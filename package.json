@@ -1,0 +1,21 @@
+{
+  "name": "play-what",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Bednarczyk",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "color": "^3.1.2",
+    "tone": "^13.8.25"
+  }
+}
