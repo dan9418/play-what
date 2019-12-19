@@ -1,7 +1,7 @@
-import Action from './ActionStrategies';
-import Color from './ColorStrategies';
-import Filter from './FilterStrategies';
-import Label from './LabelStrategies';
-import Mapping from './MappingStrategies';
+import ActionBy from './ActionBy';
+import ColorBy from './ColorBy';
+import FilterBy from './FilterBy';
+import LabelBy from './LabelBy';
+import MapBy from './MapBy';
 
-export { Action, Color, Filter, Label, Mapping };
+export { ActionBy, ColorBy, FilterBy, LabelBy, MapBy };

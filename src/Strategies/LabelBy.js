@@ -1,6 +1,7 @@
 const EMPTY = '';
 
-export default class LabelStrategies {
+export default class LabelBy {
+
     static none() {
         return EMPTY;
     }

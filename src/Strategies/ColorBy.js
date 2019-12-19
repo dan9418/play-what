@@ -52,7 +52,8 @@ const DEFAULT_COLOR_SCHEMES = {
     ]
 };
 
-export default class ColorStrategies {
+export default class ColorBy {
+    
     static none() {
         return {};
     }

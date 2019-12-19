@@ -1,11 +1,12 @@
 import SoundUtils from "../Utils/SoundUtils";
 
-export default class ActionStrategies {
-    static nop() {
+export default class ActionBy {
+
+    static none() {
         return () => null;
     }
 
-    static log(note, viewerData) {
+    static logData(note, viewerData) {
         let output = {
             note: note,
             viewerData: viewerData
@@ -15,7 +16,7 @@ export default class ActionStrategies {
         }
     }
 
-    static sound(note, viewerData) {
+    static playSound(note, viewerData) {
         return () => {
             ActionStrategies.log(note, viewerData);
             SoundUtils.play(note.frequency, .5);
