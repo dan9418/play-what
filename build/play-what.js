@@ -221,7 +221,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FilterBy; });\nclass FilterBy {\r\n    static none() {\r\n        return () => true;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/Strategies/FilterBy.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FilterBy; });\nclass FilterBy {\r\n    static none() {\r\n        return () => true;\r\n    }\r\n    static active(note) {\r\n        return note && note.interval;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/Strategies/FilterBy.js?");
 
 /***/ }),
 
