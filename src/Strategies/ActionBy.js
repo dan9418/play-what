@@ -18,7 +18,6 @@ export default class ActionBy {
 
     static playSound(note, viewerData) {
         return () => {
-            ActionStrategies.log(note, viewerData);
             SoundUtils.play(note.frequency, .5);
         }
     }
