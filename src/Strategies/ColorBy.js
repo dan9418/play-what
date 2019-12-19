@@ -67,10 +67,12 @@ export default class ColorBy {
     }
 
     static pitchClass(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.pitchClass) {
-        return ColorUtils.discrete(note.pitchClass, scheme);
+        return (note) ? ColorUtils.discrete(note.pitchClass, scheme) : ColorBy.none(); 
     }
 
     static octave(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.octave) {
+        if(!note || !viewerData) return ColorBy.none();
+
         let currentOctave = note.octave;
         let minOctave = viewerData.minNote.octave;
         let maxOctave = viewerData.maxNote.octave;
@@ -79,6 +81,8 @@ export default class ColorBy {
     }
 
     static frequency(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.frequency) {
+        if(!note || !viewerData) return ColorBy.none();
+
         let currentFrequency = note.frequency;
         let minFrequency = viewerData.minNote.frequency;
         let maxFrequency = viewerData.maxNote.frequency;
@@ -87,6 +91,8 @@ export default class ColorBy {
     }
 
     static noteIndex(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.noteIndex) {
+        if(!note || !viewerData) return ColorBy.none();
+
         let currentIndex = note.noteIndex;
         let minIndex = viewerData.minNote.noteIndex;
         let maxIndex = viewerData.maxNote.noteIndex;
