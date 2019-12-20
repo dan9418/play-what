@@ -30,9 +30,8 @@ export default class RomanNumeral extends Chord {
         let newIntervals = sourceScale.intervals.filter(interval => validDegrees.includes(interval.degree));
         while (newIntervals[0].degree < degree) {
             let first = newIntervals.shift();
-            let { degree, semitones, id, name, ascending } = first;
-            let copy = new Interval(degree, semitones, id, name, ascending, 1);
-            newIntervals.push(copy);
+            first.octaveOffset = 1;
+            newIntervals.push(first);
         }
         return newIntervals;
     }

@@ -1,17 +1,19 @@
 import CommonUtils from "../Utils/CommonUtils";
+import { INTERVAL } from "./Constants";
 
 export class Interval {
-    constructor(degree, semitones, id, name, ascending = true, octaveOffset = 0) {
-        this.id = id;
-        this.name = name;
-        this.degree = degree;
-        this.semitones = semitones;
+    constructor(baseInterval, ascending = true, octaveOffset = 0) {
+        this.baseInterval = baseInterval;
+        this.degree = baseInterval.degree;
+        this.semitones = baseInterval.semitones;
+        this.id = baseInterval.id;
+        this.name = baseInterval.name;
         this.ascending = ascending;
         this.octaveOffset = octaveOffset;
     }
 
     copy() {
-        return new Interval(this.degree, this.semitones, this.id, this.name, this.ascending, this.octaveOffset);
+        return new Interval(this, this.ascending, this.octaveOffset);
     }
 
     matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {
@@ -29,9 +31,9 @@ export class Interval {
     add(interval, subtract = false) {
         let newDegree = CommonUtils.moduloSum(this.degree, interval.degree, 7, 1, subtract);
         let newSemitones = CommonUtils.moduloSum((this.octaveOffset * 12) + this.semitones, (interval.octaveOffset * 12) + interval.semitones, 12, 0, subtract);
-        return new Interval(newDegree, newSemitones, newDegree, newDegree);
-        //let allIntervals = Object.values(INTERVAL);
-        //let newInterval = allIntervals.find((i) => i.degree === newDegree && i.semitones === newSemitones);
-        //return newInterval ? newInterval.copy() : null;
+        //return new Interval(newDegree, newSemitones, newDegree, newDegree);
+        let allIntervals = Object.values(INTERVAL);
+        let newInterval = allIntervals.find((i) => i.degree === newDegree && i.semitones === newSemitones);
+        return newInterval ? new Interval(newInterval) : null;
     }
 }

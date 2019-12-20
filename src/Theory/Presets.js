@@ -1,47 +1,8 @@
-import { Interval } from "../Theory/Interval"
 import IntervalPair from "./ConceptTypes/IntervalPair";
 import Chord from "./ConceptTypes/Chord";
 import HeptatonicScale from "./ConceptTypes/HeptatonicScale";
 import Scale from "./ConceptTypes/Scale";
-
-/***** Intervals *****/
-
-export const INTERVAL = {
-    P1: new Interval(1, 0, 'P1', 'Perfect Unison'),
-    m2: new Interval(2, 1, 'm2', 'Minor 2nd'),
-    M2: new Interval(2, 2, 'M2', 'Major 2nd'),
-    A2: new Interval(2, 3, 'A2', 'Augmented 2nd'),
-    d3: new Interval(3, 2, 'd3', 'Diminished 3rd'),
-    m3: new Interval(3, 3, 'm3', 'Minor 3rd'),
-    M3: new Interval(3, 4, 'M3', 'Major 3rd'),
-    A3: new Interval(3, 5, 'A3', 'Augmented 3rd'),
-    d4: new Interval(4, 4, 'd4', 'Diminished 4th'),
-    P4: new Interval(4, 5, 'P4', 'Perfect 4th'),
-    A4: new Interval(4, 6, 'A4', 'Augmented 4th'),
-    d5: new Interval(5, 6, 'd5', 'Diminished 5th'),
-    P5: new Interval(5, 7, 'P5', 'Perfect 5th'),
-    A5: new Interval(5, 8, 'A5', 'Augmented 5th'),
-    d6: new Interval(6, 7, 'd6', 'Diminished 6th'),
-    m6: new Interval(6, 8, 'm6', 'Minor 6th'),
-    M6: new Interval(6, 9, 'M6', 'Major 6th'),
-    A6: new Interval(6, 10, 'A6', 'Augmented 6th'),
-    d7: new Interval(7, 9, 'd7', 'Diminished 7th'),
-    m7: new Interval(7, 10, 'm7', 'Minor 7th'),
-    M7: new Interval(7, 11, 'M7', 'Major 7th'),
-    P8: new Interval(8, 12, 'P8', 'Octave'),
-    flat9: new Interval(9, 13, 'b9', 'Flat Ninth'),
-    ext9: new Interval(9, 14, '9', 'Ninth'),
-    sharp9: new Interval(9, 15, '#9', 'Sharp Ninth'),
-    flat11: new Interval(11, 16, 'b11', 'Flat Eleventh'),
-    ext11: new Interval(11, 17, '11', 'Eleventh'),
-    sharp11: new Interval(11, 18, '#11', 'Sharp Eleventh'),
-    P12: new Interval(12, 19, 'P12', 'Perfect 12th'),
-    flat13: new Interval(13, 20, 'b13', 'Flat Thirteenth'),
-    ext13: new Interval(13, 21, '13', 'Thirteenth'),
-    sharp13: new Interval(13, 22, '#13', 'Sharp Thirteenth'),
-    flat15: new Interval(15, 23, 'b15', 'Flat Fifthteenth'),
-    ext15: new Interval(15, 24, '15', 'Fifthteenth')
-};
+import { INTERVAL } from "./Constants";
 
 /***** Concepts *****/
 
