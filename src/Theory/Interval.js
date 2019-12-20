@@ -13,7 +13,7 @@ export class Interval {
     }
 
     copy() {
-        return new Interval(this, this.ascending, this.octaveOffset);
+        return new Interval(this.baseInterval, this.ascending, this.octaveOffset);
     }
 
     matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {

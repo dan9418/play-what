@@ -58,7 +58,7 @@ export default class FunctionalNote {
     }
 
     static getOctave(keyCenter, interval) {
-        return keyCenter.octave + Math.floor((keyCenter.tonic.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12);
+        return keyCenter.octave + Math.floor((keyCenter.tonic.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12) + interval.octaveOffset;
     }
 
     static getNoteIndex(noteOctave, pitchClass) {
