@@ -9,4 +9,9 @@ export default class SoundUtils {
     static play(frequency, duration) {
         MASTER_OUT.triggerAttackRelease(frequency, duration);
     }
+    static playNotes(notes, duration) {
+        let synth = new Tone.PolySynth(notes.length, Tone.Synth).toMaster();
+        let freqs = notes.map(n => n.frequency);
+        synth.triggerAttackRelease(freqs, .5);
+    }
 }
