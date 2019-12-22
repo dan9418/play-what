@@ -52,51 +52,79 @@ const DEFAULT_COLOR_SCHEMES = {
     ]
 };
 
-export default class ColorBy {
-    
-    static none() {
-        return {};
-    }
+const ColorBy = {
 
-    static binary(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.binary) {
-        return (!note || !note.interval) ? ColorUtils.discrete(0, scheme) : ColorUtils.discrete(1, scheme);
-    }
+    none: {
+        id: 'none',
+        name: 'None',
+        fx: () => { }
+    },
 
-    static degree(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.degree) {
-        return (!note || !note.interval) ? ColorUtils.discrete(0, scheme) : ColorUtils.discrete(note.interval.degree, scheme);
-    }
+    binary: {
+        id: 'binary',
+        name: 'Binary',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.binary) => {
+            return (!note || !note.interval) ? ColorUtils.discrete(0, scheme) : ColorUtils.discrete(1, scheme);
+        }
+    },
 
-    static pitchClass(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.pitchClass) {
-        return (note) ? ColorUtils.discrete(note.pitchClass, scheme) : ColorBy.none(); 
-    }
+    degree: {
+        id: 'degree',
+        name: 'Degree',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.degree) => {
+            return (!note || !note.interval) ? ColorUtils.discrete(0, scheme) : ColorUtils.discrete(note.interval.degree, scheme);
+        }
+    },
 
-    static octave(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.octave) {
-        if(!note || !viewerData) return ColorBy.none();
+    pitchClass: {
+        id: 'pitchClass',
+        name: 'Pitch Class',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.pitchClass) => {
+            return (note) ? ColorUtils.discrete(note.pitchClass, scheme) : ColorBy.none();
+        }
+    },
 
-        let currentOctave = note.octave;
-        let minOctave = viewerData.minNote.octave;
-        let maxOctave = viewerData.maxNote.octave;
+    octave: {
+        id: 'octave',
+        name: 'Octave',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.octave) => {
+            if (!note || !viewerData) return ColorBy.none();
 
-        return ColorUtils.continuous(currentOctave, minOctave, maxOctave, scheme);
-    }
+            let currentOctave = note.octave;
+            let minOctave = viewerData.minNote.octave;
+            let maxOctave = viewerData.maxNote.octave;
 
-    static frequency(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.frequency) {
-        if(!note || !viewerData) return ColorBy.none();
+            return ColorUtils.continuous(currentOctave, minOctave, maxOctave, scheme);
+        }
+    },
 
-        let currentFrequency = note.frequency;
-        let minFrequency = viewerData.minNote.frequency;
-        let maxFrequency = viewerData.maxNote.frequency;
+    frequency: {
+        id: 'frequency',
+        name: 'Frequency',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.frequency) => {
+            if (!note || !viewerData) return ColorBy.none();
 
-        return ColorUtils.continuous(currentFrequency, minFrequency, maxFrequency, scheme);
-    }
+            let currentFrequency = note.frequency;
+            let minFrequency = viewerData.minNote.frequency;
+            let maxFrequency = viewerData.maxNote.frequency;
 
-    static noteIndex(note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.noteIndex) {
-        if(!note || !viewerData) return ColorBy.none();
+            return ColorUtils.continuous(currentFrequency, minFrequency, maxFrequency, scheme);
+        }
+    },
 
-        let currentIndex = note.noteIndex;
-        let minIndex = viewerData.minNote.noteIndex;
-        let maxIndex = viewerData.maxNote.noteIndex;
+    noteIndex: {
+        id: 'noteIndex',
+        name: 'Note Index',
+        fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.noteIndex) => {
+            if (!note || !viewerData) return ColorBy.none();
 
-        return ColorUtils.continuous(currentIndex, minIndex, maxIndex, scheme);
+            let currentIndex = note.noteIndex;
+            let minIndex = viewerData.minNote.noteIndex;
+            let maxIndex = viewerData.maxNote.noteIndex;
+
+            return ColorUtils.continuous(currentIndex, minIndex, maxIndex, scheme);
+        }
     }
 }
+
+export default ColorBy;

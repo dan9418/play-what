@@ -1,24 +1,36 @@
 import SoundUtils from "../Utils/SoundUtils";
 
-export default class ActionBy {
+const ActionBy = {
 
-    static none() {
-        return () => null;
-    }
+    none: {
+        id: 'none',
+        name: 'None',
+        fx: () => null
+    },
 
-    static logData(note, viewerData) {
-        let output = {
-            note: note,
-            viewerData: viewerData
+    logData: {
+        id: 'logData',
+        name: 'Log Data',
+        fx: (note, viewerData) => {
+            let output = {
+                note: note,
+                viewerData: viewerData
+            }
+            return () => {
+                console.log(output);
+            }
         }
-        return () => {
-            console.log(output);
-        }
-    }
+    },
 
-    static playSound(note, viewerData) {
-        return () => {
-            SoundUtils.play(note.frequency, .5);
+    playSound: {
+        id: 'playSound',
+        name: 'Play Sound',
+        fx: (note, viewerData) => {
+            return () => {
+                SoundUtils.play(note.frequency, .5);
+            }
         }
     }
 }
+
+export default ActionBy;

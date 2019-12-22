@@ -1,50 +1,83 @@
 const EMPTY = '';
 
-export default class LabelBy {
+const LabelBy = {
 
-    static none() {
-        return EMPTY;
-    }
+    none: {
+        id: 'none',
+        name: 'None',
+        fx: () => EMPTY
+    },
 
-    static name(note) {
-        if(!note) return EMPTY;
+    name: {
+        id: 'name',
+        name: 'Name',
+        fx: (note) => {
+            if (!note) return EMPTY;
 
-        return note.name;
-    }
+            return note.name;
+        }
+    },
 
-    static degree(note) {
-        if(!note || !note.interval) return EMPTY;
+    degree: {
+        id: 'degree',
+        name: 'Degree',
+        fx: (note) => {
+            if (!note || !note.interval) return EMPTY;
 
-        return note.interval.degree;
-    }
+            return note.interval.degree;
+        }
+    },
 
-    static interval(note) {
-        if(!note || !note.interval) return EMPTY;
+    interval: {
+        id: 'interval',
+        name: 'Interval',
+        fx: (note) => {
+            if (!note || !note.interval) return EMPTY;
 
-        return note.interval.id;
-    }
+            return note.interval.id;
+        }
+    },
 
-    static noteIndex(note) {
-        if(!note) return EMPTY;
+    noteIndex: {
+        id: 'noteIndex',
+        name: 'Note Index',
+        fx: (note) => {
+            if (!note) return EMPTY;
 
-        return note.noteIndex;
-    }
+            return note.noteIndex;
+        }
+    },
 
-    static pitchClass(note) {
-        if(!note) return EMPTY;
 
-        return note.pitchClass;
-    }
+    pitchClass: {
+        id: 'pitchClass',
+        name: 'Note Index',
+        fx: (note) => {
+            if (!note) return EMPTY;
 
-    static octave(note) {
-        if(!note) return EMPTY;
+            return note.pitchClass;
+        }
+    },
 
-        return note.noteOctave;
-    }
+    octave: {
+        id: 'octave',
+        name: 'Octave',
+        fx: (note) => {
+            if (!note) return EMPTY;
 
-    static frequency(note) {
-        if(!note) return EMPTY;
+            return note.octave;
+        }
+    },
 
-        return Math.round(note.frequency);
+    frequency: {
+        id: 'frequency',
+        name: 'Frequency',
+        fx: (note) => {
+            if (!note) return EMPTY;
+
+            return Math.round(note.frequency);
+        }
     }
 }
+
+export default LabelBy;

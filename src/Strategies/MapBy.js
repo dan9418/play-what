@@ -2,47 +2,54 @@ import CommonUtils from '../Utils/CommonUtils';
 import FunctionalNote from '../Theory/FunctionalNote';
 import NonfunctionalNote from '../Theory/NonfunctionalNote';
 
-export default class MapBy {
+function getIntervalByPitchClass(keyCenter, intervals, pitchClass) {
+    return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;
+}
 
-    // Private
+function getIntervalByNoteIndex(keyCenter, intervals, noteIndex) {
+    return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;
+}
 
-    static _getIntervalByPitchClass(keyCenter, intervals, pitchClass) {
-        return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;
-    }
+/*function getNoteAt(noteIndex, keyCenter, concept, filterOctave = true) {
+    return filterOctave ?
+        MapBy.noteIndex(noteIndex, keyCenter, concept) :
+        MapBy.pitchClass.getNoteByPitchClass(noteIndex, keyCenter, concept);
+}*/
 
-    static _getIntervalByNoteIndex(keyCenter, intervals, noteIndex) {
-        return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;
-    }
+const MapBy = {
 
-    static _getNoteAt(noteIndex, keyCenter, concept, filterOctave = true) {
-        return filterOctave ?
-            MapBy.noteIndex(noteIndex, keyCenter, concept) :
-            MapBy.pitchClass.getNoteByPitchClass(noteIndex, keyCenter, concept);
-    }
+    pitchClass: {
+        id: 'pitchClass',
+        name: 'Pitch Class',
+        fx: (noteIndex, keyCenter, concept) => {
+            let pitchClass = CommonUtils.modulo(noteIndex, 12);
+            let interval = getIntervalByPitchClass(keyCenter, concept.intervals, pitchClass);
+            if (interval === null) {
+                return new NonfunctionalNote(noteIndex);
+            }
 
-    // Public
+            let relativeKeyCenter = {
+                ...keyCenter,
+                octave: NonfunctionalNote.getOctave(noteIndex - interval.semitones)
+            };
 
-    static pitchClass(noteIndex, keyCenter, concept) {
-        let pitchClass = CommonUtils.modulo(noteIndex, 12);
-        let interval = MapBy._getIntervalByPitchClass(keyCenter, concept.intervals, pitchClass);
-        if (interval === null) {
-            return new NonfunctionalNote(noteIndex);
+            return new FunctionalNote(relativeKeyCenter, interval);
         }
+    },
 
-        let relativeKeyCenter = {
-            ...keyCenter,
-            octave: NonfunctionalNote.getOctave(noteIndex - interval.semitones)
-        };
+    noteIndex:
+    {
+        id: 'noteIndex',
+        name: 'Note Index',
+        fx: (noteIndex, keyCenter, concept) => {
+            let interval = getIntervalByNoteIndex(keyCenter, concept.intervals, noteIndex, true);
+            if (interval === null) {
+                return new NonfunctionalNote(noteIndex);
+            }
 
-        return new FunctionalNote(relativeKeyCenter, interval);
-    }
-
-    static noteIndex(noteIndex, keyCenter, concept) {
-        let interval = MapBy._getIntervalByNoteIndex(keyCenter, concept.intervals, noteIndex, true);
-        if (interval === null) {
-            return new NonfunctionalNote(noteIndex);
+            return new FunctionalNote(keyCenter, interval);
         }
-
-        return new FunctionalNote(keyCenter, interval);
     }
 }
+
+export default MapBy;
