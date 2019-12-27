@@ -1,9 +1,9 @@
-import { Interval } from "./Interval";
+import { IntervalWrapper } from "./IntervalWrapper";
 import FunctionalNote from "./FunctionalNote";
 
 export default class Concept {
     constructor(id = '', name = '', intervals = []) {
-        this.intervals = intervals[0] instanceof Interval ? intervals : intervals.map(i => new Interval(i));
+        this.intervals = intervals[0] instanceof IntervalWrapper ? intervals : intervals.map(i => new IntervalWrapper(i));
         this.id = id;
         this.name = name;
     }

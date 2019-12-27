@@ -42,6 +42,7 @@ export const CHORD = {
     // Augmented
     Aug: new Chord('Aug', 'Augmented Triad', [INTERVAL.P1, INTERVAL.M3, INTERVAL.A5]),
     Aug7: new Chord('Aug7', 'Augmented 7th', [INTERVAL.P1, INTERVAL.M3, INTERVAL.A5, INTERVAL.m7]),
+    AugM7: new Chord('AugM7', 'Augmented Major 7th', [INTERVAL.P1, INTERVAL.M3, INTERVAL.A5, INTERVAL.M7]),
     // Diminished
     Dim: new Chord('Dim', 'Diminished Triad', [INTERVAL.P1, INTERVAL.m3, INTERVAL.d5]),
     Dim7: new Chord('Dim7', 'Diminished 7th', [INTERVAL.P1, INTERVAL.m3, INTERVAL.d5, INTERVAL.d7]),

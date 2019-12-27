@@ -1,7 +1,7 @@
 import CommonUtils from "../Utils/CommonUtils";
 import { INTERVAL } from "./Constants";
 
-export class Interval {
+export class IntervalWrapper {
     constructor(baseInterval, ascending = true, octaveOffset = 0) {
         this.baseInterval = baseInterval;
         this.degree = baseInterval.degree;
@@ -13,7 +13,7 @@ export class Interval {
     }
 
     copy() {
-        return new Interval(this.baseInterval, this.ascending, this.octaveOffset);
+        return new IntervalWrapper(this.baseInterval, this.ascending, this.octaveOffset);
     }
 
     matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {
@@ -31,9 +31,8 @@ export class Interval {
     add(interval, subtract = false) {
         let newDegree = CommonUtils.moduloSum(this.degree, interval.degree, 7, 1, subtract);
         let newSemitones = CommonUtils.moduloSum((this.octaveOffset * 12) + this.semitones, (interval.octaveOffset * 12) + interval.semitones, 12, 0, subtract);
-        //return new Interval(newDegree, newSemitones, newDegree, newDegree);
         let allIntervals = Object.values(INTERVAL);
         let newInterval = allIntervals.find((i) => i.degree === newDegree && i.semitones === newSemitones);
-        return newInterval ? new Interval(newInterval) : null;
+        return newInterval ? new IntervalWrapper(newInterval) : null;
     }
 }
