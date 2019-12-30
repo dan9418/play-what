@@ -2,8 +2,7 @@ export default class KeyCenter {
     constructor(tonic, accidental, octave) {
         this.tonic = tonic;
         this.accidental = accidental;
-        this.octave = octave;
-        
+        this.octave = octave; 
     }
 
     copy() {
