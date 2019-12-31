@@ -7,4 +7,8 @@ export default class IntervalPair extends Concept {
         }
         super(id, name, intervals);
     }
+    copy() {
+        let intervalsCopy = [...this.intervals];
+        return new IntervalPair(this.id, this.name, intervalsCopy);
+    }
 }

@@ -6,6 +6,11 @@ export default class Chord extends Concept {
         // TODO initial inversions
     }
 
+    copy() {
+        let intervalsCopy = [...this.intervals];
+        return new Chord(this.id, this.name, intervalsCopy, this.inversion);
+    }
+
     chordInversion(inversion) {
         for (let i = 0; i < inversion; i++) {
             let shifted = this.intervals.shift();
