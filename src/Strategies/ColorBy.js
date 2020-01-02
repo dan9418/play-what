@@ -80,7 +80,7 @@ const ColorBy = {
         id: 'pitchClass',
         name: 'Pitch Class',
         fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.pitchClass) => {
-            return (note) ? ColorUtils.discrete(note.pitchClass, scheme) : ColorBy.none();
+            return (note) ? ColorUtils.discrete(note.pitchClass, scheme) : {};
         }
     },
 
@@ -88,7 +88,7 @@ const ColorBy = {
         id: 'octave',
         name: 'Octave',
         fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.octave) => {
-            if (!note || !viewerData) return ColorBy.none();
+            if (!note || !viewerData) return {};
 
             let currentOctave = note.octave;
             let minOctave = viewerData.minNote.octave;
@@ -102,7 +102,7 @@ const ColorBy = {
         id: 'frequency',
         name: 'Frequency',
         fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.frequency) => {
-            if (!note || !viewerData) return ColorBy.none();
+            if (!note || !viewerData) return {};
 
             let currentFrequency = note.frequency;
             let minFrequency = viewerData.minNote.frequency;
@@ -116,7 +116,7 @@ const ColorBy = {
         id: 'noteIndex',
         name: 'Note Index',
         fx: (note, viewerData, scheme = DEFAULT_COLOR_SCHEMES.noteIndex) => {
-            if (!note || !viewerData) return ColorBy.none();
+            if (!note || !viewerData) return {};
 
             let currentIndex = note.noteIndex;
             let minIndex = viewerData.minNote.noteIndex;
