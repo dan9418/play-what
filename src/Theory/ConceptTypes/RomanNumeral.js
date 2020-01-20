@@ -25,7 +25,8 @@ export default class RomanNumeral extends Chord {
         let validDegrees = [
             degree,
             CommonUtils.moduloSum(degree, 3, 7, 1),
-            CommonUtils.moduloSum(degree, 5, 7, 1)
+            CommonUtils.moduloSum(degree, 5, 7, 1),
+            CommonUtils.moduloSum(degree, 7, 7, 1)
         ];
         let newIntervals = sourceScale.intervals.filter(interval => validDegrees.includes(interval.degree));
         while (newIntervals[0].degree < degree) {
