@@ -51,6 +51,7 @@ export const CHORD = {
     Sus2: new Chord('Sus2', 'Suspended 2nd', [INTERVAL.P1, INTERVAL.M2, INTERVAL.P5]),
     Sus4: new Chord('Sus4', 'Suspended 4th', [INTERVAL.P1, INTERVAL.P4, INTERVAL.P5]),
     // Extended
+    Dom7b9: new Chord('Dom7b9', 'Dom7 b9', [INTERVAL.P1, INTERVAL.M3, INTERVAL.P5, INTERVAL.m7, INTERVAL.flat9]),
     Maj9: new Chord('Maj9', 'Major 9th', [INTERVAL.P1, INTERVAL.M3, INTERVAL.P5, INTERVAL.M7, INTERVAL.ext9]),
     Maj11: new Chord('Maj11', 'Major 11th', [INTERVAL.P1, INTERVAL.M3, INTERVAL.P5, INTERVAL.M7, INTERVAL.ext9, INTERVAL.ext11]),
     Maj13: new Chord('Maj13', 'Major 13th', [INTERVAL.P1, INTERVAL.M3, INTERVAL.P5, INTERVAL.M7, INTERVAL.ext9, INTERVAL.ext11, INTERVAL.ext13]),
