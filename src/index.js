@@ -1,10 +1,7 @@
-import * as Theory from './v1/Theory/_module';
-import * as Utils from './v1/Utils/_module';
-import * as Strategies from './v1/Strategies/_module';
+import v1 from './v1/_module';
+import v2 from './v2/_module';
 
 export default {
-    ...Theory,
-    ...Utils,
-    ...Strategies,
-    v2: null
+    ...v1,
+    v2
 };
