@@ -1,4 +1,4 @@
-import { TONIC } from '../Tools/Presets';
+import { TONICS } from '../Tools/Presets';
 import Utils from '../Tools/Utils';
 import { getFrequency } from '../Tools/Theory';
 
@@ -25,7 +25,7 @@ export default class Note {
     static getName(noteDegree, pitchClass, accidental) {
         let spelling = Note._getTonicByDegree(noteDegree);
         // Get accidental offset
-        let offset = pitchClass - spelling.pitchClass;
+        let offset = pitchClass - spelling.value.pitchClass;
         if (offset < 0 && accidental.offset > 0) offset = offset + 12;
         else if (offset > 0 && accidental.offset < 0) offset = offset - 12;
         // Combine tonic name with accidental
@@ -33,7 +33,7 @@ export default class Note {
     }
 
     static _getTonicByDegree(noteDegree) {
-        return Object.values(TONIC)[noteDegree - 1];
+        return TONICS[noteDegree - 1];
     }
 
     static _getAccidentalString(offset) {

@@ -59,6 +59,8 @@ export const TONIC = Object.freeze({
     }
 });
 
+export const TONICS = Object.freeze(Object.values(TONIC));
+
 // Accidentals
 
 export const ACCIDENTAL = Object.freeze({

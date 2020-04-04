@@ -5,7 +5,7 @@ export default class KeyCenter {
         if (typeof args === 'string') {
             this.str = args;
             this.tonic = TONIC[args[0]].value || TONIC.C.value;
-            this.accidental = args[1] === '#' ? ACCIDENTAL.Sharp : args[1] === 'b' ? ACCIDENTAL.Flat : ACCIDENTAL.Natural;
+            this.accidental = (args[1] === '#' ? ACCIDENTAL.Sharp : args[1] === 'b' ? ACCIDENTAL.Flat : ACCIDENTAL.Natural).value;
             this.octave = 4;
         }
         else {
