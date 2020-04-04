@@ -29,7 +29,7 @@ export function getNote(interval, keyCenter) {
     };*/
 
     const kc = new KeyCenter(keyCenter.str);
-    kc.octave = getOctaveFromNoteIndex(keyCenter.tonic.pitchClass + interval.semitones);
+    kc.octave = getOctaveFromNoteIndex(keyCenter.tonic.value.pitchClass + interval.semitones);
 
     return new Note(kc, interval);
 }

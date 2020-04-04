@@ -4,7 +4,7 @@ export default class KeyCenter {
     constructor(args) {
         if (typeof args === 'string') {
             this.str = args;
-            this.tonic = TONIC[args[0]].value || TONIC.C.value;
+            this.tonic = TONIC[args[0]] || TONIC.C;
             this.accidental = (args[1] === '#' ? ACCIDENTAL.Sharp : args[1] === 'b' ? ACCIDENTAL.Flat : ACCIDENTAL.Natural).value;
             this.octave = 4;
         }
@@ -19,7 +19,11 @@ export default class KeyCenter {
     }
 
     getRootIndex(relative = false) {
-        let keyRootRelative = this.tonic.pitchClass + this.accidental.offset;
+        let keyRootRelative = this.tonic.value.pitchClass + this.accidental.offset;
         return relative ? keyRootRelative : this.getOctaveRootIndex() + keyRootRelative;
+    }
+
+    toJSON() {
+        return this.tonic.id + this.accidental.symbol + this.octave;
     }
 }

@@ -15,11 +15,11 @@ export default class Note {
     }
 
     static getDegree(keyCenter, interval) {
-        return Utils.moduloSum(keyCenter.tonic.degreeInC, interval.degree, 7, 1);
+        return Utils.moduloSum(keyCenter.tonic.value.degreeInC, interval.degree, 7, 1);
     }
 
     static getPitchClass(keyCenter, interval) {
-        return Utils.moduloSum(keyCenter.tonic.pitchClass + keyCenter.accidental.offset, interval.semitones, 12, 0);
+        return Utils.moduloSum(keyCenter.tonic.value.pitchClass + keyCenter.accidental.offset, interval.semitones, 12, 0);
     }
 
     static getName(noteDegree, pitchClass, accidental) {
@@ -54,7 +54,7 @@ export default class Note {
     }
 
     static getOctave(keyCenter, interval) {
-        return keyCenter.octave + Math.floor((keyCenter.tonic.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12) + interval.octaveOffset;
+        return keyCenter.octave + Math.floor((keyCenter.tonic.value.pitchClass + keyCenter.accidental.offset + interval.semitones) / 12) + interval.octaveOffset;
     }
 
     static getNoteIndex(noteOctave, pitchClass) {
