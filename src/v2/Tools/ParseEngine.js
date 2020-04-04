@@ -2,16 +2,6 @@ import KeyCenter from "../Entities/KeyCenter";
 import Chord from '../Entities/Concepts/Chord';
 import Scale from '../Entities/Concepts/Scale';
 
-const intervals = args => {
-    if (typeof args === 'array') {
-
-    }
-    else if (typeof args === 'object') {
-
-    }
-    return null;
-}
-
 const getConcept = (args) => {
     if (typeof args === 'object') {
         switch (args.strategy) {
@@ -38,8 +28,9 @@ const notesFromIntervals = args => {
     }
     else if (typeof args === 'object') {
         const keyCenter = new KeyCenter(args.keyCenter);
-        const intervals = getConcept(args.intervals);
-        return { keyCenter, intervals };
+        const concept = getConcept(args.intervals);
+
+        return concept.getNotes(keyCenter);
     }
     return null;
 }

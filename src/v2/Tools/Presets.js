@@ -269,6 +269,8 @@ export const INTERVAL = Object.freeze({
     }
 });
 
+export const INTERVALS = Object.freeze(Object.values(INTERVAL));
+
 export const INTERVAL_PAIR = {
     P1: { id: 'P1', name: 'P1', value: { intervals: ['P1', 'P1'] }},
     m2: { id: 'm2', name: 'm2', value: { intervals: ['P1', 'm2'] }},

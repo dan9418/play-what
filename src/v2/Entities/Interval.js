@@ -1,4 +1,5 @@
 import { INTERVAL } from "../Tools/Presets";
+import Utils from '../Tools/Utils';
 
 export default class Interval {
     constructor(args) {
@@ -6,12 +7,17 @@ export default class Interval {
             const preset = INTERVAL[args].value;
             this.degree = preset.degree;
             this.semitones = preset.semitones;
+            this.octaveOffset = 0;
         }
         else {
             return;
         }
     }
-    getDegree() {
-        return this.degree;
+    matchesPitchClassFromKeyCenter(keyCenter, pitchClass) {
+        return Utils.modulo(keyCenter.getRootIndex(true) + this.semitones, 12) === pitchClass;
+    }
+
+    matchesNoteIndexFromKeyCenter(keyCenter, noteIndex) {
+        return keyCenter.getRootIndex() + this.octaveOffset * 12 + this.semitones === noteIndex;
     }
 }
