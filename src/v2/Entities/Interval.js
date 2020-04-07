@@ -4,9 +4,9 @@ import Utils from '../Tools/Utils';
 export default class Interval {
     constructor(args) {
         if (typeof args === 'string') {
-            const preset = INTERVAL[args].value;
-            this.id = INTERVAL[args].id;
-            this.name = INTERVAL[args].id;
+            const preset = INTERVAL[args];
+            this.id = preset.id;
+            this.name = preset.id;
             this.degree = preset.degree;
             this.semitones = preset.semitones;
             this.octaveOffset = 0;
@@ -27,3 +27,26 @@ export default class Interval {
         return this.id;
     }
 }
+
+/*export class IntervalV2 {
+
+    static fromPreset(preset) {
+        return INTERVAL[preset];
+    }
+
+    static fromConfig(config) {
+        this.id = INTERVAL[args].id;
+        this.name = INTERVAL[args].id;
+        this.degree = preset.degree;
+        this.semitones = preset.semitones;
+        this.octaveOffset = 0;
+    }
+
+    static matchesPitchClassFromKeyCenter(interval, keyCenter, pitchClass) {
+        return Utils.modulo(keyCenter.getRootIndex(true) + interval.semitones, 12) === pitchClass;
+    }
+
+    static matchesNoteIndexFromKeyCenter(interval, keyCenter, noteIndex) {
+        return keyCenter.getRootIndex() + interval.octaveOffset * 12 + interval.semitones === noteIndex;
+    }
+}*/

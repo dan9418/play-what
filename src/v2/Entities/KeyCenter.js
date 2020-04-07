@@ -5,13 +5,14 @@ export default class KeyCenter {
         if (typeof args === 'string') {
             this.str = args;
             this.tonic = TONIC[args[0]] || TONIC.C;
-            this.accidental = (args[1] === '#' ? ACCIDENTAL.Sharp : args[1] === 'b' ? ACCIDENTAL.Flat : ACCIDENTAL.Natural).value;
+            this.accidental = (args[1] === '#' ? ACCIDENTAL.Sharp : args[1] === 'b' ? ACCIDENTAL.Flat : ACCIDENTAL.Natural);
             this.octave = 4;
         }
         else {
             console.error('KeyCenter error')
             return;
         }
+        Object.freeze(this);
     }
 
     getOctaveRootIndex() {
@@ -19,7 +20,7 @@ export default class KeyCenter {
     }
 
     getRootIndex(relative = false) {
-        let keyRootRelative = this.tonic.value.pitchClass + this.accidental.offset;
+        let keyRootRelative = this.tonic.pitchClass + this.accidental.offset;
         return relative ? keyRootRelative : this.getOctaveRootIndex() + keyRootRelative;
     }
 
