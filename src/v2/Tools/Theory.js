@@ -5,14 +5,6 @@ import { CALIBRATION_NOTE, CALIBRATION_CONSTANT } from './Constants';
 import KeyCenter from '../Entities/KeyCenter';
 import Note from '../Entities/Note';
 
-/*function getIntervalByPitchClass(pitchClass, keyCenter, intervals = INTERVALS) {
-    return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;
-}
-
-/*function getIntervalByNoteIndex(noteIndex, keyCenter, intervals = INTERVALS) {
-    return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;
-}*/
-
 export default class Theory {
 
     static getOctaveFromNoteIndex(noteIndex) {
@@ -79,6 +71,22 @@ export default class Theory {
 
     static getNoteIndex(noteOctave, pitchClass) {
         return (noteOctave - 4) * 12 + pitchClass;
+    }
+
+    static getIntervalByPitchClass(pitchClass, keyCenter, intervals = INTERVALS) {
+        return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;
+    }
+    
+    static getIntervalByNoteIndex(noteIndex, keyCenter, intervals = INTERVALS) {
+        return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;
+    }
+
+    static getNoteByPitchClass(notes, pitchClass) {
+        return notes.find(note => note.pitchClass === pitchClass) || null;
+    }
+
+    static getNoteByNoteIndex(notes, noteIndex) {
+        return notes.find(note => note.noteIndex === noteIndex) || null;
     }
 
 }

@@ -13,4 +13,7 @@ export default class Note {
 
         Object.freeze(this);
     }
+    toJSON() {
+        return this.name;
+    }
 }
