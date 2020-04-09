@@ -18,5 +18,4 @@ export const CALIBRATION_NOTE = {
     noteIndex: 9
 };
 
-export const CALIBRATION_CONSTANT = Math.pow(2,
-    1 / 12);
+export const CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);
