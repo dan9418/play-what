@@ -37,8 +37,13 @@ const DEGREE = [
 
 export default class ColorUtils {
 
-    static byDegree(note) {
-        return note ? this.discrete(note.interval.degree, DEGREE) : {};
+    static byDegree(note, config) {
+        if(!note || !note.interval) return {};
+
+        const degreeString = `d${note.interval.degree}`;
+        const customColor = config ? config[degreeString] : null;
+
+        return customColor ? this.getColorStyles(customColor) : this.discrete(note.interval.degree, DEGREE);
     }
     
     static getColorStyles(background, foreground) {
@@ -55,7 +60,7 @@ export default class ColorUtils {
     static discrete(value, colorScheme) {
         let background = colorScheme[value];
 
-        return ColorUtils.getColorStyles(background);
+        return this.getColorStyles(background);
     }
 
     static continuous(value, min, max, colorScheme) {
@@ -66,6 +71,6 @@ export default class ColorUtils {
         let finalColor = Color(colorScheme[1]);
         let background = initialColor.mix(finalColor, percent);
 
-        return ColorUtils.getColorStyles(background);
+        return this.getColorStyles(background);
     }
 }
