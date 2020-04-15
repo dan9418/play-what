@@ -24,29 +24,122 @@ export const COLORS = {
     pc11: '#C2305E'
 };
 
-const DEGREE = [
-    null,
-    COLORS.d1,
-    COLORS.d2,
-    COLORS.d3,
-    COLORS.d4,
-    COLORS.d5,
-    COLORS.d6,
-    COLORS.d7
-]
+const SCHEMES = {
+    binary: {
+        active: null,
+        inacitve: COLORS.Black
+    },
+    degree: {
+        d0: null,
+        d1: COLORS.d1,
+        d2: COLORS.d2,
+        d3: COLORS.d3,
+        d4: COLORS.d4,
+        d5: COLORS.d5,
+        d6: COLORS.d6,
+        d7: COLORS.d7
+    },
+    pitchClass: {
+        pc0: COLORS.pc0,
+        pc1: COLORS.pc1,
+        pc2: COLORS.pc2,
+        pc3: COLORS.pc3,
+        pc4: COLORS.pc4,
+        pc5: COLORS.pc5,
+        pc6: COLORS.pc6,
+        pc7: COLORS.pc7,
+        pc8: COLORS.pc8,
+        pc9: COLORS.pc9,
+        pc10: COLORS.pc10,
+        pc11: COLORS.pc11
+    },
+    octave: {
+        min: COLORS.White,
+        max: COLORS.Black
+    },
+    frequency: {
+        min: COLORS.White,
+        max: COLORS.Black
+    },
+    noteIndex: {
+        min: COLORS.White,
+        max: COLORS.Black
+    }
+}
 
 export default class ColorUtils {
 
-    static byDegree(note, config) {
+    static none() {
+        return {};
+    }
+
+    static binary(note, scheme = SCHEMES.binary) {
         if(!note || !note.interval) return {};
 
-        const degreeString = `d${note.interval.degree}`;
-        const customColor = config ? config[degreeString] : null;
-
-        return customColor ? this.getColorStyles(customColor) : this.discrete(note.interval.degree, DEGREE);
+        return this.getStylesFromColor(scheme.active);
     }
+
+    static degree(note, scheme = SCHEMES.degree) {
+        if(!note || !note.interval) return {};
+
+        const { degree } = note.interval;
+        const id = `d${degree}`;
+
+        const bg = scheme[id] ? scheme[id] : SCHEMES.degree[id];
+
+        return this.getStylesFromColor(bg);
+    }
+
+    static pitchClass(note, scheme = SCHEMES.pitchClass) {
+        if(!note) return {};
+
+        const pitchClass = note.getPitchClass();
+        const id = `pc${pitchClass}`;
+
+        const bg = scheme[id] ? scheme[id] : SCHEMES.pitchClass[id];
+
+        return this.getStylesFromColor(bg);
+    }
+
+    static octave(note, minNote, maxNote, scheme = SCHEMES.octave) {
+        if(!note) return {};
+
+        const minOctave = minNote.getOctave();
+        const octave = note.getOctave();
+        const maxOctave = maxNote.getOctave();
+
+        const bg = this.getColorFromContinuousScheme(octave, minOctave, maxOctave, scheme);
+
+        return this.getStylesFromColor(bg);
+    }
+
+    static frequency(note, minNote, maxNote, scheme = SCHEMES.frequency) {
+        if(!note) return {};
+
+        const minFrequency = minNote.getFrequency();
+        const frequency = note.getFrequency();
+        const maxFrequency = maxNote.getFrequency();
+
+        const bg = this.getColorFromContinuousScheme(frequency, minFrequency, maxFrequency, scheme);
+
+        return this.getStylesFromColor(bg);
+    }
+
+    static noteIndex(note, minNote, maxNote, scheme = SCHEMES.noteIndex) {
+        if(!note) return {};
+
+        const minNoteIndex = minNote.getNoteIndex();
+        const noteIndex = note.getNoteIndex();
+        const maxNoteIndex = maxNote.getNoteIndex();
+
+        const bg = this.getColorFromContinuousScheme(noteIndex, minNoteIndex, maxNoteIndex, scheme);
+
+        return this.getStylesFromColor(bg);
+    }
+
+    // Helpers
     
-    static getColorStyles(background, foreground) {
+    static getStylesFromColor(background, foreground) {
         if (!background) {
             return {};
         }
@@ -57,20 +150,14 @@ export default class ColorUtils {
         }
     }
 
-    static discrete(value, colorScheme) {
-        let background = colorScheme[value];
-
-        return this.getColorStyles(background);
-    }
-
-    static continuous(value, min, max, colorScheme) {
+    static getColorFromContinuousScheme(value, min, max, scheme) {
         let percent = (value - min) / (max - min);
         percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
-        let initialColor = Color(colorScheme[0]);
-        let finalColor = Color(colorScheme[1]);
-        let background = initialColor.mix(finalColor, percent);
+        const initialColor = Color(scheme.min);
+        const finalColor = Color(scheme.max);
+        const background = initialColor.mix(finalColor, percent);
 
-        return this.getColorStyles(background);
+        return background;
     }
 }

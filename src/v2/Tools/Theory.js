@@ -86,7 +86,8 @@ export default class Theory {
     }
 
     static getNoteByNoteIndex(notes, noteIndex) {
-        return notes.find(note => note.noteIndex === noteIndex) || null;
+        const note = notes.find(note => note.noteIndex === noteIndex) || null;
+        return note ? note : new Note(noteIndex);
     }
 
 }
