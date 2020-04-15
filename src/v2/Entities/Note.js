@@ -1,4 +1,5 @@
 import Theory from '../Tools/Theory';
+import CommonUtils from '../Tools/Utils';
 
 export default class Note {
     constructor(keyCenter, interval) {
@@ -7,7 +8,7 @@ export default class Note {
             this.keyCenter = null;
             this.interval = null;
             this.noteDegree = 0;
-            this.pitchClass = keyCenter % 12;
+            this.pitchClass = CommonUtils.modulo(keyCenter, 12);
             this.name = '';
             this.octave = Math.floor(keyCenter / 12);
             this.noteIndex = keyCenter;
@@ -31,6 +32,9 @@ export default class Note {
     }
     getDegree() {
         return this.interval.degree;
+    }
+    getName() {
+        return this.name;
     }
     getPitchClass() {
         return this.pitchClass;
