@@ -6,7 +6,7 @@ export default class SoundUtils {
     static getSynth() {
         return MASTER_OUT;
     }
-    static play(frequency, duration) {
+    static play(frequency, duration = .5) {
         MASTER_OUT.triggerAttackRelease(frequency, duration);
     }
     static playNotes(notes, duration) {
