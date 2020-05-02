@@ -42,5 +42,5 @@ export const getNoteName = (note, max = MAX_VECTOR) => {
 export const getIntervalName = (interval, max = MAX_VECTOR) => {
     const reduced = moduloVectors(interval, max);
     const preset = Presets.INTERVALS.find(i => i.p === reduced.p && i.d === reduced.d);
-    return preset ? preset.name : '?';
+    return preset ? preset.id : '?';
 }
