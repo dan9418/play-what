@@ -248,3 +248,15 @@ export const SCALE_VALUES = Object.freeze(Object.values(SCALE));
     Aeolian: { id: 'Aeolian', name: 'Aeolian', scale: 'Major', degree: 6 },
     Locrian: { id: 'Locrian', name: 'Locrian', scale: 'Major', degree: 7 }
 });*/
+
+/*
+export const QUICK_MODE = {
+    Ionian: new HeptatonicScale('Ionian', 'Ionian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]),
+    Dorian: new HeptatonicScale('Dorian', 'Dorian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]),
+    Phrygian: new HeptatonicScale('Phrygian', 'Phrygian', [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]),
+    Lydian: new HeptatonicScale('Lydian', 'Lydian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.A4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]),
+    Mixolydian: new HeptatonicScale('Mixolydian', 'Mixolydian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]),
+    Aeolian: new HeptatonicScale('Aeolian', 'Aeolian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]),
+    Locrian: new HeptatonicScale('Locrian', 'Locrian', [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.d5, INTERVAL.m6, INTERVAL.m7])
+};
+*/
