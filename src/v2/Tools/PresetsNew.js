@@ -43,7 +43,7 @@ export const KEY_CENTERS = [
     }
 ];
 
-export const INTERVALS = {
+export const INTERVALS = Object.freeze({
     P1: {
         id: 'P1',
         name: 'Perfect Unison',
@@ -176,9 +176,9 @@ export const INTERVALS = {
         d: 7,
         p: 12
     }
-};
+});
 
-export const INTERVALS_VALUES = Object.values(INTERVALS);
+export const INTERVALS_VALUES = Object.freeze(Object.values(INTERVALS));
 
 export const INTERVAL_PAIR = Object.freeze({
     P1: { id: 'P1', name: 'P1', intervals: [INTERVALS.P1, INTERVALS.P1] },
@@ -201,6 +201,8 @@ export const INTERVAL_PAIR = Object.freeze({
     M7: { id: 'M7', name: 'M7', intervals: [INTERVALS.P1, INTERVALS.M7] }
 });
 
+export const INTERVAL_PAIR_VALUES = Object.freeze(Object.values(INTERVAL_PAIR));
+
 export const CHORD = Object.freeze({
     Maj: { id: 'Maj', name: 'Major Triad', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5] },
     Maj6: { id: 'Maj6', name: 'Major 6th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.M6] },
@@ -220,6 +222,8 @@ export const CHORD = Object.freeze({
     Sus4: { id: 'Sus4', name: 'Suspended 4th', intervals: [INTERVALS.P1, INTERVALS.P4, INTERVALS.P5] }
 });
 
+export const CHORD_VALUES = Object.freeze(Object.values(CHORD));
+
 export const SCALE = Object.freeze({
     Major: { id: 'Major', name: 'Major', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
     NatualMinor: { id: 'NaturalMinor', name: 'Natural Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
@@ -228,6 +232,8 @@ export const SCALE = Object.freeze({
     MinorPentatonic: { id: 'MinorPentatonic', name: 'Minor Pentatonic', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m7] },
     Chromatic: { id: 'Chromatic', name: 'Chromatic', intervals: [INTERVALS.P1, INTERVALS.m2, INTERVALS.M2, INTERVALS.m3, INTERVALS.M3, INTERVALS.P4, INTERVALS.A4, INTERVALS.P5, INTERVALS.m6, INTERVALS.M6, INTERVALS.m7, INTERVALS.M7] }
 });
+
+export const SCALE_VALUES = Object.freeze(Object.values(SCALE));
 
 /*export const MODE = Object.freeze({
     Ionian: { id: 'Ionian', name: 'Ionian', scale: 'Major', degree: 1 },
