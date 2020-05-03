@@ -12,5 +12,6 @@ export default {
     Theory,
     Utils,
     Color,
-    Label
+    Label,
+    Sound
 };
