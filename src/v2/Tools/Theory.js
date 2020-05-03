@@ -1,5 +1,5 @@
 import Utils from './Utils';
-import { INTERVALS } from './Presets';
+import { INTERVALS_VALUES } from './Presets';
 import { TONICS } from '../Tools/Presets';
 import { CALIBRATION_NOTE, CALIBRATION_CONSTANT } from './Constants';
 import KeyCenter from '../Entities/KeyCenter';
@@ -73,11 +73,11 @@ export default class Theory {
         return (noteOctave - 4) * 12 + pitchClass;
     }
 
-    static getIntervalByPitchClass(pitchClass, keyCenter, intervals = INTERVALS) {
+    static getIntervalByPitchClass(pitchClass, keyCenter, intervals = INTERVALS_VALUES) {
         return intervals.find(interval => interval.matchesPitchClassFromKeyCenter(keyCenter, pitchClass)) || null;
     }
     
-    static getIntervalByNoteIndex(noteIndex, keyCenter, intervals = INTERVALS) {
+    static getIntervalByNoteIndex(noteIndex, keyCenter, intervals = INTERVALS_VALUES) {
         return intervals.find(interval => interval.matchesNoteIndexFromKeyCenter(keyCenter, noteIndex)) || null;
     }
 
