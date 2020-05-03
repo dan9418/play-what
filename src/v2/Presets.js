@@ -1,47 +1,47 @@
-export const KEY_CENTERS = [
-    {
+export const KEY_CENTERS = {
+    A: {
         id: 'A',
         name: 'A',
         p: 9,
         d: 0
     },
-    {
+    B: {
         id: 'B',
         name: 'B',
         p: 11,
         d: 1
     },
-    {
+    C: {
         id: 'C',
         name: 'C',
         p: 0,
         d: 2
     },
-    {
+    D: {
         id: 'D',
         name: 'D',
         p: 2,
         d: 3
     },
-    {
+    E: {
         id: 'E',
         name: 'E',
         p: 4,
         d: 4
     },
-    {
+    F: {
         id: 'F',
         name: 'F',
         p: 5,
         d: 5
     },
-    {
+    G: {
         id: 'G',
         name: 'G',
         p: 7,
         d: 6
     }
-];
+};
 
 export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
 

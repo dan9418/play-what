@@ -47,6 +47,7 @@ export const getIntervalName = (interval, max = MAX_VECTOR) => {
 
 export const octaveReduce = note => ({ p: Utils.modulo(note.p, MAX_VECTOR.p), d: note.d });
 
-export const findNoteWithPitch = (notes, note, octaveReduce = false) => {
-    return notes.find(n => octaveReduce ? Utils.modulo(n.p, MAX_VECTOR.p) : n.p === note.p && n.d === note.d) || null;
+export const findNoteWithPitch = (notes, pitch, octaveReduce = false) => {
+    const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : n.p;
+    return notes.find(n => n.p === p) || null;
 }
