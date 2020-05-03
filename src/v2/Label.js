@@ -11,9 +11,9 @@ export default class LabelUtils {
     }
 
     static degree(note, options) {
-        if(!note || !note.interval) return '';
+        if(!note || typeof note.d !== 'number') return '';
 
-        return note.interval.degree;
+        return note.d + 1;
     }
 
     static interval(note, options) {

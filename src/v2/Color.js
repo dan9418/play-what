@@ -80,10 +80,9 @@ export default class ColorUtils {
     }
 
     static degree(note, scheme = SCHEMES.degree) {
-        if(!note || !note.interval) return {};
+        if(!note || typeof note.d !== 'number') return {};
 
-        const { degree } = note.interval;
-        const id = `d${degree}`;
+        const id = `d${note.d + 1}`;
 
         const bg = scheme[id] ? scheme[id] : SCHEMES.degree[id];
 
