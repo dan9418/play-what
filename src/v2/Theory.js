@@ -1,6 +1,6 @@
-import { DEGREE_MAPPING, MAX_VECTOR } from "./ConstantsNew";
+import { DEGREE_MAPPING, MAX_VECTOR } from "./Constants";
 import Utils from './Utils';
-import * as Presets from "./PresetsNew";
+import * as Presets from "./Presets";
 
 export const getAccidentalString = (offset) => {
     switch (offset) {
@@ -36,11 +36,17 @@ export const getDegree = degree => DEGREE_MAPPING[degree];
 export const getNoteName = (note, max = MAX_VECTOR) => {
     const reduced = moduloVectors(note, max);
     const degree = DEGREE_MAPPING[reduced.d];
-    return degree.name + getAccidentalString(degree.pitch - note.p);
+    return degree.name + getAccidentalString(note.p - degree.pitch);
 }
 
 export const getIntervalName = (interval, max = MAX_VECTOR) => {
     const reduced = moduloVectors(interval, max);
     const preset = Presets.INTERVALS_VALUES.find(i => i.p === reduced.p && i.d === reduced.d);
     return preset ? preset.id : '?';
+}
+
+export const octaveReduce = note => ({ p: Utils.modulo(note.p, MAX_VECTOR.p), d: note.d });
+
+export const findNoteWithPitch = (notes, note, octaveReduce = false) => {
+    return notes.find(n => octaveReduce ? Utils.modulo(n.p, MAX_VECTOR.p) : n.p === note.p && n.d === note.d) || null;
 }

@@ -43,6 +43,9 @@ export const KEY_CENTERS = [
     }
 ];
 
+export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
+
+
 export const INTERVALS = Object.freeze({
     P1: {
         id: 'P1',
@@ -225,8 +228,9 @@ export const CHORD = Object.freeze({
 export const CHORD_VALUES = Object.freeze(Object.values(CHORD));
 
 export const SCALE = Object.freeze({
+    Major1: { id: 'Majo1r', name: 'Major1', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
     Major: { id: 'Major', name: 'Major', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
-    NatualMinor: { id: 'NaturalMinor', name: 'Natural Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
+    NaturalMinor: { id: 'NaturalMinor', name: 'Natural Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
     HarmonicMinor: { id: 'HarmonicMinor', name: 'Harmonic Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.M7] },
     MajorPentatonic: { id: 'MajorPentatonic', name: 'Major Pentatonic', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P5, INTERVALS.M6] },
     MinorPentatonic: { id: 'MinorPentatonic', name: 'Minor Pentatonic', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m7] },
