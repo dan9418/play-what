@@ -31,12 +31,14 @@ export const moduloVectors = (a, b, max = MAX_VECTOR) => ({
     d: Utils.modulo(a.d, b.d)
 });
 
-export const getDegree = degree => DEGREE_MAPPING[degree];
+export const getDegreeMapping = degree => DEGREE_MAPPING[Utils.modulo(degree, DEGREE_MAPPING.length)];
+
+export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.p }));
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
     const reduced = moduloVectors(note, max);
-    const degree = DEGREE_MAPPING[reduced.d];
-    return degree.name + getAccidentalString(note.p - degree.pitch);
+    const degree = getDegreeMapping(reduced.d);
+    return degree.name + getAccidentalString(note.p - degree.p);
 }
 
 export const getIntervalName = (interval, max = MAX_VECTOR) => {
