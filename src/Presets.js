@@ -239,6 +239,8 @@ export const SCALE = Object.freeze({
 
 export const SCALE_VALUES = Object.freeze(Object.values(SCALE));
 
+export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES];
+
 /*export const MODE = Object.freeze({
     Ionian: { id: 'Ionian', name: 'Ionian', scale: 'Major', degree: 1 },
     Dorian: { id: 'Dorian', name: 'Dorian', scale: 'Major', degree: 2 },

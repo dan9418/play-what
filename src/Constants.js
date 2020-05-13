@@ -49,6 +49,8 @@ export const ACCIDENTAL = Object.freeze({
     }
 });
 
+export const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));
+
 
 /*
 export const PITCH_CLASS_NAMES = [
