@@ -33,7 +33,9 @@ export const moduloVectors = (a, b, max = MAX_VECTOR) => ({
 
 export const getDegreeMapping = degree => DEGREE_MAPPING[Utils.modulo(degree, DEGREE_MAPPING.length)];
 
-export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.p }));
+export const getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.length), p: getDegreeMapping(degree).pitch });
+
+export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
     const reduced = moduloVectors(note, max);
