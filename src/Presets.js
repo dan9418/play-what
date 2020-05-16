@@ -228,7 +228,6 @@ export const CHORD = Object.freeze({
 export const CHORD_VALUES = Object.freeze(Object.values(CHORD));
 
 export const SCALE = Object.freeze({
-    Major1: { id: 'Majo1r', name: 'Major1', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
     Major: { id: 'Major', name: 'Major', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
     NaturalMinor: { id: 'NaturalMinor', name: 'Natural Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
     HarmonicMinor: { id: 'HarmonicMinor', name: 'Harmonic Minor', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.M7] },
@@ -239,7 +238,19 @@ export const SCALE = Object.freeze({
 
 export const SCALE_VALUES = Object.freeze(Object.values(SCALE));
 
-export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES];
+export const QUICK_MODE = {
+    Ionian: { id: 'Ionian', name: 'Ionian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7] },
+    Dorian: { id: 'Dorian', name: 'Dorian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7] },
+    Phrygian: { id: 'Phrygian', name: 'Phrygian', intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7] },
+    Lydian: { id: 'Lydian', name: 'Lydian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.A4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7] },
+    Mixolydian: { id: 'Mixolydian', name: 'Mixolydian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7] },
+    Aeolian: { id: 'Aeolian', name: 'Aeolian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7] },
+    Locrian: { id: 'Locrian', name: 'Locrian', intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.d5, INTERVAL.m6, INTERVAL.m7] }
+};
+
+export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
+
+export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
 
 /*export const MODE = Object.freeze({
     Ionian: { id: 'Ionian', name: 'Ionian', scale: 'Major', degree: 1 },
@@ -250,15 +261,3 @@ export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, 
     Aeolian: { id: 'Aeolian', name: 'Aeolian', scale: 'Major', degree: 6 },
     Locrian: { id: 'Locrian', name: 'Locrian', scale: 'Major', degree: 7 }
 });*/
-
-/*
-export const QUICK_MODE = {
-    Ionian: new HeptatonicScale('Ionian', 'Ionian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]),
-    Dorian: new HeptatonicScale('Dorian', 'Dorian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]),
-    Phrygian: new HeptatonicScale('Phrygian', 'Phrygian', [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]),
-    Lydian: new HeptatonicScale('Lydian', 'Lydian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.A4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7]),
-    Mixolydian: new HeptatonicScale('Mixolydian', 'Mixolydian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7]),
-    Aeolian: new HeptatonicScale('Aeolian', 'Aeolian', [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7]),
-    Locrian: new HeptatonicScale('Locrian', 'Locrian', [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.d5, INTERVAL.m6, INTERVAL.m7])
-};
-*/
