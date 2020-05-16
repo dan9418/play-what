@@ -239,13 +239,13 @@ export const SCALE = Object.freeze({
 export const SCALE_VALUES = Object.freeze(Object.values(SCALE));
 
 export const QUICK_MODE = {
-    Ionian: { id: 'Ionian', name: 'Ionian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7] },
-    Dorian: { id: 'Dorian', name: 'Dorian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7] },
-    Phrygian: { id: 'Phrygian', name: 'Phrygian', intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7] },
-    Lydian: { id: 'Lydian', name: 'Lydian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.A4, INTERVAL.P5, INTERVAL.M6, INTERVAL.M7] },
-    Mixolydian: { id: 'Mixolydian', name: 'Mixolydian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.M3, INTERVAL.P4, INTERVAL.P5, INTERVAL.M6, INTERVAL.m7] },
-    Aeolian: { id: 'Aeolian', name: 'Aeolian', intervals: [INTERVAL.P1, INTERVAL.M2, INTERVAL.m3, INTERVAL.P4, INTERVAL.P5, INTERVAL.m6, INTERVAL.m7] },
-    Locrian: { id: 'Locrian', name: 'Locrian', intervals: [INTERVAL.P1, INTERVAL.m2, INTERVAL.m3, INTERVAL.P4, INTERVAL.d5, INTERVAL.m6, INTERVAL.m7] }
+    Ionian: { id: 'Ionian', name: 'Ionian', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
+    Dorian: { id: 'Dorian', name: 'Dorian', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.m7] },
+    Phrygian: { id: 'Phrygian', name: 'Phrygian', intervals: [INTERVALS.P1, INTERVALS.m2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
+    Lydian: { id: 'Lydian', name: 'Lydian', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.A4, INTERVALS.P5, INTERVALS.M6, INTERVALS.M7] },
+    Mixolydian: { id: 'Mixolydian', name: 'Mixolydian', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.M3, INTERVALS.P4, INTERVALS.P5, INTERVALS.M6, INTERVALS.m7] },
+    Aeolian: { id: 'Aeolian', name: 'Aeolian', intervals: [INTERVALS.P1, INTERVALS.M2, INTERVALS.m3, INTERVALS.P4, INTERVALS.P5, INTERVALS.m6, INTERVALS.m7] },
+    Locrian: { id: 'Locrian', name: 'Locrian', intervals: [INTERVALS.P1, INTERVALS.m2, INTERVALS.m3, INTERVALS.P4, INTERVALS.d5, INTERVALS.m6, INTERVALS.m7] }
 };
 
 export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
