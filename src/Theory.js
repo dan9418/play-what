@@ -61,3 +61,26 @@ export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = false)
     const notes = addVectorsBatch(keyCenter, intervals);
     return notes.findIndex(n => n.p === p);
 }
+
+export const CUSTOM_PRESET = {
+    id: 'custom',
+    name: 'Custom',
+    intervals: []
+};
+
+const areIntervalsEqual = (a, b) => {
+    if (!a || !b) return false;
+    if (a.length != b.length) return false;
+    for (let i = 0; i < a.length; i++) {
+        const _a = a[i];
+        const _b = b[i]
+        if (_a.p !== _b.p || _a.d !== _b.d)
+            return false;
+    }
+    return true;
+}
+
+export const findPreset = intervals => {
+    const preset = Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(intervals, p.intervals));
+    return preset ? preset : { ...CUSTOM_PRESET, intervals: intervals }
+}
