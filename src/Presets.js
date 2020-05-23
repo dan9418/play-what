@@ -1,46 +1,25 @@
 export const KEY_CENTERS = {
-    A: {
-        id: 'A',
-        name: 'A',
-        p: 9,
-        d: 0
-    },
-    B: {
-        id: 'B',
-        name: 'B',
-        p: 11,
-        d: 1
-    },
-    C: {
-        id: 'C',
-        name: 'C',
-        p: 0,
-        d: 2
-    },
-    D: {
-        id: 'D',
-        name: 'D',
-        p: 2,
-        d: 3
-    },
-    E: {
-        id: 'E',
-        name: 'E',
-        p: 4,
-        d: 4
-    },
-    F: {
-        id: 'F',
-        name: 'F',
-        p: 5,
-        d: 5
-    },
-    G: {
-        id: 'G',
-        name: 'G',
-        p: 7,
-        d: 6
-    }
+    Ab: { id: 'Ab', name: 'Ab', p: 8, d: 0 },
+    A: { id: 'A', name: 'A', p: 9, d: 0 },
+    As: { id: 'As', name: 'A#', p: 10, d: 0 },
+    Bb: { id: 'Bb', name: 'Bb', p: 10, d: 1 },
+    B: { id: 'B', name: 'B', p: 11, d: 1 },
+    Bs: { id: 'Bs', name: 'B#', p: 0, d: 1 },
+    Cb: { id: 'Cb', name: 'Cb', p: 11, d: 2 },
+    C: { id: 'C', name: 'C', p: 0, d: 2 },
+    Cs: { id: 'Cs', name: 'C#', p: 1, d: 2 },
+    Db: { id: 'Db', name: 'Db', p: 1, d: 3 },
+    D: { id: 'D', name: 'D', p: 2, d: 3 },
+    Ds: { id: 'Ds', name: 'D#', p: 3, d: 3 },
+    Eb: { id: 'Eb', name: 'Eb', p: 3, d: 4 },
+    E: { id: 'E', name: 'E', p: 4, d: 4 },
+    Es: { id: 'Es', name: 'E#', p: 5, d: 4 },
+    Fb: { id: 'Fb', name: 'Fb', p: 4, d: 5 },
+    F: { id: 'F', name: 'F', p: 5, d: 5 },
+    Fs: { id: 'Fs', name: 'F#', p: 6, d: 5 },
+    Gb: { id: 'Gb', name: 'Gb', p: 6, d: 6 },
+    G: { id: 'G', name: 'G', p: 7, d: 6 },
+    Gs: { id: 'Gs', name: 'G#', p: 8, d: 6 }
 };
 
 export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
@@ -215,6 +194,7 @@ export const CHORD = Object.freeze({
     Min7: { id: 'Min7', name: 'Minor 7th', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.m7] },
     MinMaj7: { id: 'MinMaj7', name: 'Minor-Major 7th', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.M7] },
     Dom7: { id: 'Dom7', name: 'Dominant 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7] },
+    Dom7b13: { id: 'Dom7b13', name: 'Dominant 7th (b13)', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7, INTERVALS.m6] },
     Aug: { id: 'Aug', name: 'Augmented Triad', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5] },
     Aug7: { id: 'Aug7', name: 'Augmented 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.m7] },
     AugM7: { id: 'AugM7', name: 'Augmented Major 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.M7] },
@@ -253,11 +233,11 @@ export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
 export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
 
 /*export const MODE = Object.freeze({
-    Ionian: { id: 'Ionian', name: 'Ionian', scale: 'Major', degree: 1 },
-    Dorian: { id: 'Dorian', name: 'Dorian', scale: 'Major', degree: 2 },
-    Phrygian: { id: 'Phrygian', name: 'Phrygian', scale: 'Major', degree: 3 },
-    Lydian: { id: 'Lydian', name: 'Lydian', scale: 'Major', degree: 4 },
-    Mixolydian: { id: 'Mixolydian', name: 'Mixolydian', scale: 'Major', degree: 5 },
-    Aeolian: { id: 'Aeolian', name: 'Aeolian', scale: 'Major', degree: 6 },
-    Locrian: { id: 'Locrian', name: 'Locrian', scale: 'Major', degree: 7 }
+    Ionian: { id:'Ionian', name:'Ionian', scale:'Major', degree: 1 },
+    Dorian: { id:'Dorian', name:'Dorian', scale:'Major', degree: 2 },
+    Phrygian: { id:'Phrygian', name:'Phrygian', scale:'Major', degree: 3 },
+    Lydian: { id:'Lydian', name:'Lydian', scale:'Major', degree: 4 },
+    Mixolydian: { id:'Mixolydian', name:'Mixolydian', scale:'Major', degree: 5 },
+    Aeolian: { id:'Aeolian', name:'Aeolian', scale:'Major', degree: 6 },
+    Locrian: { id:'Locrian', name:'Locrian', scale:'Major', degree: 7 }
 });*/

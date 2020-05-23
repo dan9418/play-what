@@ -68,13 +68,16 @@ export const CUSTOM_PRESET = {
     intervals: []
 };
 
-const areIntervalsEqual = (a, b) => {
+export const areIntervalEqual = (a, b) => {
     if (!a || !b) return false;
-    if (a.length != b.length) return false;
+    return a.p === b.p && a.d === b.d;
+}
+
+export const areIntervalsEqual = (a, b) => {
+    if (!a || !b) return false;
+    if (a.length !== b.length) return false;
     for (let i = 0; i < a.length; i++) {
-        const _a = a[i];
-        const _b = b[i]
-        if (_a.p !== _b.p || _a.d !== _b.d)
+        if (!areIntervalEqual(a[i], b[i]))
             return false;
     }
     return true;
