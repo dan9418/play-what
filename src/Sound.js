@@ -11,7 +11,6 @@ export default class SoundUtils {
     }
     static playNotes(freqs, duration = .5) {
         let synth = new Tone.PolySynth(freqs.length, Tone.Synth).toMaster();
-        // freqs = freqs.map(f => f.p);
         synth.triggerAttackRelease(freqs, duration);
     }
 }

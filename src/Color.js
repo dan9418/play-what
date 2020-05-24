@@ -39,6 +39,16 @@ const SCHEMES = {
         d6: COLORS.d6,
         d7: COLORS.d7
     },
+    degreeForesight: {
+        d0: null,
+        d1: COLORS.White,
+        d2: COLORS.White,
+        d3: COLORS.d1,
+        d4: COLORS.White,
+        d5: COLORS.White,
+        d6: COLORS.White,
+        d7: COLORS.d5
+    },
     pitchClass: {
         pc0: COLORS.pc0,
         pc1: COLORS.pc1,
@@ -74,23 +84,46 @@ export default class ColorUtils {
     }
 
     static binary(note, scheme = SCHEMES.binary) {
-        if(!note || !note.interval) return {};
+        if (!note || !note.interval) return {};
 
         return this.getStylesFromColor(scheme.active);
     }
 
-    static degree(note, scheme = SCHEMES.degree) {
-        if(!note || typeof note.d !== 'number') return {};
+    static isValidDegree(note) {
+        return note && typeof note.d === 'number';
+    }
 
+    static degreeBg(note, scheme = SCHEMES.degree) {
+        if (!this.isValidDegree(note)) return {};
         const id = `d${note.d + 1}`;
+        const s = scheme[id] ? scheme[id] : SCHEMES.degree[id];
+        return typeof s === 'string' ? s : '';
+    }
 
-        const bg = scheme[id] ? scheme[id] : SCHEMES.degree[id];
+    static degree(note) {
+        return this.getStylesFromColor(this.degreeBg(note));
+    }
 
-        return this.getStylesFromColor(bg);
+    static degreeForesight(a, b, scheme = SCHEMES.degree) {
+        const aV = this.isValidDegree(a);
+        const bV = this.isValidDegree(b)
+        let bg = null;
+        if (!aV && !bV) return {};
+        else if (aV && !bV) {
+            bg = this.degreeBg(a, scheme);
+            return this.getStylesFromColor(bg, null);
+        }
+        else if (!aV && bV) {
+            return this.getStylesFromColor(COLORS.Black, null, .75);
+        }
+        else if (aV && bV) {
+            bg = new Color(this.degreeBg(a, scheme)).mix(new Color(COLORS.White));
+            return this.getStylesFromColor(bg, null, .75)
+        };
     }
 
     static pitchClass(note, scheme = SCHEMES.pitchClass) {
-        if(!note) return {};
+        if (!note) return {};
 
         const pitchClass = note.getPitchClass();
         const id = `pc${pitchClass}`;
@@ -101,7 +134,7 @@ export default class ColorUtils {
     }
 
     static octave(note, minNote, maxNote, scheme = SCHEMES.octave) {
-        if(!note) return {};
+        if (!note) return {};
 
         const minOctave = minNote.getOctave();
         const octave = note.getOctave();
@@ -113,7 +146,7 @@ export default class ColorUtils {
     }
 
     static frequency(note, minNote, maxNote, scheme = SCHEMES.frequency) {
-        if(!note) return {};
+        if (!note) return {};
 
         const minFrequency = minNote.getFrequency();
         const frequency = note.getFrequency();
@@ -125,7 +158,7 @@ export default class ColorUtils {
     }
 
     static noteIndex(note, minNote, maxNote, scheme = SCHEMES.noteIndex) {
-        if(!note) return {};
+        if (!note) return {};
 
         const minNoteIndex = minNote.getNoteIndex();
         const noteIndex = note.getNoteIndex();
@@ -137,12 +170,13 @@ export default class ColorUtils {
     }
 
     // Helpers
-    
-    static getStylesFromColor(background, foreground) {
+
+    static getStylesFromColor(background, foreground, opacity) {
         if (!background) {
             return {};
         }
         let bg = Color(background);
+        if (typeof opacity !== 'undefined') bg = bg.alpha(opacity);
         return {
             backgroundColor: bg.hsl().string(),
             color: foreground || (bg.isDark() ? COLORS.Black : COLORS.White)
