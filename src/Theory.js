@@ -87,3 +87,15 @@ export const findPreset = intervals => {
     const preset = Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(intervals, p.intervals));
     return preset ? preset : { ...CUSTOM_PRESET, intervals: intervals }
 }
+
+export const getFrequency = p => {
+    const a = p + 3;
+    const b = a / 12;
+    const c = Math.pow(2, b);
+    const f = 440 * c;
+    return f;
+}
+
+export const getFrequencies = pitches => {
+    return pitches.map(p => getFrequency(p.p));
+}

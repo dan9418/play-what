@@ -194,7 +194,7 @@ export const CHORD = Object.freeze({
     Min7: { id: 'Min7', name: 'Minor 7th', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.m7] },
     MinMaj7: { id: 'MinMaj7', name: 'Minor-Major 7th', intervals: [INTERVALS.P1, INTERVALS.m3, INTERVALS.P5, INTERVALS.M7] },
     Dom7: { id: 'Dom7', name: 'Dominant 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7] },
-    Dom7b13: { id: 'Dom7b13', name: 'Dominant 7th (b13)', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7, INTERVALS.m6] },
+    Dom7b9: { id: 'Dom7b9', name: 'Dominant 7th (b9)', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.P5, INTERVALS.m7, INTERVALS.m2] },
     Aug: { id: 'Aug', name: 'Augmented Triad', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5] },
     Aug7: { id: 'Aug7', name: 'Augmented 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.m7] },
     AugM7: { id: 'AugM7', name: 'Augmented Major 7th', intervals: [INTERVALS.P1, INTERVALS.M3, INTERVALS.A5, INTERVALS.M7] },
