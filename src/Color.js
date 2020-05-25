@@ -97,10 +97,11 @@ export default class ColorUtils {
         if (!this.isValidDegree(note)) return {};
         const id = `d${note.d + 1}`;
         const s = scheme[id] ? scheme[id] : SCHEMES.degree[id];
-        return typeof s === 'string' ? s : '';
+        return s;
     }
 
     static degree(note) {
+        if (!this.isValidDegree(note)) return {};
         return this.getStylesFromColor(this.degreeBg(note));
     }
 
