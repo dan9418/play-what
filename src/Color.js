@@ -41,12 +41,12 @@ const SCHEMES = {
     },
     degreeForesight: {
         d0: null,
-        d1: COLORS.White,
-        d2: COLORS.White,
-        d3: COLORS.d1,
-        d4: COLORS.White,
-        d5: COLORS.White,
-        d6: COLORS.White,
+        d1: COLORS.d1,
+        d2: COLORS.d5,
+        d3: COLORS.d5,
+        d4: COLORS.d5,
+        d5: COLORS.d5,
+        d6: COLORS.d5,
         d7: COLORS.d5
     },
     pitchClass: {
@@ -105,21 +105,21 @@ export default class ColorUtils {
         return this.getStylesFromColor(this.degreeBg(note));
     }
 
-    static degreeForesight(a, b, scheme = SCHEMES.degree) {
+    static degreeForesight(a, b, scheme = SCHEMES.degreeForesight) {
         const aV = this.isValidDegree(a);
         const bV = this.isValidDegree(b)
         let bg = null;
         if (!aV && !bV) return {};
         else if (aV && !bV) {
             bg = this.degreeBg(a, scheme);
-            return this.getStylesFromColor(bg, null);
+            return this.getStylesFromColor(COLORS.d1, null);
         }
         else if (!aV && bV) {
-            return this.getStylesFromColor(COLORS.Black, null, .75);
+            return this.getStylesFromColor(COLORS.d5, null, .5);
         }
         else if (aV && bV) {
-            bg = new Color(this.degreeBg(a, scheme)).mix(new Color(COLORS.White));
-            return this.getStylesFromColor(bg, null, .75)
+            bg = new Color(COLORS.d1).mix(new Color(COLORS.d5));
+            return this.getStylesFromColor(bg, null);
         };
     }
 
