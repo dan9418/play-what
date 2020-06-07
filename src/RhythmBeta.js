@@ -1,14 +1,15 @@
 export const parseSong = song => {
     const { name, defaults, sections } = song;
 
-    const stackMap = {};
-
     const output = { name, sections: [] };
 
     sections.forEach(sec => {
         const bars = [];
         sec.bars.forEach(bar => {
-            if (!bar) return;
+            if (!bar) {
+                bars.push(null);
+                return;
+            }
             const Q = defaults.q;
             let q = 0;
             const pulseMap = []; // length Q
