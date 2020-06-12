@@ -39,7 +39,7 @@ export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pi
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
     const reduced = moduloVectors(note, max);
-    const degree = getDegreeMapping(reduced.d);
+    const degree = getDegreeMapping(reduced.d) || { name: '?', pitch: 0 };
     return degree.name + getAccidentalString(note.p - degree.pitch);
 }
 
