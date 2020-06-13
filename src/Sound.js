@@ -23,4 +23,7 @@ export default class SoundUtils {
     static playNotes(freqs, duration = .5, velocity = .5) {
         MASTER_OUT_POLY.triggerAttackRelease(freqs, duration);
     }
+    static stopNotes() {
+        MASTER_OUT_POLY.releaseAll();
+    }
 }
