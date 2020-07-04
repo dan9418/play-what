@@ -53,7 +53,12 @@ export const octaveReduce = note => ({ p: Utils.modulo(note.p, MAX_VECTOR.p), d:
 
 export const findNoteWithPitch = (notes, pitch, octaveReduce = false) => {
     const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : n.p;
-    return notes.find(n => n.p - p === p) || null;
+    return notes.find(n => n.p === p) || null;
+}
+
+export const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = false) => {
+    const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : n.p;
+    return notes.findIndex(n => n.p === p);
 }
 
 export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = false) => {
