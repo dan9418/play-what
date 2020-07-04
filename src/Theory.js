@@ -15,7 +15,7 @@ export const getAccidentalString = (offset) => {
         case -2:
             return 'bb';
         default:
-            return (offset < 0) ? -offset + 'b' : offset + '#';
+            return (offset < 0) ? `(${-offset}b)` : `(${offset}#)`;
     }
 };
 
@@ -24,7 +24,13 @@ export const addVectors = (a, b, max) => ({
     d: Utils.moduloSum(a.d, b.d, max.d)
 });
 
-export const addVectorsBatch = (a, vectors, max = MAX_VECTOR) => vectors.map(v => addVectors(a, v, max));
+export const addVectorsBatch = (a, vectors, max = MAX_VECTOR) => {
+    if (!a || !vectors) {
+        console.error('Bad args', 'a', a, 'B', vectors);
+        return;
+    }
+    return vectors.map(v => addVectors(a, v, max));
+}
 
 export const moduloVectors = (a, b, max = MAX_VECTOR) => ({
     p: Utils.modulo(a.p, b.p),
