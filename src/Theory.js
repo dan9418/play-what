@@ -94,9 +94,9 @@ export const areIntervalsEqual = (a, b) => {
     return true;
 }
 
-export const findPreset = intervals => {
-    const preset = Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(intervals, p.intervals));
-    return preset ? preset : { ...CUSTOM_PRESET, intervals: intervals }
+export const findPreset = B => {
+    const preset = Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(B, p.B));
+    return preset ? preset : { ...CUSTOM_PRESET, B }
 }
 
 export const getFrequency = p => {
