@@ -99,7 +99,7 @@ export const findPreset = B => {
     return preset ? preset : { ...CUSTOM_PRESET, B }
 }
 
-export const findPresetById = id => {
+export const findPresetWithId = id => {
     const preset = Presets.ALL_CONCEPT_PRESETS[id];
     return preset ? preset : CUSTOM_PRESET;
 }
