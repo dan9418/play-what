@@ -275,7 +275,8 @@ export const QUICK_MODE = {
 
 export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
 
-export const CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
+export const ALL_CONCEPT_PRESETS = { ...INTERVAL_PAIR, ...CHORD, ...SCALE, ...QUICK_MODE };
+export const ALL_CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
 
 /*export const MODE = Object.freeze({
     Ionian: { id:'Ionian', name:'Ionian', scale:'Major', degree: 1 },

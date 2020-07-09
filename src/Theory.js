@@ -76,7 +76,7 @@ export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = false)
 export const CUSTOM_PRESET = {
     id: 'custom',
     name: 'Custom',
-    intervals: []
+    B: []
 };
 
 export const areIntervalEqual = (a, b) => {
@@ -95,8 +95,13 @@ export const areIntervalsEqual = (a, b) => {
 }
 
 export const findPreset = B => {
-    const preset = Presets.CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(B, p.B));
+    const preset = Presets.ALL_CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(B, p.B));
     return preset ? preset : { ...CUSTOM_PRESET, B }
+}
+
+export const findPresetById = id => {
+    const preset = Presets.ALL_CONCEPT_PRESETS[id];
+    return preset ? preset : CUSTOM_PRESET;
 }
 
 export const getFrequency = p => {
