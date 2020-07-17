@@ -19,7 +19,7 @@ export const getAccidentalString = (offset) => {
     }
 };
 
-export const addVectors = (a, b, max) => ({
+export const addVectors = (a, b, max = MAX_VECTOR) => ({
     p: Utils.moduloSum(a.p, b.p, max.p),
     d: Utils.moduloSum(a.d, b.d, max.d)
 });
@@ -44,6 +44,9 @@ export const getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.len
 export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
+    if(note.d === 0) {
+        return '';
+    }
     const reduced = moduloVectors(note, max);
     const degree = getDegreeMapping(reduced.d) || { name: '?', pitch: 0 };
     return degree.name + getAccidentalString(note.p - degree.pitch);
@@ -73,6 +76,12 @@ export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = false)
     return notes.findIndex(n => n.p === p);
 }
 
+export const EMPTY_PRESET = {
+    id: 'n/a',
+    name: 'n/a',
+    B: []
+};
+
 export const CUSTOM_PRESET = {
     id: 'custom',
     name: 'Custom',
@@ -95,6 +104,7 @@ export const areIntervalsEqual = (a, b) => {
 }
 
 export const findPreset = B => {
+    if(!B.length) return EMPTY_PRESET;
     const preset = Presets.ALL_CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(B, p.B));
     return preset ? preset : { ...CUSTOM_PRESET, B }
 }
