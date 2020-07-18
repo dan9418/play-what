@@ -44,7 +44,7 @@ export const getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.len
 export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
-    if(note.d === 0) {
+    if (note.d === 0) {
         return '';
     }
     const reduced = moduloVectors(note, max);
@@ -104,7 +104,7 @@ export const areIntervalsEqual = (a, b) => {
 }
 
 export const findPreset = B => {
-    if(!B.length) return EMPTY_PRESET;
+    if (!B.length) return EMPTY_PRESET;
     const preset = Presets.ALL_CONCEPT_PRESET_VALUES.find(p => areIntervalsEqual(B, p.B));
     return preset ? preset : { ...CUSTOM_PRESET, B }
 }
@@ -124,4 +124,24 @@ export const getFrequency = p => {
 
 export const getFrequencies = pitches => {
     return pitches.map(p => getFrequency(p.p));
+}
+
+export const transpose = (conceptConfig, interval) => {
+    const concept = { ...conceptConfig };
+    concept.a = addVectors(concept.a, interval);
+    return concept;
+}
+
+const rotate = (arr, count) => {
+    count -= arr.length * Math.floor(count / arr.length);
+    arr.push.apply(arr, arr.splice(0, count));
+    return arr;
+}
+
+export const chordalInversion = (conceptConfig, inversion) => {
+    const concept = { ...conceptConfig };
+    concept.B = [...conceptConfig.B];
+    concept.B[0] = addVectors(concept.B[0], Presets.INTERVALS.P8.a);
+    concept.B = rotate(concept.B, inversion);
+    return concept;
 }
