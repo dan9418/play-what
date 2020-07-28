@@ -1,5 +1,5 @@
 export const KEY_CENTERS = {
-    NA: { id: 'NA', name: 'N/A', a: { p: 0, d: 0 } },
+    NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
     Ab: { id: 'Ab', name: 'Ab', a: { p: 8, d: 0 } },
     A: { id: 'A', name: 'A', a: { p: 9, d: 0 } },
     As: { id: 'As', name: 'A#', a: { p: 10, d: 0 } },

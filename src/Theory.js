@@ -1,4 +1,4 @@
-import { DEGREE_MAPPING, MAX_VECTOR } from "./Constants";
+import { DEGREE_MAPPING, MAX_VECTOR, ACCIDENTAL, ACCIDENTAL_VALUES } from "./Constants";
 import Utils from './Utils';
 import * as Presets from "./Presets";
 
@@ -44,7 +44,7 @@ export const getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.len
 export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));
 
 export const getNoteName = (note, max = MAX_VECTOR) => {
-    if (note.d === 0) {
+    if (note.d < 0) {
         return '';
     }
     const reduced = moduloVectors(note, max);
@@ -145,3 +145,23 @@ export const chordalInversion = (conceptConfig, inversion) => {
     concept.B = rotate(concept.B, inversion);
     return concept;
 }
+
+const splitAt = (str, i) => [str.slice(0, i), str.slice(i)];
+
+export const parseKeyString = keyString => {
+    if (typeof keyString !== 'string' || !keyString.length) {
+        throw ('Bad keystring args')
+    }
+    const [tonicStr, accidentalStr] = splitAt(keyString, 1);
+
+    const degreeIndex = DEGREE_MAPPING.findIndex(d => d.name === tonicStr);
+
+    const accidental = ACCIDENTAL_VALUES.find(a => a.name === accidentalStr) || ACCIDENTAL.Natural;
+
+    return {
+        id: keyString,
+        name: keyString,
+        p: DEGREE_MAPPING[degreeIndex].pitch + accidental.offset,
+        d: degreeIndex
+    };
+};
