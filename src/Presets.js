@@ -1,3 +1,5 @@
+import * as Theory from './Theory';
+
 export const KEY_CENTERS = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
     Ab: { id: 'Ab', name: 'Ab', a: { p: 8, d: 0 } },
@@ -275,8 +277,6 @@ export const QUICK_MODE = {
 
 export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
 
-export const ALL_CONCEPT_PRESETS = { ...INTERVAL_PAIR, ...CHORD, ...SCALE, ...QUICK_MODE };
-export const ALL_CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
 
 /*export const MODE = Object.freeze({
     Ionian: { id:'Ionian', name:'Ionian', scale:'Major', degree: 1 },
@@ -287,3 +287,25 @@ export const ALL_CONCEPT_PRESET_VALUES = [...INTERVAL_PAIR_VALUES, ...CHORD_VALU
     Aeolian: { id:'Aeolian', name:'Aeolian', scale:'Major', degree: 6 },
     Locrian: { id:'Locrian', name:'Locrian', scale:'Major', degree: 7 }
 });*/
+
+export const ROMAN_NUMERAL = {
+    i: { id: 'i', name: 'i', B: Theory.addVectorsBatch(INTERVALS.P1.a, CHORD.Min7.B)},
+    ii: { id: 'ii', name: 'ii', B: Theory.addVectorsBatch(INTERVALS.M2.a, CHORD.Min7.B)},
+    iii: { id: 'iii', name: 'iii', B: Theory.addVectorsBatch(INTERVALS.M3.a, CHORD.Min7.B)},
+    iv: { id: 'iv', name: 'iv', B: Theory.addVectorsBatch(INTERVALS.P4.a, CHORD.Min7.B)},
+    v: { id: 'v', name: 'v', B: Theory.addVectorsBatch(INTERVALS.P5.a, CHORD.Min7.B)},
+    vi: { id: 'vi', name: 'vi', B: Theory.addVectorsBatch(INTERVALS.M6.a, CHORD.Min7.B)},
+    vii: { id: 'vii', name: 'vii', B: Theory.addVectorsBatch(INTERVALS.M7.a, CHORD.Min7.B)},
+    I: { id: 'I', name: 'I', B: Theory.addVectorsBatch(INTERVALS.P1.a, CHORD.Maj7.B)},
+    II: { id: 'II', name: 'II', B: Theory.addVectorsBatch(INTERVALS.M2.a, CHORD.Maj7.B)},
+    III: { id: 'III', name: 'III', B: Theory.addVectorsBatch(INTERVALS.M3.a, CHORD.Maj7.B)},
+    IV: { id: 'IV', name: 'IV', B: Theory.addVectorsBatch(INTERVALS.P4.a, CHORD.Maj7.B)},
+    V: { id: 'V', name: 'V', B: Theory.addVectorsBatch(INTERVALS.P5.a, CHORD.Maj7.B)},
+    VI: { id: 'VI', name: 'VI', B: Theory.addVectorsBatch(INTERVALS.M6.a, CHORD.Maj7.B)},
+    VII: { id: 'VII', name: 'VII', B: Theory.addVectorsBatch(INTERVALS.M7.a, CHORD.Maj7.B)}
+};
+
+export const ROMAN_NUMERAL_VALUES = Object.values(ROMAN_NUMERAL);
+
+export const ALL_CONCEPT_PRESETS = { ...INTERVAL_PAIR, ...CHORD, ...SCALE, ...QUICK_MODE, ...ROMAN_NUMERAL };
+export const ALL_CONCEPT_PRESET_VALUES = [ ...ROMAN_NUMERAL_VALUES, ...INTERVAL_PAIR_VALUES, ...CHORD_VALUES, ...SCALE_VALUES, ...QUICK_MODE_VALUES];
