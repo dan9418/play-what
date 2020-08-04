@@ -1,3 +1,9 @@
+export const CONCEPT_DEFAULTS = {
+    a: 'C',
+    B: 'Maj',
+    transforms: []
+};
+
 export const MAX_VECTOR = { p: 12, d: 7 };
 
 export const DEGREE_MAPPING = [
@@ -50,6 +56,13 @@ export const ACCIDENTAL = Object.freeze({
 });
 
 export const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));
+
+export const SCOPE = {
+    Concept: 'concept',
+    Progression: 'progression',
+    Section: 'section',
+    Chart: 'chart'
+}
 
 
 /*
