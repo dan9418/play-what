@@ -1,7 +1,15 @@
 import { DEGREE_MAPPING, MAX_VECTOR, SCOPE, CONCEPT_DEFAULTS } from "./Constants";
 import Utils from './Utils';
-import * as Presets from "./Presets";
+import * as KeyCenter from "./KeyCenter";
 import * as Theory from './Theory';
+import api from './api';
+
+export const SCOPE = {
+    Concept: 'concept',
+    Progression: 'progression',
+    Section: 'section',
+    Chart: 'chart'
+}
 
 export const getConceptAt = (chart, position) => {
     const { a, B } = conceptConfig;
@@ -20,12 +28,20 @@ export const getConceptName = (conceptConfig) => {
 export const parseConceptHelper = (conceptConfig) => {
     let concept = { ...conceptConfig };
     if (typeof concept.a === 'string') {
-        concept.a = Theory.parseKeyString(concept.a);
+        concept.a = api(concept.a).a;
+    }
+    if (concept.a.input) {
+        const { input, props } = concept.a;
+        concept.a = api(input, props).a;
     }
     if (typeof concept.B === 'string') {
-        concept.B = Theory.findPresetWithId(concept.B).B;
+        concept.B = api(concept.B).B;
     }
-    if (concept.transforms) {
+    if (concept.B.input) {
+        const { input, props } = concept.B;
+        concept.B = api(input, props).B;
+    }
+    /*if (concept.transforms) {
         concept.transforms.forEach(t => {
             switch (t.id) {
                 case 'transpose':
@@ -36,8 +52,8 @@ export const parseConceptHelper = (conceptConfig) => {
                     break;
             }
         })
-    }
-    concept.C = Theory.addVectorsBatch(concept.a, concept.B);
+    }*/
+    concept.C = KeyCenter.addVectorArray({ a: concept.a, B: concept.B });
     return concept;
 };
 
@@ -53,14 +69,7 @@ export const parseConceptConfig = (conceptConfig, defaults) => {
 
     const concept = parseConceptHelper(mergedConfig);
 
-    return {
-        id: id || `concept`,
-        name: name || getConceptName(concept),
-        a: concept.a,
-        B: concept.B,
-        C: concept.C,
-        outputs: concept.outputs
-    };
+    return concept;
 };
 
 export const parseSourceConfig = (sourceConfig, defaults = {}) => {
@@ -68,22 +77,20 @@ export const parseSourceConfig = (sourceConfig, defaults = {}) => {
         ...defaults,
         ...(sourceConfig.defaults || {}),
     };
-    console.log(sourceConfig.scope)
-    switch (sourceConfig.scope) {
-        case SCOPE.Chart:
-        case SCOPE.Section:
-        case SCOPE.Progression:
-            return {
-                ...sourceConfig,
-                id: sourceConfig.id || sourceConfig.scope,
-                name: sourceConfig.name || sourceConfig.scope,
-                children: sourceConfig.children.map(c => parseSourceConfig(c, mergedDefaults))
-            }
-        case SCOPE.Concept:
-            return parseConceptConfig(sourceConfig, defaults);
-        default:
-            throw ('Invalid source config scope');
+    //console.log(sourceConfig.scope)
+
+    if (sourceConfig.children) {
+        return {
+            ...sourceConfig,
+            id: sourceConfig.id || 'id',
+            name: sourceConfig.name || 'name',
+            children: sourceConfig.children.map(c => parseSourceConfig(c, mergedDefaults))
+        }
     }
+    return parseConceptConfig(sourceConfig, defaults);
 }
 
-
+export const parse = props => {
+    if (!props.config) throw ('Missing config from source props');
+    return parseSourceConfig(props.config);
+}

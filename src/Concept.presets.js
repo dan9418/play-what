@@ -1,33 +1,3 @@
-import * as Theory from './Theory';
-
-export const KEY_CENTERS = {
-    NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
-    Ab: { id: 'Ab', name: 'Ab', a: { p: 8, d: 0 } },
-    A: { id: 'A', name: 'A', a: { p: 9, d: 0 } },
-    As: { id: 'As', name: 'A#', a: { p: 10, d: 0 } },
-    Bb: { id: 'Bb', name: 'Bb', a: { p: 10, d: 1 } },
-    B: { id: 'B', name: 'B', a: { p: 11, d: 1 } },
-    Bs: { id: 'Bs', name: 'B#', a: { p: 0, d: 1 } },
-    Cb: { id: 'Cb', name: 'Cb', a: { p: 11, d: 2 } },
-    C: { id: 'C', name: 'C', a: { p: 0, d: 2 } },
-    Cs: { id: 'Cs', name: 'C#', a: { p: 1, d: 2 } },
-    Db: { id: 'Db', name: 'Db', a: { p: 1, d: 3 } },
-    D: { id: 'D', name: 'D', a: { p: 2, d: 3 } },
-    Ds: { id: 'Ds', name: 'D#', a: { p: 3, d: 3 } },
-    Eb: { id: 'Eb', name: 'Eb', a: { p: 3, d: 4 } },
-    E: { id: 'E', name: 'E', a: { p: 4, d: 4 } },
-    Es: { id: 'Es', name: 'E#', a: { p: 5, d: 4 } },
-    Fb: { id: 'Fb', name: 'Fb', a: { p: 4, d: 5 } },
-    F: { id: 'F', name: 'F', a: { p: 5, d: 5 } },
-    Fs: { id: 'Fs', name: 'F#', a: { p: 6, d: 5 } },
-    Gb: { id: 'Gb', name: 'Gb', a: { p: 6, d: 6 } },
-    G: { id: 'G', name: 'G', a: { p: 7, d: 6 } },
-    Gs: { id: 'Gs', name: 'G#', a: { p: 8, d: 6 } }
-};
-
-export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
-
-
 export const INTERVALS = Object.freeze({
     P1: {
         id: 'P1',
@@ -288,7 +258,9 @@ export const QUICK_MODE_VALUES = Object.freeze(Object.values(QUICK_MODE));
     Locrian: { id:'Locrian', name:'Locrian', scale:'Major', degree: 7 }
 });*/
 
-export const ROMAN_NUMERAL = {
+export const ROMAN_NUMERAL = {};
+
+/*export const ROMAN_NUMERAL = {
     i: { id: 'i', name: 'i', B: Theory.addVectorsBatch(INTERVALS.P1.a, CHORD.Min7.B)},
     ii: { id: 'ii', name: 'ii', B: Theory.addVectorsBatch(INTERVALS.M2.a, CHORD.Min7.B)},
     iii: { id: 'iii', name: 'iii', B: Theory.addVectorsBatch(INTERVALS.M3.a, CHORD.Min7.B)},
@@ -303,7 +275,7 @@ export const ROMAN_NUMERAL = {
     V: { id: 'V', name: 'V', B: Theory.addVectorsBatch(INTERVALS.P5.a, CHORD.Maj7.B)},
     VI: { id: 'VI', name: 'VI', B: Theory.addVectorsBatch(INTERVALS.M6.a, CHORD.Maj7.B)},
     VII: { id: 'VII', name: 'VII', B: Theory.addVectorsBatch(INTERVALS.M7.a, CHORD.Maj7.B)}
-};
+};*/
 
 export const ROMAN_NUMERAL_VALUES = Object.values(ROMAN_NUMERAL);
 

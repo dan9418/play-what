@@ -1,19 +1,13 @@
-import * as Constants from './Constants';
-import * as Presets from './Presets';
-import * as Theory from './Theory';
-import * as Chart from './Chart';
+import api from './api';
 import Utils from './Utils';
-import Color from './Color';
-import Sound from './Sound';
-import Label from './Label';
+import * as Source from './Source';
+
+import * as Constants from './Constants';
+import * as Presets from './Concept.presets';
+import * as Theory from './Theory';
 
 export default {
-    Constants,
-    Presets,
-    Theory,
-    Chart,
+    Source,
     Utils,
-    Color,
-    Label,
-    Sound
+    api
 };
