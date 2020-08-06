@@ -1,5 +1,6 @@
 import * as Utils from './Utils';
 import { MAX_VECTOR } from './Interval';
+import { parseA, parseB } from './Source';
 
 const KEY_CENTERS = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
@@ -56,4 +57,11 @@ const addVectors = (a, b, max = MAX_VECTOR) => ({
 export const addVectorArray = ({ a, B }) => {
     if (!a || !B) throw ('bad args', a, B);
     return B.map(b => addVectors(a, b));
+}
+
+// meaning add to object
+export const addIntervals = ({ a, B }) => {
+    const parsedA = parseA(a);
+    const parsedB = parseB(B);
+    return { a: parsedA, B: parsedB }; //parsedB.map(b => addVectors(parsedA, b));
 }

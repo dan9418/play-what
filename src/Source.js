@@ -24,58 +24,93 @@ export const getConceptName = (conceptConfig) => {
     return `${tonic} ${preset.name || '?'}`;
 }
 
+export const parseA = a => {
+    if (typeof a === 'string') {
+        return api(a).a;
+    }
+    return a;
+    if (a.input) {
+        const { input, props } = a;
+        return api(input, props).a;
+    }
+}
+
+export const parseB = B => {
+    if (typeof B === 'string') {
+        return api(B).B;
+    }
+    if (B.input) {
+        const { input, props } = B;
+        return api(input, props).B;
+    }
+    if(Array.isArray(B)) {
+        // handle array of config case
+        return B;
+    }
+}
+
 export const parseConceptHelper = (conceptConfig) => {
-    let concept = { ...conceptConfig };
-    if (typeof concept.a === 'string') {
-        concept.a = api(concept.a).a;
-    }
-    if (concept.a.input) {
-        const { input, props } = concept.a;
-        concept.a = api(input, props).a;
-    }
-    if (typeof concept.B === 'string') {
-        concept.B = api(concept.B).B;
-    }
-    if (concept.B.input) {
-        const { input, props } = concept.B;
-        concept.B = api(input, props).B;
-    }
-    /*if (concept.transforms) {
-        concept.transforms.forEach(t => {
-            switch (t.id) {
-                case 'transpose':
-                    concept = Theory.transpose(concept, t.args.a);
-                    break;
-                case 'chordalInversion':
-                    concept = Theory.chordalInversion(concept, t.args.inversion)
-                    break;
-            }
-        })
-    }*/
+    let concept = {};
+    concept.a = parseA(conceptConfig.a);
+    concept.B = parseB(conceptConfig.B);
     concept.C = KeyCenter.addVectorArray({ a: concept.a, B: concept.B });
     return concept;
 };
 
-export const parseConceptConfig = (conceptConfig, defaults) => {
+export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
     const { id, name } = conceptConfig;
 
-    const mergedDefaults = {
-        ...CONCEPT_DEFAULTS,
-        ...defaults
-    };
-
-    const mergedConfig = { ...mergedDefaults, ...conceptConfig };
-
-    const concept = parseConceptHelper(mergedConfig);
-
-    return concept;
+    if (typeof conceptConfig === 'string') {
+        throw ('');
+        return api(conceptConfig);
+    }
+    else if (typeof conceptConfig === 'object') {
+        // sketchy logic for determining parser on leaf
+        if (typeof conceptConfig.value === 'string')
+            return api(conceptConfig.value, conceptConfig.props);
+        // only case to handle now
+        const mergedConfig = { ...CONCEPT_DEFAULTS, ...parentInput, ...conceptConfig };
+        const concept = parseConceptHelper(mergedConfig);
+        return concept;
+    }
+    else if (Array.isArray(conceptConfig)) {
+        throw ('');
+        const inputReducer = (acc, cur, i, arr) => {
+            return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
+        };
+        return conceptConfig.reduce(inputReducer, {});
+    }
+    else {
+        throw ('');
+        return {};
+    }
 };
 
-export const parseSourceConfig = (sourceConfig, defaults = {}) => {
-    const mergedDefaults = {
-        ...defaults,
-        ...(sourceConfig.defaults || {}),
-    };
+const parseInput = (input) => {
+    if (typeof input === 'string') {
+        return api(input);
+    }
+    else if (Array.isArray(input)) {
+        const inputReducer = (acc, cur, i, arr) => {
+            return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
+        };
+        const result = input.reduce(inputReducer, {});
+        return result;
+    }
+    else if (typeof input === 'object') {
+        return api(input.value, input.props);
+    }
+    else {
+        return {};
+    }
+}
+
+export const parseSourceConfig = (sourceConfig, parentInput = {}) => {
+
+    const parsedInput = parseInput(sourceConfig.input);
+    const mergedInput = { ...parentInput, ...parsedInput };
+    console.log(sourceConfig.input, parentInput, mergedInput);
+
     //console.log(sourceConfig.scope)
 
     if (sourceConfig.children) {
@@ -83,10 +118,10 @@ export const parseSourceConfig = (sourceConfig, defaults = {}) => {
             ...sourceConfig,
             id: sourceConfig.id || 'id',
             name: sourceConfig.name || 'name',
-            children: sourceConfig.children.map(c => parseSourceConfig(c, mergedDefaults))
+            children: sourceConfig.children.map(c => parseSourceConfig(c, mergedInput))
         }
     }
-    return parseConceptConfig(sourceConfig, defaults);
+    return parseConceptConfig(sourceConfig, mergedInput);
 }
 
 export const parse = props => {
