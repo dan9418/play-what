@@ -1,8 +1,7 @@
-import { DEGREE_MAPPING, MAX_VECTOR, SCOPE, CONCEPT_DEFAULTS } from "./Constants";
-import Utils from './Utils';
+import api from './api';
 import * as KeyCenter from "./KeyCenter";
 import * as Theory from './Theory';
-import api from './api';
+import { CONCEPT_DEFAULTS } from './Concept';
 
 export const SCOPE = {
     Concept: 'concept',

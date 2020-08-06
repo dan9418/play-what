@@ -121,30 +121,6 @@ eval("throw new Error(\"Module parse failed: Identifier 'SCOPE' has already been
 
 /***/ }),
 
-/***/ "./src/Theory.js":
-/*!***********************!*\
-  !*** ./src/Theory.js ***!
-  \***********************/
-/*! exports provided: DEGREE_MAPPING, getDegreeMapping, getDegree, getAllDegrees, ACCIDENTAL, ACCIDENTAL_VALUES, getAccidentalString */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"DEGREE_MAPPING\", function() { return DEGREE_MAPPING; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDegreeMapping\", function() { return getDegreeMapping; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getDegree\", function() { return getDegree; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAllDegrees\", function() { return getAllDegrees; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL\", function() { return ACCIDENTAL; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"ACCIDENTAL_VALUES\", function() { return ACCIDENTAL_VALUES; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getAccidentalString\", function() { return getAccidentalString; });\n// Degrees\r\n\r\nconst DEGREE_MAPPING = [\r\n    {\r\n        name: 'A',\r\n        pitch: 9\r\n    },\r\n    {\r\n        name: 'B',\r\n        pitch: 11\r\n    },\r\n    {\r\n        name: 'C',\r\n        pitch: 0\r\n    },\r\n    {\r\n        name: 'D',\r\n        pitch: 2\r\n    },\r\n    {\r\n        name: 'E',\r\n        pitch: 4\r\n    },\r\n    {\r\n        name: 'F',\r\n        pitch: 5\r\n    },\r\n    {\r\n        name: 'G',\r\n        pitch: 7\r\n    }\r\n];\r\n\r\nconst getDegreeMapping = degree => DEGREE_MAPPING[Utils.modulo(degree, DEGREE_MAPPING.length)];\r\n\r\nconst getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.length), p: getDegreeMapping(degree).pitch });\r\n\r\nconst getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));\r\n\r\n\r\n// Accidentals\r\n\r\nconst ACCIDENTAL = Object.freeze({\r\n    Flat: {\r\n        id: 'Flat',\r\n        name: 'b',\r\n        offset: -1\r\n    },\r\n    Natural: {\r\n        id: 'Natural',\r\n        name: '♮',\r\n        offset: 0\r\n    },\r\n    Sharp: {\r\n        id: 'Sharp',\r\n        name: '#',\r\n        offset: 1\r\n    }\r\n});\r\n\r\nconst ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));\r\n\r\nconst getAccidentalString = (offset) => {\r\n    switch (offset) {\r\n        case 0:\r\n            return ''\r\n        case 1:\r\n            return '#';\r\n        case 2:\r\n            return 'x';\r\n        case -1:\r\n            return 'b';\r\n        case -2:\r\n            return 'bb';\r\n        default:\r\n            return (offset < 0) ? `(${-offset}b)` : `(${offset}#)`;\r\n    }\r\n};\r\n\n\n//# sourceURL=webpack:///./src/Theory.js?");
-
-/***/ }),
-
-/***/ "./src/Utils.js":
-/*!**********************!*\
-  !*** ./src/Utils.js ***!
-  \**********************/
-/*! exports provided: modulo, moduloSum, splitAt, rotate */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"modulo\", function() { return modulo; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"moduloSum\", function() { return moduloSum; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"splitAt\", function() { return splitAt; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"rotate\", function() { return rotate; });\nconst modulo = (a, b) => {\r\n    return ((a % b) + b) % b;\r\n}\r\n\r\nconst moduloSum = (a, b, divisor, offset = 0, subtraction = false) => {\r\n    let dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));\r\n    return modulo(dividend, divisor) + offset;\r\n}\r\n\r\nconst splitAt = (str, i) => [str.slice(0, i), str.slice(i)];\r\n\r\nconst rotate = (arr, count) => {\r\n    count -= arr.length * Math.floor(count / arr.length);\r\n    arr.push.apply(arr, arr.splice(0, count));\r\n    return arr;\r\n}\n\n//# sourceURL=webpack:///./src/Utils.js?");
-
-/***/ }),
-
 /***/ "./src/api.js":
 /*!********************!*\
   !*** ./src/api.js ***!
@@ -165,7 +141,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Con
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./src/api.js\");\n/* harmony import */ var _Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Utils */ \"./src/Utils.js\");\n/* harmony import */ var _Source__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Source */ \"./src/Source.js\");\n/* harmony import */ var _Source__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Source__WEBPACK_IMPORTED_MODULE_2__);\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module './Constants'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n/* harmony import */ var _Concept_presets__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Concept.presets */ \"./src/Concept.presets.js\");\n/* harmony import */ var _Theory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Theory */ \"./src/Theory.js\");\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n    Source: _Source__WEBPACK_IMPORTED_MODULE_2__,\r\n    Utils: _Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\r\n    api: _api__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n});\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./api */ \"./src/api.js\");\n\r\n//import Utils from './Utils';\r\n//import * as Source from './Source';\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n    //Source,\r\n    //Utils,\r\n    api: _api__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 

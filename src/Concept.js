@@ -1,8 +1,9 @@
-import { DEGREE_MAPPING, MAX_VECTOR, SCOPE, CONCEPT_DEFAULTS } from "./Constants";
-import Utils from './Utils';
 import * as Presets from "./Concept.presets";
-import * as Theory from './Theory';
-import api from './api';
+
+export const CONCEPT_DEFAULTS = {
+    a: { p: 0, d: 0 },
+    B: []
+}
 
 export const presets = Presets.ALL_CONCEPT_PRESETS;
 

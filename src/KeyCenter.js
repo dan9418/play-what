@@ -1,6 +1,5 @@
-import { KEY_CENTERS } from "./Concept.presets";
-import { DEGREE_MAPPING, ACCIDENTAL_VALUES, MAX_VECTOR } from "./Constants";
 import * as Utils from './Utils';
+import { MAX_VECTOR } from './Interval';
 
 const KEY_CENTERS = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
