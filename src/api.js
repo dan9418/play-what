@@ -16,12 +16,13 @@ const api = (path, props) => {
     const tree = path.split('/');
     let node = apiMap;
     let attr = null;
-    while(tree.length > 0) {
+    while (tree.length > 0) {
         attr = tree.shift();
         node = node[attr];
     }
+    console.log(`API - ${path} - IN`, props);
     const value = typeof node === 'function' ? node(props) : node;
-    console.log('api', path, props, value);
+    console.log(`API - ${path} - OUT`, value);
     return value;
 }
 

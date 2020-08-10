@@ -65,3 +65,4 @@ export const addIntervals = ({ a, B }) => {
     const parsedB = parseB(B);
     return { a: parsedA, B: parsedB }; //parsedB.map(b => addVectors(parsedA, b));
 }
+

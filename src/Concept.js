@@ -30,7 +30,7 @@ export const parse = props => {
     parseSourceConfig(props.config);
 }
 
-export const transpose = (conceptConfig, interval) => {
+export const transpose = ({ conceptConfig, interval }) => {
     const concept = { ...conceptConfig };
     concept.a = addVectors(concept.a, interval);
     return concept;

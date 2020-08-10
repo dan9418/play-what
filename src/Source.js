@@ -75,7 +75,7 @@ export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
     /*else if (Array.isArray(conceptConfig)) {
         throw ('');
         const inputReducer = (acc, cur, i, arr) => {
-            return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
+            return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
         };
         return conceptConfig.reduce(inputReducer, {});
     }*/
@@ -85,35 +85,40 @@ export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
     }
 };
 
-const parseInput = (input) => {
-    if (!input) return {};
+const parseTransform = (transform) => {
+    if (!transform) return {};
 
-    if (typeof input === 'string') {
-        return api(input);
+    if (typeof transform === 'string') {
+        return api(transform);
     }
-    /*else if (Array.isArray(input)) {
-        const inputReducer = (acc, cur, i, arr) => {
-            return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
-        };
-        const result = input.reduce(inputReducer, {});
-        return result;
-    }*/
-    else if (typeof input === 'object') {
-        if (typeof input.value !== 'undefined')
-            return api(input.value, input.props);
-        return input;
+    else if (typeof transform === 'object') {
+        if (typeof transform.value !== 'undefined')
+            return api(transform.value, transform.props);
+        return transform;
     }
     else {
-        throw ('only string and object inputs allowed')
+        throw ('only string and object transforms allowed')
         return {};
     }
 }
 
 export const parseSourceConfig = (sourceConfig, parentInput = {}) => {
 
-    const parsedInput = parseInput(sourceConfig.input);
-    const mergedInput = { ...parentInput, ...parsedInput };
-    console.log(sourceConfig.input, parentInput, mergedInput);
+    const mergedInput = { ...parentInput, ...sourceConfig.input };
+
+    let output = null;
+    if (sourceConfig.transforms) {
+        const inputReducer = (acc, cur, i, arr) => {
+            return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
+        };
+        const result = sourceConfig.transforms.reduce(inputReducer, output);
+        output = result;
+    }
+    else {
+        output = parseTransform(mergedInput);
+    }
+
+    console.log('SRC', sourceConfig, '\n\tIN', mergedInput, '\n\tOUT', output);
 
     //console.log(sourceConfig.scope)
 
