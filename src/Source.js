@@ -43,7 +43,7 @@ export const parseB = B => {
         const { input, props } = B;
         return api(input, props).B;
     }
-    if(Array.isArray(B)) {
+    if (Array.isArray(B)) {
         // handle array of config case
         return B;
     }
@@ -61,25 +61,24 @@ export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
     const { id, name } = conceptConfig;
 
     if (typeof conceptConfig === 'string') {
-        throw ('');
         return api(conceptConfig);
     }
     else if (typeof conceptConfig === 'object') {
         // sketchy logic for determining parser on leaf
-        if (typeof conceptConfig.value === 'string')
+        if (typeof conceptConfig.value !== 'undefined')
             return api(conceptConfig.value, conceptConfig.props);
         // only case to handle now
         const mergedConfig = { ...CONCEPT_DEFAULTS, ...parentInput, ...conceptConfig };
         const concept = parseConceptHelper(mergedConfig);
         return concept;
     }
-    else if (Array.isArray(conceptConfig)) {
+    /*else if (Array.isArray(conceptConfig)) {
         throw ('');
         const inputReducer = (acc, cur, i, arr) => {
             return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
         };
         return conceptConfig.reduce(inputReducer, {});
-    }
+    }*/
     else {
         throw ('');
         return {};
@@ -87,20 +86,25 @@ export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
 };
 
 const parseInput = (input) => {
+    if (!input) return {};
+
     if (typeof input === 'string') {
         return api(input);
     }
-    else if (Array.isArray(input)) {
+    /*else if (Array.isArray(input)) {
         const inputReducer = (acc, cur, i, arr) => {
             return parseInput({ value: cur.value, props: { ...acc, ...cur.props } });
         };
         const result = input.reduce(inputReducer, {});
         return result;
-    }
+    }*/
     else if (typeof input === 'object') {
-        return api(input.value, input.props);
+        if (typeof input.value !== 'undefined')
+            return api(input.value, input.props);
+        return input;
     }
     else {
+        throw ('only string and object inputs allowed')
         return {};
     }
 }
@@ -118,6 +122,7 @@ export const parseSourceConfig = (sourceConfig, parentInput = {}) => {
             ...sourceConfig,
             id: sourceConfig.id || 'id',
             name: sourceConfig.name || 'name',
+            input: mergedInput,
             children: sourceConfig.children.map(c => parseSourceConfig(c, mergedInput))
         }
     }
