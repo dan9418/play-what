@@ -1,6 +1,6 @@
 import api from './api';
 import * as KeyCenter from "./KeyCenter";
-import * as Theory from './Theory';
+import * as Note from './Note';
 import { CONCEPT_DEFAULTS } from './Concept';
 
 export const SCOPE = {
@@ -12,15 +12,15 @@ export const SCOPE = {
 
 export const getConceptAt = (chart, position) => {
     const { a, B } = conceptConfig;
-    const tonic = Theory.getNoteName(a);
-    const preset = Theory.findPreset(B);
+    const tonic = Note.getNoteName(a);
+    const preset = { name: '?' };
     return `${tonic} ${preset.name || '?'}`;
 }
 
 export const getConceptName = (conceptConfig) => {
     const { a, B } = conceptConfig;
-    const tonic = Theory.getNoteName(a);
-    const preset = Theory.findPreset(B);
+    const tonic = Note.getNoteName(a);
+    const preset = { name: '?' };
     return `${tonic} ${preset.name || '?'}`;
 }
 
@@ -118,7 +118,7 @@ export const parseSourceConfig = (sourceConfig, parentInput = {}) => {
         output = parseTransform(mergedInput);
     }
 
-    console.log('SRC', sourceConfig, '\n\tIN', mergedInput, '\n\tOUT', output);
+    console.log(`SRC - ${sourceConfig.name}\n\tDATA`, sourceConfig, '\n\tIN', mergedInput, '\n\tOUT', output);
 
     //console.log(sourceConfig.scope)
 

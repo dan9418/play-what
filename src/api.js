@@ -20,9 +20,9 @@ const api = (path, props) => {
         attr = tree.shift();
         node = node[attr];
     }
-    console.log(`API - ${path} - IN`, props);
+    console.log(`API - ${path}\n\tIN`, props);
     const value = typeof node === 'function' ? node(props) : node;
-    console.log(`API - ${path} - OUT`, value);
+    console.log(`API - ${path}\n\tOUT`, value);
     return value;
 }
 
