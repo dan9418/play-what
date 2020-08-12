@@ -57,7 +57,7 @@ export const parseConceptHelper = (conceptConfig) => {
     return concept;
 };
 
-export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
+/*export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
     const { id, name } = conceptConfig;
 
     if (typeof conceptConfig === 'string') {
@@ -72,69 +72,101 @@ export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
         const concept = parseConceptHelper(mergedConfig);
         return concept;
     }
-    /*else if (Array.isArray(conceptConfig)) {
-        throw ('');
-        const inputReducer = (acc, cur, i, arr) => {
-            return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
-        };
-        return conceptConfig.reduce(inputReducer, {});
-    }*/
+    // else if (Array.isArray(conceptConfig)) {
+    //     throw ('');
+    //     const inputReducer = (acc, cur, i, arr) => {
+    //         return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
+    //     };
+    //     return conceptConfig.reduce(inputReducer, {});
+    // }
     else {
         throw ('');
         return {};
     }
-};
+};*/
 
-const parseTransform = (transform) => {
-    if (!transform) return {};
+/*export const parseInputString = (input, parentInput = {}) => {
+    const tree = input.split('/');
+    const first = tree[0];
+    if (first === 'pw') return api(input, parentInput);
+    if (first === 'in') return parentInput[tree[1]];
+    throw ('Invalid input string');
+}*/
 
-    if (typeof transform === 'string') {
-        return api(transform);
-    }
-    else if (typeof transform === 'object') {
-        if (typeof transform.value !== 'undefined')
-            return api(transform.value, transform.props);
-        return transform;
-    }
-    else {
-        throw ('only string and object transforms allowed')
-        return {};
-    }
-}
+/*export const parseInputObject = (value, parentInput = {}, parse = () => null) => {
 
-export const parseSourceConfig = (sourceConfig, parentInput = {}) => {
+    const localInput = value.input || {};
+    const mergedInput = { ...parentInput, ...localInput };
 
-    const mergedInput = { ...parentInput, ...sourceConfig.input };
-
+    // function
+    if (typeof value.endpoint !== 'undefined')
+        const fnInput = parse(value.input, parentInput);
+    return api(value.endpoint, fnInput);
+    // transforms
     let output = null;
-    if (sourceConfig.transforms) {
+    if (source.transforms) {
         const inputReducer = (acc, cur, i, arr) => {
-            return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
+            const input = { ...parentInput, ...(cur.input || {}) };
+            return null;
         };
-        const result = sourceConfig.transforms.reduce(inputReducer, output);
+        const result = source.transforms.reduce(inputReducer, output);
         output = result;
     }
     else {
         output = parseTransform(mergedInput);
     }
 
-    console.log(`SRC - ${sourceConfig.name}\n\tDATA`, sourceConfig, '\n\tIN', mergedInput, '\n\tOUT', output);
 
-    //console.log(sourceConfig.scope)
+    console.log(`SRC - ${source.name}\n\tDATA`, source, '\n\tIN', mergedInput, '\n\tOUT', output);
 
-    if (sourceConfig.children) {
+    //console.log(source.scope)
+
+    if (source.children) {
         return {
-            ...sourceConfig,
-            id: sourceConfig.id || 'id',
-            name: sourceConfig.name || 'name',
-            input: mergedInput,
-            children: sourceConfig.children.map(c => parseSourceConfig(c, mergedInput))
+            ...source,
+            id: source.id || 'id',
+            name: source.name || 'name',
+            parentInput,
+            localInput: source.input,
+            mergedInput,
+            children: source.children.map(c => parse(c, mergedInput))
         }
     }
-    return parseConceptConfig(sourceConfig, mergedInput);
-}
+}*/
 
-export const parse = props => {
-    if (!props.config) throw ('Missing config from source props');
-    return parseSourceConfig(props.config);
+export const parseInput = (input, parentInput = {}) => {
+    const type = typeof input;
+
+    switch (type) {
+        case 'string':
+            const path = input.split('/');
+            if (path.length < 2) throw ('Invalid input string');
+            return api(input);
+        case 'object':
+            if (input === null) throw ('Null inputs not allowed');
+            if (Array.isArray(input)) {
+                return input.map(x => parseInput(x));
+            }
+            // direct object
+            if (!input.fn) {
+                return Object.entries(input).reduce((acc, [key, value], i, arr) => {
+                    const attr = parseInput(value, parseInput);
+                    console.log('reduce direct', arr, i, acc, key, attr);
+                    return { ...acc, [key]: attr };
+                }, {});
+            }
+            // function object
+            const args = Object.entries(input.args).reduce((acc, [key, value], i, arr) => {
+                const attr = parseInput(value, parentInput);
+                console.log('reduce fn', arr, i, acc, key, attr);
+                return { ...acc, [key]: attr };
+            }, {});
+            return api(input.fn, args);
+        case 'number':
+        case 'boolean':
+            return input;
+        default:
+            debugger;
+            throw ('Only string and object inputs allowed');
+    }
 }
