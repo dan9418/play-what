@@ -134,23 +134,30 @@ export const parseConceptHelper = (conceptConfig) => {
     }
 }*/
 
-export const parseInput = (input, parentInput = {}) => {
+const getOutput = (input, parentInput, parseInput) => {
     const type = typeof input;
 
     switch (type) {
         case 'string':
             const path = input.split('/');
             if (path.length < 2) { return input; /* valid string value */debugger; throw ('Invalid input string'); };
+            if (path[0] === 'in') {
+                if (path[1] === 'parent') {
+                    // get parent value
+                    return parentInput[path[2]]; // TODO recursive
+                }
+                // get current acc value
+            }
             return api(input);
         case 'object':
             if (input === null) throw ('Null inputs not allowed');
             if (Array.isArray(input)) {
-                return input.map(x => parseInput(x));
+                return input.map(x => parseInput(x, parentInput));
             }
             // direct object
             if (!input.fn) {
                 return Object.entries(input).reduce((acc, [key, value], i, arr) => {
-                    const attr = parseInput(value, parseInput);
+                    const attr = parseInput(value, parentInput);
                     console.log('reduce direct', arr, i, acc, key, attr);
                     return { ...acc, [key]: attr };
                 }, {});
@@ -169,4 +176,22 @@ export const parseInput = (input, parentInput = {}) => {
             debugger;
             throw ('Only string and object inputs allowed');
     }
+}
+
+export const parseInput = (input, parentInput = {}) => {
+
+    const output = getOutput(input, parentInput, parseInput);
+
+    if (input.children) {
+        const mergedOutput = { ...parentInput, ...output };
+
+        const children = input.children.map((x, i) => parseInput(x, mergedOutput));
+
+        return {
+            ...mergedOutput,
+            children
+        };
+    }
+
+    return output;
 }
