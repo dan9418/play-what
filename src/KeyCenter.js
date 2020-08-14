@@ -66,3 +66,8 @@ export const addIntervals = ({ a, B }) => {
     return { a: parsedA, B: parsedB }; //parsedB.map(b => addVectors(parsedA, b));
 }
 
+
+export const from = ({ preset }) => {
+    if (!preset) throw ('only preset supported')
+    return KEY_CENTERS[preset];
+}

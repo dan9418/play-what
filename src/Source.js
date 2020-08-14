@@ -140,7 +140,7 @@ export const parseInput = (input, parentInput = {}) => {
     switch (type) {
         case 'string':
             const path = input.split('/');
-            if (path.length < 2) throw ('Invalid input string');
+            if (path.length < 2) { return input; /* valid string value */debugger; throw ('Invalid input string'); };
             return api(input);
         case 'object':
             if (input === null) throw ('Null inputs not allowed');
