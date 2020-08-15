@@ -140,13 +140,17 @@ const getOutput = (input, parentInput, parseInput) => {
     switch (type) {
         case 'string':
             const path = input.split('/');
-            if (path.length < 2) { return input; /* valid string value */debugger; throw ('Invalid input string'); };
+            // immediate string value
+            if (path.length < 2) return input;
+            // referencial value
             if (path[0] === 'in') {
                 if (path[1] === 'parent') {
                     // get parent value
                     return parentInput[path[2]]; // TODO recursive
                 }
                 // get current acc value
+                debugger;
+                throw ('only parent string inputs allowed')
             }
             return api(input);
         case 'object':
@@ -188,7 +192,7 @@ export const parseInput = (input, parentInput = {}) => {
         const children = input.children.map((x, i) => parseInput(x, mergedOutput));
 
         return {
-            ...mergedOutput,
+            ...output,
             children
         };
     }

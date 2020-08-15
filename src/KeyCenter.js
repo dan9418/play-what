@@ -69,5 +69,5 @@ export const addIntervals = ({ a, B }) => {
 
 export const from = ({ preset }) => {
     if (!preset) throw ('only preset supported')
-    return KEY_CENTERS[preset];
+    return KEY_CENTERS[preset].a;
 }
