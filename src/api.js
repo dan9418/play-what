@@ -14,8 +14,8 @@ const apiMap = {
     }
 };
 
-const api = (path, props) => {
-    console.log(`API - ${path}\n\tIN`, props);
+const api = (path, args) => {
+    console.log(`API - ${path}\n\tIN`, args);
 
     const tree = path.split('/');
     let node = apiMap;
@@ -26,11 +26,11 @@ const api = (path, props) => {
     }
 
     let value = null;
-    if (props && props.component) {
-        value = { component: node };
+    if (args && args.component) {
+        value = { component: node, props: args.props };
     }
     else if (typeof node === 'function') {
-        value = node(props);
+        value = node(args);
     }
     else {
         value = node;
