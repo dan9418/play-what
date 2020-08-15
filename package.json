@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "color": "^3.1.2",
-    "tone": "^13.8.25"
+    "tone": "^13.8.25",
+    "play-what-react-viewers": "file:C:/_dev/play-what-react-viewers"
   }
 }

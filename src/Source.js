@@ -57,83 +57,6 @@ export const parseConceptHelper = (conceptConfig) => {
     return concept;
 };
 
-/*export const parseConceptConfig = (conceptConfig, parentInput = {}) => {
-    const { id, name } = conceptConfig;
-
-    if (typeof conceptConfig === 'string') {
-        return api(conceptConfig);
-    }
-    else if (typeof conceptConfig === 'object') {
-        // sketchy logic for determining parser on leaf
-        if (typeof conceptConfig.value !== 'undefined')
-            return api(conceptConfig.value, conceptConfig.props);
-        // only case to handle now
-        const mergedConfig = { ...CONCEPT_DEFAULTS, ...parentInput, ...conceptConfig };
-        const concept = parseConceptHelper(mergedConfig);
-        return concept;
-    }
-    // else if (Array.isArray(conceptConfig)) {
-    //     throw ('');
-    //     const inputReducer = (acc, cur, i, arr) => {
-    //         return parseTransform({ value: cur.value, props: { ...acc, ...cur.props } });
-    //     };
-    //     return conceptConfig.reduce(inputReducer, {});
-    // }
-    else {
-        throw ('');
-        return {};
-    }
-};*/
-
-/*export const parseInputString = (input, parentInput = {}) => {
-    const tree = input.split('/');
-    const first = tree[0];
-    if (first === 'pw') return api(input, parentInput);
-    if (first === 'in') return parentInput[tree[1]];
-    throw ('Invalid input string');
-}*/
-
-/*export const parseInputObject = (value, parentInput = {}, parse = () => null) => {
-
-    const localInput = value.input || {};
-    const mergedInput = { ...parentInput, ...localInput };
-
-    // function
-    if (typeof value.endpoint !== 'undefined')
-        const fnInput = parse(value.input, parentInput);
-    return api(value.endpoint, fnInput);
-    // transforms
-    let output = null;
-    if (source.transforms) {
-        const inputReducer = (acc, cur, i, arr) => {
-            const input = { ...parentInput, ...(cur.input || {}) };
-            return null;
-        };
-        const result = source.transforms.reduce(inputReducer, output);
-        output = result;
-    }
-    else {
-        output = parseTransform(mergedInput);
-    }
-
-
-    console.log(`SRC - ${source.name}\n\tDATA`, source, '\n\tIN', mergedInput, '\n\tOUT', output);
-
-    //console.log(source.scope)
-
-    if (source.children) {
-        return {
-            ...source,
-            id: source.id || 'id',
-            name: source.name || 'name',
-            parentInput,
-            localInput: source.input,
-            mergedInput,
-            children: source.children.map(c => parse(c, mergedInput))
-        }
-    }
-}*/
-
 const getOutput = (input, parentInput, parseInput) => {
     const type = typeof input;
 
@@ -154,25 +77,31 @@ const getOutput = (input, parentInput, parseInput) => {
             }
             return api(input);
         case 'object':
+            // Null
             if (input === null) throw ('Null inputs not allowed');
+            // Array
             if (Array.isArray(input)) {
                 return input.map(x => parseInput(x, parentInput));
             }
-            // direct object
-            if (!input.fn) {
-                return Object.entries(input).reduce((acc, [key, value], i, arr) => {
-                    const attr = parseInput(value, parentInput);
-                    console.log('reduce direct', arr, i, acc, key, attr);
-                    return { ...acc, [key]: attr };
-                }, {});
-            }
-            // function object
-            const args = Object.entries(input.args).reduce((acc, [key, value], i, arr) => {
+            // Level inputs
+            const { fn, args, ...levelInputs } = input;
+            const levelOut = levelInputs ? Object.entries(levelInputs).reduce((acc, [key, value], i, arr) => {
                 const attr = parseInput(value, parentInput);
                 console.log('reduce fn', arr, i, acc, key, attr);
                 return { ...acc, [key]: attr };
-            }, {});
-            return api(input.fn, args);
+            }, {}) : {};
+            // Funtion inputs
+            let fnOut = {};
+            if (fn) {
+                const args = input.args ? Object.entries(input.args).reduce((acc, [key, value], i, arr) => {
+                    const attr = parseInput(value, parentInput);
+                    console.log('reduce direct', arr, i, acc, key, attr);
+                    return { ...acc, [key]: attr };
+                }, {}) : {};
+                fnOut = api(input.fn, args);
+            }
+            // Merged output
+            return { ...levelOut, ...fnOut };
         case 'number':
         case 'boolean':
             return input;
