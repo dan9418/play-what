@@ -57,14 +57,15 @@ export const parseConceptHelper = (conceptConfig) => {
     return concept;
 };
 
-const getOutput = (input, parentInput, parseInput) => {
-    const type = typeof input;
+export const parseLevel = (level, parentProps = {}) => {
+    const type = typeof level;
 
     switch (type) {
         case 'string':
-            const path = input.split('/');
+            const levelStr = level;
+            const path = levelStr.split('/');
             // immediate string value
-            if (path.length < 2) return input;
+            if (path.length < 2) return levelStr;
             // referencial value
             if (path[0] === 'in') {
                 if (path[1] === 'parent') {
@@ -73,58 +74,52 @@ const getOutput = (input, parentInput, parseInput) => {
                 }
                 // get current acc value
                 debugger;
-                throw ('only parent string inputs allowed')
+                throw ('only parent string inputs allowed', levelStr)
             }
-            return api(input);
+            return api(levelStr);
         case 'object':
+            const levelObj = level;
             // Null
-            if (input === null) throw ('Null inputs not allowed');
+            if (levelObj === null) throw ('Null inputs not allowed');
             // Array
-            if (Array.isArray(input)) {
-                return input.map(x => parseInput(x, parentInput));
+            if (Array.isArray(levelObj)) {
+                return levelObj.map(x => parseLevel(x, parentInput));
+            }
+            // Get reserved attributes
+            const { fn, args, component, props, children, ...other } = levelObj;
+            if (other.length) {
+                debugger;
+                throw ('invalid object properties');
             }
             // Level inputs
-            const { fn, args, ...levelInputs } = input;
-            const levelOut = levelInputs ? Object.entries(levelInputs).reduce((acc, [key, value], i, arr) => {
-                const attr = parseInput(value, parentInput);
+            let parsedLevelProps = props ? Object.entries(props).reduce((acc, [key, value], i, arr) => {
+                const attr = parseLevel(value, parentProps);
                 console.log('reduce fn', arr, i, acc, key, attr);
                 return { ...acc, [key]: attr };
             }, {}) : {};
-            // Funtion inputs
-            let fnOut = {};
             if (fn) {
-                const args = input.args ? Object.entries(input.args).reduce((acc, [key, value], i, arr) => {
-                    const attr = parseInput(value, parentInput);
+                const parsedArgs = args ? Object.entries(args).reduce((acc, [key, value], i, arr) => {
+                    const attr = parseLevel(value, parentProps);
                     console.log('reduce direct', arr, i, acc, key, attr);
                     return { ...acc, [key]: attr };
                 }, {}) : {};
-                fnOut = api(input.fn, args);
+                const fnOut = api(fn, parsedArgs);
+                parsedLevelProps = { ...fnOut, ...parsedLevelProps };
             }
-            // Merged output
-            return { ...levelOut, ...fnOut };
+            const levelProps = { ...parentProps, ...parsedLevelProps };
+            if (children) {
+                const parsedChildren = children.map((c, i) => parseLevel(c, levelProps));
+                return {
+                    ...levelProps,
+                    children: parsedChildren
+                };
+            }
+            return levelProps;
         case 'number':
         case 'boolean':
-            return input;
+            return level;
         default:
             debugger;
             throw ('Only string and object inputs allowed');
     }
-}
-
-export const parseInput = (input, parentInput = {}) => {
-
-    const output = getOutput(input, parentInput, parseInput);
-
-    if (input.children) {
-        const mergedOutput = { ...parentInput, ...output };
-
-        const children = input.children.map((x, i) => parseInput(x, mergedOutput));
-
-        return {
-            ...output,
-            children
-        };
-    }
-
-    return output;
 }

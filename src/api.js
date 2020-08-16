@@ -27,7 +27,7 @@ const api = (path, args) => {
 
     let value = null;
     if (args && args.component) {
-        value = { component: node, props: args.props };
+        //value = { component: node, props: args.props };
     }
     else if (typeof node === 'function') {
         value = node(args);
