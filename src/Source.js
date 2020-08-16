@@ -57,7 +57,7 @@ export const parseConceptHelper = (conceptConfig) => {
     return concept;
 };
 
-export const parseLevel = (level, parentProps = {}) => {
+export const parseLevel = (level, parentProps = {}, localProps = {}) => {
     const type = typeof level;
 
     switch (type) {
@@ -66,15 +66,13 @@ export const parseLevel = (level, parentProps = {}) => {
             const path = levelStr.split('/');
             // immediate string value
             if (path.length < 2) return levelStr;
-            // referencial value
-            if (path[0] === 'in') {
-                if (path[1] === 'parent') {
-                    // get parent value
-                    return parentInput[path[2]]; // TODO recursive
-                }
-                // get current acc value
-                debugger;
-                throw ('only parent string inputs allowed', levelStr)
+            // parent value
+            if (path[0] === 'parent') {
+                return parentProps[path[1]]; // TODO recursive
+            }
+            // local value
+            else if (path[0] === 'props') {
+                return parentProps[path[1]]; // TODO recursive
             }
             return api(levelStr);
         case 'object':
@@ -83,11 +81,11 @@ export const parseLevel = (level, parentProps = {}) => {
             if (levelObj === null) throw ('Null inputs not allowed');
             // Array
             if (Array.isArray(levelObj)) {
-                return levelObj.map(x => parseLevel(x, parentInput));
+                return levelObj.map(x => parseLevel(x, parentProps));
             }
             // Get reserved attributes
-            const { fn, args, component, props, children, ...other } = levelObj;
-            if (other.length) {
+            const { fn, args, component, props, ...other } = levelObj;
+            if (Object.keys(other).length) {
                 debugger;
                 throw ('invalid object properties');
             }
@@ -99,7 +97,7 @@ export const parseLevel = (level, parentProps = {}) => {
             }, {}) : {};
             if (fn) {
                 const parsedArgs = args ? Object.entries(args).reduce((acc, [key, value], i, arr) => {
-                    const attr = parseLevel(value, parentProps);
+                    const attr = parseLevel(value, parentProps, parsedLevelProps);
                     console.log('reduce direct', arr, i, acc, key, attr);
                     return { ...acc, [key]: attr };
                 }, {}) : {};
@@ -107,13 +105,13 @@ export const parseLevel = (level, parentProps = {}) => {
                 parsedLevelProps = { ...fnOut, ...parsedLevelProps };
             }
             const levelProps = { ...parentProps, ...parsedLevelProps };
-            if (children) {
+            /*if (children) {
                 const parsedChildren = children.map((c, i) => parseLevel(c, levelProps));
                 return {
                     ...levelProps,
                     children: parsedChildren
                 };
-            }
+            }*/
             return levelProps;
         case 'number':
         case 'boolean':
