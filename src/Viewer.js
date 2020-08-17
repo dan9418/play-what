@@ -1,17 +1,26 @@
 import Viewers from 'play-what-react-viewers';
+import { parseLevel } from './Source';
 
 export const fretboard = {
     component: Viewers.Fretboard.Viewer,
     create: args => {
-        const { fretRange, tuning } = args;
+        const { fretRange, tuning, labelFn } = args;
         const [l, h] = fretRange || [0, 24];
 
         const strings = [];
         for (let s = 0; s < tuning.length; s++) {
             const frets = []
             for (let f = l; f <= h; f++) {
+                const context = {
+                    strNum: s,
+                    fretNum: f,
+                    fretRange,
+                    tuning,
+                    noteIndex: tuning[s] + f
+                };
+                console.log(labelFn)
                 frets.push({
-                    children: s + ' ' + f
+                    children: labelFn ? labelFn.callback(context) : null
                 })
             }
             strings.push(frets);
