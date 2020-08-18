@@ -7,12 +7,13 @@ export const SCOPE = {
     Chart: 'chart'
 }
 
-export const parseRawSource = (rawSource, parentProps = {}) => {
+export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
     const type = typeof rawSource;
 
     switch (type) {
         case 'number':
         case 'boolean':
+            console.log("\t".repeat(level), 'IN/OUT', attr, type, rawSource);
             return rawSource;
         case 'string':
             const levelStr = rawSource;
@@ -21,12 +22,16 @@ export const parseRawSource = (rawSource, parentProps = {}) => {
             if (path.length < 2) return levelStr;
             // parent value
             if (path[0] === 'parent') {
-                console.log(`RAW PARENT - ${rawSource}`, parentProps, parentProps[path[1]]);
-                return parentProps[path[1]]; // TODO recursive
+                console.log("\t".repeat(level), 'IN', attr, 'parent', rawSource);
+                const par = parentProps[path[1]]; // TODO recursive
+                console.log("\t".repeat(level), 'OUT', attr, 'parent', par);
+                return par;
             }
             // other api value
-            console.log('RAW API');
-            return api(levelStr);
+            console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
+            const apiRes = api(levelStr, {}, level + 1);
+            console.log("\t".repeat(level), 'OUT', attr, 'api', apiRes);
+            return apiRes;
         case 'object':
             const levelObj = rawSource;
 
@@ -35,67 +40,63 @@ export const parseRawSource = (rawSource, parentProps = {}) => {
 
             // Array
             if (Array.isArray(levelObj)) {
-                return levelObj.map(x => parseRawSource(x, parentProps));
+                console.log("\t".repeat(level), 'IN', attr, 'arr', rawSource);
+                const arr = levelObj.map(x => parseRawSource(x, parentProps, attr + '.arr', level + 1));
+                console.log("\t".repeat(level), 'OUT', attr, 'arr', arr);
+                return arr;
             }
 
             // Get reserved attributes
-            const { fn, args, component, props, callback, ...other } = levelObj;
-            if (fn && props) {
+            const { fn, args, ...props } = levelObj;
+            const numProps = Object.values(props).length;
+            if (fn && numProps || args && numProps) {
                 debugger;
-                throw ('only either fn or props attr allowed');
-            }
-            if (Object.keys(other).length) {
-                debugger;
-                throw ('invalid raw source attrs');
+                throw ('cannot mix fn defs with props');
             }
             let parsedLocalProps = {};
             let parsedFnOut = {};
 
-            // Local props
-            if (props) {
+            // Calculate props
+            if (numProps) {
                 if (typeof props !== 'object') throw ('Invalid props type');
 
-                console.log('REDUCE PROPS:', props, parentProps);
+                console.log("\t".repeat(level), 'IN', attr, 'props', rawSource);
                 const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') return acc;
-
-                    console.log('REDUCE PROPS - IN', key, value);
-                    const attr = parseRawSource(value, parentProps);
-                    console.log('REDUCE PROPS - OUT', key, attr);
-
+                    const attr = parseRawSource(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
+                console.log("\t".repeat(level), 'OUT', attr, 'props', localOut);
 
                 if (props.children) {
+                    console.log("\t".repeat(level), 'IN', attr, 'children', rawSource);
                     const mergedProps = { ...parentProps, ...localOut };
-                    localOut.children = props.children.map((c, i) => parseRawSource(c, mergedProps));
+                    localOut.children = props.children.map((c, i) => parseRawSource(c, mergedProps, attr + '.children', level + 1));
+                    console.log("\t".repeat(level), 'OUT', attr, 'children', localOut.children);
                 }
 
                 parsedLocalProps = localOut;
                 return parsedLocalProps;
             };
 
-            // Function props
+            // Execute function
             if (fn) {
                 if (typeof fn !== 'string') throw ('Invalid fn type');
 
-                console.log('REDUCE ARGS:', parentProps);
+                console.log("\t".repeat(level), 'IN', attr, 'fn', rawSource);
                 const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') throw ('children invalid for fn args')
-
-                    console.log('REDUCE ARGS - IN', key, value);
-                    const attr = parseRawSource(value, parentProps);
-                    console.log('REDUCE ARGS - OUT', key, attr);
-
+                    const attr = parseRawSource(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
+                parsedFnOut = api(fn, argsOut, level + 2);
+                console.log("\t".repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
-                parsedFnOut = api(fn, argsOut);
                 return parsedFnOut;
             }
             throw 'unexpected config';
         default:
             debugger;
-            throw ('Invalid raw source type', type);
+            throw 'Invalid raw source type';
     }
 }

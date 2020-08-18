@@ -43,13 +43,12 @@ const parseNode = (node, args) => {
     }
 }
 
-const api = (path, args) => {
-    console.log(`API - ${path}\n\tIN`, args);
+const api = (path, args = {}, level = 0) => {
+    console.log("\t".repeat(level), `API - ${path}`, args);
 
     const node = getApiNode(path);
     const value = parseNode(node, args);
 
-    console.log(`API - ${path}\n\tOUT`, value);
     return value;
 }
 

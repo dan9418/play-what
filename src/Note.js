@@ -35,7 +35,7 @@ export const label = ({ type, notes }) => {
             return {
                 callback: ctx => {
                     const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-                    return i;
+                    return i >= 0 ? notes[i].d : '';
                 }
             };
         default:
