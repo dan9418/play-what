@@ -7,6 +7,7 @@ import * as Concept from './Concept';
 
 const apiMap = {
     pw: {
+        parse: Source.parseRawSource,
         keyCenter: KeyCenter,
         concept: Concept,
         source: Source,
@@ -29,12 +30,11 @@ const getApiNode = (path) => {
 const parseNode = (node, args) => {
     const type = typeof node;
     switch (type) {
-        case 'number':
-        case 'boolean':
-            return node;
         case 'function':
             const result = node(args);
             return parseNode(result);
+        case 'number':
+        case 'boolean':
         case 'object':
             return node;
         default:

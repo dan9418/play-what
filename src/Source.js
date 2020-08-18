@@ -1,7 +1,4 @@
 import api from './api';
-import * as KeyCenter from "./KeyCenter";
-import * as Note from './Note';
-import { CONCEPT_DEFAULTS } from './Concept';
 
 export const SCOPE = {
     Concept: 'concept',
@@ -10,120 +7,95 @@ export const SCOPE = {
     Chart: 'chart'
 }
 
-export const getConceptAt = (chart, position) => {
-    const { a, B } = conceptConfig;
-    const tonic = Note.getNoteName(a);
-    const preset = { name: '?' };
-    return `${tonic} ${preset.name || '?'}`;
-}
-
-export const getConceptName = (conceptConfig) => {
-    const { a, B } = conceptConfig;
-    const tonic = Note.getNoteName(a);
-    const preset = { name: '?' };
-    return `${tonic} ${preset.name || '?'}`;
-}
-
-export const parseA = a => {
-    if (typeof a === 'string') {
-        return api(a).a;
-    }
-    return a;
-    if (a.input) {
-        const { input, props } = a;
-        return api(input, props).a;
-    }
-}
-
-export const parseB = B => {
-    if (typeof B === 'string') {
-        return api(B).B;
-    }
-    if (B.input) {
-        const { input, props } = B;
-        return api(input, props).B;
-    }
-    if (Array.isArray(B)) {
-        // handle array of config case
-        return B;
-    }
-}
-
-export const parseConceptHelper = (conceptConfig) => {
-    let concept = {};
-    concept.a = parseA(conceptConfig.a);
-    concept.B = parseB(conceptConfig.B);
-    concept.C = KeyCenter.addVectorArray({ a: concept.a, B: concept.B });
-    return concept;
-};
-
-export const parseLevel = (level, parentProps = {}, localProps = {}) => {
-    const type = typeof level;
+export const parseRawSource = (rawSource, parentProps = {}) => {
+    const type = typeof rawSource;
 
     switch (type) {
+        case 'number':
+        case 'boolean':
+            return rawSource;
         case 'string':
-            const levelStr = level;
+            const levelStr = rawSource;
             const path = levelStr.split('/');
             // immediate string value
             if (path.length < 2) return levelStr;
             // parent value
             if (path[0] === 'parent') {
-                console.log(`PARENT - ${level}`, localProps, parentProps, parentProps[path[1]]);
+                console.log(`RAW PARENT - ${rawSource}`, parentProps, parentProps[path[1]]);
                 return parentProps[path[1]]; // TODO recursive
             }
-            // local value
-            else if (path[0] === 'props') {
-                console.log(`PROPS - ${level}`, localProps, parentProps, localProps[path[1]]);
-                return localProps[path[1]]; // TODO recursive
-            }
+            // other api value
+            console.log('RAW API');
             return api(levelStr);
         case 'object':
-            const levelObj = level;
+            const levelObj = rawSource;
+
             // Null
-            if (levelObj === null) throw ('Null inputs not allowed');
+            if (levelObj === null) throw ('Invalid raw source type');
+
             // Array
             if (Array.isArray(levelObj)) {
-                return levelObj.map(x => parseLevel(x, parentProps));
+                return levelObj.map(x => parseRawSource(x, parentProps));
             }
+
             // Get reserved attributes
-            const { fn, args, component, props: allProps, callback, ...other } = levelObj;
-            const { children, ...props } = allProps || {};
+            const { fn, args, component, props, callback, ...other } = levelObj;
+            if (fn && props) {
+                debugger;
+                throw ('only either fn or props attr allowed');
+            }
             if (Object.keys(other).length) {
                 debugger;
-                throw ('invalid object properties');
+                throw ('invalid raw source attrs');
             }
-            // Level props
-            console.log('REDUCE PROPS', props, parentProps)
-            let parsedLevelProps = props ? Object.entries(props).reduce((acc, [key, value], i, arr) => {
-                console.log('REDUCE PROPS - IN', key, value);
-                const attr = parseLevel(value, parentProps);
-                console.log('REDUCE PROPS - OUT', key, attr);
-                return { ...acc, [key]: attr };
-            }, {}) : {};
+            let parsedLocalProps = {};
+            let parsedFnOut = {};
+
+            // Local props
+            if (props) {
+                if (typeof props !== 'object') throw ('Invalid props type');
+
+                console.log('REDUCE PROPS:', props, parentProps);
+                const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
+                    if (key === 'children') return acc;
+
+                    console.log('REDUCE PROPS - IN', key, value);
+                    const attr = parseRawSource(value, parentProps);
+                    console.log('REDUCE PROPS - OUT', key, attr);
+
+                    return { ...acc, [key]: attr };
+                }, {});
+
+                if (props.children) {
+                    const mergedProps = { ...parentProps, ...localOut };
+                    localOut.children = props.children.map((c, i) => parseRawSource(c, mergedProps));
+                }
+
+                parsedLocalProps = localOut;
+                return parsedLocalProps;
+            };
+
             // Function props
             if (fn) {
-                const ctxProps = { ...parsedLevelProps, ...localProps };
-                console.log('REDUCE ARGS', parentProps, ctxProps);
-                const parsedArgs = args ? Object.entries(args).reduce((acc, [key, value], i, arr) => {
+                if (typeof fn !== 'string') throw ('Invalid fn type');
+
+                console.log('REDUCE ARGS:', parentProps);
+                const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
+                    if (key === 'children') throw ('children invalid for fn args')
+
                     console.log('REDUCE ARGS - IN', key, value);
-                    const attr = parseLevel(value, parentProps, { ...parsedLevelProps, ...localProps });
+                    const attr = parseRawSource(value, parentProps);
                     console.log('REDUCE ARGS - OUT', key, attr);
+
                     return { ...acc, [key]: attr };
-                }, {}) : {};
-                const fnOut = api(fn, parsedArgs);
-                parsedLevelProps = { ...fnOut, ...parsedLevelProps };
+                }, {});
+
+                parsedFnOut = api(fn, argsOut);
+                return parsedFnOut;
             }
-            // Children
-            if (parsedLevelProps.children) {
-                parsedLevelProps.children = parseLevel(c, parentProps, { ...parsedLevelProps, ...localProps })
-            }
-            const levelProps = { ...parentProps, ...parsedLevelProps };
-            return levelProps;
-        case 'number':
-        case 'boolean':
-            return level;
+            throw 'unexpected config';
         default:
             debugger;
-            throw ('Only string and object inputs allowed');
+            throw ('Invalid raw source type', type);
     }
 }

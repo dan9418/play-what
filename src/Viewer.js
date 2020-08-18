@@ -1,5 +1,5 @@
 import Viewers from 'play-what-react-viewers';
-import { parseLevel } from './Source';
+import { parseRawSource } from './Source';
 
 export const fretboard = {
     component: Viewers.Fretboard.Viewer,
