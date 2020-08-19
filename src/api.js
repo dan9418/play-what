@@ -4,6 +4,7 @@ import * as KeyCenter from './KeyCenter';
 import * as Viewer from './Viewer';
 import * as Note from './Note';
 import * as Concept from './Concept';
+import * as Intervals from './Intervals';
 
 const apiMap = {
     pw: {
@@ -12,7 +13,8 @@ const apiMap = {
         concept: Concept,
         source: Source,
         viewer: Viewer,
-        note: Note
+        note: Note,
+        intervals: Intervals
     }
 };
 
