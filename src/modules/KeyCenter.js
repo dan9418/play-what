@@ -1,6 +1,5 @@
 import * as Utils from './Utils';
 import { MAX_VECTOR } from './Interval';
-import { parseA, parseB } from './Source';
 
 const KEY_CENTERS = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },

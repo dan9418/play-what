@@ -1,11 +1,10 @@
-import { ALL_CONCEPT_PRESETS } from "./modules/Concept.presets";
-import * as Source from "./Source";
-import * as KeyCenter from './KeyCenter';
-import * as Viewer from './Viewer';
-import * as Note from './Note';
-import * as Notes from './Notes';
-import * as Concept from './Concept';
-import * as Intervals from './Intervals';
+import * as Source from "./modules/Source";
+import * as KeyCenter from './modules/KeyCenter';
+import * as Viewer from './modules/Viewer';
+import * as Note from './modules/Note';
+import * as Notes from './modules/Notes';
+import * as Concept from './modules/Concept';
+import * as Intervals from './modules/Intervals';
 
 const apiMap = {
     pw: {

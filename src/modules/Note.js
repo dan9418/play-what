@@ -1,6 +1,6 @@
 import * as Utils from './Utils';
+import * as Color from './Color';
 import { MAX_VECTOR } from './Interval';
-import { SCHEMES } from './modules/Color'
 
 export const getNoteName = (note) => {
     if (note.d < 0) {
@@ -49,9 +49,7 @@ export const style = ({ type, notes }) => {
                 const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
                 if (i < 0) return {};
                 const id = 'd' + (notes[i].d + 1);
-                return {
-                    backgroundColor: SCHEMES.degree[id]
-                };
+                return Color.getStylesFromColor(Color.scheme.degree[id]);
             };
         default:
             return '';

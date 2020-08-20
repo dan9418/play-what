@@ -1,4 +1,4 @@
-import pwApi from './api';
+import pwApi from '../api';
 
 export const SCOPE = {
     Concept: 'concept',

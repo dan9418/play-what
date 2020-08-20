@@ -1,6 +1,6 @@
 import * as Color from "color";
 
-export const COLORS = {
+export const preset = {
     White: '#000000',
     Black: '#FFFFFF',
     d1: '#E6194B',
@@ -24,174 +24,68 @@ export const COLORS = {
     pc11: '#C2305E'
 };
 
-export const SCHEMES = {
+export const scheme = {
     binary: {
         active: null,
-        inacitve: COLORS.Black
+        inacitve: preset.Black
     },
     degree: {
         d0: null,
-        d1: COLORS.d1,
-        d2: COLORS.d2,
-        d3: COLORS.d3,
-        d4: COLORS.d4,
-        d5: COLORS.d5,
-        d6: COLORS.d6,
-        d7: COLORS.d7
-    },
-    degreeForesight: {
-        d0: null,
-        d1: COLORS.d1,
-        d2: COLORS.d5,
-        d3: COLORS.d5,
-        d4: COLORS.d5,
-        d5: COLORS.d5,
-        d6: COLORS.d5,
-        d7: COLORS.d5
+        d1: preset.d1,
+        d2: preset.d2,
+        d3: preset.d3,
+        d4: preset.d4,
+        d5: preset.d5,
+        d6: preset.d6,
+        d7: preset.d7
     },
     pitchClass: {
-        pc0: COLORS.pc0,
-        pc1: COLORS.pc1,
-        pc2: COLORS.pc2,
-        pc3: COLORS.pc3,
-        pc4: COLORS.pc4,
-        pc5: COLORS.pc5,
-        pc6: COLORS.pc6,
-        pc7: COLORS.pc7,
-        pc8: COLORS.pc8,
-        pc9: COLORS.pc9,
-        pc10: COLORS.pc10,
-        pc11: COLORS.pc11
+        pc0: preset.pc0,
+        pc1: preset.pc1,
+        pc2: preset.pc2,
+        pc3: preset.pc3,
+        pc4: preset.pc4,
+        pc5: preset.pc5,
+        pc6: preset.pc6,
+        pc7: preset.pc7,
+        pc8: preset.pc8,
+        pc9: preset.pc9,
+        pc10: preset.pc10,
+        pc11: preset.pc11
     },
     octave: {
-        min: COLORS.White,
-        max: COLORS.Black
+        min: preset.White,
+        max: preset.Black
     },
     frequency: {
-        min: COLORS.White,
-        max: COLORS.Black
+        min: preset.White,
+        max: preset.Black
     },
     noteIndex: {
-        min: COLORS.White,
-        max: COLORS.Black
+        min: preset.White,
+        max: preset.Black
     }
-}
+};
 
-export default class ColorUtils {
-
-    static none() {
+export const getStylesFromColor = (background, foreground, opacity) => {
+    if (!background) {
         return {};
     }
-
-    static binary(note, scheme = SCHEMES.binary) {
-        if (!note || !note.interval) return {};
-
-        return this.getStylesFromColor(scheme.active);
+    let bg = Color(background);
+    if (typeof opacity !== 'undefined') bg = bg.alpha(opacity);
+    return {
+        backgroundColor: bg.hsl().string(),
+        color: foreground || (bg.isDark() ? preset.Black : preset.White)
     }
+};
 
-    static isValidDegree(note) {
-        return note && typeof note.d === 'number';
-    }
+export const getColorFromContinuousScheme = (value, min, max, scheme) => {
+    let percent = (value - min) / (max - min);
+    percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
-    static degreeBg(note, scheme = SCHEMES.degree) {
-        if (!this.isValidDegree(note)) return {};
-        const id = `d${note.d + 1}`;
-        const s = scheme[id] ? scheme[id] : SCHEMES.degree[id];
-        return s;
-    }
+    const initialColor = Color(scheme.min);
+    const finalColor = Color(scheme.max);
+    const background = initialColor.mix(finalColor, percent);
 
-    static degree(note) {
-        if (!this.isValidDegree(note)) return {};
-        return this.getStylesFromColor(this.degreeBg(note));
-    }
-
-    static degreeForesight(a, b, scheme = SCHEMES.degreeForesight) {
-        const aV = this.isValidDegree(a);
-        const bV = this.isValidDegree(b)
-        let bg = null;
-        if (!aV && !bV) return {};
-        else if (aV && !bV) {
-            bg = this.degreeBg(a, scheme);
-            return this.getStylesFromColor(COLORS.d1, null);
-        }
-        else if (!aV && bV) {
-            return this.getStylesFromColor(COLORS.d5, null, .5);
-        }
-        else if (aV && bV) {
-            bg = new Color(COLORS.d1).mix(new Color(COLORS.d5));
-            return this.getStylesFromColor(bg, null);
-        };
-    }
-
-    static pitchClass(note, scheme = SCHEMES.pitchClass) {
-        if (!note) return {};
-
-        const pitchClass = note.getPitchClass();
-        const id = `pc${pitchClass}`;
-
-        const bg = scheme[id] ? scheme[id] : SCHEMES.pitchClass[id];
-
-        return this.getStylesFromColor(bg);
-    }
-
-    static octave(note, minNote, maxNote, scheme = SCHEMES.octave) {
-        if (!note) return {};
-
-        const minOctave = minNote.getOctave();
-        const octave = note.getOctave();
-        const maxOctave = maxNote.getOctave();
-
-        const bg = this.getColorFromContinuousScheme(octave, minOctave, maxOctave, scheme);
-
-        return this.getStylesFromColor(bg);
-    }
-
-    static frequency(note, minNote, maxNote, scheme = SCHEMES.frequency) {
-        if (!note) return {};
-
-        const minFrequency = minNote.getFrequency();
-        const frequency = note.getFrequency();
-        const maxFrequency = maxNote.getFrequency();
-
-        const bg = this.getColorFromContinuousScheme(frequency, minFrequency, maxFrequency, scheme);
-
-        return this.getStylesFromColor(bg);
-    }
-
-    static noteIndex(note, minNote, maxNote, scheme = SCHEMES.noteIndex) {
-        if (!note) return {};
-
-        const minNoteIndex = minNote.getNoteIndex();
-        const noteIndex = note.getNoteIndex();
-        const maxNoteIndex = maxNote.getNoteIndex();
-
-        const bg = this.getColorFromContinuousScheme(noteIndex, minNoteIndex, maxNoteIndex, scheme);
-
-        return this.getStylesFromColor(bg);
-    }
-
-    // Helpers
-
-    static getStylesFromColor(background, foreground, opacity) {
-        if (!background) {
-            return {};
-        }
-        let bg = Color(background);
-        if (typeof opacity !== 'undefined') bg = bg.alpha(opacity);
-        return {
-            backgroundColor: bg.hsl().string(),
-            color: foreground || (bg.isDark() ? COLORS.Black : COLORS.White)
-        }
-    }
-
-    static getColorFromContinuousScheme(value, min, max, scheme) {
-        let percent = (value - min) / (max - min);
-        percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
-
-        const initialColor = Color(scheme.min);
-        const finalColor = Color(scheme.max);
-        const background = initialColor.mix(finalColor, percent);
-
-        return background;
-    }
-}
+    return background;
+};
