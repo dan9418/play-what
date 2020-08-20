@@ -20,8 +20,8 @@ export const fretboard = {
                     noteIndex: tuning[s] + f
                 };
                 frets.push({
-                    children: labelFn ? labelFn.callback(context) : null,
-                    style: styleFn ? styleFn.callback(context) : {}
+                    children: labelFn ? labelFn(context) : null,
+                    style: styleFn ? styleFn(context) : {}
                 }) 
             }
             strings.push(frets);
