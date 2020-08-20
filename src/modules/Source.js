@@ -85,7 +85,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
 
                 console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
                 const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
-                    if (key === 'children') throw ('children invalid for api args')
+                    if (key === 'children') console.warn('children for api args is experimental')
                     const attr = parseRawSource(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});

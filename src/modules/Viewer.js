@@ -1,5 +1,5 @@
 import Viewers from 'play-what-react-viewers';
-import { parseRawSource } from './Source';
+import * as Source from "./Source";
 
 export const fretboard = {
     component: Viewers.Fretboard.Viewer,
@@ -22,7 +22,7 @@ export const fretboard = {
                 frets.push({
                     children: labelFn ? labelFn(context) : null,
                     style: styleFn ? styleFn(context) : {}
-                }) 
+                })
             }
             strings.push(frets);
         }
@@ -35,11 +35,23 @@ export const fretboard = {
     }
 }
 
-export const createElement = ({ type, children, ...args }) => {
-    if (typeof type !== 'string') throw ('only string types allowed')
+export const repeat = ({ n, content }) => {
+    const result = [];
+    for (let i = 0; i < n; i++) {
+        result.push(Source.parseRawSource(content))
+    }
     return {
-        component: type,
-        children,
-        props: args
+        children: result
+    };
+}
+
+export const element = {
+    from: ({ component, children, props }) => {
+        if (typeof component !== 'string') throw ('only string component defs allowed')
+        return {
+            component,
+            children,
+            props
+        }
     }
 }
