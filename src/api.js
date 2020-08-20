@@ -1,4 +1,4 @@
-import { ALL_CONCEPT_PRESETS } from "./Concept.presets";
+import { ALL_CONCEPT_PRESETS } from "./modules/Concept.presets";
 import * as Source from "./Source";
 import * as KeyCenter from './KeyCenter';
 import * as Viewer from './Viewer';

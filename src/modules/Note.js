@@ -1,6 +1,6 @@
 import * as Utils from './Utils';
 import { MAX_VECTOR } from './Interval';
-import { SCHEMES } from './todo/Color'
+import { SCHEMES } from './modules/Color'
 
 export const getNoteName = (note) => {
     if (note.d < 0) {

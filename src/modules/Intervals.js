@@ -1,4 +1,4 @@
-import { ALL_CONCEPT_PRESETS } from "./Concept.presets";
+import { ALL_CONCEPT_PRESETS } from "./modules/Concept.presets";
 
 export const from = ({ preset }) => {
     if (!preset) throw ('only preset supported')
