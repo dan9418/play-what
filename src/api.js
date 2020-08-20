@@ -26,33 +26,17 @@ const getApiNode = (path) => {
     let attr = null;
     while (tree.length > 0) {
         attr = tree.shift();
+        if (!tree.length && attr === '') return [node, true];
         node = node[attr];
     }
-    return node;
-}
-
-const parseNode = (node, args) => {
-    const type = typeof node;
-    switch (type) {
-        case 'function':
-            const result = node(args);
-            return parseNode(result);
-        case 'number':
-        case 'boolean':
-        case 'object':
-            return node;
-        default:
-            debugger;
-            throw ('unsupported api node type');
-    }
+    return [node, false];
 }
 
 const api = (path, args = {}, level = 0) => {
     console.log("\t".repeat(level), `API - ${path}`, args);
 
-    // make it judge fn/value by num of slashes
-    const node = getApiNode(path);
-    const value = parseNode(node, args);
+    const [node, isFn] = getApiNode(path);
+    const value = isFn ? node(args) : node;
 
     return value;
 }
