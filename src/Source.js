@@ -1,4 +1,4 @@
-import api from './api';
+import pwApi from './api';
 
 export const SCOPE = {
     Concept: 'concept',
@@ -29,7 +29,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
             }
             // other api value
             console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
-            const apiRes = api(levelStr, {}, level + 1);
+            const apiRes = pwApi(levelStr, {}, level + 1);
             console.log("\t".repeat(level), 'OUT', attr, 'api', apiRes);
             return apiRes;
         case 'object':
@@ -47,11 +47,11 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
             }
 
             // Get reserved attributes
-            const { fn, args, ...props } = levelObj;
+            const { api, args, ...props } = levelObj;
             const numProps = Object.values(props).length;
-            if (fn && numProps || args && numProps) {
+            if (api && numProps || args && numProps) {
                 debugger;
-                throw ('cannot mix fn defs with props');
+                throw ('cannot mix api defs with props');
             }
             let parsedLocalProps = {};
             let parsedFnOut = {};
@@ -80,17 +80,17 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
             };
 
             // Execute function
-            if (fn) {
-                if (typeof fn !== 'string') throw ('Invalid fn type');
+            if (api) {
+                if (typeof api !== 'string') throw ('Invalid api type');
 
-                console.log("\t".repeat(level), 'IN', attr, 'fn', rawSource);
+                console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
                 const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
-                    if (key === 'children') throw ('children invalid for fn args')
+                    if (key === 'children') throw ('children invalid for api args')
                     const attr = parseRawSource(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
-                parsedFnOut = api(fn, argsOut, level + 2);
-                console.log("\t".repeat(level), 'OUT', attr, 'fn', parsedFnOut);
+                parsedFnOut = pwApi(api, argsOut, level + 2);
+                console.log("\t".repeat(level), 'OUT', attr, 'api', parsedFnOut);
 
                 return parsedFnOut;
             }

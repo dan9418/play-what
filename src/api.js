@@ -3,6 +3,7 @@ import * as Source from "./Source";
 import * as KeyCenter from './KeyCenter';
 import * as Viewer from './Viewer';
 import * as Note from './Note';
+import * as Notes from './Notes';
 import * as Concept from './Concept';
 import * as Intervals from './Intervals';
 
@@ -14,6 +15,7 @@ const apiMap = {
         source: Source,
         viewer: Viewer,
         note: Note,
+        notes: Notes,
         intervals: Intervals
     }
 };
@@ -48,6 +50,7 @@ const parseNode = (node, args) => {
 const api = (path, args = {}, level = 0) => {
     console.log("\t".repeat(level), `API - ${path}`, args);
 
+    // make it judge fn/value by num of slashes
     const node = getApiNode(path);
     const value = parseNode(node, args);
 

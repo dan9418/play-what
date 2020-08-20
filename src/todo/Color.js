@@ -24,7 +24,7 @@ export const COLORS = {
     pc11: '#C2305E'
 };
 
-const SCHEMES = {
+export const SCHEMES = {
     binary: {
         active: null,
         inacitve: COLORS.Black

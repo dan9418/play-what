@@ -1,5 +1,6 @@
 import * as Utils from './Utils';
 import { MAX_VECTOR } from './Interval';
+import { SCHEMES } from './todo/Color'
 
 export const getNoteName = (note) => {
     if (note.d < 0) {
@@ -35,7 +36,25 @@ export const label = ({ type, notes }) => {
             return {
                 callback: ctx => {
                     const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-                    return i >= 0 ? notes[i].d : '';
+                    return i >= 0 ? notes[i].d + 1 : '';
+                }
+            };
+        default:
+            return '';
+    }
+}
+
+export const style = ({ type, notes }) => {
+    switch (type) {
+        case 'degree':
+            return {
+                callback: ctx => {
+                    const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
+                    if (i < 0) return {};
+                    const id = 'd' + (notes[i].d + 1);
+                    return {
+                        backgroundColor: SCHEMES.degree[id]
+                    };
                 }
             };
         default:

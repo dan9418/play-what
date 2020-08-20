@@ -3,8 +3,9 @@ import { parseRawSource } from './Source';
 
 export const fretboard = {
     component: Viewers.Fretboard.Viewer,
-    create: args => {
-        const { fretRange, tuning, labelFn } = args;
+    from: args => {
+        const config = { ...Viewers.Fretboard.Defaults, ...args };
+        const { fretRange, tuning, labelFn, styleFn } = config;
         const [l, h] = fretRange || [0, 24];
 
         const strings = [];
@@ -18,10 +19,10 @@ export const fretboard = {
                     tuning,
                     noteIndex: tuning[s] + f
                 };
-                console.log(labelFn)
                 frets.push({
-                    children: labelFn ? labelFn.callback(context) : null
-                })
+                    children: labelFn ? labelFn.callback(context) : null,
+                    style: styleFn ? styleFn.callback(context) : {}
+                }) 
             }
             strings.push(frets);
         }
