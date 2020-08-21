@@ -8,13 +8,6 @@ export const Defaults = {
 }
 
 /*
-export const transpose = ({ conceptConfig, interval }) => {
-    const concept = { ...conceptConfig };
-    concept.a = addVectors(concept.a, interval);
-    return concept;
-}*/
-
-/*
 export const chordalInversion = (conceptConfig, inversion) => {
     const concept = { ...conceptConfig };
     concept.B = [...conceptConfig.B];

@@ -2,7 +2,7 @@ import * as Source from "./modules/Source";
 import * as KeyCenter from './modules/KeyCenter';
 import * as Viewer from './modules/Viewer';
 import * as Note from './modules/Note';
-import * as Notes from './modules/Notes';
+import * as NoteList from './modules/NoteList';
 import * as Concept from './modules/Concept';
 import * as IntervalList from './modules/IntervalList';
 
@@ -13,7 +13,7 @@ const apiMap = {
         Source,
         Viewer,
         Note,
-        Notes,
+        NoteList,
         IntervalList
     }
 };

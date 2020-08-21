@@ -1,7 +1,7 @@
 import * as Utils from './Utils';
 import * as Interval from './Interval';
 
-const KEY_CENTERS = {
+export const Presets = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
     Ab: { id: 'Ab', name: 'Ab', a: { p: 8, d: 0 } },
     A: { id: 'A', name: 'A', a: { p: 9, d: 0 } },
@@ -26,11 +26,7 @@ const KEY_CENTERS = {
     Gs: { id: 'Gs', name: 'G#', a: { p: 8, d: 6 } }
 };
 
-export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
-
-export const Presets = KEY_CENTERS;
-
-export const parseString = keyString => {
+/*export const parseString = keyString => {
     if (typeof keyString !== 'string' || !keyString.length) {
         throw ('Bad keystring args')
     }
@@ -46,27 +42,13 @@ export const parseString = keyString => {
         p: DEGREE_MAPPING[degreeIndex].pitch + accidental.offset,
         d: degreeIndex
     };
-};
+};*/
 
-const addVectors = (a, b, max = Interval.max) => ({
-    p: Utils.moduloSum(a.p, b.p, max.p),
-    d: Utils.moduloSum(a.d, b.d, max.d)
-});
-
-export const addVectorArray = ({ a, B }) => {
-    if (!a || !B) throw ('bad args', a, B);
-    return B.map(b => addVectors(a, b));
+export const transpose = ({ a, interval }) => {
+    return Interval.add(a, interval);
 }
-
-// meaning add to object
-export const addIntervals = ({ a, B }) => {
-    const parsedA = parseA(a);
-    const parsedB = parseB(B);
-    return { a: parsedA, B: parsedB }; //parsedB.map(b => addVectors(parsedA, b));
-}
-
 
 export const from = ({ preset }) => {
     if (!preset) throw ('only preset supported')
-    return KEY_CENTERS[preset].a;
+    return Presets[preset].a;
 }

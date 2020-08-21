@@ -2,17 +2,22 @@ import * as Utils from './Utils';
 import * as Color from './Color';
 import * as Interval from './Interval';
 
-export const getNoteName = (note) => {
-    if (note.d < 0) {
-        return '';
-    }
-    const reduced = moduloVector(note);
-    const degree = getDegreeMapping(reduced.d) || { name: '?', pitch: 0 };
-    return degree.name + getAccidentalString(note.p - degree.pitch);
+export const max = {
+    p: 12,
+    d: 7
+};
+
+export const areEqual = ({ interval1, interval2 }) => {
+    if (!interval1 || !interval2) return false;
+    return interval1.p === interval2.p && interval1.d === interval2.d;
 }
 
-export const octaveReduce = note => ({ p: Utils.modulo(note.p, Interval.max.p), d: note.d });
+export const add = ({ x, y }) => ({
+    p: Utils.moduloSum(x.p, y.p, Interval.max.p),
+    d: Utils.moduloSum(x.d, y.d, Interval.max.d)
+});
 
+export const octaveReduce = ({ p, d }) => ({ p: Utils.modulo(p, Interval.max.p), d });
 
 export const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
     const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
@@ -77,3 +82,13 @@ export const style = ({ type, notes }) => {
             return '';
     }
 }
+
+/*
+export const getNoteName = (note) => {
+    if (note.d < 0) {
+        return '';
+    }
+    const reduced = moduloVector(note);
+    const degree = getDegreeMapping(reduced.d) || { name: '?', pitch: 0 };
+    return degree.name + getAccidentalString(note.p - degree.pitch);
+}*/

@@ -1,9 +1,7 @@
-export const max = {
-    p: 12,
-    d: 7
-};
+import * as Note from './Note';
 
-export const areEqual = ({ interval1, interval2 }) => {
-    if (!interval1 || !interval2) return false;
-    return interval1.p === interval2.p && interval1.d === interval2.d;
-}
+export const max = Note.max;
+
+export const areEqual = Note.areEqual;
+
+export const add = Node.add;
