@@ -7,15 +7,14 @@ import * as Concept from './modules/Concept';
 import * as IntervalList from './modules/IntervalList';
 
 const apiMap = {
-    pw: {
-        parse: Source.parseRawSource,
-        keyCenter: KeyCenter,
-        concept: Concept,
-        source: Source,
-        viewer: Viewer,
-        note: Note,
-        notes: Notes,
-        intervalList: IntervalList
+    PW: {
+        KeyCenter,
+        Concept,
+        Source,
+        Viewer,
+        Note,
+        Notes,
+        IntervalList
     }
 };
 

@@ -1,7 +1,7 @@
 import Viewers from 'play-what-react-viewers';
 import * as Source from "./Source";
 
-export const fretboard = {
+export const Fretboard = {
     component: Viewers.Fretboard.Viewer,
     from: args => {
         const config = { ...Viewers.Fretboard.Defaults, ...args };

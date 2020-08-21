@@ -1,8 +1,8 @@
-import * as Presets from "./Concept.presets";
+import { ALL_CONCEPT_PRESETS } from "./Concept.presets";
 
-export const presets = Presets.ALL_CONCEPT_PRESETS;
+export const Presets = ALL_CONCEPT_PRESETS;
 
-export const defaults = {
+export const Defaults = {
     a: { p: 0, d: 0 },
     B: []
 }

@@ -31,6 +31,7 @@ export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = true) 
 }
 
 export const label = ({ type, notes }) => {
+
     switch (type) {
         case 'pitchClass':
             return ctx => {
@@ -40,6 +41,7 @@ export const label = ({ type, notes }) => {
             };
         case 'degree':
             return ctx => {
+                if (!notes) return '';
                 const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
                 return i >= 0 ? notes[i].d + 1 : '';
             };
@@ -49,6 +51,7 @@ export const label = ({ type, notes }) => {
 }
 
 export const style = ({ type, notes }) => {
+
     switch (type) {
         case 'pitchClass':
             return ctx => {
@@ -64,6 +67,7 @@ export const style = ({ type, notes }) => {
             };
         case 'degree':
             return ctx => {
+                if (!notes) return {};
                 const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
                 if (i < 0) return {};
                 const id = 'd' + (notes[i].d + 1);

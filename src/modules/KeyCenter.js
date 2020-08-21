@@ -28,7 +28,7 @@ const KEY_CENTERS = {
 
 export const KEY_CENTERS_VALUES = Object.freeze(Object.values(KEY_CENTERS));
 
-export const presets = KEY_CENTERS;
+export const Presets = KEY_CENTERS;
 
 export const parseString = keyString => {
     if (typeof keyString !== 'string' || !keyString.length) {
