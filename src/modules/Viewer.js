@@ -5,7 +5,7 @@ export const Fretboard = {
     component: Viewers.Fretboard.Viewer,
     from: args => {
         const config = { ...Viewers.Fretboard.Defaults, ...args };
-        const { fretRange, tuning, labelFn, styleFn } = config;
+		const { fretRange, tuning, labelFn, styleFn } = config;
         const [l, h] = fretRange || [0, 24];
 
         const strings = [];
@@ -30,6 +30,21 @@ export const Fretboard = {
             component: Viewers.Fretboard.Viewer,
             props: {
                 fretMap: strings
+            }
+        }
+    }
+}
+
+export const Row = {
+    component: Viewers.Row.Viewer,
+    from: args => {
+        //const config = { ...Viewers.Fretboard.Defaults, ...args };
+        //const { fretRange, tuning, labelFn, styleFn } = config;
+
+        return {
+            component: Viewers.Row.Viewer,
+            props: {
+                //fretMap: strings
             }
         }
     }

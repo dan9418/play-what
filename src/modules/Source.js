@@ -77,11 +77,12 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
                 if (typeof fn !== 'string') throw ('Invalid fn type');
 
                 console.log("\t".repeat(level), 'IN', attr, 'fn', rawSource);
-                const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
+                const argsOut = parse(args, parentProps, 'args', level + 1);
+                /*Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') console.warn('children for fn args is experimental')
                     const attr = parse(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
-                }, {});
+                }, {});*/
                 parsedFnOut = api(fn, argsOut, level + 2);
                 console.log("\t".repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
