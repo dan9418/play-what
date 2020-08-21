@@ -1,4 +1,4 @@
-/*import * as Tone from "tone";
+/* import * as Tone from "tone";
 
 const VOLUME = new Tone.Volume(-15);
 
@@ -26,4 +26,4 @@ export default class SoundUtils {
     static stopNotes() {
         MASTER_OUT_POLY.releaseAll();
     }
-}*/
+} */

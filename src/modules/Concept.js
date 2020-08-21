@@ -1,11 +1,11 @@
-import { ALL_CONCEPT_PRESETS } from "./Concept.presets";
+import { ALL_CONCEPT_PRESETS } from './Concept.presets';
 
 export const Presets = ALL_CONCEPT_PRESETS;
 
 export const Defaults = {
-    a: { p: 0, d: 0 },
-    B: []
-}
+  a: { p: 0, d: 0 },
+  B: [],
+};
 
 /*
 export const chordalInversion = (conceptConfig, inversion) => {
@@ -14,4 +14,4 @@ export const chordalInversion = (conceptConfig, inversion) => {
     concept.B[0] = addVectors(concept.B[0], Presets.INTERVALS.P8.a);
     concept.B = rotate(concept.B, inversion);
     return concept;
-}*/
+} */

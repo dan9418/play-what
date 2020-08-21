@@ -9,7 +9,7 @@ export const getFrequency = p => {
 
 export const getFrequencies = pitches => {
     return pitches.map(p => getFrequency(p.p));
-}*/
+} */
 
 /*
 export const CALIBRATION_NOTE = {

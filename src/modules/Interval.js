@@ -1,7 +1,7 @@
 import * as Note from './Note';
 
-export const max = Note.max;
+export const { max } = Note;
 
-export const areEqual = Note.areEqual;
+export const { areEqual } = Note;
 
-export const add = Node.add;
+export const { add } = Node;
