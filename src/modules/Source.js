@@ -1,4 +1,4 @@
-import pwApi from '../api';
+import api from '../api';
 
 export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
     const type = typeof rawSource;
@@ -20,10 +20,10 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
                 console.log("\t".repeat(level), 'OUT', attr, 'parent', par);
                 return par;
             }
-            // other api value
-            console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
-            const apiRes = pwApi(levelStr, {}, level + 1);
-            console.log("\t".repeat(level), 'OUT', attr, 'api', apiRes);
+            // other fn value
+            console.log("\t".repeat(level), 'IN', attr, 'fn', rawSource);
+            const apiRes = api(levelStr, {}, level + 1);
+            console.log("\t".repeat(level), 'OUT', attr, 'fn', apiRes);
             return apiRes;
         case 'object':
             const levelObj = rawSource;
@@ -40,11 +40,11 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
             }
 
             // Get reserved attributes
-            const { api, args, ...props } = levelObj;
+            const { fn, args, ...props } = levelObj;
             const numProps = Object.values(props).length;
-            if (api && numProps || args && numProps) {
+            if (fn && numProps || args && numProps) {
                 debugger;
-                throw ('cannot mix api defs with props');
+                throw ('cannot mix fn defs with props');
             }
             let parsedLocalProps = {};
             let parsedFnOut = {};
@@ -73,17 +73,17 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
             };
 
             // Execute function
-            if (api) {
-                if (typeof api !== 'string') throw ('Invalid api type');
+            if (fn) {
+                if (typeof fn !== 'string') throw ('Invalid fn type');
 
-                console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
+                console.log("\t".repeat(level), 'IN', attr, 'fn', rawSource);
                 const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
-                    if (key === 'children') console.warn('children for api args is experimental')
+                    if (key === 'children') console.warn('children for fn args is experimental')
                     const attr = parse(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
-                parsedFnOut = pwApi(api, argsOut, level + 2);
-                console.log("\t".repeat(level), 'OUT', attr, 'api', parsedFnOut);
+                parsedFnOut = api(fn, argsOut, level + 2);
+                console.log("\t".repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
                 return parsedFnOut;
             }
