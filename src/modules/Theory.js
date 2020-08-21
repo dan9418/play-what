@@ -31,13 +31,6 @@ export const DEGREE_MAPPING = [
     }
 ];
 
-export const getDegreeMapping = degree => DEGREE_MAPPING[Utils.modulo(degree, DEGREE_MAPPING.length)];
-
-export const getDegree = degree => ({ d: Utils.modulo(degree, DEGREE_MAPPING.length), p: getDegreeMapping(degree).pitch });
-
-export const getAllDegrees = () => DEGREE_MAPPING.map((m, i) => ({ d: i, p: m.pitch }));
-
-
 // Accidentals
 
 export const ACCIDENTAL = Object.freeze({

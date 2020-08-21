@@ -17,7 +17,7 @@ export const add = ({ x, y }) => ({
     d: Utils.moduloSum(x.d, y.d, Interval.max.d)
 });
 
-export const octaveReduce = ({ p, d }) => ({ p: Utils.modulo(p, Interval.max.p), d });
+export const reduce = ({ p, d }) => ({ p: Utils.modulo(p, Interval.max.p), d });
 
 export const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
     const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
@@ -29,11 +29,12 @@ export const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
     return notes.findIndex(n => n.p === p);
 }
 
+/*
 export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = true) => {
     const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
     const notes = addVectorsBatch(keyCenter, intervals);
     return notes.findIndex(n => n.p === p);
-}
+}*/
 
 export const label = ({ type, notes }) => {
 

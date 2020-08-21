@@ -1,13 +1,6 @@
 import pwApi from '../api';
 
-export const SCOPE = {
-    Concept: 'concept',
-    Progression: 'progression',
-    Section: 'section',
-    Chart: 'chart'
-}
-
-export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
+export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
     const type = typeof rawSource;
 
     switch (type) {
@@ -41,7 +34,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
             // Array
             if (Array.isArray(levelObj)) {
                 console.log("\t".repeat(level), 'IN', attr, 'arr', rawSource);
-                const arr = levelObj.map(x => parseRawSource(x, parentProps, attr + '.arr', level + 1));
+                const arr = levelObj.map(x => parse(x, parentProps, attr + '.arr', level + 1));
                 console.log("\t".repeat(level), 'OUT', attr, 'arr', arr);
                 return arr;
             }
@@ -63,7 +56,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
                 console.log("\t".repeat(level), 'IN', attr, 'props', rawSource);
                 const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') return acc;
-                    const attr = parseRawSource(value, parentProps, key, level + 1);
+                    const attr = parse(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
                 console.log("\t".repeat(level), 'OUT', attr, 'props', localOut);
@@ -71,7 +64,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
                 if (props.children) {
                     console.log("\t".repeat(level), 'IN', attr, 'children', rawSource);
                     const mergedProps = { ...parentProps, ...localOut };
-                    localOut.children = props.children.map((c, i) => parseRawSource(c, mergedProps, attr + '.children', level + 1));
+                    localOut.children = props.children.map((c, i) => parse(c, mergedProps, attr + '.children', level + 1));
                     console.log("\t".repeat(level), 'OUT', attr, 'children', localOut.children);
                 }
 
@@ -86,7 +79,7 @@ export const parseRawSource = (rawSource, parentProps = {}, attr = 'root', level
                 console.log("\t".repeat(level), 'IN', attr, 'api', rawSource);
                 const argsOut = Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') console.warn('children for api args is experimental')
-                    const attr = parseRawSource(value, parentProps, key, level + 1);
+                    const attr = parse(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {});
                 parsedFnOut = pwApi(api, argsOut, level + 2);

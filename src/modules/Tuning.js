@@ -1,3 +1,4 @@
+/*
 export const getFrequency = p => {
     const a = p + 3;
     const b = a / 12;
@@ -8,7 +9,7 @@ export const getFrequency = p => {
 
 export const getFrequencies = pitches => {
     return pitches.map(p => getFrequency(p.p));
-}
+}*/
 
 /*
 export const CALIBRATION_NOTE = {

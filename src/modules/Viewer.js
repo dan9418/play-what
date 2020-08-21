@@ -38,7 +38,7 @@ export const Fretboard = {
 export const repeat = ({ n, content }) => {
     const result = [];
     for (let i = 0; i < n; i++) {
-        result.push(Source.parseRawSource(content))
+        result.push(Source.parse(content))
     }
     return {
         children: result
