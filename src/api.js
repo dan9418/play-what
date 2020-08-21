@@ -4,7 +4,7 @@ import * as Viewer from './modules/Viewer';
 import * as Note from './modules/Note';
 import * as Notes from './modules/Notes';
 import * as Concept from './modules/Concept';
-import * as Intervals from './modules/Intervals';
+import * as IntervalList from './modules/IntervalList';
 
 const apiMap = {
     pw: {
@@ -15,7 +15,7 @@ const apiMap = {
         viewer: Viewer,
         note: Note,
         notes: Notes,
-        intervals: Intervals
+        intervalList: IntervalList
     }
 };
 

@@ -1,6 +1,6 @@
 import * as Utils from './Utils';
 import * as Color from './Color';
-import { MAX_VECTOR } from './Interval';
+import * as Interval from './Interval';
 
 export const getNoteName = (note) => {
     if (note.d < 0) {
@@ -11,21 +11,21 @@ export const getNoteName = (note) => {
     return degree.name + getAccidentalString(note.p - degree.pitch);
 }
 
-export const octaveReduce = note => ({ p: Utils.modulo(note.p, MAX_VECTOR.p), d: note.d });
+export const octaveReduce = note => ({ p: Utils.modulo(note.p, Interval.max.p), d: note.d });
 
 
 export const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
-    const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : pitch;
+    const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
     return notes.find(n => n.p === p) || null;
 }
 
 export const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
-    const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : pitch;
+    const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
     return notes.findIndex(n => n.p === p);
 }
 
 export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = true) => {
-    const p = octaveReduce ? Utils.modulo(pitch, MAX_VECTOR.p) : pitch;
+    const p = octaveReduce ? Utils.modulo(pitch, Interval.max.p) : pitch;
     const notes = addVectorsBatch(keyCenter, intervals);
     return notes.findIndex(n => n.p === p);
 }

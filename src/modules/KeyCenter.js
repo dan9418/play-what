@@ -1,5 +1,5 @@
 import * as Utils from './Utils';
-import { MAX_VECTOR } from './Interval';
+import * as Interval from './Interval';
 
 const KEY_CENTERS = {
     NA: { id: 'NA', name: 'N/A', a: { p: 0, d: -1 } },
@@ -48,7 +48,7 @@ export const parseString = keyString => {
     };
 };
 
-const addVectors = (a, b, max = MAX_VECTOR) => ({
+const addVectors = (a, b, max = Interval.max) => ({
     p: Utils.moduloSum(a.p, b.p, max.p),
     d: Utils.moduloSum(a.d, b.d, max.d)
 });
