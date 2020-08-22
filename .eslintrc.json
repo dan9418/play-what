@@ -18,6 +18,10 @@
         "react"
     ],
     "rules": {
-        "linebreak-style": ["error", "windows"]
+        "linebreak-style": ["error", "windows"],
+        "no-nested-ternary":"off",
+        "no-case-declarations":"off",
+        "no-console":"off",
+        "no-debugger":"off"
     }
 }

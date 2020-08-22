@@ -1,5 +1,4 @@
 import Viewers from 'play-what-react-viewers';
-import * as Source from './Source';
 
 export const Fretboard = {
   component: Viewers.Fretboard.Viewer,
@@ -42,20 +41,18 @@ export const Row = {
   from: (args) =>
   // const config = { ...Viewers.Fretboard.Defaults, ...args };
   // const { fretRange, tuning, labelFn, styleFn } = config;
-
     ({
       component: Viewers.Row.Viewer,
       props: {
         // fretMap: strings
       },
-    })
-  ,
+    }),
 };
 
 export const repeat = ({ n, content }) => {
   const result = [];
   for (let i = 0; i < n; i++) {
-    result.push(Source.parse(content));
+    // result.push(Source.parse(content));
   }
   return {
     children: result,

@@ -1,5 +1,7 @@
 import api from '../api';
 
+export const x = 0;
+
 export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
   const type = typeof rawSource;
 

@@ -80,8 +80,8 @@ export const getStylesFromColor = (background, foreground, opacity) => {
 };
 
 export const getColorFromContinuousScheme = (value, min, max, scheme) => {
-  const percent = (value - min) / (max - min);
-  percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
+  let percent = (value - min) / (max - min);
+  percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
   const initialColor = Color(scheme.min);
   const finalColor = Color(scheme.max);
