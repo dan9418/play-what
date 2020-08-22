@@ -1,4 +1,5 @@
 import Viewers from 'play-what-react-viewers';
+import * as Note from './Vector.Note';
 
 export const Fretboard = {
   component: Viewers.Fretboard.Viewer,
@@ -49,21 +50,25 @@ export const Row = {
     })
 };
 
+const buildNoteSummary = (pod) => {
+  const name = Note.getName({ pod });
+  const { p, d } = pod;
+  return {
+    name,
+    vector: [p, d]
+  };
+};
+
 export const Summary = {
   component: Viewers.Summary.Viewer,
-  from: ({ notes }) =>
-  // const config = { ...Viewers.Fretboard.Defaults, ...args };
-  // const { fretRange, tuning, labelFn, styleFn } = config;
-    ({
+  from: ({ pods }) => {
+    return {
       component: Viewers.Summary.Viewer,
       props: {
-        notes: notes.map((n) => {
-          return {
-            vector: n
-          };
-        })
+        notes: pods.map((p) => buildNoteSummary(p))
       }
-    })
+    };
+  }
 };
 
 export const repeat = ({ n, content }) => {

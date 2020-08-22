@@ -1,6 +1,42 @@
 // Degrees
 
-export const DEGREE_NAMES = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+export const DEGREE_MAP = [
+  {
+    name: 'A',
+    d: 0,
+    p: 9
+  },
+  {
+    name: 'B',
+    d: 1,
+    p: 11
+  },
+  {
+    name: 'C',
+    d: 2,
+    p: 0
+  },
+  {
+    name: 'D',
+    d: 3,
+    p: 2
+  },
+  {
+    name: 'E',
+    d: 4,
+    p: 4
+  },
+  {
+    name: 'F',
+    d: 5,
+    p: 5
+  },
+  {
+    name: 'G',
+    d: 6,
+    p: 7
+  }
+];
 
 // Accidentals
 

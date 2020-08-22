@@ -1,11 +1,5 @@
 import * as Utils from './Utils';
 import * as Color from './Color';
-import _Interval from './Vector.Interval';
-import _KeyCenter from './Vector.KeyCenter';
-
-export const Interval = _Interval;
-
-export const KeyCenter = _KeyCenter;
 
 export const max = {
   p: 12,
