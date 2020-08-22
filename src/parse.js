@@ -1,8 +1,8 @@
-import api from '../api';
+import call from './call';
 
 export const x = 0;
 
-export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
+const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
   const type = typeof rawSource;
 
   switch (type) {
@@ -24,7 +24,7 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
       }
       // other fn value
       console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-      const apiRes = api(levelStr, {}, level + 1);
+      const apiRes = call(levelStr, {}, level + 1, userModule);
       console.log('\t'.repeat(level), 'OUT', attr, 'fn', apiRes);
       return apiRes;
     case 'object':
@@ -36,7 +36,7 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
       // Array
       if (Array.isArray(levelObj)) {
         console.log('\t'.repeat(level), 'IN', attr, 'arr', rawSource);
-        const arr = levelObj.map((x) => parse(x, parentProps, `${attr}.arr`, level + 1));
+        const arr = levelObj.map((x) => parseHelper(x, parentProps, `${attr}.arr`, level + 1, userModule));
         console.log('\t'.repeat(level), 'OUT', attr, 'arr', arr);
         return arr;
       }
@@ -58,7 +58,7 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
         console.log('\t'.repeat(level), 'IN', attr, 'props', rawSource);
         const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
           if (key === 'children') return acc;
-          const attr = parse(value, parentProps, key, level + 1);
+          const attr = parseHelper(value, parentProps, key, level + 1, userModule);
           return { ...acc, [key]: attr };
         }, {});
         console.log('\t'.repeat(level), 'OUT', attr, 'props', localOut);
@@ -66,7 +66,7 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
         if (props.children) {
           console.log('\t'.repeat(level), 'IN', attr, 'children', rawSource);
           const mergedProps = { ...parentProps, ...localOut };
-          localOut.children = props.children.map((c, i) => parse(c, mergedProps, `${attr}.children`, level + 1));
+          localOut.children = props.children.map((c, i) => parseHelper(c, mergedProps, `${attr}.children`, level + 1, userModule));
           console.log('\t'.repeat(level), 'OUT', attr, 'children', localOut.children);
         }
 
@@ -79,13 +79,13 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
         if (typeof fn !== 'string') throw ('Invalid fn type');
 
         console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-        const argsOut = parse(args, parentProps, 'args', level + 1);
+        const argsOut = parseHelper(args, parentProps, 'args', level + 1, userModule);
         /* Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') console.warn('children for fn args is experimental')
-                    const attr = parse(value, parentProps, key, level + 1);
+                    const attr = parseHelper(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {}); */
-        parsedFnOut = api(fn, argsOut, level + 2);
+        parsedFnOut = call(fn, argsOut, level + 2, userModule);
         console.log('\t'.repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
         return parsedFnOut;
@@ -96,3 +96,9 @@ export const parse = (rawSource, parentProps = {}, attr = 'root', level = 0) => 
       throw 'Invalid raw source type';
   }
 };
+
+const parse = (rawSource, userModule) => {
+  return parseHelper(rawSource, {}, 'root', 0, userModule);
+};
+
+export default parse;

@@ -1,4 +1,4 @@
-import Vector from './Vector';
+import * as Vector from './Vector';
 
 import _Chord from './Matrix.Chord';
 import _Mode from './Matrix.Mode';

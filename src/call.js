@@ -1,16 +1,11 @@
-import * as Source from './modules/Source';
-import * as Viewer from './modules/Viewer';
-
 import * as Vector from './modules/Vector';
 import * as Note from './modules/Vector.Note';
 import * as Interval from './modules/Vector.Interval';
 import * as Matrix from './modules/Matrix';
 import * as Concept from './modules/Concept';
 
-const apiMap = {
+const PW = {
   PW: {
-    Source,
-    Viewer,
     Vector: {
       ...Vector,
       Note,
@@ -21,9 +16,9 @@ const apiMap = {
   }
 };
 
-const getApiNode = (path) => {
+const getApiNode = (path, root) => {
   const tree = path.split('/');
-  let endpoint = apiMap;
+  let endpoint = root;
   let attr = null;
   while (tree.length > 0) {
     attr = tree.shift();
@@ -34,13 +29,15 @@ const getApiNode = (path) => {
   return [endpoint, false];
 };
 
-const api = (path, args = {}, level = 0) => {
+const call = (path, args = {}, level = 0, userModule) => {
   console.log('\t'.repeat(level), `API - ${path}`, args);
 
-  const [endpoint, isFn] = getApiNode(path);
+  const root = { ...PW, ...userModule };
+
+  const [endpoint, isFn] = getApiNode(path, root);
   const value = isFn ? endpoint(args) : endpoint;
 
   return value;
 };
 
-export default api;
+export default call;
