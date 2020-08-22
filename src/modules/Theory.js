@@ -8,18 +8,18 @@ export const ACCIDENTAL = Object.freeze({
   Flat: {
     id: 'Flat',
     name: 'b',
-    offset: -1,
+    offset: -1
   },
   Natural: {
     id: 'Natural',
     name: '♮',
-    offset: 0,
+    offset: 0
   },
   Sharp: {
     id: 'Sharp',
     name: '#',
-    offset: 1,
-  },
+    offset: 1
+  }
 });
 
 export const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));

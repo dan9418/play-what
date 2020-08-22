@@ -9,7 +9,7 @@ export const KeyCenter = _KeyCenter;
 
 export const max = {
   p: 12,
-  d: 7,
+  d: 7
 };
 
 export const areEqual = ({ interval1, interval2 }) => {
@@ -19,7 +19,7 @@ export const areEqual = ({ interval1, interval2 }) => {
 
 export const add = ({ x, y }) => ({
   p: Utils.moduloSum(x.p, y.p, max.p),
-  d: Utils.moduloSum(x.d, y.d, max.d),
+  d: Utils.moduloSum(x.d, y.d, max.d)
 });
 
 export const reduce = ({ p, d }) => ({ p: Utils.modulo(p, max.p), d });
@@ -117,7 +117,7 @@ export const getNoteName = (note) => {
 
 export const addVector = ({ a, b }) => ({
   p: Utils.moduloSum(a.p, b.p, max.p),
-  d: Utils.moduloSum(a.d, b.d, max.d),
+  d: Utils.moduloSum(a.d, b.d, max.d)
 });
 
 export const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));

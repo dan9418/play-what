@@ -20,10 +20,10 @@ export const KEY_CENTER = {
   Fs: { id: 'Fs', name: 'F#', value: { p: 6, d: 5 } },
   Gb: { id: 'Gb', name: 'Gb', value: { p: 6, d: 6 } },
   G: { id: 'G', name: 'G', value: { p: 7, d: 6 } },
-  Gs: { id: 'Gs', name: 'G#', value: { p: 8, d: 6 } },
+  Gs: { id: 'Gs', name: 'G#', value: { p: 8, d: 6 } }
 };
 
 export default {
   ...KEY_CENTER,
-  all: Object.values(KEY_CENTER),
+  all: Object.values(KEY_CENTER)
 };

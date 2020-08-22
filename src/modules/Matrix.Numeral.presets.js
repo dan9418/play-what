@@ -1,7 +1,7 @@
 import { INTERVAL } from './Vector.Interval.presets';
 
 export const NUMERAL = {
-  I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
+  I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] }
 };
 
 /* export const ROMAN_NUMERAL = {
@@ -23,5 +23,5 @@ export const NUMERAL = {
 
 export default {
   ...NUMERAL,
-  all: Object.values(NUMERAL),
+  all: Object.values(NUMERAL)
 };

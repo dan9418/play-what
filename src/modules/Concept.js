@@ -2,7 +2,7 @@ import * as Vector from './Vector';
 
 export const Defaults = {
   a: { p: 0, d: 0 },
-  B: [],
+  B: []
 };
 
 export const notesFrom = ({ a, B }) => Vector.addMatrix({ a, B });

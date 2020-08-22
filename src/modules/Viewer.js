@@ -5,7 +5,7 @@ export const Fretboard = {
   from: (args) => {
     const config = { ...Viewers.Fretboard.Defaults, ...args };
     const {
-      fretRange, tuning, labelFn, styleFn,
+      fretRange, tuning, labelFn, styleFn
     } = config;
     const [l, h] = fretRange || [0, 24];
 
@@ -18,11 +18,11 @@ export const Fretboard = {
           fretNum: f,
           fretRange,
           tuning,
-          noteIndex: tuning[s] + f,
+          noteIndex: tuning[s] + f
         };
         frets.push({
           children: labelFn ? labelFn(context) : null,
-          style: styleFn ? styleFn(context) : {},
+          style: styleFn ? styleFn(context) : {}
         });
       }
       strings.push(frets);
@@ -30,10 +30,10 @@ export const Fretboard = {
     return {
       component: Viewers.Fretboard.Viewer,
       props: {
-        fretMap: strings,
-      },
+        fretMap: strings
+      }
     };
-  },
+  }
 };
 
 export const Row = {
@@ -45,8 +45,8 @@ export const Row = {
       component: Viewers.Row.Viewer,
       props: {
         // fretMap: strings
-      },
-    }),
+      }
+    })
 };
 
 export const Summary = {
@@ -57,9 +57,13 @@ export const Summary = {
     ({
       component: Viewers.Summary.Viewer,
       props: {
-        notes,
-      },
-    }),
+        notes: notes.map((n) => {
+          return {
+            vector: n
+          };
+        })
+      }
+    })
 };
 
 export const repeat = ({ n, content }) => {
@@ -68,7 +72,7 @@ export const repeat = ({ n, content }) => {
     // result.push(Source.parse(content));
   }
   return {
-    children: result,
+    children: result
   };
 };
 
@@ -78,7 +82,7 @@ export const element = {
     return {
       component,
       children,
-      props,
+      props
     };
-  },
+  }
 };

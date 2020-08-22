@@ -21,13 +21,13 @@ export const preset = {
   pc8: '#A898C8',
   pc9: '#662D91',
   pc10: '#92278F',
-  pc11: '#C2305E',
+  pc11: '#C2305E'
 };
 
 export const scheme = {
   binary: {
     active: null,
-    inacitve: preset.Black,
+    inacitve: preset.Black
   },
   degree: {
     d0: null,
@@ -37,7 +37,7 @@ export const scheme = {
     d4: preset.d4,
     d5: preset.d5,
     d6: preset.d6,
-    d7: preset.d7,
+    d7: preset.d7
   },
   pitchClass: {
     pc0: preset.pc0,
@@ -51,20 +51,20 @@ export const scheme = {
     pc8: preset.pc8,
     pc9: preset.pc9,
     pc10: preset.pc10,
-    pc11: preset.pc11,
+    pc11: preset.pc11
   },
   octave: {
     min: preset.White,
-    max: preset.Black,
+    max: preset.Black
   },
   frequency: {
     min: preset.White,
-    max: preset.Black,
+    max: preset.Black
   },
   noteIndex: {
     min: preset.White,
-    max: preset.Black,
-  },
+    max: preset.Black
+  }
 };
 
 export const getStylesFromColor = (background, foreground, opacity) => {
@@ -75,7 +75,7 @@ export const getStylesFromColor = (background, foreground, opacity) => {
   if (typeof opacity !== 'undefined') bg = bg.alpha(opacity);
   return {
     backgroundColor: bg.hsl().string(),
-    color: foreground || (bg.isDark() ? preset.Black : preset.White),
+    color: foreground || (bg.isDark() ? preset.Black : preset.White)
   };
 };
 

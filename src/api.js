@@ -11,8 +11,8 @@ const apiMap = {
     Viewer,
     Vector,
     Matrix,
-    Concept,
-  },
+    Concept
+  }
 };
 
 const getApiNode = (path) => {
