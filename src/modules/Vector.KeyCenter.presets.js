@@ -1,7 +1,4 @@
-import * as Utils from './Utils';
-import * as Interval from './Interval';
-
-const KEY_CENTER = {
+export const KEY_CENTER = {
   NA: { id: 'NA', name: 'N/A', value: { p: 0, d: -1 } },
   Ab: { id: 'Ab', name: 'Ab', value: { p: 8, d: 0 } },
   A: { id: 'A', name: 'A', value: { p: 9, d: 0 } },
@@ -26,32 +23,7 @@ const KEY_CENTER = {
   Gs: { id: 'Gs', name: 'G#', value: { p: 8, d: 6 } },
 };
 
-export const Presets = {
+export default {
   ...KEY_CENTER,
-  all: Object.entries,
-};
-
-/* export const parseString = keyString => {
-    if (typeof keyString !== 'string' || !keyString.length) {
-        throw ('Bad keystring args')
-    }
-    const [tonicStr, accidentalStr] = Utils.splitAt(keyString, 1);
-
-    const degreeIndex = DEGREE_MAPPING.findIndex(d => d.name === tonicStr);
-
-    const accidental = ACCIDENTAL_VALUES.find(a => a.name === accidentalStr) || ACCIDENTAL.Natural;
-
-    return {
-        id: keyString,
-        name: keyString,
-        p: DEGREE_MAPPING[degreeIndex].pitch + accidental.offset,
-        d: degreeIndex
-    };
-}; */
-
-export const transpose = ({ a, interval }) => Interval.add(a, interval);
-
-export const from = ({ preset }) => {
-  if (!preset) throw ('only preset supported');
-  return Presets[preset].a;
+  all: Object.values(KEY_CENTER),
 };

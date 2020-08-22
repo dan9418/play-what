@@ -33,8 +33,6 @@ export const DEGREE_MAPPING = [
 
 // Accidentals
 
-// hello!
-
 export const ACCIDENTAL = Object.freeze({
   Flat: {
     id: 'Flat',

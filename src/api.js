@@ -1,20 +1,17 @@
 import * as Source from './modules/Source';
-import * as KeyCenter from './modules/KeyCenter';
 import * as Viewer from './modules/Viewer';
-import * as Note from './modules/Note';
-import * as NoteList from './modules/NoteList';
+
+import * as Vector from './modules/Vector';
+import * as Matrix from './modules/Matrix';
 import * as Concept from './modules/Concept';
-import * as IntervalList from './modules/IntervalList';
 
 const apiMap = {
   PW: {
-    KeyCenter,
-    Concept,
     Source,
     Viewer,
-    Note,
-    NoteList,
-    IntervalList,
+    Vector,
+    Matrix,
+    Concept,
   },
 };
 

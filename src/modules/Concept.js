@@ -1,11 +1,11 @@
-import { ALL_CONCEPT_PRESETS } from './Concept.presets';
-
-export const Presets = ALL_CONCEPT_PRESETS;
+import * as Vector from './Vector';
 
 export const Defaults = {
   a: { p: 0, d: 0 },
   B: [],
 };
+
+export const notesFrom = ({ a, B }) => Vector.addMatrix({ a, B });
 
 /*
 export const chordalInversion = (conceptConfig, inversion) => {
