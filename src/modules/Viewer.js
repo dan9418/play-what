@@ -49,6 +49,19 @@ export const Row = {
     }),
 };
 
+export const Summary = {
+  component: Viewers.Summary.Viewer,
+  from: ({ notes }) =>
+  // const config = { ...Viewers.Fretboard.Defaults, ...args };
+  // const { fretRange, tuning, labelFn, styleFn } = config;
+    ({
+      component: Viewers.Summary.Viewer,
+      props: {
+        notes,
+      },
+    }),
+};
+
 export const repeat = ({ n, content }) => {
   const result = [];
   for (let i = 0; i < n; i++) {
