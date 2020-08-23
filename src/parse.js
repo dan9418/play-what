@@ -1,4 +1,4 @@
-import call from './call';
+import { call } from './api';
 
 export const x = 0;
 

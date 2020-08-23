@@ -3,8 +3,9 @@ import * as Note from './modules/Vector.Note';
 import * as Interval from './modules/Vector.Interval';
 import * as Matrix from './modules/Matrix';
 import * as Concept from './modules/Concept';
+import * as Color from './modules/Color';
 
-const PW = {
+export const api = {
   PW: {
     Vector: {
       ...Vector,
@@ -12,7 +13,8 @@ const PW = {
       Interval
     },
     Matrix,
-    Concept
+    Concept,
+    Color
   }
 };
 
@@ -29,15 +31,13 @@ const getApiNode = (path, root) => {
   return [endpoint, false];
 };
 
-const call = (path, args = {}, level = 0, userModule) => {
+export const call = (path, args = {}, level = 0, userModule) => {
   console.log('\t'.repeat(level), `API - ${path}`, args);
 
-  const root = { ...PW, ...userModule };
+  const root = { ...api, ...userModule };
 
   const [endpoint, isFn] = getApiNode(path, root);
   const value = isFn ? endpoint(args) : endpoint;
 
   return value;
 };
-
-export default call;

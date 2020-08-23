@@ -1,8 +1,8 @@
 import * as Color from 'color';
 
-export const preset = {
-  White: '#000000',
-  Black: '#FFFFFF',
+export const Preset = {
+  white: '#000000',
+  black: '#FFFFFF',
   d1: '#E6194B',
   d2: '#F58231',
   d3: '#FFE119',
@@ -24,62 +24,55 @@ export const preset = {
   pc11: '#C2305E'
 };
 
-export const scheme = {
-  binary: {
+export const Scheme = {
+  Binary: {
     active: null,
-    inacitve: preset.Black
+    inacitve: Preset.Black
   },
-  degree: {
+  Degree: {
     d0: null,
-    d1: preset.d1,
-    d2: preset.d2,
-    d3: preset.d3,
-    d4: preset.d4,
-    d5: preset.d5,
-    d6: preset.d6,
-    d7: preset.d7
+    d1: Preset.d1,
+    d2: Preset.d2,
+    d3: Preset.d3,
+    d4: Preset.d4,
+    d5: Preset.d5,
+    d6: Preset.d6,
+    d7: Preset.d7
   },
-  pitchClass: {
-    pc0: preset.pc0,
-    pc1: preset.pc1,
-    pc2: preset.pc2,
-    pc3: preset.pc3,
-    pc4: preset.pc4,
-    pc5: preset.pc5,
-    pc6: preset.pc6,
-    pc7: preset.pc7,
-    pc8: preset.pc8,
-    pc9: preset.pc9,
-    pc10: preset.pc10,
-    pc11: preset.pc11
+  PitchClass: {
+    pc0: Preset.pc0,
+    pc1: Preset.pc1,
+    pc2: Preset.pc2,
+    pc3: Preset.pc3,
+    pc4: Preset.pc4,
+    pc5: Preset.pc5,
+    pc6: Preset.pc6,
+    pc7: Preset.pc7,
+    pc8: Preset.pc8,
+    pc9: Preset.pc9,
+    pc10: Preset.pc10,
+    pc11: Preset.pc11
   },
-  octave: {
-    min: preset.White,
-    max: preset.Black
+  Octave: {
+    min: Preset.White,
+    max: Preset.Black
   },
-  frequency: {
-    min: preset.White,
-    max: preset.Black
+  Frequency: {
+    min: Preset.White,
+    max: Preset.Black
   },
-  noteIndex: {
-    min: preset.White,
-    max: preset.Black
+  NoteIndex: {
+    min: Preset.White,
+    max: Preset.Black
   }
 };
 
-export const getStylesFromColor = (background, foreground, opacity) => {
-  if (!background) {
-    return {};
-  }
-  let bg = Color(background);
-  if (typeof opacity !== 'undefined') bg = bg.alpha(opacity);
-  return {
-    backgroundColor: bg.hsl().string(),
-    color: foreground || (bg.isDark() ? preset.Black : preset.White)
-  };
+export const getFgColor = (bg) => {
+  if (!bg) return Preset.black;
+  return Color(bg).isDark() ? Preset.black : Preset.white;
 };
 
-export const getColorFromContinuousScheme = (value, min, max, scheme) => {
+/* export const getColorFromContinuousScheme = (value, min, max, scheme) => {
   let percent = (value - min) / (max - min);
   percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
@@ -88,4 +81,4 @@ export const getColorFromContinuousScheme = (value, min, max, scheme) => {
   const background = initialColor.mix(finalColor, percent);
 
   return background;
-};
+}; */

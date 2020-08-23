@@ -1,4 +1,5 @@
 import * as Vector from './Vector';
+import * as Utils from './Utils';
 
 import _Chord from './Matrix.Chord';
 import _Mode from './Matrix.Mode';
@@ -17,6 +18,11 @@ export const areEqual = ({ list1, list2 }) => {
     if (!Vector.areEqual(list1[i], list2[i])) { return false; }
   }
   return true;
+};
+
+export const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
+  const p = pitchClass ? Utils.modulo(pitch, Vector.max.p) : pitch;
+  return matrix.find((n) => n.p === p) || null;
 };
 
 // export const from = ({ a, B }) => B.map((b) => Note.add({ x: a, y: b }));
