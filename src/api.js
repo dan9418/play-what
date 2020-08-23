@@ -4,6 +4,7 @@ import * as Interval from './modules/Vector.Interval';
 import * as Matrix from './modules/Matrix';
 import * as Concept from './modules/Concept';
 import * as Color from './modules/Color';
+import * as Text from './modules/Text';
 
 export const api = {
   PW: {
@@ -14,7 +15,8 @@ export const api = {
     },
     Matrix,
     Concept,
-    Color
+    Color,
+    Text
   }
 };
 
