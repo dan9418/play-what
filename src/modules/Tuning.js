@@ -1,13 +1,12 @@
-/*
-export const getFrequency = p => {
-    const a = p + 3;
-    const b = a / 12;
-    const c = Math.pow(2, b);
-    const f = 440 * c;
-    return f;
-}
+export const getFrequency = (p) => {
+  const a = p + 3;
+  const b = a / 12;
+  const c = Math.pow(2, b);
+  const f = 440 * c;
+  return f;
+};
 
-export const getFrequencies = pitches => {
+/* export const getFrequencies = pitches => {
     return pitches.map(p => getFrequency(p.p));
 } */
 

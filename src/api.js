@@ -5,6 +5,7 @@ import * as Matrix from './modules/Matrix';
 import * as Concept from './modules/Concept';
 import * as Color from './modules/Color';
 import * as Text from './modules/Text';
+import * as Tuning from './modules/Tuning';
 
 export const api = {
   PW: {
@@ -16,7 +17,8 @@ export const api = {
     Matrix,
     Concept,
     Color,
-    Text
+    Text,
+    Tuning
   }
 };
 
