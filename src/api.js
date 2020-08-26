@@ -6,6 +6,7 @@ import * as Concept from './modules/Concept';
 import * as Color from './modules/Color';
 import * as Text from './modules/Text';
 import * as Tuning from './modules/Tuning';
+import * as Utils from './modules/Utils';
 
 export const api = {
   PW: {
@@ -18,7 +19,8 @@ export const api = {
     Concept,
     Color,
     Text,
-    Tuning
+    Tuning,
+    Utils
   }
 };
 

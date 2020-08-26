@@ -11,6 +11,10 @@ export const getName = ({ pod }) => {
   }
   const reduced = Vector.reduce(pod);
   const degree = Theory.DEGREE_MAP[reduced.d];
+  if (!degree) {
+    return '?';
+    debugger;
+  }
   return degree.name + Theory.getAccidentalString(reduced.p - degree.p);
 };
 
