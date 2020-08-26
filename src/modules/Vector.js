@@ -37,42 +37,52 @@ export const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
 
 // export const transpose = ({ a, interval }) => Interval.add(a, interval);
 
+const parseColorProp = (type, note, reduced = false) => {
+  if (!note) return null;
+
+  let data = { ...note };
+  if (reduced) {
+    data = reduce(data);
+  }
+  switch (type) {
+    // case 'binary':
+    //  return data ? Color.Scheme.Binary.active : Color.Scheme.Binary.inacitve;
+    case 'degree':
+      return Color.Scheme.Degree[`d${data.d + 1}`];
+    case 'pitchClass':
+      return Color.Scheme.PitchClass[`pc${data.p + 1}`];
+    default:
+      return null;
+  }
+};
+
 export const colorBy = (props) => {
-  const { type, reduced } = props;
   return (ctx) => {
     const { note } = ctx;
-
-    if (!note) return null;
-
-    let data = { ...note };
-    if (reduced) {
-      data = reduce(data);
-    }
-
-    switch (type) {
-      // case 'binary':
-      //  return data ? Color.Scheme.Binary.active : Color.Scheme.Binary.inacitve;
-      case 'degree':
-        return Color.Scheme.Degree[`d${data.d + 1}`];
-      case 'pitchClass':
-        return Color.Scheme.PitchClass[`pc${data.p + 1}`];
-      default:
-        return null;
-    }
+    const bg = parseColorProp(props.type, note, props.reduced);
+    const fg = Color.getFgColor(bg);
+    return {
+      color: fg,
+      backgroundColor: bg
+    };
   };
 };
 
+const parseTextProp = (type, note) => {
+  switch (type) {
+    case 'degree':
+      return note ? note.d + 1 : '';
+    case 'pitchClass':
+      return note ? note.p : '';
+    default:
+      return '';
+  }
+};
+
 export const textBy = (props) => {
-  const { type } = props;
   return (ctx) => {
     const { note } = ctx;
-    switch (type) {
-      case 'degree':
-        return note ? note.d + 1 : '';
-      case 'pitchClass':
-        return note ? note.p : '';
-      default:
-        return '';
-    }
+    const text = parseTextProp(props.type, note);
+    return text;
   };
 };
