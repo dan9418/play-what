@@ -58,8 +58,8 @@ const parseColorProp = (type, note, reduced = false) => {
 
 export const colorBy = (props) => {
   return (ctx) => {
-    const { note } = ctx;
-    const bg = parseColorProp(props.type, note, props.reduced);
+    const { pod } = ctx;
+    const bg = parseColorProp(props.type, pod, props.reduced);
     const fg = Color.getFgColor(bg);
     return {
       color: fg,
@@ -68,12 +68,12 @@ export const colorBy = (props) => {
   };
 };
 
-const parseTextProp = (type, note) => {
+const parseTextProp = (type, pod) => {
   switch (type) {
     case 'degree':
-      return note ? note.d + 1 : '';
+      return pod ? pod.d + 1 : '';
     case 'pitchClass':
-      return note ? note.p : '';
+      return pod ? pod.p : '';
     default:
       return '';
   }
@@ -81,8 +81,8 @@ const parseTextProp = (type, note) => {
 
 export const textBy = (props) => {
   return (ctx) => {
-    const { note } = ctx;
-    const text = parseTextProp(props.type, note);
+    const { pod } = ctx;
+    const text = parseTextProp(props.type, pod);
     return text;
   };
 };
