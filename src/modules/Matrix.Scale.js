@@ -19,24 +19,27 @@ const getMode = ({ scale, degree }) => {
   let mode = [...scale];
   mode = Utils.rotate(mode, degree);
   const a = mode[0];
-  for (let i = 0; i < mode.length; i++) {
-    const m = mode[i];
-    console.log('in', m);
-    m.p = Utils.moduloSum(m.p, 2, 12, 0, false);
-    m.d = Utils.moduloSum(m.d, 2, 7, 0, false);
-    console.log('out', m);
-  }
-  return mode;
+  const newMode = mode.map((m) => {
+    // console.log(m.p, Utils.moduloSum(m.p, 2, 12, 0, false));
+    return {
+      d: Utils.moduloSum(m.d, a.d, 7, 0, true),
+      p: Utils.moduloSum(m.p, a.p, 12, 0, true)
+    };
+  });
+  console.log(mode, newMode);
+
+  return newMode;
+  // m.p = Utils.moduloSum(m.p, 2, 12, 0, false);
 };
 
-const getAllModes = ({ scale }) => {
+const getAllModes = ({ scale, keyCenter }) => {
   const modes = [];
-  for (let i = 0; i < scale.length; i++) {
+  for (let i = 1; i <= scale.length; i++) {
     modes.push(getMode({ scale, degree: i }));
   }
-  return scale.map((s, i) => ({
-    a: s,
-    B: modes[i]
+  return modes.map((m, i) => ({
+    a: keyCenter,
+    B: m
   }));
 };
 
