@@ -24,6 +24,7 @@ const getAllModes = ({ scale, keyCenter }) => {
     modes.push(getMode({ scale, degree: i }));
   }
   return modes.map((m, i) => ({
+    name: `Degree ${i + 1}`,
     a: keyCenter,
     B: m
   }));
@@ -36,6 +37,7 @@ const getNumeral = ({ scale, keyCenter, degree }) => {
   const i7 = Utils.moduloSum(degree, 6, scale.length);
   const numeral = [scale[i1], scale[i3], scale[i5], scale[i7]];
   return {
+    name: `Numeral ${degree + 1}`,
     a: keyCenter,
     B: numeral
   };
