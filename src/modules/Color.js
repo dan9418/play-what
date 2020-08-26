@@ -82,16 +82,3 @@ export const getFgColor = (bg) => {
 
   return background;
 }; */
-
-export const parseColorProp = (type, note) => {
-  switch (type) {
-    case 'binary':
-      return note ? Scheme.Binary.active : Scheme.Binary.inacitve;
-    case 'degree':
-      return note ? Scheme.Degree[`d${note.d + 1}`] : null;
-    case 'pitchClass':
-      return note ? Scheme.PitchClass[`pc${note.p + 1}`] : null;
-    default:
-      return null;
-  }
-};

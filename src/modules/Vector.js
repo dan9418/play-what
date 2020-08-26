@@ -28,87 +28,6 @@ export const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
   return notes.findIndex((n) => n.p === p);
 };
 
-/*
-export const findNoteIndex = (keyCenter, intervals, pitch, octaveReduce = true) => {
-    const p = octaveReduce ? Utils.modulo(pitch, max.p) : pitch;
-    const notes = addVectorsBatch(keyCenter, intervals);
-    return notes.findIndex(n => n.p === p);
-} */
-
-export const label = ({ type, notes }) => {
-  switch (type) {
-    case 'pitchClass':
-      return (ctx) => {
-        if (!notes) return Utils.modulo(ctx.noteIndex, 12);
-        const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-        return i >= 0 ? notes[i].p : '';
-      };
-    case 'degree':
-      return (ctx) => {
-        if (!notes) return '';
-        const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-        return i >= 0 ? notes[i].d + 1 : '';
-      };
-    default:
-      return '';
-  }
-};
-
-export const style = ({ type, notes }) => {
-  switch (type) {
-    case 'pitchClass':
-      return (ctx) => {
-        if (!notes) {
-          const pc = Utils.modulo(ctx.noteIndex, 12);
-          const pcId = `pc${pc}`;
-          return Color.getStylesFromColor(Color.scheme.pitchClass[pcId]);
-        }
-        const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-        if (i < 0) return {};
-        const id = `pc${notes[i].p}`;
-        return Color.getStylesFromColor(Color.scheme.pitchClass[id]);
-      };
-    case 'degree':
-      return (ctx) => {
-        if (!notes) return {};
-        const i = findIndexOfNoteWithPitch(notes, ctx.noteIndex);
-        if (i < 0) return {};
-        const id = `d${notes[i].d + 1}`;
-        return Color.getStylesFromColor(Color.scheme.degree[id]);
-      };
-    default:
-      return '';
-  }
-};
-
-/*
-export const getNoteName = (note) => {
-    if (note.d < 0) {
-        return '';
-    }
-    const reduced = moduloVector(note);
-    const degree = getDegreeMapping(reduced.d) || { name: '?', pitch: 0 };
-    return degree.name + getAccidentalString(note.p - degree.pitch);
-} */
-
-/* export const parseString = keyString => {
-    if (typeof keyString !== 'string' || !keyString.length) {
-        throw ('Bad keystring args')
-    }
-    const [tonicStr, accidentalStr] = Utils.splitAt(keyString, 1);
-
-    const degreeIndex = DEGREE_MAPPING.findIndex(d => d.name === tonicStr);
-
-    const accidental = ACCIDENTAL_VALUES.find(a => a.name === accidentalStr) || ACCIDENTAL.Natural;
-
-    return {
-        id: keyString,
-        name: keyString,
-        p: DEGREE_MAPPING[degreeIndex].pitch + accidental.offset,
-        d: degreeIndex
-    };
-}; */
-
 export const addVector = ({ a, b }) => ({
   p: Utils.moduloSum(a.p, b.p, max.p),
   d: Utils.moduloSum(a.d, b.d, max.d)
@@ -117,3 +36,43 @@ export const addVector = ({ a, b }) => ({
 export const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
 
 // export const transpose = ({ a, interval }) => Interval.add(a, interval);
+
+export const colorBy = (props) => {
+  const { type, reduced } = props;
+  return (ctx) => {
+    const { note } = ctx;
+
+    if (!note) return null;
+
+    let data = { ...note };
+    if (reduced) {
+      data = reduce(data);
+    }
+
+    switch (type) {
+      // case 'binary':
+      //  return data ? Color.Scheme.Binary.active : Color.Scheme.Binary.inacitve;
+      case 'degree':
+        return Color.Scheme.Degree[`d${data.d + 1}`];
+      case 'pitchClass':
+        return Color.Scheme.PitchClass[`pc${data.p + 1}`];
+      default:
+        return null;
+    }
+  };
+};
+
+export const textBy = (props) => {
+  const { type } = props;
+  return (ctx) => {
+    const { note } = ctx;
+    switch (type) {
+      case 'degree':
+        return note ? note.d + 1 : '';
+      case 'pitchClass':
+        return note ? note.p : '';
+      default:
+        return '';
+    }
+  };
+};
