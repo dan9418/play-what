@@ -22,7 +22,8 @@ export const areEqual = ({ list1, list2 }) => {
 
 export const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
   const p = pitchClass ? Utils.modulo(pitch, Vector.max.p) : pitch;
-  return matrix.find((n) => n.p === p) || null;
+  const index = matrix.findIndex((n) => n.p === p);
+  return index > -1 ? [matrix[index], index] : [null, index];
 };
 
 // export const from = ({ a, B }) => B.map((b) => Note.add({ x: a, y: b }));

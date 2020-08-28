@@ -37,16 +37,21 @@ export const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
 
 // export const transpose = ({ a, interval }) => Interval.add(a, interval);
 
-const parseColorProp = (type, note, reduced = false) => {
-  if (!note) return null;
+const parseColorProp = (props, ctx) => {
+  const { pod, homePod, podIndex } = ctx;
+  const { type, reduced } = props;
 
-  let data = { ...note };
+  if (!pod) return null;
+
+  let data = { ...pod };
   if (reduced) {
     data = reduce(data);
   }
   switch (type) {
     // case 'binary':
     //  return data ? Color.Scheme.Binary.active : Color.Scheme.Binary.inacitve;
+    case 'order':
+      return Color.Scheme.Degree[`d${podIndex + 1}`];
     case 'degree':
       return Color.Scheme.Degree[`d${data.d + 1}`];
     case 'pitchClass':
@@ -58,8 +63,7 @@ const parseColorProp = (type, note, reduced = false) => {
 
 export const colorBy = (props) => {
   return (ctx) => {
-    const { pod } = ctx;
-    const bg = parseColorProp(props.type, pod, props.reduced);
+    const bg = parseColorProp(props, ctx);
     const fg = Color.getFgColor(bg);
     return {
       color: fg,
@@ -68,10 +72,15 @@ export const colorBy = (props) => {
   };
 };
 
-const parseTextProp = (type, pod) => {
+const parseTextProp = (props, ctx) => {
+  const { pod, homePod, podIndex } = ctx;
+  const { type, reduced } = props;
+
   switch (type) {
+    case 'order':
+      return podIndex > -1 ? podIndex + 1 : '';
     case 'degree':
-      return pod ? pod.d + 1 : '';
+      return pod ? pod.d : '';
     case 'pitchClass':
       return pod ? pod.p : '';
     default:
@@ -81,8 +90,7 @@ const parseTextProp = (type, pod) => {
 
 export const textBy = (props) => {
   return (ctx) => {
-    const { pod } = ctx;
-    const text = parseTextProp(props.type, pod);
+    const text = parseTextProp(props, ctx);
     return text;
   };
 };

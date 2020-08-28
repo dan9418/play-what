@@ -6,7 +6,7 @@
     "typescript.suggest.enabled": false,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
-    "window.zoomLevel": 2,
+    "window.zoomLevel": 1,
     "editor.renameOnType": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
