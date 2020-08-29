@@ -1,4 +1,4 @@
-/* import * as Tone from "tone";
+/* import Tone from "tone";
 
 const VOLUME = new Tone.Volume(-15);
 

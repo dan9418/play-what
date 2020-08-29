@@ -1,5 +1,5 @@
 import Vector from './Vector';
-import * as Utils from './Utils';
+import Utils from './Utils';
 
 import Chord from './Matrix.Chord';
 import Mode from './Matrix.Mode';

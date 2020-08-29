@@ -1,6 +1,6 @@
 // Degrees
 
-export const DEGREE_MAP = [
+const DEGREE_MAP = [
   {
     name: 'A',
     d: 0,
@@ -40,7 +40,7 @@ export const DEGREE_MAP = [
 
 // Accidentals
 
-export const ACCIDENTAL = Object.freeze({
+const ACCIDENTAL = Object.freeze({
   Flat: {
     id: 'Flat',
     name: 'b',
@@ -58,9 +58,9 @@ export const ACCIDENTAL = Object.freeze({
   }
 });
 
-export const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));
+const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));
 
-export const getAccidentalString = (offset) => {
+const getAccidentalString = (offset) => {
   switch (offset) {
     case 0:
       return '';
@@ -75,4 +75,11 @@ export const getAccidentalString = (offset) => {
     default:
       return (offset < 0) ? `(${-offset}b)` : `(${offset}#)`;
   }
+};
+
+export default {
+  DEGREE_MAP,
+  ACCIDENTAL,
+  ACCIDENTAL_VALUES,
+  getAccidentalString
 };

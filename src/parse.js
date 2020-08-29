@@ -1,7 +1,5 @@
 import { call } from './api';
 
-export const x = 0;
-
 const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
   const type = typeof rawSource;
 

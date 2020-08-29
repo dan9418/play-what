@@ -1,5 +1,5 @@
 import preset from './Matrix.Scale.presets';
-import * as Utils from './Utils';
+import Utils from './Utils';
 
 const getMode = ({ scale, degree }) => {
   let mode = [...scale];

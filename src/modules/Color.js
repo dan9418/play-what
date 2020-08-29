@@ -1,6 +1,6 @@
-import * as Color from 'color';
+import Color from 'color';
 
-export const Preset = {
+const preset = {
   white: '#000000',
   black: '#FFFFFF',
   d1: '#E6194B',
@@ -24,55 +24,55 @@ export const Preset = {
   pc11: '#C2305E'
 };
 
-export const Scheme = {
+const Scheme = {
   Binary: {
     active: null,
-    inacitve: Preset.Black
+    inacitve: preset.Black
   },
   Degree: {
     d0: null,
-    d1: Preset.d1,
-    d2: Preset.d2,
-    d3: Preset.d3,
-    d4: Preset.d4,
-    d5: Preset.d5,
-    d6: Preset.d6,
-    d7: Preset.d7
+    d1: preset.d1,
+    d2: preset.d2,
+    d3: preset.d3,
+    d4: preset.d4,
+    d5: preset.d5,
+    d6: preset.d6,
+    d7: preset.d7
   },
   PitchClass: {
-    pc0: Preset.pc0,
-    pc1: Preset.pc1,
-    pc2: Preset.pc2,
-    pc3: Preset.pc3,
-    pc4: Preset.pc4,
-    pc5: Preset.pc5,
-    pc6: Preset.pc6,
-    pc7: Preset.pc7,
-    pc8: Preset.pc8,
-    pc9: Preset.pc9,
-    pc10: Preset.pc10,
-    pc11: Preset.pc11
+    pc0: preset.pc0,
+    pc1: preset.pc1,
+    pc2: preset.pc2,
+    pc3: preset.pc3,
+    pc4: preset.pc4,
+    pc5: preset.pc5,
+    pc6: preset.pc6,
+    pc7: preset.pc7,
+    pc8: preset.pc8,
+    pc9: preset.pc9,
+    pc10: preset.pc10,
+    pc11: preset.pc11
   },
   Octave: {
-    min: Preset.White,
-    max: Preset.Black
+    min: preset.White,
+    max: preset.Black
   },
   Frequency: {
-    min: Preset.White,
-    max: Preset.Black
+    min: preset.White,
+    max: preset.Black
   },
   NoteIndex: {
-    min: Preset.White,
-    max: Preset.Black
+    min: preset.White,
+    max: preset.Black
   }
 };
 
-export const getFgColor = (bg) => {
-  if (!bg) return Preset.black;
-  return Color(bg).isDark() ? Preset.black : Preset.white;
+const getFgColor = (bg) => {
+  if (!bg) return preset.black;
+  return Color(bg).isDark() ? preset.black : preset.white;
 };
 
-/* export const getColorFromContinuousScheme = (value, min, max, scheme) => {
+/* const getColorFromContinuousScheme = (value, min, max, scheme) => {
   let percent = (value - min) / (max - min);
   percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
@@ -82,3 +82,9 @@ export const getFgColor = (bg) => {
 
   return background;
 }; */
+
+export default {
+  preset,
+  Scheme,
+  getFgColor
+};

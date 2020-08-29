@@ -1,4 +1,4 @@
-import * as Vector from './Vector';
+import Vector from './Vector';
 
 const defaults = {
   a: { p: 0, d: 0 },

@@ -1,5 +1,5 @@
-import * as Utils from './Utils';
-import * as Color from './Color';
+import Utils from './Utils';
+import Color from './Color';
 
 import Interval from './Vector.Interval';
 import Note from './Vector.Note';

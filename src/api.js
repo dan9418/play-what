@@ -1,10 +1,9 @@
-import * as Color from './modules/Color';
+import Color from './modules/Color';
 import Concept from './modules/Concept';
-import * as Log from './modules/Log';
+import Log from './modules/Log';
 import Matrix from './modules/Matrix';
-import * as Text from './modules/Text';
-import * as Tuning from './modules/Tuning';
-import * as Utils from './modules/Utils';
+import Tuning from './modules/Tuning';
+import Utils from './modules/Utils';
 import Vector from './modules/Vector';
 
 export const api = {
@@ -13,7 +12,6 @@ export const api = {
     Matrix,
     Concept,
     Color,
-    Text,
     Tuning,
     Utils,
     Log
