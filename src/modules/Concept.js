@@ -1,11 +1,7 @@
-import Vector from './Vector';
-
 const defaults = {
   a: { p: 0, d: 0 },
   B: []
 };
-
-// export const notesFrom = ({ a, B }) => Vector.addMatrix({ a, B });
 
 /*
 export const chordalInversion = (conceptConfig, inversion) => {

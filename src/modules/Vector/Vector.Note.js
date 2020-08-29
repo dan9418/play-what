@@ -1,5 +1,5 @@
 import preset from './Vector.Note.presets';
-import Theory from './Theory';
+import Theory from '../Theory';
 import Vector from './Vector';
 
 const getName = ({ pod }) => {

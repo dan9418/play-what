@@ -1,4 +1,5 @@
-import { call, api } from './api';
+import api from './api';
+import call from './call';
 import parse from './parse';
 
 export default {
