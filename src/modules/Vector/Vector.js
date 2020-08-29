@@ -9,6 +9,10 @@ const max = {
   d: 7
 };
 
+const isValid = (vector) => {
+  return vector !== null && typeof vector === 'object' && typeof vector.p === 'number' && typeof vector.d === 'number';
+};
+
 const areEqual = ({ interval1, interval2 }) => {
   if (!interval1 || !interval2) return false;
   return interval1.p === interval2.p && interval1.d === interval2.d;
@@ -102,6 +106,7 @@ export default {
   Note,
   Interval,
   max,
+  isValid,
   areEqual,
   add,
   reduce,

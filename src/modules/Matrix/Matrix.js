@@ -6,6 +6,10 @@ import Mode from './Matrix.Mode';
 import Numeral from './Matrix.Numeral';
 import Scale from './Matrix.Scale';
 
+const isValid = (matrix) => {
+  return matrix !== null && Array.isArray(matrix) && !matrix.find((v) => !Vector.isValid(v));
+};
+
 const areEqual = ({ list1, list2 }) => {
   if (!list1 || !list2) return false;
   if (list1.length !== list2.length) return false;
@@ -26,6 +30,7 @@ export default {
   Scale,
   Mode,
   Numeral,
+  isValid,
   areEqual,
   findVectorWithPitch
 };
