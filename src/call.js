@@ -1,4 +1,4 @@
-import api from "./api";
+import api from './api';
 
 const getApiNode = (path, root) => {
   const tree = path.split('/');
