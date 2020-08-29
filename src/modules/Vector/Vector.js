@@ -62,7 +62,7 @@ const parseColorProp = (props, ctx) => {
     case 'degree':
       return Color.Scheme.Degree[`d${data.d + 1}`];
     case 'pitchClass':
-      return Color.Scheme.PitchClass[`pc${data.p + 1}`];
+      return Color.Scheme.PitchClass[`pc${data.p}`];
     default:
       return null;
   }
@@ -87,7 +87,7 @@ const parseTextProp = (props, ctx) => {
     case 'order':
       return podIndex > -1 ? podIndex + 1 : '';
     case 'degree':
-      return pod ? pod.d : '';
+      return pod ? pod.d + 1 : '';
     case 'pitchClass':
       return pod ? pod.p : '';
     default:

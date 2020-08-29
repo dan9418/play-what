@@ -1,6 +1,8 @@
 import Vector from '../Vector/Vector';
 import Utils from '../Utils';
 
+import Interval from '../Vector/Vector.Interval';
+
 import Chord from './Matrix.Chord';
 import Mode from './Matrix.Mode';
 import Numeral from './Matrix.Numeral';
@@ -41,6 +43,10 @@ const presets = [
   {
     type: 'Numeral',
     value: Numeral.preset
+  },
+  {
+    type: 'Interval',
+    value: Object.values(Interval.preset).map((ivl) => ({ ...ivl, value: [ivl.value] }))
   }
 ];
 
