@@ -1,21 +1,15 @@
-import * as Vector from './modules/Vector';
-import * as Note from './modules/Vector.Note';
-import * as Interval from './modules/Vector.Interval';
-import * as Matrix from './modules/Matrix';
-import * as Concept from './modules/Concept';
 import * as Color from './modules/Color';
+import Concept from './modules/Concept';
+import * as Log from './modules/Log';
+import Matrix from './modules/Matrix';
 import * as Text from './modules/Text';
 import * as Tuning from './modules/Tuning';
 import * as Utils from './modules/Utils';
-import * as Log from './modules/Log';
+import Vector from './modules/Vector';
 
 export const api = {
   PW: {
-    Vector: {
-      ...Vector,
-      Note,
-      Interval
-    },
+    Vector,
     Matrix,
     Concept,
     Color,

@@ -1,4 +1,4 @@
-import Preset from './Matrix.Scale.presets';
+import preset from './Matrix.Scale.presets';
 import * as Utils from './Utils';
 
 const getMode = ({ scale, degree }) => {
@@ -48,7 +48,7 @@ const getAllNumerals = ({ scale, keyCenter }) => {
 };
 
 export default {
-  Preset,
+  preset,
   getNumeral,
   getAllNumerals,
   getMode,

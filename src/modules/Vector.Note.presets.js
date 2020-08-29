@@ -23,7 +23,4 @@ export const NOTE = {
   'G#': { id: 'G#', name: 'G#', value: { p: 8, d: 6 } }
 };
 
-export default {
-  ...NOTE,
-  all: Object.values(NOTE)
-};
+export default NOTE;

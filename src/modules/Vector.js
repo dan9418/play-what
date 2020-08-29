@@ -1,41 +1,44 @@
 import * as Utils from './Utils';
 import * as Color from './Color';
 
-export const max = {
+import Interval from './Vector.Interval';
+import Note from './Vector.Note';
+
+const max = {
   p: 12,
   d: 7
 };
 
-export const areEqual = ({ interval1, interval2 }) => {
+const areEqual = ({ interval1, interval2 }) => {
   if (!interval1 || !interval2) return false;
   return interval1.p === interval2.p && interval1.d === interval2.d;
 };
 
-export const add = ({ x, y }) => ({
+const add = ({ x, y }) => ({
   p: Utils.moduloSum(x.p, y.p, max.p),
   d: Utils.moduloSum(x.d, y.d, max.d)
 });
 
-export const reduce = ({ p, d }) => ({ p: Utils.modulo(p, max.p), d });
+const reduce = ({ p, d }) => ({ p: Utils.modulo(p, max.p), d });
 
-export const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
+const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
   const p = octaveReduce ? Utils.modulo(pitch, max.p) : pitch;
   return notes.find((n) => n.p === p) || null;
 };
 
-export const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
+const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
   const p = octaveReduce ? Utils.modulo(pitch, max.p) : pitch;
   return notes.findIndex((n) => n.p === p);
 };
 
-export const addVector = ({ a, b }) => ({
+const addVector = ({ a, b }) => ({
   p: Utils.moduloSum(a.p, b.p, max.p),
   d: Utils.moduloSum(a.d, b.d, max.d)
 });
 
-export const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
+const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
 
-// export const transpose = ({ a, interval }) => Interval.add(a, interval);
+// const transpose = ({ a, interval }) => Interval.add(a, interval);
 
 const parseColorProp = (props, ctx) => {
   const { pod, homePod, podIndex } = ctx;
@@ -61,7 +64,7 @@ const parseColorProp = (props, ctx) => {
   }
 };
 
-export const colorBy = (props) => {
+const colorBy = (props) => {
   return (ctx) => {
     const bg = parseColorProp(props, ctx);
     const fg = Color.getFgColor(bg);
@@ -88,9 +91,26 @@ const parseTextProp = (props, ctx) => {
   }
 };
 
-export const textBy = (props) => {
+const textBy = (props) => {
   return (ctx) => {
     const text = parseTextProp(props, ctx);
     return text;
   };
+};
+
+export default {
+  Note,
+  Interval,
+  max,
+  areEqual,
+  add,
+  reduce,
+  findNoteWithPitch,
+  findIndexOfNoteWithPitch,
+  addVector,
+  addMatrix,
+  parseColorProp,
+  colorBy,
+  parseTextProp,
+  textBy
 };

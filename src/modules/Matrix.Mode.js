@@ -1,5 +1,5 @@
-import Preset from './Matrix.Mode.presets';
+import preset from './Matrix.Mode.presets';
 
 export default {
-  Preset
+  preset
 };

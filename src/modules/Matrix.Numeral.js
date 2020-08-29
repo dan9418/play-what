@@ -1,5 +1,5 @@
-import Preset from './Matrix.Numeral.presets';
+import preset from './Matrix.Numeral.presets';
 
 export default {
-  Preset
+  preset
 };

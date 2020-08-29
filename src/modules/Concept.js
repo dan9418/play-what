@@ -1,11 +1,11 @@
 import * as Vector from './Vector';
 
-export const Defaults = {
+const defaults = {
   a: { p: 0, d: 0 },
   B: []
 };
 
-export const notesFrom = ({ a, B }) => Vector.addMatrix({ a, B });
+// export const notesFrom = ({ a, B }) => Vector.addMatrix({ a, B });
 
 /*
 export const chordalInversion = (conceptConfig, inversion) => {
@@ -15,3 +15,7 @@ export const chordalInversion = (conceptConfig, inversion) => {
     concept.B = rotate(concept.B, inversion);
     return concept;
 } */
+
+export default {
+  defaults
+};

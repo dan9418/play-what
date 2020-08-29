@@ -1,10 +1,8 @@
-import _Preset from './Vector.Note.presets';
+import preset from './Vector.Note.presets';
 import * as Theory from './Theory';
-import * as Vector from './Vector';
+import Vector from './Vector';
 
-export const Preset = _Preset;
-
-export const getName = ({ pod }) => {
+const getName = ({ pod }) => {
   if (pod.d < 0 || pod.d > Vector.max.d) {
     console.error('degree out of bounds', pod);
     return '';
@@ -34,3 +32,8 @@ export const getName = ({ pod }) => {
         d: degreeIndex
     };
 }; */
+
+export default {
+  preset,
+  getName
+};

@@ -10,17 +10,4 @@ export const MODE = {
   Locrian: { id: 'Locrian', name: 'Locrian', value: [INTERVAL.P1.value, INTERVAL.m2.value, INTERVAL.m3.value, INTERVAL.P4.value, INTERVAL.d5.value, INTERVAL.m6.value, INTERVAL.m7.value] }
 };
 
-/* export const MODE = Object.freeze({
-      Ionian: { id:'Ionian', name:'Ionian', scale:'Major', degree: 1 },
-      Dorian: { id:'Dorian', name:'Dorian', scale:'Major', degree: 2 },
-      Phrygian: { id:'Phrygian', name:'Phrygian', scale:'Major', degree: 3 },
-      Lydian: { id:'Lydian', name:'Lydian', scale:'Major', degree: 4 },
-      Mixolydian: { id:'Mixolydian', name:'Mixolydian', scale:'Major', degree: 5 },
-      Aeolian: { id:'Aeolian', name:'Aeolian', scale:'Major', degree: 6 },
-      Locrian: { id:'Locrian', name:'Locrian', scale:'Major', degree: 7 }
-  }); */
-
-export default {
-  ...MODE,
-  all: Object.values(MODE)
-};
+export default MODE;

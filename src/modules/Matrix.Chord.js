@@ -1,5 +1,5 @@
-import Preset from './Matrix.Chord.presets';
+import preset from './Matrix.Chord.presets';
 
 export default {
-  Preset
+  preset
 };

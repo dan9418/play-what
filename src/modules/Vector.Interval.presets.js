@@ -177,7 +177,4 @@ export const INTERVAL = {
   }
 };
 
-export default {
-  ...INTERVAL,
-  all: Object.values(INTERVAL)
-};
+export default INTERVAL;
