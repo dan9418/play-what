@@ -25,11 +25,31 @@ const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
   return index > -1 ? [matrix[index], index] : [null, index];
 };
 
+const presets = [
+  {
+    type: 'Chord',
+    value: Chord.preset
+  },
+  {
+    type: 'Scale',
+    value: Scale.preset
+  },
+  {
+    type: 'Mode',
+    value: Mode.preset
+  },
+  {
+    type: 'Numeral',
+    value: Numeral.preset
+  }
+];
+
 export default {
   Chord,
   Scale,
   Mode,
   Numeral,
+  presets,
   isValid,
   areEqual,
   findVectorWithPitch
