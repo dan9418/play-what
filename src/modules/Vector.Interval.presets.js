@@ -1,4 +1,4 @@
-export const INTERVAL = {
+const INTERVAL = {
   P1: {
     id: 'P1',
     name: 'Perfect Unison',

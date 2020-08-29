@@ -1,4 +1,4 @@
-import { INTERVAL } from './Vector.Interval.presets';
+import INTERVAL from './Vector.Interval.presets';
 
 export const CHORD = {
   Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
