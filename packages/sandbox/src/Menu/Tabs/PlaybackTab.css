@@ -1,0 +1,22 @@
+.playback-tab {
+	box-sizing: border-box;
+}
+
+.blinker {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: white;
+	border: 1px solid #555;
+}
+
+.blinker.pulse {
+	animation-name: blink;
+	animation-duration: .1s;
+}
+
+@keyframes blink {
+	to {
+		background-color: red;
+	}
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@play-what/sandbox",
+  "version": "1.0.0",
+  "description": "Sandbox code for Play What",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "less": "lessc src/Common/index.less src/Common/index.css"
+  },
+  "keywords": [],
+  "author": "Dan Bednarczyk",
+  "license": "ISC",
+  "dependencies": {
+    "@play-what/core": "*",
+    "@play-what/react": "*",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2",
+    "react-json-view": "^1.19.1",
+    "recoil": "0.0.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/preset-es2015": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^3.2.1",
+    "less": "^3.12.2",
+    "style-loader": "^1.0.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "babel": {
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}

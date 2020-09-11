@@ -1,0 +1,17 @@
+.meter {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meter .cell {
+    width: 100%;
+    padding: 2px;
+    font-size: 80%;
+    background-color: white;
+    color: #555;
+    text-align: center;
+    border-radius: 2px;
+    margin: 2px;
+}

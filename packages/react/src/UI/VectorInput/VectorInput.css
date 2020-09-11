@@ -1,0 +1,9 @@
+.vector-input :first-child {
+    border-radius: 4px 0 0 4px;
+}
+
+.vector-input :last-child {
+    position: relative;
+    left: -1;
+    border-radius: 0 4px 4px 0;
+}

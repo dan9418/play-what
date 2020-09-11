@@ -1,0 +1,156 @@
+@primary: #25283D; //#5E99D1;
+@primary-fg: #FFF;
+@primary-hover: darken(@primary, 10%);
+
+@accent: #87A330;
+@accent-fg: #FFF;
+@accent-hover: darken(@accent, 10%);
+
+@active: #D36135;
+
+@chart: darken(#CFE7F2, 10%);
+@chart-hover: darken(@chart, 10%);
+
+@section: #E3DCE5;
+@section-hover: darken(@section, 10%);
+
+@progression: #DFF3E3;
+@progression-hover: darken(@progression, 10%);
+
+@concept: #F5E0CC;
+@concept-hover: darken(@concept, 10%);
+
+
+@light-fg: #25283D;
+
+@light-1: #F3F6F4;
+@light-1-hover: darken(@light-1, 10%);
+
+@light-2: #E8ECE9;
+@light-2-hover: darken(@light-2, 10%);
+
+@light-3: #DCE1DE;
+@light-3-hover: darken(@light-3, 10%);
+
+/* Conditions */
+
+.pw-hov {
+    cursor: pointer;
+}
+
+.pw-no-select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.pw-active {
+    border: 2px solid @active;
+}
+
+/* Theme */
+
+.pw-primary {
+    background-color: @primary;
+    color: @primary-fg;
+}
+.pw-primary.pw-hov:hover {
+    background-color: @primary-hover;
+}
+.pw-primary.pw-disabled {
+    background-color: greyscale(@primary);
+    color: lighten(@primary-fg, 30%);
+}
+
+.pw-accent {
+    background-color: @accent;
+    color: @accent-fg;
+}
+.pw-accent.pw-hov:hover {
+    background-color: @accent-fg;
+    color: @accent;
+}
+.pw-accent.pw-disabled {
+    background-color: greyscale(@accent);
+    color: lighten(@accent-fg, 30%);
+}
+
+/* Levels */
+
+.pw-chart {
+    background-color: @chart;
+    color: @light-fg;
+}
+.pw-chart.pw-hov:hover {
+    background-color: @chart-hover;
+}
+.pw-chart.pw-disabled {
+    background-color: greyscale(@chart);
+    color: lighten(@primary-fg, 30%);
+}
+
+.pw-section {
+    background-color: @section;
+    color: @light-fg;
+}
+.pw-section.pw-hov:hover {
+    background-color: @section-hover;
+}
+.pw-section.pw-disabled {
+    background-color: greyscale(@section);
+    color: lighten(@primary-fg, 30%);
+}
+
+.pw-progression {
+    background-color: @progression;
+    color: @light-fg;
+}
+.pw-progression.pw-hov:hover {
+    background-color: @progression-hover;
+}
+.pw-progression.pw-disabled {
+    background-color: greyscale(@progression);
+    color: lighten(@primary-fg, 30%);
+}
+
+.pw-concept {
+    background-color: @concept;
+    color: @light-fg;
+}
+.pw-concept.pw-hov:hover {
+    background-color: @concept-hover;
+}
+.pw-concept.pw-disabled {
+    background-color: greyscale(@concept);
+    color: lighten(@primary-fg, 30%);
+}
+
+/* Neutral */
+
+.pw-light-1 {
+    background-color: @light-1;
+    color: @light-fg;
+}
+.pw-light-1.pw-hov:hover {
+    background-color: @light-1-hover;
+}
+
+.pw-light-2 {
+    background-color: @light-2;
+    color: @light-fg;
+}
+.pw-light-2.pw-hov:hover {
+    background-color: @light-2-hover;
+}
+
+.pw-light-3 {
+    background-color: @light-3;
+    color: @light-fg;
+}
+.pw-light-3.pw-hov:hover {
+    background-color: @light-3-hover;
+}
+
