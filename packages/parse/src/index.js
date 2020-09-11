@@ -1,6 +1,6 @@
-import call from './call';
+import API from '@play-what/api';
 
-const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
+const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
   const type = typeof rawSource;
 
   switch (type) {
@@ -22,7 +22,7 @@ const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, user
       }
       // other fn value
       console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-      const apiRes = call(levelStr, {}, level + 1, userModule);
+      const apiRes = API.call(levelStr, {}, level + 1, userModule);
       console.log('\t'.repeat(level), 'OUT', attr, 'fn', apiRes);
       return apiRes;
     case 'object':
@@ -83,7 +83,7 @@ const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, user
                     const attr = parseHelper(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {}); */
-        parsedFnOut = call(fn, argsOut, level + 2, userModule);
+        parsedFnOut = API.call(fn, argsOut, level + 2, userModule);
         console.log('\t'.repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
         return parsedFnOut;
@@ -95,8 +95,10 @@ const parseHelper = (rawSource, parentProps = {}, attr = 'root', level = 0, user
   }
 };
 
-const parse = (rawSource, userModule) => {
-  return parseHelper(rawSource, {}, 'root', 0, userModule);
+const json = (rawSource, userModule) => {
+  return parseJson(rawSource, {}, 'root', 0, userModule);
 };
 
-export default parse;
+export default {
+  json
+};

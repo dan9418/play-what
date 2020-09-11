@@ -8,7 +8,7 @@ import PresetInput from '../UI/PresetInput/PresetInput';
 import Fretboard from '../Fretboard/_module';
 
 const DEFAULT_PROPS = {
-    colorFn: PW.api.Vector.colorBy({ type: 'degree' }),
+    colorFn: PW.Vector.colorBy({ type: 'degree' }),
     intervals: [],
     keyCenter: null
 }
@@ -24,9 +24,9 @@ const Out = ({ keyCenterData, setKeyCenterData, intervalsData, setIntervalsData 
     const colorFn = DEFAULT_PROPS.colorFn;
     const viewer = Fretboard;
 
-    const notes = PW.api.Vector.addMatrix({ a: keyCenter, B: intervals });
-    const modes = PW.api.Matrix.Scale.getAllModes({ keyCenter, scale: intervals });
-    const numerals = PW.api.Matrix.Scale.getAllNumerals({ keyCenter, scale: intervals });
+    const notes = PW.Vector.addMatrix({ a: keyCenter, B: intervals });
+    const modes = PW.Matrix.Scale.getAllModes({ keyCenter, scale: intervals });
+    const numerals = PW.Matrix.Scale.getAllNumerals({ keyCenter, scale: intervals });
 
     console.log(keyCenter, intervals, notes, modes, numerals);
 
@@ -49,8 +49,8 @@ const Out = ({ keyCenterData, setKeyCenterData, intervalsData, setIntervalsData 
 
 const Explorer = () => {
 
-    const [keyCenterData, setKeyCenterData] = useState(PW.api.Vector.Note.preset.C);
-    const [intervalsData, setIntervalsData] = useState(PW.api.Matrix.Scale.preset.Major);
+    const [keyCenterData, setKeyCenterData] = useState(PW.Vector.Note.preset.C);
+    const [intervalsData, setIntervalsData] = useState(PW.Matrix.Scale.preset.Major);
 
     return (
         <div className='explorer'>

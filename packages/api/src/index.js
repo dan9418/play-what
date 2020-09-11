@@ -1,4 +1,4 @@
-import api from './api';
+import core from '@play-what/core';
 
 const getApiNode = (path, root) => {
   const tree = path.split('/');
@@ -17,7 +17,7 @@ const call = (path, args = {}, level = 0, userModule) => {
   console.log('\t'.repeat(level), `API - ${path}`, args);
 
   const root = {
-    PW: api,
+    PW: core,
     ...userModule
   };
 
@@ -27,4 +27,6 @@ const call = (path, args = {}, level = 0, userModule) => {
   return value;
 };
 
-export default call;
+export default {
+  call
+};

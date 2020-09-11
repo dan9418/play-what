@@ -38,7 +38,7 @@ const getFrets = (props) => {
         for (let f = fretRange[0]; f <= fretRange[1]; f++) {
 
             const noteIndex = tuning[s] + f;
-            const [note, podIndex] = PW.api.Matrix.findVectorWithPitch({
+            const [note, podIndex] = PW.Matrix.findVectorWithPitch({
                 matrix: intervals,
                 pitch: noteIndex,
                 pitchClass: reduced

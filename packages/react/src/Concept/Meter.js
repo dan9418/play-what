@@ -6,11 +6,11 @@ import { Interval, KeyCenter, Note } from './ConceptHelpers';
 const Meter = ({ type, pods }) => {
     let count = type === 'degree' ? 7 : 12;
     let prop = type === 'degree' ? 'd' : 'p';
-    let colorFn = PW.api.Vector.colorBy({ type });
+    let colorFn = PW.Vector.colorBy({ type });
 
     const cells = [];
     for (let i = 0; i < count; i++) {
-        const pod = pods.find(ivl => PW.api.Utils.modulo(ivl[prop], count) === i);
+        const pod = pods.find(ivl => PW.Utils.modulo(ivl[prop], count) === i);
 
         let styles = {};
         if (pod) {

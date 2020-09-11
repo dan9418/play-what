@@ -36,7 +36,7 @@ const APIBrowser = () => {
         <div className='api-browser'>
             <h2>API</h2>
             <div>
-                <ModuleDropdown mod={PW.api} setData={setData} level={0} />
+                <ModuleDropdown mod={PW} setData={setData} level={0} />
             </div>
             <pre>
                 {JSON.stringify(data, null, 2)}

@@ -5,7 +5,7 @@ import PW from '@play-what/core';
 const Label = ({ color, text, userStyles }) => {
 
     const bg = color ? color : null;
-    const fg = color ? PW.api.Color.getFgColor(bg) : null;
+    const fg = color ? PW.Color.getFgColor(bg) : null;
 
     const styles = {
         position: 'absolute',

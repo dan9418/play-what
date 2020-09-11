@@ -15,6 +15,7 @@
   "dependencies": {
     "@play-what/core": "*",
     "@play-what/react": "*",
+    "@play-what/parse": "*",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-json-view": "^1.19.1",

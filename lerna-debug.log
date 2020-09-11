@@ -1,0 +1,9 @@
+0 silly argv { _: [ 'bootstrap' ],
+0 silly argv   lernaVersion: '3.22.1',
+0 silly argv   '$0':
+0 silly argv    'C:\\Users\\dan94\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js' }
+1 notice cli v3.22.1
+2 verbose rootPath C:\_dev\play-what
+3 error JSONError: Unexpected token } in JSON at position 286 while parsing near '...what/api": "*"  },}' in ..\parse\package.json
+3 error     at module.exports (C:\Users\dan94\AppData\Roaming\npm\node_modules\lerna\node_modules\parse-json\index.js:26:19)
+3 error     at parse (C:\Users\dan94\AppData\Roaming\npm\node_modules\lerna\node_modules\load-json-file\index.js:15:9)

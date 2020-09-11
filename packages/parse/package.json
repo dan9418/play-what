@@ -1,0 +1,14 @@
+{
+  "name": "@play-what/parse",
+  "version": "0.0.0",
+  "description": "API handle",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Bednarczyk",
+  "license": "ISC",
+  "dependencies": {
+    "@play-what/api": "*"
+  }
+}
