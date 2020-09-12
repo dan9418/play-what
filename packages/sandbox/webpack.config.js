@@ -29,10 +29,10 @@ module.exports = {
     output: {
         path: __dirname + '/build/',
         publicPath: '/',
-        filename: 'bundle.js'
+        filename: 'sandbox.js'
     },
     devServer: {
-        contentBase: __dirname + "/build/",
+        contentBase: __dirname + "/",
         port: 9000
     },
 };
