@@ -13,13 +13,12 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@play-what/parse": "^0.0.0",
     "@play-what/core": "^0.0.0",
+    "@play-what/parse": "^0.0.0",
     "@play-what/react": "^0.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-json-view": "^1.19.1",
-    "recoil": "0.0.10"
+    "react-json-view": "^1.19.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

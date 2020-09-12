@@ -2,7 +2,7 @@
   "name": "play-what",
   "private": true,
   "workspaces": [
-     "packages/*"
+    "packages/*"
   ],
   "scripts": {
     "start": "lerna run --scope \"@play-what/sandbox\" start"
