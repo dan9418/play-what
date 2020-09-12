@@ -1,4 +1,4 @@
-import PW from '@play-what/core';
+import Core from '@play-what/core';
 import React from 'react';
 import DropdownInput from '../../UI/DropdownInput/DropdownInput';
 import './PresetInput.css';

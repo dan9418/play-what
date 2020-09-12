@@ -2,26 +2,26 @@ import { AUTUMN_LEAVES } from "./Presets/Charts";
 
 const RAW_SOURCE = {
     name: 'Test Source',
-    a: 'PW/Vector/Note/preset/C/value',
-    B: 'PW/Matrix/Scale/preset/Major/value',
+    a: '@core/Vector/Note/preset/C/value',
+    B: '@core/Matrix/Scale/preset/Major/value',
     children: [
         {
             notes: {
-                fn: 'PW/Vector/addMatrix/',
+                fn: '@core/Vector/addMatrix/',
                 args: {
                     B: 'parent/B',
                     a: 'parent/a',
                 }
             },
             modes: {
-                fn: 'PW/Matrix/Scale/getAllModes/',
+                fn: '@core/Matrix/Scale/getAllModes/',
                 args: {
                     scale: 'parent/B',
                     keyCenter: 'parent/a',
                 }
             },
             numerals: {
-                fn: 'PW/Matrix/Scale/getAllNumerals/',
+                fn: '@core/Matrix/Scale/getAllNumerals/',
                 args: {
                     scale: 'parent/B',
                     keyCenter: 'parent/a',
@@ -29,7 +29,7 @@ const RAW_SOURCE = {
             },
             children: [
                 {
-                    fn: 'PW/Log/print/',
+                    fn: '@core/Log/print/',
                     args: {
                         a: 'parent/a',
                         B: 'parent/B',
@@ -39,13 +39,13 @@ const RAW_SOURCE = {
                     }
                 },
                 {
-                    component: 'PW_React/Explorer/component',
+                    component: '@react/Explorer/component',
                     props: {
                         name: 'C Major',
                         keyCenter: 'parent/a',
                         intervals: 'parent/B',
                         viewer: {
-                            component: 'PW_React/Fretboard/component',
+                            component: '@react/Fretboard/component',
                             //props: {}
                         }
                     }

@@ -1,7 +1,5 @@
-import React from 'react'
-import Component from './Chart';
-import PW from '@play-what/core';
+import component from './Chart';
 
 export default {
-    component: Component
+    component
 };

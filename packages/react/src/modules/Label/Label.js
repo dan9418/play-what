@@ -1,11 +1,11 @@
 import * as React from "react";
-import PW from '@play-what/core';
+import Core from '@play-what/core';
 //import "./Keyboard.css";
 
 const Label = ({ color, text, userStyles }) => {
 
     const bg = color ? color : null;
-    const fg = color ? PW.Color.getFgColor(bg) : null;
+    const fg = color ? Core.Color.getFgColor(bg) : null;
 
     const styles = {
         position: 'absolute',

@@ -98,3 +98,5 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
 const json = (rawSource, userModule) => {
   return parseJson(rawSource, {}, 'root', 0, userModule);
 };
+
+export default json;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import PW from '@play-what/core';
+import Core from '@play-what/core';
 import "./Concept.css";
 import PodMeter from "./Meter";
 
@@ -10,8 +10,8 @@ export const PitchIndex = ({ pitchIndex }) => <div className="pitch-index">{`#${
 
 export const Note = ({ pod, ctx, colorFn }) => {
     const pitchIndex = pod.p;
-    const name = PW.Vector.Note.getName(ctx);
-    const f = Math.round(PW.Tuning.getFrequency(pod.p));
+    const name = Core.Vector.Note.getName(ctx);
+    const f = Math.round(Core.Tuning.getFrequency(pod.p));
     const colorStyles = colorFn(ctx)
 
     return (
@@ -39,7 +39,7 @@ export const NoteList = ({ notes, keyCenter, colorFn }) => {
 };
 
 export const Interval = ({ pod, ctx, colorFn }) => {
-    const name = PW.Vector.Interval.getName(ctx);
+    const name = Core.Vector.Interval.getName(ctx);
     const pitchIndex = pod.p;
     const styles = colorFn(ctx);
 

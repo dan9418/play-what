@@ -1,7 +1,5 @@
-import React from 'react'
-import Component from './Concept';
-import PW from '@play-what/core';
+import component from './Concept';
 
 export default {
-    component: Component
+    component
 };

@@ -496,7 +496,7 @@ eval("throw new Error(\"Module build failed (from ./node_modules/babel-loader/li
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Chart */ \"./src/modules/Chart/Chart.js\");\n/* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Chart__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _play_what_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @play-what/core */ \"../core/src/index.js\");\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  component: _Chart__WEBPACK_IMPORTED_MODULE_1___default.a\n});\n\n//# sourceURL=webpack:///./src/modules/Chart/_module.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Chart */ \"./src/modules/Chart/Chart.js\");\n/* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_Chart__WEBPACK_IMPORTED_MODULE_0__);\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  component: (_Chart__WEBPACK_IMPORTED_MODULE_0___default())\n});\n\n//# sourceURL=webpack:///./src/modules/Chart/_module.js?");
 
 /***/ }),
 

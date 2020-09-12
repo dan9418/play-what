@@ -1,7 +1,7 @@
 import React from 'react';
 import './IntervalInput.css';
 
-import PW from '@play-what/core';
+import Core from '@play-what/core';
 import Dropdown from '../Dropdown/Dropdown';
 
 const CUSTOM_INTERVAL = {
@@ -11,12 +11,12 @@ const CUSTOM_INTERVAL = {
     d: 0
 };
 
-const DATA = [...PW.Presets.INTERVALS_VALUES, CUSTOM_INTERVAL];
+const DATA = [...Core.Presets.INTERVALS_VALUES, CUSTOM_INTERVAL];
 
 const areIntervalsEqual = (a, b) => a.p === b.a.p && a.d === b.a.d;
 
 const findPreset = interval => {
-    const preset = PW.Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));
+    const preset = Core.Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));
     return preset ? preset : { ...CUSTOM_INTERVAL };
 }
 

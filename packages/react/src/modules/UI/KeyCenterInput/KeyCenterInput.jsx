@@ -1,12 +1,12 @@
 import React from 'react';
 import './KeyCenterInput.css';
 
-import PW from '@play-what/core';
+import Core from '@play-what/core';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ScalarInput from '../ScalarInput/ScalerInput';
 
 const DegreeInput = ({ degree, setDegree }) => {
-    const allDegrees = PW.Theory.getAllDegrees();
+    const allDegrees = Core.Theory.getAllDegrees();
     return (
         <div className="degree-input">
             {allDegrees.map((d, i) => {
@@ -17,7 +17,7 @@ const DegreeInput = ({ degree, setDegree }) => {
                         onClick={() => setDegree({ p: d.p, d: i })}
                         className={isActive ? '' : null}
                     >
-                        {PW.Theory.getDegreeMapping(d.d).name}
+                        {Core.Theory.getDegreeMapping(d.d).name}
                     </ButtonInput>
                 );
             })}
@@ -26,7 +26,7 @@ const DegreeInput = ({ degree, setDegree }) => {
 };
 
 const AccidentalInput = ({ accidental, setAccidental }) => {
-    const allAccidentals = Object.values(PW.Constants.ACCIDENTAL);
+    const allAccidentals = Object.values(Core.Constants.ACCIDENTAL);
     return (
         <div className="accidental-input">
             {allAccidentals.map((a, i) => {
@@ -49,10 +49,10 @@ const OctaveInput = ({ octave, setOctave }) => <ScalarInput value={octave} setVa
 
 const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
 
-    const degree = PW.Theory.getDegree(keyCenter.d);
+    const degree = Core.Theory.getDegree(keyCenter.d);
     const octave = Math.floor(keyCenter.p / 12) + 4;
     const offset = keyCenter.p - degree.p;
-    const accidental = PW.Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;
+    const accidental = Core.Constants.ACCIDENTAL_VALUES.find(a => a.offset === offset) || null;
 
     const setDegree = (d) => {
         const newKeyCenter = {
@@ -70,7 +70,7 @@ const KeyCenterInput = ({ keyCenter, setKeyCenter }) => {
     };
     const setOctave = o => {
         const newKeyCenter = {
-            p: ((o - 4) * 12) + PW.Utils.modulo(keyCenter.p, 12),
+            p: ((o - 4) * 12) + Core.Utils.modulo(keyCenter.p, 12),
             d: keyCenter.d
         };
         setKeyCenter(newKeyCenter);
