@@ -1,5 +1,5 @@
 {
-  "name": "@pw/core",
+  "name": "@pw/color",
   "version": "0.0.0",
   "description": "",
   "main": "src/index.js",
@@ -11,7 +11,6 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@pw/color": "0.0.0",
-    "tone": "^13.8.25"
+    "color": "^3.1.2"
   }
 }
