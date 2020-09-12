@@ -1,10 +1,7 @@
-import Component from './Fretboard';
-import Defaults from './Fretboard.defaults';
-import * as api from './Fretboard.api';
-import Core from '@pw/core';
+import component from './Fretboard';
 
 const Fretboard = {
-    component: Component
+	component
 };
 
 export default Fretboard;

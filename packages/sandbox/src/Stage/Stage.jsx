@@ -1,5 +1,5 @@
 import React from 'react';
-import Parse from '@play-what/parse';
+import Parse from '@pw/parse';
 import { TEST } from '../Common/Presets';
 import Menu from '../Menu/Menu';
 import './Stage.css';

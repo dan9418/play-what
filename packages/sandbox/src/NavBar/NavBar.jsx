@@ -1,5 +1,5 @@
 import React from 'react';
-import Common from '../Common/_module';
+import * as Icons from '../Common/Icons';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -11,7 +11,7 @@ const NavBar = () => {
 			<div className="right-nav">
 				<a className="icon" href="https://github.com/dan9418/play-what-sandbox" target="_blank"><Common.Icons.GitHub /></a>
 				<div className={`meatball ${menuTab ? 'pw-accent' : 'pw-primary'} pw-hov`} onClick={toggleMenu}>
-					<Common.Icons.Menu />
+					<Icons.Menu />
 				</div>
 			</div>
 		</nav>
