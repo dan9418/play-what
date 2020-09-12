@@ -1,7 +1,7 @@
 import React from 'react';
 import './KeyCenterInput.css';
 
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import ButtonInput from '../ButtonInput/ButtonInput';
 import ScalarInput from '../ScalarInput/ScalerInput';
 

@@ -1,5 +1,5 @@
 {
-  "name": "@play-what/api",
+  "name": "@pw/api",
   "version": "0.0.0",
   "description": "API handle",
   "main": "src/index.js",
@@ -10,7 +10,7 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@play-what/core": "^0.0.0",
-    "@play-what/react": "^0.0.0"
+    "@pw/core": "^0.0.0",
+    "@pw/react": "^0.0.0"
   }
 }

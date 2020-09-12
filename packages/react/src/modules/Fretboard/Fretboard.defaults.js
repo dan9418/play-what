@@ -1,4 +1,4 @@
-import Core from '@play-what/core';
+import Core from '@pw/core';
 
 export default {
     fretRange: [0, 12],

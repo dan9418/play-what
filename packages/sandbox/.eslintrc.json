@@ -4,8 +4,7 @@
         "es2020": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -25,6 +24,8 @@
         "no-debugger":"off",
         "max-len":"off",
         "arrow-body-style":"off",
-        "comma-dangle":["error","never"]
+        "comma-dangle":["error","never"],
+        "indent": ["error", "tab"],
+        "no-tabs": ["off"]
     }
 }

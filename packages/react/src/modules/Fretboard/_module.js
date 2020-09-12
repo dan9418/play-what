@@ -1,7 +1,7 @@
 import Component from './Fretboard';
 import Defaults from './Fretboard.defaults';
 import * as api from './Fretboard.api';
-import Core from '@play-what/core';
+import Core from '@pw/core';
 
 const Fretboard = {
     component: Component

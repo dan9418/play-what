@@ -1,4 +1,4 @@
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import React, { useState } from "react";
 import "./Explorer.css";
 import Concept from '../Concept/Concept';

@@ -1,4 +1,4 @@
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import React from 'react';
 import './Meter.css';
 import { Interval, KeyCenter, Note } from './ConceptHelpers';

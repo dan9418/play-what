@@ -1,7 +1,7 @@
 import React from 'react';
 import './IntervalInput.css';
 
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import Dropdown from '../Dropdown/Dropdown';
 
 const CUSTOM_INTERVAL = {

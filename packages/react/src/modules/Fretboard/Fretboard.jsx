@@ -1,4 +1,4 @@
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import * as React from "react";
 import Label from '../Label/Label';
 import * as api from './Fretboard.api';

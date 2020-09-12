@@ -1,5 +1,5 @@
 import React from 'react';
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import './Concept.css';
 import { IntervalList, KeyCenter, NoteList } from './ConceptHelpers';
 import PresetInput from '../UI/PresetInput/PresetInput';

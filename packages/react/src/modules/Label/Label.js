@@ -1,5 +1,5 @@
 import * as React from "react";
-import Core from '@play-what/core';
+import Core from '@pw/core';
 //import "./Keyboard.css";
 
 const Label = ({ color, text, userStyles }) => {

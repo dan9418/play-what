@@ -1,4 +1,4 @@
-import Core from '@play-what/core';
+import Core from '@pw/core';
 import PW_React from '@play-what/react';
 
 const DEFAULT_MODULES = [
