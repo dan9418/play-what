@@ -383,7 +383,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var colo
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Concept */ \"../core/src/modules/Concept.js\");\n/* harmony import */ var _modules_Log__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Log */ \"../core/src/modules/Log.js\");\n/* harmony import */ var _modules_Matrix_Matrix__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Matrix/Matrix */ \"../core/src/modules/Matrix/Matrix.js\");\n/* harmony import */ var _modules_Tuning__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Tuning */ \"../core/src/modules/Tuning.js\");\n/* harmony import */ var _modules_Utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Utils */ \"../core/src/modules/Utils.js\");\n/* harmony import */ var _modules_Vector_Vector__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/Vector/Vector */ \"../core/src/modules/Vector/Vector.js\");\n\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Vector: _modules_Vector_Vector__WEBPACK_IMPORTED_MODULE_5__[\"default\"],\n  Matrix: _modules_Matrix_Matrix__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Concept: _modules_Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Tuning: _modules_Tuning__WEBPACK_IMPORTED_MODULE_3__[\"default\"],\n  Utils: _modules_Utils__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  Log: _modules_Log__WEBPACK_IMPORTED_MODULE_1__[\"default\"]\n});\n\n//# sourceURL=webpack:///../core/src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Concept__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Concept */ \"../core/src/modules/Concept.js\");\n/* harmony import */ var _modules_Matrix_Matrix__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Matrix/Matrix */ \"../core/src/modules/Matrix/Matrix.js\");\n/* harmony import */ var _modules_Tuning__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Tuning */ \"../core/src/modules/Tuning.js\");\n/* harmony import */ var _modules_Utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Utils */ \"../core/src/modules/Utils.js\");\n/* harmony import */ var _modules_Vector_Vector__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/Vector/Vector */ \"../core/src/modules/Vector/Vector.js\");\n\n\n\n\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  Vector: _modules_Vector_Vector__WEBPACK_IMPORTED_MODULE_4__[\"default\"],\n  Matrix: _modules_Matrix_Matrix__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n  Concept: _modules_Concept__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n  Tuning: _modules_Tuning__WEBPACK_IMPORTED_MODULE_2__[\"default\"],\n  Utils: _modules_Utils__WEBPACK_IMPORTED_MODULE_3__[\"default\"]\n});\n\n//# sourceURL=webpack:///../core/src/index.js?");
 
 /***/ }),
 
@@ -396,18 +396,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mod
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\nconst defaults = {\n  a: {\n    p: 0,\n    d: 0\n  },\n  B: []\n};\n/*\r\nexport const chordalInversion = (conceptConfig, inversion) => {\r\n    const concept = { ...conceptConfig };\r\n    concept.B = [...conceptConfig.B];\r\n    concept.B[0] = addVectors(concept.B[0], Presets.INTERVALS.P8.a);\r\n    concept.B = rotate(concept.B, inversion);\r\n    return concept;\r\n} */\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  defaults\n});\n\n//# sourceURL=webpack:///../core/src/modules/Concept.js?");
-
-/***/ }),
-
-/***/ "../core/src/modules/Log.js":
-/*!**********************************!*\
-  !*** ../core/src/modules/Log.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst print = args => {\n  console.log('PW - LOG', args);\n};\n\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  print\n});\n\n//# sourceURL=webpack:///../core/src/modules/Log.js?");
 
 /***/ }),
 

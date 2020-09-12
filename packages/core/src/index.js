@@ -1,5 +1,4 @@
 import Concept from './modules/Concept';
-import Log from './modules/Log';
 import Matrix from './modules/Matrix/Matrix';
 import Tuning from './modules/Tuning';
 import Utils from './modules/Utils';
@@ -10,6 +9,5 @@ export default {
 	Matrix,
 	Concept,
 	Tuning,
-	Utils,
-	Log
+	Utils
 };

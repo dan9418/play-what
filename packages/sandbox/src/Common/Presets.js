@@ -27,16 +27,6 @@ export const TEST = {
 			},
 			children: [
 				{
-					fn: '@core/Log/print/',
-					args: {
-						a: 'parent/a',
-						B: 'parent/B',
-						notes: 'parent/notes',
-						modes: 'parent/modes',
-						numerals: 'parent/numerals'
-					}
-				},
-				{
 					    component: '@react/Explorer/component',
 					props: {
 						name: 'C Major',
