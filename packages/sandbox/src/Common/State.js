@@ -1,5 +1,4 @@
 import Parse from '@play-what/parse';
-import PW_React from '@play-what/react';
 import { atom, selector } from 'recoil';
 import RAW_SOURCE from './source';
 
@@ -23,7 +22,7 @@ export const parsedSourceState = selector({
         const source = get(rawSourceState);
         let parsedSource = {};
         //try {
-        parsedSource = Parse.json(source, PW_React);
+        parsedSource = Parse.json(source);
         //}
         //catch (e) {
         //    console.error(e)

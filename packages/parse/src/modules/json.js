@@ -1,6 +1,6 @@
 import API from '@play-what/api';
 
-const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
+const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0) => {
   const type = typeof rawSource;
 
   switch (type) {
@@ -22,7 +22,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
       }
       // other fn value
       console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-      const apiRes = API.call(levelStr, {}, level + 1, userModule);
+      const apiRes = API.call(levelStr, {}, level + 1);
       console.log('\t'.repeat(level), 'OUT', attr, 'fn', apiRes);
       return apiRes;
     case 'object':
@@ -34,7 +34,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
       // Array
       if (Array.isArray(levelObj)) {
         console.log('\t'.repeat(level), 'IN', attr, 'arr', rawSource);
-        const arr = levelObj.map((x) => parseJson(x, parentProps, `${attr}.arr`, level + 1, userModule));
+        const arr = levelObj.map((x) => parseJson(x, parentProps, `${attr}.arr`, level + 1));
         console.log('\t'.repeat(level), 'OUT', attr, 'arr', arr);
         return arr;
       }
@@ -56,7 +56,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         console.log('\t'.repeat(level), 'IN', attr, 'props', rawSource);
         const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
           if (key === 'children') return acc;
-          const attr = parseJson(value, parentProps, key, level + 1, userModule);
+          const attr = parseJson(value, parentProps, key, level + 1);
           return { ...acc, [key]: attr };
         }, {});
         console.log('\t'.repeat(level), 'OUT', attr, 'props', localOut);
@@ -64,7 +64,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         if (props.children) {
           console.log('\t'.repeat(level), 'IN', attr, 'children', rawSource);
           const mergedProps = { ...parentProps, ...localOut };
-          localOut.children = props.children.map((c, i) => parseJson(c, mergedProps, `${attr}.children`, level + 1, userModule));
+          localOut.children = props.children.map((c, i) => parseJson(c, mergedProps, `${attr}.children`, level + 1));
           console.log('\t'.repeat(level), 'OUT', attr, 'children', localOut.children);
         }
 
@@ -77,13 +77,13 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         if (typeof fn !== 'string') throw ('Invalid fn type');
 
         console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-        const argsOut = parseJson(args, parentProps, 'args', level + 1, userModule);
+        const argsOut = parseJson(args, parentProps, 'args', level + 1);
         /* Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') console.warn('children for fn args is experimental')
                     const attr = parseJson(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {}); */
-        parsedFnOut = API.call(fn, argsOut, level + 2, userModule);
+        parsedFnOut = API.call(fn, argsOut, level + 2);
         console.log('\t'.repeat(level), 'OUT', attr, 'fn', parsedFnOut);
 
         return parsedFnOut;
@@ -95,8 +95,8 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
   }
 };
 
-const json = (rawSource, userModule) => {
-  return parseJson(rawSource, {}, 'root', 0, userModule);
+const json = (rawSource) => {
+  return parseJson(rawSource, {}, 'root', 0);
 };
 
 export default json;
