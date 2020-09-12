@@ -14,7 +14,7 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@play-what/core": "*"
+    "@play-what/core": "^0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

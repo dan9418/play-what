@@ -1,5 +1,7 @@
 import API from '@play-what/api';
 
+//const API = { call: () => null}
+
 const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userModule = null) => {
   const type = typeof rawSource;
 
@@ -34,7 +36,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
       // Array
       if (Array.isArray(levelObj)) {
         console.log('\t'.repeat(level), 'IN', attr, 'arr', rawSource);
-        const arr = levelObj.map((x) => parseHelper(x, parentProps, `${attr}.arr`, level + 1, userModule));
+        const arr = levelObj.map((x) => parseJson(x, parentProps, `${attr}.arr`, level + 1, userModule));
         console.log('\t'.repeat(level), 'OUT', attr, 'arr', arr);
         return arr;
       }
@@ -56,7 +58,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         console.log('\t'.repeat(level), 'IN', attr, 'props', rawSource);
         const localOut = Object.entries(props).reduce((acc, [key, value], i, arr) => {
           if (key === 'children') return acc;
-          const attr = parseHelper(value, parentProps, key, level + 1, userModule);
+          const attr = parseJson(value, parentProps, key, level + 1, userModule);
           return { ...acc, [key]: attr };
         }, {});
         console.log('\t'.repeat(level), 'OUT', attr, 'props', localOut);
@@ -64,7 +66,7 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         if (props.children) {
           console.log('\t'.repeat(level), 'IN', attr, 'children', rawSource);
           const mergedProps = { ...parentProps, ...localOut };
-          localOut.children = props.children.map((c, i) => parseHelper(c, mergedProps, `${attr}.children`, level + 1, userModule));
+          localOut.children = props.children.map((c, i) => parseJson(c, mergedProps, `${attr}.children`, level + 1, userModule));
           console.log('\t'.repeat(level), 'OUT', attr, 'children', localOut.children);
         }
 
@@ -77,10 +79,10 @@ const parseJson = (rawSource, parentProps = {}, attr = 'root', level = 0, userMo
         if (typeof fn !== 'string') throw ('Invalid fn type');
 
         console.log('\t'.repeat(level), 'IN', attr, 'fn', rawSource);
-        const argsOut = parseHelper(args, parentProps, 'args', level + 1, userModule);
+        const argsOut = parseJson(args, parentProps, 'args', level + 1, userModule);
         /* Object.entries(args).reduce((acc, [key, value], i, arr) => {
                     if (key === 'children') console.warn('children for fn args is experimental')
-                    const attr = parseHelper(value, parentProps, key, level + 1);
+                    const attr = parseJson(value, parentProps, key, level + 1);
                     return { ...acc, [key]: attr };
                 }, {}); */
         parsedFnOut = API.call(fn, argsOut, level + 2, userModule);

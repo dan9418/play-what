@@ -2,7 +2,7 @@
   "name": "@play-what/sandbox",
   "version": "1.0.0",
   "description": "Sandbox code for Play What",
-  "main": "app.js",
+  "main": "",
   "scripts": {
     "start": "webpack-dev-server --config webpack.config.js",
     "build": "webpack",
@@ -13,9 +13,9 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@play-what/core": "*",
-    "@play-what/react": "*",
-    "@play-what/parse": "*",
+    "@play-what/parse": "^0.0.0",
+    "@play-what/core": "^0.0.0",
+    "@play-what/react": "^0.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-json-view": "^1.19.1",
