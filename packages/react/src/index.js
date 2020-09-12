@@ -4,8 +4,8 @@ import Chart from './modules/Chart/_module';
 import List from './modules/List/_module';
 
 export default {
-    Fretboard,
-    Explorer,
-    Chart,
-    List
+	Fretboard,
+	Explorer,
+	Chart,
+	List
 };

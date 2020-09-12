@@ -6,14 +6,14 @@ import './Stage.css';
 import ViewerManager from './ViewerManager';
 
 const Stage = () => {
-  const rawSource = TEST;
-  const parsedSource = Parse.json(rawSource);
-  return (
-    <div className="stage">
-      <ViewerManager parsedSource={parsedSource} />
-      <Menu />
-    </div>
-  );
+	const rawSource = TEST;
+	const parsedSource = Parse.json(rawSource);
+	return (
+		<div className="stage">
+			<ViewerManager parsedSource={parsedSource} />
+			<Menu />
+		</div>
+	);
 };
 
 export default Stage;

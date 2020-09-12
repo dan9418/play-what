@@ -6,7 +6,8 @@
   ],
   "scripts": {
     "start": "lerna run --scope \"@pw/sandbox\" start",
-    "lint": "eslint --fix"
+    "lint": "eslint --fix",
+    "build": "lerna run build"
   },
   "devDependencies": {
     "eslint": "^7.7.0",
