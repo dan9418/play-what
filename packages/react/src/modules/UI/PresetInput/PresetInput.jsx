@@ -1,4 +1,4 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import React from 'react';
 import DropdownInput from '../../UI/DropdownInput/DropdownInput';
 import './PresetInput.css';

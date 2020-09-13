@@ -1,4 +1,4 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import React, { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import './PlaybackTab.css';
@@ -30,14 +30,14 @@ const PlaybackTab = () => {
 	const [playing, togglePlay] = useToggle(false);
 
 	if (!playing) {
-		Core.Sound.stopNotes();
+		PW_Core.Sound.stopNotes();
 	}
 	else {
 		const beatDuration = 1 / (tempo / 60);
 		if (remBeats === t) {
-			const freqs = Core.Theory.getFrequencies(concept.C);
+			const freqs = PW_Core.Theory.getFrequencies(concept.C);
 			const pulseDuration = beatDuration * t; // seconds
-			Core.Sound.playNotes(freqs, pulseDuration / 2);
+			PW_Core.Sound.playNotes(freqs, pulseDuration / 2);
 			console.log(beatIndex, 'P');
 		}
 		if (remBeats > 1) {

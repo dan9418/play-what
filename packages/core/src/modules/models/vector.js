@@ -2,7 +2,7 @@ import Utils from '../Utils';
 import PW_Color from '@pw/color';
 import Theory from '../Theory';
 
-import preset from './Vector.presets';
+import preset from './vector.presets';
 
 const max = {
 	p: 12,

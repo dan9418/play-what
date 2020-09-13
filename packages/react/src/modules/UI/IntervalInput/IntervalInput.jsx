@@ -1,7 +1,7 @@
 import React from 'react';
 import './IntervalInput.css';
 
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import Dropdown from '../Dropdown/Dropdown';
 
 const CUSTOM_INTERVAL = {
@@ -11,12 +11,12 @@ const CUSTOM_INTERVAL = {
     d: 0
 };
 
-const DATA = [...Core.Presets.INTERVALS_VALUES, CUSTOM_INTERVAL];
+const DATA = [...PW_Core.Presets.INTERVALS_VALUES, CUSTOM_INTERVAL];
 
 const areIntervalsEqual = (a, b) => a.p === b.a.p && a.d === b.a.d;
 
 const findPreset = interval => {
-    const preset = Core.Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));
+    const preset = PW_Core.Presets.INTERVALS_VALUES.find(p => areIntervalsEqual(interval, p));
     return preset ? preset : { ...CUSTOM_INTERVAL };
 }
 

@@ -3,7 +3,7 @@ import './MatrixInput.css';
 
 import VectorInput from '../VectorInput/VectorInput';
 
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 
 const MatrixInput = props => {
     const { value, setValue } = props;

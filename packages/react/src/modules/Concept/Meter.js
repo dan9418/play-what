@@ -1,4 +1,4 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import React from 'react';
 import './Meter.css';
 import { Interval, KeyCenter, Note } from './ConceptHelpers';
@@ -6,11 +6,11 @@ import { Interval, KeyCenter, Note } from './ConceptHelpers';
 const Meter = ({ type, pods }) => {
     let count = type === 'degree' ? 7 : 12;
     let prop = type === 'degree' ? 'd' : 'p';
-    let colorFn = Core.Vector.colorBy({ type });
+    let colorFn = PW_Core.models.vector.colorBy({ type });
 
     const cells = [];
     for (let i = 0; i < count; i++) {
-        const pod = pods.find(ivl => Core.Utils.modulo(ivl[prop], count) === i);
+        const pod = pods.find(ivl => PW_Core.Utils.modulo(ivl[prop], count) === i);
 
         let styles = {};
         if (pod) {

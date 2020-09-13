@@ -1,6 +1,6 @@
 const defaults = {
-  a: { p: 0, d: 0 },
-  B: []
+	a: { p: 0, d: 0 },
+	B: []
 };
 
 /*
@@ -13,5 +13,5 @@ export const chordalInversion = (conceptConfig, inversion) => {
 } */
 
 export default {
-  defaults
+	defaults
 };

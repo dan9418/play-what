@@ -1,4 +1,4 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import React, { useState } from "react";
 import DropdownInput from '../UI/DropdownInput/DropdownInput';
 import "./Explorer.css";
@@ -34,7 +34,7 @@ const APIBrowser = () => {
 		<div className='api-browser'>
 			<h2>API</h2>
 			<div>
-				<ModuleDropdown mod={Core} setData={setData} level={0} />
+				<ModuleDropdown mod={PW_Core} setData={setData} level={0} />
 			</div>
 			<pre>
 				{JSON.stringify(data, null, 2)}

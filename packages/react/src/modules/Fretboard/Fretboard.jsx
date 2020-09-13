@@ -1,4 +1,4 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import * as React from "react";
 import Label from '../Label/Label';
 import * as api from './Fretboard.api';
@@ -38,7 +38,7 @@ const getFrets = (props) => {
         for (let f = fretRange[0]; f <= fretRange[1]; f++) {
 
             const noteIndex = tuning[s] + f;
-            const [note, podIndex] = Core.Matrix.findVectorWithPitch({
+            const [note, podIndex] = PW_Core.models.matrix.findVectorWithPitch({
                 matrix: intervals,
                 pitch: noteIndex,
                 pitchClass: reduced

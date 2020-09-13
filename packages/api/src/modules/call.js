@@ -1,10 +1,10 @@
-import Core from '@pw/core';
+import PW_Core from '@pw/core';
 import PW_React from '@pw/react';
 
 const DEFAULT_MODULES = [
 	{
 		handle: '@core',
-		value: Core
+		value: PW_Core
 	},
 	{
 		handle: '@react',
