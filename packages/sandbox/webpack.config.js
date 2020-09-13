@@ -1,3 +1,5 @@
+const { WebpackConfigDumpPlugin } = require("webpack-config-dump-plugin");
+
 module.exports = {
 	mode: 'development',
 	entry: './src/index.jsx',
@@ -33,8 +35,9 @@ module.exports = {
 		contentBase: `${__dirname}/`,
 		port: 9000,
 		hot: true
-	}
-	/*plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	]*/
+	},
+	plugins: [
+		new WebpackConfigDumpPlugin({ outputPath: './', name: 'dump.txt' })
+		//new webpack.HotModuleReplacementPlugin()
+	]
 };

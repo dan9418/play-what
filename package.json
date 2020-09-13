@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "start": "lerna run --scope \"@pw/sandbox\" start",
+    "start": "yarn workspace @pw/sandbox start",
     "lint": "eslint --fix",
     "build": "lerna run build"
   },

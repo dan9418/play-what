@@ -5,6 +5,7 @@
   "main": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
+    "start-debug": "cross-env DEBUG='express:*' cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
     "build": "cross-env NODE_ENV=development webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "less": "lessc src/Common/index.less src/Common/index.css"
@@ -37,6 +38,7 @@
     "style-loader": "^1.0.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
+    "webpack-config-dump-plugin": "^3.0.1",
     "webpack-dev-server": "^3.9.0"
   },
   "babel": {
