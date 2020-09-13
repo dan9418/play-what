@@ -7,7 +7,7 @@ import Stage from '../Stage/Stage';
 const Main = () => {
 	return (
 		<>
-		test
+		tes
 			<NavBar />
 			<Stage />
 		</>

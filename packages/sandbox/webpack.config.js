@@ -33,6 +33,7 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: `${__dirname}/`,
+		publicPath: '/',
 		port: 9000,
 		hot: true
 	},

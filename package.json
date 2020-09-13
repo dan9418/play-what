@@ -6,6 +6,7 @@
   ],
   "scripts": {
     "start": "yarn workspace @pw/sandbox start",
+    "start-debug": "yarn workspace @pw/sandbox start-debug",
     "lint": "eslint --fix",
     "build": "lerna run build"
   },
