@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = {
 	mode: 'development',
 	entry: './src/index.jsx',
@@ -20,14 +18,12 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['*', '.jsx', '.js']
-	},
-	/*resolve: {
-		extensions: ['*', '.js', '.jsx'],
+		extensions: ['*', '.jsx', '.js'],
 		alias: {
-			react: path.resolve('./node_modules/react')
+			//react: path.resolve('./node_modules/react')
+			'react-dom': '@hot-loader/react-dom'
 		}
-	},*/
+	},
 	output: {
 		path: `${__dirname}/build/`,
 		publicPath: '/',
@@ -35,6 +31,10 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: `${__dirname}/`,
-		port: 9000
+		port: 9000,
+		hot: true
 	}
+	/*plugins: [
+		new webpack.HotModuleReplacementPlugin()
+	]*/
 };

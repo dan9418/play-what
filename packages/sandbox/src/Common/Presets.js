@@ -1267,40 +1267,6 @@ const CHARTS = [
                 ]
             }
         ]
-    },
-    {
-        id: 'exercises',
-        name: 'Exercises',
-        presets: [
-            {
-                id: 'Roman Numerals',
-                name: 'Roman Numerals',
-                defaults: {
-                    a: '@core/models/vector/preset/note/C/value'
-                },
-                sections: [
-                    {
-                        name: 'A',
-                        progressions: [
-                            {
-                                name: 'ii V I',
-                                concepts: [
-                                    {
-                                        B: '@core/models/matrix/preset/chord/ii/value'
-                                    },
-                                    {
-                                        B: '@core/models/matrix/preset/chord/V/value'
-                                    },
-                                    {
-                                        B: '@core/models/matrix/preset/chord/i/value'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                ]
-            },
-        ]
     }
 ];
 */

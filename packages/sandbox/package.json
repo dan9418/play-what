@@ -4,8 +4,8 @@
   "description": "Sandbox code for Play What",
   "main": "",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js",
-    "build": "webpack",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
+    "build": "cross-env NODE_ENV=development webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "less": "lessc src/Common/index.less src/Common/index.css"
   },
@@ -13,11 +13,13 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
     "@pw/core": "^0.0.0",
     "@pw/parse": "^0.0.0",
     "@pw/react": "^0.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-hot-loader": "^4.12.21",
     "react-json-view": "^1.19.1"
   },
   "devDependencies": {
@@ -39,7 +41,8 @@
   },
   "babel": {
     "plugins": [
-      "@babel/plugin-proposal-class-properties"
+      "@babel/plugin-proposal-class-properties",
+      "react-hot-loader/babel"
     ]
   }
 }
