@@ -1,4 +1,5 @@
 import vector from './vector';
+import scalar from './scalar';
 import Utils from '../Utils';
 
 import preset from './matrix.presets';
@@ -17,7 +18,7 @@ const areEqual = ({ list1, list2 }) => {
 };
 
 const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
-	const p = pitchClass ? Utils.modulo(pitch, vector.max.p) : pitch;
+	const p = pitchClass ? scalar.modulo(pitch, vector.max.p) : pitch;
 	const index = matrix.findIndex((n) => n.p === p);
 	return index > -1 ? [matrix[index], index] : [null, index];
 };
@@ -28,8 +29,8 @@ const getMode = ({ scale, degree }) => {
 	const a = mode[0];
 	const newMode = mode.map((m) => {
 	  return {
-			d: Utils.moduloSum(m.d, a.d, 7, 0, true),
-			p: Utils.moduloSum(m.p, a.p, 12, 0, true)
+			d: scalar.moduloSum(m.d, a.d, 7, 0, true),
+			p: scalar.moduloSum(m.p, a.p, 12, 0, true)
 	  };
 	});
 	return newMode;
@@ -49,9 +50,9 @@ const getAllModes = ({ scale, keyCenter }) => {
 
 const getNumeral = ({ scale, keyCenter, degree }) => {
 	const i1 = degree;
-	const i3 = Utils.moduloSum(degree, 2, scale.length);
-	const i5 = Utils.moduloSum(degree, 4, scale.length);
-	const i7 = Utils.moduloSum(degree, 6, scale.length);
+	const i3 = scalar.moduloSum(degree, 2, scale.length);
+	const i5 = scalar.moduloSum(degree, 4, scale.length);
+	const i7 = scalar.moduloSum(degree, 6, scale.length);
 	const numeral = [scale[i1], scale[i3], scale[i5], scale[i7]];
 	return {
 	  name: `Numeral ${degree + 1}`,

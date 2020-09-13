@@ -1,4 +1,4 @@
-import Utils from '../Utils';
+import scalar from './scalar';
 import PW_Color from '@pw/color';
 import Theory from '../Theory';
 
@@ -19,25 +19,25 @@ const areEqual = ({ interval1, interval2 }) => {
 };
 
 const add = ({ x, y }) => ({
-	p: Utils.moduloSum(x.p, y.p, max.p),
-	d: Utils.moduloSum(x.d, y.d, max.d)
+	p: scalar.moduloSum(x.p, y.p, max.p),
+	d: scalar.moduloSum(x.d, y.d, max.d)
 });
 
-const reduce = ({ p, d }) => ({ p: Utils.modulo(p, max.p), d });
+const reduce = ({ p, d }) => ({ p: scalar.modulo(p, max.p), d });
 
 const findNoteWithPitch = (notes, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? Utils.modulo(pitch, max.p) : pitch;
+	const p = octaveReduce ? scalar.modulo(pitch, max.p) : pitch;
 	return notes.find((n) => n.p === p) || null;
 };
 
 const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? Utils.modulo(pitch, max.p) : pitch;
+	const p = octaveReduce ? scalar.modulo(pitch, max.p) : pitch;
 	return notes.findIndex((n) => n.p === p);
 };
 
 const addVector = ({ a, b }) => ({
-	p: Utils.moduloSum(a.p, b.p, max.p),
-	d: Utils.moduloSum(a.d, b.d, max.d)
+	p: scalar.moduloSum(a.p, b.p, max.p),
+	d: scalar.moduloSum(a.d, b.d, max.d)
 });
 
 const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
