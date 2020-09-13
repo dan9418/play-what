@@ -1,8 +1,8 @@
 import Utils from '../Utils';
 import PW_Color from '@pw/color';
+import Theory from '../Theory';
 
-import Interval from './Vector.Interval';
-import Note from './Vector.Note';
+import preset from './Vector.presets';
 
 const max = {
 	p: 12,
@@ -102,9 +102,51 @@ const textBy = (props) => {
 	};
 };
 
+const getIntervalName = ({ pod }) => {
+	if (pod.d < 0 || pod.d > max.d) {
+		console.error('degree out of bounds', pod);
+		return '';
+	}
+	const reduced = reduce(pod);
+	const ivl = Object.values(preset.interval).find(({ value }) => value.p === reduced.p && value.d === reduced.d);
+	return ivl ? ivl.id : '';
+};
+
+const getNoteName = ({ pod }) => {
+	if (pod.d < 0 || pod.d > max.d) {
+		console.error('degree out of bounds', pod);
+		return '';
+	}
+	const reduced = reduce(pod);
+	const degree = Theory.DEGREE_MAP[reduced.d];
+	if (!degree) {
+		return '?';
+	}
+	return degree.name + Theory.getAccidentalString(reduced.p - degree.p);
+};
+
+/* export const parseString = keyString => {
+    if (typeof keyString !== 'string' || !keyString.length) {
+        throw ('Bad keystring args')
+    }
+    const [tonicStr, accidentalStr] = Utils.splitAt(keyString, 1);
+
+    const degreeIndex = DEGREE_MAPPING.findIndex(d => d.name === tonicStr);
+
+    const accidental = ACCIDENTAL_VALUES.find(a => a.name === accidentalStr) || ACCIDENTAL.Natural;
+
+    return {
+        id: keyString,
+        name: keyString,
+        p: DEGREE_MAPPING[degreeIndex].pitch + accidental.offset,
+        d: degreeIndex
+    };
+}; */
+
 export default {
-	Note,
-	Interval,
+	preset,
+	getIntervalName,
+	getNoteName,
 	max,
 	isValid,
 	areEqual,

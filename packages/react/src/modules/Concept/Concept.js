@@ -11,7 +11,7 @@ const Concept = ({ name, keyCenterData, setKeyCenterData, intervalsData, setInte
 			<div className='card'>
 				<div className='subcard-header'>
 					<h4>Key Center</h4>
-					<PresetInput presetData={Core.Vector.Note.preset} preset={keyCenterData} setPreset={setKeyCenterData} />
+					<PresetInput presetData={Core.Vector.preset.note} preset={keyCenterData} setPreset={setKeyCenterData} />
 				</div>
 				<div className='subcard'>
 					<KeyCenter keyCenter={keyCenterData.value} colorFn={colorFn} ctx={{ pod: keyCenterData.value }} />

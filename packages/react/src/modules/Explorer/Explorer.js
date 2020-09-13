@@ -48,7 +48,7 @@ const Out = ({ keyCenterData, setKeyCenterData, intervalsData, setIntervalsData 
 
 const Explorer = () => {
 
-	const [keyCenterData, setKeyCenterData] = useState(Core.Vector.Note.preset.C);
+	const [keyCenterData, setKeyCenterData] = useState(Core.Vector.preset.note.C);
 	const [intervalsData, setIntervalsData] = useState(Core.Matrix.preset.scale.Major);
 
 	return (
