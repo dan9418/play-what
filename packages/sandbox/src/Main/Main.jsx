@@ -1,3 +1,6 @@
+
+import 'react-hot-loader'
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import './Main.css';
 import '../Common/index.css';
@@ -7,11 +10,11 @@ import Stage from '../Stage/Stage';
 const Main = () => {
 	return (
 		<>
-		tes
 			<NavBar />
+			test
 			<Stage />
 		</>
 	);
 };
 
-export default Main;
+export default hot(Main);

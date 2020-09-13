@@ -1,29 +1,16 @@
-import { AppContainer } from 'react-hot-loader';
-import * as ReactDOM from 'react-dom';
-import * as React from 'react';
+import 'react-hot-loader'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import Main from './Main/Main';
-
-const domContainer = document.querySelector('#app');
-ReactDOM.render(
-	<AppContainer>
-		<Main />
-	</AppContainer>,
-	domContainer);
 
 console.log('dpb 1', module)
 
+const appContainer = document.querySelector('#app')
 
 if (module.hot) {
-	console.log('dpb 2')
-
-	module.hot.accept('./Main/Main', () => {
-		const newContainer = document.querySelector('#app');
-		const NewMain = require('./Main/Main').default;
-		ReactDOM.render(
-			<AppContainer>
-				<NewMain />
-			</AppContainer>,
-			newContainer
-		);
-	});
+	module.hot.accept();
+	if (appContainer) ReactDOM.render(<Main />, appContainer);
+}
+else if (appContainer) {
+	ReactDOM.render(<Main />, appContainer);
 }

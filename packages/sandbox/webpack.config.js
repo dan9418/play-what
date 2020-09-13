@@ -1,8 +1,14 @@
 const { WebpackConfigDumpPlugin } = require("webpack-config-dump-plugin");
+const path = require('path')
 
 module.exports = {
 	mode: 'development',
-	entry: './src/index.jsx',
+	entry: [
+		'react-hot-loader/patch',
+		'webpack-dev-server/client?http://localhost:9000',
+		'webpack/hot/only-dev-server',
+		'./src/index.jsx'
+	],
 	module: {
 		rules: [
 			{
@@ -22,8 +28,9 @@ module.exports = {
 	resolve: {
 		extensions: ['*', '.jsx', '.js'],
 		alias: {
-			//react: path.resolve('./node_modules/react')
-			'react-dom': '@hot-loader/react-dom'
+			'react-hot-loader': path.resolve(path.join(__dirname, '../../node_modules/react-hot-loader')),
+			'react': path.resolve(path.join(__dirname, '../../node_modules/react')),
+			'react-dom': path.resolve(path.join(__dirname, '../../node_modules/@hot-loader/react-dom'))
 		}
 	},
 	output: {
@@ -32,8 +39,7 @@ module.exports = {
 		filename: 'sandbox.js'
 	},
 	devServer: {
-		contentBase: `${__dirname}/`,
-		publicPath: '/',
+		contentBase: `${__dirname}/build/`,
 		port: 9000,
 		hot: true
 	},
