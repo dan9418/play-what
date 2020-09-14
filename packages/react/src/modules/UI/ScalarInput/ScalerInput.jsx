@@ -2,13 +2,13 @@ import React from 'react';
 import './ScalarInput.css';
 
 const ScalarInput = props => {
-    const { value, setValue, className } = props;
+	const { value, setValue, className } = props;
 
-    const disabled = typeof value === 'undefined' || typeof value === null;
+	const disabled = typeof value === 'undefined' || typeof value === null || !setValue;
 
-    return (
-        <input className={`scalar-input  ${className}`} type='number' disabled={disabled} value={value} onChange={e => setValue(parseInt(e.target.value))} />
-    );
+	return (
+		<input className={`scalar-input  ${className}`} type='number' disabled={disabled} value={value} onChange={e => setValue(parseInt(e.target.value))} />
+	);
 }
 
 export default ScalarInput;

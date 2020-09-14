@@ -1,3 +1,5 @@
+const defaultValue = 0;
+
 const modulo = (a, b) => ((a % b) + b) % b;
 
 const moduloSum = (a, b, divisor, offset = 0, subtraction = false) => {
@@ -6,6 +8,7 @@ const moduloSum = (a, b, divisor, offset = 0, subtraction = false) => {
 };
 
 export default {
+	defaultValue,
 	modulo,
 	moduloSum
 };
