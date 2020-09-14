@@ -11,7 +11,6 @@ const Main = () => {
 	return (
 		<>
 			<NavBar />
-			test
 			<Stage />
 		</>
 	);

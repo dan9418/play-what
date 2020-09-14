@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Concept from '../Concept/Concept';
 import Fretboard from '../Fretboard/_module';
 import List from '../List/List';
-import ScalarInput from '../UI/ScalarInput/ScalerInput';
 import APIBrowser from './APIBrowser';
 import "./Explorer.css";
 
@@ -43,37 +42,6 @@ const Out = ({ keyCenterData, setKeyCenterData, intervalsData, setIntervalsData 
 			/>
 			<List name={`Modes`} viewer={viewer} list={modes} colorFn={colorFn} />
 			<List name={`Roman Numerals`} viewer={viewer} list={numerals} colorFn={colorFn} />
-		</div>
-	);
-}
-
-const ScalarDocs = () => {
-
-	const [a, setA] = useState(0);
-	const [b, setB] = useState(1);
-
-	const result_modulo = PW_Core.models.scalar.modulo(a, b);
-
-	return (
-		<div className='explorer'>
-			{false && <APIBrowser />}
-			<h1>Scalar</h1>
-			<h2>Default:</h2>
-			<ScalarInput value={0} />
-			<h2>Modulo:</h2>
-			<h3>a</h3>
-			<ScalarInput value={a} setValue={setA} />
-			<h3>b</h3>
-			<ScalarInput value={b} setValue={setB} />
-			<h3>result</h3>
-			<ScalarInput value={result_modulo} />
-
-			{false && <Out
-				keyCenterData={keyCenterData}
-				setKeyCenterData={setKeyCenterData}
-				intervalsData={intervalsData}
-				setIntervalsData={setIntervalsData}
-			/>}
 		</div>
 	);
 }
