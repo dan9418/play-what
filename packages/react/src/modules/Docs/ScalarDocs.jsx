@@ -23,23 +23,23 @@ const ScalarDocs = () => {
 			<ScalarInput value={0} />
 
 			<h2>Modulo:</h2>
-			<h3>a</h3>
+			<label>a</label>
 			<ScalarInput value={a} setValue={setA} />
-			<h3>divisor</h3>
+			<label>divisor</label>
 			<ScalarInput value={divisor} setValue={setDivisor} />
-			<h3>result</h3>
+			<label>=</label>
 			<ScalarInput value={result_modulo} />
 
 			<h2>Modulo Sum:</h2>
-			<h3>a</h3>
+			<label>a</label>
 			<ScalarInput value={a} setValue={setA} />
-			<h3>b</h3>
+			<label>b</label>
 			<ScalarInput value={b} setValue={setB} />
-			<h3>divisor</h3>
+			<label>divisor</label>
 			<ScalarInput value={divisor} setValue={setDivisor} />
-			<h3>offset</h3>
+			<label>offset</label>
 			<ScalarInput value={offset} setValue={setOffset} />
-			<h3>result</h3>
+			<label>=</label>
 			<ScalarInput value={result_moduloSum} />
 		</div>
 	);

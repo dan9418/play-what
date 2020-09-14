@@ -7,3 +7,12 @@
     color: #333;
     margin: 4px 0;
 }
+
+.docs label {
+    font-weight: bold;
+    margin: 4px;
+}
+
+.docs .scalar-input {
+    width: 50px;
+}
