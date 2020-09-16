@@ -45,11 +45,11 @@ const getCells = (origin, vectors, x, y, max) => {
 };
 
 const DEFAULT_PROPS = {
-	origin: { p: 0, d: 0 },
-	vectors: [{ p: 2, d: 2 }],
+	origin: [0, 0],
+	vectors: [2, 2],
 	x: 'd',
 	y: 'p',
-	max: { p: 12, d: 7 },
+	max: [12, 7],
 	title: 'x vs y',
 	xLabel: 'x',
 	yLabel: 'y'

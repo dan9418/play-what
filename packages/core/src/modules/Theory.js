@@ -3,38 +3,31 @@
 const DEGREE_MAP = [
 	{
 		name: 'A',
-		d: 0,
-		p: 9
+		value: [0, 9]
 	},
 	{
 		name: 'B',
-		d: 1,
-		p: 11
+		value: [1, 11]
 	},
 	{
 		name: 'C',
-		d: 2,
-		p: 0
+		value: [2, 0]
 	},
 	{
 		name: 'D',
-		d: 3,
-		p: 2
+		value: [3, 2]
 	},
 	{
 		name: 'E',
-		d: 4,
-		p: 4
+		value: [4, 4]
 	},
 	{
 		name: 'F',
-		d: 5,
-		p: 5
+		value: [5, 5]
 	},
 	{
 		name: 'G',
-		d: 6,
-		p: 7
+		value: [6, 7]
 	}
 ];
 

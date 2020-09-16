@@ -18,8 +18,8 @@ const areEqual = ({ list1, list2 }) => {
 };
 
 const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
-	const p = pitchClass ? scalar.modulo(pitch, vector.max.p) : pitch;
-	const index = matrix.findIndex((n) => n.p === p);
+	const p = pitchClass ? scalar.modulo(pitch, vector.max[0]) : pitch;
+	const index = matrix.findIndex((n) => n[0] === p);
 	return index > -1 ? [matrix[index], index] : [null, index];
 };
 
@@ -28,10 +28,10 @@ const getMode = ({ scale, degree }) => {
 	mode = Utils.rotate(mode, degree);
 	const a = mode[0];
 	const newMode = mode.map((m) => {
-	  return {
-			d: scalar.moduloSum(m.d, a.d, 7, 0, true),
-			p: scalar.moduloSum(m.p, a.p, 12, 0, true)
-	  };
+	  return [
+			scalar.moduloSum(m[0], a[0], 12, 0, true),
+			scalar.moduloSum(m[1], a[1], 7, 0, true)
+	  ];
 	});
 	return newMode;
 };

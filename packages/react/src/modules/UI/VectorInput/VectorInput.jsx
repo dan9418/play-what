@@ -1,16 +1,16 @@
 import React from 'react';
 import './VectorInput.css';
-import ScalarInput from '../ScalarInput/ScalerInput';
+import ScalarInput from '../ScalarInput/ScalarInput';
 
 export const VectorInput = ({ value, setValue }) => {
-    const { p, d } = value;
-    const setP = v => setValue({ d: d, p: v });
-    const setD = v => setValue({ d: v, p: p });
-    return (
-        <div className='vector-input'>
-            <ScalarInput value={d} setValue={setD} />
-            <ScalarInput value={p} setValue={setP} />
-        </div>
-    );
+	const [p, d] = value;
+	const setP = v => setValue([v, d]);
+	const setD = v => setValue([p, v]);
+	return (
+		<div className='vector-input'>
+			<ScalarInput value={p} setValue={setP} />
+			<ScalarInput value={d} setValue={setD} />
+		</div>
+	);
 };
 export default VectorInput;

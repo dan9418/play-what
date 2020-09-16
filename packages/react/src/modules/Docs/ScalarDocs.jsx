@@ -1,6 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import ScalarInput from '../UI/ScalarInput/ScalerInput';
+import ScalarInput from '../UI/ScalarInput/ScalarInput';
 import "./Docs.css";
 
 const ScalarDocs = () => {

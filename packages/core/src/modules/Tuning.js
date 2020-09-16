@@ -7,7 +7,7 @@ const getFrequency = (p) => {
 };
 
 /* const getFrequencies = pitches => {
-    return pitches.map(p => getFrequency(p.p));
+    return pitches.map(p => getFrequency(p[0]));
 } */
 
 /*

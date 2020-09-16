@@ -1,5 +1,5 @@
 const defaults = {
-	a: { p: 0, d: 0 },
+	a: [0, 0],
 	B: []
 };
 
