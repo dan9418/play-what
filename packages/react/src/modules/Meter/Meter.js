@@ -4,7 +4,7 @@ import './Meter.css';
 
 const Meter = ({ type, pods }) => {
 	let count = type === 'degree' ? 7 : 12;
-	let prop = type === 'degree' ? 'd' : 'p';
+	let prop = type === 'degree' ? 1 : 0;
 	let colorFn = PW_Core.models.vector.colorBy({ type });
 
 	const cells = [];

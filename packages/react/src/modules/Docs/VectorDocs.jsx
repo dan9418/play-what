@@ -1,12 +1,15 @@
 import PW_Core from '@pw/core';
+import matrix from '@pw/core/src/modules/models/matrix';
+import vector from '@pw/core/src/modules/models/vector';
 import React, { useState } from "react";
+import PodMeter from '../Meter/Meter';
 import VectorInput from '../UI/VectorInput/VectorInput';
 import "./Docs.css";
 
 const VectorDocs = () => {
 
-	const [a, setA] = useState([0, 0]);
-	const [b, setB] = useState([1, 1]);
+	const [A, setA] = useState(matrix.preset.scale.NaturalMinor.value);
+	const [B, setB] = useState(vector.preset.interval.P5.value);
 	const [divisor, setDivisor] = useState(2);
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
@@ -19,6 +22,8 @@ const VectorDocs = () => {
 
 			<h2>Default:</h2>
 			<VectorInput value={[0, 0]} />
+
+			<PodMeter pods={A} />
 
 			{/*<h2>Modulo:</h2>
 			<label>a</label>

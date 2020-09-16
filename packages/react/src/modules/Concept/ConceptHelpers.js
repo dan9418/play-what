@@ -1,7 +1,7 @@
 import * as React from "react";
 import PW_Core from '@pw/core';
 import "./Concept.css";
-import PodMeter from "./Meter";
+import PodMeter from "../Meter/Meter";
 
 export const Frequency = ({ f }) => <div className="frequency">{`${f} Hz`}</div>;
 export const Name = ({ name }) => <div className="name">{`${name}`}</div>;
