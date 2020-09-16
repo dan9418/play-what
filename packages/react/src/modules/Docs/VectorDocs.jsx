@@ -8,7 +8,7 @@ import "./Docs.css";
 
 const VectorDocs = () => {
 
-	const [A, setA] = useState(matrix.preset.scale.NaturalMinor.value);
+	const [A, setA] = useState(vector.preset.interval.M3.value);
 	const [B, setB] = useState(vector.preset.interval.P5.value);
 	const [divisor, setDivisor] = useState(2);
 	const [offset, setOffset] = useState(1);
@@ -23,7 +23,7 @@ const VectorDocs = () => {
 			<h2>Default:</h2>
 			<VectorInput value={[0, 0]} />
 
-			<PodMeter pods={A} />
+			<PodMeter pods={[A]} />
 
 			{/*<h2>Modulo:</h2>
 			<label>a</label>

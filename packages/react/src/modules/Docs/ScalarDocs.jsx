@@ -1,5 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
+import { Meter } from '../Meter/Meter';
 import ScalarInput from '../UI/ScalarInput/ScalarInput';
 import "./Docs.css";
 
@@ -41,6 +42,8 @@ const ScalarDocs = () => {
 			<ScalarInput value={offset} setValue={setOffset} />
 			<label>=</label>
 			<ScalarInput value={result_moduloSum} />
+
+			<Meter pods={[a]} type="degree" />
 		</div>
 	);
 }
