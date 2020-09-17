@@ -1,6 +1,6 @@
 import scalar from './scalar';
 import PW_Color from '@pw/color';
-import Theory from '../Theory';
+import Theory from '../theory';
 
 import preset from './vector.presets';
 

@@ -29,7 +29,7 @@ const ScalarDocs = () => {
 			<h2>Max:</h2>
 			<ScalarInput value={max} setValue={setMax} />
 
-			<ScalarMeter values={[a]} max={7} />
+			<ScalarMeter values={[a]} max={7} colorFn={PW_Core.theory.pitchClass.getColor} />
 
 			<h2>Modulo:</h2>
 			<label>a</label>
