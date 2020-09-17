@@ -8,7 +8,8 @@ export const ScalarMeter = ({ max, values, colorFn }) => {
 	const cells = [];
 	for (let i = 0; i < max; i++) {
 		const value = values.find(v => PW_Core.models.scalar.modulo(v, max) === i);
-		const color = colorFn(value);
+		const reduced = PW_Core.models.scalar.modulo(value, max);
+		const color = colorFn(reduced);
 
 		let styles = PW_Color.getStylesFromBgColor(color);
 
@@ -22,15 +23,17 @@ export const ScalarMeter = ({ max, values, colorFn }) => {
 	);
 };
 
-export const VectorMeter = ({ values }) => {
+export const VectorMeter = ({ values, max }) => {
+	const maxP = max[0];
+	const maxD = max[1];
 	const P = values.map(v => v[0]);
 	const D = values.map(v => v[1]);
 	const colorFnP = PW_Core.theory.pitchClass.getColor;
 	const colorFnD = PW_Core.theory.degree.getColor;
 	return (
 		<>
-			<ScalarMeter values={P} max={12} colorFn={colorFnP} />
-			<ScalarMeter values={D} max={7} colorFn={colorFnD} />
+			<ScalarMeter values={P} max={maxP} colorFn={colorFnP} />
+			<ScalarMeter values={D} max={maxD} colorFn={colorFnD} />
 		</>
 	);
 }

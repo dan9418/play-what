@@ -20,9 +20,10 @@ const MatrixDocs = () => {
 			<h1>Matrix</h1>
 
 			<h2>Default:</h2>
-			<MatrixInput value={[[0, 0]]} />
-
-			<VectorMeter values={A} />
+			<div className="card">
+				<MatrixInput value={[[0, 0]]} />
+				<VectorMeter values={A} max={[12,7]}/>
+			</div>
 
 			{/*<h2>Modulo:</h2>
 			<label>a</label>

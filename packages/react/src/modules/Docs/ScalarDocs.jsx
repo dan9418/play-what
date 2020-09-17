@@ -7,7 +7,7 @@ import "./Docs.css";
 const ScalarDocs = () => {
 
 	const [defaultValue, setDefaultValue] = useState(0);
-	const [max, setMax] = useState(7);
+	const [max, setMax] = useState(12);
 
 	const [a, setA] = useState(3);
 	const [b, setB] = useState(4);
@@ -23,35 +23,37 @@ const ScalarDocs = () => {
 		<div className='scalar-docs'>
 			<h1>Scalar</h1>
 
-			<h2>Default:</h2>
-			<ScalarInput value={defaultValue} setValue={setDefaultValue} />
+			<div className="card">
+				<h2>Default:</h2>
+				<ScalarInput value={defaultValue} setValue={setDefaultValue} />
 
-			<h2>Max:</h2>
-			<ScalarInput value={max} setValue={setMax} />
+				<h2>Max:</h2>
+				<ScalarInput value={max} setValue={setMax} />
 
-			<ScalarMeter values={[a]} max={7} colorFn={PW_Core.theory.pitchClass.getColor} />
+				<ScalarMeter values={[defaultValue]} max={max} colorFn={PW_Core.theory.pitchClass.getColor} />
+			</div>
 
-			<h2>Modulo:</h2>
-			<label>a</label>
-			<ScalarInput value={a} setValue={setA} />
-			<label>divisor</label>
-			<ScalarInput value={divisor} setValue={setDivisor} />
-			<label>=</label>
-			<ScalarInput value={result_modulo} />
+			<div className="card">
+				<h2>Modulo:</h2>
+				<label>a</label>
+				<ScalarInput value={a} setValue={setA} />
+				<label>divisor</label>
+				<ScalarInput value={divisor} setValue={setDivisor} />
+				<label>=</label>
+				<ScalarInput value={result_modulo} />
 
-			<h2>Modulo Sum:</h2>
-			<label>a</label>
-			<ScalarInput value={a} setValue={setA} />
-			<label>b</label>
-			<ScalarInput value={b} setValue={setB} />
-			<label>divisor</label>
-			<ScalarInput value={divisor} setValue={setDivisor} />
-			<label>offset</label>
-			<ScalarInput value={offset} setValue={setOffset} />
-			<label>=</label>
-			<ScalarInput value={result_moduloSum} />
-
-
+				<h2>Modulo Sum:</h2>
+				<label>a</label>
+				<ScalarInput value={a} setValue={setA} />
+				<label>b</label>
+				<ScalarInput value={b} setValue={setB} />
+				<label>divisor</label>
+				<ScalarInput value={divisor} setValue={setDivisor} />
+				<label>offset</label>
+				<ScalarInput value={offset} setValue={setOffset} />
+				<label>=</label>
+				<ScalarInput value={result_moduloSum} />
+			</div>
 		</div>
 	);
 }
