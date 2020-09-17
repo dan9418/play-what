@@ -6,6 +6,10 @@ import MatrixInput from '../UI/MatrixInput/MatrixInput';
 import "./Docs.css";
 
 const MatrixDocs = () => {
+	const [defaultValue, setDefaultValue] = useState(PW_Core.models.matrix.preset.scale.NaturalMinor.value);
+	const [max, setMax] = useState([12, 7]);
+
+	console.log(defaultValue)
 
 	const [A, setA] = useState(matrix.preset.scale.NaturalMinor.value);
 	const [B, setB] = useState(matrix.preset.scale.Major.value);
@@ -21,8 +25,8 @@ const MatrixDocs = () => {
 
 			<h2>Default:</h2>
 			<div className="card">
-				<MatrixInput value={[[0, 0]]} />
-				<VectorMeter values={A} max={[12,7]}/>
+				<MatrixInput value={defaultValue} setValue={setDefaultValue} />
+				<VectorMeter values={defaultValue} max={max} />
 			</div>
 
 			{/*<h2>Modulo:</h2>

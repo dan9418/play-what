@@ -7,7 +7,7 @@ import VectorInput from '../UI/VectorInput/VectorInput';
 import "./Docs.css";
 
 const VectorDocs = () => {
-	const [defaultValue, setDefaultValue] = useState([0, 0]);
+	const [defaultValue, setDefaultValue] = useState(PW_Core.models.vector.preset.interval.P5.value);
 	const [max, setMax] = useState([12, 7]);
 
 	const [A, setA] = useState(vector.preset.interval.M3.value);
