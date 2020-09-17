@@ -2,7 +2,7 @@ import PW_Core from '@pw/core';
 import matrix from '@pw/core/src/modules/models/matrix';
 import vector from '@pw/core/src/modules/models/vector';
 import React, { useState } from "react";
-import PodMeter from '../Meter/Meter';
+import { VectorMeter } from '../Meter/Meter';
 import VectorInput from '../UI/VectorInput/VectorInput';
 import "./Docs.css";
 
@@ -23,7 +23,7 @@ const VectorDocs = () => {
 			<h2>Default:</h2>
 			<VectorInput value={[0, 0]} />
 
-			<PodMeter pods={[A]} />
+			<VectorMeter values={[A]} />
 
 			{/*<h2>Modulo:</h2>
 			<label>a</label>

@@ -2,18 +2,17 @@ import PW_Core from '@pw/core';
 import React from 'react';
 import './Meter.css';
 
-export const Meter = ({ type, pods }) => {
-	let count = type === 'degree' ? 7 : 12;
-	let prop = type === 'degree' ? 1 : 0;
-	let colorFn = PW_Core.models.vector.colorBy({ type });
+export const ScalarMeter = ({ max, values }) => {
+
+	let colorFn = PW_Core.models.vector.colorBy({ type: 'pitchClass' });
 
 	const cells = [];
-	for (let i = 0; i < count; i++) {
-		const pod = pods.find(ivl => PW_Core.models.scalar.modulo(ivl[prop], count) === i);
+	for (let i = 0; i < max; i++) {
+		const value = values.find(v => PW_Core.models.scalar.modulo(v, max) === i);
 
 		let styles = {};
-		if (pod) {
-			styles = colorFn({ pod });
+		if (value) {
+			styles = colorFn({ pod: value });
 		};
 
 		cells.push(<div className='cell' style={styles} key={i}>{i}</div>)
@@ -26,13 +25,13 @@ export const Meter = ({ type, pods }) => {
 	);
 };
 
-const PodMeter = ({ pods }) => {
+export const VectorMeter = ({ values }) => {
+	const P = values.map(v => v[0]);
+	const D = values.map(v => v[1]);
 	return (
 		<>
-			<Meter pods={pods} type='degree' />
-			<Meter pods={pods} type='pitchClass' />
+			<ScalarMeter values={P} max={12} />
+			<ScalarMeter values={D} max={7} />
 		</>
 	);
 }
-
-export default PodMeter;

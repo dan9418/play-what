@@ -1,7 +1,7 @@
 import PW_Core from '@pw/core';
 import matrix from '@pw/core/src/modules/models/matrix';
 import React, { useState } from "react";
-import PodMeter from '../Meter/Meter';
+import { VectorMeter } from '../Meter/Meter';
 import MatrixInput from '../UI/MatrixInput/MatrixInput';
 import "./Docs.css";
 
@@ -22,7 +22,7 @@ const MatrixDocs = () => {
 			<h2>Default:</h2>
 			<MatrixInput value={[[0, 0]]} />
 
-			<PodMeter pods={A} />
+			<VectorMeter values={A} />
 
 			{/*<h2>Modulo:</h2>
 			<label>a</label>

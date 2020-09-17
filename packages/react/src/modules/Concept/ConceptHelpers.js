@@ -1,7 +1,6 @@
 import * as React from "react";
 import PW_Core from '@pw/core';
 import "./Concept.css";
-import PodMeter from "../Meter/Meter";
 
 export const Frequency = ({ f }) => <div className="frequency">{`${f} Hz`}</div>;
 export const Name = ({ name }) => <div className="name">{`${name}`}</div>;
@@ -33,7 +32,6 @@ export const NoteList = ({ notes, keyCenter, colorFn }) => {
 			<div className='flex-row'>
 				{noteComps}
 			</div>
-			<PodMeter pods={notes} />
 		</>
 	);
 };
@@ -61,7 +59,6 @@ export const IntervalList = ({ intervals, colorFn }) => {
 			<div className='flex-row'>
 				{intervalComps}
 			</div>
-			<PodMeter pods={intervals} />
 		</>
 	);
 };
@@ -71,7 +68,6 @@ export const KeyCenter = ({ keyCenter, ctx, colorFn }) => {
 		<div className='key-center'>
 			<Note pod={keyCenter} ctx={{ pod: keyCenter }} colorFn={colorFn} />
 			<div className='meter-container'>
-				<PodMeter pods={[keyCenter]} />
 			</div>
 		</div>
 	);
