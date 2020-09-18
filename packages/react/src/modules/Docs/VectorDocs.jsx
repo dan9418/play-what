@@ -1,10 +1,12 @@
 import PW_Core from '@pw/core';
-import matrix from '@pw/core/src/modules/models/matrix';
 import vector from '@pw/core/src/modules/models/vector';
 import React, { useState } from "react";
 import { VectorMeter } from '../Meter/Meter';
+import ScalarInput from '../UI/ScalarInput/ScalarInput';
 import VectorInput from '../UI/VectorInput/VectorInput';
 import "./Docs.css";
+import InputRow from './InputRow';
+
 
 const VectorDocs = () => {
 	const [defaultValue, setDefaultValue] = useState(PW_Core.models.vector.preset.interval.P5.value);
@@ -22,23 +24,19 @@ const VectorDocs = () => {
 		<div className='vector-docs'>
 			<h1>Vector</h1>
 
+			<h3>Constants</h3>
+
 			<div className="card">
-				<h2>Default:</h2>
-				<VectorInput value={defaultValue} setValue={setDefaultValue} />
-				<h2>Max:</h2>
-				<VectorInput value={max} setValue={setMax} />
+				<InputRow label="Default" x>
+					<VectorInput value={defaultValue} setValue={setDefaultValue} />
+				</InputRow>
+				<InputRow label="Max" x>
+					<VectorInput value={max} setValue={setMax} />
+				</InputRow>
+
+
 				<VectorMeter values={[defaultValue]} max={max} />
 			</div>
-
-			{/*<h2>Modulo:</h2>
-			<label>a</label>
-			<VectorInput value={a} setValue={setA} />
-			<label>divisor</label>
-			<VectorInput value={divisor} setValue={setDivisor} />
-			<label>=</label>
-			<VectorInput value={result_modulo} />
-			*/}
-
 		</div>
 	);
 }

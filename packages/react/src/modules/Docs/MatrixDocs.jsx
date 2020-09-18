@@ -3,7 +3,9 @@ import matrix from '@pw/core/src/modules/models/matrix';
 import React, { useState } from "react";
 import { VectorMeter } from '../Meter/Meter';
 import MatrixInput from '../UI/MatrixInput/MatrixInput';
+import VectorInput from '../UI/VectorInput/VectorInput';
 import "./Docs.css";
+import InputRow from './InputRow';
 
 const MatrixDocs = () => {
 	const [defaultValue, setDefaultValue] = useState(PW_Core.models.matrix.preset.scale.NaturalMinor.value);
@@ -23,20 +25,18 @@ const MatrixDocs = () => {
 		<div className='matrix-docs'>
 			<h1>Matrix</h1>
 
-			<h2>Default:</h2>
+			<h3>Constants</h3>
+
 			<div className="card">
-				<MatrixInput value={defaultValue} setValue={setDefaultValue} />
+				<InputRow label="Default">
+					<MatrixInput value={defaultValue} setValue={setDefaultValue} />
+				</InputRow>
+				<InputRow label="Max" x>
+					<VectorInput value={max} setValue={setMax} />
+				</InputRow>
+
 				<VectorMeter values={defaultValue} max={max} />
 			</div>
-
-			{/*<h2>Modulo:</h2>
-			<label>a</label>
-			<MatrixInput value={a} setValue={setA} />
-			<label>divisor</label>
-			<MatrixInput value={divisor} setValue={setDivisor} />
-			<label>=</label>
-			<MatrixInput value={result_modulo} />
-			*/}
 
 		</div>
 	);

@@ -3,11 +3,6 @@
     margin: 24px auto;
 }
 
-.docs h1, .docs h2, .docs h3, .docs h4, .docs h5 {
-    color: #333;
-    margin: 4px 0;
-}
-
 .docs label {
     font-weight: bold;
     margin: 4px;
@@ -15,4 +10,29 @@
 
 .docs .scalar-input {
     width: 50px;
+}
+
+.card {
+    margin: 8px 0;
+    border-radius: 8px;
+    padding: 8px;
+    background-color: #eee;
+}
+
+.input-row {
+    margin: 8px 0;
+}
+
+.input-row.x {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-row label {
+    font-weight: bold;
+}
+
+.input-row .content {
+    margin-top: 4px;
 }

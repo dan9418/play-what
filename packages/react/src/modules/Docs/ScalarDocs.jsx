@@ -1,6 +1,7 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
 import { ScalarMeter } from '../Meter/Meter';
+import InputRow from './InputRow';
 import ScalarInput from '../UI/ScalarInput/ScalarInput';
 import "./Docs.css";
 
@@ -23,37 +24,62 @@ const ScalarDocs = () => {
 		<div className='scalar-docs'>
 			<h1>Scalar</h1>
 
-			<div className="card">
-				<h2>Default:</h2>
-				<ScalarInput value={defaultValue} setValue={setDefaultValue} />
+			<h3>Constants</h3>
 
-				<h2>Max:</h2>
-				<ScalarInput value={max} setValue={setMax} />
+			<div className="card">
+				<InputRow label="Default" x>
+					<ScalarInput value={defaultValue} setValue={setDefaultValue} />
+				</InputRow>
+				<InputRow label="Max" x>
+					<ScalarInput value={max} setValue={setMax} />
+				</InputRow>
+
 
 				<ScalarMeter values={[defaultValue]} max={max} colorFn={PW_Core.theory.pitchClass.getColor} />
 			</div>
 
-			<div className="card">
-				<h2>Modulo:</h2>
-				<label>a</label>
-				<ScalarInput value={a} setValue={setA} />
-				<label>divisor</label>
-				<ScalarInput value={divisor} setValue={setDivisor} />
-				<label>=</label>
-				<ScalarInput value={result_modulo} />
+			<h3>Modulo</h3>
 
-				<h2>Modulo Sum:</h2>
-				<label>a</label>
-				<ScalarInput value={a} setValue={setA} />
-				<label>b</label>
-				<ScalarInput value={b} setValue={setB} />
-				<label>divisor</label>
-				<ScalarInput value={divisor} setValue={setDivisor} />
-				<label>offset</label>
-				<ScalarInput value={offset} setValue={setOffset} />
-				<label>=</label>
-				<ScalarInput value={result_moduloSum} />
+			<div className="card">
+				<InputRow label="a" x>
+					<ScalarInput value={a} setValue={setA} />
+				</InputRow>
+
+				<InputRow label="divisor" x>
+					<ScalarInput value={divisor} setValue={setDivisor} />
+				</InputRow>
+
+				<div className="result">
+					<label>=</label>
+					<ScalarInput value={result_modulo} />
+				</div>
 			</div>
+
+			<h3>Modulo Sum</h3>
+
+			<div className="card">
+				<InputRow label="a" x>
+					<ScalarInput value={a} setValue={setA} />
+				</InputRow>
+
+				<InputRow label="b" x>
+					<ScalarInput value={b} setValue={setB} />
+				</InputRow>
+
+				<InputRow label="divisor" x>
+					<ScalarInput value={divisor} setValue={setDivisor} />
+				</InputRow>
+
+				<InputRow label="offset" x>
+					<ScalarInput value={offset} setValue={setOffset} />
+				</InputRow>
+
+				<div className="result">
+					<label>=</label>
+					<ScalarInput value={result_moduloSum} />
+				</div>
+			</div>
+
 		</div>
 	);
 }
