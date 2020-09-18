@@ -1,7 +1,7 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
 import DropdownInput from './DropdownInput/DropdownInput';
-import "./Explorer.css";
+//import "./APIBrowser.css";
 
 const getModules = m => Object.entries(m).map(([name, value], i) => ({ id: i, name, value }));
 

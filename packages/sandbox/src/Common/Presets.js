@@ -27,7 +27,7 @@ export const TEST = {
 			},
 			children: [
 				{
-					    component: '@react/Explorer/component',
+					component: '@react/Explorer/component',
 					props: {
 						name: 'C Major',
 						keyCenter: 'parent/a',
