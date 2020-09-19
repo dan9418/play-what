@@ -1,33 +1,40 @@
-const DEGREE = [
-	{
+const DEGREE = {
+	A: {
+		id: 'A',
 		name: 'A',
-		value: [0, 9]
+		value: 0
 	},
-	{
+	B: {
+		id: 'B',
 		name: 'B',
-		value: [1, 11]
+		value: 1
 	},
-	{
+	C: {
+		id: 'C',
 		name: 'C',
-		value: [2, 0]
+		value: 2
 	},
-	{
+	D: {
+		id: 'D',
 		name: 'D',
-		value: [3, 2]
+		value: 3
 	},
-	{
+	E: {
+		id: 'E',
 		name: 'E',
-		value: [4, 4]
+		value: 4
 	},
-	{
+	F: {
+		id: 'F',
 		name: 'F',
-		value: [5, 5]
+		value: 5
 	},
-	{
+	G: {
+		id: 'G',
 		name: 'G',
-		value: [6, 7]
+		value: 6
 	}
-];
+};
 
 const DEGREE_COLOR_SCHEME = [
 	'#E6194B',

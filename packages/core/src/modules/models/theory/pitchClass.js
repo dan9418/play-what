@@ -1,3 +1,11 @@
+const PITCH_CLASS = {
+	middleC: {
+		id: 'middleC',
+		name: 'Middle C',
+		value: 0
+	}
+};
+
 const PITCH_CLASS_COLOR_SCHEME = [
 	'#ED1C24',
 	'#F1592A',
@@ -14,6 +22,7 @@ const PITCH_CLASS_COLOR_SCHEME = [
 ]
 
 export default {
+	preset: PITCH_CLASS,
 	colorScheme: PITCH_CLASS_COLOR_SCHEME,
 	getColor: p => PITCH_CLASS_COLOR_SCHEME[p]
 }
