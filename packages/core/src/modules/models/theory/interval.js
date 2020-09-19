@@ -1,3 +1,5 @@
+import pod from '../math/pod';
+
 export const INTERVAL = {
 	P1: {
 		id: 'P1',
@@ -177,14 +179,10 @@ export const INTERVAL = {
 	}
 };
 
-const getName = ({ pod }) => {
-	if (pod[1] < 0 || po[1] > m[1]) {
-		console.error('degree out of bounds', pod);
-		return '';
-	}
-	const reduced = reduce(pod);
-	const ivl = Object.values(preset.interval).find(({ value }) => value[0] === reduced[0] && val[1][1] === reduced[1][1]);
-	return ivl ? ivl.id : '';
+const getName = (ivl) => {
+	const [p, d] = ivl;
+	const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
+	return result ? result.id : `?${d}`;
 };
 
 export default {

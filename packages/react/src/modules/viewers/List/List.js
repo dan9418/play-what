@@ -1,36 +1,36 @@
-import * as React from "react";
-import DropdownInput from '../models/math/DropdownInput/DropdownInput';
-import "./List.css";
+import PW_Core from '@pw/core';
+import PW_Color from '@pw/color';
+import React from 'react';
+import './List.css';
 
-const List = ({ children, list, viewer, name, ...props }) => {
+const TextList = ({ list }) => {
+	const cells = list.map((l, i) => <div className='list-item' style={l.style} key={i}>{l.text}</div>);
+	return (
+		<div className='list'>
+			{cells}
+		</div>
+	);
+};
 
-    const [open, setOpen] = React.useState(true);
-    const [index, setIndex] = React.useState(0);
+const IntervalList = ({ intervals, ...props }) => {
+	const list = intervals.map(ivl => {
+		const color = PW_Core.models.theory.degree.getColor(ivl[1]);
+		const style = {
+			border: `1px solid ${color}`
+		};
+		const text = PW_Core.models.theory.interval.getName(ivl)
+		return { style, text };
+	});
+	return <TextList list={list} />;
+}
 
-    const concepts = list.map((c, i) => {
-        const Comp = viewer.component;
-        const { a: keyCenter, B: intervals, name } = c;
-        return (
-            <>
-                <h4>{name}</h4>
-                <div className="subcard">
-                    <Comp {...viewer.props} keyCenter={keyCenter} intervals={intervals} name={name} key={i} />
-                </div>
-            </>
-        );
-    });
-
-    const options = list.map((v, i) => ({ id: i, name: v.name }));
-
-    return (
-        <>
-            <h3 onClick={() => setOpen(!open)}>{name}</h3>
-            <DropdownInput options={options} value={list[index]} setValue={v => setIndex(v.id)} />
-            <div className="card">
-                {open && concepts[index]}
-            </div>
-        </>
-    );
+const List = ({ value, type, ...props }) => {
+	switch (type) {
+	case 'interval':
+		return <IntervalList intervals={value} {...props} />;
+	default:
+		return null;
+	}
 }
 
 export default List;

@@ -12,7 +12,6 @@ const ListMeter = ({ list }) => {
 	);
 };
 
-
 const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {

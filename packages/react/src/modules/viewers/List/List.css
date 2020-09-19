@@ -1,3 +1,13 @@
-.list > * {
-    margin: 16px 0;
+.list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.list .list-item {
+    padding: 8px;
+    margin: 8px;
+    border-radius: 8px;
+    background-color: white;
 }
