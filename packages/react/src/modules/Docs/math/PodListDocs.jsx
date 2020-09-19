@@ -1,10 +1,9 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import Meter from '../viewers/Meter/Meter';
-import PodListInput from '../models/math/PodListInput/PodListInput';
-import PodInput from '../models/math/PodInput/PodInput';
-import "./Docs.css";
-import InputRow from './InputRow';
+import Meter from '../../viewers/Meter/Meter';
+import PodListInput from '../../models/math/PodListInput/PodListInput';
+import PodInput from '../../models/math/PodInput/PodInput';
+import InputRow from '../InputRow';
 
 const PodListDocs = () => {
 	const [testValue, setTestValue] = useState(PW_Core.models.theory.scale.preset.NaturalMinor.value);

@@ -36,3 +36,7 @@
 .input-row .content {
     margin-top: 4px;
 }
+
+.fold > h1 {
+    cursor: pointer;
+}

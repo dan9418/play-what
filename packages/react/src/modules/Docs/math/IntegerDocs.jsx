@@ -1,9 +1,8 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import Meter from '../viewers/Meter/Meter';
-import InputRow from './InputRow';
-import IntegerInput from '../models/math/IntegerInput/IntegerInput';
-import "./Docs.css";
+import Meter from '../../viewers/Meter/Meter';
+import InputRow from '../InputRow';
+import IntegerInput from '../../models/math/IntegerInput/IntegerInput';
 
 const IntegerDocs = () => {
 

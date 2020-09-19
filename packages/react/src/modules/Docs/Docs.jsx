@@ -1,16 +1,23 @@
-import IntegerDocs from './IntegerDocs';
 import React from 'react';
-import PodDocs from './PodDocs';
-import PodListDocs from './PodListDocs';
+import Fold from './Fold';
+import './Docs.css';
+
+// Math
+import IntegerDocs from './math/IntegerDocs';
+import PodDocs from './math/PodDocs';
+import PodListDocs from './math/PodListDocs';
+
+// Theory
+
 
 const Docs = () => (
 	<div className="docs">
 		<h1>Theory</h1>
-		<h1>Models</h1>
-		<IntegerDocs />
-		<PodDocs />
-		<PodListDocs />
-
+		<Fold label="Math">
+			<IntegerDocs />
+			<PodDocs />
+			<PodListDocs />
+		</Fold>
 	</div>
 );
 

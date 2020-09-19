@@ -1,9 +1,8 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import Meter from '../viewers/Meter/Meter';
-import PodInput from '../models/math/PodInput/PodInput';
-import "./Docs.css";
-import InputRow from './InputRow';
+import Meter from '../../viewers/Meter/Meter';
+import PodInput from '../../models/math/PodInput/PodInput';
+import InputRow from '../InputRow';
 
 const PodDocs = () => {
 	const [max, setMax] = useState([12, 7]);
