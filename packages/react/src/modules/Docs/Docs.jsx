@@ -1,13 +1,13 @@
-import ScalarDocs from './ScalarDocs';
+import IntegerDocs from './IntegerDocs';
 import React from 'react';
-import VectorDocs from './VectorDocs';
-import MatrixDocs from './MatrixDocs';
+import PodDocs from './PodDocs';
+import PodListDocs from './PodListDocs';
 
 const Docs = () => (
 	<div className="docs">
-		<ScalarDocs />
-		<VectorDocs />
-		<MatrixDocs />
+		<IntegerDocs />
+		<PodDocs />
+		<PodListDocs />
 	</div>
 );
 

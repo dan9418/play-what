@@ -1,13 +1,13 @@
 import PW_Core from '@pw/core';
 import podList from '@pw/core/src/modules/models/podList';
 import React, { useState } from "react";
-import { VectorMeter } from '../Meter/Meter';
-import MatrixInput from '../UI/MatrixInput/MatrixInput';
-import VectorInput from '../UI/VectorInput/VectorInput';
+import { PodMeter } from '../Meter/Meter';
+import PodListInput from '../UI/PodListInput/PodListInput';
+import PodInput from '../UI/PodInput/PodInput';
 import "./Docs.css";
 import InputRow from './InputRow';
 
-const MatrixDocs = () => {
+const PodListDocs = () => {
 	const [defaultValue, setDefaultValue] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
 	const [max, setMax] = useState([12, 7]);
 
@@ -23,23 +23,23 @@ const MatrixDocs = () => {
 
 	return (
 		<div className='podList-docs'>
-			<h1>Matrix</h1>
+			<h1>PodList</h1>
 
 			<h3>Constants</h3>
 
 			<div className="card">
 				<InputRow label="Default">
-					<MatrixInput value={defaultValue} setValue={setDefaultValue} />
+					<PodListInput value={defaultValue} setValue={setDefaultValue} />
 				</InputRow>
 				<InputRow label="Max" x>
-					<VectorInput value={max} setValue={setMax} />
+					<PodInput value={max} setValue={setMax} />
 				</InputRow>
 
-				<VectorMeter values={defaultValue} max={max} />
+				<PodMeter values={defaultValue} max={max} />
 			</div>
 
 		</div>
 	);
 }
 
-export default MatrixDocs;
+export default PodListDocs;

@@ -15,7 +15,7 @@ const areEqual = ({ list1, list2 }) => {
 	return true;
 };
 
-const findVectorWithPitch = ({ podList, pitch, pitchClass = false }) => {
+const findPodWithPitch = ({ podList, pitch, pitchClass = false }) => {
 	const p = pitchClass ? integer.modulo(pitch, pmdx[0]) : pitch;
 	const index = podList.findIndex((n) => n[0] === p);
 	return index > -1 ? [podList[index], index] : [null, index];
@@ -70,7 +70,7 @@ const getAllNumerals = ({ scale, keyCenter }) => {
 export default {
 	isValid,
 	areEqual,
-	findVectorWithPitch,
+	findPodWithPitch,
 	getNumeral,
 	getAllNumerals,
 	getMode,

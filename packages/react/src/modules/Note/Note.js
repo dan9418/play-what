@@ -1,6 +1,6 @@
 import * as React from "react";
 import PW_Core from '@pw/core';
-import "./Concept.css";
+import "./Note.css";
 
 export const Frequency = ({ f }) => <div className="frequency">{`${f} Hz`}</div>;
 export const Name = ({ name }) => <div className="name">{`${name}`}</div>;

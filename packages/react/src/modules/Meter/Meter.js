@@ -3,7 +3,7 @@ import PW_Color from '@pw/color';
 import React from 'react';
 import './Meter.css';
 
-export const ScalarMeter = ({ max, values, colorFn }) => {
+export const IntegerMeter = ({ max, values, colorFn }) => {
 
 	const cells = [];
 	for (let i = 0; i < max; i++) {
@@ -23,7 +23,7 @@ export const ScalarMeter = ({ max, values, colorFn }) => {
 	);
 };
 
-export const VectorMeter = ({ values, max }) => {
+export const PodMeter = ({ values, max }) => {
 	const maxP = max[0];
 	const maxD = max[1];
 	const P = values.map(v => v[0]);
@@ -32,8 +32,8 @@ export const VectorMeter = ({ values, max }) => {
 	const colorFnD = PW_Core.theory.degree.getColor;
 	return (
 		<>
-			<ScalarMeter values={P} max={maxP} colorFn={colorFnP} />
-			<ScalarMeter values={D} max={maxD} colorFn={colorFnD} />
+			<IntegerMeter values={P} max={maxP} colorFn={colorFnP} />
+			<IntegerMeter values={D} max={maxD} colorFn={colorFnD} />
 		</>
 	);
 }

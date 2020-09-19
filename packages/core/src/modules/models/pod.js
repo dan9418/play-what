@@ -33,12 +33,12 @@ const findIndexOfNoteWithPitch = (notes, pitch, octaveReduce = true) => {
 	return notes.findIndex((n) => n[0] === p);
 };
 
-const addVector = (a, b) => ([
+const addPod = (a, b) => ([
 	integer.moduloSum(a[0], b[0], max[0]),
 	integer.moduloSum(a[1], b[1], max[1])
 ]);
 
-const addMatrix = ({ a, B }) => B.map((b) => addVector(a, b));
+const addPodList = ({ a, B }) => B.map((b) => addPod(a, b));
 
 // const transpose = ({ a, interval }) => Interval.add(a, interval);
 
@@ -151,8 +151,8 @@ export default {
 	reduce,
 	findNoteWithPitch,
 	findIndexOfNoteWithPitch,
-	addVector,
-	addMatrix,
+	addPod,
+	addPodList,
 	parseColorProp,
 	colorBy,
 	parseTextProp,

@@ -1,11 +1,11 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { ScalarMeter } from '../Meter/Meter';
+import { IntegerMeter } from '../Meter/Meter';
 import InputRow from './InputRow';
-import ScalarInput from '../UI/ScalarInput/ScalarInput';
+import IntegerInput from '../UI/IntegerInput/IntegerInput';
 import "./Docs.css";
 
-const ScalarDocs = () => {
+const IntegerDocs = () => {
 
 	const [defaultValue, setDefaultValue] = useState(0);
 	const [max, setMax] = useState(12);
@@ -22,36 +22,36 @@ const ScalarDocs = () => {
 
 	return (
 		<div className='integer-docs'>
-			<h1>Scalar</h1>
+			<h1>Integer</h1>
 
 			<h3>Constants</h3>
 
 			<div className="card">
 				<InputRow label="Default" x>
-					<ScalarInput value={defaultValue} setValue={setDefaultValue} />
+					<IntegerInput value={defaultValue} setValue={setDefaultValue} />
 				</InputRow>
 				<InputRow label="Max" x>
-					<ScalarInput value={max} setValue={setMax} />
+					<IntegerInput value={max} setValue={setMax} />
 				</InputRow>
 
 
-				<ScalarMeter values={[defaultValue]} max={max} colorFn={PW_Core.theory.pitchClass.getColor} />
+				<IntegerMeter values={[defaultValue]} max={max} colorFn={PW_Core.theory.pitchClass.getColor} />
 			</div>
 
 			<h3>Modulo</h3>
 
 			<div className="card">
 				<InputRow label="a" x>
-					<ScalarInput value={a} setValue={setA} />
+					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
 
 				<InputRow label="divisor" x>
-					<ScalarInput value={divisor} setValue={setDivisor} />
+					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
 
 				<div className="result">
 					<label>=</label>
-					<ScalarInput value={result_modulo} />
+					<IntegerInput value={result_modulo} />
 				</div>
 			</div>
 
@@ -59,24 +59,24 @@ const ScalarDocs = () => {
 
 			<div className="card">
 				<InputRow label="a" x>
-					<ScalarInput value={a} setValue={setA} />
+					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
 
 				<InputRow label="b" x>
-					<ScalarInput value={b} setValue={setB} />
+					<IntegerInput value={b} setValue={setB} />
 				</InputRow>
 
 				<InputRow label="divisor" x>
-					<ScalarInput value={divisor} setValue={setDivisor} />
+					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
 
 				<InputRow label="offset" x>
-					<ScalarInput value={offset} setValue={setOffset} />
+					<IntegerInput value={offset} setValue={setOffset} />
 				</InputRow>
 
 				<div className="result">
 					<label>=</label>
-					<ScalarInput value={result_moduloSum} />
+					<IntegerInput value={result_moduloSum} />
 				</div>
 			</div>
 
@@ -84,4 +84,4 @@ const ScalarDocs = () => {
 	);
 }
 
-export default ScalarDocs;
+export default IntegerDocs;

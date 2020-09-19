@@ -1,7 +1,7 @@
 import React from 'react';
-import './ScalarInput.css';
+import './IntegerInput.css';
 
-const ScalarInput = props => {
+const IntegerInput = props => {
 	const { value, setValue, className } = props;
 
 	const disabled = typeof value === 'undefined' || typeof value === null || !setValue;
@@ -11,4 +11,4 @@ const ScalarInput = props => {
 	);
 }
 
-export default ScalarInput;
+export default IntegerInput;

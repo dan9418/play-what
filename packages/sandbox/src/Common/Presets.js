@@ -5,7 +5,7 @@ export const TEST = {
 	children: [
 		{
 			notes: {
-				fn: '@core/models/pod/addMatrix/',
+				fn: '@core/models/pod/addPodList/',
 				args: {
 					B: 'parent/B',
 					a: 'parent/a'

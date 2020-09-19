@@ -66,7 +66,7 @@ const PlaybackTab = () => {
 			<h3>Tempo</h3>
 			<div className="input-row">
 				<label>bpm</label>
-				<ScalarInput value={tempo} setValue={setTempo} className="bpm" />
+				<IntegerInput value={tempo} setValue={setTempo} className="bpm" />
 			</div>
 
 			<h3>Metronome</h3>
