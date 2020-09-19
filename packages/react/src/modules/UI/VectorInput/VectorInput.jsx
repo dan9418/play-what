@@ -7,7 +7,7 @@ export const VectorInput = ({ value, setValue }) => {
 	const setP = v => setValue([v, d]);
 	const setD = v => setValue([p, v]);
 	return (
-		<div className='vector-input'>
+		<div className='pod-input'>
 			<ScalarInput value={p} setValue={setP} />
 			<ScalarInput value={d} setValue={setD} />
 		</div>

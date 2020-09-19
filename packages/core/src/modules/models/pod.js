@@ -7,8 +7,8 @@ const max = [
 	7
 ];
 
-const isValid = (vector) => {
-	return vector !== null && typeof vector === 'object' && typeof vector[0] === 'number' && typeof vector[1] === 'number';
+const isValid = (pod) => {
+	return pod !== null && typeof pod === 'object' && typeof pod[0] === 'number' && typeof pod[1] === 'number';
 };
 
 const areEqual = ({ interval1, interval2 }) => {

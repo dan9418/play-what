@@ -1,24 +1,24 @@
-import vector from './vector';
+import pod from './pod'
 import scalar from './scalar';
 import utils from '../utils';
 
-const isValid = (matrix) => {
-	return matrix !== null && Array.isArray(matrix) && !matrix.find((v) => !vector.isValid(v));
+const isValid = (podList) => {
+	return podList !== null && Array.isArray(podList) && podList.find((v) => !pod.isValid(v));
 };
 
 const areEqual = ({ list1, list2 }) => {
 	if (!list1 || !list2) return false;
 	if (list1.length !== list2.length) return false;
 	for (let i = 0; i < list1.length; i++) {
-		if (!vector.areEqual(list1[i], list2[i])) { return false; }
+		if (!padeEqual(list1[i], list2[i])) { return false; }
 	}
 	return true;
 };
 
-const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
-	const p = pitchClass ? scalar.modulo(pitch, vector.max[0]) : pitch;
-	const index = matrix.findIndex((n) => n[0] === p);
-	return index > -1 ? [matrix[index], index] : [null, index];
+const findVectorWithPitch = ({ podList, pitch, pitchClass = false }) => {
+	const p = pitchClass ? scalar.modulo(pitch, pmdx[0]) : pitch;
+	const index = podList.findIndex((n) => n[0] === p);
+	return index > -1 ? [podList[index], index] : [null, index];
 };
 
 const getMode = ({ scale, degree }) => {

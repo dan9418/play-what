@@ -34,8 +34,8 @@ const getScaleStyles = (keyType, scale) => {
     }
 }
 
-const KeyboardKey = ({ noteIndex, type, scale, concept }) => {
-    if(!concept) return null;
+const KeyboardKey = ({ noteIndex, type, scale, relPodList }) => {
+    if(!relPodList) return null;
 
     let keyColor = (type === KeyboardKeyType.White) ? 'white' : 'black';
     let scaleStyles = getScaleStyles(type, scale);

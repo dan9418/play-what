@@ -1,5 +1,5 @@
 import PW_Core from '@pw/core';
-import vector from '@pw/core/src/modules/models/vector';
+import pod from '@pw/core/src/modules/models/pod';
 import React, { useState } from "react";
 import { VectorMeter } from '../Meter/Meter';
 import ScalarInput from '../UI/ScalarInput/ScalarInput';
@@ -18,10 +18,10 @@ const VectorDocs = () => {
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
 
-	//const result_modulo = PW_Core.models.vector.modulo(a, divisor);
+	//const result_modulo = PW_Core.models.pod.modulo(a, divisor);
 
 	return (
-		<div className='vector-docs'>
+		<div className='pod-docs'>
 			<h1>Vector</h1>
 
 			<h3>Constants</h3>

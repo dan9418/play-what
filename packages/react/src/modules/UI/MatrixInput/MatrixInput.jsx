@@ -14,7 +14,7 @@ const MatrixInput = props => {
 	});
 
 	return (
-		<div className="matrix-input">
+		<div className="podList-input">
 			{vectors}
 		</div>
 	);

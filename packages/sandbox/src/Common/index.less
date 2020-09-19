@@ -17,8 +17,8 @@
 @progression: #DFF3E3;
 @progression-hover: darken(@progression, 10%);
 
-@concept: #F5E0CC;
-@concept-hover: darken(@concept, 10%);
+@relPodList: #F5E0CC;
+@relPodList-hover: darken(@relPodList, 10%);
 
 
 @light-fg: #25283D;
@@ -116,15 +116,15 @@
     color: lighten(@primary-fg, 30%);
 }
 
-.pw-concept {
-    background-color: @concept;
+.pw-relPodList {
+    background-color: @relPodList;
     color: @light-fg;
 }
-.pw-concept.pw-hov:hover {
-    background-color: @concept-hover;
+.pw-relPodList.pw-hov:hover {
+    background-color: @relPodList-hover;
 }
-.pw-concept.pw-disabled {
-    background-color: greyscale(@concept);
+.pw-relPodList.pw-disabled {
+    background-color: greyscale(@relPodList);
     color: lighten(@primary-fg, 30%);
 }
 
@@ -153,4 +153,3 @@
 .pw-light-3.pw-hov:hover {
     background-color: @light-3-hover;
 }
-

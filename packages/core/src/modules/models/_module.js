@@ -1,11 +1,11 @@
 import scalar from './scalar';
-import vector from './vector';
-import matrix from './matrix';
-import concept from './concept';
+import pod from './pod';
+import podList from './podList';
+import relPodList from './relPodList';
 
 export default {
 	scalar,
-	vector,
-	matrix,
-	concept
+	pod,
+	podList,
+	relPodList
 }

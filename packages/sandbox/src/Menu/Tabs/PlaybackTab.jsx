@@ -14,11 +14,11 @@ const useToggle = (initValue = false) => {
 const PlaybackTab = () => {
 
 	const [position, setPosition] = useRecoilState(positionState);
-	const concept = useRecoilValue(conceptState);
+	const relPodList = useRecoilValue(conceptState);
 	const nextConcept = useRecoilValue(nextConceptState);
 	const nextPosition = useRecoilValue(nextPositionState);
 
-	const t = concept.t ? concept.t : 4;
+	const t = relPodList.t ? relPodList.t : 4;
 	const nextT = nextConcept.t ? nextConcept.t : 4;
 
 	// State (Compound)
@@ -35,7 +35,7 @@ const PlaybackTab = () => {
 	else {
 		const beatDuration = 1 / (tempo / 60);
 		if (remBeats === t) {
-			const freqs = PW_Core.Theory.getFrequencies(concept.C);
+			const freqs = PW_Core.Theory.getFrequencies(relPodList.C);
 			const pulseDuration = beatDuration * t; // seconds
 			PW_Core.Sound.playNotes(freqs, pulseDuration / 2);
 			console.log(beatIndex, 'P');

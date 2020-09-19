@@ -1,5 +1,5 @@
 import PW_Core from '@pw/core';
-import matrix from '@pw/core/src/modules/models/matrix';
+import podList from '@pw/core/src/modules/models/podList';
 import React, { useState } from "react";
 import { VectorMeter } from '../Meter/Meter';
 import MatrixInput from '../UI/MatrixInput/MatrixInput';
@@ -19,10 +19,10 @@ const MatrixDocs = () => {
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
 
-	//const result_modulo = PW_Core.models.matrix.modulo(a, divisor);
+	//const result_modulo = PW_Core.models.podList.modulo(a, divisor);
 
 	return (
-		<div className='matrix-docs'>
+		<div className='podList-docs'>
 			<h1>Matrix</h1>
 
 			<h3>Constants</h3>
