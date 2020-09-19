@@ -129,7 +129,7 @@ const getNoteName = ({ pod }) => {
 	if (typeof keyString !== 'string' || !keyString.length) {
 		throw ('Bad keystring args')
 	}
-	const [tonicStr, accidentalStr] = Utils.splitAt(keyString, 1);
+	const [tonicStr, accidentalStr] = utils.splitAt(keyString, 1);
 
 	const degreeIndex = DEGREE_MAPPING.findIndex(d => d.name === tonicStr);
 

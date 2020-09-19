@@ -1,6 +1,6 @@
 import vector from './vector';
 import scalar from './scalar';
-import Utils from '../Utils';
+import utils from '../utils';
 
 import preset from './matrix.presets';
 
@@ -25,7 +25,7 @@ const findVectorWithPitch = ({ matrix, pitch, pitchClass = false }) => {
 
 const getMode = ({ scale, degree }) => {
 	let mode = [...scale];
-	mode = Utils.rotate(mode, degree);
+	mode = utils.rotate(mode, degree);
 	const a = mode[0];
 	const newMode = mode.map((m) => {
 	  return [

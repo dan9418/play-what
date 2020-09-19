@@ -1,11 +1,11 @@
 import models from './modules/models/_module';
-import Tuning from './modules/Tuning';
-import Utils from './modules/Utils';
+import tuning from './modules/tuning';
+import utils from './modules/utils';
 import theory from './modules/theory';
 
 export default {
 	models,
 	theory,
-	Tuning,
-	Utils
+	tuning,
+	utils
 };
