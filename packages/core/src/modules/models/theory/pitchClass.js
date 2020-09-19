@@ -3,6 +3,41 @@ const PITCH_CLASS = {
 		id: 'middleC',
 		name: 'Middle C',
 		value: 0
+	},
+	tonic: {
+		id: 'tonic',
+		name: 'Tonic',
+		value: 0
+	},
+	supertonic: {
+		id: 'supertonic',
+		name: 'Supertonic',
+		value: 2
+	},
+	mediant: {
+		id: 'mediant',
+		name: 'Mediant',
+		value: 4
+	},
+	subdominant: {
+		id: 'subdominant',
+		name: 'Subdominant',
+		value: 5
+	},
+	dominant: {
+		id: 'dominant',
+		name: 'Dominant',
+		value: 7
+	},
+	submediant: {
+		id: 'submediant',
+		name: 'Submediant',
+		value: 9
+	},
+	subtonic: {
+		id: 'subtonic',
+		name: 'Subtonic',
+		value: 11
 	}
 };
 

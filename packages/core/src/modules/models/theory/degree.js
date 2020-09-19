@@ -1,40 +1,42 @@
 const DEGREE = {
-	A: {
-		id: 'A',
-		name: 'A',
-		value: 0
-	},
-	B: {
-		id: 'B',
-		name: 'B',
-		value: 1
-	},
 	C: {
 		id: 'C',
 		name: 'C',
-		value: 2
+		value: 0
 	},
 	D: {
 		id: 'D',
 		name: 'D',
-		value: 3
+		value: 1
 	},
 	E: {
 		id: 'E',
 		name: 'E',
-		value: 4
+		value: 2
 	},
 	F: {
 		id: 'F',
 		name: 'F',
-		value: 5
+		value: 3
 	},
 	G: {
 		id: 'G',
 		name: 'G',
+		value: 4
+	},
+	A: {
+		id: 'A',
+		name: 'A',
+		value: 5
+	},
+	B: {
+		id: 'B',
+		name: 'B',
 		value: 6
 	}
 };
+
+const DEGREE_VALUES = Object.values(DEGREE);
 
 const DEGREE_COLOR_SCHEME = [
 	'#E6194B',
@@ -49,5 +51,6 @@ const DEGREE_COLOR_SCHEME = [
 export default {
 	preset: DEGREE,
 	colorScheme: DEGREE_COLOR_SCHEME,
-	getColor: d => DEGREE_COLOR_SCHEME[d]
+	getColor: d => DEGREE_COLOR_SCHEME[d],
+	getName: d => DEGREE_VALUES[d].name
 };

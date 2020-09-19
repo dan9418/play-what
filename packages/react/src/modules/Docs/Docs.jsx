@@ -6,13 +6,19 @@ import './Docs.css';
 import IntegerDocs from './math/IntegerDocs';
 import PodDocs from './math/PodDocs';
 import PodListDocs from './math/PodListDocs';
+import RootDocs from './RootDocs';
 
 // Theory
 
 
 const Docs = () => (
 	<div className="docs">
-		<h1>Theory</h1>
+		<Fold label="Root">
+			<RootDocs />
+		</Fold>
+		<Fold label="Theory">
+
+		</Fold>
 		<Fold label="Math">
 			<IntegerDocs />
 			<PodDocs />
