@@ -38,7 +38,7 @@ const getFrets = (props) => {
 		for (let f = fretRange[0]; f <= fretRange[1]; f++) {
 
 			const noteIndex = tuning[s] + f;
-			const [note, podIndex] = PW_Core.models.podList.findPodWithPitch({
+			const [note, podIndex] = PW_Core.models.math.podList.findPodWithPitch({
 				podList: intervals,
 				pitch: noteIndex,
 				pitchClass: reduced

@@ -1,20 +1,17 @@
 import PW_Core from '@pw/core';
-import pod from '@pw/core/src/modules/models/pod';
 import React, { useState } from "react";
-import { PodMeter } from '../Meter/Meter';
-import IntegerInput from '../UI/IntegerInput/IntegerInput';
-import PodInput from '../UI/PodInput/PodInput';
+import { PodMeter } from '../viewers/Meter/Meter';
+import PodInput from '../models/math/PodInput/PodInput';
 import "./Docs.css";
 import InputRow from './InputRow';
-
 
 const PodDocs = () => {
 	const [max, setMax] = useState([12, 7]);
 
-	const [a, setA] = useState(PW_Core.theory.interval.preset.M3.value);
-	const [b, setB] = useState(PW_Core.theory.interval.preset.P5.value);
+	const [a, setA] = useState(PW_Core.models.theory.interval.preset.M3.value);
+	const [b, setB] = useState(PW_Core.models.theory.interval.preset.P5.value);
 
-	const result_addPod = PW_Core.models.pod.addPod(a, b);
+	const result_addPod = PW_Core.models.math.pod.addPod(a, b);
 
 	return (
 		<div className='pod-docs'>

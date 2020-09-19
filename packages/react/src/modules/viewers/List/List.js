@@ -1,5 +1,5 @@
 import * as React from "react";
-import DropdownInput from '../UI/DropdownInput/DropdownInput';
+import DropdownInput from '../models/math/DropdownInput/DropdownInput';
 import "./List.css";
 
 const List = ({ children, list, viewer, name, ...props }) => {

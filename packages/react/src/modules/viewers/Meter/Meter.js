@@ -7,8 +7,8 @@ export const IntegerMeter = ({ max, values, colorFn }) => {
 
 	const cells = [];
 	for (let i = 0; i < max; i++) {
-		const value = values.find(v => PW_Core.models.integer.modulo(v, max) === i);
-		const reduced = PW_Core.models.integer.modulo(value, max);
+		const value = values.find(v => PW_Core.models.math.integer.modulo(v, max) === i);
+		const reduced = PW_Core.models.math.integer.modulo(value, max);
 		const color = colorFn(reduced);
 
 		let styles = PW_Color.getStylesFromBgColor(color);
@@ -28,8 +28,8 @@ export const PodMeter = ({ values, max }) => {
 	const maxD = max[1];
 	const P = values.map(v => v[0]);
 	const D = values.map(v => v[1]);
-	const colorFnP = PW_Core.theory.pitchClass.getColor;
-	const colorFnD = PW_Core.theory.degree.getColor;
+	const colorFnP = PW_Core.models.theory.pitchClass.getColor;
+	const colorFnD = PW_Core.models.theory.degree.getColor;
 	return (
 		<>
 			<IntegerMeter values={P} max={maxP} colorFn={colorFnP} />

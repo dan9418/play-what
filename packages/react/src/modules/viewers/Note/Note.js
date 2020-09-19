@@ -9,7 +9,7 @@ export const PitchIndex = ({ pitchIndex }) => <div className="pitch-index">{`#${
 
 export const Note = ({ pod, ctx, colorFn }) => {
 	const pitchIndex = pod[0];
-	const name = PW_Core.models.pod.getNoteName(ctx);
+	const name = PW_Core.models.math.pod.getNoteName(ctx);
 	const f = Math.round(PW_Core.tuning.getFrequency(pod[0]));
 	const colorStyles = colorFn(ctx)
 

@@ -1,11 +1,7 @@
-import Fretboard from './modules/Fretboard/_module';
-import Docs from './modules/Docs/Docs';
-import Chart from './modules/Chart/_module';
-import List from './modules/List/_module';
+import docs from './modules/docs/Docs'
+import models from './modules/models/_module';
 
 export default {
-	Fretboard,
-	Chart,
-	List,
-	Docs
+	docs,
+	models
 };

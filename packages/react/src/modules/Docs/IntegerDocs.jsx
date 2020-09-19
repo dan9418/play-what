@@ -1,8 +1,8 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { IntegerMeter } from '../Meter/Meter';
+import { IntegerMeter } from '../viewers/Meter/Meter';
 import InputRow from './InputRow';
-import IntegerInput from '../UI/IntegerInput/IntegerInput';
+import IntegerInput from '../models/math/IntegerInput/IntegerInput';
 import "./Docs.css";
 
 const IntegerDocs = () => {
@@ -15,11 +15,11 @@ const IntegerDocs = () => {
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
 
-	const result_modulo = PW_Core.models.integer.modulo(a, divisor);
+	const result_modulo = PW_Core.models.math.integer.modulo(a, divisor);
 
-	const result_moduloSum = PW_Core.models.integer.moduloSum(a, b, divisor, offset, subtraction);
+	const result_moduloSum = PW_Core.models.math.integer.moduloSum(a, b, divisor, offset, subtraction);
 
-	const colorFn = PW_Core.theory.pitchClass.getColor;
+	const colorFn = PW_Core.models.theory.pitchClass.getColor;
 
 	return (
 		<div className='integer-docs'>

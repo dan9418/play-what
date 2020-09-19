@@ -1,6 +1,6 @@
 import pod from './pod'
 import integer from './integer';
-import utils from '../utils';
+import utils from '../../utils';
 
 // Constants
 
