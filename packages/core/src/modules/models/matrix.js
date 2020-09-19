@@ -2,8 +2,6 @@ import vector from './vector';
 import scalar from './scalar';
 import utils from '../utils';
 
-import preset from './matrix.presets';
-
 const isValid = (matrix) => {
 	return matrix !== null && Array.isArray(matrix) && !matrix.find((v) => !vector.isValid(v));
 };
@@ -70,7 +68,6 @@ const getAllNumerals = ({ scale, keyCenter }) => {
 };
 
 export default {
-	preset,
 	isValid,
 	areEqual,
 	findVectorWithPitch,

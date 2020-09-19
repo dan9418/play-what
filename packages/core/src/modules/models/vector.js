@@ -1,8 +1,6 @@
 import scalar from './scalar';
 import PW_Color from '@pw/color';
-import Theory from '../theory';
-
-import preset from './vector.presets';
+import theory from '../theory/_module';
 
 const max = [
 	12,
@@ -118,11 +116,11 @@ const getNoteName = ({ pod }) => {
 		return '';
 	}
 	const reduced = reduce(pod);
-	const degree = Theory.DEGREE_MAP[reduced[1]];
+	const degree = theory.DEGREE_MAP[reduced[1]];
 	if (!degree) {
 		return '?';
 	}
-	return degree.name + Theory.getAccidentalString(reduced[0] - degree[0]);
+	return degree.name + theory.getAccidentalString(reduced[0] - degree[0]);
 };
 
 /* export const parseString = keyString => {
@@ -144,7 +142,6 @@ const getNoteName = ({ pod }) => {
 }; */
 
 export default {
-	preset,
 	getIntervalName,
 	getNoteName,
 	max,

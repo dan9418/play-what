@@ -9,11 +9,11 @@ import InputRow from './InputRow';
 
 
 const VectorDocs = () => {
-	const [defaultValue, setDefaultValue] = useState(PW_Core.models.vector.preset.interval.P5.value);
+	const [defaultValue, setDefaultValue] = useState(PW_Core.theory.interval.preset.P5.value);
 	const [max, setMax] = useState([12, 7]);
 
-	const [A, setA] = useState(vector.preset.interval.M3.value);
-	const [B, setB] = useState(vector.preset.interval.P5.value);
+	const [A, setA] = useState(PW_Core.theory.interval.preset.M3.value);
+	const [B, setB] = useState(PW_Core.theory.interval.preset.P5.value);
 	const [divisor, setDivisor] = useState(2);
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);

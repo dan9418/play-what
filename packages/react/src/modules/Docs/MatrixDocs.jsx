@@ -8,13 +8,13 @@ import "./Docs.css";
 import InputRow from './InputRow';
 
 const MatrixDocs = () => {
-	const [defaultValue, setDefaultValue] = useState(PW_Core.models.matrix.preset.scale.NaturalMinor.value);
+	const [defaultValue, setDefaultValue] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
 	const [max, setMax] = useState([12, 7]);
 
 	console.log(defaultValue)
 
-	const [A, setA] = useState(matrix.preset.scale.NaturalMinor.value);
-	const [B, setB] = useState(matrix.preset.scale.Major.value);
+	const [A, setA] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
+	const [B, setB] = useState(PW_Core.theory.scale.preset.Major.value);
 	const [divisor, setDivisor] = useState(2);
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
