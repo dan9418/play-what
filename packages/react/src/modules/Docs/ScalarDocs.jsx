@@ -16,12 +16,12 @@ const ScalarDocs = () => {
 	const [offset, setOffset] = useState(1);
 	const [subtraction, setSubtraction] = useState(false);
 
-	const result_modulo = PW_Core.models.scalar.modulo(a, divisor);
+	const result_modulo = PW_Core.models.integer.modulo(a, divisor);
 
-	const result_moduloSum = PW_Core.models.scalar.moduloSum(a, b, divisor, offset, subtraction);
+	const result_moduloSum = PW_Core.models.integer.moduloSum(a, b, divisor, offset, subtraction);
 
 	return (
-		<div className='scalar-docs'>
+		<div className='integer-docs'>
 			<h1>Scalar</h1>
 
 			<h3>Constants</h3>

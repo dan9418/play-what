@@ -7,8 +7,8 @@ export const ScalarMeter = ({ max, values, colorFn }) => {
 
 	const cells = [];
 	for (let i = 0; i < max; i++) {
-		const value = values.find(v => PW_Core.models.scalar.modulo(v, max) === i);
-		const reduced = PW_Core.models.scalar.modulo(value, max);
+		const value = values.find(v => PW_Core.models.integer.modulo(v, max) === i);
+		const reduced = PW_Core.models.integer.modulo(value, max);
 		const color = colorFn(reduced);
 
 		let styles = PW_Color.getStylesFromBgColor(color);
