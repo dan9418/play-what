@@ -22,7 +22,7 @@ const IntegerDocs = () => {
 
 	return (
 		<div className='integer-docs'>
-			<h1>Integer</h1>
+			<h2>Integer</h2>
 
 			<h3>Constants</h3>
 

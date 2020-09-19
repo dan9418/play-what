@@ -23,7 +23,7 @@ const PodListDocs = () => {
 
 	return (
 		<div className='podList-docs'>
-			<h1>PodList</h1>
+			<h2>PodList</h2>
 
 			<h3>Constants</h3>
 

@@ -3,11 +3,6 @@
     width: 100vw;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 0;
-    padding: 0;
-}
-
 .stage {
     padding-top: 50px;
     width: 100%;
@@ -17,27 +12,4 @@ h1, h2, h3, h4, h5 {
 
 .stage *::-webkit-scrollbar {
     display: none;
-}
-
-.viewer-manager {
-    padding: 32px;
-    height: calc(100vh - 50px);
-    overflow-y: auto;
-}
-
-.viewer-manager h1 {
-    color: #333;
-    margin: 16px 0;
-}
-
-.viewer-grid {
-    display: grid;
-    grid-gap: 16px;
-    grid-template-columns: 50% 50%;
-}
-
-/* JSON */
-
-.json-wrapper {
-
 }

@@ -22,7 +22,7 @@ const PodDocs = () => {
 
 	return (
 		<div className='pod-docs'>
-			<h1>Pod</h1>
+			<h2>Pod</h2>
 
 			<h3>Constants</h3>
 
