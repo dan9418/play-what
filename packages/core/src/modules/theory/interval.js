@@ -177,6 +177,17 @@ export const INTERVAL = {
 	}
 };
 
+const getName = ({ pod }) => {
+	if (pod[1] < 0 || po[1] > m[1]) {
+		console.error('degree out of bounds', pod);
+		return '';
+	}
+	const reduced = reduce(pod);
+	const ivl = Object.values(preset.interval).find(({ value }) => value[0] === reduced[0] && val[1][1] === reduced[1][1]);
+	return ivl ? ivl.id : '';
+};
+
 export default {
-	preset: INTERVAL
+	preset: INTERVAL,
+	getName
 };

@@ -1,6 +1,6 @@
-const defaults = {
-	a: [0, 0],
-	B: []
+const DEFAULT = {
+	root: [0, 0],
+	list: []
 };
 
 /*
@@ -13,5 +13,5 @@ export const chordalInversion = (conceptConfig, inversion) => {
 } */
 
 export default {
-	defaults
+	defaultValue: DEFAULT
 };
