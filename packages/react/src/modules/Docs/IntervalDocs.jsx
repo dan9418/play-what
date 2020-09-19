@@ -1,6 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { PodMeter } from '../Meter/Meter';
+import Meter from '../Meter/Meter';
 import PodInput from '../models/mathdels/math/PodInput/PodInput';
 import "./Docs.css";
 import InputRow from './InputRow';
@@ -31,7 +31,7 @@ const PodDocs = () => {
 
 
 
-				<PodMeter values={[defaultValue]} max={max} />
+				<Meter values={[defaultValue]} max={max} />
 			</div>
 		</div>
 	);

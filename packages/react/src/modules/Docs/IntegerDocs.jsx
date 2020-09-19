@@ -1,6 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { IntegerMeter } from '../viewers/Meter/Meter';
+import Meter from '../viewers/Meter/Meter';
 import InputRow from './InputRow';
 import IntegerInput from '../models/math/IntegerInput/IntegerInput';
 import "./Docs.css";
@@ -19,8 +19,6 @@ const IntegerDocs = () => {
 
 	const result_moduloSum = PW_Core.models.math.integer.moduloSum(a, b, divisor, offset, subtraction);
 
-	const colorFn = PW_Core.models.theory.pitchClass.getColor;
-
 	return (
 		<div className='integer-docs'>
 			<h2>Integer</h2>
@@ -33,7 +31,7 @@ const IntegerDocs = () => {
 					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
 
-				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[a]} max={max} />
 			</div>
 
 			<h3>Modulo</h3>
@@ -42,17 +40,17 @@ const IntegerDocs = () => {
 				<InputRow label="a" x>
 					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
-				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[a]} max={max} />
 
 				<InputRow label="divisor" x>
 					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
-				<IntegerMeter values={[divisor]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[divisor]} max={max} />
 
 				<InputRow label="result" x>
 					<IntegerInput value={result_modulo} />
 				</InputRow>
-				<IntegerMeter values={[result_modulo]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[result_modulo]} max={max} />
 			</div>
 
 			<h3>Modulo Sum</h3>
@@ -61,30 +59,30 @@ const IntegerDocs = () => {
 				<InputRow label="a" x>
 					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
-				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[a]} max={max} />
 
 				<InputRow label="b" x>
 					<IntegerInput value={b} setValue={setB} />
 				</InputRow>
-				<IntegerMeter values={[b]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[b]} max={max} />
 
 
 				<InputRow label="divisor" x>
 					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
-				<IntegerMeter values={[divisor]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[divisor]} max={max} />
 
 
 				<InputRow label="offset" x>
 					<IntegerInput value={offset} setValue={setOffset} />
 				</InputRow>
-				<IntegerMeter values={[offset]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[offset]} max={max} />
 
 
 				<InputRow label="result" x>
 					<IntegerInput value={result_moduloSum} />
 				</InputRow>
-				<IntegerMeter values={[result_moduloSum]} max={max} colorFn={colorFn} />
+				<Meter type='integer' value={[result_moduloSum]} max={max} />
 
 			</div>
 

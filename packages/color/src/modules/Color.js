@@ -2,7 +2,7 @@ import color from 'color';
 
 const getFgColor = (bg) => {
 	if (!bg) return "#000";
-	return color(bg).isDark() ? "#000" : "#fff";
+	return color(bg).isDark() ? "#fff" : "#000";
 };
 
 const getStylesFromBgColor = (bg) => {

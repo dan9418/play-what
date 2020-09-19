@@ -1,6 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { PodMeter } from '../viewers/Meter/Meter';
+import Meter from '../viewers/Meter/Meter';
 import PodInput from '../models/math/PodInput/PodInput';
 import "./Docs.css";
 import InputRow from './InputRow';
@@ -25,7 +25,7 @@ const PodDocs = () => {
 					<PodInput value={a} setValue={setA} />
 				</InputRow>
 
-				<PodMeter values={[a]} max={max} />
+				<Meter type='pod' value={a} max={max} />
 			</div>
 
 			<h3>addPod(a, b)</h3>
@@ -34,17 +34,17 @@ const PodDocs = () => {
 				<InputRow label="a" x>
 					<PodInput value={a} setValue={setA} />
 				</InputRow>
-				<PodMeter values={[a]} max={max} />
+				<Meter type='pod' value={a} max={max} />
 
 				<InputRow label="b" x>
 					<PodInput value={b} setValue={setB} />
 				</InputRow>
-				<PodMeter values={[b]} max={max} />
+				<Meter type='pod' value={b} max={max} />
 
 				<InputRow label="result" x>
 					<PodInput value={result_addPod} />
 				</InputRow>
-				<PodMeter values={[result_addPod]} max={max} />
+				<Meter type='pod' value={result_addPod} max={max} />
 			</div>
 		</div>
 	);

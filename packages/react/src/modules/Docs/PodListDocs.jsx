@@ -1,6 +1,6 @@
 import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import { PodMeter } from '../viewers/Meter/Meter';
+import Meter from '../viewers/Meter/Meter';
 import PodListInput from '../models/math/PodListInput/PodListInput';
 import PodInput from '../models/math/PodInput/PodInput';
 import "./Docs.css";
@@ -30,7 +30,7 @@ const PodListDocs = () => {
 					<PodListInput value={testValue} setValue={setTestValue} />
 				</InputRow>
 
-				<PodMeter values={testValue} max={max} />
+				<Meter type="podList" value={testValue} max={max} />
 			</div>
 
 		</div>
