@@ -22,11 +22,11 @@ export const CHORD = {
 
 /*
 export const chordalInversion = (conceptConfig, inversion) => {
-    const relPodList = { ...conceptConfig };
-    relPodList.B = [...conceptConfig.B];
-    relPodList.B[0] = addPods(relPodList.B[0], Presets.INTERVALS.P8.a);
-    relPodList.B = rotate(relPodList.B, inversion);
-    return relPodList;
+    const bipod = { ...conceptConfig };
+    bipod.B = [...conceptConfig.B];
+    bipod.B[0] = addPods(bipod.B[0], Presets.INTERVALS.P8.a);
+    bipod.B = rotate(bipod.B, inversion);
+    return bipod;
 } */
 
 export default {

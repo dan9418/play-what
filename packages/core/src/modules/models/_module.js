@@ -1,11 +1,11 @@
 import integer from './integer';
 import pod from './pod';
 import podList from './podList';
-import relPodList from './relPodList';
+import bipod from './bipod';
 
 export default {
 	integer,
 	pod,
 	podList,
-	relPodList
+	bipod
 }
