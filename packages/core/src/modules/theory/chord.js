@@ -20,6 +20,15 @@ export const CHORD = {
 	Sus4: { id: 'Sus4', name: 'Suspended 4th', value: [INTERVAL.P1.value, INTERVAL.P4.value, INTERVAL.P5.value] }
 };
 
+/*
+export const chordalInversion = (conceptConfig, inversion) => {
+    const relPodList = { ...conceptConfig };
+    relPodList.B = [...conceptConfig.B];
+    relPodList.B[0] = addPods(relPodList.B[0], Presets.INTERVALS.P8.a);
+    relPodList.B = rotate(relPodList.B, inversion);
+    return relPodList;
+} */
+
 export default {
 	preset: CHORD
 };

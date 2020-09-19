@@ -7,7 +7,6 @@ import "./Docs.css";
 
 const IntegerDocs = () => {
 
-	const [defaultValue, setDefaultValue] = useState(0);
 	const [max, setMax] = useState(12);
 
 	const [a, setA] = useState(3);
@@ -20,22 +19,21 @@ const IntegerDocs = () => {
 
 	const result_moduloSum = PW_Core.models.integer.moduloSum(a, b, divisor, offset, subtraction);
 
+	const colorFn = PW_Core.theory.pitchClass.getColor;
+
 	return (
 		<div className='integer-docs'>
 			<h2>Integer</h2>
 
-			<h3>Constants</h3>
-
 			<div className="card">
-				<InputRow label="Default" x>
-					<IntegerInput value={defaultValue} setValue={setDefaultValue} />
-				</InputRow>
-				<InputRow label="Max" x>
+				<InputRow label="max" x>
 					<IntegerInput value={max} setValue={setMax} />
 				</InputRow>
+				<InputRow label="a" x>
+					<IntegerInput value={a} setValue={setA} />
+				</InputRow>
 
-
-				<IntegerMeter values={[defaultValue]} max={max} colorFn={PW_Core.theory.pitchClass.getColor} />
+				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
 			</div>
 
 			<h3>Modulo</h3>
@@ -44,15 +42,17 @@ const IntegerDocs = () => {
 				<InputRow label="a" x>
 					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
+				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
 
 				<InputRow label="divisor" x>
 					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
+				<IntegerMeter values={[divisor]} max={max} colorFn={colorFn} />
 
-				<div className="result">
-					<label>=</label>
+				<InputRow label="result" x>
 					<IntegerInput value={result_modulo} />
-				</div>
+				</InputRow>
+				<IntegerMeter values={[result_modulo]} max={max} colorFn={colorFn} />
 			</div>
 
 			<h3>Modulo Sum</h3>
@@ -61,23 +61,31 @@ const IntegerDocs = () => {
 				<InputRow label="a" x>
 					<IntegerInput value={a} setValue={setA} />
 				</InputRow>
+				<IntegerMeter values={[a]} max={max} colorFn={colorFn} />
 
 				<InputRow label="b" x>
 					<IntegerInput value={b} setValue={setB} />
 				</InputRow>
+				<IntegerMeter values={[b]} max={max} colorFn={colorFn} />
+
 
 				<InputRow label="divisor" x>
 					<IntegerInput value={divisor} setValue={setDivisor} />
 				</InputRow>
+				<IntegerMeter values={[divisor]} max={max} colorFn={colorFn} />
+
 
 				<InputRow label="offset" x>
 					<IntegerInput value={offset} setValue={setOffset} />
 				</InputRow>
+				<IntegerMeter values={[offset]} max={max} colorFn={colorFn} />
 
-				<div className="result">
-					<label>=</label>
+
+				<InputRow label="result" x>
 					<IntegerInput value={result_moduloSum} />
-				</div>
+				</InputRow>
+				<IntegerMeter values={[result_moduloSum]} max={max} colorFn={colorFn} />
+
 			</div>
 
 		</div>

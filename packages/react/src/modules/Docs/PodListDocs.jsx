@@ -8,10 +8,8 @@ import "./Docs.css";
 import InputRow from './InputRow';
 
 const PodListDocs = () => {
-	const [defaultValue, setDefaultValue] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
+	const [testValue, setTestValue] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
 	const [max, setMax] = useState([12, 7]);
-
-	console.log(defaultValue)
 
 	const [A, setA] = useState(PW_Core.theory.scale.preset.NaturalMinor.value);
 	const [B, setB] = useState(PW_Core.theory.scale.preset.Major.value);
@@ -25,17 +23,15 @@ const PodListDocs = () => {
 		<div className='podList-docs'>
 			<h2>PodList</h2>
 
-			<h3>Constants</h3>
-
 			<div className="card">
-				<InputRow label="Default">
-					<PodListInput value={defaultValue} setValue={setDefaultValue} />
-				</InputRow>
-				<InputRow label="Max" x>
+				<InputRow label="max" x>
 					<PodInput value={max} setValue={setMax} />
 				</InputRow>
+				<InputRow label="testValue">
+					<PodListInput value={testValue} setValue={setTestValue} />
+				</InputRow>
 
-				<PodMeter values={defaultValue} max={max} />
+				<PodMeter values={testValue} max={max} />
 			</div>
 
 		</div>
