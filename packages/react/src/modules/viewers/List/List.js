@@ -3,46 +3,54 @@ import PW_Color from '@pw/color';
 import React from 'react';
 import './List.css';
 
-const TextList = ({ list }) => {
-	const cells = list.map((l, i) => <div className='list-item' style={l.style} key={i}>{l.text}</div>);
-	return (
-		<div className='list'>
-			{cells}
-		</div>
-	);
-};
+const Name = ({ style, children }) => <div className='name' style={style}>{children}</div>;
 
-const IntervalList = ({ intervals, ...props }) => {
-	const list = intervals.map(ivl => {
-		const color = PW_Core.models.theory.degree.getColor(ivl[1]);
-		const style = {
-			border: `1px solid ${color}`
-		};
-		const text = PW_Core.models.theory.interval.getName(ivl)
-		return { style, text };
-	});
-	return <TextList list={list} />;
+const IntervalName = ({ interval, ...props }) => {
+	const [p, d] = interval;
+	const text = PW_Core.models.theory.interval.getName(interval)
+	const color = PW_Core.models.theory.degree.getColor(d);
+	const style = {
+		border: `1px solid ${color}`
+	};
+	return <Name style={style} >{text}</Name>;
 }
 
-const NoteList = ({ notes, ...props }) => {
-	const list = notes.map(n => {
-		const [p, d] = n;
-		const color = PW_Core.models.theory.degree.getColor(d);
-		const style = {
-			border: `1px solid ${color}`
-		};
-		const text = PW_Core.models.theory.note.getName(n)
-		return { style, text };
-	});
-	return <TextList list={list} />;
+const IntervalNameList = ({ intervals }) => {
+	return (
+		<div className='list'>
+			{intervals.map((ivl, i) => <IntervalName interval={ivl} key={i} />)}
+		</div>
+	);
+}
+
+const NoteName = ({ note, ...props }) => {
+	const [p, d] = note;
+	const text = PW_Core.models.theory.note.getName(note)
+	const color = PW_Core.models.theory.degree.getColor(d);
+	const style = {
+		border: `1px solid ${color}`
+	};
+	return <Name style={style} >{text}</Name>;
+}
+
+const NoteNameList = ({ notes }) => {
+	return (
+		<div className='list'>
+			{notes.map((n, i) => <NoteName note={n} key={i} />)}
+		</div>
+	);
 }
 
 const List = ({ value, type, ...props }) => {
 	switch (type) {
 	case 'interval':
-		return <IntervalList intervals={value} {...props} />;
+		return <IntervalName interval={value} {...props} />;
 	case 'note':
-		return <NoteList notes={value} {...props} />;
+		return <NoteName note={value} {...props} />;
+	case 'intervalList':
+		return <IntervalNameList intervals={value} {...props} />;
+	case 'noteList':
+		return <NoteNameList notes={value} {...props} />;
 	default:
 		return null;
 	}

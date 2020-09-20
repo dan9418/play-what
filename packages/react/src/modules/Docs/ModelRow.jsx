@@ -2,6 +2,7 @@ import React from "react";
 import IntegerInput from "../models/math/IntegerInput/IntegerInput";
 import PodInput from "../models/math/PodInput/PodInput";
 import PodListInput from "../models/math/PodListInput/PodListInput";
+import List from "../viewers/List/List";
 import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
 
@@ -18,9 +19,9 @@ const getInputComponent = type => {
 	}
 }
 
-const ModelRow = ({ label, type, value, setValue, max }) => {
+const ModelRow = ({ label, mathType, theoryType, value, setValue, max }) => {
 	const classes = ['model-row'];
-	const Input = getInputComponent(type);
+	const Input = getInputComponent(mathType);
 	return (
 		<div className={classes.join(' ')}>
 			<div className="title-theory">
@@ -31,7 +32,8 @@ const ModelRow = ({ label, type, value, setValue, max }) => {
 					<Input value={value} setValue={setValue} max={max} />
 				</div>
 				<div className="content">
-					<Meter type={type} value={value} max={max} />
+					<List type={theoryType} value={value} max={max} />
+					<Meter type={mathType} value={value} max={max} />
 				</div>
 			</div>
 		</div>

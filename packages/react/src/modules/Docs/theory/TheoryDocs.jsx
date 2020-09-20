@@ -18,9 +18,9 @@ const TheoryDocs = () => {
 			<h2>Theory</h2>
 
 			<div className="card">
-				<ModelRow value={a} setValue={setA} max={max} label="a" type="pod" />
-				<ModelRow value={B} setValue={setB} max={max} label="B" type="podList" />
-				<ModelRow value={C} max={max} label="C" type="podList" />
+				<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
+				<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
+				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
 
 		</div>
