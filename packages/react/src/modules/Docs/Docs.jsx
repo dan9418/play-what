@@ -7,6 +7,7 @@ import IntegerDocs from './math/IntegerDocs';
 import PodDocs from './math/PodDocs';
 import PodListDocs from './math/PodListDocs';
 import RootDocs from './RootDocs';
+import TheoryDocs from './theory/TheoryDocs';
 
 // Theory
 
@@ -17,7 +18,7 @@ const Docs = () => (
 			<RootDocs />
 		</Fold>
 		<Fold label="Theory">
-
+			<TheoryDocs />
 		</Fold>
 		<Fold label="Math">
 			<IntegerDocs />
