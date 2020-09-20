@@ -17,9 +17,7 @@ const Docs = () => (
 		<Fold label="Root">
 			<RootDocs />
 		</Fold>
-		<Fold label="Theory">
-			<TheoryDocs />
-		</Fold>
+		<TheoryDocs />
 		<Fold label="Math">
 			<IntegerDocs />
 			<PodDocs />
