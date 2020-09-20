@@ -4,6 +4,7 @@ import Meter from '../../viewers/Meter/Meter';
 import PodListInput from '../../models/math/PodListInput/PodListInput';
 import PodInput from '../../models/math/PodInput/PodInput';
 import InputRow from '../InputRow';
+import ModelRow from '../ModelRow';
 
 const max = [12, 7];
 
@@ -17,20 +18,9 @@ const TheoryDocs = () => {
 			<h2>Theory</h2>
 
 			<div className="card">
-				<InputRow label="a" x>
-					<PodInput value={a} setValue={setA} />
-				</InputRow>
-				<Meter type="pod" value={a} max={max} />
-
-				<InputRow label="B">
-					<PodListInput value={B} setValue={setB} />
-				</InputRow>
-				<Meter type="podList" value={B} max={max} />
-
-				<InputRow label="C">
-					<PodListInput value={C} />
-				</InputRow>
-				<Meter type="podList" value={C} max={max} />
+				<ModelRow value={a} setValue={setA} max={max} label="a" type="pod" />
+				<ModelRow value={B} setValue={setB} max={max} label="B" type="podList" />
+				<ModelRow value={C} max={max} label="C" type="podList" />
 			</div>
 
 		</div>

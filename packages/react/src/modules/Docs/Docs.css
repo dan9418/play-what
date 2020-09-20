@@ -40,3 +40,11 @@
 .fold > h1 {
     cursor: pointer;
 }
+
+.model-row > .input-meter {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-gap: 8px;
+    padding: 8px;
+}

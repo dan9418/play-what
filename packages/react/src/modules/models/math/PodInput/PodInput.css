@@ -1,9 +1,13 @@
-.pod-input :first-child {
-    border-radius: 4px 0 0 4px;
+.pod-input {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.pod-input :last-child {
-    position: relative;
-    left: -1;
-    border-radius: 0 4px 4px 0;
+.pod-input .integer-input {
+    margin: 0 2px;
+}
+
+.pod-open-bracket, .pod-comma {
+    font-size: 16px;
 }

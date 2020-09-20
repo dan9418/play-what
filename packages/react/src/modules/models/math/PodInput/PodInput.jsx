@@ -8,8 +8,11 @@ export const PodInput = ({ value, setValue }) => {
 	const setD = v => setValue([p, v]);
 	return (
 		<div className='pod-input'>
+			<div className='pod-open-bracket'>|</div>
 			<IntegerInput value={p} setValue={setP} />
+			<div className='pod-comma'>,</div>
 			<IntegerInput value={d} setValue={setD} />
+			<div className='pod-open-bracket'>|</div>
 		</div>
 	);
 };
