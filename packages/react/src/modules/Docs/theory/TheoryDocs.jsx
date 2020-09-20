@@ -5,6 +5,7 @@ import PodListInput from '../../models/math/PodListInput/PodListInput';
 import PodInput from '../../models/math/PodInput/PodInput';
 import InputRow from '../InputRow';
 import ModelRow from '../ModelRow';
+import Fold from '../Fold';
 
 const max = [12, 7];
 
@@ -14,16 +15,13 @@ const TheoryDocs = () => {
 	const C = PW_Core.models.math.pod.addPodList({ a, B });
 
 	return (
-		<div className='theory-docs'>
-			<h2>Theory</h2>
-
+		<Fold label={'Theory'} level={2}>
 			<div className="card">
 				<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
 				<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
-
-		</div>
+		</Fold>
 	);
 }
 

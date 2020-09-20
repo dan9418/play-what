@@ -37,8 +37,9 @@
     margin-top: 4px;
 }
 
-.fold > h1 {
+.fold > :first-child {
     cursor: pointer;
+    width: 100%;
 }
 
 .model-row > .input-meter {
