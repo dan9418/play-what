@@ -182,7 +182,7 @@ export const INTERVAL = {
 const getName = (ivl) => {
 	const [p, d] = ivl;
 	const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
-	return result ? result.id : `?${d}`;
+	return result ? result.id : `[${p}, ${d}]`;
 };
 
 export default {

@@ -20,6 +20,7 @@ const RootDocs = () => {
 				</InputRow>
 
 				<List value={rootScale} type="interval" />
+				<List value={rootScale} type="note" />
 				<Meter type='podList' value={rootScale} max={[12, 7]} />
 			</div>
 		</div>

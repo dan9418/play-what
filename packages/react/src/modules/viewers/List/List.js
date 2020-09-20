@@ -24,10 +24,25 @@ const IntervalList = ({ intervals, ...props }) => {
 	return <TextList list={list} />;
 }
 
+const NoteList = ({ notes, ...props }) => {
+	const list = notes.map(n => {
+		const [p, d] = n;
+		const color = PW_Core.models.theory.degree.getColor(d);
+		const style = {
+			border: `1px solid ${color}`
+		};
+		const text = PW_Core.models.theory.note.getName(n)
+		return { style, text };
+	});
+	return <TextList list={list} />;
+}
+
 const List = ({ value, type, ...props }) => {
 	switch (type) {
 	case 'interval':
 		return <IntervalList intervals={value} {...props} />;
+	case 'note':
+		return <NoteList notes={value} {...props} />;
 	default:
 		return null;
 	}

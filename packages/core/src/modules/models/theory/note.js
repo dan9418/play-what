@@ -1,39 +1,31 @@
 export const NOTE = {
-	NA: { id: 'NA', name: 'N/A', value: [0, -1] },
-	Ab: { id: 'Ab', name: 'Ab', value: [8, 0] },
-	A: { id: 'A', name: 'A', value: [9, 0] },
-	'A#': { id: 'A#', name: 'A#', value: [10, 0] },
-	Bb: { id: 'Bb', name: 'Bb', value: [10, 1] },
-	B: { id: 'B', name: 'B', value: [11, 1] },
-	'B#': { id: 'B#', name: 'B#', value: [0, 1] },
-	Cb: { id: 'Cb', name: 'Cb', value: [11, 2] },
-	C: { id: 'C', name: 'C', value: [0, 2] },
-	'C#': { id: 'C#', name: 'C#', value: [1, 2] },
-	Db: { id: 'Db', name: 'Db', value: [1, 3] },
-	D: { id: 'D', name: 'D', value: [2, 3] },
-	'D#': { id: 'D#', name: 'D#', value: [3, 3] },
-	Eb: { id: 'Eb', name: 'Eb', value: [3, 4] },
-	E: { id: 'E', name: 'E', value: [4, 4] },
-	'E#': { id: 'E#', name: 'E#', value: [5, 4] },
-	Fb: { id: 'Fb', name: 'Fb', value: [4, 5] },
-	F: { id: 'F', name: 'F', value: [5, 5] },
-	'F#': { id: 'F#', name: 'F#', value: [6, 5] },
-	Gb: { id: 'Gb', name: 'Gb', value: [6, 6] },
-	G: { id: 'G', name: 'G', value: [7, 6] },
-	'G#': { id: 'G#', name: 'G#', value: [8, 6] }
+	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
+	A: { id: 'A', name: 'A', value: [9, 5] },
+	'A#': { id: 'A#', name: 'A#', value: [10, 5] },
+	Bb: { id: 'Bb', name: 'Bb', value: [10, 6] },
+	B: { id: 'B', name: 'B', value: [11, 6] },
+	'B#': { id: 'B#', name: 'B#', value: [0, 6] },
+	Cb: { id: 'Cb', name: 'Cb', value: [11, 0] },
+	C: { id: 'C', name: 'C', value: [0, 0] },
+	'C#': { id: 'C#', name: 'C#', value: [1, 0] },
+	Db: { id: 'Db', name: 'Db', value: [1, 1] },
+	D: { id: 'D', name: 'D', value: [2, 1] },
+	'D#': { id: 'D#', name: 'D#', value: [3, 1] },
+	Eb: { id: 'Eb', name: 'Eb', value: [3, 2] },
+	E: { id: 'E', name: 'E', value: [4, 2] },
+	'E#': { id: 'E#', name: 'E#', value: [5, 2] },
+	Fb: { id: 'Fb', name: 'Fb', value: [4, 3] },
+	F: { id: 'F', name: 'F', value: [5, 3] },
+	'F#': { id: 'F#', name: 'F#', value: [6, 3] },
+	Gb: { id: 'Gb', name: 'Gb', value: [6, 4] },
+	G: { id: 'G', name: 'G', value: [7, 4] },
+	'G#': { id: 'G#', name: 'G#', value: [8, 4] }
 };
 
-const getName = ({ pod }) => {
-	if (pod[1] < 0 || pod[1] > m[1]) {
-		console.error('degree out of bounds', pod);
-		return '';
-	}
-	const reduced = reduce(pod);
-	const degree = theory.DEGREE_MAP[reduced[1]];
-	if (!degree) {
-		return '?';
-	}
-	return degree.name + theory.getAccidentalString(reduced[0] - degree[0]);
+const getName = (ivl) => {
+	const [p, d] = ivl;
+	const result = Object.values(NOTE).find(({ value }) => value[0] === p && value[1] === d);
+	return result ? result.id : `[${p}, ${d}]`;
 };
 
 /* export const parseString = keyString => {
