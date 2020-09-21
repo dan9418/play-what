@@ -9,13 +9,15 @@ import Fold from '../Fold';
 
 const max = [12, 7];
 
-const TransposeDocs = ({ A }) => {
+const TransposeDocs = () => {
+	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
 	const [b, setB] = useState(PW_Core.models.theory.interval.preset.P1.value);
 	const C = PW_Core.models.math.podList.addPod({ A, b });
 
 	return (
-		<Fold label={'Transpose'} level={3}>
+		<Fold label={'transpose: (a, b) => C'} level={3}>
 			<div className="card">
+				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
 				<ModelRow value={b} setValue={setB} max={max} label="b" mathType="pod" theoryType="interval" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
@@ -23,13 +25,15 @@ const TransposeDocs = ({ A }) => {
 	);
 }
 
-const InversionDocs = ({ A }) => {
+const InversionDocs = () => {
+	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
 	const [n, setN] = useState(0);
 	const C = PW_Core.models.theory.chord.getInversion({ A, n })
 
 	return (
-		<Fold label={'Inversion'} level={3}>
+		<Fold label={'inversion: (A, n) => C'} level={3}>
 			<div className="card">
+				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
 				<ModelRow value={n} setValue={setN} label="n" mathType="integer" theoryType="pitch" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
@@ -37,13 +41,15 @@ const InversionDocs = ({ A }) => {
 	);
 }
 
-const NumeralDocs = ({ A }) => {
+const NumeralDocs = () => {
+	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
 	const [d, setD] = useState(0);
 	const C = PW_Core.models.theory.scale.getNumeral({ A, d })
 
 	return (
-		<Fold label={'Roman Numeral'} level={3}>
+		<Fold label={'getNumeral: (A, d) => C'} level={3}>
 			<div className="card">
+				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
 				<ModelRow value={d} setValue={setD} label="d" mathType="integer" theoryType="degree" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
@@ -51,13 +57,15 @@ const NumeralDocs = ({ A }) => {
 	);
 }
 
-const ModeDocs = ({ A }) => {
+const ModeDocs = () => {
+	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
 	const [d, setD] = useState(0);
 	const C = PW_Core.models.theory.scale.getMode({ A, d })
 
 	return (
-		<Fold label={'Mode'} level={3}>
+		<Fold label={'getMode: (A, d) => C'} level={3}>
 			<div className="card">
+				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
 				<ModelRow value={d} setValue={setD} label="d" mathType="integer" theoryType="degree" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
@@ -66,23 +74,11 @@ const ModeDocs = ({ A }) => {
 }
 
 const ScaleDocs = () => {
-	// Definition
-	const [a, setA] = useState(PW_Core.models.theory.note.preset.C.value);
-	const [B, setB] = useState(PW_Core.models.theory.scale.preset.Major.value);
-	const C = PW_Core.models.math.pod.addPodList({ a, B });
-
 	return (
 		<Fold label={'Scale'} level={3}>
-			<Fold label={'Definition'} level={4}>
-				<div className="card">
-					<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
-					<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
-					<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
-				</div>
-			</Fold>
-			<TransposeDocs A={C} />
-			<NumeralDocs A={C} />
-			<ModeDocs A={C} />
+			<TransposeDocs />
+			<NumeralDocs />
+			<ModeDocs />
 		</Fold>
 	);
 }
