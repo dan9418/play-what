@@ -1,9 +1,10 @@
 import PW_Core from '@pw/core';
 import PW_Color from '@pw/color';
+import PW_Tone from '@pw/tone';
 import React from 'react';
 import './List.css';
 
-const Name = ({ style, children }) => <div className='name' style={style}>{children}</div>;
+const Name = ({ style, children, onClick }) => <div className='name' style={style} onClick={onClick}>{children}</div>;
 
 const IntervalName = ({ interval: raw, ...props }) => {
 	const interval = PW_Core.models.math.pod.reduce(raw);
@@ -32,7 +33,11 @@ const NoteName = ({ note: raw, ...props }) => {
 	const style = {
 		border: `1px solid ${color}`
 	};
-	return <Name style={style} >{text}</Name>;
+
+	const f = PW_Core.tuning.getFrequency(raw[0]);
+	const onClick = () => PW_Tone.out.play(f);
+
+	return <Name style={style} onClick={onClick}>{text}</Name>;
 }
 
 const NoteNameList = ({ notes }) => {

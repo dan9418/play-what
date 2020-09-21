@@ -1,5 +1,5 @@
-import Tone from './modules/Tone';
+import out from './modules/out';
 
 export default {
-	...Tone
+	out
 };
