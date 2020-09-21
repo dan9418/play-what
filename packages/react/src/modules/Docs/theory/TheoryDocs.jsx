@@ -51,6 +51,20 @@ const NumeralDocs = ({ A }) => {
 	);
 }
 
+const ModeDocs = ({ A }) => {
+	const [d, setD] = useState(0);
+	const C = PW_Core.models.theory.scale.getMode({ A, d })
+
+	return (
+		<Fold label={'Mode'} level={3}>
+			<div className="card">
+				<ModelRow value={d} setValue={setD} label="d" mathType="integer" theoryType="degree" />
+				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
+			</div>
+		</Fold>
+	);
+}
+
 const ScaleDocs = () => {
 	// Definition
 	const [a, setA] = useState(PW_Core.models.theory.note.preset.C.value);
@@ -68,6 +82,7 @@ const ScaleDocs = () => {
 			</Fold>
 			<TransposeDocs A={C} />
 			<NumeralDocs A={C} />
+			<ModeDocs A={C} />
 		</Fold>
 	);
 }

@@ -1,5 +1,7 @@
 import { INTERVAL } from './interval';
 import integer from '../math/integer';
+import utils from '../../utils';
+import chord from './chord';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
@@ -10,21 +12,17 @@ export const SCALE = {
 	Chromatic: { id: 'Chromatic', name: 'Chromatic', value: [INTERVAL.P1.value, INTERVAL.m2.value, INTERVAL.M2.value, INTERVAL.m3.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.A4.value, INTERVAL.P5.value, INTERVAL.m6.value, INTERVAL.M6.value, INTERVAL.m7.value, INTERVAL.M7.value] }
 };
 
-const getMode = ({ scale, degree }) => {
-	let mode = [...scale];
-	mode = utils.rotate(mode, degree);
-	const a = mode[0];
-	const newMode = mode.map((m) => {
-		return [
-			integer.moduloSum(m[0], a[0], 12, 0, true),
-			integer.moduloSum(m[1], a[1], 7, 0, true)
-		];
-	});
-	return newMode;
+const getMode = ({ A, d }) => {
+	return chord.getInversion({ A, n: d });
+	/*let mode = [...A];
+	mode = utils.rotate(mode, d);
+	const root = mode[0];
+	const newMode = mode.map((m) => [m[0] + root[0], m[1] + root[1]]);
+	return newMode;*/
 };
 
 const getAllModes = ({ scale, keyCenter }) => {
-	const modes = [];
+	/*const modes = [];
 	for (let i = 1; i <= scale.length; i++) {
 		modes.push(getMode({ scale, degree: i }));
 	}
@@ -32,7 +30,7 @@ const getAllModes = ({ scale, keyCenter }) => {
 		name: `Degree ${i + 1}`,
 		a: keyCenter,
 		B: m
-	}));
+	}));*/
 };
 
 const getNumeral = ({ A, d }) => {
@@ -48,11 +46,11 @@ const getNumeral = ({ A, d }) => {
 };
 
 const getAllNumerals = ({ scale, keyCenter }) => {
-	const numerals = [];
+	/*const numerals = [];
 	for (let i = 0; i < scale.length; i++) {
 		numerals.push(getNumeral({ scale, keyCenter, degree: i }));
 	}
-	return numerals;
+	return numerals;*/
 };
 
 export default {
