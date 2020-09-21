@@ -9,16 +9,28 @@ import Fold from '../Fold';
 
 const max = [12, 7];
 
-const ChordDefinitionDocs = () => {
-	const [a, setA] = useState(PW_Core.models.theory.pitchClass.preset.middleC);
-	const [B, setB] = useState(PW_Core.models.theory.scale.preset.Major.value);
-	const C = PW_Core.models.math.pod.addPodList({ a, B });
+const TransposeDocs = ({ A }) => {
+	const [b, setB] = useState(PW_Core.models.theory.interval.preset.P1.value);
+	const C = PW_Core.models.math.podList.addPod({ A, b });
 
 	return (
-		<Fold label={'Definition'} level={3}>
+		<Fold label={'Transpose'} level={3}>
 			<div className="card">
-				<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
-				<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
+				<ModelRow value={b} setValue={setB} max={max} label="b" mathType="pod" theoryType="interval" />
+				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
+			</div>
+		</Fold>
+	);
+}
+
+const InversionDocs = ({ A }) => {
+	const [n, setN] = useState(0);
+	const C = PW_Core.models.theory.chord.getInversion({ A, n })
+
+	return (
+		<Fold label={'Inversion'} level={3}>
+			<div className="card">
+				<ModelRow value={n} setValue={setN} label="n" mathType="integer" theoryType="pitch" />
 				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 			</div>
 		</Fold>
@@ -26,8 +38,9 @@ const ChordDefinitionDocs = () => {
 }
 
 const ChordDocs = () => {
-	const [a, setA] = useState(PW_Core.models.theory.pitchClass.preset.middleC);
-	const [B, setB] = useState(PW_Core.models.theory.scale.preset.Major.value);
+	// Definition
+	const [a, setA] = useState(PW_Core.models.theory.note.preset.C.value);
+	const [B, setB] = useState(PW_Core.models.theory.chord.preset.Maj7.value);
 	const C = PW_Core.models.math.pod.addPodList({ a, B });
 
 	return (
@@ -39,6 +52,8 @@ const ChordDocs = () => {
 					<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
 				</div>
 			</Fold>
+			<TransposeDocs A={C} />
+			<InversionDocs A={C} />
 		</Fold>
 	);
 }

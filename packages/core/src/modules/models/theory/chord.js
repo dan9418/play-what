@@ -1,4 +1,6 @@
 import { INTERVAL } from './interval';
+import utils from '../../utils';
+import pod from '../math/pod';
 
 export const CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
@@ -20,15 +22,20 @@ export const CHORD = {
 	Sus4: { id: 'Sus4', name: 'Suspended 4th', value: [INTERVAL.P1.value, INTERVAL.P4.value, INTERVAL.P5.value] }
 };
 
-/*
-export const chordalInversion = (conceptConfig, inversion) => {
-    const bipod = { ...conceptConfig };
-    bipod.B = [...conceptConfig.B];
-    bipod.B[0] = addPods(bipod.B[0], Presets.INTERVALS.P8.a);
-    bipod.B = rotate(bipod.B, inversion);
-    return bipod;
-} */
+
+export const getInversion = ({ A, n }) => {
+	let result = [...A];
+	result = utils.rotate(result, n);
+	const octave = INTERVAL.P8.value;
+	for (let i = 1; i <= n; i++) {
+		const index = result.length - i;
+		const a = result[index];
+		result[index] = pod.addPod({ a, b: octave })
+	}
+	return result;
+}
 
 export default {
-	preset: CHORD
+	preset: CHORD,
+	getInversion
 };

@@ -27,12 +27,12 @@ const reduce = ([p, d]) => [integer.modulo(p, MAX[0]), integer.modulo(d, MAX[1])
 
 // Utils
 
-const addPod = (a, b) => ([
+const addPod = ({ a, b }) => ([
 	integer.moduloSum(a[0], b[0], MAX[0]),
 	integer.moduloSum(a[1], b[1], MAX[1])
 ]);
 
-const addPodList = ({ a, B }) => B.map((b) => addPod(a, b));
+const addPodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
 
 export default {
 	// Constants

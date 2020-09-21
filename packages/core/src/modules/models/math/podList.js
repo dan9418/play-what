@@ -4,7 +4,7 @@ import utils from '../../utils';
 
 // Constants
 
-const DEFAULT = [[0,0]];
+const DEFAULT = [[0, 0]];
 
 // Common
 
@@ -33,6 +33,8 @@ const findIndexOfPodWithPitch = (list, pitch, octaveReduce = true) => {
 	return list.findIndex((n) => n[0] === p);
 };
 
+const addPod = ({ A, b }) => A.map((a) => pod.addPod({ a, b }));
+
 export default {
 	defaultValue: DEFAULT,
 	// Common
@@ -40,5 +42,6 @@ export default {
 	areEqual,
 	// Utils
 	findPodWithPitch,
-	findIndexOfPodWithPitch
+	findIndexOfPodWithPitch,
+	addPod
 };
