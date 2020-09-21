@@ -18,9 +18,12 @@ const moduloSum = (a, b, divisor, offset = 0, subtraction = false) => {
 	return modulo(dividend, divisor) + offset;
 };
 
+const floor = (a, b) => Math.floor(a / b);
+
 export default {
 	defaultValue: DEFAULT,
 	max: MAX,
 	modulo,
-	moduloSum
+	moduloSum,
+	floor
 };

@@ -18,19 +18,11 @@ const areEqual = ({ interval1, interval2 }) => {
 	return interval1[0] === interval2[0] && interva[1] === interval[1];
 };
 
-/*const sum = ([a, b]) => ([
-	integer.moduloSum(a[0], b[0], MAX[0]),
-	integer.moduloSum(a[1], b[1], MAX[1])
-]);*/
-
 const reduce = ([p, d]) => [integer.modulo(p, MAX[0]), integer.modulo(d, MAX[1])];
 
 // Utils
 
-const addPod = ({ a, b }) => ([
-	integer.moduloSum(a[0], b[0], MAX[0]),
-	integer.moduloSum(a[1], b[1], MAX[1])
-]);
+const addPod = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
 
 const addPodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
 
