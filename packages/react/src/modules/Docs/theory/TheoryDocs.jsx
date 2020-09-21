@@ -37,6 +37,41 @@ const InversionDocs = ({ A }) => {
 	);
 }
 
+const NumeralDocs = ({ A }) => {
+	const [d, setD] = useState(0);
+	const C = PW_Core.models.theory.scale.getNumeral({ A, d })
+
+	return (
+		<Fold label={'Roman Numeral'} level={3}>
+			<div className="card">
+				<ModelRow value={d} setValue={setD} label="d" mathType="integer" theoryType="degree" />
+				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
+			</div>
+		</Fold>
+	);
+}
+
+const ScaleDocs = () => {
+	// Definition
+	const [a, setA] = useState(PW_Core.models.theory.note.preset.C.value);
+	const [B, setB] = useState(PW_Core.models.theory.scale.preset.Major.value);
+	const C = PW_Core.models.math.pod.addPodList({ a, B });
+
+	return (
+		<Fold label={'Scale'} level={3}>
+			<Fold label={'Definition'} level={4}>
+				<div className="card">
+					<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
+					<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
+					<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
+				</div>
+			</Fold>
+			<TransposeDocs A={C} />
+			<NumeralDocs A={C} />
+		</Fold>
+	);
+}
+
 const ChordDocs = () => {
 	// Definition
 	const [a, setA] = useState(PW_Core.models.theory.note.preset.C.value);
@@ -44,8 +79,8 @@ const ChordDocs = () => {
 	const C = PW_Core.models.math.pod.addPodList({ a, B });
 
 	return (
-		<Fold label={'Chord'} level={2}>
-			<Fold label={'Definition'} level={3}>
+		<Fold label={'Chord'} level={3}>
+			<Fold label={'Definition'} level={4}>
 				<div className="card">
 					<ModelRow value={a} setValue={setA} max={max} label="a" mathType="pod" theoryType="note" />
 					<ModelRow value={B} setValue={setB} max={max} label="B" mathType="podList" theoryType="intervalList" />
@@ -61,6 +96,7 @@ const ChordDocs = () => {
 const TheoryDocs = () => {
 	return (
 		<Fold label={'Theory'} level={2}>
+			<ScaleDocs />
 			<ChordDocs />
 		</Fold>
 	);

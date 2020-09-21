@@ -1,4 +1,5 @@
 import { INTERVAL } from './interval';
+import integer from '../math/integer';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
@@ -34,17 +35,16 @@ const getAllModes = ({ scale, keyCenter }) => {
 	}));
 };
 
-const getNumeral = ({ scale, keyCenter, degree }) => {
-	const i1 = degree;
-	const i3 = integer.moduloSum(degree, 2, scale.length);
-	const i5 = integer.moduloSum(degree, 4, scale.length);
-	const i7 = integer.moduloSum(degree, 6, scale.length);
-	const numeral = [scale[i1], scale[i3], scale[i5], scale[i7]];
-	return {
-		name: `Numeral ${degree + 1}`,
-		a: keyCenter,
-		B: numeral
-	};
+const getNumeral = ({ A, d }) => {
+	const LIMIT = 7;
+	const numeral = [];
+	for (let i = 0; i < LIMIT; i = i + 2) {
+		const curD = integer.moduloSum(d, i, A.length);
+		const ivl = A[curD];
+		if (i < d) ivl[0] = ivl[0] + 12;
+		numeral.push(ivl);
+	}
+	return numeral;
 };
 
 const getAllNumerals = ({ scale, keyCenter }) => {

@@ -5,7 +5,8 @@ import './List.css';
 
 const Name = ({ style, children }) => <div className='name' style={style}>{children}</div>;
 
-const IntervalName = ({ interval, ...props }) => {
+const IntervalName = ({ interval: raw, ...props }) => {
+	const interval = PW_Core.models.math.pod.reduce(raw);
 	const [p, d] = interval;
 	const text = PW_Core.models.theory.interval.getName(interval)
 	const color = PW_Core.models.theory.degree.getColor(d);
@@ -23,7 +24,8 @@ const IntervalNameList = ({ intervals }) => {
 	);
 }
 
-const NoteName = ({ note, ...props }) => {
+const NoteName = ({ note: raw, ...props }) => {
+	const note = PW_Core.models.math.pod.reduce(raw);
 	const [p, d] = note;
 	const text = PW_Core.models.theory.note.getName(note)
 	const color = PW_Core.models.theory.degree.getColor(d);
