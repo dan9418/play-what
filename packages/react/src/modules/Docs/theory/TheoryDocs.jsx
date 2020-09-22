@@ -9,7 +9,81 @@ import Fold from '../Fold';
 
 const max = [12, 7];
 
+const NumeralDocs1 = () => {
+	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
+	const [d, setD] = useState(0);
+	const C = PW_Core.models.theory.scale.getNumeral({ A, d })
+
+	return (
+		<Fold label={'getNumeral: (A, d) => C'} level={3}>
+			<div className="card">
+				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
+				<ModelRow value={d} setValue={setD} label="d" mathType="integer" theoryType="degree" />
+				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
+			</div>
+		</Fold>
+	);
+}
+
 const THEORY_DOCS_CONFIG = [
+	{
+		id: 'scale',
+		name: 'Scale',
+		functions: [
+			/*{
+	id: 'theory/scale/inversion',
+	name: 'inversion: (A, n) => C',
+	fn: PW_Core.models.theory.chord.getInversion,
+	props: {
+		A: PW_Core.models.theory.scale.preset.Major.value,
+		n: 0
+	},
+	propDefs: [
+		{
+			name: 'A',
+			mathType: 'podList',
+			theoryType: 'noteList'
+		},
+		{
+			name: 'n',
+			mathType: 'integer',
+			theoryType: 'pitch'
+		}
+	],
+	outDef: {
+		name: 'C',
+		mathType: 'podList',
+		theoryType: 'noteList'
+	}
+},*/
+			{
+				id: 'theory/scale/transpose',
+				name: 'transpose: (a, b) => C',
+				fn: PW_Core.models.theory.scale.transpose,
+				props: {
+					A: PW_Core.models.theory.scale.preset.Major.value,
+					b: PW_Core.models.theory.interval.preset.P1.value
+				},
+				propDefs: [
+					{
+						name: 'A',
+						mathType: 'podList',
+						theoryType: 'noteList'
+					},
+					{
+						name: 'b',
+						mathType: 'pod',
+						theoryType: 'interval'
+					}
+				],
+				outDef: {
+					name: 'C',
+					mathType: 'podList',
+					theoryType: 'noteList'
+				}
+			}
+		]
+	},
 	{
 		id: 'chord',
 		name: 'Chord',
@@ -68,7 +142,7 @@ const THEORY_DOCS_CONFIG = [
 			}
 		]
 	}
-]
+];
 
 const GenericFunctionDocs = ({ config }) => {
 	const { id, name, fn, props: propsIn, propDefs, outDef } = config;

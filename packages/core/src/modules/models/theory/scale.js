@@ -2,6 +2,8 @@ import { INTERVAL } from './interval';
 import integer from '../math/integer';
 import utils from '../../utils';
 import chord from './chord';
+import pod from '../math/pod';
+import podList from '../math/podList';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
@@ -53,10 +55,15 @@ const getAllNumerals = ({ scale, keyCenter }) => {
 	return numerals;*/
 };
 
+const transpose = ({ A, b }) => {
+	return podList.addPod({ A, b });
+}
+
 export default {
 	preset: SCALE,
 	getMode,
 	getAllModes,
 	getNumeral,
-	getAllNumerals
+	getAllNumerals,
+	transpose
 };
