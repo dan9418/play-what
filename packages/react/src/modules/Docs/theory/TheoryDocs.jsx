@@ -9,10 +9,66 @@ import Fold from '../Fold';
 
 const max = [12, 7];
 
+const GENERIC_CONFIG = {
+	id: 'theory/chord/transpose',
+	name: 'transpose: (a, b) => C',
+	fn: PW_Core.models.theory.chord.transpose,
+	props: {
+		A: PW_Core.models.theory.scale.preset.Major.value,
+		b: PW_Core.models.theory.interval.preset.P1.value
+	},
+	propDefs: [
+		{
+			name: 'A',
+			mathType: 'podList',
+			theoryType: 'noteList'
+		},
+		{
+			name: 'b',
+			mathType: 'pod',
+			theoryType: 'interval'
+		}
+	],
+	outDef: {
+		name: 'C',
+		mathType: 'podList',
+		theoryType: 'noteList'
+	}
+}
+
+const GenericDocs = ({ config }) => {
+	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
+
+	const [props, setProps] = useState(propsIn);
+	const setProp = (pName, pValue) => {
+		const newProps = {
+			...props,
+			[pName]: pValue
+		}
+		setProps(newProps);
+	};
+
+	const out = fn(props);
+
+	return (
+		<Fold label={name} level={3}>
+			<div className="card">
+				{propDefs.map((p, i) => {
+					const { name, mathType, theoryType } = p;
+					const value = props[name];
+					const setValue = v => setProp(name, v);
+					return <ModelRow key={i} value={value} setValue={setValue} max={max} label={name} mathType={mathType} theoryType={theoryType} />;
+				})}
+				<ModelRow value={out} max={max} label={outDef.name} mathType={outDef.mathType} theoryType={outDef.theoryType} />
+			</div>
+		</Fold>
+	);
+}
+
 const TransposeDocs = () => {
 	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
 	const [b, setB] = useState(PW_Core.models.theory.interval.preset.P1.value);
-	const C = PW_Core.models.math.podList.addPod({ A, b });
+	const C = PW_Core.models.theory.chord.transpose({ A, b });
 
 	return (
 		<Fold label={'transpose: (a, b) => C'} level={3}>
@@ -87,6 +143,7 @@ const ChordDocs = () => {
 	return (
 		<Fold label={'Chord'} level={3}>
 			<TransposeDocs />
+			<GenericDocs config={GENERIC_CONFIG} />
 			<InversionDocs />
 		</Fold>
 	);

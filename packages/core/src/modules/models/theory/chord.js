@@ -1,6 +1,7 @@
 import { INTERVAL } from './interval';
 import utils from '../../utils';
 import pod from '../math/pod';
+import podList from '../math/podList';
 
 export const CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
@@ -23,7 +24,7 @@ export const CHORD = {
 };
 
 
-export const getInversion = ({ A, n }) => {
+const getInversion = ({ A, n }) => {
 	let result = [...A];
 	result = utils.rotate(result, n);
 	const octave = INTERVAL.P8.value;
@@ -35,7 +36,12 @@ export const getInversion = ({ A, n }) => {
 	return result;
 }
 
+const transpose = ({ A, b }) => {
+	return podList.addPod({ A, b });
+}
+
 export default {
 	preset: CHORD,
-	getInversion
+	getInversion,
+	transpose
 };
