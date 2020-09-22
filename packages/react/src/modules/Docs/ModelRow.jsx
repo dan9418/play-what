@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IntegerInput from "../models/math/IntegerInput/IntegerInput";
 import PodInput from "../models/math/PodInput/PodInput";
 import PodListInput from "../models/math/PodListInput/PodListInput";
@@ -7,7 +7,7 @@ import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
 
 const getInputComponent = type => {
-	switch(type) {
+	switch (type) {
 	case 'integer':
 		return IntegerInput;
 	case 'pod':
@@ -22,18 +22,20 @@ const getInputComponent = type => {
 const ModelRow = ({ label, mathType, theoryType, value, setValue, max }) => {
 	const classes = ['model-row'];
 	const Input = getInputComponent(mathType);
+	const [showDetails, setShowDetails] = useState(false);
 	return (
 		<div className={classes.join(' ')}>
 			<div className="title-theory">
 				<label>{label}</label>
 			</div>
 			<div className="input-meter">
-				<div>
-					<Input value={value} setValue={setValue} max={max} />
-				</div>
 				<div className="content">
 					<List type={theoryType} value={value} max={max} />
 					<Meter type={mathType} value={value} max={max} />
+				</div>
+				<div>
+					<div className="show-details" onClick={() => setShowDetails(!showDetails)}>Show Details</div>
+					{showDetails && <Input value={value} setValue={setValue} max={max} />}
 				</div>
 			</div>
 		</div>

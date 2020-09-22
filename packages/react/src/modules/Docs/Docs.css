@@ -43,9 +43,18 @@
 }
 
 .model-row > .input-meter {
+    width: 100%;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
     align-items: center;
     grid-gap: 8px;
     padding: 8px;
+}
+
+.show-details {
+    font-weight: bold;
+    color: cornflowerblue;
+    cursor: pointer;
+    margin-left: 75%;
+    padding: 4px;
 }
