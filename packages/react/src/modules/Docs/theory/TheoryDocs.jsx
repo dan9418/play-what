@@ -9,34 +9,68 @@ import Fold from '../Fold';
 
 const max = [12, 7];
 
-const GENERIC_CONFIG = {
-	id: 'theory/chord/transpose',
-	name: 'transpose: (a, b) => C',
-	fn: PW_Core.models.theory.chord.transpose,
-	props: {
-		A: PW_Core.models.theory.scale.preset.Major.value,
-		b: PW_Core.models.theory.interval.preset.P1.value
-	},
-	propDefs: [
-		{
-			name: 'A',
-			mathType: 'podList',
-			theoryType: 'noteList'
-		},
-		{
-			name: 'b',
-			mathType: 'pod',
-			theoryType: 'interval'
-		}
-	],
-	outDef: {
-		name: 'C',
-		mathType: 'podList',
-		theoryType: 'noteList'
+const THEORY_DOCS_CONFIG = [
+	{
+		id: 'chord',
+		name: 'Chord',
+		functions: [
+			{
+				id: 'theory/chord/inversion',
+				name: 'inversion: (A, n) => C',
+				fn: PW_Core.models.theory.chord.getInversion,
+				props: {
+					A: PW_Core.models.theory.scale.preset.Major.value,
+					n: 0
+				},
+				propDefs: [
+					{
+						name: 'A',
+						mathType: 'podList',
+						theoryType: 'noteList'
+					},
+					{
+						name: 'n',
+						mathType: 'integer',
+						theoryType: 'pitch'
+					}
+				],
+				outDef: {
+					name: 'C',
+					mathType: 'podList',
+					theoryType: 'noteList'
+				}
+			},
+			{
+				id: 'theory/chord/transpose',
+				name: 'transpose: (a, b) => C',
+				fn: PW_Core.models.theory.chord.transpose,
+				props: {
+					A: PW_Core.models.theory.scale.preset.Major.value,
+					b: PW_Core.models.theory.interval.preset.P1.value
+				},
+				propDefs: [
+					{
+						name: 'A',
+						mathType: 'podList',
+						theoryType: 'noteList'
+					},
+					{
+						name: 'b',
+						mathType: 'pod',
+						theoryType: 'interval'
+					}
+				],
+				outDef: {
+					name: 'C',
+					mathType: 'podList',
+					theoryType: 'noteList'
+				}
+			}
+		]
 	}
-}
+]
 
-const GenericDocs = ({ config }) => {
+const GenericFunctionDocs = ({ config }) => {
 	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
 
 	const [props, setProps] = useState(propsIn);
@@ -51,7 +85,7 @@ const GenericDocs = ({ config }) => {
 	const out = fn(props);
 
 	return (
-		<Fold label={name} level={3}>
+		<Fold label={name} level={4}>
 			<div className="card">
 				{propDefs.map((p, i) => {
 					const { name, mathType, theoryType } = p;
@@ -65,37 +99,8 @@ const GenericDocs = ({ config }) => {
 	);
 }
 
-const TransposeDocs = () => {
-	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
-	const [b, setB] = useState(PW_Core.models.theory.interval.preset.P1.value);
-	const C = PW_Core.models.theory.chord.transpose({ A, b });
 
-	return (
-		<Fold label={'transpose: (a, b) => C'} level={3}>
-			<div className="card">
-				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
-				<ModelRow value={b} setValue={setB} max={max} label="b" mathType="pod" theoryType="interval" />
-				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
-			</div>
-		</Fold>
-	);
-}
 
-const InversionDocs = () => {
-	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
-	const [n, setN] = useState(0);
-	const C = PW_Core.models.theory.chord.getInversion({ A, n })
-
-	return (
-		<Fold label={'inversion: (A, n) => C'} level={3}>
-			<div className="card">
-				<ModelRow value={A} setValue={setA} max={max} label="A" mathType="podList" theoryType="noteList" />
-				<ModelRow value={n} setValue={setN} label="n" mathType="integer" theoryType="pitch" />
-				<ModelRow value={C} max={max} label="C" mathType="podList" theoryType="noteList" />
-			</div>
-		</Fold>
-	);
-}
 
 const NumeralDocs = () => {
 	const [A, setA] = useState(PW_Core.models.theory.scale.preset.Major.value);
@@ -129,22 +134,13 @@ const ModeDocs = () => {
 	);
 }
 
-const ScaleDocs = () => {
+const GenericModuleDocs = ({ config }) => {
+	const { id, name, functions } = config;
 	return (
-		<Fold label={'Scale'} level={3}>
-			<TransposeDocs />
-			<NumeralDocs />
-			<ModeDocs />
-		</Fold>
-	);
-}
-
-const ChordDocs = () => {
-	return (
-		<Fold label={'Chord'} level={3}>
-			<TransposeDocs />
-			<GenericDocs config={GENERIC_CONFIG} />
-			<InversionDocs />
+		<Fold label={config.name} level={3}>
+			{functions.map((c, i) => {
+				return <GenericFunctionDocs config={c} key={i} />;
+			})}
 		</Fold>
 	);
 }
@@ -152,8 +148,9 @@ const ChordDocs = () => {
 const TheoryDocs = () => {
 	return (
 		<Fold label={'Theory'} level={2}>
-			<ScaleDocs />
-			<ChordDocs />
+			{THEORY_DOCS_CONFIG.map((c, i) => {
+				return <GenericModuleDocs config={c} key={i} />;
+			})}
 		</Fold>
 	);
 }
