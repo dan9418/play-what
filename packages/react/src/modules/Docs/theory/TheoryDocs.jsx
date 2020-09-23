@@ -37,7 +37,7 @@ const THEORY_DOCS_CONFIG = [
 						// props
 						name: 'A',
 						mathType: 'podList',
-						theoryType: 'noteList'
+						theoryType: 'note'
 					},
 					{
 						name: 'd',
@@ -49,7 +49,7 @@ const THEORY_DOCS_CONFIG = [
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
-					theoryType: 'noteList'
+					theoryType: 'note'
 				}
 			},
 			{
@@ -64,7 +64,7 @@ const THEORY_DOCS_CONFIG = [
 					{
 						name: 'A',
 						mathType: 'podList',
-						theoryType: 'noteList'
+						theoryType: 'note'
 					},
 					{
 						name: 'd',
@@ -75,7 +75,7 @@ const THEORY_DOCS_CONFIG = [
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
-					theoryType: 'noteList'
+					theoryType: 'note'
 				}
 			},
 			{
@@ -90,7 +90,7 @@ const THEORY_DOCS_CONFIG = [
 					{
 						name: 'A',
 						mathType: 'podList',
-						theoryType: 'noteList'
+						theoryType: 'note'
 					},
 					{
 						name: 'b',
@@ -101,7 +101,7 @@ const THEORY_DOCS_CONFIG = [
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
-					theoryType: 'noteList'
+					theoryType: 'note'
 				}
 			}
 		]
@@ -122,7 +122,7 @@ const THEORY_DOCS_CONFIG = [
 					{
 						name: 'A',
 						mathType: 'podList',
-						theoryType: 'noteList'
+						theoryType: 'note'
 					},
 					{
 						name: 'n',
@@ -133,7 +133,7 @@ const THEORY_DOCS_CONFIG = [
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
-					theoryType: 'noteList'
+					theoryType: 'note'
 				}
 			},
 			{
@@ -148,7 +148,7 @@ const THEORY_DOCS_CONFIG = [
 					{
 						name: 'A',
 						mathType: 'podList',
-						theoryType: 'noteList'
+						theoryType: 'note'
 					},
 					{
 						name: 'b',
@@ -159,7 +159,7 @@ const THEORY_DOCS_CONFIG = [
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
-					theoryType: 'noteList'
+					theoryType: 'note'
 				}
 			}
 		]

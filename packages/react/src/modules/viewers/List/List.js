@@ -32,7 +32,7 @@ const ListItem = ({ value, theoryType }) => {
 	}
 	}
 
-	return <div className='list-item' style={style} onClick={onClick}>{children}</div>;
+	return <div className='list-item' style={style} onClick={onClick}>{text}</div>;
 };
 
 const List = ({ value, mathType, theoryType, ...props }) => {
@@ -41,7 +41,7 @@ const List = ({ value, mathType, theoryType, ...props }) => {
 		return value;
 	}
 	case 'pod': {
-		return <ListItem value={v} theoryType={theoryType} key={i} />;
+		return <ListItem value={value} theoryType={theoryType} />;
 	}
 	case 'podList': {
 		return (
