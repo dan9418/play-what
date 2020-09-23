@@ -1,28 +1,12 @@
 import React from 'react';
-import Fold from './Fold';
 import './Docs.css';
 
-// Math
-import IntegerDocs from './math/IntegerDocs';
-import PodDocs from './math/PodDocs';
-import PodListDocs from './math/PodListDocs';
-import RootDocs from './RootDocs';
+import Fold from './Fold';
 import TheoryDocs from './theory/TheoryDocs';
-
-// Theory
-
 
 const Docs = () => (
 	<div className="docs">
-		<Fold label="Root">
-			<RootDocs />
-		</Fold>
 		<TheoryDocs />
-		<Fold label="Math">
-			<IntegerDocs />
-			<PodDocs />
-			<PodListDocs />
-		</Fold>
 	</div>
 );
 

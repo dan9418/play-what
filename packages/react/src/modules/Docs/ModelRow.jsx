@@ -14,8 +14,8 @@ const ModelRow = ({ label, mathType, theoryType, value, setValue, max }) => {
 			</div>
 			<div className="input-meter">
 				<div className="content">
-					<List type={theoryType} value={value} max={max} />
-					<Meter type={mathType} value={value} max={max} />
+					<List mathType={mathType} theoryType={theoryType} value={value} max={max} />
+					<Meter mathType={mathType} theoryType={theoryType} value={value} max={max} />
 				</div>
 				<div>
 					<div className="show-details" onClick={() => setShowDetails(!showDetails)}>Show Details</div>

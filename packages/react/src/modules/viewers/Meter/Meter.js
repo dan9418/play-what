@@ -64,8 +64,8 @@ const PodListMeter = ({ podList, max, ...props }) => {
 	);
 }
 
-const Meter = ({ value, type, max, ...props }) => {
-	switch (type) {
+const Meter = ({ value, mathType, max, ...props }) => {
+	switch (mathType) {
 	case 'integer':
 		return <IntegerListMeter integerList={[value]} max={max} {...props} />;
 	case 'integerList':
