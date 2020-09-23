@@ -16,14 +16,25 @@ const THEORY_DOCS_CONFIG = [
 		functions: [
 			{
 				id: 'theory/scale/getNumeral',
+				tags: [
+					'theory','scale','getNumeral','roman numeral'
+				],
 				name: 'getNumeral: (A, d) => C',
 				fn: PW_Core.models.theory.scale.getNumeral,
 				props: {
 					A: PW_Core.models.theory.scale.preset.Major.value,
 					d: 0
 				},
+				/*
+				out: {
+					id: '',
+					name: 'C'
+				}*/
+				// components?
 				propDefs: [
 					{
+						// component: 'ModelRow',
+						// props
 						name: 'A',
 						mathType: 'podList',
 						theoryType: 'noteList'
@@ -34,6 +45,7 @@ const THEORY_DOCS_CONFIG = [
 						theoryType: 'degree'
 					}
 				],
+				// outComp??
 				outDef: {
 					name: 'C',
 					mathType: 'podList',
