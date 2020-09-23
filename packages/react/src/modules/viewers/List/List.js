@@ -24,7 +24,13 @@ const ListItem = ({ value, theoryType }) => {
 		break;
 	}
 	case 'interval': {
-		return null;
+		const interval = PW_Core.models.math.pod.reduce(value);
+		const [p, d] = interval;
+		text = PW_Core.models.theory.interval.getName(interval)
+		color = PW_Core.models.theory.degree.getColor(d);
+		style = {
+			border: `1px solid ${color}`
+		};
 		break;
 	}
 	default: {
