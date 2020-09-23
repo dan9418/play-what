@@ -11,111 +11,47 @@ import { GenericModuleDocs } from './GenericDocs';
 
 const MODEL_DOCS_CONFIG = [
 	{
-		id: 'scale',
-		name: 'Scale',
+		id: 'model/pod',
+		name: 'Pod',
 		functions: [
 			{
-				id: 'theory/scale/getNumeral',
-				tags: [
-					'theory','scale','getNumeral','roman numeral'
-				],
-				name: 'getNumeral: (A, d) => C',
-				fn: PW_Core.models.theory.scale.getNumeral,
+				id: 'model/pod/addPod',
+				name: 'addPod: (a, b) => c',
+				fn: PW_Core.models.math.pod.addPod,
 				props: {
-					A: PW_Core.models.theory.scale.preset.Major.value,
-					d: 0
-				},
-				/*
-				out: {
-					id: '',
-					name: 'C'
-				}*/
-				// components?
-				propDefs: [
-					{
-						// component: 'ModelRow',
-						// props
-						name: 'A',
-						mathType: 'podList',
-						theoryType: 'note'
-					},
-					{
-						name: 'd',
-						mathType: 'integer',
-						theoryType: 'degree'
-					}
-				],
-				// outComp??
-				outDef: {
-					name: 'C',
-					mathType: 'podList',
-					theoryType: 'note'
-				}
-			},
-			{
-				id: 'theory/scale/getMode',
-				name: 'getMode: (A, d) => C',
-				fn: PW_Core.models.theory.scale.getMode,
-				props: {
-					A: PW_Core.models.theory.scale.preset.Major.value,
-					d: 0
+					a: PW_Core.models.theory.interval.preset.M3.value,
+					b: PW_Core.models.theory.interval.preset.P5.value
 				},
 				propDefs: [
 					{
-						name: 'A',
-						mathType: 'podList',
-						theoryType: 'note'
-					},
-					{
-						name: 'd',
-						mathType: 'integer',
-						theoryType: 'degree'
-					}
-				],
-				outDef: {
-					name: 'C',
-					mathType: 'podList',
-					theoryType: 'note'
-				}
-			},
-			{
-				id: 'theory/scale/transpose',
-				name: 'transpose: (a, b) => C',
-				fn: PW_Core.models.theory.scale.transpose,
-				props: {
-					A: PW_Core.models.theory.scale.preset.Major.value,
-					b: PW_Core.models.theory.interval.preset.P1.value
-				},
-				propDefs: [
-					{
-						name: 'A',
-						mathType: 'podList',
-						theoryType: 'note'
+						name: 'a',
+						mathType: 'pod',
+						theoryType: null
 					},
 					{
 						name: 'b',
 						mathType: 'pod',
-						theoryType: 'interval'
+						theoryType: null
 					}
 				],
 				outDef: {
-					name: 'C',
-					mathType: 'podList',
-					theoryType: 'note'
+					name: 'c',
+					mathType: 'pod',
+					theoryType: null
 				}
 			}
 		]
 	}
 ];
 
-const TheoryDocs = () => {
+const ModelDocs = () => {
 	return (
-		<Fold label={'Theory'} level={2}>
-			{THEORY_DOCS_CONFIG.map((c, i) => {
+		<Fold label={'Models'} level={2}>
+			{MODEL_DOCS_CONFIG.map((c, i) => {
 				return <GenericModuleDocs config={c} key={i} />;
 			})}
 		</Fold>
 	);
 }
 
-export default TheoryDocs;
+export default ModelDocs;
