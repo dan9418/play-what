@@ -11,6 +11,44 @@ import { GenericModuleDocs } from './GenericDocs';
 
 const MODEL_DOCS_CONFIG = [
 	{
+		id: 'model/integer',
+		name: 'Integer',
+		functions: [
+			{
+				id: 'model/integer/moduloSum',
+				name: 'moduloSum: (a, b, divisor) => c',
+				fn: PW_Core.models.math.integer.moduloSum,
+				props: {
+					a: PW_Core.models.theory.interval.preset.M3.value,
+					b: PW_Core.models.theory.interval.preset.P5.value,
+					divisor: 7
+				},
+				propDefs: [
+					{
+						name: 'a',
+						mathType: 'integer',
+						theoryType: null
+					},
+					{
+						name: 'b',
+						mathType: 'integer',
+						theoryType: null
+					},
+					{
+						name: 'divisor',
+						mathType: 'integer',
+						theoryType: null
+					}
+				],
+				outDef: {
+					name: 'c',
+					mathType: 'integer',
+					theoryType: null
+				}
+			}
+		]
+	},
+	{
 		id: 'model/pod',
 		name: 'Pod',
 		functions: [

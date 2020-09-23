@@ -39,7 +39,7 @@ const getNumeral = ({ A, d }) => {
 	const LIMIT = 7;
 	const numeral = [];
 	for (let i = 0; i < LIMIT; i = i + 2) {
-		const curD = integer.moduloSum(d, i, A.length);
+		const curD = integer.moduloSum({ a: d, b: i, divisor: A.length });
 		const ivl = A[curD];
 		if (i < d) ivl[0] = ivl[0] + 12;
 		numeral.push(ivl);

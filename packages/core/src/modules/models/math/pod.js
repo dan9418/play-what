@@ -18,7 +18,7 @@ const areEqual = ({ interval1, interval2 }) => {
 	return interval1[0] === interval2[0] && interva[1] === interval[1];
 };
 
-const reduce = ([p, d]) => [integer.modulo(p, MAX[0]), integer.modulo(d, MAX[1])];
+const reduce = ([p, d]) => [integer.modulo({ a: p, b: MAX[0] }), integer.modulo({ a: d, b: MAX[1] })];
 
 // Utils
 

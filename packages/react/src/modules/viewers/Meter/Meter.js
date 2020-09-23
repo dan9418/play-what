@@ -15,8 +15,8 @@ const ListMeter = ({ list }) => {
 const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = integerList.find(v => PW_Core.models.math.integer.modulo(v, max) === i);
-		const reduced = PW_Core.models.math.integer.modulo(value, max);
+		const value = integerList.find(v => PW_Core.models.math.integer.modulo({ a: v, b: max }) === i);
+		const reduced = PW_Core.models.math.integer.modulo({ a: value, b: max });
 		const color = colorFn ? colorFn(reduced) : PW_Core.models.theory.pitchClass.getColor(reduced);
 
 		const style = PW_Color.getStylesFromBgColor(color);
@@ -30,7 +30,7 @@ const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
 const OctaveListMeter = ({ pitchList }) => {
 	const list = [];
 	for (let i = 0; i < 12; i++) {
-		const pitch = pitchList.find(p => PW_Core.models.math.integer.modulo(p, 12) === i) || null;
+		const pitch = pitchList.find(p => PW_Core.models.math.integer.modulo({ a: p, b: 12 }) === i) || null;
 		if (pitch === null) {
 			list.push({
 				style: {},

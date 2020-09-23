@@ -11,11 +11,13 @@ const MAX = 1000;
 
 // sum
 
-const modulo = (a, b) => ((a % b) + b) % b;
+const modulo = ({ a, b }) => ((a % b) + b) % b;
 
-const moduloSum = (a, b, divisor, offset = 0, subtraction = false) => {
+const moduloSum = ({ a, b, divisor }) => {
+	const offset = 0;
+	const subtraction = false;
 	const dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));
-	return modulo(dividend, divisor) + offset;
+	return modulo({ a: dividend, b: divisor }) + offset;
 };
 
 const floor = (a, b) => Math.floor(a / b);
