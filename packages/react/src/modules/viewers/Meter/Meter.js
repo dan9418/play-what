@@ -59,7 +59,6 @@ const PodListMeter = ({ podList, max, ...props }) => {
 	return (
 		<>
 			<IntegerListMeter integerList={P} max={maxP} colorFn={colorFnP} {...props} />
-			<OctaveListMeter pitchList={P} />
 			<IntegerListMeter integerList={D} max={maxD} colorFn={colorFnD} {...props} />
 		</>
 	);
