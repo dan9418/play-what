@@ -17,7 +17,7 @@ const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
 	for (let i = 0; i < max; i++) {
 		const value = integerList.find(v => PW_Core.models.math.integer.modulo({ a: v, b: max }) === i);
 		const reduced = PW_Core.models.math.integer.modulo({ a: value, b: max });
-		const color = colorFn ? colorFn(reduced) : PW_Core.models.theory.pitchClass.getColor(reduced);
+		const color = colorFn ? colorFn(reduced) : PW_Core.models.theory.pitch.getColor(reduced);
 
 		const style = PW_Color.getStylesFromBgColor(color);
 		const text = nameFn ? nameFn(i) : i;
@@ -41,7 +41,7 @@ const OctaveListMeter = ({ pitchList }) => {
 
 		const o = PW_Core.models.math.integer.floor(pitch, 12);
 
-		const color = PW_Core.models.theory.pitchClass.getColor(o);
+		const color = PW_Core.models.theory.pitch.getColor(o);
 		const style = PW_Color.getStylesFromBgColor(color);
 		const text = o + 4;
 
@@ -54,7 +54,7 @@ const PodListMeter = ({ podList, max, ...props }) => {
 	const [maxP, maxD] = max;
 	const P = podList.map(([p, d]) => p);
 	const D = podList.map(([p, d]) => d);
-	const colorFnP = PW_Core.models.theory.pitchClass.getColor;
+	const colorFnP = PW_Core.models.theory.pitch.getColor;
 	const colorFnD = PW_Core.models.theory.degree.getColor;
 	return (
 		<>

@@ -1,24 +1,24 @@
 import degree from './degree';
-import pitchClass from './pitchClass';
+import pitch from './pitch';
 
 const d = degree.preset;
-const pc = pitchClass.preset;
+const p = pitch.preset;
 
 const MAX_PITCH_CLASS = 12;
 const MAX_DEGREE = 7
 const MAX = [MAX_PITCH_CLASS, MAX_DEGREE];
 
-const ROOT_PITCH = pc.middleC.value;
+const ROOT_PITCH = p.middleC.value;
 const ROOT_DEGREE = d.C;
 
 const DIATONIC_PITCHES = [
-	pc.tonic,
-	pc.supertonic,
-	pc.mediant,
-	pc.subdominant,
-	pc.dominant,
-	pc.submediant,
-	pc.subtonic
+	p.tonic,
+	p.supertonic,
+	p.mediant,
+	p.subdominant,
+	p.dominant,
+	p.submediant,
+	p.subtonic
 ];
 
 const DIATONIC_DEGREES = Object.values(d);

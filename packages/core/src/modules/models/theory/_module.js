@@ -1,7 +1,7 @@
 import config from './config';
 
 import degree from './degree';
-import pitchClass from './pitchClass';
+import pitch from './pitch';
 import accidental from './accidental';
 
 import interval from './interval';
@@ -12,7 +12,7 @@ import scale from './scale';
 export default {
 	config,
 	degree,
-	pitchClass,
+	pitch,
 	accidental,
 	interval,
 	note,
