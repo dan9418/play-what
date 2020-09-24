@@ -3,6 +3,8 @@ import IntegerInput from '../../models/math/IntegerInput/IntegerInput';
 import PodInput from '../../models/math/PodInput/PodInput';
 import PodListInput from '../../models/math/PodListInput/PodListInput';
 
+const GenericOutput = ({ value }) => <div>{value}</div>
+
 const getInputComponent = type => {
 	switch (type) {
 	case 'integer':
@@ -11,6 +13,9 @@ const getInputComponent = type => {
 		return PodInput;
 	case 'podList':
 		return PodListInput;
+	case 'string':
+	case 'integer':
+		return GenericOutput
 	default:
 		return null;
 	}

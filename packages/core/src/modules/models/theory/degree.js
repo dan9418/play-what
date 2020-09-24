@@ -52,5 +52,5 @@ export default {
 	preset: DEGREE,
 	colorScheme: DEGREE_COLOR_SCHEME,
 	getColor: d => DEGREE_COLOR_SCHEME[d],
-	getName: d => DEGREE_VALUES[d].name
+	getName: ({ d }) => DEGREE_VALUES[d].name
 };

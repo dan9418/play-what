@@ -118,6 +118,90 @@ const DOCS_CONFIG = {
 			name: 'Theory',
 			submodules: [
 				{
+					id: 'degree',
+					name: 'Degree',
+					functions: [
+						{
+							id: 'theory/degree/getName',
+							name: 'getName: (d) => name',
+							fn: PW_Core.models.theory.degree.getName,
+							props: {
+								d: PW_Core.models.theory.degree.preset.C.value
+							},
+							propDefs: [
+								{
+									name: 'd',
+									mathType: 'integer',
+									theoryType: 'degree'
+								}
+							],
+							outDef: {
+								name: 'name',
+								mathType: 'string',
+								theoryType: 'note'
+							}
+						}
+					]
+				},
+				{
+					id: 'chord',
+					name: 'Chord',
+					functions: [
+						{
+							id: 'theory/chord/inversion',
+							name: 'inversion: (A, n) => C',
+							fn: PW_Core.models.theory.chord.getInversion,
+							props: {
+								A: PW_Core.models.theory.scale.preset.Major.value,
+								n: 0
+							},
+							propDefs: [
+								{
+									name: 'A',
+									mathType: 'podList',
+									theoryType: 'note'
+								},
+								{
+									name: 'n',
+									mathType: 'integer',
+									theoryType: 'pitch'
+								}
+							],
+							outDef: {
+								name: 'C',
+								mathType: 'podList',
+								theoryType: 'note'
+							}
+						},
+						{
+							id: 'theory/chord/transpose',
+							name: 'transpose: (a, b) => C',
+							fn: PW_Core.models.theory.chord.transpose,
+							props: {
+								A: PW_Core.models.theory.scale.preset.Major.value,
+								b: PW_Core.models.theory.interval.preset.P1.value
+							},
+							propDefs: [
+								{
+									name: 'A',
+									mathType: 'podList',
+									theoryType: 'note'
+								},
+								{
+									name: 'b',
+									mathType: 'pod',
+									theoryType: 'interval'
+								}
+							],
+							outDef: {
+								name: 'C',
+								mathType: 'podList',
+								theoryType: 'note'
+							}
+						}
+					]
+				},
+				{
 					id: 'scale',
 					name: 'Scale',
 					functions: [
@@ -189,64 +273,6 @@ const DOCS_CONFIG = {
 							id: 'theory/scale/transpose',
 							name: 'transpose: (a, b) => C',
 							fn: PW_Core.models.theory.scale.transpose,
-							props: {
-								A: PW_Core.models.theory.scale.preset.Major.value,
-								b: PW_Core.models.theory.interval.preset.P1.value
-							},
-							propDefs: [
-								{
-									name: 'A',
-									mathType: 'podList',
-									theoryType: 'note'
-								},
-								{
-									name: 'b',
-									mathType: 'pod',
-									theoryType: 'interval'
-								}
-							],
-							outDef: {
-								name: 'C',
-								mathType: 'podList',
-								theoryType: 'note'
-							}
-						}
-					]
-				},
-				{
-					id: 'chord',
-					name: 'Chord',
-					functions: [
-						{
-							id: 'theory/chord/inversion',
-							name: 'inversion: (A, n) => C',
-							fn: PW_Core.models.theory.chord.getInversion,
-							props: {
-								A: PW_Core.models.theory.scale.preset.Major.value,
-								n: 0
-							},
-							propDefs: [
-								{
-									name: 'A',
-									mathType: 'podList',
-									theoryType: 'note'
-								},
-								{
-									name: 'n',
-									mathType: 'integer',
-									theoryType: 'pitch'
-								}
-							],
-							outDef: {
-								name: 'C',
-								mathType: 'podList',
-								theoryType: 'note'
-							}
-						},
-						{
-							id: 'theory/chord/transpose',
-							name: 'transpose: (a, b) => C',
-							fn: PW_Core.models.theory.chord.transpose,
 							props: {
 								A: PW_Core.models.theory.scale.preset.Major.value,
 								b: PW_Core.models.theory.interval.preset.P1.value

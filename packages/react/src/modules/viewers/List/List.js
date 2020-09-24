@@ -43,6 +43,7 @@ const ListItem = ({ value, theoryType }) => {
 
 const List = ({ value, mathType, theoryType, ...props }) => {
 	switch (mathType) {
+	case 'string':
 	case 'integer': {
 		return value;
 	}
