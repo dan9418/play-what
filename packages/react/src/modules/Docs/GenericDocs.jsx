@@ -10,7 +10,7 @@ import Fold from './Fold';
 
 const max = [12, 7];
 
-export const GenericFunctionDocs = ({ config }) => {
+export const GenericFunctionDocs = ({ config, level }) => {
 	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
 
 	const [props, setProps] = useState(propsIn);
@@ -25,7 +25,7 @@ export const GenericFunctionDocs = ({ config }) => {
 	const out = fn(props);
 
 	return (
-		<Fold label={name} level={4}>
+		<Fold label={name} level={level}>
 			<div className="card">
 				{propDefs.map((p, i) => {
 					const { name, mathType, theoryType } = p;
@@ -39,12 +39,23 @@ export const GenericFunctionDocs = ({ config }) => {
 	);
 }
 
-export const GenericModuleDocs = ({ config }) => {
+export const GenericSubmoduleDocs = ({ config, level }) => {
 	const { id, name, functions } = config;
 	return (
-		<Fold label={config.name} level={3}>
+		<Fold label={config.name} level={level}>
 			{functions.map((c, i) => {
-				return <GenericFunctionDocs config={c} key={i} />;
+				return <GenericFunctionDocs config={c} key={i} level={level + 1}/>;
+			})}
+		</Fold>
+	);
+}
+
+export const GenericModuleDocs = ({ config, level }) => {
+	const { id, name, submodules } = config;
+	return (
+		<Fold label={config.name} level={level}>
+			{submodules.map((c, i) => {
+				return <GenericSubmoduleDocs config={c} key={i} level={level + 1}/>;
 			})}
 		</Fold>
 	);
