@@ -119,7 +119,7 @@ const DOCS_CONFIG = {
 			submodules: [
 				{
 					id: 'pitch',
-					name: 'Pitch',
+					name: 'Pitch (integer)',
 					functions: [
 						{
 							id: 'theory/pitch/getName',
@@ -145,7 +145,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'degree',
-					name: 'Degree',
+					name: 'Degree (integer)',
 					functions: [
 						{
 							id: 'theory/degree/getName',
@@ -170,8 +170,60 @@ const DOCS_CONFIG = {
 					]
 				},
 				{
+					id: 'interval',
+					name: 'Interval (pod)',
+					functions: [
+						{
+							id: 'theory/interval/getName',
+							name: 'getName: (A) => name',
+							fn: PW_Core.models.theory.interval.getName,
+							props: {
+								A: PW_Core.models.theory.interval.preset.P1.value
+							},
+							propDefs: [
+								{
+									name: 'A',
+									mathType: 'pod',
+									theoryType: 'interval'
+								}
+							],
+							outDef: {
+								name: 'name',
+								mathType: 'string',
+								theoryType: 'interval'
+							}
+						}
+					]
+				},
+				{
+					id: 'note',
+					name: 'Note (pod)',
+					functions: [
+						{
+							id: 'theory/note/getName',
+							name: 'getName: (A) => name',
+							fn: PW_Core.models.theory.note.getName,
+							props: {
+								A: PW_Core.models.theory.note.preset.C.value
+							},
+							propDefs: [
+								{
+									name: 'A',
+									mathType: 'pod',
+									theoryType: 'note'
+								}
+							],
+							outDef: {
+								name: 'name',
+								mathType: 'string',
+								theoryType: 'note'
+							}
+						}
+					]
+				},
+				{
 					id: 'chord',
-					name: 'Chord',
+					name: 'Chord (podList)',
 					functions: [
 						{
 							id: 'theory/chord/inversion',
@@ -229,7 +281,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'scale',
-					name: 'Scale',
+					name: 'Scale (podList)',
 					functions: [
 						{
 							id: 'theory/scale/getNumeral',

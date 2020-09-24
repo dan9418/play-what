@@ -22,8 +22,8 @@ export const NOTE = {
 	'G#': { id: 'G#', name: 'G#', value: [8, 4] }
 };
 
-const getName = (ivl) => {
-	const [p, d] = ivl;
+const getName = ({ A }) => {
+	const [p, d] = A;
 	const result = Object.values(NOTE).find(({ value }) => value[0] === p && value[1] === d);
 	return result ? result.id : `[${p}, ${d}]`;
 };

@@ -14,7 +14,7 @@ const ListItem = ({ value, theoryType }) => {
 	case 'note': {
 		const note = PW_Core.models.math.pod.reduce(value);
 		const [p, d] = note;
-		text = PW_Core.models.theory.note.getName(note)
+		text = PW_Core.models.theory.note.getName({ A: note })
 		color = PW_Core.models.theory.degree.getColor(d);
 		style = {
 			border: `1px solid ${color}`
@@ -26,7 +26,7 @@ const ListItem = ({ value, theoryType }) => {
 	case 'interval': {
 		const interval = PW_Core.models.math.pod.reduce(value);
 		const [p, d] = interval;
-		text = PW_Core.models.theory.interval.getName(interval)
+		text = PW_Core.models.theory.interval.getName({ A: interval })
 		color = PW_Core.models.theory.degree.getColor(d);
 		style = {
 			border: `1px solid ${color}`
