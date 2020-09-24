@@ -1,3 +1,7 @@
+import degree from './degree';
+import accidental from './accidental';
+import config from './config';
+
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
 	A: { id: 'A', name: 'A', value: [9, 5] },
@@ -24,8 +28,10 @@ export const NOTE = {
 
 const getName = ({ A }) => {
 	const [p, d] = A;
-	const result = Object.values(NOTE).find(({ value }) => value[0] === p && value[1] === d);
-	return result ? result.id : `[${p}, ${d}]`;
+	const degreeName = degree.getName({ d });
+	const offset = p - config.rootScale[d][0];
+	const accidentalName = accidental.getName({ a: offset });
+	return `${degreeName}${accidentalName}`;
 };
 
 /* export const parseString = keyString => {

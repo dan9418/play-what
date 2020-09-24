@@ -170,6 +170,32 @@ const DOCS_CONFIG = {
 					]
 				},
 				{
+					id: 'accidental',
+					name: 'Accidental (integer)',
+					functions: [
+						{
+							id: 'theory/accidental/getName',
+							name: 'getName: (a) => name',
+							fn: PW_Core.models.theory.accidental.getName,
+							props: {
+								a: PW_Core.models.theory.accidental.preset.natural.value
+							},
+							propDefs: [
+								{
+									name: 'a',
+									mathType: 'integer',
+									theoryType: 'accidental'
+								}
+							],
+							outDef: {
+								name: 'name',
+								mathType: 'string',
+								theoryType: 'accidental'
+							}
+						}
+					]
+				},
+				{
 					id: 'interval',
 					name: 'Interval (pod)',
 					functions: [

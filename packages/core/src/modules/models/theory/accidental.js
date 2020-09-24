@@ -1,41 +1,34 @@
 const ACCIDENTAL = Object.freeze({
-	Flat: {
-		id: 'Flat',
-		name: 'b',
-		offset: -1
+	flat: {
+		id: 'flat',
+		name: 'Flat',
+		symbol: 'b',
+		value: -1
 	},
-	Natural: {
-		id: 'Natural',
-		name: '♮',
-		offset: 0
+	natural: {
+		id: 'natural',
+		name: 'Natural',
+		symbol: '♮',
+		value: 0
 	},
-	Sharp: {
-		id: 'Sharp',
-		name: '#',
-		offset: 1
+	sharp: {
+		id: 'sharp',
+		name: 'Sharp',
+		symbol: '#',
+		value: 1
 	}
 });
 
 const ACCIDENTAL_VALUES = Object.freeze(Object.values(ACCIDENTAL));
 
-const getAccidentalString = (offset) => {
-	switch (offset) {
-	case 0:
-		return '';
-	case 1:
-		return '#';
-	case 2:
-		return 'x';
-	case -1:
-		return 'b';
-	case -2:
-		return 'bb';
-	default:
-		return (offset < 0) ? `(${-offset}b)` : `(${offset}#)`;
-	}
+const getName = ({ a }) => {
+	if (isNaN(a) || !a) return '';
+	if (a > 0) return ACCIDENTAL.sharp.symbol.repeat(a);
+	return ACCIDENTAL.flat.symbol.repeat(-a);
 };
 
 export default {
 	preset: ACCIDENTAL,
-	getAccidentalString
+	presetValues: ACCIDENTAL_VALUES,
+	getName
 }
