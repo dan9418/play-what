@@ -118,6 +118,32 @@ const DOCS_CONFIG = {
 			name: 'Theory',
 			submodules: [
 				{
+					id: 'pitch',
+					name: 'Pitch',
+					functions: [
+						{
+							id: 'theory/pitch/getName',
+							name: 'getName: (p) => name',
+							fn: PW_Core.models.theory.pitch.getName,
+							props: {
+								p: PW_Core.models.theory.pitch.preset.middleC.value
+							},
+							propDefs: [
+								{
+									name: 'p',
+									mathType: 'integer',
+									theoryType: 'degree'
+								}
+							],
+							outDef: {
+								name: 'name',
+								mathType: 'string',
+								theoryType: 'note'
+							}
+						}
+					]
+				},
+				{
 					id: 'degree',
 					name: 'Degree',
 					functions: [

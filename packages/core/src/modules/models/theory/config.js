@@ -1,32 +1,23 @@
 import degree from './degree';
 import pitch from './pitch';
+import { DIATONIC } from './diatonic';
 
 const d = degree.preset;
 const p = pitch.preset;
 
-const MAX_PITCH_CLASS = 12;
+const MAX_PITCH = 12;
 const MAX_DEGREE = 7
-const MAX = [MAX_PITCH_CLASS, MAX_DEGREE];
+const MAX = [MAX_PITCH, MAX_DEGREE];
 
 const ROOT_PITCH = p.middleC.value;
-const ROOT_DEGREE = d.C;
+const ROOT_DEGREE = d.C.value;
 
-const DIATONIC_PITCHES = [
-	p.tonic,
-	p.supertonic,
-	p.mediant,
-	p.subdominant,
-	p.dominant,
-	p.submediant,
-	p.subtonic
-];
+const DIATONIC_VALUES = Object.values(DIATONIC);
 
-const DIATONIC_DEGREES = Object.values(d);
-
-const ROOT = DIATONIC_PITCHES.map((p, i) => (
+const ROOT = DIATONIC_VALUES.map((pod, i) => (
 	[
-		ROOT_PITCH + DIATONIC_PITCHES[i].value,
-		DIATONIC_DEGREES[i].value
+		ROOT_PITCH + pod.value[0],
+		ROOT_DEGREE + pod.value[1]
 	]
 ));
 

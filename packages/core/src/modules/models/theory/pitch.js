@@ -1,47 +1,19 @@
-const PITCH_CLASS = {
+const PITCH = {
 	middleC: {
 		id: 'middleC',
 		name: 'Middle C',
 		value: 0
 	},
-	tonic: {
-		id: 'tonic',
-		name: 'Tonic',
-		value: 0
-	},
-	supertonic: {
-		id: 'supertonic',
-		name: 'Supertonic',
-		value: 2
-	},
-	mediant: {
-		id: 'mediant',
-		name: 'Mediant',
-		value: 4
-	},
-	subdominant: {
-		id: 'subdominant',
-		name: 'Subdominant',
-		value: 5
-	},
-	dominant: {
-		id: 'dominant',
-		name: 'Dominant',
-		value: 7
-	},
-	submediant: {
-		id: 'submediant',
-		name: 'Submediant',
-		value: 9
-	},
-	subtonic: {
-		id: 'subtonic',
-		name: 'Subtonic',
-		value: 11
+	midi: {
+		id: 'midi',
+		name: 'MIDI',
+		value: 60
 	}
 };
 
-const PITCH_CLASS_COLOR_SCHEME = [
+const PITCH_VALUES = Object.values(PITCH);
+
+const PITCH_COLOR_SCHEME = [
 	'#ED1C24',
 	'#F1592A',
 	'#F8981E',
@@ -57,7 +29,8 @@ const PITCH_CLASS_COLOR_SCHEME = [
 ]
 
 export default {
-	preset: PITCH_CLASS,
-	colorScheme: PITCH_CLASS_COLOR_SCHEME,
-	getColor: p => PITCH_CLASS_COLOR_SCHEME[p]
+	preset: PITCH,
+	colorScheme: PITCH_COLOR_SCHEME,
+	getColor: p => PITCH_COLOR_SCHEME[p],
+	getName: ({ p }) => PITCH_VALUES.find(x => x.value === p).name
 }
