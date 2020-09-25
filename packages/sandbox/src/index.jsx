@@ -3,8 +3,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Main from './Main/Main';
 
-console.log('dpb 1', module)
-
 const appContainer = document.querySelector('#app')
 
 if (module.hot) {

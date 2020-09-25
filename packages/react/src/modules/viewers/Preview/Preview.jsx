@@ -7,6 +7,8 @@ import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
 import VectorInput from '../../models/math/VectorInput/VectorInput';
 import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
 
+const max = [12, 7];
+
 const ListItem = ({ value, podType }) => {
 
 	let onClick = null;
@@ -50,6 +52,7 @@ const ListItem = ({ value, podType }) => {
 };
 
 const List = ({ value, podType }) => {
+	console.log('dpb 4', value)
 	return (
 		<div className='list'>
 			{value.map((v, i) => <ListItem value={v} podType={podType} key={i} />)}
@@ -57,42 +60,44 @@ const List = ({ value, podType }) => {
 	);
 };
 
+const Edit = ({ value, setValue, modelType, podType }) => {
+	switch (modelType) {
+	case 'scalar': {
+		return <ScalarInput value={value} setValue={setValue} max={max} />;
+	}
+	case 'vector': {
+		return <VectorInput value={value} setValue={setValue} max={max} />;
+	}
+	case 'matrix': {
+		return <MatrixInput value={value} setValue={setValue} max={max} />;
+	}
+	}
+};
+
+const View = ({ value, podType, modelType }) => {
+	switch (modelType) {
+	case 'vector': {
+		return <List value={[value]} podType={podType} />;
+	}
+	case 'matrix': {
+		return <List value={value} podType={podType} />;
+	}
+	default: {
+		return <div className='list-item' >{value}</div>;
+	}
+	}
+};
+
 const Preview = ({ value, setValue, modelType, podType, theoryType, ...props }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const toggleEdit = () => setIsEditing(!isEditing);
-
-	let child = null;
-
-	if(isEditing) {
-		switch (modelType) {
-		case 'scalar': {
-			child = <ScalarInput value={value} setValue={setValue} max={max} />;
-		}
-		case 'vector': {
-			child =  <VectorInput value={value} setValue={setValue} max={max} />;
-		}
-		case 'matrix': {
-			child =  <MatrixInput value={value} setValue={setValue} max={max} />;
-		}
-		}
-	}
-	else {
-		switch (modelType) {
-		case 'vector': {
-			child = <List value={[value]} podType={podType} />;
-		}
-		case 'matrix': {
-			child = <List value={value} podType={podType} />;
-		}
-		default: {
-			child = <div className='list-item' >{value}</div>;
-		}
-		}
-	}
 	return (
 		<div>
-			<div onClick={toggleEdit}>edit</div>
-			{child}
+			<div className='edit' onClick={toggleEdit}>edit</div>
+			{isEditing ?
+				<Edit value={value} modelType={modelType} setValue={setValue} podType={podType} />
+				: <View value={value} modelType={modelType} setValue={setValue} podType={podType} />
+			}
 		</div>
 	);
 }

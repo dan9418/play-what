@@ -50,11 +50,3 @@
     grid-gap: 8px;
     padding: 8px;
 }
-
-.show-details {
-    font-weight: bold;
-    color: cornflowerblue;
-    cursor: pointer;
-    margin-left: 75%;
-    padding: 4px;
-}
