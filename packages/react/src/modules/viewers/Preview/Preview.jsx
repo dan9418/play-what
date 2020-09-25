@@ -65,19 +65,19 @@ const List = ({ value, podType }) => {
 export const Edit = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
 	case 'scalar': {
-		return <div>
+		return <div className="l-r">
 			<ScalarInput value={value} setValue={setValue} max={max} />
 			<span>{value}</span>
 		</div>;
 	}
 	case 'vector': {
-		return <div>
+		return <div className="l-r">
 			<VectorInput value={value} setValue={setValue} max={max} />
 			<VectorOutput value={value} setValue={setValue} max={max} />
 		</div>;
 	}
 	case 'matrix': {
-		return <div>
+		return <div className="l-r">
 			<MatrixInput value={value} setValue={setValue} max={max} />
 			<MatrixOutput value={value} max={max} />
 		</div>;
