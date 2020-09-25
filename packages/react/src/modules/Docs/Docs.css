@@ -50,3 +50,35 @@
     grid-gap: 8px;
     padding: 8px;
 }
+
+.view-as-input {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.view-as-option {
+    padding: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+
+.content {
+    background-color: #ddd;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.edit-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 0;
+}
