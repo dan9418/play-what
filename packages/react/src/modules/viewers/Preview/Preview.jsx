@@ -6,6 +6,8 @@ import './Preview.css';
 import ScalarInput from '../../models/math/scalar/ScalarInput';
 import VectorInput from '../../models/math/vector/VectorInput';
 import MatrixInput from '../../models/math/matrix/MatrixInput';
+import VectorOutput from '../../models/math/vector/VectorOutput';
+import MatrixOutput from '../../models/math/matrix/MatrixOutput';
 
 const max = [12, 7];
 
@@ -63,13 +65,22 @@ const List = ({ value, podType }) => {
 export const Edit = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
 	case 'scalar': {
-		return <ScalarInput value={value} setValue={setValue} max={max} />;
+		return <div>
+			<ScalarInput value={value} setValue={setValue} max={max} />
+			<span>{value}</span>
+		</div>;
 	}
 	case 'vector': {
-		return <VectorInput value={value} setValue={setValue} max={max} />;
+		return <div>
+			<VectorInput value={value} setValue={setValue} max={max} />
+			<VectorOutput value={value} setValue={setValue} max={max} />
+		</div>;
 	}
 	case 'matrix': {
-		return <MatrixInput value={value} setValue={setValue} max={max} />;
+		return <div>
+			<MatrixInput value={value} setValue={setValue} max={max} />
+			<MatrixOutput value={value} max={max} />
+		</div>;
 	}
 	}
 };

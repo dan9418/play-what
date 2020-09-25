@@ -12,3 +12,11 @@
 .vector-open-bracket, .vector-comma {
     font-size: 16px;
 }
+
+
+.vector-output {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto;
+}
