@@ -2,7 +2,7 @@ import PW_Core from '@pw/core';
 import PW_Color from '@pw/color';
 import PW_Tone from '@pw/tone';
 import React from 'react';
-import './List.css';
+import './Output.css';
 
 const ListItem = ({ value, theoryType }) => {
 	let onClick = null;
@@ -41,12 +41,8 @@ const ListItem = ({ value, theoryType }) => {
 	return <div className='list-item' style={style} onClick={onClick}>{text}</div>;
 };
 
-const List = ({ value, mathType, theoryType, ...props }) => {
+const Output = ({ value, mathType, theoryType, ...props }) => {
 	switch (mathType) {
-	case 'string':
-	case 'scalar': {
-		return value;
-	}
 	case 'vector': {
 		return <ListItem value={value} theoryType={theoryType} />;
 	}
@@ -58,9 +54,9 @@ const List = ({ value, mathType, theoryType, ...props }) => {
 		);
 	}
 	default: {
-		return null;
+		return <div className='list-item' >{value}</div>;
 	}
 	}
 }
 
-export default List;
+export default Output;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Input from "../viewers/Input/Input";
-import List from "../viewers/List/List";
+import Output from "../viewers/Output/Output";
 import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
 
@@ -14,7 +14,7 @@ const ModelRow = ({ label, mathType, theoryType, value, setValue, max }) => {
 			</div>
 			<div className="input-meter">
 				<div className="content">
-					<List mathType={mathType} theoryType={theoryType} value={value} max={max} />
+					<Output mathType={mathType} theoryType={theoryType} value={value} max={max} />
 					{false && <Meter mathType={mathType} theoryType={theoryType} value={value} max={max} />}
 				</div>
 				<div>
