@@ -1,5 +1,5 @@
 import React from 'react';
-import './ScalarInput.css';
+import './scalar.css';
 
 const ScalarInput = props => {
 	const { value, setValue, className } = props;

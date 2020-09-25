@@ -1,7 +1,7 @@
 import React from 'react';
-import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
-import VectorInput from '../../models/math/VectorInput/VectorInput';
-import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
+import ScalarInput from '../../models/math/scalar/ScalarInput';
+import VectorInput from '../../models/math/vector/VectorInput';
+import MatrixInput from '../../models/math/matrix/MatrixInput';
 
 const GenericPreview = ({ value }) => <div>{value}</div>
 

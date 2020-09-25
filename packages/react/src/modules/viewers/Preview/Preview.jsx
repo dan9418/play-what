@@ -3,9 +3,9 @@ import PW_Color from '@pw/color';
 import PW_Tone from '@pw/tone';
 import React, { useState } from 'react';
 import './Preview.css';
-import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
-import VectorInput from '../../models/math/VectorInput/VectorInput';
-import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
+import ScalarInput from '../../models/math/scalar/ScalarInput';
+import VectorInput from '../../models/math/vector/VectorInput';
+import MatrixInput from '../../models/math/matrix/MatrixInput';
 
 const max = [12, 7];
 

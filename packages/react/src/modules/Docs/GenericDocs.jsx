@@ -1,12 +1,7 @@
-import './Docs.css';
-import PW_Core from '@pw/core';
 import React, { useState } from "react";
-import Meter from '../viewers/Meter/Meter';
-import MatrixInput from '../models/math/MatrixInput/MatrixInput';
-import VectorInput from '../models/math/VectorInput/VectorInput';
-import InputRow from './InputRow';
-import ModelRow from './ModelRow';
+import './Docs.css';
 import Fold from './Fold';
+import ModelRow from './ModelRow';
 
 const max = [12, 7];
 

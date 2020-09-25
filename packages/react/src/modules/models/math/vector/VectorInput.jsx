@@ -1,6 +1,6 @@
 import React from 'react';
-import './VectorInput.css';
-import ScalarInput from '../ScalarInput/ScalarInput';
+import './vector.css';
+import ScalarInput from '../scalar/ScalarInput';
 
 export const VectorInput = ({ value, setValue }) => {
 	const [p, d] = value;

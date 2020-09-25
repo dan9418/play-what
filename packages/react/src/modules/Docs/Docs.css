@@ -60,9 +60,14 @@
 .view-as-option {
     padding: 4px;
     cursor: pointer;
+    color: cornflowerblue;
+}
+
+.view-as-option.active {
     font-weight: bold;
     color: cornflowerblue;
 }
+
 
 .content {
     background-color: #ddd;

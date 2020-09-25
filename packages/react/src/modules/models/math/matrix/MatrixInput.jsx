@@ -1,7 +1,7 @@
 import React from 'react';
-import './MatrixInput.css';
+import './matrix.css';
 
-import VectorInput from '../VectorInput/VectorInput';
+import VectorInput from '../vector/VectorInput';
 
 import PW_Core from '@pw/core';
 

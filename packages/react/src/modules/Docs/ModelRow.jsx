@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import Meter from "../viewers/Meter/Meter";
-import { Edit, View} from "../viewers/Preview/Preview";
+import { Edit, View } from "../viewers/Preview/Preview";
 import "./Docs.css";
 
 const ViewAsInput = ({ value, setValue }) => {
 	return (
 		<div className='view-as-input'>
 			<div>View As:</div>
-			<div className='view-as-option' onClick={() => setValue('pod')}>Pods</div>
-			<div className='view-as-option' onClick={() => setValue('note')}>Notes</div>
-			<div className='view-as-option' onClick={() => setValue('interval')}>Intervals</div>
+			<div className={`view-as-option ${value === 'pod' ? 'active' : ''}`} onClick={() => setValue('pod')}>Pods</div>
+			<div className={`view-as-option ${value === 'note' ? 'active' : ''}`} onClick={() => setValue('note')}>Notes</div>
+			<div className={`view-as-option ${value === 'interval' ? 'active' : ''}`} onClick={() => setValue('interval')}>Intervals</div>
 		</div>
 	);
 };
@@ -32,10 +32,10 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, max 
 				<View value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 
 				{isEditing &&
-				<div className='edit-panel'>
-					<ViewAsInput value={viewAs} setValue={setViewAs} />
-					<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-				</div>
+					<div className='edit-panel'>
+						<ViewAsInput value={viewAs} setValue={setViewAs} />
+						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
+					</div>
 				}
 				<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} max={max} />
 			</div>
