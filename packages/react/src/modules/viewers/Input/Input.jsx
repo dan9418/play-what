@@ -1,5 +1,5 @@
 import React from 'react';
-import IntegerInput from '../../models/math/IntegerInput/IntegerInput';
+import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
 import PodInput from '../../models/math/PodInput/PodInput';
 import PodListInput from '../../models/math/PodListInput/PodListInput';
 
@@ -7,14 +7,14 @@ const GenericOutput = ({ value }) => <div>{value}</div>
 
 const getInputComponent = type => {
 	switch (type) {
-	case 'integer':
-		return IntegerInput;
+	case 'scalar':
+		return ScalarInput;
 	case 'pod':
 		return PodInput;
 	case 'podList':
 		return PodListInput;
 	case 'string':
-	case 'integer':
+	case 'scalar':
 		return GenericOutput
 	default:
 		return null;

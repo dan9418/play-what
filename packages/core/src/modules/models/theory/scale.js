@@ -1,5 +1,5 @@
 import { INTERVAL } from './interval';
-import integer from '../math/integer';
+import scalar from '../math/scalar';
 import utils from '../../utils';
 import chord from './chord';
 import pod from '../math/pod';
@@ -39,7 +39,7 @@ const getNumeral = ({ A, d }) => {
 	const LIMIT = 7;
 	const numeral = [];
 	for (let i = 0; i < LIMIT; i = i + 2) {
-		const curD = integer.moduloSum({ a: d, b: i, divisor: A.length });
+		const curD = scalar.moduloSum({ a: d, b: i, divisor: A.length });
 		const ivl = A[curD];
 		if (i < d) ivl[0] = ivl[0] + 12;
 		numeral.push(ivl);

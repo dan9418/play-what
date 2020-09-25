@@ -1,4 +1,4 @@
-import integer from './integer';
+import scalar from './scalar';
 import PW_Color from '@pw/color';
 import theory from '../theory/_module';
 
@@ -18,7 +18,7 @@ const areEqual = ({ interval1, interval2 }) => {
 	return interval1[0] === interval2[0] && interva[1] === interval[1];
 };
 
-const reduce = ([p, d]) => [integer.modulo({ a: p, b: MAX[0] }), integer.modulo({ a: d, b: MAX[1] })];
+const reduce = ([p, d]) => [scalar.modulo({ a: p, b: MAX[0] }), scalar.modulo({ a: d, b: MAX[1] })];
 
 // Utils
 

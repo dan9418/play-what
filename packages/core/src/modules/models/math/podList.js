@@ -1,5 +1,5 @@
 import pod from './pod'
-import integer from './integer';
+import scalar from './scalar';
 import utils from '../../utils';
 
 // Constants
@@ -24,12 +24,12 @@ const areEqual = ({ list1, list2 }) => {
 // Utils
 
 const findPodWithPitch = (list, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? integer.modulo({ a: pitch, b: MAX[0] }) : pitch;
+	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
 	return list.find((n) => n[0] === p) || null;
 };
 
 const findIndexOfPodWithPitch = (list, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? integer.modulo({ a: pitch, b: MAX[0] }) : pitch;
+	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
 	return list.findIndex((n) => n[0] === p);
 };
 

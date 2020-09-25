@@ -16,13 +16,13 @@ const DOCS_CONFIG = {
 			name: 'Models',
 			submodules: [
 				{
-					id: 'model/integer',
-					name: 'Integer',
+					id: 'model/scalar',
+					name: 'Scalar',
 					functions: [
 						{
-							id: 'model/integer/modulo',
+							id: 'model/scalar/modulo',
 							name: 'modulo: (a, divisor) => c',
-							fn: PW_Core.models.math.integer.modulo,
+							fn: PW_Core.models.math.scalar.modulo,
 							props: {
 								a: PW_Core.models.theory.degree.preset.C.value,
 								divisor: 7
@@ -30,25 +30,25 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: null
 								},
 								{
 									name: 'divisor',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'integer',
+								mathType: 'scalar',
 								theoryType: null
 							}
 						},
 						{
-							id: 'model/integer/moduloSum',
+							id: 'model/scalar/moduloSum',
 							name: 'moduloSum: (a, b, divisor) => c',
-							fn: PW_Core.models.math.integer.moduloSum,
+							fn: PW_Core.models.math.scalar.moduloSum,
 							props: {
 								a: PW_Core.models.theory.degree.preset.C.value,
 								b: PW_Core.models.theory.degree.preset.F.value,
@@ -57,23 +57,23 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: null
 								},
 								{
 									name: 'b',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: null
 								},
 								{
 									name: 'divisor',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'integer',
+								mathType: 'scalar',
 								theoryType: null
 							}
 						}
@@ -119,7 +119,7 @@ const DOCS_CONFIG = {
 			submodules: [
 				{
 					id: 'pitch',
-					name: 'Pitch (integer)',
+					name: 'Pitch (scalar)',
 					functions: [
 						{
 							id: 'theory/pitch/getName',
@@ -131,7 +131,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'p',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'degree'
 								}
 							],
@@ -145,7 +145,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'degree',
-					name: 'Degree (integer)',
+					name: 'Degree (scalar)',
 					functions: [
 						{
 							id: 'theory/degree/getName',
@@ -157,7 +157,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'd',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'degree'
 								}
 							],
@@ -171,7 +171,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'accidental',
-					name: 'Accidental (integer)',
+					name: 'Accidental (scalar)',
 					functions: [
 						{
 							id: 'theory/accidental/getName',
@@ -183,7 +183,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'accidental'
 								}
 							],
@@ -267,7 +267,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'n',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'pitch'
 								}
 							],
@@ -336,7 +336,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'd',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'degree'
 								}
 							],
@@ -363,7 +363,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'd',
-									mathType: 'integer',
+									mathType: 'scalar',
 									theoryType: 'degree'
 								}
 							],

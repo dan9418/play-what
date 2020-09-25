@@ -1,9 +1,9 @@
-import integer from './integer';
+import scalar from './scalar';
 import pod from './pod';
 import podList from './podList';
 
 export default {
-	integer,
+	scalar,
 	pod,
 	podList
 }

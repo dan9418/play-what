@@ -12,11 +12,11 @@ const ListMeter = ({ list }) => {
 	);
 };
 
-const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
+const ScalarListMeter = ({ max, nameFn, scalarList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = integerList.find(v => PW_Core.models.math.integer.modulo({ a: v, b: max }) === i);
-		const reduced = PW_Core.models.math.integer.modulo({ a: value, b: max });
+		const value = scalarList.find(v => PW_Core.models.math.scalar.modulo({ a: v, b: max }) === i);
+		const reduced = PW_Core.models.math.scalar.modulo({ a: value, b: max });
 		const color = colorFn ? colorFn(reduced) : PW_Core.models.theory.pitch.getColor(reduced);
 
 		const style = PW_Color.getStylesFromBgColor(color);
@@ -30,7 +30,7 @@ const IntegerListMeter = ({ max, nameFn, integerList, colorFn }) => {
 const OctaveListMeter = ({ pitchList }) => {
 	const list = [];
 	for (let i = 0; i < 12; i++) {
-		const pitch = pitchList.find(p => PW_Core.models.math.integer.modulo({ a: p, b: 12 }) === i) || null;
+		const pitch = pitchList.find(p => PW_Core.models.math.scalar.modulo({ a: p, b: 12 }) === i) || null;
 		if (pitch === null) {
 			list.push({
 				style: {},
@@ -39,7 +39,7 @@ const OctaveListMeter = ({ pitchList }) => {
 			continue;
 		}
 
-		const o = PW_Core.models.math.integer.floor(pitch, 12);
+		const o = PW_Core.models.math.scalar.floor(pitch, 12);
 
 		const color = PW_Core.models.theory.pitch.getColor(o);
 		const style = PW_Color.getStylesFromBgColor(color);
@@ -58,18 +58,18 @@ const PodListMeter = ({ podList, max, ...props }) => {
 	const colorFnD = PW_Core.models.theory.degree.getColor;
 	return (
 		<>
-			<IntegerListMeter integerList={P} max={maxP} colorFn={colorFnP} {...props} />
-			<IntegerListMeter integerList={D} max={maxD} colorFn={colorFnD} {...props} />
+			<ScalarListMeter scalarList={P} max={maxP} colorFn={colorFnP} {...props} />
+			<ScalarListMeter scalarList={D} max={maxD} colorFn={colorFnD} {...props} />
 		</>
 	);
 }
 
 const Meter = ({ value, mathType, max, ...props }) => {
 	switch (mathType) {
-	case 'integer':
-		return <IntegerListMeter integerList={[value]} max={max} {...props} />;
-	case 'integerList':
-		return <IntegerListMeter integerList={value} max={max} {...props} />;
+	case 'scalar':
+		return <ScalarListMeter scalarList={[value]} max={max} {...props} />;
+	case 'scalarList':
+		return <ScalarListMeter scalarList={value} max={max} {...props} />;
 	case 'pod':
 		return <PodListMeter podList={[value]} max={max} {...props} />;
 	case 'podList':

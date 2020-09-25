@@ -1,9 +1,9 @@
-import IntegerInput from './IntegerInput/IntegerInput';
+import ScalarInput from './ScalarInput/ScalarInput';
 import PodInput from './PodInput/PodInput';
 import PodListInput from './PodListInput/PodListInput';
 
 export default {
-	IntegerInput,
+	ScalarInput,
 	PodInput,
 	PodListInput
 };

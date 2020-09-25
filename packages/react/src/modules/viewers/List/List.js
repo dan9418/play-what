@@ -44,7 +44,7 @@ const ListItem = ({ value, theoryType }) => {
 const List = ({ value, mathType, theoryType, ...props }) => {
 	switch (mathType) {
 	case 'string':
-	case 'integer': {
+	case 'scalar': {
 		return value;
 	}
 	case 'pod': {

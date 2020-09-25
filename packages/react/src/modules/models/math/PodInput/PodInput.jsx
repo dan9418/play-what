@@ -1,6 +1,6 @@
 import React from 'react';
 import './PodInput.css';
-import IntegerInput from '../IntegerInput/IntegerInput';
+import ScalarInput from '../ScalarInput/ScalarInput';
 
 export const PodInput = ({ value, setValue }) => {
 	const [p, d] = value;
@@ -9,9 +9,9 @@ export const PodInput = ({ value, setValue }) => {
 	return (
 		<div className='pod-input'>
 			<div className='pod-open-bracket'>|</div>
-			<IntegerInput value={p} setValue={setP} />
+			<ScalarInput value={p} setValue={setP} />
 			<div className='pod-comma'>,</div>
-			<IntegerInput value={d} setValue={setD} />
+			<ScalarInput value={d} setValue={setD} />
 			<div className='pod-open-bracket'>|</div>
 		</div>
 	);
