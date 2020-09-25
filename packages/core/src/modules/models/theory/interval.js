@@ -1,4 +1,4 @@
-import pod from '../math/pod';
+import vector from '../math/vector';
 
 export const INTERVAL = {
 	P1: {

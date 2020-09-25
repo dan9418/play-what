@@ -80,13 +80,13 @@ const DOCS_CONFIG = {
 					]
 				},
 				{
-					id: 'model/pod',
-					name: 'Pod',
+					id: 'model/vector',
+					name: 'Vector',
 					functions: [
 						{
-							id: 'model/pod/addPod',
-							name: 'addPod: (a, b) => c',
-							fn: PW_Core.models.math.pod.addPod,
+							id: 'model/vector/addVector',
+							name: 'addVector: (a, b) => c',
+							fn: PW_Core.models.math.vector.addVector,
 							props: {
 								a: PW_Core.models.theory.interval.preset.M3.value,
 								b: PW_Core.models.theory.interval.preset.P5.value
@@ -94,18 +94,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: null
 								},
 								{
 									name: 'b',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'pod',
+								mathType: 'vector',
 								theoryType: null
 							}
 						}
@@ -197,7 +197,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'interval',
-					name: 'Interval (pod)',
+					name: 'Interval (vector)',
 					functions: [
 						{
 							id: 'theory/interval/getName',
@@ -209,7 +209,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: 'interval'
 								}
 							],
@@ -223,7 +223,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'note',
-					name: 'Note (pod)',
+					name: 'Note (vector)',
 					functions: [
 						{
 							id: 'theory/note/getName',
@@ -235,7 +235,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: 'note'
 								}
 							],
@@ -249,7 +249,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'chord',
-					name: 'Chord (podList)',
+					name: 'Chord (matrix)',
 					functions: [
 						{
 							id: 'theory/chord/inversion',
@@ -262,7 +262,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'podList',
+									mathType: 'matrix',
 									theoryType: 'note'
 								},
 								{
@@ -273,7 +273,7 @@ const DOCS_CONFIG = {
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'podList',
+								mathType: 'matrix',
 								theoryType: 'note'
 							}
 						},
@@ -288,18 +288,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'podList',
+									mathType: 'matrix',
 									theoryType: 'note'
 								},
 								{
 									name: 'b',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'podList',
+								mathType: 'matrix',
 								theoryType: 'note'
 							}
 						}
@@ -307,7 +307,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'scale',
-					name: 'Scale (podList)',
+					name: 'Scale (matrix)',
 					functions: [
 						{
 							id: 'theory/scale/getNumeral',
@@ -331,7 +331,7 @@ const DOCS_CONFIG = {
 									// component: 'ModelRow',
 									// props
 									name: 'A',
-									mathType: 'podList',
+									mathType: 'matrix',
 									theoryType: 'note'
 								},
 								{
@@ -343,7 +343,7 @@ const DOCS_CONFIG = {
 							// outComp??
 							outDef: {
 								name: 'C',
-								mathType: 'podList',
+								mathType: 'matrix',
 								theoryType: 'note'
 							}
 						},
@@ -358,7 +358,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'podList',
+									mathType: 'matrix',
 									theoryType: 'note'
 								},
 								{
@@ -369,7 +369,7 @@ const DOCS_CONFIG = {
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'podList',
+								mathType: 'matrix',
 								theoryType: 'note'
 							}
 						},
@@ -384,18 +384,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'podList',
+									mathType: 'matrix',
 									theoryType: 'note'
 								},
 								{
 									name: 'b',
-									mathType: 'pod',
+									mathType: 'vector',
 									theoryType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'podList',
+								mathType: 'matrix',
 								theoryType: 'note'
 							}
 						}

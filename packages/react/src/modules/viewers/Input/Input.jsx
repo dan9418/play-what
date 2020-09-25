@@ -1,7 +1,7 @@
 import React from 'react';
 import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
-import PodInput from '../../models/math/PodInput/PodInput';
-import PodListInput from '../../models/math/PodListInput/PodListInput';
+import VectorInput from '../../models/math/VectorInput/VectorInput';
+import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
 
 const GenericOutput = ({ value }) => <div>{value}</div>
 
@@ -9,10 +9,10 @@ const getInputComponent = type => {
 	switch (type) {
 	case 'scalar':
 		return ScalarInput;
-	case 'pod':
-		return PodInput;
-	case 'podList':
-		return PodListInput;
+	case 'vector':
+		return VectorInput;
+	case 'matrix':
+		return MatrixInput;
 	case 'string':
 	case 'scalar':
 		return GenericOutput

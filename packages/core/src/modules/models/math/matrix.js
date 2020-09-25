@@ -1,4 +1,4 @@
-import pod from './pod'
+import vector from './vector'
 import scalar from './scalar';
 import utils from '../../utils';
 
@@ -8,8 +8,8 @@ const DEFAULT = [[0, 0]];
 
 // Common
 
-const isValid = (podList) => {
-	return podList !== null && Array.isArray(podList) && podList.find((v) => !pod.isValid(v));
+const isValid = (matrix) => {
+	return matrix !== null && Array.isArray(matrix) && matrix.find((v) => !vector.isValid(v));
 };
 
 const areEqual = ({ list1, list2 }) => {
@@ -23,17 +23,17 @@ const areEqual = ({ list1, list2 }) => {
 
 // Utils
 
-const findPodWithPitch = (list, pitch, octaveReduce = true) => {
+const findVectorWithPitch = (list, pitch, octaveReduce = true) => {
 	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
 	return list.find((n) => n[0] === p) || null;
 };
 
-const findIndexOfPodWithPitch = (list, pitch, octaveReduce = true) => {
+const findIndexOfVectorWithPitch = (list, pitch, octaveReduce = true) => {
 	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
 	return list.findIndex((n) => n[0] === p);
 };
 
-const addPod = ({ A, b }) => A.map((a) => pod.addPod({ a, b }));
+const addVector = ({ A, b }) => A.map((a) => vector.addVector({ a, b }));
 
 export default {
 	defaultValue: DEFAULT,
@@ -41,7 +41,7 @@ export default {
 	isValid,
 	areEqual,
 	// Utils
-	findPodWithPitch,
-	findIndexOfPodWithPitch,
-	addPod
+	findVectorWithPitch,
+	findIndexOfVectorWithPitch,
+	addVector
 };

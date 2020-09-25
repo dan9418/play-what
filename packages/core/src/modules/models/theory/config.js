@@ -14,14 +14,14 @@ const ROOT_DEGREE = d.C.value;
 
 const DIATONIC_VALUES = Object.values(DIATONIC);
 
-const ROOT = DIATONIC_VALUES.map((pod, i) => (
+const ROOT = DIATONIC_VALUES.map((vector, i) => (
 	[
-		ROOT_PITCH + pod.value[0],
-		ROOT_DEGREE + pod.value[1]
+		ROOT_PITCH + vector.value[0],
+		ROOT_DEGREE + vector.value[1]
 	]
 ));
 
 export default {
 	rootScale: ROOT,
-	maxPod: MAX
+	maxVector: MAX
 };

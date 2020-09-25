@@ -9,8 +9,8 @@ const MAX = [12, 7];
 
 // Common
 
-const isValid = (pod) => {
-	return pod !== null && typeof pod === 'object' && typeof pod[0] === 'number' && typeof pod[1] === 'number';
+const isValid = (vector) => {
+	return vector !== null && typeof vector === 'object' && typeof vector[0] === 'number' && typeof vector[1] === 'number';
 };
 
 const areEqual = ({ interval1, interval2 }) => {
@@ -22,9 +22,9 @@ const reduce = ([p, d]) => [scalar.modulo({ a: p, b: MAX[0] }), scalar.modulo({ 
 
 // Utils
 
-const addPod = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
+const addVector = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
 
-const addPodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
+const addMatrix = ({ a, B }) => B.map((b) => addVector({ a, b }));
 
 export default {
 	// Constants
@@ -35,6 +35,6 @@ export default {
 	areEqual,
 	reduce,
 	// Utils
-	addPod,
-	addPodList
+	addVector,
+	addMatrix
 };

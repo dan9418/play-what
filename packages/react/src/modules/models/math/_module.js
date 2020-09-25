@@ -1,9 +1,9 @@
 import ScalarInput from './ScalarInput/ScalarInput';
-import PodInput from './PodInput/PodInput';
-import PodListInput from './PodListInput/PodListInput';
+import VectorInput from './VectorInput/VectorInput';
+import MatrixInput from './MatrixInput/MatrixInput';
 
 export default {
 	ScalarInput,
-	PodInput,
-	PodListInput
+	VectorInput,
+	MatrixInput
 };

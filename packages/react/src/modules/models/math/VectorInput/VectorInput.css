@@ -1,14 +1,14 @@
-.pod-input {
+.vector-input {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin: auto;
 }
 
-.pod-input .scalar-input {
+.vector-input .scalar-input {
     margin: 0 2px;
 }
 
-.pod-open-bracket, .pod-comma {
+.vector-open-bracket, .vector-comma {
     font-size: 16px;
 }

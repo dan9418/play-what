@@ -12,7 +12,7 @@ const ListItem = ({ value, theoryType }) => {
 
 	switch (theoryType) {
 	case 'note': {
-		const note = PW_Core.models.math.pod.reduce(value);
+		const note = PW_Core.models.math.vector.reduce(value);
 		const [p, d] = note;
 		text = PW_Core.models.theory.note.getName({ A: note })
 		color = PW_Core.models.theory.degree.getColor(d);
@@ -24,7 +24,7 @@ const ListItem = ({ value, theoryType }) => {
 		break;
 	}
 	case 'interval': {
-		const interval = PW_Core.models.math.pod.reduce(value);
+		const interval = PW_Core.models.math.vector.reduce(value);
 		const [p, d] = interval;
 		text = PW_Core.models.theory.interval.getName({ A: interval })
 		color = PW_Core.models.theory.degree.getColor(d);
@@ -47,10 +47,10 @@ const List = ({ value, mathType, theoryType, ...props }) => {
 	case 'scalar': {
 		return value;
 	}
-	case 'pod': {
+	case 'vector': {
 		return <ListItem value={value} theoryType={theoryType} />;
 	}
-	case 'podList': {
+	case 'matrix': {
 		return (
 			<div className='list'>
 				{value.map((v, i) => <ListItem value={v} theoryType={theoryType} key={i} />)}

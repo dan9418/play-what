@@ -50,10 +50,10 @@ const OctaveListMeter = ({ pitchList }) => {
 	return <ListMeter list={list} />
 };
 
-const PodListMeter = ({ podList, max, ...props }) => {
+const MatrixMeter = ({ matrix, max, ...props }) => {
 	const [maxP, maxD] = max;
-	const P = podList.map(([p, d]) => p);
-	const D = podList.map(([p, d]) => d);
+	const P = matrix.map(([p, d]) => p);
+	const D = matrix.map(([p, d]) => d);
 	const colorFnP = PW_Core.models.theory.pitch.getColor;
 	const colorFnD = PW_Core.models.theory.degree.getColor;
 	return (
@@ -70,10 +70,10 @@ const Meter = ({ value, mathType, max, ...props }) => {
 		return <ScalarListMeter scalarList={[value]} max={max} {...props} />;
 	case 'scalarList':
 		return <ScalarListMeter scalarList={value} max={max} {...props} />;
-	case 'pod':
-		return <PodListMeter podList={[value]} max={max} {...props} />;
-	case 'podList':
-		return <PodListMeter podList={value} max={max} {...props} />;
+	case 'vector':
+		return <MatrixMeter matrix={[value]} max={max} {...props} />;
+	case 'matrix':
+		return <MatrixMeter matrix={value} max={max} {...props} />;
 	default:
 		return null;
 	}
