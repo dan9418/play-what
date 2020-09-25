@@ -3,7 +3,7 @@ import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
 import VectorInput from '../../models/math/VectorInput/VectorInput';
 import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
 
-const GenericOutput = ({ value }) => <div>{value}</div>
+const GenericPreview = ({ value }) => <div>{value}</div>
 
 const getInputComponent = type => {
 	switch (type) {
@@ -15,7 +15,7 @@ const getInputComponent = type => {
 		return MatrixInput;
 	case 'string':
 	case 'scalar':
-		return GenericOutput
+		return GenericPreview
 	default:
 		return null;
 	}

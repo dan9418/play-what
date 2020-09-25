@@ -2,11 +2,12 @@ import PW_Core from '@pw/core';
 import PW_Color from '@pw/color';
 import PW_Tone from '@pw/tone';
 import React, { useState } from 'react';
-import './Output.css';
+import './Preview.css';
+import ScalarInput from '../../models/math/ScalarInput/ScalarInput';
+import VectorInput from '../../models/math/VectorInput/VectorInput';
+import MatrixInput from '../../models/math/MatrixInput/MatrixInput';
 
 const ListItem = ({ value, podType }) => {
-	const [isEditing, setIsEditing] = useState(false);
-	const toggleEdit = () => setIsEditing(!isEditing);
 
 	let onClick = null;
 	let text = '';
@@ -43,7 +44,6 @@ const ListItem = ({ value, podType }) => {
 
 	return (
 		<div className='list-item' style={style} onClick={onClick}>
-			<div className='edit' onClick={toggleEdit}>edit</div>
 			{text}
 		</div>
 	);
@@ -57,18 +57,44 @@ const List = ({ value, podType }) => {
 	);
 };
 
-const Output = ({ value, modelType, podType, theoryType, ...props }) => {
-	switch (modelType) {
-	case 'vector': {
-		return <List value={[value]} podType={podType} />;
+const Preview = ({ value, setValue, modelType, podType, theoryType, ...props }) => {
+	const [isEditing, setIsEditing] = useState(false);
+	const toggleEdit = () => setIsEditing(!isEditing);
+
+	let child = null;
+
+	if(isEditing) {
+		switch (modelType) {
+		case 'scalar': {
+			child = <ScalarInput value={value} setValue={setValue} max={max} />;
+		}
+		case 'vector': {
+			child =  <VectorInput value={value} setValue={setValue} max={max} />;
+		}
+		case 'matrix': {
+			child =  <MatrixInput value={value} setValue={setValue} max={max} />;
+		}
+		}
 	}
-	case 'matrix': {
-		return <List value={value} podType={podType} />;
+	else {
+		switch (modelType) {
+		case 'vector': {
+			child = <List value={[value]} podType={podType} />;
+		}
+		case 'matrix': {
+			child = <List value={value} podType={podType} />;
+		}
+		default: {
+			child = <div className='list-item' >{value}</div>;
+		}
+		}
 	}
-	default: {
-		return <div className='list-item' >{value}</div>;
-	}
-	}
+	return (
+		<div>
+			<div onClick={toggleEdit}>edit</div>
+			{child}
+		</div>
+	);
 }
 
-export default Output;
+export default Preview;

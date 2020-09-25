@@ -33,6 +33,8 @@ export const GenericFunctionDocs = ({ config, level }) => {
 					const setValue = v => setProp(name, v);
 					return <ModelRow key={i} value={value} setValue={setValue} max={max} label={name} modelType={modelType} podType={podType} />;
 				})}
+			</div>
+			<div className="card">
 				<ModelRow value={out} max={max} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
 			</div>
 		</Fold>
