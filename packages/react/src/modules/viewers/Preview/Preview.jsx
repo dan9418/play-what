@@ -60,7 +60,7 @@ const List = ({ value, podType }) => {
 	);
 };
 
-const Edit = ({ value, setValue, modelType, podType }) => {
+export const Edit = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
 	case 'scalar': {
 		return <ScalarInput value={value} setValue={setValue} max={max} />;
@@ -74,7 +74,7 @@ const Edit = ({ value, setValue, modelType, podType }) => {
 	}
 };
 
-const View = ({ value, podType, modelType }) => {
+export const View = ({ value, podType, modelType }) => {
 	switch (modelType) {
 	case 'vector': {
 		return <List value={[value]} podType={podType} />;
@@ -87,19 +87,3 @@ const View = ({ value, podType, modelType }) => {
 	}
 	}
 };
-
-const Preview = ({ value, setValue, modelType, podType, theoryType, ...props }) => {
-	const [isEditing, setIsEditing] = useState(false);
-	const toggleEdit = () => setIsEditing(!isEditing);
-	return (
-		<div>
-			<div className='edit' onClick={toggleEdit}>edit</div>
-			{isEditing ?
-				<Edit value={value} modelType={modelType} setValue={setValue} podType={podType} />
-				: <View value={value} modelType={modelType} setValue={setValue} podType={podType} />
-			}
-		</div>
-	);
-}
-
-export default Preview;
