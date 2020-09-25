@@ -28,12 +28,12 @@ export const GenericFunctionDocs = ({ config, level }) => {
 		<Fold label={name} level={level}>
 			<div className="card">
 				{propDefs.map((p, i) => {
-					const { name, mathType, theoryType } = p;
+					const { name, mathType, podType } = p;
 					const value = props[name];
 					const setValue = v => setProp(name, v);
-					return <ModelRow key={i} value={value} setValue={setValue} max={max} label={name} mathType={mathType} theoryType={theoryType} />;
+					return <ModelRow key={i} value={value} setValue={setValue} max={max} label={name} mathType={mathType} podType={podType} />;
 				})}
-				<ModelRow value={out} max={max} label={outDef.name} mathType={outDef.mathType} theoryType={outDef.theoryType} />
+				<ModelRow value={out} max={max} label={outDef.name} mathType={outDef.mathType} podType={outDef.podType} />
 			</div>
 		</Fold>
 	);

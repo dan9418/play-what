@@ -4,13 +4,13 @@ import PW_Tone from '@pw/tone';
 import React from 'react';
 import './Output.css';
 
-const ListItem = ({ value, theoryType }) => {
+const ListItem = ({ value, podType }) => {
 	let onClick = null;
 	let text = '';
 	let color = null;
 	let style = {};
 
-	switch (theoryType) {
+	switch (podType) {
 	case 'note': {
 		const note = PW_Core.models.math.vector.reduce(value);
 		const [p, d] = note;
@@ -41,17 +41,21 @@ const ListItem = ({ value, theoryType }) => {
 	return <div className='list-item' style={style} onClick={onClick}>{text}</div>;
 };
 
-const Output = ({ value, mathType, theoryType, ...props }) => {
+const List = ({ value, podType }) => {
+	return (
+		<div className='list'>
+			{value.map((v, i) => <ListItem value={v} podType={podType} key={i} />)}
+		</div>
+	);
+};
+
+const Output = ({ value, mathType, podType, ...props }) => {
 	switch (mathType) {
 	case 'vector': {
-		return <ListItem value={value} theoryType={theoryType} />;
+		return <List value={[value]} podType={podType} />;
 	}
 	case 'matrix': {
-		return (
-			<div className='list'>
-				{value.map((v, i) => <ListItem value={v} theoryType={theoryType} key={i} />)}
-			</div>
-		);
+		return <List value={value} podType={podType} />;
 	}
 	default: {
 		return <div className='list-item' >{value}</div>;

@@ -31,18 +31,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									mathType: 'scalar',
-									theoryType: null
+									podType: null
 								},
 								{
 									name: 'divisor',
 									mathType: 'scalar',
-									theoryType: null
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
 								mathType: 'scalar',
-								theoryType: null
+								podType: null
 							}
 						},
 						{
@@ -58,23 +58,23 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									mathType: 'scalar',
-									theoryType: null
+									podType: null
 								},
 								{
 									name: 'b',
 									mathType: 'scalar',
-									theoryType: null
+									podType: null
 								},
 								{
 									name: 'divisor',
 									mathType: 'scalar',
-									theoryType: null
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
 								mathType: 'scalar',
-								theoryType: null
+								podType: null
 							}
 						}
 					]
@@ -95,18 +95,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									mathType: 'vector',
-									theoryType: null
+									podType: null
 								},
 								{
 									name: 'b',
 									mathType: 'vector',
-									theoryType: null
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
 								mathType: 'vector',
-								theoryType: null
+								podType: null
 							}
 						}
 					]
@@ -132,13 +132,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'p',
 									mathType: 'scalar',
-									theoryType: 'degree'
+									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'name',
 								mathType: 'string',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						}
 					]
@@ -158,13 +158,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'd',
 									mathType: 'scalar',
-									theoryType: 'degree'
+									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'name',
 								mathType: 'string',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						}
 					]
@@ -184,13 +184,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									mathType: 'scalar',
-									theoryType: 'accidental'
+									podType: 'accidental'
 								}
 							],
 							outDef: {
 								name: 'name',
 								mathType: 'string',
-								theoryType: 'accidental'
+								podType: 'accidental'
 							}
 						}
 					]
@@ -210,13 +210,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'vector',
-									theoryType: 'interval'
+									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'name',
 								mathType: 'string',
-								theoryType: 'interval'
+								podType: 'interval'
 							}
 						}
 					]
@@ -236,13 +236,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'vector',
-									theoryType: 'note'
+									podType: 'note'
 								}
 							],
 							outDef: {
 								name: 'name',
 								mathType: 'string',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						}
 					]
@@ -263,18 +263,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'matrix',
-									theoryType: 'note'
+									podType: 'note'
 								},
 								{
 									name: 'n',
 									mathType: 'scalar',
-									theoryType: 'pitch'
+									podType: 'pitch'
 								}
 							],
 							outDef: {
 								name: 'C',
 								mathType: 'matrix',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						},
 						{
@@ -289,18 +289,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'matrix',
-									theoryType: 'note'
+									podType: 'note'
 								},
 								{
 									name: 'b',
 									mathType: 'vector',
-									theoryType: 'interval'
+									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
 								mathType: 'matrix',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						}
 					]
@@ -332,19 +332,19 @@ const DOCS_CONFIG = {
 									// props
 									name: 'A',
 									mathType: 'matrix',
-									theoryType: 'note'
+									podType: 'note'
 								},
 								{
 									name: 'd',
 									mathType: 'scalar',
-									theoryType: 'degree'
+									podType: 'degree'
 								}
 							],
 							// outComp??
 							outDef: {
 								name: 'C',
 								mathType: 'matrix',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						},
 						{
@@ -359,18 +359,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'matrix',
-									theoryType: 'note'
+									podType: 'note'
 								},
 								{
 									name: 'd',
 									mathType: 'scalar',
-									theoryType: 'degree'
+									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'C',
 								mathType: 'matrix',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						},
 						{
@@ -385,18 +385,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'A',
 									mathType: 'matrix',
-									theoryType: 'note'
+									podType: 'note'
 								},
 								{
 									name: 'b',
 									mathType: 'vector',
-									theoryType: 'interval'
+									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
 								mathType: 'matrix',
-								theoryType: 'note'
+								podType: 'note'
 							}
 						}
 					]

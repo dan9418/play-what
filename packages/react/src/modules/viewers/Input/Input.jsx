@@ -21,7 +21,7 @@ const getInputComponent = type => {
 	}
 }
 
-const Input = ({ value, setValue, mathType, theoryType, max, ...props }) => {
+const Input = ({ value, setValue, mathType, podType, max, ...props }) => {
 	const InputComponent = getInputComponent(mathType);
 	return (
 		<InputComponent value={value} setValue={setValue} max={max} />
