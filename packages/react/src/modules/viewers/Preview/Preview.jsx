@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import './Preview.css';
 import ScalarInput from '../../models/math/scalar/ScalarInput';
 import VectorInput from '../../models/math/vector/VectorInput';
-import MatrixInput from '../../models/math/matrix/MatrixInput';
+import MultiInput from '../../models/math/matrix/MultiInput';
 import VectorOutput from '../../models/math/vector/VectorOutput';
 import MatrixOutput from '../../models/math/matrix/MatrixOutput';
 
@@ -54,7 +54,6 @@ const ListItem = ({ value, podType }) => {
 };
 
 const List = ({ value, podType }) => {
-	console.log('dpb 4', value)
 	return (
 		<div className='list'>
 			{value.map((v, i) => <ListItem value={v} podType={podType} key={i} />)}
@@ -63,26 +62,7 @@ const List = ({ value, podType }) => {
 };
 
 export const Edit = ({ value, setValue, modelType, podType }) => {
-	switch (modelType) {
-	case 'scalar': {
-		return <div className="l-r">
-			<ScalarInput value={value} setValue={setValue} max={max} />
-			<span>{value}</span>
-		</div>;
-	}
-	case 'vector': {
-		return <div className="l-r">
-			<VectorInput value={value} setValue={setValue} max={max} />
-			<VectorOutput value={value} setValue={setValue} max={max} />
-		</div>;
-	}
-	case 'matrix': {
-		return <div className="l-r">
-			<MatrixInput value={value} setValue={setValue} max={max} />
-			<MatrixOutput value={value} max={max} />
-		</div>;
-	}
-	}
+	return <MultiInput value={value} setValue={setValue} max={max} podType={podType} modelType={modelType} />
 };
 
 export const View = ({ value, podType, modelType }) => {

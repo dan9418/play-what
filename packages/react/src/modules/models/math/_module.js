@@ -1,9 +1,9 @@
 import ScalarInput from './scalar/ScalarInput';
 import VectorInput from './vector/VectorInput';
-import MatrixInput from './matrix/MatrixInput';
+import MultiInput from './matrix/MultiInput';
 
 export default {
 	ScalarInput,
 	VectorInput,
-	MatrixInput
+	MultiInput
 };

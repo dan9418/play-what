@@ -14,7 +14,7 @@ const ViewAsInput = ({ value, setValue }) => {
 	);
 };
 
-const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, max }) => {
+const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 
 	const [viewAs, setViewAs] = useState(podType);
 	const [isEditing, setIsEditing] = useState(false);

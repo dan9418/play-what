@@ -1,7 +1,7 @@
 import React from 'react';
 import ScalarInput from '../../models/math/scalar/ScalarInput';
 import VectorInput from '../../models/math/vector/VectorInput';
-import MatrixInput from '../../models/math/matrix/MatrixInput';
+import MultiInput from '../../models/math/matrix/MultiInput';
 
 const GenericPreview = ({ value }) => <div>{value}</div>
 
@@ -12,7 +12,7 @@ const getInputComponent = type => {
 	case 'vector':
 		return VectorInput;
 	case 'matrix':
-		return MatrixInput;
+		return MultiInput;
 	case 'string':
 	case 'scalar':
 		return GenericPreview
