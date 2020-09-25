@@ -12,4 +12,15 @@
     border-radius: 8px;
     background-color: white;
     cursor: pointer;
+    position: relative;
+}
+
+.edit {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    cursor: pointer;
+    width: 100%;
+    padding-top: 2px;
+    font-size: 80%;
 }

@@ -1,29 +1,17 @@
-import React, { useState } from "react";
-import Input from "../viewers/Input/Input";
-import Output from "../viewers/Output/Output";
+import React from "react";
 import Meter from "../viewers/Meter/Meter";
+import Output from "../viewers/Output/Output";
 import "./Docs.css";
 
-const ModelRow = ({ label, mathType, podType, value, setValue, max }) => {
-	const classes = ['model-row'];
-	const [showDetails, setShowDetails] = useState(false);
+const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, max }) => {
 	return (
-		<div className={classes.join(' ')}>
-			<div className="title-theory">
-				<label>{`${label}: ${mathType}`}</label>
+		<div className='model-row'>
+			<div>
+				<label>{`${label}:`}</label>
+				<span>{modelType}</span>
 			</div>
-			<div className="input-meter">
-				<div className="content">
-					<Output mathType={mathType} podType={podType} value={value} max={max} />
-					{false && <Meter mathType={mathType} podType={podType} value={value} max={max} />}
-				</div>
-				<div>
-					<div className="show-details" onClick={() => setShowDetails(!showDetails)}>Show Details</div>
-					{showDetails && false && (
-						<Input value={value} setValue={setValue} max={max} mathType={mathType} podType={podType} />
-					)}
-				</div>
-			</div>
+			<Output modelType={modelType} podType={podType} value={value} setValue={setValue} max={max} />
+			<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} max={max} />
 		</div>
 	);
 }

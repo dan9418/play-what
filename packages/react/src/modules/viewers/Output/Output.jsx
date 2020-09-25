@@ -1,10 +1,13 @@
 import PW_Core from '@pw/core';
 import PW_Color from '@pw/color';
 import PW_Tone from '@pw/tone';
-import React from 'react';
+import React, { useState } from 'react';
 import './Output.css';
 
 const ListItem = ({ value, podType }) => {
+	const [isEditing, setIsEditing] = useState(false);
+	const toggleEdit = () => setIsEditing(!isEditing);
+
 	let onClick = null;
 	let text = '';
 	let color = null;
@@ -38,7 +41,12 @@ const ListItem = ({ value, podType }) => {
 	}
 	}
 
-	return <div className='list-item' style={style} onClick={onClick}>{text}</div>;
+	return (
+		<div className='list-item' style={style} onClick={onClick}>
+			<div className='edit' onClick={toggleEdit}>edit</div>
+			{text}
+		</div>
+	);
 };
 
 const List = ({ value, podType }) => {
@@ -49,8 +57,8 @@ const List = ({ value, podType }) => {
 	);
 };
 
-const Output = ({ value, mathType, podType, ...props }) => {
-	switch (mathType) {
+const Output = ({ value, modelType, podType, theoryType, ...props }) => {
+	switch (modelType) {
 	case 'vector': {
 		return <List value={[value]} podType={podType} />;
 	}

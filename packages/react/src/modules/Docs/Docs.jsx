@@ -30,18 +30,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: null
 								},
 								{
 									name: 'divisor',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'scalar',
+								modelType: 'scalar',
 								podType: null
 							}
 						},
@@ -57,23 +57,23 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: null
 								},
 								{
 									name: 'b',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: null
 								},
 								{
 									name: 'divisor',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'scalar',
+								modelType: 'scalar',
 								podType: null
 							}
 						}
@@ -94,18 +94,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: null
 								},
 								{
 									name: 'b',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								mathType: 'vector',
+								modelType: 'vector',
 								podType: null
 							}
 						}
@@ -131,13 +131,13 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'p',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'name',
-								mathType: 'string',
+								modelType: 'string',
 								podType: 'note'
 							}
 						}
@@ -157,13 +157,13 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'd',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'name',
-								mathType: 'string',
+								modelType: 'string',
 								podType: 'note'
 							}
 						}
@@ -183,13 +183,13 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'accidental'
 								}
 							],
 							outDef: {
 								name: 'name',
-								mathType: 'string',
+								modelType: 'string',
 								podType: 'accidental'
 							}
 						}
@@ -209,13 +209,13 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'name',
-								mathType: 'string',
+								modelType: 'string',
 								podType: 'interval'
 							}
 						}
@@ -235,13 +235,13 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: 'note'
 								}
 							],
 							outDef: {
 								name: 'name',
-								mathType: 'string',
+								modelType: 'string',
 								podType: 'note'
 							}
 						}
@@ -262,18 +262,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'matrix',
+									modelType: 'matrix',
 									podType: 'note'
 								},
 								{
 									name: 'n',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'pitch'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'matrix',
+								modelType: 'matrix',
 								podType: 'note'
 							}
 						},
@@ -288,18 +288,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'matrix',
+									modelType: 'matrix',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'matrix',
+								modelType: 'matrix',
 								podType: 'note'
 							}
 						}
@@ -331,19 +331,19 @@ const DOCS_CONFIG = {
 									// component: 'ModelRow',
 									// props
 									name: 'A',
-									mathType: 'matrix',
+									modelType: 'matrix',
 									podType: 'note'
 								},
 								{
 									name: 'd',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'degree'
 								}
 							],
 							// outComp??
 							outDef: {
 								name: 'C',
-								mathType: 'matrix',
+								modelType: 'matrix',
 								podType: 'note'
 							}
 						},
@@ -358,18 +358,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'matrix',
+									modelType: 'matrix',
 									podType: 'note'
 								},
 								{
 									name: 'd',
-									mathType: 'scalar',
+									modelType: 'scalar',
 									podType: 'degree'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'matrix',
+								modelType: 'matrix',
 								podType: 'note'
 							}
 						},
@@ -384,18 +384,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									mathType: 'matrix',
+									modelType: 'matrix',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									mathType: 'vector',
+									modelType: 'vector',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								mathType: 'matrix',
+								modelType: 'matrix',
 								podType: 'note'
 							}
 						}
