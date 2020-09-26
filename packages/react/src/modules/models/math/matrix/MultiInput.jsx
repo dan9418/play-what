@@ -16,12 +16,23 @@ const getInput = (podType) => {
 	}
 }
 
+const getOutput = (value, podType) => {
+	switch (podType) {
+	case 'pod':
+		return JSON.stringify(value);
+	case 'interval':
+		return PW_Core.models.theory.interval.getName({ A: value })
+	case 'note':
+		return PW_Core.models.theory.note.getName({ A: value })
+	}
+}
 
 const SingleInput = ({ value, setValue, podType }) => {
 	const InputComponent = getInput(podType)
+	const output = getOutput(value, podType);
 	return <div className="l-r" >
 		<InputComponent value={value} setValue={setValue} />
-		<div>{JSON.stringify(value)}</div>
+		<div>{output}</div>
 	</div>;
 }
 
