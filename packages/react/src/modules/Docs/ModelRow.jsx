@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import Edit from "../viewers/Edit/Edit";
 import Meter from "../viewers/Meter/Meter";
-import { Edit, View } from "../viewers/Preview/Preview";
+import { Preview } from "../viewers/Preview/Preview";
 import "./Docs.css";
 
 const ViewAsInput = ({ value, setValue }) => {
@@ -29,7 +30,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 				<div className='edit' onClick={toggleEdit}>edit</div>
 			</div>
 			<div className='content'>
-				<View value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
+				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 
 				{isEditing &&
 					<div className='edit-panel'>

@@ -1,11 +1,14 @@
 import React from 'react';
-import './matrix.css';
+import './Edit.css';
 
-import VectorInput from '../vector/VectorInput';
+import VectorInput from '../../models/math/vector/VectorInput';
 
 import PW_Core from '@pw/core';
-import IntervalInput from '../../theory/interval/IntervalInput';
-import NoteInput from '../../theory/note/NoteInput';
+import IntervalInput from '../../models/theory/interval/IntervalInput';
+import NoteInput from '../../models/theory/note/NoteInput';
+import VectorOutput from '../../models/math/vector/VectorOutput';
+import NoteOutput from '../../models/theory/note/NoteOutput';
+import IntervalOutput from '../../models/theory/interval/IntervalOutput';
 
 const getInput = (podType) => {
 	switch (podType) {
@@ -21,27 +24,26 @@ const getInput = (podType) => {
 const getOutput = (value, podType) => {
 	switch (podType) {
 	case 'pod':
-		return JSON.stringify(value);
+		return VectorOutput;
 	case 'interval':
-		return PW_Core.models.theory.interval.getName({ A: value })
+		return IntervalOutput;
 	case 'note':
-		return PW_Core.models.theory.note.getName({ A: value })
+		return NoteOutput;
 	}
 }
 
 const SingleInput = ({ value, setValue, podType }) => {
 	const InputComponent = getInput(podType);
-	const output = getOutput(value, podType);
+	const OutputComponent = getOutput(value, podType);
 	return (
 		<div className="center-x" >
 			<InputComponent value={value} setValue={setValue} />
-			<div>{output}</div>
+			<OutputComponent value={value} />
 		</div>
 	);
 }
 
-const MultiInput = props => {
-	const { value, setValue, modelType, podType } = props;
+const Edit = ({ value, setValue, modelType, podType }) => {
 
 	switch (modelType) {
 	case 'scalar':
@@ -62,4 +64,4 @@ const MultiInput = props => {
 	}
 }
 
-export default MultiInput;
+export default Edit;
