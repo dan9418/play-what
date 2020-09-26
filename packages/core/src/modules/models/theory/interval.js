@@ -179,6 +179,8 @@ export const INTERVAL = {
 	}
 };
 
+const INTERVAL_VALUES = Object.values(INTERVAL);
+
 const getName = ({ A }) => {
 	const [p, d] = A;
 	const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
@@ -187,5 +189,6 @@ const getName = ({ A }) => {
 
 export default {
 	preset: INTERVAL,
+	presetValues: INTERVAL_VALUES,
 	getName
 };

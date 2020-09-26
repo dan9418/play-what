@@ -4,13 +4,14 @@ import './matrix.css';
 import VectorInput from '../vector/VectorInput';
 
 import PW_Core from '@pw/core';
+import IntervalInput from '../../theory/interval/IntervalInput';
 
 const getInput = (podType) => {
 	switch (podType) {
 	case 'pod':
 		return VectorInput;
 	case 'interval':
-		return React.Fragment;
+		return IntervalInput;
 	case 'note':
 		return React.Fragment;
 	}
@@ -28,12 +29,14 @@ const getOutput = (value, podType) => {
 }
 
 const SingleInput = ({ value, setValue, podType }) => {
-	const InputComponent = getInput(podType)
+	const InputComponent = getInput(podType);
 	const output = getOutput(value, podType);
-	return <div className="l-r" >
-		<InputComponent value={value} setValue={setValue} />
-		<div>{output}</div>
-	</div>;
+	return (
+		<div className="center-x" >
+			<InputComponent value={value} setValue={setValue} />
+			<div>{output}</div>
+		</div>
+	);
 }
 
 const MultiInput = props => {
