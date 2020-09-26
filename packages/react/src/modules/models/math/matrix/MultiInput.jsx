@@ -5,6 +5,7 @@ import VectorInput from '../vector/VectorInput';
 
 import PW_Core from '@pw/core';
 import IntervalInput from '../../theory/interval/IntervalInput';
+import NoteInput from '../../theory/note/NoteInput';
 
 const getInput = (podType) => {
 	switch (podType) {
@@ -13,7 +14,7 @@ const getInput = (podType) => {
 	case 'interval':
 		return IntervalInput;
 	case 'note':
-		return React.Fragment;
+		return NoteInput;
 	}
 }
 

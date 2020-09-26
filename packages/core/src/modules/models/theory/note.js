@@ -26,6 +26,8 @@ export const NOTE = {
 	'G#': { id: 'G#', name: 'G#', value: [8, 4] }
 };
 
+const NOTE_VALUES = Object.values(NOTE);
+
 const getName = ({ A }) => {
 	const [p, d] = A;
 	const degreeName = degree.getName({ d });
@@ -54,5 +56,6 @@ const getName = ({ A }) => {
 
 export default {
 	preset: NOTE,
+	presetValues: NOTE_VALUES,
 	getName
 };
