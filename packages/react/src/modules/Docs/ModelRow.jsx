@@ -20,6 +20,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 	const [viewAs, setViewAs] = useState(podType);
 	const [isEditing, setIsEditing] = useState(false);
 	const toggleEdit = () => setIsEditing(!isEditing);
+
 	return (
 		<div className='model-row'>
 			<div className='row-header'>
@@ -31,14 +32,13 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 			</div>
 			<div className='content'>
 				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-
+				<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} max={max} />
 				{isEditing &&
 					<div className='edit-panel'>
 						<ViewAsInput value={viewAs} setValue={setViewAs} />
 						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 					</div>
 				}
-				<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} max={max} />
 			</div>
 		</div>
 	);

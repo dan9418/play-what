@@ -8,11 +8,11 @@ export const VectorInput = ({ value, setValue }) => {
 	const setD = v => setValue([p, v]);
 	return (
 		<div className='vector-input'>
-			<div className='vector-open-bracket'>|</div>
+			{/*<div className='vector-open-bracket'>|</div>*/}
 			<ScalarInput value={p} setValue={setP} />
 			<div className='vector-comma'>,</div>
 			<ScalarInput value={d} setValue={setD} />
-			<div className='vector-open-bracket'>|</div>
+			{/*<div className='vector-open-bracket'>|</div>*/}
 		</div>
 	);
 };

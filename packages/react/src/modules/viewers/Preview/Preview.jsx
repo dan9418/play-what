@@ -17,17 +17,13 @@ const getOutputComponent = (podType) => {
 
 const Single = ({ value, podType }) => {
 	const Component = getOutputComponent(podType);
-	return (
-		<div className='list'>
-			{value.map((v, i) => <Component value={v} key={i} />)}
-		</div>
-	);
+	return <Component value={value} />;
 };
 
 const Multi = ({ value, podType }) => {
 	const Component = getOutputComponent(podType);
 	return (
-		<div className='multi'>
+		<div className='multi-preview'>
 			{value.map((v, i) => <Component value={v} key={i} />)}
 		</div>
 	);

@@ -34,15 +34,15 @@ const Single = ({ value, setValue, podType }) => {
 	const OutputComponent = getOutput(podType);
 	return (
 		<div className="center-x" >
-			<InputComponent value={value} setValue={setValue} />
 			<OutputComponent value={value} />
+			<InputComponent value={value} setValue={setValue} />
 		</div>
 	);
 }
 
 const Multi = ({ value, setValue, podType }) => {
 	return (
-		<div className="multi">
+		<div className="multi-edit">
 			{value.map((v, i) => {
 				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 				return <Single value={v} setValue={setSubValue} podType={podType} key={i} />;
