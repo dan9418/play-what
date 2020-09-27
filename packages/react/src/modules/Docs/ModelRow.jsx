@@ -18,13 +18,13 @@ const ViewAsInput = ({ value, setValue }) => {
 	);
 };
 
-const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
+const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 
 	const [viewAs, setViewAs] = useState(podType);
 	const [isEditing, setIsEditing] = useState(false);
 	const toggleEdit = () => setIsEditing(!isEditing);
 
-	console.log('dpb', label, modelType, podType, value, max);
+	console.log('dpb', label, modelType, podType, value);
 
 	return (
 		<div className='model-row'>
@@ -37,7 +37,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 			</div>
 			<div className='content'>
 				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-				<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} max={max} />
+				<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
 				{isEditing &&
 					<div className='edit-panel'>
 						<ViewAsInput value={viewAs} setValue={setViewAs} />

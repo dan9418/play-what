@@ -4,11 +4,11 @@ import PW_Core from '@pw/core';
 import PW_Tone from '@pw/tone';
 
 export const NoteOutput = ({ value, reduce }) => {
-	const note = reduce ? PW_Core.models.math.vector.reduce(value) : value;
+	const note = reduce ? PW_Core.models.math.vector.reduce({ a: value }) : value;
 
 	const [p, d] = note;
 
-	const name = PW_Core.models.theory.note.getName({ A: note });
+	const name = PW_Core.models.theory.note.getName({ a: note });
 
 	const color = PW_Core.models.theory.degree.getColor(d);
 	const style = {

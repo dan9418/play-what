@@ -259,14 +259,14 @@ const DOCS_CONFIG = {
 					functions: [
 						{
 							id: 'theory/interval/getName',
-							name: 'getName: (A) => name',
+							name: 'getName: (a) => name',
 							fn: PW_Core.models.theory.interval.getName,
 							props: {
 								A: PW_Core.models.theory.interval.preset.P1.value
 							},
 							propDefs: [
 								{
-									name: 'A',
+									name: 'a',
 									modelType: 'vector',
 									podType: 'interval'
 								}
@@ -285,14 +285,14 @@ const DOCS_CONFIG = {
 					functions: [
 						{
 							id: 'theory/note/getName',
-							name: 'getName: (A) => name',
+							name: 'getName: (a) => name',
 							fn: PW_Core.models.theory.note.getName,
 							props: {
 								A: PW_Core.models.theory.note.preset.C.value
 							},
 							propDefs: [
 								{
-									name: 'A',
+									name: 'a',
 									modelType: 'vector',
 									podType: 'note'
 								}

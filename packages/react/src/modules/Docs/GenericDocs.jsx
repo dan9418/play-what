@@ -3,8 +3,6 @@ import './Docs.css';
 import Fold from './Fold';
 import ModelRow from './ModelRow';
 
-const max = [12, 7];
-
 export const GenericFunctionDocs = ({ config, level }) => {
 	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
 
@@ -26,11 +24,11 @@ export const GenericFunctionDocs = ({ config, level }) => {
 					const { name, modelType, podType } = p;
 					const value = props[name];
 					const setValue = v => setProp(name, v);
-					return <ModelRow key={i} value={value} setValue={setValue} max={max} label={name} modelType={modelType} podType={podType} />;
+					return <ModelRow key={i} value={value} setValue={setValue} label={name} modelType={modelType} podType={podType} />;
 				})}
 			</div>
 			<div className="card">
-				<ModelRow value={out} max={max} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
+				<ModelRow value={out} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
 			</div>
 		</Fold>
 	);

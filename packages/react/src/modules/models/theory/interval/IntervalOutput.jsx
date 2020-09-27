@@ -4,11 +4,11 @@ import PW_Core from '@pw/core';
 import PW_Tone from '@pw/tone';
 
 export const IntervalInput = ({ value, reduce }) => {
-	const interval = reduce ? PW_Core.models.math.vector.reduce(value) : value;
+	const interval = reduce ? PW_Core.models.math.vector.reduce({ a: value }) : value;
 
 	const [p, d] = interval;
 
-	const name = PW_Core.models.theory.interval.getName({ A: interval });
+	const name = PW_Core.models.theory.interval.getName({ a: interval });
 
 	const color = PW_Core.models.theory.degree.getColor(d);
 	const style = {

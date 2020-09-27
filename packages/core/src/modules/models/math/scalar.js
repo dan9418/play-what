@@ -1,7 +1,6 @@
 // Constants
 
 const DEFAULT = 0;
-const MAX = 1000;
 
 // Common
 
@@ -24,7 +23,6 @@ const floor = (a, b) => Math.floor(a / b);
 
 export default {
 	defaultValue: DEFAULT,
-	max: MAX,
 	modulo,
 	moduloSum,
 	floor

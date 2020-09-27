@@ -6,6 +6,7 @@ import './Meter.css';
 const getPitchColor = PW_Core.models.theory.pitch.getColor;
 const getDegreeColor = PW_Core.models.theory.degree.getColor;
 const modulo = PW_Core.models.math.scalar.modulo;
+const MAX = PW_Core.models.math.vector.max;
 
 const ListMeter = ({ list }) => {
 	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
@@ -31,24 +32,23 @@ const ScalarListMeter = ({ max, nameFn, scalarList, colorFn }) => {
 	return <ListMeter list={list} />
 };
 
-const MatrixMeter = ({ matrix, max, ...props }) => {
-	const [maxP, maxD] = max;
+const MatrixMeter = ({ matrix, ...props }) => {
 	const P = matrix.map(([p, d]) => p);
 	const D = matrix.map(([p, d]) => d);
 	return (
 		<>
-			<ScalarListMeter scalarList={P} max={maxP} colorFn={getPitchColor} {...props} />
-			<ScalarListMeter scalarList={D} max={maxD} colorFn={getDegreeColor} {...props} />
+			<ScalarListMeter scalarList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
+			<ScalarListMeter scalarList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
 		</>
 	);
 }
 
-const Meter = ({ value, modelType, podType, max, ...props }) => {
+const Meter = ({ value, modelType, podType, ...props }) => {
 	switch (modelType) {
 	case 'vector':
-		return <MatrixMeter matrix={[value]} max={max} {...props} />;
+		return <MatrixMeter matrix={[value]} {...props} />;
 	case 'matrix':
-		return <MatrixMeter matrix={value} max={max} {...props} />;
+		return <MatrixMeter matrix={value} {...props} />;
 	default:
 		return null;
 	}

@@ -1,6 +1,7 @@
 import degree from './degree';
 import accidental from './accidental';
 import config from './config';
+import vector from '../math/vector';
 
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
@@ -28,8 +29,9 @@ export const NOTE = {
 
 const NOTE_VALUES = Object.values(NOTE);
 
-const getName = ({ A }) => {
-	const [p, d] = A;
+const getName = ({ a }) => {
+	const reduced = vector.reduce({ a });
+	const [p, d] = reduced;
 	const degreeName = degree.getName({ d });
 	const offset = p - config.rootScale[d][0];
 	const accidentalName = accidental.getName({ a: offset });
