@@ -87,3 +87,19 @@
     justify-content: space-between;
     padding: 4px 0;
 }
+
+.h1, h2, h3, h4, h5 {
+    cursor: pointer;
+    color: #111;
+}
+
+.h1:hover, h2:hover, h3:hover, h4:hover, h5:hover {
+    color: cornflowerblue;
+}
+
+h3 {
+    background-color: #888;
+    color: white;
+    border-radius: 4px;
+    padding: 4px;
+}
