@@ -31,18 +31,18 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									modelType: 'scalar',
-									podType: null
+									podType: 'note'
 								},
 								{
 									name: 'divisor',
 									modelType: 'scalar',
-									podType: null
+									podType: 'note'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'scalar',
-								podType: null
+								podType: 'note'
 							}
 						},
 						{
@@ -58,23 +58,23 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									modelType: 'scalar',
-									podType: null
+									podType: 'note'
 								},
 								{
 									name: 'b',
 									modelType: 'scalar',
-									podType: null
+									podType: 'note'
 								},
 								{
 									name: 'divisor',
 									modelType: 'scalar',
-									podType: null
+									podType: 'note'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'scalar',
-								podType: null
+								podType: 'note'
 							}
 						}
 					]
@@ -95,18 +95,44 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									modelType: 'vector',
-									podType: null
+									podType: 'note'
 								},
 								{
 									name: 'b',
 									modelType: 'vector',
-									podType: null
+									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'vector',
-								podType: null
+								podType: 'note'
+							}
+						},
+						{
+							id: 'model/vector/addMatrix',
+							name: 'addMatrix: (a, B) => C',
+							fn: PW_Core.models.math.vector.addMatrix,
+							props: {
+								a: PW_Core.models.theory.note.preset.C.value,
+								B: PW_Core.models.theory.scale.preset.NaturalMinor.value
+							},
+							propDefs: [
+								{
+									name: 'a',
+									modelType: 'vector',
+									podType: 'note'
+								},
+								{
+									name: 'B',
+									modelType: 'matrix',
+									podType: 'interval'
+								}
+							],
+							outDef: {
+								name: 'C',
+								modelType: 'matrix',
+								podType: 'note'
 							}
 						}
 					]

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Docs.css";
 
 const Fold = ({ label, level, children }) => {
-	const [open, setOpen] = useState(level < 4);
+	const [open, setOpen] = useState(level < 3);
 	const Tag = `h${level || 1}`;
 	const style = { marginLeft: `${4 * level}px` };
 	return (
