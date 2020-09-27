@@ -460,6 +460,44 @@ const DOCS_CONFIG = {
 					]
 				}
 			]
+		},
+		{
+			id: 'struct',
+			name: 'Structs',
+			submodules: [
+				{
+					id: 'struct/cell',
+					name: 'Cell',
+					functions: [
+						{
+							id: 'struct/cell/evaluate',
+							name: 'modulo: (a, B) => C',
+							fn: PW_Core.models.struct.cell.evaluate,
+							props: {
+								a: PW_Core.models.theory.note.preset.C.value,
+								B: PW_Core.models.theory.chord.preset.Dom7.value
+							},
+							propDefs: [
+								{
+									name: 'a',
+									modelType: 'vector',
+									podType: 'note'
+								},
+								{
+									name: 'B',
+									modelType: 'matrix',
+									podType: 'interval'
+								}
+							],
+							outDef: {
+								name: 'C',
+								modelType: 'matrix',
+								podType: 'note'
+							}
+						}
+					]
+				}
+			]
 		}
 	]
 };
