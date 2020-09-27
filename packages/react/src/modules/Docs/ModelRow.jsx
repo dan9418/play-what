@@ -4,7 +4,10 @@ import Meter from "../viewers/Meter/Meter";
 import { Preview } from "../viewers/Preview/Preview";
 import "./Docs.css";
 
+const isPodModel = modelType => modelType === 'vector' || modelType === 'matrix';
+
 const ViewAsInput = ({ value, setValue }) => {
+	if (!value) return null;
 	return (
 		<div className='view-as-input'>
 			<div>View As:</div>
@@ -21,6 +24,8 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const toggleEdit = () => setIsEditing(!isEditing);
 
+	console.log('dpb', label, modelType, podType, value, max);
+
 	return (
 		<div className='model-row'>
 			<div className='row-header'>
@@ -28,7 +33,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue, max }) => {
 					<label>{`${label}:`}</label>
 					<span>{modelType}</span>
 				</div>
-				<div className='edit' onClick={toggleEdit}>edit</div>
+				{setValue && <div className='edit' onClick={toggleEdit}>edit</div>}
 			</div>
 			<div className='content'>
 				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />

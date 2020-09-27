@@ -24,25 +24,25 @@ const DOCS_CONFIG = {
 							name: 'modulo: (a, divisor) => c',
 							fn: PW_Core.models.math.scalar.modulo,
 							props: {
-								a: PW_Core.models.theory.degree.preset.C.value,
-								divisor: 7
+								a: 7,
+								b: 5
 							},
 							propDefs: [
 								{
 									name: 'a',
 									modelType: 'scalar',
-									podType: 'note'
+									podType: null
 								},
 								{
-									name: 'divisor',
+									name: 'b',
 									modelType: 'scalar',
-									podType: 'note'
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'scalar',
-								podType: 'note'
+								podType: null
 							}
 						},
 						{

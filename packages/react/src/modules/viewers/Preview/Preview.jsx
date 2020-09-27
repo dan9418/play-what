@@ -17,7 +17,7 @@ const getOutputComponent = (podType) => {
 
 const Single = ({ value, podType }) => {
 	const Component = getOutputComponent(podType);
-	return <Component value={value} />;
+	return Component && <Component value={value} />;
 };
 
 const Multi = ({ value, podType }) => {
@@ -36,6 +36,6 @@ export const Preview = ({ value, podType, modelType }) => {
 	case 'matrix':
 		return <Multi value={value} podType={podType} />;
 	default:
-		return null;
+		return <div>{value}</div>;
 	}
 };

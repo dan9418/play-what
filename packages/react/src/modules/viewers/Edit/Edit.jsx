@@ -1,4 +1,5 @@
 import React from 'react';
+import ScalarInput from '../../models/math/scalar/ScalarInput';
 import VectorInput from '../../models/math/vector/VectorInput';
 import VectorOutput from '../../models/math/vector/VectorOutput';
 import IntervalInput from '../../models/theory/interval/IntervalInput';
@@ -34,8 +35,8 @@ const Single = ({ value, setValue, podType }) => {
 	const OutputComponent = getOutput(podType);
 	return (
 		<div className="center-x" >
-			<OutputComponent value={value} />
-			<InputComponent value={value} setValue={setValue} />
+			{OutputComponent && <OutputComponent value={value} />}
+			{InputComponent && <InputComponent value={value} setValue={setValue} />}
 		</div>
 	);
 }
@@ -54,7 +55,7 @@ const Multi = ({ value, setValue, podType }) => {
 const Edit = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
 	case 'scalar':
-		return value;
+		return <ScalarInput value={value} setValue={setValue} />;
 	case 'vector':
 		return <Single value={value} setValue={setValue} podType={podType} />;
 	case 'matrix':
