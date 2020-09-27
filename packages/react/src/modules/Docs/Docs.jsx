@@ -58,23 +58,23 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									modelType: 'scalar',
-									podType: 'note'
+									podType: null
 								},
 								{
 									name: 'b',
 									modelType: 'scalar',
-									podType: 'note'
+									podType: null
 								},
 								{
 									name: 'divisor',
 									modelType: 'scalar',
-									podType: 'note'
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'scalar',
-								podType: 'note'
+								podType: null
 							}
 						}
 					]
@@ -158,7 +158,7 @@ const DOCS_CONFIG = {
 								{
 									name: 'p',
 									modelType: 'scalar',
-									podType: 'degree'
+									podType: null
 								}
 							],
 							outDef: {
@@ -184,7 +184,7 @@ const DOCS_CONFIG = {
 								{
 									name: 'd',
 									modelType: 'scalar',
-									podType: 'degree'
+									podType: null
 								}
 							],
 							outDef: {
@@ -210,13 +210,13 @@ const DOCS_CONFIG = {
 								{
 									name: 'a',
 									modelType: 'scalar',
-									podType: 'accidental'
+									podType: null
 								}
 							],
 							outDef: {
 								name: 'name',
 								modelType: 'string',
-								podType: 'accidental'
+								podType: null
 							}
 						}
 					]
@@ -294,7 +294,7 @@ const DOCS_CONFIG = {
 								{
 									name: 'n',
 									modelType: 'scalar',
-									podType: 'pitch'
+									podType: null
 								}
 							],
 							outDef: {
@@ -363,7 +363,7 @@ const DOCS_CONFIG = {
 								{
 									name: 'd',
 									modelType: 'scalar',
-									podType: 'degree'
+									podType: null
 								}
 							],
 							// outComp??
@@ -390,7 +390,7 @@ const DOCS_CONFIG = {
 								{
 									name: 'd',
 									modelType: 'scalar',
-									podType: 'degree'
+									podType: null
 								}
 							],
 							outDef: {
