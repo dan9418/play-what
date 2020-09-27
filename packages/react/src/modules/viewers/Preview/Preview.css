@@ -18,10 +18,7 @@
 .edit {
     width: 100%;
     text-align: right;
-    font-weight: bold;
     color: cornflowerblue;
-    position: relative;
-    bottom: 8px;
     cursor: pointer;
 }
 

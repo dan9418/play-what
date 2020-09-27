@@ -50,8 +50,8 @@ const DOCS_CONFIG = {
 							name: 'moduloSum: (a, b, divisor) => c',
 							fn: PW_Core.models.math.scalar.moduloSum,
 							props: {
-								a: PW_Core.models.theory.degree.preset.C.value,
-								b: PW_Core.models.theory.degree.preset.F.value,
+								a: 7,
+								b: 5,
 								divisor: 7
 							},
 							propDefs: [
