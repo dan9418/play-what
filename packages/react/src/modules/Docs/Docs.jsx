@@ -136,6 +136,38 @@ const DOCS_CONFIG = {
 							}
 						}
 					]
+				},
+				{
+					id: 'model/matrix',
+					name: 'Matrix',
+					functions: [
+						{
+							id: 'model/matrix/addVector',
+							name: 'addVector: (A, b) => C',
+							fn: PW_Core.models.math.matrix.addVector,
+							props: {
+								A: PW_Core.models.theory.scale.preset.Major.value,
+								b: PW_Core.models.theory.interval.preset.P1.value
+							},
+							propDefs: [
+								{
+									name: 'A',
+									modelType: 'matrix',
+									podType: 'note'
+								},
+								{
+									name: 'b',
+									modelType: 'vector',
+									podType: 'interval'
+								}
+							],
+							outDef: {
+								name: 'C',
+								modelType: 'matrix',
+								podType: 'note'
+							}
+						}
+					]
 				}
 			]
 		},

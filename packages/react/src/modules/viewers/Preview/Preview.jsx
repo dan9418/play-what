@@ -17,7 +17,7 @@ const getOutputComponent = (podType) => {
 
 const Single = ({ value, podType }) => {
 	const Component = getOutputComponent(podType);
-	return Component && <Component value={value} />;
+	return Component ? <Component value={value} /> : null;
 };
 
 const Multi = ({ value, podType }) => {
