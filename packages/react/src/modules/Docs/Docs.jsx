@@ -145,7 +145,7 @@ const DOCS_CONFIG = {
 			submodules: [
 				{
 					id: 'pitch',
-					name: 'Pitch (scalar)',
+					name: 'Pitch: scalar',
 					functions: [
 						{
 							id: 'theory/pitch/getName',
@@ -171,7 +171,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'degree',
-					name: 'Degree (scalar)',
+					name: 'Degree: scalar',
 					functions: [
 						{
 							id: 'theory/degree/getName',
@@ -197,7 +197,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'accidental',
-					name: 'Accidental (scalar)',
+					name: 'Accidental: scalar',
 					functions: [
 						{
 							id: 'theory/accidental/getName',
@@ -223,7 +223,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'interval',
-					name: 'Interval (vector)',
+					name: 'Interval: vector',
 					functions: [
 						{
 							id: 'theory/interval/getName',
@@ -249,7 +249,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'note',
-					name: 'Note (vector)',
+					name: 'Note: vector',
 					functions: [
 						{
 							id: 'theory/note/getName',
@@ -275,7 +275,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'chord',
-					name: 'Chord (matrix)',
+					name: 'Chord: matrix',
 					functions: [
 						{
 							id: 'theory/chord/inversion',
@@ -333,7 +333,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'scale',
-					name: 'Scale (matrix)',
+					name: 'Scale: matrix',
 					functions: [
 						{
 							id: 'theory/scale/getNumeral',
