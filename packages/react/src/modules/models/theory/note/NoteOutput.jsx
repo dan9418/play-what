@@ -1,22 +1,22 @@
 import React from 'react';
 import './note.css';
-import PW_Core from '@pw/core';
-import PW_Tone from '@pw/tone';
+import pw_core from '@pw/core';
+import pw_tone from '@pw/tone';
 
 export const NoteOutput = ({ value, reduce }) => {
-	const note = reduce ? PW_Core.models.math.vector.reduce({ a: value }) : value;
+	const note = reduce ? pw_core.models.math.vector.reduce({ a: value }) : value;
 
 	const [p, d] = note;
 
-	const name = PW_Core.models.theory.note.getName({ a: note });
+	const name = pw_core.models.theory.note.getName({ a: note });
 
-	const color = PW_Core.models.theory.degree.getColor(d);
+	const color = pw_core.models.theory.degree.getColor(d);
 	const style = {
 		border: `1px solid ${color}`
 	};
 
-	const f = PW_Core.tuning.getFrequency(p);
-	const onClick = () => PW_Tone.out.play(f);
+	const f = pw_core.tuning.getFrequency(p);
+	const onClick = () => pw_tone.out.play(f);
 
 	return (
 		<div className='note-output output' style={style} onClick={onClick}>

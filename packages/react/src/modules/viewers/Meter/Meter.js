@@ -1,12 +1,12 @@
-import PW_Core from '@pw/core';
-import PW_Color from '@pw/color';
+import pw_core from '@pw/core';
+import pw_color from '@pw/color';
 import React from 'react';
 import './Meter.css';
 
-const getPitchColor = PW_Core.models.theory.pitch.getColor;
-const getDegreeColor = PW_Core.models.theory.degree.getColor;
-const modulo = PW_Core.models.math.scalar.modulo;
-const MAX = PW_Core.models.math.vector.max;
+const getPitchColor = pw_core.models.theory.pitch.getColor;
+const getDegreeColor = pw_core.models.theory.degree.getColor;
+const modulo = pw_core.models.math.scalar.modulo;
+const MAX = pw_core.models.math.vector.max;
 
 const ListMeter = ({ list }) => {
 	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
@@ -20,11 +20,11 @@ const ListMeter = ({ list }) => {
 const ScalarListMeter = ({ max, nameFn, scalarList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = scalarList.find(v => PW_Core.models.math.scalar.modulo({ a: v, b: max }) === i);
-		const reduced = PW_Core.models.math.scalar.modulo({ a: value, b: max });
-		const color = colorFn ? colorFn(reduced) : PW_Core.models.theory.pitch.getColor(reduced);
+		const value = scalarList.find(v => pw_core.models.math.scalar.modulo({ a: v, b: max }) === i);
+		const reduced = pw_core.models.math.scalar.modulo({ a: value, b: max });
+		const color = colorFn ? colorFn(reduced) : pw_core.models.theory.pitch.getColor(reduced);
 
-		const style = PW_Color.getStylesFromBgColor(color);
+		const style = pw_color.getStylesFromBgColor(color);
 		const text = nameFn ? nameFn(i) : i;
 
 		list.push({ style, text });

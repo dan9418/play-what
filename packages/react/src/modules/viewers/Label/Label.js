@@ -1,11 +1,11 @@
 import * as React from "react";
-//import PW_Color from '@pw/color';
+//import pw_color from '@pw/color';
 //import "./Keyboard.css";
 
 const Label = ({ color, text, userStyles }) => {
 
 	const bg = color ? color : null;
-	//const fg = color ? PW_Color.getFgColor(bg) : null;
+	//const fg = color ? pw_color.getFgColor(bg) : null;
 
 	const styles = {
 		position: 'absolute',

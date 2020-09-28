@@ -1,5 +1,5 @@
 import scalar from './scalar';
-import PW_Color from '@pw/color';
+import pw_color from '@pw/color';
 import theory from '../theory/_module';
 
 // Constants
