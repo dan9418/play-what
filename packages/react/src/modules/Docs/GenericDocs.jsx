@@ -4,7 +4,7 @@ import Fold from './Fold';
 import ModelRow from './ModelRow';
 
 export const GenericFunctionDocs = ({ config, level }) => {
-	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
+	const { id, name, fn, props: propsIn, propDefs, outDef, component } = config;
 
 	const [props, setProps] = useState(propsIn);
 	const setProp = (pName, pValue) => {
@@ -16,6 +16,7 @@ export const GenericFunctionDocs = ({ config, level }) => {
 	};
 
 	const out = fn(props);
+	const Comp = component;
 
 	return (
 		<Fold label={name} level={level}>
@@ -29,6 +30,7 @@ export const GenericFunctionDocs = ({ config, level }) => {
 			</div>
 			<div className="card">
 				<ModelRow value={out} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
+				<Comp />
 			</div>
 		</Fold>
 	);

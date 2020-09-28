@@ -1,6 +1,7 @@
 import React from 'react';
 import './Docs.css';
 import pw_core from '@pw/core';
+import Fretboard from '../viewers/Fretboard/Fretboard';
 
 import Fold from './Fold';
 import { GenericModuleDocs } from './GenericDocs';
@@ -493,7 +494,8 @@ const DOCS_CONFIG = {
 								name: 'C',
 								modelType: 'matrix',
 								podType: 'note'
-							}
+							},
+							component: Fretboard
 						}
 					]
 				}

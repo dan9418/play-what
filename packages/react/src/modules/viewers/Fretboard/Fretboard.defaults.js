@@ -6,6 +6,8 @@ export default {
 	//colorFn: pw_core.models.math.vector.colorBy({ type: 'degree' }),
 	//textFn: pw_core.models.math.vector.textBy({ type: 'degree' }),
 	reduced: true,
-	intervals: [],
-	keyCenter: null
+	cell: {
+		a: [0, 0],
+		B: []
+	}
 };

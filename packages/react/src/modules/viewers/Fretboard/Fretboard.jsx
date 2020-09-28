@@ -1,6 +1,5 @@
 import pw_core from '@pw/core';
 import * as React from "react";
-import Label from '../Label/Label';
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
@@ -8,29 +7,38 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
 export const Fret = ({ context, colorFn, textFn }) => {
-	const labelProps = {
-		userStyles: colorFn(context),
-		text: textFn(context)
-	};
-
 	let classes = ['fret'];
 	if (context.fretIndex === 0)
 		classes.push('open');
+
+	const styles = {
+		position: 'absolute',
+		width: '90%',
+		height: '90%',
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		borderRadius: '100%'
+	};
 
 	return (
 		<div className={classes.join(' ')}>
 			{false && <div className='fret-number'>{context.fretIndex + 1}</div>}
 			<div className='fret-string' />
-			<Label {...labelProps} />
+			<div className='label' style={styles}>
+				{JSON.stringify(context.fretIndex)}
+			</div>
 			{false && <div className='fret-dots'>{api.getDotsForFret(fretIndex + 1)}</div>}
 		</div>
 	);
 }
 
 const getFrets = (props) => {
-	const { fretRange, tuning, keyCenter, intervals, colorFn, textFn, reduced } = props;
+	const { fretRange, tuning, cell, colorFn, textFn, reduced } = props;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
+
+	const result = pw_core.models.struct.cell.evaluate(cell);
 
 	const allFrets = [];
 
@@ -38,13 +46,12 @@ const getFrets = (props) => {
 		for (let f = fretRange[0]; f <= fretRange[1]; f++) {
 
 			const noteIndex = tuning[s] + f;
-			const [note, vectorIndex] = pw_core.models.math.matrix.findVectorWithPitch({
-				matrix: intervals,
-				pitch: noteIndex,
-				pitchClass: reduced
+			const index = pw_core.models.math.matrix.findIndexOfVectorWithPitch({
+				A: result,
+				p: noteIndex
 			});
 
-			const interval = intervals[vectorIndex];
+			const pod = cell.B[index];
 
 			const ctx = {
 				tuning,
@@ -52,8 +59,7 @@ const getFrets = (props) => {
 				fretRange,
 				fretIndex: f,
 				noteIndex,
-				vector: interval,
-				vectorIndex
+				vector: pod
 			};
 
 			allFrets.push(

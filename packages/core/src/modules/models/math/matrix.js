@@ -23,14 +23,16 @@ const areEqual = ({ list1, list2 }) => {
 
 // Utils
 
-const findVectorWithPitch = (list, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
-	return list.find((n) => n[0] === p) || null;
+const findVectorWithPitch = ({ A, p }) => {
+	const octaveReduce = true
+	const pitch = octaveReduce ? scalar.modulo({ a: p, b: vector.max[0] }) : p;
+	return A.find((n) => n[0] === pitch) || null;
 };
 
-const findIndexOfVectorWithPitch = (list, pitch, octaveReduce = true) => {
-	const p = octaveReduce ? scalar.modulo({ a: pitch, b: MAX[0] }) : pitch;
-	return list.findIndex((n) => n[0] === p);
+const findIndexOfVectorWithPitch = ({ A, p }) => {
+	const octaveReduce = true
+	const pitch = octaveReduce ? scalar.modulo({ a: p, b: vector.max[0] }) : p;
+	return A.findIndex((n) => n[0] === pitch);
 };
 
 const addVector = ({ A, b }) => A.map((a) => vector.addVector({ a, b }));

@@ -1,5 +1,5 @@
 import pw_core from '@pw/core';
-import PW_React from '@pw/react';
+import pw_react from '@pw/react';
 
 const DEFAULT_MODULES = [
 	{
@@ -8,7 +8,7 @@ const DEFAULT_MODULES = [
 	},
 	{
 		handle: '@react',
-		value: PW_React
+		value: pw_react
 	}
 ];
 
