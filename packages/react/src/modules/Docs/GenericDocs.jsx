@@ -30,7 +30,9 @@ export const GenericFunctionDocs = ({ config, level }) => {
 			</div>
 			<div className="card">
 				<ModelRow value={out} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
-				<Comp />
+				<div className="content">
+					<Comp />
+				</div>
 			</div>
 		</Fold>
 	);
