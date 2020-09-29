@@ -1,16 +1,39 @@
-import React from 'react';
-import Parse from '@pw/parse';
-import { TEST } from '../Common/Presets';
+import React, { useState } from 'react';
 import Menu from '../Menu/Menu';
 import './Stage.css';
 import Docs from '@pw/react/src/modules/docs/Docs';
+import Cell from '@pw/react/src/modules/docs/Cell';
+
+const TABS = [
+	{
+		id: 'docs',
+		name: 'Docs',
+		component: <Docs />
+	},
+	{
+		id: 'cell',
+		name: 'Cell',
+		component: <Cell/>
+	}
+]
 
 const Stage = () => {
-	const rawSource = TEST;
-	// const parsedSource = Parse.json(rawSource);
+	const [tabIndex, setTabIndex] = useState(0);
+	const tab = TABS[tabIndex];
 	return (
 		<div className="stage">
-			<Docs />
+			<div>
+				<div className="tab-list">
+					{TABS.map((t, i) => (
+						<div
+							className={`tab ${tabIndex === i ? 'active' : ''}`}
+							key={t.id}
+							onClick={() => setTabIndex(i)}
+						>{t.name}</div>
+					))}
+				</div>
+				{tab.component}
+			</div>
 			<Menu />
 		</div>
 	);

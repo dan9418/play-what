@@ -13,3 +13,25 @@
 .stage *::-webkit-scrollbar {
     display: none;
 }
+
+.tab-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tab {
+    padding: 16px;
+    font-weight: bold;
+    font-size: 150%;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.tab:hover {
+    color: cornflowerblue;
+}
+
+.tab.active {
+    border-bottom: 4px solid cornflowerblue;
+}

@@ -494,8 +494,7 @@ const DOCS_CONFIG = {
 								name: 'C',
 								modelType: 'matrix',
 								podType: 'note'
-							},
-							component: Fretboard
+							}
 						}
 					]
 				}

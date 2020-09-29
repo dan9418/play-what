@@ -4,7 +4,7 @@ import Fold from './Fold';
 import ModelRow from './ModelRow';
 
 export const GenericFunctionDocs = ({ config, level }) => {
-	const { id, name, fn, props: propsIn, propDefs, outDef, component } = config;
+	const { id, name, fn, props: propsIn, propDefs, outDef } = config;
 
 	const [props, setProps] = useState(propsIn);
 	const setProp = (pName, pValue) => {
@@ -16,7 +16,6 @@ export const GenericFunctionDocs = ({ config, level }) => {
 	};
 
 	const out = fn(props);
-	const Comp = component;
 
 	return (
 		<Fold label={name} level={level}>
@@ -30,9 +29,6 @@ export const GenericFunctionDocs = ({ config, level }) => {
 			</div>
 			<div className="card">
 				<ModelRow value={out} label={outDef.name} modelType={outDef.modelType} podType={outDef.podType} />
-				<div className="content">
-					<Comp />
-				</div>
 			</div>
 		</Fold>
 	);
@@ -43,7 +39,7 @@ export const GenericSubmoduleDocs = ({ config, level }) => {
 	return (
 		<Fold label={config.name} level={level}>
 			{functions.map((c, i) => {
-				return <GenericFunctionDocs config={c} key={i} level={level + 1}/>;
+				return <GenericFunctionDocs config={c} key={i} level={level + 1} />;
 			})}
 		</Fold>
 	);
@@ -54,7 +50,7 @@ export const GenericModuleDocs = ({ config, level }) => {
 	return (
 		<Fold label={config.name} level={level}>
 			{submodules.map((c, i) => {
-				return <GenericSubmoduleDocs config={c} key={i} level={level + 1}/>;
+				return <GenericSubmoduleDocs config={c} key={i} level={level + 1} />;
 			})}
 		</Fold>
 	);
