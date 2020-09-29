@@ -8,8 +8,9 @@ export default {
 		textFn: pw_core.models.theory.interval.getName,
 		reduced: true,
 		cell: {
-			a: pw_core.models.theory.note.preset.C.value,
-			B: pw_core.models.theory.scale.preset.Major.value
+			a: [0, 0],
+			B: [],
+			C: []
 		}
 	}
 };

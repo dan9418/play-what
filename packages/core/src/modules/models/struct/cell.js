@@ -12,12 +12,12 @@ const DEFAULT = null;
 
 // sum
 
-const evaluate = ({ a, B }) => {
-	const result = vector.addMatrix({ a, B });
-	return result;
+const from = ({ a, B }) => {
+	const C = vector.addMatrix({ a, B });
+	return { a, B, C };
 };
 
 export default {
 	defaultValue: DEFAULT,
-	evaluate
+	from
 };

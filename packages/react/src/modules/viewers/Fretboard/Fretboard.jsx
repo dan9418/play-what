@@ -53,8 +53,6 @@ const getFrets = (props) => {
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
-	const result = pw_core.models.struct.cell.evaluate(cell);
-
 	const allFrets = [];
 
 	for (let s = 0; s < tuning.length; s++) {
@@ -62,7 +60,7 @@ const getFrets = (props) => {
 
 			const noteIndex = tuning[s] + f;
 			const index = pw_core.models.math.matrix.findIndexOfVectorWithPitch({
-				A: result,
+				A: cell.C,
 				p: noteIndex
 			});
 
@@ -83,7 +81,7 @@ const getFrets = (props) => {
 					key={`s${s}-f${f}`}
 					context={ctx}
 					projection={projection}
-					result={result}
+					result={cell.C}
 				/>
 			);
 		}

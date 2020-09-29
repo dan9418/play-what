@@ -471,9 +471,9 @@ const DOCS_CONFIG = {
 					name: 'Cell',
 					functions: [
 						{
-							id: 'struct/cell/evaluate',
+							id: 'struct/cell/from',
 							name: 'modulo: (a, B) => C',
-							fn: pw_core.models.struct.cell.evaluate,
+							fn: pw_core.models.struct.cell.from,
 							props: {
 								a: pw_core.models.theory.note.preset.C.value,
 								B: pw_core.models.theory.chord.preset.Dom7.value

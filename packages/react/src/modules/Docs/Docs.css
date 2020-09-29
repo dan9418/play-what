@@ -107,4 +107,6 @@ h3 {
 
 .cell {
     padding: 16px;
+    max-width: 1024;
+    margin: auto;
 }

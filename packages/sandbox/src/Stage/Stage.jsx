@@ -14,6 +14,16 @@ const TABS = [
 		id: 'cell',
 		name: 'Cell',
 		component: <Cell/>
+	},
+	{
+		id: 'section',
+		name: 'Section',
+		component: <Cell/>
+	},
+	{
+		id: 'chart',
+		name: 'Chart',
+		component: <Cell/>
 	}
 ]
 
