@@ -54,6 +54,7 @@
 .view-as-input {
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
@@ -109,4 +110,10 @@ h3 {
     padding: 16px;
     max-width: 1024;
     margin: auto;
+}
+
+.load {
+    padding: 4px;
+    cursor: pointer;
+    color: cornflowerblue;
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DropdownInput from "../models/ui/DropdownInput/DropdownInput";
 import Edit from "../viewers/Edit/Edit";
 import Meter from "../viewers/Meter/Meter";
 import { Preview } from "../viewers/Preview/Preview";
@@ -18,10 +19,20 @@ const ViewAsInput = ({ value, setValue }) => {
 	);
 };
 
-const ModelRow =  ({ label, modelType, podType, value, setValue }) => {
+const PresetInput = ({ value, setValue }) => {
+	//if (!value) return null;
+	return (
+		<div className='preset-input'>
+			load presets here
+		</div>
+	);
+};
+
+const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 
 	const [viewAs, setViewAs] = useState(podType);
 	const [isEditing, setIsEditing] = useState(false);
+	const [presetOpen, setPresetOpen] = useState(false);
 	const toggleEdit = () => setIsEditing(!isEditing);
 
 	console.log('dpb', label, modelType, podType, value);
@@ -41,6 +52,12 @@ const ModelRow =  ({ label, modelType, podType, value, setValue }) => {
 				{isEditing &&
 					<div className='edit-panel'>
 						<ViewAsInput value={viewAs} setValue={setViewAs} />
+						<div className='load' onClick={() => setPresetOpen(!presetOpen)}>Load Preset</div>
+						{presetOpen &&
+							<div className="preset-panel">
+								<PresetInput />
+							</div>
+						}
 						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 					</div>
 				}

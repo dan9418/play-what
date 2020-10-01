@@ -28,7 +28,7 @@ const TABS = [
 ]
 
 const Stage = () => {
-	const [tabIndex, setTabIndex] = useState(0);
+	const [tabIndex, setTabIndex] = useState(1);
 	const tab = TABS[tabIndex];
 	return (
 		<div className="stage">
