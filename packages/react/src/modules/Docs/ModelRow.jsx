@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import DropdownInput from "../models/ui/DropdownInput/DropdownInput";
 import Edit from "../viewers/Edit/Edit";
 import Meter from "../viewers/Meter/Meter";
 import { Preview } from "../viewers/Preview/Preview";
 import "./Docs.css";
+import PresetInput from "./PresetInput";
 
 const isPodModel = modelType => modelType === 'vector' || modelType === 'matrix';
 
@@ -15,15 +15,6 @@ const ViewAsInput = ({ value, setValue }) => {
 			<div className={`view-as-option ${value === 'pod' ? 'active' : ''}`} onClick={() => setValue('pod')}>Pods</div>
 			<div className={`view-as-option ${value === 'note' ? 'active' : ''}`} onClick={() => setValue('note')}>Notes</div>
 			<div className={`view-as-option ${value === 'interval' ? 'active' : ''}`} onClick={() => setValue('interval')}>Intervals</div>
-		</div>
-	);
-};
-
-const PresetInput = ({ value, setValue }) => {
-	//if (!value) return null;
-	return (
-		<div className='preset-input'>
-			load presets here
 		</div>
 	);
 };
@@ -55,7 +46,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 						<div className='load' onClick={() => setPresetOpen(!presetOpen)}>Load Preset</div>
 						{presetOpen &&
 							<div className="preset-panel">
-								<PresetInput />
+								<PresetInput value={value} setValue={setValue} />
 							</div>
 						}
 						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />

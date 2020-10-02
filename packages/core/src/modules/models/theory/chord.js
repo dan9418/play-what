@@ -23,6 +23,7 @@ export const CHORD = {
 	Sus4: { id: 'Sus4', name: 'Suspended 4th', value: [INTERVAL.P1.value, INTERVAL.P4.value, INTERVAL.P5.value] }
 };
 
+const CHORD_VALUES = Object.values(CHORD);
 
 const getInversion = ({ A, n }) => {
 	let result = [...A];
@@ -42,6 +43,7 @@ const transpose = ({ A, b }) => {
 
 export default {
 	preset: CHORD,
+	presetValues: CHORD_VALUES,
 	getInversion,
 	transpose
 };

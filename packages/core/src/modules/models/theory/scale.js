@@ -14,6 +14,8 @@ export const SCALE = {
 	Chromatic: { id: 'Chromatic', name: 'Chromatic', value: [INTERVAL.P1.value, INTERVAL.m2.value, INTERVAL.M2.value, INTERVAL.m3.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.A4.value, INTERVAL.P5.value, INTERVAL.m6.value, INTERVAL.M6.value, INTERVAL.m7.value, INTERVAL.M7.value] }
 };
 
+const SCALE_VALUES = Object.values(SCALE);
+
 const getMode = ({ A, d }) => {
 	return chord.getInversion({ A, n: d });
 	/*let mode = [...A];
@@ -61,6 +63,7 @@ const transpose = ({ A, b }) => {
 
 export default {
 	preset: SCALE,
+	presetValues: SCALE_VALUES,
 	getMode,
 	getAllModes,
 	getNumeral,
