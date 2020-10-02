@@ -3,7 +3,6 @@ import Edit from "../viewers/Edit/Edit";
 import Meter from "../viewers/Meter/Meter";
 import { Preview } from "../viewers/Preview/Preview";
 import "./Docs.css";
-import PresetInput from "./PresetInput";
 
 const isPodModel = modelType => modelType === 'vector' || modelType === 'matrix';
 
@@ -43,12 +42,6 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				{isEditing &&
 					<div className='edit-panel'>
 						<ViewAsInput value={viewAs} setValue={setViewAs} />
-						<div className='load' onClick={() => setPresetOpen(!presetOpen)}>Load Preset</div>
-						{presetOpen &&
-							<div className="preset-panel">
-								<PresetInput value={value} setValue={setValue} modelType={modelType} />
-							</div>
-						}
 						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 					</div>
 				}

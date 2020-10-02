@@ -4,6 +4,7 @@ import VectorInput from '../../models/math/vector/VectorInput';
 import VectorOutput from '../../models/math/vector/VectorOutput';
 import IntervalInput from '../../models/theory/interval/IntervalInput';
 import IntervalOutput from '../../models/theory/interval/IntervalOutput';
+import MatrixPresetInput from '../../models/theory/MatrixPresetInput';
 import NoteInput from '../../models/theory/note/NoteInput';
 import NoteOutput from '../../models/theory/note/NoteOutput';
 import './Edit.css';
@@ -44,6 +45,7 @@ const Single = ({ value, setValue, podType }) => {
 const Multi = ({ value, setValue, podType }) => {
 	return (
 		<div className="multi-edit">
+			<MatrixPresetInput value={value} setValue={setValue} />
 			{value.map((v, i) => {
 				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 				return <Single value={v} setValue={setSubValue} podType={podType} key={i} />;
