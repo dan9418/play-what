@@ -46,7 +46,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 						<div className='load' onClick={() => setPresetOpen(!presetOpen)}>Load Preset</div>
 						{presetOpen &&
 							<div className="preset-panel">
-								<PresetInput value={value} setValue={setValue} />
+								<PresetInput value={value} setValue={setValue} modelType={modelType} />
 							</div>
 						}
 						<Edit value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
