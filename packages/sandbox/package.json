@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --hot --inline --config webpack.config.js",
     "start-debug": "cross-env DEBUG='express:*' cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
-    "build": "cross-env NODE_ENV=development webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "less": "lessc src/Common/index.less src/Common/index.css"
   },

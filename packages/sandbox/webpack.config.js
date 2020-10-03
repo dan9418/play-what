@@ -1,14 +1,17 @@
 const { WebpackConfigDumpPlugin } = require("webpack-config-dump-plugin");
-const path = require('path')
+const path = require('path');
+const env = process.env.NODE_ENV;
 
 module.exports = {
 	mode: 'development',
-	entry: [
-		'react-hot-loader/patch',
-		'webpack-dev-server/client?http://localhost:9000',
-		'webpack/hot/only-dev-server',
-		'./src/index.jsx'
-	],
+	entry: env === 'production' ?
+		['./src/index.jsx'] :
+		[
+			'react-hot-loader/patch',
+			'webpack-dev-server/client?http://localhost:9000',
+			'webpack/hot/only-dev-server',
+			'./src/index.jsx'
+		],
 	module: {
 		rules: [
 			{
