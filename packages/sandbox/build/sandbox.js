@@ -621,7 +621,7 @@ eval("\n\nif (true) {\n  module.exports = __webpack_require__(/*! ./dist/react-h
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("if (true) {\n  var hot = __webpack_require__(/*! ./index */ \"../../node_modules/react-hot-loader/index.js\").hot;\n  if (false) { var parent, cache; }\n  // setup hot for caller\n  exports.hot = hot(parent);\n} else {}\n\n\n//# sourceURL=webpack:///C:/_dev/play-what/node_modules/react-hot-loader/root.js?");
+eval("if (true) {\n  var hot = __webpack_require__(/*! ./index */ \"../../node_modules/react-hot-loader/index.js\").hot;\n  if (false) { var parent, cache; } else {\n    fallbackHot();\n  }\n} else {}\n\nfunction fallbackHot() {\n  exports.hot = function (a) {\n    return a;\n  };\n}\n\n\n//# sourceURL=webpack:///C:/_dev/play-what/node_modules/react-hot-loader/root.js?");
 
 /***/ }),
 

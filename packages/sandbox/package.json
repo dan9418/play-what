@@ -14,16 +14,16 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@hot-loader/react-dom": "^16.13.0",
     "@pw/core": "^0.0.0",
     "@pw/parse": "^0.0.0",
     "@pw/react": "^0.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-hot-loader": "^4.12.21",
     "react-json-view": "^1.19.1"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.13.0",
+    "react-hot-loader": "^4.12.21",
     "@babel/core": "^7.7.5",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/preset-es2015": "^7.0.0-beta.53",
