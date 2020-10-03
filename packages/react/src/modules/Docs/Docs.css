@@ -71,7 +71,7 @@
 
 
 .content {
-    background-color: #ddd;
+    background-color: #eee;
     border-radius: 8px;
     padding: 8px;
     margin: 4px 0;
@@ -83,11 +83,21 @@
     align-items: center;
 }
 
-.row-header {
+.model-row-header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 4px 0;
+}
+
+.model-label {
+    font-weight: bold;
+}
+
+.model-type {
+    margin-left: 4px;
+    color: #555;
+    font-size: 80%;
+    font-style: italic;
 }
 
 .h1, h2, h3, h4, h5 {
@@ -116,4 +126,15 @@ h3 {
     padding: 4px;
     cursor: pointer;
     color: cornflowerblue;
+}
+
+.action-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.preset-input {
+    display: flex;
+    padding: 8px;
 }

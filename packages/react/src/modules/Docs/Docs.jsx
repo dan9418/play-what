@@ -379,16 +379,8 @@ const DOCS_CONFIG = {
 								A: pw_core.models.theory.scale.preset.Major.value,
 								d: 0
 							},
-							/*
-							out: {
-								id: '',
-								name: 'C'
-							}*/
-							// components?
 							propDefs: [
 								{
-									// component: 'ModelRow',
-									// props
 									name: 'A',
 									modelType: 'matrix',
 									podType: 'note'
@@ -399,7 +391,6 @@ const DOCS_CONFIG = {
 									podType: null
 								}
 							],
-							// outComp??
 							outDef: {
 								name: 'C',
 								modelType: 'matrix',
