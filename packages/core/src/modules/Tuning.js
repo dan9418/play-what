@@ -3,7 +3,7 @@ const getFrequency = (p) => {
 	const b = a / 12;
 	const c = Math.pow(2, b);
 	const f = 440 * c;
-	return f;
+	return Math.round(f);
 };
 
 /* const getFrequencies = pitches => {

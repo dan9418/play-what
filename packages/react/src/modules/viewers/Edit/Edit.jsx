@@ -8,6 +8,7 @@ import MatrixPresetInput from '../../models/theory/MatrixPresetInput';
 import NoteInput from '../../models/theory/note/NoteInput';
 import NoteOutput from '../../models/theory/note/NoteOutput';
 import './Edit.css';
+import pw_core from '@pw/core';
 
 const getInput = (podType) => {
 	switch (podType) {
@@ -31,26 +32,41 @@ const getOutput = (podType) => {
 	}
 }
 
-const Single = ({ value, setValue, podType }) => {
+const EditRow = ({ value, setValue, podType, i }) => {
 	const InputComponent = getInput(podType);
 	const OutputComponent = getOutput(podType);
+	const [p, d] = value;
+	const f = pw_core.tuning.getFrequency(p);
 	return (
-		<div className="center-x" >
-			{OutputComponent && <OutputComponent value={value} />}
-			{InputComponent && <InputComponent value={value} setValue={setValue} />}
-		</div>
+		<tr>
+			<td>{i}</td>
+			<td>{InputComponent && <InputComponent value={value} setValue={setValue} />}</td>
+			<td>{OutputComponent && <OutputComponent value={value} />}</td>
+			<td>{p}</td>
+			<td>{d}</td>
+			<td>{`${f} Hz`}</td>
+		</tr>
 	);
 }
 
-const Multi = ({ value, setValue, podType }) => {
+const EditTable = ({ value, setValue, podType }) => {
 	return (
-		<div className="multi-edit">
-			<MatrixPresetInput value={value} setValue={setValue} />
-			{value.map((v, i) => {
-				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
-				return <Single value={v} setValue={setSubValue} podType={podType} key={i} />;
-			})}
-		</div>
+		<table>
+			<thead>
+				<th>#</th>
+				<th>In</th>
+				<th>Out</th>
+				<th>p</th>
+				<th>d</th>
+				<th>f</th>
+			</thead>
+			<tbody>
+				{value.map((v, i) => {
+					const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
+					return <EditRow value={v} setValue={setSubValue} podType={podType} key={i} i={i} />;
+				})}
+			</tbody>
+		</table>
 	);
 }
 
@@ -59,9 +75,12 @@ const Edit = ({ value, setValue, modelType, podType }) => {
 	case 'scalar':
 		return <ScalarInput value={value} setValue={setValue} />;
 	case 'vector':
-		return <Single value={value} setValue={setValue} podType={podType} />;
+		return <EditRow value={value} setValue={setValue} podType={podType} />;
 	case 'matrix':
-		return <Multi value={value} setValue={setValue} podType={podType} />;
+		return <>
+			<MatrixPresetInput value={value} setValue={setValue} />
+			<EditTable value={value} setValue={setValue} podType={podType} />
+		</>;
 	default:
 		return null;
 	}
