@@ -21,27 +21,14 @@ const getInput = (podType) => {
 	}
 }
 
-const getOutput = (podType) => {
-	switch (podType) {
-	case 'pod':
-		return VectorOutput;
-	case 'interval':
-		return IntervalOutput;
-	case 'note':
-		return NoteOutput;
-	}
-}
-
 const EditRow = ({ value, setValue, podType, i }) => {
 	const InputComponent = getInput(podType);
-	const OutputComponent = getOutput(podType);
 	const [p, d] = value;
 	const f = pw_core.tuning.getFrequency(p);
 	return (
 		<tr>
 			<td>{i}</td>
 			<td>{InputComponent && <InputComponent value={value} setValue={setValue} />}</td>
-			<td>{OutputComponent && <OutputComponent value={value} />}</td>
 			<td>{p}</td>
 			<td>{d}</td>
 			<td>{`${f} Hz`}</td>
@@ -51,11 +38,10 @@ const EditRow = ({ value, setValue, podType, i }) => {
 
 const EditTable = ({ value, setValue, podType }) => {
 	return (
-		<table>
+		<table className="edit-table">
 			<thead>
 				<th>#</th>
 				<th>In</th>
-				<th>Out</th>
 				<th>p</th>
 				<th>d</th>
 				<th>f</th>
@@ -75,7 +61,7 @@ const Edit = ({ value, setValue, modelType, podType }) => {
 	case 'scalar':
 		return <ScalarInput value={value} setValue={setValue} />;
 	case 'vector':
-		return <EditRow value={value} setValue={setValue} podType={podType} />;
+		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} />;
 	case 'matrix':
 		return <>
 			<MatrixPresetInput value={value} setValue={setValue} />

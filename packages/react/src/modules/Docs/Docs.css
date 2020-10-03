@@ -78,6 +78,9 @@
 }
 
 .edit-panel {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #ddd;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -132,9 +135,19 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: 8px;
 }
 
 .preset-input {
     display: flex;
     padding: 8px;
+}
+
+.edit-table {
+
+}
+
+.edit-table td {
+    padding: 4px;
+    text-align: center;
 }
