@@ -15,11 +15,6 @@ const getOutputComponent = (podType) => {
 	}
 }
 
-const Single = ({ value, podType }) => {
-	const Component = getOutputComponent(podType);
-	return Component ? <Component value={value} /> : null;
-};
-
 const Multi = ({ value, podType }) => {
 	const Component = getOutputComponent(podType);
 	return (
@@ -32,7 +27,7 @@ const Multi = ({ value, podType }) => {
 const PodList = ({ value, podType, modelType }) => {
 	switch (modelType) {
 	case 'vector':
-		return <Single value={value} podType={podType} />;
+		return <Multi value={[value]} podType={podType} />;
 	case 'matrix':
 		return <Multi value={value} podType={podType} />;
 	default:
