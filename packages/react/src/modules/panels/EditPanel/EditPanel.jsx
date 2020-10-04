@@ -1,14 +1,10 @@
+import pw_core from '@pw/core';
 import React from 'react';
 import ScalarInput from '../../models/math/scalar/ScalarInput';
 import VectorInput from '../../models/math/vector/VectorInput';
-import VectorOutput from '../../models/math/vector/VectorOutput';
 import IntervalInput from '../../models/theory/interval/IntervalInput';
-import IntervalOutput from '../../models/theory/interval/IntervalOutput';
-import MatrixPresetInput from '../../models/theory/MatrixPresetInput';
 import NoteInput from '../../models/theory/note/NoteInput';
-import NoteOutput from '../../models/theory/note/NoteOutput';
-import './Edit.css';
-import pw_core from '@pw/core';
+import './EditPanel.css';
 
 const getInput = (podType) => {
 	switch (podType) {
@@ -56,20 +52,17 @@ const EditTable = ({ value, setValue, podType }) => {
 	);
 }
 
-const Edit = ({ value, setValue, modelType, podType }) => {
+const EditPanel = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
 	case 'scalar':
 		return <ScalarInput value={value} setValue={setValue} />;
 	case 'vector':
 		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} />;
 	case 'matrix':
-		return <>
-			<MatrixPresetInput value={value} setValue={setValue} />
-			<EditTable value={value} setValue={setValue} podType={podType} />
-		</>;
+		return <EditTable value={value} setValue={setValue} podType={podType} />;
 	default:
 		return null;
 	}
 }
 
-export default Edit;
+export default EditPanel;
