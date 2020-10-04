@@ -37,10 +37,22 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 			<div className='content'>
 				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 				<div className='action-row'>
+					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('meter')}>meter</ButtonInput>}
+					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('configure')}>configure</ButtonInput>}
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('preset')}>preset</ButtonInput>}
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('edit')}>edit</ButtonInput>}
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId(null)}>X</ButtonInput>}
 				</div>
+				{panelId === 'meter' &&
+					<div className='edit-panel'>
+						<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
+					</div>
+				}
+				{panelId === 'configure' &&
+					<div className='edit-panel'>
+						<ViewAsInput value={viewAs} setValue={setViewAs} />
+					</div>
+				}
 				{panelId === 'preset' &&
 					<div className='edit-panel'>
 						<MatrixPresetInput value={value} setValue={setValue} />
@@ -48,8 +60,6 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				}
 				{panelId === 'edit' &&
 					<div className='edit-panel'>
-						<ViewAsInput value={viewAs} setValue={setViewAs} />
-						<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
 						<EditPanel value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 					</div>
 				}
