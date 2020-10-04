@@ -78,10 +78,9 @@
     margin: 4px 0;
 }
 
-.edit-panel {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.panel {
+    padding-top: 8px;
+    text-align: center;
 }
 
 .model-row-header {

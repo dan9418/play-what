@@ -2,7 +2,7 @@ import React from 'react';
 import VectorOutput from '../../models/math/vector/VectorOutput';
 import IntervalOutput from '../../models/theory/interval/IntervalOutput';
 import NoteOutput from '../../models/theory/note/NoteOutput';
-import './Preview.css';
+import './PodList.css';
 
 const getOutputComponent = (podType) => {
 	switch (podType) {
@@ -29,7 +29,7 @@ const Multi = ({ value, podType }) => {
 	);
 };
 
-export const Preview = ({ value, podType, modelType }) => {
+const PodList = ({ value, podType, modelType }) => {
 	switch (modelType) {
 	case 'vector':
 		return <Single value={value} podType={podType} />;
@@ -39,3 +39,5 @@ export const Preview = ({ value, podType, modelType }) => {
 		return <div>{value}</div>;
 	}
 };
+
+export default PodList;

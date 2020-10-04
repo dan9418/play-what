@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import EditPanel from "../panels/EditPanel/EditPanel";
 import Meter from "../viewers/Meter/Meter";
+import PodList from "../viewers/PodList/PodList";
 import ButtonInput from '../models/ui/ButtonInput/ButtonInput';
-import { Preview } from "../viewers/Preview/Preview";
 import "./Docs.css";
 import MatrixPresetInput from "../models/theory/MatrixPresetInput";
-
-const isPodModel = modelType => modelType === 'vector' || modelType === 'matrix';
 
 const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;
@@ -35,7 +33,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				<span className='model-type'>{modelType}</span>
 			</div>
 			<div className='content'>
-				<Preview value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
+				<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
 				<div className='action-row'>
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('meter')}>meter</ButtonInput>}
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('configure')}>configure</ButtonInput>}
@@ -43,26 +41,20 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('edit')}>edit</ButtonInput>}
 					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId(null)}>X</ButtonInput>}
 				</div>
-				{panelId === 'meter' &&
-					<div className='edit-panel'>
+				<div className='panel'>
+					{panelId === 'meter' &&
 						<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
-					</div>
-				}
-				{panelId === 'configure' &&
-					<div className='edit-panel'>
+					}
+					{panelId === 'configure' &&
 						<ViewAsInput value={viewAs} setValue={setViewAs} />
-					</div>
-				}
-				{panelId === 'preset' &&
-					<div className='edit-panel'>
+					}
+					{panelId === 'preset' &&
 						<MatrixPresetInput value={value} setValue={setValue} />
-					</div>
-				}
-				{panelId === 'edit' &&
-					<div className='edit-panel'>
+					}
+					{panelId === 'edit' &&
 						<EditPanel value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-					</div>
-				}
+					}
+				</div>
 			</div>
 		</div>
 	);
