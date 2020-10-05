@@ -8,6 +8,7 @@
     border: 1px solid #aaa;
     border-radius: 4px;
     padding: 0 8px;
+    margin: 8px;
 }
 
 .dropdown-input option {
