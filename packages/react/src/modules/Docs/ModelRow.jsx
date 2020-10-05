@@ -9,9 +9,10 @@ const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;
 	return (
 		<div className='view-as-input'>
-			<div>View As:</div>
 			<div className={`view-as-option ${value === 'pod' ? 'active' : ''}`} onClick={() => setValue('pod')}>Pods</div>
+			|
 			<div className={`view-as-option ${value === 'note' ? 'active' : ''}`} onClick={() => setValue('note')}>Notes</div>
+			|
 			<div className={`view-as-option ${value === 'interval' ? 'active' : ''}`} onClick={() => setValue('interval')}>Intervals</div>
 		</div>
 	);
@@ -31,6 +32,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				<div className='title-row'>
 					<label className='model-label'>{label}</label>
 					<span className='model-type'>{modelType}</span>
+					<ViewAsInput value={viewAs} modelType={modelType} setValue={setViewAs} podType={viewAs} />
 					<div className="space" />
 					{!panelId && <ButtonInput className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>}
 					{!panelId && <ButtonInput className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>}
@@ -43,7 +45,8 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				}
 				{panelId === 'edit' &&
 					<div className='action-row'>
-						<ButtonInput className='action-button' onClick={() => setSubPanelId('preset')}>preset</ButtonInput>
+						<ButtonInput className='action-button' onClick={() => setSubPanelId('transform')}>transform</ButtonInput>
+						<ButtonInput className='action-button' onClick={() => setSubPanelId('preset')}>load preset</ButtonInput>
 					</div>
 				}
 				{panelId === 'view' &&
