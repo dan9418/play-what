@@ -33,16 +33,12 @@
     font-weight: bold;
 }
 
-.input-row .content {
-    margin-top: 4px;
-}
-
-.fold > :first-child {
+.fold> :first-child {
     cursor: pointer;
     width: 100%;
 }
 
-.model-row > .input-meter {
+.model-row>.input-meter {
     width: 100%;
     display: grid;
     grid-template-rows: auto auto;
@@ -70,23 +66,12 @@
     color: cornflowerblue;
 }
 
-
 .content {
-    background-color: #eee;
-    border-radius: 8px;
-    padding: 8px;
-    margin: 4px 0;
 }
 
 .panel {
     padding-top: 8px;
     text-align: center;
-}
-
-.model-row-header {
-    display: flex;
-    align-items: center;
-    padding: 4px 0;
 }
 
 .model-label {
@@ -128,14 +113,31 @@ h3 {
     color: cornflowerblue;
 }
 
-.action-row {
+.model-row-header {
+    margin: 8px 0;
     padding: 8px;
     border-radius: 8px;
     background-color: #ddd;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    padding-bottom: 4px;
+}
+
+.action-row {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 8px;
+}
+
+.space {
+    width: 100%;
+}
+
+.edit {
+    width: fit-content;
 }
 
 .action-button {
@@ -147,9 +149,7 @@ h3 {
     padding: 8px;
 }
 
-.edit-table {
-
-}
+.edit-table {}
 
 .edit-table td {
     padding: 4px;

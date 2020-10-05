@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import EditPanel from "../panels/EditPanel/EditPanel";
+import MatrixPresetInput from "../models/theory/MatrixPresetInput";
+import ButtonInput from '../models/ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import PodList from "../viewers/PodList/PodList";
-import ButtonInput from '../models/ui/ButtonInput/ButtonInput';
 import "./Docs.css";
-import MatrixPresetInput from "../models/theory/MatrixPresetInput";
 
 const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;
@@ -22,38 +21,47 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 
 	const [viewAs, setViewAs] = useState(podType);
 	const [panelId, setPanelId] = useState(null);
-	const [presetOpen, setPresetOpen] = useState(false);
+	const [subPanelId, setSubPanelId] = useState(null);
 
 	console.log('dpb', label, modelType, podType, value);
 
 	return (
 		<div className='model-row'>
 			<div className='model-row-header'>
-				<label className='model-label'>{label}</label>
-				<span className='model-type'>{modelType}</span>
-			</div>
-			<div className='content'>
-				<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-				<div className='action-row'>
-					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('meter')}>meter</ButtonInput>}
-					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('configure')}>configure</ButtonInput>}
-					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('preset')}>preset</ButtonInput>}
-					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId('edit')}>edit</ButtonInput>}
-					{setValue && <ButtonInput className='action-button' onClick={() => setPanelId(null)}>X</ButtonInput>}
+				<div className='title-row'>
+					<label className='model-label'>{label}</label>
+					<span className='model-type'>{modelType}</span>
+					<div className="space" />
+					{!panelId && <ButtonInput className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>}
+					{!panelId && <ButtonInput className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>}
+					{panelId && <ButtonInput className='action-button edit' onClick={() => setPanelId(null)}>X</ButtonInput>}
 				</div>
-				<div className='panel'>
-					{panelId === 'meter' &&
-						<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
-					}
-					{panelId === 'configure' &&
-						<ViewAsInput value={viewAs} setValue={setViewAs} />
-					}
-					{panelId === 'preset' &&
-						<MatrixPresetInput value={value} setValue={setValue} />
-					}
-					{panelId === 'edit' &&
-						<EditPanel value={value} modelType={modelType} setValue={setValue} podType={viewAs} />
-					}
+				{panelId === 'view' &&
+					<div className='action-row'>
+						<ButtonInput className='action-button' onClick={() => setSubPanelId('meter')}>meter</ButtonInput>
+					</div>
+				}
+				{panelId === 'edit' &&
+					<div className='action-row'>
+						<ButtonInput className='action-button' onClick={() => setSubPanelId('preset')}>preset</ButtonInput>
+					</div>
+				}
+				{panelId === 'view' &&
+					<div className='panel'>
+						{subPanelId === 'meter' &&
+							<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
+						}
+					</div>
+				}
+				{panelId === 'edit' &&
+					<div className='panel'>
+						{subPanelId === 'preset' &&
+							<MatrixPresetInput value={value} setValue={setValue} />
+						}
+					</div>
+				}
+				<div className='content'>
+					<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={panelId === 'edit'} />
 				</div>
 			</div>
 		</div>

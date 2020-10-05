@@ -6,17 +6,6 @@ import IntervalInput from '../../models/theory/interval/IntervalInput';
 import NoteInput from '../../models/theory/note/NoteInput';
 import './EditPanel.css';
 
-const getInput = (podType) => {
-	switch (podType) {
-	case 'pod':
-		return VectorInput;
-	case 'interval':
-		return IntervalInput;
-	case 'note':
-		return NoteInput;
-	}
-}
-
 const EditRow = ({ value, setValue, podType, i }) => {
 	const InputComponent = getInput(podType);
 	const [p, d] = value;
@@ -57,7 +46,7 @@ const EditPanel = ({ value, setValue, modelType, podType }) => {
 	case 'scalar':
 		return <ScalarInput value={value} setValue={setValue} />;
 	case 'vector':
-		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} />;
+		return <EditTable value={[value]} setValue={} podType={podType} />;
 	case 'matrix':
 		return <EditTable value={value} setValue={setValue} podType={podType} />;
 	default:
