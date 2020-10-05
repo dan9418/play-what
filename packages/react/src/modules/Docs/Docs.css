@@ -117,9 +117,16 @@ h3 {
     background-color: #ddd;
 }
 
+.model-row-subheader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .title-row {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-bottom: 4px;
 }
 
