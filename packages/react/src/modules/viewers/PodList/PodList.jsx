@@ -57,8 +57,12 @@ const Multi = ({ value, setValue, isEditing, podType }) => {
 			{isEditing && <NewPod value={value} setValue={setValue} podType={podType} i={0} />}
 			{value.map((v, i) => {
 				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
+				const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
 				return <>
-					<Component value={v} setValue={setSubValue} key={i} />
+					<div>
+						<Component value={v} setValue={setSubValue} key={i} />
+						{isEditing && <ButtonInput onClick={remove} >X</ButtonInput>}
+					</div>
 					{isEditing && <NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />}
 				</>;
 			})}
