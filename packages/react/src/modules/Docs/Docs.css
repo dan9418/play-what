@@ -117,7 +117,7 @@ h3 {
     background-color: #ddd;
 }
 
-.model-row-subheader {
+.subtitle-row {
     display: flex;
     align-items: center;
     justify-content: space-between;

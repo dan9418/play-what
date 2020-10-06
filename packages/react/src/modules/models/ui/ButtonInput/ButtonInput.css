@@ -11,3 +11,7 @@
 .button-input:hover {
     background-color: darkgoldenrod;
 }
+
+.button-input.active {
+    background-color: darkgoldenrod;
+}

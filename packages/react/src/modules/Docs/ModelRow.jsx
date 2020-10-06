@@ -21,6 +21,7 @@ const ViewAsInput = ({ value, setValue }) => {
 const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 
 	const [open, setOpen] = useState(false);
+	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
 	const [viewAs, setViewAs] = useState(podType);
 	const [panelId, setPanelId] = useState('preview');
 
@@ -37,16 +38,16 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 					<ButtonInput className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
 				</div>
 				{open && <>
-					<div className='model-row-subheader'>
+					<div className='subtitle-row'>
 						<ViewAsInput value={viewAs} modelType={modelType} setValue={setViewAs} podType={viewAs} />
 						<div className="space" />
-						<ButtonInput className='action-button edit' onClick={() => setPanelId('preview')}>preview</ButtonInput>
-						<ButtonInput className='action-button edit' onClick={() => setPanelId('analyze')}>analyze</ButtonInput>
-						<ButtonInput className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
+						<ButtonInput active={panelId === 'preview'} className='action-button edit' onClick={() => setPanelId('preview')}>preview</ButtonInput>
+						<ButtonInput active={panelId === 'analyze'} className='action-button edit' onClick={() => setPanelId('analyze')}>analyze</ButtonInput>
+						<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
 					</div>
 					{panelId === 'preview' &&
 						<div className='panel'>
-							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={panelId === 'edit'} />
+							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
 						</div>
 					}
 					{panelId === 'analyze' &&
@@ -56,8 +57,9 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 					}
 					{panelId === 'edit' &&
 						<div className='panel'>
-							<ButtonInput className='action-button' onClick={null}>load preset</ButtonInput>
-							<MatrixPresetInput value={value} setValue={setValue} />
+							<ButtonInput className='action-button' onClick={() => setIsLoadingPreset(!isLoadingPreset)}>load preset</ButtonInput>
+							{isLoadingPreset && <MatrixPresetInput value={value} setValue={setValue} modelType={modelType} />}
+							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />
 						</div>
 					}
 				</>
