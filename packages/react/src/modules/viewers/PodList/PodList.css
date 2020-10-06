@@ -46,3 +46,7 @@
     background-color: white;
     cursor: pointer;
 }
+
+.new-pod.active {
+    border: 3px solid cornflowerblue;
+}
