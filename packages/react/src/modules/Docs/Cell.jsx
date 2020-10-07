@@ -3,6 +3,7 @@ import Fretboard from "../viewers/Fretboard/Fretboard";
 import "./Docs.css";
 import pw_core from '@pw/core';
 import ModelRow from "./ModelRow";
+import Explore from "../models/Explore";
 
 const Cell = () => {
 	const [a, setA] = useState(pw_core.models.theory.note.preset.C.value);
@@ -18,6 +19,7 @@ const Cell = () => {
 
 	return (
 		<>
+			<Explore />
 			<table className="cell-table">
 				<thead>
 					<tr>

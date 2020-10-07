@@ -206,3 +206,11 @@ h3 {
     line-height: 16px;
     padding: 0 8px;
 }
+
+.explore {
+    width: 100%;
+    max-width: 512px;
+    margin: auto;
+    text-align: center;
+    margin-top: 16px;
+}

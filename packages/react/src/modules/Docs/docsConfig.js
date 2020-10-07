@@ -488,4 +488,4 @@ const DOCS_CONFIG = {
 	]
 };
 
-export default DoDOCS_CONFIGcs;
+export default DOCS_CONFIG;
