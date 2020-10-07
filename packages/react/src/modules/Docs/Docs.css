@@ -65,11 +65,6 @@
 
 .content {}
 
-.panel {
-    padding-top: 8px;
-    text-align: center;
-}
-
 .h1, h2, h3, h4, h5 {
     cursor: pointer;
     color: #111;
@@ -93,7 +88,19 @@ h3 {
     border-collapse: collapse;
 }
 
-.cell-table tr {}
+
+.cell-table thead {
+    background-color: #eee;
+}
+
+.cell-table thead th {
+    padding: 8px;
+    white-space: nowrap;
+}
+
+.cell-table tr:not(.panel) {
+    border-top: 1px solid #555;
+}
 
 .cell-table th:not(:last-child) {
     text-align: left;
@@ -101,7 +108,6 @@ h3 {
 
 .cell-table td {
     padding: 8px;
-    border-top: 1px solid #555;
 }
 
 .cell-table td.prop {}
@@ -120,6 +126,7 @@ h3 {
     text-align: center;
 }
 
+
 .cell-table tfoot {
     border-top: 2px solid #555;
 }
@@ -130,24 +137,18 @@ h3 {
     color: cornflowerblue;
 }
 
-.model-row-header {
-    margin: 8px 0;
+.submenu {
     padding: 8px;
-    border-radius: 8px;
-    background-color: #ddd;
 }
 
-.subtitle-row {
+.submenu, .panel {
+    background-color: #eee;
+}
+
+.space-between {
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.title-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 4px;
 }
 
 .action-row {
