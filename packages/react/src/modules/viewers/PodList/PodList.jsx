@@ -50,32 +50,47 @@ const NewPod = ({ value, setValue, podType, i }) => {
 	);
 };
 
-const Multi = ({ value, setValue, isEditing, podType }) => {
+const EditTable = ({ value, setValue, isEditing, podType }) => {
 	const Component = isEditing ? getInputComponent(podType) : getOutputComponent(podType);
 	return (
-		<div className='multi-preview'>
-			{isEditing && <NewPod value={value} setValue={setValue} podType={podType} i={0} />}
+		<table className='edit-table'>
+			{isEditing && <tr>
+				<td colSpan="3">
+					<NewPod value={value} setValue={setValue} podType={podType} i={0} />
+				</td>
+			</tr>}
 			{value.map((v, i) => {
 				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 				const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
 				return <>
-					<div>
-						<Component value={v} setValue={setSubValue} key={i} />
-						{isEditing && <ButtonInput onClick={remove} >X</ButtonInput>}
-					</div>
-					{isEditing && <NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />}
+					<tr>
+						<td>
+							{i}
+						</td>
+						<td>
+							<Component value={v} setValue={setSubValue} key={i} />
+						</td>
+						<td>
+							{isEditing && <td><ButtonInput onClick={remove} >X</ButtonInput></td>}
+						</td>
+					</tr>
+					{isEditing && <tr>
+						<td colSpan="3">
+							<NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />
+						</td>
+					</tr>}
 				</>;
 			})}
-		</div>
+		</table>
 	);
 };
 
 const PodList = ({ value, setValue, isEditing, podType, modelType }) => {
 	switch (modelType) {
 	case 'vector':
-		return <Multi value={[value]} setValue={v => setValue(v[0])} podType={podType} isEditing={isEditing} />;
+		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} isEditing={isEditing} />;
 	case 'matrix':
-		return <Multi value={value} setValue={setValue} podType={podType} isEditing={isEditing} />;
+		return <EditTable value={value} setValue={setValue} podType={podType} isEditing={isEditing} />;
 	default:
 		return <div>{value}</div>;
 	}

@@ -176,7 +176,10 @@ h3 {
     padding: 8px;
 }
 
-.edit-table {}
+.edit-table {
+    width: 100%;
+    border-collapse: collapse;
+}
 
 .edit-table td {
     padding: 4px;
