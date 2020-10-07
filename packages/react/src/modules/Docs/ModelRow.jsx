@@ -30,10 +30,10 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 	return (
 		<>
 			<tr>
-				<td className='model-label'>{label}</td>
+				<td className='prop'>{label}</td>
 				<td className='model-type'>{modelType}</td>
-				<td></td>
-				<td>
+				<td className='name'></td>
+				<td className='edit'>
 					<ButtonInput onClick={() => setOpen(!open)} className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
 				</td>
 			</tr>

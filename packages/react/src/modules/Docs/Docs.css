@@ -63,23 +63,11 @@
     color: cornflowerblue;
 }
 
-.content {
-}
+.content {}
 
 .panel {
     padding-top: 8px;
     text-align: center;
-}
-
-.model-label {
-    font-weight: bold;
-}
-
-.model-type {
-    margin-left: 4px;
-    color: #555;
-    font-size: 80%;
-    font-style: italic;
 }
 
 .h1, h2, h3, h4, h5 {
@@ -100,26 +88,41 @@ h3 {
 
 .cell-table {
     width: 100%;
-    margin: 16px;
-    max-width: 1024px;
+    margin: 16px auto;
+    max-width: 512px;
     border-collapse: collapse;
 }
 
+.cell-table tr {}
 
-.cell-table tr {
-}
-
-.cell-table th {
+.cell-table th:not(:last-child) {
     text-align: left;
 }
 
 .cell-table td {
-  padding: 8px;
-  border-top: 1px solid #555;
+    padding: 8px;
+    border-top: 1px solid #555;
 }
 
+.cell-table td.prop {}
 
+.cell-table td.model-type {
+    color: #555;
+    font-size: 80%;
+    font-style: italic;
+}
 
+.cell-table td.name {
+    width: 100%;
+}
+
+.cell-table td.edit {
+    text-align: center;
+}
+
+.cell-table tfoot {
+    border-top: 2px solid #555;
+}
 
 .load {
     padding: 4px;

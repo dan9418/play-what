@@ -29,8 +29,10 @@ const Cell = () => {
 			<tbody>
 				<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
 				<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
-				<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
 			</tbody>
+			<tfoot>
+				<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
+			</tfoot>
 		</table>
 	);
 };
