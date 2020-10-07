@@ -98,11 +98,28 @@ h3 {
     padding: 4px;
 }
 
-.cell {
-    padding: 16px;
-    max-width: 1024;
-    margin: auto;
+.cell-table {
+    width: 100%;
+    margin: 16px;
+    max-width: 1024px;
+    border-collapse: collapse;
 }
+
+
+.cell-table tr {
+}
+
+.cell-table th {
+    text-align: left;
+}
+
+.cell-table td {
+  padding: 8px;
+  border-top: 1px solid #555;
+}
+
+
+
 
 .load {
     padding: 4px;

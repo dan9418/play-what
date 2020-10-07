@@ -17,16 +17,24 @@ const Cell = () => {
 	};
 
 	return (
-		<div className="cell">
-			<h2>Inputs</h2>
-			<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
-			<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
-			<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
-
-			<h2>Outputs</h2>
-			<Fretboard projection={projection} />
-		</div>
+		<table className="cell-table">
+			<thead>
+				<tr>
+					<th>Prop</th>
+					<th>Model Type</th>
+					<th>Name</th>
+					<th>Edit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
+				<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
+				<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
+			</tbody>
+		</table>
 	);
 };
 
 export default Cell;
+
+// 			<Fretboard projection={projection} />
