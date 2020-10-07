@@ -53,7 +53,6 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 				</tr>
 				<tr className='panel'>
 					<td colSpan="4">
-
 						{panelId === 'preview' &&
 							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
 						}
@@ -62,9 +61,12 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 						}
 						{panelId === 'edit' &&
 							<>
-								<ButtonInput className='action-button' onClick={() => setIsLoadingPreset(!isLoadingPreset)}>load preset</ButtonInput>
+								<div className="space-between">
+									<div className="space" />
+									<div className='view-as-option' onClick={() => setIsLoadingPreset(!isLoadingPreset)}>{isLoadingPreset ? 'cancel' : 'load preset'}</div>
+								</div>
 								{isLoadingPreset && <MatrixPresetInput value={value} setValue={setValue} modelType={modelType} />}
-								<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />
+								{!isLoadingPreset && <PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />}
 							</>
 						}
 					</td>

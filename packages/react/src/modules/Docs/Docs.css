@@ -56,11 +56,11 @@
     padding: 4px;
     cursor: pointer;
     color: cornflowerblue;
+    white-space: nowrap;
 }
 
-.view-as-option.active {
+.view-as-option.active, .view-as-option:hover {
     font-weight: bold;
-    color: cornflowerblue;
 }
 
 .content {}
@@ -87,7 +87,6 @@ h3 {
     max-width: 512px;
     border-collapse: collapse;
 }
-
 
 .cell-table thead {
     background-color: #eee;
@@ -126,7 +125,6 @@ h3 {
     text-align: center;
 }
 
-
 .cell-table tfoot {
     border-top: 2px solid #555;
 }
@@ -143,6 +141,10 @@ h3 {
 
 .submenu, .panel {
     background-color: #eee;
+}
+
+.panel td {
+    padding-top: 0;
 }
 
 .space-between {

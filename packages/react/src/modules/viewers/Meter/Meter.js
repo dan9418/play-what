@@ -37,7 +37,9 @@ const MatrixMeter = ({ matrix, ...props }) => {
 	const D = matrix.map(([p, d]) => d);
 	return (
 		<>
+			<label className='meter-label'>pitch</label>
 			<ScalarListMeter scalarList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
+			<label className='meter-label'>degree</label>
 			<ScalarListMeter scalarList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
 		</>
 	);
