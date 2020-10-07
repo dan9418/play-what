@@ -39,7 +39,7 @@ const NewPod = ({ value, setValue, podType, i }) => {
 		setValue([...value.slice(0, i), r, ...value.slice(i)]);
 	};
 	return (
-		<div className={`new-pod ${isAdding ? 'active' : ''}`}>
+		<div className={`new-pod pin-right ${isAdding ? 'active' : ''}`}>
 			{!isAdding && (
 				<ButtonInput onClick={() => setIsAdding(true)} >+</ButtonInput>
 			)}
@@ -55,7 +55,7 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 	return (
 		<table className='edit-table'>
 			{isEditing && <tr>
-				<td colSpan="3">
+				<td colSpan="3" className="add pin-right">
 					<NewPod value={value} setValue={setValue} podType={podType} i={0} />
 				</td>
 			</tr>}
@@ -70,12 +70,10 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 						<td>
 							<Component value={v} setValue={setSubValue} key={i} />
 						</td>
-						<td>
-							{isEditing && <td><ButtonInput onClick={remove} >X</ButtonInput></td>}
-						</td>
+						{isEditing && <td className='pin-right'><ButtonInput onClick={remove} >X</ButtonInput></td>}
 					</tr>
 					{isEditing && <tr>
-						<td colSpan="3">
+						<td colSpan="3" className="add pin-right">
 							<NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />
 						</td>
 					</tr>}

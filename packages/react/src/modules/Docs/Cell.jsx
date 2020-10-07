@@ -17,23 +17,39 @@ const Cell = () => {
 	};
 
 	return (
-		<table className="cell-table">
-			<thead>
-				<tr>
-					<th>Prop</th>
-					<th>Model Type</th>
-					<th>Name</th>
-					<th>Edit</th>
-				</tr>
-			</thead>
-			<tbody>
-				<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
-				<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
-			</tbody>
-			<tfoot>
-				<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
-			</tfoot>
-		</table>
+		<>
+			<table className="cell-table">
+				<thead>
+					<tr>
+						<th>Input</th>
+						<th>Name</th>
+						<th>Model</th>
+						<th>As</th>
+						<th>Preview</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
+					<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
+				</tbody>
+			</table>
+			<table className="cell-table">
+				<thead>
+					<tr>
+						<th>Output</th>
+						<th>Name</th>
+						<th>Model</th>
+						<th>As</th>
+						<th>Preview</th>
+						<th>Edit</th>
+					</tr>
+				</thead>
+				<tbody>
+					<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
+				</tbody>
+			</table>
+		</>
 	);
 };
 

@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/Menu';
 import './Stage.css';
-import Docs from '@pw/react/src/modules/docs/Docs';
 import Cell from '@pw/react/src/modules/docs/Cell';
 
 const TABS = [
 	{
-		id: 'docs',
-		name: 'Docs',
-		component: <Docs />
+		id: 'intro',
+		name: 'Intro',
+		component: <div />
 	},
 	{
-		id: 'cell',
-		name: 'Cell',
+		id: 'explore',
+		name: 'Explore',
 		component: <Cell/>
 	},
 	{
-		id: 'section',
-		name: 'Section',
-		component: <Cell/>
-	},
-	{
-		id: 'chart',
-		name: 'Chart',
-		component: <Cell/>
+		id: 'about',
+		name: 'About',
+		component: <div/>
 	}
 ]
 

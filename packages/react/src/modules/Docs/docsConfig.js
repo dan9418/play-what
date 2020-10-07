@@ -1,12 +1,6 @@
-import React from 'react';
-import './Docs.css';
 import pw_core from '@pw/core';
-import Fretboard from '../viewers/Fretboard/Fretboard';
+import './Docs.css';
 
-import Fold from './Fold';
-import { GenericModuleDocs } from './GenericDocs';
-
-const ROOT_LEVEL = 1;
 
 const DOCS_CONFIG = {
 	id: 'root',
@@ -494,14 +488,4 @@ const DOCS_CONFIG = {
 	]
 };
 
-const Docs = () => (
-	<div className="docs">
-		<Fold label={'Docs'} level={ROOT_LEVEL}>
-			{DOCS_CONFIG.modules.map((c, i) => {
-				return <GenericModuleDocs config={c} key={i} level={ROOT_LEVEL + 1} />;
-			})}
-		</Fold>
-	</div>
-);
-
-export default Docs;
+export default DoDOCS_CONFIGcs;

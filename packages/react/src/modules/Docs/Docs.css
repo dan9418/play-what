@@ -178,10 +178,31 @@ h3 {
 
 .edit-table {
     width: 100%;
+    max-width: 256px;
     border-collapse: collapse;
+    margin: auto;
 }
 
 .edit-table td {
-    padding: 4px;
-    text-align: center;
+    padding: 2px;
+}
+
+.edit-table tr {
+    border-top: 0 !important;
+}
+
+.add {
+    text-align: right;
+}
+
+.pin-right {
+    text-align: right;
+}
+
+.new-pod .button-input {
+    background-color: white;
+    color: cornflowerblue;
+    height: 16px;
+    line-height: 16px;
+    padding: 0 8px;
 }

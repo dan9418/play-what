@@ -31,15 +31,17 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 		<>
 			<tr>
 				<td className='prop'>{label}</td>
-				<td className='model-type'>{modelType}</td>
 				<td className='name'></td>
-				<td className='edit'>
+				<td className='model-type'>{modelType}</td>
+				<td className='model-type'>{podType}</td>
+				<td className='preview'></td>
+				<td className='edit pin-right'>
 					<ButtonInput onClick={() => setOpen(!open)} className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
 				</td>
 			</tr>
 			{open && (<>
 				<tr className='submenu'>
-					<td colSpan="4">
+					<td colSpan="6">
 						<div className="space-between">
 							<ViewAsInput value={viewAs} modelType={modelType} setValue={setViewAs} podType={viewAs} />
 							<div className="space" />
@@ -52,7 +54,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 					</td>
 				</tr>
 				<tr className='panel'>
-					<td colSpan="4">
+					<td colSpan="6">
 						{panelId === 'preview' &&
 							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
 						}
