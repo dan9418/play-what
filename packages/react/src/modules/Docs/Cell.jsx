@@ -20,10 +20,11 @@ const Cell = () => {
 	return (
 		<>
 			<Explore />
+			<h3>Inputs</h3>
 			<table className="cell-table">
 				<thead>
 					<tr>
-						<th>Input</th>
+						<th>#</th>
 						<th>Name</th>
 						<th>Model</th>
 						<th>As</th>
@@ -33,13 +34,14 @@ const Cell = () => {
 				</thead>
 				<tbody>
 					<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
-					<ModelRow label='B' modelType="matrix" podType="interval" value={B} setValue={setB} />
+					<ModelRow label='b' modelType="matrix" podType="interval" value={B} setValue={setB} />
 				</tbody>
 			</table>
+			<h3>Outputs</h3>
 			<table className="cell-table">
 				<thead>
 					<tr>
-						<th>Output</th>
+						<th>#</th>
 						<th>Name</th>
 						<th>Model</th>
 						<th>As</th>
@@ -48,7 +50,7 @@ const Cell = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<ModelRow label='C' modelType="matrix" podType="note" value={cell.C} />
+					<ModelRow label='c' modelType="matrix" podType="note" value={cell.C} />
 				</tbody>
 			</table>
 		</>

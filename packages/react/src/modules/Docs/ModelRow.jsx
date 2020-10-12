@@ -18,7 +18,7 @@ const ViewAsInput = ({ value, setValue }) => {
 	);
 };
 
-const ModelRow = ({ label, modelType, podType, value, setValue }) => {
+const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 
 	const [open, setOpen] = useState(false);
 	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
@@ -30,8 +30,8 @@ const ModelRow = ({ label, modelType, podType, value, setValue }) => {
 	return (
 		<>
 			<tr>
-				<td className='prop'>{label}</td>
-				<td className='name'></td>
+				<td className='model-type'>{'0'}</td>
+				<td className='name'>{label}</td>
 				<td className='model-type'>{modelType}</td>
 				<td className='model-type'>{podType}</td>
 				<td className='preview'></td>
