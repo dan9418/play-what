@@ -1,9 +1,9 @@
 import { INTERVAL } from './interval';
-import scalar from '../math/scalar';
+import index from '../math/index';
 import utils from '../../utils';
 import chord from './chord';
-import vector from '../math/vector';
-import matrix from '../math/matrix';
+import pod from '../math/pod';
+import podList from '../math/podList';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
@@ -41,7 +41,7 @@ const getNumeral = ({ A, d }) => {
 	const LIMIT = 7;
 	const numeral = [];
 	for (let i = 0; i < LIMIT; i = i + 2) {
-		const curD = scalar.moduloSum({ a: d, b: i, divisor: A.length });
+		const curD = index.moduloSum({ a: d, b: i, divisor: A.length });
 		const ivl = A[curD];
 		if (i < d) ivl[0] = ivl[0] + 12;
 		numeral.push(ivl);
@@ -58,7 +58,7 @@ const getAllNumerals = ({ scale, keyCenter }) => {
 };
 
 const transpose = ({ A, b }) => {
-	return matrix.addVector({ A, b });
+	return podList.addPod({ A, b });
 }
 
 export default {

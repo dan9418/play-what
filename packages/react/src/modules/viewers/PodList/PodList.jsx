@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import VectorInput from '../../models/math/vector/VectorInput';
-import VectorOutput from '../../models/math/vector/VectorOutput';
+import PodInput from '../../models/math/pod/PodInput';
+import PodOutput from '../../models/math/pod/PodOutput';
 import IntervalInput from '../../models/theory/interval/IntervalInput';
 import IntervalOutput from '../../models/theory/interval/IntervalOutput';
 import NoteInput from '../../models/theory/note/NoteInput';
 import NoteOutput from '../../models/theory/note/NoteOutput';
 import ButtonInput from '../../models/ui/ButtonInput/ButtonInput';
-import './PodList.css';
+import './podList.css';
 
 const getOutputComponent = (podType) => {
 	switch (podType) {
 	case 'pod':
-		return VectorOutput;
+		return PodOutput;
 	case 'interval':
 		return IntervalOutput;
 	case 'note':
@@ -22,7 +22,7 @@ const getOutputComponent = (podType) => {
 const getInputComponent = (podType) => {
 	switch (podType) {
 	case 'pod':
-		return VectorInput;
+		return PodInput;
 	case 'interval':
 		return IntervalInput;
 	case 'note':
@@ -83,15 +83,15 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 	);
 };
 
-const PodList = ({ value, setValue, isEditing, podType, modelType }) => {
+const podList = ({ value, setValue, isEditing, podType, modelType }) => {
 	switch (modelType) {
-	case 'vector':
+	case 'pod':
 		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} isEditing={isEditing} />;
-	case 'matrix':
+	case 'podList':
 		return <EditTable value={value} setValue={setValue} podType={podType} isEditing={isEditing} />;
 	default:
 		return <div>{value}</div>;
 	}
 };
 
-export default PodList;
+export default podList;

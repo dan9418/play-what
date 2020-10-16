@@ -19,13 +19,13 @@ const Label = ({ axis, children }) => {
 };
 
 const areEqual = (v1, v2, x, y, max) => {
-	const mod = (a, b) => ((a % b) + b) % b; //pw_core.models.math.scalar.modulo;
+	const mod = (a, b) => ((a % b) + b) % b; //pw_core.models.math.index.modulo;
 	const xEqual = mod(v1[x], max[x]) === mod(v2[x], max[x]);
 	const yEqual = mod(v1[y], max[y]) === mod(v2[y], max[y]);
 	return xEqual && yEqual;
 }
 
-const getCells = (origin, vectors, x, y, max) => {
+const getCells = (origin, pods, x, y, max) => {
 	const cells = [];
 	for (let i = max[y] - 1; i >= -1; i--) {
 		cells.push(<Label key={'y' + i} axis='y'>{i > -1 && i}</Label>)
@@ -36,7 +36,7 @@ const getCells = (origin, vectors, x, y, max) => {
 			else {
 				const point = { [x]: j, [y]: i };
 				const isOrigin = areEqual(origin, point, x, y, max);
-				const isResultant = vectors.findIndex(v => areEqual(v, point, x, y, max)) >= 0;
+				const isResultant = pods.findIndex(v => areEqual(v, point, x, y, max)) >= 0;
 				cells.push(<Cell key={j + '-' + i} x={j} y={i} color={isOrigin ? 'red' : isResultant ? 'blue' : null} />)
 			}
 		}
@@ -46,7 +46,7 @@ const getCells = (origin, vectors, x, y, max) => {
 
 const DEFAULT_PROPS = {
 	origin: [0, 0],
-	vectors: [2, 2],
+	pods: [2, 2],
 	x: 'd',
 	y: 'p',
 	max: [12, 7],
@@ -57,13 +57,13 @@ const DEFAULT_PROPS = {
 
 const Graph = props => {
 	const config = { ...DEFAULT_PROPS, ...props };
-	const { origin, vectors, x, y, max, title, xLabel, yLabel } = config;
+	const { origin, pods, x, y, max, title, xLabel, yLabel } = config;
 	return (
 		<div className="graph-container">
 			<div className="graph-title">{title}</div>
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<div className="y-label">{yLabel}</div>
-				<div className="graph">{getCells(origin, vectors, x, y, max)}</div>
+				<div className="graph">{getCells(origin, pods, x, y, max)}</div>
 			</div>
 			<div className="x-label">{xLabel}</div>
 		</div>

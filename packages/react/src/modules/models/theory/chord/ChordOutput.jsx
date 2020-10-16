@@ -4,7 +4,7 @@ import pw_core from '@pw/core';
 import pw_tone from '@pw/tone';
 
 export const ChordOutput = ({ value, reduce }) => {
-	const chord = reduce ? pw_core.models.math.vector.reduce({ a: value }) : value;
+	const chord = reduce ? pw_core.models.math.pod.reduce({ a: value }) : value;
 
 	const [p, d] = chord;
 

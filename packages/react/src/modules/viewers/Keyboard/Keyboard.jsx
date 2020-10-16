@@ -26,7 +26,7 @@ const getKeyboardKeys = (config, viewerWidth) => {
 				maxIndex={config.keyHigh}
 				scale={viewerWidth / numWhiteKeys}
 				type={type}
-				bivector={config.bivector}
+				bipod={config.bipod}
 			/>
 		);
 	}

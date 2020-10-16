@@ -1,7 +1,7 @@
-import ScalarInput from './scalar/ScalarInput';
-import VectorInput from './vector/VectorInput';
+import IndexInput from './index/IndexInput';
+import PodInput from './pod/PodInput';
 
 export default {
-	ScalarInput,
-	VectorInput
+	IndexInput,
+	PodInput
 };

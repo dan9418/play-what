@@ -59,7 +59,7 @@ const getFrets = (props) => {
 		for (let f = fretRange[0]; f <= fretRange[1]; f++) {
 
 			const noteIndex = tuning[s] + f;
-			const index = pw_core.models.math.matrix.findIndexOfVectorWithPitch({
+			const index = pw_core.models.math.podList.findIndexOfPodWithPitch({
 				A: cell.C,
 				p: noteIndex
 			});
@@ -72,7 +72,7 @@ const getFrets = (props) => {
 				fretRange,
 				fretIndex: f,
 				noteIndex,
-				vector: pod,
+				pod: pod,
 				podIndex: index
 			};
 

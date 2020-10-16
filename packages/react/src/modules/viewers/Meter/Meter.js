@@ -5,8 +5,8 @@ import './Meter.css';
 
 const getPitchColor = pw_core.models.theory.pitch.getColor;
 const getDegreeColor = pw_core.models.theory.degree.getColor;
-const modulo = pw_core.models.math.scalar.modulo;
-const MAX = pw_core.models.math.vector.max;
+const modulo = pw_core.models.math.index.modulo;
+const MAX = pw_core.models.math.pod.max;
 
 const ListMeter = ({ list }) => {
 	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
@@ -17,11 +17,11 @@ const ListMeter = ({ list }) => {
 	);
 };
 
-const ScalarListMeter = ({ max, nameFn, scalarList, colorFn }) => {
+const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = scalarList.find(v => pw_core.models.math.scalar.modulo({ a: v, b: max }) === i);
-		const reduced = pw_core.models.math.scalar.modulo({ a: value, b: max });
+		const value = indexList.find(v => pw_core.models.math.index.modulo({ a: v, b: max }) === i);
+		const reduced = pw_core.models.math.index.modulo({ a: value, b: max });
 		const color = colorFn ? colorFn(reduced) : pw_core.models.theory.pitch.getColor(reduced);
 
 		const style = pw_color.getStylesFromBgColor(color);
@@ -32,25 +32,25 @@ const ScalarListMeter = ({ max, nameFn, scalarList, colorFn }) => {
 	return <ListMeter list={list} />
 };
 
-const MatrixMeter = ({ matrix, ...props }) => {
-	const P = matrix.map(([p, d]) => p);
-	const D = matrix.map(([p, d]) => d);
+const podListMeter = ({ podList, ...props }) => {
+	const P = podList.map(([p, d]) => p);
+	const D = podList.map(([p, d]) => d);
 	return (
 		<>
 			<label className='meter-label'>pitch</label>
-			<ScalarListMeter scalarList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
+			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
 			<label className='meter-label'>degree</label>
-			<ScalarListMeter scalarList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
+			<IndexListMeter indexList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
 		</>
 	);
 }
 
 const Meter = ({ value, modelType, podType, ...props }) => {
 	switch (modelType) {
-	case 'vector':
-		return <MatrixMeter matrix={[value]} {...props} />;
-	case 'matrix':
-		return <MatrixMeter matrix={value} {...props} />;
+	case 'pod':
+		return <podListMeter podList={[value]} {...props} />;
+	case 'podList':
+		return <podListMeter podList={value} {...props} />;
 	default:
 		return null;
 	}

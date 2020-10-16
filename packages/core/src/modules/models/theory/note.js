@@ -1,7 +1,7 @@
 import degree from './degree';
 import accidental from './accidental';
 import config from './config';
-import vector from '../math/vector';
+import pod from '../math/pod';
 
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
@@ -30,7 +30,7 @@ export const NOTE = {
 const NOTE_VALUES = Object.values(NOTE);
 
 const getName = ({ a }) => {
-	const reduced = vector.reduce({ a });
+	const reduced = pod.reduce({ a });
 	const [p, d] = reduced;
 	const degreeName = degree.getName({ d });
 	const offset = p - config.rootScale[d][0];

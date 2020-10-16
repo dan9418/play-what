@@ -1,20 +1,20 @@
-.vector-input {
+.pod-input {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     margin: auto;
 }
 
-.vector-input .scalar-input {
+.pod-input .index-input {
     margin: 0 2px;
 }
 
-.vector-open-bracket, .vector-comma {
+.pod-open-bracket, .pod-comma {
     font-size: 16px;
 }
 
 
-.vector-output {
+.pod-output {
     display: flex;
     align-items: center;
     justify-content: flex-start;

@@ -21,6 +21,51 @@ const TABS = [
 	}
 ]
 
+const MODELS = [
+	{
+		id: 'index',
+		name: 'index',
+		types: [
+			{
+				id: 'pitch',
+				name: 'pitch'
+			},
+			{
+				id: 'degree',
+				name: 'degree'
+			}
+		]
+	},
+	{
+		id: 'pod',
+		name: 'pod',
+		types: [
+			{
+				id: 'note',
+				name: 'note'
+			},
+			{
+				id: 'interval',
+				name: 'interval'
+			}
+		]
+	},
+	{
+		id: 'podList',
+		name: 'podList',
+		types: [
+			{
+				id: 'chord',
+				name: 'chord'
+			},
+			{
+				id: 'scale',
+				name: 'scale'
+			}
+		]
+	}
+]
+
 const Stage = () => {
 	const [tabIndex, setTabIndex] = useState(1);
 	const tab = TABS[tabIndex];

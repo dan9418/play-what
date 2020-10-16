@@ -11,13 +11,13 @@ const DOCS_CONFIG = {
 			name: 'Models',
 			submodules: [
 				{
-					id: 'model/scalar',
-					name: 'Scalar',
+					id: 'model/index',
+					name: 'Index',
 					functions: [
 						{
-							id: 'model/scalar/modulo',
+							id: 'model/index/modulo',
 							name: 'modulo: (a, divisor) => c',
-							fn: pw_core.models.math.scalar.modulo,
+							fn: pw_core.models.math.index.modulo,
 							props: {
 								a: 7,
 								b: 5
@@ -25,25 +25,25 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								},
 								{
 									name: 'b',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								modelType: 'scalar',
+								modelType: 'index',
 								podType: null
 							}
 						},
 						{
-							id: 'model/scalar/moduloSum',
+							id: 'model/index/moduloSum',
 							name: 'moduloSum: (a, b, divisor) => c',
-							fn: pw_core.models.math.scalar.moduloSum,
+							fn: pw_core.models.math.index.moduloSum,
 							props: {
 								a: 7,
 								b: 5,
@@ -52,36 +52,36 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								},
 								{
 									name: 'b',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								},
 								{
 									name: 'divisor',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'c',
-								modelType: 'scalar',
+								modelType: 'index',
 								podType: null
 							}
 						}
 					]
 				},
 				{
-					id: 'model/vector',
-					name: 'Vector',
+					id: 'model/pod',
+					name: 'Pod',
 					functions: [
 						{
-							id: 'model/vector/addVector',
-							name: 'addVector: (a, b) => c',
-							fn: pw_core.models.math.vector.addVector,
+							id: 'model/pod/addPod',
+							name: 'addPod: (a, b) => c',
+							fn: pw_core.models.math.pod.addPod,
 							props: {
 								a: pw_core.models.theory.interval.preset.M3.value,
 								b: pw_core.models.theory.interval.preset.P5.value
@@ -89,25 +89,25 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'c',
-								modelType: 'vector',
+								modelType: 'pod',
 								podType: 'note'
 							}
 						},
 						{
-							id: 'model/vector/addMatrix',
-							name: 'addMatrix: (a, B) => C',
-							fn: pw_core.models.math.vector.addMatrix,
+							id: 'model/pod/addpodList',
+							name: 'addpodList: (a, B) => C',
+							fn: pw_core.models.math.pod.addpodList,
 							props: {
 								a: pw_core.models.theory.note.preset.C.value,
 								B: pw_core.models.theory.scale.preset.NaturalMinor.value
@@ -115,31 +115,31 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'note'
 								},
 								{
 									name: 'B',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						}
 					]
 				},
 				{
-					id: 'model/matrix',
-					name: 'Matrix',
+					id: 'model/podList',
+					name: 'podList',
 					functions: [
 						{
-							id: 'model/matrix/addVector',
-							name: 'addVector: (A, b) => C',
-							fn: pw_core.models.math.matrix.addVector,
+							id: 'model/podList/addPod',
+							name: 'addPod: (A, b) => C',
+							fn: pw_core.models.math.podList.addPod,
 							props: {
 								A: pw_core.models.theory.scale.preset.Major.value,
 								b: pw_core.models.theory.interval.preset.P1.value
@@ -147,18 +147,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						}
@@ -172,7 +172,7 @@ const DOCS_CONFIG = {
 			submodules: [
 				{
 					id: 'pitch',
-					name: 'Pitch: scalar',
+					name: 'Pitch: index',
 					functions: [
 						{
 							id: 'theory/pitch/getName',
@@ -184,7 +184,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'p',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
@@ -198,7 +198,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'degree',
-					name: 'Degree: scalar',
+					name: 'Degree: index',
 					functions: [
 						{
 							id: 'theory/degree/getName',
@@ -210,7 +210,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'd',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
@@ -224,7 +224,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'accidental',
-					name: 'Accidental: scalar',
+					name: 'Accidental: index',
 					functions: [
 						{
 							id: 'theory/accidental/getName',
@@ -236,7 +236,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
@@ -250,7 +250,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'interval',
-					name: 'Interval: vector',
+					name: 'Interval: pod',
 					functions: [
 						{
 							id: 'theory/interval/getName',
@@ -262,7 +262,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'interval'
 								}
 							],
@@ -276,7 +276,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'note',
-					name: 'Note: vector',
+					name: 'Note: pod',
 					functions: [
 						{
 							id: 'theory/note/getName',
@@ -288,7 +288,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'note'
 								}
 							],
@@ -302,7 +302,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'chord',
-					name: 'Chord: matrix',
+					name: 'Chord: podList',
 					functions: [
 						{
 							id: 'theory/chord/inversion',
@@ -315,18 +315,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'n',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						},
@@ -341,18 +341,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						}
@@ -360,7 +360,7 @@ const DOCS_CONFIG = {
 				},
 				{
 					id: 'scale',
-					name: 'Scale: matrix',
+					name: 'Scale: podList',
 					functions: [
 						{
 							id: 'theory/scale/getNumeral',
@@ -376,18 +376,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'd',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						},
@@ -402,18 +402,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'd',
-									modelType: 'scalar',
+									modelType: 'index',
 									podType: null
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						},
@@ -428,18 +428,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'note'
 								},
 								{
 									name: 'b',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						}
@@ -466,18 +466,18 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									modelType: 'vector',
+									modelType: 'pod',
 									podType: 'note'
 								},
 								{
 									name: 'B',
-									modelType: 'matrix',
+									modelType: 'podList',
 									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
-								modelType: 'matrix',
+								modelType: 'podList',
 								podType: 'note'
 							}
 						}

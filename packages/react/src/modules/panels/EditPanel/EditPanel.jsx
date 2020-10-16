@@ -1,7 +1,7 @@
 import pw_core from '@pw/core';
 import React from 'react';
-import ScalarInput from '../../models/math/scalar/ScalarInput';
-import VectorInput from '../../models/math/vector/VectorInput';
+import IndexInput from '../../models/math/index/IndexInput';
+import PodInput from '../../models/math/pod/PodInput';
 import IntervalInput from '../../models/theory/interval/IntervalInput';
 import NoteInput from '../../models/theory/note/NoteInput';
 import './EditPanel.css';
@@ -43,11 +43,11 @@ const EditTable = ({ value, setValue, podType }) => {
 
 const EditPanel = ({ value, setValue, modelType, podType }) => {
 	switch (modelType) {
-	case 'scalar':
-		return <ScalarInput value={value} setValue={setValue} />;
-	case 'vector':
+	case 'index':
+		return <IndexInput value={value} setValue={setValue} />;
+	case 'pod':
 		return <EditTable value={[value]} setValue={} podType={podType} />;
-	case 'matrix':
+	case 'podList':
 		return <EditTable value={value} setValue={setValue} podType={podType} />;
 	default:
 		return null;

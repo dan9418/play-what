@@ -1,9 +1,9 @@
-import scalar from './scalar';
-import vector from './vector';
-import matrix from './matrix';
+import index from './index';
+import pod from './pod';
+import podList from './podList';
 
 export default {
-	scalar,
-	vector,
-	matrix
+	index,
+	pod,
+	podList
 }

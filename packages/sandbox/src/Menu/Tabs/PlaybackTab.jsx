@@ -14,11 +14,11 @@ const useToggle = (initValue = false) => {
 const PlaybackTab = () => {
 
 	const [position, setPosition] = useRecoilState(positionState);
-	const bivector = useRecoilValue(conceptState);
+	const bipod = useRecoilValue(conceptState);
 	const nextConcept = useRecoilValue(nextConceptState);
 	const nextPosition = useRecoilValue(nextPositionState);
 
-	const t = bivector.t ? bivector.t : 4;
+	const t = bipod.t ? bipod.t : 4;
 	const nextT = nextConcept.t ? nextConcept.t : 4;
 
 	// State (Compound)
@@ -35,7 +35,7 @@ const PlaybackTab = () => {
 	else {
 		const beatDuration = 1 / (tempo / 60);
 		if (remBeats === t) {
-			const freqs = pw_core.Theory.getFrequencies(bivector.C);
+			const freqs = pw_core.Theory.getFrequencies(bipod.C);
 			const pulseDuration = beatDuration * t; // seconds
 			pw_core.Sound.playNotes(freqs, pulseDuration / 2);
 			console.log(beatIndex, 'P');
@@ -66,7 +66,7 @@ const PlaybackTab = () => {
 			<h3>Tempo</h3>
 			<div className="input-row">
 				<label>bpm</label>
-				<ScalarInput value={tempo} setValue={setTempo} className="bpm" />
+				<IndexInput value={tempo} setValue={setTempo} className="bpm" />
 			</div>
 
 			<h3>Metronome</h3>

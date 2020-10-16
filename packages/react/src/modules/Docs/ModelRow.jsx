@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import MatrixPresetInput from "../models/theory/MatrixPresetInput";
+import PodListPresetInput from "../models/theory/PodListPresetInput";
 import ButtonInput from '../models/ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
-import PodList from "../viewers/PodList/PodList";
+import podList from "../viewers/podList/podList";
 import "./Docs.css";
 
 const ViewAsInput = ({ value, setValue }) => {
@@ -56,7 +56,7 @@ const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 				<tr className='panel'>
 					<td colSpan="6">
 						{panelId === 'preview' &&
-							<PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
+							<podList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
 						}
 						{panelId === 'analyze' &&
 							<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
@@ -67,8 +67,8 @@ const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 									<div className="space" />
 									<div className='view-as-option' onClick={() => setIsLoadingPreset(!isLoadingPreset)}>{isLoadingPreset ? 'cancel' : 'load preset'}</div>
 								</div>
-								{isLoadingPreset && <MatrixPresetInput value={value} setValue={setValue} modelType={modelType} />}
-								{!isLoadingPreset && <PodList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />}
+								{isLoadingPreset && <PodListPresetInput value={value} setValue={setValue} modelType={modelType} />}
+								{!isLoadingPreset && <podList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />}
 							</>
 						}
 					</td>

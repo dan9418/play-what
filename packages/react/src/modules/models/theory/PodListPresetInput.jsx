@@ -6,7 +6,7 @@ import IntervalInput from "./interval/IntervalInput";
 import NoteInput from "./note/NoteInput";
 import ScaleInput from "./scale/ScaleInput";
 
-const VECTOR_TYPES = [
+const POD_TYPES = [
 	{
 		id: 'note',
 		name: 'Note',
@@ -19,7 +19,7 @@ const VECTOR_TYPES = [
 	}
 ];
 
-const MATRIX_TYPES = [
+const podList_TYPES = [
 	{
 		id: 'chord',
 		name: 'Chord',
@@ -33,11 +33,11 @@ const MATRIX_TYPES = [
 ];
 
 const TYPES = {
-	vector: VECTOR_TYPES,
-	matrix: MATRIX_TYPES
+	pod: POD_TYPES,
+	podList: podList_TYPES
 }
 
-const MatrixPresetInput = ({ value, setValue, modelType }) => {
+const PodListPresetInput = ({ value, setValue, modelType }) => {
 	//if (!value) return null;
 
 	const model = TYPES[modelType];
@@ -52,4 +52,4 @@ const MatrixPresetInput = ({ value, setValue, modelType }) => {
 	);
 };
 
-export default MatrixPresetInput;
+export default PodListPresetInput;

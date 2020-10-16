@@ -33,8 +33,8 @@ const Cell = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<ModelRow label='a' modelType="vector" podType="note" value={a} setValue={setA} />
-					<ModelRow label='b' modelType="matrix" podType="interval" value={B} setValue={setB} />
+					<ModelRow label='a' modelType="pod" podType="note" value={a} setValue={setA} />
+					<ModelRow label='b' modelType="podList" podType="interval" value={B} setValue={setB} />
 				</tbody>
 			</table>
 			<h3>Outputs</h3>
@@ -50,7 +50,7 @@ const Cell = () => {
 					</tr>
 				</thead>
 				<tbody>
-					<ModelRow label='c' modelType="matrix" podType="note" value={cell.C} />
+					<ModelRow label='c' modelType="podList" podType="note" value={cell.C} />
 				</tbody>
 			</table>
 		</>

@@ -4,6 +4,6 @@
     align-items: center;
 }
 
-.multi-input .vector-input:not(:last-child) {
+.multi-input .pod-input:not(:last-child) {
     margin-bottom: 4px;
 }

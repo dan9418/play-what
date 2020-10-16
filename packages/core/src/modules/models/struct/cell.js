@@ -1,6 +1,6 @@
 // Constants
 
-import vector from "../math/vector";
+import pod from "../math/pod";
 
 const DEFAULT = null;
 
@@ -13,7 +13,7 @@ const DEFAULT = null;
 // sum
 
 const from = ({ a, B }) => {
-	const C = vector.addMatrix({ a, B });
+	const C = pod.addpodList({ a, B });
 	return { a, B, C };
 };
 

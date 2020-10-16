@@ -1,4 +1,4 @@
-import vector from '../math/vector';
+import pod from '../math/pod';
 
 export const INTERVAL = {
 	P1: {
@@ -182,7 +182,7 @@ export const INTERVAL = {
 const INTERVAL_VALUES = Object.values(INTERVAL);
 
 const getName = ({ a }) => {
-	const reduced = vector.reduce({ a });
+	const reduced = pod.reduce({ a });
 	const [p, d] = reduced;
 	const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
 	return result ? result.id : `[${p}, ${d}]`;

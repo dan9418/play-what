@@ -1,5 +1,5 @@
-import vector from './vector'
-import scalar from './scalar';
+import pod from './pod'
+import index from './index';
 import utils from '../../utils';
 
 // Constants
@@ -8,8 +8,8 @@ const DEFAULT = [[0, 0]];
 
 // Common
 
-const isValid = (matrix) => {
-	return matrix !== null && Array.isArray(matrix) && matrix.find((v) => !vector.isValid(v));
+const isValid = (podList) => {
+	return podList !== null && Array.isArray(podList) && podList.find((v) => !pod.isValid(v));
 };
 
 const areEqual = ({ list1, list2 }) => {
@@ -23,19 +23,19 @@ const areEqual = ({ list1, list2 }) => {
 
 // Utils
 
-const findVectorWithPitch = ({ A, p }) => {
+const findPodWithPitch = ({ A, p }) => {
 	const octaveReduce = true
-	const pitch = octaveReduce ? scalar.modulo({ a: p, b: vector.max[0] }) : p;
+	const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 	return A.find((n) => n[0] === pitch) || null;
 };
 
-const findIndexOfVectorWithPitch = ({ A, p }) => {
+const findIndexOfPodWithPitch = ({ A, p }) => {
 	const octaveReduce = true
-	const pitch = octaveReduce ? scalar.modulo({ a: p, b: vector.max[0] }) : p;
+	const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 	return A.findIndex((n) => n[0] === pitch);
 };
 
-const addVector = ({ A, b }) => A.map((a) => vector.addVector({ a, b }));
+const addPod = ({ A, b }) => A.map((a) => pod.addPod({ a, b }));
 
 export default {
 	defaultValue: DEFAULT,
@@ -43,7 +43,7 @@ export default {
 	isValid,
 	areEqual,
 	// Utils
-	findVectorWithPitch,
-	findIndexOfVectorWithPitch,
-	addVector
+	findPodWithPitch,
+	findIndexOfPodWithPitch,
+	addPod
 };

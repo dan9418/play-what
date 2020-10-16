@@ -1,7 +1,7 @@
 import { INTERVAL } from './interval';
 import utils from '../../utils';
-import vector from '../math/vector';
-import matrix from '../math/matrix';
+import pod from '../math/pod';
+import podList from '../math/podList';
 
 export const CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
@@ -32,13 +32,13 @@ const getInversion = ({ A, n }) => {
 	for (let i = 1; i <= n; i++) {
 		const index = result.length - i;
 		const a = result[index];
-		result[index] = vector.addVector({ a, b: octave })
+		result[index] = pod.addPod({ a, b: octave })
 	}
 	return result;
 }
 
 const transpose = ({ A, b }) => {
-	return matrix.addVector({ A, b });
+	return podList.addPod({ A, b });
 }
 
 export default {
