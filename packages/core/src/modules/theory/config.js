@@ -1,5 +1,5 @@
-import degree from './degree';
-import pitch from './pitch';
+import degree from '../temp/index/degree';
+import pitch from '../temp/index/pitch';
 import { DIATONIC } from './diatonic';
 
 const d = degree.preset;

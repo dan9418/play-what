@@ -1,6 +1,6 @@
 import pod from './pod'
-import index from './index';
-import utils from '../../utils';
+import index from '../index/index';
+import utils from '../../../utils';
 
 // Constants
 

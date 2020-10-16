@@ -1,9 +1,9 @@
-import { INTERVAL } from './interval';
-import index from '../math/index';
-import utils from '../../utils';
+import { INTERVAL } from '../pod/interval';
+import index from '../index/index';
+import utils from '../../../utils';
 import chord from './chord';
-import pod from '../math/pod';
-import podList from '../math/podList';
+import pod from '../temp/pod';
+import podList from './podList';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },

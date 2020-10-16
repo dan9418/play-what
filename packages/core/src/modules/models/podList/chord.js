@@ -1,7 +1,7 @@
-import { INTERVAL } from './interval';
-import utils from '../../utils';
-import pod from '../math/pod';
-import podList from '../math/podList';
+import { INTERVAL } from '../pod/interval';
+import utils from '../../../utils';
+import pod from '../temp/pod';
+import podList from './podList';
 
 export const CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },

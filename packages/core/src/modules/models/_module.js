@@ -1,9 +1,9 @@
-import math from './math/_module';
-import theory from './theory/_module';
-import struct from './struct/_module';
+import index from './index/index';
+import pod from './pod';
+import podList from './podList';
 
 export default {
-	math,
-	theory,
-	struct
+	index,
+	pod,
+	podList
 }
