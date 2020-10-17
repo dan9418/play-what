@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Menu from '../Menu/Menu';
 import './Stage.css';
-import Cell from '@pw/react/src/modules/docs/Cell';
 
 const TABS = [
 	{
@@ -12,7 +11,7 @@ const TABS = [
 	{
 		id: 'explore',
 		name: 'Explore',
-		component: <Cell/>
+		component: <div/>
 	},
 	{
 		id: 'about',
