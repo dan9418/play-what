@@ -1,9 +1,8 @@
 import React from 'react';
-import './scale.css';
 import pw_core from '@pw/core';
 import DropdownInput from '../../ui/DropdownInput/DropdownInput';
 
-const SCALES = pw_core.models.theory.scale.presetValues;
+const SCALES = pw_core.models.podList.scale.presetValues;
 
 export const ScaleInput = ({ value, setValue }) => {
 	const [p, d] = value;

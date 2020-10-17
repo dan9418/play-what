@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import PodListPresetInput from "../models/theory/PodListPresetInput";
-import ButtonInput from '../models/ui/ButtonInput/ButtonInput';
+import PodListPresetInput from "../models/podList/PodListPresetInput";
+import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
-import podList from "../viewers/podList/podList";
-import "./Docs.css";
+import "./ModelDocs.css";
 
 const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;

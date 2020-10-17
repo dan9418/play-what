@@ -1,3 +1,6 @@
+import degree from './degree';
+import pitch from './pitch';
+
 // Constants
 
 const DEFAULT = 0;
@@ -22,6 +25,8 @@ const moduloSum = ({ a, b, divisor }) => {
 const floor = (a, b) => Math.floor(a / b);
 
 export default {
+	degree,
+	pitch,
 	defaultValue: DEFAULT,
 	modulo,
 	moduloSum,

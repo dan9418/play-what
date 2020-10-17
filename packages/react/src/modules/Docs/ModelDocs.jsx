@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import Fretboard from "../viewers/Fretboard/Fretboard";
-import "./Docs.css";
+import "./ModelDocs.css";
 import pw_core from '@pw/core';
 import ModelRow from "./ModelRow";
-import Explore from "../models/Explore";
+import Explore from "../other/Explore";
 
-const Cell = () => {
-	const [a, setA] = useState(pw_core.models.theory.note.preset.C.value);
-	const [B, setB] = useState(pw_core.models.theory.chord.preset.Maj7.value);
-	const cell = pw_core.models.struct.cell.from({ a, B });
+const ModelDocs = () => {
+	const [a, setA] = useState(pw_core.models.pod.note.preset.C.value);
+	const [B, setB] = useState(pw_core.models.podList.chord.preset.Maj7.value);
+	const cell = pw_core.structs.cell.from({ a, B });
 
 	const projection = {
-		colorFn: pw_core.models.theory.degree.getColor,
-		textFn: pw_core.models.theory.interval.getName,
+		colorFn: pw_core.models.index.degree.getColor,
+		textFn: pw_core.models.pod.getName,
 		reduced: true,
 		cell
 	};
@@ -57,6 +57,4 @@ const Cell = () => {
 	);
 };
 
-export default Cell;
-
-// 			<Fretboard projection={projection} />
+export default ModelDocs;

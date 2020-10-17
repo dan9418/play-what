@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ModelDocs from '../../../react/src/modules/docs/ModelDocs';
 import Menu from '../Menu/Menu';
 import './Stage.css';
 
@@ -11,7 +12,7 @@ const TABS = [
 	{
 		id: 'explore',
 		name: 'Explore',
-		component: <div/>
+		component: <ModelDocs/>
 	},
 	{
 		id: 'about',

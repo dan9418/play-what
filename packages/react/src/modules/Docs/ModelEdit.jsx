@@ -1,9 +1,6 @@
 import pw_core from '@pw/core';
 import React from 'react';
-import IndexInput from '../../models/math/index/IndexInput';
-import PodInput from '../../models/math/pod/PodInput';
-import IntervalInput from '../../models/theory/interval/IntervalInput';
-import NoteInput from '../../models/theory/note/NoteInput';
+import IndexInput from '../../models/index/IndexInput';
 import './EditPanel.css';
 
 const EditRow = ({ value, setValue, podType, i }) => {

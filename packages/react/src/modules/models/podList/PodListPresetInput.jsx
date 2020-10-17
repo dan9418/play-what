@@ -1,10 +1,10 @@
 import pw_core from "@pw/core";
 import React, { useState } from "react";
-import DropdownInput from "../ui/DropdownInput/DropdownInput";
-import ChordInput from "./chord/ChordInput";
-import IntervalInput from "./interval/IntervalInput";
-import NoteInput from "./note/NoteInput";
-import ScaleInput from "./scale/ScaleInput";
+import DropdownInput from "../../ui/DropdownInput/DropdownInput";
+import ChordInput from "./ChordInput";
+import IntervalInput from "../pod/IntervalInput";
+import NoteInput from "../pod/NoteInput";
+import ScaleInput from "./ScaleInput";
 
 const POD_TYPES = [
 	{

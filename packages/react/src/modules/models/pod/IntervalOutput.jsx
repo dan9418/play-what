@@ -1,16 +1,15 @@
 import React from 'react';
-import './interval.css';
 import pw_core from '@pw/core';
 import pw_tone from '@pw/tone';
 
 export const IntervalInput = ({ value, reduce }) => {
-	const interval = reduce ? pw_core.models.math.pod.reduce({ a: value }) : value;
+	const interval = reduce ? pw_core.models.pod.reduce({ a: value }) : value;
 
 	const [p, d] = interval;
 
-	const name = pw_core.models.theory.interval.getName({ a: interval });
+	const name = pw_core.models.pod.getName({ a: interval });
 
-	const color = pw_core.models.theory.degree.getColor(d);
+	const color = pw_core.models.index.degree.getColor(d);
 	const style = {
 		border: `1px solid ${color}`
 	};

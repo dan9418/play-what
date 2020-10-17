@@ -1,6 +1,6 @@
 // Constants
 
-import pod from "../pod/pod";
+import pod from "../models/pod/pod";
 
 const DEFAULT = null;
 

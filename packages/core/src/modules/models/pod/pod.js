@@ -1,6 +1,7 @@
-import index from './index/index';
+import index from '../index/index';
+import interval from './interval';
+import note from './note';
 import pw_color from '@pw/color';
-import theory from '../theory/_module';
 
 // Constants
 
@@ -27,6 +28,8 @@ const addPod = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
 const addpodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
 
 export default {
+	interval,
+	note,
 	// Constants
 	defaultValue: DEFAULT,
 	max: MAX,

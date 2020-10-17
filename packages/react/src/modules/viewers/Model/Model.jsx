@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import PodInput from '../../models/math/pod/PodInput';
-import PodOutput from '../../models/math/pod/PodOutput';
-import IntervalInput from '../../models/theory/interval/IntervalInput';
-import IntervalOutput from '../../models/theory/interval/IntervalOutput';
-import NoteInput from '../../models/theory/note/NoteInput';
-import NoteOutput from '../../models/theory/note/NoteOutput';
-import ButtonInput from '../../models/ui/ButtonInput/ButtonInput';
-import './podList.css';
+import PodInput from '../../models/pod/PodInput';
+import PodOutput from '../../models/pod/PodOutput';
+import IntervalInput from '../../models/pod/IntervalInput';
+import IntervalOutput from '../../models/pod/IntervalOutput';
+import NoteInput from '../../models/pod/NoteInput';
+import ButtonInput from '../../ui/ButtonInput/ButtonInput';
+import './Model.css';
 
 const getOutputComponent = (podType) => {
 	switch (podType) {
@@ -83,7 +82,7 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 	);
 };
 
-const podList = ({ value, setValue, isEditing, podType, modelType }) => {
+const Model = ({ value, setValue, isEditing, podType, modelType }) => {
 	switch (modelType) {
 	case 'pod':
 		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} isEditing={isEditing} />;
@@ -94,4 +93,4 @@ const podList = ({ value, setValue, isEditing, podType, modelType }) => {
 	}
 };
 
-export default podList;
+export default Model;

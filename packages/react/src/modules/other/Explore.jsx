@@ -1,7 +1,7 @@
 import pw_core from '@pw/core';
 import React, { useState } from "react";
-import DOCS_CONFIG from '../docs/docsConfig';
-import DropdownInput from '../models/ui/DropdownInput/DropdownInput';
+import DOCS_CONFIG from '../docs/ModelDocs.config';
+import DropdownInput from '../ui/DropdownInput/DropdownInput';
 //import "./APIBrowser.css";
 
 const MODULES = DOCS_CONFIG.modules;

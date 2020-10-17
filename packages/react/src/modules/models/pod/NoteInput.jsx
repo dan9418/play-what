@@ -1,9 +1,8 @@
 import React from 'react';
-import './note.css';
 import pw_core from '@pw/core';
 import DropdownInput from '../../ui/DropdownInput/DropdownInput';
 
-const NOTES = pw_core.models.theory.note.presetValues;
+const NOTES = pw_core.models.pod.note.presetValues;
 
 export const NoteInput = ({ value, setValue }) => {
 	const [p, d] = value;

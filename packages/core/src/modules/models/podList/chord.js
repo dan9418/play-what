@@ -1,6 +1,6 @@
 import { INTERVAL } from '../pod/interval';
-import utils from '../../../utils';
-import pod from '../temp/pod';
+import utils from '../../utils';
+import pod from '../../models/pod/pod';
 import podList from './podList';
 
 export const CHORD = {

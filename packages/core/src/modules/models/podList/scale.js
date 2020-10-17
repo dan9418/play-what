@@ -1,8 +1,6 @@
 import { INTERVAL } from '../pod/interval';
 import index from '../index/index';
-import utils from '../../../utils';
 import chord from './chord';
-import pod from '../temp/pod';
 import podList from './podList';
 
 export const SCALE = {

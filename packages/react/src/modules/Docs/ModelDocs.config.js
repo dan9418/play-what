@@ -1,6 +1,5 @@
 import pw_core from '@pw/core';
-import './Docs.css';
-
+import './ModelDocs.css';
 
 const DOCS_CONFIG = {
 	id: 'root',
@@ -17,7 +16,7 @@ const DOCS_CONFIG = {
 						{
 							id: 'model/index/modulo',
 							name: 'modulo: (a, divisor) => c',
-							fn: pw_core.models.math.index.modulo,
+							fn: pw_core.models.index.modulo,
 							props: {
 								a: 7,
 								b: 5
@@ -43,7 +42,7 @@ const DOCS_CONFIG = {
 						{
 							id: 'model/index/moduloSum',
 							name: 'moduloSum: (a, b, divisor) => c',
-							fn: pw_core.models.math.index.moduloSum,
+							fn: pw_core.models.index.moduloSum,
 							props: {
 								a: 7,
 								b: 5,
@@ -81,10 +80,10 @@ const DOCS_CONFIG = {
 						{
 							id: 'model/pod/addPod',
 							name: 'addPod: (a, b) => c',
-							fn: pw_core.models.math.pod.addPod,
+							fn: pw_core.models.pod.addPod,
 							props: {
-								a: pw_core.models.theory.interval.preset.M3.value,
-								b: pw_core.models.theory.interval.preset.P5.value
+								a: pw_core.models.pod.interval.preset.M3.value,
+								b: pw_core.models.pod.interval.preset.P5.value
 							},
 							propDefs: [
 								{
@@ -107,10 +106,10 @@ const DOCS_CONFIG = {
 						{
 							id: 'model/pod/addpodList',
 							name: 'addpodList: (a, B) => C',
-							fn: pw_core.models.math.pod.addpodList,
+							fn: pw_core.models.pod.addpodList,
 							props: {
-								a: pw_core.models.theory.note.preset.C.value,
-								B: pw_core.models.theory.scale.preset.NaturalMinor.value
+								a: pw_core.models.pod.note.preset.C.value,
+								B: pw_core.models.podList.scale.preset.NaturalMinor.value
 							},
 							propDefs: [
 								{
@@ -139,10 +138,10 @@ const DOCS_CONFIG = {
 						{
 							id: 'model/podList/addPod',
 							name: 'addPod: (A, b) => C',
-							fn: pw_core.models.math.podList.addPod,
+							fn: pw_core.models.podList.addPod,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
-								b: pw_core.models.theory.interval.preset.P1.value
+								A: pw_core.models.podList.scale.preset.Major.value,
+								b: pw_core.models.pod.interval.preset.P1.value
 							},
 							propDefs: [
 								{
@@ -177,9 +176,9 @@ const DOCS_CONFIG = {
 						{
 							id: 'theory/pitch/getName',
 							name: 'getName: (p) => name',
-							fn: pw_core.models.theory.pitch.getName,
+							fn: pw_core.models.index.pitch.getName,
 							props: {
-								p: pw_core.models.theory.pitch.preset.middleC.value
+								p: pw_core.models.index.pitch.preset.middleC.value
 							},
 							propDefs: [
 								{
@@ -203,9 +202,9 @@ const DOCS_CONFIG = {
 						{
 							id: 'theory/degree/getName',
 							name: 'getName: (d) => name',
-							fn: pw_core.models.theory.degree.getName,
+							fn: pw_core.models.index.degree.getName,
 							props: {
-								d: pw_core.models.theory.degree.preset.C.value
+								d: pw_core.models.index.degree.preset.C.value
 							},
 							propDefs: [
 								{
@@ -229,9 +228,9 @@ const DOCS_CONFIG = {
 						{
 							id: 'theory/accidental/getName',
 							name: 'getName: (a) => name',
-							fn: pw_core.models.theory.accidental.getName,
+							fn: pw_core.theory.accidental.getName,
 							props: {
-								a: pw_core.models.theory.accidental.preset.natural.value
+								a: pw_core.theory.accidental.preset.natural.value
 							},
 							propDefs: [
 								{
@@ -253,11 +252,11 @@ const DOCS_CONFIG = {
 					name: 'Interval: pod',
 					functions: [
 						{
-							id: 'theory/interval/getName',
+							id: 'models/pod/interval/getName',
 							name: 'getName: (a) => name',
-							fn: pw_core.models.theory.interval.getName,
+							fn: pw_core.models.pod.getName,
 							props: {
-								A: pw_core.models.theory.interval.preset.P1.value
+								A: pw_core.models.pod.interval.preset.P1.value
 							},
 							propDefs: [
 								{
@@ -279,11 +278,11 @@ const DOCS_CONFIG = {
 					name: 'Note: pod',
 					functions: [
 						{
-							id: 'theory/note/getName',
+							id: 'models/pod/note/getName',
 							name: 'getName: (a) => name',
-							fn: pw_core.models.theory.note.getName,
+							fn: pw_core.models.pod.note.getName,
 							props: {
-								A: pw_core.models.theory.note.preset.C.value
+								A: pw_core.models.pod.note.preset.C.value
 							},
 							propDefs: [
 								{
@@ -305,11 +304,11 @@ const DOCS_CONFIG = {
 					name: 'Chord: podList',
 					functions: [
 						{
-							id: 'theory/chord/inversion',
+							id: 'models/podList/chord/inversion',
 							name: 'inversion: (A, n) => C',
-							fn: pw_core.models.theory.chord.getInversion,
+							fn: pw_core.models.podList.chord.getInversion,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
+								A: pw_core.models.podList.scale.preset.Major.value,
 								n: 0
 							},
 							propDefs: [
@@ -331,12 +330,12 @@ const DOCS_CONFIG = {
 							}
 						},
 						{
-							id: 'theory/chord/transpose',
+							id: 'models/podList/chord/transpose',
 							name: 'transpose: (a, b) => C',
-							fn: pw_core.models.theory.chord.transpose,
+							fn: pw_core.models.podList.chord.transpose,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
-								b: pw_core.models.theory.interval.preset.P1.value
+								A: pw_core.models.podList.scale.preset.Major.value,
+								b: pw_core.models.pod.interval.preset.P1.value
 							},
 							propDefs: [
 								{
@@ -363,14 +362,14 @@ const DOCS_CONFIG = {
 					name: 'Scale: podList',
 					functions: [
 						{
-							id: 'theory/scale/getNumeral',
+							id: 'models/podList/scale/getNumeral',
 							tags: [
 								'theory', 'scale', 'getNumeral', 'roman numeral'
 							],
 							name: 'getNumeral: (A, d) => C',
-							fn: pw_core.models.theory.scale.getNumeral,
+							fn: pw_core.models.podList.scale.getNumeral,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
+								A: pw_core.models.podList.scale.preset.Major.value,
 								d: 0
 							},
 							propDefs: [
@@ -392,11 +391,11 @@ const DOCS_CONFIG = {
 							}
 						},
 						{
-							id: 'theory/scale/getMode',
+							id: 'models/podList/scale/getMode',
 							name: 'getMode: (A, d) => C',
-							fn: pw_core.models.theory.scale.getMode,
+							fn: pw_core.models.podList.scale.getMode,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
+								A: pw_core.models.podList.scale.preset.Major.value,
 								d: 0
 							},
 							propDefs: [
@@ -418,12 +417,12 @@ const DOCS_CONFIG = {
 							}
 						},
 						{
-							id: 'theory/scale/transpose',
+							id: 'models/podList/scale/transpose',
 							name: 'transpose: (a, b) => C',
-							fn: pw_core.models.theory.scale.transpose,
+							fn: pw_core.models.podList.scale.transpose,
 							props: {
-								A: pw_core.models.theory.scale.preset.Major.value,
-								b: pw_core.models.theory.interval.preset.P1.value
+								A: pw_core.models.podList.scale.preset.Major.value,
+								b: pw_core.models.pod.interval.preset.P1.value
 							},
 							propDefs: [
 								{
@@ -448,20 +447,20 @@ const DOCS_CONFIG = {
 			]
 		},
 		{
-			id: 'struct',
+			id: 'structs',
 			name: 'Structs',
 			submodules: [
 				{
-					id: 'struct/cell',
+					id: 'structs/cell',
 					name: 'Cell',
 					functions: [
 						{
-							id: 'struct/cell/from',
+							id: 'structs/cell/from',
 							name: 'modulo: (a, B) => C',
-							fn: pw_core.models.struct.cell.from,
+							fn: pw_core.structs.cell.from,
 							props: {
-								a: pw_core.models.theory.note.preset.C.value,
-								B: pw_core.models.theory.chord.preset.Dom7.value
+								a: pw_core.models.pod.note.preset.C.value,
+								B: pw_core.models.podList.chord.preset.Dom7.value
 							},
 							propDefs: [
 								{

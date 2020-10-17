@@ -1,9 +1,8 @@
 import React from 'react';
-import './interval.css';
 import pw_core from '@pw/core';
 import DropdownInput from '../../ui/DropdownInput/DropdownInput';
 
-const INTERVALS = pw_core.models.theory.interval.presetValues;
+const INTERVALS = pw_core.models.pod.interval.presetValues;
 
 export const IntervalInput = ({ value, setValue }) => {
 	const [p, d] = value;

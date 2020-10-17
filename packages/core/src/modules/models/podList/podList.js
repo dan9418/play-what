@@ -1,6 +1,7 @@
-import pod from './pod'
+import pod from '../pod/pod'
 import index from '../index/index';
-import utils from '../../../utils';
+import chord from './chord';
+import scale from './scale';
 
 // Constants
 
@@ -38,6 +39,8 @@ const findIndexOfPodWithPitch = ({ A, p }) => {
 const addPod = ({ A, b }) => A.map((a) => pod.addPod({ a, b }));
 
 export default {
+	chord,
+	scale,
 	defaultValue: DEFAULT,
 	// Common
 	isValid,

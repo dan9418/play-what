@@ -3,10 +3,10 @@ import pw_color from '@pw/color';
 import React from 'react';
 import './Meter.css';
 
-const getPitchColor = pw_core.models.theory.pitch.getColor;
-const getDegreeColor = pw_core.models.theory.degree.getColor;
-const modulo = pw_core.models.math.index.modulo;
-const MAX = pw_core.models.math.pod.max;
+const getPitchColor = pw_core.models.index.pitch.getColor;
+const getDegreeColor = pw_core.models.index.degree.getColor;
+const modulo = pw_core.models.index.modulo;
+const MAX = pw_core.models.pod.max;
 
 const ListMeter = ({ list }) => {
 	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
@@ -20,9 +20,9 @@ const ListMeter = ({ list }) => {
 const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = indexList.find(v => pw_core.models.math.index.modulo({ a: v, b: max }) === i);
-		const reduced = pw_core.models.math.index.modulo({ a: value, b: max });
-		const color = colorFn ? colorFn(reduced) : pw_core.models.theory.pitch.getColor(reduced);
+		const value = indexList.find(v => pw_core.models.index.modulo({ a: v, b: max }) === i);
+		const reduced = pw_core.models.index.modulo({ a: value, b: max });
+		const color = colorFn ? colorFn(reduced) : pw_core.models.index.pitch.getColor(reduced);
 
 		const style = pw_color.getStylesFromBgColor(color);
 		const text = nameFn ? nameFn(i) : i;

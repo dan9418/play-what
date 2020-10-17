@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonInput from '../../models/ui/ButtonInput/ButtonInput';
+import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import './TrueScale.css';
 
 const TRUE_INTERVAL_MAP = [

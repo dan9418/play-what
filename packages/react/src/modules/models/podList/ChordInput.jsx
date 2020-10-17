@@ -1,9 +1,8 @@
 import React from 'react';
-import './chord.css';
 import pw_core from '@pw/core';
 import DropdownInput from '../../ui/DropdownInput/DropdownInput';
 
-const CHORDS = pw_core.models.theory.chord.presetValues;
+const CHORDS = pw_core.models.podList.chord.presetValues;
 
 export const ChordInput = ({ value, setValue }) => {
 	const [p, d] = value;
