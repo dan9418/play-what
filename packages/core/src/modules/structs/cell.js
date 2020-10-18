@@ -13,7 +13,7 @@ const DEFAULT = null;
 // sum
 
 const from = ({ a, B }) => {
-	const C = pod.addpodList({ a, B });
+	const C = pod.addPodList({ a, B });
 	return { a, B, C };
 };
 

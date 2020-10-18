@@ -48,20 +48,20 @@ const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 						<div className='submenu'>
 							<div className="space" />
 							<div className="action-row">
-								<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('preview')}>preview</ButtonInput>
+								<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>
 								<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
 							</div>
 						</div>
 						<div className='panel'>
 							<div>
-								{panelId === 'preview' &&
+								{panelId === 'view' &&
 									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={false} />
 								}
 								{panelId === 'edit' &&
 									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={true} />
 								}
 							</div>
-						</div >
+						</div>
 					</div>
 				)}
 			</div>

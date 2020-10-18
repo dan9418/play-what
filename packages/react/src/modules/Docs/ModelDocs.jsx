@@ -4,24 +4,35 @@ import "./ModelDocs.css";
 import pw_core from '@pw/core';
 import ModelRow from "./ModelRow";
 import Explore from "../other/Explore";
+import DOCS_CONFIG from "./ModelDocs.config";
+
+const FN = DOCS_CONFIG.modules[0].submodules[0].functions[0];
 
 const ModelDocs = () => {
-	const [a, setA] = useState(pw_core.models.pod.note.preset.C.value);
-	const [B, setB] = useState(pw_core.models.podList.chord.preset.Maj7.value);
-	const cell = pw_core.structs.cell.from({ a, B });
+	const [fn, setFn] = useState(FN);
 
-	const projection = {
-		colorFn: pw_core.models.index.degree.getColor,
-		textFn: pw_core.models.pod.getName,
-		reduced: true,
-		cell
-	};
+	const props = fn.props.reduce((prev, cur, i) => {
+		return {
+			...prev,
+			[cur.name]: cur.value
+		};
+	}, {})
+
+	console.log(props)
+
+	const result = fn.fn(props);
 
 	return (
 		<>
-			<ModelRow label='a' modelType="pod" podType="note" value={a} setValue={setA} />
-			<ModelRow label='b' modelType="podList" podType="interval" value={B} setValue={setB} />
-			<ModelRow label='c' modelType="podList" podType="note" value={cell.C} />
+			<Explore />
+			{
+				fn.props.map((v, i) => {
+					return (
+						<ModelRow key={i} label={v.name} modelType={v.modelType} podType={v.podType} value={props[v.name]} setValue={null} />
+					);
+				})
+			}
+			<ModelRow label='c' modelType="podList" podType="note" value={result} />
 		</>
 	);
 };

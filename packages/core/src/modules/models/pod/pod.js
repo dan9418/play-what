@@ -25,7 +25,7 @@ const reduce = ({ a }) => [index.modulo({ a: a[0], b: MAX[0] }), index.modulo({ 
 
 const addPod = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
 
-const addpodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
+const addPodList = ({ a, B }) => B.map((b) => addPod({ a, b }));
 
 export default {
 	interval,
@@ -39,5 +39,5 @@ export default {
 	reduce,
 	// Utils
 	addPod,
-	addpodList
+	addPodList
 };

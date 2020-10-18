@@ -6,15 +6,19 @@ import DropdownInput from '../ui/DropdownInput/DropdownInput';
 
 const MODULES = DOCS_CONFIG.modules;
 
-const Explore = () => {
+const Explore = ({ set }) => {
 	const [module, setModule] = useState(MODULES[0]);
 	const [submodule, setSubmodule] = useState(module.submodules[0]);
 	const [fn, setFn] = useState(submodule.functions[0]);
+	const onSet = v => {
+		set(v);
+		setFn(v);
+	}
 	return (
 		<div className='explore'>
 			<DropdownInput options={MODULES} value={module} setValue={setModule} />
 			<DropdownInput options={module.submodules} value={submodule} setValue={setSubmodule} />
-			<DropdownInput options={submodule.functions} value={fn} setValue={setFn} />
+			<DropdownInput options={submodule.functions} value={fn} setValue={onSet} />
 		</div>
 	);
 }
