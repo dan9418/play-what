@@ -19,40 +19,9 @@ const ModelDocs = () => {
 
 	return (
 		<>
-			<Explore />
-			<h3>Inputs</h3>
-			<table className="cell-table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Model</th>
-						<th>As</th>
-						<th>Preview</th>
-						<th>Edit</th>
-					</tr>
-				</thead>
-				<tbody>
-					<ModelRow label='a' modelType="pod" podType="note" value={a} setValue={setA} />
-					<ModelRow label='b' modelType="podList" podType="interval" value={B} setValue={setB} />
-				</tbody>
-			</table>
-			<h3>Outputs</h3>
-			<table className="cell-table">
-				<thead>
-					<tr>
-						<th>#</th>
-						<th>Name</th>
-						<th>Model</th>
-						<th>As</th>
-						<th>Preview</th>
-						<th>Edit</th>
-					</tr>
-				</thead>
-				<tbody>
-					<ModelRow label='c' modelType="podList" podType="note" value={cell.C} />
-				</tbody>
-			</table>
+			<ModelRow label='a' modelType="pod" podType="note" value={a} setValue={setA} />
+			<ModelRow label='b' modelType="podList" podType="interval" value={B} setValue={setB} />
+			<ModelRow label='c' modelType="podList" podType="note" value={cell.C} />
 		</>
 	);
 };

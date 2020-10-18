@@ -32,7 +32,7 @@ const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 	return <ListMeter list={list} />
 };
 
-const podListMeter = ({ podList, ...props }) => {
+const PodListMeter = ({ podList, ...props }) => {
 	const P = podList.map(([p, d]) => p);
 	const D = podList.map(([p, d]) => d);
 	return (
@@ -48,9 +48,9 @@ const podListMeter = ({ podList, ...props }) => {
 const Meter = ({ value, modelType, podType, ...props }) => {
 	switch (modelType) {
 	case 'pod':
-		return <podListMeter podList={[value]} {...props} />;
+		return <PodListMeter podList={[value]} {...props} />;
 	case 'podList':
-		return <podListMeter podList={value} {...props} />;
+		return <PodListMeter podList={value} {...props} />;
 	default:
 		return null;
 	}

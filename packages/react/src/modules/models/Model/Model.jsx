@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import PodInput from '../../models/pod/PodInput';
-import PodOutput from '../../models/pod/PodOutput';
-import IntervalInput from '../../models/pod/IntervalInput';
-import IntervalOutput from '../../models/pod/IntervalOutput';
-import NoteInput from '../../models/pod/NoteInput';
+import PodInput from '../pod/PodInput';
+import PodOutput from '../pod/PodOutput';
+import IntervalInput from '../pod/IntervalInput';
+import IntervalOutput from '../pod/IntervalOutput';
+import NoteInput from '../pod/NoteInput';
+import NoteOutput from '../pod/NoteOutput';
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import './Model.css';
 

@@ -3,6 +3,7 @@ import PodListPresetInput from "../models/podList/PodListPresetInput";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import "./ModelDocs.css";
+import Model from '../models/Model/Model';
 
 const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;
@@ -20,59 +21,50 @@ const ViewAsInput = ({ value, setValue }) => {
 const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 
 	const [open, setOpen] = useState(false);
-	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
-	const [viewAs, setViewAs] = useState(podType);
-	const [panelId, setPanelId] = useState('preview');
+	const [panelId, setPanelId] = useState('view');
 
 	console.log('dpb', label, modelType, podType, value);
 
 	return (
 		<>
-			<tr>
-				<td className='model-type'>{'0'}</td>
-				<td className='name'>{label}</td>
-				<td className='model-type'>{modelType}</td>
-				<td className='model-type'>{podType}</td>
-				<td className='preview'></td>
-				<td className='edit pin-right'>
-					<ButtonInput onClick={() => setOpen(!open)} className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
-				</td>
-			</tr>
-			{open && (<>
-				<tr className='submenu'>
-					<td colSpan="6">
-						<div className="space-between">
-							<ViewAsInput value={viewAs} modelType={modelType} setValue={setViewAs} podType={viewAs} />
+			<div className='model-row'>
+				<div className='model-summary'>
+					<div className='model-details'>
+						<div className='model-name'>{label}</div>
+						<div className='type-row'>
+							<div className='model-type'>{modelType}</div>
+							{` | `}
+							<div className='pod-type'>{podType}</div>
+						</div>
+					</div>
+					<div className='edit pin-right'>
+						<ButtonInput onClick={() => setOpen(!open)} className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
+					</div>
+				</div>
+				{open && (
+					<div className='model-panel'>
+						<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
+
+						<div className='submenu'>
 							<div className="space" />
 							<div className="action-row">
-								<ButtonInput active={panelId === 'preview'} className='action-button edit' onClick={() => setPanelId('preview')}>preview</ButtonInput>
-								<ButtonInput active={panelId === 'analyze'} className='action-button edit' onClick={() => setPanelId('analyze')}>analyze</ButtonInput>
+								<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('preview')}>preview</ButtonInput>
 								<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
 							</div>
 						</div>
-					</td>
-				</tr>
-				<tr className='panel'>
-					<td colSpan="6">
-						{panelId === 'preview' &&
-							<podList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={false} />
-						}
-						{panelId === 'analyze' &&
-							<Meter modelType={modelType} podType={viewAs} value={value} setValue={setValue} />
-						}
-						{panelId === 'edit' &&
-							<>
-								<div className="space-between">
-									<div className="space" />
-									<div className='view-as-option' onClick={() => setIsLoadingPreset(!isLoadingPreset)}>{isLoadingPreset ? 'cancel' : 'load preset'}</div>
-								</div>
-								{isLoadingPreset && <PodListPresetInput value={value} setValue={setValue} modelType={modelType} />}
-								{!isLoadingPreset && <podList value={value} modelType={modelType} setValue={setValue} podType={viewAs} isEditing={true} />}
-							</>
-						}
-					</td>
-				</tr >
-			</>)}
+						<div className='panel'>
+							<div>
+								{panelId === 'preview' &&
+									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={false} />
+								}
+								{panelId === 'edit' &&
+									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={true} />
+								}
+							</div>
+						</div >
+					</div>
+				)}
+			</div>
 		</>
 	);
 }
