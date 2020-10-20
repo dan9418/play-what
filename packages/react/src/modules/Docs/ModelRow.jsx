@@ -22,7 +22,7 @@ const ViewAsInput = ({ value, setValue }) => {
 const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
 	const [open, setOpen] = useState(false);
-	const [panelId, setPanelId] = useState('view');
+	const [isEditing, setIsEditing] = useState(false);
 
 	console.log('dpb', label, modelType, podType, value);
 
@@ -53,22 +53,20 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i })
 								<div className='submenu'>
 									<div className="space" />
 									<div className="action-row">
-										<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>
-										<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
+										<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
 									</div>
 								</div>
+								{isEditing &&
+									<div className='submenu'>
+										<div className="space" />
+										<div className="action-row">
+											<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
+										</div>
+									</div>
+								}
 								<div>
-									{panelId === 'view' &&
-										<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={false} />
-									}
-									{panelId === 'edit' &&
-										<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={true} />
-									}
+									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={isEditing} />
 								</div>
-							</div>
-							<h3>Preset</h3>
-							<div>
-								<DropdownInput options={[]} value={{}} />
 							</div>
 
 							<h3>Meter</h3>

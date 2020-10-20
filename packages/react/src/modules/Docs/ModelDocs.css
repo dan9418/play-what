@@ -101,8 +101,14 @@
     width: fit-content;
 }
 
-.action-button {
-    margin-left: 8px;
+.edit {
+    cursor: pointer;
+    color: cornflowerblue;
+    padding: 4px;
+}
+
+.edit:hover {
+    font-weight: bold;
 }
 
 .preset-input {
@@ -110,20 +116,14 @@
     padding: 8px;
 }
 
-.add {
-    text-align: right;
+.add button {
+    text-align: center;
+    width: 100%;
+    background-color: #999;
 }
 
 .pin-right {
     text-align: right;
-}
-
-.new-pod .button-input {
-    background-color: white;
-    color: cornflowerblue;
-    height: 16px;
-    line-height: 16px;
-    padding: 0 8px;
 }
 
 .explore {
