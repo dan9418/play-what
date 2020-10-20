@@ -54,31 +54,39 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 	const Component = isEditing ? getInputComponent(podType) : getOutputComponent(podType);
 	return (
 		<table className='edit-table'>
-			{isEditing && <tr>
-				<td colSpan="3" className="add pin-right">
-					<NewPod value={value} setValue={setValue} podType={podType} i={0} />
-				</td>
-			</tr>}
-			{value.map((v, i) => {
-				const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
-				const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
-				return <>
-					<tr>
-						<td>
-							{i}
-						</td>
-						<td>
-							<Component value={v} setValue={setSubValue} key={i} />
-						</td>
-						{isEditing && <td className='pin-right'><ButtonInput onClick={remove} >X</ButtonInput></td>}
-					</tr>
-					{isEditing && <tr>
-						<td colSpan="3" className="add pin-right">
-							<NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />
-						</td>
-					</tr>}
-				</>;
-			})}
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				{isEditing && <tr>
+					<td colSpan="3" className="add pin-right">
+						<NewPod value={value} setValue={setValue} podType={podType} i={0} />
+					</td>
+				</tr>}
+				{value.map((v, i) => {
+					const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
+					const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
+					return <>
+						<tr>
+							<td>
+								{i}
+							</td>
+							<td>
+								<Component value={v} setValue={setSubValue} key={i} />
+							</td>
+							{isEditing && <td className='pin-right'><ButtonInput onClick={remove} >X</ButtonInput></td>}
+						</tr>
+						{isEditing && <tr>
+							<td colSpan="3" className="add pin-right">
+								<NewPod value={value} setValue={setValue} podType={podType} i={i + 1} />
+							</td>
+						</tr>}
+					</>;
+				})}
+			</tbody>
 		</table>
 	);
 };

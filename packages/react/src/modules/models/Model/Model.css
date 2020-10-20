@@ -42,11 +42,15 @@
 .output {
     padding: 8px;
     border-radius: 8px;
-    margin: 8px;
+    margin: 4px;
     background-color: white;
     cursor: pointer;
 }
 
 .new-pod.active {
     border: 3px solid cornflowerblue;
+}
+
+.edit-table {
+    margin: auto;
 }

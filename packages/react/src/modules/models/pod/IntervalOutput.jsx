@@ -7,7 +7,7 @@ export const IntervalInput = ({ value, reduce }) => {
 
 	const [p, d] = interval;
 
-	const name = pw_core.models.pod.getName({ a: interval });
+	const name = pw_core.models.pod.interval.getName({ a: interval });
 
 	const color = pw_core.models.index.degree.getColor(d);
 	const style = {

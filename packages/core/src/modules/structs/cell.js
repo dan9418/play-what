@@ -12,9 +12,9 @@ const DEFAULT = null;
 
 // sum
 
-const from = ({ a, B }) => {
-	const C = pod.addPodList({ a, B });
-	return { a, B, C };
+const from = ({ keyCenter, intervals }) => {
+	const notes = pod.addPodList({ a: keyCenter, B: intervals });
+	return { keyCenter, intervals, notes };
 };
 
 export default {

@@ -28,11 +28,19 @@ const ModelDocs = () => {
 			{
 				fn.props.map((v, i) => {
 					return (
-						<ModelRow key={i} label={v.name} modelType={v.modelType} podType={v.podType} value={props[v.name]} setValue={null} />
+						<ModelRow
+							key={i}
+							label={v.name}
+							modelType={v.modelType}
+							podType={v.podType}
+							theoryType={v.theoryType}
+							value={props[v.name]}
+							setValue={null}
+						/>
 					);
 				})
 			}
-			<ModelRow label='c' modelType="podList" podType="note" value={result} />
+			<ModelRow label='Notes' modelType="podList" podType="note" value={result} />
 		</>
 	);
 };

@@ -462,22 +462,25 @@ const DOCS_CONFIG = {
 							fn: pw_core.structs.cell.from,
 							props: [
 								{
-									name: 'a',
+									name: 'keyCenter',
 									modelType: 'pod',
 									podType: 'note',
+									theoryType: 'keyCenter',
 									value: pw_core.models.pod.note.preset.C.value
 								},
 								{
-									name: 'B',
+									name: 'intervals',
 									modelType: 'podList',
 									podType: 'interval',
+									theoryType: 'chord',
 									value: pw_core.models.podList.chord.preset.Dom7.value
 								}
 							],
 							outDef: {
-								name: 'C',
+								name: 'notes',
 								modelType: 'podList',
-								podType: 'note'
+								podType: 'note',
+								theoryType: 'chord'
 							}
 						}
 					]

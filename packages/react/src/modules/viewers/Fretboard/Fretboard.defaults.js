@@ -5,7 +5,7 @@ export default {
 	tuning: [16, 11, 7, 2, -3, -8],
 	projection: {
 		colorFn: pw_core.models.index.degree.getColor,
-		textFn: pw_core.models.pod.getName,
+		textFn: pw_core.models.pod.interval.getName,
 		reduced: true,
 		cell: {
 			a: [0, 0],

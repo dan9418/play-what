@@ -77,14 +77,6 @@
     color: cornflowerblue;
 }
 
-.submenu {
-    padding: 8px;
-}
-
-.submenu, .panel {
-    background-color: #eee;
-}
-
 .panel td {
     padding-top: 0;
 }
@@ -177,5 +169,11 @@
 }
 
 .model-panel {
-    padding: 16px;
+    padding: 0 16px 16px;
+}
+
+.subpanel {
+    background-color: #ddd;
+    padding: 8px;
+    border-radius: 8px;
 }

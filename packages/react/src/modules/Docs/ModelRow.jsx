@@ -4,6 +4,7 @@ import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import "./ModelDocs.css";
 import Model from '../models/Model/Model';
+import DropdownInput from "../ui/DropdownInput/DropdownInput";
 
 const ViewAsInput = ({ value, setValue }) => {
 	if (!value) return null;
@@ -18,7 +19,7 @@ const ViewAsInput = ({ value, setValue }) => {
 	);
 };
 
-const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
+const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
 	const [open, setOpen] = useState(false);
 	const [panelId, setPanelId] = useState('view');
@@ -35,6 +36,8 @@ const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 							<div className='model-type'>{modelType}</div>
 							{` | `}
 							<div className='pod-type'>{podType}</div>
+							{` | `}
+							<div className='pod-type'>{theoryType}</div>
 						</div>
 					</div>
 					<div className='edit pin-right'>
@@ -43,24 +46,34 @@ const ModelRow = ({ label, modelType, podType, value, setValue, i }) => {
 				</div>
 				{open && (
 					<div className='model-panel'>
-						<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
-
-						<div className='submenu'>
-							<div className="space" />
-							<div className="action-row">
-								<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>
-								<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
-							</div>
-						</div>
 						<div className='panel'>
-							<div>
-								{panelId === 'view' &&
-									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={false} />
-								}
-								{panelId === 'edit' &&
-									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={true} />
-								}
+
+
+							<div className='subpanel'>
+								<div className='submenu'>
+									<div className="space" />
+									<div className="action-row">
+										<ButtonInput active={panelId === 'view'} className='action-button edit' onClick={() => setPanelId('view')}>view</ButtonInput>
+										<ButtonInput active={panelId === 'edit'} className='action-button edit' onClick={() => setPanelId('edit')}>edit</ButtonInput>
+									</div>
+								</div>
+								<div>
+									{panelId === 'view' &&
+										<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={false} />
+									}
+									{panelId === 'edit' &&
+										<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={true} />
+									}
+								</div>
 							</div>
+							<h3>Preset</h3>
+							<div>
+								<DropdownInput options={[]} value={{}} />
+							</div>
+
+							<h3>Meter</h3>
+							<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
+
 						</div>
 					</div>
 				)}
