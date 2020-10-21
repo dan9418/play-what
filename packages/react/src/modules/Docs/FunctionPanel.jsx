@@ -4,7 +4,7 @@ import ModelPanel from "./ModelPanel";
 
 const FunctionPanel = ({ fnDef }) => {
 
-	const props = fnDef.props.reduce((prev, cur, i) => {
+	const props = fnDef.propDefs.reduce((prev, cur, i) => {
 		return {
 			...prev,
 			[cur.name]: cur.value
@@ -16,14 +16,13 @@ const FunctionPanel = ({ fnDef }) => {
 	return (
 		<>
 			{
-				fnDef.props.map((v, i) => {
+				fnDef.propDefs.map((v, i) => {
 					return (
 						<ModelPanel
 							key={i}
 							label={v.name}
 							modelType={v.modelType}
 							podType={v.podType}
-							theoryType={v.theoryType}
 							value={props[v.name]}
 							setValue={null}
 						/>
@@ -34,7 +33,6 @@ const FunctionPanel = ({ fnDef }) => {
 				label={fnDef.outDef.name}
 				modelType={fnDef.outDef.modelType}
 				podType={fnDef.outDef.podType}
-				theoryType={fnDef.outDef.theoryType}
 				value={result.notes}
 				setValue={null}
 			/>

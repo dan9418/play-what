@@ -6,7 +6,7 @@ import ModelTable from './ModelTable';
 import pw_core from "@pw/core";
 
 
-const getPreviewText = (value, modelType, podType, theoryType) => {
+const getPreviewText = (value, modelType, podType) => {
 	if(modelType === 'pod') {
 		if (podType === 'pod') {
 			return JSON.stringify(value);
@@ -32,7 +32,7 @@ const getPreviewText = (value, modelType, podType, theoryType) => {
 }
 
 
-const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value }) => {
+const ModelSummary = ({ label, modelType, podType, isOpen, setIsOpen, value }) => {
 	return (
 		<div className='model-summary'>
 			<div>
@@ -41,12 +41,10 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 					<div className='model-type'>{modelType}</div>
 					{` | `}
 					<div className='pod-type'>{podType}</div>
-					{` | `}
-					<div className='pod-type'>{theoryType}</div>
 				</div>
 			</div>
 			<div className="preview">
-				{getPreviewText(value, modelType, podType, theoryType)}
+				{getPreviewText(value, modelType, podType)}
 			</div>
 			<div className='edit pin-right'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
@@ -55,7 +53,7 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 	);
 };
 
-const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const ModelTableSubpanel = ({ modelType, podType, value, setValue }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	return (
 		<div className='subpanel'>
@@ -78,7 +76,7 @@ const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue })
 	);
 };
 
-const MeterSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const MeterSubpanel = ({ modelType, podType, value, setValue }) => {
 	return (
 		<div className='subpanel'>
 			<Meter value={value} setValue={setValue} modelType={modelType} podType={podType} />
@@ -86,14 +84,13 @@ const MeterSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	);
 };
 
-const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
+const ModelDetails = ({ modelType, podType, value, setValue }) => {
 	return (
 		<div className='model-details'>
 			<h3>Value</h3>
 			<ModelTableSubpanel
 				modelType={modelType}
 				podType={podType}
-				theoryType={theoryType}
 				value={value}
 				setValue={setValue}
 			/>
@@ -101,7 +98,6 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 			<MeterSubpanel
 				modelType={modelType}
 				podType={podType}
-				theoryType={theoryType}
 				value={value}
 				setValue={setValue}
 			/>
@@ -109,11 +105,11 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 	);
 };
 
-const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
+const ModelPanel = ({ label, modelType, podType, value, setValue, i }) => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
-	console.log('dpb', label, modelType, podType, theoryType, value);
+	console.log('dpb', label, modelType, podType, value);
 
 	return (
 		<div className='model-row'>
@@ -121,7 +117,6 @@ const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i 
 				label={label}
 				modelType={modelType}
 				podType={podType}
-				theoryType={theoryType}
 				isOpen={isOpen}
 				setIsOpen={setIsOpen}
 				value={value}
@@ -131,7 +126,6 @@ const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i 
 					label={label}
 					modelType={modelType}
 					podType={podType}
-					theoryType={theoryType}
 					value={value}
 					setValue={setValue}
 				/>

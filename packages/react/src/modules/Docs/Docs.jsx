@@ -11,7 +11,7 @@ const Docs = () => {
 
 	return (
 		<>
-			<Explore />
+			<Explore set={setFnDef} />
 			<FunctionPanel fnDef={fnDef} />
 		</>
 	);

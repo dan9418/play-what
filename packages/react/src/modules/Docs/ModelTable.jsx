@@ -25,7 +25,7 @@ const NewPod = ({ value, setValue, podType, i }) => {
 	);
 };
 
-const ModelTable = ({ value, setValue, isEditing, modelType, podType, theoryType }) => {
+const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
 	const valueText = podType === 'note' ? 'Note' : podType === 'interval' ? 'Interval' : 'Value';
 	const specialText = podType === 'note' ? 'Frequency' : podType === 'interval' ? 'Ratio' : null;
 
@@ -47,7 +47,6 @@ const ModelTable = ({ value, setValue, isEditing, modelType, podType, theoryType
 					isEditing={isEditing}
 					modelType={modelType}
 					podType={podType}
-					theoryType={theoryType}
 				/>
 			</tbody>
 		</table>

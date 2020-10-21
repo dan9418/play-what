@@ -32,7 +32,7 @@ const getInput = (value, podType) => {
 	return null;
 }
 
-const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, theoryType }) => {
+const ModelRow = ({ value, setValue, i, isEditing, modelType, podType }) => {
 
 	const reduced = pw_core.models.pod.reduce({ a: value });
 	let name = isEditing ? getInput(reduced, podType) : getName(reduced, podType);
@@ -58,7 +58,7 @@ const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, theoryTyp
 	);
 };
 
-const ModelRowManager = ({ value, setValue, isEditing, modelType, podType, theoryType }) => {
+const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => {
 	if (modelType === 'index') {
 		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
 	}
@@ -70,7 +70,6 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType, theor
 			isEditing={isEditing}
 			modelType={modelType}
 			podType={podType}
-			theoryType={theoryType}
 		/>;
 	}
 	else if (modelType === 'podList') {
@@ -85,7 +84,6 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType, theor
 				isEditing={isEditing}
 				modelType={modelType}
 				podType={podType}
-				theoryType={theoryType}
 			/>;
 		});
 	}
