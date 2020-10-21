@@ -1,34 +1,9 @@
 import React, { useState } from 'react';
-import PodInput from '../models/pod/PodInput';
-import PodOutput from '../models/pod/PodOutput';
-import IntervalInput from '../models/pod/IntervalInput';
-import IntervalOutput from '../models/pod/IntervalOutput';
-import NoteInput from '../models/pod/NoteInput';
-import NoteOutput from '../models/pod/NoteOutput';
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
+import ModelIO from './ModelIO';
+import pw_core from '@pw/core';
+
 import './ModelTable.css';
-
-const getOutputComponent = (podType) => {
-	switch (podType) {
-	case 'pod':
-		return PodOutput;
-	case 'interval':
-		return IntervalOutput;
-	case 'note':
-		return NoteOutput;
-	}
-}
-
-const getInputComponent = (podType) => {
-	switch (podType) {
-	case 'pod':
-		return PodInput;
-	case 'interval':
-		return IntervalInput;
-	case 'note':
-		return NoteInput;
-	}
-}
 
 const NewPod = ({ value, setValue, podType, i }) => {
 	const [isAdding, setIsAdding] = useState(false);
@@ -50,16 +25,26 @@ const NewPod = ({ value, setValue, podType, i }) => {
 	);
 };
 
-const EditTable = ({ value, setValue, isEditing, podType }) => {
-	const Component = isEditing ? getInputComponent(podType) : getOutputComponent(podType);
+const reduceModel = (value, modelType) => {
+	if(modelType === 'pod') return pw_core.models.pod.reduce({ a: value });
+	if(modelType === 'podList') return pw_core.models.podList.reduce({ A: value });
+}
+
+const ModelTable = ({ value, setValue, isEditing, modelType, podType, theoryType }) => {
+	const valueText = podType === 'note' ? 'Note' : podType === 'interval' ? 'Interval' : 'Value';
+	const specialText = podType === 'note' ? 'Frequency' : podType === 'interval' ? 'Ratio' : null;
+
+	const reduced = reduceModel(value, modelType);
+
 	return (
-		<table className='edit-table'>
+		<table className='model-table'>
 			<thead>
 				<tr>
 					<th>#</th>
-					<th>Name</th>
 					<th>Pod</th>
-					<th>Ratio</th>
+					<th>Reduced</th>
+					<th>{valueText}</th>
+					<th>{specialText}</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -77,10 +62,21 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 								{i}
 							</td>
 							<td>
-								<Component value={v} setValue={setSubValue} key={i} />
+								{JSON.stringify(v)}
 							</td>
 							<td>
-								{JSON.stringify(v)}
+								{JSON.stringify(reduced[i])}
+							</td>
+							<td>
+								<ModelIO
+									value={value}
+									setValue={setSubValue}
+									i={i}
+									isEditing={isEditing}
+									modelType={modelType}
+									podType={podType}
+									theoryType={theoryType}
+								/>
 							</td>
 							<td>
 								1:1
@@ -99,15 +95,4 @@ const EditTable = ({ value, setValue, isEditing, podType }) => {
 	);
 };
 
-const Model = ({ value, setValue, isEditing, podType, modelType }) => {
-	switch (modelType) {
-	case 'pod':
-		return <EditTable value={[value]} setValue={v => setValue(v[0])} podType={podType} isEditing={isEditing} />;
-	case 'podList':
-		return <EditTable value={value} setValue={setValue} podType={podType} isEditing={isEditing} />;
-	default:
-		return <div>{value}</div>;
-	}
-};
-
-export default Model;
+export default ModelTable;

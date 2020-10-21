@@ -22,6 +22,8 @@ const areEqual = ({ list1, list2 }) => {
 	return true;
 };
 
+const reduce = ({ A }) => A.map((a) => pod.reduce({ a }));
+
 // Utils
 
 const findPodWithPitch = ({ A, p }) => {
@@ -45,6 +47,7 @@ export default {
 	// Common
 	isValid,
 	areEqual,
+	reduce,
 	// Utils
 	findPodWithPitch,
 	findIndexOfPodWithPitch,

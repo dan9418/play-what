@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import Explore from "../other/Explore";
-import DOCS_CONFIG from "./Docs.config";
+import React from "react";
 import "./Docs.css";
 import ModelPanel from "./ModelPanel";
 

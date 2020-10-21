@@ -24,7 +24,7 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 	);
 };
 
-const PodTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	return (
 		<div className='subpanel'>
@@ -61,7 +61,7 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 	return (
 		<div className='model-details'>
 			<h3>Intervals</h3>
-			<PodTableSubpanel
+			<ModelTableSubpanel
 				modelType={modelType}
 				podType={podType}
 				theoryType={theoryType}
