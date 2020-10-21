@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import PodListPresetInput from "../models/podList/PodListPresetInput";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import "./ModelDocs.css";
-import Model from '../models/Model/Model';
-import DropdownInput from "../ui/DropdownInput/DropdownInput";
+import ModelTable from './ModelTable';
 
 const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen }) => {
 	return (
@@ -45,7 +43,7 @@ const PodTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) =
 				</div>
 			}
 			<div>
-				<Model value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
+				<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 			</div>
 		</div>
 	);
