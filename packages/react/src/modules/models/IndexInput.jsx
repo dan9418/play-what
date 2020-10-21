@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './models.css';
 
 const IndexInput = props => {
 	const { value, setValue, className } = props;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './pod.css';
+import './models.css';
 import IndexInput from '../index/IndexInput';
 
 export const PodInput = ({ value, setValue }) => {
