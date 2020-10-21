@@ -5,13 +5,8 @@ import './Stage.css';
 
 const TABS = [
 	{
-		id: 'intro',
-		name: 'Intro',
-		component: <div />
-	},
-	{
-		id: 'explore',
-		name: 'Explore',
+		id: 'docs',
+		name: 'Docs',
 		component: <Docs/>
 	},
 	{
@@ -67,7 +62,7 @@ const MODELS = [
 ]
 
 const Stage = () => {
-	const [tabIndex, setTabIndex] = useState(1);
+	const [tabIndex, setTabIndex] = useState(0);
 	const tab = TABS[tabIndex];
 	return (
 		<div className="stage">
