@@ -31,17 +31,15 @@ const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue })
 			<div className='submenu'>
 				<div className="space" />
 				<div className="action-row">
+					{isEditing &&
+						<>
+							<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
+							{` | `}
+						</>
+					}
 					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
 				</div>
 			</div>
-			{isEditing &&
-				<div className='submenu'>
-					<div className="space" />
-					<div className="action-row">
-						<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
-					</div>
-				</div>
-			}
 			<div>
 				<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 			</div>
