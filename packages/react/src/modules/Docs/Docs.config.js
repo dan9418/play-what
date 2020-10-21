@@ -1,5 +1,5 @@
 import pw_core from '@pw/core';
-import './ModelDocs.css';
+import './Docs.css';
 
 const DOCS_CONFIG = {
 	id: 'root',

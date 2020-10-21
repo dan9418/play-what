@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
-import "./ModelDocs.css";
+import "./Docs.css";
 import ModelTable from './ModelTable';
 
 const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen }) => {

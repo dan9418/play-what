@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Fretboard from "../viewers/Fretboard/Fretboard";
-import "./ModelDocs.css";
+import "./Docs.css";
 import pw_core from '@pw/core';
 import ModelRow from "./ModelRow";
 import Explore from "../other/Explore";
-import DOCS_CONFIG from "./ModelDocs.config";
+import DOCS_CONFIG from "./Docs.config";
 
 const FN = DOCS_CONFIG.modules[0].submodules[0].functions[0];
 
-const ModelDocs = () => {
+const Docs = () => {
 	const [fn, setFn] = useState(FN);
 
 	const props = fn.props.reduce((prev, cur, i) => {
@@ -45,4 +45,4 @@ const ModelDocs = () => {
 	);
 };
 
-export default ModelDocs;
+export default Docs;
