@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Fretboard from "../viewers/Fretboard/Fretboard";
 import "./Docs.css";
 import pw_core from '@pw/core';
-import ModelRow from "./ModelRow";
+import ModelPanel from "./ModelPanel";
 import Explore from "../other/Explore";
 import DOCS_CONFIG from "./Docs.config";
 
@@ -28,7 +28,7 @@ const Docs = () => {
 			{
 				fn.props.map((v, i) => {
 					return (
-						<ModelRow
+						<ModelPanel
 							key={i}
 							label={v.name}
 							modelType={v.modelType}
@@ -40,7 +40,7 @@ const Docs = () => {
 					);
 				})
 			}
-			<ModelRow label='Notes' modelType="podList" podType="note" value={result} />
+			<ModelPanel label='Notes' modelType="podList" podType="note" value={result} />
 		</>
 	);
 };

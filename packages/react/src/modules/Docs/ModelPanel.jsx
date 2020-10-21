@@ -60,29 +60,27 @@ const MeterSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 	return (
 		<div className='model-details'>
-			<div className='panel'>
-				<h3>Intervals</h3>
-				<PodTableSubpanel
-					modelType={modelType}
-					podType={podType}
-					theoryType={theoryType}
-					value={value}
-					setValue={setValue}
-				/>
-				<h3>Meter</h3>
-				<MeterSubpanel
-					modelType={modelType}
-					podType={podType}
-					theoryType={theoryType}
-					value={value}
-					setValue={setValue}
-				/>
-			</div>
+			<h3>Intervals</h3>
+			<PodTableSubpanel
+				modelType={modelType}
+				podType={podType}
+				theoryType={theoryType}
+				value={value}
+				setValue={setValue}
+			/>
+			<h3>Meter</h3>
+			<MeterSubpanel
+				modelType={modelType}
+				podType={podType}
+				theoryType={theoryType}
+				value={value}
+				setValue={setValue}
+			/>
 		</div>
 	);
 };
 
-const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
+const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -112,4 +110,4 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i })
 	);
 }
 
-export default ModelRow;
+export default ModelPanel;

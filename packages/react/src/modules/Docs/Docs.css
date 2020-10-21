@@ -53,10 +53,6 @@
     color: cornflowerblue;
 }
 
-.panel td {
-    padding-top: 0;
-}
-
 .space-between {
     display: flex;
     align-items: center;
