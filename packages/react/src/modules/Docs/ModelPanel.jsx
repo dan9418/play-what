@@ -3,8 +3,36 @@ import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
 import ModelTable from './ModelTable';
+import pw_core from "@pw/core";
 
-const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen }) => {
+
+const getPreviewText = (value, modelType, podType, theoryType) => {
+	if(modelType === 'pod') {
+		if (podType === 'pod') {
+			return JSON.stringify(value);
+		}
+		else if (podType === 'note') {
+			return pw_core.models.pod.note.getName({ a: value });
+		}
+		else if (podType === 'interval') {
+			return pw_core.models.pod.interval.getName({ a: value });
+		}
+	}
+	if(modelType === 'podList') {
+		if (podType === 'pod') {
+			return JSON.stringify(value);
+		}
+		else if (podType === 'note') {
+			return value.map(a => pw_core.models.pod.note.getName({ a })).join(', ');
+		}
+		else if (podType === 'interval') {
+			return value.map(a => pw_core.models.pod.interval.getName({ a })).join(', ');
+		}
+	}
+}
+
+
+const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value }) => {
 	return (
 		<div className='model-summary'>
 			<div>
@@ -16,6 +44,9 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 					{` | `}
 					<div className='pod-type'>{theoryType}</div>
 				</div>
+			</div>
+			<div className="preview">
+				{getPreviewText(value, modelType, podType, theoryType)}
 			</div>
 			<div className='edit pin-right'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
@@ -58,7 +89,7 @@ const MeterSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 	return (
 		<div className='model-details'>
-			<h3>Intervals</h3>
+			<h3>Value</h3>
 			<ModelTableSubpanel
 				modelType={modelType}
 				podType={podType}
@@ -66,7 +97,7 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 				value={value}
 				setValue={setValue}
 			/>
-			<h3>Meter</h3>
+			<h3>Analysis</h3>
 			<MeterSubpanel
 				modelType={modelType}
 				podType={podType}
@@ -93,6 +124,7 @@ const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i 
 				theoryType={theoryType}
 				isOpen={isOpen}
 				setIsOpen={setIsOpen}
+				value={value}
 			/>
 			{isOpen && (
 				<ModelDetails
