@@ -6,22 +6,29 @@ import "./ModelDocs.css";
 import Model from '../models/Model/Model';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 
-const ViewAsInput = ({ value, setValue }) => {
-	if (!value) return null;
+const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen }) => {
 	return (
-		<div className='view-as-input'>
-			<div className={`view-as-option ${value === 'pod' ? 'active' : ''}`} onClick={() => setValue('pod')}>Pods</div>
-			|
-			<div className={`view-as-option ${value === 'note' ? 'active' : ''}`} onClick={() => setValue('note')}>Notes</div>
-			|
-			<div className={`view-as-option ${value === 'interval' ? 'active' : ''}`} onClick={() => setValue('interval')}>Intervals</div>
+		<div className='model-summary'>
+			<div className='model-details'>
+				<div className='model-name'>{label}</div>
+				<div className='type-row'>
+					<div className='model-type'>{modelType}</div>
+					{` | `}
+					<div className='pod-type'>{podType}</div>
+					{` | `}
+					<div className='pod-type'>{theoryType}</div>
+				</div>
+			</div>
+			<div className='edit pin-right'>
+				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
+			</div>
 		</div>
 	);
 };
 
 const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
-	const [open, setOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 	const [isEditing, setIsEditing] = useState(false);
 
 	console.log('dpb', label, modelType, podType, value);
@@ -29,26 +36,18 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i })
 	return (
 		<>
 			<div className='model-row'>
-				<div className='model-summary'>
-					<div className='model-details'>
-						<div className='model-name'>{label}</div>
-						<div className='type-row'>
-							<div className='model-type'>{modelType}</div>
-							{` | `}
-							<div className='pod-type'>{podType}</div>
-							{` | `}
-							<div className='pod-type'>{theoryType}</div>
-						</div>
-					</div>
-					<div className='edit pin-right'>
-						<ButtonInput onClick={() => setOpen(!open)} className='action-button edit'>{open ? '-' : '+'}</ButtonInput>
-					</div>
-				</div>
-				{open && (
+				<ModelSummary
+					label={label}
+					modelType={modelType}
+					podType={podType}
+					theoryType={theoryType}
+					isOpen={isOpen}
+					setIsOpen={setIsOpen}
+				/>
+				{isOpen && (
 					<div className='model-panel'>
 						<div className='panel'>
-
-
+							<h3>Intervals</h3>
 							<div className='subpanel'>
 								<div className='submenu'>
 									<div className="space" />
@@ -70,8 +69,9 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i })
 							</div>
 
 							<h3>Meter</h3>
-							<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
-
+							<div className='subpanel'>
+								<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
+							</div>
 						</div>
 					</div>
 				)}

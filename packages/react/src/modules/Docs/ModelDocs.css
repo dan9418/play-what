@@ -1,3 +1,8 @@
+.h1, h2, h3, h4, h5 {
+    max-width: 512px;
+    margin: auto;
+}
+
 .docs {
     width: 512px;
     margin: 24px auto;
@@ -33,11 +38,6 @@
     font-weight: bold;
 }
 
-.fold> :first-child {
-    cursor: pointer;
-    width: 100%;
-}
-
 .model-row>.input-meter {
     width: 100%;
     display: grid;
@@ -46,30 +46,6 @@
     grid-gap: 8px;
     padding: 8px;
 }
-
-.view-as-input {
-    display: flex;
-    align-items: center;
-}
-
-.view-as-option {
-    padding: 4px;
-    cursor: pointer;
-    color: cornflowerblue;
-    white-space: nowrap;
-}
-
-.view-as-option.active, .view-as-option:hover {
-    font-weight: bold;
-}
-
-.content {}
-
-.h1, h2, h3, h4, h5 {
-    max-width: 512px;
-    margin: auto;
-}
-
 
 .load {
     padding: 4px;
@@ -136,7 +112,7 @@
 
 .model-row {
     background-color: #eee;
-    border-radius: 16px;
+    border-radius: 8px;
     margin: 16px auto;
     width: 100%;
     max-width: 512px;
@@ -176,4 +152,8 @@
     background-color: #ddd;
     padding: 8px;
     border-radius: 8px;
+}
+
+.model-row h3 {
+    margin: 8px 0;
 }
