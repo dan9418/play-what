@@ -26,35 +26,59 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 	);
 };
 
-const ModelDetails = ({ modelType, podType, theoryType, value, setValue, isEditing, setIsEditing }) => {
+const PodTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+	const [isEditing, setIsEditing] = useState(false);
+	return (
+		<div className='subpanel'>
+			<div className='submenu'>
+				<div className="space" />
+				<div className="action-row">
+					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+				</div>
+			</div>
+			{isEditing &&
+				<div className='submenu'>
+					<div className="space" />
+					<div className="action-row">
+						<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
+					</div>
+				</div>
+			}
+			<div>
+				<Model value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
+			</div>
+		</div>
+	);
+};
+
+const MeterSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+	return (
+		<div className='subpanel'>
+			<Meter value={value} setValue={setValue} modelType={modelType} podType={podType} />
+		</div>
+	);
+};
+
+const ModelDetails = ({ modelType, podType, theoryType, value, setValue }) => {
 	return (
 		<div className='model-details'>
 			<div className='panel'>
 				<h3>Intervals</h3>
-				<div className='subpanel'>
-					<div className='submenu'>
-						<div className="space" />
-						<div className="action-row">
-							<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-						</div>
-					</div>
-					{isEditing &&
-						<div className='submenu'>
-							<div className="space" />
-							<div className="action-row">
-								<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
-							</div>
-						</div>
-					}
-					<div>
-						<Model value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
-					</div>
-				</div>
-
+				<PodTableSubpanel
+					modelType={modelType}
+					podType={podType}
+					theoryType={theoryType}
+					value={value}
+					setValue={setValue}
+				/>
 				<h3>Meter</h3>
-				<div className='subpanel'>
-					<Meter value={value} setValue={setValue} modelType={modelType} podType={podType} />
-				</div>
+				<MeterSubpanel
+					modelType={modelType}
+					podType={podType}
+					theoryType={theoryType}
+					value={value}
+					setValue={setValue}
+				/>
 			</div>
 		</div>
 	);
@@ -63,35 +87,30 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue, isEditi
 const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
 	const [isOpen, setIsOpen] = useState(false);
-	const [isEditing, setIsEditing] = useState(false);
 
-	console.log('dpb', label, modelType, podType, value);
+	console.log('dpb', label, modelType, podType, theoryType, value);
 
 	return (
-		<>
-			<div className='model-row'>
-				<ModelSummary
+		<div className='model-row'>
+			<ModelSummary
+				label={label}
+				modelType={modelType}
+				podType={podType}
+				theoryType={theoryType}
+				isOpen={isOpen}
+				setIsOpen={setIsOpen}
+			/>
+			{isOpen && (
+				<ModelDetails
 					label={label}
 					modelType={modelType}
 					podType={podType}
 					theoryType={theoryType}
-					isOpen={isOpen}
-					setIsOpen={setIsOpen}
+					value={value}
+					setValue={setValue}
 				/>
-				{isOpen && (
-					<ModelDetails
-						label={label}
-						modelType={modelType}
-						podType={podType}
-						theoryType={theoryType}
-						isEditing={isEditing}
-						setIsEditing={setIsEditing}
-						value={value}
-						setValue={setValue}
-					/>
-				)}
-			</div>
-		</>
+			)}
+		</div>
 	);
 }
 
