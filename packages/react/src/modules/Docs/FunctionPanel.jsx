@@ -30,7 +30,14 @@ const FunctionPanel = ({ fnDef }) => {
 					);
 				})
 			}
-			<ModelPanel label='Notes' modelType="podList" podType="note" value={result} />
+			<ModelPanel
+				label={fnDef.outDef.name}
+				modelType={fnDef.outDef.modelType}
+				podType={fnDef.outDef.podType}
+				theoryType={fnDef.outDef.theoryType}
+				value={result.notes}
+				setValue={null}
+			/>
 		</>
 	);
 }

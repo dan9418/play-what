@@ -1,56 +1,12 @@
-.list {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ouptput {
-    text-align: center;
-    padding: 8px;
-    margin: 4px;
-    border-radius: 8px;
-    background-color: white;
-    cursor: pointer;
-    position: relative;
-}
-
-.l-r {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 8px;
-}
-
-.center-x {
-    display: flex;
-    align-items: center;
-}
-
-.center-y {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.multi-preview {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.output {
-    padding: 8px;
-    border-radius: 8px;
-    margin: 4px;
-    background-color: white;
-    cursor: pointer;
-}
-
-.new-pod.active {
-    border: 3px solid cornflowerblue;
-}
-
-.edit-table {
+.model-table {
     margin: auto;
+}
+
+.model-table td {
+    margin: 0;
+    padding: 4px;
+}
+
+.model-table th {
+    padding: 8px;
 }

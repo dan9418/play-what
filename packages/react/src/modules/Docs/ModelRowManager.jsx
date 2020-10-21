@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import pw_core from "@pw/core";
+import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import './ModelTable.css';
 
 const getName = (value, podType) => {
@@ -16,10 +17,25 @@ const getName = (value, podType) => {
 	return null;
 }
 
+const getInput = (value, podType) => {
+	if (podType === 'pod') {
+		return value;
+	}
+	else if (podType === 'note') {
+		const options = pw_core.models.pod.note.presetValues;
+		return <DropdownInput options={options} value={null} setValue={null} />
+	}
+	else if (podType === 'interval') {
+		const options = pw_core.models.pod.interval.presetValues;
+		return <DropdownInput options={options} value={null} setValue={null} displayProperty="id" />
+	}
+	return null;
+}
+
 const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, theoryType }) => {
 
 	const reduced = pw_core.models.pod.reduce({ a: value });
-	let name = getName(reduced, podType);
+	let name = isEditing ? getInput(reduced, podType) : getName(reduced, podType);
 
 	return (
 		<tr key={i}>
