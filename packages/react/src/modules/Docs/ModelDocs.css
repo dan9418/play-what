@@ -125,6 +125,10 @@
     justify-content: space-between;
 }
 
+.model-details {
+    padding: 0 16px 16px;
+}
+
 .model-name {
     font-size: 120%;
     font-weight: bold;
@@ -142,10 +146,6 @@
 
 .model-type, .pod-type {
     padding: 4px;
-}
-
-.model-panel {
-    padding: 0 16px 16px;
 }
 
 .subpanel {

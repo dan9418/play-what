@@ -9,7 +9,7 @@ import DropdownInput from "../ui/DropdownInput/DropdownInput";
 const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen }) => {
 	return (
 		<div className='model-summary'>
-			<div className='model-details'>
+			<div>
 				<div className='model-name'>{label}</div>
 				<div className='type-row'>
 					<div className='model-type'>{modelType}</div>
@@ -21,6 +21,40 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 			</div>
 			<div className='edit pin-right'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
+			</div>
+		</div>
+	);
+};
+
+const ModelDetails = ({ modelType, podType, theoryType, value, setValue, isEditing, setIsEditing }) => {
+	return (
+		<div className='model-details'>
+			<div className='panel'>
+				<h3>Intervals</h3>
+				<div className='subpanel'>
+					<div className='submenu'>
+						<div className="space" />
+						<div className="action-row">
+							<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+						</div>
+					</div>
+					{isEditing &&
+						<div className='submenu'>
+							<div className="space" />
+							<div className="action-row">
+								<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
+							</div>
+						</div>
+					}
+					<div>
+						<Model value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
+					</div>
+				</div>
+
+				<h3>Meter</h3>
+				<div className='subpanel'>
+					<Meter value={value} setValue={setValue} modelType={modelType} podType={podType} />
+				</div>
 			</div>
 		</div>
 	);
@@ -45,35 +79,16 @@ const ModelRow = ({ label, modelType, podType, theoryType, value, setValue, i })
 					setIsOpen={setIsOpen}
 				/>
 				{isOpen && (
-					<div className='model-panel'>
-						<div className='panel'>
-							<h3>Intervals</h3>
-							<div className='subpanel'>
-								<div className='submenu'>
-									<div className="space" />
-									<div className="action-row">
-										<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-									</div>
-								</div>
-								{isEditing &&
-									<div className='submenu'>
-										<div className="space" />
-										<div className="action-row">
-											<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
-										</div>
-									</div>
-								}
-								<div>
-									<Model value={value} modelType={modelType} setValue={setValue} podType={podType} isEditing={isEditing} />
-								</div>
-							</div>
-
-							<h3>Meter</h3>
-							<div className='subpanel'>
-								<Meter modelType={modelType} podType={podType} value={value} setValue={setValue} />
-							</div>
-						</div>
-					</div>
+					<ModelDetails
+						label={label}
+						modelType={modelType}
+						podType={podType}
+						theoryType={theoryType}
+						isEditing={isEditing}
+						setIsEditing={setIsEditing}
+						value={value}
+						setValue={setValue}
+					/>
 				)}
 			</div>
 		</>
