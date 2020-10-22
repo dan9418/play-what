@@ -41,10 +41,12 @@ const getInput = (value, podType) => {
 	return null;
 }
 
-const ModelRow = ({ value, setValue, i, isEditing, modelType, podType }) => {
+const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, remove }) => {
 
 	const reduced = pw_core.models.pod.reduce({ a: value });
 	let name = isEditing ? getInput(reduced, podType) : getName(reduced, podType);
+
+	const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 
 	return (
 		<tr key={i}>
@@ -63,6 +65,17 @@ const ModelRow = ({ value, setValue, i, isEditing, modelType, podType }) => {
 			<td>
 				1:1
 			</td>
+			{isEditing && (
+				<>
+					<td>
+						<ButtonInput onClick={remove}>X</ButtonInput>
+					</td>
+					<td>
+						<ButtonInput>^</ButtonInput>
+						<ButtonInput>v</ButtonInput>
+					</td>
+				</>
+			)}
 		</tr>
 	);
 };
@@ -72,28 +85,32 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => 
 		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
 	}
 	else if (modelType === 'pod') {
-		return <ModelRow
-			value={value}
-			i={0}
-			setValue={setValue}
-			isEditing={isEditing}
-			modelType={modelType}
-			podType={podType}
-		/>;
-	}
-	else if (modelType === 'podList') {
-		return value.map((v, i) => {
-			const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
-			//const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
-			return <ModelRow
-				key={i}
-				i={i}
-				value={v}
-				setValue={setSubValue}
+		return (
+			<ModelRow
+				value={value}
+				i={0}
+				setValue={setValue}
 				isEditing={isEditing}
 				modelType={modelType}
 				podType={podType}
-			/>;
+			/>
+		);
+	}
+	else if (modelType === 'podList') {
+		return value.map((v, i) => {
+			const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
+			return (
+				<ModelRow
+					key={i}
+					i={i}
+					value={v}
+					setValue={setValue}
+					isEditing={isEditing}
+					modelType={modelType}
+					podType={podType}
+					remove={remove}
+				/>
+			);
 		});
 	}
 };

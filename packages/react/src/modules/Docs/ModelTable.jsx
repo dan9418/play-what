@@ -35,6 +35,16 @@ const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
 					<th>Reduced</th>
 					<th>I/O</th>
 					<th>Other</th>
+					{isEditing && (
+						<>
+							<th>
+								Delete
+							</th>
+							<th>
+								Order
+							</th>
+						</>
+					)}
 				</tr>
 			</thead>
 			<tbody>

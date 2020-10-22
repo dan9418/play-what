@@ -26,6 +26,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'b',
+									value: 5,
 									modelType: 'index',
 									podType: 'number'
 								}

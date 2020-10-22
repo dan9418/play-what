@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Docs.css";
 import ModelPanel from "./ModelPanel";
 
+const getProps = propDefs => propDefs.reduce((prev, cur, i) => {
+	return {
+		...prev,
+		[cur.name]: cur.value
+	};
+}, {});
+
 const FunctionPanel = ({ fnDef }) => {
 
-	const props = fnDef.propDefs.reduce((prev, cur, i) => {
-		return {
-			...prev,
-			[cur.name]: cur.value
-		};
-	}, {})
+	const [fnProps, setFnProps] = useState(null);
+	const [fnResult, setFnResult] = useState(null);
+	useEffect(() => {
+		const newProps = getProps(fnDef.propDefs);
+		setFnProps(newProps);
+		const newResult = fnDef.fn(newProps);
+		setFnResult(newResult);
+	}, [fnDef.id])
 
-	const result = fnDef.fn(props);
+	console.log('dpb - fn', fnProps, fnResult)
+
+	if (!fnProps || !fnResult) return null;
 
 	return (
 		<>
 			{
 				fnDef.propDefs.map((v, i) => {
+					const setProp = p => setFnProps({ ...fnProps, [v.name]: p });
 					return (
 						<ModelPanel
 							key={i}
 							label={v.name}
 							modelType={v.modelType}
 							podType={v.podType}
-							value={props[v.name]}
-							setValue={null}
+							value={fnProps[v.name]}
+							setValue={setProp}
 						/>
 					);
 				})
@@ -33,7 +45,7 @@ const FunctionPanel = ({ fnDef }) => {
 				label={fnDef.outDef.name}
 				modelType={fnDef.outDef.modelType}
 				podType={fnDef.outDef.podType}
-				value={result.notes}
+				value={fnResult.notes || fnResult}
 				setValue={null}
 			/>
 		</>
