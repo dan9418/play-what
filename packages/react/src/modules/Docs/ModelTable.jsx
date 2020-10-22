@@ -26,9 +26,6 @@ const NewPod = ({ value, setValue, podType, i }) => {
 };
 
 const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
-	const valueText = podType === 'note' ? 'Note' : podType === 'interval' ? 'Interval' : 'Value';
-	const specialText = podType === 'note' ? 'Frequency' : podType === 'interval' ? 'Ratio' : null;
-
 	return (
 		<table className='model-table'>
 			<thead>
@@ -36,8 +33,8 @@ const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
 					<th>#</th>
 					<th>Pod</th>
 					<th>Reduced</th>
-					<th>{valueText}</th>
-					<th>{specialText}</th>
+					<th>I/O</th>
+					<th>Other</th>
 				</tr>
 			</thead>
 			<tbody>

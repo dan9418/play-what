@@ -22,21 +22,18 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: 7,
 									modelType: 'index',
-									podType: null,
-									theoryType: null
+									podType: 'number'
 								},
 								{
 									name: 'b',
 									modelType: 'index',
-									podType: null,
-									theoryType: null
+									podType: 'number'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'index',
-								podType: null,
-								theoryType: null
+								podType: 'number'
 							}
 						},
 						{
@@ -48,28 +45,25 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: 7,
 									modelType: 'index',
-									podType: null,
-									theoryType: null
+									podType: 'number'
 								},
 								{
 									name: 'b',
 									value: 5,
 									modelType: 'index',
-									podType: null,
-									theoryType: null
+									podType: 'number'
 								},
 								{
 									name: 'divisor',
 									value: 7,
 									modelType: 'index',
-									podType: null,
-									theoryType: null
+									podType: 'number'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'index',
-								podType: null
+								podType: 'number'
 							}
 						}
 					]
@@ -87,22 +81,19 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: pw_core.models.pod.interval.preset.M3.value,
 									modelType: 'pod',
-									podType: 'pod',
-									theoryType: 'pod'
+									podType: 'pod'
 								},
 								{
 									name: 'b',
 									value: pw_core.models.pod.interval.preset.P5.value,
 									modelType: 'pod',
-									podType: 'pod',
-									theoryType: 'pod'
+									podType: 'pod'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'pod',
-								podType: 'pod',
-								theoryType: 'pod'
+								podType: 'pod'
 							}
 						},
 						{
@@ -114,22 +105,19 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: pw_core.models.pod.note.preset.C.value,
 									modelType: 'pod',
-									podType: 'pod',
-									theoryType: 'pod'
+									podType: 'pod'
 								},
 								{
 									name: 'B',
 									value: pw_core.models.podList.chord.preset.Maj.value,
 									modelType: 'podList',
-									podType: 'pod',
-									theoryType: 'podList'
+									podType: 'podList'
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'pod',
-								theoryType: 'podList'
+								podType: 'podList'
 							}
 						}
 					]
@@ -147,22 +135,19 @@ const DOCS_CONFIG = {
 									name: 'A',
 									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'pod',
-									theoryType: 'podList'
+									podType: 'podList'
 								},
 								{
 									name: 'b',
 									value: pw_core.models.pod.interval.preset.P1.value,
 									modelType: 'pod',
-									podType: 'pod',
-									theoryType: 'pod'
+									podType: 'pod'
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'pod',
-								theoryType: 'podList'
+								podType: 'podList'
 							}
 						}
 					]
@@ -467,22 +452,19 @@ const DOCS_CONFIG = {
 									name: 'keyCenter',
 									modelType: 'pod',
 									podType: 'note',
-									theoryType: 'keyCenter',
 									value: pw_core.models.pod.note.preset.C.value
 								},
 								{
 									name: 'intervals',
 									modelType: 'podList',
-									podType: 'interval',
-									theoryType: 'chord',
+									podType: 'intervalLIst',
 									value: pw_core.models.podList.chord.preset.Dom7.value
 								}
 							],
 							outDef: {
 								name: 'notes',
 								modelType: 'podList',
-								podType: 'note',
-								theoryType: 'chord'
+								podType: 'noteList'
 							}
 						}
 					]

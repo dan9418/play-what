@@ -7,28 +7,25 @@ import pw_core from "@pw/core";
 
 
 const getPreviewText = (value, modelType, podType) => {
-	if(modelType === 'pod') {
-		if (podType === 'pod') {
-			return JSON.stringify(value);
-		}
-		else if (podType === 'note') {
-			return pw_core.models.pod.note.getName({ a: value });
-		}
-		else if (podType === 'interval') {
-			return pw_core.models.pod.interval.getName({ a: value });
-		}
+	if (podType === 'pod') {
+		return JSON.stringify(value);
 	}
-	if(modelType === 'podList') {
-		if (podType === 'pod') {
-			return JSON.stringify(value);
-		}
-		else if (podType === 'note') {
-			return value.map(a => pw_core.models.pod.note.getName({ a })).join(', ');
-		}
-		else if (podType === 'interval') {
-			return value.map(a => pw_core.models.pod.interval.getName({ a })).join(', ');
-		}
+	else if (podType === 'note') {
+		return pw_core.models.pod.note.getName({ a: value });
 	}
+	else if (podType === 'interval') {
+		return pw_core.models.pod.interval.getName({ a: value });
+	}
+	if (podType === 'podList') {
+		return JSON.stringify(value);
+	}
+	else if (podType === 'noteList') {
+		return value.map(a => pw_core.models.pod.note.getName({ a })).join(', ');
+	}
+	else if (podType === 'intervalList') {
+		return value.map(a => pw_core.models.pod.interval.getName({ a })).join(', ');
+	}
+
 }
 
 

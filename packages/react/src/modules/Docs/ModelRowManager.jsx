@@ -6,7 +6,7 @@ import './ModelTable.css';
 
 const getName = (value, podType) => {
 	if (podType === 'pod') {
-		return value;
+		return JSON.stringify(value);
 	}
 	else if (podType === 'note') {
 		return pw_core.models.pod.note.getName({ a: value });
@@ -14,7 +14,16 @@ const getName = (value, podType) => {
 	else if (podType === 'interval') {
 		return pw_core.models.pod.interval.getName({ a: value });
 	}
-	return null;
+	else if (podType === 'podList') {
+		return JSON.stringify(value);
+	}
+	else if (podType === 'noteList') {
+		return pw_core.models.pod.note.getName({ a: value });
+	}
+	else if (podType === 'intervalList') {
+		return pw_core.models.pod.interval.getName({ a: value });
+	}
+	return '?';
 }
 
 const getInput = (value, podType) => {
