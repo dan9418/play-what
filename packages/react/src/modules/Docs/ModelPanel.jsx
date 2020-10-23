@@ -94,6 +94,8 @@ const ModelDetails = ({ modelType, podType, value, setValue }) => {
 
 const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
+	if (typeof value === 'undefined' || value === null) return null;
+
 	const [isOpen, setIsOpen] = useState(false);
 
 	console.log('dpb', label, modelType, podType, value);

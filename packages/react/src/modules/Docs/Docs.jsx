@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import DOCS_CONFIG from "./Docs.config";
 import "./Docs.css";
@@ -12,6 +12,14 @@ const Docs = () => {
 	const [module, setModule] = useState(MODULE);
 	const [submodule, setSubmodule] = useState(SUBMODULE);
 	const [fnDef, setFnDef] = useState(FN);
+
+	useEffect(() => {
+		setSubmodule(module.submodules[0]);
+	}, [module.id]);
+
+	useEffect(() => {
+		setFnDef(module.submodules[0].functions[0])
+	}, [submodule.id]);
 
 	return (
 		<>

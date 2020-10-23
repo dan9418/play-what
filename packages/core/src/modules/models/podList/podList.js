@@ -2,6 +2,8 @@ import pod from '../pod/pod'
 import index from '../index/index';
 import chord from './chord';
 import scale from './scale';
+import note from '../pod/note';
+import interval from '../pod/interval';
 
 // Constants
 
@@ -36,9 +38,9 @@ const getName = ({ podList, podType, theoryType }) => {
 	if (podType) {
 		switch (podType) {
 		case 'note':
-			return podList.map(pod => note.getName({ a: pod }));
+			return podList.map(pod => note.getName({ a: pod })).join(', ');
 		case 'interval':
-			return podList.map(pod => interval.getName({ a: pod }));
+			return podList.map(pod => interval.getName({ a: pod })).join(', ');
 		}
 	}
 	return JSON.stringify(podList);

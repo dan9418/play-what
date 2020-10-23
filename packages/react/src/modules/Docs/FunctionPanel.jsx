@@ -11,16 +11,10 @@ const getProps = propDefs => propDefs.reduce((prev, cur, i) => {
 
 const FunctionPanel = ({ fnDef }) => {
 
-	const [fnProps, setFnProps] = useState(null);
-	const [fnResult, setFnResult] = useState(null);
-	useEffect(() => {
-		const newProps = getProps(fnDef.propDefs);
-		setFnProps(newProps);
-		const newResult = fnDef.fn(newProps);
-		setFnResult(newResult);
-	}, [fnDef.id])
+	const fnProps = getProps(fnDef.propDefs);
+	const fnResult = fnDef.fn(fnProps);
 
-	console.log('dpb - fn', fnProps, fnResult)
+	console.log('dpb - fn', fnDef, fnProps, fnResult)
 
 	if (!fnProps || !fnResult) return null;
 

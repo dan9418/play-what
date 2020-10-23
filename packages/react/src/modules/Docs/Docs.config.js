@@ -163,7 +163,7 @@ const DOCS_CONFIG = {
 				}
 			]
 		},
-		/*{
+		{
 			id: 'theory',
 			name: 'Theory',
 			submodules: [
@@ -175,14 +175,13 @@ const DOCS_CONFIG = {
 							id: 'theory/pitch/getName',
 							name: 'getName: (p) => name',
 							fn: pw_core.models.index.pitch.getName,
-							propDefs: {
-								p: pw_core.models.index.pitch.preset.middleC.value
-							},
 							propDefs: [
 								{
 									name: 'p',
+									value: pw_core.models.index.pitch.preset.middleC.value,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
@@ -201,14 +200,13 @@ const DOCS_CONFIG = {
 							id: 'theory/degree/getName',
 							name: 'getName: (d) => name',
 							fn: pw_core.models.index.degree.getName,
-							propDefs: {
-								d: pw_core.models.index.degree.preset.C.value
-							},
 							propDefs: [
 								{
 									name: 'd',
+									value: pw_core.models.index.degree.preset.C.value,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
@@ -227,20 +225,20 @@ const DOCS_CONFIG = {
 							id: 'theory/accidental/getName',
 							name: 'getName: (a) => name',
 							fn: pw_core.theory.accidental.getName,
-							propDefs: {
-								a: pw_core.theory.accidental.preset.natural.value
-							},
 							propDefs: [
 								{
 									name: 'a',
+									value: pw_core.theory.accidental.preset.natural.value,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'name',
 								modelType: 'string',
-								podType: null
+								podType: null,
+								theoryType: null
 							}
 						}
 					]
@@ -253,14 +251,13 @@ const DOCS_CONFIG = {
 							id: 'models/pod/interval/getName',
 							name: 'getName: (a) => name',
 							fn: pw_core.models.pod.getName,
-							propDefs: {
-								A: pw_core.models.pod.interval.preset.P1.value
-							},
 							propDefs: [
 								{
 									name: 'a',
+									value: pw_core.models.pod.interval.preset.P1.value,
 									modelType: 'pod',
-									podType: 'interval'
+									podType: 'interval',
+									theoryType: null
 								}
 							],
 							outDef: {
@@ -279,20 +276,20 @@ const DOCS_CONFIG = {
 							id: 'models/pod/note/getName',
 							name: 'getName: (a) => name',
 							fn: pw_core.models.pod.note.getName,
-							propDefs: {
-								A: pw_core.models.pod.note.preset.C.value
-							},
 							propDefs: [
 								{
 									name: 'a',
+									value: pw_core.models.pod.note.preset.C.value,
 									modelType: 'pod',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'name',
 								modelType: 'string',
-								podType: 'note'
+								podType: 'note',
+								theoryType: null
 							}
 						}
 					]
@@ -305,20 +302,20 @@ const DOCS_CONFIG = {
 							id: 'models/podList/chord/inversion',
 							name: 'inversion: (A, n) => C',
 							fn: pw_core.models.podList.chord.getInversion,
-							propDefs: {
-								A: pw_core.models.podList.scale.preset.Major.value,
-								n: 0
-							},
 							propDefs: [
 								{
 									name: 'A',
+									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								},
 								{
 									name: 'n',
+									value: 0,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
@@ -331,26 +328,27 @@ const DOCS_CONFIG = {
 							id: 'models/podList/chord/transpose',
 							name: 'transpose: (a, b) => C',
 							fn: pw_core.models.podList.chord.transpose,
-							propDefs: {
-								A: pw_core.models.podList.scale.preset.Major.value,
-								b: pw_core.models.pod.interval.preset.P1.value
-							},
 							propDefs: [
 								{
 									name: 'A',
+									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								},
 								{
 									name: 'b',
+									value: pw_core.models.pod.interval.preset.P1.value,
 									modelType: 'pod',
-									podType: 'interval'
+									podType: 'interval',
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'note'
+								podType: 'note',
+								theoryType: null
 							}
 						}
 					]
@@ -361,51 +359,49 @@ const DOCS_CONFIG = {
 					functions: [
 						{
 							id: 'models/podList/scale/getNumeral',
-							tags: [
-								'theory', 'scale', 'getNumeral', 'roman numeral'
-							],
 							name: 'getNumeral: (A, d) => C',
 							fn: pw_core.models.podList.scale.getNumeral,
-							propDefs: {
-								A: pw_core.models.podList.scale.preset.Major.value,
-								d: 0
-							},
 							propDefs: [
 								{
 									name: 'A',
+									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								},
 								{
 									name: 'd',
+									value: 0,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'note'
+								podType: 'note',
+								theoryType: null
 							}
 						},
 						{
 							id: 'models/podList/scale/getMode',
 							name: 'getMode: (A, d) => C',
 							fn: pw_core.models.podList.scale.getMode,
-							propDefs: {
-								A: pw_core.models.podList.scale.preset.Major.value,
-								d: 0
-							},
 							propDefs: [
 								{
 									name: 'A',
+									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								},
 								{
 									name: 'd',
+									value: 0,
 									modelType: 'index',
-									podType: null
+									podType: null,
+									theoryType: null
 								}
 							],
 							outDef: {
@@ -418,32 +414,33 @@ const DOCS_CONFIG = {
 							id: 'models/podList/scale/transpose',
 							name: 'transpose: (a, b) => C',
 							fn: pw_core.models.podList.scale.transpose,
-							propDefs: {
-								A: pw_core.models.podList.scale.preset.Major.value,
-								b: pw_core.models.pod.interval.preset.P1.value
-							},
 							propDefs: [
 								{
 									name: 'A',
+									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'note'
+									podType: 'note',
+									theoryType: null
 								},
 								{
 									name: 'b',
+									value: pw_core.models.pod.interval.preset.P1.value,
 									modelType: 'pod',
-									podType: 'interval'
+									podType: 'interval',
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'note'
+								podType: 'note',
+								theoryType: null
 							}
 						}
 					]
 				}
 			]
-		},*/
+		},
 		{
 			id: 'structs',
 			name: 'Structs',
@@ -459,21 +456,24 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'keyCenter',
+									value: pw_core.models.pod.note.preset.C.value,
 									modelType: 'pod',
 									podType: 'note',
-									value: pw_core.models.pod.note.preset.C.value
+									theoryType: null
 								},
 								{
 									name: 'intervals',
+									value: pw_core.models.podList.chord.preset.Dom7.value,
 									modelType: 'podList',
-									podType: 'intervalLIst',
-									value: pw_core.models.podList.chord.preset.Dom7.value
+									podType: 'interval',
+									theoryType: null
 								}
 							],
 							outDef: {
 								name: 'notes',
 								modelType: 'podList',
-								podType: 'noteList'
+								podType: 'note',
+								theoryType: null
 							}
 						}
 					]
