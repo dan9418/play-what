@@ -103,7 +103,10 @@
     max-width: 512px;
     margin: auto;
     text-align: center;
-    margin-top: 16px;
+}
+
+.explore > * {
+    margin: 16px 8px;
 }
 
 .model-row {

@@ -15,7 +15,7 @@ const Docs = () => {
 
 	return (
 		<>
-			<div>
+			<div className="explore">
 				<DropdownInput options={DOCS_CONFIG.modules} value={module} setValue={setModule} />
 				<DropdownInput options={module.submodules} value={submodule} setValue={setSubmodule} />
 				<DropdownInput options={submodule.functions} value={fnDef} setValue={setFnDef} />
