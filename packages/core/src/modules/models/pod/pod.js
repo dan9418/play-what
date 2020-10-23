@@ -14,9 +14,9 @@ const isValid = (pod) => {
 	return pod !== null && typeof pod === 'object' && typeof pod[0] === 'number' && typeof pod[1] === 'number';
 };
 
-const areEqual = ({ interval1, interval2 }) => {
-	if (!interval1 || !interval2) return false;
-	return interval1[0] === interval2[0] && interva[1] === interval[1];
+const areEqual = ({ pod1, pod2 }) => {
+	if (!pod1 || !pod2) return false;
+	return pod1[0] === pod2[0] && pod1[1] === pod2[1];
 };
 
 const reduce = ({ a }) => [index.modulo({ a: a[0], b: MAX[0] }), index.modulo({ a: a[1], b: MAX[1] })];

@@ -41,7 +41,7 @@ const transpose = ({ A, b }) => {
 	return podList.addPod({ A, b });
 }
 
-const getName = ({ A }) => 'chord';
+const getName = ({ A }) => (CHORD_VALUES.find(x => podList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
 
 export default {
 	preset: CHORD,

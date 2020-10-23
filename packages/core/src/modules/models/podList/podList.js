@@ -17,7 +17,7 @@ const areEqual = ({ list1, list2 }) => {
 	if (!list1 || !list2) return false;
 	if (list1.length !== list2.length) return false;
 	for (let i = 0; i < list1.length; i++) {
-		if (!padeEqual(list1[i], list2[i])) { return false; }
+		if (!pod.areEqual({ pod1: list1[i], pod2: list2[i] })) { return false; }
 	}
 	return true;
 };
