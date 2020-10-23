@@ -6,30 +6,18 @@ import ModelTable from './ModelTable';
 import pw_core from "@pw/core";
 
 
-const getPreviewText = (value, modelType, podType) => {
-	if (podType === 'pod') {
-		return JSON.stringify(value);
+const getPreviewText = (value, modelType, podType, theoryType) => {
+	if (modelType === 'pod') {
+		return pw_core.models.pod.getName({ pod: value, podType });
 	}
-	else if (podType === 'note') {
-		return pw_core.models.pod.note.getName({ a: value });
+	if (modelType === 'podList') {
+		return pw_core.models.podList.getName({ podList: value, podType, theoryType });
 	}
-	else if (podType === 'interval') {
-		return pw_core.models.pod.interval.getName({ a: value });
-	}
-	if (podType === 'podList') {
-		return JSON.stringify(value);
-	}
-	else if (podType === 'noteList') {
-		return value.map(a => pw_core.models.pod.note.getName({ a })).join(', ');
-	}
-	else if (podType === 'intervalList') {
-		return value.map(a => pw_core.models.pod.interval.getName({ a })).join(', ');
-	}
-
+	return JSON.stringify(value);
 }
 
 
-const ModelSummary = ({ label, modelType, podType, isOpen, setIsOpen, value }) => {
+const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value }) => {
 	return (
 		<div className='model-summary'>
 			<div>
@@ -38,10 +26,12 @@ const ModelSummary = ({ label, modelType, podType, isOpen, setIsOpen, value }) =
 					<div className='model-type'>{modelType}</div>
 					{` | `}
 					<div className='pod-type'>{podType}</div>
+					{` | `}
+					<div className='pod-type'>{theoryType}</div>
 				</div>
 			</div>
 			<div className="preview">
-				{getPreviewText(value, modelType, podType)}
+				{getPreviewText(value, modelType, podType, theoryType)}
 			</div>
 			<div className='edit pin-right'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
@@ -102,7 +92,7 @@ const ModelDetails = ({ modelType, podType, value, setValue }) => {
 	);
 };
 
-const ModelPanel = ({ label, modelType, podType, value, setValue, i }) => {
+const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -114,6 +104,7 @@ const ModelPanel = ({ label, modelType, podType, value, setValue, i }) => {
 				label={label}
 				modelType={modelType}
 				podType={podType}
+				theoryType={theoryType}
 				isOpen={isOpen}
 				setIsOpen={setIsOpen}
 				value={value}

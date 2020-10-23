@@ -4,33 +4,9 @@ import pw_core from "@pw/core";
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import './ModelTable.css';
 
-const getName = (value, podType) => {
-	if (podType === 'pod') {
-		return JSON.stringify(value);
-	}
-	else if (podType === 'note') {
-		return pw_core.models.pod.note.getName({ a: value });
-	}
-	else if (podType === 'interval') {
-		return pw_core.models.pod.interval.getName({ a: value });
-	}
-	else if (podType === 'podList') {
-		return JSON.stringify(value);
-	}
-	else if (podType === 'noteList') {
-		return pw_core.models.pod.note.getName({ a: value });
-	}
-	else if (podType === 'intervalList') {
-		return pw_core.models.pod.interval.getName({ a: value });
-	}
-	return '?';
-}
 
 const getInput = (value, podType) => {
-	if (podType === 'pod') {
-		return value;
-	}
-	else if (podType === 'note') {
+	if (podType === 'note') {
 		const options = pw_core.models.pod.note.presetValues;
 		return <DropdownInput options={options} value={null} setValue={null} />
 	}
@@ -41,10 +17,10 @@ const getInput = (value, podType) => {
 	return null;
 }
 
-const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, remove }) => {
+const PodRow = ({ value, setValue, i, isEditing, modelType, podType, remove, moveUp, moveDown }) => {
 
 	const reduced = pw_core.models.pod.reduce({ a: value });
-	let name = isEditing ? getInput(reduced, podType) : getName(reduced, podType);
+	let name = isEditing ? getInput(reduced, podType) : pw_core.models.pod.getName({ pod: reduced, podType });
 
 	const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 
@@ -71,11 +47,27 @@ const ModelRow = ({ value, setValue, i, isEditing, modelType, podType, remove })
 						<ButtonInput onClick={remove}>X</ButtonInput>
 					</td>
 					<td>
-						<ButtonInput>^</ButtonInput>
-						<ButtonInput>v</ButtonInput>
+						<ButtonInput onClick={moveUp}>^</ButtonInput>
+						<ButtonInput onClick={moveDown}>v</ButtonInput>
 					</td>
 				</>
 			)}
+		</tr>
+	);
+};
+
+const NewModelRow = ({ }) => {
+	return (
+		<tr key="new">
+			<td colSpan="3" />
+			<td>
+				Add
+			</td>
+			<td />
+			<td>
+				<ButtonInput onClick={null}>+</ButtonInput>
+			</td>
+			<td colSpan="2" />
 		</tr>
 	);
 };
@@ -86,7 +78,7 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => 
 	}
 	else if (modelType === 'pod') {
 		return (
-			<ModelRow
+			<PodRow
 				value={value}
 				i={0}
 				setValue={setValue}
@@ -97,10 +89,12 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => 
 		);
 	}
 	else if (modelType === 'podList') {
-		return value.map((v, i) => {
+		const rows = value.map((v, i) => {
 			const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
+			const moveUp = () => setValue([...value.slice(0, i - 1), value[i], value[i - 1], ...value.slice(i + 1)]);
+			const moveDown = () => setValue([...value.slice(0, i), value[i + 1], value[i], ...value.slice(i + 2)]);
 			return (
-				<ModelRow
+				<PodRow
 					key={i}
 					i={i}
 					value={v}
@@ -109,9 +103,12 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => 
 					modelType={modelType}
 					podType={podType}
 					remove={remove}
+					moveUp={moveUp}
+					moveDown={moveDown}
 				/>
 			);
 		});
+		return [...rows, isEditing ? <NewModelRow /> : null]
 	}
 };
 

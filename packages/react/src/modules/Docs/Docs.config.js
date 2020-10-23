@@ -82,19 +82,22 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: pw_core.models.pod.interval.preset.M3.value,
 									modelType: 'pod',
-									podType: 'pod'
+									podType: 'note',
+									theoryType: 'note'
 								},
 								{
 									name: 'b',
 									value: pw_core.models.pod.interval.preset.P5.value,
 									modelType: 'pod',
-									podType: 'pod'
+									podType: 'interval',
+									theoryType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'c',
 								modelType: 'pod',
-								podType: 'pod'
+								podType: 'note',
+								theoryType: 'note'
 							}
 						},
 						{
@@ -106,19 +109,22 @@ const DOCS_CONFIG = {
 									name: 'a',
 									value: pw_core.models.pod.note.preset.C.value,
 									modelType: 'pod',
-									podType: 'pod'
+									podType: 'note',
+									theoryType: 'note'
 								},
 								{
 									name: 'B',
 									value: pw_core.models.podList.chord.preset.Maj.value,
 									modelType: 'podList',
-									podType: 'podList'
+									podType: 'interval',
+									theoryType: 'chord'
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'podList'
+								podType: 'note',
+								theoryType: 'chord'
 							}
 						}
 					]
@@ -136,19 +142,21 @@ const DOCS_CONFIG = {
 									name: 'A',
 									value: pw_core.models.podList.scale.preset.Major.value,
 									modelType: 'podList',
-									podType: 'podList'
+									podType: 'note',
+									theoryType: 'scale'
 								},
 								{
 									name: 'b',
 									value: pw_core.models.pod.interval.preset.P1.value,
 									modelType: 'pod',
-									podType: 'pod'
+									podType: 'interval'
 								}
 							],
 							outDef: {
 								name: 'C',
 								modelType: 'podList',
-								podType: 'podList'
+								podType: 'note',
+								theoryType: 'scale'
 							}
 						}
 					]

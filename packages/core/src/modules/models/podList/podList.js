@@ -24,6 +24,26 @@ const areEqual = ({ list1, list2 }) => {
 
 const reduce = ({ A }) => A.map((a) => pod.reduce({ a }));
 
+const getName = ({ podList, podType, theoryType }) => {
+	if (theoryType) {
+		switch (theoryType) {
+		case 'chord':
+			return chord.getName({ A: podList });
+		case 'scale':
+			return scale.getName({ A: podList });
+		}
+	}
+	if (podType) {
+		switch (podType) {
+		case 'note':
+			return podList.map(pod => note.getName({ a: pod }));
+		case 'interval':
+			return podList.map(pod => interval.getName({ a: pod }));
+		}
+	}
+	return JSON.stringify(podList);
+}
+
 // Utils
 
 const findPodWithPitch = ({ A, p }) => {
@@ -44,6 +64,7 @@ export default {
 	chord,
 	scale,
 	defaultValue: DEFAULT,
+	getName,
 	// Common
 	isValid,
 	areEqual,

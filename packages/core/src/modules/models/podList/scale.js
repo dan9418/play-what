@@ -59,6 +59,8 @@ const transpose = ({ A, b }) => {
 	return podList.addPod({ A, b });
 }
 
+const getName = ({ A }) => 'chord';
+
 export default {
 	preset: SCALE,
 	presetValues: SCALE_VALUES,
@@ -66,5 +68,6 @@ export default {
 	getAllModes,
 	getNumeral,
 	getAllNumerals,
-	transpose
+	transpose,
+	getName
 };

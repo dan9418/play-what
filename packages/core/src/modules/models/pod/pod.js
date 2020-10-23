@@ -21,6 +21,17 @@ const areEqual = ({ interval1, interval2 }) => {
 
 const reduce = ({ a }) => [index.modulo({ a: a[0], b: MAX[0] }), index.modulo({ a: a[1], b: MAX[1] })];
 
+const getName = ({ pod, podType }) => {
+	switch (podType) {
+	case 'note':
+		return note.getName({ a: pod });
+	case 'interval':
+		return interval.getName({ a: pod });
+	default:
+		return JSON.stringify(pod);
+	}
+}
+
 // Utils
 
 const addPod = ({ a, b }) => ([a[0] + b[0], a[1] + b[1]]);
@@ -37,6 +48,7 @@ export default {
 	isValid,
 	areEqual,
 	reduce,
+	getName,
 	// Utils
 	addPod,
 	addPodList

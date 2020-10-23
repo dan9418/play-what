@@ -41,9 +41,12 @@ const transpose = ({ A, b }) => {
 	return podList.addPod({ A, b });
 }
 
+const getName = ({ A }) => 'chord';
+
 export default {
 	preset: CHORD,
 	presetValues: CHORD_VALUES,
 	getInversion,
-	transpose
+	transpose,
+	getName
 };

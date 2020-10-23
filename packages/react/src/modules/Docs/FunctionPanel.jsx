@@ -35,6 +35,7 @@ const FunctionPanel = ({ fnDef }) => {
 							label={v.name}
 							modelType={v.modelType}
 							podType={v.podType}
+							theoryType={v.theoryType}
 							value={fnProps[v.name]}
 							setValue={setProp}
 						/>
@@ -45,6 +46,7 @@ const FunctionPanel = ({ fnDef }) => {
 				label={fnDef.outDef.name}
 				modelType={fnDef.outDef.modelType}
 				podType={fnDef.outDef.podType}
+				theoryType={fnDef.outDef.theoryType}
 				value={fnResult.notes || fnResult}
 				setValue={null}
 			/>
