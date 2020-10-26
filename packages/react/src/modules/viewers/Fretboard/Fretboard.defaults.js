@@ -4,13 +4,11 @@ export default {
 	fretRange: [0, 12],
 	tuning: [16, 11, 7, 2, -3, -8],
 	projection: {
+		value: [[0,0]],
+		modelType: 'podList',
+		podType: 'note',
 		colorFn: pw_core.models.index.degree.getColor,
 		textFn: pw_core.models.pod.interval.getName,
-		reduced: true,
-		cell: {
-			a: [0, 0],
-			B: [],
-			C: []
-		}
+		reduced: true
 	}
 };

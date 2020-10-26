@@ -7,12 +7,12 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-export const Fret = ({ context, projection, result }) => {
+export const Fret = ({ context, projection }) => {
 	let classes = ['fret'];
 	if (context.fretIndex === 0)
 		classes.push('open');
 
-	const x = projection.cell.B[context.podIndex];
+	const x = context.pod;
 	let d = null;
 	let p = null;
 	if (x) {
@@ -49,7 +49,7 @@ export const Fret = ({ context, projection, result }) => {
 
 const getFrets = (props) => {
 	const { fretRange, tuning, projection } = props;
-	const { cell, colorFn, textFn, reduced } = projection;
+	const { value, modelType, podType, colorFn, textFn, reduced } = projection;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
@@ -60,11 +60,11 @@ const getFrets = (props) => {
 
 			const noteIndex = tuning[s] + f;
 			const index = pw_core.models.podList.findIndexOfPodWithPitch({
-				A: cell.C,
+				A: value,
 				p: noteIndex
 			});
 
-			const pod = cell.B[index];
+			const pod = value[index];
 
 			const ctx = {
 				tuning,
@@ -81,7 +81,6 @@ const getFrets = (props) => {
 					key={`s${s}-f${f}`}
 					context={ctx}
 					projection={projection}
-					result={cell.C}
 				/>
 			);
 		}

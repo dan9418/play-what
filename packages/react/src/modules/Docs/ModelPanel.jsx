@@ -5,7 +5,7 @@ import "./Docs.css";
 import ModelTable from './ModelTable';
 import pw_core from "@pw/core";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
-
+import Fretboard from '../viewers/Fretboard/_module';
 
 const getPreviewText = (value, modelType, podType, theoryType) => {
 	if (modelType === 'pod') {
@@ -77,9 +77,9 @@ const ANALYSIS_OPTIONS = [
 		component: PreviewText
 	},
 	{
-		id: 'meter2',
-		name: 'Meter 2',
-		component: Meter
+		id: 'fretboard',
+		name: 'Fretboard',
+		component: Fretboard.component
 	}
 ];
 
@@ -89,7 +89,10 @@ const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) =
 	const Component = analysis.component;
 	return (
 		<div className='subpanel'>
-			<DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />
+			<div>
+				<label>Component</label>
+				<DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />
+			</div>
 			<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
 		</div>
 	);
