@@ -4,6 +4,7 @@ import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
 import ModelTable from './ModelTable';
 import pw_core from "@pw/core";
+import DropdownInput from "../ui/DropdownInput/DropdownInput";
 
 
 const getPreviewText = (value, modelType, podType, theoryType) => {
@@ -16,8 +17,9 @@ const getPreviewText = (value, modelType, podType, theoryType) => {
 	return JSON.stringify(value);
 }
 
+const PreviewText = ({ value, modelType, podType, theoryType }) => getPreviewText(value, modelType, podType, theoryType);
 
-const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value }) => {
+const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value, preview }) => {
 	return (
 		<div className='model-summary'>
 			<div>
@@ -63,26 +65,50 @@ const ModelTableSubpanel = ({ modelType, podType, value, setValue }) => {
 	);
 };
 
-const MeterSubpanel = ({ modelType, podType, value, setValue }) => {
+const ANALYSIS_OPTIONS = [
+	{
+		id: 'meter',
+		name: 'Meter',
+		component: Meter
+	},
+	{
+		id: 'text',
+		name: 'Text',
+		component: PreviewText
+	},
+	{
+		id: 'meter2',
+		name: 'Meter 2',
+		component: Meter
+	}
+];
+
+const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[1]);
+
+	const Component = analysis.component;
 	return (
 		<div className='subpanel'>
-			<Meter value={value} setValue={setValue} modelType={modelType} podType={podType} />
+			<DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />
+			<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
 		</div>
 	);
 };
 
-const ModelDetails = ({ modelType, podType, value, setValue }) => {
+const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview }) => {
 	return (
 		<div className='model-details'>
-			<h3>Value</h3>
-			<ModelTableSubpanel
+			<h3>Analysis</h3>
+			<AnalysisSubpanel
 				modelType={modelType}
 				podType={podType}
 				value={value}
 				setValue={setValue}
+				preview={preview}
+				setPreview={setPreview}
 			/>
-			<h3>Analysis</h3>
-			<MeterSubpanel
+			<h3>Value</h3>
+			<ModelTableSubpanel
 				modelType={modelType}
 				podType={podType}
 				value={value}

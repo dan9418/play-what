@@ -37,9 +37,7 @@ const PodListMeter = ({ podList, ...props }) => {
 	const D = podList.map(([p, d]) => d);
 	return (
 		<>
-			<label className='meter-label'>pitch</label>
 			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
-			<label className='meter-label'>degree</label>
 			<IndexListMeter indexList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
 		</>
 	);

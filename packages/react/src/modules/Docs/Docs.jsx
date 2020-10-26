@@ -4,9 +4,9 @@ import DOCS_CONFIG from "./Docs.config";
 import "./Docs.css";
 import FunctionPanel from "./FunctionPanel";
 
-const MODULE = DOCS_CONFIG.modules.find(x => x.id === 'model');
-const SUBMODULE = MODULE.submodules.find(x => x.id === 'model/pod');
-const FN = SUBMODULE.functions.find(x => x.id === 'model/pod/addPodList');
+const MODULE = DOCS_CONFIG.modules.find(x => x.id === 'structs');
+const SUBMODULE = MODULE.submodules.find(x => x.id === 'structs/cell');
+const FN = SUBMODULE.functions.find(x => x.id === 'structs/cell/from');
 
 const Docs = () => {
 	const [module, setModule] = useState(MODULE);
