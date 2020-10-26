@@ -85,15 +85,22 @@ const ANALYSIS_OPTIONS = [
 
 const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[1]);
+	const [isEditing, setIsEditing] = useState(false);
 
 	const Component = analysis.component;
+
 	return (
 		<div className='subpanel'>
-			<div>
-				<label>Component</label>
-				<DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />
+			<div className='submenu'>
+				<div className="space" />
+				<div className="action-row">
+					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+				</div>
 			</div>
-			<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
+			{isEditing && <DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />}
+			<div>
+				<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
+			</div>
 		</div>
 	);
 };
