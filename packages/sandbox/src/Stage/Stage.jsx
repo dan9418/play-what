@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import Docs from '../../../react/src/modules/docs/Docs';
+import Explore from '../../../react/src/modules/docs/Explore';
 import Menu from '../Menu/Menu';
 import './Stage.css';
 
 const TABS = [
+	{
+		id: 'explore',
+		name: 'Explore',
+		component: <Explore/>
+	},
 	{
 		id: 'docs',
 		name: 'Docs',

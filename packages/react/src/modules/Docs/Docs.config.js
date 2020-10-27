@@ -459,21 +459,21 @@ const DOCS_CONFIG = {
 									value: pw_core.models.pod.note.preset.C.value,
 									modelType: 'pod',
 									podType: 'note',
-									theoryType: null
+									theoryType: 'note'
 								},
 								{
 									name: 'intervals',
 									value: pw_core.models.podList.chord.preset.Dom7.value,
 									modelType: 'podList',
 									podType: 'interval',
-									theoryType: null
+									theoryType: 'chord'
 								}
 							],
 							outDef: {
 								name: 'notes',
 								modelType: 'podList',
 								podType: 'note',
-								theoryType: null
+								theoryType: 'chord'
 							}
 						}
 					]

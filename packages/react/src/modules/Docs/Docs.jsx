@@ -28,7 +28,7 @@ const Docs = () => {
 				<DropdownInput options={module.submodules} value={submodule} setValue={setSubmodule} />
 				<DropdownInput options={submodule.functions} value={fnDef} setValue={setFnDef} />
 			</div>
-			<FunctionPanel fnDef={fnDef} />
+			<FunctionPanel fnDef={fnDef} setFnDef={setFnDef} />
 		</>
 	);
 };

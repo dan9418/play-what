@@ -9,7 +9,7 @@ const getProps = propDefs => propDefs.reduce((prev, cur, i) => {
 	};
 }, {});
 
-const FunctionPanel = ({ fnDef }) => {
+const FunctionPanel = ({ fnDef, setFnDef }) => {
 
 	const fnProps = getProps(fnDef.propDefs);
 	const fnResult = fnDef.fn(fnProps);
@@ -18,8 +18,13 @@ const FunctionPanel = ({ fnDef }) => {
 
 	if (!fnProps || !fnResult) return null;
 
+	const setFnProps = p => {
+		console.log('dpb', p)
+		setFnDef({ ...fnDef, fnProps: p })
+	}
+
 	return (
-		<>
+		<>\
 			{
 				fnDef.propDefs.map((v, i) => {
 					const setProp = p => setFnProps({ ...fnProps, [v.name]: p });

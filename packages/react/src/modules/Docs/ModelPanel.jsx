@@ -59,14 +59,36 @@ const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen
 	);
 };
 
-const ModelTableSubpanel = ({ modelType, podType, value, setValue }) => {
+const getPresetOptions = (modelType, theoryType) => {
+	if (modelType === 'pod') {
+		if (theoryType === 'note') return pw_core.models.pod.note.presetValues;
+		else if (theoryType === 'interval') return pw_core.models.pod.interval.presetValues;
+	}
+	else if (modelType === 'podList') {
+		if (theoryType === 'chord') return pw_core.models.podList.chord.presetValues;
+		else if (theoryType === 'scale') return pw_core.models.podList.scale.presetValues;
+	}
+	return [];
+}
+
+const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	const [isEditing, setIsEditing] = useState(false);
+	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
+	const editOptionText = isLoadingPreset ? 'done' : 'load preset';
+	const editOptions = [{ text: editOptionText, onClick: () => setIsLoadingPreset(!isLoadingPreset) }];
 	return (
 		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} actions={[{ text: 'load preset' }]} />
-			<div>
-				<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
-			</div>
+			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} actions={editOptions} />
+			{isEditing && (
+				<div>
+					<DropdownInput
+						options={getPresetOptions(modelType, theoryType)}
+						value={value}
+						setValue={v => setValue(v.value)}
+					/>
+				</div>
+			)}
+			<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 		</div>
 	);
 };
@@ -212,13 +234,14 @@ const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	);
 };
 
-const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview }) => {
+const ModelDetails = ({ modelType, podType, theoryType, value, setValue, preview, setPreview }) => {
 	return (
 		<div className='model-details'>
 			<h3>Type</h3>
 			<TypeSubpanel
 				modelType={modelType}
 				podType={podType}
+				theoryType={theoryType}
 				value={value}
 				setValue={setValue}
 			/>
@@ -226,6 +249,7 @@ const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview
 			<ModelTableSubpanel
 				modelType={modelType}
 				podType={podType}
+				theoryType={theoryType}
 				value={value}
 				setValue={setValue}
 			/>
@@ -233,6 +257,7 @@ const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview
 			<AnalysisSubpanel
 				modelType={modelType}
 				podType={podType}
+				theoryType={theoryType}
 				value={value}
 				setValue={setValue}
 				preview={preview}
@@ -266,6 +291,7 @@ const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i 
 					label={label}
 					modelType={modelType}
 					podType={podType}
+					theoryType={theoryType}
 					value={value}
 					setValue={setValue}
 				/>
