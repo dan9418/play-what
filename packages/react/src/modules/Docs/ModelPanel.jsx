@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import Meter from "../viewers/Meter/Meter";
 import "./Docs.css";
@@ -84,7 +84,7 @@ const ANALYSIS_OPTIONS = [
 ];
 
 const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
-	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[1]);
+	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[0]);
 	const [isEditing, setIsEditing] = useState(false);
 
 	const Component = analysis.component;
@@ -105,9 +105,134 @@ const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) =
 	);
 };
 
+const TYPE_OPTIONS = [
+	{
+		id: 'index',
+		name: 'Index',
+		theoryTypes: [
+			{
+				id: 'pitch',
+				name: 'Pitch'
+			},
+			{
+				id: 'degree',
+				name: 'Degree'
+			}
+		]
+	},
+	{
+		id: 'pod',
+		name: 'Pod',
+		theoryTypes: [
+			{
+				id: 'note',
+				name: 'Note'
+			},
+			{
+				id: 'interval',
+				name: 'Interval'
+			}
+		]
+	},
+	{
+		id: 'podList',
+		name: 'Pod List',
+		theoryTypes: [
+			{
+				id: 'chord',
+				name: 'Chord'
+			},
+			{
+				id: 'scale',
+				name: 'Scale'
+			}
+		]
+	}
+];
+
+const POD_TYPE_OPTIONS = [
+	{
+		id: 'note',
+		name: 'Note'
+	},
+	{
+		id: 'interval',
+		name: 'Interval'
+	}
+];
+
+const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+	const [isEditing, setIsEditing] = useState(false);
+
+	const [model, setModel] = useState(TYPE_OPTIONS[0]);
+	const [theory, setTheory] = useState(model.theoryTypes[0]);
+
+	const [pod, setPod] = useState(POD_TYPE_OPTIONS[0]);
+
+	useEffect(() => {
+		setTheory(model.theoryTypes[0]);
+	}, [model.id]);
+
+	return (
+		<div className='subpanel'>
+			<div className='submenu'>
+				<div className="space" />
+				<div className="action-row">
+					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+				</div>
+			</div>
+			<table>
+				<thead>
+					<tr>
+						<th>Model Type</th>
+						<th>Pod Type</th>
+						<th>Theory Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					{isEditing ?
+						<tr>
+							<td>
+								<DropdownInput options={TYPE_OPTIONS} value={model} setValue={setModel} />
+							</td>
+							<td>
+								<DropdownInput options={model.theoryTypes} value={theory} setValue={setTheory} />
+							</td>
+							<td>
+								<DropdownInput options={POD_TYPE_OPTIONS} value={pod} setValue={setPod} />
+							</td>
+						</tr>
+						:
+						<tr>
+							<td>{modelType}</td>
+							<td>{podType}</td>
+							<td>{theoryType || 'n/a'}</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+
+		</div>
+	);
+};
+
 const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview }) => {
 	return (
 		<div className='model-details'>
+			<h3>Type</h3>
+			<TypeSubpanel
+				modelType={modelType}
+				podType={podType}
+				value={value}
+				setValue={setValue}
+			/>
+			<h3>Value</h3>
+			<ModelTableSubpanel
+				modelType={modelType}
+				podType={podType}
+				value={value}
+				setValue={setValue}
+			/>
 			<h3>Analysis</h3>
 			<AnalysisSubpanel
 				modelType={modelType}
@@ -116,13 +241,6 @@ const ModelDetails = ({ modelType, podType, value, setValue, preview, setPreview
 				setValue={setValue}
 				preview={preview}
 				setPreview={setPreview}
-			/>
-			<h3>Value</h3>
-			<ModelTableSubpanel
-				modelType={modelType}
-				podType={podType}
-				value={value}
-				setValue={setValue}
 			/>
 		</div>
 	);
