@@ -7,6 +7,23 @@ import pw_core from "@pw/core";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import Fretboard from '../viewers/Fretboard/_module';
 
+const EditDash = ({ isEditing, setIsEditing }) => {
+	return (
+		<div className='submenu'>
+			<div className="space" />
+			<div className="action-row">
+				{isEditing &&
+					<>
+						<div className='edit' onClick={null}>{null}</div>
+						{` | `}
+					</>
+				}
+				<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+			</div>
+		</div>
+	);
+};
+
 const getPreviewText = (value, modelType, podType, theoryType) => {
 	if (modelType === 'pod') {
 		return pw_core.models.pod.getName({ pod: value, podType });
@@ -46,18 +63,7 @@ const ModelTableSubpanel = ({ modelType, podType, value, setValue }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	return (
 		<div className='subpanel'>
-			<div className='submenu'>
-				<div className="space" />
-				<div className="action-row">
-					{isEditing &&
-						<>
-							<div className='edit' onClick={null}>{false ? 'done' : 'load preset'} </div>
-							{` | `}
-						</>
-					}
-					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-				</div>
-			</div>
+			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
 			<div>
 				<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 			</div>
@@ -91,12 +97,7 @@ const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) =
 
 	return (
 		<div className='subpanel'>
-			<div className='submenu'>
-				<div className="space" />
-				<div className="action-row">
-					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-				</div>
-			</div>
+			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
 			{isEditing && <DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />}
 			<div>
 				<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
@@ -175,12 +176,7 @@ const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 
 	return (
 		<div className='subpanel'>
-			<div className='submenu'>
-				<div className="space" />
-				<div className="action-row">
-					<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-				</div>
-			</div>
+			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
 			<table>
 				<thead>
 					<tr>
