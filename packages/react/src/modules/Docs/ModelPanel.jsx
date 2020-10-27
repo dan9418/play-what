@@ -234,14 +234,17 @@ const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	);
 };
 
-const ModelDetails = ({ modelType, podType, theoryType, value, setValue, preview, setPreview }) => {
+const ModelDetails = ({ modelType, setModelType, podType, setPodType, theoryType, setTheoryType, value, setValue, preview, setPreview }) => {
 	return (
 		<div className='model-details'>
 			<h3>Type</h3>
 			<TypeSubpanel
 				modelType={modelType}
+				setModelType={setModelType}
 				podType={podType}
+				setPodType={setPodType}
 				theoryType={theoryType}
+				setTheoryType={setTheoryType}
 				value={value}
 				setValue={setValue}
 			/>
@@ -267,7 +270,7 @@ const ModelDetails = ({ modelType, podType, theoryType, value, setValue, preview
 	);
 };
 
-const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i }) => {
+const ModelPanel = ({ label, modelType, setModelType, podType, setPodType, theoryType, setTheoryType, value, setValue, i }) => {
 
 	if (typeof value === 'undefined' || value === null) return null;
 
@@ -290,8 +293,11 @@ const ModelPanel = ({ label, modelType, podType, theoryType, value, setValue, i 
 				<ModelDetails
 					label={label}
 					modelType={modelType}
+					setModelType={setModelType}
 					podType={podType}
+					setPodType={setPodType}
 					theoryType={theoryType}
+					setTheoryType={setTheoryType}
 					value={value}
 					setValue={setValue}
 				/>
