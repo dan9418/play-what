@@ -7,17 +7,17 @@ import pw_core from "@pw/core";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import Fretboard from '../viewers/Fretboard/_module';
 
-const EditDash = ({ isEditing, setIsEditing }) => {
+const EditDash = ({ isEditing, setIsEditing, actions }) => {
 	return (
 		<div className='submenu'>
 			<div className="space" />
 			<div className="action-row">
-				{isEditing &&
+				{isEditing && actions && actions.length && actions.map(a => (
 					<>
-						<div className='edit' onClick={null}>{null}</div>
+						<div className='edit' onClick={a.onClick}>{a.text}</div>
 						{` | `}
 					</>
-				}
+				))}
 				<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
 			</div>
 		</div>
@@ -63,7 +63,7 @@ const ModelTableSubpanel = ({ modelType, podType, value, setValue }) => {
 	const [isEditing, setIsEditing] = useState(false);
 	return (
 		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
+			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} actions={[{ text: 'load preset' }]} />
 			<div>
 				<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 			</div>
