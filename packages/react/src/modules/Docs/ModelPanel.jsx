@@ -85,7 +85,7 @@ const ModelTableSubpanel = () => {
 	return (
 		<div className='subpanel'>
 			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} actions={editOptions} />
-			{isEditing && (
+			{isLoadingPreset && (
 				<div>
 					<DropdownInput
 						options={getPresetOptions(modelType, theoryType)}
