@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./Docs.css";
-import ModelPanel from "./ModelPanel";
+
+import ModelPanel from "../explore/ModelPanel";
 
 const getProps = propDefs => propDefs.reduce((prev, cur, i) => {
 	return {

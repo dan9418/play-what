@@ -2,7 +2,7 @@ import pw_core from "@pw/core";
 import React from "react";
 import usePodContext from "../other/PodContext";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
-import "./Docs.css";
+
 
 const getPreviewText = (value, modelType, podType, theoryType) => {
 	if (modelType === 'pod') {
@@ -14,7 +14,7 @@ const getPreviewText = (value, modelType, podType, theoryType) => {
 	return JSON.stringify(value);
 }
 
-const ModelCardHeader = ({ label, isOpen, setIsOpen }) => {
+const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { modelType, podType, theoryType, value, setValue } = podContext;
 	return (
@@ -39,4 +39,4 @@ const ModelCardHeader = ({ label, isOpen, setIsOpen }) => {
 	);
 };
 
-export default ModelCardHeader;
+export default ModelPanelHeader;

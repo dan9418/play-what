@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import usePodContext from "../other/PodContext";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
-import "./Docs.css";
+
 import EditDash from './EditDash';
 
 const TYPE_OPTIONS = [

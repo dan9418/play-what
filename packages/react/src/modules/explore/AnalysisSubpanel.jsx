@@ -3,7 +3,7 @@ import usePodContext from "../other/PodContext";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import Fretboard from '../viewers/Fretboard/_module';
 import Meter from "../viewers/Meter/Meter";
-import "./Docs.css";
+
 import EditDash from './EditDash';
 
 const ANALYSIS_OPTIONS = [

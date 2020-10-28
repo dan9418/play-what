@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import AnalysisSubpanel from "./AnalysisSubpanel";
-import "./Docs.css";
-import ModelCardHeader from "./ModelCardHeader";
+
+import ModelPanelHeader from "./ModelPanelHeader";
 import TypeSubpanel from "./TypeSubpanel";
 import ValueSubpanel from "./ValueSubpanel";
 
-const ModelDetails = () => {
+const ModelPanelBody = () => {
 	return (
 		<div className='model-details'>
 			<h3>Type</h3>
@@ -23,8 +23,8 @@ const ModelPanel = ({ label }) => {
 	console.log('dpb', label);
 	return (
 		<div className='model-row'>
-			<ModelCardHeader label={label} isOpen={isOpen} setIsOpen={setIsOpen} />
-			{isOpen && (<ModelDetails />)}
+			<ModelPanelHeader label={label} isOpen={isOpen} setIsOpen={setIsOpen} />
+			{isOpen && (<ModelPanelBody />)}
 		</div>
 	);
 }

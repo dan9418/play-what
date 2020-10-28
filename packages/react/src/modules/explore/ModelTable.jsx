@@ -1,5 +1,5 @@
 import React from 'react';
-import ModelRowManager from './ModelRowManager';
+import ModelRowManager from './ModelTableRow';
 import './ModelTable.css';
 
 const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {

@@ -1,24 +1,24 @@
 import React, { useState } from 'react';
-import Docs from '../../../react/src/modules/docs/Docs';
-import Explore from '../../../react/src/modules/docs/Explore';
 import Menu from '../Menu/Menu';
 import './Stage.css';
+import ExploreTab from '../../../react/src/modules/tabs/ExploreTab';
+import DocsTab from '../../../react/src/modules/tabs/DocsTab';
 
 const TABS = [
 	{
 		id: 'explore',
 		name: 'Explore',
-		component: <Explore/>
+		component: <ExploreTab />
 	},
 	{
 		id: 'docs',
 		name: 'Docs',
-		component: <Docs/>
+		component: <DocsTab />
 	},
 	{
 		id: 'about',
 		name: 'About',
-		component: <div/>
+		component: <div />
 	}
 ]
 

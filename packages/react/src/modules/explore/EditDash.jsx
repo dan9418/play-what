@@ -1,5 +1,5 @@
 import React from "react";
-import "./Docs.css";
+
 
 const EditDash = ({ isEditing, setIsEditing, actions }) => {
 	return (

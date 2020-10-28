@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PodContextProvider } from '../other/PodContext';
-import ModelPanel from './ModelPanel';
+import ModelPanel from '../explore/ModelPanel';
+import './ExploreTab.css';
 
 const Explore = () => {
 	const [modelType, setModelType] = useState('pod');

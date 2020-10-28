@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import DOCS_CONFIG from "./Docs.config";
-import "./Docs.css";
-import FunctionPanel from "./FunctionPanel";
+import "./DocsTab.css";
+import FunctionPanel from "../docs/FunctionPanel";
 
 const MODULE = DOCS_CONFIG.modules.find(x => x.id === 'structs');
 const SUBMODULE = MODULE.submodules.find(x => x.id === 'structs/cell');

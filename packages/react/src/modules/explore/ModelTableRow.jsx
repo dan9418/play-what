@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import pw_core from "@pw/core";
+import React from 'react';
+import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import './ModelTable.css';
-
 
 const getInput = (value, podType) => {
 	if (podType === 'note') {
@@ -72,7 +71,7 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => {
+const ModelTableRow = ({ value, setValue, isEditing, modelType, podType }) => {
 	if (modelType === 'index') {
 		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
 	}
@@ -112,4 +111,4 @@ const ModelRowManager = ({ value, setValue, isEditing, modelType, podType }) => 
 	}
 };
 
-export default ModelRowManager;
+export default ModelTableRow;

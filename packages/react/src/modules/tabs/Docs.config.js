@@ -1,5 +1,4 @@
 import pw_core from '@pw/core';
-import './Docs.css';
 
 const DOCS_CONFIG = {
 	id: 'root',
