@@ -141,7 +141,7 @@ const TYPE_OPTIONS = [
 	{
 		id: 'index',
 		name: 'Index',
-		theoryTypes: [
+		theoryOptions: [
 			{
 				id: 'pitch',
 				name: 'Pitch'
@@ -155,7 +155,7 @@ const TYPE_OPTIONS = [
 	{
 		id: 'pod',
 		name: 'Pod',
-		theoryTypes: [
+		theoryOptions: [
 			{
 				id: 'note',
 				name: 'Note'
@@ -169,7 +169,7 @@ const TYPE_OPTIONS = [
 	{
 		id: 'podList',
 		name: 'Pod List',
-		theoryTypes: [
+		theoryOptions: [
 			{
 				id: 'chord',
 				name: 'Chord'
@@ -195,18 +195,17 @@ const POD_TYPE_OPTIONS = [
 
 const TypeSubpanel = () => {
 	const podContext = usePodContext();
-	const { modelType, podType, theoryType, value, setValue } = podContext;
+	const { modelType, setModelType, podType, setPodType, theoryType, setTheoryType, value, setValue } = podContext;
 
 	const [isEditing, setIsEditing] = useState(false);
 
-	const [model, setModel] = useState(TYPE_OPTIONS[0]);
-	const [theory, setTheory] = useState(model.theoryTypes[0]);
-
-	const [pod, setPod] = useState(POD_TYPE_OPTIONS[0]);
+	const modelObj = TYPE_OPTIONS.find(x => x.id === modelType);
+	const theoryObj = modelObj.theoryOptions.find(x => x.id === theoryType);
+	const podObj = POD_TYPE_OPTIONS.find(x => x.id === podType);
 
 	useEffect(() => {
-		setTheory(model.theoryTypes[0]);
-	}, [model.id]);
+		setTheoryType(modelObj.theoryOptions[0].id);
+	}, [modelType]);
 
 	return (
 		<div className='subpanel'>
@@ -214,29 +213,29 @@ const TypeSubpanel = () => {
 			<table>
 				<thead>
 					<tr>
-						<th>Model Type</th>
-						<th>Pod Type</th>
-						<th>Theory Type</th>
+						<th>Model</th>
+						<th>Pod</th>
+						<th>Theory</th>
 					</tr>
 				</thead>
 				<tbody>
 					{isEditing ?
 						<tr>
 							<td>
-								<DropdownInput options={TYPE_OPTIONS} value={model} setValue={setModel} />
+								<DropdownInput options={TYPE_OPTIONS} value={modelType} setValue={t => setModelType(t.id)} />
 							</td>
 							<td>
-								<DropdownInput options={model.theoryTypes} value={theory} setValue={setTheory} />
+								<DropdownInput options={modelObj.theoryOptions} value={theoryType} setValue={t => setTheoryType(t.id)} />
 							</td>
 							<td>
-								<DropdownInput options={POD_TYPE_OPTIONS} value={pod} setValue={setPod} />
+								<DropdownInput options={POD_TYPE_OPTIONS} value={podType} setValue={t => setPodType(t.id)} />
 							</td>
 						</tr>
 						:
 						<tr>
-							<td>{modelType}</td>
-							<td>{podType}</td>
-							<td>{theoryType || 'n/a'}</td>
+							<td>{modelObj.name}</td>
+							<td>{podObj.name}</td>
+							<td>{theoryObj && theoryObj.name || 'n/a'}</td>
 						</tr>
 					}
 				</tbody>
