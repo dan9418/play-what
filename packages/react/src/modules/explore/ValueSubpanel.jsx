@@ -1,6 +1,7 @@
 import pw_core from "@pw/core";
 import React, { useState } from "react";
 import usePodContext from "../other/PodContext";
+import ButtonInput from "../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 
 import EditDash from './EditDash';
@@ -24,11 +25,15 @@ const ValueSubpanel = () => {
 
 	const [isEditing, setIsEditing] = useState(false);
 	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
-	const editOptionText = isLoadingPreset ? 'done' : 'load preset';
-	const editOptions = [{ text: editOptionText, onClick: () => setIsLoadingPreset(!isLoadingPreset) }];
 	return (
 		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} actions={editOptions} />
+			<EditDash name="Value" isEditing={isEditing} setIsEditing={setIsEditing} />
+			<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
+			{isEditing && (
+				<div className='preset-box' >
+					<ButtonInput onClick={() => setIsLoadingPreset(!isLoadingPreset)}>Load Preset</ButtonInput>
+				</div>
+			)}
 			{isLoadingPreset && (
 				<div>
 					<DropdownInput
@@ -38,7 +43,6 @@ const ValueSubpanel = () => {
 					/>
 				</div>
 			)}
-			<ModelTable value={value} setValue={setValue} modelType={modelType} podType={podType} isEditing={isEditing} />
 		</div>
 	);
 };

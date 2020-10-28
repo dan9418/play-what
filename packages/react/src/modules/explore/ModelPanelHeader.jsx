@@ -32,7 +32,7 @@ const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 			<div className="preview">
 				{getPreviewText(value, modelType, podType, theoryType)}
 			</div>
-			<div className='edit'>
+			<div className='expand'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
 			</div>
 		</div>

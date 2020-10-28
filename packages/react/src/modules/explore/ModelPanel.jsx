@@ -8,11 +8,8 @@ import ValueSubpanel from "./ValueSubpanel";
 const ModelPanelBody = () => {
 	return (
 		<div className='model-panel-body'>
-			<h3>Type</h3>
 			<TypeSubpanel />
-			<h3>Value</h3>
 			<ValueSubpanel />
-			<h3>Analysis</h3>
 			<AnalysisSubpanel />
 		</div>
 	);

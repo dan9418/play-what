@@ -76,7 +76,7 @@ const TypeSubpanel = () => {
 
 	return (
 		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
+			<EditDash name="Types" isEditing={isEditing} setIsEditing={setIsEditing} />
 			<table>
 				<thead>
 					<tr>

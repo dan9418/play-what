@@ -30,7 +30,7 @@ const AnalysisSubpanel = () => {
 
 	return (
 		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
+			<EditDash name="Analysis" isEditing={isEditing} setIsEditing={setIsEditing} />
 			{isEditing && <DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />}
 			<div>
 				<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />

@@ -1,19 +1,11 @@
 import React from "react";
 
 
-const EditDash = ({ isEditing, setIsEditing, actions }) => {
+const EditDash = ({ isEditing, setIsEditing, name }) => {
 	return (
-		<div className='submenu'>
-			<div className="space" />
-			<div className="action-row">
-				{isEditing && actions && actions.length && actions.map(a => (
-					<>
-						<div className='edit' onClick={a.onClick}>{a.text}</div>
-						{` | `}
-					</>
-				))}
-				<div className='edit' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
-			</div>
+		<div className='edit-dash'>
+			<div className="subpanel-name">{name}</div>
+			<div className='edit-button' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
 		</div>
 	);
 };

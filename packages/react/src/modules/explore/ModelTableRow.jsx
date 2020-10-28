@@ -2,7 +2,6 @@ import pw_core from "@pw/core";
 import React from 'react';
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
-import './ModelTable.css';
 
 const getInput = (value, podType) => {
 	if (podType === 'note') {

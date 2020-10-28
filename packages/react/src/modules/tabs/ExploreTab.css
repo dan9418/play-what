@@ -1,3 +1,14 @@
+/* General */
+
+.subpanel {
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+}
+
+.subpanel-name {
+    font-weight: bold;
+}
+
 /* ExploreTab */
 
 .explore-tab {
@@ -14,20 +25,19 @@
 
 .model-panel-body {
     background-color: #eee;
-    padding: 16px;
+    /*padding: 16px;*/
 }
 
 .model-panel-footer {
-    background-color: #eee;
+    background-color: #ddd;
     padding: 16px;
     border-radius: 0 0 16px 16px;
-    border-top: 1px solid #ccc;
 }
 
 /* ModelPanelHeader */
 
 .model-panel-header {
-    background-color: #eee;
+    background-color: #ddd;
     padding: 16px;
     border-radius: 16px 16px 0 0;
     display: flex;
@@ -49,4 +59,41 @@
 
 .type {
     padding: 4px;
+}
+
+/* EditDash */
+
+.edit-dash {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    padding-top: 0;
+    box-sizing: border-box;
+}
+
+.edit-button {
+    color: cornflowerblue;
+    cursor: pointer;
+}
+
+/* table */
+
+table {
+    margin: auto;
+}
+
+table td {
+    margin: 0;
+    padding: 4px;
+}
+
+table th {
+    padding: 8px;
+}
+
+.preset-box {
+    padding: 8px;
+    text-align: center;
 }
