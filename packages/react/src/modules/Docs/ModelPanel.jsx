@@ -1,48 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ButtonInput from '../ui/ButtonInput/ButtonInput';
-import Meter from "../viewers/Meter/Meter";
-import "./Docs.css";
-import ModelTable from './ModelTable';
-import pw_core from "@pw/core";
-import DropdownInput from "../ui/DropdownInput/DropdownInput";
-import Fretboard from '../viewers/Fretboard/_module';
 import usePodContext from "../other/PodContext";
+import DropdownInput from "../ui/DropdownInput/DropdownInput";
+import AnalysisSubpanel from "./AnalysisSubpanel";
+import "./Docs.css";
 import EditDash from './EditDash';
 import ModelCardHeader from "./ModelCardHeader";
 import ValueSubpanel from "./ValueSubpanel";
-
-const ANALYSIS_OPTIONS = [
-	{
-		id: 'meter',
-		name: 'Meter',
-		component: Meter
-	},
-	{
-		id: 'fretboard',
-		name: 'Fretboard',
-		component: Fretboard.component
-	}
-];
-
-const AnalysisSubpanel = () => {
-	const podContext = usePodContext();
-	const { modelType, podType, theoryType, value, setValue } = podContext;
-
-	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[0]);
-	const [isEditing, setIsEditing] = useState(false);
-
-	const Component = analysis.component;
-
-	return (
-		<div className='subpanel'>
-			<EditDash isEditing={isEditing} setIsEditing={setIsEditing} />
-			{isEditing && <DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />}
-			<div>
-				<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
-			</div>
-		</div>
-	);
-};
 
 const TYPE_OPTIONS = [
 	{
