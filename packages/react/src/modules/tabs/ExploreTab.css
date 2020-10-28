@@ -1,0 +1,52 @@
+/* ExploreTab */
+
+.explore-tab {
+    width: 100%;
+    max-width: 512px;
+    margin: 24px auto;
+}
+
+/* ModelPanel ModelPanelBody ModelPanelFooter */
+
+.model-panel {
+    width: 100%;
+}
+
+.model-panel-body {
+    background-color: #eee;
+    padding: 16px;
+}
+
+.model-panel-footer {
+    background-color: #eee;
+    padding: 16px;
+    border-radius: 0 0 16px 16px;
+    border-top: 1px solid #ccc;
+}
+
+/* ModelPanelHeader */
+
+.model-panel-header {
+    background-color: #eee;
+    padding: 16px;
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+}
+
+.model-name {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.type-row {
+    display: flex;
+    align-items: center;
+    color: #555;
+}
+
+.type {
+    padding: 4px;
+}

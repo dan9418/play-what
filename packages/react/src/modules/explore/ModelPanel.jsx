@@ -7,7 +7,7 @@ import ValueSubpanel from "./ValueSubpanel";
 
 const ModelPanelBody = () => {
 	return (
-		<div className='model-details'>
+		<div className='model-panel-body'>
 			<h3>Type</h3>
 			<TypeSubpanel />
 			<h3>Value</h3>
@@ -22,9 +22,10 @@ const ModelPanel = ({ label }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	console.log('dpb', label);
 	return (
-		<div className='model-row'>
+		<div className='model-panel'>
 			<ModelPanelHeader label={label} isOpen={isOpen} setIsOpen={setIsOpen} />
 			{isOpen && (<ModelPanelBody />)}
+			<div className='model-panel-footer' />
 		</div>
 	);
 }

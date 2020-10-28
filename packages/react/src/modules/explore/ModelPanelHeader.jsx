@@ -18,21 +18,21 @@ const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { modelType, podType, theoryType, value, setValue } = podContext;
 	return (
-		<div className='model-summary'>
+		<div className='model-panel-header'>
 			<div>
 				<div className='model-name'>{label}</div>
 				<div className='type-row'>
-					<div className='model-type'>{modelType}</div>
+					<div className='type'>{modelType}</div>
 					{` | `}
-					<div className='pod-type'>{podType}</div>
+					<div className='type'>{podType}</div>
 					{` | `}
-					<div className='pod-type'>{theoryType}</div>
+					<div className='type'>{theoryType}</div>
 				</div>
 			</div>
 			<div className="preview">
 				{getPreviewText(value, modelType, podType, theoryType)}
 			</div>
-			<div className='edit pin-right'>
+			<div className='edit'>
 				<ButtonInput onClick={() => setIsOpen(!isOpen)} className='action-button edit'>{isOpen ? '-' : '+'}</ButtonInput>
 			</div>
 		</div>

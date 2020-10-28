@@ -1,20 +1,6 @@
-.h1, h2, h3, h4, h5 {
-    max-width: 512px;
-    margin: auto;
-}
-
-.docs {
+.docs-tab {
     width: 512px;
     margin: 24px auto;
-}
-
-.docs label {
-    font-weight: bold;
-    margin: 4px;
-}
-
-.docs .index-input {
-    width: 50px;
 }
 
 .card {
@@ -22,20 +8,6 @@
     border-radius: 8px;
     padding: 8px;
     background-color: #eee;
-}
-
-.input-row {
-    margin: 8px 0;
-}
-
-.input-row.x {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.input-row label {
-    font-weight: bold;
 }
 
 .model-row>.input-meter {
@@ -69,90 +41,13 @@
     width: 100%;
 }
 
-.edit {
-    width: fit-content;
-}
-
-.edit {
-    cursor: pointer;
-    color: cornflowerblue;
-    padding: 4px;
-}
-
-.edit:hover {
-    font-weight: bold;
-}
-
 .preset-input {
     display: flex;
     padding: 8px;
-}
-
-.add button {
-    text-align: center;
-    width: 100%;
-    background-color: #999;
-}
-
-.pin-right {
-    text-align: right;
-}
-
-.explore {
-    width: 100%;
-    max-width: 512px;
-    margin: auto;
-    text-align: center;
-}
-
-.explore > * {
-    margin: 16px 8px;
-}
-
-.model-row {
-    background-color: #eee;
-    border-radius: 8px;
-    margin: 16px auto;
-    width: 100%;
-    max-width: 512px;
-}
-
-.model-summary {
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.model-details {
-    padding: 0 16px 16px;
-}
-
-.model-name {
-    font-size: 120%;
-    font-weight: bold;
-}
-
-.model-details {
-
-}
-
-.type-row {
-    display: flex;
-    align-items: center;
-    color: #555;
-}
-
-.model-type, .pod-type {
-    padding: 4px;
 }
 
 .subpanel {
     background-color: #ddd;
     padding: 8px;
     border-radius: 8px;
-}
-
-.model-row h3 {
-    margin: 8px 0;
 }

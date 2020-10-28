@@ -9,7 +9,7 @@ const Explore = () => {
 	const [theoryType, setTheoryType] = useState('note');
 	const [value, setValue] = useState([0, 0]);
 	return (
-		<div className='explore'>
+		<div className='explore-tab'>
 			<PodContextProvider
 				modelType={modelType}
 				setModelType={setModelType}
