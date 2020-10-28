@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { PodContextProvider } from '../other/PodContext';
 import ModelPanel from './ModelPanel';
 
 const Explore = () => {
@@ -7,9 +8,8 @@ const Explore = () => {
 	const [theoryType, setTheoryType] = useState('note');
 	const [value, setValue] = useState([0, 0]);
 	return (
-		<table className='explore'>
-			<ModelPanel
-				label='Custom'
+		<div className='explore'>
+			<PodContextProvider
 				modelType={modelType}
 				setModelType={setModelType}
 				podType={podType}
@@ -18,8 +18,10 @@ const Explore = () => {
 				setTheoryType={setTheoryType}
 				value={value}
 				setValue={setValue}
-			/>
-		</table>
+			>
+				<ModelPanel label='Custom' />
+			</PodContextProvider>
+		</div>
 	);
 };
 

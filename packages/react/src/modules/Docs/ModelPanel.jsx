@@ -6,6 +6,7 @@ import ModelTable from './ModelTable';
 import pw_core from "@pw/core";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import Fretboard from '../viewers/Fretboard/_module';
+import usePodContext from "../other/PodContext";
 
 const EditDash = ({ isEditing, setIsEditing, actions }) => {
 	return (
@@ -36,7 +37,9 @@ const getPreviewText = (value, modelType, podType, theoryType) => {
 
 const PreviewText = ({ value, modelType, podType, theoryType }) => getPreviewText(value, modelType, podType, theoryType);
 
-const ModelSummary = ({ label, modelType, podType, theoryType, isOpen, setIsOpen, value, preview }) => {
+const ModelSummary = ({ label, isOpen, setIsOpen }) => {
+	const podContext = usePodContext();
+	const { modelType, podType, theoryType, value, setValue } = podContext;
 	return (
 		<div className='model-summary'>
 			<div>
@@ -71,7 +74,10 @@ const getPresetOptions = (modelType, theoryType) => {
 	return [];
 }
 
-const ModelTableSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const ModelTableSubpanel = () => {
+	const podContext = usePodContext();
+	const { modelType, podType, theoryType, value, setValue } = podContext;
+
 	const [isEditing, setIsEditing] = useState(false);
 	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
 	const editOptionText = isLoadingPreset ? 'done' : 'load preset';
@@ -111,7 +117,10 @@ const ANALYSIS_OPTIONS = [
 	}
 ];
 
-const AnalysisSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const AnalysisSubpanel = () => {
+	const podContext = usePodContext();
+	const { modelType, podType, theoryType, value, setValue } = podContext;
+
 	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[0]);
 	const [isEditing, setIsEditing] = useState(false);
 
@@ -184,7 +193,10 @@ const POD_TYPE_OPTIONS = [
 	}
 ];
 
-const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
+const TypeSubpanel = () => {
+	const podContext = usePodContext();
+	const { modelType, podType, theoryType, value, setValue } = podContext;
+
 	const [isEditing, setIsEditing] = useState(false);
 
 	const [model, setModel] = useState(TYPE_OPTIONS[0]);
@@ -234,74 +246,26 @@ const TypeSubpanel = ({ modelType, podType, theoryType, value, setValue }) => {
 	);
 };
 
-const ModelDetails = ({ modelType, setModelType, podType, setPodType, theoryType, setTheoryType, value, setValue, preview, setPreview }) => {
+const ModelDetails = () => {
 	return (
 		<div className='model-details'>
 			<h3>Type</h3>
-			<TypeSubpanel
-				modelType={modelType}
-				setModelType={setModelType}
-				podType={podType}
-				setPodType={setPodType}
-				theoryType={theoryType}
-				setTheoryType={setTheoryType}
-				value={value}
-				setValue={setValue}
-			/>
+			<TypeSubpanel />
 			<h3>Value</h3>
-			<ModelTableSubpanel
-				modelType={modelType}
-				podType={podType}
-				theoryType={theoryType}
-				value={value}
-				setValue={setValue}
-			/>
+			<ModelTableSubpanel />
 			<h3>Analysis</h3>
-			<AnalysisSubpanel
-				modelType={modelType}
-				podType={podType}
-				theoryType={theoryType}
-				value={value}
-				setValue={setValue}
-				preview={preview}
-				setPreview={setPreview}
-			/>
+			<AnalysisSubpanel />
 		</div>
 	);
 };
 
-const ModelPanel = ({ label, modelType, setModelType, podType, setPodType, theoryType, setTheoryType, value, setValue, i }) => {
-
-	if (typeof value === 'undefined' || value === null) return null;
-
+const ModelPanel = ({ label }) => {
 	const [isOpen, setIsOpen] = useState(false);
-
-	console.log('dpb', label, modelType, podType, value);
-
+	console.log('dpb', label);
 	return (
 		<div className='model-row'>
-			<ModelSummary
-				label={label}
-				modelType={modelType}
-				podType={podType}
-				theoryType={theoryType}
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-				value={value}
-			/>
-			{isOpen && (
-				<ModelDetails
-					label={label}
-					modelType={modelType}
-					setModelType={setModelType}
-					podType={podType}
-					setPodType={setPodType}
-					theoryType={theoryType}
-					setTheoryType={setTheoryType}
-					value={value}
-					setValue={setValue}
-				/>
-			)}
+			<ModelSummary label={label} isOpen={isOpen} setIsOpen={setIsOpen} />
+			{isOpen && (<ModelDetails />)}
 		</div>
 	);
 }
