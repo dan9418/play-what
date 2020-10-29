@@ -1,3 +1,5 @@
+import PodIndex from ".";
+
 const DEGREE = {
 	C: {
 		id: 'C',
@@ -48,9 +50,17 @@ const DEGREE_COLOR_SCHEME = [
 	'#F032E6'
 ];
 
-export default {
-	preset: DEGREE,
-	colorScheme: DEGREE_COLOR_SCHEME,
-	getColor: d => DEGREE_COLOR_SCHEME[d],
-	getName: ({ d }) => DEGREE_VALUES[d].name
-};
+class Degree extends PodIndex {
+	static getColor(d) {
+		return DEGREE_COLOR_SCHEME[d];
+	}
+
+	static getName({ d }) {
+		return DEGREE_VALUES[d].name;
+	}
+}
+
+Degree.preset = DEGREE;
+Degree.colorScheme = DEGREE_COLOR_SCHEME;
+
+export default Degree;

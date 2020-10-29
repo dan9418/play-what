@@ -1,8 +1,6 @@
-import degree from '../models/index/degree';
 import pitch from '../models/index/pitch';
 import { DIATONIC } from './diatonic';
 
-const d = degree.preset;
 const p = pitch.preset;
 
 const MAX_PITCH = 12;
@@ -10,7 +8,7 @@ const MAX_DEGREE = 7
 const MAX = [MAX_PITCH, MAX_DEGREE];
 
 const ROOT_PITCH = p.middleC.value;
-const ROOT_DEGREE = d.C.value;
+const ROOT_DEGREE = [0, 0];
 
 const DIATONIC_VALUES = Object.values(DIATONIC);
 

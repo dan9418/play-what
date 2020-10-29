@@ -1,19 +1,3 @@
-import degree from './degree';
-import pitch from './pitch';
-
-// Constants
-
-const DEFAULT = 0;
-
-// Common
-
-// isValid
-
-// areEqual
-
-// sum
-
-
 class PodIndex {
 
 	constructor(value) {
@@ -32,8 +16,5 @@ class PodIndex {
 	static floor(a, b) { Math.floor(a / b); }
 
 }
-
-PodIndex.degree = degree;
-PodIndex.pitch = pitch;
 
 export default PodIndex;

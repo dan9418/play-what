@@ -173,11 +173,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'theory/pitch/getName',
 							name: 'getName: (p) => name',
-							fn: pw_core.models.index.pitch.getName,
+							fn: pw_core.models.pitch.getName,
 							propDefs: [
 								{
 									name: 'p',
-									value: pw_core.models.index.pitch.preset.middleC.value,
+									value: pw_core.models.pitch.preset.middleC.value,
 									modelType: 'index',
 									podType: null,
 									theoryType: null
@@ -198,11 +198,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'theory/degree/getName',
 							name: 'getName: (d) => name',
-							fn: pw_core.models.index.degree.getName,
+							fn: pw_core.models.degree.getName,
 							propDefs: [
 								{
 									name: 'd',
-									value: pw_core.models.index.degree.preset.C.value,
+									value: pw_core.models.degree.preset.C.value,
 									modelType: 'index',
 									podType: null,
 									theoryType: null

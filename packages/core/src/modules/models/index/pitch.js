@@ -1,3 +1,5 @@
+import PodIndex from ".";
+
 const PITCH = {
 	middleC: {
 		id: 'middleC',
@@ -28,9 +30,17 @@ const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ]
 
-export default {
-	preset: PITCH,
-	colorScheme: PITCH_COLOR_SCHEME,
-	getColor: p => PITCH_COLOR_SCHEME[p],
-	getName: ({ p }) => PITCH_VALUES.find(x => x.value === p).name
+class Pitch extends PodIndex {
+	static getColor(p) {
+		return PITCH_COLOR_SCHEME[p];
+	}
+
+	static getName({ p }) {
+		return PITCH_VALUES.find(x => x.value === p).name;
+	}
 }
+
+Pitch.preset = PITCH;
+Pitch.colorScheme = PITCH_COLOR_SCHEME;
+
+export default Pitch;
