@@ -79,14 +79,14 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									value: pw_core.models.pod.interval.preset.M3.value,
+									value: pw_core.models.interval.preset.M3.value,
 									modelType: 'pod',
 									podType: 'note',
 									theoryType: 'note'
 								},
 								{
 									name: 'b',
-									value: pw_core.models.pod.interval.preset.P5.value,
+									value: pw_core.models.interval.preset.P5.value,
 									modelType: 'pod',
 									podType: 'interval',
 									theoryType: 'interval'
@@ -106,7 +106,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									value: pw_core.models.pod.note.preset.C.value,
+									value: pw_core.models.note.preset.C.value,
 									modelType: 'pod',
 									podType: 'note',
 									theoryType: 'note'
@@ -146,7 +146,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'b',
-									value: pw_core.models.pod.interval.preset.P1.value,
+									value: pw_core.models.interval.preset.P1.value,
 									modelType: 'pod',
 									podType: 'interval'
 								}
@@ -253,7 +253,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'a',
-									value: pw_core.models.pod.interval.preset.P1.value,
+									value: pw_core.models.interval.preset.P1.value,
 									modelType: 'pod',
 									podType: 'interval',
 									theoryType: null
@@ -274,11 +274,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/pod/note/getName',
 							name: 'getName: (a) => name',
-							fn: pw_core.models.pod.note.getName,
+							fn: pw_core.models.note.getName,
 							propDefs: [
 								{
 									name: 'a',
-									value: pw_core.models.pod.note.preset.C.value,
+									value: pw_core.models.note.preset.C.value,
 									modelType: 'pod',
 									podType: 'note',
 									theoryType: null
@@ -337,7 +337,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'b',
-									value: pw_core.models.pod.interval.preset.P1.value,
+									value: pw_core.models.interval.preset.P1.value,
 									modelType: 'pod',
 									podType: 'interval',
 									theoryType: null
@@ -423,7 +423,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'b',
-									value: pw_core.models.pod.interval.preset.P1.value,
+									value: pw_core.models.interval.preset.P1.value,
 									modelType: 'pod',
 									podType: 'interval',
 									theoryType: null
@@ -455,7 +455,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'keyCenter',
-									value: pw_core.models.pod.note.preset.C.value,
+									value: pw_core.models.note.preset.C.value,
 									modelType: 'pod',
 									podType: 'note',
 									theoryType: 'note'

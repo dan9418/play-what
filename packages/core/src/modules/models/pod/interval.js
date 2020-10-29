@@ -1,4 +1,4 @@
-import pod from './pod';
+import Pod from './pod';
 
 export const INTERVAL = {
 	P1: {
@@ -181,15 +181,16 @@ export const INTERVAL = {
 
 const INTERVAL_VALUES = Object.values(INTERVAL);
 
-const getName = ({ a }) => {
-	const reduced = pod.reduce({ a });
-	const [p, d] = reduced;
-	const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
-	return result ? result.id : `[${p}, ${d}]`;
-};
+class Interval extends Pod {
+	static getName({ a }) {
+		const reduced = Pod.reduce({ a });
+		const [p, d] = reduced;
+		const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
+		return result ? result.id : `[${p}, ${d}]`;
+	}
+}
 
-export default {
-	preset: INTERVAL,
-	presetValues: INTERVAL_VALUES,
-	getName
-};
+Interval.preset = INTERVAL;
+Interval.presetValues = INTERVAL_VALUES;
+
+export default Interval;

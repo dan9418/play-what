@@ -5,11 +5,11 @@ import DropdownInput from '../ui/DropdownInput/DropdownInput';
 
 const getInput = (value, podType) => {
 	if (podType === 'note') {
-		const options = pw_core.models.pod.note.presetValues;
+		const options = pw_core.models.note.presetValues;
 		return <DropdownInput options={options} value={null} setValue={null} />
 	}
 	else if (podType === 'interval') {
-		const options = pw_core.models.pod.interval.presetValues;
+		const options = pw_core.models.interval.presetValues;
 		return <DropdownInput options={options} value={null} setValue={null} displayProperty="id" />
 	}
 	return null;

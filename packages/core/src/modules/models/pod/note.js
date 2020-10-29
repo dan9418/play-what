@@ -1,7 +1,7 @@
 import degree from '../index/degree';
 import accidental from '../../theory/accidental';
 import config from '../../theory/config';
-import pod from './pod';
+import Pod from './pod';
 
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
@@ -29,15 +29,6 @@ export const NOTE = {
 
 const NOTE_VALUES = Object.values(NOTE);
 
-const getName = ({ a }) => {
-	const reduced = pod.reduce({ a });
-	const [p, d] = reduced;
-	const degreeName = degree.getName({ d });
-	const offset = p - config.rootScale[d][0];
-	const accidentalName = accidental.getName({ a: offset });
-	return `${degreeName}${accidentalName}`;
-};
-
 /* export const parseString = keyString => {
 	if (typeof keyString !== 'string' || !keyString.length) {
 		throw ('Bad keystring args')
@@ -56,8 +47,19 @@ const getName = ({ a }) => {
 	};
 }; */
 
-export default {
-	preset: NOTE,
-	presetValues: NOTE_VALUES,
-	getName
-};
+
+class Note extends Pod {
+	static getName({ a }) {
+		const reduced = Pod.reduce({ a });
+		const [p, d] = reduced;
+		const degreeName = degree.getName({ d });
+		const offset = p - config.rootScale[d][0];
+		const accidentalName = accidental.getName({ a: offset });
+		return `${degreeName}${accidentalName}`;
+	};
+}
+
+Note.preset = NOTE;
+Note.presetValues = NOTE_VALUES;
+
+export default Note;

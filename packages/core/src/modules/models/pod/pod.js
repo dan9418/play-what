@@ -1,6 +1,4 @@
 import index from '../index/index';
-import interval from './interval';
-import note from './note';
 
 // Constants
 
@@ -30,10 +28,10 @@ class Pod {
 
 	static getName({ pod, podType }) {
 		switch (podType) {
-		case 'note':
+		/*case 'note':
 			return note.getName({ a: pod });
 		case 'interval':
-			return interval.getName({ a: pod });
+			return interval.getName({ a: pod });*/
 		default:
 			return JSON.stringify(pod);
 		}
@@ -46,8 +44,5 @@ class Pod {
 	static addPodList({ a, B }) { return B.map((b) => addPod({ a, b })); };
 
 }
-
-Pod.interval = interval;
-Pod.note = note;
 
 export default Pod;

@@ -9,8 +9,8 @@ import ModelTable from './ModelTable';
 
 const getPresetOptions = (modelType, theoryType) => {
 	if (modelType === 'pod') {
-		if (theoryType === 'note') return pw_core.models.pod.note.presetValues;
-		else if (theoryType === 'interval') return pw_core.models.pod.interval.presetValues;
+		if (theoryType === 'note') return pw_core.models.note.presetValues;
+		else if (theoryType === 'interval') return pw_core.models.interval.presetValues;
 	}
 	else if (modelType === 'podList') {
 		if (theoryType === 'chord') return pw_core.models.podList.chord.presetValues;
