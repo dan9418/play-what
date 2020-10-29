@@ -1,7 +1,7 @@
-import { INTERVAL } from '../pod/interval';
+import Pod from '../../models/pod/pod';
 import utils from '../../utils';
-import pod from '../../models/pod/pod';
-import podList from './podList';
+import { INTERVAL } from '../pod/interval';
+import PodList from './podList';
 
 export const CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
@@ -25,28 +25,29 @@ export const CHORD = {
 
 const CHORD_VALUES = Object.values(CHORD);
 
-const getInversion = ({ A, n }) => {
-	let result = [...A];
-	result = utils.rotate(result, n);
-	const octave = INTERVAL.P8.value;
-	for (let i = 1; i <= n; i++) {
-		const index = result.length - i;
-		const a = result[index];
-		result[index] = pod.addPod({ a, b: octave })
+class Chord extends PodList {
+	static getInversion({ A, n }) {
+		let result = [...A];
+		result = utils.rotate(result, n);
+		const octave = INTERVAL.P8.value;
+		for (let i = 1; i <= n; i++) {
+			const index = result.length - i;
+			const a = result[index];
+			result[index] = Pod.addPod({ a, b: octave })
+		}
+		return result;
 	}
-	return result;
+
+	static transpose({ A, b }) {
+		return PodList.addPod({ A, b });
+	}
+
+	static getName({ A }) {
+		return (CHORD_VALUES.find(x => PodList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
+	}
 }
 
-const transpose = ({ A, b }) => {
-	return podList.addPod({ A, b });
-}
+Chord.preset = CHORD;
+Chord.presetValues = CHORD_VALUES;
 
-const getName = ({ A }) => (CHORD_VALUES.find(x => podList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
-
-export default {
-	preset: CHORD,
-	presetValues: CHORD_VALUES,
-	getInversion,
-	transpose,
-	getName
-};
+export default Chord;

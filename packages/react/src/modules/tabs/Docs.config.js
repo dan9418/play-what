@@ -113,7 +113,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'B',
-									value: pw_core.models.podList.chord.preset.Maj.value,
+									value: pw_core.models.chord.preset.Maj.value,
 									modelType: 'podList',
 									podType: 'interval',
 									theoryType: 'chord'
@@ -139,7 +139,7 @@ const DOCS_CONFIG = {
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: 'scale'
@@ -300,11 +300,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/podList/chord/inversion',
 							name: 'inversion: (A, n) => C',
-							fn: pw_core.models.podList.chord.getInversion,
+							fn: pw_core.models.chord.getInversion,
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: null
@@ -326,11 +326,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/podList/chord/transpose',
 							name: 'transpose: (a, b) => C',
-							fn: pw_core.models.podList.chord.transpose,
+							fn: pw_core.models.chord.transpose,
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: null
@@ -359,11 +359,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/podList/scale/getNumeral',
 							name: 'getNumeral: (A, d) => C',
-							fn: pw_core.models.podList.scale.getNumeral,
+							fn: pw_core.models.scale.getNumeral,
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: null
@@ -386,11 +386,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/podList/scale/getMode',
 							name: 'getMode: (A, d) => C',
-							fn: pw_core.models.podList.scale.getMode,
+							fn: pw_core.models.scale.getMode,
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: null
@@ -412,11 +412,11 @@ const DOCS_CONFIG = {
 						{
 							id: 'models/podList/scale/transpose',
 							name: 'transpose: (a, b) => C',
-							fn: pw_core.models.podList.scale.transpose,
+							fn: pw_core.models.scale.transpose,
 							propDefs: [
 								{
 									name: 'A',
-									value: pw_core.models.podList.scale.preset.Major.value,
+									value: pw_core.models.scale.preset.Major.value,
 									modelType: 'podList',
 									podType: 'note',
 									theoryType: null
@@ -462,7 +462,7 @@ const DOCS_CONFIG = {
 								},
 								{
 									name: 'intervals',
-									value: pw_core.models.podList.chord.preset.Dom7.value,
+									value: pw_core.models.chord.preset.Dom7.value,
 									modelType: 'podList',
 									podType: 'interval',
 									theoryType: 'chord'

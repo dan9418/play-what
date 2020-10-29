@@ -1,7 +1,7 @@
 import { INTERVAL } from '../pod/interval';
 import index from '../index/index';
 import chord from './chord';
-import podList from './podList';
+import PodList from './podList';
 
 export const SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
@@ -14,60 +14,59 @@ export const SCALE = {
 
 const SCALE_VALUES = Object.values(SCALE);
 
-const getMode = ({ A, d }) => {
-	return chord.getInversion({ A, n: d });
-	/*let mode = [...A];
-	mode = utils.rotate(mode, d);
-	const root = mode[0];
-	const newMode = mode.map((m) => [m[0] + root[0], m[1] + root[1]]);
-	return newMode;*/
-};
+class Scale extends PodList {
+	static getMode({ A, d }) {
+		return chord.getInversion({ A, n: d });
+		/*let mode = [...A];
+		mode = utils.rotate(mode, d);
+		const root = mode[0];
+		const newMode = mode.map((m) => [m[0] + root[0], m[1] + root[1]]);
+		return newMode;*/
+	};
 
-const getAllModes = ({ scale, keyCenter }) => {
-	/*const modes = [];
-	for (let i = 1; i <= scale.length; i++) {
-		modes.push(getMode({ scale, degree: i }));
+	static getAllModes({ scale, keyCenter }) {
+		/*const modes = [];
+		for (let i = 1; i <= scale.length; i++) {
+			modes.push(getMode({ scale, degree: i }));
+		}
+		return modes.map((m, i) => ({
+			name: `Degree ${i + 1}`,
+			a: keyCenter,
+			B: m
+		}));*/
+	};
+
+	static getNumeral({ A, d }) {
+		const LIMIT = 7;
+		const numeral = [];
+		for (let i = 0; i < LIMIT; i = i + 2) {
+			const curD = index.moduloSum({ a: d, b: i, divisor: A.length });
+			const ivl = A[curD];
+			if (i < d) ivl[0] = ivl[0] + 12;
+			numeral.push(ivl);
+		}
+		return numeral;
+	};
+
+	static getAllNumerals({ scale, keyCenter }) {
+		/*const numerals = [];
+		for (let i = 0; i < scale.length; i++) {
+			numerals.push(getNumeral({ scale, keyCenter, degree: i }));
+		}
+		return numerals;*/
+	};
+
+	static transpose({ A, b }) {
+		return PodList.addPod({ A, b });
 	}
-	return modes.map((m, i) => ({
-		name: `Degree ${i + 1}`,
-		a: keyCenter,
-		B: m
-	}));*/
-};
 
-const getNumeral = ({ A, d }) => {
-	const LIMIT = 7;
-	const numeral = [];
-	for (let i = 0; i < LIMIT; i = i + 2) {
-		const curD = index.moduloSum({ a: d, b: i, divisor: A.length });
-		const ivl = A[curD];
-		if (i < d) ivl[0] = ivl[0] + 12;
-		numeral.push(ivl);
+	static getName({ A }) {
+		return (SCALE_VALUES.find(x => PodList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
 	}
-	return numeral;
-};
 
-const getAllNumerals = ({ scale, keyCenter }) => {
-	/*const numerals = [];
-	for (let i = 0; i < scale.length; i++) {
-		numerals.push(getNumeral({ scale, keyCenter, degree: i }));
-	}
-	return numerals;*/
-};
-
-const transpose = ({ A, b }) => {
-	return podList.addPod({ A, b });
 }
 
-const getName = ({ A }) => (SCALE_VALUES.find(x => podList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
+Scale.preset = SCALE;
+Scale.presetValues = SCALE_VALUES;
 
-export default {
-	preset: SCALE,
-	presetValues: SCALE_VALUES,
-	getMode,
-	getAllModes,
-	getNumeral,
-	getAllNumerals,
-	transpose,
-	getName
-};
+export default Scale;

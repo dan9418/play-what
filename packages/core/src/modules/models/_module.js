@@ -7,6 +7,8 @@ import interval from './pod/interval';
 import note from './pod/note';
 
 import podList from './podList/podList';
+import chord from './podList/chord';
+import scale from './podList/scale';
 
 export default {
 	index,
@@ -15,5 +17,7 @@ export default {
 	pod,
 	interval,
 	note,
-	podList
+	podList,
+	chord,
+	scale
 }

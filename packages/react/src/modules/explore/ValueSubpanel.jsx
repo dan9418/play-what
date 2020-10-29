@@ -13,8 +13,8 @@ const getPresetOptions = (modelType, theoryType) => {
 		else if (theoryType === 'interval') return pw_core.models.interval.presetValues;
 	}
 	else if (modelType === 'podList') {
-		if (theoryType === 'chord') return pw_core.models.podList.chord.presetValues;
-		else if (theoryType === 'scale') return pw_core.models.podList.scale.presetValues;
+		if (theoryType === 'chord') return pw_core.models.chord.presetValues;
+		else if (theoryType === 'scale') return pw_core.models.scale.presetValues;
 	}
 	return [];
 }

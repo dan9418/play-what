@@ -1,7 +1,5 @@
 import pod from '../pod/pod'
 import index from '../index/index';
-import chord from './chord';
-import scale from './scale';
 import note from '../pod/note';
 import interval from '../pod/interval';
 
@@ -33,14 +31,14 @@ class PodList {
 	static reduce({ A }) { return A.map((a) => pod.reduce({ a })); }
 
 	static getName({ podList, podType, theoryType }) {
-		if (theoryType) {
+		/*if (theoryType) {
 			switch (theoryType) {
 			case 'chord':
 				return chord.getName({ A: podList });
 			case 'scale':
 				return scale.getName({ A: podList });
 			}
-		}
+		}*/
 		if (podType) {
 			switch (podType) {
 			case 'note':
@@ -69,8 +67,5 @@ class PodList {
 	static addPod({ A, b }) { return A.map((a) => pod.addPod({ a, b })); }
 
 }
-
-PodList.chord = chord;
-PodList.scale = scale;
 
 export default PodList;
