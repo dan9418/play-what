@@ -13,22 +13,27 @@ const DEFAULT = 0;
 
 // sum
 
-const modulo = ({ a, b }) => ((a % b) + b) % b;
 
-const moduloSum = ({ a, b, divisor }) => {
-	const offset = 0;
-	const subtraction = false;
-	const dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));
-	return modulo({ a: dividend, b: divisor }) + offset;
-};
+class PodIndex {
 
-const floor = (a, b) => Math.floor(a / b);
+	constructor(value) {
+		this.value = value;
+	}
 
-export default {
-	degree,
-	pitch,
-	defaultValue: DEFAULT,
-	modulo,
-	moduloSum,
-	floor
-};
+	static modulo({ a, b }) { return ((a % b) + b) % b; }
+
+	static moduloSum({ a, b, divisor }) {
+		const offset = 0;
+		const subtraction = false;
+		const dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));
+		return modulo({ a: dividend, b: divisor }) + offset;
+	};
+
+	static floor(a, b) { Math.floor(a / b); }
+
+}
+
+PodIndex.degree = degree;
+PodIndex.pitch = pitch;
+
+export default PodIndex;
