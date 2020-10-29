@@ -6,7 +6,7 @@ import './Meter.css';
 const getPitchColor = pw_core.models.index.pitch.getColor;
 const getDegreeColor = pw_core.models.index.degree.getColor;
 const modulo = pw_core.models.index.modulo;
-const MAX = pw_core.models.pod.max;
+const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {
 	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
