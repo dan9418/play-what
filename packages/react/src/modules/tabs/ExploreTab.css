@@ -29,7 +29,7 @@
 }
 
 .model-panel-footer {
-    background-color: #ddd;
+    background-color: #eee;
     padding: 16px;
     border-radius: 0 0 16px 16px;
 }
@@ -37,7 +37,7 @@
 /* ModelPanelHeader */
 
 .model-panel-header {
-    background-color: #ddd;
+    background-color: #eee;
     padding: 16px;
     border-radius: 16px 16px 0 0;
     display: flex;

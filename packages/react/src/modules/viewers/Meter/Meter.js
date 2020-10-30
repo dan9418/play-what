@@ -5,7 +5,6 @@ import './Meter.css';
 
 const getPitchColor = pw_core.models.pitch.getColor;
 const getDegreeColor = pw_core.models.degree.getColor;
-const modulo = pw_core.models.index.modulo;
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {
@@ -22,7 +21,7 @@ const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 	for (let i = 0; i < max; i++) {
 		const value = indexList.find(v => pw_core.models.index.modulo({ a: v, b: max }) === i);
 		const reduced = pw_core.models.index.modulo({ a: value, b: max });
-		const color = colorFn ? colorFn(reduced) : pw_core.models.pitch.getColor(reduced);
+		const color = colorFn(reduced);
 
 		const style = pw_color.getStylesFromBgColor(color);
 		const text = nameFn ? nameFn(i) : i;

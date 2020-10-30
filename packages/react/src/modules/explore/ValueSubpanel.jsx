@@ -8,14 +8,6 @@ import EditDash from './EditDash';
 import ModelTable from './ModelTable';
 
 const getPresetOptions = (modelType, theoryType) => {
-	if (modelType === 'pod') {
-		if (theoryType === 'note') return pw_core.models.note.presetValues;
-		else if (theoryType === 'interval') return pw_core.models.interval.presetValues;
-	}
-	else if (modelType === 'podList') {
-		if (theoryType === 'chord') return pw_core.models.chord.presetValues;
-		else if (theoryType === 'scale') return pw_core.models.scale.presetValues;
-	}
 	return [];
 }
 

@@ -6,7 +6,8 @@ import ButtonInput from '../ui/ButtonInput/ButtonInput';
 
 const getPreviewText = (value, modelType, podType, theoryType) => {
 	if (modelType === 'pod') {
-		return pw_core.models.pod.getName({ pod: value, podType });
+		const pod = new pw_core.models.pod(value);
+		return pod.getName({ pod: value, podType });
 	}
 	if (modelType === 'podList') {
 		return pw_core.models.podList.getName({ podList: value, podType, theoryType });

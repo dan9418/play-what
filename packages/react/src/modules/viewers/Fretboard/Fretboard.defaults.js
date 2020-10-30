@@ -7,8 +7,8 @@ export default {
 		value: [[0,0]],
 		modelType: 'podList',
 		podType: 'note',
-		colorFn: pw_core.models.degree.getColor,
-		textFn: pw_core.models.interval.getName,
+		colorFn: null,
+		textFn: null,
 		reduced: true
 	}
 };
