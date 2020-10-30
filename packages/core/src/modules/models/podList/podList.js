@@ -5,17 +5,19 @@ import interval from '../pod/interval';
 
 // Constants
 
-const DEFAULT = [[0, 0]];
+const DEFAULT_POD_LIST = [[0, 0]];
+const DEFAULT_POD_LIST_OPTIONS = {
+	reduced: true
+};
 
 class PodList {
 
-	constructor(value) {
+	constructor(value = DEFAULT_POD_LIST, options = {}) {
 		this.value = value;
+		this.options = { ...DEFAULT_POD_LIST_OPTIONS, ...options };
 	}
 
-	// Common
-
-	static isValid(podList) {
+	/*static isValid(podList) {
 		return podList !== null && Array.isArray(podList) && podList.find((v) => !pod.isValid(v));
 	};
 
@@ -26,45 +28,36 @@ class PodList {
 			if (!pod.areEqual({ pod1: list1[i], pod2: list2[i] })) { return false; }
 		}
 		return true;
-	};
+	};*/
 
-	static reduce({ A }) { return A.map((a) => pod.reduce({ a })); }
-
-	static getName({ podList, podType, theoryType }) {
-		/*if (theoryType) {
-			switch (theoryType) {
-			case 'chord':
-				return chord.getName({ A: podList });
-			case 'scale':
-				return scale.getName({ A: podList });
-			}
-		}*/
-		if (podType) {
-			switch (podType) {
-			case 'note':
-				return podList.map(pod => note.getName({ a: pod })).join(', ');
-			case 'interval':
-				return podList.map(pod => interval.getName({ a: pod })).join(', ');
-			}
-		}
-		return JSON.stringify(podList);
+	static reduce() {
+		const A = this.value;
+		return A.map((a) => pod.reduce({ a }));
 	}
 
-	// Utils
+	static getName() {
+		const A = this.value;
+		return JSON.stringify(A);
+	}
 
-	static findPodWithPitch({ A, p }) {
+	static findPodWithPitch(p) {
+		const A = this.value;
 		const octaveReduce = true
 		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 		return A.find((n) => n[0] === pitch) || null;
 	};
 
-	static findIndexOfPodWithPitch({ A, p }) {
+	static findIndexOfPodWithPitch(p) {
+		const A = this.value;
 		const octaveReduce = true
 		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 		return A.findIndex((n) => n[0] === pitch);
 	};
 
-	static addPod({ A, b }) { return A.map((a) => pod.addPod({ a, b })); }
+	static addPod(b) {
+		const A = this.value;
+		return A.map((a) => pod.addPod({ a, b }));
+	}
 
 }
 
