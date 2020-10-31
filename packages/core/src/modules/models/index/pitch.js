@@ -1,4 +1,4 @@
-import PodIndex from ".";
+import PodIndex from "./PodIndex";
 
 const PITCH = {
 	middleC: {

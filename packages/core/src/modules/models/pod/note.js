@@ -1,7 +1,7 @@
-import degree from '../index/degree';
+import degree from '../index/Degree';
 import accidental from '../../theory/accidental';
 import config from '../../theory/config';
-import Pod from './pod';
+import Pod from './Pod';
 
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },

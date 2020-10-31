@@ -1,4 +1,4 @@
-import pitch from '../models/index/pitch';
+import pitch from '../models/index/Pitch';
 import { DIATONIC } from './diatonic';
 
 const p = pitch.preset;

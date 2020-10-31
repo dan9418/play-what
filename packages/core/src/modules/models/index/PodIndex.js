@@ -1,3 +1,4 @@
+import Utils from "../../Utils";
 
 const DEFAULT_POD_INDEX = 0;
 const DEFAULT_POD_INDEX_OPTIONS = {
@@ -11,18 +12,21 @@ class PodIndex {
 		this.options = { ...DEFAULT_POD_INDEX_OPTIONS, ...options };
 	}
 
-	static modulo(b) {
-		const a = this.value;
-		return ((a % b) + b) % b;
+	getValue() {
+		return this.value;
 	}
 
-	static moduloSum(b, divisor) {
+	reduce(max) {
 		const a = this.value;
-		const offset = 0;
-		const subtraction = false;
-		const dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));
-		return modulo({ a: dividend, b: divisor }) + offset;
-	};
+		this.value = Utils.modulo(a, max);
+		return this;
+	}
+
+	add(b, divisor) {
+		const a = this.value;
+		this.value = Utils.moduloSum(a, b, divisor)
+		return this;
+	}
 }
 
 export default PodIndex;

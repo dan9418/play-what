@@ -1,10 +1,3 @@
-import pod from '../pod/pod'
-import index from '../index/index';
-import note from '../pod/note';
-import interval from '../pod/interval';
-
-// Constants
-
 const DEFAULT_POD_LIST = [[0, 0]];
 const DEFAULT_POD_LIST_OPTIONS = {
 	reduced: true
@@ -30,35 +23,34 @@ class PodList {
 		return true;
 	};*/
 
-	static reduce() {
+	reduce() {
 		const A = this.value;
-		return A.map((a) => pod.reduce({ a }));
+		this.value = A.map((a) => {
+			const p = Utils.modulo(a[0], max[0]);
+			const d = Utils.modulo(a[1], max[1]);
+			return [p, d];
+		});
+		return this;
 	}
 
-	static getName() {
+	getName() {
 		const A = this.value;
 		return JSON.stringify(A);
 	}
 
-	static findPodWithPitch(p) {
+	/*findPodWithPitch(p) {
 		const A = this.value;
 		const octaveReduce = true
 		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 		return A.find((n) => n[0] === pitch) || null;
 	};
 
-	static findIndexOfPodWithPitch(p) {
+	findIndexOfPodWithPitch(p) {
 		const A = this.value;
 		const octaveReduce = true
 		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 		return A.findIndex((n) => n[0] === pitch);
-	};
-
-	static addPod(b) {
-		const A = this.value;
-		return A.map((a) => pod.addPod({ a, b }));
-	}
-
+	};*/
 }
 
 export default PodList;

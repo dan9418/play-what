@@ -1,4 +1,4 @@
-import Pod from './pod';
+import Pod from './Pod';
 
 export const INTERVAL = {
 	P1: {
