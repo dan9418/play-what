@@ -59,6 +59,7 @@ class Note extends Pod {
 	};
 }
 
+Note.modelId = 'note';
 Note.preset = NOTE;
 Note.presetValues = NOTE_VALUES;
 

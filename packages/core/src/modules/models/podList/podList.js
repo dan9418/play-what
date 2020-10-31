@@ -40,4 +40,6 @@ class PodList {
 	};*/
 }
 
+PodList.modelId = 'podList';
+
 export default PodList;

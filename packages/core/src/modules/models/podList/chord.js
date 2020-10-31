@@ -47,6 +47,7 @@ class Chord extends PodList {
 	}
 }
 
+Chord.modelId = 'chord';
 Chord.preset = CHORD;
 Chord.presetValues = CHORD_VALUES;
 

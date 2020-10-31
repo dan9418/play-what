@@ -40,6 +40,7 @@ class Pitch extends PodIndex {
 	}
 }
 
+Pitch.modelId = 'pitch';
 Pitch.preset = PITCH;
 Pitch.colorScheme = PITCH_COLOR_SCHEME;
 

@@ -66,6 +66,7 @@ class Scale extends PodList {
 
 }
 
+Scale.modelId = 'scale';
 Scale.preset = SCALE;
 Scale.presetValues = SCALE_VALUES;
 

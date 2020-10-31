@@ -60,6 +60,7 @@ class Degree extends PodIndex {
 	}
 }
 
+Degree.modelId = 'degree';
 Degree.preset = DEGREE;
 Degree.colorScheme = DEGREE_COLOR_SCHEME;
 

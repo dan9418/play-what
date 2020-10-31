@@ -6,12 +6,13 @@ import ButtonInput from '../ui/ButtonInput/ButtonInput';
 const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { value, setValue } = podContext;
+	console.log(value)
 	return (
 		<div className='model-panel-header'>
 			<div>
 				<div className='model-name'>{label}</div>
 				<div className='type-row'>
-					<div className='type'>{typeof value}</div>
+					<div className='type'>{value.modelId}</div>
 				</div>
 			</div>
 			<div className="preview">

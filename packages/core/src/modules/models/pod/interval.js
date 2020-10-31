@@ -190,6 +190,7 @@ class Interval extends Pod {
 	}
 }
 
+Interval.modelId = 'interval';
 Interval.preset = INTERVAL;
 Interval.presetValues = INTERVAL_VALUES;
 

@@ -48,6 +48,12 @@ class Pod {
 		return JSON.stringify(a);
 	}
 
+	getType() {
+		return 'pod';
+	}
+
 }
+
+Pod.modelId = 'pod';
 
 export default Pod;

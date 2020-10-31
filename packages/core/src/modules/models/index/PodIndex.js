@@ -29,4 +29,6 @@ class PodIndex {
 	}
 }
 
+PodIndex.modelId = 'podIndex';
+
 export default PodIndex;
