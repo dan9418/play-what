@@ -3,23 +3,23 @@ import React from 'react';
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 
-const getInput = (value, podType) => {
-	if (podType === 'note') {
-		const options = pw_core.models.note.presetValues;
+const getInput = (value) => {
+	if (value instanceof pw_core.Note) {
+		const options = pw_core.Note.presetValues;
 		return <DropdownInput options={options} value={null} setValue={null} />
 	}
-	else if (podType === 'interval') {
-		const options = pw_core.models.interval.presetValues;
+	else if (value instanceof pw_core.Interval) {
+		const options = pw_core.Interval.presetValues;
 		return <DropdownInput options={options} value={null} setValue={null} displayProperty="id" />
 	}
 	return null;
 }
 
-const PodRow = ({ value, setValue, i, isEditing, modelType, podType, remove, moveUp, moveDown }) => {
+const PodRow = ({ value, setValue, i, isEditing, remove, moveUp, moveDown }) => {
 
 	const pod = new pw_core.models.pod(value);
 	const reduced = pod.reduce();
-	let name = isEditing ? getInput(reduced, podType) : pod.getName({ reduced, podType });
+	let name = isEditing ? getInput(reduced) : reduced.getName();
 
 	const setSubValue = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 
@@ -71,23 +71,18 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const ModelTableRow = ({ value, setValue, isEditing, modelType, podType }) => {
-	if (modelType === 'index') {
-		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
-	}
-	else if (modelType === 'pod') {
+const ModelTableRow = ({ value, setValue, isEditing }) => {
+	if (value instanceof pw_core.Pod) {
 		return (
 			<PodRow
 				value={value}
 				i={0}
 				setValue={setValue}
 				isEditing={isEditing}
-				modelType={modelType}
-				podType={podType}
 			/>
 		);
 	}
-	else if (modelType === 'podList') {
+	else if (value instanceof pw_core.PodList) {
 		const rows = value.map((v, i) => {
 			const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
 			const moveUp = () => setValue([...value.slice(0, i - 1), value[i], value[i - 1], ...value.slice(i + 1)]);
@@ -99,8 +94,6 @@ const ModelTableRow = ({ value, setValue, isEditing, modelType, podType }) => {
 					value={v}
 					setValue={setValue}
 					isEditing={isEditing}
-					modelType={modelType}
-					podType={podType}
 					remove={remove}
 					moveUp={moveUp}
 					moveDown={moveDown}
@@ -108,6 +101,9 @@ const ModelTableRow = ({ value, setValue, isEditing, modelType, podType }) => {
 			);
 		});
 		return [...rows, isEditing ? <NewModelRow /> : null]
+	}
+	else {
+		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
 	}
 };
 

@@ -3,23 +3,11 @@ import React, { createContext, useContext } from 'react';
 const PodContext = createContext(null);
 
 export const PodContextProvider = ({
-	modelType,
-	setModelType,
-	podType,
-	setPodType,
-	theoryType,
-	setTheoryType,
 	value,
 	setValue,
 	children
 }) => {
 	const podContext = {
-		modelType,
-		setModelType,
-		podType,
-		setPodType,
-		theoryType,
-		setTheoryType,
 		value,
 		setValue
 	};

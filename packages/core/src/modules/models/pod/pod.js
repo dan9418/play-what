@@ -13,15 +13,6 @@ class Pod {
 		this.options = { ...DEFAULT_POD_OPTIONS, ...options };
 	}
 
-	/*isValid(pod) {
-		return pod !== null && typeof pod === 'object' && typeof pod[0] === 'number' && typeof pod[1] === 'number';
-	};
-
-	areEqual({ pod1, pod2 }) {
-		if (!pod1 || !pod2) return false;
-		return pod1[0] === pod2[0] && pod1[1] === pod2[1];
-	};*/
-
 	getValue() {
 		return this.value;
 	}
@@ -53,8 +44,8 @@ class Pod {
 	};
 
 	getName() {
-		const pod = this.value;
-		return JSON.stringify(pod);
+		const a = this.value;
+		return JSON.stringify(a);
 	}
 
 }

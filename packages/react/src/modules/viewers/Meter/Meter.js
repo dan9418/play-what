@@ -42,15 +42,12 @@ const PodListMeter = ({ podList, ...props }) => {
 	);
 }
 
-const Meter = ({ value, modelType, podType, ...props }) => {
-	switch (modelType) {
-	case 'pod':
+const Meter = ({ value, ...props }) => {
+	if(value instanceof pw_core.Pod)
 		return <PodListMeter podList={[value]} {...props} />;
-	case 'podList':
+	else if(value instanceof pw_core.PodList)
 		return <PodListMeter podList={value} {...props} />;
-	default:
-		return null;
-	}
+	return null;
 }
 
 export default Meter;

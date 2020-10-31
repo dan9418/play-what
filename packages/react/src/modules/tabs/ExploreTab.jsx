@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { PodContextProvider } from '../other/PodContext';
 import ModelPanel from '../explore/ModelPanel';
+import pw_core from '@pw/core';
 import './ExploreTab.css';
 
+const DEFAULT_VALUE = new pw_core.Pod([0, 0]);
+
 const Explore = () => {
-	const [modelType, setModelType] = useState('pod');
-	const [podType, setPodType] = useState('note');
-	const [theoryType, setTheoryType] = useState('note');
-	const [value, setValue] = useState([0, 0]);
+	const [value, setValue] = useState(DEFAULT_VALUE);
 	return (
 		<div className='explore-tab'>
 			<PodContextProvider
-				modelType={modelType}
-				setModelType={setModelType}
-				podType={podType}
-				setPodType={setPodType}
-				theoryType={theoryType}
-				setTheoryType={setTheoryType}
 				value={value}
 				setValue={setValue}
 			>

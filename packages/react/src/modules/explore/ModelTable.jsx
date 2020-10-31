@@ -1,7 +1,7 @@
 import React from 'react';
 import ModelRowManager from './ModelTableRow';
 
-const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
+const ModelTable = ({ value }) => {
 	return (
 		<table className='model-table'>
 			<thead>
@@ -9,7 +9,7 @@ const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
 					<th>#</th>
 					<th>Pod</th>
 					<th>Reduced</th>
-					<th>{podType}</th>
+					<th>Type</th>
 					<th>Other</th>
 					{isEditing && (
 						<>
@@ -28,8 +28,6 @@ const ModelTable = ({ value, setValue, isEditing, modelType, podType }) => {
 					value={value}
 					setValue={setValue}
 					isEditing={isEditing}
-					modelType={modelType}
-					podType={podType}
 				/>
 			</tbody>
 		</table>

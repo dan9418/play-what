@@ -21,7 +21,7 @@ const ANALYSIS_OPTIONS = [
 
 const AnalysisSubpanel = () => {
 	const podContext = usePodContext();
-	const { modelType, podType, theoryType, value, setValue } = podContext;
+	const { value, setValue } = podContext;
 
 	const [analysis, setAnalysis] = useState(ANALYSIS_OPTIONS[0]);
 	const [isEditing, setIsEditing] = useState(false);
@@ -33,7 +33,7 @@ const AnalysisSubpanel = () => {
 			<EditDash name="Analysis" isEditing={isEditing} setIsEditing={setIsEditing} />
 			{isEditing && <DropdownInput options={ANALYSIS_OPTIONS} setValue={setAnalysis} />}
 			<div>
-				<Component value={value} modelType={modelType} podType={podType} theoryType={theoryType} />
+				<Component value={value} />
 			</div>
 		</div>
 	);
