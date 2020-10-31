@@ -17,7 +17,7 @@ const getInput = (value) => {
 
 const PodRow = ({ value, setValue, i, isEditing, remove, moveUp, moveDown }) => {
 
-	const pod = new pw_core.models.pod(value);
+	const pod = new pw_core.Pod(value);
 	const reduced = pod.reduce();
 	let name = isEditing ? getInput(reduced) : reduced.getName();
 

@@ -3,8 +3,8 @@ import pw_color from '@pw/color';
 import React from 'react';
 import './Meter.css';
 
-const getPitchColor = pw_core.models.pitch.getColor;
-const getDegreeColor = pw_core.models.degree.getColor;
+const getPitchColor = pw_core.Pitch.getColor;
+const getDegreeColor = pw_core.Degree.getColor;
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {
@@ -19,8 +19,8 @@ const ListMeter = ({ list }) => {
 const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = indexList.find(v => pw_core.models.index.modulo({ a: v, b: max }) === i);
-		const reduced = pw_core.models.index.modulo({ a: value, b: max });
+		const value = indexList.find(v => pw_core.Utils.modulo(v, max) === i);
+		const reduced = pw_core.Utils.modulo(value, max);
 		const color = colorFn(reduced);
 
 		const style = pw_color.getStylesFromBgColor(color);
@@ -43,9 +43,9 @@ const PodListMeter = ({ podList, ...props }) => {
 }
 
 const Meter = ({ value, ...props }) => {
-	if(value instanceof pw_core.Pod)
+	if (value instanceof pw_core.Pod)
 		return <PodListMeter podList={[value]} {...props} />;
-	else if(value instanceof pw_core.PodList)
+	else if (value instanceof pw_core.PodList)
 		return <PodListMeter podList={value} {...props} />;
 	return null;
 }

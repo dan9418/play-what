@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import DropdownInput from '../ui/DropdownInput/DropdownInput';
 import DOCS_CONFIG from "./Docs.config";
 import "./DocsTab.css";
@@ -33,4 +33,6 @@ const Docs = () => {
 	);
 };
 
+export default Docs;*/
+const  Docs = () => null;
 export default Docs;
