@@ -10,7 +10,7 @@ class PodList {
 		this.options = { ...DEFAULT_POD_LIST_OPTIONS, ...options };
 	}
 
-	reduce() {
+	reduce(max = [12, 7]) {
 		const A = this.value;
 		this.value = A.map((a) => {
 			const p = Utils.modulo(a[0], max[0]);

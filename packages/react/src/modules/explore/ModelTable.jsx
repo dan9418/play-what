@@ -1,7 +1,7 @@
 import React from 'react';
 import ModelRowManager from './ModelTableRow';
 
-const ModelTable = ({ value }) => {
+const ModelTable = ({ value, setValue, isEditing }) => {
 	return (
 		<table className='model-table'>
 			<thead>

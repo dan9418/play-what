@@ -17,7 +17,7 @@ class Pod {
 		return this.value;
 	}
 
-	reduce(max) {
+	reduce(max = MAX) {
 		const a = this.value;
 		const p = Utils.modulo(a[0], max[0]);
 		const d = Utils.modulo(a[1], max[1]);

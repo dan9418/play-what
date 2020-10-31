@@ -44,9 +44,9 @@ const PodListMeter = ({ podList, ...props }) => {
 
 const Meter = ({ value, ...props }) => {
 	if (value instanceof pw_core.Pod)
-		return <PodListMeter podList={[value]} {...props} />;
+		return <PodListMeter podList={[value.getValue()]} {...props} />;
 	else if (value instanceof pw_core.PodList)
-		return <PodListMeter podList={value} {...props} />;
+		return <PodListMeter podList={value.getValue()} {...props} />;
 	return null;
 }
 
