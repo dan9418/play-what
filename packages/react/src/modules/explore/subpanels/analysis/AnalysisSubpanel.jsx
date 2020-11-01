@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import usePodContext from "../../../other/PodContext";
 import EditDash from '../../EditDash';
-import Meter from "./Meter";
+import Meter from "./Analysis";
 
 const AnalysisSubpanel = () => {
 	const podContext = usePodContext();

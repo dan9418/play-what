@@ -1,7 +1,7 @@
 import pw_core from '@pw/core';
 import pw_color from '@pw/color';
 import React from 'react';
-import './Meter.css';
+import './Analysis.css';
 
 const getPitchColor = pw_core.Pitch.getColor;
 const getDegreeColor = pw_core.Degree.getColor;
