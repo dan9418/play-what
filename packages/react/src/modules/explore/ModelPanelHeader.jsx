@@ -12,7 +12,7 @@ const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 			<div>
 				<div className='model-name'>{label}</div>
 				<div className='type-row'>
-					<div className='type'>{value.modelId}</div>
+					<div className='type'>{value.getType()}</div>
 				</div>
 			</div>
 			<div className="preview">

@@ -38,9 +38,12 @@ class Pitch extends PodIndex {
 	static getName({ p }) {
 		return PITCH_VALUES.find(x => x.value === p).name;
 	}
+
+	getType() {
+		return 'pitch';
+	}
 }
 
-Pitch.modelId = 'pitch';
 Pitch.preset = PITCH;
 Pitch.colorScheme = PITCH_COLOR_SCHEME;
 

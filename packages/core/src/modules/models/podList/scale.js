@@ -64,9 +64,12 @@ class Scale extends PodList {
 		return (SCALE_VALUES.find(x => PodList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
 	}
 
+	getType() {
+		return 'scale';
+	}
+
 }
 
-Scale.modelId = 'scale';
 Scale.preset = SCALE;
 Scale.presetValues = SCALE_VALUES;
 

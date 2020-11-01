@@ -27,8 +27,10 @@ class PodIndex {
 		this.value = Utils.moduloSum(a, b, divisor)
 		return this;
 	}
-}
 
-PodIndex.modelId = 'podIndex';
+	getType() {
+		return 'podIndex';
+	}
+}
 
 export default PodIndex;

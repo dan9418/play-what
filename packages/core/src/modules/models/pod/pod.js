@@ -52,8 +52,10 @@ class Pod {
 		return 'pod';
 	}
 
-}
+	getType() {
+		return 'pod';
+	}
 
-Pod.modelId = 'pod';
+}
 
 export default Pod;

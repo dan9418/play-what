@@ -45,9 +45,12 @@ class Chord extends PodList {
 	static getName({ A }) {
 		return (CHORD_VALUES.find(x => PodList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
 	}
+
+	getType() {
+		return 'chord';
+	}
 }
 
-Chord.modelId = 'chord';
 Chord.preset = CHORD;
 Chord.presetValues = CHORD_VALUES;
 

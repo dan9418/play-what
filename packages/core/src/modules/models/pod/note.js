@@ -57,9 +57,12 @@ class Note extends Pod {
 		const accidentalName = accidental.getName({ a: offset });
 		return `${degreeName}${accidentalName}`;
 	};
+
+	getType() {
+		return 'note';
+	}
 }
 
-Note.modelId = 'note';
 Note.preset = NOTE;
 Note.presetValues = NOTE_VALUES;
 

@@ -58,9 +58,12 @@ class Degree extends PodIndex {
 	static getName({ d }) {
 		return DEGREE_VALUES[d].name;
 	}
+
+	getType() {
+		return 'degree';
+	}
 }
 
-Degree.modelId = 'degree';
 Degree.preset = DEGREE;
 Degree.colorScheme = DEGREE_COLOR_SCHEME;
 

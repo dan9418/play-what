@@ -188,9 +188,12 @@ class Interval extends Pod {
 		const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
 		return result ? result.id : `[${p}, ${d}]`;
 	}
+
+	getType() {
+		return 'interval';
+	}
 }
 
-Interval.modelId = 'interval';
 Interval.preset = INTERVAL;
 Interval.presetValues = INTERVAL_VALUES;
 

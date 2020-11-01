@@ -25,6 +25,10 @@ class PodList {
 		return JSON.stringify(A);
 	}
 
+	getType() {
+		return 'podList';
+	}
+
 	/*findPodWithPitch(p) {
 		const A = this.value;
 		const octaveReduce = true
@@ -39,7 +43,5 @@ class PodList {
 		return A.findIndex((n) => n[0] === pitch);
 	};*/
 }
-
-PodList.modelId = 'podList';
 
 export default PodList;
