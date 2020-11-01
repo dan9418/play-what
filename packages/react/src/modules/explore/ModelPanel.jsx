@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import ModelPanelHeader from "./ModelPanelHeader";
-import ModelSubpanel from "./subpanels/ModelSubpanel";
-import ValueSubpanel from "./subpanels/ValueSubpanel";
-import AnalysisSubpanel from "./subpanels/AnalysisSubpanel";
+import ModelSubpanel from "./subpanels/model/ModelSubpanel";
+import ValueSubpanel from "./subpanels/value/ValueSubpanel";
+import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
 
 
 const ModelPanelBody = () => {

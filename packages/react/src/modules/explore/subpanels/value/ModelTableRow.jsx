@@ -1,7 +1,7 @@
 import pw_core from "@pw/core";
 import React from 'react';
-import ButtonInput from '../../ui/ButtonInput/ButtonInput';
-import DropdownInput from '../../ui/DropdownInput/DropdownInput';
+import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
+import DropdownInput from '../../../ui/DropdownInput/DropdownInput';
 
 const getInput = (value) => {
 	if (value instanceof pw_core.Note) {
