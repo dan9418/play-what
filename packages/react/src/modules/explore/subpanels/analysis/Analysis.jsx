@@ -46,7 +46,7 @@ const Analysis = ({ value, ...props }) => {
 	const v = value.getValue();
 	if (value instanceof pw_core.PodIndex)
 		return <IndexListMeter indexList={[v]} max={v} colorFn={getPitchColor} {...props} />
-	if (value instanceof pw_core.Pod)
+	else if (value instanceof pw_core.Pod)
 		return <PodListMeter podList={[v]} {...props} />;
 	else if (value instanceof pw_core.PodList)
 		return <PodListMeter podList={v} {...props} />;
