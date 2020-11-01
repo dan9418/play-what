@@ -16,7 +16,7 @@ const ListMeter = ({ list }) => {
 	);
 };
 
-const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
+const IndexListMeter = ({ max, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
 		const value = indexList.find(v => pw_core.Utils.modulo(v, max) === i);
@@ -24,7 +24,7 @@ const IndexListMeter = ({ max, nameFn, indexList, colorFn }) => {
 		const color = colorFn(reduced);
 
 		const style = pw_color.getStylesFromBgColor(color);
-		const text = nameFn ? nameFn(i) : i;
+		const text = i;
 
 		list.push({ style, text });
 	}
@@ -42,12 +42,15 @@ const PodListMeter = ({ podList, ...props }) => {
 	);
 }
 
-const Meter = ({ value, ...props }) => {
+const Analysis = ({ value, ...props }) => {
+	const v = value.getValue();
+	if (value instanceof pw_core.PodIndex)
+		return <IndexListMeter indexList={[v]} max={v} colorFn={getPitchColor} {...props} />
 	if (value instanceof pw_core.Pod)
-		return <PodListMeter podList={[value.getValue()]} {...props} />;
+		return <PodListMeter podList={[v]} {...props} />;
 	else if (value instanceof pw_core.PodList)
-		return <PodListMeter podList={value.getValue()} {...props} />;
-	return null;
+		return <PodListMeter podList={v} {...props} />;
+	return JSON.stringify(value);
 }
 
-export default Meter;
+export default Analysis;
