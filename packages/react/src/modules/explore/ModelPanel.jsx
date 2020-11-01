@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import AnalysisSubpanel from "./AnalysisSubpanel";
 
 import ModelPanelHeader from "./ModelPanelHeader";
-import TypeSubpanel from "./TypeSubpanel";
+import ModelSubpanel from "./ModelSubpanel";
 import ValueSubpanel from "./ValueSubpanel";
 
 const ModelPanelBody = () => {
 	return (
 		<div className='model-panel-body'>
-			<TypeSubpanel />
+			<ModelSubpanel />
 			<ValueSubpanel />
 			<AnalysisSubpanel />
 		</div>

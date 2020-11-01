@@ -60,7 +60,7 @@ const POD_TYPE_OPTIONS = [
 	}
 ];
 
-const TypeSubpanel = () => {
+const ModelSubpanel = () => {
 	const podContext = usePodContext();
 	const { value, setValue } = podContext;
 
@@ -68,23 +68,17 @@ const TypeSubpanel = () => {
 
 	return (
 		<div className='subpanel'>
-			<EditDash name="Types" isEditing={isEditing} setIsEditing={setIsEditing} />
+			<EditDash name="Model" isEditing={isEditing} setIsEditing={setIsEditing} />
 			<table>
 				<thead>
 					<tr>
-						<th>Model</th>
-						<th>Pod</th>
-						<th>Theory</th>
+						<th>Type</th>
 					</tr>
 				</thead>
 				<tbody>
-
 					<tr>
-						<td>{null}</td>
-						<td>{null}</td>
-						<td>{null}</td>
+						<td>{value.getType()}</td>
 					</tr>
-
 				</tbody>
 			</table>
 
@@ -92,4 +86,4 @@ const TypeSubpanel = () => {
 	);
 };
 
-export default TypeSubpanel;
+export default ModelSubpanel;
