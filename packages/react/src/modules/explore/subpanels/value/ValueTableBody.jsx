@@ -40,6 +40,7 @@ const RowManager = ({ isEditing }) => {
 			return (
 				<PodListRow
 					value={value}
+					isEditing={isEditing}
 					i={i}
 					key={i}
 				/>

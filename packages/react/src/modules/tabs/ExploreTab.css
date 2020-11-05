@@ -1,7 +1,7 @@
 /* General */
 
 .subpanel {
-    padding: 8px;
+    padding: 8px 16px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -68,9 +68,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px;
-    padding-top: 0;
     box-sizing: border-box;
+    padding: 8px 8px 16px 8px;
 }
 
 .edit-button {
@@ -80,17 +79,36 @@
 
 /* table */
 
-table {
-    margin: auto;
+table th {
+    padding: 4px;
 }
 
-table td {
-    margin: 0;
-    padding: 4px;
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+}
+
+table td, table th {
+    padding: 8px;
 }
 
 table th {
     padding: 8px;
+    text-align: left;
+    background-color: #ddd;
+}
+
+table th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+table th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+table tbody tr:not(:last-child) {
+    border-bottom: 1px solid #ccc;
 }
 
 .preset-box {
