@@ -9,9 +9,9 @@ import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
 const ModelPanelBody = () => {
 	return (
 		<div className='model-panel-body'>
+			<AnalysisSubpanel />
 			<ModelSubpanel />
 			<ValueSubpanel />
-			<AnalysisSubpanel />
 		</div>
 	);
 };

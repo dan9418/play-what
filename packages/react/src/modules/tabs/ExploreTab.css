@@ -2,6 +2,11 @@
 
 .subpanel {
     border-bottom: 1px solid #ccc;
+    padding: 0 16px 16px 16px;
+}
+
+.subpanel > * {
+    margin-bottom: 16px;
 }
 
 .subpanel-name {
@@ -65,7 +70,6 @@
 .edit-dash {
     box-sizing: border-box;
     padding: 16px 0;
-    margin: 0 16px;
     border-bottom: 1px solid #ddd;
     display: flex;
     align-items: center;
@@ -86,8 +90,7 @@ table th {
 
 table {
     border-collapse: collapse;
-    margin: 16px auto;
-    width: 90%;
+    margin: auto;
 }
 
 table td, table th {
