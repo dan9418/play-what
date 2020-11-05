@@ -51,14 +51,14 @@
     font-weight: bold;
 }
 
-.type-row {
-    display: flex;
-    align-items: center;
+.type {
+    padding: 4px;
     color: #555;
 }
 
-.type {
+.preview {
     padding: 4px;
+    color: teal;
 }
 
 /* EditDash */

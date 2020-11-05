@@ -4,6 +4,7 @@ const ValueTableHeader = ({ value, setValue, isEditing }) => {
 	return (
 		<thead>
 			<tr>
+				{/* start with introducitng core cells concept */}
 				<th>#</th>
 				<th>Pod</th>
 				<th>Reduced</th>
