@@ -63,9 +63,10 @@
 /* EditDash */
 
 .edit-dash {
-    padding: 16px;
-    background-color: #ccc;
-    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 0;
+    margin: 0 16px;
+    border-bottom: 1px solid #ddd;
     display: flex;
     align-items: center;
     justify-content: space-between;
