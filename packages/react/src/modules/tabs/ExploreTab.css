@@ -1,7 +1,6 @@
 /* General */
 
 .subpanel {
-    padding: 8px 16px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -64,12 +63,13 @@
 /* EditDash */
 
 .edit-dash {
+    padding: 16px;
+    background-color: #ccc;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
-    padding: 8px 8px 16px 8px;
 }
 
 .edit-button {
@@ -85,8 +85,8 @@ table th {
 
 table {
     border-collapse: collapse;
-    margin: auto;
-    width: 100%;
+    margin: 16px auto;
+    width: 90%;
 }
 
 table td, table th {

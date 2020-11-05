@@ -13,11 +13,9 @@ const NewModelRow = ({ }) => {
 			<td>
 				Add
 			</td>
-			<td />
 			<td>
 				<ButtonInput onClick={null}>+</ButtonInput>
 			</td>
-			<td colSpan="2" />
 		</tr>
 	);
 };
@@ -40,6 +38,7 @@ const RowManager = ({ isEditing }) => {
 			return (
 				<PodListRow
 					value={value}
+					setValue={setValue}
 					isEditing={isEditing}
 					i={i}
 					key={i}

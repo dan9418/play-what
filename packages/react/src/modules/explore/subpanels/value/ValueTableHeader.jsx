@@ -34,14 +34,10 @@ const ValueTableHeader = ({ isEditing }) => {
 						Preset
 					</th>
 					{isEditing && (
-						<>
-							<th>
+						<th>
 									Delete
-							</th>
-							<th>
-									Order
-							</th>
-						</>
+						</th>
+
 					)}
 				</tr>
 			</thead>
