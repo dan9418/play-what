@@ -16,6 +16,11 @@ class PodIndex {
 		return this.value;
 	}
 
+	getName() {
+		const A = this.value;
+		return JSON.stringify(A);
+	}
+
 	reduce(max) {
 		const a = this.value;
 		this.value = Utils.modulo(a, max);

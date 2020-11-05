@@ -4,7 +4,9 @@ import ModelPanel from '../explore/ModelPanel';
 import pw_core from '@pw/core';
 import './ExploreTab.css';
 
-const DEFAULT_VALUE = new pw_core.Pod([0, 0]);
+//const DEFAULT_VALUE = new pw_core.PodIndex(0);
+//const DEFAULT_VALUE = new pw_core.Pod([0, 0]);
+const DEFAULT_VALUE = new pw_core.PodList([[0, 0]]);
 
 const Explore = () => {
 	const [value, setValue] = useState(DEFAULT_VALUE);

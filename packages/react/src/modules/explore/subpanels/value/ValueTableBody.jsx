@@ -36,24 +36,12 @@ const RowManager = ({ isEditing }) => {
 		);
 	}
 	else if (value instanceof pw_core.PodList) {
-		const rows = value.map((v, i) => {
-			const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
-			const moveUp = () => setValue([...value.slice(0, i - 1), value[i], value[i - 1], ...value.slice(i + 1)]);
-			const moveDown = () => setValue([...value.slice(0, i), value[i + 1], value[i], ...value.slice(i + 2)]);
-			const setPod = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
-
+		const rows = value.getValue().map((v, i) => {
 			return (
 				<PodListRow
-					key={i}
+					value={value}
 					i={i}
-					pod={v}
-					setPod={setPod}
-					podList={value}
-					setPodList={setValue}
-					isEditing={isEditing}
-					remove={remove}
-					moveUp={moveUp}
-					moveDown={moveDown}
+					key={i}
 				/>
 			);
 		});
