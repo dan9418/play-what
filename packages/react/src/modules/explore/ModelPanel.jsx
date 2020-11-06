@@ -1,17 +1,29 @@
 import React, { useState } from "react";
 
 import ModelPanelHeader from "./ModelPanelHeader";
-import ModelSubpanel from "./subpanels/model/ModelSubpanel";
 import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
+import SwitchInput from '../ui/SwitchInput/SwitchInput';
+import usePodContext from "../other/PodContext";
 
+const PodTypeBar = () => {
+	const { podType, setPodType } = usePodContext();
+	return (
+		<div className='pod-type-bar'>
+			<div>Pod Type</div>
+			<span>Interval</span>
+			<SwitchInput value={podType} setValue={setPodType} />
+			<span>Note</span>
+		</div>
+	);
+};
 
 const ModelPanelBody = () => {
 	return (
 		<div className='model-panel-body'>
-			<AnalysisSubpanel />
-			<ModelSubpanel />
+			<PodTypeBar />
 			<ValueSubpanel />
+			<AnalysisSubpanel />
 		</div>
 	);
 };

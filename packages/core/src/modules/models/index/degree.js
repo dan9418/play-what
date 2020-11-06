@@ -65,6 +65,7 @@ class Degree extends PodIndex {
 }
 
 Degree.preset = DEGREE;
+Degree.presetValues = DEGREE_VALUES;
 Degree.colorScheme = DEGREE_COLOR_SCHEME;
 
 export default Degree;

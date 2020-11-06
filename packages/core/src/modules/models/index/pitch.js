@@ -45,6 +45,7 @@ class Pitch extends PodIndex {
 }
 
 Pitch.preset = PITCH;
+Pitch.presetValues = PITCH_VALUES;
 Pitch.colorScheme = PITCH_COLOR_SCHEME;
 
 export default Pitch;

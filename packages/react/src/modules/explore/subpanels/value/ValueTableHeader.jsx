@@ -14,6 +14,16 @@ const ValueTableHeader = ({ isEditing }) => {
 				</tr>
 			</thead>
 		);
+	else if (value instanceof pw_core.Interval)
+		return (
+			<thead>
+				<tr>
+					<th>Pod</th>
+					<th>Reduced</th>
+					<th>Preset</th>
+				</tr>
+			</thead>
+		);
 	else if (value instanceof pw_core.Pod)
 		return (
 			<thead>

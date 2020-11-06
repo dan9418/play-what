@@ -5,11 +5,15 @@ const PodContext = createContext(null);
 export const PodContextProvider = ({
 	value,
 	setValue,
+	podType,
+	setPodType,
 	children
 }) => {
 	const podContext = {
 		value,
-		setValue
+		setValue,
+		podType,
+		setPodType
 	};
 	return (
 		<PodContext.Provider value={podContext}>

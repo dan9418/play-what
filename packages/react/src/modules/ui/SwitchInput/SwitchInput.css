@@ -1,9 +1,9 @@
 .switch-input {
     -ms-user-select: none;
     user-select: none;
-    height: 40px;
-    width: 80px;
-    border-radius: 40px;
+    height: 16px;
+    width: 48px;
+    border-radius: 16px;
     display: inline-flex;
     align-items: center;
     cursor: pointer;
@@ -18,9 +18,9 @@
 }
 
 .switch-input .ball {
-    height: 34px;
-    width: 34px;
-    margin: 3px;
+    height: 14px;
+    width: 14px;
+    margin: 2px;
     border-radius: 100%;
     background-color: #fff;
 }
