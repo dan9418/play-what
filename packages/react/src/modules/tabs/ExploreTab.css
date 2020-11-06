@@ -38,7 +38,7 @@
     border-radius: 0 0 16px 16px;
 }
 
-.pod-type-bar {
+.input-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -46,12 +46,12 @@
     border-bottom: 1px solid #ccc;
 }
 
-.pod-type-bar > :first-child {
+.input-bar > :first-child {
     width: 100%;
     font-weight: bold;
 }
 
-.pod-type-bar > span {
+.input-bar > span {
     padding: 4px;
 }
 
@@ -86,7 +86,7 @@
 
 .edit-dash {
     box-sizing: border-box;
-    padding: 16px 0;
+    padding: 8px 0;
     border-bottom: 1px solid #ddd;
     display: flex;
     align-items: center;

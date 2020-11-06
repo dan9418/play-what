@@ -10,7 +10,7 @@ const DropdownInput = props => {
 			onChange={e => setValue(options[e.target.selectedIndex], e.target.selectedIndex)}
 			value={value ? value.id : ''}
 		>
-			{options.map((v, i) => (
+			{(options || []).map((v, i) => (
 				<option key={i} value={v.id}>{displayProperty ? v[displayProperty] : v.name}</option>
 			))}
 		</select>
