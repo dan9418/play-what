@@ -65,7 +65,7 @@ const getModel = (value) => {
 }
 
 const getPreset = (value, presets = []) => {
-	return presets.find(m => false) || null;
+	return presets.find(p => value.equalTo(p.value)) || null;
 }
 
 export const PodContextProvider = ({

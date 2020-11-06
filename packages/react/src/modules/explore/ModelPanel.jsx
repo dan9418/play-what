@@ -34,7 +34,7 @@ const PresetBar = () => {
 	return (
 		<div className='input-bar'>
 			<div>Preset</div>
-			<DropdownInput options={model.cl.presetValues} value={preset} setValue={v => setValue(new v.cl(v.value))} />
+			<DropdownInput options={model.cl.presetValues} value={preset} setValue={v => setValue(new model.cl(v.value))} />
 		</div>
 	);
 };

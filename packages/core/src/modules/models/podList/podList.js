@@ -16,6 +16,18 @@ class PodList {
 		return this.value;
 	}
 
+	equalTo(B) {
+		if (!B || !B.length) return false;
+		for (let i = 0; i < this.value.length; i++) {
+			const a = this.value[i];
+			const b = B[i];
+
+			if(a[0] !== b[0] || a[1] !== b[1])
+				return false;
+		}
+		return true;
+	}
+
 	reduce(max = [12, 7]) {
 		const A = this.value;
 		this.value = A.map((a) => {

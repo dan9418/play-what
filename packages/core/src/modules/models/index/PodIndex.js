@@ -16,6 +16,10 @@ class PodIndex {
 		return this.value;
 	}
 
+	equalTo(b) {
+		return this.value === b;
+	}
+
 	getName() {
 		const A = this.value;
 		return JSON.stringify(A);

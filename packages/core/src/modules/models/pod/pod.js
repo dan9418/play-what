@@ -17,6 +17,11 @@ class Pod {
 		return this.value;
 	}
 
+	equalTo(b) {
+		if (!b || b.length !== 2) return false;
+		return this.value[0] === b[0] && this.value[1] === b[1];
+	}
+
 	reduce(max = MAX) {
 		const a = this.value;
 		const p = Utils.modulo(a[0], max[0]);
