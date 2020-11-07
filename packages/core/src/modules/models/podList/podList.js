@@ -1,15 +1,11 @@
 import Utils from '../../Utils';
 
 const DEFAULT_POD_LIST = [[0, 0]];
-const DEFAULT_POD_LIST_OPTIONS = {
-	reduced: true
-};
 
 class PodList {
 
-	constructor(value = DEFAULT_POD_LIST, options = {}) {
+	constructor(value = DEFAULT_POD_LIST) {
 		this.value = value;
-		this.options = { ...DEFAULT_POD_LIST_OPTIONS, ...options };
 	}
 
 	getValue() {

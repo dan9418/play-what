@@ -1,15 +1,11 @@
 import Utils from "../../Utils";
 
 const DEFAULT_POD_INDEX = 0;
-const DEFAULT_POD_INDEX_OPTIONS = {
-	reduced: true
-};
 
 class PodIndex {
 
-	constructor(value = DEFAULT_POD_INDEX, options = {}) {
+	constructor(value = DEFAULT_POD_INDEX) {
 		this.value = value;
-		this.options = { ...DEFAULT_POD_INDEX_OPTIONS, ...options };
 	}
 
 	getValue() {

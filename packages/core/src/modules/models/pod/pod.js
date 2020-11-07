@@ -2,15 +2,12 @@ import Utils from '../../Utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
-const DEFAULT_POD_OPTIONS = {
-	reduced: true
-};
+
 
 class Pod {
 
-	constructor(value = DEFAULT_POD, options = {}) {
+	constructor(value = DEFAULT_POD) {
 		this.value = value;
-		this.options = { ...DEFAULT_POD_OPTIONS, ...options };
 	}
 
 	getValue() {

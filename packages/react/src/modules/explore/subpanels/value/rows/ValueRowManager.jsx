@@ -1,9 +1,9 @@
 import React from 'react';
-import usePodContext from '../../../other/PodContext';
-import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
-import PodIndexRow from './rows/PodIndexRow';
-import PodRow from './rows/PodRow';
-import PodListRow from './rows/PodListRow';
+import usePodContext from '../../../../other/PodContext';
+import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
+import PodIndexRow from './PodIndexRow';
+import PodRow from './PodRow';
+import PodListRow from './PodListRow';
 import pw_core from '@pw/core';
 
 const NewModelRow = ({ }) => {
@@ -20,7 +20,7 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const RowManager = ({ isEditing }) => {
+const ValueRowManager = ({ isEditing }) => {
 	const podContext = usePodContext();
 	const { value, setValue, model, preset } = podContext;
 
@@ -54,12 +54,4 @@ const RowManager = ({ isEditing }) => {
 	}
 };
 
-const ValueTableBody = ({ isEditing }) => {
-	return (
-		<tbody>
-			<RowManager isEditing={isEditing} />
-		</tbody>
-	);
-};
-
-export default ValueTableBody;
+export default ValueRowManager;
