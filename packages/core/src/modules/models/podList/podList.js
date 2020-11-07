@@ -18,7 +18,7 @@ class PodList {
 			const a = this.value[i];
 			const b = B[i];
 
-			if(a[0] !== b[0] || a[1] !== b[1])
+			if (a[0] !== b[0] || a[1] !== b[1])
 				return false;
 		}
 		return true;
@@ -35,8 +35,7 @@ class PodList {
 	}
 
 	getName() {
-		const A = this.value;
-		return JSON.stringify(A);
+		return 'n/a';
 	}
 
 	getType() {

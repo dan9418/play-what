@@ -1,18 +1,28 @@
+import PodList from "@pw/core/src/modules/models/podList/PodList";
 import React, { useState } from "react";
-import ModelPanelHeader from "./ModelPanelHeader";
-import ValueSubpanel from "./subpanels/value/ValueSubpanel";
-import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
-import SwitchInput from '../ui/SwitchInput/SwitchInput';
 import usePodContext, { MODELS } from "../other/PodContext";
+import { POD_TYPE } from "../tabs/ExploreTab";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
+import SwitchInput from '../ui/SwitchInput/SwitchInput';
+import ModelPanelHeader from "./ModelPanelHeader";
+import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
+import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 
 const PodTypeBar = () => {
-	const { podType, setPodType } = usePodContext();
+	const { value, podType, setPodType } = usePodContext();
+	if (!(value instanceof PodList)) return null;
+	const onToggle = v => {
+		console.log(v)
+		if(v) setPodType(POD_TYPE.interval);
+		else
+			setPodType(POD_TYPE.note);
+	}
+
 	return (
 		<div className='input-bar'>
 			<div>Pod Type</div>
 			<span>Interval</span>
-			<SwitchInput value={podType} setValue={setPodType} />
+			<SwitchInput value={podType} setValue={onToggle} />
 			<span>Note</span>
 		</div>
 	);

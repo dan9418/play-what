@@ -22,9 +22,18 @@ const NewModelRow = ({ }) => {
 
 const ValueRowManager = ({ isEditing }) => {
 	const podContext = usePodContext();
-	const { value, setValue, model, preset } = podContext;
+	const { value, setValue, model, preset, podType } = podContext;
 
-	if (value instanceof pw_core.Pod) {
+	if (value instanceof pw_core.PodIndex) {
+		return (
+			<PodIndexRow
+				podIndex={value}
+				setPodIndex={setValue}
+				isEditing={isEditing}
+			/>
+		);
+	}
+	else if (value instanceof pw_core.Pod) {
 		return (
 			<PodRow
 				pod={value}
@@ -44,6 +53,7 @@ const ValueRowManager = ({ isEditing }) => {
 					key={i}
 					model={model}
 					preset={preset}
+					podType={podType}
 				/>
 			);
 		});

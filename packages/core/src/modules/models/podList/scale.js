@@ -60,8 +60,8 @@ class Scale extends PodList {
 		return PodList.addPod({ A, b });
 	}
 
-	static getName({ A }) {
-		return (SCALE_VALUES.find(x => PodList.areEqual({ list1: A, list2: x.value })) || { name: '?' }).name;
+	getName() {
+		return 'n/a';
 	}
 
 	getType() {

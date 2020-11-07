@@ -17,11 +17,10 @@ class PodIndex {
 	}
 
 	getName() {
-		const A = this.value;
-		return JSON.stringify(A);
+		return 'n/a';
 	}
 
-	reduce(max) {
+	reduce(max = 10) {
 		const a = this.value;
 		this.value = Utils.modulo(a, max);
 		return this;

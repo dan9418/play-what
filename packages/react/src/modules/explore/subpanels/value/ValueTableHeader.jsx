@@ -8,7 +8,7 @@ const getHeaders = (value, isEditing) => {
 			return ['PodIndex', 'Reduced', 'Preset'];
 		if (value instanceof pw_core.Pitch)
 			return ['PodIndex', 'Reduced', 'Preset'];
-		return ['PodIndex', 'Reduced'];
+		return ['PodIndex', 'Reduced', 'Preset'];
 	}
 	else if (value instanceof pw_core.Pod) {
 		if (value instanceof pw_core.Interval)
@@ -22,7 +22,7 @@ const getHeaders = (value, isEditing) => {
 			return ['#', 'Pod', 'Reduced', 'Preset', isEditing ? 'Delete' : undefined];
 		if (value instanceof pw_core.Scale)
 			return ['#', 'Pod', 'Reduced', 'Preset', isEditing ? 'Delete' : undefined];
-		return ['#', 'Pod', 'Reduced', isEditing ? 'Delete' : undefined];
+		return ['#', 'Pod', 'Reduced', , 'Preset', isEditing ? 'Delete' : undefined];
 	}
 	else
 		return [];
