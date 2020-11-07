@@ -55,8 +55,9 @@ class Degree extends PodIndex {
 		return DEGREE_COLOR_SCHEME[d];
 	}
 
-	static getName({ d }) {
-		return DEGREE_VALUES[d].name;
+	getName() {
+		const degree = DEGREE_VALUES[this.value]
+		return degree ? degree.name : '?';
 	}
 
 	getType() {

@@ -3,7 +3,7 @@ import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
 import pw_core from '@pw/core';
 
-const PodListRow = ({ value, setValue, i, isEditing }) => {
+const PodListRow = ({ value, setValue, i, isEditing, model, preset }) => {
 
 	const podList = value.getValue();
 	const pod = new pw_core.Pod(podList[i]);
@@ -42,7 +42,7 @@ const PodListRow = ({ value, setValue, i, isEditing }) => {
 				{
 					isEditing ?
 						<DropdownInput options={[]} value={null} setValue={null} />
-						: value.getName()
+						: pod.getName()
 				}
 			</td>
 			{isEditing &&

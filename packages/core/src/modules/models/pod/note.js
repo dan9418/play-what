@@ -1,7 +1,7 @@
-import degree from '../index/Degree';
-import accidental from '../../theory/accidental';
 import config from '../../theory/config';
 import Pod from './Pod';
+import Degree from '../index/Degree';
+import Accidental from '../index/Accidental';
 
 export const NOTE = {
 	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
@@ -49,12 +49,12 @@ const NOTE_VALUES = Object.values(NOTE);
 
 
 class Note extends Pod {
-	static getName({ a }) {
-		const reduced = Pod.reduce({ a });
+	getName() {
+		const reduced = new Note(this.value).reduce().getValue();
 		const [p, d] = reduced;
-		const degreeName = degree.getName({ d });
+		const degreeName = new Degree(d).getName();
 		const offset = p - config.rootScale[d][0];
-		const accidentalName = accidental.getName({ a: offset });
+		const accidentalName = new Accidental(offset).getName();
 		return `${degreeName}${accidentalName}`;
 	};
 

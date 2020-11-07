@@ -9,24 +9,6 @@ const PodRow = ({ pod, setPod, isEditing }) => {
 	pod.reduce();
 	const reduced = JSON.stringify(pod.getValue());
 
-	if (pod instanceof pw_core.Interval) {
-		return (
-			<tr>
-				<td>
-					{raw}
-				</td>
-				<td>
-					{reduced}
-				</td>
-				<td>
-					{isEditing ?
-						<DropdownInput options={[]} value={null} setValue={null} />
-						:
-						pod.getName()}
-				</td>
-			</tr>
-		);
-	}
 
 	return (
 		<tr>
@@ -35,6 +17,13 @@ const PodRow = ({ pod, setPod, isEditing }) => {
 			</td>
 			<td>
 				{reduced}
+			</td>
+
+			<td>
+				{isEditing ?
+					<DropdownInput options={[]} value={null} setValue={null} />
+					:
+					pod.getName()}
 			</td>
 		</tr>
 	);

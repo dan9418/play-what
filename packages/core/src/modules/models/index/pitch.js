@@ -28,15 +28,16 @@ const PITCH_COLOR_SCHEME = [
 	'#662D91',
 	'#92278F',
 	'#C2305E'
-]
+];
 
 class Pitch extends PodIndex {
 	static getColor(p) {
 		return PITCH_COLOR_SCHEME[p];
 	}
 
-	static getName({ p }) {
-		return PITCH_VALUES.find(x => x.value === p).name;
+	getName() {
+		const pitch = PITCH_VALUES.find(x => x.value === this.value);
+		return pitch ? pitch.name : '?';
 	}
 
 	getType() {
