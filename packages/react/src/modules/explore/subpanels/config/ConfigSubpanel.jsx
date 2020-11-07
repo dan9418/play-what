@@ -5,7 +5,7 @@ import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
 import SwitchInput from "../../../ui/SwitchInput/SwitchInput";
 import EditDash from "../../EditDash";
 
-const PodTypeBar = () => {
+const PodTypeBar = ({ isEditing }) => {
 	const { value, podType, setPodType } = usePodContext();
 	if (!(value instanceof PodList)) return null;
 	const onToggle = v => {
@@ -25,30 +25,37 @@ const PodTypeBar = () => {
 	);
 };
 
-const ModelBar = () => {
+const ModelBar = ({ isEditing }) => {
 	const { value, setValue, structure, model, preset } = usePodContext();
 	return (
 		<>
 			<div className='input-bar'>
 				<div>Structure</div>
-				<DropdownInput options={STRUCTURES} value={structure} setValue={v => setValue(new v.cl(v.defaultValue))} />
+				{isEditing ?
+					<DropdownInput options={STRUCTURES} value={structure} setValue={v => setValue(new v.cl(v.defaultValue))} />
+					: structure.id
+				}
 			</div>
 			<div className='input-bar'>
 				<div>Model</div>
-				<DropdownInput options={MODELS[structure.id]} value={model} setValue={v => setValue(new v.cl(v.defaultValue))} />
+				{isEditing ?
+					<DropdownInput options={MODELS[structure.id]} value={model} setValue={v => setValue(new v.cl(v.defaultValue))} />
+					: MODELS[structure.id].id || 'n/a'}
 			</div>
 			{value instanceof PodList && <PodTypeBar />}
 		</>
 	);
 };
 
-const PresetBar = () => {
+const PresetBar = ({ isEditing }) => {
 	const { value, setValue, model, preset } = usePodContext();
 
 	return (
 		<div className='input-bar'>
 			<div>Preset</div>
-			<DropdownInput options={model.cl.presetValues} value={preset} setValue={v => setValue(new model.cl(v.value))} />
+			{isEditing ?
+				<DropdownInput options={model.cl.presetValues} value={preset} setValue={v => setValue(new model.cl(v.value))} />
+				: 'n/a'}
 		</div>
 	);
 };
@@ -62,8 +69,8 @@ const ConfigSubpanel = () => {
 	return (
 		<div className='subpanel'>
 			<EditDash name="Config" isEditing={isEditing} setIsEditing={setIsEditing} />
-			<ModelBar />
-			<PresetBar />
+			<ModelBar isEditing={isEditing} />
+			<PresetBar isEditing={isEditing} />
 		</div>
 	);
 };

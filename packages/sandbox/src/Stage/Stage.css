@@ -1,6 +1,7 @@
 #app {
     height: 100vh;
     width: 100vw;
+    background-color: #ecefef;
 }
 
 .stage {
@@ -9,6 +10,13 @@
     display: grid;
     grid-template-columns: 1fr auto;
 }
+
+/*.stage > :first-child {
+    background-color: #eee;
+    width: 512px;
+    margin: auto;
+    height: 100vh;
+}*/
 
 .stage *::-webkit-scrollbar {
     display: none;

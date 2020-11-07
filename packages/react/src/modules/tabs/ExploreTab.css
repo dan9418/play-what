@@ -15,6 +15,7 @@
     width: 100%;
     max-width: 512px;
     margin: 24px auto;
+    background-color: #eee;
 }
 
 /* ModelPanel ModelPanelBody ModelPanelFooter */
@@ -23,13 +24,7 @@
     width: 100%;
 }
 
-.model-panel-body {
-    background-color: #eee;
-    /*padding: 16px;*/
-}
-
 .model-panel-footer {
-    background-color: #eee;
     padding: 16px;
     border-radius: 0 0 16px 16px;
 }
@@ -44,7 +39,6 @@
 
 .input-bar > :first-child {
     width: 100%;
-    font-weight: bold;
 }
 
 .input-bar > span {
@@ -70,7 +64,6 @@
 /* ModelPanelHeader */
 
 .model-panel-header {
-    background-color: #eee;
     padding: 16px;
     border-radius: 16px 16px 0 0;
     display: flex;
