@@ -3,24 +3,12 @@ import pw_core from "@pw/core";
 
 const PodContext = createContext(null);
 
-export const MODELS = [
+export const STRUCTURES = [
 	{
 		id: 'podIndex',
 		name: 'podIndex',
 		cl: pw_core.PodIndex,
 		defaultValue: 0
-	},
-	{
-		id: 'pitch',
-		name: 'pitch',
-		cl: pw_core.Pitch,
-		defaultValue: pw_core.Pitch.presetValues[0].value
-	},
-	{
-		id: 'degree',
-		name: 'degree',
-		cl: pw_core.Degree,
-		defaultValue: pw_core.Degree.presetValues[0].value
 	},
 	{
 		id: 'pod',
@@ -29,39 +17,64 @@ export const MODELS = [
 		defaultValue: [0, 0]
 	},
 	{
-		id: 'note',
-		name: 'note',
-		cl: pw_core.Note,
-		defaultValue: pw_core.Note.presetValues[0].value
-	},
-	{
-		id: 'interval',
-		name: 'interval',
-		cl: pw_core.Interval,
-		defaultValue: pw_core.Interval.presetValues[0].value
-	},
-	{
 		id: 'podList',
 		name: 'podList',
 		cl: pw_core.PodList,
 		defaultValue: [[0, 0], [0, 0]]
-	},
-	{
-		id: 'chord',
-		name: 'chord',
-		cl: pw_core.Chord,
-		defaultValue: pw_core.Chord.presetValues[0].value
-	},
-	{
-		id: 'scale',
-		name: 'scale',
-		cl: pw_core.Scale,
-		defaultValue: pw_core.Scale.presetValues[0].value
 	}
 ];
 
-const getModel = (value) => {
-	return MODELS.find(m => m.id === value.getType());
+export const MODELS = {
+	podIndex: [
+		{
+			id: 'pitch',
+			name: 'pitch',
+			cl: pw_core.Pitch,
+			defaultValue: pw_core.Pitch.presetValues[0].value
+		},
+		{
+			id: 'degree',
+			name: 'degree',
+			cl: pw_core.Degree,
+			defaultValue: pw_core.Degree.presetValues[0].value
+		}
+	],
+	pod: [
+		{
+			id: 'note',
+			name: 'note',
+			cl: pw_core.Note,
+			defaultValue: pw_core.Note.presetValues[0].value
+		},
+		{
+			id: 'interval',
+			name: 'interval',
+			cl: pw_core.Interval,
+			defaultValue: pw_core.Interval.presetValues[0].value
+		}
+	],
+	podList: [
+		{
+			id: 'chord',
+			name: 'chord',
+			cl: pw_core.Chord,
+			defaultValue: pw_core.Chord.presetValues[0].value
+		},
+		{
+			id: 'scale',
+			name: 'scale',
+			cl: pw_core.Scale,
+			defaultValue: pw_core.Scale.presetValues[0].value
+		}
+	]
+};
+
+const getStructure = (value) => {
+	return STRUCTURES.find(s => value instanceof s.cl);
+}
+
+const getModel = (structure, value) => {
+	return MODELS[structure.id].find(m => value instanceof m.cl) || MODELS[structure.id][0];
 }
 
 const getPreset = (value, presets = []) => {
@@ -76,14 +89,17 @@ export const PodContextProvider = ({
 	children
 }) => {
 
-	const model = getModel(value);
-	const preset = getPreset(value, model.cl.presetValues);
+	const structure = getStructure(value);
+	const model = getModel(structure, value);
+	const safe = model || structure;
+	const preset = getPreset(value, safe.cl.presetValues);
 
 	const podContext = {
 		value,
 		setValue,
 		podType,
 		setPodType,
+		structure,
 		model,
 		preset
 	};

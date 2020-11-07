@@ -1,12 +1,8 @@
 /* General */
 
 .subpanel {
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     padding: 0 16px 16px 16px;
-}
-
-.subpanel > * {
-    margin-bottom: 16px;
 }
 
 .subpanel-name {
@@ -39,11 +35,11 @@
 }
 
 .input-bar {
+    border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px;
-    border-bottom: 1px solid #ccc;
+    padding: 8px;
 }
 
 .input-bar > :first-child {
@@ -52,6 +48,22 @@
 }
 
 .input-bar > span {
+    padding: 4px;
+}
+
+.subinput-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+}
+
+.subinput-bar > :first-child {
+    width: 100%;
+    font-style: italic;
+}
+
+.subinput-bar > span {
     padding: 4px;
 }
 
@@ -88,6 +100,7 @@
     box-sizing: border-box;
     padding: 8px 0;
     border-bottom: 1px solid #ddd;
+    -top: 1px solid #ddd;
     display: flex;
     align-items: center;
     justify-content: space-between;
