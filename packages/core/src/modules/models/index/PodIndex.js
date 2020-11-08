@@ -17,7 +17,11 @@ class PodIndex {
 	}
 
 	getName() {
-		return 'n/a';
+		return '?';
+	}
+
+	getPreview() {
+		return JSON.stringify(this.value);
 	}
 
 	reduce(max = 10) {

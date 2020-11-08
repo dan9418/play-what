@@ -10,9 +10,9 @@ const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
 	return (
 		<div className='model-panel-header'>
 			<div>
-				<span className='model-name'>{label}</span>
+				<span className='model-name'>{value.getName()}</span>
 				<span className='type'>{value.getType()}</span>
-				<div className="preview">{value.getName()}</div>
+				<div className="preview">{value.getPreview && value.getPreview()}</div>
 			</div>
 			<div className='edit-button' onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </div>
 		</div>

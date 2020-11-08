@@ -47,7 +47,11 @@ class Pod {
 
 	getName() {
 		const a = this.value;
-		return JSON.stringify(a);
+		return '?';
+	}
+
+	getPreview() {
+		return JSON.stringify(this.value);
 	}
 
 	getType() {

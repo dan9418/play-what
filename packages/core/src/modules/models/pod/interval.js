@@ -182,11 +182,10 @@ export const INTERVAL = {
 const INTERVAL_VALUES = Object.values(INTERVAL);
 
 class Interval extends Pod {
-	static getName({ a }) {
-		const reduced = Pod.reduce({ a });
-		const [p, d] = reduced;
-		const result = Object.values(INTERVAL).find(({ value }) => value[0] === p && value[1] === d);
-		return result ? result.id : `[${p}, ${d}]`;
+	getName() {
+		const reduced = new Interval(this.value).reduce();
+		const result = Object.values(INTERVAL).find(({ value }) => reduced.equalTo(value));
+		return result ? result.id : `?`;
 	}
 
 	getType() {

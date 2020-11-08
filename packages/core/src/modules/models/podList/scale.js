@@ -61,7 +61,7 @@ class Scale extends PodList {
 	}
 
 	getName() {
-		return 'n/a';
+		return '?';
 	}
 
 	getType() {

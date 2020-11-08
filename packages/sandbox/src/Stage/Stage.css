@@ -11,12 +11,13 @@
     grid-template-columns: 1fr auto;
 }
 
-/*.stage > :first-child {
-    background-color: #eee;
+.stage > :first-child {
+    background-color: #f5f5f5;
     width: 512px;
     margin: auto;
+    padding: 16px;
     height: 100vh;
-}*/
+}
 
 .stage *::-webkit-scrollbar {
     display: none;

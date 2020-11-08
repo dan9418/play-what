@@ -36,13 +36,13 @@ const ModelBar = ({ isEditing }) => {
 					: structure.id
 				}
 			</div>
+			{value instanceof PodList && <PodTypeBar />}
 			<div className='input-bar'>
 				<div>Model</div>
 				{isEditing ?
 					<DropdownInput options={MODELS[structure.id]} value={model} setValue={v => setValue(new v.cl(v.defaultValue))} />
 					: MODELS[structure.id].id || 'n/a'}
 			</div>
-			{value instanceof PodList && <PodTypeBar />}
 		</>
 	);
 };

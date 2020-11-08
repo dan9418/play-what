@@ -35,7 +35,11 @@ class PodList {
 	}
 
 	getName() {
-		return 'n/a';
+		return '?';
+	}
+
+	getPreview() {
+		return JSON.stringify(this.value);
 	}
 
 	getType() {
