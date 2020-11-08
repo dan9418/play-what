@@ -6,6 +6,8 @@ import Pod from '@pw/core/src/modules/models/pod/Pod';
 
 const PresetCell = ({ value, isEditing, podType }) => {
 	let comp = null;
+	const model = new podType.cl(value.getValue());
+	comp = model.getName();
 	/*if (podType === POD_TYPE.interval) {
 		const interval = new pw_core.Interval(value.getValue());
 		comp = isEditing ?

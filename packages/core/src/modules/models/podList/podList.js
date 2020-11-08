@@ -8,9 +8,38 @@ class PodList {
 		this.value = value;
 	}
 
+	// common
+
+	equalTo(b) {
+		if (!b || b.length !== 2) return false;
+		return this.value[0] === b[0] && this.value[1] === b[1];
+	}
+
 	getValue() {
 		return this.value;
 	}
+
+	getName() {
+		return '?';
+	}
+
+	getPreset() {
+		return null;
+	}
+
+	getPreview() {
+		return this.getValue();
+	}
+
+	getType() {
+		return 'podList';
+	}
+
+	getValue() {
+		return this.value;
+	}
+
+	// utils
 
 	equalTo(B) {
 		if (!B || !B.length) return false;
@@ -32,18 +61,6 @@ class PodList {
 			return [p, d];
 		});
 		return this;
-	}
-
-	getName() {
-		return '?';
-	}
-
-	getPreview() {
-		return JSON.stringify(this.value);
-	}
-
-	getType() {
-		return 'podList';
 	}
 
 	/*findPodWithPitch(p) {

@@ -4,10 +4,7 @@ export const INTERVAL = {
 	P1: {
 		id: 'P1',
 		name: 'Perfect Unison',
-		value: [
-			0,
-			0
-		]
+		value: [0, 0]
 	},
 	m2: {
 		id: 'm2',
@@ -182,10 +179,10 @@ export const INTERVAL = {
 const INTERVAL_VALUES = Object.values(INTERVAL);
 
 class Interval extends Pod {
-	getName() {
+
+	getPreset() {
 		const reduced = new Interval(this.value).reduce();
-		const result = Object.values(INTERVAL).find(({ value }) => reduced.equalTo(value));
-		return result ? result.id : `?`;
+		return INTERVAL_VALUES.find(({ value }) => reduced.equalTo(value)) || null;
 	}
 
 	getType() {

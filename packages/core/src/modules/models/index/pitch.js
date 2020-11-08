@@ -35,9 +35,14 @@ class Pitch extends PodIndex {
 		return PITCH_COLOR_SCHEME[p];
 	}
 
+	// common
+
 	getName() {
-		const pitch = PITCH_VALUES.find(x => x.value === this.value);
-		return pitch ? pitch.name : '?';
+		return '?';
+	}
+
+	getPreset() {
+		return PITCH_VALUES.find(x => x.value === this.value) || null;
 	}
 
 	getType() {

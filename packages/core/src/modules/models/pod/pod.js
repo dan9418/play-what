@@ -10,14 +10,34 @@ class Pod {
 		this.value = value;
 	}
 
-	getValue() {
-		return this.value;
-	}
+	// common
 
 	equalTo(b) {
 		if (!b || b.length !== 2) return false;
 		return this.value[0] === b[0] && this.value[1] === b[1];
 	}
+
+	getValue() {
+		return this.value;
+	}
+
+	getName() {
+		return '?';
+	}
+
+	getPreset() {
+		return null;
+	}
+
+	getPreview() {
+		return this.getValue();
+	}
+
+	getType() {
+		return 'pod';
+	}
+
+	// utils
 
 	reduce(max = MAX) {
 		const a = this.value;
@@ -44,19 +64,6 @@ class Pod {
 		});
 		return this;
 	};
-
-	getName() {
-		const a = this.value;
-		return '?';
-	}
-
-	getPreview() {
-		return JSON.stringify(this.value);
-	}
-
-	getType() {
-		return 'pod';
-	}
 
 }
 

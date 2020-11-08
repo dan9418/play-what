@@ -8,21 +8,33 @@ class PodIndex {
 		this.value = value;
 	}
 
-	getValue() {
-		return this.value;
-	}
+	// common
 
 	equalTo(b) {
 		return this.value === b;
+	}
+
+	getValue() {
+		return this.value;
 	}
 
 	getName() {
 		return '?';
 	}
 
-	getPreview() {
-		return JSON.stringify(this.value);
+	getPreset() {
+		return null;
 	}
+
+	getPreview() {
+		return this.getValue();
+	}
+
+	getType() {
+		return 'podIndex';
+	}
+
+	// utils
 
 	reduce(max = 10) {
 		const a = this.value;
@@ -34,10 +46,6 @@ class PodIndex {
 		const a = this.value;
 		this.value = Utils.moduloSum(a, b, divisor)
 		return this;
-	}
-
-	getType() {
-		return 'podIndex';
 	}
 }
 

@@ -1,8 +1,7 @@
 import PodList from "@pw/core/src/modules/models/podList/PodList";
 import React, { useState } from "react";
-import usePodContext, { MODELS, STRUCTURES } from "../../../other/PodContext";
+import usePodContext, { STRUCTURES } from "../../../other/PodContext";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import SwitchInput from "../../../ui/SwitchInput/SwitchInput";
 import EditDash from "../../EditDash";
 
 const PodTypeBar = ({ isEditing }) => {
@@ -11,7 +10,9 @@ const PodTypeBar = ({ isEditing }) => {
 	return (
 		<div className='subinput-bar'>
 			<div>Pod Type</div>
-			<DropdownInput options={[]} value={podType} setValue={null} />
+			{isEditing ?
+				<DropdownInput options={STRUCTURES[1].models} value={podType} setValue={setPodType} />
+				: podType.id}
 		</div>
 	);
 };
@@ -27,7 +28,7 @@ const ModelBar = ({ isEditing }) => {
 					: structure.id
 				}
 			</div>
-			{value instanceof PodList && <PodTypeBar />}
+			{value instanceof PodList && <PodTypeBar isEditing={isEditing} />}
 			<div className='input-bar'>
 				<div>Model</div>
 				{isEditing ?
@@ -40,6 +41,8 @@ const ModelBar = ({ isEditing }) => {
 
 const PresetBar = ({ isEditing }) => {
 	const { value, setValue, model, preset } = usePodContext();
+
+	if (!model.cl.presetValues) return null;
 
 	return (
 		<div className='input-bar'>
