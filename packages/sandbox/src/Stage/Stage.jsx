@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Menu from '../Menu/Menu';
 import './Stage.css';
 import ExploreTab from '../../../react/src/modules/tabs/ExploreTab';
 import DocsTab from '../../../react/src/modules/tabs/DocsTab';
@@ -27,19 +26,16 @@ const Stage = () => {
 	const tab = TABS[tabIndex];
 	return (
 		<div className="stage">
-			<div>
-				<div className="tab-list">
-					{TABS.map((t, i) => (
-						<div
-							className={`tab ${tabIndex === i ? 'active' : ''}`}
-							key={t.id}
-							onClick={() => setTabIndex(i)}
-						>{t.name}</div>
-					))}
-				</div>
-				{tab.component}
+			<div className="tab-list">
+				{TABS.map((t, i) => (
+					<div
+						className={`tab ${tabIndex === i ? 'active' : ''}`}
+						key={t.id}
+						onClick={() => setTabIndex(i)}
+					>{t.name}</div>
+				))}
 			</div>
-			<Menu />
+			{tab.component}
 		</div>
 	);
 };
