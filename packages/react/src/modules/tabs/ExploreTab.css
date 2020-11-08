@@ -114,6 +114,7 @@ table th {
 table {
     border-collapse: collapse;
     margin: auto;
+    width: 100%;
 }
 
 table td, table th {

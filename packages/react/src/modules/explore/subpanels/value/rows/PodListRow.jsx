@@ -3,11 +3,15 @@ import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
 import pw_core from '@pw/core';
 import Pod from '@pw/core/src/modules/models/pod/Pod';
+import NumericInput from '../../../../ui/NumericInput/NumericInput';
 
 const PresetCell = ({ value, isEditing, podType }) => {
 	const model = new podType.cl(value.getValue());
 	const preset = model.getPreset();
-	return <td>{preset ? preset.name : 'n/a'}</td>
+	return <td>{
+		isEditing ? <DropdownInput options={podType.cl.presetValues} value={preset} setValue={null} /> :
+			<>{preset ? preset.name : 'n/a'}</>
+	}</td>
 }
 
 const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) => {
@@ -34,7 +38,7 @@ const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) =
 			<td>
 				{
 					isEditing ?
-						<input type="number" value={i} onChange={onChange} />
+						<NumericInput value={i} setValue={setValue} />
 						: i
 				}
 			</td>
@@ -44,7 +48,7 @@ const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) =
 			<td>
 				{JSON.stringify(reduced)}
 			</td>
-			<PresetCell value={pod} isEditing={isEditing} podType={podType}/>
+			<PresetCell value={pod} isEditing={isEditing} podType={podType} />
 			{isEditing &&
 				<td>
 					<ButtonInput onClick={remove}>X</ButtonInput>
