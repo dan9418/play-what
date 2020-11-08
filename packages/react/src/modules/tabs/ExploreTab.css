@@ -98,11 +98,6 @@
     box-sizing: border-box;
 }
 
-.edit-button {
-    color: cornflowerblue;
-    cursor: pointer;
-}
-
 /* table */
 
 table th {

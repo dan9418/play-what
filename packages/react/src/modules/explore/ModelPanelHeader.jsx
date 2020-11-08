@@ -6,7 +6,6 @@ import ButtonInput from '../ui/ButtonInput/ButtonInput';
 const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { value, setValue, podType } = podContext;
-	console.log(value)
 	return (
 		<div className='model-panel-header'>
 			<div>
@@ -14,7 +13,7 @@ const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 				<span className='type'>{value.getType()}</span>
 				<div className="preview">{value.getPreview && value.getPreview({ podType })}</div>
 			</div>
-			<div className='edit-button' onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </div>
+			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>
 	);
 };

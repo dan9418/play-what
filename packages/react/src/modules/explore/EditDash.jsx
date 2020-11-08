@@ -1,11 +1,17 @@
 import React from "react";
+import ButtonInput from "../ui/ButtonInput/ButtonInput";
 
 
 const EditDash = ({ isEditing, setIsEditing, name }) => {
 	return (
 		<div className='edit-dash'>
 			<div className="subpanel-name">{name}</div>
-			<div className='edit-button' onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'done' : 'edit'} </div>
+			<ButtonInput
+				isActive={isEditing}
+				onClick={() => setIsEditing(!isEditing)}
+			>
+				{isEditing ? 'done' : 'edit'}
+			</ButtonInput>
 		</div>
 	);
 };
