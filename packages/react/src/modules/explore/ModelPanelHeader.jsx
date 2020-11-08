@@ -11,7 +11,7 @@ const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 			<div>
 				<span className='model-name'>{value.getName()}</span>
 				<span className='type'>{value.getType()}</span>
-				<div className="preview">{value.getPreview && value.getPreview({ podType })}</div>
+				<div className="preview pw-accent-fg">{value.getPreview && value.getPreview({ podType })}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>

@@ -28,13 +28,14 @@ class PodList {
 	}
 
 	getPreview(options) {
-		const arr = this.value.map(v => {
+		return JSON.stringify(this.value);
+		/*const arr = this.value.map(v => {
 			if(options.podType && options.podType.id !== 'pod')
 				return new options.podType.cl(v).getName();
 			else
 				return JSON.stringify(v)
 		});
-		return arr.join(', ')
+		return arr.join(', ')*/
 	}
 
 	getType() {

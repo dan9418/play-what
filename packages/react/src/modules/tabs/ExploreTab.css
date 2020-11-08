@@ -1,8 +1,6 @@
 /* General */
 
 .subpanel {
-    border-top: 1px solid #ccc;
-    padding: 0 16px 16px 16px;
 }
 
 .subpanel-name {
@@ -28,11 +26,14 @@
 }
 
 .input-bar {
-    border-top: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px;
+}
+
+.input-bar:not(:first-child) {
+    border-top: 1px solid #ddd;
 }
 
 .input-bar > :first-child {
@@ -40,22 +41,6 @@
 }
 
 .input-bar > span {
-    padding: 4px;
-}
-
-.subinput-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 16px;
-}
-
-.subinput-bar > :first-child {
-    width: 100%;
-    font-style: italic;
-}
-
-.subinput-bar > span {
     padding: 4px;
 }
 
@@ -70,6 +55,10 @@
     border-bottom: 1px solid #ccc;
 }
 
+.model-panel-body {
+    padding: 16px;
+}
+
 .model-name {
     font-size: 120%;
     font-weight: bold;
@@ -82,20 +71,24 @@
 
 .preview {
     padding: 4px;
-    color: teal;
 }
 
-/* EditDash */
+/* SubpanelHeader */
 
-.edit-dash {
+.subpanel-header {
     box-sizing: border-box;
-    padding: 8px 0;
-    border-bottom: 1px solid #ddd;
-    -top: 1px solid #ddd;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #ddd;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.subpanel-body {
     box-sizing: border-box;
+    padding: 16px;
+    padding-bottom: 24px;
 }
 
 /* table */
@@ -117,15 +110,7 @@ table td, table th {
 table th {
     padding: 8px;
     text-align: left;
-    background-color: #ddd;
-}
-
-table th:first-child {
-    border-radius: 8px 0 0 8px;
-}
-
-table th:last-child {
-    border-radius: 0 8px 8px 0;
+    border-bottom: 2px solid #ccc;
 }
 
 table tbody tr:not(:last-child) {

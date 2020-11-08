@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import usePodContext from "../../../other/PodContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import EditDash from '../../EditDash';
+import Subpanel from "../../Subpanel";
 import Value from "./Value";
 
 const ValueSubpanel = () => {
@@ -13,8 +13,7 @@ const ValueSubpanel = () => {
 	const [isLoadingPreset, setIsLoadingPreset] = useState(false);
 
 	return (
-		<div className='subpanel'>
-			<EditDash name="Value" isEditing={isEditing} setIsEditing={setIsEditing} />
+		<Subpanel name="Value" isEditing={isEditing} setIsEditing={setIsEditing}>
 			<Value isEditing={isEditing} />
 			{isEditing && (
 				<div className='preset-box' >
@@ -30,7 +29,7 @@ const ValueSubpanel = () => {
 					/>
 				</div>
 			)}
-		</div>
+		</Subpanel>
 	);
 };
 

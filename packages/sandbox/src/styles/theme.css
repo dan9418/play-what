@@ -25,6 +25,9 @@
   background-color: #313131;
   color: #ffffff;
 }
+.pw-primary-fg {
+  color: #25283D;
+}
 /* Accent */
 .pw-accent {
   background-color: #87A330;
@@ -37,6 +40,9 @@
   background-color: #6a6a6a;
   color: #ffffff;
 }
+.pw-accent-fg {
+  color: #87A330;
+}
 /* Active */
 .pw-active {
   background-color: #D36135;
@@ -48,4 +54,7 @@
 .pw-active.pw-disabled {
   background-color: #848484;
   color: #ffffff;
+}
+.pw-active-fg {
+  color: #D36135;
 }

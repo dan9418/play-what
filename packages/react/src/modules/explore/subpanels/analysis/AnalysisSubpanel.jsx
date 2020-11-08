@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import usePodContext from "../../../other/PodContext";
-import EditDash from '../../EditDash';
+import Subpanel from "../../Subpanel";
 import Meter from "./Analysis";
 
 const AnalysisSubpanel = () => {
@@ -10,12 +10,11 @@ const AnalysisSubpanel = () => {
 	const [isEditing, setIsEditing] = useState(false);
 
 	return (
-		<div className='subpanel'>
-			<EditDash name="Analysis" isEditing={isEditing} setIsEditing={setIsEditing} />
+		<Subpanel name="Analysis" isEditing={isEditing} setIsEditing={setIsEditing} >
 			<div>
 				<Meter value={value} />
 			</div>
-		</div>
+		</Subpanel>
 	);
 };
 

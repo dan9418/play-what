@@ -2,13 +2,13 @@ import PodList from "@pw/core/src/modules/models/podList/PodList";
 import React, { useState } from "react";
 import usePodContext, { STRUCTURES } from "../../../other/PodContext";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import EditDash from "../../EditDash";
+import Subpanel from "../../Subpanel";
 
 const PodTypeBar = ({ isEditing }) => {
 	const { value, podType, setPodType } = usePodContext();
 	if (!(value instanceof PodList)) return null;
 	return (
-		<div className='subinput-bar'>
+		<div className='input-bar'>
 			<div>Pod Type</div>
 			{isEditing ?
 				<DropdownInput options={STRUCTURES[1].models} value={podType} setValue={setPodType} />
@@ -28,7 +28,6 @@ const ModelBar = ({ isEditing }) => {
 					: structure.id
 				}
 			</div>
-			{value instanceof PodList && <PodTypeBar isEditing={isEditing} />}
 			<div className='input-bar'>
 				<div>Model</div>
 				{isEditing ?
@@ -61,11 +60,11 @@ const ConfigSubpanel = () => {
 	const [isEditing, setIsEditing] = useState(false);
 
 	return (
-		<div className='subpanel'>
-			<EditDash name="Config" isEditing={isEditing} setIsEditing={setIsEditing} />
+		<Subpanel name="Config" isEditing={isEditing} setIsEditing={setIsEditing} >
 			<ModelBar isEditing={isEditing} />
+			{value instanceof PodList && <PodTypeBar isEditing={isEditing} />}
 			<PresetBar isEditing={isEditing} />
-		</div>
+		</Subpanel>
 	);
 };
 

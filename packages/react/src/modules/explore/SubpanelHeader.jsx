@@ -1,10 +1,9 @@
 import React from "react";
 import ButtonInput from "../ui/ButtonInput/ButtonInput";
 
-
-const EditDash = ({ isEditing, setIsEditing, name }) => {
+const SubpanelHeader = ({ isEditing, setIsEditing, name }) => {
 	return (
-		<div className='edit-dash'>
+		<div className='subpanel-header'>
 			<div className="subpanel-name">{name}</div>
 			<ButtonInput
 				isActive={isEditing}
@@ -16,4 +15,4 @@ const EditDash = ({ isEditing, setIsEditing, name }) => {
 	);
 };
 
-export default EditDash;
+export default SubpanelHeader;

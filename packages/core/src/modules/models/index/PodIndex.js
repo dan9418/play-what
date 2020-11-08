@@ -27,7 +27,7 @@ class PodIndex {
 	}
 
 	getPreview() {
-		return null;
+		return JSON.stringify(this.value);
 	}
 
 	getType() {
