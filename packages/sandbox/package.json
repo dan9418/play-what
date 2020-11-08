@@ -8,7 +8,7 @@
     "start-debug": "cross-env DEBUG='express:*' cross-env NODE_ENV=development webpack-dev-server --hot --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "less": "lessc src/Common/index.less src/Common/index.css"
+    "less": "lessc src/styles/theme.less src/styles/theme.css"
   },
   "keywords": [],
   "author": "Dan Bednarczyk",

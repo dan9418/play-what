@@ -5,6 +5,11 @@ import DocsTab from '../../../../react/src/modules/tabs/DocsTab';
 
 const TABS = [
 	{
+		id: 'about',
+		name: 'About',
+		component: <div />
+	},
+	{
 		id: 'explore',
 		name: 'Explore',
 		component: <ExploreTab />
@@ -13,20 +18,15 @@ const TABS = [
 		id: 'docs',
 		name: 'Docs',
 		component: <DocsTab />
-	},
-	{
-		id: 'about',
-		name: 'About',
-		component: <div />
 	}
-]
+];
 
 const Stage = () => {
-	const [tabIndex, setTabIndex] = useState(0);
+	const [tabIndex, setTabIndex] = useState(1);
 	const tab = TABS[tabIndex];
 	return (
 		<div className="stage">
-			<div className="tab-list">
+			<div className="stage-tabs">
 				{TABS.map((t, i) => (
 					<div
 						className={`tab ${tabIndex === i ? 'active' : ''}`}
@@ -35,7 +35,9 @@ const Stage = () => {
 					>{t.name}</div>
 				))}
 			</div>
-			{tab.component}
+			<div className="stage-content">
+				{tab.component}
+			</div>
 		</div>
 	);
 };
