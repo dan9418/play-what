@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Icons from '../Common/Icons';
+import * as Icons from '../../img/Icons';
 import './NavBar.css';
 
 const NavBar = () => {

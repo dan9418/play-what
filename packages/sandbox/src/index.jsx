@@ -1,7 +1,9 @@
 import 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Main from './Main/Main';
+import Main from './components/Main';
+import './styles/index.css';
+import './styles/theme.css';
 
 const appContainer = document.querySelector('#app')
 

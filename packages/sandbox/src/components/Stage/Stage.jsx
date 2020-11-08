@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Stage.css';
-import ExploreTab from '../../../react/src/modules/tabs/ExploreTab';
-import DocsTab from '../../../react/src/modules/tabs/DocsTab';
+import ExploreTab from '../../../../react/src/modules/tabs/ExploreTab';
+import DocsTab from '../../../../react/src/modules/tabs/DocsTab';
 
 const TABS = [
 	{
