@@ -14,12 +14,12 @@ const ModelPanelBody = () => {
 	);
 };
 
-const ModelPanel = ({ label }) => {
-	const [isOpen, setIsOpen] = useState(false);
-	console.log('dpb', label);
+const ModelPanel = () => {
+	const [isOpen, setIsOpen] = useState(true);
+	console.log('dpb');
 	return (
 		<div className='model-panel'>
-			<ModelPanelHeader label={label} isOpen={isOpen} setIsOpen={setIsOpen} />
+			<ModelPanelHeader isOpen={isOpen} setIsOpen={setIsOpen} />
 			{isOpen && (<ModelPanelBody />)}
 			<div className='model-panel-footer' />
 		</div>

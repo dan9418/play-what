@@ -24,7 +24,7 @@ const Explore = () => {
 				podType={podType}
 				setPodType={setPodType}
 			>
-				<ModelPanel label='Custom' />
+				<ModelPanel />
 			</PodContextProvider>
 		</div>
 	);

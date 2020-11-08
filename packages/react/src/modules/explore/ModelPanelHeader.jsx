@@ -3,7 +3,7 @@ import React from "react";
 import usePodContext from "../other/PodContext";
 import ButtonInput from '../ui/ButtonInput/ButtonInput';
 
-const ModelPanelHeader = ({ label, isOpen, setIsOpen }) => {
+const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { value, setValue } = podContext;
 	console.log(value)
