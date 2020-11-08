@@ -8,19 +8,10 @@ import EditDash from "../../EditDash";
 const PodTypeBar = ({ isEditing }) => {
 	const { value, podType, setPodType } = usePodContext();
 	if (!(value instanceof PodList)) return null;
-	const onToggle = v => {
-		console.log(v)
-		if (v) setPodType(POD_TYPE.interval);
-		else
-			setPodType(POD_TYPE.note);
-	}
-
 	return (
 		<div className='subinput-bar'>
 			<div>Pod Type</div>
-			<span>Interval</span>
-			<SwitchInput value={podType} setValue={onToggle} />
-			<span>Note</span>
+			<DropdownInput options={[]} value={podType} setValue={null} />
 		</div>
 	);
 };
@@ -40,8 +31,8 @@ const ModelBar = ({ isEditing }) => {
 			<div className='input-bar'>
 				<div>Model</div>
 				{isEditing ?
-					<DropdownInput options={MODELS[structure.id]} value={model} setValue={v => setValue(new v.cl(v.defaultValue))} />
-					: MODELS[structure.id].id || 'n/a'}
+					<DropdownInput options={structure.models} value={model} setValue={v => setValue(new v.cl(v.defaultValue))} />
+					: model.id || 'n/a'}
 			</div>
 		</>
 	);

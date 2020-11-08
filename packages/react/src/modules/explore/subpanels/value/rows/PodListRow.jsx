@@ -3,11 +3,10 @@ import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
 import pw_core from '@pw/core';
 import Pod from '@pw/core/src/modules/models/pod/Pod';
-import { POD_TYPE } from '../../../../tabs/ExploreTab';
 
 const PresetCell = ({ value, isEditing, podType }) => {
 	let comp = null;
-	if (podType === POD_TYPE.interval) {
+	/*if (podType === POD_TYPE.interval) {
 		const interval = new pw_core.Interval(value.getValue());
 		comp = isEditing ?
 			<DropdownInput options={pw_core.Interval.presetValues} value={null} setValue={null} />
@@ -18,7 +17,7 @@ const PresetCell = ({ value, isEditing, podType }) => {
 		comp = isEditing ?
 			<DropdownInput options={pw_core.Note.presetValues} value={null} setValue={null} />
 			: note.getName()
-	}
+	}*/
 	return <td>{comp}</td>
 }
 
