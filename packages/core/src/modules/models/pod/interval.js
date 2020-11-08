@@ -180,6 +180,12 @@ const INTERVAL_VALUES = Object.values(INTERVAL);
 
 class Interval extends Pod {
 
+	// common
+
+	getName() {
+		return this.getPreset().id;
+	}
+
 	getPreset() {
 		const reduced = new Interval(this.value).reduce();
 		return INTERVAL_VALUES.find(({ value }) => reduced.equalTo(value)) || null;

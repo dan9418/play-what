@@ -20,15 +20,21 @@ class PodList {
 	}
 
 	getName() {
-		return '?';
+		return 'Custom';
 	}
 
 	getPreset() {
 		return null;
 	}
 
-	getPreview() {
-		return this.getValue();
+	getPreview(options) {
+		const arr = this.value.map(v => {
+			if(options.podType && options.podType.id !== 'pod')
+				return new options.podType.cl(v).getName();
+			else
+				return JSON.stringify(v)
+		});
+		return arr.join(', ')
 	}
 
 	getType() {
@@ -55,12 +61,12 @@ class PodList {
 
 	reduce(max = [12, 7]) {
 		const A = this.value;
-		this.value = A.map((a) => {
+		const newValue = A.map((a) => {
 			const p = Utils.modulo(a[0], max[0]);
 			const d = Utils.modulo(a[1], max[1]);
 			return [p, d];
 		});
-		return this;
+		return new PodList(newValue);
 	}
 
 	/*findPodWithPitch(p) {

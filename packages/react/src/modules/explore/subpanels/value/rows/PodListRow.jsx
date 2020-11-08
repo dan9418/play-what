@@ -5,22 +5,9 @@ import pw_core from '@pw/core';
 import Pod from '@pw/core/src/modules/models/pod/Pod';
 
 const PresetCell = ({ value, isEditing, podType }) => {
-	let comp = null;
 	const model = new podType.cl(value.getValue());
-	comp = model.getName();
-	/*if (podType === POD_TYPE.interval) {
-		const interval = new pw_core.Interval(value.getValue());
-		comp = isEditing ?
-			<DropdownInput options={pw_core.Interval.presetValues} value={null} setValue={null} />
-			: interval.getName()
-	}
-	else if (podType === POD_TYPE.note) {
-		const note = new pw_core.Note(value.getValue());
-		comp = isEditing ?
-			<DropdownInput options={pw_core.Note.presetValues} value={null} setValue={null} />
-			: note.getName()
-	}*/
-	return <td>{comp}</td>
+	const preset = model.getPreset();
+	return <td>{preset ? preset.name : 'n/a'}</td>
 }
 
 const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) => {

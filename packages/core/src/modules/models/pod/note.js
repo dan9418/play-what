@@ -53,13 +53,17 @@ class Note extends Pod {
 	getName() {
 		const reduced = new Note(this.value).reduce().getValue();
 		const [p, d] = reduced;
+
 		const degreeName = new Degree(d).getName();
+
 		const offset = p - config.rootScale[d][0];
 		const accidentalName = new Accidental(offset).getName();
+
 		return `${degreeName}${accidentalName}`;
 	};
 
 	getPreset() {
+		const reduced = this.reduce();
 		return NOTE_VALUES.find(({ value }) => reduced.equalTo(value)) || null;
 	};
 

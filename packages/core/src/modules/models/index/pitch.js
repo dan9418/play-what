@@ -38,7 +38,7 @@ class Pitch extends PodIndex {
 	// common
 
 	getName() {
-		return '?';
+		return '(pitch?)';
 	}
 
 	getPreset() {

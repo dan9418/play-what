@@ -1,8 +1,8 @@
 import Utils from '../../Utils';
+import PodList from '../podList/PodList';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
-
 
 class Pod {
 
@@ -22,7 +22,7 @@ class Pod {
 	}
 
 	getName() {
-		return '?';
+		return 'Custom';
 	}
 
 	getPreset() {
@@ -30,7 +30,7 @@ class Pod {
 	}
 
 	getPreview() {
-		return this.getValue();
+		return null;
 	}
 
 	getType() {
@@ -43,26 +43,26 @@ class Pod {
 		const a = this.value;
 		const p = Utils.modulo(a[0], max[0]);
 		const d = Utils.modulo(a[1], max[1]);
-		this.value = [p, d];
-		return this;
+		const newValue = [p, d];
+		return new Pod(newValue);
 	}
 
 	addPod(b, divisor = MAX) {
 		const a = this.value;
 		const p = Utils.moduloSum(a[0], b[0], divisor[0]);
 		const d = Utils.moduloSum(a[1], b[1], divisor[1]);
-		this.value = [p, d];
-		return this;
+		const newValue = [p, d];
+		return new Pod(newValue);
 	}
 
 	addPodList(B, divisor = MAX) {
 		const a = this.value;
-		this.value = B.map((b) => {
+		const newValue = B.map((b) => {
 			const p = Utils.moduloSum(a[0], b[0], divisor[0]);
 			const d = Utils.moduloSum(a[1], b[1], divisor[1]);
 			return [p, d];
 		});
-		return this;
+		return new PodList(newValue);
 	};
 
 }

@@ -19,7 +19,7 @@ class PodIndex {
 	}
 
 	getName() {
-		return '?';
+		return 'Custom';
 	}
 
 	getPreset() {
@@ -27,7 +27,7 @@ class PodIndex {
 	}
 
 	getPreview() {
-		return this.getValue();
+		return null;
 	}
 
 	getType() {
@@ -38,14 +38,14 @@ class PodIndex {
 
 	reduce(max = 10) {
 		const a = this.value;
-		this.value = Utils.modulo(a, max);
-		return this;
+		const newValue = Utils.modulo(a, max);
+		return new PodIndex(newValue);
 	}
 
 	add(b, divisor) {
 		const a = this.value;
-		this.value = Utils.moduloSum(a, b, divisor)
-		return this;
+		const newValue = Utils.moduloSum(a, b, divisor)
+		return new PodIndex(newValue);
 	}
 }
 
