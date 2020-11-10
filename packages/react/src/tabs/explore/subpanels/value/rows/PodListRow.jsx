@@ -1,9 +1,9 @@
 import React from 'react';
-import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
-import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
+import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
+import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 import pw_core from '@pw/core';
 import Pod from '@pw/core/src/modules/models/pod/Pod';
-import NumericInput from '../../../../ui/NumericInput/NumericInput';
+import NumericInput from '../../../../../ui/NumericInput/NumericInput';
 
 const PresetCell = ({ value, isEditing, podType }) => {
 	const model = new podType.cl(value.getValue());

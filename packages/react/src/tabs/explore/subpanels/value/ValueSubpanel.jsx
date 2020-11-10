@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import usePodContext from "../../../other/PodContext";
-import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
-import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
+import usePodContext from "../../../../other/PodContext";
+import ButtonInput from "../../../../ui/ButtonInput/ButtonInput";
+import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import Subpanel from "../../Subpanel";
 import Value from "./Value";
 

@@ -1,6 +1,6 @@
 import PodIndex from '@pw/core/src/modules/models/index/PodIndex';
 import React from 'react';
-import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
+import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 const PodIndexRow = ({ podIndex, setPodIndex, isEditing }) => {
 

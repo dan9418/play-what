@@ -1,7 +1,7 @@
 import pw_core from "@pw/core";
 import Pod from "@pw/core/src/modules/models/pod/Pod";
 import React from 'react';
-import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
+import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 
 const PodRow = ({ pod, setPod, isEditing }) => {

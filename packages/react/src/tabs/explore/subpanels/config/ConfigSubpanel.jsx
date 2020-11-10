@@ -1,7 +1,7 @@
 import PodList from "@pw/core/src/modules/models/podList/PodList";
 import React, { useState } from "react";
-import usePodContext, { STRUCTURES } from "../../../other/PodContext";
-import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
+import usePodContext, { STRUCTURES } from "../../../../other/PodContext";
+import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import Subpanel from "../../Subpanel";
 
 const PodTypeBar = ({ isEditing }) => {

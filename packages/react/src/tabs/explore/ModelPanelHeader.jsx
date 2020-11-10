@@ -1,7 +1,7 @@
 import pw_core from "@pw/core";
 import React from "react";
-import usePodContext from "../other/PodContext";
-import ButtonInput from '../ui/ButtonInput/ButtonInput';
+import usePodContext from "../../other/PodContext";
+import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 
 const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 	const podContext = usePodContext();

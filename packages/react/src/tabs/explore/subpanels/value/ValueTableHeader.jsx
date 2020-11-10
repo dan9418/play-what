@@ -1,6 +1,6 @@
 import React from 'react';
 import pw_core from '@pw/core';
-import usePodContext from "../../../other/PodContext";
+import usePodContext from "../../../../other/PodContext";
 
 const getHeaders = (value, isEditing) => {
 	if (value instanceof pw_core.PodIndex) {
