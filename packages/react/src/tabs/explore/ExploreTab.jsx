@@ -1,6 +1,6 @@
 import React from 'react';
 import ModelPanel from '../explore/ModelPanel';
-import { PodContextProvider } from '../other/PodContext';
+import { PodContextProvider } from '../../other/PodContext';
 import './ExploreTab.css';
 
 const Explore = () => {
