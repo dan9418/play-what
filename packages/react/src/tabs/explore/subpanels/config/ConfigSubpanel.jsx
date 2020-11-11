@@ -1,4 +1,4 @@
-import PodList from "@pw/core/src/modules/models/podList/PodList";
+/*import PodList from "@pw/core/src/modules/models/podList/PodList";
 import React, { useState } from "react";
 import usePodContext, { STRUCTURES } from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
@@ -54,8 +54,6 @@ const PresetBar = ({ isEditing }) => {
 };
 
 const ConfigSubpanel = () => {
-	const podContext = usePodContext();
-	const { value, setValue } = podContext;
 
 	const [isEditing, setIsEditing] = useState(false);
 
@@ -68,4 +66,4 @@ const ConfigSubpanel = () => {
 	);
 };
 
-export default ConfigSubpanel;
+export default ConfigSubpanel;*/

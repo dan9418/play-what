@@ -1,6 +1,4 @@
 import React from 'react';
-import pw_core from '@pw/core';
-import usePodContext from "../../../../other/PodContext";
 import useEditContext from '../../../../other/EditContext';
 
 const getHeaders = (type, isEditing) => {
