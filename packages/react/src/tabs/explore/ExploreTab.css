@@ -7,6 +7,10 @@
     font-weight: bold;
 }
 
+h2 {
+    margin: 0;
+}
+
 /* ExploreTab */
 
 .explore-tab {

@@ -7,7 +7,7 @@ import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 const ModelPanelBody = () => {
 	return (
 		<div className='model-panel-body'>
-			<ConfigSubpanel />
+			{/*<ConfigSubpanel />*/}
 			<ValueSubpanel />
 			<AnalysisSubpanel />
 		</div>
@@ -15,7 +15,7 @@ const ModelPanelBody = () => {
 };
 
 const ModelPanel = () => {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
 	console.log('dpb');
 	return (
 		<div className='model-panel'>

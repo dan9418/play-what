@@ -104,9 +104,6 @@ export const PodContextProvider = ({ children }) => {
 
 	const [value, setValue] = useState(DEFAULT_VALUE);
 	const [podType, setPodType] = useState(STRUCTURES[1].models[0]);
-	const [breadcrumbs, setBreadcrumbs] = useState(['cell']);
-	const pushBreadcrumb = b => setBreadcrumbs([...breadcrumbs, b]);
-	const popBreadcrumb = () => setBreadcrumbs(breadcrumbs.slice(0, breadcrumbs.length - 1));
 
 	const structure = getStructure(value);
 	const model = getModel(structure, value);
@@ -120,11 +117,7 @@ export const PodContextProvider = ({ children }) => {
 		// computed
 		structure,
 		model,
-		preset,
-		// breadcrumbs
-		breadcrumbs,
-		pushBreadcrumb,
-		popBreadcrumb
+		preset
 	};
 
 	return (

@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
-import ModelPanel from '../explore/ModelPanel';
-import usePodContext, { PodContextProvider } from '../../other/PodContext';
-import './ExploreTab.css';
+import React from 'react';
+import useBreadcrumbContext, { BreadcrumbContextProvider } from '../../other/BreadcrumbContext';
+import { PodContextProvider } from '../../other/PodContext';
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
+import ModelPanel from '../explore/ModelPanel';
+import './ExploreTab.css';
 
 const Breadcrumbs = () => {
-	const podContext = usePodContext();
+	const breadcrumbContext = useBreadcrumbContext();
 	return (
 		<div className='breadcrumb-container'>
-			{podContext.breadcrumbs.map(b => <ButtonInput key={b}>{b}</ButtonInput>)}
+			{breadcrumbContext.breadcrumbs.map(b => <ButtonInput key={b}>{b}</ButtonInput>)}
 		</div>
 	);
 };
@@ -16,10 +17,20 @@ const Breadcrumbs = () => {
 const Explore = () => {
 	return (
 		<div className='explore-tab'>
-			<PodContextProvider>
-				<Breadcrumbs />
-				<ModelPanel />
-			</PodContextProvider>
+			<BreadcrumbContextProvider>
+				<h2>Key Center</h2>
+				<PodContextProvider>
+					<ModelPanel />
+				</PodContextProvider>
+				<h2>Intervals</h2>
+				<PodContextProvider>
+					<ModelPanel />
+				</PodContextProvider>
+				<h2>Notes</h2>
+				<PodContextProvider>
+					<ModelPanel />
+				</PodContextProvider>
+			</BreadcrumbContextProvider>
 		</div>
 	);
 };

@@ -1,11 +1,13 @@
 import pw_core from "@pw/core";
 import React from "react";
+import useBreadcrumbContext from "../../other/BreadcrumbContext";
 import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 
 const ModelPanelHeader = ({ isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { value, setValue, podType } = podContext;
+	const { breadcrumbs, pushBreadcrumb, popBreadcrumb } = useBreadcrumbContext();
 	return (
 		<div className='model-panel-header'>
 			<div>
