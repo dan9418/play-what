@@ -1,38 +1,24 @@
 import React from 'react';
 import pw_core from '@pw/core';
 import usePodContext from "../../../../other/PodContext";
+import useEditContext from '../../../../other/EditContext';
 
-const getHeaders = (value, isEditing) => {
-	if (value instanceof pw_core.PodIndex) {
-		if (value instanceof pw_core.Degree)
-			return ['PodIndex', 'Reduced', 'Preset'];
-		if (value instanceof pw_core.Pitch)
-			return ['PodIndex', 'Reduced', 'Preset'];
-		return ['PodIndex', 'Reduced', 'Preset'];
+const getHeaders = (type, isEditing) => {
+	if (type === 'keyCenter') {
+		return ['Pod', 'Reduced', 'Preset'];
 	}
-	else if (value instanceof pw_core.Pod) {
-		if (value instanceof pw_core.Interval)
-			return ['Pod', 'Reduced', 'Preset'];
-		if (value instanceof pw_core.Note)
-			return ['Pod', 'Reduced', 'Preset'];
-		return ['PodIndex', 'Reduced', 'Preset'];
-	}
-	else if (value instanceof pw_core.PodList) {
-		if (value instanceof pw_core.Chord)
-			return ['#', 'Pod', 'Reduced', 'Preset', isEditing ? 'Delete' : undefined];
-		if (value instanceof pw_core.Scale)
-			return ['#', 'Pod', 'Reduced', 'Preset', isEditing ? 'Delete' : undefined];
+	else if (type === 'intervals' || type === 'notes') {
 		return ['#', 'Pod', 'Reduced', , 'Preset', isEditing ? 'Delete' : undefined];
 	}
 	else
 		return [];
 }
 
-const ValueTableHeader = ({ isEditing }) => {
-	const podContext = usePodContext();
-	const { value, setValue } = podContext;
+const ValueTableHeader = ({ value, type }) => {
+	const editContext = useEditContext();
+	const { isEditing, setIsEditing } = editContext;
 
-	const headers = getHeaders(value, isEditing);
+	const headers = getHeaders(type, isEditing);
 
 	return (
 		<thead>

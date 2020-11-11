@@ -24,11 +24,6 @@ h2 {
     width: 100%;
 }
 
-.model-panel-footer {
-    padding: 16px;
-    border-radius: 0 0 16px 16px;
-}
-
 .input-bar {
     display: flex;
     justify-content: space-between;

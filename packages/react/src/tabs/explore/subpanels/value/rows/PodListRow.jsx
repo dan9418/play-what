@@ -4,29 +4,29 @@ import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 import pw_core from '@pw/core';
 import Pod from '@pw/core/src/modules/models/pod/Pod';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
+import useEditContext from '../../../../../other/EditContext';
+import PodListUtils from '@pw/core/src/modules/models/podList/PodListUtils';
+import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
 
 const PresetCell = ({ value, isEditing, podType }) => {
-	const model = new podType.cl(value.getValue());
-	const preset = model.getPreset();
 	return <td>{
-		isEditing ? <DropdownInput options={podType.cl.presetValues} value={preset} setValue={null} /> :
-			<>{preset ? preset.name : 'n/a'}</>
+		isEditing ? <DropdownInput options={[]} value={null} setValue={null} /> :
+			<>{'n/a'}</>
 	}</td>
 }
 
-const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) => {
+const PodListRow = ({ i, podList, setPodList, type }) => {
 
-	const podList = value.getValue();
-	const pod = new pw_core.Pod(podList[i]);
+	const editContext = useEditContext();
+	const { isEditing } = editContext;
 
-	const remove = () => setValue(new pw_core.Pod([...podList.slice(0, i), ...podList.slice(i + 1)]));
-	const moveUp = () => setValue(new pw_core.Pod([...podList.slice(0, i - 1), podList[i], podList[i - 1], ...podList.slice(i + 1)]));
-	const moveDown = () => setValue(new pw_core.Pod([...podList.slice(0, i), podList[i + 1], podList[i], ...podList.slice(i + 2)]));
-	const setPod = r => setValue([...podList.slice(0, i), r, ...podList.slice(i + 1)]);
+	const raw = podList[i];
+	const reduced = PodUtils.reduce(raw);
 
-	const raw = pod.getValue();
-	const reduced = new Pod(raw).reduce().getValue();
-
+	const remove = () => setPodList([...podList.slice(0, i), ...podList.slice(i + 1)]);
+	const moveUp = () => setPodList([...podList.slice(0, i - 1), podList[i], podList[i - 1], ...podList.slice(i + 1)]);
+	const moveDown = () => setPodList([...podList.slice(0, i), podList[i + 1], podList[i], ...podList.slice(i + 2)]);
+	const setPod = r => setPodList([...podList.slice(0, i), r, ...podList.slice(i + 1)]);
 	const onChange = e => {
 		const v = e.target.value;
 		if (v > i) moveUp();
@@ -38,7 +38,7 @@ const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) =
 			<td>
 				{
 					isEditing ?
-						<NumericInput value={i} setValue={setValue} />
+						<NumericInput value={i} setValue={onChange} />
 						: i
 				}
 			</td>
@@ -48,7 +48,7 @@ const PodListRow = ({ value, setValue, i, isEditing, model, preset, podType }) =
 			<td>
 				{JSON.stringify(reduced)}
 			</td>
-			<PresetCell value={pod} isEditing={isEditing} podType={podType} />
+			<PresetCell value={reduced} isEditing={isEditing} type={type} />
 			{isEditing &&
 				<td>
 					<ButtonInput onClick={remove}>X</ButtonInput>

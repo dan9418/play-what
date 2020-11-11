@@ -2,15 +2,15 @@ import React from 'react';
 import ValueRowManager from './rows/ValueRowManager';
 import ValueTableHeader from './ValueTableHeader';
 
-const Value = ({ isEditing }) => {
+const ValueTable = ({ value, type }) => {
 	return (
 		<table className='model-table'>
-			<ValueTableHeader isEditing={isEditing} />
+			<ValueTableHeader value={value} type={type} />
 			<tbody>
-				<ValueRowManager isEditing={isEditing} />
+				<ValueRowManager value={value} type={type} />
 			</tbody>
 		</table>
 	);
 };
 
-export default Value;
+export default ValueTable;

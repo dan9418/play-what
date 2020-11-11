@@ -31,25 +31,24 @@ const IndexListMeter = ({ max, indexList, colorFn }) => {
 	return <ListMeter list={list} />
 };
 
-const PodListMeter = ({ podList, ...props }) => {
+const PodListMeter = ({ podList }) => {
 	const P = podList.map(([p, d]) => p);
 	const D = podList.map(([p, d]) => d);
 	return (
 		<>
-			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} {...props} />
-			<IndexListMeter indexList={D} max={MAX[1]} colorFn={getDegreeColor} {...props} />
+			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} />
+			<IndexListMeter indexList={D} max={MAX[1]} colorFn={getDegreeColor} />
 		</>
 	);
 }
 
-const Analysis = ({ value, ...props }) => {
-	const v = value.getValue();
-	if (value instanceof pw_core.PodIndex)
-		return <IndexListMeter indexList={[v]} max={v} colorFn={getPitchColor} {...props} />
-	else if (value instanceof pw_core.Pod)
-		return <PodListMeter podList={[v]} {...props} />;
-	else if (value instanceof pw_core.PodList)
-		return <PodListMeter podList={v} {...props} />;
+const Analysis = ({ value, type }) => {
+	//if (type === 'podIndex')
+	//	return <IndexListMeter indexList={[value]} max={value} colorFn={getPitchColor} />
+	if (type === 'keyCenter')
+		return <PodListMeter podList={[value]} />;
+	else if (type === 'intervals' || type === 'notes')
+		return <PodListMeter podList={value} />;
 	return JSON.stringify(value);
 }
 

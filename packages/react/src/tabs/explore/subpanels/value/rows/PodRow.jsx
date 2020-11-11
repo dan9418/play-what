@@ -1,18 +1,22 @@
 import pw_core from "@pw/core";
 import Pod from "@pw/core/src/modules/models/pod/Pod";
+import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
 import React from 'react';
+import useEditContext from "../../../../../other/EditContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 
-const PodRow = ({ pod, setPod, isEditing }) => {
+const PodRow = ({ pod, setPod }) => {
 
-	const raw = pod.getValue();
-	const reduced = new Pod(raw).reduce().getValue();
+	const editContext = useEditContext();
+	const { isEditing } = editContext;
+
+	const reduced = PodUtils.reduce(pod);
 
 	return (
 		<tr>
 			<td>
-				{JSON.stringify(raw)}
+				{JSON.stringify(pod)}
 			</td>
 			<td>
 				{JSON.stringify(reduced)}
@@ -21,7 +25,7 @@ const PodRow = ({ pod, setPod, isEditing }) => {
 				{isEditing ?
 					<DropdownInput options={[]} value={null} setValue={null} />
 					:
-					pod.getName()}
+					PodUtils.getPreview(reduced)}
 			</td>
 		</tr>
 	);

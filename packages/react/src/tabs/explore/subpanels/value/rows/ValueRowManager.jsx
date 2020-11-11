@@ -5,6 +5,7 @@ import PodIndexRow from './PodIndexRow';
 import PodRow from './PodRow';
 import PodListRow from './PodListRow';
 import pw_core from '@pw/core';
+import useEditContext from '../../../../../other/EditContext';
 
 const NewModelRow = ({ }) => {
 	return (
@@ -20,11 +21,10 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const ValueRowManager = ({ isEditing }) => {
-	const podContext = usePodContext();
-	const { value, setValue, model, preset, podType } = podContext;
-
-	if (value instanceof pw_core.PodIndex) {
+const ValueRowManager = ({ value, type }) => {
+	const editContext = useEditContext();
+	const { isEditing } = editContext;
+	/*if (value instanceof pw_core.PodIndex) {
 		return (
 			<PodIndexRow
 				podIndex={value}
@@ -32,28 +32,25 @@ const ValueRowManager = ({ isEditing }) => {
 				isEditing={isEditing}
 			/>
 		);
-	}
-	else if (value instanceof pw_core.Pod) {
+	}*/
+	if (type === 'keyCenter') {
 		return (
 			<PodRow
 				pod={value}
-				setPod={setValue}
-				isEditing={isEditing}
+				setPod={null}
+				type={type}
 			/>
 		);
 	}
-	else if (value instanceof pw_core.PodList) {
-		const rows = value.getValue().map((v, i) => {
+	else if (type === 'intervals' || type === 'notes') {
+		const rows = value.map((v, i) => {
 			return (
 				<PodListRow
-					value={value}
-					setValue={setValue}
-					isEditing={isEditing}
 					i={i}
 					key={i}
-					model={model}
-					preset={preset}
-					podType={podType}
+					podList={value}
+					setPodList={null}
+					type={type}
 				/>
 			);
 		});
