@@ -39,7 +39,7 @@ const ValueRowManager = ({ value, type }) => {
 			/>
 		);
 	}
-	else if (type === 'intervals' || type === 'notes') {
+	else if (type === 'intervalList' || type === 'noteList') {
 		const rows = value.map((v, i) => {
 			return (
 				<PodListRow

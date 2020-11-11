@@ -47,7 +47,7 @@ const Analysis = ({ value, type }) => {
 	//	return <IndexListMeter indexList={[value]} max={value} colorFn={getPitchColor} />
 	if (type === 'keyCenter')
 		return <PodListMeter podList={[value]} />;
-	else if (type === 'intervals' || type === 'notes')
+	else if (type === 'intervalList' || type === 'noteList')
 		return <PodListMeter podList={value} />;
 	return JSON.stringify(value);
 }

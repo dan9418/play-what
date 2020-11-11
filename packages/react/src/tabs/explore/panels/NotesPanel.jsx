@@ -4,7 +4,7 @@ import Panel from "../Panel";
 import AnalysisSubpanel from "../subpanels/analysis/AnalysisSubpanel";
 import ValueSubpanel from "../subpanels/value/ValueSubpanel";
 
-const TYPE = 'notes';
+const TYPE = 'noteList';
 
 const NotesPanel = () => {
 	const cellContext = useCellContext();

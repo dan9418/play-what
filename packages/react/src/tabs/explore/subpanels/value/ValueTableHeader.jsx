@@ -5,7 +5,7 @@ const getHeaders = (type, isEditing) => {
 	if (type === 'keyCenter') {
 		return ['Pod', 'Reduced', 'Preset'];
 	}
-	else if (type === 'intervals' || type === 'notes') {
+	else if (type === 'intervalList' || type === 'noteList') {
 		return ['#', 'Pod', 'Reduced', , 'Preset', isEditing ? 'Delete' : undefined];
 	}
 	else
