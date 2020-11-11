@@ -1,12 +1,9 @@
+import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
 import React from 'react';
+import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
-import pw_core from '@pw/core';
-import Pod from '@pw/core/src/modules/models/pod/Pod';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
-import useEditContext from '../../../../../other/EditContext';
-import PodListUtils from '@pw/core/src/modules/models/podList/PodListUtils';
-import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
 
 const PresetCell = ({ value, isEditing, podType }) => {
 	return <td>{

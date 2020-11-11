@@ -1,5 +1,3 @@
-import pw_core from "@pw/core";
-import Pod from "@pw/core/src/modules/models/pod/Pod";
 import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";

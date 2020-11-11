@@ -1,5 +1,4 @@
 import Utils from '../../Utils';
-import PodList from '../podList/PodList';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];

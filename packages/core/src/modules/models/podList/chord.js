@@ -1,4 +1,4 @@
-import Pod from '../pod/Pod';
+/*import Pod from '../pod/Pod';
 import utils from '../../Utils';
 import { INTERVAL } from '../pod/Interval';
 import PodList from './PodList';
@@ -54,4 +54,4 @@ class Chord extends PodList {
 Chord.preset = CHORD;
 Chord.presetValues = CHORD_VALUES;
 
-export default Chord;
+export default Chord;*/
