@@ -12,17 +12,14 @@ const Explore = () => {
 
 	return (
 		<div className='explore-tab'>
-			<h2>Key Center</h2>
 			<PodContextProvider value={keyCenter} podType="note" isList={false}>
-				<Panel />
+				<Panel name="Key Center" />
 			</PodContextProvider>
-			<h2>Intervals</h2>
 			<PodContextProvider value={intervals} podType="interval" isList>
-				<Panel />
+				<Panel name="Intervals" />
 			</PodContextProvider>
-			<h2>Notes</h2>
 			<PodContextProvider value={notes} podType="note" isList>
-				<Panel />
+				<Panel name="Notes" />
 			</PodContextProvider>
 		</div>
 	);

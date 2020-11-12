@@ -35,11 +35,11 @@ const GenericPanel = ({ name, children }) => {
 	);
 }
 
-const Panel = () => {
+const Panel = ({ name }) => {
 	const podContext = usePodContext();
 	const { value, podType, isList } = podContext;
 	return (
-		<GenericPanel name="Name">
+		<GenericPanel name={name}>
 			<AnalysisSubpanel />
 			<ValueSubpanel />
 		</GenericPanel>
