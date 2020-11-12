@@ -4,13 +4,13 @@ import { PodContextProvider } from '../../../other/PodContext';
 import Panel from '../Panel';
 
 const BasicDemo = () => {
-	const [keyCenter, setKeyCenter] = useState([0, 0]);
+	const [value, setValue] = useState([0, 0]);
 	const [podType, setPodType] = useState('note');
 	const [isList, setIsList] = useState(false);
 
 	return (
 		<>
-			<PodContextProvider value={keyCenter} podType={podType} isList={isList}>
+			<PodContextProvider value={value} setValue={setValue} podType={podType} setPodType={setPodType} isList={isList} setIsList={setIsList}>
 				<Panel name="Basic" />
 			</PodContextProvider>
 		</>

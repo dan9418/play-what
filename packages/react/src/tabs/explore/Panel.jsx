@@ -5,6 +5,7 @@ import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
 import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 import { getPreview } from '../../../../core/src/modules/theory/podConfig';
+import ConfigSubpanel from "./subpanels/config/ConfigSubpanel";
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
@@ -37,11 +38,13 @@ const GenericPanel = ({ name, children }) => {
 
 const Panel = ({ name }) => {
 	const podContext = usePodContext();
-	const { value, podType, isList } = podContext;
+	const { value, setValue, podType, setPodType, isList, setIsList } = podContext;
+	const isEditable = setValue || setPodType || setIsList;
 	return (
 		<GenericPanel name={name}>
-			<AnalysisSubpanel />
+			{isEditable && <ConfigSubpanel />}
 			<ValueSubpanel />
+			<AnalysisSubpanel />
 		</GenericPanel>
 	);
 }
