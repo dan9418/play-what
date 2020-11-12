@@ -8,13 +8,13 @@ import { getPreview } from '../../../../core/src/modules/theory/podConfig';
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
-	const { value, podType } = podContext;
+	const { value, podType, isList } = podContext;
 	return (
 		<div className='model-panel-header'>
 			<div>
 				<span className='model-name'>{name}</span>
-				<span className='type'>{podType}</span>
-				<div className="preview pw-accent-fg">{getPreview(value, podType)}</div>
+				<span className='type'>{podType}{isList ? '[]' : ''}</span>
+				<div className="preview pw-accent-fg">{getPreview(value, podType, isList)}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>

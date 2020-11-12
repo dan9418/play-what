@@ -1,5 +1,5 @@
 import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
-import { findPodTypePreset, getPodTypePresets } from "@pw/core/src/modules/theory/podConfig";
+import { findPodTypePreset, getPodTypePresets, getPreview } from "@pw/core/src/modules/theory/podConfig";
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
@@ -7,10 +7,11 @@ import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 const PresetCell = ({ value, isEditing, podType }) => {
 	const presets = getPodTypePresets(podType);
 	const preset = findPodTypePreset(value, podType);
+	const presetName = preset ? preset.id : '?';
 
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} /> : 'TODO'}
+			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} displayProperty="id" /> : presetName}
 		</td>
 	)
 }
@@ -21,7 +22,6 @@ const PodRow = ({ pod, setPod, podType }) => {
 	const { isEditing } = editContext;
 
 	const reduced = PodUtils.reduce(pod);
-
 
 	return (
 		<tr>

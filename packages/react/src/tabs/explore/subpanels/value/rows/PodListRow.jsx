@@ -9,10 +9,11 @@ import NumericInput from '../../../../../ui/NumericInput/NumericInput';
 const PresetCell = ({ value, isEditing, podType }) => {
 	const presets = getPodTypePresets(podType);
 	const preset = findPodTypePreset(value, podType);
+	const presetName = preset ? preset.id : '?';
 
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} /> : 'TODO'}
+			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} displayProperty="id" /> : presetName}
 		</td>
 	)
 }
