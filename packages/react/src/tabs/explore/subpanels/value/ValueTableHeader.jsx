@@ -1,22 +1,20 @@
 import React from 'react';
 import useEditContext from '../../../../other/EditContext';
 
-const getHeaders = (type, isEditing) => {
-	if (type === 'keyCenter') {
+const getHeaders = (podType, isList, isEditing) => {
+	if (!isList) {
 		return ['Pod', 'Reduced', 'Preset'];
 	}
-	else if (type === 'intervalList' || type === 'noteList') {
+	else {
 		return ['#', 'Pod', 'Reduced', , 'Preset', isEditing ? 'Delete' : undefined];
 	}
-	else
-		return [];
 }
 
-const ValueTableHeader = ({ value, type }) => {
+const ValueTableHeader = ({ value, podType, isList }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 
-	const headers = getHeaders(type, isEditing);
+	const headers = getHeaders(podType, isList, isEditing);
 
 	return (
 		<thead>

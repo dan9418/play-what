@@ -12,7 +12,7 @@ const PresetCell = ({ value, isEditing, podType }) => {
 	}</td>
 }
 
-const PodListRow = ({ i, podList, setPodList, type }) => {
+const PodListRow = ({ i, podList, setPodList, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -45,7 +45,7 @@ const PodListRow = ({ i, podList, setPodList, type }) => {
 			<td>
 				{JSON.stringify(reduced)}
 			</td>
-			<PresetCell value={reduced} isEditing={isEditing} type={type} />
+			<PresetCell value={reduced} isEditing={isEditing} podType={podType} />
 			{isEditing &&
 				<td>
 					<ButtonInput onClick={remove}>X</ButtonInput>

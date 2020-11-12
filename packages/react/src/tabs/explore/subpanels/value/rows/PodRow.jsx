@@ -4,7 +4,7 @@ import useEditContext from "../../../../../other/EditContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 
-const PodRow = ({ pod, setPod }) => {
+const PodRow = ({ pod, setPod, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;

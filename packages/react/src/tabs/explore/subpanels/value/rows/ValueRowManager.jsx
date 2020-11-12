@@ -18,28 +18,19 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const ValueRowManager = ({ value, type }) => {
+const ValueRowManager = ({ value, podType, isList }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
-	/*if (value instanceof pw_core.PodIndex) {
-		return (
-			<PodIndexRow
-				podIndex={value}
-				setPodIndex={setValue}
-				isEditing={isEditing}
-			/>
-		);
-	}*/
-	if (type === 'keyCenter') {
+	if (!isList) {
 		return (
 			<PodRow
 				pod={value}
 				setPod={null}
-				type={type}
+				podType={podType}
 			/>
 		);
 	}
-	else if (type === 'intervalList' || type === 'noteList') {
+	else {
 		const rows = value.map((v, i) => {
 			return (
 				<PodListRow
@@ -47,14 +38,11 @@ const ValueRowManager = ({ value, type }) => {
 					key={i}
 					podList={value}
 					setPodList={null}
-					type={type}
+					podType={podType}
 				/>
 			);
 		});
 		return [...rows, isEditing ? <NewModelRow /> : null]
-	}
-	else {
-		return <tr><td colSpan="100">{JSON.stringify(value)}</td></tr>
 	}
 };
 

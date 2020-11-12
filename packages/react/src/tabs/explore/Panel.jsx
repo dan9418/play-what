@@ -40,7 +40,7 @@ const Panel = () => {
 	return (
 		<GenericPanel name="Name">
 			<AnalysisSubpanel />
-			{/*<ValueSubpanel />*/}
+			<ValueSubpanel />
 		</GenericPanel>
 	);
 }
