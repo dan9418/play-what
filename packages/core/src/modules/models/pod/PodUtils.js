@@ -7,7 +7,7 @@ class PodUtils {
 
 	// common
 
-	static equalTo(a, b) {
+	static areEqual(a, b) {
 		if (!b || b.length !== 2) return false;
 		return a[0] === b[0] && a[1] === b[1];
 	}
@@ -45,6 +45,42 @@ class PodUtils {
 		const newValue = B.map((b) => this.addPod(a, b, divisor));
 		return newValue;
 	};
+
+	static areListsEqual(A, B) {
+		if (!A || !B) return false;
+		if (!A.length || !B.length) return false;
+		for (let i = 0; i < A.length; i++) {
+			const a = A[i];
+			const b = B[i];
+
+			if (!this.areEqual(a, b))
+				return false;
+		}
+		return true;
+	}
+
+	static reduceList(A, max = [12, 7]) {
+		const newValue = A.map((a) => {
+			const p = Utils.modulo(a[0], max[0]);
+			const d = Utils.modulo(a[1], max[1]);
+			return [p, d];
+		});
+		return new newValue;
+	}
+
+	/*findPodWithPitch(p) {
+		const A = this.value;
+		const octaveReduce = true
+		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
+		return A.find((n) => n[0] === pitch) || null;
+	};
+
+	findIndexOfPodWithPitch(p) {
+		const A = this.value;
+		const octaveReduce = true
+		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
+		return A.findIndex((n) => n[0] === pitch);
+	};*/
 
 }
 
