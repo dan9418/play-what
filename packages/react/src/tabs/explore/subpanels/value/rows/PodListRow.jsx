@@ -1,4 +1,5 @@
 import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
+import { findPodTypePreset, getPodTypePresets } from '@pw/core/src/modules/theory/podConfig';
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
@@ -6,10 +7,14 @@ import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
 
 const PresetCell = ({ value, isEditing, podType }) => {
-	return <td>{
-		isEditing ? <DropdownInput options={[]} value={null} setValue={null} /> :
-			<>{'n/a'}</>
-	}</td>
+	const presets = getPodTypePresets(podType);
+	const preset = findPodTypePreset(value, podType);
+
+	return (
+		<td>
+			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} /> : 'TODO'}
+		</td>
+	)
 }
 
 const PodListRow = ({ i, podList, setPodList, podType }) => {

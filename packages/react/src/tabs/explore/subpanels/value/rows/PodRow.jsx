@@ -1,8 +1,19 @@
 import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
+import { findPodTypePreset, getPodTypePresets } from "@pw/core/src/modules/theory/podConfig";
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
+const PresetCell = ({ value, isEditing, podType }) => {
+	const presets = getPodTypePresets(podType);
+	const preset = findPodTypePreset(value, podType);
+
+	return (
+		<td>
+			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} /> : 'TODO'}
+		</td>
+	)
+}
 
 const PodRow = ({ pod, setPod, podType }) => {
 
@@ -10,6 +21,7 @@ const PodRow = ({ pod, setPod, podType }) => {
 	const { isEditing } = editContext;
 
 	const reduced = PodUtils.reduce(pod);
+
 
 	return (
 		<tr>
@@ -19,12 +31,7 @@ const PodRow = ({ pod, setPod, podType }) => {
 			<td>
 				{JSON.stringify(reduced)}
 			</td>
-			<td>
-				{isEditing ?
-					<DropdownInput options={[]} value={null} setValue={null} />
-					:
-					PodUtils.getPreview(reduced)}
-			</td>
+			<PresetCell value={reduced} isEditing={isEditing} podType={podType} />
 		</tr>
 	);
 };
