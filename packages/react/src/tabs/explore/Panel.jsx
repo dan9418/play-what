@@ -4,16 +4,17 @@ import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
 import ValueSubpanel from "./subpanels/value/ValueSubpanel";
+import { getPreview } from '../../../../core/src/modules/theory/podConfig';
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
-	const { podType } = podContext;
+	const { value, podType } = podContext;
 	return (
 		<div className='model-panel-header'>
 			<div>
 				<span className='model-name'>{name}</span>
 				<span className='type'>{podType}</span>
-				<div className="preview pw-accent-fg">{podType}</div>
+				<div className="preview pw-accent-fg">{getPreview(value, podType)}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>

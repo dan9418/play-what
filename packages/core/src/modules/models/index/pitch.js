@@ -1,18 +1,3 @@
-const PITCH = {
-	middleC: {
-		id: 'middleC',
-		name: 'Middle C',
-		value: 0
-	},
-	midi: {
-		id: 'midi',
-		name: 'MIDI',
-		value: 60
-	}
-};
-
-const PITCH_VALUES = Object.values(PITCH);
-
 const PITCH_COLOR_SCHEME = [
 	'#ED1C24',
 	'#F1592A',
@@ -33,9 +18,5 @@ class Pitch {
 		return PITCH_COLOR_SCHEME[p];
 	}
 }
-
-Pitch.preset = PITCH;
-Pitch.presetValues = PITCH_VALUES;
-Pitch.colorScheme = PITCH_COLOR_SCHEME;
 
 export default Pitch;
