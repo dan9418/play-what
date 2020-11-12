@@ -1,21 +1,29 @@
-import React from 'react';
-import { CellContextProvider } from '../../other/CellContext';
+import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
+import React, { useState } from 'react';
+import { PodContextProvider } from '../../other/PodContext';
 import './ExploreTab.css';
-import IntervalsPanel from './panels/IntervalsPanel';
-import KeyCenterPanel from './panels/KeyCenterPanel';
-import NotesPanel from './panels/NotesPanel';
+import Panel from './Panel';
 
 const Explore = () => {
+	const [keyCenter, setKeyCenter] = useState([0, 0]);
+	const [intervals, setIntervals] = useState([[1, 1], [2, 2]]);
+
+	const notes = PodUtils.addPodList(keyCenter, intervals);
+
 	return (
 		<div className='explore-tab'>
-			<CellContextProvider>
-				<h2>Key Center</h2>
-				<KeyCenterPanel />
-				<h2>Intervals</h2>
-				<IntervalsPanel />
-				<h2>Notes</h2>
-				<NotesPanel />
-			</CellContextProvider>
+			<h2>Key Center</h2>
+			<PodContextProvider value={keyCenter} podType="note" isList={false}>
+				<Panel />
+			</PodContextProvider>
+			<h2>Intervals</h2>
+			<PodContextProvider value={intervals} podType="interval" isList>
+				<Panel />
+			</PodContextProvider>
+			<h2>Notes</h2>
+			<PodContextProvider value={notes} podType="note" isList>
+				<Panel />
+			</PodContextProvider>
 		</div>
 	);
 };

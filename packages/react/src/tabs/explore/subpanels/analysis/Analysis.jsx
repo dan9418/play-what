@@ -3,6 +3,7 @@ import pw_core from '@pw/core';
 import Degree from '@pw/core/src/modules/models/index/Degree';
 import Pitch from '@pw/core/src/modules/models/index/Pitch';
 import React from 'react';
+import usePodContext from '../../../../other/PodContext';
 import './Analysis.css';
 
 const getPitchColor = Pitch.getColor
@@ -44,14 +45,13 @@ const PodListMeter = ({ podList }) => {
 	);
 }
 
-const Analysis = ({ value, type }) => {
-	//if (type === 'podIndex')
-	//	return <IndexListMeter indexList={[value]} max={value} colorFn={getPitchColor} />
-	if (type === 'keyCenter')
+const Analysis = () => {
+	const podContext = usePodContext();
+	const { value, podType, isList } = podContext;
+	if (!isList)
 		return <PodListMeter podList={[value]} />;
-	else if (type === 'intervalList' || type === 'noteList')
+	else
 		return <PodListMeter podList={value} />;
-	return JSON.stringify(value);
 }
 
 export default Analysis;

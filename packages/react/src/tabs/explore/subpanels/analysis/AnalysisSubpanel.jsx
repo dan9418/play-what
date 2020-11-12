@@ -1,11 +1,11 @@
 import React from "react";
 import Subpanel from "../../Subpanel";
-import Meter from "./Analysis";
+import Analysis from "./Analysis";
 
-const AnalysisSubpanel = ({ value, type }) => {
+const AnalysisSubpanel = () => {
 	return (
 		<Subpanel name="Analysis"  >
-			<Meter value={value} type={type} />
+			<Analysis />
 		</Subpanel>
 	);
 };
