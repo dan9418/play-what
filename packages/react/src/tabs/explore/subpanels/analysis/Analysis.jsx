@@ -1,10 +1,12 @@
-import pw_core from '@pw/core';
 import pw_color from '@pw/color';
+import pw_core from '@pw/core';
+import Degree from '@pw/core/src/modules/models/index/Degree';
+import Pitch from '@pw/core/src/modules/models/index/Pitch';
 import React from 'react';
 import './Analysis.css';
 
-const getPitchColor = pw_core.Pitch.getColor;
-const getDegreeColor = pw_core.Degree.getColor;
+const getPitchColor = Pitch.getColor
+const getDegreeColor = Degree.getColor
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {

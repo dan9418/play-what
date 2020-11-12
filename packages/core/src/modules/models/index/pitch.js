@@ -1,5 +1,3 @@
-import PodIndex from "./PodIndex";
-
 const PITCH = {
 	middleC: {
 		id: 'middleC',
@@ -30,23 +28,9 @@ const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ];
 
-class Pitch extends PodIndex {
+class Pitch {
 	static getColor(p) {
 		return PITCH_COLOR_SCHEME[p];
-	}
-
-	// common
-
-	getName() {
-		return '(pitch?)';
-	}
-
-	getPreset() {
-		return PITCH_VALUES.find(x => x.value === this.value) || null;
-	}
-
-	getType() {
-		return 'pitch';
 	}
 }
 

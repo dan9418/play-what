@@ -1,5 +1,3 @@
-import Utils from "../../Utils";
-import PodIndex from "./PodIndex";
 
 const DEGREE = {
 	C: {
@@ -51,23 +49,9 @@ const DEGREE_COLOR_SCHEME = [
 	'#F032E6'
 ];
 
-class Degree extends PodIndex {
+class Degree {
 	static getColor(d) {
 		return DEGREE_COLOR_SCHEME[d];
-	}
-
-	// common
-
-	getName() {
-		return this.getPreset().id;
-	}
-
-	getPreset() {
-		return DEGREE_VALUES[Utils.modulo(this.value, 7)] || null;
-	}
-
-	getType() {
-		return 'degree';
 	}
 }
 
