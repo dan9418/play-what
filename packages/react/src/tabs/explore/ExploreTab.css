@@ -18,6 +18,19 @@ h2 {
     margin: 24px auto;
 }
 
+/* DemoSelect */
+
+.demo-select {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.demo-select label {
+    margin-right: 8px;
+}
+
 /* ModelPanel ModelPanelBody ModelPanelFooter */
 
 .model-panel {

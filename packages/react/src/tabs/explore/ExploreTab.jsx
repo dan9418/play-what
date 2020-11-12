@@ -1,26 +1,26 @@
-import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
 import React, { useState } from 'react';
-import { PodContextProvider } from '../../other/PodContext';
+import DropdownInput from '../../ui/DropdownInput/DropdownInput';
+import CellDemo from './demos/CellDemo';
 import './ExploreTab.css';
-import Panel from './Panel';
+
+const DEMOS = [
+	{
+		id: 'cell',
+		name: 'Cell',
+		component: <CellDemo />
+	}
+];
 
 const Explore = () => {
-	const [keyCenter, setKeyCenter] = useState([0, 0]);
-	const [intervals, setIntervals] = useState([[1, 1], [2, 2]]);
-
-	const notes = PodUtils.addPodList(keyCenter, intervals);
+	const [demo, setDemo] = useState(DEMOS[0]);
 
 	return (
 		<div className='explore-tab'>
-			<PodContextProvider value={keyCenter} podType="note" isList={false}>
-				<Panel name="Key Center" />
-			</PodContextProvider>
-			<PodContextProvider value={intervals} podType="interval" isList>
-				<Panel name="Intervals" />
-			</PodContextProvider>
-			<PodContextProvider value={notes} podType="note" isList>
-				<Panel name="Notes" />
-			</PodContextProvider>
+			<div className="demo-select">
+				<label>Demo:</label>
+				<DropdownInput options={DEMOS} value={demo} setValue={setDemo} />
+			</div>
+			{demo.component}
 		</div>
 	);
 };
