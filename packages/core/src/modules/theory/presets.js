@@ -320,3 +320,20 @@ export const PRESET_TYPES = [
 		presets: SCALE_VALUES
 	}
 ];
+
+export const LIST_PRESETS = [
+	{
+		id: 'chord',
+		name: 'Chord',
+		podType: 'interval',
+		isList: false,
+		presets: CHORD_VALUES
+	},
+	{
+		id: 'scale',
+		name: 'Scale',
+		podType: 'interval',
+		isList: false,
+		presets: SCALE_VALUES
+	}
+]

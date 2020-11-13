@@ -34,8 +34,8 @@ class PodUtils {
 
 	static addPod(a, b, divisor = MAX) {
 		console.log('PodUtils - addPod', a, b)
-		const p = Utils.moduloSum(a[0], b[0], divisor[0]);
-		const d = Utils.moduloSum(a[1], b[1], divisor[1]);
+		const p = a[0] + b[0];//Utils.moduloSum(a[0], b[0], divisor[0]);
+		const d = a[1] + b[1];//Utils.moduloSum(a[1], b[1], divisor[1]);
 
 		console.log('PodUtils - addPod', p, d)
 		return [p, d];

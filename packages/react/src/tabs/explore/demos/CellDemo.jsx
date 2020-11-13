@@ -9,6 +9,8 @@ const CellDemo = () => {
 
 	const notes = PodUtils.addPodList(keyCenter, intervals);
 
+	console.log('Cell', keyCenter, intervals, notes);
+
 	return (
 		<>
 			<PodContextProvider value={keyCenter} setValue={setKeyCenter} podType="note" isList={false}>
