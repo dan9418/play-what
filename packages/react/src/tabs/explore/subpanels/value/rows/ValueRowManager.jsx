@@ -4,7 +4,7 @@ import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 import PodListRow from './PodListRow';
 import PodRow from './PodRow';
 
-const NewModelRow = ({ }) => {
+const NewPodRow = ({ addPod }) => {
 	return (
 		<tr key="new">
 			<td colSpan="3" />
@@ -12,7 +12,7 @@ const NewModelRow = ({ }) => {
 				Add
 			</td>
 			<td>
-				<ButtonInput onClick={null}>+</ButtonInput>
+				<ButtonInput onClick={addPod}>+</ButtonInput>
 			</td>
 		</tr>
 	);
@@ -43,7 +43,9 @@ const ValueRowManager = ({ value, setValue, podType, setPodType, isList, setIsLi
 				/>
 			);
 		});
-		return [...rows, isEditing ? <NewModelRow key="x" /> : null]
+
+		const addPod = () => setValue([...value, [0, 0]]);
+		return [...rows, isEditing ? <NewPodRow key="new" addPod={addPod} /> : null];
 	}
 };
 

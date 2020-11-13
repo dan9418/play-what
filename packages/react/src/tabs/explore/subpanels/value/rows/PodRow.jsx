@@ -1,11 +1,10 @@
 import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
-import { findPodTypePreset, getPodTypePresets, getPreview } from "@pw/core/src/modules/theory/podConfig";
+import { findPodTypePreset, getPodTypePresets } from "@pw/core/src/modules/theory/podConfig";
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";
-import usePodContext from "../../../../../other/PodContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
-const PresetCell = ({ value, setValue, isEditing, podType }) => {
+export const PresetCell = ({ value, setValue, isEditing, podType }) => {
 	const presets = getPodTypePresets(podType);
 	const preset = findPodTypePreset(value, podType);
 	const presetName = preset ? preset.id : '?';
