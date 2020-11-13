@@ -39,7 +39,7 @@ const GenericPanel = ({ name, children }) => {
 const Panel = ({ name }) => {
 	const podContext = usePodContext();
 	const { value, setValue, podType, setPodType, isList, setIsList } = podContext;
-	const isEditable = setValue || setPodType || setIsList;
+	const isEditable = /*setValue || */setPodType || setIsList;
 	return (
 		<GenericPanel name={name}>
 			{isEditable && <ConfigSubpanel />}

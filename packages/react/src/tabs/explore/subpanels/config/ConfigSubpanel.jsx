@@ -18,17 +18,19 @@ const POD_TYPES = [
 		id: 'interval',
 		name: 'Interval'
 	}
-]
+];
 
 const PodTypeBar = () => {
 	const { podType, setPodType } = usePodContext();
 	const { isEditing } = useEditContext();
 
+	const podTypeDef = POD_TYPES.find(p => p.id === podType);
+
 	return (
 		<div className='input-bar'>
 			<div>Pod Type</div>
 			{isEditing ?
-				<DropdownInput options={POD_TYPES} value={podType} setValue={t => setPodType(t.id)} />
+				<DropdownInput options={POD_TYPES} value={podTypeDef} setValue={t => setPodType(t.id)} />
 				: podType}
 		</div>
 	);

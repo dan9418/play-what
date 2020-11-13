@@ -9,11 +9,14 @@ export const PresetCell = ({ value, setValue, isEditing, podType }) => {
 	const preset = findPodTypePreset(value, podType);
 	const presetName = preset ? preset.id : '?';
 
-	const setHelper = v => setValue(v.value)
+	const setHelper = v => { if (v.value) setValue(v.value); }
+
+	const unknown = { id: '--', name: 'Unknown' };
+	const options = [unknown, ...presets];
 
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={presets} value={preset} setValue={setHelper} displayProperty="id" /> : presetName}
+			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
 		</td>
 	)
 }

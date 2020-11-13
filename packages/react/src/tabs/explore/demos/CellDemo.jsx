@@ -11,10 +11,10 @@ const CellDemo = () => {
 
 	return (
 		<>
-			<PodContextProvider value={keyCenter} podType="note" isList={false}>
+			<PodContextProvider value={keyCenter} setValue={setKeyCenter} podType="note" isList={false}>
 				<Panel name="Key Center" />
 			</PodContextProvider>
-			<PodContextProvider value={intervals} podType="interval" isList>
+			<PodContextProvider value={intervals} setValue={setIntervals} podType="interval" isList>
 				<Panel name="Intervals" />
 			</PodContextProvider>
 			<PodContextProvider value={notes} podType="note" isList>
