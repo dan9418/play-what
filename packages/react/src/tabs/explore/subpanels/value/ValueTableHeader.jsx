@@ -19,7 +19,7 @@ const ValueTableHeader = ({ value, podType, isList }) => {
 	return (
 		<thead>
 			<tr>
-				{headers.map(h => <th key={h}>{h}</th>)}
+				{headers.map((h, i) => <th key={i}>{h}</th>)}
 			</tr>
 		</thead>
 	);

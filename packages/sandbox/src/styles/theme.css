@@ -10,9 +10,6 @@
   -ms-user-select: none;
   user-select: none;
 }
-.pw-active {
-  border: 2px solid #D36135;
-}
 /* Primary */
 .pw-primary {
   background-color: #25283D;

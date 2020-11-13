@@ -42,7 +42,7 @@ const ValueRowManager = ({ value, podType, isList }) => {
 				/>
 			);
 		});
-		return [...rows, isEditing ? <NewModelRow /> : null]
+		return [...rows, isEditing ? <NewModelRow key="x" /> : null]
 	}
 };
 

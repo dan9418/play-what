@@ -5,15 +5,30 @@ import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import SwitchInput from "../../../../ui/SwitchInput/SwitchInput";
 import Subpanel from "../../Subpanel";
 
+const POD_TYPES = [
+	{
+		id: 'pod',
+		name: 'Pod'
+	},
+	{
+		id: 'note',
+		name: 'Note'
+	},
+	{
+		id: 'interval',
+		name: 'Interval'
+	}
+]
+
 const PodTypeBar = () => {
-	const { value, podType, setPodType } = usePodContext();
+	const { podType, setPodType } = usePodContext();
 	const { isEditing } = useEditContext();
 
 	return (
 		<div className='input-bar'>
 			<div>Pod Type</div>
 			{isEditing ?
-				<DropdownInput options={[]} value={podType} setValue={setPodType} />
+				<DropdownInput options={POD_TYPES} value={podType} setValue={t => setPodType(t.id)} />
 				: podType}
 		</div>
 	);
@@ -22,13 +37,19 @@ const PodTypeBar = () => {
 const ListBar = () => {
 	const { value, setValue, isList, setIsList } = usePodContext();
 	const { isEditing } = useEditContext();
+
+	const setHelper = v => {
+		setIsList(v);
+		setValue(v ? [value] : value[0]);
+	}
+
 	return (
 		<>
 			<div className='input-bar'>
 				<div>List</div>
 				{isEditing ?
-					<SwitchInput value={isList} setValue={setIsList} />
-					: (isList ? 'Y' : 'N')
+					<SwitchInput value={isList} setValue={setHelper} />
+					: JSON.stringify(isList)
 				}
 			</div>
 		</>

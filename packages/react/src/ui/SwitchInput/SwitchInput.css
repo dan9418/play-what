@@ -13,13 +13,13 @@
     flex-direction: row;
 }
 
-.switch-input.pw-accent {
+.switch-input.pw-active {
     flex-direction: row-reverse;
 }
 
 .switch-input .ball {
-    height: 14px;
-    width: 14px;
+    height: 12px;
+    width: 12px;
     margin: 2px;
     border-radius: 100%;
     background-color: #fff;
