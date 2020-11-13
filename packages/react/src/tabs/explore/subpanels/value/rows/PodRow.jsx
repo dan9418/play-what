@@ -2,36 +2,39 @@ import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
 import { findPodTypePreset, getPodTypePresets, getPreview } from "@pw/core/src/modules/theory/podConfig";
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";
+import usePodContext from "../../../../../other/PodContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
-const PresetCell = ({ value, isEditing, podType }) => {
+const PresetCell = ({ value, setValue, isEditing, podType }) => {
 	const presets = getPodTypePresets(podType);
 	const preset = findPodTypePreset(value, podType);
 	const presetName = preset ? preset.id : '?';
 
+	const setHelper = v => setValue(v.value)
+
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={presets} value={preset} setValue={null} displayProperty="id" /> : presetName}
+			{isEditing ? <DropdownInput options={presets} value={preset} setValue={setHelper} displayProperty="id" /> : presetName}
 		</td>
 	)
 }
 
-const PodRow = ({ pod, setPod, podType }) => {
+const PodRow = ({ value, setValue, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	const reduced = PodUtils.reduce(pod);
+	const reduced = PodUtils.reduce(value);
 
 	return (
 		<tr>
 			<td>
-				{JSON.stringify(pod)}
+				{JSON.stringify(value)}
 			</td>
 			<td>
 				{JSON.stringify(reduced)}
 			</td>
-			<PresetCell value={reduced} isEditing={isEditing} podType={podType} />
+			<PresetCell value={reduced} setValue={setValue} isEditing={isEditing} podType={podType} />
 		</tr>
 	);
 };

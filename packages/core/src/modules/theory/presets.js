@@ -54,13 +54,6 @@ export const PITCH = {
 export const PITCH_VALUES = Object.values(PITCH);
 
 export const NOTE = {
-	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
-	A: { id: 'A', name: 'A', value: [9, 5] },
-	'A#': { id: 'A#', name: 'A#', value: [10, 5] },
-	Bb: { id: 'Bb', name: 'Bb', value: [10, 6] },
-	B: { id: 'B', name: 'B', value: [11, 6] },
-	'B#': { id: 'B#', name: 'B#', value: [0, 6] },
-	Cb: { id: 'Cb', name: 'Cb', value: [11, 0] },
 	C: { id: 'C', name: 'C', value: [0, 0] },
 	'C#': { id: 'C#', name: 'C#', value: [1, 0] },
 	Db: { id: 'Db', name: 'Db', value: [1, 1] },
@@ -74,7 +67,14 @@ export const NOTE = {
 	'F#': { id: 'F#', name: 'F#', value: [6, 3] },
 	Gb: { id: 'Gb', name: 'Gb', value: [6, 4] },
 	G: { id: 'G', name: 'G', value: [7, 4] },
-	'G#': { id: 'G#', name: 'G#', value: [8, 4] }
+	'G#': { id: 'G#', name: 'G#', value: [8, 4] },
+	Ab: { id: 'Ab', name: 'Ab', value: [8, 5] },
+	A: { id: 'A', name: 'A', value: [9, 5] },
+	'A#': { id: 'A#', name: 'A#', value: [10, 5] },
+	Bb: { id: 'Bb', name: 'Bb', value: [10, 6] },
+	B: { id: 'B', name: 'B', value: [11, 6] },
+	'B#': { id: 'B#', name: 'B#', value: [0, 6] },
+	Cb: { id: 'Cb', name: 'Cb', value: [11, 0] }
 };
 
 export const NOTE_VALUES = Object.values(NOTE);

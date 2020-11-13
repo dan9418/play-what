@@ -18,14 +18,15 @@ const NewModelRow = ({ }) => {
 	);
 };
 
-const ValueRowManager = ({ value, podType, isList }) => {
+const ValueRowManager = ({ value, setValue, podType, setPodType, isList, setIsList }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
+
 	if (!isList) {
 		return (
 			<PodRow
-				pod={value}
-				setPod={null}
+				value={value}
+				setValue={setValue}
 				podType={podType}
 			/>
 		);
@@ -36,8 +37,8 @@ const ValueRowManager = ({ value, podType, isList }) => {
 				<PodListRow
 					i={i}
 					key={i}
-					podList={value}
-					setPodList={null}
+					value={value}
+					setValue={setValue}
 					podType={podType}
 				/>
 			);

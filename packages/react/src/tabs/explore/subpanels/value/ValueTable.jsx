@@ -5,12 +5,11 @@ import ValueTableHeader from './ValueTableHeader';
 
 const ValueTable = () => {
 	const podContext = usePodContext();
-	const { value, podType, isList } = podContext;
 	return (
 		<table className='model-table'>
-			<ValueTableHeader value={value} podType={podType} isList={isList} />
+			<ValueTableHeader {...podContext} />
 			<tbody>
-				<ValueRowManager value={value} podType={podType} isList={isList} />
+				<ValueRowManager {...podContext} />
 			</tbody>
 		</table>
 	);

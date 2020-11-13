@@ -18,18 +18,18 @@ const PresetCell = ({ value, isEditing, podType }) => {
 	)
 }
 
-const PodListRow = ({ i, podList, setPodList, podType }) => {
+const PodListRow = ({ i, value, setValue, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	const raw = podList[i];
+	const raw = value[i];
 	const reduced = PodUtils.reduce(raw);
 
-	const remove = () => setPodList([...podList.slice(0, i), ...podList.slice(i + 1)]);
-	const moveUp = () => setPodList([...podList.slice(0, i - 1), podList[i], podList[i - 1], ...podList.slice(i + 1)]);
-	const moveDown = () => setPodList([...podList.slice(0, i), podList[i + 1], podList[i], ...podList.slice(i + 2)]);
-	const setPod = r => setPodList([...podList.slice(0, i), r, ...podList.slice(i + 1)]);
+	const remove = () => setValue([...value.slice(0, i), ...value.slice(i + 1)]);
+	const moveUp = () => setValue([...value.slice(0, i - 1), value[i], value[i - 1], ...value.slice(i + 1)]);
+	const moveDown = () => setValue([...value.slice(0, i), value[i + 1], value[i], ...value.slice(i + 2)]);
+	const setPod = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 	const onChange = e => {
 		const v = e.target.value;
 		if (v > i) moveUp();
