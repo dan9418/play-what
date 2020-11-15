@@ -133,3 +133,8 @@ table tbody tr:not(:last-child) {
     padding: 8px;
     text-align: center;
 }
+
+.preset-box > button {
+    width: 50%;
+    margin: 8px;
+}

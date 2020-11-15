@@ -18,12 +18,24 @@ const PresetBox = () => {
 		<div className="preset-box">
 			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
 			{isOpen && (
-				<div>
-					Type:
-					<DropdownInput options={LIST_PRESETS} value={type} setValue={setType} />
-					Preset:
-					<DropdownInput options={type.presets} value={null} setValue={setHelper} />
-				</div>
+				<table className="preset-table">
+					<thead>
+						<tr>
+							<th>Type</th>
+							<th>Preset</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<DropdownInput options={LIST_PRESETS} value={type} setValue={setType} />
+							</td>
+							<td>
+								<DropdownInput options={type.presets} value={null} setValue={setHelper} />
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			)}
 		</div>
 	);

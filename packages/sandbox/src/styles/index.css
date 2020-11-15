@@ -1,4 +1,6 @@
-* {
+#app {
+    background-color: #ecefef;
+    color: #333;
     font-family: sans-serif;
 }
 
@@ -7,8 +9,4 @@ html, body {
     padding: 0;
     height: 100%;
     width: 100%;
-}
-
-#app {
-    background-color: #ecefef;
 }
