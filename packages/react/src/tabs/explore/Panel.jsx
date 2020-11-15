@@ -1,11 +1,10 @@
+import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
 import React, { useState } from "react";
-import pw_core from "@pw/core";
 import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
-import ValueSubpanel from "./subpanels/value/ValueSubpanel";
-import { getPreview } from '../../../../core/src/modules/theory/podConfig';
 import ConfigSubpanel from "./subpanels/config/ConfigSubpanel";
+import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
@@ -16,7 +15,7 @@ const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 			<div>
 				<span className='model-name'>{name}</span>
 				<span className='type'>{podType}{isList ? '[]' : ''}</span>
-				<div className="preview pw-accent-fg">{getPreview(value, previewOptions)}</div>
+				<div className="preview pw-accent-fg">{PodUtils.getPreview(value, previewOptions)}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>

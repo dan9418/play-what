@@ -1,3 +1,4 @@
+import { INTERVAL_VALUES, NOTE_VALUES } from '../../theory/presets';
 import Utils from '../../Utils';
 
 const MAX = [12, 7];
@@ -5,38 +6,19 @@ const DEFAULT_POD = [0, 0];
 
 class PodUtils {
 
-	// common
-
 	static areEqual(a, b) {
 		if (!b || b.length !== 2) return false;
 		return a[0] === b[0] && a[1] === b[1];
 	}
 
-	static getName(a) {
-		return 'Custom';
-	}
-
-	static getPreset(a) {
-		return null;
-	}
-
-	static getPreview(a) {
-		return JSON.stringify(a);
-	}
-
-	// utils
-
-	static addPod(a, b, divisor = MAX) {
-		console.log('PodUtils - addPod', a, b)
+	static addPod(a, b, max = MAX) {
 		const p = a[0] + b[0];//Utils.moduloSum(a[0], b[0], divisor[0]);
 		const d = a[1] + b[1];//Utils.moduloSum(a[1], b[1], divisor[1]);
-
-		console.log('PodUtils - addPod', p, d)
 		return [p, d];
 	}
 
-	static addPodList(a, B, divisor = MAX) {
-		const newValue = B.map((b) => this.addPod(a, b, divisor));
+	static addPodList(a, B, max = MAX) {
+		const newValue = B.map((b) => this.addPod(a, b, max));
 		return newValue;
 	};
 
@@ -88,6 +70,45 @@ class PodUtils {
 		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
 		return A.findIndex((n) => n[0] === pitch);
 	};*/
+
+	static getPresets(options = {}) {
+		if (options.podType === 'note') {
+			return NOTE_VALUES;
+		}
+		else if (options.podType === 'interval') {
+			return INTERVAL_VALUES;
+		}
+		return [];
+	}
+
+	static findPreset(value, options = {}) {
+		let data = []
+		if (options.podType === 'note') {
+			data = NOTE_VALUES;
+		}
+		else if (options.podType === 'interval') {
+			data = INTERVAL_VALUES;
+		}
+		return data.find(d => PodUtils.areEqual(value, d.value)) || null;
+	}
+
+	static getPreview(value, options = {}) {
+		const { podType, isList, reduce } = options;
+		const testValue = reduce ? PodUtils.reduce(value, { isList }) : value;
+		if (podType === 'pod') {
+			return JSON.stringify(testValue);
+		}
+		else if (isList) {
+			return testValue.map(v => {
+				const result = this.findPreset(v, { podType });
+				return result ? result.id : '?';
+			}).join(', ');
+		}
+		else {
+			const result = this.findPreset(testValue, { podType });
+			return result ? result.id : '?';
+		}
+	}
 
 }
 
