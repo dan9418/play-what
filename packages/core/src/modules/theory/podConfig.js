@@ -22,18 +22,20 @@ export const findPodTypePreset = (value, podType) => {
 	return data.find(d => PodUtils.areEqual(value, d.value)) || null;
 }
 
-export const getPreview = (value, podType, isList) => {
+export const getPreview = (value, options = {}) => {
+	const { podType, isList, reduce } = options;
+	const testValue = reduce ? PodUtils.reduce(value, { isList }) : value;
 	if (podType === 'pod') {
-		return JSON.stringify(value);
+		return JSON.stringify(testValue);
 	}
 	else if (isList) {
-		return value.map(v => {
+		return testValue.map(v => {
 			const result = findPodTypePreset(v, podType);
 			return result ? result.id : '?';
 		}).join(', ');
 	}
 	else {
-		const result = findPodTypePreset(value, podType);
+		const result = findPodTypePreset(testValue, podType);
 		return result ? result.id : '?';
 	}
 }

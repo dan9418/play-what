@@ -1,11 +1,12 @@
 import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
+import { NOTE, SCALE } from '@pw/core/src/modules/theory/presets';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';
 import Panel from '../Panel';
 
 const CellDemo = () => {
-	const [keyCenter, setKeyCenter] = useState([0, 0]);
-	const [intervals, setIntervals] = useState([[1, 1], [2, 2]]);
+	const [keyCenter, setKeyCenter] = useState(NOTE.D.value);
+	const [intervals, setIntervals] = useState(SCALE.Major.value);
 
 	const notes = PodUtils.addPodList(keyCenter, intervals);
 

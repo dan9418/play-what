@@ -10,12 +10,13 @@ import ConfigSubpanel from "./subpanels/config/ConfigSubpanel";
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
 	const { value, podType, isList } = podContext;
+	const previewOptions = { podType, isList, reduce: podType !== 'pod' };
 	return (
 		<div className='model-panel-header'>
 			<div>
 				<span className='model-name'>{name}</span>
 				<span className='type'>{podType}{isList ? '[]' : ''}</span>
-				<div className="preview pw-accent-fg">{getPreview(value, podType, isList)}</div>
+				<div className="preview pw-accent-fg">{getPreview(value, previewOptions)}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>

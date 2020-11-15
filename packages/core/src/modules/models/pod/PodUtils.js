@@ -26,12 +26,6 @@ class PodUtils {
 
 	// utils
 
-	static reduce(a, max = MAX) {
-		const p = Utils.modulo(a[0], max[0]);
-		const d = Utils.modulo(a[1], max[1]);
-		return [p, d];
-	}
-
 	static addPod(a, b, divisor = MAX) {
 		console.log('PodUtils - addPod', a, b)
 		const p = a[0] + b[0];//Utils.moduloSum(a[0], b[0], divisor[0]);
@@ -59,13 +53,26 @@ class PodUtils {
 		return true;
 	}
 
-	static reduceList(A, max = [12, 7]) {
+	static reduceSingle(a, max = MAX) {
+		const p = Utils.modulo(a[0], max[0]);
+		const d = Utils.modulo(a[1], max[1]);
+		return [p, d];
+	}
+
+	static reduceList(A, max = MAX) {
 		const newValue = A.map((a) => {
-			const p = Utils.modulo(a[0], max[0]);
-			const d = Utils.modulo(a[1], max[1]);
-			return [p, d];
+			return this.reduceSingle(a, max);
 		});
-		return new newValue;
+		return newValue;
+	}
+
+	static reduce(value, options = {}) {
+		if (options.isList) {
+			return this.reduceList(value, options.max);
+		}
+		else {
+			return this.reduceSingle(value, options.max);
+		}
 	}
 
 	/*findPodWithPitch(p) {

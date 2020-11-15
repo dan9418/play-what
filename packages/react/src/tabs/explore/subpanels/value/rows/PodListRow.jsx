@@ -5,13 +5,13 @@ import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
 import { PresetCell } from './PodRow';
 
-const PodListRow = ({ i, value, setValue, podType }) => {
+const PodListRow = ({ i, value, reducedValue, setValue, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
 	const raw = value[i];
-	const reduced = PodUtils.reduce(raw);
+	const reduced = reducedValue[i];
 
 	const setPod = r => setValue([...value.slice(0, i), r, ...value.slice(i + 1)]);
 

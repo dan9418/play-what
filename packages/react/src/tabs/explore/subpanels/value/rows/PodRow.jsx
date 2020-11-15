@@ -21,12 +21,10 @@ export const PresetCell = ({ value, setValue, isEditing, podType }) => {
 	)
 }
 
-const PodRow = ({ value, setValue, podType }) => {
+const PodRow = ({ value, reducedValue, setValue, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
-
-	const reduced = PodUtils.reduce(value);
 
 	return (
 		<tr>
@@ -34,9 +32,9 @@ const PodRow = ({ value, setValue, podType }) => {
 				{JSON.stringify(value)}
 			</td>
 			<td>
-				{JSON.stringify(reduced)}
+				{JSON.stringify(reducedValue)}
 			</td>
-			<PresetCell value={reduced} setValue={setValue} isEditing={isEditing} podType={podType} />
+			<PresetCell value={reducedValue} setValue={setValue} isEditing={isEditing} podType={podType} />
 		</tr>
 	);
 };
