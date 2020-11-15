@@ -1,5 +1,4 @@
-import { DIATONIC } from './diatonic';
-import { PITCH } from './presets';
+import { PITCH, DIATONIC } from './presets';
 
 const MAX_PITCH = 12;
 const MAX_DEGREE = 7
