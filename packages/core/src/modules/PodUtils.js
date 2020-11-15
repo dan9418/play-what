@@ -1,5 +1,5 @@
-import { INTERVAL_VALUES, NOTE_VALUES } from '../../theory/presets';
-import Utils from '../../Utils';
+import { INTERVAL_VALUES, NOTE_VALUES } from './theory/presets';
+import Utils from './Utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];

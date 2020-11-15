@@ -1,4 +1,4 @@
-import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
+import PodUtils from '@pw/core/src/modules/PodUtils';
 import { NOTE, SCALE } from '@pw/core/src/modules/theory/presets';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';

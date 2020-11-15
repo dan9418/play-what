@@ -1,4 +1,3 @@
-import PodUtils from '@pw/core/src/modules/models/pod/PodUtils';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';
 import Panel from '../Panel';

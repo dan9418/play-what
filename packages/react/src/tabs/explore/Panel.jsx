@@ -1,4 +1,4 @@
-import PodUtils from "@pw/core/src/modules/models/pod/PodUtils";
+import PodUtils from "@pw/core/src/modules/PodUtils";
 import React, { useState } from "react";
 import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
