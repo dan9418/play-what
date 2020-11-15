@@ -8,10 +8,11 @@ const DEGREE_COLOR_SCHEME = [
 	'#F032E6'
 ];
 
-class Degree {
-	static getColor(d) {
-		return DEGREE_COLOR_SCHEME[d];
-	}
+const getColor = (d) => {
+	return DEGREE_COLOR_SCHEME[d];
 }
 
-export default Degree;
+export default {
+	DEGREE_COLOR_SCHEME,
+	getColor
+};

@@ -13,10 +13,11 @@ const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ];
 
-class Pitch {
-	static getColor(p) {
-		return PITCH_COLOR_SCHEME[p];
-	}
-}
+const getColor = (p) => {
+	return PITCH_COLOR_SCHEME[p];
+};
 
-export default Pitch;
+export default {
+	PITCH_COLOR_SCHEME,
+	getColor
+};
