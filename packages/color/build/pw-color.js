@@ -198,19 +198,43 @@ eval("module.exports = function isArrayish(obj) {\n\tif (!obj || typeof obj === 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Color */ \"./src/modules/Color.js\");\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\t..._modules_Color__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n});\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_ColorUtils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/ColorUtils */ \"./src/modules/ColorUtils.js\");\n/* harmony import */ var _modules_Pitch__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Pitch */ \"./src/modules/Pitch.js\");\n/* harmony import */ var _modules_Degree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/Degree */ \"./src/modules/Degree.js\");\n\r\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tColorUtils: _modules_ColorUtils__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\r\n\tPitch: _modules_Pitch__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\r\n\tDegree: _modules_Degree__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\r\n});\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
-/***/ "./src/modules/Color.js":
+/***/ "./src/modules/ColorUtils.js":
+/*!***********************************!*\
+  !*** ./src/modules/ColorUtils.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color */ \"../../node_modules/color/index.js\");\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(color__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nconst getFgColor = (bg) => {\r\n\tif (!bg) return \"#000\";\r\n\treturn color__WEBPACK_IMPORTED_MODULE_0___default()(bg).isDark() ? \"#fff\" : \"#000\";\r\n};\r\n\r\nconst getStylesFromBgColor = (bg) => {\r\n\tconst fg = getFgColor(bg);\r\n\treturn {\r\n\t\tbackgroundColor: bg,\r\n\t\tcolor: fg\r\n\t}\r\n};\r\n\r\n/* const getColorFromContinuousScheme = (value, min, max, scheme) => {\r\n  let percent = (value - min) / (max - min);\r\n  percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;\r\n\r\n  const initialColor = color(scheme.min);\r\n  const finalColor = color(scheme.max);\r\n  const background = initialColor.mix(finalColor, percent);\r\n\r\n  return background;\r\n}; */\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tgetFgColor,\r\n\tgetStylesFromBgColor\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/ColorUtils.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Degree.js":
+/*!*******************************!*\
+  !*** ./src/modules/Degree.js ***!
+  \*******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst DEGREE_COLOR_SCHEME = [\r\n\t'#E6194B',\r\n\t'#F58231',\r\n\t'#FFE119',\r\n\t'#3CB44B',\r\n\t'#4363D8',\r\n\t'#911DB4',\r\n\t'#F032E6'\r\n];\r\n\r\nconst getColor = (d) => {\r\n\treturn DEGREE_COLOR_SCHEME[d];\r\n}\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tDEGREE_COLOR_SCHEME,\r\n\tgetColor\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/Degree.js?");
+
+/***/ }),
+
+/***/ "./src/modules/Pitch.js":
 /*!******************************!*\
-  !*** ./src/modules/Color.js ***!
+  !*** ./src/modules/Pitch.js ***!
   \******************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! color */ \"../../node_modules/color/index.js\");\n/* harmony import */ var color__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(color__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nconst getFgColor = (bg) => {\r\n\tif (!bg) return \"#000\";\r\n\treturn color__WEBPACK_IMPORTED_MODULE_0___default()(bg).isDark() ? \"#fff\" : \"#000\";\r\n};\r\n\r\nconst getStylesFromBgColor = (bg) => {\r\n\tconst fg = getFgColor(bg);\r\n\treturn {\r\n\t\tbackgroundColor: bg,\r\n\t\tcolor: fg\r\n\t}\r\n};\r\n\r\n/* const getColorFromContinuousScheme = (value, min, max, scheme) => {\r\n  let percent = (value - min) / (max - min);\r\n  percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;\r\n\r\n  const initialColor = color(scheme.min);\r\n  const finalColor = color(scheme.max);\r\n  const background = initialColor.mix(finalColor, percent);\r\n\r\n  return background;\r\n}; */\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tgetFgColor,\r\n\tgetStylesFromBgColor\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/Color.js?");
+eval("__webpack_require__.r(__webpack_exports__);\nconst PITCH_COLOR_SCHEME = [\r\n\t'#ED1C24',\r\n\t'#F1592A',\r\n\t'#F8981E',\r\n\t'#FCB040',\r\n\t'#FFF200',\r\n\t'#8CC63F',\r\n\t'#056839',\r\n\t'#13A89E',\r\n\t'#A898C8',\r\n\t'#662D91',\r\n\t'#92278F',\r\n\t'#C2305E'\r\n];\r\n\r\nconst getColor = (p) => {\r\n\treturn PITCH_COLOR_SCHEME[p];\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tPITCH_COLOR_SCHEME,\r\n\tgetColor\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/Pitch.js?");
 
 /***/ }),
 

@@ -1,4 +1,4 @@
-import { INTERVAL_VALUES, NOTE_VALUES } from './theory/presets';
+import { INTERVAL_VALUES, NOTE_VALUES } from './Presets';
 import Utils from './Utils';
 
 const MAX = [12, 7];

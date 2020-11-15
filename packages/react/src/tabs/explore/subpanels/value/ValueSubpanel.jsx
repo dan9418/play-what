@@ -1,4 +1,4 @@
-import { LIST_PRESETS } from "@pw/core/src/modules/theory/presets";
+import { LIST_PRESETS } from "@pw/core/src/modules/Presets";
 import React, { useState } from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
