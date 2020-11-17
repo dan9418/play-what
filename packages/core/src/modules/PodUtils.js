@@ -57,19 +57,13 @@ class PodUtils {
 		}
 	}
 
-	/*findPodWithPitch(p) {
-		const A = this.value;
-		const octaveReduce = true
-		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
-		return A.find((n) => n[0] === pitch) || null;
+	static findPodWithPitch(A, p) {
+		return A.find((n) => n[0] === p) || null;
 	};
 
-	findIndexOfPodWithPitch(p) {
-		const A = this.value;
-		const octaveReduce = true
-		const pitch = octaveReduce ? index.modulo({ a: p, b: pod.max[0] }) : p;
-		return A.findIndex((n) => n[0] === pitch);
-	};*/
+	static findIndexOfPodWithPitch(A, p, options) {
+		return A.findIndex((n) => n[0] === p);
+	};
 
 	static getPresets(options = {}) {
 		if (options.podType === 'note') {

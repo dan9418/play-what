@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
+import Fretboard from "../../../../viewers/Fretboard/Fretboard";
 import Meter from "../../../../viewers/Meter/Meter";
 import Subpanel from "../../Subpanel";
 
@@ -10,12 +11,17 @@ const VIEWERS = [
 		id: 'meter',
 		name: 'Meter',
 		component: Meter
+	},
+	{
+		id: 'fretboard',
+		name: 'Fretboard',
+		component: Fretboard
 	}
 ];
 
 const ViewerBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [viewer, setViewer] = useState(VIEWERS[0]);
+	const [viewer, setViewer] = useState(VIEWERS[1]);
 	const podContext = usePodContext();
 	const { value, setValue, podType, isList } = podContext;
 	const { isEditing } = useEditContext();

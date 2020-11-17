@@ -1,5 +1,5 @@
-import pw_core from '@pw/core';
-import pw_color from '@pw/color';
+import ColorUtils from '@pw/color/src/modules/ColorUtils';
+import PodUtils from '@pw/core/src/modules/PodUtils';
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
@@ -7,24 +7,22 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 
 const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-export const Fret = ({ context, projection }) => {
-	let classes = ['fret'];
-	if (context.fretIndex === 0)
+export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
+	const { value, podType, isList } = podContext;
+
+	const noteIndex = stringTuning + fretIndex;
+	const pod = PodUtils.findPodWithPitch(value, noteIndex);
+
+	const classes = ['fret'];
+	if (fretIndex === 0)
 		classes.push('open');
 
-	const x = context.pod;
-	let d = null;
-	let p = null;
-	if (x) {
-		d = x[1];
-		p = x[0];
-	}
-	const color = projection.colorFn(d);
-	const colorStyles = pw_color.getStylesFromBgColor(color);
+	const color = ColorUtils.getColor(pod, podType)
+	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const text = x ? projection.textFn({ a: x }) : '';
+	const text = '';
 
-	const styles = {
+	const style = {
 		position: 'absolute',
 		width: '90%',
 		height: '90%',
@@ -37,9 +35,9 @@ export const Fret = ({ context, projection }) => {
 
 	return (
 		<div className={classes.join(' ')}>
-			{false && <div className='fret-number'>{context.fretIndex + 1}</div>}
+			{false && <div className='fret-number'>{fretIndex + 1}</div>}
 			<div className='fret-string' />
-			<div className='label' style={styles}>
+			<div className='label' style={style}>
 				{text}
 			</div>
 			{false && <div className='fret-dots'>{api.getDotsForFret(fretIndex + 1)}</div>}
@@ -48,39 +46,20 @@ export const Fret = ({ context, projection }) => {
 }
 
 const getFrets = (props) => {
-	const { fretRange, tuning, projection } = props;
-	const { value, modelType, podType, colorFn, textFn, reduced } = projection;
+	const { fretRange, tuning, podContext } = props;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
 	const allFrets = [];
-
 	for (let s = 0; s < tuning.length; s++) {
 		for (let f = fretRange[0]; f <= fretRange[1]; f++) {
-
-			const noteIndex = tuning[s] + f;
-			const index = pw_core.PodList.findIndexOfPodWithPitch({
-				A: value,
-				p: noteIndex
-			});
-
-			const pod = value[index];
-
-			const ctx = {
-				tuning,
-				stringIndex: s,
-				fretRange,
-				fretIndex: f,
-				noteIndex,
-				pod: pod,
-				podIndex: index
-			};
-
 			allFrets.push(
 				<Fret
 					key={`s${s}-f${f}`}
-					context={ctx}
-					projection={projection}
+					stringTuning={tuning[s]}
+					stringIndex={s}
+					fretIndex={f}
+					podContext={podContext}
 				/>
 			);
 		}
