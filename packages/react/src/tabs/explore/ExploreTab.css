@@ -129,7 +129,7 @@ table tbody tr:not(:last-child) {
     border-bottom: 1px solid #ccc;
 }
 
-.preset-box, .viewer-box {
+.preset-box {
     padding: 8px;
     text-align: center;
 }
@@ -139,6 +139,6 @@ table tbody tr:not(:last-child) {
     margin: 8px;
 }
 
-.viewer-box > * {
-    margin: 8px;
+.viewer-box {
+    margin-top: 16px;
 }

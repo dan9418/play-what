@@ -3,7 +3,7 @@ import PodUtils from '../../../core/src/modules/PodUtils';
 
 const PodContext = createContext(null);
 
-export const PodContextProvider = ({ value, setValue, podType, setPodType, isList, setIsList, children }) => {
+export const PodContextProvider = ({ value, setValue, podType, setPodType, isList, setIsList, viewer, setViewer, viewerProps, setViewerProps, children }) => {
 
 	const reducedValue = PodUtils.reduce(value, { isList });
 
@@ -14,7 +14,11 @@ export const PodContextProvider = ({ value, setValue, podType, setPodType, isLis
 		podType,
 		setPodType,
 		isList,
-		setIsList
+		setIsList,
+		viewer,
+		setViewer,
+		viewerProps,
+		setViewerProps
 	};
 
 	return (

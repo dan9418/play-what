@@ -6,51 +6,44 @@ import Fretboard from "../../../../viewers/Fretboard/Fretboard";
 import Graph from "../../../../viewers/Graph/Graph";
 import Keyboard from "../../../../viewers/Keyboard/Keyboard";
 import Meter from "../../../../viewers/Meter/Meter";
+import { VIEWERS } from "../../demos/BasicDemo";
 import Subpanel from "../../Subpanel";
 
-const VIEWERS = [
-	{
-		id: 'meter',
-		name: 'Meter',
-		component: Meter
-	},
-	{
-		id: 'fretboard',
-		name: 'Fretboard',
-		component: Fretboard
-	},
-	{
-		id: 'keyboard',
-		name: 'Keyboard',
-		component: Keyboard
-	},
-	{
-		id: 'graph',
-		name: 'Graph',
-		component: Graph
-	}
-];
+
+
+
+
+
+const ViewerBar = () => {
+	const { viewer, setViewer } = usePodContext();
+	const { isEditing } = useEditContext();
+
+	const viewerDef = VIEWERS.find(p => p.id === viewer.id);
+
+	return (
+		<div className='input-bar'>
+			<div>Viewer</div>
+			{isEditing ?
+				<DropdownInput options={VIEWERS} value={viewerDef} setValue={setViewer} />
+				: viewer.name}
+		</div>
+	);
+};
 
 const ViewerBox = () => {
-	const [isOpen, setIsOpen] = useState(false);
-	const [viewer, setViewer] = useState(VIEWERS[3]);
 	const podContext = usePodContext();
-	const { value, setValue, podType, isList } = podContext;
-	const { isEditing } = useEditContext();
-	const ViewerComponent = viewer.component;
-	const setHelper = v => setValue(v.value);
+	const ViewerComponent = podContext.viewer.component;
+
 	return (
 		<>
-			{isEditing && (
-				<div className="viewer-box">
-					<label>Viewer:</label>
-					<DropdownInput options={VIEWERS} value={viewer} setValue={setViewer} />
-				</div>
-			)}
-			<ViewerComponent podContext={podContext} />
+			<ViewerBar />
+			<div className="viewer-box">
+				<ViewerComponent podContext={podContext} />
+			</div>
 		</>
 	);
 };
+
 
 const AnalysisSubpanel = () => {
 	return (

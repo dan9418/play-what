@@ -18,7 +18,7 @@ const DEMOS = [
 ];
 
 const Explore = () => {
-	const [demo, setDemo] = useState(DEMOS[1]);
+	const [demo, setDemo] = useState(DEMOS[0]);
 
 	return (
 		<div className='explore-tab'>
