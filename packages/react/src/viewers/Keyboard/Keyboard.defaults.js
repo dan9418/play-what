@@ -1,5 +1,10 @@
+import { SCALE } from "@pw/core/src/modules/Presets";
+
 export default {
-	keyLow: 0,
-	keyHigh: 24,
-	bipod: { a: [0, 0], B: [] }
+	keyRange: [0, 24],
+	podContext: {
+		value: SCALE.Major.value,
+		podType: 'note',
+		isList: true
+	}
 };

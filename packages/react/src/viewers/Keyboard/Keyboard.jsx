@@ -3,39 +3,29 @@ import "./Keyboard.css";
 import KeyboardKey, { KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
 
-const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
-
-// TODO Enforce code reuse
-const modulo = (a, b) => {
-	return ((a % b) + b) % b;
-}
-
-const getKeyboardKeys = (config, viewerWidth) => {
+const getKeyboardKeys = (props, viewerWidth) => {
+	const { keyRange, podContext } = props;
+	const [lo, hi] = keyRange;
 	let keys = [];
 	// Safe approximation for scale
-	let numWhiteKeys = (config.keyHigh - config.keyLow + 1) * (7 / 12) + 1;
+	let numWhiteKeys = (hi - lo + 1) * (7 / 12) + 1;
 
-	for (let i = config.keyLow; i <= config.keyHigh; i++) {
-		let type = BLACK_KEY_INDICES.includes(modulo(i, 12)) ? KeyboardKeyType.White : KeyboardKeyType.Black;
-
+	for (let i = lo; i <= hi; i++) {
 		keys.push(
 			<KeyboardKey
 				key={i}
 				noteIndex={i}
-				minIndex={config.keyLow}
-				maxIndex={config.keyHigh}
+				podContext={podContext}
 				scale={viewerWidth / numWhiteKeys}
-				type={type}
-				bipod={config.bipod}
 			/>
 		);
 	}
 	return keys;
 }
 
-const Keyboard = ({ style, ...props }) => {
+const Keyboard = (userProps) => {
 
-	const config = { ...DEFAULT_PROPS, ...props };
+	const props = { ...DEFAULT_PROPS, ...userProps };
 
 	const [dims, setDims] = React.useState([512, 512]);
 
@@ -50,8 +40,8 @@ const Keyboard = ({ style, ...props }) => {
 	}, [])
 
 	return (
-		<div className='keyboard' id='keyboard' style={style}>
-			{getKeyboardKeys(config, dims[0])}
+		<div className='keyboard' id='keyboard'>
+			{getKeyboardKeys(props, dims[0])}
 		</div>
 	);
 }

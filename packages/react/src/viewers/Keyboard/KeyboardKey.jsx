@@ -1,5 +1,8 @@
+import Utils from '@pw/core/src/modules/Utils';
 import * as React from 'react';
 import "./Keyboard.css";
+
+const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -8,19 +11,19 @@ const KEY__DIMS = {
 	WhW_BlH: 2.9688 // White key width to black hey height
 }
 
-export const KeyboardKeyType = {
-	Black: 'Black',
-	White: 'White'
+export const KEY_TYPE = {
+	Black: 'black',
+	White: 'white'
 }
 
 const getScaleStyles = (keyType, scale) => {
 	switch (keyType) {
-	case KeyboardKeyType.White:
+	case KEY_TYPE.White:
 		return {
 			width: scale + 'px',
 			height: KEY__DIMS.WhW_WhH * scale + 'px'
 		};
-	case KeyboardKeyType.Black:
+	case KEY_TYPE.Black:
 		return {
 			width: KEY__DIMS.WhW_BlW * scale + 'px',
 			height: KEY__DIMS.WhW_BlH * scale + 'px',
@@ -34,21 +37,20 @@ const getScaleStyles = (keyType, scale) => {
 	}
 }
 
-const KeyboardKey = ({ noteIndex, type, scale, bipod }) => {
-	if(!bipod) return null;
+const KeyboardKey = ({ noteIndex, podContext, scale }) => {
+	let keyType = BLACK_KEY_INDICES.includes(Utils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
-	let keyColor = (type === KeyboardKeyType.White) ? 'white' : 'black';
-	let scaleStyles = getScaleStyles(type, scale);
-	let classes = ['keyboard-key', `${keyColor}-key`, keyColor];
+	let scaleStyles = getScaleStyles(keyType, scale);
+	let classes = ['keyboard-key', `${keyType}-key`, keyType];
 
 	const colorStyles = {};
 	const label = '';
 
-	const keyStyles = keyColor === 'white' ? scaleStyles : { ...scaleStyles, ...colorStyles };
-	const labelStyles = keyColor === 'white' ? colorStyles : {};
+	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
+	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
 
 	return (
-		<div className={`${keyColor}-key-container`}>
+		<div className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
 				<div className='keyboard-key-label' style={labelStyles}>
 					{label}

@@ -11,7 +11,7 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 	const { value, podType, isList } = podContext;
 
 	const noteIndex = stringTuning + fretIndex;
-	const pod = PodUtils.findPodWithPitch(value, noteIndex);
+	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
 	const classes = ['fret'];
 	if (fretIndex === 0)

@@ -1,4 +1,3 @@
-import pw_core from '@pw/core';
 import { SCALE } from '@pw/core/src/modules/Presets';
 
 export default {
