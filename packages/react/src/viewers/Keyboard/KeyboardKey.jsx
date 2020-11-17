@@ -1,3 +1,5 @@
+import ColorUtils from '@pw/color/src/modules/ColorUtils';
+import PodUtils from '@pw/core/src/modules/PodUtils';
 import Utils from '@pw/core/src/modules/Utils';
 import * as React from 'react';
 import "./Keyboard.css";
@@ -38,13 +40,19 @@ const getScaleStyles = (keyType, scale) => {
 }
 
 const KeyboardKey = ({ noteIndex, podContext, scale }) => {
+	const { value, podType, isList } = podContext;
+
+	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
+
+	const color = ColorUtils.getPodColor(pod, podType)
+	const colorStyles = ColorUtils.getStylesFromBgColor(color);
+
+	const text = PodUtils.getPreview(pod, { podType });
+
 	let keyType = BLACK_KEY_INDICES.includes(Utils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
 	let scaleStyles = getScaleStyles(keyType, scale);
 	let classes = ['keyboard-key', `${keyType}-key`, keyType];
-
-	const colorStyles = {};
-	const label = '';
 
 	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
@@ -53,7 +61,7 @@ const KeyboardKey = ({ noteIndex, podContext, scale }) => {
 		<div className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
 				<div className='keyboard-key-label' style={labelStyles}>
-					{label}
+					{text}
 				</div>
 			</div>
 		</div>

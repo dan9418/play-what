@@ -13,10 +13,6 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 	const noteIndex = stringTuning + fretIndex;
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
-	const classes = ['fret'];
-	if (fretIndex === 0)
-		classes.push('open');
-
 	const color = ColorUtils.getPodColor(pod, podType)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
@@ -32,6 +28,10 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 		borderRadius: '100%',
 		...colorStyles
 	};
+
+	const classes = ['fret'];
+	if (fretIndex === 0)
+		classes.push('open');
 
 	return (
 		<div className={classes.join(' ')}>
