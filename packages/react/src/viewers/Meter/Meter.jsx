@@ -1,8 +1,7 @@
 import pw_color from '@pw/color';
 import pw_core from '@pw/core';
 import React from 'react';
-import usePodContext from '../../../../other/PodContext';
-import './Analysis.css';
+import './Meter.css';
 
 const getPitchColor = pw_color.Pitch.getColor;
 const getDegreeColor = pw_color.Degree.getColor;
@@ -43,13 +42,11 @@ const PodListMeter = ({ podList }) => {
 	);
 }
 
-const Analysis = () => {
-	const podContext = usePodContext();
-	const { value, podType, isList } = podContext;
+const Meter = ({ value, podType, isList }) => {
 	if (!isList)
 		return <PodListMeter podList={[value]} />;
 	else
 		return <PodListMeter podList={value} />;
 }
 
-export default Analysis;
+export default Meter;
