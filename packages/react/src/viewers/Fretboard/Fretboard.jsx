@@ -17,10 +17,10 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 	if (fretIndex === 0)
 		classes.push('open');
 
-	const color = ColorUtils.getColor(pod, podType)
+	const color = ColorUtils.getPodColor(pod, podType)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const text = '';
+	const text = PodUtils.getPreview(pod, { podType });
 
 	const style = {
 		position: 'absolute',
@@ -75,7 +75,7 @@ const getFretRatios = (numFrets) => {
 	return ratios;
 }
 
-const Fretboard = ({ style, ...userProps }) => {
+const Fretboard = (userProps) => {
 	const props = Object.assign({}, DEFAULT_PROPS, userProps);
 	// Calculate fretboard dimensions
 
@@ -85,8 +85,7 @@ const Fretboard = ({ style, ...userProps }) => {
 	const gridTemplateRows = `repeat(${numStrings}, 1fr)`;
 	const fretboardStyles = {
 		gridTemplateColumns,
-		gridTemplateRows,
-		...style
+		gridTemplateRows
 	};
 
 	return (

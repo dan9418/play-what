@@ -86,21 +86,24 @@ class PodUtils {
 		return data.find(d => PodUtils.areEqual(value, d.value)) || null;
 	}
 
+	static getName(value, options = {}) {
+		const result = this.findPreset(value, options);
+		return result ? result.id : '?';
+	}
+
 	static getPreview(value, options = {}) {
+		if (!value) return '';
+
 		const { podType, isList, reduce } = options;
 		const testValue = reduce ? PodUtils.reduce(value, { isList }) : value;
 		if (podType === 'pod') {
 			return JSON.stringify(testValue);
 		}
 		else if (isList) {
-			return testValue.map(v => {
-				const result = this.findPreset(v, { podType });
-				return result ? result.id : '?';
-			}).join(', ');
+			return testValue.map(v => this.getName(v, options)).join(', ');
 		}
 		else {
-			const result = this.findPreset(testValue, { podType });
-			return result ? result.id : '?';
+			return this.getName(testValue, options)
 		}
 	}
 

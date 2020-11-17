@@ -42,7 +42,8 @@ const PodListMeter = ({ podList }) => {
 	);
 }
 
-const Meter = ({ value, podType, isList }) => {
+const Meter = ({ podContext }) => {
+	const { value, podType, isList } = podContext;
 	if (!isList)
 		return <PodListMeter podList={[value]} />;
 	else

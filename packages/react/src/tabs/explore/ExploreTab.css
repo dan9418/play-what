@@ -129,12 +129,16 @@ table tbody tr:not(:last-child) {
     border-bottom: 1px solid #ccc;
 }
 
-.preset-box {
+.preset-box, .viewer-box {
     padding: 8px;
     text-align: center;
 }
 
 .preset-box > button {
     width: 50%;
+    margin: 8px;
+}
+
+.viewer-box > * {
     margin: 8px;
 }

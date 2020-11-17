@@ -29,8 +29,13 @@ const ViewerBox = () => {
 	const setHelper = v => setValue(v.value);
 	return (
 		<>
-			{isEditing && <DropdownInput options={VIEWERS} value={viewer} setValue={setViewer} />}
-			<ViewerComponent {...podContext} />
+			{isEditing && (
+				<div className="viewer-box">
+					<label>Viewer:</label>
+					<DropdownInput options={VIEWERS} value={viewer} setValue={setViewer} />
+				</div>
+			)}
+			<ViewerComponent podContext={podContext} />
 		</>
 	);
 };

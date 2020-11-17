@@ -16,7 +16,7 @@ const getStylesFromBgColor = (bg) => {
 	}
 };
 
-const getColor = (value, podType) => {
+const getPodColor = (value, podType) => {
 	if (!value) return null;
 	if (podType === 'pod')
 		return Pitch.getColor(value[0]);
@@ -37,5 +37,5 @@ const getColor = (value, podType) => {
 export default {
 	getFgColor,
 	getStylesFromBgColor,
-	getColor
+	getPodColor
 };
