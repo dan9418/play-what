@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import Fretboard from "../../../../viewers/Fretboard/Fretboard";
-import Graph from "../../../../viewers/Graph/Graph";
-import Keyboard from "../../../../viewers/Keyboard/Keyboard";
-import Meter from "../../../../viewers/Meter/Meter";
-import { VIEWERS } from "../../demos/BasicDemo";
+import { VIEWERS } from "../../../../viewers/viewers";
 import Subpanel from "../../Subpanel";
-
-
-
-
-
 
 const ViewerBar = () => {
 	const { viewer, setViewer } = usePodContext();
