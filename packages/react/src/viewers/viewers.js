@@ -19,14 +19,14 @@ export const VIEWERS = [
 		name: 'Fretboard',
 		component: Fretboard,
 		panelComponent: FretboardPanel,
-		defaultInputs: DEFAULT_FRETBOARD_INPUTS
+		defaultProps: DEFAULT_FRETBOARD_INPUTS
 	},
 	{
 		id: 'keyboard',
 		name: 'Keyboard',
 		component: Keyboard,
 		panelComponent: KeyboardPanel,
-		defaultInputs: DEFAULT_KEYBOARD_INPUTS
+		defaultProps: DEFAULT_KEYBOARD_INPUTS
 	},
 	{
 		id: 'graph',
