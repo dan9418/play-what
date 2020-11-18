@@ -1,5 +1,5 @@
 .numeric-input {
-    width: 32px;
+    max-width: 64px;
     padding: 4px;
     border-radius: 4px;
     border: none;

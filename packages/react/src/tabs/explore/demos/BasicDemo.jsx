@@ -8,8 +8,8 @@ const BasicDemo = () => {
 	const [value, setValue] = useState([[0, 0], [1, 1], [2, 2]]);
 	const [podType, setPodType] = useState('note');
 	const [isList, setIsList] = useState(true);
-	const [viewer, setViewer] = useState(VIEWERS[0]);
-	const [viewerProps, setViewerProps] = useState({});
+	const [viewer, setViewer] = useState(VIEWERS[2]);
+	const [viewerProps, setViewerProps] = useState(VIEWERS[2].defaultInputs);
 
 	return (
 		<>

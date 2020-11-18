@@ -1,10 +1,13 @@
 import { SCALE } from "@pw/core/src/modules/Presets";
 
-export default {
-	keyRange: [0, 24],
+const DEFAULT_KEYBOARD_INPUTS = {
+	keyLow: -12,
+	keyHigh: 12,
 	podContext: {
 		value: SCALE.Major.value,
 		podType: 'note',
 		isList: true
 	}
 };
+
+export default DEFAULT_KEYBOARD_INPUTS;

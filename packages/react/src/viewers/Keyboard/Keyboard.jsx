@@ -4,13 +4,12 @@ import KeyboardKey, { KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
 
 const getKeyboardKeys = (props, viewerWidth) => {
-	const { keyRange, podContext } = props;
-	const [lo, hi] = keyRange;
+	const { keyLow, keyHigh, podContext } = props;
 	let keys = [];
 	// Safe approximation for scale
-	let numWhiteKeys = (hi - lo + 1) * (7 / 12) + 1;
+	let numWhiteKeys = (keyHigh - keyLow + 1) * (7 / 12) + 1;
 
-	for (let i = lo; i <= hi; i++) {
+	for (let i = keyLow; i <= keyHigh; i++) {
 		keys.push(
 			<KeyboardKey
 				key={i}

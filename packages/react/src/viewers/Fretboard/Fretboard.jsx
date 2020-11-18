@@ -46,13 +46,13 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 }
 
 const getFrets = (props) => {
-	const { fretRange, tuning, podContext } = props;
+	const { fretLow, fretHigh, tuning, podContext } = props;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
 
 	const allFrets = [];
 	for (let s = 0; s < tuning.length; s++) {
-		for (let f = fretRange[0]; f <= fretRange[1]; f++) {
+		for (let f = fretLow; f <= fretHigh[1]; f++) {
 			allFrets.push(
 				<Fret
 					key={`s${s}-f${f}`}
@@ -79,7 +79,7 @@ const Fretboard = (userProps) => {
 	const props = Object.assign({}, DEFAULT_PROPS, userProps);
 	// Calculate fretboard dimensions
 
-	const numFrets = props.fretRange[1] - props.fretRange[0] + 1;
+	const numFrets = props.fretHigh - props.fretLow + 1;
 	const numStrings = props.tuning.length;
 	const gridTemplateColumns = getFretRatios(numFrets).map(n => n + 'fr').join(' ');
 	const gridTemplateRows = `repeat(${numStrings}, 1fr)`;
