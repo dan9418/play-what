@@ -1,4 +1,5 @@
 import Fretboard from "./Fretboard/Fretboard";
+import { FRETBOARD_TUNING_VALUES } from "./Fretboard/Fretboard.api";
 import DEFAULT_FRETBOARD_INPUTS from "./Fretboard/Fretboard.defaults";
 import Graph from "./Graph/Graph";
 import Keyboard from "./Keyboard/Keyboard";
@@ -33,6 +34,14 @@ export const VIEWERS = [
 				inputProps: {
 					min: 0,
 					max: 24
+				}
+			},
+			{
+				id: 'tuning',
+				name: 'Tuning',
+				inputId: 'dropdown',
+				inputProps: {
+					options: FRETBOARD_TUNING_VALUES
 				}
 			}
 		]

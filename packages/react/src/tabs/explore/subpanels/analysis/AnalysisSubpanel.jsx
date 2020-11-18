@@ -32,14 +32,25 @@ const ViewerInputBars = () => {
 
 	return viewer.props.map(input => {
 		const InputComponent = INPUT[input.inputId].component;
-		const value = viewerProps[input.id];
-		const setValue = v => setViewerProps({ ...viewerProps, [input.id]: v });
+		let value = null;
+		let setValue = null;
+		let name = null;
+		if (input.inputId === 'dropdown') {
+			value = input.inputProps.options.find(o => o.value === viewerProps[input.id]); ///probs doesn't work
+			setValue = v => setViewerProps({ ...viewerProps, [input.id]: v.value });
+			name = value.name;
+		}
+		else {
+			value = viewerProps[input.id];
+			setValue = v => setViewerProps({ ...viewerProps, [input.id]: v });
+			name = value;
+		}
 		return (
 			<div key={input.id} className='input-bar'>
 				<div>{input.name}</div>
 				{isEditing ?
 					<InputComponent value={value} setValue={setValue} {...input.inputProps} />
-					: value}
+					: name}
 			</div>
 		);
 	});
