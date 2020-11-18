@@ -21,7 +21,7 @@ export const VIEWERS = [
 		name: 'Keyboard',
 		component: Keyboard,
 		defaultInputs: DEFAULT_KEYBOARD_INPUTS,
-		inputs: [
+		props: [
 			{
 				id: 'keyLow',
 				name: 'Low Key',

@@ -28,16 +28,19 @@ const ViewerInputBars = ({ inputs }) => {
 
 	const viewerDef = VIEWERS.find(p => p.id === viewer.id);
 
-	if (!viewer.inputs) return null;
+	if (!viewer.props) return null;
 
-	return viewer.inputs.map(input => {
+	console.log('dpb', viewerProps)
+
+	return viewer.props.map(input => {
 		const InputComponent = INPUT[input.inputId].component;
 		const value = viewerProps[input.id];
+		const setValue = v => setViewerProps({ ...viewerProps, [input.id]: v });
 		return (
 			<div key={input.id} className='input-bar'>
 				<div>{input.name}</div>
 				{isEditing ?
-					<InputComponent value={value} {...input.inputProps} />
+					<InputComponent value={value} setValue={setValue} {...input.inputProps} />
 					: value}
 			</div>
 		);
@@ -46,6 +49,7 @@ const ViewerInputBars = ({ inputs }) => {
 
 const ViewerBox = () => {
 	const podContext = usePodContext();
+	const { viewer, setViewer, viewerProps, setViewerProps } = podContext;
 	const ViewerComponent = podContext.viewer.component;
 
 	return (
@@ -53,7 +57,7 @@ const ViewerBox = () => {
 			<ViewerBar />
 			<ViewerInputBars />
 			<div className="viewer-box">
-				<ViewerComponent podContext={podContext} />
+				<ViewerComponent {...viewerProps} />
 			</div>
 		</>
 	);
