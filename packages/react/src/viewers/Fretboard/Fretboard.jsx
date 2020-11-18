@@ -5,8 +5,6 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
-const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
-
 export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 	const { value, podType, isList } = podContext;
 
@@ -67,21 +65,12 @@ const getFrets = (props) => {
 	return allFrets;
 }
 
-const getFretRatios = (numFrets) => {
-	let ratios = [];
-	for (let i = 1; i <= numFrets; i++) {
-		ratios.push((i <= 1) ? 1 : ratios[i - 2] * FRET_SIZE_RATIO);
-	}
-	return ratios;
-}
-
 const Fretboard = (userProps) => {
 	const props = Object.assign({}, DEFAULT_PROPS, userProps);
-	// Calculate fretboard dimensions
 
 	const numFrets = props.fretHigh - props.fretLow + 1;
 	const numStrings = props.tuning.length;
-	const gridTemplateColumns = getFretRatios(numFrets).map(n => n + 'fr').join(' ');
+	const gridTemplateColumns = api.getFretRatios(numFrets).map(n => n + 'fr').join(' ');
 	const gridTemplateRows = `repeat(${numStrings}, 1fr)`;
 	const fretboardStyles = {
 		gridTemplateColumns,
