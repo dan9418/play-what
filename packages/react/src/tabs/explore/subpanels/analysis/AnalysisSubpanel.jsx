@@ -22,15 +22,13 @@ const ViewerBar = () => {
 	);
 };
 
-const ViewerInputBars = ({ inputs }) => {
+const ViewerInputBars = () => {
 	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
 	const { isEditing } = useEditContext();
 
-	const viewerDef = VIEWERS.find(p => p.id === viewer.id);
-
 	if (!viewer.props) return null;
 
-	console.log('dpb', viewerProps)
+	console.log('dpb', viewer)
 
 	return viewer.props.map(input => {
 		const InputComponent = INPUT[input.inputId].component;

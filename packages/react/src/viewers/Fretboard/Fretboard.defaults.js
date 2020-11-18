@@ -1,6 +1,6 @@
 import { SCALE } from '@pw/core/src/modules/Presets';
 
-export default {
+const DEFAULT_FRETBOARD_INPUTS = {
 	fretLow: 0,
 	fretHigh: 12,
 	tuning: [16, 11, 7, 2, -3, -8],
@@ -10,3 +10,5 @@ export default {
 		isList: true
 	}
 };
+
+export default DEFAULT_FRETBOARD_INPUTS;

@@ -1,9 +1,9 @@
 import Fretboard from "./Fretboard/Fretboard";
+import DEFAULT_FRETBOARD_INPUTS from "./Fretboard/Fretboard.defaults";
 import Graph from "./Graph/Graph";
 import Keyboard from "./Keyboard/Keyboard";
 import DEFAULT_KEYBOARD_INPUTS from "./Keyboard/Keyboard.defaults";
 import Meter from "./Meter/Meter";
-
 
 export const VIEWERS = [
 	{
@@ -14,7 +14,28 @@ export const VIEWERS = [
 	{
 		id: 'fretboard',
 		name: 'Fretboard',
-		component: Fretboard
+		component: Fretboard,
+		defaultInputs: DEFAULT_FRETBOARD_INPUTS,
+		props: [
+			{
+				id: 'fretLow',
+				name: 'Low Fret',
+				inputId: 'numeric',
+				inputProps: {
+					min: 0,
+					max: 24
+				}
+			},
+			{
+				id: 'fretHigh',
+				name: 'High Fret',
+				inputId: 'numeric',
+				inputProps: {
+					min: 0,
+					max: 24
+				}
+			}
+		]
 	},
 	{
 		id: 'keyboard',

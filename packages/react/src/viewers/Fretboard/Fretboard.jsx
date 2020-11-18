@@ -52,7 +52,7 @@ const getFrets = (props) => {
 
 	const allFrets = [];
 	for (let s = 0; s < tuning.length; s++) {
-		for (let f = fretLow; f <= fretHigh[1]; f++) {
+		for (let f = fretLow; f <= fretHigh; f++) {
 			allFrets.push(
 				<Fret
 					key={`s${s}-f${f}`}
