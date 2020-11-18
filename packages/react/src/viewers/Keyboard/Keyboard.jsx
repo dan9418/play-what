@@ -1,15 +1,16 @@
 import * as React from "react";
 import "./Keyboard.css";
-import KeyboardKey, { KeyboardKeyType } from "./KeyboardKey";
 import DEFAULT_PROPS from "./Keyboard.defaults";
+import KeyboardKey from "./KeyboardKey";
 
 const getKeyboardKeys = (props, viewerWidth) => {
-	const { keyLow, keyHigh, podContext } = props;
+	const { keyRange, podContext } = props;
+	const [lo, hi] = keyRange;
 	let keys = [];
 	// Safe approximation for scale
-	let numWhiteKeys = (keyHigh - keyLow + 1) * (7 / 12) + 1;
+	let numWhiteKeys = (hi - lo + 1) * (7 / 12) + 1;
 
-	for (let i = keyLow; i <= keyHigh; i++) {
+	for (let i = lo; i <= hi; i++) {
 		keys.push(
 			<KeyboardKey
 				key={i}

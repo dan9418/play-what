@@ -30,7 +30,7 @@ const ViewerBox = () => {
 	return (
 		<>
 			<ViewerBar />
-			<PanelComponent />
+			{PanelComponent && <PanelComponent />}
 			<div className="viewer-box">
 				<ViewerComponent {...viewerProps} />
 			</div>

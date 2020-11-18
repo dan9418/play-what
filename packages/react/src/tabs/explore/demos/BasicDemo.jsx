@@ -9,8 +9,8 @@ const BasicDemo = () => {
 	const [value, setValue] = useState(SCALE.Major.value);
 	const [podType, setPodType] = useState('note');
 	const [isList, setIsList] = useState(true);
-	const [viewer, setViewer] = useState(VIEWERS[1]);
-	const [viewerProps, setViewerProps] = useState(VIEWERS[1].defaultInputs);
+	const [viewer, setViewer] = useState(VIEWERS[2]);
+	const [viewerProps, setViewerProps] = useState(VIEWERS[2].defaultInputs);
 
 	return (
 		<>
