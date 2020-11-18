@@ -2,6 +2,7 @@ import pw_color from '@pw/color';
 import pw_core from '@pw/core';
 import React from 'react';
 import './Meter.css';
+import DEFAULT_METER_PROPS from './Meter.defaults';
 
 const getPitchColor = pw_color.Pitch.getColor;
 const getDegreeColor = pw_color.Degree.getColor;
@@ -42,8 +43,11 @@ const PodListMeter = ({ podList }) => {
 	);
 }
 
-const Meter = ({ podContext }) => {
+const Meter = (userProps) => {
+	const props = { ...DEFAULT_METER_PROPS, ...userProps };
+	const { podContext } = props;
 	const { value, podType, isList } = podContext;
+
 	if (!isList)
 		return <PodListMeter podList={[value]} />;
 	else

@@ -1,12 +1,15 @@
 import { SCALE } from "@pw/core/src/modules/Presets";
 
-const DEFAULT_KEYBOARD_PROPS = {
-	keyRange: [-12, 12],
+const DEFAULT_GRAPH_PROPS = {
+	origin: [0, 0],
+	title: 'd vs. p',
+	xLabel: 'd',
+	yLabel: 'p',
 	podContext: {
 		value: SCALE.Major.value,
 		podType: 'note',
 		isList: true
 	}
-};
+}
 
-export default DEFAULT_KEYBOARD_PROPS;
+export default DEFAULT_GRAPH_PROPS;

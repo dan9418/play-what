@@ -3,6 +3,7 @@ import { SCALE } from '@pw/core/src/modules/Presets';
 import React from 'react';
 import { MAX } from '../../../../core/src/modules/Constants';
 import './Graph.css';
+import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 
 const Cell = props => {
 	const { color } = props;
@@ -41,20 +42,8 @@ const getCells = (origin, podContext) => {
 	return cells;
 };
 
-const DEFAULT_PROPS = {
-	origin: [0, 0],
-	title: 'd vs. p',
-	xLabel: 'd',
-	yLabel: 'p',
-	podContext: {
-		value: SCALE.Major.value,
-		podType: 'note',
-		isList: true
-	}
-}
-
 const Graph = userProps => {
-	const props = { ...DEFAULT_PROPS, ...userProps };
+	const props = { ...DEFAULT_GRAPH_PROPS, ...userProps };
 	const { origin, title, xLabel, yLabel, podContext } = props;
 	return (
 		<div className="graph-container">

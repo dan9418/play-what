@@ -1,7 +1,7 @@
 import { SCALE } from '@pw/core/src/modules/Presets';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
-const DEFAULT_FRETBOARD_INPUTS = {
+const DEFAULT_FRETBOARD_PROPS = {
 	fretRange: [0, 12],
 	tuning: FRETBOARD_TUNING.standard.value,
 	podContext: {
@@ -11,4 +11,4 @@ const DEFAULT_FRETBOARD_INPUTS = {
 	}
 };
 
-export default DEFAULT_FRETBOARD_INPUTS;
+export default DEFAULT_FRETBOARD_PROPS;
