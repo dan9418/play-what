@@ -24,6 +24,11 @@ export const PITCH_COLOR_SCHEME = [
 ];
 
 export const COLOR_SCHEME = {
+	none: {
+		id: 'none',
+		name: 'None',
+		value: () => null
+	},
 	degree: {
 		id: 'degree',
 		name: 'Degree',

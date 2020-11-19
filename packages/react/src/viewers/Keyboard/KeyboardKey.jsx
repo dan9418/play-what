@@ -39,7 +39,7 @@ const getScaleStyles = (keyType, scale) => {
 	}
 }
 
-const KeyboardKey = ({ noteIndex, podContext, colorScheme, scale }) => {
+const KeyboardKey = ({ noteIndex, podContext, colorScheme, labelScheme, scale }) => {
 	const { value, podType, isList } = podContext;
 
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
@@ -47,7 +47,7 @@ const KeyboardKey = ({ noteIndex, podContext, colorScheme, scale }) => {
 	const color = colorScheme(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const text = PodUtils.getPreview(pod, { podType });
+	const label = labelScheme(pod);
 
 	let keyType = BLACK_KEY_INDICES.includes(Utils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
@@ -61,7 +61,7 @@ const KeyboardKey = ({ noteIndex, podContext, colorScheme, scale }) => {
 		<div className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
 				<div className='keyboard-key-label' style={labelStyles}>
-					{text}
+					{label}
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 import { COLOR_SCHEME_VALUES } from "@pw/color/src/ColorConstants";
+import { LABEL_SCHEME_VALUES } from "@pw/color/src/LabelConstants";
 import * as React from "react";
 import useEditContext from "../../other/EditContext";
 import usePodContext from "../../other/PodContext";
@@ -10,11 +11,12 @@ import "./Fretboard.css";
 export const FretboardPanel = ({ }) => {
 	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
 	const { isEditing } = useEditContext();
-	const { fretRange, tuning, colorScheme, podContext } = viewerProps;
+	const { fretRange, tuning, colorScheme, labelScheme, podContext } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
 	const colorSchemeDef = COLOR_SCHEME_VALUES.find(o => o.value === colorScheme);
+	const labelSchemeDef = LABEL_SCHEME_VALUES.find(o => o.value === labelScheme);
 
 	const setProp = (k, v) => setViewerProps({ ...viewerProps, [k]: v });
 
@@ -41,6 +43,12 @@ export const FretboardPanel = ({ }) => {
 				{isEditing ?
 					<DropdownInput options={COLOR_SCHEME_VALUES} value={colorSchemeDef} setValue={v => setProp('colorScheme', v.value)} />
 					: colorSchemeDef.name}
+			</div>
+			<div className='input-bar'>
+				<div>Label Scheme</div>
+				{isEditing ?
+					<DropdownInput options={LABEL_SCHEME_VALUES} value={labelSchemeDef} setValue={v => setProp('labelScheme', v.value)} />
+					: labelSchemeDef.name}
 			</div>
 		</>
 	);

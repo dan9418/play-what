@@ -1,4 +1,5 @@
 import { COLOR_SCHEME_VALUES } from "@pw/color/src/ColorConstants";
+import { LABEL_SCHEME_VALUES } from "@pw/color/src/LabelConstants";
 import * as React from "react";
 import useEditContext from "../../other/EditContext";
 import usePodContext from "../../other/PodContext";
@@ -9,10 +10,11 @@ import "./Keyboard.css";
 export const KeyboardPanel = ({ }) => {
 	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
 	const { isEditing } = useEditContext();
-	const { keyRange, colorScheme, podContext } = viewerProps;
+	const { keyRange, colorScheme, labelScheme, podContext } = viewerProps;
 	const [keyLow, keyHigh] = keyRange;
 
 	const colorSchemeDef = COLOR_SCHEME_VALUES.find(o => o.value === colorScheme);
+	const labelSchemeDef = LABEL_SCHEME_VALUES.find(o => o.value === labelScheme);
 
 	const setProp = (k, v) => setViewerProps({ ...viewerProps, [k]: v });
 
@@ -33,6 +35,12 @@ export const KeyboardPanel = ({ }) => {
 				{isEditing ?
 					<DropdownInput options={COLOR_SCHEME_VALUES} value={colorSchemeDef} setValue={v => setProp('colorScheme', v.value)} />
 					: colorSchemeDef.name}
+			</div>
+			<div className='input-bar'>
+				<div>Label Scheme</div>
+				{isEditing ?
+					<DropdownInput options={LABEL_SCHEME_VALUES} value={labelSchemeDef} setValue={v => setProp('labelScheme', v.value)} />
+					: labelSchemeDef.name}
 			</div>
 		</>
 	);
