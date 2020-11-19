@@ -1,4 +1,4 @@
-import ColorUtils from '@pw/color/src/modules/ColorUtils';
+import ColorUtils from '@pw/color/src/ColorUtils';
 import PodUtils from '@pw/core/src/modules/PodUtils';
 import Utils from '@pw/core/src/modules/Utils';
 import * as React from 'react';

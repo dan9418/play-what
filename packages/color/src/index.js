@@ -1,9 +1,3 @@
-import ColorUtils from './modules/ColorUtils';
-import Pitch from './modules/Pitch';
-import Degree from './modules/Degree';
+import ColorUtils from './ColorUtils';
 
-export default {
-	ColorUtils,
-	Pitch,
-	Degree
-};
+export default ColorUtils;

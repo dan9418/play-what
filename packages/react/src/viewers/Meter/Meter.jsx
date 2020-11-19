@@ -4,8 +4,8 @@ import React from 'react';
 import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
 
-const getPitchColor = pw_color.Pitch.getColor;
-const getDegreeColor = pw_color.Degree.getColor;
+const getPitchColor = pw_color.getPodColor;
+const getDegreeColor = pw_color.getPodColor;
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {

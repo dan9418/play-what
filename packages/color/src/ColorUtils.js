@@ -1,6 +1,5 @@
 import color from 'color';
-import Degree from './Degree';
-import Pitch from './Pitch';
+import COLOR_OPTIONS from './ColorOptions';
 
 const getFgColor = (bg) => {
 	if (!bg) return "#000";
@@ -18,9 +17,7 @@ const getStylesFromBgColor = (bg) => {
 
 const getPodColor = (value, podType) => {
 	if (!value) return null;
-	if (podType === 'pod')
-		return Pitch.getColor(value[0]);
-	return Degree.getColor(value[1]);
+	return COLOR_OPTIONS[0].colorSchemes[0].value[value[1]];
 }
 
 /* const getColorFromContinuousScheme = (value, min, max, scheme) => {
