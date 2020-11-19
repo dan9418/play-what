@@ -1,5 +1,4 @@
 import color from 'color';
-import COLOR_OPTIONS from './ColorOptions';
 
 const getFgColor = (bg) => {
 	if (!bg) return "#000";
@@ -15,11 +14,6 @@ const getStylesFromBgColor = (bg) => {
 	}
 };
 
-const getPodColor = (value, podType) => {
-	if (!value) return null;
-	return COLOR_OPTIONS[0].colorSchemes[0].value[value[1]];
-}
-
 /* const getColorFromContinuousScheme = (value, min, max, scheme) => {
   let percent = (value - min) / (max - min);
   percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
@@ -33,6 +27,5 @@ const getPodColor = (value, podType) => {
 
 export default {
 	getFgColor,
-	getStylesFromBgColor,
-	getPodColor
+	getStylesFromBgColor
 };

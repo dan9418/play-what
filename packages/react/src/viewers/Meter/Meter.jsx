@@ -1,11 +1,12 @@
 import pw_color from '@pw/color';
+import { COLOR_SCHEME } from '@pw/color/src/ColorConstants';
 import pw_core from '@pw/core';
 import React from 'react';
 import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
 
-const getPitchColor = pw_color.getPodColor;
-const getDegreeColor = pw_color.getPodColor;
+const getPitchColor = COLOR_SCHEME.pitch;
+const getDegreeColor = COLOR_SCHEME.degree;
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {

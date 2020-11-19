@@ -5,13 +5,13 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
-export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
+export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorScheme }) => {
 	const { value, podType, isList } = podContext;
 
 	const noteIndex = stringTuning + fretIndex;
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
-	const color = ColorUtils.getPodColor(pod, podType)
+	const color = colorScheme(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const text = PodUtils.getPreview(pod, { podType });
@@ -44,7 +44,7 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext }) => {
 }
 
 const getFrets = (props) => {
-	const { fretRange, tuning, podContext } = props;
+	const { fretRange, tuning, colorScheme, podContext } = props;
 	const [lo, hi] = fretRange;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
@@ -59,6 +59,7 @@ const getFrets = (props) => {
 					stringIndex={s}
 					fretIndex={f}
 					podContext={podContext}
+					colorScheme={colorScheme}
 				/>
 			);
 		}

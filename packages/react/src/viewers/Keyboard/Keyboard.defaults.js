@@ -1,7 +1,9 @@
+import { COLOR_SCHEME } from "@pw/color/src/ColorConstants";
 import { SCALE } from "@pw/core/src/modules/Presets";
 
 const DEFAULT_KEYBOARD_PROPS = {
 	keyRange: [-12, 12],
+	colorScheme: COLOR_SCHEME.degree.value,
 	podContext: {
 		value: SCALE.Major.value,
 		podType: 'note',

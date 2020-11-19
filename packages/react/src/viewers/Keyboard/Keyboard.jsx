@@ -4,7 +4,7 @@ import DEFAULT_PROPS from "./Keyboard.defaults";
 import KeyboardKey from "./KeyboardKey";
 
 const getKeyboardKeys = (props, viewerWidth) => {
-	const { keyRange, podContext } = props;
+	const { keyRange, podContext, colorScheme } = props;
 	const [lo, hi] = keyRange;
 	let keys = [];
 	// Safe approximation for scale
@@ -16,6 +16,7 @@ const getKeyboardKeys = (props, viewerWidth) => {
 				key={i}
 				noteIndex={i}
 				podContext={podContext}
+				colorScheme={colorScheme}
 				scale={viewerWidth / numWhiteKeys}
 			/>
 		);

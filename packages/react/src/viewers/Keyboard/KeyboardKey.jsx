@@ -39,12 +39,12 @@ const getScaleStyles = (keyType, scale) => {
 	}
 }
 
-const KeyboardKey = ({ noteIndex, podContext, scale }) => {
+const KeyboardKey = ({ noteIndex, podContext, colorScheme, scale }) => {
 	const { value, podType, isList } = podContext;
 
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
-	const color = ColorUtils.getPodColor(pod, podType)
+	const color = colorScheme(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const text = PodUtils.getPreview(pod, { podType });
