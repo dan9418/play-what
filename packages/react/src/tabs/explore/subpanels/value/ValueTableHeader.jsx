@@ -3,10 +3,10 @@ import useEditContext from '../../../../other/EditContext';
 
 const getHeaders = (podType, isList, isEditing) => {
 	if (!isList) {
-		return ['Pod', 'Reduced', 'Preset'];
+		return ['Pod', 'Pitch', 'Octave', 'Degree', 'Preset'];
 	}
 	else {
-		return ['#', 'Pod', 'Reduced', , 'Preset', isEditing ? 'Delete' : undefined];
+		return ['#', 'Pod', 'Pitch', 'Octave', 'Degree', 'Preset', isEditing ? 'Delete' : undefined];
 	}
 }
 

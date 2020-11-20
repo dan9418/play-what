@@ -91,6 +91,14 @@ class PodUtils {
 		return result ? result.id : '?';
 	}
 
+	static getPitchClass(value, options = {}) {
+		return Utils.modulo(value[0], MAX[0]);
+	}
+
+	static getOctave(value, options = {}) {
+		return Math.floor(value[0] / 12);
+	}
+
 	static getPreview(value, options = {}) {
 		if (!value) return '';
 

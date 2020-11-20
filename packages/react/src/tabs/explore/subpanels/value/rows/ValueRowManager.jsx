@@ -7,7 +7,7 @@ import PodRow from './PodRow';
 const NewPodRow = ({ addPod }) => {
 	return (
 		<tr key="new">
-			<td colSpan="3" />
+			<td colSpan="5" />
 			<td>
 				Add
 			</td>

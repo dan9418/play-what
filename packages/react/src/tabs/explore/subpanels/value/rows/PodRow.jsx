@@ -26,13 +26,22 @@ const PodRow = ({ value, reducedValue, setValue, podType }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
+	const pitchClass = PodUtils.getPitchClass(value);
+	const octave = PodUtils.getOctave(value);
+
 	return (
 		<tr>
 			<td>
 				{JSON.stringify(value)}
 			</td>
 			<td>
-				{JSON.stringify(reducedValue)}
+				{pitchClass}
+			</td>
+			<td>
+				{octave}
+			</td>
+			<td>
+				{value[1]}
 			</td>
 			<PresetCell value={reducedValue} setValue={setValue} isEditing={isEditing} podType={podType} />
 		</tr>

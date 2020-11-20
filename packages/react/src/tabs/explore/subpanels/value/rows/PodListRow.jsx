@@ -1,3 +1,4 @@
+import PodUtils from '@pw/core/src/modules/PodUtils';
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
@@ -23,6 +24,9 @@ const PodListRow = ({ i, value, reducedValue, setValue, podType }) => {
 		if (v < i) moveDown();
 	}
 
+	const pitchClass = PodUtils.getPitchClass(raw);
+	const octave = PodUtils.getOctave(raw);
+
 	return (
 		<tr key={i}>
 			<td>
@@ -36,7 +40,13 @@ const PodListRow = ({ i, value, reducedValue, setValue, podType }) => {
 				{JSON.stringify(raw)}
 			</td>
 			<td>
-				{JSON.stringify(reduced)}
+				{pitchClass}
+			</td>
+			<td>
+				{octave}
+			</td>
+			<td>
+				{raw[1]}
 			</td>
 			<PresetCell value={reduced} setValue={setPod} isEditing={isEditing} podType={podType} />
 			{isEditing &&

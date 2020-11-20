@@ -105,6 +105,10 @@ h2 {
 
 /* table */
 
+table {
+    text-align: center;
+}
+
 table th {
     padding: 4px;
 }
@@ -121,7 +125,8 @@ table td, table th {
 
 table th {
     padding: 8px;
-    text-align: left;
+    text-transform: uppercase;
+    font-size: 80%;
     border-bottom: 2px solid #ccc;
 }
 
