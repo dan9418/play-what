@@ -18,24 +18,23 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const ValueRowManager = ({ value, reducedValue, setValue, podType, setPodType }) => {
+const ValueRowManager = ({ pods, setPods, podType, setPodType }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	const rows = value.map((v, i) => {
+	const rows = pods.map((v, i) => {
 		return (
 			<ValueRow
 				i={i}
 				key={i}
-				value={value}
-				reducedValue={reducedValue}
-				setValue={setValue}
+				pods={pods}
+				setPods={setPods}
 				podType={podType}
 			/>
 		);
 	});
 
-	const addPod = () => setValue([...value, [0, 0]]);
+	const addPod = () => setPods([...pods, [0, 0]]);
 	return [...rows, isEditing ? <NewPodRow key="new" addPod={addPod} /> : null];
 
 };

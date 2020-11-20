@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import DropdownInput from '../../ui/DropdownInput/DropdownInput';
 import BasicDemo from './demos/BasicDemo';
-import CellDemo from './demos/CellDemo';
 import './ExploreTab.css';
 
 const DEMOS = [
@@ -9,11 +8,6 @@ const DEMOS = [
 		id: 'basic',
 		name: 'Basic',
 		component: <BasicDemo />
-	},
-	{
-		id: 'cell',
-		name: 'Cell',
-		component: <CellDemo />
 	}
 ];
 

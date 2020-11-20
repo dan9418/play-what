@@ -21,8 +21,8 @@ const ListMeter = ({ list }) => {
 const IndexListMeter = ({ max, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = indexList.find(v => pw_core.CoreUtils.modulo(v, max) === i);
-		const reduced = pw_core.CoreUtils.modulo(value, max);
+		const index = indexList.find(v => pw_core.CoreUtils.modulo(v, max) === i);
+		const reduced = pw_core.CoreUtils.modulo(index, max);
 		const color = colorFn(reduced);
 
 		const style = ColorUtils.getStylesFromBgColor(color);

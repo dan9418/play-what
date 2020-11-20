@@ -5,7 +5,7 @@ const getHeaders = (podType, isEditing) => {
 	return ['#', 'Pod', 'Pitch', 'Octave', 'Degree', 'Preset', isEditing ? 'Delete' : undefined];
 }
 
-const ValueTableHeader = ({ value, podType }) => {
+const ValueTableHeader = ({ podType }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 

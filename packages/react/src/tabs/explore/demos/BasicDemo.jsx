@@ -6,18 +6,20 @@ import Panel from '../Panel';
 
 
 const BasicDemo = () => {
-	const [value, setValue] = useState(SCALE.Major.value);
-	const [podType, setPodType] = useState('note');
+	const [pods, _setPods] = useState(SCALE.Major.value);
+	const [podType, _setPodType] = useState('note');
 	const [viewer, _setViewer] = useState(VIEWERS[2]);
 	const [viewerProps, setViewerProps] = useState(VIEWERS[2].defaultProps);
 
 	const setViewer = v => { _setViewer(v); setViewerProps(v.defaultProps); };
+	const setPods = v => { _setPods(v); setViewerProps({ ...viewerProps, pods: v }); };
+	const setPodType = v => { _setPodType(v); _setViewerProps({ ...viewerProps, podType: v }); };
 
 	return (
 		<>
 			<PodContextProvider
-				value={value}
-				setValue={setValue}
+				pods={pods}
+				setPods={setPods}
 				podType={podType}
 				setPodType={setPodType}
 				viewer={viewer}

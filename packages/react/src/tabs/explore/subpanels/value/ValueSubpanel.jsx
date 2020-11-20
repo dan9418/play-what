@@ -10,10 +10,10 @@ import ValueTable from "./table/ValueTable";
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
-	const { value, setValue, podType } = usePodContext();
+	const { pods, setPods, podType } = usePodContext();
 	const { isEditing } = useEditContext();
 	if (!isEditing) return null;
-	const setHelper = v => setValue(v.value);
+	const setHelper = v => setPods(v.value);
 	return (
 		<div className="preset-box">
 			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>

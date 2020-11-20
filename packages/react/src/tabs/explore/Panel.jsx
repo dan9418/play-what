@@ -8,14 +8,14 @@ import ValueSubpanel from "./subpanels/value/ValueSubpanel";
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
-	const { value, podType } = podContext;
+	const { pods, podType } = podContext;
 	const previewOptions = { podType, reduce: podType !== 'pod' };
 	return (
 		<div className='model-panel-header'>
 			<div>
 				<span className='model-name'>{name}</span>
 				<span className='type'>{podType}</span>
-				<div className="preview pw-accent-fg">{PodUtils.getPreview(value, previewOptions)}</div>
+				<div className="preview pw-accent-fg">{PodUtils.getPreview(pods, previewOptions)}</div>
 			</div>
 			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
 		</div>
@@ -38,7 +38,7 @@ const GenericPanel = ({ name, children }) => {
 
 const Panel = ({ name }) => {
 	const podContext = usePodContext();
-	const { value, setValue, podType, setPodType } = podContext;
+	const { podType, setPodType } = podContext;
 	const isEditable = !!setPodType;
 	return (
 		<GenericPanel name={name}>
