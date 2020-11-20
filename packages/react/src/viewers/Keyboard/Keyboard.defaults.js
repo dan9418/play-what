@@ -1,5 +1,6 @@
-import { COLOR_SCHEME } from "@pw/color/src/ColorConstants";
-import { LABEL_SCHEME } from "@pw/color/src/LabelConstants";
+
+import { COLOR_SCHEME } from '@pw/core/src/ColorConstants';
+import { LABEL_SCHEME } from '@pw/core/src/LabelConstants';
 import { SCALE } from "@pw/core/src/Presets";
 
 const DEFAULT_KEYBOARD_PROPS = {

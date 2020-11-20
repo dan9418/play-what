@@ -1,5 +1,6 @@
-import { COLOR_SCHEME_VALUES } from "@pw/color/src/ColorConstants";
-import { LABEL_SCHEME_VALUES } from "@pw/color/src/LabelConstants";
+
+import { COLOR_SCHEME_VALUES } from '@pw/core/src/ColorConstants';
+import { LABEL_SCHEME_VALUES } from '@pw/core/src/LabelConstants';
 import * as React from "react";
 import useEditContext from "../../other/EditContext";
 import usePodContext from "../../other/PodContext";
