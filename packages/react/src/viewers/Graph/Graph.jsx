@@ -1,7 +1,7 @@
-import PodUtils from '@pw/core/src/modules/PodUtils';
-import { SCALE } from '@pw/core/src/modules/Presets';
+import PodUtils from '@pw/core/src/PodUtils';
+import { SCALE } from '@pw/core/src/Presets';
 import React from 'react';
-import { MAX } from '../../../../core/src/modules/Constants';
+import { MAX } from '../../../../core/src/Constants';
 import './Graph.css';
 import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 

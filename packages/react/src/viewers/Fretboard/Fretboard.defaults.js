@@ -1,6 +1,6 @@
 import { COLOR_SCHEME } from '@pw/color/src/ColorConstants';
 import { LABEL_SCHEME } from '@pw/color/src/LabelConstants';
-import { SCALE } from '@pw/core/src/modules/Presets';
+import { SCALE } from '@pw/core/src/Presets';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 const DEFAULT_FRETBOARD_PROPS = {

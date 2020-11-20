@@ -109,10 +109,6 @@ table {
     text-align: center;
 }
 
-table th {
-    padding: 4px;
-}
-
 table {
     border-collapse: collapse;
     margin: auto;
@@ -120,7 +116,7 @@ table {
 }
 
 table td, table th {
-    padding: 8px;
+    padding: 8px 4px;
 }
 
 table th {

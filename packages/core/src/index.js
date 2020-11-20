@@ -1,5 +1,5 @@
-import Tuning from './modules/Tuning';
-import Utils from './modules/Utils';
+import Tuning from './Tuning';
+import Utils from './Utils';
 
 export default {
 	Utils,

@@ -1,4 +1,4 @@
-import PodUtils from '@pw/core/src/modules/PodUtils';
+import PodUtils from '@pw/core/src/PodUtils';
 import React from 'react';
 import useEditContext from "../../../../../other/EditContext";
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';

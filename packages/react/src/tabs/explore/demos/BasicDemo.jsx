@@ -1,4 +1,4 @@
-import { SCALE } from '@pw/core/src/modules/Presets';
+import { SCALE } from '@pw/core/src/Presets';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';
 import { VIEWERS } from '../../../viewers/viewers';

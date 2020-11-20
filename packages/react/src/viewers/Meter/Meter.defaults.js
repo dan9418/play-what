@@ -1,4 +1,4 @@
-import { SCALE } from "@pw/core/src/modules/Presets";
+import { SCALE } from "@pw/core/src/Presets";
 
 const DEFAULT_METER_PROPS = {
 	podContext: {
