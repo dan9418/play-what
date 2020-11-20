@@ -2,10 +2,28 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
+import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
-import { PresetCell } from './PodRow';
 
-const PodListRow = ({ i, value, reducedValue, setValue, podType }) => {
+const PresetCell = ({ value, setValue, isEditing, podType }) => {
+	const sharedOptions = { podType };
+	const presets = PodUtils.getPresets(sharedOptions);
+	const preset = PodUtils.findPreset(value, sharedOptions);
+	const presetName = preset ? preset.id : '?';
+
+	const setHelper = v => { if (v.value) setValue(v.value); }
+
+	const unknown = { id: '--', name: 'Unknown' };
+	const options = [unknown, ...presets];
+
+	return (
+		<td>
+			{isEditing ? <DropdownInputI options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
+		</td>
+	)
+}
+
+const ValueRow = ({ i, value, reducedValue, setValue, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -58,4 +76,4 @@ const PodListRow = ({ i, value, reducedValue, setValue, podType }) => {
 	);
 };
 
-export default PodListRow;
+export default ValueRow;

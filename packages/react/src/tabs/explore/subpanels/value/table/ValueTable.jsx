@@ -1,6 +1,6 @@
 import React from 'react';
-import usePodContext from '../../../../other/PodContext';
-import ValueRowManager from './rows/ValueRowManager';
+import usePodContext from '../../../../../other/PodContext';
+import ValueRowManager from './ValueRowManager';
 import ValueTableHeader from './ValueTableHeader';
 
 const ValueTable = () => {

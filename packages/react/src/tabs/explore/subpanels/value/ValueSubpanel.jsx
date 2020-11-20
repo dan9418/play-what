@@ -5,7 +5,7 @@ import usePodContext from "../../../../other/PodContext";
 import ButtonInput from "../../../../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import Subpanel from "../../Subpanel";
-import ValueTable from "./ValueTable";
+import ValueTable from "./table/ValueTable";
 
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);

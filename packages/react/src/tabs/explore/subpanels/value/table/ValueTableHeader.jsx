@@ -1,5 +1,5 @@
 import React from 'react';
-import useEditContext from '../../../../other/EditContext';
+import useEditContext from '../../../../../other/EditContext';
 
 const getHeaders = (podType, isEditing) => {
 	return ['#', 'Pod', 'Pitch', 'Octave', 'Degree', 'Preset', isEditing ? 'Delete' : undefined];

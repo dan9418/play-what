@@ -1,8 +1,8 @@
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
-import PodListRow from './PodListRow';
-import PodRow from './PodRow';
+
+import ValueRow from './ValueRow';
 
 const NewPodRow = ({ addPod }) => {
 	return (
@@ -24,7 +24,7 @@ const ValueRowManager = ({ value, reducedValue, setValue, podType, setPodType })
 
 	const rows = value.map((v, i) => {
 		return (
-			<PodListRow
+			<ValueRow
 				i={i}
 				key={i}
 				value={value}
