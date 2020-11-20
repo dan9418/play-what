@@ -20,12 +20,12 @@ export const LABEL_SCHEME = {
 	pitchClass: {
 		id: 'pitchClass',
 		name: 'Pitch Class',
-		value: pod => pod ? Utils.modulo(pod[0], 12) : null //TODO PodUtils
+		value: pod => pod ? PodUtils.getPitchClass(pod) : null
 	},
 	octave: {
 		id: 'octave',
 		name: 'Octave',
-		value: pod => pod ? Math.floor(pod[0] / 12) + 4 : null //TODO PodUtils
+		value: pod => pod ? PodUtils.getOctave(pod) : null
 	},
 	interval: {
 		id: 'interval',
