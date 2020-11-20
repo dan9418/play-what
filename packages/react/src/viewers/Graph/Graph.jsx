@@ -22,8 +22,7 @@ const Label = ({ axis, children }) => {
 	);
 };
 
-const getCells = (origin, podContext) => {
-	const { value, podType } = podContext;
+const getCells = (origin, pods) => {
 	const cells = [];
 	for (let p = MAX[0] - 1; p >= -1; p--) {
 		cells.push(<Label key={'p' + p} axis='y'>{p > -1 && p}</Label>)
@@ -34,7 +33,7 @@ const getCells = (origin, podContext) => {
 			else {
 				const point = [p, d];
 				const isOrigin = PodUtils.areEqual(origin, point);
-				const isResultant = value.findIndex(v => PodUtils.areEqual(v, point)) >= 0;
+				const isResultant = pods.findIndex(v => PodUtils.areEqual(v, point)) >= 0;
 				cells.push(<Cell key={d + '-' + p} color={isOrigin ? 'red' : isResultant ? 'blue' : null} />)
 			}
 		}
@@ -44,13 +43,13 @@ const getCells = (origin, podContext) => {
 
 const Graph = userProps => {
 	const props = { ...DEFAULT_GRAPH_PROPS, ...userProps };
-	const { origin, title, xLabel, yLabel, podContext } = props;
+	const { origin, title, xLabel, yLabel, pods, podType } = props;
 	return (
 		<div className="graph-container">
 			<div className="graph-title">{title}</div>
 			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<div className="y-label">{yLabel}</div>
-				<div className="graph">{getCells(origin, podContext)}</div>
+				<div className="graph">{getCells(origin, pods)}</div>
 			</div>
 			<div className="x-label">{xLabel}</div>
 		</div>

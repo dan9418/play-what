@@ -33,9 +33,9 @@ const IndexListMeter = ({ max, indexList, colorFn }) => {
 	return <ListMeter list={list} />
 };
 
-const PodListMeter = ({ podList }) => {
-	const P = podList.map(([p, d]) => p);
-	const D = podList.map(([p, d]) => d);
+const PodListMeter = ({ pods }) => {
+	const P = pods.map(([p, d]) => p);
+	const D = pods.map(([p, d]) => d);
 	return (
 		<>
 			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} />
@@ -46,10 +46,9 @@ const PodListMeter = ({ podList }) => {
 
 const Meter = (userProps) => {
 	const props = { ...DEFAULT_METER_PROPS, ...userProps };
-	const { podContext } = props;
-	const { value, podType } = podContext;
+	const { pods, podType } = props;
 
-	return <PodListMeter podList={value} />;
+	return <PodListMeter pods={pods} />;
 }
 
 export default Meter;

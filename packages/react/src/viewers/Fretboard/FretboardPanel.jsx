@@ -12,7 +12,7 @@ import "./Fretboard.css";
 export const FretboardPanel = ({ }) => {
 	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
 	const { isEditing } = useEditContext();
-	const { fretRange, tuning, colorFn, labelFn, podContext } = viewerProps;
+	const { fretRange, tuning, colorFn, labelFn } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);

@@ -11,7 +11,7 @@ import "./Keyboard.css";
 export const KeyboardPanel = ({ }) => {
 	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
 	const { isEditing } = useEditContext();
-	const { keyRange, colorFn, labelFn, podContext } = viewerProps;
+	const { keyRange, colorFn, labelFn } = viewerProps;
 	const [keyLow, keyHigh] = keyRange;
 
 	const colorSchemeDef = COLOR_SCHEME_VALUES.find(o => o.value === colorFn);

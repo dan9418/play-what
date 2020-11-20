@@ -18,7 +18,7 @@ const PresetCell = ({ value, setValue, isEditing, podType }) => {
 
 	return (
 		<td>
-			{isEditing ? <DropdownInputI options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
+			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
 		</td>
 	)
 }

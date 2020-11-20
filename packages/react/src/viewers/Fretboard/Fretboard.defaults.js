@@ -13,10 +13,9 @@ const DEFAULT_FRETBOARD_PROPS = {
 	labelFn: LABEL_FN.interval.value,
 	tuningFn: TUNING_FN.TET.value,
 	toneFn: TONE_FN.sine.value,
-	podContext: {
-		value: SCALE.Major.value,
-		podType: 'note'
-	}
+	pods: SCALE.Major.value,
+	podType: 'note'
+
 };
 
 export default DEFAULT_FRETBOARD_PROPS;

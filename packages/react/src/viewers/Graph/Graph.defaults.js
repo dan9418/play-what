@@ -5,10 +5,8 @@ const DEFAULT_GRAPH_PROPS = {
 	title: 'd vs. p',
 	xLabel: 'd',
 	yLabel: 'p',
-	podContext: {
-		value: SCALE.Major.value,
-		podType: 'note'
-	}
+	pods: SCALE.Major.value,
+	podType: 'note'
 }
 
 export default DEFAULT_GRAPH_PROPS;
