@@ -1,4 +1,4 @@
-import { LIST_PRESETS } from "@pw/core/src/Pod.presets";
+import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
@@ -9,10 +9,10 @@ import ValueTable from "./ValueTable";
 
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [type, setType] = useState(LIST_PRESETS[0]);
-	const { value, setValue, podType, isList } = usePodContext();
+	const [type, setType] = useState(PRESET_TYPES[0]);
+	const { value, setValue, podType } = usePodContext();
 	const { isEditing } = useEditContext();
-	if (!isList || !isEditing) return null;
+	if (!isEditing) return null;
 	const setHelper = v => setValue(v.value);
 	return (
 		<div className="preset-box">
@@ -28,7 +28,7 @@ const PresetBox = () => {
 					<tbody>
 						<tr>
 							<td>
-								<DropdownInput options={LIST_PRESETS} value={type} setValue={setType} />
+								<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
 							</td>
 							<td>
 								<DropdownInput options={type.presets} value={null} setValue={setHelper} />

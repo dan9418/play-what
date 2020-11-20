@@ -18,37 +18,26 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const ValueRowManager = ({ value, reducedValue, setValue, podType, setPodType, isList, setIsList }) => {
+const ValueRowManager = ({ value, reducedValue, setValue, podType, setPodType }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	if (!isList) {
+	const rows = value.map((v, i) => {
 		return (
-			<PodRow
+			<PodListRow
+				i={i}
+				key={i}
 				value={value}
 				reducedValue={reducedValue}
 				setValue={setValue}
 				podType={podType}
 			/>
 		);
-	}
-	else {
-		const rows = value.map((v, i) => {
-			return (
-				<PodListRow
-					i={i}
-					key={i}
-					value={value}
-					reducedValue={reducedValue}
-					setValue={setValue}
-					podType={podType}
-				/>
-			);
-		});
+	});
 
-		const addPod = () => setValue([...value, [0, 0]]);
-		return [...rows, isEditing ? <NewPodRow key="new" addPod={addPod} /> : null];
-	}
+	const addPod = () => setValue([...value, [0, 0]]);
+	return [...rows, isEditing ? <NewPodRow key="new" addPod={addPod} /> : null];
+
 };
 
 export default ValueRowManager;

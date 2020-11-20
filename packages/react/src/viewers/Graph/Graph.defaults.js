@@ -7,8 +7,7 @@ const DEFAULT_GRAPH_PROPS = {
 	yLabel: 'p',
 	podContext: {
 		value: SCALE.Major.value,
-		podType: 'note',
-		isList: true
+		podType: 'note'
 	}
 }
 

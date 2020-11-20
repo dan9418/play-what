@@ -14,13 +14,13 @@ const CellDemo = () => {
 
 	return (
 		<>
-			<PodContextProvider value={keyCenter} setValue={setKeyCenter} podType="note" isList={false}>
+			<PodContextProvider value={keyCenter} setValue={setKeyCenter} podType="note">
 				<Panel name="Key Center" />
 			</PodContextProvider>
-			<PodContextProvider value={intervals} setValue={setIntervals} podType="interval" isList>
+			<PodContextProvider value={intervals} setValue={setIntervals} podType="interval">
 				<Panel name="Intervals" />
 			</PodContextProvider>
-			<PodContextProvider value={notes} podType="note" isList>
+			<PodContextProvider value={notes} podType="note">
 				<Panel name="Notes" />
 			</PodContextProvider>
 		</>

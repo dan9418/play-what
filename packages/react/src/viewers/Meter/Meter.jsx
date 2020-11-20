@@ -47,12 +47,9 @@ const PodListMeter = ({ podList }) => {
 const Meter = (userProps) => {
 	const props = { ...DEFAULT_METER_PROPS, ...userProps };
 	const { podContext } = props;
-	const { value, podType, isList } = podContext;
+	const { value, podType } = podContext;
 
-	if (!isList)
-		return <PodListMeter podList={[value]} />;
-	else
-		return <PodListMeter podList={value} />;
+	return <PodListMeter podList={value} />;
 }
 
 export default Meter;

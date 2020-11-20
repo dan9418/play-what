@@ -333,45 +333,24 @@ export const PRESET_TYPES = [
 		id: 'note',
 		name: 'Note',
 		podType: 'note',
-		isList: false,
-		presets: NOTE_VALUES
+		presets: NOTE_VALUES.map(n => ({ ...n, value: [n.value] }))
 	},
 	{
 		id: 'interval',
 		name: 'Interval',
 		podType: 'interval',
-		isList: false,
-		presets: INTERVAL_VALUES
+		presets: INTERVAL_VALUES.map(n => ({ ...n, value: [INTERVAL.P1.value, n.value] }))
 	},
 	{
 		id: 'chord',
 		name: 'Chord',
 		podType: 'interval',
-		isList: false,
 		presets: CHORD_VALUES
 	},
 	{
 		id: 'scale',
 		name: 'Scale',
 		podType: 'interval',
-		isList: false,
-		presets: SCALE_VALUES
-	}
-];
-
-export const LIST_PRESETS = [
-	{
-		id: 'chord',
-		name: 'Chord',
-		podType: 'interval',
-		isList: false,
-		presets: CHORD_VALUES
-	},
-	{
-		id: 'scale',
-		name: 'Scale',
-		podType: 'interval',
-		isList: false,
 		presets: SCALE_VALUES
 	}
 ];

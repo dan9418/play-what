@@ -40,9 +40,9 @@ const getScaleStyles = (keyType, scale) => {
 }
 
 const KeyboardKey = ({ noteIndex, scale, podContext, colorFn, labelFn, tuningFn, toneFn }) => {
-	const { value, podType, isList } = podContext;
+	const { value, podType } = podContext;
 
-	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
+	const pod = PodUtils.findPodWithPitch(value, noteIndex);
 
 	const color = colorFn(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);

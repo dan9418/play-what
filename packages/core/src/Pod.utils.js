@@ -41,20 +41,11 @@ class PodUtils {
 		return [p, d];
 	}
 
-	static reduceList(A, max = MAX) {
+	static reduce(A, max = MAX) {
 		const newValue = A.map((a) => {
 			return this.reduceSingle(a, max);
 		});
 		return newValue;
-	}
-
-	static reduce(value, options = {}) {
-		if (options.isList) {
-			return this.reduceList(value, options.max);
-		}
-		else {
-			return this.reduceSingle(value, options.max);
-		}
 	}
 
 	static findPodWithPitch(A, p) {
@@ -102,16 +93,13 @@ class PodUtils {
 	static getPreview(value, options = {}) {
 		if (!value) return '';
 
-		const { podType, isList, reduce } = options;
-		const testValue = reduce ? PodUtils.reduce(value, { isList }) : value;
+		const { podType, reduce } = options;
+		const testValue = reduce ? PodUtils.reduce(value) : value;
 		if (podType === 'pod') {
 			return JSON.stringify(testValue);
 		}
-		else if (isList) {
-			return testValue.map(v => this.getName(v, options)).join(', ');
-		}
 		else {
-			return this.getName(testValue, options)
+			return testValue.map(v => this.getName(v, options)).join(', ');
 		}
 	}
 

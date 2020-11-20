@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import SwitchInput from "../../../../ui/SwitchInput/SwitchInput";
 import Subpanel from "../../Subpanel";
 
 const POD_TYPES = [
@@ -36,33 +35,10 @@ const PodTypeBar = () => {
 	);
 };
 
-const ListBar = () => {
-	const { value, setValue, isList, setIsList } = usePodContext();
-	const { isEditing } = useEditContext();
-
-	const setHelper = v => {
-		setIsList(v);
-		setValue(v ? [value] : value[0]);
-	}
-
-	return (
-		<>
-			<div className='input-bar'>
-				<div>List</div>
-				{isEditing ?
-					<SwitchInput value={isList} setValue={setHelper} />
-					: JSON.stringify(isList)
-				}
-			</div>
-		</>
-	);
-};
-
 const ConfigSubpanel = () => {
 	return (
 		<Subpanel name="Config" >
 			<PodTypeBar />
-			<ListBar />
 		</Subpanel>
 	);
 };

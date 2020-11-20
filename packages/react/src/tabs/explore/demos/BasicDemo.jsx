@@ -8,7 +8,6 @@ import Panel from '../Panel';
 const BasicDemo = () => {
 	const [value, setValue] = useState(SCALE.Major.value);
 	const [podType, setPodType] = useState('note');
-	const [isList, setIsList] = useState(true);
 	const [viewer, _setViewer] = useState(VIEWERS[2]);
 	const [viewerProps, setViewerProps] = useState(VIEWERS[2].defaultProps);
 
@@ -21,8 +20,6 @@ const BasicDemo = () => {
 				setValue={setValue}
 				podType={podType}
 				setPodType={setPodType}
-				isList={isList}
-				setIsList={setIsList}
 				viewer={viewer}
 				setViewer={setViewer}
 				viewerProps={viewerProps}

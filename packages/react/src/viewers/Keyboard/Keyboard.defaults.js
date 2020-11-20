@@ -13,8 +13,7 @@ const DEFAULT_KEYBOARD_PROPS = {
 	toneFn: TONE_FN.sine.value,
 	podContext: {
 		value: SCALE.Major.value,
-		podType: 'note',
-		isList: true
+		podType: 'note'
 	}
 };
 

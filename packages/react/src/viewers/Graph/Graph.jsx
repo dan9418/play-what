@@ -23,7 +23,7 @@ const Label = ({ axis, children }) => {
 };
 
 const getCells = (origin, podContext) => {
-	const { value, podType, isList } = podContext;
+	const { value, podType } = podContext;
 	const cells = [];
 	for (let p = MAX[0] - 1; p >= -1; p--) {
 		cells.push(<Label key={'p' + p} axis='y'>{p > -1 && p}</Label>)

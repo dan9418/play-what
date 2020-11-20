@@ -6,10 +6,10 @@ import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
 export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorFn, labelFn, tuningFn, toneFn }) => {
-	const { value, podType, isList } = podContext;
+	const { value, podType } = podContext;
 
 	const noteIndex = stringTuning + fretIndex;
-	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
+	const pod = PodUtils.findPodWithPitch(value, noteIndex);
 
 	const color = colorFn(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
