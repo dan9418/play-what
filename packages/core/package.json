@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@pw/color": "0.0.0",
-    "@pw/tone": "0.0.0"
+    "@pw/tone": "0.0.0",
+    "color": "^3.1.3",
+    "tone": "^14.7.58"
   }
 }

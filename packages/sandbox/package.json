@@ -15,11 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "@pw/core": "^0.0.0",
-    "@pw/parse": "^0.0.0",
     "@pw/react": "^0.0.0",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-json-view": "^1.19.1"
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@hot-loader/react-dom": "^16.13.0",
