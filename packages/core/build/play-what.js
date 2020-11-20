@@ -95,31 +95,7 @@ module.exports =
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_Tuning__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/Tuning */ \"./src/modules/Tuning.js\");\n/* harmony import */ var _modules_Utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Utils */ \"./src/modules/Utils.js\");\n\r\n\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tUtils: _modules_Utils__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\r\n\tTuning: _modules_Tuning__WEBPACK_IMPORTED_MODULE_0__[\"default\"]\r\n});\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/Tuning.js":
-/*!*******************************!*\
-  !*** ./src/modules/Tuning.js ***!
-  \*******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst getFrequency = (p) => {\r\n\tconst a = p + 3;\r\n\tconst b = a / 12;\r\n\tconst c = Math.pow(2, b);\r\n\tconst f = 440 * c;\r\n\treturn Math.round(f);\r\n};\r\n\r\n/* const getFrequencies = pitches => {\r\n    return pitches.map(p => getFrequency(p[0]));\r\n} */\r\n\r\n/*\r\nconst CALIBRATION_NOTE = {\r\n    frequency: 440,\r\n    noteIndex: 9\r\n};\r\n\r\nconst CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);\r\n*/\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tgetFrequency\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/Tuning.js?");
-
-/***/ }),
-
-/***/ "./src/modules/Utils.js":
-/*!******************************!*\
-  !*** ./src/modules/Utils.js ***!
-  \******************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\nconst splitAt = (str, i) => [str.slice(0, i), str.slice(i)];\r\n\r\nconst rotate = (arr, count) => {\r\n\tcount -= arr.length * Math.floor(count / arr.length);\r\n\tarr.push.apply(arr, arr.splice(0, count));\r\n\treturn arr;\r\n};\r\n\r\nconst modulo = (a, b) => {\r\n\treturn ((a % b) + b) % b;\r\n}\r\n\r\nconst moduloSum = (a, b, divisor) => {\r\n\tconst offset = 0;\r\n\tconst subtraction = false;\r\n\tconst dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));\r\n\treturn modulo(dividend, divisor) + offset;\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\tsplitAt,\r\n\trotate,\r\n\tmodulo,\r\n\tmoduloSum\r\n});\r\n\n\n//# sourceURL=webpack:///./src/modules/Utils.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\r\n\r\n});\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
