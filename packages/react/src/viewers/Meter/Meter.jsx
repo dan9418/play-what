@@ -1,6 +1,6 @@
 import pw_core from '@pw/core';
-import { COLOR_SCHEME } from '@pw/core/src/ColorConstants';
-import ColorUtils from '@pw/core/src/ColorUtils';
+import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
+import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
 import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
@@ -21,8 +21,8 @@ const ListMeter = ({ list }) => {
 const IndexListMeter = ({ max, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const value = indexList.find(v => pw_core.Utils.modulo(v, max) === i);
-		const reduced = pw_core.Utils.modulo(value, max);
+		const value = indexList.find(v => pw_core.CoreUtils.modulo(v, max) === i);
+		const reduced = pw_core.CoreUtils.modulo(value, max);
 		const color = colorFn(reduced);
 
 		const style = ColorUtils.getStylesFromBgColor(color);

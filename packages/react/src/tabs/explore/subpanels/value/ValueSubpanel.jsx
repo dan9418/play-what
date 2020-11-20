@@ -1,4 +1,4 @@
-import { LIST_PRESETS } from "@pw/core/src/Presets";
+import { LIST_PRESETS } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
 import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";

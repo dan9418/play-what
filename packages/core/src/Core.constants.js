@@ -1,4 +1,4 @@
-import { PITCH, DEGREE, DIATONIC } from './Presets';
+import { PITCH, DEGREE, DIATONIC } from './Pod.presets';
 
 const MAX_PITCH = 12;
 const MAX_DEGREE = 7

@@ -1,4 +1,4 @@
-const getFrequency = (p) => {
+export const getFrequency = (p) => {
 	const a = p + 3;
 	const b = a / 12;
 	const c = Math.pow(2, b);
@@ -18,7 +18,3 @@ const CALIBRATION_NOTE = {
 
 const CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);
 */
-
-export default {
-	getFrequency
-};

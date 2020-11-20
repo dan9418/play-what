@@ -1,6 +1,6 @@
-import ColorUtils from '@pw/core/src/ColorUtils';
-import PodUtils from '@pw/core/src/PodUtils';
-import Utils from '@pw/core/src/Utils';
+import ColorUtils from '@pw/core/src/Color.utils';
+import PodUtils from '@pw/core/src/Pod.utils';
+import CoreUtils from '@pw/core/src/Core.utils';
 import * as React from 'react';
 import "./Keyboard.css";
 
@@ -49,7 +49,7 @@ const KeyboardKey = ({ noteIndex, podContext, colorScheme, labelScheme, scale })
 
 	const label = labelScheme(pod);
 
-	let keyType = BLACK_KEY_INDICES.includes(Utils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
+	let keyType = BLACK_KEY_INDICES.includes(CoreUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
 	let scaleStyles = getScaleStyles(keyType, scale);
 	let classes = ['keyboard-key', `${keyType}-key`, keyType];

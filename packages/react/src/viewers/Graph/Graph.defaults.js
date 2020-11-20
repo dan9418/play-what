@@ -1,4 +1,4 @@
-import { SCALE } from "@pw/core/src/Presets";
+import { SCALE } from "@pw/core/src/Pod.presets";
 
 const DEFAULT_GRAPH_PROPS = {
 	origin: [0, 0],

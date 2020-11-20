@@ -1,5 +1,5 @@
 /*import Pod from '../pod/Pod';
-import utils from '../../Utils';
+import utils from '../../Core.utils';
 import { INTERVAL } from '../pod/Interval';
 import PodList from './PodList';
 

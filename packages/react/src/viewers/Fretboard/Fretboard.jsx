@@ -1,5 +1,5 @@
-import ColorUtils from '@pw/core/src/ColorUtils';
-import PodUtils from '@pw/core/src/PodUtils';
+import ColorUtils from '@pw/core/src/Color.utils';
+import PodUtils from '@pw/core/src/Pod.utils';
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";

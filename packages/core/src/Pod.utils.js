@@ -1,5 +1,5 @@
-import { INTERVAL_VALUES, NOTE_VALUES } from './Presets';
-import Utils from './Utils';
+import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
+import CoreUtils from './Core.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
@@ -12,8 +12,8 @@ class PodUtils {
 	}
 
 	static addPod(a, b, max = MAX) {
-		const p = a[0] + b[0];//Utils.moduloSum(a[0], b[0], divisor[0]);
-		const d = a[1] + b[1];//Utils.moduloSum(a[1], b[1], divisor[1]);
+		const p = a[0] + b[0];//Core.utils.moduloSum(a[0], b[0], divisor[0]);
+		const d = a[1] + b[1];//Core.utils.moduloSum(a[1], b[1], divisor[1]);
 		return [p, d];
 	}
 
@@ -36,8 +36,8 @@ class PodUtils {
 	}
 
 	static reduceSingle(a, max = MAX) {
-		const p = Utils.modulo(a[0], max[0]);
-		const d = Utils.modulo(a[1], max[1]);
+		const p = CoreUtils.modulo(a[0], max[0]);
+		const d = CoreUtils.modulo(a[1], max[1]);
 		return [p, d];
 	}
 
@@ -92,7 +92,7 @@ class PodUtils {
 	}
 
 	static getPitchClass(value, options = {}) {
-		return Utils.modulo(value[0], MAX[0]);
+		return CoreUtils.modulo(value[0], MAX[0]);
 	}
 
 	static getOctave(value, options = {}) {

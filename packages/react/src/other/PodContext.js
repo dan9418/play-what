@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import PodUtils from '../../../core/src/PodUtils';
+import PodUtils from '../../../core/src/Pod.utils';
 
 const PodContext = createContext(null);
 

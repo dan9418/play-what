@@ -1,4 +1,4 @@
-import PodUtils from "./PodUtils";
+import PodUtils from "./Pod.utils";
 
 export const LABEL_SCHEME = {
 	none: {

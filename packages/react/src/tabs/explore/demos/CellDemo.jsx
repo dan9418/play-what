@@ -1,5 +1,5 @@
-import PodUtils from '@pw/core/src/PodUtils';
-import { NOTE, SCALE } from '@pw/core/src/Presets';
+import PodUtils from '@pw/core/src/Pod.utils';
+import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';
 import Panel from '../Panel';
