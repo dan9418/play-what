@@ -1,9 +1,9 @@
-import tone from "tone";
+import * as tone from 'tone'
 
 const VOLUME = new tone.Volume(-15);
 
 const MASTER_OUT = new tone.Synth().chain(VOLUME, tone.Master);
-const MASTER_OUT_POLY = new tone.PolySynth(12, tone.Synth).chain(VOLUME, tone.Master);
+const MASTER_OUT_POLY = new tone.PolySynth(tone.Synth).chain(VOLUME, tone.Master);
 const SHAPE = 'sine'
 
 MASTER_OUT_POLY.set({

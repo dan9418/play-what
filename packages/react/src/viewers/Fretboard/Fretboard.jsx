@@ -5,16 +5,19 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
-export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorScheme, labelScheme }) => {
+export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorFn, labelFn, tuningFn, toneFn }) => {
 	const { value, podType, isList } = podContext;
 
 	const noteIndex = stringTuning + fretIndex;
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
-	const color = colorScheme(pod)
+	const color = colorFn(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const label = labelScheme(pod);
+	const label = labelFn(pod);
+
+	const frequency = tuningFn(pod);
+	const onClick = () => toneFn(frequency);
 
 	const style = {
 		position: 'absolute',
@@ -35,7 +38,7 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorSc
 		<div className={classes.join(' ')}>
 			{false && <div className='fret-number'>{fretIndex + 1}</div>}
 			<div className='fret-string' />
-			<div className='label' style={style}>
+			<div className='label' style={style} onClick={onClick}>
 				{label}
 			</div>
 			{false && <div className='fret-dots'>{api.getDotsForFret(fretIndex + 1)}</div>}
@@ -44,7 +47,7 @@ export const Fret = ({ stringTuning, stringIndex, fretIndex, podContext, colorSc
 }
 
 const getFrets = (props) => {
-	const { fretRange, tuning, colorScheme, labelScheme, podContext } = props;
+	const { fretRange, tuning, ...otherProps } = props;
 	const [lo, hi] = fretRange;
 	//let min = config.strings.reduce((prev, current) => (prev.tuning < current.tuning) ? prev : current).tuning + config.fretLow;
 	//let max = config.strings.reduce((prev, current) => (prev.tuning > current.tuning) ? prev : current).tuning + config.fretHigh;
@@ -58,9 +61,7 @@ const getFrets = (props) => {
 					stringTuning={tuning[s]}
 					stringIndex={s}
 					fretIndex={f}
-					podContext={podContext}
-					colorScheme={colorScheme}
-					labelScheme={labelScheme}
+					{...otherProps}
 				/>
 			);
 		}

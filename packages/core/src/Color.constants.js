@@ -23,7 +23,7 @@ export const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ];
 
-export const COLOR_SCHEME = {
+export const COLOR_FN = {
 	none: {
 		id: 'none',
 		name: 'None',
@@ -41,4 +41,4 @@ export const COLOR_SCHEME = {
 	}
 };
 
-export const COLOR_SCHEME_VALUES = Object.values(COLOR_SCHEME);
+export const COLOR_SCHEME_VALUES = Object.values(COLOR_FN);

@@ -1,6 +1,6 @@
 import PodUtils from "./Pod.utils";
 
-export const LABEL_SCHEME = {
+export const LABEL_FN = {
 	none: {
 		id: 'none',
 		name: 'None',
@@ -38,4 +38,4 @@ export const LABEL_SCHEME = {
 	}
 };
 
-export const LABEL_SCHEME_VALUES = Object.values(LABEL_SCHEME);
+export const LABEL_SCHEME_VALUES = Object.values(LABEL_FN);

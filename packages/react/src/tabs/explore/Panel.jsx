@@ -23,7 +23,7 @@ const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 };
 
 const GenericPanel = ({ name, children }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<div className='model-panel'>
 			<PanelHeader isOpen={isOpen} setIsOpen={setIsOpen} name={name} />

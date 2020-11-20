@@ -39,15 +39,18 @@ const getScaleStyles = (keyType, scale) => {
 	}
 }
 
-const KeyboardKey = ({ noteIndex, podContext, colorScheme, labelScheme, scale }) => {
+const KeyboardKey = ({ noteIndex, scale, podContext, colorFn, labelFn, tuningFn, toneFn }) => {
 	const { value, podType, isList } = podContext;
 
 	const pod = PodUtils.findPodWithPitch(isList ? value : [value], noteIndex);
 
-	const color = colorScheme(pod)
+	const color = colorFn(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const label = labelScheme(pod);
+	const label = labelFn(pod);
+
+	const frequency = tuningFn(pod);
+	const onClick = () => toneFn(frequency);
 
 	let keyType = BLACK_KEY_INDICES.includes(CoreUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
@@ -58,7 +61,7 @@ const KeyboardKey = ({ noteIndex, podContext, colorScheme, labelScheme, scale })
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
 
 	return (
-		<div className={`${keyType}-key-container`}>
+		<div className={`${keyType}-key-container`} onClick={onClick}>
 			<div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
 				<div className='keyboard-key-label' style={labelStyles}>
 					{label}
