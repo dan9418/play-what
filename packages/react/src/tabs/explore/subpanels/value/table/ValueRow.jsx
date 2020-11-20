@@ -5,13 +5,13 @@ import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 import NumericInput from '../../../../../ui/NumericInput/NumericInput';
 
-const PresetCell = ({ pods, setPods, isEditing, podType }) => {
+const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };
 	const presets = PodUtils.getPresets(sharedOptions);
-	const preset = PodUtils.findPreset(pods, sharedOptions);
+	const preset = PodUtils.findPreset(pod, sharedOptions);
 	const presetName = preset ? preset.id : '?';
 
-	const setHelper = v => { if (v.value) setPodss(v.value); }
+	const setHelper = v => { if (v.value) setPod(v.value); }
 
 	const unknown = { id: '--', name: 'Unknown' };
 	const options = [unknown, ...presets];
@@ -65,7 +65,7 @@ const ValueRow = ({ i, pods, setPods, podType }) => {
 			<td>
 				{pod[1]}
 			</td>
-			<PresetCell value={pods} setValue={setPod} isEditing={isEditing} podType={podType} />
+			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
 			{isEditing &&
 				<td>
 					<ButtonInput onClick={remove}>X</ButtonInput>
