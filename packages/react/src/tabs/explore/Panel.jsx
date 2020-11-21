@@ -50,16 +50,20 @@ const GenericPanel = ({ name, children }) => {
 
 const Panel = ({ name }) => {
 	return (
-		<>
-			<SectionHeader name="Inputs" />
-			<GenericPanel name="Pods">
-				<PodSubpanel />
-			</GenericPanel>
-			<SectionHeader name="Outputs" />
-			<GenericPanel name="Viewer">
-				<ViewerSubpanel />
-			</GenericPanel>
-		</>
+		<div className='side-by'>
+			<div className='section'>
+				<SectionHeader name="Inputs" />
+				<GenericPanel name="Pods">
+					<PodSubpanel />
+				</GenericPanel>
+			</div>
+			<div className='section'>
+				<SectionHeader name="Outputs" />
+				<GenericPanel name="Viewer">
+					<ViewerSubpanel />
+				</GenericPanel>
+			</div>
+		</div>
 	);
 }
 

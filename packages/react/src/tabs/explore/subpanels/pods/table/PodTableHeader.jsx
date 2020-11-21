@@ -19,7 +19,11 @@ const PodTypeCell = () => {
 }
 
 const getHeaders = (podType, isEditing) => {
-	return ['#', 'Pod', 'P', 'O', 'D', <PodTypeCell />, isEditing ? 'Delete' : undefined];
+	const result = ['#', 'Pod', 'Pitch', 'Octave', 'Degree', <PodTypeCell />];
+	if (isEditing) {
+		result.push('Delete')
+	}
+	return result;
 }
 
 const PodTableHeader = ({ podType }) => {
