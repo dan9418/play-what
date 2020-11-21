@@ -16,10 +16,10 @@ const Explore = () => {
 
 	return (
 		<div className='explore-tab'>
-			<div className="demo-select">
+			<h1 className="demo-select">
 				<label>Demo:</label>
 				<DropdownInput options={DEMOS} value={demo} setValue={setDemo} />
-			</div>
+			</h1>
 			{demo.component}
 		</div>
 	);

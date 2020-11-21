@@ -4,7 +4,7 @@ import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
 import ButtonInput from "../../../../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import Subpanel from "../../Subpanel";
+import Subpanel from "../Subpanel";
 import PodTable from "./table/PodTable";
 
 const PresetBox = () => {

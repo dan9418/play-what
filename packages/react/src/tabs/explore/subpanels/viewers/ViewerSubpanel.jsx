@@ -3,7 +3,7 @@ import useEditContext from "../../../../other/EditContext";
 import usePodContext from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import { VIEWERS } from "../../../../viewers/viewers";
-import Subpanel from "../../Subpanel";
+import Subpanel from "../Subpanel";
 
 const ViewerBar = () => {
 	const { viewer, setViewer } = usePodContext();

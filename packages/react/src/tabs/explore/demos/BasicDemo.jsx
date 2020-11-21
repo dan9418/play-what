@@ -2,8 +2,8 @@ import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import { PodContextProvider } from '../../../other/PodContext';
 import { VIEWERS } from '../../../viewers/viewers';
-import Panel from '../Panel';
-
+import InputPanel from '../panels/InputPanel';
+import OutputPanel from '../panels/OutputPanel';
 
 const BasicDemo = () => {
 	const [pods, _setPods] = useState(SCALE.Major.value);
@@ -27,7 +27,10 @@ const BasicDemo = () => {
 				viewerProps={viewerProps}
 				setViewerProps={setViewerProps}
 			>
-				<Panel name="Basic" />
+				<div className="basic-demo">
+					<InputPanel />
+					<OutputPanel />
+				</div>
 			</PodContextProvider>
 		</>
 	);

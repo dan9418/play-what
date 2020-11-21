@@ -43,22 +43,15 @@
     margin-right: 16px;
 }
 
+@media(max-width: 512px) {
+    .logo {
+        display: none;
+    }
+}
+
 .breadcrumb::after {
     content: ">";
     padding: 0 8px;
-}
-
-.button {
-    height: 50px;
-    width: 50px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 10px;
-}
-
-.button:hover {
-    cursor: pointer;
-    border: 1px solid white;
 }
 
 .right-nav {
@@ -75,16 +68,15 @@
     box-sizing: border-box;
 }
 
-
 .tab {
     padding: 0 16px;
     cursor: pointer;
 }
 
 .tab:hover {
-    color: cornflowerblue;
+    color: #D36135;
 }
 
 .tab.active {
-    border-bottom: 4px solid cornflowerblue;
+    border-bottom: 4px solid #D36135;
 }

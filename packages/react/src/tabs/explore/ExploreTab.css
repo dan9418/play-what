@@ -1,12 +1,6 @@
 /* General */
 
-.subpanel {}
-
-.subpanel-name {
-    font-weight: bold;
-}
-
-h2 {
+h1, h2, h3 {
     margin: 0;
 }
 
@@ -30,17 +24,69 @@ h2 {
     margin-right: 8px;
 }
 
-/* ModelPanel ModelPanelBody ModelPanelFooter */
+/* BasicDemo */
 
-.model-panel {
+.basic-demo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Panel */
+
+.panel {
+    box-sizing: border-box;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 512px;
+}
+
+.panel-header {
+    padding: 16px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+/* Subpanel */
+
+.subpanel {
+    margin: 16px 0;
     padding: 16px;
     padding-bottom: 24;
     box-sizing: border-box;
     width: 100%;
+    max-width: 512px;
     border-radius: 16px;
     background-color: #f5f5f5;
     box-shadow: -2px 3px 15px 5px rgba(0, 0, 0, 0.1);
 }
+
+.subpanel-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.name-container {
+    display: flex;
+    align-items: center;
+}
+
+.pod-type {
+    padding-left: 8px;
+    color: #555;
+}
+
+.preview {
+    padding: 4px;
+}
+
+/* InputBar */
 
 .input-bar {
     display: flex;
@@ -61,67 +107,7 @@ h2 {
     padding: 4px;
 }
 
-/* ModelPanelHeader */
-
-.model-panel-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.model-panel-header button {
-    font-weight: bolder;
-    height: 32px;
-    width: 32px;
-    border-radius: 100%;
-}
-
-.model-panel-body {
-    background-color: #f5f5f5;
-    border-radius: 0 0 16px 16px;
-}
-
-.model-name {
-    font-size: 120%;
-    font-weight: bold;
-}
-
-.type {
-    padding: 4px;
-    color: #555;
-}
-
-.preview {
-    padding: 4px;
-}
-
-/* SubpanelHeader */
-
-.section-header {
-    padding: 16px;
-    border-bottom: 1px solid #ccc;
-}
-
-.subpanel-header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.subpanel-header>button {
-    background-color: transparent;
-    color: #555;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-.subpanel-header>.button-input:hover {
-    background-color: #ccc;
-}
-
-.subpanel-body {
-    box-sizing: border-box;
-}
+/* Other */
 
 .preset-box {
     padding: 8px;
@@ -135,18 +121,4 @@ h2 {
 
 .viewer-box {
     margin-top: 16px;
-}
-
-.side-by {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.section {
-    width: 512px;
-    margin: 16px;
-    box-sizing: border-box;
 }
