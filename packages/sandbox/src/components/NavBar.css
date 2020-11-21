@@ -35,19 +35,12 @@
 }
 
 .logo {
-    font-size: 20px;
+    font-size: 120%;
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: bolder;
     cursor: pointer;
-}
-
-.nav-link {
-    cursor: pointer;
-    color: white;
-}
-
-.nav-link:hover {
+    margin-right: 16px;
 }
 
 .breadcrumb::after {
@@ -80,4 +73,18 @@
     cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
+}
+
+
+.tab {
+    padding: 0 16px;
+    cursor: pointer;
+}
+
+.tab:hover {
+    color: cornflowerblue;
+}
+
+.tab.active {
+    border-bottom: 4px solid cornflowerblue;
 }
