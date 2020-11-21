@@ -5,7 +5,7 @@ import usePodContext from "../../../../other/PodContext";
 import ButtonInput from "../../../../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import Subpanel from "../../Subpanel";
-import ValueTable from "./table/ValueTable";
+import PodTable from "./table/PodTable";
 
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -41,13 +41,13 @@ const PresetBox = () => {
 	);
 };
 
-const ValueSubpanel = () => {
+const PodSubpanel = () => {
 	return (
 		<Subpanel name="Value" >
-			<ValueTable />
+			<PodTable />
 			<PresetBox />
 		</Subpanel>
 	);
 };
 
-export default ValueSubpanel;
+export default PodSubpanel;

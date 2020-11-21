@@ -4,8 +4,7 @@ import React, { useState } from "react";
 import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
-import ConfigSubpanel from "./subpanels/config/ConfigSubpanel";
-import ValueSubpanel from "./subpanels/value/ValueSubpanel";
+import PodSubpanel from "./subpanels/value/PodSubpanel";
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
@@ -38,13 +37,9 @@ const GenericPanel = ({ name, children }) => {
 }
 
 const Panel = ({ name }) => {
-	const podContext = usePodContext();
-	const { podType, setPodType } = podContext;
-	const isEditable = !!setPodType;
 	return (
 		<GenericPanel name={name}>
-			{isEditable && <ConfigSubpanel />}
-			<ValueSubpanel />
+			<PodSubpanel />
 			<AnalysisSubpanel />
 		</GenericPanel>
 	);

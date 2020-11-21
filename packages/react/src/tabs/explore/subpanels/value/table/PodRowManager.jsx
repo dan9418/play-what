@@ -2,7 +2,7 @@ import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 
-import ValueRow from './ValueRow';
+import ValueRow from './PodRow';
 
 const NewPodRow = ({ addPod }) => {
 	return (
