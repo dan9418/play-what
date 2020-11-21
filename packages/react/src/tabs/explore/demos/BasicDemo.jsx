@@ -1,6 +1,6 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
-import { VIEWERS } from '../../../viewers/viewers';
+import { VIEWER } from '../../../viewers/viewers';
 import InputPanel from '../panels/InputPanel';
 import OutputPanel from '../panels/OutputPanel';
 
@@ -28,8 +28,16 @@ const DEFAULT_OUTPUTS = [
 		id: 'output1',
 		name: 'Output 1',
 		value: {
-			viewerDef: VIEWERS[0],
-			viewerProps: VIEWERS[0].defaultProps
+			viewerDef: VIEWER.fretboard,
+			viewerProps: VIEWER.fretboard.defaultProps
+		}
+	},
+	{
+		id: 'output1',
+		name: 'Output 1',
+		value: {
+			viewerDef: VIEWER.keyboard,
+			viewerProps: VIEWER.keyboard.defaultProps
 		}
 	}
 ];
@@ -40,16 +48,8 @@ const BasicDemo = () => {
 
 	return (
 		<div className="basic-demo">
-			<div className="panel-list">
-				{inputs.map((input, i) => (
-					<InputPanel key={input.id} i={i} inputs={inputs} setInputs={setInputs} />)
-				)}
-			</div>
-			<div className="panel-list">
-				{outputs.map((output, i) => (
-					<OutputPanel key={output.id} i={i} inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
-				))}
-			</div>
+			<InputPanel inputs={inputs} setInputs={setInputs} />
+			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
 		</div>
 	);
 };

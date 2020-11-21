@@ -3,15 +3,18 @@ import { OutputContextProvider } from "../../../other/OutputContext";
 import ViewerSubpanel from "../subpanels/viewers/ViewerSubpanel";
 import Panel from "./Panel";
 
-const OutputPanel = ({ i, inputs, outputs, setOutputs }) => {
-	const output = outputs[i];
-	const setOutput = output => setOutputs([...outputs.slice(0, i), output, ...outputs.slice(i + 1)])
+const OutputPanel = ({ inputs, outputs, setOutputs }) => {
 	return (
-		<OutputContextProvider output={output} setOutput={setOutput} inputs={inputs}>
-			<Panel name="Outputs">
-				<ViewerSubpanel />
-			</Panel>
-		</OutputContextProvider>
+		<Panel name="Outputs">
+			{outputs.map((output, i) => {
+				const setOutput = output => setOutputs([...outputs.slice(0, i), output, ...outputs.slice(i + 1)]);
+				return (
+					<OutputContextProvider key={i} output={output} setOutput={setOutput} inputs={inputs}>
+						<ViewerSubpanel />
+					</OutputContextProvider>
+				);
+			})}
+		</Panel>
 	);
 }
 

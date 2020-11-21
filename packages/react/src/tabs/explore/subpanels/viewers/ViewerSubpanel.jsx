@@ -2,7 +2,7 @@ import React from "react";
 import useEditContext from "../../../../other/EditContext";
 import useOutputContext from "../../../../other/OutputContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import { VIEWERS } from "../../../../viewers/viewers";
+import { VIEWER_VALUES } from "../../../../viewers/viewers";
 import Subpanel from "../Subpanel";
 
 const ViewerBar = () => {
@@ -13,7 +13,7 @@ const ViewerBar = () => {
 		<div className='input-bar'>
 			<div>Component</div>
 			{isEditing ?
-				<DropdownInput options={VIEWERS} value={viewerDef} setValue={setViewerDef} />
+				<DropdownInput options={VIEWER_VALUES} value={viewerDef} setValue={setViewerDef} />
 				: viewerDef.name}
 		</div>
 	);

@@ -8,11 +8,13 @@ const InputPanel = ({ i, inputs, setInputs }) => {
 	const setInput = input => setInputs([...inputs.slice(0, i), input, ...inputs.slice(i + 1)])
 
 	return (
-		<InputContextProvider input={input} setInput={setInput}>
-			<Panel name="Inputs">
-				<PodSubpanel />
-			</Panel>
-		</InputContextProvider>
+		<Panel name="Inputs">
+			{inputs.map((input, i) => (
+				<InputContextProvider key={i} input={input} setInput={setInput}>
+					<PodSubpanel />
+				</InputContextProvider>
+			))}
+		</Panel>
 	);
 }
 
