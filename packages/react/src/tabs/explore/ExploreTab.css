@@ -103,33 +103,6 @@ h2 {
     padding-bottom: 24px;
 }
 
-/* table */
-
-table {
-    text-align: center;
-}
-
-table {
-    border-collapse: collapse;
-    margin: auto;
-    width: 100%;
-}
-
-table td, table th {
-    padding: 8px 4px;
-}
-
-table th {
-    padding: 8px;
-    text-transform: uppercase;
-    font-size: 80%;
-    border-bottom: 2px solid #ccc;
-}
-
-table tbody tr:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-}
-
 .preset-box {
     padding: 8px;
     text-align: center;

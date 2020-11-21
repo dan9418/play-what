@@ -43,7 +43,7 @@ const PresetBox = () => {
 
 const PodSubpanel = () => {
 	return (
-		<Subpanel name="Value" >
+		<Subpanel name="Pods" >
 			<PodTable />
 			<PresetBox />
 		</Subpanel>

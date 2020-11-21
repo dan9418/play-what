@@ -13,7 +13,7 @@ const ViewerBar = () => {
 
 	return (
 		<div className='input-bar'>
-			<div>Viewer</div>
+			<div>Component</div>
 			{isEditing ?
 				<DropdownInput options={VIEWERS} value={viewerDef} setValue={setViewer} />
 				: viewer.name}

@@ -12,3 +12,5 @@ export const POD_TYPES = [
 		name: 'Interval'
 	}
 ];
+
+export const POD_TYPE_VALUES = Object.values(POD_TYPES);

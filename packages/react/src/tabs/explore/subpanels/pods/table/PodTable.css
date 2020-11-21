@@ -1,0 +1,26 @@
+
+.pod-table {
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+}
+
+.pod-table td, .pod-table th {
+    padding: 8px 4px;
+}
+
+.pod-table th {
+    padding: 8px;
+    text-transform: uppercase;
+    font-size: 80%;
+    border-bottom: 2px solid #ccc;
+}
+
+.pod-table tbody tr:not(:last-child) {
+    border-bottom: 1px solid #ccc;
+}
+
+.pod-table td:nth-child(2), .pod-table td:nth-child(5) {
+    border-right: 1px solid #ccc;
+}

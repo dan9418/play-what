@@ -1,15 +1,14 @@
 import React from 'react';
-import usePodContext from '../../../../../other/PodContext';
 import ValueRowManager from './PodRowManager';
+import './PodTable.css';
 import PodTableHeader from './PodTableHeader';
 
 const PodTable = () => {
-	const podContext = usePodContext();
 	return (
 		<table className='pod-table'>
-			<PodTableHeader {...podContext} />
+			<PodTableHeader />
 			<tbody>
-				<ValueRowManager {...podContext} />
+				<ValueRowManager />
 			</tbody>
 		</table>
 	);
