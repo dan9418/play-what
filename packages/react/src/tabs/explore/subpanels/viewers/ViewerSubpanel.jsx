@@ -39,12 +39,12 @@ const ViewerBox = () => {
 };
 
 
-const AnalysisSubpanel = () => {
+const ViewerSubpanel = () => {
 	return (
-		<Subpanel name="Analysis"  >
+		<Subpanel name="Viewer"  >
 			<ViewerBox />
 		</Subpanel>
 	);
 };
 
-export default AnalysisSubpanel;
+export default ViewerSubpanel;

@@ -3,8 +3,8 @@ import PodListUtils from "@pw/core/src/PodList.utils";
 import React, { useState } from "react";
 import usePodContext from "../../other/PodContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
-import AnalysisSubpanel from "./subpanels/analysis/AnalysisSubpanel";
-import PodSubpanel from "./subpanels/value/PodSubpanel";
+import ViewerSubpanel from "./subpanels/viewers/ViewerSubpanel";
+import PodSubpanel from "./subpanels/pods/PodSubpanel";
 
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
@@ -40,7 +40,7 @@ const Panel = ({ name }) => {
 	return (
 		<GenericPanel name={name}>
 			<PodSubpanel />
-			<AnalysisSubpanel />
+			<ViewerSubpanel />
 		</GenericPanel>
 	);
 }
