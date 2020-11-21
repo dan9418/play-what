@@ -2,7 +2,7 @@ import React, { createContext, useContext } from 'react';
 
 const OutputContext = createContext(null);
 
-export const OutputContextProvider = ({ output, setOutput, children }) => {
+export const OutputContextProvider = ({ output, setOutput, inputs, children }) => {
 
 	const { viewerDef, viewerProps } = output.value;
 	const setViewerProps = newProps => setOutput({ ...output, value: { ...output.value, viewerProps: newProps } });
@@ -12,9 +12,8 @@ export const OutputContextProvider = ({ output, setOutput, children }) => {
 		setOutput({ ...output, value });
 	};
 
-
 	const outputContext = {
-		viewerDef, viewerProps, setViewerDef, setViewerProps, setViewerProp
+		viewerDef, viewerProps, setViewerDef, setViewerProps, setViewerProp, inputs
 	};
 
 	return (

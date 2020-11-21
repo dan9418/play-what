@@ -19,18 +19,44 @@ const ViewerBar = () => {
 	);
 };
 
+const ViewerInputBar = () => {
+	const { viewerProps, setViewerProps, inputs } = useOutputContext();
+	const { isEditing } = useEditContext();
+
+	const setHelper = v => {
+		if (v.value) {
+			setViewerProps({
+				...viewerProps,
+				...v.value
+			})
+		}
+	};
+	const unknown = { id: 'default', name: 'Default' };
+	const options = [unknown, ...inputs];
+
+	return (
+		<div className='input-bar'>
+			<div>Input</div>
+			{isEditing ?
+				<DropdownInput options={options} value={null} setValue={setHelper} />
+				: '?'}
+		</div>
+	);
+};
+
 const ViewerBox = () => {
 
-	const { viewerDef } = useOutputContext()
+	const { viewerDef, viewerProps } = useOutputContext()
 	const ViewerComponent = viewerDef.component;
 	const PanelComponent = viewerDef.panelComponent;
 
 	return (
 		<>
 			<ViewerBar />
+			<ViewerInputBar />
 			{PanelComponent && <PanelComponent />}
 			<div className="viewer-box">
-				<ViewerComponent {...{}} />
+				<ViewerComponent {...viewerProps} />
 			</div>
 		</>
 	);

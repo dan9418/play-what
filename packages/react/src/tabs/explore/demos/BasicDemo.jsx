@@ -12,6 +12,14 @@ const DEFAULT_INPUTS = [
 			pods: SCALE.Major.value,
 			podType: 'note'
 		}
+	},
+	{
+		id: 'input2',
+		name: 'Input 2',
+		value: {
+			pods: SCALE.NaturalMinor.value,
+			podType: 'note'
+		}
 	}
 ];
 
@@ -32,12 +40,12 @@ const BasicDemo = () => {
 
 	return (
 		<div className="basic-demo">
-			<div className="input-panel-list">
+			<div className="panel-list">
 				{inputs.map((input, i) => (
 					<InputPanel key={input.id} i={i} inputs={inputs} setInputs={setInputs} />)
 				)}
 			</div>
-			<div className="output-panel-list">
+			<div className="panel-list">
 				{outputs.map((output, i) => (
 					<OutputPanel key={output.id} i={i} inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
 				))}
