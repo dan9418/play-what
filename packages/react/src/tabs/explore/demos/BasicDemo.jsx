@@ -20,8 +20,8 @@ const DEFAULT_OUTPUTS = [
 		id: 'output1',
 		name: 'Output 1',
 		value: {
-			def: VIEWERS[2],
-			props: VIEWERS[2].defaultProps
+			viewerDef: VIEWERS[0],
+			viewerProps: VIEWERS[0].defaultProps
 		}
 	}
 ];

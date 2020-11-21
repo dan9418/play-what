@@ -1,29 +1,29 @@
 import React from "react";
 import useEditContext from "../../../../other/EditContext";
+import useOutputContext from "../../../../other/OutputContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import { VIEWERS } from "../../../../viewers/viewers";
 import Subpanel from "../Subpanel";
 
 const ViewerBar = () => {
-	const { viewer, setViewer } = { viewer: VIEWERS[0] };
+	const { viewerDef, setViewerDef } = useOutputContext();
 	const { isEditing } = useEditContext();
-
-	const viewerDef = VIEWERS.find(p => p.id === viewer.id);
 
 	return (
 		<div className='input-bar'>
 			<div>Component</div>
 			{isEditing ?
-				<DropdownInput options={VIEWERS} value={viewerDef} setValue={setViewer} />
-				: viewer.name}
+				<DropdownInput options={VIEWERS} value={viewerDef} setValue={setViewerDef} />
+				: viewerDef.name}
 		</div>
 	);
 };
 
 const ViewerBox = () => {
 
-	const ViewerComponent = VIEWERS[0].component;
-	const PanelComponent = VIEWERS[0].panelComponent;
+	const { viewerDef } = useOutputContext()
+	const ViewerComponent = viewerDef.component;
+	const PanelComponent = viewerDef.panelComponent;
 
 	return (
 		<>
