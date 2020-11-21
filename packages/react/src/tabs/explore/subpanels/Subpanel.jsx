@@ -4,10 +4,9 @@ import useEditContext, { EditContextProvider } from "../../../other/EditContext"
 import useInputContext from "../../../other/InputContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
+import useOutputContext from "../../../other/OutputContext";
 
-const SubpanelHeader = ({ name, isOpen, setIsOpen }) => {
-	const inputContext = useInputContext();
-	const { pods, podType } = inputContext || { pods: [], podType: 'note' };
+const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 	return (
@@ -15,9 +14,9 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen }) => {
 			<div className='preview-container'>
 				<div className='name-container'>
 					<h3 className='pod-name'>{name}</h3>
-					<div className='pod-type'>{podType}</div>
+					<div className='pod-type'>{caption}</div>
 				</div>
-				<div className='preview pw-accent-fg'>{PodListUtils.getPreview(pods, { podType })}</div>
+				<div className='preview pw-accent-fg'>{preview}</div>
 			</div>
 			<div className="button-container">
 				{isOpen && isEditing && <ButtonInput
@@ -44,11 +43,31 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen }) => {
 };
 
 const Subpanel = ({ name, children }) => {
-	const [isOpen, setIsOpen] = useState(true);
+	const [isOpen, setIsOpen] = useState(false);
+	const inputContext = useInputContext();
+	const outputContext = useOutputContext();
+	let caption = null;
+	let preview = null;
+	let viewerPreview = null;
+	if (inputContext) {
+		const { pods, podType } = inputContext;
+		preview = PodListUtils.getPreview(pods, { podType })
+	}
+	else if (outputContext) {
+		const { viewerDef, viewerProps } = outputContext;
+		const ViewerComponent = viewerDef.component;
+		viewerPreview = <ViewerComponent {...viewerProps} />;
+	}
+
 	return (
 		<div className='subpanel'>
 			<EditContextProvider>
-				<SubpanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} />
+				<SubpanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
+				{!isOpen && viewerPreview && (
+					<div className="viewer-preview">
+						{viewerPreview}
+					</div>
+				)}
 				{isOpen && (
 					<div className='subpanel-body'>
 						{children}

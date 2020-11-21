@@ -108,6 +108,10 @@ h1, h2, h3 {
     padding: 4px;
 }
 
+.viewer-preview {
+    padding: 0 0 24px 0;
+}
+
 .subpanel-body {
     padding: 0 0 24px 0;
 }
