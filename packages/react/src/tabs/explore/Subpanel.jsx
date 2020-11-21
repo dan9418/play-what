@@ -7,7 +7,6 @@ const SubpanelHeader = ({ name }) => {
 	const { isEditing, setIsEditing } = editContext;
 	return (
 		<div className='subpanel-header'>
-			<div className="subpanel-name">{name}</div>
 			<ButtonInput
 				isActive={isEditing}
 				onClick={() => setIsEditing(!isEditing)}

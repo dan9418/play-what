@@ -6,6 +6,18 @@ import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import ViewerSubpanel from "./subpanels/viewers/ViewerSubpanel";
 import PodSubpanel from "./subpanels/pods/PodSubpanel";
 
+const SectionHeader = ({ isOpen, setIsOpen, name }) => {
+	const podContext = usePodContext();
+	const { pods, podType } = podContext;
+	const previewOptions = { podType };
+	return (
+		<h3 className='Section-header'>
+			{name}
+		</h3>
+	);
+};
+
+
 const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 	const podContext = usePodContext();
 	const { pods, podType } = podContext;
@@ -17,7 +29,7 @@ const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 				<span className='type'>{podType}</span>
 				<div className="preview pw-accent-fg">{PodListUtils.getPreview(pods, previewOptions)}</div>
 			</div>
-			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? 'done' : 'edit'} </ButtonInput>
+			<ButtonInput isActive={isOpen} onClick={() => setIsOpen(!isOpen)}>{isOpen ? '-' : '+'} </ButtonInput>
 		</div>
 	);
 };
@@ -38,10 +50,16 @@ const GenericPanel = ({ name, children }) => {
 
 const Panel = ({ name }) => {
 	return (
-		<GenericPanel name={name}>
-			<PodSubpanel />
-			<ViewerSubpanel />
-		</GenericPanel>
+		<>
+			<SectionHeader name="Inputs" />
+			<GenericPanel name="Pods">
+				<PodSubpanel />
+			</GenericPanel>
+			<SectionHeader name="Outputs" />
+			<GenericPanel name="Viewer">
+				<ViewerSubpanel />
+			</GenericPanel>
+		</>
 	);
 }
 
