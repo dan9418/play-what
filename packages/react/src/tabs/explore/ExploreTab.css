@@ -55,8 +55,7 @@ h1, h2, h3 {
 
 .subpanel {
     margin: 16px 0;
-    padding: 16px;
-    padding-bottom: 24;
+    padding: 0 16px;
     box-sizing: border-box;
     width: 100%;
     max-width: 512px;
@@ -67,9 +66,32 @@ h1, h2, h3 {
 
 .subpanel-header {
     padding: 16px;
+    padding-right: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.subpanel-header .button-container button {
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 8px;
+    color: white;
+}
+
+.subpanel-header .button-container button svg {
+    height: 16px;
+    width: 16px;
+}
+
+.subpanel-header .button-container button svg, .subpanel-header .button-container button svg * {
+    color: white;
+    fill: white;
 }
 
 .name-container {
@@ -84,6 +106,10 @@ h1, h2, h3 {
 
 .preview {
     padding: 4px;
+}
+
+.subpanel-body {
+    padding: 0 0 24px 0;
 }
 
 /* InputBar */

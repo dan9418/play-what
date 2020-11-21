@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import useEditContext, { EditContextProvider } from "../../../other/EditContext";
 import usePodContext from "../../../other/PodContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
+import * as Icon from '../../../../../sandbox/src/img/Icons';
 
-const SubpanelHeader = ({ name }) => {
+const SubpanelHeader = ({ name, isOpen, setIsOpen }) => {
 	const podContext = usePodContext();
 	const { pods, podType } = podContext;
 	const editContext = useEditContext();
@@ -18,24 +19,41 @@ const SubpanelHeader = ({ name }) => {
 				</div>
 				<div className='preview pw-accent-fg'>{PodListUtils.getPreview(pods, { podType })}</div>
 			</div>
-			<ButtonInput
-				isActive={isEditing}
-				onClick={() => setIsEditing(!isEditing)}
-			>
-				{isEditing ? 'done' : 'edit'}
-			</ButtonInput>
+			<div className="button-container">
+				{isOpen && isEditing && <ButtonInput
+					isActive={false}
+					onClick={null}
+				>
+					<Icon.Cancel />
+				</ButtonInput>}
+				{isOpen && <ButtonInput
+					isActive={isEditing}
+					onClick={() => setIsEditing(!isEditing)}
+				>
+					{isEditing ? <Icon.Confirm /> : <Icon.Edit />}
+				</ButtonInput>}
+				<ButtonInput
+					isActive={isOpen}
+					onClick={() => setIsOpen(!isOpen)}
+				>
+					{isOpen ? <Icon.Minus /> : <Icon.Plus />}
+				</ButtonInput>
+			</div>
 		</div>
 	);
 };
 
 const Subpanel = ({ name, children }) => {
+	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<div className='subpanel'>
 			<EditContextProvider>
-				<SubpanelHeader name={name} />
-				<div className='subpanel-body'>
-					{children}
-				</div>
+				<SubpanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} />
+				{isOpen && (
+					<div className='subpanel-body'>
+						{children}
+					</div>
+				)}
 			</EditContextProvider>
 		</div>
 	);
