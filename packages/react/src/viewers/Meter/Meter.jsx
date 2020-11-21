@@ -1,12 +1,12 @@
-import pw_core from '@pw/core';
 import { COLOR_FN } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
+import CoreUtils from '@pw/core/src/Core.utils';
 import React from 'react';
 import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
 
-const getPitchColor = COLOR_FN.pitch;
-const getDegreeColor = COLOR_FN.degree;
+const getPitchColor = COLOR_FN.pitch.value;
+const getDegreeColor = COLOR_FN.degree.value;
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {
@@ -21,8 +21,8 @@ const ListMeter = ({ list }) => {
 const IndexListMeter = ({ max, indexList, colorFn }) => {
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const index = indexList.find(v => pw_core.CoreUtils.modulo(v, max) === i);
-		const reduced = pw_core.CoreUtils.modulo(index, max);
+		const index = indexList.find(v => CoreUtils.modulo(v, max) === i);
+		const reduced = CoreUtils.modulo(index, max);
 		const color = colorFn(reduced);
 
 		const style = ColorUtils.getStylesFromBgColor(color);

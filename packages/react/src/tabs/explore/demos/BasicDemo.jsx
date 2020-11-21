@@ -1,38 +1,48 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
-import { PodContextProvider } from '../../../other/PodContext';
 import { VIEWERS } from '../../../viewers/viewers';
 import InputPanel from '../panels/InputPanel';
 import OutputPanel from '../panels/OutputPanel';
 
-const BasicDemo = () => {
-	const [pods, _setPods] = useState(SCALE.Major.value);
-	const [podType, _setPodType] = useState('note');
-	const [viewer, _setViewer] = useState(VIEWERS[2]);
-	const [viewerProps, setViewerProps] = useState(VIEWERS[2].defaultProps);
+const DEFAULT_INPUTS = [
+	{
+		id: 'input1',
+		name: 'Input 1',
+		value: {
+			pods: SCALE.Major.value,
+			podType: 'note'
+		}
+	}
+];
 
-	const setViewer = v => { _setViewer(v); setViewerProps(v.defaultProps); };
-	const setPods = v => { _setPods(v); setViewerProps({ ...viewerProps, pods: v }); };
-	const setPodType = v => { _setPodType(v); _setViewerProps({ ...viewerProps, podType: v }); };
+const DEFAULT_OUTPUTS = [
+	{
+		id: 'output1',
+		name: 'Output 1',
+		value: {
+			def: VIEWERS[2],
+			props: VIEWERS[2].defaultProps
+		}
+	}
+];
+
+const BasicDemo = () => {
+	const [inputs, setInputs] = useState(DEFAULT_INPUTS);
+	const [outputs, setOutputs] = useState(DEFAULT_OUTPUTS);
 
 	return (
-		<>
-			<PodContextProvider
-				pods={pods}
-				setPods={setPods}
-				podType={podType}
-				setPodType={setPodType}
-				viewer={viewer}
-				setViewer={setViewer}
-				viewerProps={viewerProps}
-				setViewerProps={setViewerProps}
-			>
-				<div className="basic-demo">
-					<InputPanel />
-					<OutputPanel />
-				</div>
-			</PodContextProvider>
-		</>
+		<div className="basic-demo">
+			<div className="input-panel-list">
+				{inputs.map((input, i) => (
+					<InputPanel key={input.id} i={i} inputs={inputs} setInputs={setInputs} />)
+				)}
+			</div>
+			<div className="output-panel-list">
+				{outputs.map((output, i) => (
+					<OutputPanel key={output.id} i={i} inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
+				))}
+			</div>
+		</div>
 	);
 };
 

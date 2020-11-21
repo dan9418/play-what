@@ -1,12 +1,12 @@
 import { POD_TYPES } from '@pw/core/src/Pod.constants';
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
-import usePodContext from '../../../../../other/PodContext';
+import useInputContext from '../../../../../other/InputContext';
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 const PodTypeCell = () => {
-	const podContext = usePodContext();
-	const { podType, setPodType } = podContext;
+	const inputContext = useInputContext();
+	const { podType, setPodType } = inputContext;
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 

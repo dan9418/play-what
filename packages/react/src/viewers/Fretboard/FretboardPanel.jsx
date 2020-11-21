@@ -3,14 +3,13 @@ import { COLOR_SCHEME_VALUES } from '@pw/core/src/Color.constants';
 import { LABEL_SCHEME_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
 import useEditContext from "../../other/EditContext";
-import usePodContext from "../../other/PodContext";
 import DropdownInput from "../../ui/DropdownInput/DropdownInput";
 import NumericInput from "../../ui/NumericInput/NumericInput";
 import { FRETBOARD_TUNING_VALUES } from "./Fretboard.api";
 import "./Fretboard.css";
 
 export const FretboardPanel = ({ }) => {
-	const { viewer, setViewer, viewerProps, setViewerProps } = usePodContext();
+	const { viewer, setViewer, viewerProps, setViewerProps } = {};
 	const { isEditing } = useEditContext();
 	const { fretRange, tuning, colorFn, labelFn } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;

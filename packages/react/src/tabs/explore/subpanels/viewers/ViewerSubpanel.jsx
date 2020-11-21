@@ -1,12 +1,11 @@
 import React from "react";
 import useEditContext from "../../../../other/EditContext";
-import usePodContext from "../../../../other/PodContext";
 import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
 import { VIEWERS } from "../../../../viewers/viewers";
 import Subpanel from "../Subpanel";
 
 const ViewerBar = () => {
-	const { viewer, setViewer } = usePodContext();
+	const { viewer, setViewer } = { viewer: VIEWERS[0] };
 	const { isEditing } = useEditContext();
 
 	const viewerDef = VIEWERS.find(p => p.id === viewer.id);
@@ -22,17 +21,16 @@ const ViewerBar = () => {
 };
 
 const ViewerBox = () => {
-	const podContext = usePodContext();
-	const { viewer, setViewer, viewerProps, setViewerProps } = podContext;
-	const ViewerComponent = podContext.viewer.component;
-	const PanelComponent = podContext.viewer.panelComponent;
+
+	const ViewerComponent = VIEWERS[0].component;
+	const PanelComponent = VIEWERS[0].panelComponent;
 
 	return (
 		<>
 			<ViewerBar />
 			{PanelComponent && <PanelComponent />}
 			<div className="viewer-box">
-				<ViewerComponent {...viewerProps} />
+				<ViewerComponent {...{}} />
 			</div>
 		</>
 	);

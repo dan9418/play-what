@@ -1,13 +1,13 @@
 import PodListUtils from "@pw/core/src/PodList.utils";
 import React, { useState } from "react";
 import useEditContext, { EditContextProvider } from "../../../other/EditContext";
-import usePodContext from "../../../other/PodContext";
+import useInputContext from "../../../other/InputContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
 
 const SubpanelHeader = ({ name, isOpen, setIsOpen }) => {
-	const podContext = usePodContext();
-	const { pods, podType } = podContext;
+	const inputContext = useInputContext();
+	const { pods, podType } = inputContext || { pods: [], podType: 'note' };
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 	return (
