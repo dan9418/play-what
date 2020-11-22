@@ -10,9 +10,15 @@ const Docs = () => {
                 For now, here are some useful links:
 			</p>
 			<ul>
-				<li>
-					<a href="https://github.com/dan9418/play-what">Current Monorepo</a>
-				</li>
+				<li>Current</li>
+				<ul>
+					<li>
+						<a href="https://dan9418.github.io/play-what/">App</a>
+					</li>
+					<li>
+						<a href="https://github.com/dan9418/play-what">Monorepo</a>
+					</li>
+				</ul>
 				<li>Beta</li>
 				<ul>
 					<li>Sample</li>
