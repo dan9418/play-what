@@ -6,18 +6,32 @@ import ViewerSubpanel from "../subpanels/viewers/ViewerSubpanel";
 import Panel from "./Panel";
 
 
+const NewPod = ({ children }) => {
+	const { isEditing } = useEditContext();
+	if (!isEditing) return null;
+	return (
+		<div className="new-pod">
+			<ButtonInput>+ Add</ButtonInput>
+		</div>
+	);
+}
+
 const SubpanelWrapper = ({ children, isLast }) => {
 	const { isEditing } = useEditContext();
 	return (
 		<div className="subpanel-wrapper">
-			{isEditing && <ButtonInput>+ Add</ButtonInput>}
+			<NewPod />
 			<div className="edit-wrapper">
-
 				{children}
-
-				{isEditing && <ButtonInput>X</ButtonInput>}
+				{isEditing &&
+					<div className="v-button">
+						<ButtonInput>^</ButtonInput>
+						<ButtonInput>X</ButtonInput>
+						<ButtonInput>v</ButtonInput>
+					</div>
+				}
 			</div>
-			{isLast && isEditing && <ButtonInput>+ Add</ButtonInput>}
+			{isLast && <NewPod />}
 		</div>
 	);
 }
@@ -29,7 +43,7 @@ const OutputPanel = ({ inputs, outputs, setOutputs }) => {
 			{outputs.map((output, i) => {
 				const setOutput = output => setOutputs([...outputs.slice(0, i), output, ...outputs.slice(i + 1)]);
 				return (
-					<SubpanelWrapper key={i} isLast={i === output.length - 1}>
+					<SubpanelWrapper key={i} isLast={i === outputs.length - 1}>
 						<OutputContextProvider output={output} setOutput={setOutput} inputs={inputs}>
 							<ViewerSubpanel name={`Out ${i + 1}`} />
 						</OutputContextProvider>

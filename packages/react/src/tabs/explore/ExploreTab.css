@@ -49,12 +49,13 @@ h1, h2, h3 {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    margin-bottom: 16px;
 }
 
 /* Subpanel */
 
 .subpanel {
-    margin: 16px 0;
+    margin: 0 0 16px 0;
     padding: 0 16px;
     box-sizing: border-box;
     width: 100%;
@@ -158,7 +159,14 @@ h1, h2, h3 {
     width: 100%;
 }
 
-.edit-wrapper>button {
+.edit-wrapper>.v-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-wrapper button {
     height: 32px;
     width: 32px;
     border-radius: 100%;
@@ -168,4 +176,14 @@ h1, h2, h3 {
     font-weight: bold;
     margin: auto 0 auto 16px;
     color: white;
+}
+
+.new-pod {
+    text-align: center;
+    margin-bottom: 16px;
+    margin-right: 48px;
+}
+
+.new-pod button {
+    width: 50%;
 }
