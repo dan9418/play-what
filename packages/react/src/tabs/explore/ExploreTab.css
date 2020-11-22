@@ -152,3 +152,20 @@ h1, h2, h3 {
 .viewer-box {
     margin-top: 16px;
 }
+
+.edit-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.edit-wrapper > button {
+    height: 32px;
+    width: 32px;
+    border-radius: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: auto 0 auto 16px;
+    color: white;
+}
