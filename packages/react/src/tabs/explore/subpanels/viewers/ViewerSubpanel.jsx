@@ -72,21 +72,13 @@ const ViewerBox = () => {
 };
 
 
-const ViewerSubpanel = ({ name }) => {
-	const onInsertAbove = null;
-	const onMoveUp = null;
-	const onDelete = null;
-	const onMoveDown = null;
-	const onInsertBelow = null;
-
+const ViewerSubpanel = ({ name, outputs, setOutputs, i }) => {
 	return (
 		<Subpanel
 			name={name}
-			onInsertAbove={onInsertAbove}
-			onMoveUp={onMoveUp}
-			onDelete={onDelete}
-			onMoveDown={onMoveDown}
-			onInsertBelow={onInsertBelow}
+			data={outputs}
+			setData={setOutputs}
+			i={i}
 		>
 			<ViewerBox />
 		</Subpanel>

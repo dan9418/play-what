@@ -92,8 +92,13 @@ const InnerSubpanel = ({ name, children }) => {
 };
 
 
-const Subpanel = ({ children, isLast, onInsertAbove, onMoveUp, onDelete, onMoveDown, onInsertBelow }) => {
+const Subpanel = ({ children, isLast, data, setData, i }) => {
 	const { isEditing } = useEditContext();
+	const onInsertAbove = null;
+	const onMoveUp = () => setData([...data.slice(0, i - 1), data[i], data[i - 1], ...data.slice(i + 1)]);
+	const onDelete = () => setData([...data.slice(0, i), ...data.slice(i + 1)]);
+	const onMoveDown = () => setData([...data.slice(0, i), data[i + 1], data[i], ...data.slice(i + 2)]);
+	const onInsertBelow = null;
 	return (
 		<div className="subpanel-wrapper">
 			<NewSubpanelButton onClick={onInsertAbove} />

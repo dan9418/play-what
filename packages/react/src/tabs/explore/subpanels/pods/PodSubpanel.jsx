@@ -41,9 +41,14 @@ const PresetBox = () => {
 	);
 };
 
-const PodSubpanel = ({ name }) => {
+const PodSubpanel = ({ name, i, inputs, setInputs }) => {
 	return (
-		<Subpanel name={name} >
+		<Subpanel
+			name={name}
+			data={inputs}
+			setData={setInputs}
+			i={i}
+		>
 			<PodTable />
 			<PresetBox />
 		</Subpanel>

@@ -11,7 +11,7 @@ const OutputPanel = ({ inputs, outputs, setOutputs }) => {
 				const isLast = i === outputs.length - 1;
 				return (
 					<OutputContextProvider key={i} output={output} setOutput={setOutput} inputs={inputs}>
-						<ViewerSubpanel name={`Out ${i + 1}`} />
+						<ViewerSubpanel i={i} name={`Out ${i + 1}`} outputs={outputs} setOutputs={setOutputs} />
 					</OutputContextProvider>
 				);
 			})}
