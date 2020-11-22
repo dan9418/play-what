@@ -6,7 +6,7 @@ import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
 import useOutputContext from "../../../other/OutputContext";
 
-const NewSubpanelButton = (props) => {
+export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
 	if (!isEditing) return null;
 	return (
@@ -92,13 +92,12 @@ const InnerSubpanel = ({ name, children }) => {
 };
 
 
-const Subpanel = ({ children, isLast, data, setData, i }) => {
+const Subpanel = ({ children, data, setData, name, i }) => {
 	const { isEditing } = useEditContext();
-	const onInsertAbove = null;
+	const onInsertAbove = () => setData([...data.slice(0, i), data[i], ...data.slice(i)]);
 	const onMoveUp = () => setData([...data.slice(0, i - 1), data[i], data[i - 1], ...data.slice(i + 1)]);
 	const onDelete = () => setData([...data.slice(0, i), ...data.slice(i + 1)]);
 	const onMoveDown = () => setData([...data.slice(0, i), data[i + 1], data[i], ...data.slice(i + 2)]);
-	const onInsertBelow = null;
 	return (
 		<div className="subpanel-wrapper">
 			<NewSubpanelButton onClick={onInsertAbove} />
@@ -114,7 +113,6 @@ const Subpanel = ({ children, isLast, data, setData, i }) => {
 					</div>
 				}
 			</div>
-			{isLast && <NewSubpanelButton onClick={onInsertBelow} />}
 		</div>
 	);
 }

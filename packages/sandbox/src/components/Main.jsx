@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import 'react-hot-loader';
 import { hot } from 'react-hot-loader/root';
+import About from '../../../react/src/tabs/about/About';
 import Docs from '../../../react/src/tabs/docs/DocsTab';
 import Explore from '../../../react/src/tabs/explore/ExploreTab';
 import * as Icons from '../img/Icons';
@@ -12,7 +13,7 @@ const TABS = [
 	{
 		id: 'about',
 		name: 'About',
-		component: <div />
+		component: <About />
 	},
 	{
 		id: 'explore',
@@ -27,7 +28,7 @@ const TABS = [
 ];
 
 const Main = () => {
-	const [tabIndex, setTabIndex] = useState(1);
+	const [tabIndex, setTabIndex] = useState(0);
 	const tab = TABS[tabIndex];
 	return (
 		<>

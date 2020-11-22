@@ -1,9 +1,11 @@
 import React from "react";
 import { InputContextProvider } from "../../../other/InputContext";
 import PodSubpanel from "../subpanels/pods/PodSubpanel";
+import { NewSubpanelButton } from "../subpanels/Subpanel";
 import Panel from "./Panel";
 
 const InputPanel = ({ inputs, setInputs }) => {
+	const onInsertBelow = () => setInputs([...inputs, inputs[inputs.length - 1]]);
 	return (
 		<Panel name="Inputs">
 			{inputs.map((input, i) => {
@@ -14,6 +16,7 @@ const InputPanel = ({ inputs, setInputs }) => {
 					</InputContextProvider>
 				)
 			})}
+			<NewSubpanelButton onClick={onInsertBelow} />
 		</Panel>
 	);
 }
