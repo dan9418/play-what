@@ -63,7 +63,7 @@ const Subpanel = ({ name, children }) => {
 	}
 
 	return (
-		<div className='subpanel'>
+		<div className={`subpanel ${!isOpen && 'collapsed'}`}>
 			<EditContextProvider>
 				<SubpanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
 				{!isOpen && viewerPreview && (
@@ -72,7 +72,7 @@ const Subpanel = ({ name, children }) => {
 					</div>
 				)}
 				{isOpen && (
-					<div className='subpanel-body'>
+					<div className={`subpanel-body ${!isOpen && 'collapsed'}`}>
 						{children}
 					</div>
 				)}

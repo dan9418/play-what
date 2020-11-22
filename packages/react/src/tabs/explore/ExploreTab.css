@@ -158,7 +158,7 @@ h1, h2, h3 {
     width: 100%;
 }
 
-.edit-wrapper > button {
+.edit-wrapper>button {
     height: 32px;
     width: 32px;
     border-radius: 100%;
