@@ -6,6 +6,16 @@ import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
 import useOutputContext from "../../../other/OutputContext";
 
+const NewSubpanelButton = (props) => {
+	const { isEditing } = useEditContext();
+	if (!isEditing) return null;
+	return (
+		<div className="new-pod">
+			<ButtonInput {...props}>+ Add</ButtonInput>
+		</div>
+	);
+}
+
 const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
@@ -42,7 +52,7 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 	);
 };
 
-const Subpanel = ({ name, children }) => {
+const InnerSubpanel = ({ name, children }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const inputContext = useInputContext();
 	const outputContext = useOutputContext();
@@ -80,5 +90,28 @@ const Subpanel = ({ name, children }) => {
 		</div>
 	);
 };
+
+
+const Subpanel = ({ children, isLast, onInsertAbove, onMoveUp, onDelete, onMoveDown, onInsertBelow }) => {
+	const { isEditing } = useEditContext();
+	return (
+		<div className="subpanel-wrapper">
+			<NewSubpanelButton onClick={onInsertAbove} />
+			<div className="edit-wrapper">
+				<InnerSubpanel name={name}>
+					{children}
+				</InnerSubpanel>
+				{isEditing &&
+					<div className="v-button">
+						<ButtonInput onClick={onMoveUp}><Icon.Up /></ButtonInput>
+						<ButtonInput onClick={onDelete}><Icon.Delete /></ButtonInput>
+						<ButtonInput onClick={onMoveDown}><Icon.Down /></ButtonInput>
+					</div>
+				}
+			</div>
+			{isLast && <NewSubpanelButton onClick={onInsertBelow} />}
+		</div>
+	);
+}
 
 export default Subpanel;
