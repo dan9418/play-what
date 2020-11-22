@@ -10,7 +10,7 @@ const InputPanel = ({ i, inputs, setInputs }) => {
 				const setInput = input => setInputs([...inputs.slice(0, i), input, ...inputs.slice(i + 1)])
 				return (
 					<InputContextProvider key={i} input={input} setInput={setInput}>
-						<PodSubpanel />
+						<PodSubpanel name={`In ${i + 1}`} />
 					</InputContextProvider>
 				)
 			})}

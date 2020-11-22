@@ -34,8 +34,7 @@ const ViewerInputBar = () => {
 		else {
 			const newProps = {
 				...viewerProps,
-				pods: viewerDef.defaultProps.pods,
-				podType: viewerDef.defaultProps.podType
+				...viewerDef.defaultProps
 			};
 			setViewerInput(null, newProps);
 		}
@@ -73,9 +72,9 @@ const ViewerBox = () => {
 };
 
 
-const ViewerSubpanel = () => {
+const ViewerSubpanel = ({ name }) => {
 	return (
-		<Subpanel name="Viewer"  >
+		<Subpanel name={name} >
 			<ViewerBox />
 		</Subpanel>
 	);

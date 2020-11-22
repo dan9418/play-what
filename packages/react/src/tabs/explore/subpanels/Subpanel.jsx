@@ -51,11 +51,14 @@ const Subpanel = ({ name, children }) => {
 	let viewerPreview = null;
 	if (inputContext) {
 		const { pods, podType } = inputContext;
+		caption = podType;
 		preview = PodListUtils.getPreview(pods, { podType })
 	}
 	else if (outputContext) {
-		const { viewerDef, viewerProps } = outputContext;
+		const { viewerDef, viewerProps, viewerInput } = outputContext;
 		const ViewerComponent = viewerDef.component;
+		caption = viewerDef.name
+		if (viewerInput) preview = viewerInput.name;
 		viewerPreview = <ViewerComponent {...viewerProps} />;
 	}
 

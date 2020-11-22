@@ -10,7 +10,7 @@ import PodTable from "./table/PodTable";
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
-	const {  setPods } = useInputContext();
+	const { setPods } = useInputContext();
 	const { isEditing } = useEditContext();
 	if (!isEditing) return null;
 	const setHelper = v => setPods(v.value);
@@ -41,9 +41,9 @@ const PresetBox = () => {
 	);
 };
 
-const PodSubpanel = () => {
+const PodSubpanel = ({ name }) => {
 	return (
-		<Subpanel name="Pods" >
+		<Subpanel name={name} >
 			<PodTable />
 			<PresetBox />
 		</Subpanel>

@@ -10,7 +10,7 @@ const OutputPanel = ({ inputs, outputs, setOutputs }) => {
 				const setOutput = output => setOutputs([...outputs.slice(0, i), output, ...outputs.slice(i + 1)]);
 				return (
 					<OutputContextProvider key={i} output={output} setOutput={setOutput} inputs={inputs}>
-						<ViewerSubpanel />
+						<ViewerSubpanel name={`Out ${i + 1}`} />
 					</OutputContextProvider>
 				);
 			})}
