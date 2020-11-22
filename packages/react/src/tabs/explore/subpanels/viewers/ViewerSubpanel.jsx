@@ -25,19 +25,19 @@ const ViewerInputBar = () => {
 
 	const setHelper = v => {
 		if (v.value) {
-			setViewerProps({
+			const newProps = {
 				...viewerProps,
 				...v.value
-			});
-			setViewerInput(v);
+			};
+			setViewerInput(v, newProps);
 		}
 		else {
-			setViewerProps({
+			const newProps = {
 				...viewerProps,
 				pods: viewerDef.defaultProps.pods,
 				podType: viewerDef.defaultProps.podType
-			});
-			setViewerInput(null);
+			};
+			setViewerInput(null, newProps);
 		}
 	};
 	const unknown = { id: 'default', name: 'Default' };
