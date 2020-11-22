@@ -85,12 +85,12 @@ h1, h2, h3 {
     color: white;
 }
 
-.subpanel-header .button-container button svg {
-    height: 16px;
-    width: 16px;
+.subpanel-header .button-container button svg, .edit-wrapper button svg {
+    height: 12px;
+    width: 12px;
 }
 
-.subpanel-header .button-container button svg, .subpanel-header .button-container button svg * {
+.subpanel-header .button-container button svg, .subpanel-header .button-container button svg *, .edit-wrapper button svg, .edit-wrapper button svg * {
     color: white;
     fill: white;
 }
@@ -174,7 +174,7 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    margin: auto 0 auto 16px;
+    margin: 0 0 16px 16px;
     color: white;
 }
 

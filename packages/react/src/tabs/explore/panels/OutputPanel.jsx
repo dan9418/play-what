@@ -4,7 +4,7 @@ import { OutputContextProvider } from "../../../other/OutputContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import ViewerSubpanel from "../subpanels/viewers/ViewerSubpanel";
 import Panel from "./Panel";
-
+import * as Icon from '../../../../../sandbox/src/img/Icons';
 
 const NewPod = ({ children }) => {
 	const { isEditing } = useEditContext();
@@ -25,9 +25,9 @@ const SubpanelWrapper = ({ children, isLast }) => {
 				{children}
 				{isEditing &&
 					<div className="v-button">
-						<ButtonInput>^</ButtonInput>
-						<ButtonInput>X</ButtonInput>
-						<ButtonInput>v</ButtonInput>
+						<ButtonInput><Icon.Up /></ButtonInput>
+						<ButtonInput><Icon.Delete /></ButtonInput>
+						<ButtonInput><Icon.Down /></ButtonInput>
 					</div>
 				}
 			</div>

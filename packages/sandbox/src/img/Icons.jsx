@@ -1,5 +1,47 @@
 import React from 'react';
 
+export const Delete = () => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		x="0"
+		y="0"
+		enableBackground="new 0 0 512.001 512.001"
+		version="1.1"
+		viewBox="0 0 512.001 512.001"
+		xmlSpace="preserve"
+	>
+		<path d="M294.111 256.001L504.109 46.003c10.523-10.524 10.523-27.586 0-38.109-10.524-10.524-27.587-10.524-38.11 0L256 217.892 46.002 7.894C35.478-2.63 18.416-2.63 7.893 7.894s-10.524 27.586 0 38.109l209.998 209.998L7.893 465.999c-10.524 10.524-10.524 27.586 0 38.109 10.524 10.524 27.586 10.523 38.109 0L256 294.11l209.997 209.998c10.524 10.524 27.587 10.523 38.11 0 10.523-10.524 10.523-27.586 0-38.109L294.111 256.001z"></path>
+	</svg>
+);
+
+export const Up = () => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		x="0"
+		y="0"
+		enableBackground="new 0 0 213.333 213.333"
+		version="1.1"
+		viewBox="0 0 213.333 213.333"
+		xmlSpace="preserve"
+	>
+		<path d="M106.667 53.333L0 160 213.333 160z"></path>
+	</svg>
+);
+
+export const Down = () => (
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		x="0"
+		y="0"
+		enableBackground="new 0 0 213.333 213.333"
+		version="1.1"
+		viewBox="0 0 213.333 213.333"
+		xmlSpace="preserve"
+	>
+		<path d="M0 53.333L106.667 160 213.333 53.333z"></path>
+	</svg>
+);
+
 export const Plus = () => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
