@@ -28,6 +28,7 @@ const DEFAULT_OUTPUTS = [
 		id: 'output1',
 		name: 'Output 1',
 		value: {
+			viewerInput: null,
 			viewerDef: VIEWER.fretboard,
 			viewerProps: VIEWER.fretboard.defaultProps
 		}
@@ -36,6 +37,7 @@ const DEFAULT_OUTPUTS = [
 		id: 'output1',
 		name: 'Output 1',
 		value: {
+			viewerInput: null,
 			viewerDef: VIEWER.keyboard,
 			viewerProps: VIEWER.keyboard.defaultProps
 		}

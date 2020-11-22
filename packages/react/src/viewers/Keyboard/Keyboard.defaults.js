@@ -11,7 +11,7 @@ const DEFAULT_KEYBOARD_PROPS = {
 	labelFn: LABEL_FN.interval.value,
 	tuningFn: TUNING_FN.TET.value,
 	toneFn: TONE_FN.sine.value,
-	pods: SCALE.Major.value,
+	pods: [],
 	podType: 'note'
 };
 

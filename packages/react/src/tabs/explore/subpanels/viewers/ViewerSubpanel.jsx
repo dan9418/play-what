@@ -20,7 +20,7 @@ const ViewerBar = () => {
 };
 
 const ViewerInputBar = () => {
-	const { viewerProps, setViewerProps, inputs } = useOutputContext();
+	const { viewerProps, setViewerProps, inputs, viewerInput, setViewerInput, viewerDef } = useOutputContext();
 	const { isEditing } = useEditContext();
 
 	const setHelper = v => {
@@ -28,18 +28,28 @@ const ViewerInputBar = () => {
 			setViewerProps({
 				...viewerProps,
 				...v.value
-			})
+			});
+			setViewerInput(v);
+		}
+		else {
+			setViewerProps({
+				...viewerProps,
+				pods: viewerDef.defaultProps.pods,
+				podType: viewerDef.defaultProps.podType
+			});
+			setViewerInput(null);
 		}
 	};
 	const unknown = { id: 'default', name: 'Default' };
+	const selectedInput = viewerInput || unknown;
 	const options = [unknown, ...inputs];
 
 	return (
 		<div className='input-bar'>
 			<div>Input</div>
 			{isEditing ?
-				<DropdownInput options={options} value={null} setValue={setHelper} />
-				: '?'}
+				<DropdownInput options={options} value={selectedInput} setValue={setHelper} />
+				: selectedInput.name}
 		</div>
 	);
 };

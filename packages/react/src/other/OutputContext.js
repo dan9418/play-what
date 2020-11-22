@@ -4,8 +4,9 @@ const OutputContext = createContext(null);
 
 export const OutputContextProvider = ({ output, setOutput, inputs, children }) => {
 
-	const { viewerDef, viewerProps } = output.value;
+	const { viewerDef, viewerProps, viewerInput } = output.value;
 	const setViewerProps = newProps => setOutput({ ...output, value: { ...output.value, viewerProps: newProps } });
+	const setViewerInput = newInput => setOutput({ ...output, value: { ...output.value, viewerInput: newInput } });
 	const setViewerProp = (propName, propValue) => setOutput({ ...output, value: { ...output.value, viewerProps: { ...output.value.viewerProps, [propName]: propValue } } });
 	const setViewerDef = newDef => {
 		const value = { viewerDef: newDef, viewerProps: newDef.defaultProps };
@@ -13,7 +14,7 @@ export const OutputContextProvider = ({ output, setOutput, inputs, children }) =
 	};
 
 	const outputContext = {
-		viewerDef, viewerProps, setViewerDef, setViewerProps, setViewerProp, inputs
+		viewerDef, viewerProps, setViewerDef, setViewerProps, setViewerProp, inputs, viewerInput, setViewerInput
 	};
 
 	return (
