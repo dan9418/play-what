@@ -38,8 +38,8 @@ const PodListMeter = ({ pods }) => {
 	const D = pods.map(([p, d]) => d);
 	return (
 		<>
-			<IndexListMeter indexList={P} max={MAX[0]} colorFn={getPitchColor} />
-			<IndexListMeter indexList={D} max={MAX[1]} colorFn={getDegreeColor} />
+			<IndexListMeter indexList={P} max={MAX[0]} colorFn={(i) => getPitchColor([i, 0])} />
+			<IndexListMeter indexList={D} max={MAX[1]} colorFn={(i) => getDegreeColor([0, i])} />
 		</>
 	);
 }

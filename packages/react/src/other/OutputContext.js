@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 
 const OutputContext = createContext(null);
 
@@ -15,8 +15,18 @@ export const OutputContextProvider = ({ output, setOutput, inputs, children }) =
 		setOutput({ ...output, value });
 	};
 
+
+	let calcProps = viewerProps;
+	if (viewerInput) {
+		const theInput = inputs.find(i => viewerInput.id === i.id);
+		calcProps = {
+			...viewerProps,
+			...theInput.value
+		};
+	}
+
 	const outputContext = {
-		viewerDef, viewerProps, setViewerDef, setViewerProps, setViewerProp, inputs, viewerInput, setViewerInput
+		viewerDef, viewerProps: calcProps, setViewerDef, setViewerProps, setViewerProp, inputs, viewerInput, setViewerInput
 	};
 
 	return (
