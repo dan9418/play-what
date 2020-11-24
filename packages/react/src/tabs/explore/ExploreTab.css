@@ -166,6 +166,10 @@ h1, h2, h3 {
     justify-content: center;
 }
 
+.edit-wrapper >.v-button button {
+    margin: 0 0 16px 16px;
+}
+
 .edit-wrapper button {
     height: 32px;
     width: 32px;
@@ -174,8 +178,18 @@ h1, h2, h3 {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    margin: 0 0 16px 16px;
     color: white;
+}
+
+button.load-preset {
+    width: 50%;
+    border-radius: 8px;
+    text-transform: uppercase;
+}
+
+.preset-table {
+    margin: auto;
+    margin-top: 16px;
 }
 
 .new-pod {

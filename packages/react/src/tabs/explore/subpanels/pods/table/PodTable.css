@@ -20,10 +20,6 @@
     border-bottom: 1px solid #ccc;
 }
 
-.pod-table td:nth-child(1), .pod-table td:nth-child(5), .pod-table td:nth-child(6) {
-    border-right: 1px solid #ccc;
-}
-
 .pod-table td:nth-child(2), .pod-table td:nth-child(6) {
     font-weight: bold;
 }

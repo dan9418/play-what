@@ -16,7 +16,7 @@ const PresetBox = () => {
 	const setHelper = v => setPods(v.value);
 	return (
 		<div className="preset-box">
-			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
+			<ButtonInput className="load-preset" onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
 			{isOpen && (
 				<table className="preset-table">
 					<thead>
