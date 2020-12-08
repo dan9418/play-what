@@ -1,8 +1,7 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import { VIEWER } from '../../viewers/viewers';
-import BasicDemo from './demos/BasicDemo';
-import './ExploreTab.css';
+import './Explore.css';
 import InputPanel from './panels/InputPanel';
 import OutputPanel from './panels/OutputPanel';
 
@@ -51,7 +50,7 @@ const Explore = () => {
 	const [outputs, setOutputs] = useState(DEFAULT_OUTPUTS);
 
 	return (
-		<div className="explore-tab">
+		<div className="explore">
 			<InputPanel inputs={inputs} setInputs={setInputs} />
 			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
 		</div>

@@ -4,9 +4,9 @@ h1, h2, h3 {
     margin: 0;
 }
 
-/* ExploreTab */
+/* Explore */
 
-.explore-tab {
+.explore {
     width: 100%;
     min-height: 100%;
     margin: 24px auto;

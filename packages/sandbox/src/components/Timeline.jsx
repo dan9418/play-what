@@ -8,7 +8,9 @@ const Timeline = () => {
 	return (
 		<>
 			<section className="timeline">
-                time
+				<section className="playback-bar">
+
+				</section>
 			</section>
 		</>
 	);

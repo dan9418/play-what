@@ -6,3 +6,12 @@
     position: fixed;
     bottom: 0;
 }
+
+.playback-bar {
+    position: absolute;
+    bottom: 100%;
+    width: 100%;
+    background-color: #ddd;
+    color: #25283D;
+    height: 64px;
+}
