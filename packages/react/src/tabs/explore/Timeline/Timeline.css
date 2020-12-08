@@ -14,4 +14,43 @@
     background-color: #ddd;
     color: #25283D;
     height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.playback-bar button {
+    margin: 8px;
+    padding: 8px;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+.frame-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.frame {
+    height: 90%;
+    min-width: 128px;
+    background-color: #ccc;
+    margin: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.frame.active {
+    border: 1px solid orange;
 }

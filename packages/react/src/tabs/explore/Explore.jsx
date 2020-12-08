@@ -76,7 +76,7 @@ const Explore = () => {
 		<div className="explore">
 			<InputPanel inputs={inputs} setInputs={setInputs} />
 			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
-			<Timeline frames={frames} frameIndex={frameIndex} />
+			<Timeline frames={frames} frameIndex={frameIndex} setFrameIndex={setFrameIndex} />
 		</div>
 	);
 };
