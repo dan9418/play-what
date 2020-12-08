@@ -1,5 +1,4 @@
 .timeline {
-    height: 128px;
     width: 100%;
     background-color: #fff;
     border-top: 1px solid #555;
@@ -9,7 +8,7 @@
 
 .playback-bar {
     position: absolute;
-    bottom: 100%;
+    bottom: 128px;
     width: 100%;
     background-color: #ddd;
     color: #25283D;
@@ -34,8 +33,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
+    height: 64px;
     width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: white;;
+
 }
 
 .frame {
@@ -53,4 +56,13 @@
 
 .frame.active {
     border: 1px solid orange;
+}
+
+.m-bar {
+    background-color: white;;
+    height: 64px;
+    position: absolute;
+    bottom: 64px;
+    width: 100%;
+    display: grid;
 }
