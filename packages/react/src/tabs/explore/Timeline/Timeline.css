@@ -37,8 +37,8 @@
     width: 100%;
     position: absolute;
     bottom: 0;
-    background-color: white;;
-
+    background-color: white;
+    ;
 }
 
 .frame {
@@ -59,10 +59,21 @@
 }
 
 .m-bar {
-    background-color: white;;
+    background-color: white;
     height: 64px;
     position: absolute;
     bottom: 64px;
     width: 100%;
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.m, .b {
+    height: 100%;
+    border-right: 1px solid #555;
+}
+
+.m {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }

@@ -20,9 +20,16 @@ const Timeline = ({ frames, frameIndex, setFrameIndex }) => {
 					<button>Next</button>
 				</section>
 				<section className="m-bar">
-					{(new Array(measureScope)).map((m, i) => {
+					{Array.from('m'.repeat(measureScope)).map((m, i) => {
 						const classes = ['m'];
-						return <div key={i} className={classes.join(' ')} />;
+						return <div key={i} className={classes.join(' ')} >
+							{Array.from('b'.repeat(beatNum)).map((b, i) => {
+								const classes = ['b'];
+								return <div key={i} className={classes.join(' ')} >
+									{`1/${beatType}`}
+								</div>;
+							})}
+						</div>;
 					})}
 				</section>
 				<section className="frame-bar">
