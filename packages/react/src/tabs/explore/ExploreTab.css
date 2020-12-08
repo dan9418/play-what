@@ -8,7 +8,13 @@ h1, h2, h3 {
 
 .explore-tab {
     width: 100%;
+    min-height: 100%;
     margin: 24px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* DemoSelect */
@@ -22,16 +28,6 @@ h1, h2, h3 {
 
 .demo-select h1 {
     margin-right: 8px;
-}
-
-/* BasicDemo */
-
-.basic-demo {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
 }
 
 /* Panel */
