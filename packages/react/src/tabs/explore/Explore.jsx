@@ -6,55 +6,77 @@ import InputPanel from './panels/InputPanel';
 import OutputPanel from './panels/OutputPanel';
 import Timeline from './Timeline/Timeline';
 
-const DEFAULT_INPUTS = [
-	{
-		id: 'input1',
-		name: 'Input 1',
-		value: {
-			pods: SCALE.Major.value,
-			podType: 'note'
-		}
-	},
-	{
-		id: 'input2',
-		name: 'Input 2',
-		value: {
-			pods: SCALE.NaturalMinor.value,
-			podType: 'note'
-		}
+const INPUT_1 = {
+	id: 'input1',
+	name: 'Input 1',
+	value: {
+		pods: SCALE.Major.value,
+		podType: 'note'
 	}
-];
+};
 
-const DEFAULT_OUTPUTS = [
+const INPUT_2 = {
+	id: 'input2',
+	name: 'Input 2',
+	value: {
+		pods: SCALE.NaturalMinor.value,
+		podType: 'note'
+	}
+};
+
+const OUTPUT_1 = {
+	id: 'output1',
+	name: 'Output 1',
+	value: {
+		viewerInput: null,
+		viewerDef: VIEWER.fretboard,
+		viewerProps: VIEWER.fretboard.defaultProps
+	}
+};
+
+const OUTPUT_2 = {
+	id: 'output1',
+	name: 'Output 1',
+	value: {
+		viewerInput: null,
+		viewerDef: VIEWER.keyboard,
+		viewerProps: VIEWER.keyboard.defaultProps
+	}
+}
+
+const DEFAULT_FRAMES = [
 	{
-		id: 'output1',
-		name: 'Output 1',
+		id: '1',
+		name: 'Frame 1',
 		value: {
-			viewerInput: null,
-			viewerDef: VIEWER.fretboard,
-			viewerProps: VIEWER.fretboard.defaultProps
+			inputs: [INPUT_1],
+			outputs: [OUTPUT_1]
 		}
 	},
 	{
-		id: 'output1',
-		name: 'Output 1',
+		id: '2',
+		name: 'Frame 2',
 		value: {
-			viewerInput: null,
-			viewerDef: VIEWER.keyboard,
-			viewerProps: VIEWER.keyboard.defaultProps
+			inputs: [INPUT_2],
+			outputs: [OUTPUT_2]
 		}
 	}
 ];
 
 const Explore = () => {
-	const [inputs, setInputs] = useState(DEFAULT_INPUTS);
-	const [outputs, setOutputs] = useState(DEFAULT_OUTPUTS);
+	const [frames, setFrames] = useState(DEFAULT_FRAMES);
+	const [frameIndex, setFrameIndex] = useState(0);
+
+	const frame = frames[frameIndex].value;
+	const { inputs, outputs } = frame;
+	const setInputs = null;
+	const setOutputs = null;
 
 	return (
 		<div className="explore">
 			<InputPanel inputs={inputs} setInputs={setInputs} />
 			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
-			<Timeline />
+			<Timeline frames={frames} frameIndex={frameIndex} />
 		</div>
 	);
 };
