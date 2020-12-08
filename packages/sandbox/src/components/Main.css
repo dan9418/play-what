@@ -1,11 +1,7 @@
-.stage {
+.main {
     padding-top: 50px;
     margin: auto;
 
     width: 100%;
     min-height: 100vh;
-}
-
-.stage *::-webkit-scrollbar {
-    display: none;
 }

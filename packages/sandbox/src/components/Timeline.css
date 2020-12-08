@@ -1,0 +1,8 @@
+.timeline {
+    height: 128px;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #555;
+    position: fixed;
+    bottom: 0;
+}
