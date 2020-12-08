@@ -4,6 +4,7 @@ import { VIEWER } from '../../viewers/viewers';
 import './Explore.css';
 import InputPanel from './panels/InputPanel';
 import OutputPanel from './panels/OutputPanel';
+import Timeline from './Timeline/Timeline';
 
 const DEFAULT_INPUTS = [
 	{
@@ -53,6 +54,7 @@ const Explore = () => {
 		<div className="explore">
 			<InputPanel inputs={inputs} setInputs={setInputs} />
 			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
+			<Timeline />
 		</div>
 	);
 };

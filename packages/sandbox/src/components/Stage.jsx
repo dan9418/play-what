@@ -8,7 +8,6 @@ import Explore from '../../../react/src/tabs/explore/Explore';
 import Main from './Main';
 import './Main.css';
 import Nav from './Nav';
-import Timeline from './Timeline';
 
 const TABS = [
 	{
@@ -37,7 +36,6 @@ const Stage = () => {
 			<Main>
 				{tab.component}
 			</Main>
-			<Timeline />
 		</>
 	);
 };

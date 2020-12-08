@@ -1,7 +1,6 @@
 
 import React from 'react';
 import 'react-hot-loader';
-import './Main.css';
 import './Timeline.css';
 
 const Timeline = () => {
