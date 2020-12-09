@@ -4,6 +4,7 @@
     border-top: 1px solid #555;
     position: fixed;
     bottom: 0;
+    z-index: 1000;
 }
 
 .playback-bar {

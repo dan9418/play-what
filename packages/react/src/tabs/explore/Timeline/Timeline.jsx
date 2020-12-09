@@ -67,7 +67,7 @@ const Timeline = ({ frameset, position, setPosition }) => {
 									if (active) classes.push('active');
 									return (
 										<div key={j} className={classes.join(' ')} >
-											<div className="beat-tab">{j}</div>
+											<div className="beat-tab" onClick={() => setPosition([i, j])}>{j}</div>
 											{Array.from('p'.repeat(12)).map((b, k) => {
 												const classes = ['pitch'];
 												const pod = beat.find(b => b[0] === k);
