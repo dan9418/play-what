@@ -1,8 +1,7 @@
 
-import ColorUtils from '@pw/core/src/Color.utils';
 import { COLOR_FN } from '@pw/core/src/Color.constants';
+import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
-import 'react-hot-loader';
 import './Timeline.css';
 
 const Timeline = ({ frameset, position }) => {
@@ -38,9 +37,11 @@ const Timeline = ({ frameset, position }) => {
 							<div key={i} className={classes.join(' ')} style={measureStyle}>
 								{measure.map((beat, j) => {
 									const classes = ['beat'];
-									if (j === position[1]) classes.push('active');
+									const active = i === position[0] && j === position[1];
+									if (active) classes.push('active');
 									return (
 										<div key={j} className={classes.join(' ')} >
+											<div className="beat-tab">{j}</div>
 											{Array.from('p'.repeat(12)).map((b, k) => {
 												const classes = ['pitch'];
 												const pod = beat.find(b => b[0] === k);

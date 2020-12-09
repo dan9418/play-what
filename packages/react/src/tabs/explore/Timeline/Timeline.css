@@ -79,7 +79,17 @@
     display: grid;
 }
 
+.beat-tab {
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+.beat.active .beat-tab {
+    background-color: orange;
+}
+
 .beat {
     display: grid;
-    grid-template-rows: repeat(12, 1fr);
+    grid-template-rows: repeat(13, 1fr);
 }
