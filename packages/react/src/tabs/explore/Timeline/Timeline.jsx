@@ -4,7 +4,20 @@ import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
 import './Timeline.css';
 
-const Timeline = ({ frameset, position }) => {
+const getNextPosition = (position, measures) => {
+	const lastMeasure = position[0] === measures.length - 1;
+	const lastBeat = position[1] === measures[position[0]].length - 1;
+
+	if (lastMeasure && lastBeat) {
+		return [0, 0];
+	}
+	if (lastBeat) {
+		return [position[0] + 1, 0];
+	}
+	return [position[0], position[1] + 1];
+}
+
+const Timeline = ({ frameset, position, setPosition }) => {
 	const measureScope = frameset.measures.length;
 
 	const beatNum = 4;
@@ -16,7 +29,7 @@ const Timeline = ({ frameset, position }) => {
 
 	const measureStyle = {
 		gridTemplateColumns: `repeat(${beatNum}, 1fr)`
-	}
+	};
 
 	return (
 		<>
@@ -27,7 +40,7 @@ const Timeline = ({ frameset, position }) => {
 					<button>Pause</button>
 					<button>Stop</button>
 					<button>Prev</button>
-					<button>Next</button>
+					<button onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</button>
 				</section>
 				<section className="measure-container" style={scopeStyle}>
 					{frameset.measures.map((measure, i) => {

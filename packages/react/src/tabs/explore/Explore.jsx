@@ -42,7 +42,7 @@ const Explore = () => {
 		<div className="explore">
 			{/*<InputPanel frameset={frameset} setFrameset={setFrameset} position={position} />*/}
 			<OutputPanel frame={frame} outputs={[OUTPUT_1, OUTPUT_2]} />
-			<Timeline frameset={frameset} position={position} />
+			<Timeline frameset={frameset} position={position} setPosition={setPosition} />
 		</div>
 	);
 };
