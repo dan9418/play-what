@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect } from 'react';
 
 const OutputContext = createContext(null);
 
-export const OutputContextProvider = ({ output, setOutput, inputs, children }) => {
+export const OutputContextProvider = ({ output, setOutput, frame, children }) => {
 
 	const { viewerDef, viewerProps, viewerInput } = output.value;
 	const setViewerProps = newProps => setOutput({ ...output, value: { ...output.value, viewerProps: newProps } });
@@ -17,16 +17,15 @@ export const OutputContextProvider = ({ output, setOutput, inputs, children }) =
 
 
 	let calcProps = viewerProps;
-	if (viewerInput) {
-		const theInput = inputs.find(i => viewerInput.id === i.id);
+	if (frame && frame.length) {
 		calcProps = {
 			...viewerProps,
-			...theInput.value
+			pods: frame
 		};
 	}
 
 	const outputContext = {
-		viewerDef, viewerProps: calcProps, setViewerDef, setViewerProps, setViewerProp, inputs, viewerInput, setViewerInput
+		viewerDef, viewerProps: calcProps, setViewerDef, setViewerProps, setViewerProp, frame, viewerInput, setViewerInput
 	};
 
 	return (

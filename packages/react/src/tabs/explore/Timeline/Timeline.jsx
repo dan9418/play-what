@@ -5,7 +5,7 @@ import React from 'react';
 import 'react-hot-loader';
 import './Timeline.css';
 
-const Timeline = ({ frameset, frameIndex, setFrameIndex }) => {
+const Timeline = ({ frameset, position }) => {
 	const measureScope = frameset.measures.length;
 
 	const beatNum = 4;
@@ -33,10 +33,12 @@ const Timeline = ({ frameset, frameIndex, setFrameIndex }) => {
 				<section className="measure-container" style={scopeStyle}>
 					{frameset.measures.map((measure, i) => {
 						const classes = ['measure'];
+						if (i === position[0]) classes.push('active');
 						return (
 							<div key={i} className={classes.join(' ')} style={measureStyle}>
 								{measure.map((beat, j) => {
 									const classes = ['beat'];
+									if (j === position[1]) classes.push('active');
 									return (
 										<div key={j} className={classes.join(' ')} >
 											{Array.from('p'.repeat(12)).map((b, k) => {
