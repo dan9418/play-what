@@ -4,10 +4,19 @@ import 'react-hot-loader';
 import './Timeline.css';
 
 const Timeline = ({ frames, frameIndex, setFrameIndex }) => {
-	const measureScope = 4;
+	const measureScope = 5;
 
 	const beatNum = 4;
 	const beatType = 4;
+
+	const scopeStyle = {
+		gridTemplateColumns: `repeat(${measureScope}, 1fr)`
+	};
+
+	const measureStyle = {
+		gridTemplateColumns: `repeat(${beatNum}, 1fr)`
+	}
+
 	return (
 		<>
 			<section className="timeline">
@@ -19,27 +28,26 @@ const Timeline = ({ frames, frameIndex, setFrameIndex }) => {
 					<button>Prev</button>
 					<button>Next</button>
 				</section>
-				<section className="m-bar">
+				<section className="measure-container" style={scopeStyle}>
 					{Array.from('m'.repeat(measureScope)).map((m, i) => {
-						const classes = ['m'];
-						return <div key={i} className={classes.join(' ')} >
-							{Array.from('b'.repeat(beatNum)).map((b, i) => {
-								const classes = ['b'];
-								return <div key={i} className={classes.join(' ')} >
-									{`1/${beatType}`}
-								</div>;
-							})}
-						</div>;
-					})}
-				</section>
-				<section className="frame-bar">
-					{frames.map((frame, i) => {
-						const classes = ['frame'];
-						if (frameIndex === i)
-							classes.push('active');
+						const classes = ['measure'];
 						return (
-							<div key={frame.id} className={classes.join(' ')} onClick={() => setFrameIndex(i)}>
-								{frame.name}
+							<div key={i} className={classes.join(' ')} style={measureStyle}>
+								{Array.from('b'.repeat(beatNum)).map((b, j) => {
+									const classes = ['beat'];
+									return (
+										<div key={j} className={classes.join(' ')} >
+											{Array.from('p'.repeat(12)).map((b, k) => {
+												const classes = ['pitch'];
+												return (
+													<div key={k} className={classes.join(' ')} >
+
+													</div>
+												);
+											})}
+										</div>
+									);
+								})}
 							</div>
 						);
 					})}

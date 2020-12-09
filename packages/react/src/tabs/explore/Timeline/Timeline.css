@@ -8,7 +8,7 @@
 
 .playback-bar {
     position: absolute;
-    bottom: 128px;
+    bottom: 256px;
     width: 100%;
     background-color: #ddd;
     color: #25283D;
@@ -58,22 +58,26 @@
     border: 1px solid orange;
 }
 
-.m-bar {
+.measure-container {
     background-color: white;
-    height: 64px;
+    height: 256px;
     position: absolute;
-    bottom: 64px;
+    bottom: 0;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
 }
 
-.m, .b {
+.measure, .beat, .pitch {
     height: 100%;
     border-right: 1px solid #555;
+    border-bottom: 1px solid #555;
 }
 
-.m {
+.measure {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+}
+
+.beat {
+    display: grid;
+    grid-template-rows: repeat(12, 1fr);
 }
