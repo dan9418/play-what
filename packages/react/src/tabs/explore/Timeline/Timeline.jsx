@@ -4,6 +4,19 @@ import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
 import './Timeline.css';
 
+const getPrevPosition = (position, measures) => {
+	const firstMeasure = position[0] === 0;
+	const firstBeat = position[1] === 0;
+
+	if (firstMeasure && firstBeat) {
+		return [measures.length - 1, measures[position[0]].length - 1];
+	}
+	if (firstBeat) {
+		return [position[0] - 1, measures[position[0]].length - 1];
+	}
+	return [position[0], position[1] - 1];
+}
+
 const getNextPosition = (position, measures) => {
 	const lastMeasure = position[0] === measures.length - 1;
 	const lastBeat = position[1] === measures[position[0]].length - 1;
@@ -39,7 +52,7 @@ const Timeline = ({ frameset, position, setPosition }) => {
 					<button>Play</button>
 					<button>Pause</button>
 					<button>Stop</button>
-					<button>Prev</button>
+					<button onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</button>
 					<button onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</button>
 				</section>
 				<section className="measure-container" style={scopeStyle}>
