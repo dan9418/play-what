@@ -1,10 +1,12 @@
 
+import ColorUtils from '@pw/core/src/Color.utils';
+import { COLOR_FN } from '@pw/core/src/Color.constants';
 import React from 'react';
 import 'react-hot-loader';
 import './Timeline.css';
 
-const Timeline = ({ frames, frameIndex, setFrameIndex }) => {
-	const measureScope = 5;
+const Timeline = ({ frameset, frameIndex, setFrameIndex }) => {
+	const measureScope = frameset.measures.length;
 
 	const beatNum = 4;
 	const beatType = 4;
@@ -29,18 +31,21 @@ const Timeline = ({ frames, frameIndex, setFrameIndex }) => {
 					<button>Next</button>
 				</section>
 				<section className="measure-container" style={scopeStyle}>
-					{Array.from('m'.repeat(measureScope)).map((m, i) => {
+					{frameset.measures.map((measure, i) => {
 						const classes = ['measure'];
 						return (
 							<div key={i} className={classes.join(' ')} style={measureStyle}>
-								{Array.from('b'.repeat(beatNum)).map((b, j) => {
+								{measure.map((beat, j) => {
 									const classes = ['beat'];
 									return (
 										<div key={j} className={classes.join(' ')} >
 											{Array.from('p'.repeat(12)).map((b, k) => {
 												const classes = ['pitch'];
+												const pod = beat.find(b => b[0] === k);
+												const color = COLOR_FN.pitch.value(pod)
+												const colorStyles = ColorUtils.getStylesFromBgColor(color);
 												return (
-													<div key={k} className={classes.join(' ')} >
+													<div key={k} className={classes.join(' ')} style={colorStyles} >
 
 													</div>
 												);

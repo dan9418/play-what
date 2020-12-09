@@ -63,11 +63,17 @@ const DEFAULT_FRAMES = [
 	}
 ];
 
+const DEFAULT_FRAMESET = {
+	id: '2-5-1',
+	name: '2-5-1',
+	measures: [[SCALE.Major.value, [], SCALE.NaturalMinor.value, SCALE.Chromatic.value], [SCALE.Major.value, [], [], []]]
+}
+
 const Explore = () => {
-	const [frames, setFrames] = useState(DEFAULT_FRAMES);
+	const [frameset, setFrameset] = useState(DEFAULT_FRAMESET);
 	const [frameIndex, setFrameIndex] = useState(0);
 
-	const frame = frames[frameIndex].value;
+	const frame = { inputs: [], outputs: [] };
 	const { inputs, outputs } = frame;
 	const setInputs = null;
 	const setOutputs = null;
@@ -76,7 +82,7 @@ const Explore = () => {
 		<div className="explore">
 			<InputPanel inputs={inputs} setInputs={setInputs} />
 			<OutputPanel inputs={inputs} outputs={outputs} setOutputs={setOutputs} />
-			<Timeline frames={frames} frameIndex={frameIndex} setFrameIndex={setFrameIndex} />
+			<Timeline frameset={frameset} frameIndex={frameIndex} setFrameIndex={setFrameIndex} />
 		</div>
 	);
 };
