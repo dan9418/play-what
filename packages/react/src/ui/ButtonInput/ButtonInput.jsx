@@ -1,17 +1,25 @@
 import React from 'react';
-import './ButtonInput.css';
+import styled from 'styled-components';
+
+const StyledButton = styled.button`
+	cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+	color: white;
+	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent}
+`;
 
 const ButtonInput = props => {
-	const { disabled, onClick, children, className, isActive, hoverable } = props;
+	const { disabled, onClick, children, isActive, hoverable } = props;
 
 	const hov = onClick || hoverable;
 	const isDisabled = disabled || false;
 	const clickHander = onClick || (() => null);
 
-	const cn = `button-input ${className ? className : ''}`;
-
 	return (
-		<button className={cn} type='button' disabled={isDisabled} onClick={clickHander} >{children}</button>
+		<StyledButton type='button' disabled={isDisabled} onClick={clickHander} $isActive={isActive}>{children}</StyledButton>
 	);
 }
 

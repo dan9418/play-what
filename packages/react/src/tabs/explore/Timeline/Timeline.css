@@ -19,15 +19,8 @@
     justify-content: flex-end;
 }
 
-.playback-bar button {
-    margin: 8px;
-    padding: 8px;
-    border: none;
-    background-color: #555;
-    color: white;
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
+.playback-bar > * {
+    margin: 0 8px;
 }
 
 .frame-bar {

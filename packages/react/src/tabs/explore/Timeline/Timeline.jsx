@@ -2,6 +2,7 @@
 import { COLOR_FN } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
+import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
 import './Timeline.css';
 
 const getPrevPosition = (position, measures) => {
@@ -49,11 +50,8 @@ const Timeline = ({ frameset, position, setPosition }) => {
 			<section className="timeline">
 				<section className="playback-bar">
 					<span>{`${beatNum}/${beatType}`}</span>
-					<button>Play</button>
-					<button>Pause</button>
-					<button>Stop</button>
-					<button onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</button>
-					<button onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</button>
+					<ButtonInput onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</ButtonInput>
+					<ButtonInput onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</ButtonInput>
 				</section>
 				<section className="measure-container" style={scopeStyle}>
 					{frameset.measures.map((measure, i) => {

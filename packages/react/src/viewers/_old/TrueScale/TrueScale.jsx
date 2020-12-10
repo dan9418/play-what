@@ -1,6 +1,5 @@
 import React from 'react';
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
-import './TrueScale.css';
 
 const TRUE_INTERVAL_MAP = [
     'P1',
@@ -19,7 +18,7 @@ const TRUE_INTERVAL_MAP = [
     'm7',
     'M7',
     'M7'
-]
+];
 
 const getHz = (fund, n) => {
     const octave = fund * 2;
