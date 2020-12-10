@@ -3,9 +3,15 @@ import React from 'react';
 import 'react-hot-loader';
 import * as Icons from '../img/Icons';
 import './Nav.css';
+import styled from 'styled-components';
+
+const StyledNav = styled.nav`
+	color: white;
+	background-color: ${({ theme }) => theme.primary};
+`;
 
 const Nav = ({ tabs, tabIndex, setTabIndex }) => (
-	<nav className="top-nav">
+	<StyledNav className="top-nav">
 		<div className="logo">Play What?</div>
 		{tabs.map((t, i) => (
 			<div
@@ -21,7 +27,7 @@ const Nav = ({ tabs, tabIndex, setTabIndex }) => (
 				<Icons.Menu />
 			</div>
 		</div>
-	</nav>
+	</StyledNav>
 );
 
 export default Nav;
