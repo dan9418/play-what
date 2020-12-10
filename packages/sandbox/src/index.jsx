@@ -3,7 +3,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Stage from './components/Stage';
 import './styles/index.css';
-import './styles/theme.css';
 
 const appContainer = document.querySelector('#app')
 

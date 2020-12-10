@@ -26,7 +26,7 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 					<h3 className='pod-name'>{name}</h3>
 					<div className='pod-type'>{caption}</div>
 				</div>
-				<div className='preview pw-accent-fg'>{preview}</div>
+				<div className='preview'>{preview}</div>
 			</div>
 			<div className="button-container">
 				{isOpen && isEditing && <ButtonInput

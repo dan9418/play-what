@@ -5,7 +5,7 @@ import * as Icons from '../img/Icons';
 import './Nav.css';
 
 const Nav = ({ tabs, tabIndex, setTabIndex }) => (
-	<nav className="top-nav pw-primary">
+	<nav className="top-nav">
 		<div className="logo">Play What?</div>
 		{tabs.map((t, i) => (
 			<div
@@ -17,7 +17,7 @@ const Nav = ({ tabs, tabIndex, setTabIndex }) => (
 		<div className="spacer" />
 		<div className="right-nav">
 			<a className="icon" href="https://github.com/dan9418/play-what-sandbox" target="_blank"><Icons.GitHub /></a>
-			<div className={`meatball pw-hov`} onClick={() => null}>
+			<div className={`meatball`} onClick={() => null}>
 				<Icons.Menu />
 			</div>
 		</div>

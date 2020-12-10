@@ -8,6 +8,8 @@ import Explore from '../../../react/src/tabs/explore/Explore';
 import Main from './Main';
 import './Main.css';
 import Nav from './Nav';
+import { ThemeProvider } from 'styled-components';
+import THEME from '../styles/theme';
 
 const TABS = [
 	{
@@ -31,12 +33,12 @@ const Stage = () => {
 	const [tabIndex, setTabIndex] = useState(0);
 	const tab = TABS[tabIndex];
 	return (
-		<>
+		<ThemeProvider theme={THEME}>
 			<Nav tabs={TABS} tabIndex={tabIndex} setTabIndex={setTabIndex} />
 			<Main>
 				{tab.component}
 			</Main>
-		</>
+		</ThemeProvider>
 	);
 };
 
