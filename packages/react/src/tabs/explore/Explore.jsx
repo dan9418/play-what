@@ -29,7 +29,32 @@ const OUTPUT_2 = {
 const DEFAULT_FRAMESET = {
 	id: '2-5-1',
 	name: '2-5-1',
-	measures: [[SCALE.Major.value, [], SCALE.NaturalMinor.value, SCALE.Chromatic.value], [SCALE.Major.value, [], [], []]]
+	measures: [{
+		beats: [
+			{
+				pods: SCALE.Major.value
+			},
+			null,
+			{
+				pods: SCALE.NaturalMinor.value
+			},
+			{
+				pods: SCALE.Chromatic.value
+			}
+		]
+	},
+	{
+		beats: [
+			{
+				pods: SCALE.Major.value
+			},
+			null,
+			{
+				pods: SCALE.NaturalMinor.value
+			},
+			null
+		]
+	}]
 }
 
 const Explore = () => {

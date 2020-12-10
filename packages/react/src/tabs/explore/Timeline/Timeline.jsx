@@ -3,47 +3,76 @@ import { COLOR_FN } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import React from 'react';
 import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
+import styled from 'styled-components';
 import './Timeline.css';
 
 const getPrevPosition = (position, measures) => {
-	const firstMeasure = position[0] === 0;
-	const firstBeat = position[1] === 0;
+	const [mIndex, bIndex] = position;
+	const firstMeasure = mIndex === 0;
+	const firstBeat = bIndex === 0;
 
 	if (firstMeasure && firstBeat) {
-		return [measures.length - 1, measures[position[0]].length - 1];
+		return [measures.length - 1, measures[mIndex].length - 1];
 	}
 	if (firstBeat) {
-		return [position[0] - 1, measures[position[0]].length - 1];
+		return [mIndex - 1, measures[mIndex].length - 1];
 	}
-	return [position[0], position[1] - 1];
+	return [mIndex, bIndex - 1];
 }
 
 const getNextPosition = (position, measures) => {
-	const lastMeasure = position[0] === measures.length - 1;
-	const lastBeat = position[1] === measures[position[0]].length - 1;
+	const [mIndex, bIndex] = position;
+	const lastMeasure = mIndex === measures.length - 1;
+	const lastBeat = bIndex === measures[mIndex].length - 1;
 
 	if (lastMeasure && lastBeat) {
 		return [0, 0];
 	}
 	if (lastBeat) {
-		return [position[0] + 1, 0];
+		return [mIndex + 1, 0];
 	}
-	return [position[0], position[1] + 1];
+	return [mIndex, bIndex + 1];
 }
 
+const StyledTable = styled.table`
+	background-color: white;
+	border-collapse: collapse;
+	table-layout: fixed;
+
+	height: 256px;
+	width: 100%;
+
+    position: absolute;
+	bottom: 0;
+
+`;
+
+const PitchRow = styled.tr`
+	&:not(:last-child) {
+		border-bottom: 1px solid #555;
+	}
+`;
+
+const PitchCell = styled.td`
+	padding: 4px;
+	text-align: center;
+	&:not(:last-child) {
+		border-right: 1px solid #555;
+	}
+`;
+
+const PITCHES = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
 const Timeline = ({ frameset, position, setPosition }) => {
-	const measureScope = frameset.measures.length;
+	const [mIndex, bIndex] = position;
+
+	const { measures } = frameset;
+	const curMeasure = measures[mIndex];
+	const { beats } = curMeasure
+	const curBeat = beats[bIndex];
 
 	const beatNum = 4;
 	const beatType = 4;
-
-	const scopeStyle = {
-		gridTemplateColumns: `repeat(${measureScope}, 1fr)`
-	};
-
-	const measureStyle = {
-		gridTemplateColumns: `repeat(${beatNum}, 1fr)`
-	};
 
 	return (
 		<>
@@ -53,37 +82,54 @@ const Timeline = ({ frameset, position, setPosition }) => {
 					<ButtonInput onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</ButtonInput>
 					<ButtonInput onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</ButtonInput>
 				</section>
-				<section className="measure-container" style={scopeStyle}>
-					{frameset.measures.map((measure, i) => {
-						const classes = ['measure'];
-						if (i === position[0]) classes.push('active');
-						return (
-							<div key={i} className={classes.join(' ')} style={measureStyle}>
-								{measure.map((beat, j) => {
-									const classes = ['beat'];
-									const active = i === position[0] && j === position[1];
-									if (active) classes.push('active');
-									return (
-										<div key={j} className={classes.join(' ')} >
-											<div className="beat-tab" onClick={() => setPosition([i, j])}>{j}</div>
-											{Array.from('p'.repeat(12)).map((b, k) => {
-												const classes = ['pitch'];
-												const pod = beat.find(b => b[0] === k);
-												const color = COLOR_FN.pitch.value(pod)
-												const colorStyles = ColorUtils.getStylesFromBgColor(color);
-												return (
-													<div key={k} className={classes.join(' ')} style={colorStyles} >
-
-													</div>
-												);
-											})}
-										</div>
-									);
-								})}
-							</div>
-						);
-					})}
-				</section>
+				<StyledTable>
+					<thead>
+						<tr>
+							{measures.map((measure, i) => {
+								const mActive = i === mIndex;
+								return (
+									<React.Fragment key={i}>
+										{measure.beats.map((beat, j) => {
+											const bActive = mActive && j === bIndex;
+											return (
+												<th key={j}
+													onClick={() => setPosition([i, j])}>{j}
+												</th>
+											);
+										})}
+									</React.Fragment>
+								);
+							})}
+						</tr>
+					</thead>
+					<tbody>
+						{PITCHES.map((pitch, p) => {
+							const pClasses = ['pitch'];
+							const pActive = false;
+							return (
+								<PitchRow key={p} className={pClasses.join(' ')} >
+									{measures.map((measure, i) => {
+										const mClasses = ['measure'];
+										const mActive = i === mIndex;
+										return (
+											<React.Fragment key={i}>
+												{measure.beats.map((beat, j) => {
+													const bClasses = ['beat'];
+													const bActive = mActive && j === bIndex;
+													return (
+														<PitchCell key={j} className={bClasses.join(' ')}
+															onClick={() => setPosition([i, j])}>{j}
+														</PitchCell>
+													);
+												})}
+											</React.Fragment>
+										);
+									})}
+								</PitchRow>
+							);
+						})}
+					</tbody>
+				</StyledTable>
 			</section>
 		</>
 	);

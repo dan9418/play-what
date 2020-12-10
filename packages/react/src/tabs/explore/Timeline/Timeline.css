@@ -23,56 +23,6 @@
     margin: 0 8px;
 }
 
-.frame-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 64px;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    background-color: white;
-    ;
-}
-
-.frame {
-    height: 90%;
-    min-width: 128px;
-    background-color: #ccc;
-    margin: 16px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-sizing: border-box;
-}
-
-.frame.active {
-    border: 1px solid orange;
-}
-
-.measure-container {
-    background-color: white;
-    height: 256px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    display: grid;
-}
-
-.measure, .beat, .pitch {
-    height: 100%;
-    border-right: 1px solid #555;
-    border-bottom: 1px solid #555;
-    background-color: white;
-    box-sizing: border-box;
-}
-
-.measure {
-    display: grid;
-}
-
 .beat-tab {
     background-color: #333;
     color: white;
@@ -81,9 +31,4 @@
 
 .beat.active .beat-tab {
     background-color: orange;
-}
-
-.beat {
-    display: grid;
-    grid-template-rows: repeat(13, 1fr);
 }
