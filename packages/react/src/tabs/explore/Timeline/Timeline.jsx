@@ -15,7 +15,7 @@ const getPrevPosition = (position, measures) => {
 		return [measures.length - 1, measures[mIndex].length - 1];
 	}
 	if (firstBeat) {
-		return [mIndex - 1, measures[mIndex].length - 1];
+		return [mIndex - 1, measures[mIndex].beats.length - 1];
 	}
 	return [mIndex, bIndex - 1];
 }
@@ -23,7 +23,7 @@ const getPrevPosition = (position, measures) => {
 const getNextPosition = (position, measures) => {
 	const [mIndex, bIndex] = position;
 	const lastMeasure = mIndex === measures.length - 1;
-	const lastBeat = bIndex === measures[mIndex].length - 1;
+	const lastBeat = bIndex === measures[mIndex].beats.length - 1;
 
 	if (lastMeasure && lastBeat) {
 		return [0, 0];
@@ -43,7 +43,7 @@ const StyledTable = styled.table`
 	width: 100%;
 
     position: absolute;
-	bottom: 0;
+	bottom: 64px;
 
 `;
 
@@ -64,6 +64,7 @@ const PitchRow = styled.tr`
 const PitchCell = styled.td`
 	padding: 4px;
 	text-align: center;
+	background-color: ${({ $active, $pod }) => $pod ? COLOR_FN.degree.value($pod) : $active ? '#ddd' : 'white'};
 	&:not(:last-child) {
 		border-right: 1px solid #555;
 	}
@@ -122,15 +123,22 @@ const Timeline = ({ frameset, position, setPosition }) => {
 									{measures.map((measure, i) => {
 										const mClasses = ['measure'];
 										const mActive = i === mIndex;
+
+										const pod = measures.pods ?
+											measures.pods.find(x => x[0] === p)
+											: null;
 										return (
 											<React.Fragment key={i}>
 												{measure.beats.map((beat, j) => {
 													const bClasses = ['beat'];
 													const bActive = mActive && j === bIndex;
 													return (
-														<PitchCell key={j} className={bClasses.join(' ')}
-															onClick={() => setPosition([i, j])}>{j}
-														</PitchCell>
+														<PitchCell
+															key={j}
+															className={bClasses.join(' ')}
+															$active={bActive}
+															$pod={pod}
+														/>
 													);
 												})}
 											</React.Fragment>
