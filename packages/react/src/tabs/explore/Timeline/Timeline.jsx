@@ -47,6 +47,14 @@ const StyledTable = styled.table`
 
 `;
 
+const BeatTab = styled.th`
+	background-color: ${({ theme, $active }) => $active ? theme.active : theme.primary};
+    color: white;
+	text-align: center;
+	padding: 4px;
+	cursor: pointer;
+`;
+
 const PitchRow = styled.tr`
 	&:not(:last-child) {
 		border-bottom: 1px solid #555;
@@ -92,9 +100,12 @@ const Timeline = ({ frameset, position, setPosition }) => {
 										{measure.beats.map((beat, j) => {
 											const bActive = mActive && j === bIndex;
 											return (
-												<th key={j}
-													onClick={() => setPosition([i, j])}>{j}
-												</th>
+												<BeatTab
+													key={j}
+													$active={bActive}
+													onClick={() => setPosition([i, j])}>
+													{j}
+												</BeatTab>
 											);
 										})}
 									</React.Fragment>

@@ -9,7 +9,7 @@
 
 .playback-bar {
     position: absolute;
-    bottom: 256px;
+    bottom: -100%;
     width: 100%;
     background-color: #ddd;
     color: #25283D;
@@ -21,14 +21,4 @@
 
 .playback-bar > * {
     margin: 0 8px;
-}
-
-.beat-tab {
-    background-color: #333;
-    color: white;
-    text-align: center;
-}
-
-.beat.active .beat-tab {
-    background-color: orange;
 }
