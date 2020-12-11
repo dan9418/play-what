@@ -61,6 +61,26 @@ const PitchRow = styled.tr`
 	}
 `;
 
+const PlaybackBar = styled.section`
+	position: absolute;
+    bottom: -100%;
+    width: 100%;
+    background-color: #ddd;
+    color: #25283D;
+	height: 64px;
+	padding: 8px;
+	box-sizing: border-box;
+    display: flex;
+	align-items: center;
+	justify-content: space-between;
+`;
+
+const Left = styled.div`
+`;
+
+const Right = styled.div`
+`;
+
 const PitchCell = styled.td`
 	padding: 4px;
 	text-align: center;
@@ -86,11 +106,15 @@ const Timeline = ({ frameset, position, setPosition }) => {
 	return (
 		<>
 			<section className="timeline">
-				<section className="playback-bar">
-					<span>{`${beatNum}/${beatType}`}</span>
-					<ButtonInput onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</ButtonInput>
-					<ButtonInput onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</ButtonInput>
-				</section>
+				<PlaybackBar>
+					<Left>
+						<span>{`${beatNum}/${beatType}`}</span>
+					</Left>
+					<Right>
+						<ButtonInput onClick={() => setPosition(getPrevPosition(position, frameset.measures))}>Prev</ButtonInput>
+						<ButtonInput onClick={() => setPosition(getNextPosition(position, frameset.measures))}>Next</ButtonInput>
+					</Right>
+				</PlaybackBar>
 				<StyledTable>
 					<thead>
 						<tr>
@@ -124,14 +148,14 @@ const Timeline = ({ frameset, position, setPosition }) => {
 										const mClasses = ['measure'];
 										const mActive = i === mIndex;
 
-										const pod = measures.pods ?
-											measures.pods.find(x => x[0] === p)
-											: null;
 										return (
 											<React.Fragment key={i}>
 												{measure.beats.map((beat, j) => {
 													const bClasses = ['beat'];
 													const bActive = mActive && j === bIndex;
+													const pod = beat ?
+														beat.pods.find(x => x[0] === p)
+														: null;
 													return (
 														<PitchCell
 															key={j}

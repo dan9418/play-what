@@ -6,19 +6,3 @@
     bottom: 0;
     z-index: 1000;
 }
-
-.playback-bar {
-    position: absolute;
-    bottom: -100%;
-    width: 100%;
-    background-color: #ddd;
-    color: #25283D;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.playback-bar > * {
-    margin: 0 8px;
-}
