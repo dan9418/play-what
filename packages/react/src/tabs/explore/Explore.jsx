@@ -29,45 +29,37 @@ const OUTPUT_2 = {
 const DEFAULT_FRAMESET = {
 	id: '2-5-1',
 	name: '2-5-1',
-	measures: [{
-		beats: [
-			{
-				pods: SCALE.Major.value
-			},
-			null,
-			{
-				pods: SCALE.NaturalMinor.value
-			},
-			{
-				pods: SCALE.Chromatic.value
-			}
-		]
-	},
-	{
-		beats: [
-			{
-				pods: SCALE.Major.value
-			},
-			null,
-			{
-				pods: SCALE.NaturalMinor.value
-			},
-			null
-		]
-	}]
-}
+	frames: [
+		{
+			pods: SCALE.Major.value
+		},
+		null,
+		{
+			pods: SCALE.NaturalMinor.value
+		},
+		{
+			pods: SCALE.Chromatic.value
+		},
+		{
+			pods: SCALE.Major.value
+		},
+		null,
+		{
+			pods: SCALE.NaturalMinor.value
+		},
+		null
+	]
+};
 
 const Explore = () => {
-	const [frameset, setFrameset] = useState(DEFAULT_FRAMESET);
-	const [position, setPosition] = useState([0, 0]);
-
-	const frame = frameset.measures[position[0]][position[1]];
+	const [frames, setFrames] = useState(DEFAULT_FRAMESET.frames);
+	const [index, setIndex] = useState(0);
 
 	return (
 		<div className="explore">
 			{/*<InputPanel frameset={frameset} setFrameset={setFrameset} position={position} />*/}
-			<OutputPanel frame={frame} outputs={[OUTPUT_1, OUTPUT_2]} />
-			<Timeline frameset={frameset} position={position} setPosition={setPosition} />
+			<OutputPanel frame={frames[index]} outputs={[OUTPUT_1, OUTPUT_2]} />
+			<Timeline frames={frames} index={index} setIndex={setIndex} />
 		</div>
 	);
 };
