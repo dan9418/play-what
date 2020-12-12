@@ -35,7 +35,6 @@ h1, h2, h3 {
 .panel {
     box-sizing: border-box;
     width: 100%;
-    max-width: 512px;
     margin: 0 16px;
 }
 
@@ -152,7 +151,9 @@ h1, h2, h3 {
 
 .edit-wrapper {
     display: flex;
-    width: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .edit-wrapper>.v-button {

@@ -1,6 +1,6 @@
 
 import { COLOR_FN } from '@pw/core/src/Color.constants';
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
 import './Timeline.css';
@@ -10,12 +10,8 @@ const StyledTable = styled.table`
 	border-collapse: collapse;
 	table-layout: fixed;
 
-	height: 256px;
+	height: 100%;
 	width: 100%;
-
-    position: absolute;
-	bottom: 64px;
-
 `;
 
 const BeatTab = styled.th`
@@ -72,7 +68,38 @@ const StyledTimeline = styled.section`
     z-index: 1000;
 `;
 
+const StyledTableContainer = styled.div`
+	position: absolute;
+	bottom: 64px;
+	width: 100%;
+
+	height: ${({ $open }) => $open ? 256 : 0}px;
+	${({ $open }) => $open ? '' : `
+		& table {
+			display: none;
+		}
+	`};
+`;
+
+const StyledToggle = styled.button`
+	width: 128px;
+	height: 32px;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background-color: ${({ theme }) => theme.accent};
+	border-radius: 8px 8px 0 0;
+	position: absolute;
+	right: 0;
+	bottom: 100%;
+	color: white;
+	font-weight: bold;
+	font-size: 140%;
+`;
+
 const Timeline = ({ frames, index, setIndex }) => {
+
+	const [open, setOpen] = useState(true);
 
 	return (
 		<>
@@ -86,45 +113,50 @@ const Timeline = ({ frames, index, setIndex }) => {
 						<ButtonInput onClick={() => setIndex(index + 1)}>Next</ButtonInput>
 					</Right>
 				</PlaybackBar>
-				<StyledTable>
-					<thead>
-						<tr>
-							{frames.map((frame, b) => {
-								const isActive = b === index;
+				<StyledTableContainer $open={open}>
+					<StyledToggle onClick={() => setOpen(!open)} >
+						{open ? '-' : '+'}
+					</StyledToggle>
+					<StyledTable>
+						<thead>
+							<tr>
+								{frames.map((frame, b) => {
+									const isActive = b === index;
+									return (
+										<BeatTab
+											key={b}
+											$active={isActive}
+											onClick={() => setIndex(b)}
+										>
+											{b}
+										</BeatTab>
+									);
+								})}
+							</tr>
+						</thead>
+						<tbody>
+							{PITCHES.map((pitch, p) => {
 								return (
-									<BeatTab
-										key={b}
-										$active={isActive}
-										onClick={() => setIndex(b)}
-									>
-										{b}
-									</BeatTab>
+									<PitchRow key={p}>
+										{frames.map((frame, b) => {
+											const isActive = b === index;
+											const pod = frame ?
+												frame.pods.find(x => x[0] === p)
+												: null;
+											return (
+												<PitchCell
+													key={b}
+													$active={isActive}
+													$pod={pod}
+												/>
+											);
+										})}
+									</PitchRow>
 								);
 							})}
-						</tr>
-					</thead>
-					<tbody>
-						{PITCHES.map((pitch, p) => {
-							return (
-								<PitchRow key={p}>
-									{frames.map((frame, b) => {
-										const isActive = b === index;
-										const pod = frame ?
-											frame.pods.find(x => x[0] === p)
-											: null;
-										return (
-											<PitchCell
-												key={b}
-												$active={isActive}
-												$pod={pod}
-											/>
-										);
-									})}
-								</PitchRow>
-							);
-						})}
-					</tbody>
-				</StyledTable>
+						</tbody>
+					</StyledTable>
+				</StyledTableContainer>
 			</StyledTimeline>
 		</>
 	);

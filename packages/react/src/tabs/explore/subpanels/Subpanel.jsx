@@ -99,7 +99,7 @@ const Subpanel = ({ children, data, setData, name, i }) => {
 	const onDelete = () => setData([...data.slice(0, i), ...data.slice(i + 1)]);
 	const onMoveDown = () => setData([...data.slice(0, i), data[i + 1], data[i], ...data.slice(i + 2)]);
 	return (
-		<div className="subpanel-wrapper">
+		<>
 			<NewSubpanelButton onClick={onInsertAbove} />
 			<div className="edit-wrapper">
 				<InnerSubpanel name={name}>
@@ -113,7 +113,7 @@ const Subpanel = ({ children, data, setData, name, i }) => {
 					</div>
 				}
 			</div>
-		</div>
+		</>
 	);
 }
 
