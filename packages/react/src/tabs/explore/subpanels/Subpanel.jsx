@@ -1,10 +1,8 @@
-import PodListUtils from "@pw/core/src/PodList.utils";
 import React, { useState } from "react";
-import useEditContext, { EditContextProvider } from "../../../other/EditContext";
-import useInputContext from "../../../other/InputContext";
-import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
+import useEditContext, { EditContextProvider } from "../../../other/EditContext";
 import useOutputContext from "../../../other/OutputContext";
+import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -54,17 +52,11 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 
 const InnerSubpanel = ({ name, children }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const inputContext = useInputContext();
 	const outputContext = useOutputContext();
 	let caption = null;
 	let preview = null;
 	let viewerPreview = null;
-	if (inputContext) {
-		const { pods, podType } = inputContext;
-		caption = podType;
-		preview = PodListUtils.getPreview(pods, { podType })
-	}
-	else if (outputContext) {
+	if (outputContext) {
 		const { viewerDef, viewerProps, viewerInput } = outputContext;
 		const ViewerComponent = viewerDef.component;
 		caption = viewerDef.name

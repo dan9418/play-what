@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { OutputContextProvider } from "../../../other/OutputContext";
 import { NewSubpanelButton } from "../subpanels/Subpanel";
 import ViewerSubpanel from "../subpanels/viewers/ViewerSubpanel";
 import Panel from "./Panel";
+import { VIEWER } from '../../../viewers/viewers';
 
-const OutputPanel = ({ frame, outputs, setOutputs }) => {
+const OUTPUT_1 = {
+	id: 'output1',
+	name: 'Output 1',
+	value: {
+		viewerDef: VIEWER.fretboard,
+		viewerProps: VIEWER.fretboard.defaultProps
+	}
+};
+
+const OUTPUT_2 = {
+	id: 'output1',
+	name: 'Output 1',
+	value: {
+		viewerDef: VIEWER.keyboard,
+		viewerProps: VIEWER.keyboard.defaultProps
+	}
+};
+
+const OUTPUT_3 = {
+	id: 'output3',
+	name: 'Output 3',
+	value: {
+		viewerDef: VIEWER.table,
+		viewerProps: VIEWER.table.defaultProps
+	}
+};
+
+const OUTPUTS = [OUTPUT_3, OUTPUT_1, OUTPUT_2];
+
+const OutputPanel = ({ frame }) => {
+	const [outputs, setOutputs] = useState(OUTPUTS)
 	const onInsertBelow = () => setOutputs([...outputs, outputs[outputs.length - 1]]);
 	return (
 		<Panel name="Outputs">

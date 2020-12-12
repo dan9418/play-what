@@ -99,7 +99,7 @@ const StyledToggle = styled.button`
 
 const Timeline = ({ frames, index, setIndex }) => {
 
-	const [open, setOpen] = useState(true);
+	const [open, setOpen] = useState(false);
 
 	return (
 		<>

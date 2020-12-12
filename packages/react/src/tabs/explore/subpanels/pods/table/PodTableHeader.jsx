@@ -1,12 +1,11 @@
 import { POD_TYPES } from '@pw/core/src/Pod.constants';
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
-import useInputContext from '../../../../../other/InputContext';
 import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
 
 const PodTypeCell = () => {
-	const inputContext = useInputContext();
-	const { podType, setPodType } = inputContext;
+	const setPods = null;
+	const podType = 'interval';
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 
