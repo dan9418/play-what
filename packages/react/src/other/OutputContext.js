@@ -17,10 +17,10 @@ export const OutputContextProvider = ({ output, setOutput, frame, children }) =>
 
 
 	let calcProps = viewerProps;
-	if (frame && frame.length) {
+	if (frame && frame.pods.length) {
 		calcProps = {
 			...viewerProps,
-			pods: frame
+			pods: frame.pods
 		};
 	}
 
