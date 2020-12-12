@@ -100,8 +100,9 @@ const Subpanel = ({ children, data, setData, name, i }) => {
 	const onMoveDown = () => setData([...data.slice(0, i), data[i + 1], data[i], ...data.slice(i + 2)]);
 	return (
 		<>
+			<NewSubpanelButton onClick={onInsertAbove} />
+
 			<div className="edit-wrapper">
-				<NewSubpanelButton onClick={onInsertAbove} />
 				<InnerSubpanel name={name}>
 					{children}
 				</InnerSubpanel>

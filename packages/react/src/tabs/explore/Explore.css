@@ -39,7 +39,7 @@ h1, h2, h3 {
 }
 
 .panel-header {
-    padding: 16px;
+    padding: 0 16px 16px 16px;
     border-bottom: 1px solid #ccc;
     display: flex;
     align-items: flex-end;
@@ -51,7 +51,7 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -159,7 +159,7 @@ h1, h2, h3 {
 
 .edit-wrapper {
     display: flex;
-    margin: auto;
+    width: 100%;
     justify-content: center;
     align-items: center;
 }
@@ -200,11 +200,12 @@ button.load-preset {
 .new-pod {
     text-align: center;
     margin-bottom: 16px;
-    margin-right: 48px;
+    width: 100%;
+    max-width: 256px
 }
 
 .new-pod button {
-    width: 50%;
+    width: 100%;
 }
 
 .subpanel-wrapper {
