@@ -1,9 +1,6 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
-import useEditContext from '../../../../other/EditContext';
-import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
-import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
-import NumericInput from '../../../../ui/NumericInput/NumericInput';
+import useEditContext from '../../../../../contexts/EditContext';
 
 const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };

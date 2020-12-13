@@ -1,9 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../other/EditContext";
-import useSubpanelContext from "../../../other/SubpanelContext";
-import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import { VIEWER_VALUES } from "../../../viewers/viewers";
+import useEditContext from "../../../../contexts/EditContext";
+import useSubpanelContext from "../../../../contexts/SubpanelContext";
+import { VIEWER_VALUES, DropdownInput } from "@pw/react";
 
 const StyledViewerBox = styled.div`
 	margin-top: 16px;

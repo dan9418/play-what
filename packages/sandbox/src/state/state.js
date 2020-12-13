@@ -1,6 +1,6 @@
 import { SCALE } from "@pw/core/src/Pod.presets";
+import Fretboard from "@pw/react/src/Fretboard/Fretboard";
 import { atom, selector } from "recoil";
-import Fretboard from "../../../react/src/viewers/Fretboard/Fretboard";
 
 export const inputListState = atom({
 	key: 'inputListState',

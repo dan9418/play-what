@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import ButtonInput from "../../ui/ButtonInput/ButtonInput";
-import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../../sandbox/src/img/Icons";
-import useEditContext, { EditContextProvider } from "../../other/EditContext";
-import useSubpanelContext, { SubpanelContextProvider } from "../../other/SubpanelContext";
+import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../img/Icons";
+import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
+import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
+import { ButtonInput } from '@pw/react';
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -190,7 +190,7 @@ const InsertAboveButton = () => {
 const Subpanel = ({ children, dataList, setDataList, name, i }) => {
 	return (
 		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
-			<InsertAboveButton/>
+			<InsertAboveButton />
 			<StyledSubpanel>
 				<InnerSubpanel name={name}>
 					{children}

@@ -1,9 +1,7 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../other/EditContext";
-import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
-import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
+import useEditContext from "../../../contexts/EditContext";
 
 const StyledPresetBox = styled.div`
 	padding: 8px;

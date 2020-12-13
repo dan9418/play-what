@@ -1,9 +1,5 @@
 module.exports = () => ({ mode: 'development',
-  entry:
-   [ 'react-hot-loader/patch',
-     'webpack-dev-server/client?http://localhost:9000',
-     'webpack/hot/only-dev-server',
-     './src/index.jsx' ],
+  entry: [ './src/index.jsx' ],
   module:
    { unknownContextRequest: '.',
      unknownContextRecursive: true,
@@ -47,14 +43,8 @@ module.exports = () => ({ mode: 'development',
   devServer:
    { contentBase: 'C:\\_dev\\play-what\\packages\\sandbox/build/',
      port: 9000,
-     hot: true,
-     host: 'localhost',
-     publicPath: '/',
-     filename: 'sandbox.js',
-     clientLogLevel: 'info' },
-  plugins:
-   [ { fullBuildTimeout: 200, requestTimeout: 10000 },
-     { outputPath: './', name: 'dump.txt', depth: 4 } ],
+     hot: true },
+  plugins: [ { outputPath: './', name: 'dump.txt', depth: 4 } ],
   context: 'C:\\_dev\\play-what\\packages\\sandbox',
   devtool: 'eval',
   cache: true,
