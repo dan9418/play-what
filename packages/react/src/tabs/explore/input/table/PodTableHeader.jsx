@@ -1,7 +1,7 @@
 import { POD_TYPES } from '@pw/core/src/Pod.constants';
 import React from 'react';
-import useEditContext from '../../../../../other/EditContext';
-import DropdownInput from '../../../../../ui/DropdownInput/DropdownInput';
+import useEditContext from '../../../../other/EditContext';
+import DropdownInput from '../../../../ui/DropdownInput/DropdownInput';
 
 const PodTypeCell = () => {
 	const setPods = null;

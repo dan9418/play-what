@@ -1,11 +1,11 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
-import useEditContext from "../../../other/EditContext";
-import useInputContext from "../../../../other/InputContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import Subpanel from "./Subpanel";
+import Subpanel from "../Subpanel";
 import PodTable from "./table/PodTable";
+import styled from 'styled-components';
+import useEditContext from "../../../other/EditContext";
 
 const StyledPresetBox = styled.div`
 	padding: 8px;
@@ -31,10 +31,9 @@ const StyledPresetBox = styled.div`
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
-	const { setPods } = useInputContext();
 	const { isEditing } = useEditContext();
 	if (!isEditing) return null;
-	const setHelper = v => setPods(v.value);
+	const setHelper = null; //v => setPods(v.value);
 	return (
 		<StyledPresetBox>
 			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
@@ -62,7 +61,7 @@ const PresetBox = () => {
 	);
 };
 
-const PodSubpanel = ({ name, i, inputs, setInputs }) => {
+const InputSubpanel = ({ name, i, inputs, setInputs }) => {
 	return (
 		<Subpanel
 			name={name}
@@ -76,4 +75,4 @@ const PodSubpanel = ({ name, i, inputs, setInputs }) => {
 	);
 };
 
-export default PodSubpanel;
+export default InputSubpanel;

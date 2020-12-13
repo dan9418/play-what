@@ -1,6 +1,6 @@
 import React from 'react';
-import useEditContext from '../../../../../other/EditContext';
-import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
+import useEditContext from '../../../../other/EditContext';
+import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
 import ValueRow from './PodRow';
 
 const NewPodRow = ({ addPod }) => {
@@ -18,6 +18,7 @@ const NewPodRow = ({ addPod }) => {
 };
 
 const ValueRowManager = () => {
+	const pods = [];
 	const setPods = null;
 	const podType = 'interval';
 	const editContext = useEditContext();
