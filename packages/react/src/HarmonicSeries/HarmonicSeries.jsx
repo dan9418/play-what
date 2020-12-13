@@ -16,8 +16,7 @@ const PRIMES = {
     ['21']: 'aqua',
     ['23']: 'darkgreen',
     ['27']: 'lime'
-}
-
+};
 
 const Overtone = ({ f, n }) => {
     //const color = (n * 1000).toString(16);
@@ -58,7 +57,8 @@ const Overtone = ({ f, n }) => {
 const DEFAULT_PROPS = {
     fundamental: 100,
     n: 8
-}
+};
+
 const HarmonicSeries = props => {
     const { fundamental, n } = props;
     const config = { ...DEFAULT_PROPS, ...props };
