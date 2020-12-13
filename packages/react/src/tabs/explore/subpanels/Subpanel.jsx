@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as Icon from '../../../../../sandbox/src/img/Icons';
 import useEditContext, { EditContextProvider } from "../../../other/EditContext";
-import useOutputContext from "../../../other/OutputContext";
 import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
 
 export const NewSubpanelButton = (props) => {
@@ -52,17 +51,9 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 
 const InnerSubpanel = ({ name, children }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const outputContext = useOutputContext();
 	let caption = null;
 	let preview = null;
 	let viewerPreview = null;
-	if (outputContext) {
-		const { viewerDef, viewerProps, viewerInput } = outputContext;
-		const ViewerComponent = viewerDef.component;
-		caption = viewerDef.name
-		if (viewerInput) preview = viewerInput.name;
-		viewerPreview = <ViewerComponent {...viewerProps} />;
-	}
 
 	return (
 		<div className={`subpanel ${!isOpen && 'collapsed'}`}>

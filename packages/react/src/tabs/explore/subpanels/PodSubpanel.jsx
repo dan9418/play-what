@@ -1,10 +1,10 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
-import useEditContext from "../../../../other/EditContext";
+import useEditContext from "../../../other/EditContext";
 import useInputContext from "../../../../other/InputContext";
-import ButtonInput from "../../../../ui/ButtonInput/ButtonInput";
-import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import Subpanel from "../Subpanel";
+import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
+import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
+import Subpanel from "./Subpanel";
 import PodTable from "./table/PodTable";
 
 const PresetBox = () => {

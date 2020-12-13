@@ -1,12 +1,10 @@
 import React from "react";
-import useEditContext from "../../../../other/EditContext";
-import useOutputContext from "../../../../other/OutputContext";
-import DropdownInput from "../../../../ui/DropdownInput/DropdownInput";
-import { VIEWER_VALUES } from "../../../../viewers/viewers";
-import Subpanel from "../Subpanel";
+import useEditContext from "../../../other/EditContext";
+import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
+import { VIEWER_VALUES } from "../../../viewers/viewers";
+import Subpanel from "./Subpanel";
 
 const ViewerBar = () => {
-	const { viewerDef, setViewerDef } = useOutputContext();
 	const { isEditing } = useEditContext();
 
 	return (
@@ -21,7 +19,6 @@ const ViewerBar = () => {
 
 const ViewerBox = () => {
 
-	const { viewerDef, viewerProps } = useOutputContext()
 	const ViewerComponent = viewerDef.component;
 	const PanelComponent = viewerDef.panelComponent;
 

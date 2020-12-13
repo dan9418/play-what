@@ -7,10 +7,11 @@
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
     "window.zoomLevel": 1,
-    "editor.renameOnType": true,
+    "editor.linkedEditing": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    "editor.snippetSuggestions": "top" 
 }

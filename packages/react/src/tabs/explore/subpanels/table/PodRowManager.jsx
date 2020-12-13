@@ -1,6 +1,5 @@
 import React from 'react';
 import useEditContext from '../../../../../other/EditContext';
-import useOutputContext from '../../../../../other/OutputContext';
 import ButtonInput from '../../../../../ui/ButtonInput/ButtonInput';
 import ValueRow from './PodRow';
 
@@ -21,7 +20,6 @@ const NewPodRow = ({ addPod }) => {
 const ValueRowManager = () => {
 	const setPods = null;
 	const podType = 'interval';
-	const { pods } = useOutputContext().frame;
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
