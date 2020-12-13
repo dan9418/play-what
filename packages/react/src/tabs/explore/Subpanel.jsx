@@ -111,7 +111,7 @@ const StyledInnerSubpanel = styled.div`
 `;
 
 const InnerSubpanel = ({ name, children }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	let caption = null;
 	let preview = null;
 

@@ -5,7 +5,8 @@ import styled from 'styled-components';
 import { NewSubpanelButton } from "./Subpanel";
 
 const StyledPanel = styled.div`
-    width: 100%;
+	width: 100%;
+	max-width: 512px;
 	margin: 0 16px;
 	& .header {
 		padding: 0 16px 16px 16px;

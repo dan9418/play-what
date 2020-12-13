@@ -21,6 +21,12 @@ const Explore = () => {
 	return (
 		<StyledExplore>
 			<Panel
+				name="Inputs"
+				dataList={outputList}
+				setDataList={setOutputList}
+				subpanelComponent={OutputSubpanel}
+			/>
+			<Panel
 				name="Outputs"
 				dataList={outputList}
 				setDataList={setOutputList}
