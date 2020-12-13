@@ -3,7 +3,6 @@ import { COLOR_FN } from '@pw/core/src/Color.constants';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonInput from '../../../ui/ButtonInput/ButtonInput';
-import './Timeline.css';
 
 const StyledTable = styled.table`
 	background-color: white;
@@ -42,11 +41,6 @@ const PlaybackBar = styled.section`
 	justify-content: space-between;
 `;
 
-const Left = styled.div`
-`;
-
-const Right = styled.div`
-`;
 
 const PitchCell = styled.td`
 	padding: 4px;
@@ -105,13 +99,13 @@ const Timeline = ({ frames, index, setIndex }) => {
 		<>
 			<StyledTimeline>
 				<PlaybackBar>
-					<Left>
+					<div>
 						{index}
-					</Left>
-					<Right>
+					</div>
+					<div>
 						<ButtonInput onClick={() => setIndex(index - 1)}>Prev</ButtonInput>
 						<ButtonInput onClick={() => setIndex(index + 1)}>Next</ButtonInput>
-					</Right>
+					</div>
 				</PlaybackBar>
 				<StyledTableContainer $open={open}>
 					<StyledToggle onClick={() => setOpen(!open)} >
