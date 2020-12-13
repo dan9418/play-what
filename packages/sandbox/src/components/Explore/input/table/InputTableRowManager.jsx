@@ -1,3 +1,4 @@
+import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import useEditContext from '../../../../contexts/EditContext';
 import InputTableRow from './InputTableRow';
@@ -18,7 +19,7 @@ const NewPodRow = ({ addPod }) => {
 
 const InputTableRowManager = ({ input, setInput }) => {
 	const pods = input.value;
-	const setPods = setInput;
+	const setPods = newPods => setInput({ ...input, value: newPods });
 	const podType = 'interval';
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
