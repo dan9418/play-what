@@ -47,6 +47,7 @@ export const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 export const Panel = ({ name, dataList, setDataList, subpanelComponent }) => {
 	const [isOpen, setIsOpen] = useState(true);
 	const onInsertBelow = () => setDataList([...dataList, dataList[dataList.length - 1]]);
+	const SubpanelComponent = subpanelComponent;
 
 	return (
 		<StyledPanel>
@@ -59,7 +60,7 @@ export const Panel = ({ name, dataList, setDataList, subpanelComponent }) => {
 								const isLast = i === dataList.length - 1;
 								return (
 									<Subpanel key={data.id} name={data.name} i={i} dataList={dataList} setDataList={setDataList}>
-										{subpanelComponent}
+										<SubpanelComponent />
 									</Subpanel>
 								);
 							})

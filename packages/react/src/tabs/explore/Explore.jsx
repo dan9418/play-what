@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputListState, outputListState } from '../../../../sandbox/src/state/state';
-import PresetBox from './input/PresetBox';
+import InputTable from './input/table/InputTable';
 import ViewerBox from './output/ViewerBox';
 import Panel from './Panel';
 
@@ -26,7 +26,7 @@ const Explore = () => {
 				name="Inputs"
 				dataList={inputList}
 				setDataList={setInputList}
-				subpanelComponent={PresetBox}
+				subpanelComponent={InputTable}
 			/>
 			<Panel
 				name="Outputs"

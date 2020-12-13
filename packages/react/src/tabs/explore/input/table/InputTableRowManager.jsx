@@ -1,7 +1,7 @@
 import React from 'react';
 import useEditContext from '../../../../other/EditContext';
 import ButtonInput from '../../../../ui/ButtonInput/ButtonInput';
-import ValueRow from './PodRow';
+import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {
 	return (
@@ -17,16 +17,16 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const ValueRowManager = ({ input, setInput }) => {
+const InputTableRowManager = ({ input, setInput }) => {
 	const pods = input.value;
-	const setPods = null;
+	const setPods = setInput;
 	const podType = 'interval';
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
 	const rows = pods.map((v, i) => {
 		return (
-			<ValueRow
+			<InputTableRow
 				i={i}
 				key={i}
 				pods={pods}
@@ -41,4 +41,4 @@ const ValueRowManager = ({ input, setInput }) => {
 
 };
 
-export default ValueRowManager;
+export default InputTableRowManager;

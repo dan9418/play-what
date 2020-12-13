@@ -23,7 +23,7 @@ const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	)
 }
 
-const ValueRow = ({ i, pods, setPods, podType }) => {
+const InputTableRow = ({ i, pods, setPods, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -75,4 +75,4 @@ const ValueRow = ({ i, pods, setPods, podType }) => {
 	);
 };
 
-export default ValueRow;
+export default InputTableRow;

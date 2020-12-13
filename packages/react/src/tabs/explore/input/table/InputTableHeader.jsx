@@ -25,7 +25,7 @@ const getHeaders = (podType, isEditing) => {
 	return result;
 }
 
-const PodTableHeader = ({ podType }) => {
+const InputTableHeader = ({ podType }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 
@@ -40,4 +40,4 @@ const PodTableHeader = ({ podType }) => {
 	);
 };
 
-export default PodTableHeader;
+export default InputTableHeader;

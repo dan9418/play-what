@@ -44,7 +44,7 @@ const ViewerBar = () => {
 
 const ViewerBox = () => {
 	const subpanelContext = useSubpanelContext();
-	const { defaultProps, component } = subpanelContext.data;
+	const { defaultProps, component } = subpanelContext.data.value;
 
 	const ViewerComponent = component;
 
