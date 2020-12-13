@@ -1,6 +1,6 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
-import useEditContext from '../../../../../contexts/EditContext';
+import useEditContext from '../../../../contexts/EditContext';
 
 const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };

@@ -1,6 +1,6 @@
 import { POD_TYPES } from '@pw/core/src/Pod.constants';
 import React from 'react';
-import useEditContext from '../../../../../contexts/EditContext';
+import useEditContext from '../../../../contexts/EditContext';
 
 const PodTypeCell = () => {
 	const setPods = null;

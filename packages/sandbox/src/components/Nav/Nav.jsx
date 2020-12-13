@@ -1,8 +1,8 @@
 
 import React from 'react';
 import 'react-hot-loader';
-import * as Icons from '../img/Icons';
 import styled from 'styled-components';
+import { GitHub, Menu } from '../../img/Icons';
 
 const StyledNav = styled.nav`
 	color: white;
@@ -90,9 +90,9 @@ const Nav = ({ tabs, tabIndex, setTabIndex }) => (
 		))}
 		<div className="spacer" />
 		<div className="right-nav">
-			<a className="icon" href="https://github.com/dan9418/play-what-sandbox" target="_blank"><Icons.GitHub /></a>
+			<a className="icon" href="https://github.com/dan9418/play-what-sandbox" target="_blank"><GitHub /></a>
 			<div className={`meatball`} onClick={() => null}>
-				<Icons.Menu />
+				<Menu />
 			</div>
 		</div>
 	</StyledNav>

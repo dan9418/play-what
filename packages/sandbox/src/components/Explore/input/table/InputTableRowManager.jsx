@@ -1,5 +1,5 @@
 import React from 'react';
-import useEditContext from '../../../../../contexts/EditContext';
+import useEditContext from '../../../../contexts/EditContext';
 import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {

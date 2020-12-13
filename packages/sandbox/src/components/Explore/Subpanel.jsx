@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../img/Icons";
-import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
-import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
+import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../img/Icons";
+import useSubpanelContext, { SubpanelContextProvider } from "../../contexts/SubpanelContext";
+import useEditContext, { EditContextProvider } from "../../contexts/EditContext";
 import { ButtonInput } from '@pw/react';
 
 export const NewSubpanelButton = (props) => {

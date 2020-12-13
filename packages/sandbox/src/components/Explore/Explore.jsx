@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { inputListState, outputListState } from '../../../state/state';
+import { inputListState, outputListState } from '../../state/state';
 import InputTable from './input/table/InputTable';
 import ViewerBox from './output/ViewerBox';
 import Panel from './Panel';
