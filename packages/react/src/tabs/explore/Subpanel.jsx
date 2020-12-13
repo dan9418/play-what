@@ -166,29 +166,31 @@ const StyledSubpanel = styled.div`
 	}
 `;
 
-const SubpanelControls = ({ children, dataList, setDataList, name, i }) => {
+const SubpanelControls = () => {
 	const subpanelContext = useSubpanelContext();
 	const { onMoveUp, onMoveDown, onDelete } = subpanelContext;
 	const { isEditing } = useEditContext();
 	if (!isEditing) return false;
 
 	return (
-
 		<div className="controls">
 			<ButtonInput onClick={onMoveUp}><Up /></ButtonInput>
 			<ButtonInput onClick={onDelete}><Delete /></ButtonInput>
 			<ButtonInput onClick={onMoveDown}><Down /></ButtonInput>
 		</div>
-
 	);
 }
 
-const Subpanel = ({ children, dataList, setDataList, name, i }) => {
-	const { isEditing } = useEditContext();
+const InsertAboveButton = () => {
+	const subpanelContext = useSubpanelContext();
+	const { onInsertAbove } = subpanelContext;
+	return <NewSubpanelButton onClick={onInsertAbove} />;
+}
 
+const Subpanel = ({ children, dataList, setDataList, name, i }) => {
 	return (
 		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
-			<NewSubpanelButton onClick={null} />
+			<InsertAboveButton/>
 			<StyledSubpanel>
 				<InnerSubpanel name={name}>
 					{children}
