@@ -1,11 +1,9 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import React, { useState } from "react";
-import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
-import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
-import Subpanel from "../Subpanel";
-import PodTable from "./table/PodTable";
 import styled from 'styled-components';
 import useEditContext from "../../../other/EditContext";
+import ButtonInput from "../../../ui/ButtonInput/ButtonInput";
+import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
 
 const StyledPresetBox = styled.div`
 	padding: 8px;
@@ -61,18 +59,4 @@ const PresetBox = () => {
 	);
 };
 
-const InputSubpanel = ({ name, i, inputs, setInputs }) => {
-	return (
-		<Subpanel
-			name={name}
-			data={inputs}
-			setData={setInputs}
-			i={i}
-		>
-			<PodTable />
-			<PresetBox />
-		</Subpanel>
-	);
-};
-
-export default InputSubpanel;
+export default PresetBox;

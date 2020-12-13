@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-import Panel from './Panel';
 import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { inputListState, outputListState } from '../../../../sandbox/src/state/state';
-import OutputSubpanel from './output/OutputSubpanel';
-import InputSubpanel from './input/InputSubpanel';
+import PresetBox from './input/PresetBox';
+import ViewerBox from './output/ViewerBox';
+import Panel from './Panel';
 
 const StyledExplore = styled.div`
 	width: 100%;
@@ -26,13 +26,13 @@ const Explore = () => {
 				name="Inputs"
 				dataList={inputList}
 				setDataList={setInputList}
-				subpanelComponent={InputSubpanel}
+				subpanelComponent={PresetBox}
 			/>
 			<Panel
 				name="Outputs"
 				dataList={outputList}
 				setDataList={setOutputList}
-				subpanelComponent={OutputSubpanel}
+				subpanelComponent={ViewerBox}
 			/>
 		</StyledExplore>
 	);

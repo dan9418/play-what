@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ButtonInput from "../../ui/ButtonInput/ButtonInput";
 import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../../sandbox/src/img/Icons";
 import useEditContext, { EditContextProvider } from "../../other/EditContext";
+import useSubpanelContext, { SubpanelContextProvider } from "../../other/SubpanelContext";
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -165,29 +166,36 @@ const StyledSubpanel = styled.div`
 	}
 `;
 
-const Subpanel = ({ children, data, setData, name, i }) => {
+const SubpanelControls = ({ children, dataList, setDataList, name, i }) => {
+	const subpanelContext = useSubpanelContext();
+	const { onMoveUp, onMoveDown, onDelete } = subpanelContext;
 	const { isEditing } = useEditContext();
-	const onInsertAbove = () => setData([...data.slice(0, i), data[i], ...data.slice(i)]);
-	const onMoveUp = () => setData([...data.slice(0, i - 1), data[i], data[i - 1], ...data.slice(i + 1)]);
-	const onDelete = () => setData([...data.slice(0, i), ...data.slice(i + 1)]);
-	const onMoveDown = () => setData([...data.slice(0, i), data[i + 1], data[i], ...data.slice(i + 2)]);
-	return (
-		<>
-			<NewSubpanelButton onClick={onInsertAbove} />
+	if (!isEditing) return false;
 
+	return (
+
+		<div className="controls">
+			<ButtonInput onClick={onMoveUp}><Up /></ButtonInput>
+			<ButtonInput onClick={onDelete}><Delete /></ButtonInput>
+			<ButtonInput onClick={onMoveDown}><Down /></ButtonInput>
+		</div>
+
+	);
+}
+
+const Subpanel = ({ children, dataList, setDataList, name, i }) => {
+	const { isEditing } = useEditContext();
+
+	return (
+		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
+			<NewSubpanelButton onClick={null} />
 			<StyledSubpanel>
 				<InnerSubpanel name={name}>
 					{children}
 				</InnerSubpanel>
-				{isEditing &&
-					<div className="controls">
-						<ButtonInput onClick={onMoveUp}><Up /></ButtonInput>
-						<ButtonInput onClick={onDelete}><Delete /></ButtonInput>
-						<ButtonInput onClick={onMoveDown}><Down /></ButtonInput>
-					</div>
-				}
+				<SubpanelControls />
 			</StyledSubpanel>
-		</>
+		</SubpanelContextProvider>
 	);
 }
 

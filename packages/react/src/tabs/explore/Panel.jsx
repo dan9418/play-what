@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useEditContext, { EditContextProvider } from "../../other/EditContext";
 import ButtonInput from '../../ui/ButtonInput/ButtonInput';
 import styled from 'styled-components';
-import { NewSubpanelButton } from "./Subpanel";
+import Subpanel, { NewSubpanelButton } from "./Subpanel";
 
 const StyledPanel = styled.div`
 	width: 100%;
@@ -56,11 +56,11 @@ export const Panel = ({ name, dataList, setDataList, subpanelComponent }) => {
 					<div className='body'>
 						{
 							dataList.map((data, i) => {
-								const setData = data => setDataList([...dataList.slice(0, i), data, ...dataList.slice(i + 1)]);
 								const isLast = i === dataList.length - 1;
-								const SubpanelComponent = subpanelComponent;
 								return (
-									<SubpanelComponent key={i} i={i} name={data.name} data={data} setData={setData} />
+									<Subpanel key={data.id} name={data.name} i={i} dataList={dataList} setDataList={setDataList}>
+										{subpanelComponent}
+									</Subpanel>
 								);
 							})
 						}

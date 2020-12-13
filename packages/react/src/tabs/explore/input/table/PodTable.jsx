@@ -3,12 +3,12 @@ import ValueRowManager from './PodRowManager';
 import './PodTable.css';
 import PodTableHeader from './PodTableHeader';
 
-const PodTable = () => {
+const PodTable = ({ input, setInput }) => {
 	return (
 		<table className='pod-table'>
 			<PodTableHeader />
 			<tbody>
-				<ValueRowManager />
+				<ValueRowManager input={input} setInput={setInput} />
 			</tbody>
 		</table>
 	);

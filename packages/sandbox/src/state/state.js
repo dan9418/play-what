@@ -4,13 +4,10 @@ import Fretboard from "../../../react/src/viewers/Fretboard/Fretboard";
 
 export const inputListState = atom({
 	key: 'inputListState',
-	default: [{
-		id: 'input1',
-		name: 'Input 1',
-		value: SCALE.Major.value
-	}]
+	default: [
+		SCALE.Major
+	]
 });
-
 
 export const outputListState = atom({
 	key: 'outputListState',

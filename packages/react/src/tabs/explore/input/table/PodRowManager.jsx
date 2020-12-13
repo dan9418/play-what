@@ -17,8 +17,8 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const ValueRowManager = () => {
-	const pods = [];
+const ValueRowManager = ({ input, setInput }) => {
+	const pods = input.value;
 	const setPods = null;
 	const podType = 'interval';
 	const editContext = useEditContext();

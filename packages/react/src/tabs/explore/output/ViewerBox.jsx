@@ -1,9 +1,9 @@
 import React from "react";
+import styled from 'styled-components';
 import useEditContext from "../../../other/EditContext";
+import useSubpanelContext from "../../../other/SubpanelContext";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
 import { VIEWER_VALUES } from "../../../viewers/viewers";
-import Subpanel from "../Subpanel";
-import styled from 'styled-components';
 
 const StyledViewerBox = styled.div`
 	margin-top: 16px;
@@ -42,7 +42,9 @@ const ViewerBar = () => {
 	);
 };
 
-const ViewerBox = ({ defaultProps, component }) => {
+const ViewerBox = () => {
+	const subpanelContext = useSubpanelContext();
+	const { defaultProps, component } = subpanelContext.data;
 
 	const ViewerComponent = component;
 
@@ -53,18 +55,4 @@ const ViewerBox = ({ defaultProps, component }) => {
 	);
 };
 
-
-const OutputSubpanel = ({ name, data, setData, i }) => {
-	return (
-		<Subpanel
-			name={name}
-			data={data}
-			setData={setData}
-			i={i}
-		>
-			<ViewerBox {...data.value} />
-		</Subpanel>
-	);
-};
-
-export default OutputSubpanel;
+export default ViewerBox;
