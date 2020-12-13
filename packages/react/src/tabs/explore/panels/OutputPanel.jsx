@@ -7,7 +7,7 @@ import { VIEWER } from '../../../viewers/viewers';
 
 const OUTPUT_1 = {
 	id: 'output1',
-	name: 'Output 1',
+	name: 'Guitar',
 	value: {
 		viewerDef: VIEWER.fretboard,
 		viewerProps: VIEWER.fretboard.defaultProps
@@ -16,7 +16,7 @@ const OUTPUT_1 = {
 
 const OUTPUT_2 = {
 	id: 'output1',
-	name: 'Output 1',
+	name: 'Keyboard',
 	value: {
 		viewerDef: VIEWER.keyboard,
 		viewerProps: VIEWER.keyboard.defaultProps
@@ -25,7 +25,7 @@ const OUTPUT_2 = {
 
 const OUTPUT_3 = {
 	id: 'output3',
-	name: 'Output 3',
+	name: 'Table',
 	value: {
 		viewerDef: VIEWER.table,
 		viewerProps: VIEWER.table.defaultProps
@@ -44,7 +44,7 @@ const OutputPanel = ({ frame }) => {
 				const isLast = i === outputs.length - 1;
 				return (
 					<OutputContextProvider key={i} output={output} setOutput={setOutput} frame={frame}>
-						<ViewerSubpanel i={i} name={`Out ${i + 1}`} outputs={outputs} setOutputs={setOutputs} />
+						<ViewerSubpanel i={i} name={output.name} outputs={outputs} setOutputs={setOutputs} />
 					</OutputContextProvider>
 				);
 			})}

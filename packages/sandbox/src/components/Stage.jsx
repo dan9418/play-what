@@ -10,6 +10,7 @@ import './Main.css';
 import Nav from './Nav';
 import { ThemeProvider } from 'styled-components';
 import THEME from '../styles/theme';
+import { RecoilRoot } from 'recoil';
 
 const TABS = [
 	{
@@ -33,12 +34,14 @@ const Stage = () => {
 	const [tabIndex, setTabIndex] = useState(1);
 	const tab = TABS[tabIndex];
 	return (
-		<ThemeProvider theme={THEME}>
-			<Nav tabs={TABS} tabIndex={tabIndex} setTabIndex={setTabIndex} />
-			<Main>
-				{tab.component}
-			</Main>
-		</ThemeProvider>
+		<RecoilRoot>
+			<ThemeProvider theme={THEME}>
+				<Nav tabs={TABS} tabIndex={tabIndex} setTabIndex={setTabIndex} />
+				<Main>
+					{tab.component}
+				</Main>
+			</ThemeProvider>
+		</RecoilRoot>
 	);
 };
 

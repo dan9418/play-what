@@ -4,19 +4,6 @@ h1, h2, h3 {
     margin: 0;
 }
 
-/* Explore */
-
-.explore {
-    width: 100%;
-    min-height: 100%;
-    margin: 24px auto;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 /* DemoSelect */
 
 .demo-select {
