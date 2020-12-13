@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import './Explore.css';
 import Panel from './Panel';
 import { useRecoilState } from 'recoil';
 import { inputListState, outputListState } from '../../../../sandbox/src/state/state';

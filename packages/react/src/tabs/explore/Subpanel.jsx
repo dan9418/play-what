@@ -100,9 +100,7 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 const StyledInnerSubpanel = styled.div`
 	margin: 0 0 16px 0;
     padding: 0 16px;
-    box-sizing: border-box;
     width: 100%;
-    max-width: 512px;
     border-radius: 16px;
     background-color: #f5f5f5;
 	box-shadow: -2px 3px 15px 5px rgba(0, 0, 0, 0.1);
@@ -177,7 +175,7 @@ const Subpanel = ({ children, data, setData, name, i }) => {
 		<>
 			<NewSubpanelButton onClick={onInsertAbove} />
 
-			<div className="edit-wrapper">
+			<StyledSubpanel>
 				<InnerSubpanel name={name}>
 					{children}
 				</InnerSubpanel>
@@ -188,7 +186,7 @@ const Subpanel = ({ children, data, setData, name, i }) => {
 						<ButtonInput onClick={onMoveDown}><Down /></ButtonInput>
 					</div>
 				}
-			</div>
+			</StyledSubpanel>
 		</>
 	);
 }

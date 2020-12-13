@@ -7,6 +7,27 @@ import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
 import Subpanel from "./Subpanel";
 import PodTable from "./table/PodTable";
 
+const StyledPresetBox = styled.div`
+	padding: 8px;
+	text-align: center;
+	
+	& button {
+		width: 50%;
+    margin: 8px;
+	}
+
+	& button {
+		width: 50%;
+		border-radius: 8px;
+		text-transform: uppercase;
+	}
+
+	& table {
+		margin: auto;
+    	margin-top: 16px;
+	}
+`;
+
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
@@ -15,10 +36,10 @@ const PresetBox = () => {
 	if (!isEditing) return null;
 	const setHelper = v => setPods(v.value);
 	return (
-		<div className="preset-box">
-			<ButtonInput className="load-preset" onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
+		<StyledPresetBox>
+			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
 			{isOpen && (
-				<table className="preset-table">
+				<table>
 					<thead>
 						<tr>
 							<th>Type</th>
@@ -37,7 +58,7 @@ const PresetBox = () => {
 					</tbody>
 				</table>
 			)}
-		</div>
+		</StyledPresetBox>
 	);
 };
 
