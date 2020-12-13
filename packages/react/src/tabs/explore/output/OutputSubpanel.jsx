@@ -2,7 +2,7 @@ import React from "react";
 import useEditContext from "../../../other/EditContext";
 import DropdownInput from "../../../ui/DropdownInput/DropdownInput";
 import { VIEWER_VALUES } from "../../../viewers/viewers";
-import Subpanel from "./Subpanel";
+import Subpanel from "../Subpanel";
 
 const ViewerBar = () => {
 	const { isEditing } = useEditContext();
@@ -17,32 +17,29 @@ const ViewerBar = () => {
 	);
 };
 
-const ViewerBox = () => {
+const ViewerBox = ({ defaultProps, component }) => {
 
-	const ViewerComponent = viewerDef.component;
-	const PanelComponent = viewerDef.panelComponent;
+	const ViewerComponent = component;
 
 	return (
 		<>
-
-			{PanelComponent && <PanelComponent />}
 			<div className="viewer-box">
-				<ViewerComponent {...viewerProps} />
+				<ViewerComponent {...defaultProps} />
 			</div>
 		</>
 	);
 };
 
 
-const OutputSubpanel = ({ name, outputs, setOutputs, i }) => {
+const OutputSubpanel = ({ name, data, setData, i }) => {
 	return (
 		<Subpanel
 			name={name}
-			data={outputs}
-			setData={setOutputs}
+			data={data}
+			setData={setData}
 			i={i}
 		>
-			<ViewerBox />
+			<ViewerBox {...data.value} />
 		</Subpanel>
 	);
 };

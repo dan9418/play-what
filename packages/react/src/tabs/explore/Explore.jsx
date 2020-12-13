@@ -4,6 +4,7 @@ import './Explore.css';
 import Panel from './Panel';
 import { useRecoilState } from 'recoil';
 import { inputListState, outputListState } from '../../../../sandbox/src/state/state';
+import OutputSubpanel from './output/OutputSubpanel';
 
 const StyledExplore = styled.div`
 	width: 100%;
@@ -24,7 +25,7 @@ const Explore = () => {
 				name="Outputs"
 				dataList={outputList}
 				setDataList={setOutputList}
-				subpanelComponent={null}
+				subpanelComponent={OutputSubpanel}
 			/>
 		</StyledExplore>
 	);

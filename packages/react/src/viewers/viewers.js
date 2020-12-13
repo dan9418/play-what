@@ -1,4 +1,3 @@
-import PodTable from "../tabs/explore/input/pods/table/PodTable";
 import Fretboard from "./Fretboard/Fretboard";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard/Fretboard.defaults";
 import FretboardPanel from "./Fretboard/FretboardPanel";
@@ -7,16 +6,8 @@ import Keyboard from "./Keyboard/Keyboard";
 import DEFAULT_KEYBOARD_PROPS from "./Keyboard/Keyboard.defaults";
 import KeyboardPanel from "./Keyboard/KeyboardPanel";
 import Meter from "./Meter/Meter";
-import React from 'react'
 
 export const VIEWER = {
-	table: {
-		id: 'table',
-		name: 'Table',
-		component: PodTable,
-		panelComponent: React.Fragment,
-		defaultProps: {}
-	},
 	meter: {
 		id: 'meter',
 		name: 'Meter',

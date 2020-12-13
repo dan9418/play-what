@@ -58,9 +58,8 @@ export const Panel = ({ name, dataList, setDataList, subpanelComponent }) => {
 								const setData = data => setDataList([...dataList.slice(0, i), data, ...dataList.slice(i + 1)]);
 								const isLast = i === dataList.length - 1;
 								const SubpanelComponent = subpanelComponent;
-								return null;
 								return (
-									<SubpanelComponent key={i} i={i} name={data.name} dataList={dataList} setDataList={setDataList} />
+									<SubpanelComponent key={i} i={i} name={data.name} data={data} setData={setData} />
 								);
 							})
 						}
