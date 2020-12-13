@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import './Explore.css';
-import OutputPanel from './panels/OutputPanel';
+import Panel from './Panel';
+import { useRecoilState } from 'recoil';
+import { inputListState, outputListState } from '../../../../sandbox/src/state/state';
 
 const StyledExplore = styled.div`
 	width: 100%;
@@ -14,11 +16,16 @@ const StyledExplore = styled.div`
     flex-wrap: wrap;
 `;
 
-
 const Explore = () => {
+	const [outputList, setOutputList] = useRecoilState(outputListState)
 	return (
 		<StyledExplore>
-			<OutputPanel />
+			<Panel
+				name="Outputs"
+				dataList={outputList}
+				setDataList={setOutputList}
+				subpanelComponent={null}
+			/>
 		</StyledExplore>
 	);
 };

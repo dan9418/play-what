@@ -1,4 +1,4 @@
-import PodTable from "../tabs/explore/subpanels/pods/table/PodTable";
+import PodTable from "../tabs/explore/input/pods/table/PodTable";
 import Fretboard from "./Fretboard/Fretboard";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard/Fretboard.defaults";
 import FretboardPanel from "./Fretboard/FretboardPanel";

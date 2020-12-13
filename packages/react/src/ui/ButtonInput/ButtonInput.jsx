@@ -8,18 +8,18 @@ const StyledButton = styled.button`
     border-radius: 4px;
     padding: 4px 8px;
 	color: white;
-	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent}
+	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent};
 `;
 
 const ButtonInput = props => {
-	const { disabled, onClick, children, isActive, hoverable } = props;
+	const { disabled, onClick, children, isActive, hoverable, className } = props;
 
 	const hov = onClick || hoverable;
 	const isDisabled = disabled || false;
 	const clickHander = onClick || (() => null);
 
 	return (
-		<StyledButton type='button' disabled={isDisabled} onClick={clickHander} $isActive={isActive}>{children}</StyledButton>
+		<StyledButton type='button' disabled={isDisabled} onClick={clickHander} $isActive={isActive} className={className}>{children}</StyledButton>
 	);
 }
 

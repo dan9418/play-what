@@ -24,7 +24,7 @@ const ViewerBox = () => {
 
 	return (
 		<>
-			<ViewerBar />
+
 			{PanelComponent && <PanelComponent />}
 			<div className="viewer-box">
 				<ViewerComponent {...viewerProps} />
@@ -34,7 +34,7 @@ const ViewerBox = () => {
 };
 
 
-const ViewerSubpanel = ({ name, outputs, setOutputs, i }) => {
+const OutputSubpanel = ({ name, outputs, setOutputs, i }) => {
 	return (
 		<Subpanel
 			name={name}
@@ -47,4 +47,4 @@ const ViewerSubpanel = ({ name, outputs, setOutputs, i }) => {
 	);
 };
 
-export default ViewerSubpanel;
+export default OutputSubpanel;

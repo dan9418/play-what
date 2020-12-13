@@ -7,7 +7,6 @@
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
     "window.zoomLevel": 1,
-    "editor.linkedEditing": true,
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "editor.codeActionsOnSave": {
