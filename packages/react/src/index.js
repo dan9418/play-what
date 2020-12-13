@@ -2,16 +2,16 @@ import Meter from './Meter/Meter';
 import Fretboard from './Fretboard/Fretboard';
 import Keyboard from './Keyboard/Keyboard';
 import Graph from './Graph/Graph';
-import ButtonInput from './ui/ButtonInput/ButtonInput';
-import DropdownInput from './ui/DropdownInput/DropdownInput';
-import NumericInput from './ui/NumericInput/NumericInput';
-import SwitchInput from './ui/SwitchInput/SwitchInput';
+import _ButtonInput from './ui/ButtonInput/ButtonInput';
+import _DropdownInput from './ui/DropdownInput/DropdownInput';
+import _NumericInput from './ui/NumericInput/NumericInput';
+import _SwitchInput from './ui/SwitchInput/SwitchInput';
 import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
 import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
 import DEFAULT_GRAPH_PROPS from './Graph/Graph.defaults';
 import DEFAULT_METER_PROPS from './Meter/Meter.defaults';
 
-const VIEWER = {
+export const VIEWER = {
 	meter: {
 		id: 'meter',
 		name: 'Meter',
@@ -38,18 +38,9 @@ const VIEWER = {
 	}
 };
 
-const VIEWER_VALUES = Object.values(VIEWER);
+export const VIEWER_VALUES = Object.values(VIEWER);
 
-const UI = {
-	ButtonInput,
-	DropdownInput,
-	NumericInput,
-	SwitchInput
-}
-
-export default {
-	VIEWER,
-	VIEWER_VALUES,
-	...VIEWER,
-	...UI
-}
+export const ButtonInput = _ButtonInput;
+export const DropdownInput = _DropdownInput;
+export const NumericInput = _NumericInput;
+export const SwitchInput = _SwitchInput;
