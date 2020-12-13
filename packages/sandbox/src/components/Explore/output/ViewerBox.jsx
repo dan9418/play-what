@@ -43,13 +43,13 @@ const ViewerBar = () => {
 
 const ViewerBox = () => {
 	const subpanelContext = useSubpanelContext();
-	const { defaultProps, component } = subpanelContext.data.value;
+	const { viewerProps, component } = subpanelContext.data;
 
 	const ViewerComponent = component;
 
 	return (
 		<StyledViewerBox>
-			<ViewerComponent {...defaultProps} />
+			<ViewerComponent {...viewerProps} />
 		</StyledViewerBox>
 	);
 };

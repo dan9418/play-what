@@ -16,7 +16,7 @@ export const VIEWER = {
 		id: 'meter',
 		name: 'Meter',
 		component: Meter,
-		defaulProps: DEFAULT_METER_PROPS
+		defaultProps: DEFAULT_METER_PROPS
 	},
 	fretboard: {
 		id: 'fretboard',
