@@ -2,13 +2,13 @@
 import React from 'react';
 import 'react-hot-loader';
 import styled from 'styled-components';
-import { GitHub, Menu } from '../../img/Icons';
+import { GitHub } from '../../img/Icons';
 
 const StyledNav = styled.nav`
 	color: white;
 	background-color: ${({ theme }) => theme.primary};
-    height: 64px;
-    line-height: 64px;
+    height: 48px;
+    line-height: 48px;
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -19,35 +19,46 @@ const StyledNav = styled.nav`
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
     padding: 0 16px;
-    font-weight: bold;
-    font-size: 120%;
 
-	& svg, & svg * {
-		width: 100%;
-		height: 100%;
-		fill: #fff;
-	}
-
-	& .icon {
-		height: 50px;
-		width: 50px;
+	& .link {
 		cursor: pointer;
-		padding: 10px;
-		box-sizing: border-box;
-	}
+		display: flex;
+		align-items: center;
+		color: white;
+		text-decoration: none;
+		padding: 0 8px;
+		background-color: transparent;
+		outline: none;
+		border: none;
+		font-size: 80%;
+		font-weight: normal;
+		margin-left: 8px;
 
-	& .spacer {
-		width: 20px;
-		height: 50px;
-		line-height: 50px;
-		font-size: 20px;
+		&:hover {
+			color: ${({ theme }) => theme.active};
+		}
+
+		& svg {
+			margin-right: 8px;
+			width: 24px;
+			height: 24px;
+		}
+
+		& svg, & svg * {
+			fill: #fff;
+		}
+		&:hover {
+			& svg, & svg * {
+				fill: ${({ theme }) => theme.active};
+			}
+		}
 	}
 
 	& .logo {
-		font-size: 120%;
+		font-size: 100%;
 		text-transform: uppercase;
-		letter-spacing: 5px;
-		font-weight: bolder;
+		letter-spacing: 8px;
+		font-weight: 300;
 		cursor: pointer;
 		margin-right: 16px;
 	}
@@ -56,14 +67,6 @@ const StyledNav = styled.nav`
 		position: absolute;
 		right: 0;
 		display: flex;
-	}
-
-	& .meatball {
-		height: 50px;
-		width: 50px;
-		cursor: pointer;
-		padding: 10px;
-		box-sizing: border-box;
 	}
 
 	& .tab {
@@ -78,8 +81,8 @@ const StyledNav = styled.nav`
 	}
 `;
 
-const Nav = ({ tabs, tabIndex, setTabIndex }) => (
-	<StyledNav className="top-nav">
+const Nav = ({ tabs, links, tabIndex, setTabIndex }) => (
+	<StyledNav>
 		<div className="logo">Play What?</div>
 		{tabs.map((t, i) => (
 			<div
@@ -90,12 +93,19 @@ const Nav = ({ tabs, tabIndex, setTabIndex }) => (
 		))}
 		<div className="spacer" />
 		<div className="right-nav">
-			<a className="icon" href="https://github.com/dan9418/play-what-sandbox" target="_blank"><GitHub /></a>
-			<div className={`meatball`} onClick={() => null}>
-				<Menu />
-			</div>
+			{links.map((l, i) => (
+				<button
+					key={i}
+					className="link"
+					type="button"
+					onClick={() => setTabIndex(tabs.length + i)}
+				>
+					<GitHub />
+					{l.name}
+				</button>
+			))}
 		</div>
-	</StyledNav>
+	</StyledNav >
 );
 
 export default Nav;

@@ -14,14 +14,22 @@ import ErrorBoundary from './ErrorBoundary';
 
 const TABS = [
 	{
+		id: 'io',
+		name: 'In/Out',
+		component: <Explore />
+	},
+	{
+		id: 'chart',
+		name: 'Chart',
+		component: <Explore />
+	}
+];
+
+const LINKS = [
+	{
 		id: 'about',
 		name: 'About',
 		component: <About />
-	},
-	{
-		id: 'explore',
-		name: 'Explore',
-		component: <Explore />
 	},
 	{
 		id: 'docs',
@@ -38,12 +46,12 @@ const StyledMain = styled.main`
 
 const App = () => {
 	const [tabIndex, setTabIndex] = useState(1);
-	const tab = TABS[tabIndex];
+	const tab = [...TABS, ...LINKS][tabIndex];
 	return (
 		<RecoilRoot>
 			<ThemeProvider theme={THEME}>
 				<ErrorBoundary>
-					<Nav tabs={TABS} tabIndex={tabIndex} setTabIndex={setTabIndex} />
+					<Nav tabs={TABS} links={LINKS} tabIndex={tabIndex} setTabIndex={setTabIndex} />
 					<StyledMain>
 						{tab.component}
 					</StyledMain>
