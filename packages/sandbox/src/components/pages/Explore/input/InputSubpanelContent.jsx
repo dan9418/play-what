@@ -1,4 +1,5 @@
-import React from "react";
+import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../../contexts/EditContext";
 import PresetBox from "./PresetBox";
@@ -8,13 +9,30 @@ const StyledDiv = styled.div`
 	width: 100%;
 `;
 
+const StyledSwitchContainer = styled.div`
+	width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > * {
+        margin: 8px;
+    }
+`;
+
 const InputSubpanelContent = () => {
 	const { isEditing } = useEditContext();
+	const [hasKey, setHasKey] = useState(false);
 
 	return (
 		<StyledDiv>
-			<InputTable />
+			<StyledSwitchContainer>
+                Notes
+				<SwitchInput value={hasKey} setValue={setHasKey} />
+                Intervals
+			</StyledSwitchContainer>
 			<PresetBox />
+			<InputTable />
 		</StyledDiv>
 	);
 };

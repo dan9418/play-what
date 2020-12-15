@@ -68,7 +68,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
 			{isEditing &&
 				<td>
-					<ButtonInput onClick={remove}>X</ButtonInput>
+					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
 				</td>
 			}
 		</tr>

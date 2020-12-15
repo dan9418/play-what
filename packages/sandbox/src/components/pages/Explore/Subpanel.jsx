@@ -147,10 +147,7 @@ const StyledSubpanel = styled.div`
 		}
 	}
 	
-	& button {
-		height: 32px;
-		width: 32px;
-		border-radius: 100%;
+	& button.delete {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
