@@ -2,7 +2,16 @@
 import React from 'react';
 import 'react-hot-loader';
 import styled from 'styled-components';
+import useRouteContext from '../../contexts/RouteContext';
 import { GitHub } from '../../img/Icons';
+
+const LINKS = [
+	{
+		id: 'source',
+		name: 'Source',
+		href: 'https://github.com/dan9418/play-what/'
+	}
+];
 
 const StyledNav = styled.nav`
 	color: white;
@@ -81,31 +90,38 @@ const StyledNav = styled.nav`
 	}
 `;
 
-const Nav = ({ tabs, links, tabIndex, setTabIndex }) => (
-	<StyledNav>
-		<div className="logo">Play What?</div>
-		{tabs.map((t, i) => (
-			<div
-				className={`tab ${tabIndex === i ? 'active' : ''}`}
-				key={t.id}
-				onClick={() => setTabIndex(i)}
-			>{t.name}</div>
-		))}
-		<div className="spacer" />
-		<div className="right-nav">
-			{links.map((l, i) => (
-				<button
-					key={i}
-					className="link"
-					type="button"
-					onClick={() => setTabIndex(tabs.length + i)}
-				>
-					<GitHub />
-					{l.name}
-				</button>
-			))}
-		</div>
-	</StyledNav >
-);
+const Nav = () => {
+	const routeContext = useRouteContext();
+	const { breadcrumbs, popAt, currentPage } = routeContext;
+
+	return (
+		<StyledNav>
+			<div className="logo" onClick={() => popAt(0)}>Play What?</div>
+			{breadcrumbs.map((page, i) => {
+				if (i === 0) return null;
+				return (
+					<div
+						className={`breadcrumb ${page.id === currentPage.id ? 'active' : ''}`}
+						key={page.id}
+						onClick={() => popAt(i)}
+					>{page.name}</div>
+				);
+			})}
+			<div className="spacer" />
+			<div className="right-nav">
+				{LINKS.map((l, i) => (
+					<a
+						key={i}
+						className="link"
+						href={l.href}
+					>
+						<GitHub />
+						{l.name}
+					</a>
+				))}
+			</div>
+		</StyledNav >
+	);
+};
 
 export default Nav;
