@@ -23,16 +23,19 @@ const StyledSwitchContainer = styled.div`
 const InputSubpanelContent = () => {
 	const { isEditing } = useEditContext();
 	const [hasKey, setHasKey] = useState(false);
+	const podType = hasKey ? 'interval' : 'note';
 
 	return (
 		<StyledDiv>
-			<StyledSwitchContainer>
-                Notes
-				<SwitchInput value={hasKey} setValue={setHasKey} />
+			{isEditing && <>
+				<StyledSwitchContainer>
+					Notes
+					<SwitchInput value={hasKey} setValue={setHasKey} />
                 Intervals
-			</StyledSwitchContainer>
-			<PresetBox />
-			<InputTable />
+				</StyledSwitchContainer>
+				<PresetBox />
+			</>}
+			<InputTable podType={podType} />
 		</StyledDiv>
 	);
 };

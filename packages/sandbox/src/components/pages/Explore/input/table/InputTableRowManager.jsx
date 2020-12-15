@@ -11,16 +11,15 @@ const NewPodRow = ({ addPod }) => {
 				Add
 			</td>
 			<td>
-				<ButtonInput onClick={addPod}>+</ButtonInput>
+				<ButtonInput className="add" onClick={addPod}>+</ButtonInput>
 			</td>
 		</tr>
 	);
 };
 
-const InputTableRowManager = ({ input, setInput }) => {
+const InputTableRowManager = ({ input, setInput, podType }) => {
 	const pods = input.value;
 	const setPods = newPods => setInput({ ...input, value: newPods });
-	const podType = 'interval';
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 

@@ -3,7 +3,6 @@ import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../../contexts/EditContext";
 
 const StyledPresetBox = styled.div`
 	padding: 8px;
@@ -29,8 +28,6 @@ const StyledPresetBox = styled.div`
 const PresetBox = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
-	const { isEditing } = useEditContext();
-	if (!isEditing) return null;
 	const setHelper = null; //v => setPods(v.value);
 	return (
 		<StyledPresetBox>

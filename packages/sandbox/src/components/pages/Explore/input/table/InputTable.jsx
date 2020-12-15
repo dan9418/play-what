@@ -30,15 +30,15 @@ const StyledInputTable = styled.table`
 	}
 `;
 
-const InputTable = () => {
+const InputTable = ({ podType }) => {
 	const subpanelContext = useSubpanelContext();
 	const { data, setData } = subpanelContext;
 
 	return (
 		<StyledInputTable>
-			<InputTableHeader />
+			<InputTableHeader podType={podType} />
 			<tbody>
-				<InputTableRowManager input={data} setInput={setData} />
+				<InputTableRowManager input={data} setInput={setData} podType={podType} />
 			</tbody>
 		</StyledInputTable>
 	);
