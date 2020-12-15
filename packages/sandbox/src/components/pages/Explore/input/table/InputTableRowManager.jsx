@@ -1,5 +1,6 @@
+import { NOTE } from '@pw/core/src/Pod.presets';
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
-import React from 'react';
+import React, { useState } from 'react';
 import useEditContext from '../../../../../contexts/EditContext';
 import InputTableRow from './InputTableRow';
 
@@ -23,6 +24,8 @@ const InputTableRowManager = ({ input, setInput, podType }) => {
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
+	const [keyPod, setKeyPod] = useState(NOTE.C);
+
 	const rows = pods.map((v, i) => {
 		return (
 			<InputTableRow
@@ -36,7 +39,23 @@ const InputTableRowManager = ({ input, setInput, podType }) => {
 	});
 
 	const addPod = () => setPods([...pods, [0, 0]]);
-	return [...rows, isEditing ? <NewPodRow key="new" addPod={addPod} /> : null];
+
+	let keyPodRow = null;
+	if (podType === 'interval') {
+		keyPodRow = <InputTableRow
+			key="key"
+			i={0}
+			pods={[keyPod.value]}
+			setPods={null}
+			podType={podType}
+		/>;
+	}
+
+	return [
+		keyPodRow,
+		...rows,
+		isEditing ? <NewPodRow key="new" addPod={addPod} /> : null
+	];
 
 };
 

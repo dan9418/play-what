@@ -3,6 +3,7 @@ import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import NumericInput from '@pw/react/src/ui/NumericInput/NumericInput';
 import React from 'react';
+import styled from 'styled-components';
 import useEditContext from '../../../../../contexts/EditContext';
 
 const PresetCell = ({ pod, setPod, isEditing, podType }) => {
@@ -22,6 +23,13 @@ const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 		</td>
 	)
 }
+
+const StyledInputTableRow = styled.tr`
+	${props => props.$border && 'background-color: #ddd;'}
+	&:hover {
+		background-color: #eee;
+	}
+`;
 
 const InputTableRow = ({ i, pods, setPods, podType }) => {
 
@@ -45,7 +53,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 	const octave = PodUtils.getOctave(pod);
 
 	return (
-		<tr key={i}>
+		<StyledInputTableRow key={i} $border={setPods === null}>
 			<td>
 				{
 					isEditing ?
@@ -71,7 +79,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
 				</td>
 			}
-		</tr>
+		</StyledInputTableRow>
 	);
 };
 
