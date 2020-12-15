@@ -1,7 +1,9 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
+import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
+import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../contexts/EditContext";
+import useEditContext from "../../../../contexts/EditContext";
 
 const StyledPresetBox = styled.div`
 	padding: 8px;
@@ -9,11 +11,7 @@ const StyledPresetBox = styled.div`
 	
 	& button {
 		width: 50%;
-    margin: 8px;
-	}
-
-	& button {
-		width: 50%;
+    	margin: 8px;
 		border-radius: 8px;
 		text-transform: uppercase;
 	}
@@ -21,6 +19,10 @@ const StyledPresetBox = styled.div`
 	& table {
 		margin: auto;
     	margin-top: 16px;
+	}
+
+	& th, td {
+		padding: 8px;
 	}
 `;
 
