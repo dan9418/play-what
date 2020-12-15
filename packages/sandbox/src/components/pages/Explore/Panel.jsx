@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from "../../contexts/EditContext";
+import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
 import Subpanel, { NewSubpanelButton } from "./Subpanel";
 import { ButtonInput } from '@pw/react';
 

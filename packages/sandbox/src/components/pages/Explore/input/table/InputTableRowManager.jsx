@@ -1,6 +1,6 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
-import useEditContext from '../../../../contexts/EditContext';
+import useEditContext from '../../../../../contexts/EditContext';
 import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {

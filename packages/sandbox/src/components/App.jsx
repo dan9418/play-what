@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import 'react-hot-loader';
 import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import THEME from '../styles/theme';
-import Nav from './Nav/Nav';
-import About from './About/About';
-import Docs from './Docs/Docs';
-import Explore from './Explore/Explore';
-import styled from 'styled-components';
 import ErrorBoundary from './ErrorBoundary';
+import Nav from './Nav/Nav';
+import About from './pages/About/About';
+import Docs from './pages/Docs/Docs';
+import Explore from './pages/Explore/Explore';
 
 const TABS = [
 	{
