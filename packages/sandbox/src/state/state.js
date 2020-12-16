@@ -1,4 +1,5 @@
 import { SCALE } from "@pw/core/src/Pod.presets";
+import PodUtils from "@pw/core/src/Pod.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 
@@ -50,11 +51,18 @@ export const inputListState = selector({
 	get: ({ get }) => {
 		const inputDefs = get(_inputListState);
 		const inputs = inputDefs.map(input => {
-			const { id, name } = input;
+			const { id, name, value } = input;
+			const { keyCenter, intervals } = value;
+
+			let notes = [];
+			if (keyCenter) {
+				notes = PodUtils.addPodList(keyCenter, intervals);
+			}
 			return {
 				id,
 				name,
 				...DEFAULT_INPUT,
+				notes,
 				...input.value
 			};
 		});
