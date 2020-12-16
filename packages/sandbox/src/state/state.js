@@ -31,8 +31,11 @@ export const outputListState = selector({
 		const outputDefs = get(_outputListState);
 		const inputs = get(inputListState);
 		const outputList = outputDefs.map(out => {
+			const { id, name } = out;
 			const input = inputs.find(i => i.id === out.value.inputId);
 			return {
+				id,
+				name,
 				component: VIEWER[out.value.viewerId].component,
 				viewerProps: {
 					...VIEWER[out.value.viewerId].defaultProps,
