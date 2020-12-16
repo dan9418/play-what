@@ -2,13 +2,33 @@ import { SCALE } from "@pw/core/src/Pod.presets";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 
-export const inputListState = atom({
-	key: 'inputListState',
+const DEFAULT_INPUT = {
+	keyCenter: null,
+	intervals: null,
+	notes: []
+};
+
+export const _inputListState = atom({
+	key: '_inputListState',
 	default: [
 		{
 			id: 'input1',
 			name: 'Input 1',
-			value: SCALE.Major.value
+			// IRelativeInputConfig
+			value: {
+				modelId: 'relative',
+				keyCenter: [0, 0],
+				intervals: SCALE.Major.value
+			}
+		},
+		{
+			id: 'input2',
+			name: 'Input 2',
+			// IAbsoluteInputConfig
+			value: {
+				modelId: 'absolute',
+				notes: SCALE.Major.value
+			}
 		}
 	]
 });
@@ -25,6 +45,23 @@ export const _outputListState = atom({
 	}]
 });
 
+export const inputListState = selector({
+	key: 'inputListState',
+	get: ({ get }) => {
+		const inputDefs = get(_inputListState);
+		const inputs = inputDefs.map(input => {
+			const { id, name } = input;
+			return {
+				id,
+				name,
+				...DEFAULT_INPUT,
+				...input.value
+			};
+		});
+		return inputs;
+	}
+});
+
 export const outputListState = selector({
 	key: 'outputListState',
 	get: ({ get }) => {
@@ -39,7 +76,7 @@ export const outputListState = selector({
 				component: VIEWER[out.value.viewerId].component,
 				viewerProps: {
 					...VIEWER[out.value.viewerId].defaultProps,
-					pods: input.value
+					pods: input.notes
 				}
 			};
 		});

@@ -18,36 +18,36 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const InputTableRowManager = ({ input, setInput, podType }) => {
-	const pods = input.value;
+const InputTableRowManager = ({ input, setInput }) => {
+	const { keyCenter, intervals, notes, modelId } = input;
 	const setPods = newPods => setInput({ ...input, value: newPods });
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
 	const [keyPod, setKeyPod] = useState(NOTE.C);
 
-	const rows = pods.map((v, i) => {
+	const rows = notes.map((v, i) => {
 		return (
 			<InputTableRow
 				i={i}
 				key={i}
-				pods={pods}
+				pods={notes}
 				setPods={setPods}
-				podType={podType}
+				modelId={modelId}
 			/>
 		);
 	});
 
-	const addPod = () => setPods([...pods, [0, 0]]);
+	const addPod = () => setPods([...notes, [0, 0]]);
 
 	let keyPodRow = null;
-	if (podType === 'interval') {
+	if (modelId === 'relative') {
 		keyPodRow = <InputTableRow
 			key="key"
 			i={0}
 			pods={[keyPod.value]}
 			setPods={null}
-			podType={podType}
+			modelId={modelId}
 		/>;
 	}
 

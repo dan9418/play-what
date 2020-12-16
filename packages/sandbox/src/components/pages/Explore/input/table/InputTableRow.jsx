@@ -31,7 +31,7 @@ const StyledInputTableRow = styled.tr`
 	}
 `;
 
-const InputTableRow = ({ i, pods, setPods, podType }) => {
+const InputTableRow = ({ i, pods, setPods, modelId }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -73,7 +73,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 			<td>
 				{pod[1]}
 			</td>
-			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
+			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={'note'} />
 			{isEditing &&
 				<td>
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
