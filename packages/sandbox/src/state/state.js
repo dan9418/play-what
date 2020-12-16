@@ -16,20 +16,16 @@ export const _inputListState = atom({
 			id: 'input1',
 			name: 'Input 1',
 			// IRelativeInputConfig
-			value: {
-				modelId: 'relative',
-				keyCenter: [0, 0],
-				intervals: SCALE.Major.value
-			}
+			modelId: 'relative',
+			keyCenter: [0, 0],
+			intervals: SCALE.Major.value
 		},
 		{
 			id: 'input2',
 			name: 'Input 2',
 			// IAbsoluteInputConfig
-			value: {
-				modelId: 'absolute',
-				notes: SCALE.Major.value
-			}
+			modelId: 'absolute',
+			notes: SCALE.Major.value
 		}
 	]
 });
@@ -39,10 +35,8 @@ export const _outputListState = atom({
 	default: [{
 		id: 'output1',
 		name: 'Output 1',
-		value: {
-			inputId: 'input1',
-			viewerId: 'fretboard'
-		}
+		inputId: 'input1',
+		viewerId: 'fretboard'
 	}]
 });
 
@@ -51,19 +45,20 @@ export const inputListState = selector({
 	get: ({ get }) => {
 		const inputDefs = get(_inputListState);
 		const inputs = inputDefs.map(input => {
-			const { id, name, value } = input;
-			const { keyCenter, intervals } = value;
+			const { id, name, keyCenter, intervals, notes, modelId } = input;
 
-			let notes = [];
+			let calcNotes = null;
 			if (keyCenter) {
-				notes = PodUtils.addPodList(keyCenter, intervals);
+				calcNotes = PodUtils.addPodList(keyCenter, intervals);
 			}
 			return {
 				id,
 				name,
 				...DEFAULT_INPUT,
-				notes,
-				...input.value
+				modelId,
+				keyCenter: keyCenter || DEFAULT_INPUT.keyCenter,
+				intervals: intervals || DEFAULT_INPUT.intervals,
+				notes: calcNotes ? calcNotes : notes
 			};
 		});
 		return inputs;
@@ -76,14 +71,14 @@ export const outputListState = selector({
 		const outputDefs = get(_outputListState);
 		const inputs = get(inputListState);
 		const outputList = outputDefs.map(out => {
-			const { id, name } = out;
-			const input = inputs.find(i => i.id === out.value.inputId);
+			const { id, name, viewerId, inputId } = out;
+			const input = inputs.find(i => i.id === inputId);
 			return {
 				id,
 				name,
-				component: VIEWER[out.value.viewerId].component,
+				component: VIEWER[viewerId].component,
 				viewerProps: {
-					...VIEWER[out.value.viewerId].defaultProps,
+					...VIEWER[viewerId].defaultProps,
 					pods: input.notes
 				}
 			};
