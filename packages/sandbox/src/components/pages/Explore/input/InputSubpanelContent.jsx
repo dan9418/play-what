@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../../contexts/EditContext";
 import useSubpanelContext from "../../../../contexts/SubpanelContext";
+import SubpanelConfigRow from "../SubpanelConfigRow";
 import PresetBox from "./PresetBox";
 import InputTable from "./table/InputTable";
 
@@ -10,7 +11,7 @@ const StyledDiv = styled.div`
 	width: 100%;
 `;
 
-const StyledSwitchContainer = styled.div`
+const StyledInputModeSwitch = styled.div`
 	width: 100%;
     display: flex;
     align-items: center;
@@ -21,8 +22,16 @@ const StyledSwitchContainer = styled.div`
     }
 `;
 
+const InputModeSwitch = ({ value, setValue }) => (
+	<StyledInputModeSwitch>
+		Notes
+		<SwitchInput value={value === 'interval'} setValue={setValue} />
+		Intervals
+	</StyledInputModeSwitch>
+);
+
 const InputSubpanelContent = () => {
-	const { isEditing } = useEditContext();
+
 	const { data, setData } = useSubpanelContext();
 	const hasKey = !!data.keyCenter;
 	const podType = hasKey ? 'interval' : 'note';
@@ -33,16 +42,20 @@ const InputSubpanelContent = () => {
 
 	return (
 		<StyledDiv>
-			{isEditing && <>
-				<StyledSwitchContainer>
-					Notes
-					<SwitchInput value={hasKey} setValue={setHasKey} />
-                Intervals
-				</StyledSwitchContainer>
-				<PresetBox />
-			</>}
+			<SubpanelConfigRow
+				name="Input Mode"
+				value={podType}
+				setValue={setHasKey}
+				EditComponent={InputModeSwitch}
+			/>
+			<SubpanelConfigRow
+				name="Preset"
+				value={'<preset>'}
+				setValue={null}
+				EditComponent={PresetBox}
+			/>
 			<InputTable podType={podType} />
-		</StyledDiv>
+		</StyledDiv >
 	);
 };
 

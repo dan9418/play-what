@@ -26,32 +26,28 @@ const StyledPresetBox = styled.div`
 `;
 
 const PresetBox = () => {
-	const [isOpen, setIsOpen] = useState(false);
 	const [type, setType] = useState(PRESET_TYPES[0]);
 	const setHelper = null; //v => setPods(v.value);
 	return (
 		<StyledPresetBox>
-			<ButtonInput onClick={() => setIsOpen(!isOpen)} >{isOpen ? 'Done' : 'Load Preset'}</ButtonInput>
-			{isOpen && (
-				<table>
-					<thead>
-						<tr>
-							<th>Type</th>
-							<th>Preset</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>
-								<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
-							</td>
-							<td>
-								<DropdownInput options={type.presets} value={null} setValue={setHelper} />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			)}
+			<table>
+				<thead>
+					<tr>
+						<th>Type</th>
+						<th>Preset</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
+						</td>
+						<td>
+							<DropdownInput options={type.presets} value={null} setValue={setHelper} />
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</StyledPresetBox>
 	);
 };

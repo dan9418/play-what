@@ -3,27 +3,29 @@ import styled from 'styled-components';
 
 const StyledSVG = styled.svg`
 	${({ $color }) => {
-		if ($color) {
-			return `
-				fill: ${$color};
+		return `
+				fill: ${$color || 'white'};
 				& * {
-					fill: ${$color}
+					fill: ${$color || 'white'}
 				}
 			`;
-		}
 	}}
-	${({ $hoverColor }) => {
+	${({ $hoverColor, theme }) => {
 		if ($hoverColor) {
 			return `
 				&:hover {
-					fill: ${$hoverColor};
+					fill: ${$hoverColor || theme.accent};
 					& * {
-						fill: ${$hoverColor}
+						fill: ${$hoverColor || theme.accent}
 					}
 				}
 			`;
 		}
 	}}
+	${({ $size }) => `
+		height: ${$size || 16}px;
+		width: ${$size || 16}px;
+	`}
 `;
 
 export const Delete = props => (
@@ -183,9 +185,9 @@ const ICON = {
 	github: GitHub
 }
 
-const Icon = ({ iconId, color, hoverColor }) => {
+const Icon = ({ iconId, color, hoverColor, size }) => {
 	const IconComponent = ICON[iconId];
-	return <IconComponent $color={color} $hoverColor={hoverColor} />;
+	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} />;
 }
 
 export default Icon;
