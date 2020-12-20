@@ -31,7 +31,7 @@ const StyledInputTableRow = styled.tr`
 	}
 `;
 
-const InputTableRow = ({ i, pods, setPods, modelId }) => {
+const InputTableRow = ({ i, pods, setPods }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;

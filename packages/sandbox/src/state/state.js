@@ -16,7 +16,6 @@ export const _inputListState = atom({
 			id: 'input1',
 			name: 'Input 1',
 			// IRelativeInputConfig
-			modelId: 'relative',
 			keyCenter: [0, 0],
 			intervals: SCALE.Major.value
 		},
@@ -24,7 +23,6 @@ export const _inputListState = atom({
 			id: 'input2',
 			name: 'Input 2',
 			// IAbsoluteInputConfig
-			modelId: 'absolute',
 			notes: SCALE.Major.value
 		}
 	]
@@ -47,7 +45,7 @@ export const inputListState = selector({
 	get: ({ get }) => {
 		const inputDefs = get(_inputListState);
 		const inputs = inputDefs.map(input => {
-			const { id, name, keyCenter, intervals, notes, modelId } = input;
+			const { id, name, keyCenter, intervals, notes } = input;
 
 			let calcNotes = null;
 			if (keyCenter) {
@@ -57,7 +55,6 @@ export const inputListState = selector({
 				id,
 				name,
 				...DEFAULT_INPUT,
-				modelId,
 				keyCenter: keyCenter || DEFAULT_INPUT.keyCenter,
 				intervals: intervals || DEFAULT_INPUT.intervals,
 				notes: calcNotes ? calcNotes : notes
@@ -85,7 +82,7 @@ export const outputListState = selector({
 				viewerProps: {
 					...VIEWER[viewerId].defaultProps,
 					...viewerProps,
-					pods: input.notes
+					pods: input ? input.notes : []
 				}
 			};
 		});

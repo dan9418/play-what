@@ -1,8 +1,7 @@
 import React from 'react';
+import styled from 'styled-components';
 import InputTableHeader from './InputTableHeader';
 import InputTableRowManager from './InputTableRowManager';
-import styled from 'styled-components';
-import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 
 const StyledInputTable = styled.table`
 	text-align: center;
