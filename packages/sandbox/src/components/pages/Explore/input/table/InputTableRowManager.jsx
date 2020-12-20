@@ -18,43 +18,25 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const InputTableRowManager = () => {
+const InputTableRowManager = ({ data, setData }) => {
 
-	const subpanelContext = useSubpanelContext();
-	const { data: input, setData: setInput } = subpanelContext;
-
-	const { keyCenter, intervals, notes } = input;
-	const setPods = newPods => setInput({ ...input, value: newPods });
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	const rows = notes.map((v, i) => {
+	const rows = data.map((v, i) => {
 		return (
 			<InputTableRow
 				i={i}
 				key={i}
-				pods={notes}
-				setPods={setPods}
+				pods={data}
+				setPods={setData}
 			/>
 		);
 	});
 
-	const addPod = () => setPods([...notes, [0, 0]]);
-
-	let keyPodRow = null;
-	if (keyCenter) {
-		keyPodRow = <InputTableRow
-			key="key"
-			i={0}
-			pods={[keyCenter]}
-			setPods={null}
-		/>;
-	}
-
 	return [
-		keyPodRow,
 		...rows,
-		isEditing ? <NewPodRow key="new" addPod={addPod} /> : null
+		isEditing ? <NewPodRow key="new" addPod={null} /> : null
 	];
 
 };

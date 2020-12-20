@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableHeader from './InputTableHeader';
 import InputTableRowManager from './InputTableRowManager';
 
@@ -30,13 +31,29 @@ const StyledInputTable = styled.table`
 `;
 
 const InputTable = ({ podType }) => {
+	const subpanelContext = useSubpanelContext();
+	const { data, setData } = subpanelContext;
+
+	const { keyCenter, intervals, notes } = data;
+	const tableData = keyCenter ? intervals : notes;
+
 	return (
-		<StyledInputTable>
-			<InputTableHeader podType={podType} />
-			<tbody>
-				<InputTableRowManager podType={podType} />
-			</tbody>
-		</StyledInputTable>
+		<>
+			{podType === 'interval' &&
+				<StyledInputTable>
+					<InputTableHeader podType='note' />
+					<tbody>
+						<InputTableRowManager podType='note' data={tableData} setData={null} />
+					</tbody>
+				</StyledInputTable>
+			}
+			<StyledInputTable>
+				<InputTableHeader podType={podType} />
+				<tbody>
+					<InputTableRowManager podType={podType} data={tableData} setData={null} />
+				</tbody>
+			</StyledInputTable>
+		</>
 	);
 };
 

@@ -25,7 +25,7 @@ const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 }
 
 const StyledInputTableRow = styled.tr`
-	${props => props.$border && 'background-color: #ddd;'}
+	//${props => props.$border && 'background-color: #ddd;'}
 	&:hover {
 		background-color: #eee;
 	}
@@ -53,7 +53,7 @@ const InputTableRow = ({ i, pods, setPods }) => {
 	const octave = PodUtils.getOctave(pod);
 
 	return (
-		<StyledInputTableRow key={i} $border={setPods === null}>
+		<StyledInputTableRow key={i}>
 			<td>
 				{
 					isEditing ?
