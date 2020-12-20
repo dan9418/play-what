@@ -36,7 +36,9 @@ export const _outputListState = atom({
 		id: 'output1',
 		name: 'Output 1',
 		inputId: 'input1',
-		viewerId: 'fretboard'
+		viewerId: 'fretboard',
+		component: null,
+		viewerProps: {}
 	}]
 });
 
@@ -72,18 +74,22 @@ export const outputListState = selector({
 		const outputDefs = get(_outputListState);
 		const inputs = get(inputListState);
 		const outputList = outputDefs.map(out => {
-			const { id, name, viewerId, inputId } = out;
+			const { id, name, viewerId, inputId, viewerProps } = out;
 			const input = inputs.find(i => i.id === inputId);
 			return {
 				id,
 				name,
+				viewerId,
+				inputId,
 				component: VIEWER[viewerId].component,
 				viewerProps: {
 					...VIEWER[viewerId].defaultProps,
+					...viewerProps,
 					pods: input.notes
 				}
 			};
 		});
 		return outputList;
-	}
+	},
+	set: ({ set }, newValue) => set(_outputListState, newValue)
 });
