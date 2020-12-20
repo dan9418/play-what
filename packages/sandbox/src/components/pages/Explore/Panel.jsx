@@ -51,10 +51,8 @@ export const Panel = ({ dataList, setDataList, panelMode }) => {
 	const onInsertBelow = () => setDataList([...dataList, dataList[dataList.length - 1]]);
 
 	let name = 'Inputs';
-	let SubpanelComponent = InputSubpanelContent;
 	if (panelMode === 'output') {
 		name = 'Outputs';
-		SubpanelComponent = ViewerBox;
 	}
 
 	return (
@@ -67,9 +65,14 @@ export const Panel = ({ dataList, setDataList, panelMode }) => {
 							dataList.map((data, i) => {
 								const isLast = i === dataList.length - 1;
 								return (
-									<Subpanel key={data.id} name={data.name} i={i} dataList={dataList} setDataList={setDataList}>
-										<SubpanelComponent />
-									</Subpanel>
+									<Subpanel
+										key={data.id}
+										name={data.name}
+										i={i}
+										dataList={dataList}
+										setDataList={setDataList}
+										panelMode={panelMode}
+									/>
 								);
 							})
 						}

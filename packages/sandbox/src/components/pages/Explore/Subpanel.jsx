@@ -4,6 +4,8 @@ import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../i
 import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
 import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
 import { ButtonInput } from '@pw/react';
+import InputSubpanelContent from "./input/InputSubpanelContent";
+import ViewerBox from "./output/ViewerBox";
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -184,13 +186,17 @@ const InsertAboveButton = () => {
 	return <NewSubpanelButton onClick={onInsertAbove} />;
 }
 
-const Subpanel = ({ children, dataList, setDataList, name, i }) => {
+const Subpanel = ({ dataList, setDataList, name, i, panelMode }) => {
+	let SubpanelComponent = InputSubpanelContent;
+	if (panelMode === 'output') {
+		SubpanelComponent = ViewerBox;
+	}
 	return (
 		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
 			<InsertAboveButton />
 			<StyledSubpanel>
 				<InnerSubpanel name={name}>
-					{children}
+					<SubpanelComponent />
 				</InnerSubpanel>
 				<SubpanelControls />
 			</StyledSubpanel>
