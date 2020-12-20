@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableHeader from './InputTableHeader';
 import InputTableRowManager from './InputTableRowManager';
+import KeyCenterRow from './KeyCenterRow';
 
 const StyledInputTable = styled.table`
 	text-align: center;
@@ -39,17 +40,12 @@ const InputTable = ({ podType }) => {
 
 	return (
 		<>
-			{podType === 'interval' &&
-				<StyledInputTable>
-					<InputTableHeader podType='note' />
-					<tbody>
-						<InputTableRowManager podType='note' data={tableData} setData={null} />
-					</tbody>
-				</StyledInputTable>
-			}
 			<StyledInputTable>
 				<InputTableHeader podType={podType} />
 				<tbody>
+					{podType === 'interval' &&
+						<KeyCenterRow keyCenter={keyCenter} setKeyCenter={null} />
+					}
 					<InputTableRowManager podType={podType} data={tableData} setData={null} />
 				</tbody>
 			</StyledInputTable>

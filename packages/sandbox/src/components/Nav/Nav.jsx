@@ -1,9 +1,9 @@
 
 import React from 'react';
 import 'react-hot-loader';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import useRouteContext from '../../contexts/RouteContext';
-import { GitHub } from '../../img/Icons';
+import Icon from '../Icon';
 
 const LINKS = [
 	{
@@ -52,15 +52,6 @@ const StyledNav = styled.nav`
 			width: 24px;
 			height: 24px;
 		}
-
-		& svg, & svg * {
-			fill: #fff;
-		}
-		&:hover {
-			& svg, & svg * {
-				fill: ${({ theme }) => theme.active};
-			}
-		}
 	}
 
 	& .logo {
@@ -92,6 +83,7 @@ const StyledNav = styled.nav`
 
 const Nav = () => {
 	const routeContext = useRouteContext();
+	const theme = useTheme();
 	const { breadcrumbs, popAt, currentPage } = routeContext;
 
 	return (
@@ -115,7 +107,7 @@ const Nav = () => {
 						className="link"
 						href={l.href}
 					>
-						<GitHub />
+						<Icon iconId="github" color="white" hoverColor={theme.active} />
 						{l.name}
 					</a>
 				))}

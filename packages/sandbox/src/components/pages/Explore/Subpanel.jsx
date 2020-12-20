@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { Cancel, Confirm, Delete, Down, Edit, Minus, Plus, Up } from "../../../img/Icons";
+import Icon from "../../Icon";
 import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
 import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
 import { ButtonInput } from '@pw/react';
@@ -81,19 +81,19 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 					isActive={false}
 					onClick={null}
 				>
-					<Cancel />
+					<Icon iconId="cancel" />
 				</ButtonInput>}
 				{isOpen && <ButtonInput
 					isActive={isEditing}
 					onClick={() => setIsEditing(!isEditing)}
 				>
-					{isEditing ? <Confirm /> : <Edit />}
+					<Icon iconId={isEditing ? 'confirm' : 'edit'} />
 				</ButtonInput>}
 				<ButtonInput
 					isActive={isOpen}
 					onClick={() => setIsOpen(!isOpen)}
 				>
-					{isOpen ? <Minus /> : <Plus />}
+					<Icon iconId={isOpen ? 'minus' : 'plus'} />
 				</ButtonInput>
 			</div>
 		</StyledSubpanelHeader>
@@ -147,6 +147,12 @@ const StyledSubpanel = styled.div`
 		& button {
 			margin: 0 0 16px 16px;
 		}
+
+		& svg {
+			height: 16px;
+			width: 16px;
+			fill: #fff;
+		}
 	}
 	
 	& button.delete {
@@ -173,9 +179,9 @@ const SubpanelControls = () => {
 
 	return (
 		<div className="controls">
-			<ButtonInput onClick={onMoveUp}><Up /></ButtonInput>
-			<ButtonInput onClick={onDelete}><Delete /></ButtonInput>
-			<ButtonInput onClick={onMoveDown}><Down /></ButtonInput>
+			<ButtonInput onClick={onMoveUp}><Icon iconId="up" /></ButtonInput>
+			<ButtonInput onClick={onDelete}><Icon iconId="delete" /></ButtonInput>
+			<ButtonInput onClick={onMoveDown}><Icon iconId="down" /></ButtonInput>
 		</div>
 	);
 }

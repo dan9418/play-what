@@ -1,7 +1,6 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import useEditContext from '../../../../../contexts/EditContext';
-import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {
@@ -18,7 +17,7 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const InputTableRowManager = ({ data, setData }) => {
+const InputTableRowManager = ({ data, setData, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -30,6 +29,7 @@ const InputTableRowManager = ({ data, setData }) => {
 				key={i}
 				pods={data}
 				setPods={setData}
+				podType={podType}
 			/>
 		);
 	});

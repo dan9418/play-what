@@ -6,7 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import useEditContext from '../../../../../contexts/EditContext';
 
-const PresetCell = ({ pod, setPod, isEditing, podType }) => {
+export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };
 	const presets = PodUtils.getPresets(sharedOptions);
 	const preset = PodUtils.findPreset(pod, sharedOptions);
@@ -24,14 +24,14 @@ const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	)
 }
 
-const StyledInputTableRow = styled.tr`
-	//${props => props.$border && 'background-color: #ddd;'}
+export const StyledInputTableRow = styled.tr`
+	${props => props.$border && 'border-bottom: 2px solid #ddd;'}
 	&:hover {
 		background-color: #eee;
 	}
 `;
 
-const InputTableRow = ({ i, pods, setPods }) => {
+const InputTableRow = ({ i, pods, setPods, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -73,7 +73,7 @@ const InputTableRow = ({ i, pods, setPods }) => {
 			<td>
 				{pod[1]}
 			</td>
-			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={'note'} />
+			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
 			{isEditing &&
 				<td>
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
