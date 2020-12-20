@@ -101,7 +101,6 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 };
 
 const StyledInnerSubpanel = styled.div`
-	margin: 0 0 16px 0;
     padding: 0 16px;
     width: 100%;
     border-radius: 16px;
@@ -137,6 +136,7 @@ const StyledSubpanel = styled.div`
     width: 100%;
     justify-content: center;
 	align-items: center;
+	margin: 16px 0;
 	
 	& .controls {
 		display: flex;
@@ -180,26 +180,28 @@ const SubpanelControls = () => {
 	);
 }
 
-const InsertAboveButton = () => {
+const InsertButton = ({ below }) => {
 	const subpanelContext = useSubpanelContext();
-	const { onInsertAbove } = subpanelContext;
-	return <NewSubpanelButton onClick={onInsertAbove} />;
+	const { onInsertAbove, onInsertBelow } = subpanelContext;
+	const action = below ? onInsertBelow : onInsertAbove;
+	return <NewSubpanelButton onClick={action} />;
 }
 
-const Subpanel = ({ dataList, setDataList, name, i, panelMode }) => {
+const Subpanel = ({ dataList, setDataList, name, i, panelMode, isLast }) => {
 	let SubpanelComponent = InputSubpanelContent;
 	if (panelMode === 'output') {
 		SubpanelComponent = ViewerBox;
 	}
 	return (
 		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
-			<InsertAboveButton />
+			<InsertButton />
 			<StyledSubpanel>
 				<InnerSubpanel name={name}>
 					<SubpanelComponent />
 				</InnerSubpanel>
 				<SubpanelControls />
 			</StyledSubpanel>
+			{isLast && <InsertButton below />}
 		</SubpanelContextProvider>
 	);
 }

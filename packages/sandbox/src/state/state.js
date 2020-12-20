@@ -62,7 +62,8 @@ export const inputListState = selector({
 			};
 		});
 		return inputs;
-	}
+	},
+	set: ({ set }, newValue) => set(_inputListState, newValue)
 });
 
 export const outputListState = selector({
