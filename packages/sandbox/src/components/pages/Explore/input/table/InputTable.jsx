@@ -31,14 +31,11 @@ const StyledInputTable = styled.table`
 `;
 
 const InputTable = ({ podType }) => {
-	const subpanelContext = useSubpanelContext();
-	const { data, setData } = subpanelContext;
-
 	return (
 		<StyledInputTable>
 			<InputTableHeader podType={podType} />
 			<tbody>
-				<InputTableRowManager input={data} setInput={setData} podType={podType} />
+				<InputTableRowManager podType={podType} />
 			</tbody>
 		</StyledInputTable>
 	);

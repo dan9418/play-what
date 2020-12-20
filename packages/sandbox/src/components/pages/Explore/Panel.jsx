@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
 import Subpanel, { NewSubpanelButton } from "./Subpanel";
 import { ButtonInput } from '@pw/react';
+import InputSubpanelContent from "./input/InputSubpanelContent";
+import ViewerBox from "./output/ViewerBox";
 
 const StyledPanel = styled.div`
 	width: 100%;
@@ -44,10 +46,16 @@ export const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 };
 
 
-export const Panel = ({ name, dataList, setDataList, subpanelComponent }) => {
+export const Panel = ({ dataList, setDataList, panelMode }) => {
 	const [isOpen, setIsOpen] = useState(true);
 	const onInsertBelow = () => setDataList([...dataList, dataList[dataList.length - 1]]);
-	const SubpanelComponent = subpanelComponent;
+
+	let name = 'Inputs';
+	let SubpanelComponent = InputSubpanelContent;
+	if (panelMode === 'output') {
+		name = 'Outputs';
+		SubpanelComponent = ViewerBox;
+	}
 
 	return (
 		<StyledPanel>

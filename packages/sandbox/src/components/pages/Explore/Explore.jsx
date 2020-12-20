@@ -2,9 +2,6 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputListState, outputListState } from '../../../state/state';
-import InputSubpanelContent from './input/InputSubpanelContent';
-import InputTable from './input/table/InputTable';
-import ViewerBox from './output/ViewerBox';
 import Panel from './Panel';
 
 const StyledExplore = styled.div`
@@ -24,16 +21,14 @@ const Explore = () => {
 	return (
 		<StyledExplore>
 			<Panel
-				name="Inputs"
 				dataList={inputList}
 				setDataList={setInputList}
-				subpanelComponent={InputSubpanelContent}
+				panelMode={'input'}
 			/>
 			<Panel
-				name="Outputs"
 				dataList={outputList}
 				setDataList={setOutputList}
-				subpanelComponent={ViewerBox}
+				panelMode={'output'}
 			/>
 		</StyledExplore>
 	);
