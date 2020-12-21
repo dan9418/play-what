@@ -35,11 +35,9 @@ const SubpanelConfigRow = ({ name, value, setValue, EditComponent }) => {
 				<div>{name}</div>
 				<div>
 					<span>{value}</span>
-					{isEditing && (
-						<ButtonInput onClick={() => setIsOpen(!isOpen)}>
-							<Icon iconId="edit" />
-						</ButtonInput>
-					)}
+					<ButtonInput onClick={() => setIsOpen(!isOpen)}>
+						<Icon iconId={isOpen ? 'confirm' : 'edit'} />
+					</ButtonInput>
 				</div>
 			</StyledSubpanelConfigRow>
 			{isOpen &&

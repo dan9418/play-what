@@ -4,10 +4,7 @@ import React from 'react';
 import useEditContext from '../../../../../contexts/EditContext';
 
 const getHeaders = (podType, isEditing) => {
-	const result = ['#', 'Pod', 'P', 'O', 'D', podType];
-	if (isEditing) {
-		result.push('Delete')
-	}
+	const result = ['#', 'Pod', 'P', 'O', 'D', podType, 'Edit'];
 	return result;
 }
 

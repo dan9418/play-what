@@ -29,7 +29,7 @@ const KeyCenterRow = ({ keyCenter, setKeyCenter }) => {
 				{keyCenter[1]}
 			</td>
 			<PresetCell pod={keyCenter} setPod={setKeyCenter} isEditing={isEditing} podType='note' />
-			{isEditing && <td>null</td>}
+			<td>{null}</td>
 		</StyledInputTableRow>
 	);
 };
