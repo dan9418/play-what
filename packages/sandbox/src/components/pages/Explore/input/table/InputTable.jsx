@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import useSubpanelContext from '../../../../../contexts/SubpanelContext';
-import InputTableHeader from './InputTableHeader';
 import InputTableRowManager from './InputTableRowManager';
-import KeyCenterRow from './KeyCenterRow';
 
 const StyledInputTable = styled.table`
 	text-align: center;
@@ -31,6 +29,8 @@ const StyledInputTable = styled.table`
 	}
 `;
 
+const getHeaders = (podType) => ['#', 'Pod', 'P', 'O', 'D', podType, 'Edit'];
+
 const InputTable = ({ podType }) => {
 	const subpanelContext = useSubpanelContext();
 	const { data, setData } = subpanelContext;
@@ -41,11 +41,12 @@ const InputTable = ({ podType }) => {
 	return (
 		<>
 			<StyledInputTable>
-				<InputTableHeader podType={podType} />
+				<thead>
+					<tr>
+						{getHeaders(podType).map((h, i) => <th key={i}>{h}</th>)}
+					</tr>
+				</thead>
 				<tbody>
-					{podType === 'interval' &&
-						<KeyCenterRow keyCenter={keyCenter} setKeyCenter={null} />
-					}
 					<InputTableRowManager podType={podType} data={tableData} setData={null} />
 				</tbody>
 			</StyledInputTable>

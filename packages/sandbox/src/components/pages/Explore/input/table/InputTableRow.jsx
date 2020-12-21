@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import useEditContext from '../../../../../contexts/EditContext';
 import Icon from '../../../../Icon';
 
-export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
+export const PresetCell = ({ pod, setPod, podType }) => {
 	const sharedOptions = { podType };
 	const presets = PodUtils.getPresets(sharedOptions);
 	const preset = PodUtils.findPreset(pod, sharedOptions);
@@ -20,7 +20,12 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
+			<DropdownInput
+				options={options}
+				value={preset || unknown}
+				setValue={setHelper}
+				displayProperty="id"
+			/>
 		</td>
 	)
 }
@@ -62,26 +67,12 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 	return (
 		<>
 			<StyledInputTableRow key={i}>
-				<td>
-					{
-						isEditing ?
-							<NumericInput value={i} setValue={onReorder} min={0} max={pods.length - 1} />
-							: i + 1
-					}
-				</td>
-				<td>
-					{JSON.stringify(pod)}
-				</td>
-				<td>
-					{pitchClass}
-				</td>
-				<td>
-					{octave}
-				</td>
-				<td>
-					{pod[1]}
-				</td>
-				<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
+				<td>{i + 1}</td>
+				<td>{JSON.stringify(pod)}</td>
+				<td>{pitchClass}</td>
+				<td>{octave}</td>
+				<td>{pod[1]}</td>
+				<td>name</td>
 				<td>
 					<ButtonInput onClick={() => setIsEditing(!isEditing)}>
 						<Icon iconId={isEditing ? 'confirm' : 'edit'} />
@@ -91,7 +82,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 			{isEditing &&
 				<StyledInputTableSubRow>
 					<td colSpan="7">
-						test
+						<NumericInput value={i} setValue={onReorder} min={0} max={pods.length - 1} />
 					</td>
 				</StyledInputTableSubRow>
 			}
