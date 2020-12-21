@@ -1,4 +1,3 @@
-const { WebpackConfigDumpPlugin } = require("webpack-config-dump-plugin");
 const path = require('path');
 const env = process.env.NODE_ENV;
 
@@ -47,7 +46,7 @@ module.exports = {
 		hot: true
 	},
 	plugins: [
-		new WebpackConfigDumpPlugin({ outputPath: './', name: 'dump.txt' })
+		//new WebpackConfigDumpPlugin({ outputPath: './', name: 'dump.txt' })
 		//new webpack.HotModuleReplacementPlugin()
 	]
 };

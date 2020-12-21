@@ -21,7 +21,7 @@ const StyledSubpanelConfigSubRow = styled.div`
     padding: 8px;
     justify-content: center;
 	align-items: center;
-	margin: 16px 0;
+	margin: 0 0 16px 0;
 	background-color: #ddd;
 	border-radius: 8px;
 `;
