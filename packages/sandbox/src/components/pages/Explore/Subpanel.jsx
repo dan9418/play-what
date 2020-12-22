@@ -1,12 +1,11 @@
+import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Icon from "../../Icon";
-import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
 import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
-import { ButtonInput } from '@pw/react';
+import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
+import Icon from "../../Icon";
 import InputSubpanelContent from "./input/InputSubpanelContent";
 import ViewerBox from "./output/ViewerBox";
-import EditButton from "@pw/react/src/ui/ButtonInput/EditButton";
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -19,8 +18,7 @@ export const NewSubpanelButton = (props) => {
 }
 
 const StyledSubpanelHeader = styled.div`
-	padding: 16px;
-    padding-right: 0;
+	padding: 16px 0;
     display: flex;
     align-items: center;
 	justify-content: space-between;

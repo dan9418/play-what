@@ -5,19 +5,15 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 
 const StyledPresetBox = styled.div`
-	padding: 8px;
 	text-align: center;
 	
 	& button {
 		width: 50%;
-    	margin: 8px;
-		border-radius: 8px;
-		text-transform: uppercase;
+    	margin: 8px 0;
 	}
 
 	& table {
 		margin: auto;
-    	margin-top: 16px;
 	}
 
 	& th, td {
@@ -48,6 +44,7 @@ const PresetBox = () => {
 					</tr>
 				</tbody>
 			</table>
+			<ButtonInput>Import</ButtonInput>
 		</StyledPresetBox>
 	);
 };
