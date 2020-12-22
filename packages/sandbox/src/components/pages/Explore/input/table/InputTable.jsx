@@ -8,13 +8,12 @@ import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 
 const StyledTableLabel = styled.div`
-	padding: 8px 0;
+	padding: 16px 0 8px;
 	border-bottom: 1px solid #ccc;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 	justify-content: space-between;
 	& h3 {
-		margin: 16px 0 8px 0;
 		text-transform: capitalize;
 	}	
 `;

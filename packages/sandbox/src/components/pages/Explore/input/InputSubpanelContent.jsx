@@ -13,10 +13,19 @@ const StyledDiv = styled.div`
 	width: 100%;
 `;
 
+const StyledEditBar = styled.div`
+	width: 100%;
+	display: flex;
+	background-color: #eee;
+	padding: 8px;
+	border-radius: 8px;
+`;
+
 const StyledInputModeSwitch = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+	margin-left: auto;
 
     & > * {
         margin: 8px;
@@ -43,13 +52,13 @@ const InputSubpanelContent = () => {
 
 	return (
 		<StyledDiv>
-			<div css="display: flex; justify-content: space-between;">
-				<InputModeSwitch value={podType} setValue={setHasKey} />
+			<StyledEditBar>
 				<TextButton>Load Preset</TextButton>
 				<TextButton>Transform</TextButton>
-			</div>
+				<InputModeSwitch value={podType} setValue={setHasKey} />
+			</StyledEditBar>
 			<InputTable podType={podType} />
-		</StyledDiv >
+		</StyledDiv>
 	);
 };
 

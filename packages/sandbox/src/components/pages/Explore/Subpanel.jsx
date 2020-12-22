@@ -42,18 +42,15 @@ const StyledSubpanelHeader = styled.div`
 			padding: 4px;
 		}
 	}
-	& .button-container {
-		& button {
-			height: 32px;
-			width: 32px;
-			border-radius: 100%;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			font-weight: bold;
-			margin: 0 8px;
-			color: white;
-		}
+	& button {
+		height: 32px;
+		width: 32px;
+		border-radius: 100%;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: bold;
+		color: white;
 	}
 	& svg {
 		height: 12px;
@@ -77,21 +74,12 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>
-			<div className="button-container">
-				{isOpen && isEditing && <ButtonInput
-					isActive={false}
-					onClick={null}
-				>
-					<Icon iconId="cancel" />
-				</ButtonInput>}
-				{isOpen && <EditButton  />}
-				<ButtonInput
-					isActive={isOpen}
-					onClick={() => setIsOpen(!isOpen)}
-				>
-					<Icon iconId={isOpen ? 'minus' : 'plus'} />
-				</ButtonInput>
-			</div>
+			<ButtonInput
+				isActive={isOpen}
+				onClick={() => setIsOpen(!isOpen)}
+			>
+				<Icon iconId={isOpen ? 'minus' : 'plus'} />
+			</ButtonInput>
 		</StyledSubpanelHeader>
 	);
 };
