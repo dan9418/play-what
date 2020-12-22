@@ -1,13 +1,36 @@
+import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
+import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
+import useEditContext from '../../../../../contexts/EditContext';
 import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 
-const StyledTableLabel = styled.h3`
-	margin: 16px 0 8px 0;
-	text-transform: capitalize;
+const StyledTableLabel = styled.div`
+	padding: 8px 0;
+	border-bottom: 1px solid #ccc;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	& h3 {
+		margin: 16px 0 8px 0;
+		text-transform: capitalize;
+	}	
 `;
+
+const TableLabel = ({ name }) => {
+	const editContext = useEditContext();
+	const { isEditing, setIsEditing } = editContext;
+	return (
+		<StyledTableLabel>
+			<h3>
+				{name || 'Panel'}
+			</h3>
+			<EditButton  />
+		</StyledTableLabel>
+	);
+};
 
 const StyledInputTable = styled.table`
 	text-align: center;
@@ -22,16 +45,10 @@ const StyledInputTable = styled.table`
 	& th {
 		text-transform: uppercase;
 		font-size: 80%;
-		border-bottom: 2px solid #ccc;
 	}
 
-	& .pod-table tbody tr:not(:last-child) {
+	& thead tr {
 		border-bottom: 1px solid #ccc;
-	}
-
-	& .pod-table td:nth-child(2), .pod-table td:nth-child(6) {
-		font-weight: bold;
-	}
 `;
 
 const getHeaders = (podType) => ['#', 'Pod', 'P', 'O', 'D', podType, 'Edit'];
@@ -49,7 +66,7 @@ const InputTable = ({ podType }) => {
 		<>
 			{podType === 'interval' &&
 				<>
-					<StyledTableLabel>Key Center</StyledTableLabel>
+					<TableLabel name="Key Center" />
 					<StyledInputTable>
 						<thead>
 							<tr>
@@ -62,7 +79,7 @@ const InputTable = ({ podType }) => {
 					</StyledInputTable>
 				</>
 			}
-			<StyledTableLabel>{podType}s</StyledTableLabel>
+			<TableLabel name={`${podType}s`} />
 			<StyledInputTable>
 				<thead>
 					<tr>

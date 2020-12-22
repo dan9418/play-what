@@ -1,5 +1,6 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
+import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import NumericInput from '@pw/react/src/ui/NumericInput/NumericInput';
 import React, { useState } from 'react';
@@ -74,9 +75,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 				<td>{pod[1]}</td>
 				<td>name</td>
 				<td>
-					<ButtonInput onClick={() => setIsEditing(!isEditing)}>
-						<Icon iconId={isEditing ? 'confirm' : 'edit'} />
-					</ButtonInput>
+					<EditButton />
 				</td>
 			</StyledInputTableRow>
 			{isEditing &&

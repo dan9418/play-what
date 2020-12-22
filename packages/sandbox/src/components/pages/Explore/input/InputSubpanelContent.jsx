@@ -1,3 +1,4 @@
+import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
@@ -12,7 +13,6 @@ const StyledDiv = styled.div`
 `;
 
 const StyledInputModeSwitch = styled.div`
-	width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,18 +42,11 @@ const InputSubpanelContent = () => {
 
 	return (
 		<StyledDiv>
-			<SubpanelConfigRow
-				name="Input Mode"
-				value={podType}
-				setValue={setHasKey}
-				EditComponent={InputModeSwitch}
-			/>
-			<SubpanelConfigRow
-				name="Preset"
-				value={'<preset>'}
-				setValue={null}
-				EditComponent={PresetBox}
-			/>
+			<div css="display: flex; justify-content: space-between;">
+				<InputModeSwitch value={podType} setValue={setHasKey} />
+				<ButtonInput>Load Preset</ButtonInput>
+				<ButtonInput>Transform</ButtonInput>
+			</div>
 			<InputTable podType={podType} />
 		</StyledDiv >
 	);

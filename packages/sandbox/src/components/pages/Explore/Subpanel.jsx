@@ -6,6 +6,7 @@ import useEditContext, { EditContextProvider } from "../../../contexts/EditConte
 import { ButtonInput } from '@pw/react';
 import InputSubpanelContent from "./input/InputSubpanelContent";
 import ViewerBox from "./output/ViewerBox";
+import EditButton from "@pw/react/src/ui/ButtonInput/EditButton";
 
 export const NewSubpanelButton = (props) => {
 	const { isEditing } = useEditContext();
@@ -83,12 +84,7 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 				>
 					<Icon iconId="cancel" />
 				</ButtonInput>}
-				{isOpen && <ButtonInput
-					isActive={isEditing}
-					onClick={() => setIsEditing(!isEditing)}
-				>
-					<Icon iconId={isEditing ? 'confirm' : 'edit'} />
-				</ButtonInput>}
+				{isOpen && <EditButton  />}
 				<ButtonInput
 					isActive={isOpen}
 					onClick={() => setIsOpen(!isOpen)}

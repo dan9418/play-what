@@ -1,4 +1,5 @@
 import { ButtonInput } from '@pw/react';
+import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
@@ -25,7 +26,7 @@ const StyledPanel = styled.div`
 	}
 `;
 
-export const PanelHeader = ({ isOpen, setIsOpen, name }) => {
+export const PanelHeader = ({ name }) => {
 	const editContext = useEditContext();
 	const { isEditing, setIsEditing } = editContext;
 	return (
@@ -33,12 +34,7 @@ export const PanelHeader = ({ isOpen, setIsOpen, name }) => {
 			<h2>
 				{name || 'Panel'}
 			</h2>
-			<ButtonInput
-				isActive={isEditing}
-				onClick={() => setIsEditing(!isEditing)}
-			>
-				{isEditing ? 'done' : 'edit'}
-			</ButtonInput>
+			<EditButton  />
 		</div>
 	);
 };
