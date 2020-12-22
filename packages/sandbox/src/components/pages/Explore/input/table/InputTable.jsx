@@ -58,7 +58,7 @@ const getKeyHeaders = () => ['Pod', 'P', 'O', 'D', 'Key'];
 
 const HeaderRow = ({ podType }) => {
 	const { isEditing } = useEditContext();
-	return (<tr>{getHeaders(podType, isEditing).map((h, i) => <th key={i}>{h}</th>)}</tr>);
+	return (<tr>{getHeaders(podType, isEditing).map((h, i) => h ? <th key={i}>{h}</th> : null)}</tr>);
 };
 
 const InputTable = ({ podType }) => {

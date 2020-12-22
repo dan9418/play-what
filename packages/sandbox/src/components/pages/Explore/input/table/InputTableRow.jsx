@@ -25,7 +25,6 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 }
 
 export const StyledInputTableRow = styled.tr`
-	${props => props.$border && 'border-bottom: 2px solid #ddd;'}
 	&:hover {
 		background-color: #eee;
 	}
