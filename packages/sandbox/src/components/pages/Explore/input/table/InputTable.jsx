@@ -2,7 +2,7 @@ import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
-import useEditContext from '../../../../../contexts/EditContext';
+import useEditContext, { EditContextProvider } from '../../../../../contexts/EditContext';
 import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
@@ -27,7 +27,7 @@ const TableLabel = ({ name }) => {
 			<h3>
 				{name || 'Panel'}
 			</h3>
-			<EditButton  />
+			<EditButton />
 		</StyledTableLabel>
 	);
 };
@@ -49,11 +49,17 @@ const StyledInputTable = styled.table`
 
 	& thead tr {
 		border-bottom: 1px solid #ccc;
+	}
 `;
 
-const getHeaders = (podType) => ['#', 'Pod', 'P', 'O', 'D', podType, 'Edit'];
+const getHeaders = (podType, isEditing) => ['#', 'Pod', 'P', 'O', 'D', podType, isEditing ? 'Delete' : undefined];
 
-const getKeyHeaders = () => ['Pod', 'P', 'O', 'D', 'Key', 'Edit'];
+const getKeyHeaders = () => ['Pod', 'P', 'O', 'D', 'Key'];
+
+const HeaderRow = ({ podType }) => {
+	const { isEditing } = useEditContext();
+	return (<tr>{getHeaders(podType, isEditing).map((h, i) => <th key={i}>{h}</th>)}</tr>);
+};
 
 const InputTable = ({ podType }) => {
 	const subpanelContext = useSubpanelContext();
@@ -65,7 +71,7 @@ const InputTable = ({ podType }) => {
 	return (
 		<>
 			{podType === 'interval' &&
-				<>
+				<EditContextProvider>
 					<TableLabel name="Key Center" />
 					<StyledInputTable>
 						<thead>
@@ -77,19 +83,19 @@ const InputTable = ({ podType }) => {
 							<KeyCenterRow keyCenter={keyCenter} />
 						</tbody>
 					</StyledInputTable>
-				</>
+				</EditContextProvider>
 			}
-			<TableLabel name={`${podType}s`} />
-			<StyledInputTable>
-				<thead>
-					<tr>
-						{getHeaders(podType).map((h, i) => <th key={i}>{h}</th>)}
-					</tr>
-				</thead>
-				<tbody>
-					<InputTableRowManager podType={podType} data={tableData} setData={null} />
-				</tbody>
-			</StyledInputTable>
+			<EditContextProvider>
+				<TableLabel name={`${podType}s`} />
+				<StyledInputTable>
+					<thead>
+						<HeaderRow podType={podType} />
+					</thead>
+					<tbody>
+						<InputTableRowManager podType={podType} data={tableData} setData={null} />
+					</tbody>
+				</StyledInputTable>
+			</EditContextProvider>
 		</>
 	);
 };

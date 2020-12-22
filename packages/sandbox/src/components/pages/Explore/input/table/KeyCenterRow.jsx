@@ -26,7 +26,6 @@ const KeyCenterRow = ({ keyCenter, setKeyCenter }) => {
 				{keyCenter[1]}
 			</td>
 			<PresetCell pod={keyCenter} setPod={setKeyCenter} isEditing={isEditing} podType='note' />
-			<td>{null}</td>
 		</StyledInputTableRow>
 	);
 };

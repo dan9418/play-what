@@ -1,14 +1,12 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
-import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import NumericInput from '@pw/react/src/ui/NumericInput/NumericInput';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import useEditContext from '../../../../../contexts/EditContext';
-import Icon from '../../../../Icon';
 
-export const PresetCell = ({ pod, setPod, podType }) => {
+export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };
 	const presets = PodUtils.getPresets(sharedOptions);
 	const preset = PodUtils.findPreset(pod, sharedOptions);
@@ -21,12 +19,7 @@ export const PresetCell = ({ pod, setPod, podType }) => {
 
 	return (
 		<td>
-			<DropdownInput
-				options={options}
-				value={preset || unknown}
-				setValue={setHelper}
-				displayProperty="id"
-			/>
+			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
 		</td>
 	)
 }
@@ -38,16 +31,10 @@ export const StyledInputTableRow = styled.tr`
 	}
 `;
 
-export const StyledInputTableSubRow = styled.tr`
-	background-color: #ddd;
-	& td {
-		border-radius: 8px;
-	}
-`;
-
 const InputTableRow = ({ i, pods, setPods, podType }) => {
 
-	const [isEditing, setIsEditing] = useState(false);
+	const editContext = useEditContext();
+	const { isEditing } = editContext;
 
 	const pod = pods[i];
 
@@ -66,26 +53,33 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 	const octave = PodUtils.getOctave(pod);
 
 	return (
-		<>
-			<StyledInputTableRow key={i}>
-				<td>{i + 1}</td>
-				<td>{JSON.stringify(pod)}</td>
-				<td>{pitchClass}</td>
-				<td>{octave}</td>
-				<td>{pod[1]}</td>
-				<td>name</td>
-				<td>
-					<EditButton />
-				</td>
-			</StyledInputTableRow>
-			{isEditing &&
-				<StyledInputTableSubRow>
-					<td colSpan="7">
+		<StyledInputTableRow key={i}>
+			<td>
+				{
+					isEditing ?
 						<NumericInput value={i} setValue={onReorder} min={0} max={pods.length - 1} />
-					</td>
-				</StyledInputTableSubRow>
+						: i + 1
+				}
+			</td>
+			<td>
+				{JSON.stringify(pod)}
+			</td>
+			<td>
+				{pitchClass}
+			</td>
+			<td>
+				{octave}
+			</td>
+			<td>
+				{pod[1]}
+			</td>
+			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
+			{isEditing &&
+				<td>
+					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
+				</td>
 			}
-		</>
+		</StyledInputTableRow>
 	);
 };
 

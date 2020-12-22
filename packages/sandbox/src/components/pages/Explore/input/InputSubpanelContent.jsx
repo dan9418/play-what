@@ -1,4 +1,5 @@
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
+import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
@@ -44,8 +45,8 @@ const InputSubpanelContent = () => {
 		<StyledDiv>
 			<div css="display: flex; justify-content: space-between;">
 				<InputModeSwitch value={podType} setValue={setHasKey} />
-				<ButtonInput>Load Preset</ButtonInput>
-				<ButtonInput>Transform</ButtonInput>
+				<TextButton>Load Preset</TextButton>
+				<TextButton>Transform</TextButton>
 			</div>
 			<InputTable podType={podType} />
 		</StyledDiv >
