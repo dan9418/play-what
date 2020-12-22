@@ -2,6 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import useSubpanelContext from '../../../../../contexts/SubpanelContext';
 import InputTableRowManager from './InputTableRowManager';
+import KeyCenterRow from './KeyCenterRow';
+
+const StyledTableLabel = styled.h3`
+	margin: 16px 0 8px 0;
+	text-transform: capitalize;
+`;
 
 const StyledInputTable = styled.table`
 	text-align: center;
@@ -14,7 +20,6 @@ const StyledInputTable = styled.table`
 	}
 
 	& th {
-		padding: 8px;
 		text-transform: uppercase;
 		font-size: 80%;
 		border-bottom: 2px solid #ccc;
@@ -31,6 +36,8 @@ const StyledInputTable = styled.table`
 
 const getHeaders = (podType) => ['#', 'Pod', 'P', 'O', 'D', podType, 'Edit'];
 
+const getKeyHeaders = () => ['Pod', 'P', 'O', 'D', 'Key', 'Edit'];
+
 const InputTable = ({ podType }) => {
 	const subpanelContext = useSubpanelContext();
 	const { data, setData } = subpanelContext;
@@ -40,6 +47,22 @@ const InputTable = ({ podType }) => {
 
 	return (
 		<>
+			{podType === 'interval' &&
+				<>
+					<StyledTableLabel>Key Center</StyledTableLabel>
+					<StyledInputTable>
+						<thead>
+							<tr>
+								{getKeyHeaders(podType).map((h, i) => <th key={i}>{h}</th>)}
+							</tr>
+						</thead>
+						<tbody>
+							<KeyCenterRow keyCenter={keyCenter} />
+						</tbody>
+					</StyledInputTable>
+				</>
+			}
+			<StyledTableLabel>{podType}s</StyledTableLabel>
 			<StyledInputTable>
 				<thead>
 					<tr>

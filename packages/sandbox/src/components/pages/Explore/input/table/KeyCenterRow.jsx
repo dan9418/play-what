@@ -12,10 +12,7 @@ const KeyCenterRow = ({ keyCenter, setKeyCenter }) => {
 	const octave = PodUtils.getOctave(keyCenter);
 
 	return (
-		<StyledInputTableRow key='keyCenter' $border>
-			<td>
-				Key
-			</td>
+		<StyledInputTableRow key='keyCenter'>
 			<td>
 				{JSON.stringify(keyCenter)}
 			</td>
