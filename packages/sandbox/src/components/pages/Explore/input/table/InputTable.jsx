@@ -91,7 +91,7 @@ const InputTable = ({ podType }) => {
 						<HeaderRow podType={podType} />
 					</thead>
 					<tbody>
-						<InputTableRowManager podType={podType} data={tableData} setData={null} />
+						<InputTableRowManager podType={podType} data={tableData} setData={setData} />
 					</tbody>
 				</StyledInputTable>
 			</EditContextProvider>

@@ -1,4 +1,4 @@
-import { SCALE } from "@pw/core/src/Pod.presets";
+import { CHORD, SCALE } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
@@ -17,13 +17,13 @@ export const _inputListState = atom({
 			name: 'Input 1',
 			// IRelativeInputConfig
 			keyCenter: [0, 0],
-			intervals: SCALE.Major.value
+			intervals: CHORD.Maj.value
 		},
 		{
 			id: 'input2',
 			name: 'Input 2',
 			// IAbsoluteInputConfig
-			notes: SCALE.Major.value
+			notes: CHORD.Dom7.value
 		}
 	]
 });
