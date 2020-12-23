@@ -1,6 +1,5 @@
-import { CHORD, SCALE } from "@pw/core/src/Pod.presets";
+import { CHORD } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
-import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 
 const DEFAULT_INPUT = {
@@ -94,7 +93,7 @@ export const outputListState = selector({
 				viewerId: viewerId || DEFAULT_OUTPUT.viewerId,
 				inputId: inputId || DEFAULT_OUTPUT.inputId,
 				viewerProps: {
-					...viewerProps,
+					...(viewerProps || DEFAULT_OUTPUT.viewerProps),
 					pods: input ? input.notes : []
 				}
 			};
