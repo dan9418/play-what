@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../../contexts/EditContext";
 import useSubpanelContext from "../../../../contexts/SubpanelContext";
-import { VIEWER_VALUES, DropdownInput } from "@pw/react";
+import { VIEWER_VALUES, DropdownInput, VIEWER } from "@pw/react";
 
 const StyledViewerBox = styled.div`
 	margin-top: 16px;
@@ -43,9 +43,9 @@ const ViewerBar = () => {
 
 const ViewerBox = () => {
 	const subpanelContext = useSubpanelContext();
-	const { viewerProps, component } = subpanelContext.data;
+	const { viewerProps, viewerId } = subpanelContext.data;
 
-	const ViewerComponent = component;
+	const ViewerComponent = VIEWER[viewerId].component;
 
 	return (
 		<StyledViewerBox>
