@@ -27,6 +27,7 @@ const InputTableRowManager = ({ podType }) => {
 
 	const tableData = podType === 'interval' ? intervals : notes;
 	const setTableData = podType === 'interval' ? setIntervals : setNotes;
+	const addPod = () => setTableData([...tableData, [0, 0]]);
 
 	const rows = tableData.map((v, i) => {
 		return (
@@ -42,7 +43,7 @@ const InputTableRowManager = ({ podType }) => {
 
 	return [
 		...rows,
-		isEditing ? <NewPodRow key="new" addPod={null} /> : null
+		isEditing ? <NewPodRow key="new" addPod={addPod} /> : null
 	];
 
 };
