@@ -8,6 +8,7 @@ import Icon from "../../Icon";
 import InputSubpanelContent from "./input/InputSubpanelContent";
 import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
+import SubpanelDelegator from "./SubpanelDelegator";
 
 export const getListHelpers = (list, setList, i) => {
 	const isLast = i === list.length - 1;
@@ -109,28 +110,6 @@ const SubpanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
 	);
 };
 
-const SubpanelDelegator = ({ data, setData, listType }) => {
-
-	let Context = React.Fragment;
-	let Content = React.Fragment;
-	switch (listType) {
-	case 'input':
-		Context = InputContextProvider;
-		Content = InputSubpanelContent;
-		break;
-	case 'output':
-		Context = OutputContextProvider;
-		Content = ViewerBox;
-		break;
-	}
-
-	return (
-		<Context data={data} setData={setData}>
-			<Content />
-		</Context>
-	);
-};
-
 const SubpanelWrapper = ({ list, setList, i, listType }) => {
 
 	const { isEditing } = useEditContext();
@@ -150,9 +129,7 @@ const SubpanelWrapper = ({ list, setList, i, listType }) => {
 		<>
 			{isEditing && <ButtonInput className="new-subpanel-button" onClick={onInsertAbove} />}
 			<StyledSubpanelWrapper>
-				<Subpanel name={data.name}>
-					<SubpanelDelegator data={data} setData={setData} listType={listType} />
-				</Subpanel>
+				<SubpanelDelegator data={data} setData={setData} listType={listType} />
 				{isEditing &&
 					<SubpanelControls
 						onMoveUp={onMoveUp}

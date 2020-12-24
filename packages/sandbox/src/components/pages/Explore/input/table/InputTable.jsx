@@ -1,13 +1,13 @@
-import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../../../contexts/EditContext';
-import useSubpanelContext from '../../../../../contexts/InputContext';
+import useInputContext from '../../../../../contexts/InputContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 
 const StyledTableLabel = styled.div`
+	width: 100%;
 	padding: 16px 0 8px;
 	border-bottom: 1px solid #ccc;
 	display: flex;
@@ -19,8 +19,6 @@ const StyledTableLabel = styled.div`
 `;
 
 const TableLabel = ({ name }) => {
-	const editContext = useEditContext();
-	const { isEditing, setIsEditing } = editContext;
 	return (
 		<StyledTableLabel>
 			<h3>
@@ -60,12 +58,9 @@ const HeaderRow = ({ podType }) => {
 	return (<tr>{getHeaders(podType, isEditing).map((h, i) => h ? <th key={i}>{h}</th> : null)}</tr>);
 };
 
-const InputTable = ({ podType }) => {
-	const subpanelContext = useSubpanelContext();
-	const { data, setData } = subpanelContext;
-
-	const { keyCenter, intervals, notes } = data;
-	const tableData = keyCenter ? intervals : notes;
+const InputTable = () => {
+	const inputContext = useInputContext();
+	const { keyCenter, podType } = inputContext;
 
 	return (
 		<>
@@ -91,7 +86,7 @@ const InputTable = ({ podType }) => {
 						<HeaderRow podType={podType} />
 					</thead>
 					<tbody>
-						<InputTableRowManager podType={podType} data={tableData} setData={setData} />
+						<InputTableRowManager />
 					</tbody>
 				</StyledInputTable>
 			</EditContextProvider>

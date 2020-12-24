@@ -5,13 +5,13 @@ import { EditContextProvider } from "../../../contexts/EditContext";
 import Icon from "../../Icon";
 
 const StyledSubpanelHeader = styled.div`
+	width: 100%;
 	padding: 16px 0;
     display: flex;
     align-items: center;
 	justify-content: space-between;
 	
 	& .preview-container {
-
 		& .name-container {
 			display: flex;
     		align-items: center;
@@ -25,6 +25,7 @@ const StyledSubpanelHeader = styled.div`
 		}
 		& .preview {
 			padding: 4px;
+			color: ${({ theme }) => theme.accent}
 		}
 	}
 	& button {
@@ -79,10 +80,8 @@ const StyledSubpanel = styled.div`
 	}
 `;
 
-const Subpanel = ({ name, children }) => {
+const Subpanel = ({ name, caption, preview, children }) => {
 	const [isOpen, setIsOpen] = useState(true);
-	let caption = null;
-	let preview = null;
 
 	return (
 		<StyledSubpanel>

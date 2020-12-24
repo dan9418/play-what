@@ -69,6 +69,7 @@ export const inputListState = selector({
 			return {
 				id: id || DEFAULT_INPUT.id,
 				name: name || DEFAULT_INPUT.name,
+				podType: podType || DEFAULT_INPUT.podType,
 				keyCenter: keyCenter || DEFAULT_INPUT.keyCenter,
 				intervals: intervals || DEFAULT_INPUT.intervals,
 				notes: calcNotes ? calcNotes : notes

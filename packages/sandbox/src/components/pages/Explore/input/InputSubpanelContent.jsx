@@ -7,10 +7,6 @@ import useInputContext from "../../../../contexts/InputContext";
 import PresetBox from "./PresetBox";
 import InputTable from "./table/InputTable";
 
-const StyledDiv = styled.div`
-	width: 100%;
-`;
-
 const StyledEditBar = styled.div`
 	width: 100%;
 	display: flex;
@@ -45,13 +41,18 @@ const StyledInputModeSwitch = styled.div`
     }
 `;
 
-const InputModeSwitch = ({ value, setValue }) => (
-	<StyledInputModeSwitch>
-		Notes
-		<SwitchInput value={value === 'interval'} setValue={setValue} />
-		Intervals
-	</StyledInputModeSwitch>
-);
+const PodTypeSwitch = () => {
+	const { podType, setPodType } = useInputContext();
+	const value = podType === 'interval';
+	const setValue = v => setPodType(v ? 'interval' : 'note');
+	return (
+		<StyledInputModeSwitch>
+			<span>Notes</span>
+			<SwitchInput value={value} setValue={setValue} />
+			<span>Intervals</span>
+		</StyledInputModeSwitch>
+	);
+};
 
 const EDIT_MODE = {
 	None: 0,
@@ -63,21 +64,13 @@ const InputSubpanelContent = () => {
 
 	const [editMode, setEditMode] = useState(EDIT_MODE.None);
 
-	const { data, setData } = useInputContext();
-	const hasKey = !!data.keyCenter;
-	const podType = hasKey ? 'interval' : 'note';
-	const setHasKey = () => {
-		if (hasKey) setData({ ...data, keyCenter: null });
-		else setData({ ...data, keyCenter: [0, 0], intervals: data.notes, notes: null });
-	}
-
 	return (
-		<StyledDiv>
+		<>
 			{editMode === EDIT_MODE.None ?
 				<StyledEditBar>
 					<TextButton onClick={() => setEditMode(EDIT_MODE.Preset)}>Import Preset</TextButton>
 					<TextButton onClick={() => setEditMode(EDIT_MODE.Transform)}>Transform</TextButton>
-					<InputModeSwitch value={podType} setValue={setHasKey} />
+					<PodTypeSwitch />
 				</StyledEditBar>
 				:
 				<StyledEditDetails>
@@ -86,8 +79,8 @@ const InputSubpanelContent = () => {
 					{editMode === EDIT_MODE.Transform && "Coming Soon!!!"}
 				</StyledEditDetails>
 			}
-			<InputTable podType={podType} />
-		</StyledDiv>
+			<InputTable />
+		</>
 	);
 };
 
