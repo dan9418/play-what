@@ -9,19 +9,19 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 
 	let Context = React.Fragment;
 	let Content = React.Fragment;
-	let caption = null;
+	let caption = data.podType;
 	let preview = null;
 
 	switch (listType) {
 	case 'input':
 		Context = InputContextProvider;
 		Content = InputSubpanelContent;
-		caption = 'in';
 		preview = 'in';
 		break;
 	case 'output':
 		Context = OutputContextProvider;
 		Content = ViewerBox;
+		preview = 'out';
 		break;
 	}
 

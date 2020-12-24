@@ -18,12 +18,12 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const InputTableRowManager = () => {
+const InputTableRowManager = ({ podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
 
-	const { intervals, setIntervals, notes, setNotes, podType } = useInputContext();
+	const { intervals, setIntervals, notes, setNotes } = useInputContext();
 
 	const tableData = podType === 'interval' ? intervals : notes;
 	const setTableData = podType === 'interval' ? setIntervals : setNotes;

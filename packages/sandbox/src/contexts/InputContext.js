@@ -11,7 +11,12 @@ const getInputContext = (data, setData) => {
 			podType: x
 		});
 	};
-	const setKeyCenter = null;
+	const setKeyCenter = x => {
+		setData({
+			...data,
+			keyCenter: x
+		});
+	};
 	const setIntervals = null;
 	const setNotes = null;
 

@@ -2,12 +2,7 @@ import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../contexts/EditContext";
-import { InputContextProvider } from "../../../contexts/InputContext";
-import { OutputContextProvider } from "../../../contexts/OutputContext";
 import Icon from "../../Icon";
-import InputSubpanelContent from "./input/InputSubpanelContent";
-import ViewerBox from "./output/ViewerBox";
-import Subpanel from "./Subpanel";
 import SubpanelDelegator from "./SubpanelDelegator";
 
 export const getListHelpers = (list, setList, i) => {
@@ -58,11 +53,11 @@ export const getListHelpers = (list, setList, i) => {
 
 const StyledSubpanelList = styled.ul`
     width: 100%;
-	text-align: center;
 
 	& button.insert {
 		width: 100%;
 		max-width: 256px;
+		margin: auto;
 
 		&:last-child {
 			margin-bottom: 16px;

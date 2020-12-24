@@ -1,12 +1,13 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
 import useEditContext from '../../../../../contexts/EditContext';
+import useInputContext from '../../../../../contexts/InputContext';
 import { PresetCell, StyledInputTableRow } from './InputTableRow';
 
-const KeyCenterRow = ({ keyCenter, setKeyCenter }) => {
+const KeyCenterRow = () => {
 
-	const editContext = useEditContext();
-	const { isEditing } = editContext;
+	const { isEditing } = useEditContext();
+	const { keyCenter, setKeyCenter } = useInputContext();
 
 	const pitchClass = PodUtils.getPitchClass(keyCenter);
 	const octave = PodUtils.getOctave(keyCenter);

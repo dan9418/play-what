@@ -18,13 +18,13 @@ const StyledTableLabel = styled.div`
 	}	
 `;
 
-const TableLabel = ({ name }) => {
+const TableLabel = ({ name, editable }) => {
 	return (
 		<StyledTableLabel>
 			<h3>
 				{name || 'Panel'}
 			</h3>
-			<EditButton />
+			{editable && <EditButton />}
 		</StyledTableLabel>
 	);
 };
@@ -60,33 +60,46 @@ const HeaderRow = ({ podType }) => {
 
 const InputTable = () => {
 	const inputContext = useInputContext();
-	const { keyCenter, podType } = inputContext;
+	const { podType } = inputContext;
 
 	return (
 		<>
 			{podType === 'interval' &&
-				<EditContextProvider>
-					<TableLabel name="Key Center" />
-					<StyledInputTable>
-						<thead>
-							<tr>
-								{getKeyHeaders(podType).map((h, i) => <th key={i}>{h}</th>)}
-							</tr>
-						</thead>
-						<tbody>
-							<KeyCenterRow keyCenter={keyCenter} />
-						</tbody>
-					</StyledInputTable>
-				</EditContextProvider>
+				<>
+					<EditContextProvider>
+						<TableLabel name="Key Center" editable />
+						<StyledInputTable>
+							<thead>
+								<tr>
+									{getKeyHeaders(podType).map((h, i) => <th key={i}>{h}</th>)}
+								</tr>
+							</thead>
+							<tbody>
+								<KeyCenterRow />
+							</tbody>
+						</StyledInputTable>
+					</EditContextProvider>
+					<EditContextProvider>
+						<TableLabel name="Intervals" editable />
+						<StyledInputTable>
+							<thead>
+								<HeaderRow podType="interval" />
+							</thead>
+							<tbody>
+								<InputTableRowManager podType="interval" />
+							</tbody>
+						</StyledInputTable>
+					</EditContextProvider>
+				</>
 			}
 			<EditContextProvider>
-				<TableLabel name={`${podType}s`} />
+				<TableLabel name="Notes" editable={podType === 'note'} />
 				<StyledInputTable>
 					<thead>
-						<HeaderRow podType={podType} />
+						<HeaderRow podType="note" />
 					</thead>
 					<tbody>
-						<InputTableRowManager />
+						<InputTableRowManager podType="note" />
 					</tbody>
 				</StyledInputTable>
 			</EditContextProvider>
