@@ -58,6 +58,16 @@ export const getListHelpers = (list, setList, i) => {
 
 const StyledSubpanelList = styled.ul`
     width: 100%;
+	text-align: center;
+
+	& button.insert {
+		width: 100%;
+		max-width: 256px;
+
+		&:last-child {
+			margin-bottom: 16px;
+		}
+	}
 `;
 
 const StyledSubpanelWrapper = styled.div`
@@ -91,13 +101,6 @@ const StyledSubpanelWrapper = styled.div`
 		font-weight: bold;
 		color: white;
 	}
-
-	& .new-subpanel-button {
-		text-align: center;
-		margin-bottom: 16px;
-		width: 100%;
-		max-width: 256px
-	}
 `;
 
 const SubpanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
@@ -127,7 +130,7 @@ const SubpanelWrapper = ({ list, setList, i, listType }) => {
 
 	return (
 		<>
-			{isEditing && <ButtonInput className="new-subpanel-button" onClick={onInsertAbove} />}
+			{isEditing && <ButtonInput className="insert" onClick={onInsertAbove}>+ Add</ButtonInput>}
 			<StyledSubpanelWrapper>
 				<SubpanelDelegator data={data} setData={setData} listType={listType} />
 				{isEditing &&
@@ -138,7 +141,7 @@ const SubpanelWrapper = ({ list, setList, i, listType }) => {
 					/>
 				}
 			</StyledSubpanelWrapper>
-			{isLast && isEditing && <ButtonInput className="new-subpanel-button" onClick={onInsertBelow} />}
+			{isLast && isEditing && <ButtonInput className="insert" onClick={onInsertBelow}>+ Add</ButtonInput>}
 		</>
 	);
 }

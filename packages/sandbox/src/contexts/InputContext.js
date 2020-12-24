@@ -5,10 +5,12 @@ const InputContext = createContext(null);
 const getInputContext = (data, setData) => {
 	const { podType, keyCenter, intervals, notes } = data;
 
-	const setPodType = x => setData({
-		...data,
-		podType: x
-	});
+	const setPodType = x => {
+		setData({
+			...data,
+			podType: x
+		});
+	};
 	const setKeyCenter = null;
 	const setIntervals = null;
 	const setNotes = null;
@@ -28,8 +30,6 @@ const getInputContext = (data, setData) => {
 export const InputContextProvider = ({ data, setData, children }) => {
 
 	const inputContext = getInputContext(data, setData);
-
-	console.log(data, inputContext)
 
 	return (
 		<InputContext.Provider value={inputContext}>
