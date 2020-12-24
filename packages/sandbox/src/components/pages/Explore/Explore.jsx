@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputListState, outputListState } from '../../../state/state';
 import Panel from './Panel';
+import SubpanelList from './SubpanelList';
 
 const StyledExplore = styled.div`
 	width: 100%;
@@ -20,16 +21,13 @@ const Explore = () => {
 	const [outputList, setOutputList] = useRecoilState(outputListState)
 	return (
 		<StyledExplore>
-			<Panel
-				dataList={inputList}
-				setDataList={setInputList}
-				panelMode={'input'}
-			/>
-			<Panel
-				dataList={outputList}
-				setDataList={setOutputList}
-				panelMode={'output'}
-			/>
+			<Panel>
+				<SubpanelList
+					list={inputList}
+					setList={setInputList}
+					listType='input'
+				/>
+			</Panel>
 		</StyledExplore>
 	);
 };

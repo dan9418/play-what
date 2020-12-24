@@ -1,21 +1,8 @@
 import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
-import useSubpanelContext, { SubpanelContextProvider } from "../../../contexts/SubpanelContext";
+import { EditContextProvider } from "../../../contexts/EditContext";
 import Icon from "../../Icon";
-import InputSubpanelContent from "./input/InputSubpanelContent";
-import ViewerBox from "./output/ViewerBox";
-
-export const NewSubpanelButton = (props) => {
-	const { isEditing } = useEditContext();
-	if (!isEditing) return null;
-	return (
-		<div className="new-subpanel-panel">
-			<ButtonInput {...props}>+ Add</ButtonInput>
-		</div>
-	);
-}
 
 const StyledSubpanelHeader = styled.div`
 	padding: 16px 0;
@@ -61,8 +48,6 @@ const StyledSubpanelHeader = styled.div`
 `;
 
 const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
-	const editContext = useEditContext();
-	const { isEditing, setIsEditing } = editContext;
 	return (
 		<StyledSubpanelHeader>
 			<div className='preview-container'>
@@ -82,7 +67,7 @@ const SubpanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 	);
 };
 
-const StyledInnerSubpanel = styled.div`
+const StyledSubpanel = styled.div`
     padding: 0 16px;
     width: 100%;
     border-radius: 16px;
@@ -94,13 +79,13 @@ const StyledInnerSubpanel = styled.div`
 	}
 `;
 
-const InnerSubpanel = ({ name, children }) => {
+const Subpanel = ({ name, children }) => {
 	const [isOpen, setIsOpen] = useState(true);
 	let caption = null;
 	let preview = null;
 
 	return (
-		<StyledInnerSubpanel>
+		<StyledSubpanel>
 			<EditContextProvider>
 				<SubpanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
 				{isOpen && (
@@ -109,89 +94,8 @@ const InnerSubpanel = ({ name, children }) => {
 					</div>
 				)}
 			</EditContextProvider>
-		</StyledInnerSubpanel>
+		</StyledSubpanel>
 	);
 };
-
-const StyledSubpanel = styled.div`
-	display: flex;
-    width: 100%;
-    justify-content: center;
-	align-items: center;
-	margin: 16px 0;
-	
-	& .controls {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-
-		& button {
-			margin: 0 0 16px 16px;
-		}
-
-		& svg {
-			height: 16px;
-			width: 16px;
-			fill: #fff;
-		}
-	}
-	
-	& button.delete {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
-		color: white;
-	}
-
-	& .new-subpanel-button {
-		text-align: center;
-		margin-bottom: 16px;
-		width: 100%;
-		max-width: 256px
-	}
-`;
-
-const SubpanelControls = () => {
-	const subpanelContext = useSubpanelContext();
-	const { onMoveUp, onMoveDown, onDelete } = subpanelContext;
-	const { isEditing } = useEditContext();
-	if (!isEditing) return false;
-
-	return (
-		<div className="controls">
-			<ButtonInput onClick={onMoveUp}><Icon iconId="up" /></ButtonInput>
-			<ButtonInput onClick={onDelete}><Icon iconId="delete" /></ButtonInput>
-			<ButtonInput onClick={onMoveDown}><Icon iconId="down" /></ButtonInput>
-		</div>
-	);
-}
-
-const InsertButton = ({ below }) => {
-	const subpanelContext = useSubpanelContext();
-	const { onInsertAbove, onInsertBelow } = subpanelContext;
-	const action = below ? onInsertBelow : onInsertAbove;
-	return <NewSubpanelButton onClick={action} />;
-}
-
-const Subpanel = ({ dataList, setDataList, name, i, panelMode, isLast }) => {
-	let SubpanelComponent = InputSubpanelContent;
-	if (panelMode === 'output') {
-		SubpanelComponent = ViewerBox;
-	}
-	return (
-		<SubpanelContextProvider dataList={dataList} setDataList={setDataList} i={i}>
-			<InsertButton />
-			<StyledSubpanel>
-				<InnerSubpanel name={name}>
-					<SubpanelComponent />
-				</InnerSubpanel>
-				<SubpanelControls />
-			</StyledSubpanel>
-			{isLast && <InsertButton below />}
-		</SubpanelContextProvider>
-	);
-}
 
 export default Subpanel;

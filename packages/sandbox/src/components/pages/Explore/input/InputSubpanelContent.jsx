@@ -5,7 +5,8 @@ import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../../contexts/EditContext";
-import useSubpanelContext from "../../../../contexts/SubpanelContext";
+import useInputContext from "../../../../contexts/InputContext";
+import useSubpanelContext from "../../../../contexts/InputContext";
 import SubpanelConfigRow from "../SubpanelConfigRow";
 import PresetBox from "./PresetBox";
 import InputTable from "./table/InputTable";
@@ -66,7 +67,7 @@ const InputSubpanelContent = () => {
 
 	const [editMode, setEditMode] = useState(EDIT_MODE.None);
 
-	const { data, setData } = useSubpanelContext();
+	const { data, setData } = useInputContext();
 	const hasKey = !!data.keyCenter;
 	const podType = hasKey ? 'interval' : 'note';
 	const setHasKey = () => {

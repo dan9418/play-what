@@ -3,7 +3,7 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../../../contexts/EditContext';
-import useSubpanelContext from '../../../../../contexts/SubpanelContext';
+import useSubpanelContext from '../../../../../contexts/InputContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 

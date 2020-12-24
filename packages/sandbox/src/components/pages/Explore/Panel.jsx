@@ -1,9 +1,7 @@
-import { ButtonInput } from '@pw/react';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from "../../../contexts/EditContext";
-import Subpanel from "./Subpanel";
+import { EditContextProvider } from "../../../contexts/EditContext";
 
 const StyledPanel = styled.div`
 	width: 100%;
@@ -27,8 +25,6 @@ const StyledPanel = styled.div`
 `;
 
 export const PanelHeader = ({ name }) => {
-	const editContext = useEditContext();
-	const { isEditing, setIsEditing } = editContext;
 	return (
 		<div className='header'>
 			<h2>
@@ -40,13 +36,8 @@ export const PanelHeader = ({ name }) => {
 };
 
 
-export const Panel = ({ dataList, setDataList, panelMode }) => {
+export const Panel = ({ name, children }) => {
 	const [isOpen, setIsOpen] = useState(true);
-
-	let name = 'Inputs';
-	if (panelMode === 'output') {
-		name = 'Outputs';
-	}
 
 	return (
 		<StyledPanel>
@@ -54,21 +45,7 @@ export const Panel = ({ dataList, setDataList, panelMode }) => {
 				<PanelHeader isOpen={isOpen} setIsOpen={setIsOpen} name={name} />
 				{isOpen && (
 					<div className='body'>
-						{
-							dataList.map((data, i) => {
-								return (
-									<Subpanel
-										key={data.id}
-										name={data.name}
-										i={i}
-										dataList={dataList}
-										setDataList={setDataList}
-										panelMode={panelMode}
-										isLast={i === dataList.length - 1}
-									/>
-								);
-							})
-						}
+						{children}
 					</div>
 				)}
 			</EditContextProvider>
