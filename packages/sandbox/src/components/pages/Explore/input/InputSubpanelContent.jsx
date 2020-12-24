@@ -1,13 +1,9 @@
-import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import CloseButton from "@pw/react/src/ui/ButtonInput/CloseButton";
 import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../../contexts/EditContext";
 import useInputContext from "../../../../contexts/InputContext";
-import useSubpanelContext from "../../../../contexts/InputContext";
-import SubpanelConfigRow from "../SubpanelConfigRow";
 import PresetBox from "./PresetBox";
 import InputTable from "./table/InputTable";
 

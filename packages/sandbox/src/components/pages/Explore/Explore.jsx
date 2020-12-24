@@ -21,11 +21,18 @@ const Explore = () => {
 	const [outputList, setOutputList] = useRecoilState(outputListState)
 	return (
 		<StyledExplore>
-			<Panel>
+			<Panel name="Inputs">
 				<SubpanelList
 					list={inputList}
 					setList={setInputList}
 					listType='input'
+				/>
+			</Panel>
+			<Panel name="Outputs">
+				<SubpanelList
+					list={outputList}
+					setList={setOutputList}
+					listType='output'
 				/>
 			</Panel>
 		</StyledExplore>

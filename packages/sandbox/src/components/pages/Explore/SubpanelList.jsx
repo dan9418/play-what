@@ -3,8 +3,10 @@ import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../contexts/EditContext";
 import { InputContextProvider } from "../../../contexts/InputContext";
+import { OutputContextProvider } from "../../../contexts/OutputContext";
 import Icon from "../../Icon";
 import InputSubpanelContent from "./input/InputSubpanelContent";
+import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
 
 export const getListHelpers = (list, setList, i) => {
@@ -54,7 +56,7 @@ export const getListHelpers = (list, setList, i) => {
 };
 
 const StyledSubpanelList = styled.ul`
-    
+    width: 100%;
 `;
 
 const StyledSubpanelWrapper = styled.div`
@@ -105,7 +107,29 @@ const SubpanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
 			<ButtonInput onClick={onMoveDown}><Icon iconId="down" /></ButtonInput>
 		</div>
 	);
-}
+};
+
+const SubpanelDelegator = ({ data, setData, listType }) => {
+
+	let Context = React.Fragment;
+	let Content = React.Fragment;
+	switch (listType) {
+	case 'input':
+		Context = InputContextProvider;
+		Content = InputSubpanelContent;
+		break;
+	case 'output':
+		Context = OutputContextProvider;
+		Content = ViewerBox;
+		break;
+	}
+
+	return (
+		<Context data={data} setData={setData}>
+			<Content />
+		</Context>
+	);
+};
 
 const SubpanelWrapper = ({ list, setList, i, listType }) => {
 
@@ -122,17 +146,12 @@ const SubpanelWrapper = ({ list, setList, i, listType }) => {
 		onDelete
 	} = getListHelpers(list, setList, i);
 
-	const Component = listType === 'input' ? InputSubpanelContent : null;
-	const Context = listType === 'input' ? InputContextProvider : null;
-
 	return (
 		<>
 			{isEditing && <ButtonInput className="new-subpanel-button" onClick={onInsertAbove} />}
 			<StyledSubpanelWrapper>
 				<Subpanel name={data.name}>
-					<Context data={data} setData={setData}>
-						<Component />
-					</Context>
+					<SubpanelDelegator data={data} setData={setData} listType={listType} />
 				</Subpanel>
 				{isEditing &&
 					<SubpanelControls
