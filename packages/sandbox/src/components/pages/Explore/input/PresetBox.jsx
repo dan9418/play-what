@@ -1,8 +1,9 @@
 import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import useInputContext from "../../../../contexts/InputContext";
 
 const StyledPresetBox = styled.div`
 	text-align: center;
@@ -23,7 +24,17 @@ const StyledPresetBox = styled.div`
 
 const PresetBox = () => {
 	const [type, setType] = useState(PRESET_TYPES[0]);
-	const setHelper = null; //v => setPods(v.value);
+	const [preset, setPreset] = useState(PRESET_TYPES[0].presets[0]);
+	const { intervals, setIntervals, notes, setNotes, podType } = useInputContext();
+
+	const pods = podType === 'interval' ? intervals : notes;
+	const setPods = podType === 'interval' ? setIntervals : setNotes;
+	const setHelper = () => setPods(preset.value);
+
+	useEffect(() => {
+		setPreset(type.presets[0]);
+	}, [type.id]);
+
 	return (
 		<StyledPresetBox>
 			<table>
@@ -39,12 +50,12 @@ const PresetBox = () => {
 							<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
 						</td>
 						<td>
-							<DropdownInput options={type.presets} value={null} setValue={setHelper} />
+							<DropdownInput options={type.presets} value={preset} setValue={setPreset} />
 						</td>
 					</tr>
 				</tbody>
 			</table>
-			<ButtonInput>Import</ButtonInput>
+			<ButtonInput onClick={setHelper}>Import</ButtonInput>
 		</StyledPresetBox>
 	);
 };
