@@ -9,9 +9,12 @@ const StyledEditBox = styled.div`
 	padding: 8px;
 	border-radius: 8px;
 
-	& .close {
-		display: block;
-		margin-left: auto;
+	& .top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-bottom: 8px;
+		border-bottom: 1px solid #ccc;
 	}
 `;
 
@@ -23,6 +26,10 @@ const StyledLeftContainer = styled.div`
 const EditBox = ({ leftActions, rightAction, action, setAction }) => {
 	return (
 		<StyledEditBox>
+			{action && <div className="top">
+				<h4>{action.text}</h4>
+				<CloseButton onClick={() => setAction(null)} />
+			</div>}
 			{!action &&
 				<StyledLeftContainer>
 					{leftActions.map(a =>
@@ -31,7 +38,6 @@ const EditBox = ({ leftActions, rightAction, action, setAction }) => {
 					{rightAction || null}
 				</StyledLeftContainer>
 			}
-			{action && <CloseButton onClick={() => setAction(null)} />}
 			{action && action.component}
 		</StyledEditBox>
 	);
