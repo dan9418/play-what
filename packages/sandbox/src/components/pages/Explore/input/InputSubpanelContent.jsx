@@ -1,43 +1,20 @@
-import CloseButton from "@pw/react/src/ui/ButtonInput/CloseButton";
-import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import useInputContext from "../../../../contexts/InputContext";
+import EditBox from "../EditBox";
 import PresetBox from "./PresetBox";
 import InputTable from "./table/InputTable";
-
-const StyledEditBar = styled.div`
-	width: 100%;
-	display: flex;
-	background-color: #eee;
-	padding: 8px;
-	border-radius: 8px;
-`;
-
-const StyledEditDetails = styled.div`
-	margin-top: 8px;
-	width: 100%;
-	background-color: #eee;
-	padding: 8px;
-	border-radius: 8px;
-	position: relative;
-
-	& .close {
-		position: absolute;
-		top: 8px;
-		right: 8px;
-	}
-`;
 
 const StyledInputModeSwitch = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 	margin-left: auto;
+	font-size: 80%;
 
     & > * {
-        margin: 8px;
+        margin: 0 4px;
     }
 `;
 
@@ -54,31 +31,25 @@ const PodTypeSwitch = () => {
 	);
 };
 
-const EDIT_MODE = {
-	None: 0,
-	Preset: 1,
-	Transform: 2
-};
+const ACTIONS = [
+	{
+		id: 'preset',
+		text: 'Import Preset',
+		component: <PresetBox />
+	},
+	{
+		id: 'transform',
+		text: 'Transform',
+		component: <div />
+	}
+];
 
 const InputSubpanelContent = () => {
-
-	const [editMode, setEditMode] = useState(EDIT_MODE.None);
+	const [action, setAction] = useState(null);
 
 	return (
 		<>
-			{editMode === EDIT_MODE.None ?
-				<StyledEditBar>
-					<TextButton onClick={() => setEditMode(EDIT_MODE.Preset)}>Import Preset</TextButton>
-					<TextButton onClick={() => setEditMode(EDIT_MODE.Transform)}>Transform</TextButton>
-					<PodTypeSwitch />
-				</StyledEditBar>
-				:
-				<StyledEditDetails>
-					<CloseButton onClick={() => setEditMode(EDIT_MODE.None)} />
-					{editMode === EDIT_MODE.Preset && <PresetBox />}
-					{editMode === EDIT_MODE.Transform && "Coming Soon!!!"}
-				</StyledEditDetails>
-			}
+			<EditBox leftActions={ACTIONS} action={action} setAction={setAction} rightAction={<PodTypeSwitch />} />
 			<InputTable />
 		</>
 	);

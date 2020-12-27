@@ -11,7 +11,7 @@ const StyledTextButton = styled.button`
 	color: ${({ theme }) => theme.accent};
 
 	&:hover {
-		background-color: #eee;
+		background-color: rgba(0,0,0,.05);
 	}
 `;
 
