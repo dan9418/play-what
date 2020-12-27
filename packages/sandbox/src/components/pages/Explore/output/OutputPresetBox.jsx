@@ -25,12 +25,16 @@ const StyledPresetBox = styled.div`
 const OutputPresetBox = () => {
 	const [type, setType] = useState(VIEWER_VALUES[0]);
 	const [preset, setPreset] = useState(VIEWER_VALUES[0].presets[0]);
-	const outputContext = useOutputContext();
-	const { viewerProps, viewerId } = outputContext.data;
+	const { viewerProps, setViewerProps, viewerId, setViewerId } = useOutputContext();
 
 	useEffect(() => {
 		setPreset(type.presets[0]);
 	}, [type.id]);
+
+	const setHelper = () => {
+		setViewerId(type.id);
+	//	setViewerProps(preset.value);
+	};
 
 	return (
 		<StyledPresetBox>
@@ -52,7 +56,7 @@ const OutputPresetBox = () => {
 					</tr>
 				</tbody>
 			</table>
-			<ButtonInput onClick={null}>Update</ButtonInput>
+			<ButtonInput onClick={setHelper}>Update</ButtonInput>
 		</StyledPresetBox>
 	);
 };

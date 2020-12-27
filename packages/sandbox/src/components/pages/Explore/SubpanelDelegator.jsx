@@ -24,13 +24,18 @@ const INPUT_ACTIONS = [
 
 const OUTPUT_ACTIONS = [
 	{
+		id: 'input',
+		text: 'Change Input',
+		component: <div />
+	},
+	{
 		id: 'viewer',
 		text: 'Change Viewer',
 		component: <OutputPresetBox />
 	},
 	{
 		id: 'configure',
-		text: 'Configure',
+		text: 'Configure Viewer',
 		component: <div />
 	}
 ];

@@ -9,8 +9,7 @@ const StyledViewerBox = styled.div`
 `;
 
 const ViewerBox = () => {
-	const outputContext = useOutputContext();
-	const { viewerProps, viewerId } = outputContext.data;
+	const { viewerProps, viewerId } = useOutputContext();
 
 	const ViewerComponent = VIEWER[viewerId].component;
 
