@@ -7,8 +7,6 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 
 	const { viewerProps, viewerId, inputId } = data;
 
-	console.log(viewerProps);
-
 	const setInputId = x => {
 		setData({
 			...data,
@@ -29,11 +27,8 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 	};
 	const setViewerProp = (k, v) => {
 		setViewerProps({
-			...data,
-			viewerProps: {
-				...viewerProps,
-				[k]: v
-			}
+			...viewerProps,
+			[k]: v
 		});
 	};
 
