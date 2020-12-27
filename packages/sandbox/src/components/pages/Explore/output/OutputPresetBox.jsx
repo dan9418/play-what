@@ -1,9 +1,9 @@
-import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
+import { VIEWER_VALUES } from "@pw/react";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import useInputContext from "../../../../contexts/InputContext";
+import useOutputContext from "../../../../contexts/OutputContext";
 
 const StyledPresetBox = styled.div`
 	text-align: center;
@@ -22,14 +22,11 @@ const StyledPresetBox = styled.div`
 	}
 `;
 
-const PresetBox = () => {
-	const [type, setType] = useState(PRESET_TYPES[0]);
-	const [preset, setPreset] = useState(PRESET_TYPES[0].presets[0]);
-	const { intervals, setIntervals, notes, setNotes, podType } = useInputContext();
-
-	const pods = podType === 'interval' ? intervals : notes;
-	const setPods = podType === 'interval' ? setIntervals : setNotes;
-	const setHelper = () => setPods(preset.value);
+const OutputPresetBox = () => {
+	const [type, setType] = useState(VIEWER_VALUES[0]);
+	const [preset, setPreset] = useState(VIEWER_VALUES[0].presets[0]);
+	const outputContext = useOutputContext();
+	const { viewerProps, viewerId } = outputContext.data;
 
 	useEffect(() => {
 		setPreset(type.presets[0]);
@@ -40,14 +37,14 @@ const PresetBox = () => {
 			<table>
 				<thead>
 					<tr>
-						<th>Type</th>
+						<th>Viewer</th>
 						<th>Preset</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td>
-							<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
+							<DropdownInput options={VIEWER_VALUES} value={type} setValue={setType} />
 						</td>
 						<td>
 							<DropdownInput options={type.presets} value={preset} setValue={setPreset} />
@@ -55,9 +52,9 @@ const PresetBox = () => {
 					</tr>
 				</tbody>
 			</table>
-			<ButtonInput onClick={setHelper}>Import</ButtonInput>
+			<ButtonInput onClick={null}>Update</ButtonInput>
 		</StyledPresetBox>
 	);
 };
 
-export default PresetBox;
+export default OutputPresetBox;

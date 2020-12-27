@@ -3,16 +3,17 @@ import { InputContextProvider } from "../../../contexts/InputContext";
 import { OutputContextProvider } from "../../../contexts/OutputContext";
 import EditBox from "./EditBox";
 import PodTypeSwitch from "./input/PodTypeSwitch";
-import PresetBox from "./input/PresetBox";
+import InputPresetBox from "./input/InputPresetBox";
 import InputTable from "./input/table/InputTable";
 import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
+import OutputPresetBox from "./output/OutputPresetBox";
 
 const INPUT_ACTIONS = [
 	{
 		id: 'preset',
 		text: 'Import Preset',
-		component: <PresetBox />
+		component: <InputPresetBox />
 	},
 	{
 		id: 'transform',
@@ -25,7 +26,7 @@ const OUTPUT_ACTIONS = [
 	{
 		id: 'viewer',
 		text: 'Change Viewer',
-		component: <div />
+		component: <OutputPresetBox />
 	},
 	{
 		id: 'configure',

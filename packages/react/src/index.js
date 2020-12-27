@@ -16,25 +16,53 @@ export const VIEWER = {
 		id: 'meter',
 		name: 'Meter',
 		component: Meter,
-		defaultProps: DEFAULT_METER_PROPS
+		defaultProps: DEFAULT_METER_PROPS,
+		presets: [
+			{
+				id: 'default',
+				name: 'Default',
+				value: DEFAULT_METER_PROPS
+			}
+		]
 	},
 	fretboard: {
 		id: 'fretboard',
 		name: 'Fretboard',
 		component: Fretboard,
-		defaultProps: DEFAULT_FRETBOARD_PROPS
+		defaultProps: DEFAULT_FRETBOARD_PROPS,
+		presets: [
+			{
+				id: 'default',
+				name: 'Default',
+				value: DEFAULT_FRETBOARD_PROPS
+			}
+		]
 	},
 	keyboard: {
 		id: 'keyboard',
 		name: 'Keyboard',
 		component: Keyboard,
-		defaultProps: DEFAULT_KEYBOARD_PROPS
+		defaultProps: DEFAULT_KEYBOARD_PROPS,
+		presets: [
+			{
+				id: 'default',
+				name: 'Default',
+				value: DEFAULT_KEYBOARD_PROPS
+			}
+		]
 	},
 	graph: {
 		id: 'graph',
 		name: 'Graph',
 		component: Graph,
-		defaultProps: DEFAULT_GRAPH_PROPS
+		defaultProps: DEFAULT_GRAPH_PROPS,
+		presets: [
+			{
+				id: 'default',
+				name: 'Default',
+				value: DEFAULT_GRAPH_PROPS
+			}
+		]
 	}
 };
 
