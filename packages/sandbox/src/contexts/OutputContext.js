@@ -5,8 +5,14 @@ const OutputContext = createContext(null);
 
 export const OutputContextProvider = ({ data, setData, children }) => {
 
-	const { viewerProps, viewerId } = data;
+	const { viewerProps, viewerId, inputId } = data;
 
+	const setInputId = x => {
+		setData({
+			...data,
+			inputId: x
+		});
+	};
 	const setViewerId = x => {
 		setData({
 			...data,
@@ -22,6 +28,8 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 	};
 
 	const outputContext = {
+		inputId,
+		setInputId,
 		viewerProps,
 		setViewerProps,
 		viewerId,

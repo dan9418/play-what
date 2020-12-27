@@ -8,6 +8,7 @@ import InputTable from "./input/table/InputTable";
 import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
 import OutputPresetBox from "./output/OutputPresetBox";
+import InputSelector from "./output/InputSelector";
 
 const INPUT_ACTIONS = [
 	{
@@ -23,11 +24,6 @@ const INPUT_ACTIONS = [
 ];
 
 const OUTPUT_ACTIONS = [
-	{
-		id: 'input',
-		text: 'Change Input',
-		component: <div />
-	},
 	{
 		id: 'viewer',
 		text: 'Change Viewer',
@@ -65,6 +61,7 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 		Content = ViewerBox;
 		caption = data.inputId;
 		leftActions = OUTPUT_ACTIONS;
+		rightAction = <InputSelector />;
 		preview = '<preview coming soon>';
 		break;
 	}
