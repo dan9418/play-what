@@ -16,7 +16,8 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 	const setViewerId = x => {
 		setData({
 			...data,
-			viewerId: x
+			viewerId: x,
+			viewerProps: VIEWER[x].presets[0].value
 		});
 	};
 	const setViewerProps = x => {

@@ -2,7 +2,6 @@
 import { COLOR_SCHEME_VALUES } from '@pw/core/src/Color.constants';
 import { LABEL_SCHEME_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
-import useEditContext from '../../../sandbox/src/contexts/EditContext';
 import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";

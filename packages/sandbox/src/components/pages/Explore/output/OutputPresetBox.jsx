@@ -33,7 +33,6 @@ const OutputPresetBox = () => {
 
 	const setHelper = () => {
 		setViewerId(type.id);
-		setViewerProps(preset.value);
 	};
 
 	return (

@@ -1,7 +1,6 @@
 
 import { COLOR_FN } from '@pw/core/src/Color.constants';
 import { LABEL_FN } from '@pw/core/src/Label.constants';
-import { SCALE } from "@pw/core/src/Pod.presets";
 import { TONE_FN } from '@pw/core/src/Tone.constants';
 import { TUNING_FN } from '@pw/core/src/Tuning.constants';
 

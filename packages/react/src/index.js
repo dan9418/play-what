@@ -11,6 +11,7 @@ import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
 import DEFAULT_GRAPH_PROPS from './Graph/Graph.defaults';
 import DEFAULT_METER_PROPS from './Meter/Meter.defaults';
 import FretboardPanel from './Fretboard/FretboardPanel';
+import KeyboardPanel from './Keyboard/KeyboardPanel';
 
 export const VIEWER = {
 	meter: {
@@ -42,6 +43,7 @@ export const VIEWER = {
 		id: 'keyboard',
 		name: 'Keyboard',
 		component: Keyboard,
+		panelComponent: KeyboardPanel,
 		presets: [
 			{
 				id: 'default',
