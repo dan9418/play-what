@@ -2,7 +2,6 @@ import { VIEWER_VALUES } from "@pw/react";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
 import useOutputContext from "../../../../contexts/OutputContext";
 
 const OutputPresetBox = () => {

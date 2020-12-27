@@ -11,6 +11,7 @@ import OutputPresetBox from "./output/OutputPresetBox";
 import InputSelector from "./output/InputSelector";
 import ViewerPropsBox from "./output/ViewerPropsBox";
 import PodListUtils from "@pw/core/src/PodList.utils";
+import InputTransformBox from "./input/InputTransformBox";
 
 const INPUT_ACTIONS = [
 	{
@@ -21,7 +22,7 @@ const INPUT_ACTIONS = [
 	{
 		id: 'transform',
 		text: 'Transform',
-		component: <div />
+		component: <InputTransformBox />
 	}
 ];
 

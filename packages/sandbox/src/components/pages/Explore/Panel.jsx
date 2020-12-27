@@ -6,7 +6,9 @@ import { EditContextProvider } from "../../../contexts/EditContext";
 const StyledPanel = styled.div`
 	width: 100%;
 	max-width: 512px;
-	margin: 0 16px;
+	@media(min-width: 512px) {
+		margin: 0 16px;
+	}
 	& .header {
 		padding: 0 16px 16px 16px;
 		margin-bottom: 16px;
