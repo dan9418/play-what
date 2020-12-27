@@ -1,10 +1,7 @@
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
 import useInputContext from "../../../../contexts/InputContext";
-import EditBox from "../EditBox";
-import PresetBox from "./PresetBox";
-import InputTable from "./table/InputTable";
 
 const StyledInputModeSwitch = styled.div`
     display: flex;
@@ -31,28 +28,4 @@ const PodTypeSwitch = () => {
 	);
 };
 
-const ACTIONS = [
-	{
-		id: 'preset',
-		text: 'Import Preset',
-		component: <PresetBox />
-	},
-	{
-		id: 'transform',
-		text: 'Transform',
-		component: <div />
-	}
-];
-
-const InputSubpanelContent = () => {
-	const [action, setAction] = useState(null);
-
-	return (
-		<>
-			<EditBox leftActions={ACTIONS} action={action} setAction={setAction} rightAction={<PodTypeSwitch />} />
-			<InputTable />
-		</>
-	);
-};
-
-export default InputSubpanelContent;
+export default PodTypeSwitch;

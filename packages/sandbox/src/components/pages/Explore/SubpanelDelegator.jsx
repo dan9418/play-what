@@ -1,35 +1,73 @@
-import React from "react";
+import React, { useState } from "react";
 import { InputContextProvider } from "../../../contexts/InputContext";
 import { OutputContextProvider } from "../../../contexts/OutputContext";
-import InputSubpanelContent from "./input/InputSubpanelContent";
+import EditBox from "./EditBox";
+import PodTypeSwitch from "./input/PodTypeSwitch";
+import PresetBox from "./input/PresetBox";
+import InputTable from "./input/table/InputTable";
 import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
 
+const INPUT_ACTIONS = [
+	{
+		id: 'preset',
+		text: 'Import Preset',
+		component: <PresetBox />
+	},
+	{
+		id: 'transform',
+		text: 'Transform',
+		component: <div />
+	}
+];
+
+const OUTPUT_ACTIONS = [
+	{
+		id: 'viewer',
+		text: 'Change Viewer',
+		component: <div />
+	},
+	{
+		id: 'configure',
+		text: 'Configure',
+		component: <div />
+	}
+];
+
 const SubpanelDelegator = ({ data, setData, listType }) => {
+	const [action, setAction] = useState(null);
 
 	let Context = React.Fragment;
 	let Content = React.Fragment;
 	let caption = null;
 	let preview = null;
+	let leftActions = null;
+	let rightAction = null;
 
 	switch (listType) {
-	case 'input':
+	case 'input': {
 		Context = InputContextProvider;
-		Content = InputSubpanelContent;
+		Content = InputTable;
 		caption = data.podType;
+		leftActions = INPUT_ACTIONS;
+		rightAction = <PodTypeSwitch />;
 		preview = '<preview coming soon>';
 		break;
-	case 'output':
+	}
+	case 'output': {
 		Context = OutputContextProvider;
 		Content = ViewerBox;
 		caption = data.inputId;
+		leftActions = OUTPUT_ACTIONS;
 		preview = '<preview coming soon>';
 		break;
+	}
 	}
 
 	return (
 		<Context data={data} setData={setData}>
 			<Subpanel name={data.name} caption={caption} preview={preview}>
+				<EditBox action={action} setAction={setAction} leftActions={leftActions} rightAction={rightAction} />
 				<Content />
 			</Subpanel>
 		</Context>
