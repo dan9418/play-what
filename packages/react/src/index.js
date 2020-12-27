@@ -16,7 +16,6 @@ export const VIEWER = {
 		id: 'meter',
 		name: 'Meter',
 		component: Meter,
-		defaultProps: DEFAULT_METER_PROPS,
 		presets: [
 			{
 				id: 'default',
@@ -29,7 +28,6 @@ export const VIEWER = {
 		id: 'fretboard',
 		name: 'Fretboard',
 		component: Fretboard,
-		defaultProps: DEFAULT_FRETBOARD_PROPS,
 		presets: [
 			{
 				id: 'default',
@@ -42,7 +40,6 @@ export const VIEWER = {
 		id: 'keyboard',
 		name: 'Keyboard',
 		component: Keyboard,
-		defaultProps: DEFAULT_KEYBOARD_PROPS,
 		presets: [
 			{
 				id: 'default',
@@ -55,7 +52,6 @@ export const VIEWER = {
 		id: 'graph',
 		name: 'Graph',
 		component: Graph,
-		defaultProps: DEFAULT_GRAPH_PROPS,
 		presets: [
 			{
 				id: 'default',
