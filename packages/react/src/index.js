@@ -34,8 +34,16 @@ export const VIEWER = {
 		presets: [
 			{
 				id: 'default',
-				name: 'Default',
+				name: 'Guitar',
 				value: DEFAULT_FRETBOARD_PROPS
+			},
+			{
+				id: 'bass',
+				name: 'Bass',
+				value: {
+					...DEFAULT_FRETBOARD_PROPS,
+					tuning: DEFAULT_FRETBOARD_PROPS.tuning.slice(0, 4)
+				}
 			}
 		]
 	},

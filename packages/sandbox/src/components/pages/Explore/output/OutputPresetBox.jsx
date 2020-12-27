@@ -25,14 +25,14 @@ const StyledPresetBox = styled.div`
 const OutputPresetBox = () => {
 	const [type, setType] = useState(VIEWER_VALUES[0]);
 	const [preset, setPreset] = useState(VIEWER_VALUES[0].presets[0]);
-	const { viewerProps, setViewerProps, viewerId, setViewerId } = useOutputContext();
+	const { setViewerPreset } = useOutputContext();
 
 	useEffect(() => {
 		setPreset(type.presets[0]);
 	}, [type.id]);
 
 	const setHelper = () => {
-		setViewerId(type.id);
+		setViewerPreset(type.id, preset.value);
 	};
 
 	return (

@@ -13,6 +13,13 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 			inputId: x
 		});
 	};
+	const setViewerPreset = (id, props) => {
+		setData({
+			...data,
+			viewerId: id,
+			viewerProps: props
+		});
+	};
 	const setViewerId = x => {
 		setData({
 			...data,
@@ -41,7 +48,8 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 		setViewerProps,
 		setViewerProp,
 		viewerId,
-		setViewerId
+		setViewerId,
+		setViewerPreset
 	};
 
 	return (
