@@ -9,6 +9,7 @@ import ViewerBox from "./output/ViewerBox";
 import Subpanel from "./Subpanel";
 import OutputPresetBox from "./output/OutputPresetBox";
 import InputSelector from "./output/InputSelector";
+import ViewerPropsBox from "./output/ViewerPropsBox";
 
 const INPUT_ACTIONS = [
 	{
@@ -32,7 +33,7 @@ const OUTPUT_ACTIONS = [
 	{
 		id: 'configure',
 		text: 'Configure Viewer',
-		component: <div />
+		component: <ViewerPropsBox />
 	}
 ];
 

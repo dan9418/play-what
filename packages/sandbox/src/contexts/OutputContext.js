@@ -27,12 +27,23 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 			viewerProps: x
 		});
 	};
+	const setViewerProp = (k, v) => {
+		setViewerProps({
+			...data,
+			viewerProps: {
+				...viewerProps,
+				[k]: v
+			}
+		});
+	};
+
 
 	const outputContext = {
 		inputId,
 		setInputId,
 		viewerProps,
 		setViewerProps,
+		setViewerProp,
 		viewerId,
 		setViewerId
 	};

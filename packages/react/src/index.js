@@ -10,6 +10,7 @@ import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
 import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
 import DEFAULT_GRAPH_PROPS from './Graph/Graph.defaults';
 import DEFAULT_METER_PROPS from './Meter/Meter.defaults';
+import FretboardPanel from './Fretboard/FretboardPanel';
 
 export const VIEWER = {
 	meter: {
@@ -28,6 +29,7 @@ export const VIEWER = {
 		id: 'fretboard',
 		name: 'Fretboard',
 		component: Fretboard,
+		panelComponent: FretboardPanel,
 		presets: [
 			{
 				id: 'default',

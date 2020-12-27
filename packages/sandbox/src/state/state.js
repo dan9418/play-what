@@ -1,5 +1,6 @@
 import { CHORD } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
+import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 
 const DEFAULT_INPUT = {
@@ -49,7 +50,7 @@ const _outputListState = atom({
 		name: 'Output 1',
 		inputId: 'input1',
 		viewerId: 'fretboard',
-		viewerProps: {}
+		viewerProps: null
 	}]
 });
 
@@ -94,7 +95,7 @@ export const outputListState = selector({
 				viewerId: viewerId || DEFAULT_OUTPUT.viewerId,
 				inputId: inputId || DEFAULT_OUTPUT.inputId,
 				viewerProps: {
-					...(viewerProps || DEFAULT_OUTPUT.viewerProps),
+					...(viewerProps || VIEWER[viewerId].presets[0].value),
 					pods: input ? input.notes : []
 				}
 			};
