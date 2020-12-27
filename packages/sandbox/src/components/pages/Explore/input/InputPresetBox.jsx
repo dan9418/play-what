@@ -2,25 +2,7 @@ import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
 import useInputContext from "../../../../contexts/InputContext";
-
-const StyledPresetBox = styled.div`
-	text-align: center;
-	
-	& button {
-		width: 50%;
-    	margin: 8px 0;
-	}
-
-	& table {
-		margin: auto;
-	}
-
-	& th, td {
-		padding: 8px;
-	}
-`;
 
 const InputPresetBox = () => {
 	const [type, setType] = useState(PRESET_TYPES[0]);
@@ -36,27 +18,20 @@ const InputPresetBox = () => {
 	}, [type.id]);
 
 	return (
-		<StyledPresetBox>
-			<table>
-				<thead>
-					<tr>
-						<th>Type</th>
-						<th>Preset</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>
-							<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
-						</td>
-						<td>
-							<DropdownInput options={type.presets} value={preset} setValue={setPreset} />
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<ButtonInput onClick={setHelper}>Import</ButtonInput>
-		</StyledPresetBox>
+		<>
+			<div className='input-bar'>
+				<div>Type</div>
+				<DropdownInput options={PRESET_TYPES} value={type} setValue={setType} />
+			</div>
+			<div className='input-bar'>
+				<div>Preset</div>
+				<DropdownInput options={type.presets} value={preset} setValue={setPreset} />
+			</div>
+			<div className='input-bar'>
+				<div />
+				<ButtonInput onClick={setHelper}>Import</ButtonInput>
+			</div>
+		</>
 	);
 };
 
