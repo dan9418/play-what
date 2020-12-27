@@ -10,6 +10,7 @@ import Subpanel from "./Subpanel";
 import OutputPresetBox from "./output/OutputPresetBox";
 import InputSelector from "./output/InputSelector";
 import ViewerPropsBox from "./output/ViewerPropsBox";
+import PodListUtils from "@pw/core/src/PodList.utils";
 
 const INPUT_ACTIONS = [
 	{
@@ -54,16 +55,16 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 		caption = data.podType;
 		leftActions = INPUT_ACTIONS;
 		rightAction = <PodTypeSwitch />;
-		preview = '<preview coming soon>';
+		preview = PodListUtils.getPreview(data[`${data.podType}s`], { podType: data.podType })
 		break;
 	}
 	case 'output': {
 		Context = OutputContextProvider;
 		Content = ViewerBox;
-		caption = data.inputId;
+		caption = data.viewerId;
 		leftActions = OUTPUT_ACTIONS;
 		rightAction = <InputSelector />;
-		preview = '<preview coming soon>';
+		preview = data.inputId;
 		break;
 	}
 	}
