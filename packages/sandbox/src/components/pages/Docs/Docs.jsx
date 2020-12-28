@@ -1,8 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledDocs = styled.div`
+	height: 100%;
+	width: 100%;
+	max-width: 512px;
+	margin: auto;
+
+	& > h1, & > p {
+		margin: 32px 0;
+	}
+`;
 
 const Docs = () => {
 	return (
-		<div className='docs'>
+		<StyledDocs>
 			<h1>API Documentation</h1>
 			<h2>Coming Soon!</h2>
 			<p>
@@ -49,7 +61,7 @@ const Docs = () => {
 					</ul>
 				</ul>
 			</ul>
-		</div>
+		</StyledDocs>
 	)
 };
 

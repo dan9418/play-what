@@ -10,11 +10,6 @@ export const PAGE = {
 		name: 'Explore',
 		component: <Explore />
 	},
-	chart: {
-		id: 'chart',
-		name: 'Chart',
-		component: <Explore />
-	},
 	about: {
 		id: 'about',
 		name: 'About',

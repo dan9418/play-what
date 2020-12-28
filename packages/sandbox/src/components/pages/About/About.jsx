@@ -1,22 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const StyledAbout = styled.div`
+	min-height: 100%;
+	width: 100%;
+	max-width: 512px;
+	margin: auto;
+
+	& > h1, & > p {
+		margin: 32px 0;
+	}
+`;
 
 const About = () => {
 	return (
-		<div className='about'>
-			<h1>Play What?</h1>
-			<p>
-                Play What is a toolkit for modeling and analyzing musical concepts.
-                Some of the core components include:
-			</p>
-			<ul>
-				<li>A simple, efficient, and flexible data structure spec</li>
-				<li>A JavaScript API for working with these data structures</li>
-				<li>An immutable object-oriented JavaScript framework to wrap these data structures</li>
-				<li>A React component library for consuming and analyzing these data structures</li>
-				<li>A free web app demonstrating the libraries abilities accessible to musicians of all stripes</li>
-				<li>An open-source repository designed to be easily forked and extended</li>
-				<li>A young community of technical music theory enthusiasts</li>
-			</ul>
+		<StyledAbout>
 			<h2>How Does It Work?</h2>
 			<p>
                 The foundational building block of Play What is a concept called a pod.
@@ -156,7 +154,7 @@ const About = () => {
 			<p>
                 Check out the Explore tab to experiment with some pods.
 			</p>
-		</div>
+		</StyledAbout>
 	)
 };
 
