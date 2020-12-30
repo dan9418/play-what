@@ -48,9 +48,8 @@ const Home = () => {
 				Play What is under active development and is slated for initial release in early 2021.
 			</p>
 			<section>
-				<ButtonInput onClick={() => routeContext.push(PAGE.explore)}>Explore</ButtonInput>
-				<ButtonInput onClick={() => routeContext.push(PAGE.about)}>About</ButtonInput>
-				<ButtonInput onClick={() => routeContext.push(PAGE.docs)}>Docs</ButtonInput>
+				<ButtonInput onClick={() => routeContext.push(PAGE.docs)}>Documentation</ButtonInput>
+				<ButtonInput onClick={() => routeContext.push(PAGE.explore)}>App</ButtonInput>
 			</section>
 		</StyledHome>
 	)

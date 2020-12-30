@@ -1,19 +1,13 @@
 import React from 'react';
-import About from "./About/About";
-import Docs from "./Docs/Docs";
+import Docs from "./Documentation/Documentation";
 import Explore from "./Explore/Explore";
 import Home from './Home/Home';
 
 export const PAGE = {
 	explore: {
 		id: 'explore',
-		name: 'Explore',
+		name: 'App',
 		component: <Explore />
-	},
-	about: {
-		id: 'about',
-		name: 'About',
-		component: <About />
 	},
 	docs: {
 		id: 'docs',

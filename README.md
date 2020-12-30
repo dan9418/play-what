@@ -2,8 +2,6 @@
 
 Play What is a JavaScript toolkit for modelling music theory concepts.
 
-## See The App
-
 For the most recent documentation and demos, please [visit the app](https://dan9418.github.io/play-what/) on GitHub Pages.
 
 ## Disclaimer
