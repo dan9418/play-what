@@ -29,6 +29,14 @@ const _inputListState = atom({
 			name: 'Input 1',
 			podType: 'interval',
 			keyCenter: [0, 0],
+			intervals: [[4, 4]],
+			notes: null
+		}
+		/*{
+			id: 'input1',
+			name: 'Input 1',
+			podType: 'interval',
+			keyCenter: [0, 0],
 			intervals: CHORD.Maj.value,
 			notes: null
 		},
@@ -39,7 +47,7 @@ const _inputListState = atom({
 			keyCenter: null,
 			intervals: null,
 			notes: CHORD.Dom7.value
-		}
+		}*/
 	]
 });
 

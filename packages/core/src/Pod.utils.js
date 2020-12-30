@@ -1,5 +1,6 @@
 import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
 import CoreUtils from './Core.utils';
+import TheoryUtils from './Theory.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
@@ -50,8 +51,16 @@ class PodUtils {
 	}
 
 	static getName(pod, options = {}) {
-		const result = this.findPreset(pod, options);
-		return result ? result.id : '?';
+		const { podType } = options;
+		const [p, d] = pod;
+
+		if (podType === 'interval') {
+			return p + 'i';
+		}
+		else if (podType === 'note') {
+			return TheoryUtils.getNoteName(pod);
+		}
+		else return '?';
 	}
 
 	static getPitchClass(pod, options = {}) {
