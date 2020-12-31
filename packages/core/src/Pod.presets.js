@@ -186,7 +186,7 @@ export const INTERVAL = {
 		name: 'Augmented 5th',
 		value: [
 			8,
-			5
+			4
 		]
 	},
 	d6: {

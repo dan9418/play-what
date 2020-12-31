@@ -1,8 +1,6 @@
-import { DEGREE_VALUES, INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
-import CoreUtils from './Core.utils';
-import { ACCIDENTAL } from './Theory.constants';
 import { ROOT_SCALE } from './Core.constants';
-
+import { DEGREE_VALUES } from './Pod.presets';
+import { ACCIDENTAL, CORE_INTERVALS, QUALITY } from './Theory.constants';
 class TheoryUtils {
 
 	static getAccidentalOffset(pod) {
@@ -24,6 +22,27 @@ class TheoryUtils {
 		const accidental = this.getAccidentalString(offset);
 		const spelling = DEGREE_VALUES[pod[1]].name;
 		return `${spelling}${accidental}`;
+	}
+
+	static getIntervalName(pod) {
+		const [p, d] = pod;
+		const degreeIntervals = CORE_INTERVALS[d];
+		if (!degreeIntervals) return '?';
+		const loIvl = degreeIntervals[0];
+		if (p === loIvl.value[0]) return loIvl.id;
+		if (p < loIvl.value[0]) {
+			const offset = loIvl.value[0] - p;
+			const quality = QUALITY.dim.symbol.repeat(offset);
+			return `${quality}${d + 1}`;
+		}
+		const hiIvl = degreeIntervals[degreeIntervals.length - 1];
+		if (p === hiIvl.value[0]) return hiIvl.id;
+		if (p > hiIvl.value[0]) {
+			const offset = p - hiIvl.value[0];
+			const quality = QUALITY.aug.symbol.repeat(offset);
+			return `${quality}${d + 1}`;
+		}
+		return '?';
 	}
 
 }

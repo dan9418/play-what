@@ -55,7 +55,7 @@ class PodUtils {
 		const [p, d] = pod;
 
 		if (podType === 'interval') {
-			return p + 'i';
+			return TheoryUtils.getIntervalName(pod);
 		}
 		else if (podType === 'note') {
 			return TheoryUtils.getNoteName(pod);

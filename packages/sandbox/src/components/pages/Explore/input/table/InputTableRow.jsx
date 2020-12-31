@@ -11,6 +11,7 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const presets = PodUtils.getPresets(sharedOptions);
 	const preset = PodUtils.findPreset(pod, sharedOptions);
 	const presetName = preset ? preset.id : '?';
+	const podName = PodUtils.getName(pod, sharedOptions);
 
 	const setHelper = v => { if (v.value) setPod(v.value); }
 
@@ -19,7 +20,7 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 
 	return (
 		<td>
-			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : presetName}
+			{isEditing ? <DropdownInput options={options} value={preset || unknown} setValue={setHelper} displayProperty="id" /> : podName}
 		</td>
 	)
 }
