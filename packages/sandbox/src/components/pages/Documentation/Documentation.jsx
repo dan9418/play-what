@@ -1,27 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledDocs = styled.div`
+const StyledDocumentation = styled.div`
 	height: 100%;
 	width: 100%;
 	max-width: 512px;
 	margin: auto;
 
-	& > h1, & > p {
-		margin: 32px 0;
+	& h1, h2, h3, h4, h5 {
+		margin: 16px 0;
+		&:first-child {
+			margin-top: 0;
+		}
+	}
+	& p {
+		margin: 16px 0;
 	}
 `;
 
-const Docs = () => {
+const StyledSourceCode = styled.div`
+background-color: #ddd;
+padding: 16px;
+border-radius: 16px;
+	& li {
+		padding: 4px;
+	}
+	& ul {
+		margin-left: 16px;
+	}
+`;
+
+const Documentation = () => {
 	return (
-		<StyledDocs>
-			<h1>API Documentation</h1>
-			<h2>Coming Soon!</h2>
-			<p>
-                For now, here are some useful links:
-			</p>
-			<ul>
-				<li>Current</li>
+		<StyledDocumentation>
+			<h1>Documentation</h1>
+
+			<StyledSourceCode>
+				<h2>Source Code</h2>
+				<p>
+					This is an open source project, but the code is not yet ready for public contribution.
+					Details will be published here when available.
+					For now, here are some useful links:
+				</p>
+
+				<h3>Current</h3>
 				<ul>
 					<li>
 						<a href="https://dan9418.github.io/play-what/">App</a>
@@ -30,7 +52,7 @@ const Docs = () => {
 						<a href="https://github.com/dan9418/play-what">Monorepo</a>
 					</li>
 				</ul>
-				<li>Beta</li>
+				<h3>Beta</h3>
 				<ul>
 					<li>Sample</li>
 					<ul>
@@ -60,9 +82,10 @@ const Docs = () => {
 						</li>
 					</ul>
 				</ul>
-			</ul>
-		</StyledDocs>
+
+			</StyledSourceCode>
+		</StyledDocumentation>
 	)
 };
 
-export default Docs;
+export default Documentation;

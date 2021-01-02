@@ -9,6 +9,10 @@ const StyledButton = styled.button`
     padding: 4px 8px;
 	color: white;
 	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent};
+
+	&:hover {
+		opacity: .9;
+	}
 `;
 
 const ButtonInput = props => {
