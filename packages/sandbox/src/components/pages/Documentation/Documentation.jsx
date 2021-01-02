@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledDocumentation = styled.div`
 	min-height: 100%;
 	width: 100%;
-	max-width: 512px;
+	max-width: 1024px;
 	margin: auto;
 
 	& h1, h2, h3, h4, h5 {
@@ -89,7 +89,7 @@ const Documentation = () => {
 				<p>
 					This simply means that the numbers are always whole numbers
 					- no decimals or fractions are allowed.
-					The integers can be positive, negative, or zero. We refer to a single integer as an **index**.
+					The integers can be positive, negative, or zero. We refer to a single integer as an <strong>index</strong>.
 				</p>
 				<h3>Cyclical</h3>
 				<p>
@@ -119,20 +119,20 @@ const Documentation = () => {
 				</p>
 				<p>
 					When a pitch is doubled or cut in half, the resulting pitches sound like higher and lower versions of the root pitch, respectively.
-					This relationship is called an **octave**.
-					Pitches related to each other by octaves are said to belong to the same **pitch class**.
+					This relationship is called an <strong>octave</strong>.
+					Pitches related to each other by octaves are said to belong to the same <strong>pitch class</strong>.
 				</p>
 				<p>
 					In most tuning systems, the distance between octaves is subdivided to simplify and define the set of available pitches.
-					By far, the most common tuning system in Western music is **twelve-tone equal-temperament (TET)**, which divides an octave into exactly 12 equal parts.
+					By far, the most common tuning system in Western music is <strong>twelve-tone equal-temperament (TET)</strong>, which divides an octave into exactly 12 equal parts.
 					The reason for this choice is not yet important, just understand that it provides a convenient and flexible set of pitches.
 				</p>
 				<p>
-					The distance between two adjacent pitches in this system is called a **semitone** (or **half-step**).
-					Likewise, the distance spanning two half-steps is a **whole-tone** (or **whole-step**).
+					The distance between two adjacent pitches in this system is called a <strong>semitone</strong> (or <strong>half-step</strong>).
+					Likewise, the distance spanning two half-steps is a <strong>whole-tone</strong> (or <strong>whole-step</strong>).
 				</p>
 				<p>
-					In the context of pods, the p value can represent an **absolute** pitch (**position**) or **relative** pitch (**distance**).
+					In the context of pods, the p value can represent an <strong>absolute</strong> pitch (<strong>position</strong>) or <strong>relative</strong> pitch (<strong>distance</strong>).
 					In other words, position is like a specific yard-line on a football field, whereas distance is the number of yard-lines spanned.
 				</p>
 
@@ -144,24 +144,24 @@ const Documentation = () => {
 					TET provides 12 unique pitch classes within a single octave.
 					However, most music is based on a subset of these at any given time.
 					This is what is meant when music is written in a certain key or improvised from a certain scale.
-					The chosen pitches are each assigned a **degree**, which is denoted by a letter name or **spelling**.
+					The chosen pitches are each assigned a <strong>degree</strong>, which is denoted by a letter name or <strong>spelling</strong>.
 				</p>
 				<p>
 					Western music generally uses 7 of the 12 available pitches.
 					The choices are somewhat arbitrary and may change depending on the context and purpose.
 				</p>
 				<p>
-					The first degree is called the **root** and all other notes are named relative to that one.
+					The first degree is called the <strong>root</strong> and all other notes are named relative to that one.
 					By convention, the most common root is C rather than A.
 				</p>
 				<p>
-					Like pitch, degree can specify a **position** or **distance**.
+					Like pitch, degree can specify a <strong>position</strong> or <strong>distance</strong>.
 				</p>
 
 				<h3>Octave (o)</h3>
 				<p>
 					In pods, there is also a third, implicit index.
-					The pitch index can be dissected into two parts, **octave** and **pitch class**.
+					The pitch index can be dissected into two parts, <strong>octave</strong> and <strong>pitch class</strong>.
 				</p>
 				<p>
 					The octave represents how many times a pitch value wraps around the maximum.
@@ -193,14 +193,14 @@ const Documentation = () => {
 					Okay, this is where the fun begins.
 					The value of the pod format is not apparent until we understand what the combined indices can collectively represent.
 					The representation differs if the pod specifies a position or distance.
-					To indicate the representation, we use a term called **pod type**.
+					To indicate the representation, we use a term called <strong>pod type</strong>.
 				</p>
 
 				<p>There are two possible pod types:</p>
 				<h4>Note</h4>
 				<p>
 					Analogous to position.
-					Notes are named with a **letter spelling** (A-G) and an **accidental** (# or b).
+					Notes are named with a <strong>letter spelling</strong> (A-G) and an <strong>accidental</strong> (# or b).
 				</p>
 				<code>
 					A, Bb, C#
@@ -219,7 +219,7 @@ const Documentation = () => {
 				<h4>Interval</h4>
 				<p>
 					Analogous to distance.
-					Intervals are named with a **degree** (1-7) and a **quality** (major, minor, augmented, diminished, etc...).
+					Intervals are named with a <strong>degree</strong> (1-7) and a <strong>quality</strong> (major, minor, augmented, diminished, etc...).
 				</p>
 				<code>
 					M2, m3, A4, d5
@@ -261,7 +261,7 @@ const Documentation = () => {
 			<section>
 				<h3>Pod Lists</h3>
 				<p>We can take the abstraction of pod type one step further and analyze lists of pods.</p>
-				<p>You may notice that a list of pods is essentially a **matrix**, but we call them **lists** here because the 2nd dimension of the matrix is generally kept intact.</p>
+				<p>You may notice that a list of pods is essentially a <strong>matrix</strong>, but we call them <strong>lists</strong> here because the 2nd dimension of the matrix is generally kept intact.</p>
 				<p>Any operation that can be applied to a single pod can also be applied to a list of pods.</p>
 				<p>This allows us to model more useful musical concepts like chords, scales, melodies, etc...</p>
 				<p>Just like individual pods, pod lists can be defined using notes or intervals.</p>
@@ -269,8 +269,8 @@ const Documentation = () => {
 
 			<section>
 				<h3>Pod List Type</h3>
-				<p>Similar to how pod type is defined based on what the pod measures, the **pod list type** is defined based on how the constituent pods are **temporally related**.</p>
-				<p>In music, this relationship is equivalent to **chords** and **scales**</p>
+				<p>Similar to how pod type is defined based on what the pod measures, the <strong>pod list type</strong> is defined based on how the constituent pods are <strong>temporally related</strong>.</p>
+				<p>In music, this relationship is equivalent to <strong>chords</strong> and <strong>scales</strong></p>
 				<h4>Chord</h4>
 				<p>A set of notes played simultanoesly</p>
 				<code>Major Chord = [P1, M3, P5] = [C, E, G]</code>

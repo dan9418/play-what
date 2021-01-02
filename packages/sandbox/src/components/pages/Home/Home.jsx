@@ -34,18 +34,11 @@ const Home = () => {
 		<StyledHome>
 			<h1>Play What?</h1>
 			<p>
-				Play What is a toolkit for modeling and analyzing musical concepts, inlcuding...
+				Play What is a toolkit for modeling and analyzing musical concepts.
+				The project is under active development and is slated for initial release in early 2021.
 			</p>
-			<ul>
-				<li>A simple, efficient, and flexible musical data structure spec</li>
-				<li>A JavaScript API for working with these data structures</li>
-				<li>A React component library for consuming and analyzing these data structures</li>
-				<li>A free web app demonstrating its abilities</li>
-				<li>An open-source repository designed to be easily forked and extended</li>
-				<li>A young community of technical music theory enthusiasts</li>
-			</ul>
 			<p>
-				Play What is under active development and is slated for initial release in early 2021.
+				Visit the documentation to understand the core concepts then check out the app to explore its capabilities:
 			</p>
 			<section>
 				<ButtonInput onClick={() => routeContext.push(PAGE.docs)}>Documentation</ButtonInput>
