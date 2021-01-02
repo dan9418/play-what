@@ -36,6 +36,8 @@ const StyledDocumentation = styled.div`
 		}
 	}
 	& code {
+		background-color: #f5f5f5;
+		border-radius: 4px;
 		display: block;
 		padding: 4px;
 		width: 100%;
@@ -256,19 +258,68 @@ const Documentation = () => {
 				<p>It is important to remember that the pod type does not change the mathematical operation, it only helps us model what the operation is doing.</p>
 			</section>
 
+			<section>
+				<h3>Pod Lists</h3>
+				<p>We can take the abstraction of pod type one step further and analyze lists of pods.</p>
+				<p>You may notice that a list of pods is essentially a **matrix**, but we call them **lists** here because the 2nd dimension of the matrix is generally kept intact.</p>
+				<p>Any operation that can be applied to a single pod can also be applied to a list of pods.</p>
+				<p>This allows us to model more useful musical concepts like chords, scales, melodies, etc...</p>
+				<p>Just like individual pods, pod lists can be defined using notes or intervals.</p>
+			</section>
 
+			<section>
+				<h3>Pod List Type</h3>
+				<p>Similar to how pod type is defined based on what the pod measures, the **pod list type** is defined based on how the constituent pods are **temporally related**.</p>
+				<p>In music, this relationship is equivalent to **chords** and **scales**</p>
+				<h4>Chord</h4>
+				<p>A set of notes played simultanoesly</p>
+				<code>Major Chord = [P1, M3, P5] = [C, E, G]</code>
+				<h4>Scale</h4>
+				<p>A set of notes played sequentially</p>
+				<code>Major Scale = [P1, M2, M3, P4, P5, M6, M7] = [C, D, E, F, G, A, B]</code>
+				<p>
+					Just like pod type, the pod list type does not change how we work with pods.
+					It simply provides a mental model to think about the concepts we are working with.
+				</p>
+			</section>
 
+			<section>
+				<h3>Applications</h3>
+				<p>Given the above properties, we can easily and efficient perform a number of useful operations on a number of musical concepts.</p>
+				<h4>Transposition</h4>
+				<code>[C, E, G] + M2 = [D, F, A]</code>
+				<h4>Key Center + Intervals</h4>
+				<code>C + [P1, M3, P5] = [C, E, G]</code>
+				<p>This is equivalent to the the (commutation?)  property of transposition</p>
+				<h4>Chordal Inversions</h4>
+				<code>TBA</code>
+				<h4>Melodic Inversions</h4>
+				<code>TBA</code>
+				<h4>Roman Numerals</h4>
+				<code>TBA</code>
+				<h4>Supersets</h4>
+				<code>TBA</code>
+			</section>
 
-
-
-
-
-
-
-
-
-
-
+			<section>
+				<h3>What Is It Useful?</h3>
+				<p>The pod concept allows for the qualitative modelling of abstract musical ideas in a way that is extraordinarily simple and efficient to work with.</p>
+				<p>
+					The musical idea can be a collection of notes and intervals
+					(like chords, scales, and melodies)
+					or a musical operation
+					(like transpositions or inversions)
+				</p>
+				<p>For example, in Roman Numeral chord analysis, which is the basic for most popular Western music, all the available chords are derived from a single scale.</p>
+				<p>The derivation is essentially an algorithm, so the structured representation of pods makes them well suited to operate on.</p>
+				<p>Additionally, having a consistent model of the operation, and namely, the musical CHARACTER of the operation, allows us to separate it from the source material, and even more, the source musical system.</p>
+				<p>Using this abstraction, we can essentially reverse-engineer the musical system to get chords from altered tuning systems, degree definitions, etc...</p>
+				<p>As a result, it is flexible enough to accommodate nearly any musical system and moreover provide an interchange format between them.</p>
+				<p>Additionally, it can be used to connect variations on a musical idea in the universe of musical ideas.</p>
+				<p>For example, a major chord may be essentially identical in character to some other inverted chord.</p>
+				<p>Pods clearly expose this relationship, which can be useful in songwriting or algorithmic music generation</p>
+				<p>The pod model provides a framework for finding those relationships.</p>
+			</section>
 
 			<StyledBlock>
 				<h2>Source Code</h2>
