@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InputContextProvider } from "../../../contexts/InputContext";
 import { OutputContextProvider } from "../../../contexts/OutputContext";
 import EditBox from "./EditBox";
-import PodTypeSwitch from "./input/PodTypeSwitch";
+import { InputPodTypeSwitch } from "./PodTypeSwitch";
 import InputPresetBox from "./input/InputPresetBox";
 import InputTable from "./input/table/InputTable";
 import ViewerBox from "./output/ViewerBox";
@@ -55,7 +55,7 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 		Content = InputTable;
 		caption = data.podType;
 		leftActions = INPUT_ACTIONS;
-		rightAction = <PodTypeSwitch />;
+		rightAction = <InputPodTypeSwitch />;
 		preview = PodListUtils.getPreview(data[`${data.podType}s`], { podType: data.podType })
 		break;
 	}

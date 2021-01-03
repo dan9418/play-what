@@ -104,8 +104,9 @@ export const outputListState = selector({
 				inputId: inputId || DEFAULT_OUTPUT.inputId,
 				viewerProps: {
 					...(viewerProps || VIEWER[viewerId].presets[0].value),
-					pods: input ? input.notes : [],
-					podType: input.podType
+					keyCenter: input ? input.keyCenter : [0 ,0],
+					intervals: input ? input.intervals : [],
+					notes: input ? input.notes : []
 				}
 			};
 		});

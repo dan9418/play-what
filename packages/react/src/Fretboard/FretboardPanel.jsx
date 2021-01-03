@@ -2,6 +2,7 @@
 import { COLOR_SCHEME_VALUES } from '@pw/core/src/Color.constants';
 import { LABEL_SCHEME_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
+import PodTypeSwitch from '../../../sandbox/src/components/pages/Explore/PodTypeSwitch';
 import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";
@@ -10,7 +11,7 @@ import "./Fretboard.css";
 
 export const FretboardPanel = ({ }) => {
 	const { viewerProps, setViewerProp, name, id } = useOutputContext();
-	const { fretRange, tuning, colorFn, labelFn } = viewerProps;
+	const { fretRange, tuning, colorPodType, colorFn, labelPodType, labelFn } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
@@ -32,8 +33,16 @@ export const FretboardPanel = ({ }) => {
 				<DropdownInput options={FRETBOARD_TUNING_VALUES} value={tuningDef} setValue={v => setViewerProp('tuning', v.value)} />
 			</div>
 			<div className='input-bar'>
+				<div>Color Pod Type</div>
+				<PodTypeSwitch podType={colorPodType} setPodType={null} />
+			</div>
+			<div className='input-bar'>
 				<div>Color Scheme</div>
 				<DropdownInput options={COLOR_SCHEME_VALUES} value={colorSchemeDef} setValue={v => setViewerProp('colorFn', v.value)} />
+			</div>
+			<div className='input-bar'>
+				<div>Label Pod Type</div>
+				<PodTypeSwitch podType={labelPodType} setPodType={null} />
 			</div>
 			<div className='input-bar'>
 				<div>Label Scheme</div>

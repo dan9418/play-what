@@ -1,7 +1,7 @@
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React from "react";
 import styled from 'styled-components';
-import useInputContext from "../../../../contexts/InputContext";
+import useInputContext from "../../../contexts/InputContext";
 
 const StyledInputModeSwitch = styled.div`
     display: flex;
@@ -15,8 +15,7 @@ const StyledInputModeSwitch = styled.div`
     }
 `;
 
-const PodTypeSwitch = () => {
-	const { podType, setPodType } = useInputContext();
+const PodTypeSwitch = ({ podType, setPodType }) => {
 	const value = podType === 'interval';
 	const setValue = v => setPodType(v ? 'interval' : 'note');
 	return (
@@ -26,6 +25,11 @@ const PodTypeSwitch = () => {
 			<span>Intervals</span>
 		</StyledInputModeSwitch>
 	);
+};
+
+export const InputPodTypeSwitch = () => {
+	const { podType, setPodType } = useInputContext();
+	return <PodTypeSwitch podType={podType} setPodType={setPodType} />;
 };
 
 export default PodTypeSwitch;
