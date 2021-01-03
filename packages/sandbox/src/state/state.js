@@ -24,15 +24,15 @@ const DEFAULT_OUTPUT = {
 const _inputListState = atom({
 	key: '_inputListState',
 	default: [
-		{
+		/*{
 			id: 'input1',
 			name: 'Input 1',
 			podType: 'interval',
 			keyCenter: [0, 0],
 			intervals: [[4, 4]],
 			notes: null
-		}
-		/*{
+		}*/
+		{
 			id: 'input1',
 			name: 'Input 1',
 			podType: 'interval',
@@ -47,7 +47,7 @@ const _inputListState = atom({
 			keyCenter: null,
 			intervals: null,
 			notes: CHORD.Dom7.value
-		}*/
+		}
 	]
 });
 
@@ -104,7 +104,8 @@ export const outputListState = selector({
 				inputId: inputId || DEFAULT_OUTPUT.inputId,
 				viewerProps: {
 					...(viewerProps || VIEWER[viewerId].presets[0].value),
-					pods: input ? input.notes : []
+					pods: input ? input.notes : [],
+					podType: input.podType
 				}
 			};
 		});

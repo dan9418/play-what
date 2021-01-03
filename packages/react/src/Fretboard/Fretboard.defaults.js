@@ -15,7 +15,6 @@ const DEFAULT_FRETBOARD_PROPS = {
 	toneFn: TONE_FN.sine.value,
 	pods: [],
 	podType: 'note'
-
 };
 
 export default DEFAULT_FRETBOARD_PROPS;

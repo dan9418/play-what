@@ -63,7 +63,6 @@ export const QUALITY = Object.freeze({
 
 export const QUALITY_VALUES = Object.values(QUALITY);
 
-
 export const CORE_INTERVALS = [
 	[INTERVAL.P1],
 	[INTERVAL.m2, INTERVAL.M2],
