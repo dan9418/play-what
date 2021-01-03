@@ -52,13 +52,13 @@ class PodUtils {
 
 	static getName(pod, options = {}) {
 		const { podType } = options;
-		const [p, d] = pod;
+		const reduced = this.reduce(pod);
 
 		if (podType === 'interval') {
-			return TheoryUtils.getIntervalName(pod);
+			return TheoryUtils.getIntervalName(reduced);
 		}
 		else if (podType === 'note') {
-			return TheoryUtils.getNoteName(pod);
+			return TheoryUtils.getNoteName(reduced);
 		}
 		else return '?';
 	}

@@ -1,4 +1,5 @@
 import { ROOT_SCALE } from './Core.constants';
+import CoreUtils from './Core.utils';
 import { DEGREE_VALUES } from './Pod.presets';
 import { ACCIDENTAL, CORE_INTERVALS, QUALITY } from './Theory.constants';
 class TheoryUtils {
@@ -6,8 +7,10 @@ class TheoryUtils {
 	static getAccidentalOffset(pod) {
 		const [p, d] = pod;
 		let offset = p - ROOT_SCALE[d][0];
-		//if (offset < 0 && accidental.offset > 0) offset = offset + 12;
-		//else if (offset > 0 && accidental.offset < 0) offset = offset - 12;
+		console.log(p, d, offset);
+		// TODO figure out root cause of this
+		if (d === 0 && offset >= 11) offset = offset - 12;
+		if (d === 6 && offset <= -11) offset = offset + 12;
 		return offset;
 	}
 
