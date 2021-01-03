@@ -1,6 +1,6 @@
 
-import { COLOR_SCHEME_VALUES } from '@pw/core/src/Color.constants';
-import { LABEL_SCHEME_VALUES } from '@pw/core/src/Label.constants';
+import { COLOR_FN_INTERVAL_VALUES, COLOR_FN_NOTE_VALUES } from '@pw/core/src/Color.constants';
+import { LABEL_FN_INTERVAL_VALUES, LABEL_FN_NOTE_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
 import PodTypeSwitch from '../../../sandbox/src/components/pages/Explore/PodTypeSwitch';
 import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
@@ -15,8 +15,10 @@ export const FretboardPanel = ({ }) => {
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
-	const colorSchemeDef = COLOR_SCHEME_VALUES.find(o => o.value === colorFn);
-	const labelSchemeDef = LABEL_SCHEME_VALUES.find(o => o.value === labelFn);
+	const colorOptions = colorPodType === 'note' ? COLOR_FN_NOTE_VALUES : COLOR_FN_INTERVAL_VALUES;
+	const colorSchemeDef = colorOptions.find(o => o.value === colorFn);
+	const labelOptions = labelPodType === 'note' ? LABEL_FN_NOTE_VALUES : LABEL_FN_INTERVAL_VALUES;
+	const labelSchemeDef = labelOptions.find(o => o.value === labelFn);
 
 	return (
 		<>
@@ -34,19 +36,19 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Color Pod Type</div>
-				<PodTypeSwitch podType={colorPodType} setPodType={null} />
+				<PodTypeSwitch podType={colorPodType} setPodType={v => setViewerProp('colorPodType', v)} />
 			</div>
 			<div className='input-bar'>
 				<div>Color Scheme</div>
-				<DropdownInput options={COLOR_SCHEME_VALUES} value={colorSchemeDef} setValue={v => setViewerProp('colorFn', v.value)} />
+				<DropdownInput options={colorOptions} value={colorSchemeDef} setValue={v => setViewerProp('colorFn', v.value)} />
 			</div>
 			<div className='input-bar'>
 				<div>Label Pod Type</div>
-				<PodTypeSwitch podType={labelPodType} setPodType={null} />
+				<PodTypeSwitch podType={labelPodType} setPodType={v => setViewerProp('labelPodType', v)} />
 			</div>
 			<div className='input-bar'>
 				<div>Label Scheme</div>
-				<DropdownInput options={LABEL_SCHEME_VALUES} value={labelSchemeDef} setValue={v => setViewerProp('labelFn', v.value)} />
+				<DropdownInput options={labelOptions} value={labelSchemeDef} setValue={v => setViewerProp('labelFn', v.value)} />
 			</div>
 		</>
 	);

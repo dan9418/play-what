@@ -23,7 +23,22 @@ export const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ];
 
-export const COLOR_FN = {
+export const COLOR_FN_NOTE = {
+	none: {
+		id: 'none',
+		name: 'None',
+		value: () => null
+	},
+	pitch: {
+		id: 'pitch',
+		name: 'Pitch',
+		value: pod => pod ? PITCH_COLOR_SCHEME[pod[0]] : null
+	}
+};
+
+export const COLOR_FN_NOTE_VALUES = Object.values(COLOR_FN_NOTE);
+
+export const COLOR_FN_INTERVAL = {
 	none: {
 		id: 'none',
 		name: 'None',
@@ -33,12 +48,7 @@ export const COLOR_FN = {
 		id: 'degree',
 		name: 'Degree',
 		value: pod => pod ? DEGREE_COLOR_SCHEME[pod[1]] : null
-	},
-	pitch: {
-		id: 'pitch',
-		name: 'Pitch',
-		value: pod => pod ? PITCH_COLOR_SCHEME[pod[0]] : null
 	}
 };
 
-export const COLOR_SCHEME_VALUES = Object.values(COLOR_FN);
+export const COLOR_FN_INTERVAL_VALUES = Object.values(COLOR_FN_INTERVAL);
