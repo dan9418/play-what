@@ -11,7 +11,7 @@ import "./Fretboard.css";
 
 export const FretboardPanel = ({ }) => {
 	const { viewerProps, setViewerProp, name, id } = useOutputContext();
-	const { fretRange, tuning, colorPodType, colorFn, labelPodType, labelFn } = viewerProps;
+	const { fretRange, tuning, colorPodType, colorFn, labelPodType, labelFn, keyCenter, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
@@ -22,32 +22,46 @@ export const FretboardPanel = ({ }) => {
 
 	return (
 		<>
-			<div className='input-bar'>
-				<div>Fret Range</div>
-				<div>
-					<NumericInput value={fretLow} setValue={v => setViewerProp('fretRange', [v, fretHigh])} />
-					<span>-</span>
-					<NumericInput value={fretHigh} setValue={v => setViewerProp('fretRange', [fretLow, v])} />
-				</div>
+			<div className='input-bar-header'>
+				Strings
 			</div>
 			<div className='input-bar'>
 				<div>Tuning</div>
 				<DropdownInput options={FRETBOARD_TUNING_VALUES} value={tuningDef} setValue={v => setViewerProp('tuning', v.value)} />
 			</div>
-			<div className='input-bar'>
-				<div>Color Pod Type</div>
-				<PodTypeSwitch podType={colorPodType} setPodType={v => setViewerProp('colorPodType', v)} />
+			<div className='input-bar-header'>
+				Frets
 			</div>
 			<div className='input-bar'>
-				<div>Color Scheme</div>
+				<div>Range</div>
+				<div>
+					<NumericInput value={fretLow} setValue={v => setViewerProp('fretRange', [v, fretHigh])} />
+					<span>{` - `}</span>
+					<NumericInput value={fretHigh} setValue={v => setViewerProp('fretRange', [fretLow, v])} />
+				</div>
+			</div>
+			<div className='input-bar-header'>
+				Color
+			</div>
+			<div className='input-bar'>
+				<div>Source</div>
+				{intervals !== null && <PodTypeSwitch podType={colorPodType} setPodType={v => setViewerProp('colorPodType', v)} />}
+				{intervals === null && <span>Notes</span>}
+			</div>
+			<div className='input-bar'>
+				<div>Scheme</div>
 				<DropdownInput options={colorOptions} value={colorSchemeDef} setValue={v => setViewerProp('colorFn', v.value)} />
 			</div>
-			<div className='input-bar'>
-				<div>Label Pod Type</div>
-				<PodTypeSwitch podType={labelPodType} setPodType={v => setViewerProp('labelPodType', v)} />
+			<div className='input-bar-header'>
+				Label
 			</div>
 			<div className='input-bar'>
-				<div>Label Scheme</div>
+				<div>Source</div>
+				{intervals !== null && <PodTypeSwitch podType={labelPodType} setPodType={v => setViewerProp('labelPodType', v)} />}
+				{intervals === null && <span>Notes</span>}
+			</div>
+			<div className='input-bar'>
+				<div>Property</div>
 				<DropdownInput options={labelOptions} value={labelSchemeDef} setValue={v => setViewerProp('labelFn', v.value)} />
 			</div>
 		</>

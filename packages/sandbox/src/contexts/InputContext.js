@@ -6,10 +6,23 @@ const getInputContext = (data, setData) => {
 	const { podType, keyCenter, intervals, notes } = data;
 
 	const setPodType = x => {
-		setData({
-			...data,
-			podType: x
-		});
+		if (x === 'note') {
+			setData({
+				...data,
+				keyCenter: null,
+				intervals: null,
+				podType: x
+			});
+		}
+		if (x === 'interval') {
+			setData({
+				...data,
+				keyCenter: [0, 0],
+				intervals: data.notes,
+				//notes: data.notes,
+				podType: x
+			});
+		}
 	};
 	const setKeyCenter = x => {
 		setData({

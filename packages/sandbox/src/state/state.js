@@ -6,8 +6,8 @@ import { atom, selector } from "recoil";
 const DEFAULT_INPUT = {
 	id: 'default',
 	name: 'Default Input',
-	keyCenter: [0, 0],
-	intervals: [],
+	keyCenter: null,
+	intervals: null,
 	notes: []
 };
 
@@ -39,15 +39,15 @@ const _inputListState = atom({
 			keyCenter: [0, 0],
 			intervals: CHORD.Maj.value,
 			notes: null
-		},
-		{
+		}
+		/*{
 			id: 'input2',
 			name: 'Input 2',
 			podType: 'note',
 			keyCenter: null,
 			intervals: null,
 			notes: CHORD.Dom7.value
-		}
+		}*/
 	]
 });
 
@@ -104,8 +104,8 @@ export const outputListState = selector({
 				inputId: inputId || DEFAULT_OUTPUT.inputId,
 				viewerProps: {
 					...(viewerProps || VIEWER[viewerId].presets[0].value),
-					keyCenter: input ? input.keyCenter : [0 ,0],
-					intervals: input ? input.intervals : [],
+					keyCenter: input ? input.keyCenter : null,
+					intervals: input ? input.intervals : null,
 					notes: input ? input.notes : []
 				}
 			};
