@@ -9,9 +9,9 @@ import { FRETBOARD_TUNING } from './Fretboard.api';
 const DEFAULT_FRETBOARD_PROPS = {
 	fretRange: [0, 12],
 	tuning: FRETBOARD_TUNING.standard.value,
-	colorPodType: 'note',
+	colorSource: 'keyCenter',
 	colorFn: COLOR_FN_NOTE.pitch.value,
-	labelPodType: 'note',
+	labelSource: 'keyCenter',
 	labelFn: LABEL_FN_NOTE.note.value,
 	tuningFn: TUNING_FN.TET.value,
 	toneFn: TONE_FN.sine.value

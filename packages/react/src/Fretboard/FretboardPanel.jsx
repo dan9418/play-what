@@ -9,15 +9,32 @@ import NumericInput from "../ui/NumericInput/NumericInput";
 import { FRETBOARD_TUNING_VALUES } from "./Fretboard.api";
 import "./Fretboard.css";
 
+const SOURCE_OPTIONS = [
+	{
+		id: 'keyCenter',
+		name: 'Key Center'
+	},
+	{
+		id: 'intervals',
+		name: 'Intervals'
+	},
+	{
+		id: 'notes',
+		name: 'Notes'
+	}
+];
+
 export const FretboardPanel = ({ }) => {
 	const { viewerProps, setViewerProp, name, id } = useOutputContext();
-	const { fretRange, tuning, colorPodType, colorFn, labelPodType, labelFn, keyCenter, intervals, notes } = viewerProps;
+	const { fretRange, tuning, colorSource, colorFn, labelSource, labelFn, keyCenter, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
-	const colorOptions = colorPodType === 'note' ? COLOR_FN_NOTE_VALUES : COLOR_FN_INTERVAL_VALUES;
+	const colorSourceDef = SOURCE_OPTIONS.find(s => s.id === colorSource);
+	const colorOptions = colorSource === 'intervals' ? COLOR_FN_INTERVAL_VALUES : COLOR_FN_NOTE_VALUES;
 	const colorSchemeDef = colorOptions.find(o => o.value === colorFn);
-	const labelOptions = labelPodType === 'note' ? LABEL_FN_NOTE_VALUES : LABEL_FN_INTERVAL_VALUES;
+	const labelSourceDef = SOURCE_OPTIONS.find(s => s.id === labelSource);
+	const labelOptions = labelSource === 'intervals' ? LABEL_FN_INTERVAL_VALUES : LABEL_FN_NOTE_VALUES;
 	const labelSchemeDef = labelOptions.find(o => o.value === labelFn);
 
 	return (
@@ -45,7 +62,7 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Source</div>
-				{intervals !== null && <PodTypeSwitch podType={colorPodType} setPodType={v => setViewerProp('colorPodType', v)} />}
+				{intervals !== null && <DropdownInput options={SOURCE_OPTIONS} value={colorSourceDef} setValue={v => setViewerProp('colorSource', v.id)} />}
 				{intervals === null && <span>Notes</span>}
 			</div>
 			<div className='input-bar'>
@@ -57,7 +74,7 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Source</div>
-				{intervals !== null && <PodTypeSwitch podType={labelPodType} setPodType={v => setViewerProp('labelPodType', v)} />}
+				{intervals !== null && <DropdownInput options={SOURCE_OPTIONS} value={labelSourceDef} setValue={v => setViewerProp('labelSource', v.id)} />}
 				{intervals === null && <span>Notes</span>}
 			</div>
 			<div className='input-bar'>

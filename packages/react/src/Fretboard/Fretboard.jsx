@@ -6,6 +6,15 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_PROPS from "./Fretboard.defaults";
 
+const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
+	let source = [];
+	if(sourceId === 'keyCenter') source = [keyCenter];
+	else if(sourceId === 'intervals') source = intervals;
+	else if(sourceId === 'notes') source = notes;
+	const pod = PodListUtils.findPodWithPitch(source, noteIndex);
+	return pod;
+};
+
 export const Fret = ({
 	stringTuning,
 	stringIndex,
@@ -13,23 +22,21 @@ export const Fret = ({
 	keyCenter,
 	intervals,
 	notes,
-	colorPodType,
+	colorSource,
 	colorFn,
-	labelPodType,
+	labelSource,
 	labelFn,
 	tuningFn,
 	toneFn }) => {
 
 	const noteIndex = stringTuning + fretIndex;
-	const podIndex = PodListUtils.findIndexOfPodWithPitch(notes, noteIndex);
-	const note = notes[podIndex];
-	const interval = intervals ? intervals[podIndex] : null;
+	const note = PodListUtils.findPodWithPitch(notes, noteIndex);
 
-	const colorPod = colorPodType === 'note' ? note : interval;
+	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
 	const color = colorFn(colorPod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const labelPod = labelPodType === 'note' ? note : interval;
+	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);
 	const label = labelFn(labelPod);
 
 	const frequency = tuningFn(note);
