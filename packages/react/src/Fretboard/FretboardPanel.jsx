@@ -11,6 +11,10 @@ import "./Fretboard.css";
 
 const SOURCE_OPTIONS = [
 	{
+		id: 'none',
+		name: 'None'
+	},
+	{
 		id: 'keyCenter',
 		name: 'Key Center'
 	},

@@ -8,9 +8,12 @@ import DEFAULT_PROPS from "./Fretboard.defaults";
 
 const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
 	let source = [];
-	if(sourceId === 'keyCenter') source = [keyCenter];
-	else if(sourceId === 'intervals') source = intervals;
-	else if(sourceId === 'notes') source = notes;
+	if (sourceId === 'none') return null;
+	if (sourceId === 'keyCenter') source = [keyCenter];
+	else if (sourceId === 'intervals') source = intervals;
+	else if (sourceId === 'notes') source = notes;
+	// TODO handle at higher level - sourceId should change if pod type of input id changes
+	if (intervals === null && (sourceId === 'keyCenter' || sourceId === 'intervals')) source = notes;
 	const pod = PodListUtils.findPodWithPitch(source, noteIndex);
 	return pod;
 };

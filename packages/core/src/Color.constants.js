@@ -24,11 +24,6 @@ export const PITCH_COLOR_SCHEME = [
 ];
 
 export const COLOR_FN_NOTE = {
-	none: {
-		id: 'none',
-		name: 'None',
-		value: () => null
-	},
 	pitch: {
 		id: 'pitch',
 		name: 'Pitch',
@@ -39,11 +34,6 @@ export const COLOR_FN_NOTE = {
 export const COLOR_FN_NOTE_VALUES = Object.values(COLOR_FN_NOTE);
 
 export const COLOR_FN_INTERVAL = {
-	none: {
-		id: 'none',
-		name: 'None',
-		value: () => null
-	},
 	degree: {
 		id: 'degree',
 		name: 'Degree',
