@@ -1,41 +1,39 @@
 import PodUtils from "./Pod.utils";
 
-export const LABEL_FN_NOTE = {
-	note: {
-		id: 'name',
-		name: 'Name',
-		value: pod => pod ? PodUtils.getName(pod, { podType: 'note' }) : null
+export const LABEL_SOURCES = [
+	{
+		id: 'none',
+		name: 'None',
+		properties: []
 	},
-	pitch: {
-		id: 'pitch',
-		name: 'Pitch',
-		value: pod => pod ? pod[0] : null
+	{
+		id: 'keyCenter',
+		name: 'Key Center',
+		properties: [
+			{
+				id: 'pitchClass',
+				name: 'Pitch Class'
+			}
+		]
 	},
-	pitchClass: {
-		id: 'pitchClass',
-		name: 'Pitch Class',
-		value: pod => pod ? PodUtils.getPitchClass(pod) : null
+	{
+		id: 'note',
+		name: 'Note',
+		properties: [
+			{
+				id: 'pitchClass',
+				name: 'Pitch Class'
+			}
+		]
 	},
-	octave: {
-		id: 'octave',
-		name: 'Octave',
-		value: pod => pod ? PodUtils.getOctave(pod) : null
+	{
+		id: 'interval',
+		name: 'Interval',
+		properties: [
+			{
+				id: 'degree',
+				name: 'Degree'
+			}
+		]
 	}
-};
-
-export const LABEL_FN_NOTE_VALUES = Object.values(LABEL_FN_NOTE);
-
-export const LABEL_FN_INTERVAL = {
-	name: {
-		id: 'name',
-		name: 'Name',
-		value: pod => pod ? PodUtils.getName(pod, { podType: 'interval' }) : null
-	},
-	degree: {
-		id: 'degree',
-		name: 'Degree',
-		value: pod => pod ? pod[1] : null
-	}
-};
-
-export const LABEL_FN_INTERVAL_VALUES = Object.values(LABEL_FN_INTERVAL);
+];

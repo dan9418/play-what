@@ -1,5 +1,3 @@
-import { } from '@pw/core/src/Color.constants';
-import { LABEL_FN_INTERVAL_VALUES, LABEL_FN_NOTE_VALUES } from '@pw/core/src/Label.constants';
 import { VIEWER } from '@pw/react';
 import React, { createContext, useContext } from 'react';
 
@@ -40,12 +38,6 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 			...viewerProps,
 			[k]: v
 		};
-		/*if (k === 'colorSource') {
-			newProps.colorFn = v === 'intervals' ? COLOR_FN_INTERVAL_VALUES[0].value : COLOR_FN_NOTE_VALUES[0].value;
-		}
-		if (k === 'labelSource') {
-			newProps.labelFn = v === 'intervals' ? LABEL_FN_INTERVAL_VALUES[0].value : LABEL_FN_NOTE_VALUES[0].value;
-		}*/
 		setViewerProps(newProps);
 	};
 
