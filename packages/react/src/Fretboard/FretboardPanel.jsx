@@ -29,7 +29,7 @@ const SOURCE_OPTIONS = [
 
 export const FretboardPanel = ({ }) => {
 	const { viewerProps, setViewerProp, name, id } = useOutputContext();
-	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelFn, keyCenter, intervals, notes } = viewerProps;
+	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelProperty, keyCenter, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
@@ -38,7 +38,7 @@ export const FretboardPanel = ({ }) => {
 	const colorSchemeDef = colorPropertyDef.schemes.find(x => x.id === colorScheme);
 	const labelSourceDef = SOURCE_OPTIONS.find(s => s.id === labelSource);
 	const labelOptions = labelSource === 'intervals' ? LABEL_FN_INTERVAL_VALUES : LABEL_FN_NOTE_VALUES;
-	const labelSchemeDef = labelOptions.find(o => o.value === labelFn);
+	const labelSchemeDef = labelOptions.find(o => o.value === labelProperty);
 
 	return (
 		<>
@@ -86,7 +86,7 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Property</div>
-				<DropdownInput options={labelOptions} value={labelSchemeDef} setValue={v => setViewerProp('labelFn', v.value)} />
+				<DropdownInput options={labelOptions} value={labelSchemeDef} setValue={v => setViewerProp('labelProperty', v.value)} />
 			</div>
 		</>
 	);

@@ -29,7 +29,7 @@ export const Fret = ({
 	colorProperty,
 	colorScheme,
 	labelSource,
-	labelFn,
+	labelProperty,
 	tuningFn,
 	toneFn }) => {
 
@@ -38,12 +38,12 @@ export const Fret = ({
 
 	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
 	const colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
-	// TODO start here - the color sheme should not be a preset
 	const color = colorScheme[colorPropertyValue];
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);
-	const label = labelFn(labelPod);
+	const labelPropertyValue = PodUtils.getProperty(labelPod, colorProperty);
+	const label = labelPropertyValue;
 
 	const frequency = tuningFn(note);
 	const onClick = () => toneFn(frequency);

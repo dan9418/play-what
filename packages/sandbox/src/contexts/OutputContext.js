@@ -42,10 +42,10 @@ export const OutputContextProvider = ({ data, setData, children }) => {
 		};
 		/*if (k === 'colorSource') {
 			newProps.colorFn = v === 'intervals' ? COLOR_FN_INTERVAL_VALUES[0].value : COLOR_FN_NOTE_VALUES[0].value;
-		}*/
+		}
 		if (k === 'labelSource') {
 			newProps.labelFn = v === 'intervals' ? LABEL_FN_INTERVAL_VALUES[0].value : LABEL_FN_NOTE_VALUES[0].value;
-		}
+		}*/
 		setViewerProps(newProps);
 	};
 
