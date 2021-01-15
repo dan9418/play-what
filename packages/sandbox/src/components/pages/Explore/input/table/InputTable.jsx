@@ -2,7 +2,6 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../../../contexts/EditContext';
-import useInputContext from '../../../../../contexts/InputContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 
@@ -59,12 +58,12 @@ const HeaderRow = ({ podType }) => {
 };
 
 const InputTable = () => {
-	const inputContext = useInputContext();
-	const { podType } = inputContext;
+
+	const podType = 'interval';
 
 	return (
 		<>
-			{podType === 'interval' &&
+			{true &&
 				<>
 					<EditContextProvider>
 						<TableLabel name="Key Center" editable />

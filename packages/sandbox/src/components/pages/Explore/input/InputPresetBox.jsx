@@ -7,11 +7,9 @@ import useInputContext from "../../../../contexts/InputContext";
 const InputPresetBox = () => {
 	const [type, setType] = useState(PRESET_TYPES[0]);
 	const [preset, setPreset] = useState(PRESET_TYPES[0].presets[0]);
-	const { intervals, setIntervals, notes, setNotes, podType } = useInputContext();
+	const { intervals, setIntervals, notes, setNotes } = useInputContext();
 
-	const pods = podType === 'interval' ? intervals : notes;
-	const setPods = podType === 'interval' ? setIntervals : setNotes;
-	const setHelper = () => setPods(preset.value);
+	const setHelper = () => setIntervals(preset.value);
 
 	useEffect(() => {
 		setPreset(type.presets[0]);

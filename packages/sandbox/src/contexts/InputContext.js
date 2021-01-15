@@ -3,27 +3,8 @@ import React, { createContext, useContext } from 'react';
 const InputContext = createContext(null);
 
 const getInputContext = (data, setData) => {
-	const { podType, keyCenter, intervals, notes } = data;
+	const { keyCenter, intervals, notes } = data;
 
-	const setPodType = x => {
-		if (x === 'note') {
-			setData({
-				...data,
-				keyCenter: null,
-				intervals: null,
-				podType: x
-			});
-		}
-		if (x === 'interval') {
-			setData({
-				...data,
-				keyCenter: [0, 0],
-				intervals: data.notes,
-				//notes: data.notes,
-				podType: x
-			});
-		}
-	};
 	const setKeyCenter = x => {
 		setData({
 			...data,
@@ -44,8 +25,6 @@ const getInputContext = (data, setData) => {
 	};
 
 	return {
-		podType,
-		setPodType,
 		keyCenter,
 		setKeyCenter,
 		intervals,

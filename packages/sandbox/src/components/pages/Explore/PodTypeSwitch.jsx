@@ -28,6 +28,7 @@ const PodTypeSwitch = ({ podType, setPodType }) => {
 };
 
 export const InputPodTypeSwitch = () => {
+	return null;
 	const { podType, setPodType } = useInputContext();
 	return <PodTypeSwitch podType={podType} setPodType={setPodType} />;
 };

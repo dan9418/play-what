@@ -1,7 +1,6 @@
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React from "react";
-import useInputContext from "../../../../contexts/InputContext";
 
 const TRANSFORMS = [
 	{
@@ -37,14 +36,6 @@ const TRANSFORMS = [
 ];
 
 const InputTransformBox = () => {
-	const { podType,
-		setPodType,
-		keyCenter,
-		setKeyCenter,
-		intervals,
-		setIntervals,
-		notes,
-		setNotes } = useInputContext();
 
 	return (
 		<>
