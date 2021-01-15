@@ -1,6 +1,3 @@
-
-import { COLOR_SOURCES } from '@pw/core/src/Color.constants';
-import { LABEL_FN_NOTE } from '@pw/core/src/Label.constants';
 import { TONE_FN } from '@pw/core/src/Tone.constants';
 import { TUNING_FN } from '@pw/core/src/Tuning.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';

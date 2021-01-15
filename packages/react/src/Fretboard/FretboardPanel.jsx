@@ -1,6 +1,4 @@
-
-import { COLOR_SOURCES } from '@pw/core/src/Color.constants';
-import { LABEL_SOURCES } from '@pw/core/src/Label.constants';
+import { SOURCES } from "@pw/core/src/Pod.constants";
 import * as React from "react";
 import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
@@ -15,11 +13,10 @@ export const FretboardPanel = ({ }) => {
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
 
-	const colorSourceDef = COLOR_SOURCES.find(s => s.id === colorSource);
+	const colorSourceDef = SOURCES.find(s => s.id === colorSource);
 	const colorPropertyDef = colorSourceDef.properties.find(x => x.id === colorProperty);
-	const colorSchemeDef = colorPropertyDef.schemes.find(x => x.id === colorScheme);
 
-	const labelSourceDef = LABEL_SOURCES.find(s => s.id === labelSource);
+	const labelSourceDef = SOURCES.find(s => s.id === labelSource);
 	const labelPropertyDef = labelSourceDef.properties.find(x => x.id === labelProperty);
 
 	return (
@@ -47,28 +44,28 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Source</div>
-				{intervals !== null && <DropdownInput options={COLOR_SOURCES} value={colorSourceDef} setValue={v => setViewerProp('colorSource', v.id)} />}
+				{intervals !== null && <DropdownInput options={SOURCES} value={colorSourceDef} setValue={v => setViewerProp('colorSource', v.id)} />}
 				{intervals === null && <span>Notes</span>}
 			</div>
 			<div className='input-bar'>
 				<div>Property</div>
 				<DropdownInput options={colorSourceDef.properties} value={colorPropertyDef} setValue={v => setViewerProp('colorProperty', v.id)} />
 			</div>
-			<div className='input-bar'>
+			{/*<div className='input-bar'>
 				<div>Scheme</div>
 				<DropdownInput options={colorPropertyDef.schemes} value={colorSchemeDef} setValue={v => setViewerProp('colorScheme', v.value)} />
-			</div>
+			</div>*/}
 			<div className='input-bar-header'>
 				Label
 			</div>
 			<div className='input-bar'>
 				<div>Source</div>
-				{intervals !== null && <DropdownInput options={LABEL_SOURCES} value={labelSourceDef} setValue={v => setViewerProp('labelSource', v.id)} />}
+				{intervals !== null && <DropdownInput options={SOURCES} value={labelSourceDef} setValue={v => setViewerProp('labelSource', v.id)} />}
 				{intervals === null && <span>Notes</span>}
 			</div>
 			<div className='input-bar'>
 				<div>Property</div>
-				<DropdownInput options={labelPropertyDef} value={labelSourceDef.properties} setValue={v => setViewerProp('labelProperty', v.value)} />
+				<DropdownInput options={labelSourceDef.properties} value={labelPropertyDef} setValue={v => setViewerProp('labelProperty', v.value)} />
 			</div>
 		</>
 	);

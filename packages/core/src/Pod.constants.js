@@ -1,16 +1,43 @@
-export const POD_TYPES = [
-	/*{
-		id: 'pod',
-		name: 'Pod'
-	},*/
+export const NOTE_PROPERTIES = [
 	{
-		id: 'note',
-		name: 'Note'
+		id: 'name',
+		name: 'Name'
 	},
 	{
-		id: 'interval',
-		name: 'Interval'
+		id: 'octave',
+		name: 'Octave'
+	},
+	{
+		id: 'pitchClass',
+		name: 'Pitch Class'
 	}
 ];
 
-export const POD_TYPE_VALUES = Object.values(POD_TYPES);
+export const INTERVAL_PROPERTIES = [
+	{
+		id: 'name',
+		name: 'Name'
+	},
+	{
+		id: 'degree',
+		name: 'Degree'
+	}
+];
+
+export const SOURCES = [
+	{
+		id: 'keyCenter',
+		name: 'Key Center',
+		properties: NOTE_PROPERTIES
+	},
+	{
+		id: 'note',
+		name: 'Note',
+		properties: NOTE_PROPERTIES
+	},
+	{
+		id: 'interval',
+		name: 'Interval',
+		properties: INTERVAL_PROPERTIES
+	}
+];
