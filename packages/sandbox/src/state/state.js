@@ -76,7 +76,7 @@ export const outputListState = selector({
 
 			return {
 				id: i,
-				name: `Output ${i}`,
+				name: `Output ${i + 1}`,
 				viewerId,
 				inputId,
 				viewerProps: {

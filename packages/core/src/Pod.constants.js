@@ -35,13 +35,13 @@ export const SOURCES = [
 		properties: NOTE_PROPERTIES
 	},
 	{
-		id: 'note',
-		name: 'Note',
+		id: 'notes',
+		name: 'Notes',
 		properties: NOTE_PROPERTIES
 	},
 	{
-		id: 'interval',
-		name: 'Interval',
+		id: 'intervals',
+		name: 'Intervals',
 		properties: INTERVAL_PROPERTIES
 	}
 ];

@@ -1,3 +1,4 @@
+import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
@@ -36,7 +37,7 @@ export const Fret = ({
 
 	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
 	const colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
-	const color = colorScheme[colorPropertyValue];
+	const color = COLOR_SCHEME[colorScheme][colorPropertyValue];
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);

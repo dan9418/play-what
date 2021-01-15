@@ -22,3 +22,8 @@ const DEFAULT_PITCH_COLOR_SCHEME = [
 	'#92278F',
 	'#C2305E'
 ];
+
+export const COLOR_SCHEME = {
+	degree: DEFAULT_DEGREE_COLOR_SCHEME,
+	pitchClass: DEFAULT_PITCH_COLOR_SCHEME
+};
