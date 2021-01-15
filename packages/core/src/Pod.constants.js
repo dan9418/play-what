@@ -8,6 +8,10 @@ export const NOTE_PROPERTIES = [
 		name: 'Octave'
 	},
 	{
+		id: 'pitch',
+		name: 'Pitch'
+	},
+	{
 		id: 'pitchClass',
 		name: 'Pitch Class'
 	}

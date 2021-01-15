@@ -65,7 +65,7 @@ export const FretboardPanel = ({ }) => {
 			</div>
 			<div className='input-bar'>
 				<div>Property</div>
-				<DropdownInput options={labelSourceDef.properties} value={labelPropertyDef} setValue={v => setViewerProp('labelProperty', v.value)} />
+				<DropdownInput options={labelSourceDef.properties} value={labelPropertyDef} setValue={v => setViewerProp('labelProperty', v.id)} />
 			</div>
 		</>
 	);

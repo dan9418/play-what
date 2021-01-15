@@ -65,8 +65,11 @@ class PodUtils {
 
 	static getProperty(pod, property) {
 		if (!pod) return null;
-		if (property === 'degree') return pod[1];
-		else if (property === 'pitchClass') return pod[0];
+		if (property === 'name') return '?';
+		else if (property === 'degree') return pod[1];
+		else if (property === 'pitch') return pod[0];
+		else if (property === 'pitchClass') return this.getPitchClass(pod);
+		else if (property === 'octave') return this.getOctave(pod);
 		return null;
 	}
 

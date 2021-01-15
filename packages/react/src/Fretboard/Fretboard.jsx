@@ -4,7 +4,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
-import DEFAULT_PROPS from "./Fretboard.defaults";
+import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
 
 const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
 	let source = [];
@@ -12,8 +12,6 @@ const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
 	if (sourceId === 'keyCenter') source = [keyCenter];
 	else if (sourceId === 'intervals') source = intervals;
 	else if (sourceId === 'notes') source = notes;
-	// TODO handle at higher level - sourceId should change if pod type of input id changes
-	if (intervals === null && (sourceId === 'keyCenter' || sourceId === 'intervals')) source = notes;
 	const pod = PodListUtils.findPodWithPitch(source, noteIndex);
 	return pod;
 };
@@ -42,7 +40,7 @@ export const Fret = ({
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);
-	const labelPropertyValue = PodUtils.getProperty(labelPod, colorProperty);
+	const labelPropertyValue = PodUtils.getProperty(labelPod, labelProperty);
 	const label = labelPropertyValue;
 
 	const frequency = tuningFn(note);
@@ -99,7 +97,7 @@ const getFrets = (props) => {
 }
 
 const Fretboard = (userProps) => {
-	const props = Object.assign({}, DEFAULT_PROPS, userProps);
+	const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
 
 	const [lo, hi] = props.fretRange;
 	const numFrets = hi - lo + 1;

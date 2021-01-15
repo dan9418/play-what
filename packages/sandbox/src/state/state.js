@@ -1,19 +1,14 @@
-import { CHORD } from "@pw/core/src/Pod.presets";
+import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 
-const DEFAULT_INPUT = {
-	id: 'default',
-	name: 'Default Input',
-	keyCenter: null,
-	intervals: null,
-	notes: []
+const DEFAULT_INPUT_CONFIG = {
+	keyCenter: [0, 0],
+	intervals: []
 };
 
-const DEFAULT_OUTPUT = {
-	id: 'default',
-	name: 'Default Output',
+const DEFAULT_OUTPUT_CONFIG = {
 	inputId: null,
 	viewerId: 'fretboard',
 	viewerProps: {}
@@ -24,42 +19,22 @@ const DEFAULT_OUTPUT = {
 const _inputListState = atom({
 	key: '_inputListState',
 	default: [
-		/*{
-			id: 'input1',
-			name: 'Input 1',
-			podType: 'interval',
-			keyCenter: [0, 0],
-			intervals: [[4, 4]],
-			notes: null
-		}*/
 		{
-			id: 'input1',
-			name: 'Input 1',
-			podType: 'interval',
-			keyCenter: [0, 0],
-			intervals: CHORD.Maj.value,
-			notes: null
+			keyCenter: NOTE.C.value,
+			intervals: CHORD.Maj.value
 		}
-		/*{
-			id: 'input2',
-			name: 'Input 2',
-			podType: 'note',
-			keyCenter: null,
-			intervals: null,
-			notes: CHORD.Dom7.value
-		}*/
 	]
 });
 
 const _outputListState = atom({
 	key: '_outputListState',
-	default: [{
-		id: 'output1',
-		name: 'Output 1',
-		inputId: 'input1',
-		viewerId: 'fretboard',
-		viewerProps: null
-	}]
+	default: [
+		{
+			inputId: 'input1',
+			viewerId: 'fretboard',
+			viewerProps: null
+		}
+	]
 });
 
 // PUBLIC
@@ -68,20 +43,17 @@ export const inputListState = selector({
 	key: 'inputListState',
 	get: ({ get }) => {
 		const inputDefs = get(_inputListState);
-		const inputs = inputDefs.map(input => {
-			const { id, name, podType, keyCenter, intervals, notes } = input;
+		const inputs = inputDefs.map((input, i) => {
 
-			let calcNotes = null;
-			if (podType === 'interval') {
-				calcNotes = PodUtils.addPodList(keyCenter, intervals);
-			}
+			const { keyCenter, intervals } = input;
+			const notes = PodUtils.addPodList(keyCenter, intervals);
+
 			return {
-				id: id || DEFAULT_INPUT.id,
-				name: name || DEFAULT_INPUT.name,
-				podType: podType || DEFAULT_INPUT.podType,
-				keyCenter: keyCenter || DEFAULT_INPUT.keyCenter,
-				intervals: intervals || DEFAULT_INPUT.intervals,
-				notes: calcNotes ? calcNotes : notes
+				id: i,
+				name: `Input ${i + 1}`,
+				keyCenter,
+				intervals,
+				notes
 			};
 		});
 		return inputs;
@@ -94,23 +66,27 @@ export const outputListState = selector({
 	get: ({ get }) => {
 		const outputDefs = get(_outputListState);
 		const inputs = get(inputListState);
-		const outputList = outputDefs.map(out => {
-			const { id, name, viewerId, inputId, viewerProps } = out;
-			const input = inputs.find(i => i.id === inputId);
+
+		const outputs = outputDefs.map((out, i) => {
+			const { inputId, viewerId, viewerProps } = out;
+			const input = inputs.find(i => i.id === inputId) || inputs[0];
+			const { keyCenter, intervals, notes } = input;
+
+			const propsFromInput = input ? { keyCenter, intervals, notes } : {};
+
 			return {
-				id: id || DEFAULT_OUTPUT.id,
-				name: name || DEFAULT_OUTPUT.name,
-				viewerId: viewerId || DEFAULT_OUTPUT.viewerId,
-				inputId: inputId || DEFAULT_OUTPUT.inputId,
+				id: i,
+				name: `Output ${i}`,
+				viewerId,
+				inputId,
 				viewerProps: {
-					...(viewerProps || VIEWER[viewerId].presets[0].value),
-					keyCenter: input ? input.keyCenter : null,
-					intervals: input ? input.intervals : null,
-					notes: input ? input.notes : []
+					...VIEWER[viewerId].presets[0].value,
+					...viewerProps,
+					...propsFromInput
 				}
 			};
 		});
-		return outputList;
+		return outputs;
 	},
 	set: ({ set }, newValue) => set(_outputListState, newValue)
 });
