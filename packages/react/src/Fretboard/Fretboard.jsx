@@ -26,7 +26,8 @@ export const Fret = ({
 	intervals,
 	notes,
 	colorSource,
-	colorFn,
+	colorProperty,
+	colorScheme,
 	labelSource,
 	labelFn,
 	tuningFn,
@@ -36,7 +37,9 @@ export const Fret = ({
 	const note = PodListUtils.findPodWithPitch(notes, noteIndex);
 
 	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
-	const color = colorFn(colorPod)
+	const colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
+	// TODO start here - the color sheme should not be a preset
+	const color = colorScheme[colorPropertyValue];
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);

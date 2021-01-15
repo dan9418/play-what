@@ -1,4 +1,4 @@
-export const DEGREE_COLOR_SCHEME = [
+const DEFAULT_DEGREE_COLOR_SCHEME = [
 	'#E6194B',
 	'#F58231',
 	'#FFE119',
@@ -8,7 +8,7 @@ export const DEGREE_COLOR_SCHEME = [
 	'#F032E6'
 ];
 
-export const PITCH_COLOR_SCHEME = [
+const DEFAULT_PITCH_COLOR_SCHEME = [
 	'#ED1C24',
 	'#F1592A',
 	'#F8981E',
@@ -23,22 +23,44 @@ export const PITCH_COLOR_SCHEME = [
 	'#C2305E'
 ];
 
-export const COLOR_FN_NOTE = {
-	pitch: {
-		id: 'pitch',
-		name: 'Pitch',
-		value: pod => pod ? PITCH_COLOR_SCHEME[pod[0]] : null
+export const COLOR_SOURCES = [
+	{
+		id: 'none',
+		name: 'None',
+		properties: []
+	},
+	{
+		id: 'note',
+		name: 'Note',
+		properties: [
+			{
+				id: 'pitchClass',
+				name: 'Pitch Class',
+				schemes: [
+					{
+						id: 'default',
+						name: 'Default',
+						value: DEFAULT_PITCH_COLOR_SCHEME
+					}
+				]
+			}
+		]
+	},
+	{
+		id: 'interval',
+		name: 'Interval',
+		properties: [
+			{
+				id: 'degree',
+				name: 'Degree',
+				schemes: [
+					{
+						id: 'default',
+						name: 'Default',
+						value: DEFAULT_DEGREE_COLOR_SCHEME
+					}
+				]
+			}
+		]
 	}
-};
-
-export const COLOR_FN_NOTE_VALUES = Object.values(COLOR_FN_NOTE);
-
-export const COLOR_FN_INTERVAL = {
-	degree: {
-		id: 'degree',
-		name: 'Degree',
-		value: pod => pod ? DEGREE_COLOR_SCHEME[pod[1]] : null
-	}
-};
-
-export const COLOR_FN_INTERVAL_VALUES = Object.values(COLOR_FN_INTERVAL);
+];

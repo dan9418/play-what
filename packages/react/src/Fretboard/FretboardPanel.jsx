@@ -1,8 +1,7 @@
 
-import { COLOR_FN_INTERVAL_VALUES, COLOR_FN_NOTE_VALUES } from '@pw/core/src/Color.constants';
+import { COLOR_SOURCES } from '@pw/core/src/Color.constants';
 import { LABEL_FN_INTERVAL_VALUES, LABEL_FN_NOTE_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
-import PodTypeSwitch from '../../../sandbox/src/components/pages/Explore/PodTypeSwitch';
 import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";
@@ -30,13 +29,13 @@ const SOURCE_OPTIONS = [
 
 export const FretboardPanel = ({ }) => {
 	const { viewerProps, setViewerProp, name, id } = useOutputContext();
-	const { fretRange, tuning, colorSource, colorFn, labelSource, labelFn, keyCenter, intervals, notes } = viewerProps;
+	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelFn, keyCenter, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);
-	const colorSourceDef = SOURCE_OPTIONS.find(s => s.id === colorSource);
-	const colorOptions = colorSource === 'intervals' ? COLOR_FN_INTERVAL_VALUES : COLOR_FN_NOTE_VALUES;
-	const colorSchemeDef = colorOptions.find(o => o.value === colorFn);
+	const colorSourceDef = COLOR_SOURCES.find(s => s.id === colorSource);
+	const colorPropertyDef = colorSourceDef.properties.find(x => x.id === colorProperty);
+	const colorSchemeDef = colorPropertyDef.schemes.find(x => x.id === colorScheme);
 	const labelSourceDef = SOURCE_OPTIONS.find(s => s.id === labelSource);
 	const labelOptions = labelSource === 'intervals' ? LABEL_FN_INTERVAL_VALUES : LABEL_FN_NOTE_VALUES;
 	const labelSchemeDef = labelOptions.find(o => o.value === labelFn);
@@ -70,8 +69,12 @@ export const FretboardPanel = ({ }) => {
 				{intervals === null && <span>Notes</span>}
 			</div>
 			<div className='input-bar'>
+				<div>Property</div>
+				<DropdownInput options={colorSourceDef.properties} value={colorPropertyDef} setValue={v => setViewerProp('colorProperty', v.id)} />
+			</div>
+			<div className='input-bar'>
 				<div>Scheme</div>
-				<DropdownInput options={colorOptions} value={colorSchemeDef} setValue={v => setViewerProp('colorFn', v.value)} />
+				<DropdownInput options={colorPropertyDef.schemes} value={colorSchemeDef} setValue={v => setViewerProp('colorScheme', v.value)} />
 			</div>
 			<div className='input-bar-header'>
 				Label

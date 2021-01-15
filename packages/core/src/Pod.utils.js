@@ -63,6 +63,13 @@ class PodUtils {
 		else return '?';
 	}
 
+	static getProperty(pod, property) {
+		if (!pod) return null;
+		if (property === 'degree') return pod[1];
+		else if (property === 'pitchClass') return pod[0];
+		return null;
+	}
+
 	static getPitchClass(pod, options = {}) {
 		return CoreUtils.modulo(pod[0], MAX[0]);
 	}
