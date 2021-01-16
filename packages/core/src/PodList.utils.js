@@ -27,10 +27,7 @@ class PodListUtils {
 
 	static findPodWithPitchClass(A, p) {
 		const pc = CoreUtils.modulo(p, 12);
-		return A.find(pod => {
-			console.log(p, pc, pod[0]);
-			return CoreUtils.modulo(pod[0], 12) === pc
-		}) || null;
+		return A.find(pod => CoreUtils.modulo(pod[0], 12) === pc) || null;
 	};
 
 	static findIndexOfPodWithPitch(A, p, options) {

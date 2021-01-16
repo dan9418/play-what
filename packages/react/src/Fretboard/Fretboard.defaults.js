@@ -5,11 +5,11 @@ import { FRETBOARD_TUNING } from './Fretboard.api';
 const DEFAULT_FRETBOARD_PROPS = {
 	fretRange: [0, 12],
 	tuning: FRETBOARD_TUNING.standard.value,
-	colorSource: 'notes',
-	colorProperty: 'pitchClass',
-	colorScheme: 'pitchClass',
-	labelSource: 'keyCenter',
-	labelProperty: 'name',
+	colorSource: 'intervals',
+	colorProperty: 'degree',
+	colorScheme: 'degree',
+	labelSource: 'intervals',
+	labelProperty: 'degree',
 	tuningFn: TUNING_FN.TET.value,
 	toneFn: TONE_FN.sine.value
 };

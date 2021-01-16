@@ -36,12 +36,13 @@ export const Fret = ({
 	const note = PodListUtils.findPodWithPitchClass(notes, noteIndex);
 
 	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
-	const colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
+	let colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
 	const color = COLOR_SCHEME[colorScheme][colorPropertyValue];
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
 	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);
-	const labelPropertyValue = PodUtils.getProperty(labelPod, labelProperty);
+	let labelPropertyValue = PodUtils.getProperty(labelPod, labelProperty);
+	if(labelPod && labelProperty === 'degree') labelPropertyValue = labelPropertyValue + 1;
 	const label = labelPropertyValue;
 
 	const frequency = tuningFn(note);
