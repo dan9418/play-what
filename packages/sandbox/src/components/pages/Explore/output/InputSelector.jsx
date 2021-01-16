@@ -1,4 +1,4 @@
-import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
+/*import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -29,4 +29,4 @@ const InputSelector = () => {
 	);
 };
 
-export default InputSelector;
+export default InputSelector;*/

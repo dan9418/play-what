@@ -17,83 +17,63 @@ const DEFAULT_OUTPUT_CONFIG = {
 
 // PRIVATE
 
-const _inputListState = atom({
-	key: '_inputListState',
-	default: OUT_OF_NOWHERE
-	/*[
-		{
-			keyCenter: NOTE.C.value,
-			intervals: CHORD.Maj.value
-		}
-	]*/
+const _inputState = atom({
+	key: '_inputState',
+	default: {
+		keyCenter: NOTE.C.value,
+		intervals: CHORD.Maj.value
+	}
+
 });
 
-const _outputListState = atom({
-	key: '_outputListState',
-	default: OUT_OF_NOWHERE.map((x, i) => ({
-		inputId: i,
+const _outputState = atom({
+	key: '_outputState',
+	default: {
+		inputId: 'input1',
 		viewerId: 'fretboard',
 		viewerProps: null
-	}))
-	/*[
-		{
-			inputId: 'input1',
-			viewerId: 'fretboard',
-			viewerProps: null
-		}
-	]*/
+	}
 });
 
 // PUBLIC
 
-export const inputListState = selector({
-	key: 'inputListState',
+export const inputState = selector({
+	key: 'inputState',
 	get: ({ get }) => {
-		const inputDefs = get(_inputListState);
-		const inputs = inputDefs.map((input, i) => {
+		const inputDef = get(_inputState);
+		const { keyCenter, intervals } = inputDef;
+		const notes = PodUtils.addPodList(keyCenter, intervals);
 
-			const { keyCenter, intervals } = input;
-			const notes = PodUtils.addPodList(keyCenter, intervals);
-
-			return {
-				id: i,
-				name: `Input ${i + 1}`,
-				keyCenter,
-				intervals,
-				notes
-			};
-		});
-		return inputs;
+		return {
+			name: `Input`,
+			keyCenter,
+			intervals,
+			notes
+		};
 	},
-	set: ({ set }, newValue) => set(_inputListState, newValue)
+	set: ({ set }, newValue) => set(_inputState, newValue)
 });
 
-export const outputListState = selector({
-	key: 'outputListState',
+export const outputState = selector({
+	key: 'outputState',
 	get: ({ get }) => {
-		const outputDefs = get(_outputListState);
-		const inputs = get(inputListState);
+		const outputDef = get(_outputState);
+		const input = get(inputState);
 
-		const outputs = outputDefs.map((out, i) => {
-			const { inputId, viewerId, viewerProps } = out;
-			const input = inputs.find(i => i.id === inputId) || inputs[0];
-			const { keyCenter, intervals, notes } = input;
+		const { viewerId, viewerProps } = outputDef;
+		const { keyCenter, intervals, notes } = input;
 
-			const propsFromInput = input ? { keyCenter, intervals, notes } : {};
+		const propsFromInput = { keyCenter, intervals, notes };
 
-			return {
-				id: i,
-				name: `Output ${i + 1}`,
-				viewerId,
-				inputId,
-				viewerProps: {
-					...VIEWER[viewerId].presets[0].value,
-					...viewerProps,
-					...propsFromInput
-				}
-			};
-		});
-		return outputs;
+		return {
+			name: `Output`,
+			viewerId,
+			viewerProps: {
+				...VIEWER[viewerId].presets[0].value,
+				...viewerProps,
+				...propsFromInput
+			}
+		};
 	},
-	set: ({ set }, newValue) => set(_outputListState, newValue)
+	set: ({ set }, newValue) => set(_outputState, newValue)
 });

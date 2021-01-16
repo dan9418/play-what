@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { inputListState, outputListState } from '../../../state/state';
+import { inputState, outputState } from '../../../state/state';
 import Panel from './Panel';
+import SubpanelDelegator from './SubpanelDelegator';
 import SubpanelList from './SubpanelList';
 
 const StyledExplore = styled.div`
@@ -17,24 +18,12 @@ const StyledExplore = styled.div`
 `;
 
 const Explore = () => {
-	const [inputList, setInputList] = useRecoilState(inputListState)
-	const [outputList, setOutputList] = useRecoilState(outputListState)
+	const [input, setInput] = useRecoilState(inputState)
+	const [output, setOutput] = useRecoilState(outputState)
 	return (
 		<StyledExplore>
-			<Panel name="Inputs">
-				<SubpanelList
-					list={inputList}
-					setList={setInputList}
-					listType='input'
-				/>
-			</Panel>
-			<Panel name="Outputs">
-				<SubpanelList
-					list={outputList}
-					setList={setOutputList}
-					listType='output'
-				/>
-			</Panel>
+			<SubpanelDelegator data={input} setData={setInput} listType="input" />
+			<SubpanelDelegator data={output} setData={setOutput} listType="output" />
 		</StyledExplore>
 	);
 };

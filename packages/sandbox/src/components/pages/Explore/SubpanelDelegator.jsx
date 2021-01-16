@@ -55,7 +55,6 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 		Content = InputTable;
 		caption = data.podType;
 		leftActions = INPUT_ACTIONS;
-		rightAction = <InputPodTypeSwitch />;
 		preview = PodListUtils.getPreview(data[`${data.podType}s`], { podType: data.podType })
 		break;
 	}
@@ -64,7 +63,6 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 		Content = ViewerBox;
 		caption = data.viewerId;
 		leftActions = OUTPUT_ACTIONS;
-		rightAction = <InputSelector />;
 		preview = data.inputId;
 		break;
 	}
