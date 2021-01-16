@@ -13,7 +13,7 @@ const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
 	if (sourceId === 'keyCenter') source = [keyCenter];
 	else if (sourceId === 'intervals') source = intervals;
 	else if (sourceId === 'notes') source = notes;
-	const pod = PodListUtils.findPodWithPitch(source, noteIndex);
+	const pod = PodListUtils.findPodWithPitchClass(source, noteIndex);
 	return pod;
 };
 
@@ -33,7 +33,7 @@ export const Fret = ({
 	toneFn }) => {
 
 	const noteIndex = stringTuning + fretIndex;
-	const note = PodListUtils.findPodWithPitch(notes, noteIndex);
+	const note = PodListUtils.findPodWithPitchClass(notes, noteIndex);
 
 	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
 	const colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);

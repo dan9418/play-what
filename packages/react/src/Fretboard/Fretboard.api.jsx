@@ -23,12 +23,12 @@ export const FRETBOARD_TUNING = {
 	standard: {
 		id: 'standard',
 		name: 'Standard',
-		value: [16, 11, 7, 2, -3, 8] // e B G D A E
+		value: [16, 11, 7, 2, -3, -8] // e B G D A E
 	},
 	dropD: {
 		id: 'dropD',
 		name: 'Drop D',
-		value: [16, 11, 7, 2, -3, 6] // e B G D A D
+		value: [16, 11, 7, 2, -3, -10] // e B G D A D
 	}
 };
 
