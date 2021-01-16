@@ -1,5 +1,5 @@
-import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
 import CoreUtils from './Core.utils';
+import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
 import TheoryUtils from './Theory.utils';
 
 const MAX = [12, 7];

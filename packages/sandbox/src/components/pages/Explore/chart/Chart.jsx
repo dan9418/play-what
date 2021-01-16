@@ -1,3 +1,5 @@
+import PodUtils from '@pw/core/src/Pod.utils';
+import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
 import styled from 'styled-components';
 import { OUT_OF_NOWHERE } from '../../../../state/songs';
@@ -30,11 +32,17 @@ const Section = ({ section }) => {
 		<StyledSection>
 			<h2>{name}</h2>
 			<div className='concept-grid' style={style}>
-				{concepts.map((c, i) => (
-					<div key={i}>
-						{i}
-					</div>
-				))}
+				{concepts.map((c, i) => {
+					const { keyCenter, intervals } = c;
+					const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
+					const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { name: '?' };
+					const name = `${keyCenterPreset.id} ${intervalsPreset.id}`;
+					return (
+						<div key={i}>
+							{name}
+						</div>
+					);
+				})}
 			</div>
 		</StyledSection>
 	);

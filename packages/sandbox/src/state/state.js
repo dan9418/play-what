@@ -1,5 +1,6 @@
 import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
+import PodListUtils from "@pw/core/src/PodList.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
 import { OUT_OF_NOWHERE } from "./songs";
@@ -42,10 +43,14 @@ export const inputState = selector({
 	get: ({ get }) => {
 		const inputDef = get(_inputState);
 		const { keyCenter, intervals } = inputDef;
+
+		const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
+		const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { name: '?' };
+
 		const notes = PodUtils.addPodList(keyCenter, intervals);
 
 		return {
-			name: `Input`,
+			name: `${keyCenterPreset.id} ${intervalsPreset.id}`,
 			keyCenter,
 			intervals,
 			notes

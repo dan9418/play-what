@@ -1,6 +1,7 @@
-import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
 import CoreUtils from './Core.utils';
+import { CHORD_VALUES, SCALE_VALUES } from './Pod.presets';
 import PodUtils from './Pod.utils';
+
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
@@ -42,6 +43,17 @@ class PodListUtils {
 	static getPreview(pods, options = {}) {
 		if (!pods || !pods.length) return '';
 		return pods.map(v => PodUtils.getName(v, options)).join(', ');
+	}
+
+	static findPreset(podList, options = {}) {
+		let data = []
+		if (options.podType === 'chord') {
+			data = CHORD_VALUES;
+		}
+		else if (options.podType === 'scale') {
+			data = SCALE_VALUES;
+		}
+		return data.find(d => PodListUtils.areEqual(podList, d.value)) || null;
 	}
 
 }
