@@ -18,13 +18,9 @@ const DEFAULT_OUTPUT_CONFIG = {
 
 // PRIVATE
 
-const _inputState = atom({
-	key: '_inputState',
-	default: {
-		keyCenter: NOTE.C.value,
-		intervals: CHORD.Maj.value
-	}
-
+const _chartState = atom({
+	key: '_chartState',
+	default: OUT_OF_NOWHERE
 });
 
 const _outputState = atom({
@@ -38,10 +34,17 @@ const _outputState = atom({
 
 // PUBLIC
 
+export const positionState = atom({
+	key: 'positionState',
+	default: [0, 0]
+});
+
 export const inputState = selector({
 	key: 'inputState',
 	get: ({ get }) => {
-		const inputDef = get(_inputState);
+		const chartDef = get(_chartState);
+		const position = get(positionState);
+		const inputDef = chartDef.sections[position[0]].concepts[position[1]];
 		const { keyCenter, intervals } = inputDef;
 
 		const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };

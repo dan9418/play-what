@@ -1,8 +1,10 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { OUT_OF_NOWHERE } from '../../../../state/songs';
+import { inputState, positionState } from '../../../../state/state';
 import Subpanel from '../Subpanel';
 
 const StyledSection = styled.div`
@@ -17,14 +19,21 @@ const StyledSection = styled.div`
             border-radius: 8px;
             margin: 8px;
             padding: 8px;
-            text-align: center;
+			text-align: center;
+			cursor: pointer;
+			box-sizing: border-box;
+			&.active {
+				border: 1px solid orange;
+			}
         }
     }
 `;
 
-const Section = ({ section }) => {
+const Section = ({ section, sIndex }) => {
 	const { id, name, concepts } = section;
 	const widths = concepts.map(c => c.t || 1);
+	const [position, setPosition] = useRecoilState(positionState);
+
 	const style = {
 		gridTemplateColumns: widths.map(n => n + 'fr').join(' ')
 	};
@@ -33,12 +42,13 @@ const Section = ({ section }) => {
 			<h2>{name}</h2>
 			<div className='concept-grid' style={style}>
 				{concepts.map((c, i) => {
+					const isActive = sIndex === position[0] && i === position[1]
 					const { keyCenter, intervals } = c;
 					const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
 					const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { name: '?' };
 					const name = `${keyCenterPreset.id} ${intervalsPreset.id}`;
 					return (
-						<div key={i}>
+						<div key={i} onClick={() => setPosition([sIndex, i])} className={isActive ? 'active' : null}>
 							{name}
 						</div>
 					);
@@ -59,8 +69,8 @@ const Chart = () => {
 	return (
 		<StyledChart>
 			<Subpanel name="Chart">
-				{CHART.sections.map(s => (
-					<Section key={s.id} section={s} />
+				{CHART.sections.map((s, i) => (
+					<Section key={s.id} section={s} sIndex={i} />
 				))}
 			</Subpanel>
 		</StyledChart>
