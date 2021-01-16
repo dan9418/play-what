@@ -2,6 +2,7 @@ import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
 import PodUtils from "@pw/core/src/Pod.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
+import { OUT_OF_NOWHERE } from "./songs";
 
 const DEFAULT_INPUT_CONFIG = {
 	keyCenter: [0, 0],
@@ -18,23 +19,29 @@ const DEFAULT_OUTPUT_CONFIG = {
 
 const _inputListState = atom({
 	key: '_inputListState',
-	default: [
+	default: OUT_OF_NOWHERE
+	/*[
 		{
 			keyCenter: NOTE.C.value,
 			intervals: CHORD.Maj.value
 		}
-	]
+	]*/
 });
 
 const _outputListState = atom({
 	key: '_outputListState',
-	default: [
+	default: OUT_OF_NOWHERE.map((x, i) => ({
+		inputId: i,
+		viewerId: 'fretboard',
+		viewerProps: null
+	}))
+	/*[
 		{
 			inputId: 'input1',
 			viewerId: 'fretboard',
 			viewerProps: null
 		}
-	]
+	]*/
 });
 
 // PUBLIC

@@ -7,16 +7,6 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
 
-const getPod = (keyCenter, intervals, notes, sourceId, noteIndex) => {
-	let source = [];
-	if (sourceId === 'none') return null;
-	if (sourceId === 'keyCenter') source = [keyCenter];
-	else if (sourceId === 'intervals') source = intervals;
-	else if (sourceId === 'notes') source = notes;
-	const pod = PodListUtils.findPodWithPitchClass(source, noteIndex);
-	return pod;
-};
-
 export const Fret = ({
 	stringTuning,
 	stringIndex,
@@ -33,14 +23,16 @@ export const Fret = ({
 	toneFn }) => {
 
 	const noteIndex = stringTuning + fretIndex;
-	const note = PodListUtils.findPodWithPitchClass(notes, noteIndex);
+	const i = PodListUtils.findIndexOfPodWithPitchClass(notes, noteIndex);
+	const note = notes[i];
+	const interval = intervals[i];
 
-	const colorPod = getPod(keyCenter, intervals, notes, colorSource, noteIndex);
+	const colorPod = colorSource === 'notes' ? note : colorSource === 'intervals' ? interval : null;
 	let colorPropertyValue = PodUtils.getProperty(colorPod, colorProperty);
 	const color = COLOR_SCHEME[colorScheme][colorPropertyValue];
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
 
-	const labelPod = getPod(keyCenter, intervals, notes, labelSource, noteIndex);
+	const labelPod = labelSource === 'notes' ? note : labelSource === 'intervals' ? interval : null;
 	let labelPropertyValue = PodUtils.getProperty(labelPod, labelProperty);
 	if(labelPod && labelProperty === 'degree') labelPropertyValue = labelPropertyValue + 1;
 	const label = labelPropertyValue;
