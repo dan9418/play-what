@@ -41,7 +41,6 @@ const Home = () => {
 				Visit the documentation to understand the core concepts then check out the app to explore its capabilities:
 			</p>
 			<section>
-				<ButtonInput onClick={() => routeContext.push(PAGE.docs)}>Documentation</ButtonInput>
 				<ButtonInput onClick={() => routeContext.push(PAGE.explore)}>App</ButtonInput>
 			</section>
 		</StyledHome>

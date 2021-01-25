@@ -148,3 +148,26 @@ For example, in Roman Numeral chord analysis, which is the basic for most popula
 Additionally, having a consistent model of the operation, and namely, the musical CHARACTER of the operation, allows us to separate it from the source material, and even more, the source musical system. Using this abstraction, we can essentially reverse-engineer the musical system to get chords from altered tuning systems, degree definitions, etc... As a result, it is flexible enough to accommodate nearly any musical system and moreover provide an interchange format between them.
 
 Additionally, it can be used to connect variations on a musical idea in the universe of musical ideas. For example, a major chord may be essentially identical in character to some other inverted chord. Pods clearly expose this relationship, which can be useful in songwriting or algorithmic music generation. The pod model provides a framework for finding those relationships.
+
+## Links
+
+This is an open source project, but the code is not yet ready for public contribution.
+Details will be published here when available.
+
+For now, here are some useful links:
+
+### Latest Version
+- [App](https://dan9418.github.io/play-what/)
+- [Monorepo](https://github.com/dan9418/play-what)
+### Beta Version
+#### Sample
+- [Demo](https://github.com/dan9418/play-what-sample)
+- [Repo](https://github.com/dan9418/play-what-sample)
+#### Sandbox
+						
+- [Demo](https://github.com/dan9418/play-what-sandbox)
+- [Repo](https://dan9418.github.io/play-what-sandbox/)
+#### Packages
+				
+- [Repo (Core)](https://github.com/dan9418/play-what-beta)
+- [Repo (React)](https://github.com/dan9418/play-what-react-viewers)
