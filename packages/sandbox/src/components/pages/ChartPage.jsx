@@ -11,7 +11,6 @@ const StyledChartPage = styled.div`
 `;
 
 const ChartPage = () => {
-
 	return (
 		<StyledChartPage>
 			<Chart/>
