@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useEditContext from "../../../contexts/EditContext";
 import Icon from "../../Icon";
 
-const StyledSubpanelConfigRow = styled.div`
+const StyledPanelConfigRow = styled.div`
 	display: flex;
     width: 100%;
     justify-content: space-between;
@@ -16,7 +16,7 @@ const StyledSubpanelConfigRow = styled.div`
 	}
 `;
 
-const StyledSubpanelConfigSubRow = styled.div`
+const StyledPanelConfigSubRow = styled.div`
 	display: flex;
     padding: 8px;
     justify-content: center;
@@ -26,12 +26,12 @@ const StyledSubpanelConfigSubRow = styled.div`
 	border-radius: 8px;
 `;
 
-const SubpanelConfigRow = ({ name, value, setValue, EditComponent }) => {
+const PanelConfigRow = ({ name, value, setValue, EditComponent }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const { isEditing } = useEditContext();
 	return (
 		<>
-			<StyledSubpanelConfigRow>
+			<StyledPanelConfigRow>
 				<div>{name}</div>
 				<div>
 					<span>{value}</span>
@@ -39,14 +39,14 @@ const SubpanelConfigRow = ({ name, value, setValue, EditComponent }) => {
 						<Icon iconId={isOpen ? 'confirm' : 'edit'} />
 					</ButtonInput>
 				</div>
-			</StyledSubpanelConfigRow>
+			</StyledPanelConfigRow>
 			{isOpen &&
-				<StyledSubpanelConfigSubRow>
+				<StyledPanelConfigSubRow>
 					<EditComponent value={value} setValue={setValue} />
-				</StyledSubpanelConfigSubRow>
+				</StyledPanelConfigSubRow>
 			}
 		</>
 	);
 }
 
-export default SubpanelConfigRow;
+export default PanelConfigRow;

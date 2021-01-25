@@ -4,7 +4,7 @@ import React from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState, positionState, _chartState } from '../../../../state/state';
-import Subpanel from '../Subpanel';
+import Panel from '../Panel';
 
 const StyledSection = styled.div`
 	width: 100%;
@@ -67,11 +67,11 @@ const Chart = () => {
 	const [chart, setChart] = useRecoilState(_chartState);
 	return (
 		<StyledChart>
-			<Subpanel name="Chart">
+			<Panel name="Chart">
 				{chart.sections.map((s, i) => (
 					<Section key={s.id} section={s} sIndex={i} />
 				))}
-			</Subpanel>
+			</Panel>
 		</StyledChart>
 	);
 };

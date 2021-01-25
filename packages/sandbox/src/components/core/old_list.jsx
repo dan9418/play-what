@@ -1,9 +1,9 @@
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import React from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../contexts/EditContext";
-import Icon from "../../ui/Icon";
-import SubpanelDelegator from "./SubpanelDelegator";
+import useEditContext from "../../contexts/EditContext";
+import Icon from "../ui/Icon";
+import PanelDelegator from "../pages/Explore/PanelDelegator";
 
 export const getListHelpers = (list, setList, i) => {
 	const isLast = i === list.length - 1;
@@ -51,7 +51,7 @@ export const getListHelpers = (list, setList, i) => {
 	};
 };
 
-const StyledSubpanelList = styled.ul`
+const StyledPanelList = styled.ul`
     width: 100%;
 
 	& button.insert {
@@ -65,7 +65,7 @@ const StyledSubpanelList = styled.ul`
 	}
 `;
 
-const StyledSubpanelWrapper = styled.div`
+const StyledPanelWrapper = styled.div`
 	display: flex;
     width: 100%;
     justify-content: center;
@@ -98,7 +98,7 @@ const StyledSubpanelWrapper = styled.div`
 	}
 `;
 
-const SubpanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
+const PanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
 	return (
 		<div className="controls">
 			<ButtonInput onClick={onMoveUp}><Icon iconId="up" /></ButtonInput>
@@ -108,7 +108,7 @@ const SubpanelControls = ({ onMoveUp, onMoveDown, onDelete }) => {
 	);
 };
 
-const SubpanelWrapper = ({ list, setList, i, listType }) => {
+const PanelWrapper = ({ list, setList, i, listType }) => {
 
 	const { isEditing } = useEditContext();
 
@@ -126,28 +126,28 @@ const SubpanelWrapper = ({ list, setList, i, listType }) => {
 	return (
 		<>
 			{isEditing && <ButtonInput className="insert" onClick={onInsertAbove}>+ Add</ButtonInput>}
-			<StyledSubpanelWrapper>
-				<SubpanelDelegator data={data} setData={setData} listType={listType} />
+			<StyledPanelWrapper>
+				<PanelDelegator data={data} setData={setData} listType={listType} />
 				{isEditing &&
-					<SubpanelControls
+					<PanelControls
 						onMoveUp={onMoveUp}
 						onMoveDown={onMoveDown}
 						onDelete={onDelete}
 					/>
 				}
-			</StyledSubpanelWrapper>
+			</StyledPanelWrapper>
 			{isLast && isEditing && <ButtonInput className="insert" onClick={onInsertBelow}>+ Add</ButtonInput>}
 		</>
 	);
 }
 
-const SubpanelList = ({ list, setList, listType }) => {
+const PanelList = ({ list, setList, listType }) => {
 	return (
-		<StyledSubpanelList>
+		<StyledPanelList>
 			{
 				list.map((item, i) => {
 					return (
-						<SubpanelWrapper
+						<PanelWrapper
 							key={item.id}
 							i={i}
 							list={list}
@@ -157,8 +157,8 @@ const SubpanelList = ({ list, setList, listType }) => {
 					);
 				})
 			}
-		</StyledSubpanelList>
+		</StyledPanelList>
 	);
 };
 
-export default SubpanelList;
+export default PanelList;

@@ -7,7 +7,7 @@ import InputTable from "./input/table/InputTable";
 import OutputPresetBox from "./output/OutputPresetBox";
 import ViewerBox from "./output/ViewerBox";
 import ViewerPropsBox from "./output/ViewerPropsBox";
-import Subpanel from "./Subpanel";
+import Panel from "./Panel";
 
 const INPUT_ACTIONS = [
 	{
@@ -35,7 +35,7 @@ const OUTPUT_ACTIONS = [
 	}
 ];
 
-const SubpanelDelegator = ({ data, setData, listType }) => {
+const PanelDelegator = ({ data, setData, listType }) => {
 	const [action, setAction] = useState(null);
 
 	let Content = React.Fragment;
@@ -63,12 +63,12 @@ const SubpanelDelegator = ({ data, setData, listType }) => {
 
 	return (
 
-		<Subpanel name={data.name} caption={caption} preview={preview}>
+		<Panel name={data.name} caption={caption} preview={preview}>
 			<EditBox action={action} setAction={setAction} leftActions={leftActions} rightAction={rightAction} />
 			<Content />
-		</Subpanel>
+		</Panel>
 
 	);
 };
 
-export default SubpanelDelegator;
+export default PanelDelegator;
