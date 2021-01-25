@@ -1,8 +1,8 @@
 import React from "react";
-import OutputPresetBox from "./output/OutputPresetBox";
-import ViewerBox from "./output/ViewerBox";
-import ViewerPropsBox from "./output/ViewerPropsBox";
-import Panel from "../../core/Panel";
+import OutputPresetBox from "./OutputPresetBox";
+import ViewerBox from "./ViewerBox";
+import ViewerPropsBox from "./ViewerPropsBox";
+import Panel from "../../../core/Panel";
 
 const OUTPUT_ACTIONS = [
 	{

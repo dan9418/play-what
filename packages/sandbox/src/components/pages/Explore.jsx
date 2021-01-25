@@ -1,10 +1,10 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { inputState, outputState } from '../../../state/state';
+import { inputState, outputState } from '../../state/state';
 import Chart from './chart/Chart';
-import InputPanel from './InputPanel';
-import OutputPanel from './OutputPanel';
+import InputPanel from './InputPanel/InputPanel';
+import OutputPanel from './OutputPanel/OutputPanel';
 
 const StyledExplore = styled.div`
 	width: 100%;

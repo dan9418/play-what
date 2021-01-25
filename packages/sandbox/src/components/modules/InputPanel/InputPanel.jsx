@@ -1,9 +1,9 @@
 import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
-import InputPresetBox from "./input/InputPresetBox";
-import InputTransformBox from "./input/InputTransformBox";
-import InputTable from "./input/table/InputTable";
-import Panel from "../../core/Panel";
+import InputPresetBox from "./InputPresetBox";
+import InputTransformBox from "./InputTransformBox";
+import InputTable from "./table/InputTable";
+import Panel from "../../../core/Panel";
 
 const INPUT_ACTIONS = [
 	{

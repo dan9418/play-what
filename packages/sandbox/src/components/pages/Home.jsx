@@ -2,8 +2,8 @@ import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import useRouteContext from '../../../contexts/RouteContext';
-import { PAGE, PAGE_VALUES } from '../pages';
+import useRouteContext from '../../contexts/RouteContext';
+import { PAGE, PAGE_VALUES } from './pages';
 
 const StyledHome = styled.div`
 	height: 100%;
