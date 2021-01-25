@@ -3,7 +3,7 @@ import React from "react";
 import InputPresetBox from "./input/InputPresetBox";
 import InputTransformBox from "./input/InputTransformBox";
 import InputTable from "./input/table/InputTable";
-import Panel from "./Panel";
+import Panel from "../../core/Panel";
 
 const INPUT_ACTIONS = [
 	{
@@ -20,12 +20,13 @@ const INPUT_ACTIONS = [
 
 const InputPanel = ({ data }) => {
 
-	let caption = data.podType;
-	let preview = PodListUtils.getPreview(data[`${data.podType}s`], { podType: data.podType });
-	let rightAction = null;
+	const { name, keyCenter, intervals, notes } = data;
+	const caption = null;
+	const preview = PodListUtils.getPreview(intervals, { podType: 'intervals' });
+	const rightAction = null;
 
 	return (
-		<Panel name={data.name} caption={caption} preview={preview} leftActions={INPUT_ACTIONS} rightAction={rightAction}>
+		<Panel name={name} caption={caption} preview={preview} leftActions={INPUT_ACTIONS} rightAction={rightAction}>
 			<InputTable />
 		</Panel>
 	);

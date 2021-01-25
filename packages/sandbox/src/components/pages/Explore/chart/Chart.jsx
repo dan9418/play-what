@@ -4,7 +4,7 @@ import React from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState, positionState, _chartState } from '../../../../state/state';
-import Panel from '../Panel';
+import Panel from '../../../core/Panel';
 
 const StyledSection = styled.div`
 	width: 100%;

@@ -2,8 +2,7 @@ import React from "react";
 import OutputPresetBox from "./output/OutputPresetBox";
 import ViewerBox from "./output/ViewerBox";
 import ViewerPropsBox from "./output/ViewerPropsBox";
-import Panel from "./Panel";
-
+import Panel from "../../core/Panel";
 
 const OUTPUT_ACTIONS = [
 	{
@@ -20,12 +19,13 @@ const OUTPUT_ACTIONS = [
 
 const OutputPanel = ({ data }) => {
 
-	let caption = data.viewerId;
-	let preview = data.inputId;
-	let rightAction = null;
+	const { name, viewerId, viewerProps } = data;
+	const caption = viewerId;
+	const preview = null;
+	const rightAction = null;
 
 	return (
-		<Panel name={data.name} caption={caption} preview={preview} leftActions={OUTPUT_ACTIONS} rightAction={rightAction}>
+		<Panel name={name} caption={caption} preview={preview} leftActions={OUTPUT_ACTIONS} rightAction={rightAction}>
 			<ViewerBox />
 		</Panel>
 	);

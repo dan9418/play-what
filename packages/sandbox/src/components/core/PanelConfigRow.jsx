@@ -1,7 +1,7 @@
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../contexts/EditContext";
+import useEditContext from "../../contexts/EditContext";
 import Icon from "../../Icon";
 
 const StyledPanelConfigRow = styled.div`
