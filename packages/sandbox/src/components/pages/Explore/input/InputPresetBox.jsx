@@ -2,14 +2,12 @@ import { PRESET_TYPES } from "@pw/core/src/Pod.presets";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useEffect, useState } from "react";
-import useInputContext from "../../../../contexts/InputContext";
 
 const InputPresetBox = () => {
 	const [type, setType] = useState(PRESET_TYPES[0]);
 	const [preset, setPreset] = useState(PRESET_TYPES[0].presets[0]);
-	const { intervals, setIntervals, notes, setNotes } = useInputContext();
 
-	const setHelper = () => setIntervals(preset.value);
+	const setHelper = () => null;
 
 	useEffect(() => {
 		setPreset(type.presets[0]);

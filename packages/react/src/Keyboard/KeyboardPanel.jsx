@@ -2,13 +2,12 @@
 import { COLOR_SCHEME_VALUES } from '@pw/core/src/Color.constants';
 import { LABEL_SCHEME_VALUES } from '@pw/core/src/Label.constants';
 import * as React from "react";
-import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";
 import "./Keyboard.css";
 
-export const KeyboardPanel = ({ }) => {
-	const { viewerProps, setViewerProp, name, id } = useOutputContext();
+export const KeyboardPanel = props => {
+	const { viewerProps, setViewerProp, name, id } = props;
 	const { keyRange, tuning, colorFn, labelFn } = viewerProps;
 	const [keyLow, keyHigh] = keyRange;
 

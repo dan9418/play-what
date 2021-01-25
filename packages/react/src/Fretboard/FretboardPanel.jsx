@@ -1,13 +1,12 @@
 import { SOURCES } from "@pw/core/src/Pod.constants";
 import * as React from "react";
-import useOutputContext from '../../../sandbox/src/contexts/OutputContext';
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";
 import { FRETBOARD_TUNING_VALUES } from "./Fretboard.api";
 import "./Fretboard.css";
 
-export const FretboardPanel = ({ }) => {
-	const { viewerProps, setViewerProp, name, id } = useOutputContext();
+export const FretboardPanel = props => {
+	const { viewerProps, setViewerProp, name, id } = props;
 	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelProperty, keyCenter, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 

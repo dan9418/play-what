@@ -1,7 +1,8 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import useEditContext from '../../../../../contexts/EditContext';
-import useInputContext from '../../../../../contexts/InputContext';
+import { inputState } from '../../../../../state/state';
 import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {
@@ -19,11 +20,10 @@ const NewPodRow = ({ addPod }) => {
 };
 
 const InputTableRowManager = ({ podType }) => {
+	const { intervals, setIntervals, notes, setNotes } = useRecoilValue(inputState);
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
-
-	const { intervals, setIntervals, notes, setNotes } = useInputContext();
 
 	const tableData = podType === 'interval' ? intervals : notes;
 	const setTableData = podType === 'interval' ? setIntervals : setNotes;

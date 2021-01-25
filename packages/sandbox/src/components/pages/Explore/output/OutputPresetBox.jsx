@@ -2,12 +2,11 @@ import { VIEWER_VALUES } from "@pw/react";
 import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import DropdownInput from "@pw/react/src/ui/DropdownInput/DropdownInput";
 import React, { useEffect, useState } from "react";
-import useOutputContext from "../../../../contexts/OutputContext";
 
 const OutputPresetBox = () => {
 	const [type, setType] = useState(VIEWER_VALUES[0]);
 	const [preset, setPreset] = useState(VIEWER_VALUES[0].presets[0]);
-	const { setViewerPreset } = useOutputContext();
+	const setViewerPreset = null;
 
 	useEffect(() => {
 		setPreset(type.presets[0]);

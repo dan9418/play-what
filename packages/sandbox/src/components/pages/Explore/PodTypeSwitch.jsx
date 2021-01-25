@@ -1,7 +1,6 @@
 import SwitchInput from "@pw/react/src/ui/SwitchInput/SwitchInput";
 import React from "react";
 import styled from 'styled-components';
-import useInputContext from "../../../contexts/InputContext";
 
 const StyledInputModeSwitch = styled.div`
     display: flex;
@@ -26,11 +25,3 @@ const PodTypeSwitch = ({ podType, setPodType }) => {
 		</StyledInputModeSwitch>
 	);
 };
-
-export const InputPodTypeSwitch = () => {
-	return null;
-	const { podType, setPodType } = useInputContext();
-	return <PodTypeSwitch podType={podType} setPodType={setPodType} />;
-};
-
-export default PodTypeSwitch;

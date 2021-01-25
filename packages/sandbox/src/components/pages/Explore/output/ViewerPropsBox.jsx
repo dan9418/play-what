@@ -1,9 +1,10 @@
 import { VIEWER } from "@pw/react";
 import React from "react";
-import useOutputContext from "../../../../contexts/OutputContext";
+import { useRecoilValue } from "recoil";
+import { outputState } from "../../../../state/state";
 
-const ViewerPropsBox = () => {
-	const { viewerProps, viewerId } = useOutputContext();
+const ViewerPropsBox = props => {
+	const { viewerProps, viewerId } = useRecoilValue(outputState);
 
 	const ViewerComponent = VIEWER[viewerId].panelComponent;
 
