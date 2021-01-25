@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../../contexts/EditContext";
 import Icon from "../../ui/Icon";
+import EditBox from './EditBox';
 
 const StyledPanelHeader = styled.div`
 	width: 100%;
@@ -80,8 +81,9 @@ const StyledPanel = styled.div`
 	}
 `;
 
-const Panel = ({ name, caption, preview, children }) => {
+const Panel = ({ name, caption, preview, leftActions, rightAction,  children }) => {
 	const [isOpen, setIsOpen] = useState(true);
+	const [action, setAction] = useState(null);
 
 	return (
 		<StyledPanel>
@@ -89,6 +91,7 @@ const Panel = ({ name, caption, preview, children }) => {
 				<PanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
 				{isOpen && (
 					<div className="body">
+						<EditBox action={action} setAction={setAction} leftActions={leftActions} rightAction={rightAction} />
 						{children}
 					</div>
 				)}

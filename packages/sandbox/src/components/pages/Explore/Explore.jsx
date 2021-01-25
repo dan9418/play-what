@@ -3,7 +3,8 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState, outputState } from '../../../state/state';
 import Chart from './chart/Chart';
-import IOPanel from './IOPanel';
+import InputPanel from './InputPanel';
+import OutputPanel from './OutputPanel';
 
 const StyledExplore = styled.div`
 	width: 100%;
@@ -38,8 +39,8 @@ const Explore = () => {
 		<StyledExplore>
 			<Chart />
 			<div className="io">
-				<IOPanel data={input} setData={setInput} listType="input" />
-				<IOPanel data={output} setData={setOutput} listType="output" />
+				<InputPanel data={input} setData={setInput} />
+				<OutputPanel data={output} setData={setOutput} />
 			</div>
 		</StyledExplore>
 	);

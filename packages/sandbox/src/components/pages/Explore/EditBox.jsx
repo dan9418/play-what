@@ -23,7 +23,7 @@ const StyledLeftContainer = styled.div`
 	display: flex;
 `;
 
-const EditBox = ({ leftActions, rightAction, action, setAction }) => {
+const EditBox = ({ leftActions = [], rightAction, action, setAction }) => {
 	return (
 		<StyledEditBox>
 			{action && <div className="top">
