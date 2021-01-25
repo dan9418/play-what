@@ -1,8 +1,9 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
-import React from 'react';
+import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import useRouteContext from '../../../contexts/RouteContext';
-import { PAGE } from '../pages';
+import { PAGE, PAGE_VALUES } from '../pages';
 
 const StyledHome = styled.div`
 	height: 100%;
@@ -29,6 +30,7 @@ const StyledHome = styled.div`
 
 const Home = () => {
 	const routeContext = useRouteContext();
+	const [page, setPage] = useState(PAGE.home);
 
 	return (
 		<StyledHome>
@@ -41,7 +43,8 @@ const Home = () => {
 				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
 			<section>
-				<ButtonInput onClick={() => routeContext.push(PAGE.explore)}>App</ButtonInput>
+				<DropdownInput options={PAGE_VALUES} value={page} setValue={setPage} />
+				<ButtonInput onClick={() => routeContext.push(page)}>Go!</ButtonInput>
 			</section>
 		</StyledHome>
 	)
