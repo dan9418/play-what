@@ -3,7 +3,7 @@ import React from 'react';
 import 'react-hot-loader';
 import styled, { useTheme } from 'styled-components';
 import useRouteContext from '../../contexts/RouteContext';
-import Icon from '../Icon';
+import Icon from '../ui/Icon';
 
 const LINKS = [
 	{

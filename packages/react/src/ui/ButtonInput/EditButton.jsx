@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../../sandbox/src/components/Icon';
+import Icon from '../../../../sandbox/src/components/ui/Icon';
 import useEditContext from '../../../../sandbox/src/contexts/EditContext';
 import ButtonInput from './ButtonInput';
 

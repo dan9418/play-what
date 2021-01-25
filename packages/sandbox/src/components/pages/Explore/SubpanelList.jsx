@@ -2,7 +2,7 @@ import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../../contexts/EditContext";
-import Icon from "../../Icon";
+import Icon from "../../ui/Icon";
 import SubpanelDelegator from "./SubpanelDelegator";
 
 export const getListHelpers = (list, setList, i) => {

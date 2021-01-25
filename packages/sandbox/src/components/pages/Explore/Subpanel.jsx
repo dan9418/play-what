@@ -2,7 +2,7 @@ import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../../contexts/EditContext";
-import Icon from "../../Icon";
+import Icon from "../../ui/Icon";
 
 const StyledSubpanelHeader = styled.div`
 	width: 100%;

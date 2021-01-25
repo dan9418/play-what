@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../../../sandbox/src/components/Icon';
+import Icon from '../../../../sandbox/src/components/ui/Icon';
 import ButtonInput from './ButtonInput';
 
 const CloseButton = props => {

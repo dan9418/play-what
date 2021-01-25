@@ -6,8 +6,8 @@ import { RecoilRoot } from 'recoil';
 import styled, { ThemeProvider } from 'styled-components';
 import useRouteContext, { RouteContextConsumer, RouteContextProvider } from '../contexts/RouteContext';
 import THEME from '../styles/theme';
-import ErrorBoundary from './ErrorBoundary';
-import Nav from './Nav/Nav';
+import ErrorBoundary from './core/ErrorBoundary';
+import Nav from './core/Nav';
 
 const StyledMain = styled.main`
 	padding: 63px 0;
