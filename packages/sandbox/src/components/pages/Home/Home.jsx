@@ -38,7 +38,7 @@ const Home = () => {
 				The project is under active development and is slated for initial release in early 2021.
 			</p>
 			<p>
-				Visit the documentation to understand the core concepts then check out the app to explore its capabilities:
+				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
 			<section>
 				<ButtonInput onClick={() => routeContext.push(PAGE.explore)}>App</ButtonInput>
