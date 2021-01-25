@@ -2,7 +2,7 @@ import React from "react";
 import OutputPresetBox from "./OutputPresetBox";
 import ViewerBox from "./ViewerBox";
 import ViewerPropsBox from "./ViewerPropsBox";
-import Panel from "../../../core/Panel";
+import Panel from "../../core/Panel";
 
 const OUTPUT_ACTIONS = [
 	{

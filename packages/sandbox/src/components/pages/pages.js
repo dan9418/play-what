@@ -1,6 +1,6 @@
 import React from 'react';
-import Explore from "./Explore/Explore";
-import Home from './Home/Home';
+import Explore from "./Explore";
+import Home from './Home';
 
 export const PAGE = {
 	explore: {

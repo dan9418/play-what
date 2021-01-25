@@ -1,8 +1,8 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import useEditContext from '../../../../../contexts/EditContext';
-import { inputState } from '../../../../../state/state';
+import useEditContext from '../../../../contexts/EditContext';
+import { inputState } from '../../../../state/state';
 import InputTableRow from './InputTableRow';
 
 const NewPodRow = ({ addPod }) => {

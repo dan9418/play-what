@@ -1,7 +1,7 @@
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from '../../../../../contexts/EditContext';
+import useEditContext, { EditContextProvider } from '../../../../contexts/EditContext';
 import InputTableRowManager from './InputTableRowManager';
 import KeyCenterRow from './KeyCenterRow';
 

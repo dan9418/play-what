@@ -3,7 +3,7 @@ import React from "react";
 import InputPresetBox from "./InputPresetBox";
 import InputTransformBox from "./InputTransformBox";
 import InputTable from "./table/InputTable";
-import Panel from "../../../core/Panel";
+import Panel from "../../core/Panel";
 
 const INPUT_ACTIONS = [
 	{

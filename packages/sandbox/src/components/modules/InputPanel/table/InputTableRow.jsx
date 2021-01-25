@@ -4,7 +4,7 @@ import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import NumericInput from '@pw/react/src/ui/NumericInput/NumericInput';
 import React from 'react';
 import styled from 'styled-components';
-import useEditContext from '../../../../../contexts/EditContext';
+import useEditContext from '../../../../contexts/EditContext';
 
 export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	const sharedOptions = { podType };

@@ -1,8 +1,8 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import useEditContext from '../../../../../contexts/EditContext';
-import { inputState } from '../../../../../state/state';
+import useEditContext from '../../../../contexts/EditContext';
+import { inputState } from '../../../../state/state';
 import { PresetCell, StyledInputTableRow } from './InputTableRow';
 
 const KeyCenterRow = props => {

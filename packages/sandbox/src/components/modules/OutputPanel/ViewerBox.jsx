@@ -2,7 +2,7 @@ import { VIEWER } from "@pw/react";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { outputState } from "../../../../state/state";
+import { outputState } from "../../../state/state";
 
 const StyledViewerBox = styled.div`
 	margin-top: 16px;
