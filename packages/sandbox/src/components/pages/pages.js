@@ -1,17 +1,29 @@
 import React from 'react';
-import Explore from "./Explore";
+import ChartPage from './ChartPage';
 import Home from './Home';
+import InputPage from './InputPage';
+import OutputPage from './OutputPage';
 
 export const PAGE = {
-	explore: {
-		id: 'explore',
-		name: 'App',
-		component: <Explore />
-	},
 	home: {
 		id: 'home',
 		name: 'Home',
 		component: <Home />
+	},
+	input: {
+		id: 'input',
+		name: 'Input',
+		component: <InputPage />
+	},
+	output: {
+		id: 'output',
+		name: 'Output',
+		component: <OutputPage />
+	},
+	chart: {
+		id: 'chart',
+		name: 'Chart',
+		component: <ChartPage />
 	}
 };
 

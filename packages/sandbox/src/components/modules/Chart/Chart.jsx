@@ -1,10 +1,10 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { inputState, positionState, _chartState } from '../../../../state/state';
-import Panel from '../../../core/Panel';
+import { positionState, _chartState } from '../../../state/state';
+import Panel from '../../core/Panel';
 
 const StyledSection = styled.div`
 	width: 100%;
