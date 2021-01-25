@@ -3,7 +3,7 @@ import PodUtils from "@pw/core/src/Pod.utils";
 import PodListUtils from "@pw/core/src/PodList.utils";
 import { VIEWER } from "@pw/react";
 import { atom, selector } from "recoil";
-import { OUT_OF_NOWHERE } from "./songs";
+import { OUT_OF_NOWHERE, TEST_SONG } from "./songs";
 
 const DEFAULT_INPUT_CONFIG = {
 	keyCenter: [0, 0],
@@ -18,9 +18,9 @@ const DEFAULT_OUTPUT_CONFIG = {
 
 // PRIVATE
 
-const _chartState = atom({
+export const _chartState = atom({
 	key: '_chartState',
-	default: OUT_OF_NOWHERE
+	default: TEST_SONG
 });
 
 const _outputState = atom({

@@ -1,4 +1,22 @@
-import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
+import { CHORD, NOTE, SCALE } from "@pw/core/src/Pod.presets";
+
+export const TEST_SONG = {
+	id: 'test',
+	name: 'test',
+	sections: [
+		{
+			id: 'A1',
+			name: 'A',
+			concepts: [
+				{
+					keyCenter: NOTE.C.value,
+					intervals: SCALE.Major.value,
+					t: 4
+				}
+			]
+		}
+	]
+};
 
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',

@@ -3,8 +3,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { OUT_OF_NOWHERE } from '../../../../state/songs';
-import { inputState, positionState } from '../../../../state/state';
+import { inputState, positionState, _chartState } from '../../../../state/state';
 import Subpanel from '../Subpanel';
 
 const StyledSection = styled.div`
@@ -65,11 +64,11 @@ const StyledChart = styled.div`
 `;
 
 const Chart = () => {
-	const CHART = OUT_OF_NOWHERE;
+	const [chart, setChart] = useRecoilState(_chartState);
 	return (
 		<StyledChart>
 			<Subpanel name="Chart">
-				{CHART.sections.map((s, i) => (
+				{chart.sections.map((s, i) => (
 					<Section key={s.id} section={s} sIndex={i} />
 				))}
 			</Subpanel>
