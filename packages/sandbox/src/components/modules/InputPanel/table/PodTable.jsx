@@ -1,9 +1,17 @@
+import Meter from '@pw/react/src/Meter/Meter';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../../contexts/EditContext';
 import PodTableActionBox from './PodTableActionBox';
 import PodTableRowManager from './PodTableRowManager';
+
+const StyledMeterWrapper = styled.div`
+	background-color: #eee;
+	padding: 8px;
+	border-radius: 8px;
+	margin-top: 8px;
+`;
 
 const StyledTableLabel = styled.div`
 	width: 100%;
@@ -87,6 +95,7 @@ const PodTable = ({ name, editable, pods, podType }) => {
 	return (
 		<EditContextProvider>
 			<TableLabel name={name} editable={editable} />
+
 			<PTAB />
 			<StyledPodTable>
 				<thead>
@@ -96,6 +105,9 @@ const PodTable = ({ name, editable, pods, podType }) => {
 					<PodTableRowManager pods={pods} podType={podType} />
 				</tbody>
 			</StyledPodTable>
+			<StyledMeterWrapper>
+				<Meter pods={pods} />
+			</StyledMeterWrapper>
 		</EditContextProvider>
 	);
 };

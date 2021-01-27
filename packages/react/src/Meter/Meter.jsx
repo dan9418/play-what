@@ -1,12 +1,12 @@
-import { COLOR_FN } from '@pw/core/src/Color.constants';
+import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import CoreUtils from '@pw/core/src/Core.utils';
 import React from 'react';
 import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
 
-const getPitchColor = COLOR_FN.pitch.value;
-const getDegreeColor = COLOR_FN.degree.value;
+const getPitchColor = p => COLOR_SCHEME.pitchClass[p % 12];
+const getDegreeColor = d => COLOR_SCHEME.degree[d % 7];
 const MAX = [12, 7];
 
 const ListMeter = ({ list }) => {
@@ -38,8 +38,8 @@ const PodListMeter = ({ pods }) => {
 	const D = pods.map(([p, d]) => d);
 	return (
 		<>
-			<IndexListMeter indexList={P} max={MAX[0]} colorFn={(i) => getPitchColor([i, 0])} />
-			<IndexListMeter indexList={D} max={MAX[1]} colorFn={(i) => getDegreeColor([0, i])} />
+			<IndexListMeter indexList={P} max={MAX[0]} colorFn={(i) => getPitchColor(i)} />
+			<IndexListMeter indexList={D} max={MAX[1]} colorFn={(i) => getDegreeColor(i)} />
 		</>
 	);
 }
