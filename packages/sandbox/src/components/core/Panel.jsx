@@ -17,7 +17,7 @@ const StyledPanelHeader = styled.div`
 			display: flex;
     		align-items: center;
 			& .pod-name {
-
+				font-size: 200%;
 			}
 			& .pod-type {
 				padding-left: 8px;
@@ -25,27 +25,31 @@ const StyledPanelHeader = styled.div`
 			}
 		}
 		& .preview {
+			font-size: 140%;
 			padding: 4px;
 			color: ${({ theme }) => theme.accent}
 		}
 	}
 	& button {
-		height: 32px;
-		width: 32px;
+		height: 64px;
+		width: 64px;
 		border-radius: 100%;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		font-weight: bold;
-		color: white;
+		background-color: transparent;
+	}
+	& button:hover {
+		background-color: rgba(0,0,0,0.1);
 	}
 	& svg {
-		height: 12px;
-    	width: 12px;
+		height: 24px;
+    	width: 24px;
 	}
 	& svg, & svg * {
-		color: white;
-    	fill: white;
+		color: #AAA;
+    	fill: #AAA;
 	}
 `;
 
@@ -72,7 +76,9 @@ const PanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 const StyledPanel = styled.div`
     padding: 0 16px;
     width: 100%;
-    border-radius: 16px;
+	margin: 0 auto;
+	max-width: 1024px;
+    border-radius: 8px;
     background-color: #f5f5f5;
 	box-shadow: -2px 3px 15px 5px rgba(0, 0, 0, 0.1);
 	

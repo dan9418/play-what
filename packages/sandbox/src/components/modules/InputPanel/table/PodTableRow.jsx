@@ -25,13 +25,13 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	)
 }
 
-export const StyledInputTableRow = styled.tr`
+export const StyledPodTableRow = styled.tr`
 	&:hover {
 		background-color: #eee;
 	}
 `;
 
-const InputTableRow = ({ i, pods, setPods, podType }) => {
+const PodTableRow = ({ i, pods, setPods, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -53,7 +53,7 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 	const octave = PodUtils.getOctave(pod);
 
 	return (
-		<StyledInputTableRow key={i}>
+		<StyledPodTableRow key={i}>
 			<td>
 				{
 					isEditing ?
@@ -79,8 +79,8 @@ const InputTableRow = ({ i, pods, setPods, podType }) => {
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
 				</td>
 			}
-		</StyledInputTableRow>
+		</StyledPodTableRow>
 	);
 };
 
-export default InputTableRow;
+export default PodTableRow;

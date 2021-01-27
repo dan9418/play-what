@@ -2,6 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState } from '../../state/state';
+import InputPanel from '../modules/InputPanel/InputPanel';
 import OutputPanel from '../modules/OutputPanel/OutputPanel';
 
 const StyledInputPage = styled.div`
@@ -17,7 +18,7 @@ const InputPage = () => {
 
 	return (
 		<StyledInputPage>
-			<OutputPanel data={input} setData={setInput} />
+			<InputPanel data={input} setData={setInput} />
 		</StyledInputPage>
 	);
 };

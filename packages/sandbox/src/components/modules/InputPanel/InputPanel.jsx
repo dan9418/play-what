@@ -2,7 +2,7 @@ import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
 import InputPresetBox from "./InputPresetBox";
 import InputTransformBox from "./InputTransformBox";
-import InputTable from "./table/InputTable";
+import PodTable from "./table/PodTable";
 import Panel from "../../core/Panel";
 
 const INPUT_ACTIONS = [
@@ -27,7 +27,7 @@ const InputPanel = ({ data }) => {
 
 	return (
 		<Panel name={name} caption={caption} preview={preview} leftActions={INPUT_ACTIONS} rightAction={rightAction}>
-			<InputTable />
+			<PodTable />
 		</Panel>
 	);
 };

@@ -3,7 +3,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import useEditContext from '../../../../contexts/EditContext';
 import { inputState } from '../../../../state/state';
-import InputTableRow from './InputTableRow';
+import PodTableRow from './PodTableRow';
 
 const NewPodRow = ({ addPod }) => {
 	return (
@@ -19,7 +19,7 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const InputTableRowManager = ({ podType }) => {
+const PodTableRowManager = ({ podType }) => {
 	const { intervals, setIntervals, notes, setNotes } = useRecoilValue(inputState);
 
 	const editContext = useEditContext();
@@ -31,7 +31,7 @@ const InputTableRowManager = ({ podType }) => {
 
 	const rows = tableData.map((v, i) => {
 		return (
-			<InputTableRow
+			<PodTableRow
 				i={i}
 				key={i}
 				pods={tableData}
@@ -48,4 +48,4 @@ const InputTableRowManager = ({ podType }) => {
 
 };
 
-export default InputTableRowManager;
+export default PodTableRowManager;

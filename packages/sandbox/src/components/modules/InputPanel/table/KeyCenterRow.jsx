@@ -3,7 +3,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import useEditContext from '../../../../contexts/EditContext';
 import { inputState } from '../../../../state/state';
-import { PresetCell, StyledInputTableRow } from './InputTableRow';
+import { PresetCell, StyledPodTableRow } from './PodTableRow';
 
 const KeyCenterRow = props => {
 
@@ -14,7 +14,7 @@ const KeyCenterRow = props => {
 	const octave = PodUtils.getOctave(keyCenter);
 
 	return (
-		<StyledInputTableRow key='keyCenter'>
+		<StyledPodTableRow key='keyCenter'>
 			<td>
 				{JSON.stringify(keyCenter)}
 			</td>
@@ -28,7 +28,7 @@ const KeyCenterRow = props => {
 				{keyCenter[1]}
 			</td>
 			<PresetCell pod={keyCenter} setPod={setKeyCenter} isEditing={isEditing} podType='note' />
-		</StyledInputTableRow>
+		</StyledPodTableRow>
 	);
 };
 
