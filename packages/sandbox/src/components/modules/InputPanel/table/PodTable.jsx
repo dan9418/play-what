@@ -2,12 +2,12 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../../contexts/EditContext';
+import PodTableActionBox from './PodTableActionBox';
 import PodTableRowManager from './PodTableRowManager';
 
 const StyledTableLabel = styled.div`
 	width: 100%;
 	padding: 16px 0 8px;
-	border-bottom: 1px solid #ccc;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -43,27 +43,57 @@ const StyledPodTable = styled.table`
 	}
 
 	& thead tr {
+		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 	}
 `;
 
-
-const HeaderRow = () => {
-	const { isEditing } = useEditContext();
-	return (<tr></tr>);
+const HEADERS = {
+	note: [
+		'#',
+		'Name',
+		'POD',
+		'p',
+		'o',
+		'd',
+		'x',
+		'freq'
+	],
+	interval: [
+		'#',
+		'Name',
+		'POD',
+		'p',
+		'o',
+		'd',
+		'x',
+		'ratio'
+	]
 };
 
-const PodTable = ({ name, editable }) => {
+const HeaderRow = ({ podType }) => {
+	const { isEditing } = useEditContext();
+	const headers = [...HEADERS[podType]];
+	if (isEditing) headers.push('Delete');
+	return (<tr>{headers.map(h => <th key={h}>{h}</th>)}</tr>);
+};
 
+const PTAB = props => {
+	const { isEditing } = useEditContext();
+	return isEditing ? <PodTableActionBox {...props} /> : null;
+};
+
+const PodTable = ({ name, editable, pods, podType }) => {
 	return (
 		<EditContextProvider>
 			<TableLabel name={name} editable={editable} />
+			<PTAB />
 			<StyledPodTable>
 				<thead>
-					<HeaderRow />
+					<HeaderRow podType={podType} />
 				</thead>
 				<tbody>
-					<PodTableRowManager />
+					<PodTableRowManager pods={pods} podType={podType} />
 				</tbody>
 			</StyledPodTable>
 		</EditContextProvider>

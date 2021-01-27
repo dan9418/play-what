@@ -51,6 +51,7 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 
 	const pitchClass = PodUtils.getPitchClass(pod);
 	const octave = PodUtils.getOctave(pod);
+	const x = PodUtils.getDegreeCycles(pod);
 
 	return (
 		<StyledPodTableRow key={i}>
@@ -61,6 +62,7 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 						: i + 1
 				}
 			</td>
+			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
 			<td>
 				{JSON.stringify(pod)}
 			</td>
@@ -73,7 +75,12 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 			<td>
 				{pod[1]}
 			</td>
-			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
+			<td>
+				{x}
+			</td>
+			<td>
+				?
+			</td>
 			{isEditing &&
 				<td>
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>

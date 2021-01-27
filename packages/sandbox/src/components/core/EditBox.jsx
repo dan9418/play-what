@@ -18,12 +18,23 @@ const StyledEditBox = styled.div`
 	}
 `;
 
-const StyledLeftContainer = styled.div`
-	width: 100%;
+const StyledActionsContainer = styled.div`
 	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	& > div {
+		width: 100%;
+		&:first-child {
+			text-align: left;
+		}
+		&:last-child {
+			text-align: right;
+		}
+	}
 `;
 
-const EditBox = ({ leftActions = [], rightAction, action, setAction }) => {
+const EditBox = ({ leftActions = [], rightActions = [], action, setAction }) => {
 	return (
 		<StyledEditBox>
 			{action && <div className="top">
@@ -31,12 +42,18 @@ const EditBox = ({ leftActions = [], rightAction, action, setAction }) => {
 				<CloseButton onClick={() => setAction(null)} />
 			</div>}
 			{!action &&
-				<StyledLeftContainer>
-					{leftActions.map(a =>
-						<TextButton key={a.id} onClick={() => setAction(a)}>{a.text}</TextButton>
-					)}
-					{rightAction || null}
-				</StyledLeftContainer>
+				<StyledActionsContainer>
+					<div>
+						{leftActions.map(a =>
+							<TextButton key={a.id} onClick={() => setAction(a)}>{a.text}</TextButton>
+						)}
+					</div>
+					<div>
+						{rightActions.map(a =>
+							<TextButton key={a.id} onClick={() => setAction(a)}>{a.text}</TextButton>
+						)}
+					</div>
+				</StyledActionsContainer>
 			}
 			{action && action.component}
 		</StyledEditBox>

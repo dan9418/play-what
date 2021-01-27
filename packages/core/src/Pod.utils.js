@@ -80,6 +80,10 @@ class PodUtils {
 	static getOctave(pod, options = {}) {
 		return Math.floor(pod[0] / 12);
 	}
+
+	static getDegreeCycles(pod, options = {}) {
+		return Math.floor(pod[1] / 7);
+	}
 }
 
 export default PodUtils;

@@ -89,15 +89,12 @@ const StyledPanel = styled.div`
 
 const Panel = ({ name, caption, preview, leftActions, rightAction,  children }) => {
 	const [isOpen, setIsOpen] = useState(true);
-	const [action, setAction] = useState(null);
-
 	return (
 		<StyledPanel>
 			<EditContextProvider>
 				<PanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
 				{isOpen && (
 					<div className="body">
-						<EditBox action={action} setAction={setAction} leftActions={leftActions} rightAction={rightAction} />
 						{children}
 					</div>
 				)}
