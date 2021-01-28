@@ -2,7 +2,7 @@ import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
 import styled from "styled-components";
 import Panel from "../../core/Panel";
-import PodTable from "./table/PodTable";
+import PodTable from "../PodList/PodTable";
 
 const StyledInputPanel = styled.div`
 	display: flex;
@@ -20,7 +20,7 @@ const StyledInputPanel = styled.div`
 
 `;
 
-const InputPanel = ({ data, setData }) => {
+const Concept = ({ data, setData }) => {
 
 	const { name, keyCenter, intervals, notes } = data;
 	const caption = null;
@@ -48,4 +48,4 @@ const InputPanel = ({ data, setData }) => {
 	);
 };
 
-export default InputPanel;
+export default Concept;

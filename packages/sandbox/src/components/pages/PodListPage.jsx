@@ -1,7 +1,7 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PodTable from '../modules/InputPanel/table/PodTable';
+import PodTable from '../modules/PodList/PodTable';
 
 const StyledPodListPage = styled.div`
 	> * {

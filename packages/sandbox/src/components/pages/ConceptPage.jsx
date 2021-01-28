@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState } from '../../state/state';
-import InputPanel from '../modules/InputPanel/InputPanel';
+import Concept from '../modules/Concept/Concept';
 
 const StyledInputPage = styled.div`
 	width: 100%;
@@ -17,7 +17,7 @@ const InputPage = () => {
 
 	return (
 		<StyledInputPage>
-			<InputPanel data={input} setData={setInput} />
+			<Concept data={input} setData={setInput} />
 		</StyledInputPage>
 	);
 };
