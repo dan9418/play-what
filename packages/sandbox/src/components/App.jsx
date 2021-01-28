@@ -10,9 +10,9 @@ import ErrorBoundary from './core/ErrorBoundary';
 import Nav from './core/Nav';
 
 const StyledMain = styled.main`
-	padding: 63px 0;
+	padding: 64px 16px 16px 16px;
 	width: 100%;
-	margin: auto;
+	min-height: 100%;
 `;
 
 const App = () => {
