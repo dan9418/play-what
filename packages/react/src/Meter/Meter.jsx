@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import PodUtils from '@pw/core/src/Pod.utils';
 
 const StyledMeter = styled.div`
- 	margin: 8px;
+ 	margin: 16px 0 8px;
 	.dot-list {
 		display: flex;
 		align-items: center;

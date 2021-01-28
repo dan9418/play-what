@@ -8,7 +8,7 @@ import PodTableRowManager from './PodTableRowManager';
 
 const StyledTableLabel = styled.div`
 	width: 100%;
-	padding: 16px 0 8px;
+	padding: 8px 0;
 	display: flex;
 	align-items: center;
 	& h3 {
@@ -81,23 +81,31 @@ const PTAB = props => {
 	return isEditing ? <PodTableActionBox {...props} /> : null;
 };
 
+
+const StyledPodPanel = styled.section`
+	border: 1px solid #ccc;
+	padding: 8px 16px;
+	border-radius: 2px;
+	background-color: #f5f5f5;
+`;
+
 const PodTable = ({ name, editable, pods, setPods, podType }) => {
 	return (
-		<EditContextProvider>
-			<TableLabel name={name} editable={editable} />
-			<PTAB />
-
-
-			<StyledPodTable>
-				<thead>
-					<HeaderRow podType={podType} />
-				</thead>
-				<tbody>
-					<PodTableRowManager pods={pods} setPods={setPods} podType={podType} />
-				</tbody>
-			</StyledPodTable>
-			<Meter pods={pods} podType={podType} />
-		</EditContextProvider>
+		<StyledPodPanel>
+			<EditContextProvider>
+				<TableLabel name={name} editable={editable} />
+				<PTAB />
+				<StyledPodTable>
+					<thead>
+						<HeaderRow podType={podType} />
+					</thead>
+					<tbody>
+						<PodTableRowManager pods={pods} setPods={setPods} podType={podType} />
+					</tbody>
+				</StyledPodTable>
+				<Meter pods={pods} podType={podType} />
+			</EditContextProvider>
+		</StyledPodPanel>
 	);
 };
 
