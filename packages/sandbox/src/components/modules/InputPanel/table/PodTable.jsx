@@ -6,30 +6,27 @@ import useEditContext, { EditContextProvider } from '../../../../contexts/EditCo
 import PodTableActionBox from './PodTableActionBox';
 import PodTableRowManager from './PodTableRowManager';
 
-const StyledMeterWrapper = styled.div`
-	background-color: #eee;
-	padding: 8px;
-	border-radius: 8px;
-	margin-top: 8px;
-`;
-
 const StyledTableLabel = styled.div`
 	width: 100%;
 	padding: 16px 0 8px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	& h3 {
 		text-transform: capitalize;
-	}	
+	}
+
+	& button {
+		margin-left: auto;
+	}
 `;
 
-const TableLabel = ({ name, editable }) => {
+const TableLabel = ({ name, editable, pods }) => {
 	return (
 		<StyledTableLabel>
 			<h3>
 				{name || 'Panel'}
 			</h3>
+			<Meter pods={pods} />
 			{editable && <EditButton />}
 		</StyledTableLabel>
 	);
@@ -91,10 +88,10 @@ const PTAB = props => {
 	return isEditing ? <PodTableActionBox {...props} /> : null;
 };
 
-const PodTable = ({ name, editable, pods, podType }) => {
+const PodTable = ({ name, editable, pods, setPods, podType }) => {
 	return (
 		<EditContextProvider>
-			<TableLabel name={name} editable={editable} />
+			<TableLabel name={name} editable={editable} pods={pods} />
 
 			<PTAB />
 			<StyledPodTable>
@@ -102,12 +99,9 @@ const PodTable = ({ name, editable, pods, podType }) => {
 					<HeaderRow podType={podType} />
 				</thead>
 				<tbody>
-					<PodTableRowManager pods={pods} podType={podType} />
+					<PodTableRowManager pods={pods} setPods={setPods} podType={podType} />
 				</tbody>
 			</StyledPodTable>
-			<StyledMeterWrapper>
-				<Meter pods={pods} />
-			</StyledMeterWrapper>
 		</EditContextProvider>
 	);
 };

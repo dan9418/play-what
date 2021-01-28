@@ -14,7 +14,8 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@pw/core": "^0.0.0"
+    "@pw/core": "^0.0.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",

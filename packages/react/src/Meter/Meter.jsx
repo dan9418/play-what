@@ -2,53 +2,58 @@ import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import CoreUtils from '@pw/core/src/Core.utils';
 import React from 'react';
-import './Meter.css';
 import DEFAULT_METER_PROPS from './Meter.defaults';
+import styled from 'styled-components';
+
+const StyledMeter = styled.div`
+ 	margin: 0 8px;
+	.dot-list {
+		display: inline-flex;
+		align-items: center;
+
+		.dot {
+			height: 12px;
+			width: 12px;
+			border-radius: 50%;
+			background-color: white;
+			border: 1px solid #555;
+			margin: 0 4px;
+		}
+	}
+`;
 
 const getPitchColor = p => COLOR_SCHEME.pitchClass[p % 12];
 const getDegreeColor = d => COLOR_SCHEME.degree[d % 7];
-const MAX = [12, 7];
 
-const ListMeter = ({ list }) => {
-	const cells = list.map((l, i) => <div className='cell' style={l.style} key={i}>{l.text}</div>);
+const DotList = ({ pods, meterType }) => {
+
+	let max = 12;
+	let colorFn = getDegreeColor;
+
+	const list = [];
+	for (let i = 0; i < max; i++) {
+		const index = pods.findIndex(pod => CoreUtils.modulo(pod[0], max) === i);
+		const color = colorFn(index);
+		const style = ColorUtils.getStylesFromBgColor(color);
+
+		list.push(<div className='dot' style={style} key={i} />);
+	}
 	return (
-		<div className='meter'>
-			{cells}
+		<div className='dot-list'>
+			{list}
 		</div>
 	);
 };
 
-const IndexListMeter = ({ max, indexList, colorFn }) => {
-	const list = [];
-	for (let i = 0; i < max; i++) {
-		const index = indexList.find(v => CoreUtils.modulo(v, max) === i);
-		const reduced = CoreUtils.modulo(index, max);
-		const color = colorFn(reduced);
-
-		const style = ColorUtils.getStylesFromBgColor(color);
-		const text = i;
-
-		list.push({ style, text });
-	}
-	return <ListMeter list={list} />
-};
-
-const PodListMeter = ({ pods }) => {
-	const P = pods.map(([p, d]) => p);
-	const D = pods.map(([p, d]) => d);
-	return (
-		<>
-			<IndexListMeter indexList={P} max={MAX[0]} colorFn={(i) => getPitchColor(i)} />
-			<IndexListMeter indexList={D} max={MAX[1]} colorFn={(i) => getDegreeColor(i)} />
-		</>
-	);
-}
-
 const Meter = (userProps) => {
 	const props = { ...DEFAULT_METER_PROPS, ...userProps };
-	const { pods, podType } = props;
+	const { pods } = props;
 
-	return <PodListMeter pods={pods} />;
+	return (
+		<StyledMeter>
+			<DotList pods={pods} />
+		</StyledMeter>
+	);
 }
 
 export default Meter;

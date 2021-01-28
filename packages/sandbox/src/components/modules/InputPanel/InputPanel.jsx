@@ -13,11 +13,14 @@ const StyledInputPanel = styled.div`
 	grid-gap: 16px;
 `;
 
-const InputPanel = ({ data }) => {
+const InputPanel = ({ data, setData }) => {
 
 	const { name, keyCenter, intervals, notes } = data;
 	const caption = null;
 	const preview = PodListUtils.getPreview(intervals, { podType: 'intervals' });
+
+	const setKeyCenter = kc => setData({ ...data, keyCenter: kc[0] });
+	const setIntervals = ivls => setData({ ...data, intervals: ivls });
 
 	return (
 		<Panel name={name} caption={caption} preview={preview}>
@@ -26,13 +29,13 @@ const InputPanel = ({ data }) => {
 
 				</div>
 				<div>
-					<PodTable name="Key Center" pods={[keyCenter]} podType="note" editable />
+					<PodTable name="Key Center" pods={[keyCenter]} setPods={setKeyCenter} podType="note" editable />
 				</div>
 				<div>
 					<PodTable name="Notes" pods={notes} podType="note" />
 				</div>
 				<div>
-					<PodTable name="Intervals" pods={intervals} podType="interval" editable />
+					<PodTable name="Intervals" pods={intervals} setPods={setIntervals} podType="interval" editable />
 				</div>
 			</StyledInputPanel>
 		</Panel>

@@ -59,7 +59,17 @@ export const inputState = selector({
 			notes
 		};
 	},
-	set: ({ set }, newValue) => set(_inputState, newValue)
+	set: ({ set, get }, newValue) => {
+		const chartDef = get(_chartState);
+		const [s, c] = get(positionState);
+		const newChart = { ...chartDef };
+		newChart.sections = [...chartDef.sections];
+		newChart.sections[s] = { ...chartDef.sections[s] };
+		newChart.sections[s].concepts = [...chartDef.sections[s].concepts];
+		newChart.sections[s].concepts[c] = newValue;
+
+		set(_chartState, newChart)
+	}
 });
 
 export const outputState = selector({
