@@ -2,9 +2,9 @@ import React from 'react';
 import ChartPage from './ChartPage';
 import Home from './Home';
 import ConceptPage from './ConceptPage';
-import OutputPage from './OutputPage';
 import PodListPage from './PodListPage';
 import PodPage from './PodPage';
+import FretboardPage from './FretboardPage';
 
 export const PAGE = {
 	home: {
@@ -27,10 +27,10 @@ export const PAGE = {
 		name: 'Concept',
 		component: <ConceptPage />
 	},
-	output: {
-		id: 'output',
-		name: 'Output',
-		component: <OutputPage />
+	fretboard: {
+		id: 'fretboard',
+		name: 'Fretboard',
+		component: <FretboardPage />
 	},
 	chart: {
 		id: 'chart',

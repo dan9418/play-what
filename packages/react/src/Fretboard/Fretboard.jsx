@@ -13,7 +13,6 @@ export const Fret = ({
 	fretIndex,
 	keyCenter,
 	intervals,
-	notes,
 	colorSource,
 	colorProperty,
 	colorScheme,
@@ -21,6 +20,8 @@ export const Fret = ({
 	labelProperty,
 	tuningFn,
 	toneFn }) => {
+
+	const notes = PodUtils.addPodList(keyCenter, intervals);
 
 	const noteIndex = stringTuning + fretIndex;
 	const i = PodListUtils.findIndexOfPodWithPitchClass(notes, noteIndex);
