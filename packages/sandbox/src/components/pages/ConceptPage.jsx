@@ -1,4 +1,5 @@
-import React from 'react';
+import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { inputState } from '../../state/state';
@@ -12,14 +13,15 @@ const StyledInputPage = styled.div`
     flex-direction: column;
 `;
 
-const InputPage = () => {
-	const [input, setInput] = useRecoilState(inputState);
+const ConceptPage = () => {
+	const [keyCenter, setKeyCenter] = useState(NOTE.C.value)
+	const [intervals, setIntervals] = useState(SCALE.Major.value)
 
 	return (
 		<StyledInputPage>
-			<Concept data={input} setData={setInput} />
+			<Concept keyCenter={keyCenter} setIntervals={setIntervals} setKeyCenter={setKeyCenter} intervals={intervals} />
 		</StyledInputPage>
 	);
 };
 
-export default InputPage;
+export default ConceptPage;

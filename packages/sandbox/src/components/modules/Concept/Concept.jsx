@@ -1,3 +1,4 @@
+import PodUtils from "@pw/core/src/Pod.utils";
 import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
 import styled from "styled-components";
@@ -20,21 +21,16 @@ const StyledInputPanel = styled.div`
 
 `;
 
-const Concept = ({ data, setData }) => {
+const Concept = ({ keyCenter, setKeyCenter, intervals, setIntervals, name, caption }) => {
 
-	const { name, keyCenter, intervals, notes } = data;
-	const caption = null;
 	const preview = PodListUtils.getPreview(intervals, { podType: 'intervals' });
-
-	const setKeyCenter = kc => setData({ ...data, keyCenter: kc[0] });
-	const setIntervals = ivls => setData({ ...data, intervals: ivls });
+	const notes = PodUtils.addPodList(keyCenter, intervals);
 
 	return (
 		<Panel name={name} caption={caption} preview={preview}>
 			<StyledInputPanel>
-
 				<div>
-					<PodListTable name="Key Center" pods={[keyCenter]} setPods={setKeyCenter} podType="note" editable />
+					<PodListTable name="Key Center" pods={[keyCenter]} setPods={pods => setKeyCenter(pods[0])} podType="note" editable />
 				</div>
 				<div>
 					<PodListTable name="Intervals" pods={intervals} setPods={setIntervals} podType="interval" editable />
@@ -42,7 +38,6 @@ const Concept = ({ data, setData }) => {
 				<div>
 					<PodListTable name="Notes" pods={notes} podType="note" />
 				</div>
-
 			</StyledInputPanel>
 		</Panel>
 	);
