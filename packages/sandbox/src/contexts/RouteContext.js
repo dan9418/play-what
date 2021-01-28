@@ -8,7 +8,8 @@ export const RouteContextProvider = ({ children }) => {
 	const currentPage = breadcrumbs[breadcrumbs.length - 1];
 	const popAt = n => setBreadcrumbs(breadcrumbs.slice(0, n + 1));
 	const push = p => setBreadcrumbs([...breadcrumbs, p]);
-	const routeContext = { breadcrumbs, setBreadcrumbs, currentPage, popAt, push };
+	const replace = x => setBreadcrumbs([x]);
+	const routeContext = { breadcrumbs, setBreadcrumbs, currentPage, popAt, push, replace };
 	return (
 		<RouteContext.Provider value={routeContext}>
 			{children}

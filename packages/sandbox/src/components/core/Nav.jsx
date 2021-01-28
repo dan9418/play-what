@@ -1,8 +1,10 @@
 
+import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import React from 'react';
 import 'react-hot-loader';
 import styled, { useTheme } from 'styled-components';
 import useRouteContext from '../../contexts/RouteContext';
+import { PAGE_VALUES } from '../pages/pages';
 import Icon from '../ui/Icon';
 
 const LINKS = [
@@ -84,12 +86,12 @@ const StyledNav = styled.nav`
 const Nav = () => {
 	const routeContext = useRouteContext();
 	const theme = useTheme();
-	const { breadcrumbs, popAt, currentPage } = routeContext;
+	const { breadcrumbs, popAt, currentPage, replace } = routeContext;
 
 	return (
 		<StyledNav>
 			<div className="logo" onClick={() => popAt(0)}>Play What?</div>
-			{breadcrumbs.map((page, i) => {
+			{/*breadcrumbs.map((page, i) => {
 				if (i === 0) return null;
 				return (
 					<div
@@ -98,7 +100,8 @@ const Nav = () => {
 						onClick={() => popAt(i)}
 					>{page.name}</div>
 				);
-			})}
+			})*/}
+			<DropdownInput options={PAGE_VALUES} value={currentPage} setValue={replace} />
 			<div className="spacer" />
 			<div className="right-nav">
 				{LINKS.map((l, i) => (
