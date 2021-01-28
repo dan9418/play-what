@@ -21,22 +21,22 @@ const POD_ACTIONS = [
 
 const PodTable = ({ name, editable, pod, setPod, podType }) => {
 
-	const cols = [
-		<th>index</th>,
-		<th>value</th>,
-		<th>max</th>,
-		<th>mod</th>,
+	const cols = <>
+		<th>index</th>
+		<th>value</th>
+		<th>max</th>
+		<th>mod</th>
 		<th>rem</th>
-	];
+	</>;
 
-	const rows = [
+	const rows = <>
 		<tr>
 			<td>p</td>
 			<td>{pod[0]}</td>
 			<td>12</td>
 			<td>{PodUtils.getPitchClass(pod)}</td>
 			<td>{PodUtils.getOctave(pod)}</td>
-		</tr>,
+		</tr>
 		<tr>
 			<td>d</td>
 			<td>{pod[1]}</td>
@@ -44,7 +44,7 @@ const PodTable = ({ name, editable, pod, setPod, podType }) => {
 			<td>{PodUtils.getDegree(pod)}</td>
 			<td>{PodUtils.getX(pod)}</td>
 		</tr>
-	];
+	</>;
 
 	return (
 		<Table
