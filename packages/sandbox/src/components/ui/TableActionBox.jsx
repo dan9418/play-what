@@ -2,20 +2,7 @@ import CloseButton from "@pw/react/src/ui/ButtonInput/CloseButton";
 import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import useEditContext from "../../../contexts/EditContext";
-
-const INPUT_ACTIONS = [
-	{
-		id: 'preset',
-		text: 'Import Preset',
-		component: <React.Fragment />
-	},
-	{
-		id: 'transform',
-		text: 'Transform',
-		component: <React.Fragment />
-	}
-];
+import useEditContext from "../../contexts/EditContext";
 
 const StyledTableActionBox = styled.div`
 	width: 100%;

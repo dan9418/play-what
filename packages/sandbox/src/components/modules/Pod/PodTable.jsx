@@ -3,119 +3,57 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../contexts/EditContext';
-import TableActionBox from './TableActionBox';
+import Table from '../../ui/Table';
+import TableActionBox from '../../ui/TableActionBox';
 
-const StyledTableLabel = styled.div`
-	width: 100%;
-	padding: 8px 0;
-	display: flex;
-	align-items: center;
-	& h3 {
-		text-transform: capitalize;
+const POD_ACTIONS = [
+	{
+		id: 'preset',
+		text: 'Import Preset',
+		component: <React.Fragment />
+	},
+	{
+		id: 'transform',
+		text: 'Transform',
+		component: <React.Fragment />
 	}
-
-	& button {
-		margin-left: auto;
-	}
-`;
-
-const TableLabel = ({ name, editable }) => {
-	return (
-		<StyledTableLabel>
-			<h3>
-				{name || 'Panel'}
-			</h3>
-			{editable && <EditButton />}
-		</StyledTableLabel>
-	);
-};
-
-const StyledPodListTable = styled.table`
-	text-align: center;
-    border-collapse: collapse;
-    margin: auto;
-	width: 100%;
-	
-	& td, th {
-		padding: 8px 4px;
-	}
-
-	& th {
-		text-transform: uppercase;
-		font-size: 80%;
-	}
-
-	& thead tr {
-		border-top: 1px solid #ccc;
-		border-bottom: 1px solid #ccc;
-	}
-`;
-
-const HEADERS = {
-	note: [
-		'index',
-		'value',
-		'max',
-		'mod.',
-		'rem.'
-	],
-	interval: [
-		'index',
-		'value',
-		'max',
-		'mod.',
-		'rem.'
-	]
-};
-
-const HeaderRow = ({ podType }) => {
-	const { isEditing } = useEditContext();
-	const headers = [...HEADERS[podType]];
-	return (<tr>{headers.map(h => <th key={h}>{h}</th>)}</tr>);
-};
-
-const PTAB = props => {
-	const { isEditing } = useEditContext();
-	return isEditing ? <TableActionBox {...props} /> : null;
-};
-
-
-const StyledPodPanel = styled.section`
-	border: 1px solid #ccc;
-	padding: 8px 16px;
-	border-radius: 2px;
-	background-color: #f5f5f5;
-`;
+];
 
 const PodTable = ({ name, editable, pod, setPod, podType }) => {
+
+	const cols = [
+		<th>index</th>,
+		<th>value</th>,
+		<th>max</th>,
+		<th>mod</th>,
+		<th>rem</th>
+	];
+
+	const rows = [
+		<tr>
+			<td>p</td>
+			<td>{pod[0]}</td>
+			<td>12</td>
+			<td>{PodUtils.getPitchClass(pod)}</td>
+			<td>{PodUtils.getOctave(pod)}</td>
+		</tr>,
+		<tr>
+			<td>d</td>
+			<td>{pod[1]}</td>
+			<td>7</td>
+			<td>{PodUtils.getDegree(pod)}</td>
+			<td>{PodUtils.getX(pod)}</td>
+		</tr>
+	];
+
 	return (
-		<StyledPodPanel>
-			<EditContextProvider>
-				<TableLabel name={name} editable={editable} />
-				<PTAB />
-				<StyledPodListTable>
-					<thead>
-						<HeaderRow podType={podType} />
-					</thead>
-					<tbody>
-						<tr>
-							<td>p</td>
-							<td>{pod[0]}</td>
-							<td>12</td>
-							<td>{PodUtils.getPitchClass(pod)}</td>
-							<td>{PodUtils.getOctave(pod)}</td>
-						</tr>
-						<tr>
-							<td>d</td>
-							<td>{pod[1]}</td>
-							<td>7</td>
-							<td>{PodUtils.getDegree(pod)}</td>
-							<td>{PodUtils.getX(pod)}</td>
-						</tr>
-					</tbody>
-				</StyledPodListTable>
-			</EditContextProvider>
-		</StyledPodPanel>
+		<Table
+			cols={cols}
+			rows={rows}
+			name="Pod"
+			actions={POD_ACTIONS}
+			editable
+		/>
 	);
 };
 
