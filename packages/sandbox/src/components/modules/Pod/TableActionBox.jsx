@@ -2,6 +2,7 @@ import CloseButton from "@pw/react/src/ui/ButtonInput/CloseButton";
 import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import React, { useState } from "react";
 import styled from 'styled-components';
+import useEditContext from "../../../contexts/EditContext";
 
 const INPUT_ACTIONS = [
 	{
@@ -16,7 +17,7 @@ const INPUT_ACTIONS = [
 	}
 ];
 
-const StyledPodListTableActionBox = styled.div`
+const StyledTableActionBox = styled.div`
 	width: 100%;
 	background-color: #eee;
 	padding: 8px;
@@ -38,11 +39,14 @@ const StyledActionsContainer = styled.div`
 	justify-content: flex-end;
 `;
 
-const PodListTableActionBox = ({ podType }) => {
+const TableActionBox = ({ podType, actions = [] }) => {
 	const [action, setAction] = useState(null);
+	const { isEditing } = useEditContext();
+
+	if (!isEditing) return null;
 
 	return (
-		<StyledPodListTableActionBox>
+		<StyledTableActionBox>
 			{action && <>
 				<div className="top">
 					<h4>{action.text}</h4>
@@ -53,13 +57,13 @@ const PodListTableActionBox = ({ podType }) => {
 			}
 			{!action &&
 				<StyledActionsContainer>
-					{INPUT_ACTIONS.map(a =>
+					{actions.map(a =>
 						<TextButton key={a.id} onClick={() => setAction(a)}>{a.text}</TextButton>
 					)}
 				</StyledActionsContainer>
 			}
-		</StyledPodListTableActionBox>
+		</StyledTableActionBox>
 	);
 };
 
-export default PodListTableActionBox;
+export default TableActionBox;

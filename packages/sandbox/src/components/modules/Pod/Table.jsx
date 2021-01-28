@@ -1,9 +1,8 @@
-import Meter from '@pw/react/src/Meter/Meter';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../contexts/EditContext';
-import PodListTableRowManager from './PodListTableRowManager';
+import TableActionBox from './TableActionBox';
 
 const StyledTableLabel = styled.div`
 	width: 100%;
@@ -51,56 +50,32 @@ const StyledPodListTable = styled.table`
 	}
 `;
 
-const HEADERS = {
-	note: [
-		'#',
-		'Name',
-		'p',
-		'd',
-		'freq'
-	],
-	interval: [
-		'#',
-		'Name',
-		'p',
-		'd',
-		'ratio'
-	]
-};
-
-const HeaderRow = ({ podType }) => {
-	const { isEditing } = useEditContext();
-	const headers = [...HEADERS[podType]];
-	if (isEditing) headers.push('Delete');
-	return (<tr>{headers.map(h => <th key={h}>{h}</th>)}</tr>);
-};
-
-
-
-const StyledPodPanel = styled.section`
+const StyledTableContainer = styled.section`
 	border: 1px solid #ccc;
 	padding: 8px 16px;
 	border-radius: 2px;
 	background-color: #f5f5f5;
 `;
 
-const PodListTable = ({ name, editable, pods, setPods, podType }) => {
+const Table = ({ name, editable, rows, cols, actions }) => {
 	return (
-		<StyledPodPanel>
+		<StyledTableContainer>
 			<EditContextProvider>
 				<TableLabel name={name} editable={editable} />
+				<TableActionBox actions={actions} />
 				<StyledPodListTable>
 					<thead>
-						<HeaderRow podType={podType} />
+						<tr>
+							{cols}
+						</tr>
 					</thead>
 					<tbody>
-						<PodListTableRowManager pods={pods} setPods={setPods} podType={podType} />
+						{rows}
 					</tbody>
 				</StyledPodListTable>
-				<Meter pods={pods} podType={podType} />
 			</EditContextProvider>
-		</StyledPodPanel>
+		</StyledTableContainer>
 	);
 };
 
-export default PodListTable;
+export default Table;

@@ -3,7 +3,7 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../contexts/EditContext';
-import PodListTableActionBox from '../PodList/PodListTableActionBox';
+import TableActionBox from './TableActionBox';
 
 const StyledTableLabel = styled.div`
 	width: 100%;
@@ -76,7 +76,7 @@ const HeaderRow = ({ podType }) => {
 
 const PTAB = props => {
 	const { isEditing } = useEditContext();
-	return isEditing ? <PodListTableActionBox {...props} /> : null;
+	return isEditing ? <TableActionBox {...props} /> : null;
 };
 
 
