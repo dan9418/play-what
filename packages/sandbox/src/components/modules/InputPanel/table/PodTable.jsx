@@ -57,21 +57,15 @@ const HEADERS = {
 	note: [
 		'#',
 		'Name',
-		'POD',
 		'p',
-		'o',
 		'd',
-		'x',
 		'freq'
 	],
 	interval: [
 		'#',
 		'Name',
-		'POD',
 		'p',
-		'o',
 		'd',
-		'x',
 		'ratio'
 	]
 };

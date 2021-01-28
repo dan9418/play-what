@@ -37,6 +37,7 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 	const { isEditing } = editContext;
 
 	const pod = pods[i];
+	const [p, d] = pod;
 
 	const setPod = r => setPods([...pods.slice(0, i), r, ...pods.slice(i + 1)]);
 
@@ -51,7 +52,8 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 
 	const pitchClass = PodUtils.getPitchClass(pod);
 	const octave = PodUtils.getOctave(pod);
-	const x = PodUtils.getDegreeCycles(pod);
+	const degree = PodUtils.getDegree(pod);
+	const x = PodUtils.getX(pod);
 
 	return (
 		<StyledPodTableRow key={i}>
@@ -64,19 +66,10 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 			</td>
 			<PresetCell pod={pod} setPod={setPod} isEditing={isEditing} podType={podType} />
 			<td>
-				{JSON.stringify(pod)}
+				{`${p} (${octave}, ${pitchClass})`}
 			</td>
 			<td>
-				{pitchClass}
-			</td>
-			<td>
-				{octave}
-			</td>
-			<td>
-				{pod[1]}
-			</td>
-			<td>
-				{x}
+				{`${d} (${degree}, ${x})`}
 			</td>
 			<td>
 				?

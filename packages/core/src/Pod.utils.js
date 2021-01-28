@@ -81,7 +81,11 @@ class PodUtils {
 		return Math.floor(pod[0] / 12);
 	}
 
-	static getDegreeCycles(pod, options = {}) {
+	static getDegree(pod, options = {}) {
+		return CoreUtils.modulo(pod[1], MAX[1]);
+	}
+
+	static getX(pod, options = {}) {
 		return Math.floor(pod[1] / 7);
 	}
 }
