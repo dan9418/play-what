@@ -1,10 +1,6 @@
 import PodUtils from '@pw/core/src/Pod.utils';
-import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
-import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from '../../../contexts/EditContext';
 import Table from '../../ui/Table';
-import TableActionBox from '../../ui/TableActionBox';
 
 const POD_ACTIONS = [
 	{
