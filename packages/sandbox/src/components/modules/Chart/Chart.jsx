@@ -63,8 +63,7 @@ const StyledChart = styled.div`
     margin: auto;
 `;
 
-const Chart = () => {
-	const [chart, setChart] = useRecoilState(_chartState);
+const Chart = ({ chart }) => {
 	return (
 		<StyledChart>
 			<Panel name="Chart">

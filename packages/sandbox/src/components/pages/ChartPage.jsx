@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { TEST_SONG } from '../../state/songs';
 import Chart from '../modules/Chart/Chart';
 
 const StyledChartPage = styled.div`
-	width: 100%;
-    min-height: 100%;
-    margin: 24px auto;
-    display: flex;
-    flex-direction: column;
+
 `;
 
 const ChartPage = () => {
+	const [chart, setChart] = useState(TEST_SONG);
 	return (
 		<StyledChartPage>
-			<Chart/>
+			<Chart chart={chart} setChart={setChart} />
 		</StyledChartPage>
 	);
 };

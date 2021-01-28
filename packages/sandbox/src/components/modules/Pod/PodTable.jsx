@@ -53,18 +53,18 @@ const StyledPodListTable = styled.table`
 
 const HEADERS = {
 	note: [
-		'Index',
-		'Name',
-		'total',
-		'mod',
-		'rem'
+		'index',
+		'value',
+		'max',
+		'mod.',
+		'rem.'
 	],
 	interval: [
-		'Index',
-		'Name',
-		'total',
-		'mod',
-		'rem'
+		'index',
+		'value',
+		'max',
+		'mod.',
+		'rem.'
 	]
 };
 
@@ -100,15 +100,15 @@ const PodTable = ({ name, editable, pod, setPod, podType }) => {
 					<tbody>
 						<tr>
 							<td>p</td>
-							<td>{PodUtils.getName(pod, { podType })}</td>
 							<td>{pod[0]}</td>
+							<td>12</td>
 							<td>{PodUtils.getPitchClass(pod)}</td>
 							<td>{PodUtils.getOctave(pod)}</td>
 						</tr>
 						<tr>
 							<td>d</td>
-							<td>{PodUtils.getName(pod, { podType })}</td>
 							<td>{pod[1]}</td>
+							<td>7</td>
 							<td>{PodUtils.getDegree(pod)}</td>
 							<td>{PodUtils.getX(pod)}</td>
 						</tr>

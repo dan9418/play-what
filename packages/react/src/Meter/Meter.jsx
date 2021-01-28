@@ -6,6 +6,8 @@ import DEFAULT_METER_PROPS from './Meter.defaults';
 import styled from 'styled-components';
 import PodUtils from '@pw/core/src/Pod.utils';
 
+const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
+
 const StyledMeter = styled.div`
  	margin: 16px 0 8px;
 	.dot-list {
@@ -18,7 +20,6 @@ const StyledMeter = styled.div`
 			width: 100%;
 			border-radius: 4px;
 			padding: 2px;
-			background-color: white;
 			border: 1px solid #555;
 			margin: 0 4px;
 			font-size: 80%;
@@ -42,6 +43,8 @@ const DotList = ({ pods, podType }) => {
 		const pod = pods.find(pod => CoreUtils.modulo(pod[0], max) === i);
 		const color = colorFn(pod && pod[0]);
 		const style = ColorUtils.getStylesFromBgColor(color);
+		if (!style.backgroundColor) style.backgroundColor = BLACK_KEY_INDICES.includes(CoreUtils.modulo(i, 12)) ? 'white' : 'black'
+		//style.color = '#ccc';
 
 		const podName = pod ? PodUtils.getName(pod, { podType }) : null;
 
