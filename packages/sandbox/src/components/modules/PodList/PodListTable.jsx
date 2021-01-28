@@ -3,8 +3,8 @@ import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
 import useEditContext, { EditContextProvider } from '../../../contexts/EditContext';
-import PodTableActionBox from './PodTableActionBox';
-import PodTableRowManager from './PodTableRowManager';
+import PodListTableActionBox from './PodListTableActionBox';
+import PodListTableRowManager from './PodListTableRowManager';
 
 const StyledTableLabel = styled.div`
 	width: 100%;
@@ -31,7 +31,7 @@ const TableLabel = ({ name, editable }) => {
 	);
 };
 
-const StyledPodTable = styled.table`
+const StyledPodListTable = styled.table`
 	text-align: center;
     border-collapse: collapse;
     margin: auto;
@@ -78,7 +78,7 @@ const HeaderRow = ({ podType }) => {
 
 const PTAB = props => {
 	const { isEditing } = useEditContext();
-	return isEditing ? <PodTableActionBox {...props} /> : null;
+	return isEditing ? <PodListTableActionBox {...props} /> : null;
 };
 
 
@@ -89,24 +89,24 @@ const StyledPodPanel = styled.section`
 	background-color: #f5f5f5;
 `;
 
-const PodTable = ({ name, editable, pods, setPods, podType }) => {
+const PodListTable = ({ name, editable, pods, setPods, podType }) => {
 	return (
 		<StyledPodPanel>
 			<EditContextProvider>
 				<TableLabel name={name} editable={editable} />
 				<PTAB />
-				<StyledPodTable>
+				<StyledPodListTable>
 					<thead>
 						<HeaderRow podType={podType} />
 					</thead>
 					<tbody>
-						<PodTableRowManager pods={pods} setPods={setPods} podType={podType} />
+						<PodListTableRowManager pods={pods} setPods={setPods} podType={podType} />
 					</tbody>
-				</StyledPodTable>
+				</StyledPodListTable>
 				<Meter pods={pods} podType={podType} />
 			</EditContextProvider>
 		</StyledPodPanel>
 	);
 };
 
-export default PodTable;
+export default PodListTable;

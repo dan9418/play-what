@@ -1,7 +1,7 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import useEditContext from '../../../contexts/EditContext';
-import PodTableRow from './PodTableRow';
+import PodListTableRow from './PodListTableRow';
 
 const NewPodRow = ({ addPod }) => {
 	return (
@@ -17,7 +17,7 @@ const NewPodRow = ({ addPod }) => {
 	);
 };
 
-const PodTableRowManager = ({ pods, setPods, podType }) => {
+const PodListTableRowManager = ({ pods, setPods, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -26,7 +26,7 @@ const PodTableRowManager = ({ pods, setPods, podType }) => {
 
 	const rows = pods.map((v, i) => {
 		return (
-			<PodTableRow
+			<PodListTableRow
 				i={i}
 				key={i}
 				pods={pods}
@@ -43,4 +43,4 @@ const PodTableRowManager = ({ pods, setPods, podType }) => {
 
 };
 
-export default PodTableRowManager;
+export default PodListTableRowManager;

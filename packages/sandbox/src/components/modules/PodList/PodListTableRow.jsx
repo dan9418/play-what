@@ -25,13 +25,13 @@ export const PresetCell = ({ pod, setPod, isEditing, podType }) => {
 	)
 }
 
-export const StyledPodTableRow = styled.tr`
+export const StyledPodListTableRow = styled.tr`
 	&:hover {
 		background-color: #eee;
 	}
 `;
 
-const PodTableRow = ({ i, pods, setPods, podType }) => {
+const PodListTableRow = ({ i, pods, setPods, podType }) => {
 
 	const editContext = useEditContext();
 	const { isEditing } = editContext;
@@ -56,7 +56,7 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 	const x = PodUtils.getX(pod);
 
 	return (
-		<StyledPodTableRow key={i}>
+		<StyledPodListTableRow key={i}>
 			<td>
 				{
 					isEditing ?
@@ -79,8 +79,8 @@ const PodTableRow = ({ i, pods, setPods, podType }) => {
 					<ButtonInput className="delete" onClick={remove}>X</ButtonInput>
 				</td>
 			}
-		</StyledPodTableRow>
+		</StyledPodListTableRow>
 	);
 };
 
-export default PodTableRow;
+export default PodListTableRow;

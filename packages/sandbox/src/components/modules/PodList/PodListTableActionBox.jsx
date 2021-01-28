@@ -16,7 +16,7 @@ const INPUT_ACTIONS = [
 	}
 ];
 
-const StyledPodTableActionBox = styled.div`
+const StyledPodListTableActionBox = styled.div`
 	width: 100%;
 	background-color: #eee;
 	padding: 8px;
@@ -38,11 +38,11 @@ const StyledActionsContainer = styled.div`
 	justify-content: flex-end;
 `;
 
-const PodTableActionBox = ({ podType }) => {
+const PodListTableActionBox = ({ podType }) => {
 	const [action, setAction] = useState(null);
 
 	return (
-		<StyledPodTableActionBox>
+		<StyledPodListTableActionBox>
 			{action && <>
 				<div className="top">
 					<h4>{action.text}</h4>
@@ -58,8 +58,8 @@ const PodTableActionBox = ({ podType }) => {
 					)}
 				</StyledActionsContainer>
 			}
-		</StyledPodTableActionBox>
+		</StyledPodListTableActionBox>
 	);
 };
 
-export default PodTableActionBox;
+export default PodListTableActionBox;

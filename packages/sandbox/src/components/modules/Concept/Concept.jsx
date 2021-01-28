@@ -2,7 +2,7 @@ import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
 import styled from "styled-components";
 import Panel from "../../core/Panel";
-import PodTable from "../PodList/PodTable";
+import PodListTable from "../PodList/PodListTable";
 
 const StyledInputPanel = styled.div`
 	display: flex;
@@ -34,13 +34,13 @@ const Concept = ({ data, setData }) => {
 			<StyledInputPanel>
 
 				<div>
-					<PodTable name="Key Center" pods={[keyCenter]} setPods={setKeyCenter} podType="note" editable />
+					<PodListTable name="Key Center" pods={[keyCenter]} setPods={setKeyCenter} podType="note" editable />
 				</div>
 				<div>
-					<PodTable name="Intervals" pods={intervals} setPods={setIntervals} podType="interval" editable />
+					<PodListTable name="Intervals" pods={intervals} setPods={setIntervals} podType="interval" editable />
 				</div>
 				<div>
-					<PodTable name="Notes" pods={notes} podType="note" />
+					<PodListTable name="Notes" pods={notes} podType="note" />
 				</div>
 
 			</StyledInputPanel>
