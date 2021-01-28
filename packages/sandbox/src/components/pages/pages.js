@@ -5,12 +5,18 @@ import ConceptPage from './ConceptPage';
 import PodListPage from './PodListPage';
 import PodPage from './PodPage';
 import FretboardPage from './FretboardPage';
+import PodIndexPage from './PodIndexPage';
 
 export const PAGE = {
 	home: {
 		id: 'home',
 		name: 'Home',
 		component: <Home />
+	},
+	podIndex: {
+		id: 'podIndex',
+		name: 'Pod Index',
+		component: <PodIndexPage />
 	},
 	pod: {
 		id: 'pod',
