@@ -20,13 +20,12 @@ const StyledTableLabel = styled.div`
 	}
 `;
 
-const TableLabel = ({ name, editable, pods }) => {
+const TableLabel = ({ name, editable }) => {
 	return (
 		<StyledTableLabel>
 			<h3>
 				{name || 'Panel'}
 			</h3>
-			<Meter pods={pods} />
 			{editable && <EditButton />}
 		</StyledTableLabel>
 	);
@@ -85,9 +84,10 @@ const PTAB = props => {
 const PodTable = ({ name, editable, pods, setPods, podType }) => {
 	return (
 		<EditContextProvider>
-			<TableLabel name={name} editable={editable} pods={pods} />
-
+			<TableLabel name={name} editable={editable} />
 			<PTAB />
+
+
 			<StyledPodTable>
 				<thead>
 					<HeaderRow podType={podType} />
@@ -96,6 +96,7 @@ const PodTable = ({ name, editable, pods, setPods, podType }) => {
 					<PodTableRowManager pods={pods} setPods={setPods} podType={podType} />
 				</tbody>
 			</StyledPodTable>
+			<Meter pods={pods} podType={podType} />
 		</EditContextProvider>
 	);
 };
