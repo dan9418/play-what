@@ -6,9 +6,9 @@ import ButtonInput from './ButtonInput';
 const EditButton = props => {
 	const { isEditing, setIsEditing } = useEditContext();
 	return (
-		<ButtonInput {...props} onClick={() => setIsEditing(!isEditing)}>
+		<ButtonInput {...props} onClick={props.onClick || (() => setIsEditing(!isEditing))}>
 			<Icon iconId={isEditing ? 'confirm' : 'edit'} size={12} />
-		</ButtonInput>
+		</ButtonInput >
 	);
 }
 

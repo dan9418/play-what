@@ -2,11 +2,14 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import useEditContext from '../../../contexts/EditContext';
+import useRouteContext from '../../../contexts/RouteContext';
+import { PAGE } from '../../pages/pages';
 import Table from '../../ui/Table';
 
 const PodTable = ({ pod, setPod, podType }) => {
 
 	const { isEditing } = useEditContext();
+	const { push } = useRouteContext();
 
 	const cols = (
 		<>
@@ -27,7 +30,7 @@ const PodTable = ({ pod, setPod, podType }) => {
 				<td>12</td>
 				<td>{PodUtils.getPitchClass(pod)}</td>
 				<td>{PodUtils.getOctave(pod)}</td>
-				{isEditing && <td><EditButton /></td>}
+				{isEditing && <td><EditButton onClick={() => push(PAGE.podIndex)} /></td>}
 			</tr>
 			<tr>
 				<td>d</td>
