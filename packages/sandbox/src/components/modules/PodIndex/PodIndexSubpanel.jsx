@@ -1,5 +1,6 @@
 import React from 'react';
 import Subpanel from '../../ui/Subpanel';
+import PodIndexTable from './PodIndexTable';
 
 const POD_INDEX_ACTIONS = [
 	{
@@ -14,11 +15,11 @@ const POD_INDEX_ACTIONS = [
 	}
 ];
 
-const PodIndexSubpanel = ({ index, setIndex, podIndexType, setPodIndexType }) => {
+const PodIndexSubpanel = ({ podIndex, setPodIndex, podIndexType, setPodIndexType }) => {
 
 	return (
-		<Subpanel name={index} caption="Pod Index" actions={POD_INDEX_ACTIONS} editable>
-			here
+		<Subpanel name={podIndex} caption="Pod Index" actions={POD_INDEX_ACTIONS} editable>
+			<PodIndexTable podIndex={podIndex} setPodIndex={setPodIndex} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
 		</Subpanel>
 	);
 };

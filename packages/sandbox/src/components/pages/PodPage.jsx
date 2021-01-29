@@ -3,6 +3,8 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
+import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
+import PodIndexTable from '../modules/PodIndex/PodIndexTable';
 import Panel from '../ui/Panel';
 
 const StyledPodPage = styled.div`
@@ -26,7 +28,10 @@ const PodPage = () => {
 	return (
 		<StyledPodPage>
 			<Panel name="Untitled" caption="Concept" preview={preview}>
-				<PodSubpanel pod={pod} setPod={setPod} podType={podType} setPodType={setPodType} />
+				<h2>Pitch</h2>
+				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
+				<h2>Degree</h2>
+				<PodIndexSubpanel podIndex={pod[1]} podIndexType="degree" />
 			</Panel>
 		</StyledPodPage>
 	);
