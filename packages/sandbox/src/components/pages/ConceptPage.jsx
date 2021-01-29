@@ -1,7 +1,7 @@
 import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Concept from '../modules/Concept/Concept';
+import ConceptPanel from '../modules/Concept/ConceptPanel';
 
 const StyledConceptPage = styled.div`
 	width: 100%;
@@ -17,7 +17,7 @@ const ConceptPage = () => {
 
 	return (
 		<StyledConceptPage>
-			<Concept keyCenter={keyCenter} setIntervals={setIntervals} setKeyCenter={setKeyCenter} intervals={intervals} />
+			<ConceptPanel keyCenter={keyCenter} setIntervals={setIntervals} setKeyCenter={setKeyCenter} intervals={intervals} />
 		</StyledConceptPage>
 	);
 };

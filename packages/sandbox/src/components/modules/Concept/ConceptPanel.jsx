@@ -27,13 +27,13 @@ const StyledInputPanel = styled.div`
 
 `;
 
-const Concept = ({ keyCenter, setKeyCenter, intervals, setIntervals }) => {
+const ConceptPanel = ({ keyCenter, setKeyCenter, intervals, setIntervals }) => {
 
 	const notes = PodUtils.addPodList(keyCenter, intervals);
 	const preview = PodListUtils.getPreview(notes, { podType: 'note' });
 
 	return (
-		<Panel name="Concept" caption={"caption"} preview={preview}>
+		<Panel name="Untitled" caption="Concept" preview={preview}>
 			<StyledInputPanel>
 				<h2>Key Center</h2>
 				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} podType="note" />
@@ -46,4 +46,4 @@ const Concept = ({ keyCenter, setKeyCenter, intervals, setIntervals }) => {
 	);
 };
 
-export default Concept;
+export default ConceptPanel;
