@@ -1,11 +1,9 @@
 import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { inputState } from '../../state/state';
 import Concept from '../modules/Concept/Concept';
 
-const StyledInputPage = styled.div`
+const StyledConceptPage = styled.div`
 	width: 100%;
     min-height: 100%;
     margin: 24px auto;
@@ -18,9 +16,9 @@ const ConceptPage = () => {
 	const [intervals, setIntervals] = useState(SCALE.Major.value)
 
 	return (
-		<StyledInputPage>
+		<StyledConceptPage>
 			<Concept keyCenter={keyCenter} setIntervals={setIntervals} setKeyCenter={setKeyCenter} intervals={intervals} />
-		</StyledInputPage>
+		</StyledConceptPage>
 	);
 };
 
