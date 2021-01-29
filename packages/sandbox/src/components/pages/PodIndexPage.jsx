@@ -2,21 +2,30 @@ import { NOTE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PodTable from '../modules/Pod/PodTable';
+import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
+import Panel from '../ui/Panel';
 
 const StyledPodIndexPage = styled.div`
-	> * {
-		max-width: 512px;
-		margin: auto;
+	.panel-body {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	h2 {
+		margin: 32px 0 16px;
 	}
 `;
 
 const PodIndexPage = () => {
-	const [pod, setPod] = useState(NOTE.C.value);
-	const [podType, setPodType] = useState('note');
+	const [podIndex, setPodIndex] = useState(0);
+	const [podIndexType, setPodIndexType] = useState('pitch');
 
 	return (
 		<StyledPodIndexPage>
-			<PodTable name="Pod" pod={pod} setPod={setPod} podType={podType} editable />
+			<Panel name="Untitled" caption="Index" preview={podIndexType}>
+				<PodIndexSubpanel podIndex={podIndex} setPodIndex={setPodIndex} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
+			</Panel>
 		</StyledPodIndexPage>
 	);
 };

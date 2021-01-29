@@ -8,7 +8,6 @@ import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
 
 const StyledConceptPage = styled.div`
-
 	.panel-body {
 		display: flex;
 		align-items: center;
@@ -17,10 +16,6 @@ const StyledConceptPage = styled.div`
 
 	h2 {
 		margin: 32px 0 16px;
-	}
-
-	@media(min-width: 1024px) {
-		
 	}
 `;
 
