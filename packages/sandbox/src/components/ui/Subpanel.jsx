@@ -6,9 +6,11 @@ import ActionBox from './ActionBox';
 
 const StyledSubpanelHeader = styled.div`
 	width: 100%;
-	padding: 8px 0;
+	padding: 8px 16px;
 	display: flex;
 	align-items: center;
+	border-bottom: 1px solid #ccc;
+
 	& h3 {
 		text-transform: capitalize;
 	}
@@ -31,9 +33,11 @@ const SubpanelHeader = ({ name, editable }) => {
 
 const StyledSubpanel = styled.section`
 	border: 1px solid #ccc;
-	padding: 8px 16px;
 	border-radius: 2px;
 	background-color: #f5f5f5;
+	& > .body {
+		padding: 8px 16px;
+	}
 `;
 
 const Subpanel = ({ name, editable, actions, children }) => {
@@ -41,8 +45,10 @@ const Subpanel = ({ name, editable, actions, children }) => {
 		<StyledSubpanel>
 			<EditContextProvider>
 				<SubpanelHeader name={name} editable={editable} />
-				<ActionBox actions={actions} />
-				{children}
+				<div className="body">
+					<ActionBox actions={actions} />
+					{children}
+				</div>
 			</EditContextProvider>
 		</StyledSubpanel>
 	);

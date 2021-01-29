@@ -17,7 +17,6 @@ const StyledTable = styled.table`
 	}
 
 	& thead tr {
-		border-top: 1px solid #ccc;
 		border-bottom: 1px solid #ccc;
 	}
 `;

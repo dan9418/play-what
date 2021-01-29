@@ -15,8 +15,12 @@ const StyledInputPanel = styled.div`
 	> * {
 		width: 100%;
 		max-width: 512px;
-		margin: 16px 0;
 	}
+
+	> h2 {
+		margin: 32px 0 16px;
+	}
+
 	@media(min-width: 1024px) {
 		
 	}
@@ -31,8 +35,11 @@ const Concept = ({ keyCenter, setKeyCenter, intervals, setIntervals }) => {
 	return (
 		<Panel name="Concept" caption={"caption"} preview={preview}>
 			<StyledInputPanel>
+				<h2>Key Center</h2>
 				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} />
+				<h2>Intervals</h2>
 				<PodListSubpanel pods={intervals} setPods={setIntervals} />
+				<h2>Notes</h2>
 				<PodListSubpanel pods={notes} />
 			</StyledInputPanel>
 		</Panel>
