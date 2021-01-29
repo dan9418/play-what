@@ -1,32 +1,36 @@
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
-import React from 'react';
+import ExpandButton from '@pw/react/src/ui/ButtonInput/ExpandButton';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { EditContextProvider } from '../../contexts/EditContext';
 import ActionBox from './ActionBox';
 
-const StyledSubpanelHeader = styled.div`
+const StyledSubpanelHeader = styled.h3`
 	width: 100%;
 	padding: 8px 16px;
 	display: flex;
 	align-items: center;
-	border-bottom: 1px solid #ccc;
+	white-space: nowrap;
 
-	& h3 {
-		text-transform: capitalize;
+	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc;'}
+	
+
+	& >:nth-child(2) {
+		width: 100%	
 	}
 
 	& button {
-		margin-left: auto;
+		margin: 0 8px;
 	}
 `;
 
-const SubpanelHeader = ({ name, editable }) => {
+const SubpanelHeader = ({ name, isOpen, setIsOpen, editable }) => {
 	return (
-		<StyledSubpanelHeader>
-			<h3>
-				{name || 'Panel'}
-			</h3>
-			{editable && <EditButton />}
+		<StyledSubpanelHeader $showBorder={isOpen}>
+			<span>{name}</span>
+			<div />
+			{isOpen && editable && <EditButton />}
+			<ExpandButton isOpen={isOpen} setIsOpen={setIsOpen} />
 		</StyledSubpanelHeader>
 	);
 };
@@ -41,14 +45,18 @@ const StyledSubpanel = styled.section`
 `;
 
 const Subpanel = ({ name, editable, actions, children }) => {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<StyledSubpanel>
 			<EditContextProvider>
-				<SubpanelHeader name={name} editable={editable} />
-				<div className="body">
-					<ActionBox actions={actions} />
-					{children}
-				</div>
+				<SubpanelHeader name={name} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
+				{isOpen && (
+					<div className="body">
+						<ActionBox actions={actions} />
+						{children}
+					</div>
+				)}
 			</EditContextProvider>
 		</StyledSubpanel>
 	);
