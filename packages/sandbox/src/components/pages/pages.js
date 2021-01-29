@@ -1,6 +1,6 @@
 import React from 'react';
 import ChartPage from './ChartPage';
-import Home from './Home';
+import About from './About';
 import ConceptPage from './ConceptPage';
 import PodListPage from './PodListPage';
 import PodPage from './PodPage';
@@ -8,10 +8,10 @@ import FretboardPage from './FretboardPage';
 import PodIndexPage from './PodIndexPage';
 
 export const PAGE = {
-	home: {
-		id: 'home',
-		name: 'Home',
-		component: <Home />
+	about: {
+		id: 'about',
+		name: 'About',
+		component: <About />
 	},
 	podIndex: {
 		id: 'podIndex',
