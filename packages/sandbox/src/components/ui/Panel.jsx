@@ -83,7 +83,7 @@ const StyledPanel = styled.div`
     //background-color: #f5f5f5;
 	//box-shadow: -2px 3px 15px 5px rgba(0, 0, 0, 0.1);
 	
-	& > .body {
+	& > .panel-body {
 		padding: 0 0 24px 0;
 	}
 `;
@@ -95,7 +95,7 @@ const Panel = ({ name, caption, preview, leftActions, rightAction,  children }) 
 			<EditContextProvider>
 				<PanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
 				{isOpen && (
-					<div className="body">
+					<div className="panel-body">
 						{children}
 					</div>
 				)}

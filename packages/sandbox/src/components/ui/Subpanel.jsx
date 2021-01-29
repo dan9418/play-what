@@ -44,10 +44,12 @@ const SubpanelHeader = ({ name, caption, isOpen, setIsOpen, editable }) => {
 };
 
 const StyledSubpanel = styled.section`
+	width: 100%;
+	max-width: 512px;
 	border: 1px solid #ccc;
 	border-radius: 2px;
 	background-color: #f5f5f5;
-	& > .body {
+	& > .subpanel-body {
 		padding: 8px 16px;
 	}
 `;
@@ -60,7 +62,7 @@ const Subpanel = ({ name, caption, editable, actions, children }) => {
 			<EditContextProvider>
 				<SubpanelHeader name={name} caption={caption} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
 				{isOpen && (
-					<div className="body">
+					<div className="subpanel-body">
 						<ActionBox actions={actions} />
 						{children}
 					</div>
