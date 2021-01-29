@@ -2,8 +2,8 @@ import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../contexts/EditContext";
-import Icon from "../ui/Icon";
-import EditBox from './EditBox';
+import Icon from "./Icon";
+import EditBox from '../core/EditBox';
 
 const StyledPanelHeader = styled.div`
 	width: 100%;

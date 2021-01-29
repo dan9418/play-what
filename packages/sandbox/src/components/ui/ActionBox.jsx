@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
 
-const StyledTableActionBox = styled.div`
+const StyledActionBox = styled.div`
 	width: 100%;
 	background-color: #eee;
 	padding: 8px;
@@ -26,14 +26,14 @@ const StyledActionsContainer = styled.div`
 	justify-content: flex-end;
 `;
 
-const TableActionBox = ({ podType, actions = [] }) => {
+const ActionBox = ({ podType, actions = [] }) => {
 	const [action, setAction] = useState(null);
 	const { isEditing } = useEditContext();
 
 	if (!isEditing) return null;
 
 	return (
-		<StyledTableActionBox>
+		<StyledActionBox>
 			{action && <>
 				<div className="top">
 					<h4>{action.text}</h4>
@@ -49,8 +49,8 @@ const TableActionBox = ({ podType, actions = [] }) => {
 					)}
 				</StyledActionsContainer>
 			}
-		</StyledTableActionBox>
+		</StyledActionBox>
 	);
 };
 
-export default TableActionBox;
+export default ActionBox;

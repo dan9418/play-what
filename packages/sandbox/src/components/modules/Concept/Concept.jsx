@@ -2,7 +2,7 @@ import PodUtils from "@pw/core/src/Pod.utils";
 import PodListUtils from "@pw/core/src/PodList.utils";
 import React from "react";
 import styled from "styled-components";
-import Panel from "../../core/Panel";
+import Panel from "../../ui/Panel";
 import PodListTable from "../PodList/PodListTable";
 
 const StyledInputPanel = styled.div`

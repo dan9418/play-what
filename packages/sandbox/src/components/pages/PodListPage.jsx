@@ -1,7 +1,7 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PodListTable from '../modules/PodList/PodListTable';
+import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 
 const StyledPodListPage = styled.div`
 	> * {
@@ -16,7 +16,7 @@ const PodListPage = () => {
 
 	return (
 		<StyledPodListPage>
-			<PodListTable name="Pod List" pods={pods} setPods={setPods} podType={podType} editable />
+			<PodListSubpanel pods={pods} setPods={setPods} podType={podType} setPodType={setPodType} />
 		</StyledPodListPage>
 	);
 };

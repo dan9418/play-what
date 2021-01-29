@@ -33,8 +33,8 @@ export const StyledPodListTableRow = styled.tr`
 
 const PodListTableRow = ({ i, pods, setPods, podType }) => {
 
-	const editContext = useEditContext();
-	const { isEditing } = editContext;
+
+	const { isEditing } = useEditContext();
 
 	const pod = pods[i];
 	const [p, d] = pod;

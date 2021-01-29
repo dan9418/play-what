@@ -1,9 +1,9 @@
 import { NOTE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PodTable from '../modules/Pod/PodTable';
+import PodSubpanel from '../modules/Pod/PodSubpanel';
 
-const StyledListPage = styled.div`
+const StyledPodPage = styled.div`
 	> * {
 		max-width: 512px;
 		margin: auto;
@@ -15,9 +15,9 @@ const PodPage = () => {
 	const [podType, setPodType] = useState('note');
 
 	return (
-		<StyledListPage>
-			<PodTable name="Pod" pod={pod} setPod={setPod} podType={podType} editable />
-		</StyledListPage>
+		<StyledPodPage>
+			<PodSubpanel pod={pod} setPod={setPod} podType={podType} setPodType={setPodType} />
+		</StyledPodPage>
 	);
 };
 

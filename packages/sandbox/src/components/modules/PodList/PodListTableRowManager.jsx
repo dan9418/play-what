@@ -19,8 +19,7 @@ const NewPodRow = ({ addPod }) => {
 
 const PodListTableRowManager = ({ pods, setPods, podType }) => {
 
-	const editContext = useEditContext();
-	const { isEditing } = editContext;
+	const { isEditing } = useEditContext();
 
 	const addPod = () => setPods([...pods, [0, 0]]);
 

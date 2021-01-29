@@ -1,35 +1,7 @@
-import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import styled from 'styled-components';
-import useEditContext, { EditContextProvider } from '../../contexts/EditContext';
-import TableActionBox from './TableActionBox';
 
-const StyledTableLabel = styled.div`
-	width: 100%;
-	padding: 8px 0;
-	display: flex;
-	align-items: center;
-	& h3 {
-		text-transform: capitalize;
-	}
-
-	& button {
-		margin-left: auto;
-	}
-`;
-
-const TableLabel = ({ name, editable }) => {
-	return (
-		<StyledTableLabel>
-			<h3>
-				{name || 'Panel'}
-			</h3>
-			{editable && <EditButton />}
-		</StyledTableLabel>
-	);
-};
-
-const StyledPodListTable = styled.table`
+const StyledTable = styled.table`
 	text-align: center;
     border-collapse: collapse;
     margin: auto;
@@ -50,31 +22,18 @@ const StyledPodListTable = styled.table`
 	}
 `;
 
-const StyledTableContainer = styled.section`
-	border: 1px solid #ccc;
-	padding: 8px 16px;
-	border-radius: 2px;
-	background-color: #f5f5f5;
-`;
-
-const Table = ({ name, editable, rows, cols, actions }) => {
+const Table = ({ rows, cols }) => {
 	return (
-		<StyledTableContainer>
-			<EditContextProvider>
-				<TableLabel name={name} editable={editable} />
-				<TableActionBox actions={actions} />
-				<StyledPodListTable>
-					<thead>
-						<tr>
-							{cols}
-						</tr>
-					</thead>
-					<tbody>
-						{rows}
-					</tbody>
-				</StyledPodListTable>
-			</EditContextProvider>
-		</StyledTableContainer>
+		<StyledTable>
+			<thead>
+				<tr>
+					{cols}
+				</tr>
+			</thead>
+			<tbody>
+				{rows}
+			</tbody>
+		</StyledTable>
 	);
 };
 
