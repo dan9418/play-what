@@ -12,8 +12,14 @@ const StyledBreadcrumbList = styled.ul`
 	font-size: 80%;
 	font-weight: bold;
 
-	li{
-		margin-right: 4px;	
+	li {
+		margin-right: 4px;
+		cursor: pointer;
+		
+		&.active {
+			color: ${({ theme }) => theme.accent};
+		}
+
 		:not(:last-child){
 			::after {
 				content: '    >'
@@ -23,13 +29,15 @@ const StyledBreadcrumbList = styled.ul`
 `;
 
 const BreadcrumbList = ({ podType, actions = [] }) => {
-	const { breadcrumbs } = useRouteContext();
+	const { breadcrumbs, currentPage, popAt } = useRouteContext();
 
 	return (
 		<StyledBreadcrumbList>
 			{breadcrumbs.map((b, i) => {
+				const className = b.id === currentPage.id ? 'active' : '';
+				const onClick = () => popAt(i);
 				return (
-					<li key={b.id}>{b.name}</li>
+					<li key={b.id} className={className} onClick={onClick}>{b.name}</li>
 				);
 			})}
 		</StyledBreadcrumbList>
