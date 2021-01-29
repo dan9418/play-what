@@ -8,10 +8,13 @@ import useRouteContext, { RouteContextConsumer, RouteContextProvider } from '../
 import THEME from '../styles/theme';
 import ErrorBoundary from './core/ErrorBoundary';
 import Nav from './core/Nav';
+import BreadcrumbList from './ui/BreadcrumbList';
 
 const StyledMain = styled.main`
 	padding: 64px 16px 16px 16px;
+	margin: auto;
 	width: 100%;
+	max-width: 1024px;
 	min-height: 100%;
 `;
 
@@ -23,6 +26,7 @@ const App = () => {
 					<RouteContextProvider>
 						<Nav />
 						<StyledMain>
+							<BreadcrumbList />
 							<RouteContextConsumer>
 								{routeContext => routeContext.currentPage.component}
 							</RouteContextConsumer>
