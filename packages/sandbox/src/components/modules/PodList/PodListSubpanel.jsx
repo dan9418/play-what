@@ -1,3 +1,4 @@
+import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
 import Subpanel from '../../ui/Subpanel';
 import PodListTable from './PodListTable';
@@ -17,9 +18,12 @@ const POD_LIST_ACTIONS = [
 
 const PodListSubpanel = ({ pods, setPods, podType, setPodType }) => {
 
+	const name = PodListUtils.getPreview(pods, { podType });
+
 	return (
 		<Subpanel
-			name="Pod List"
+			name={name}
+			caption="Pod List"
 			actions={POD_LIST_ACTIONS}
 			editable
 		>

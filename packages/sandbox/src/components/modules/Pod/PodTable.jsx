@@ -1,8 +1,12 @@
 import PodUtils from '@pw/core/src/Pod.utils';
+import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
+import useEditContext from '../../../contexts/EditContext';
 import Table from '../../ui/Table';
 
 const PodTable = ({ pod, setPod, podType }) => {
+
+	const { isEditing } = useEditContext();
 
 	const cols = (
 		<>
@@ -11,6 +15,7 @@ const PodTable = ({ pod, setPod, podType }) => {
 			<th>max</th>
 			<th>mod</th>
 			<th>rem</th>
+			{isEditing && <th>edit</th>}
 		</>
 	);
 
@@ -22,6 +27,7 @@ const PodTable = ({ pod, setPod, podType }) => {
 				<td>12</td>
 				<td>{PodUtils.getPitchClass(pod)}</td>
 				<td>{PodUtils.getOctave(pod)}</td>
+				{isEditing && <td><EditButton /></td>}
 			</tr>
 			<tr>
 				<td>d</td>
@@ -29,6 +35,7 @@ const PodTable = ({ pod, setPod, podType }) => {
 				<td>7</td>
 				<td>{PodUtils.getDegree(pod)}</td>
 				<td>{PodUtils.getX(pod)}</td>
+				{isEditing && <td><EditButton /></td>}
 			</tr>
 		</>
 	);

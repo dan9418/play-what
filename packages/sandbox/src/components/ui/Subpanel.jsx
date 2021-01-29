@@ -16,6 +16,13 @@ const StyledSubpanelHeader = styled.h3`
 	
 
 	& >:nth-child(2) {
+		font-weight: normal;
+		color: #555;
+		font-size: 80%;
+		margin-left: 8px;
+	}
+
+	& >:nth-child(3) {
 		width: 100%	
 	}
 
@@ -24,10 +31,11 @@ const StyledSubpanelHeader = styled.h3`
 	}
 `;
 
-const SubpanelHeader = ({ name, isOpen, setIsOpen, editable }) => {
+const SubpanelHeader = ({ name, caption, isOpen, setIsOpen, editable }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
 			<span>{name}</span>
+			<span>{caption}</span>
 			<div />
 			{isOpen && editable && <EditButton />}
 			<ExpandButton isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -44,13 +52,13 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-const Subpanel = ({ name, editable, actions, children }) => {
+const Subpanel = ({ name, caption, editable, actions, children }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<StyledSubpanel>
 			<EditContextProvider>
-				<SubpanelHeader name={name} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
+				<SubpanelHeader name={name} caption={caption} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
 				{isOpen && (
 					<div className="body">
 						<ActionBox actions={actions} />

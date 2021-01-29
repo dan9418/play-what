@@ -1,3 +1,4 @@
+import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
 import Subpanel from '../../ui/Subpanel';
 import PodTable from './PodTable';
@@ -17,8 +18,10 @@ const POD_ACTIONS = [
 
 const PodSubpanel = ({ pod, setPod, podType, setPodType }) => {
 
+	const name = PodUtils.getName(pod, { podType });
+
 	return (
-		<Subpanel name="Pod" actions={POD_ACTIONS} editable>
+		<Subpanel name={name} caption="Pod" actions={POD_ACTIONS} editable>
 			<PodTable pod={pod} setPod={setPod} podType={podType} />
 		</Subpanel>
 	);

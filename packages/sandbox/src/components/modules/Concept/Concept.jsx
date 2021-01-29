@@ -36,11 +36,11 @@ const Concept = ({ keyCenter, setKeyCenter, intervals, setIntervals }) => {
 		<Panel name="Concept" caption={"caption"} preview={preview}>
 			<StyledInputPanel>
 				<h2>Key Center</h2>
-				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} />
+				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} podType="note" />
 				<h2>Intervals</h2>
-				<PodListSubpanel pods={intervals} setPods={setIntervals} />
+				<PodListSubpanel pods={intervals} setPods={setIntervals} podType="interval" />
 				<h2>Notes</h2>
-				<PodListSubpanel pods={notes} />
+				<PodListSubpanel pods={notes} podType="note" />
 			</StyledInputPanel>
 		</Panel>
 	);
