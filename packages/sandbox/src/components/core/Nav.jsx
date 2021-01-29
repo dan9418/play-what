@@ -1,13 +1,20 @@
 
-import DropdownInput from '@pw/react/src/ui/DropdownInput/DropdownInput';
 import React from 'react';
 import 'react-hot-loader';
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import useRouteContext from '../../contexts/RouteContext';
-import { PAGE_VALUES } from '../pages/pages';
-import Icon from '../ui/Icon';
 
 const LINKS = [
+	{
+		id: 'about',
+		name: 'About',
+		href: 'https://github.com/dan9418/play-what/'
+	},
+	{
+		id: 'docs',
+		name: 'Docs',
+		href: 'https://github.com/dan9418/play-what/'
+	},
 	{
 		id: 'source',
 		name: 'Source',
@@ -29,92 +36,61 @@ const StyledNav = styled.nav`
     display: flex;
     align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
-    padding: 0 16px;
+	padding: 0 16px;
 
-	& .link {
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		color: white;
-		text-decoration: none;
-		padding: 0 8px;
-		background-color: transparent;
-		outline: none;
-		border: none;
-		font-size: 80%;
-		font-weight: normal;
-		margin-left: 8px;
-
-		&:hover {
-			color: ${({ theme }) => theme.active};
-		}
-
-		& svg {
-			margin-right: 8px;
-			width: 24px;
-			height: 24px;
-		}
-	}
-
-	& .logo {
+	.logo {
 		font-size: 100%;
 		text-transform: uppercase;
 		letter-spacing: 8px;
 		font-weight: 300;
 		cursor: pointer;
 		margin-right: 16px;
+		white-space: nowrap;
 	}
-
-	& .right-nav {
-		position: absolute;
-		right: 0;
+	
+	.link-list {
 		display: flex;
-	}
+		align-items: center;
+		justify-content: flex-end;
+		width: 100%;
 
-	& .tab {
-		padding: 0 16px;
-		cursor: pointer;
-		&:hover {
-			color: ${({ theme }) => theme.active};
-		}
-		&.active {
-			border-bottom: 4px solid ${({ theme }) => theme.active};
+		list-style-type: none;
+
+		a {
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			color: white;
+			text-decoration: none;
+			padding: 0 8px;
+			background-color: transparent;
+			outline: none;
+			border: none;
+			font-size: 80%;
+			font-weight: normal;
+			margin-left: 8px;
+
+			&:hover {
+				color: ${({ theme }) => theme.active};
+			}
 		}
 	}
 `;
 
 const Nav = () => {
 	const routeContext = useRouteContext();
-	const theme = useTheme();
-	const { breadcrumbs, popAt, currentPage, replace } = routeContext;
+	const { popAt, currentPage, replace } = routeContext;
 
 	return (
 		<StyledNav>
 			<div className="logo" onClick={() => popAt(0)}>Play What?</div>
-			{/*breadcrumbs.map((page, i) => {
-				if (i === 0) return null;
-				return (
-					<div
-						className={`breadcrumb ${page.id === currentPage.id ? 'active' : ''}`}
-						key={page.id}
-						onClick={() => popAt(i)}
-					>{page.name}</div>
-				);
-			})*/}
-			<DropdownInput options={PAGE_VALUES} value={currentPage} setValue={replace} />
-			<div className="spacer" />
-			<div className="right-nav">
+			<ul className="link-list">
 				{LINKS.map((l, i) => (
-					<a
-						key={i}
-						className="link"
-						href={l.href}
-					>
-						<Icon iconId="github" color="white" hoverColor={theme.active} />
-						{l.name}
-					</a>
+					<li key={i}>
+						<a href={l.href}>{l.name}</a>
+					</li>
 				))}
-			</div>
+			</ul>
 		</StyledNav >
 	);
 };
