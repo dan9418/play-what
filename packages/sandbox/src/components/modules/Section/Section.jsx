@@ -29,20 +29,23 @@ const StyledBlock = styled.div`
 
 const StyledSection = styled.div`
     display: grid;
-    width: 100%;
+	width: 100%;
+	grid-template-columns: 1fr;
+	
+	@media(min-width: 512px) {
+		grid-template-columns: ${({ $gridTemplateColumns }) => $gridTemplateColumns};
+	}
 `;
 
 const Section = ({ section, sIndex }) => {
 	const { id, name, blocks } = section;
 	const widths = blocks.map(c => c.t || 1);
 	const [position, setPosition] = useRecoilState(positionState);
-	const { push } = useRouteContext();
 
-	const style = {
-		gridTemplateColumns: widths.map(n => n + 'fr').join(' ')
-	};
+	const gridTemplateColumns = widths.map(n => n + 'fr').join(' ');
+
 	return (
-		<StyledSection style={style}>
+		<StyledSection $gridTemplateColumns={gridTemplateColumns}>
 			{blocks.map((c, i) => {
 				const isActive = sIndex === position[0] && i === position[1]
 				const { keyCenter, intervals } = c;

@@ -8,6 +8,7 @@ const StyledZoomButton = styled.button`
 	outline: none;
 	border: none;
 	cursor: pointer;
+	background-color: transparent;
 `;
 
 const ZoomButton = ({ level, name, index, size, ...props }) => {
