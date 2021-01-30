@@ -4,9 +4,10 @@ import 'react-hot-loader';
 import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import styled, { ThemeProvider } from 'styled-components';
-import useRouteContext, { RouteContextConsumer, RouteContextProvider } from '../contexts/RouteContext';
+import { RouteContextProvider } from '../contexts/RouteContext';
 import THEME from '../styles/theme';
 import ErrorBoundary from './core/ErrorBoundary';
+import Level from './core/Level';
 import Nav from './core/Nav';
 import BreadcrumbList from './ui/BreadcrumbList';
 
@@ -27,9 +28,7 @@ const App = () => {
 						<Nav />
 						<StyledMain>
 							<BreadcrumbList />
-							<RouteContextConsumer>
-								{routeContext => routeContext.currentPage.component}
-							</RouteContextConsumer>
+							<Level />
 						</StyledMain>
 					</RouteContextProvider>
 				</ErrorBoundary>

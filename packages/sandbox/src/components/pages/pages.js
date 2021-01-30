@@ -11,37 +11,37 @@ export const PAGE = {
 	about: {
 		id: 'about',
 		name: 'About',
-		component: <About />
+		component: About
 	},
 	podIndex: {
 		id: 'podIndex',
 		name: 'Pod Index',
-		component: <PodIndexPage />
+		component: PodIndexPage
 	},
 	pod: {
 		id: 'pod',
 		name: 'Pod',
-		component: <PodPage />
+		component: PodPage
 	},
 	podList: {
 		id: 'podList',
 		name: 'Pod List',
-		component: <PodListPage />
+		component: PodListPage
 	},
 	concept: {
 		id: 'concept',
 		name: 'Concept',
-		component: <ConceptPage />
+		component: ConceptPage
 	},
 	fretboard: {
 		id: 'fretboard',
 		name: 'Fretboard',
-		component: <FretboardPage />
+		component: FretboardPage
 	},
 	chart: {
 		id: 'chart',
 		name: 'Chart',
-		component: <ChartPage />
+		component: ChartPage
 	}
 };
 
