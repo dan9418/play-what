@@ -1,6 +1,7 @@
 import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
+import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
@@ -15,7 +16,12 @@ const StyledBlockPage = styled.div`
 	}
 
 	h2 {
+		width: 100%;
+		max-width: 512px;
 		margin: 32px 0 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 	}
 `;
 
@@ -29,11 +35,11 @@ const BlockPage = () => {
 	return (
 		<StyledBlockPage>
 			<Panel name="Untitled" caption="Block" preview={preview}>
-				<h2>Key Center</h2>
+				<h2>Key Center<ZoomButton name="Key Center" index={0} level="pod" /></h2>
 				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} podType="note" />
-				<h2>Intervals</h2>
+				<h2>Intervals<ZoomButton name="Intervals" index={0} level="podList" /></h2>
 				<PodListSubpanel pods={intervals} setPods={setIntervals} podType="interval" />
-				<h2>Notes</h2>
+				<h2>Notes<ZoomButton name="Notes" index={0} level="podList" /></h2>
 				<PodListSubpanel pods={notes} podType="note" />
 			</Panel>
 		</StyledBlockPage>

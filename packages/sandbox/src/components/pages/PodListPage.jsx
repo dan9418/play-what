@@ -10,10 +10,11 @@ const StyledPodListPage = styled.div`
 		display: flex;
 		align-items: center;
 		flex-direction: column;
+		margin: 32px 0 16px;
 	}
 
 	h2 {
-		margin: 32px 0 16px;
+		
 	}
 `;
 
