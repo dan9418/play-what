@@ -40,7 +40,7 @@ const Chart = () => {
 	const { data: chart } = useLevelContext();
 	return (
 		<StyledChart>
-			<Panel name="Chart">
+			<Panel name={chart.name}>
 				{chart.sections.map((s, i) => (
 					<SectionWrapper key={s.id} section={s} />
 				))}

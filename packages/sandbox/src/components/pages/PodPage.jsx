@@ -3,6 +3,7 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
 import PodIndexTable from '../modules/PodIndex/PodIndexTable';
@@ -26,14 +27,14 @@ const StyledPodPage = styled.div`
 `;
 
 const PodPage = () => {
-	const [pod, setPod] = useState(NOTE.C.value);
+	const { data: pod, currentLevel } = useLevelContext();
 	const [podType, setPodType] = useState('note');
 
 	const preview = PodUtils.getName(pod, { podType });
 
 	return (
 		<StyledPodPage>
-			<Panel name="Untitled" caption="Pod" preview={preview}>
+			<Panel name={currentLevel.id} caption="Pod" preview={preview}>
 				<h2>Pitch<ZoomButton name="Pitch" id={0} level="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
 				<h2>Degree<ZoomButton name="Degree" id={1} level="podIndex" /></h2>

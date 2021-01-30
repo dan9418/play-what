@@ -1,7 +1,6 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { TEST_SONG } from '../../state/songs';
 import { useLevelContext } from '../core/Level';
 import BlockSubpanel from '../modules/Block/BlockSubpanel';
 import Panel from '../ui/Panel';
@@ -35,13 +34,13 @@ const SectionPage = () => {
 	const { data: section } = useLevelContext();
 	return (
 		<StyledSectionPage>
-			<Panel name="Section">
+			<Panel name={section.name}>
 				{
 					section.blocks.map((block, i) => {
 						return (
 							<div key={i} className="block-wrapper">
 								<BlockSubpanel block={block} />
-								<ZoomButton name={i} level="block" id={i} />
+								<ZoomButton name={`Block ${i}`} level="block" id={i} />
 							</div>
 						);
 					})

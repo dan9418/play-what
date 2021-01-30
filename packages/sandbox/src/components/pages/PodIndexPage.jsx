@@ -1,6 +1,7 @@
 import { NOTE } from '@pw/core/src/Pod.presets';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useLevelContext } from '../core/Level';
 import PodTable from '../modules/Pod/PodTable';
 import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
 import Panel from '../ui/Panel';
@@ -19,13 +20,13 @@ const StyledPodIndexPage = styled.div`
 `;
 
 const PodIndexPage = () => {
-	const [podIndex, setPodIndex] = useState(0);
+	const { data: podIndex } = useLevelContext();
 	const [podIndexType, setPodIndexType] = useState('pitch');
 
 	return (
 		<StyledPodIndexPage>
 			<Panel name="Untitled" caption="Index" preview={podIndexType}>
-				<PodIndexSubpanel podIndex={podIndex} setPodIndex={setPodIndex} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
+				<PodIndexSubpanel podIndex={podIndex} setPodIndex={null} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
 			</Panel>
 		</StyledPodIndexPage>
 	);

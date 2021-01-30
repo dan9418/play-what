@@ -1,8 +1,7 @@
-import { NOTE, SCALE } from '@pw/core/src/Pod.presets';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
@@ -27,7 +26,7 @@ const StyledBlockPage = styled.div`
 `;
 
 const BlockPage = () => {
-	const { data: block } = useLevelContext();
+	const { data: block, currentLevel } = useLevelContext();
 
 	const { keyCenter, intervals } = block;
 
@@ -36,7 +35,7 @@ const BlockPage = () => {
 
 	return (
 		<StyledBlockPage>
-			<Panel name="Untitled" caption="Block" preview={preview}>
+			<Panel name={currentLevel.name} caption="Block" preview={preview}>
 				<h2>Key Center<ZoomButton name="Key Center" id="keyCenter" level="pod" /></h2>
 				<PodSubpanel pod={keyCenter} setPod={null} podType="note" />
 				<h2>Intervals<ZoomButton name="Intervals" id="intervals" level="podList" /></h2>

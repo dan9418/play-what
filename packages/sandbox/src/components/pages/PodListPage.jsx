@@ -3,6 +3,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
@@ -33,16 +34,17 @@ const StyledPodListPage = styled.div`
 `;
 
 const PodListPage = () => {
-	const [pods, setPods] = useState(SCALE.Major.value);
+	const { data: podList, currentLevel } = useLevelContext();
+
 	const [podType, setPodType] = useState('note');
 
-	const preview = PodListUtils.getPreview(pods, { podType: 'interval' });
+	const preview = PodListUtils.getPreview(podList, { podType });
 
 	return (
 		<StyledPodListPage>
-			<Panel name="Untitled" caption="Pod List" preview={preview}>
+			<Panel name={currentLevel.id} caption="Pod List" preview={preview}>
 				{
-					pods.map((pod, i) => {
+					podList.map((pod, i) => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<PodSubpanel pod={pod} podType={podType} />
