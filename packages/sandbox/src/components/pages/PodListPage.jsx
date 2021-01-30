@@ -1,7 +1,9 @@
 import { SCALE } from '@pw/core/src/Pod.presets';
 import PodListUtils from '@pw/core/src/PodList.utils';
+import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
 
@@ -11,10 +13,22 @@ const StyledPodListPage = styled.div`
 		align-items: center;
 		flex-direction: column;
 		margin: 32px 0 16px;
+
+		> * {
+			margin: 16px 0;
+		}
 	}
 
-	h2 {
-		
+	.pod-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 512px;
+		>:first-child {
+			width: 100%;
+			margin-right: 8px;	
+		}
 	}
 `;
 
@@ -26,8 +40,17 @@ const PodListPage = () => {
 
 	return (
 		<StyledPodListPage>
-			<Panel name="Untitled" caption="Block" preview={preview}>
-				<PodListSubpanel pods={pods} setPods={setPods} podType={podType} setPodType={setPodType} />
+			<Panel name="Untitled" caption="Pod List" preview={preview}>
+				{
+					pods.map((pod, i) => {
+						return (
+							<div key={i} className="pod-wrapper">
+								<PodSubpanel pod={pod} podType={podType} />
+								<ZoomButton name={i} level="pod" index={0} />
+							</div>
+						);
+					})
+				}
 			</Panel>
 		</StyledPodListPage>
 	);

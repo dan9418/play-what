@@ -16,7 +16,7 @@ const StyledPanelHeader = styled.div`
 	& .preview-container {
 		& .name-container {
 			display: flex;
-    		align-items: center;
+    		align-items: baseline;
 			& .pod-name {
 				font-size: 200%;
 			}
