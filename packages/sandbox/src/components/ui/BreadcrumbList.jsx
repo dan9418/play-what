@@ -35,7 +35,7 @@ const BreadcrumbList = ({ path = [], currentLevel, popAt }) => {
 				const className = b.id === currentLevel.id ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
-					<li key={b.id} className={className} onClick={onClick}>{b.name}</li>
+					<li key={b.id} className={className} onClick={onClick}>{b.id}</li>
 				);
 			})}
 		</StyledBreadcrumbList>

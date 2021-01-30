@@ -12,9 +12,9 @@ export const pathState = atom({
 		{
 			id: 'outOfNowhere',
 			level: 'chart'
-		}
-		/*{
-			id: 'A',
+		},
+		{
+			id: 'A1',
 			level: 'section'
 		},
 		{
@@ -30,9 +30,9 @@ export const pathState = atom({
 			level: 'pod'
 		},
 		{
-			id: 'p',
+			id: 0,
 			level: 'podIndex'
-		}*/
+		}
 	]
 });
 
