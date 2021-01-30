@@ -5,13 +5,49 @@ export const TEST_SONG = {
 	name: 'test',
 	sections: [
 		{
-			id: 'A1',
+			id: 'A',
 			name: 'A',
 			concepts: [
+				{
+					keyCenter: NOTE.A.value,
+					intervals: SCALE.Major.value,
+					t: 4
+				},
+				{
+					keyCenter: NOTE.B.value,
+					intervals: SCALE.Major.value,
+					t: 4
+				},
 				{
 					keyCenter: NOTE.C.value,
 					intervals: SCALE.Major.value,
 					t: 4
+				},
+				{
+					keyCenter: NOTE.D.value,
+					intervals: SCALE.Major.value,
+					t: 4
+				}
+			]
+		},
+		{
+			id: 'B',
+			name: 'B',
+			concepts: [
+				{
+					keyCenter: NOTE.A.value,
+					intervals: CHORD.Maj.value,
+					t: 4
+				},
+				{
+					keyCenter: NOTE.B.value,
+					intervals: CHORD.Maj.value,
+					t: 4
+				},
+				{
+					keyCenter: NOTE.C.value,
+					intervals: CHORD.Maj.value,
+					t: 8
 				}
 			]
 		}

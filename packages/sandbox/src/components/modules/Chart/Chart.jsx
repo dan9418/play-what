@@ -4,6 +4,7 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { positionState, _chartState } from '../../../state/state';
+import Icon from '../../ui/Icon';
 import Panel from '../../ui/Panel';
 
 const StyledSection = styled.div`
@@ -12,20 +13,32 @@ const StyledSection = styled.div`
     & .concept-grid {
         display: grid;
         width: 100%;
-
-        & > div {
-            background-color: #eee;
-            border-radius: 8px;
-            margin: 8px;
-            padding: 8px;
-			text-align: center;
-			cursor: pointer;
-			box-sizing: border-box;
-			&.active {
-				border: 1px solid orange;
-			}
-        }
     }
+`;
+
+const StyledBlock = styled.div`
+	background-color: #f5f5f5;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	margin: 8px;
+	padding: 8px 16px;
+
+	cursor: pointer;
+	
+	&.active {
+		border: 1px solid orange;
+	}
+
+	& svg {
+		* {
+			fill: #555
+		}
+	}
 `;
 
 const Section = ({ section, sIndex }) => {
@@ -44,12 +57,17 @@ const Section = ({ section, sIndex }) => {
 					const isActive = sIndex === position[0] && i === position[1]
 					const { keyCenter, intervals } = c;
 					const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
-					const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { name: '?' };
+					const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { id: '?' };
 					const name = `${keyCenterPreset.id} ${intervalsPreset.id}`;
 					return (
-						<div key={i} onClick={() => setPosition([sIndex, i])} className={isActive ? 'active' : null}>
+						<StyledBlock
+							key={i}
+							onClick={() => setPosition([sIndex, i])}
+							className={isActive ? 'active' : null}
+						>
 							{name}
-						</div>
+							<Icon iconId="plus" />
+						</StyledBlock>
 					);
 				})}
 			</div>
@@ -60,7 +78,11 @@ const Section = ({ section, sIndex }) => {
 const StyledChart = styled.div`
 	width: 100%;
     max-width: 1024px;
-    margin: auto;
+	margin: auto;
+
+	h2 {
+		margin: 32px 0 16px;
+	}
 `;
 
 const Chart = ({ chart }) => {
