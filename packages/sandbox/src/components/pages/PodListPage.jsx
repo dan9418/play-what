@@ -46,7 +46,7 @@ const PodListPage = () => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<PodSubpanel pod={pod} podType={podType} />
-								<ZoomButton name={i} level="pod" pathId={0} />
+								<ZoomButton name={i} level="pod" id={0} />
 							</div>
 						);
 					})

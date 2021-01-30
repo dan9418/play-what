@@ -34,9 +34,9 @@ const PodPage = () => {
 	return (
 		<StyledPodPage>
 			<Panel name="Untitled" caption="Pod" preview={preview}>
-				<h2>Pitch<ZoomButton name="Pitch" pathId={0} level="podIndex" /></h2>
+				<h2>Pitch<ZoomButton name="Pitch" id={0} level="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
-				<h2>Degree<ZoomButton name="Degree" pathId={0} level="podIndex" /></h2>
+				<h2>Degree<ZoomButton name="Degree" id={0} level="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[1]} podIndexType="degree" />
 			</Panel>
 		</StyledPodPage>

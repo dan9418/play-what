@@ -23,7 +23,7 @@ const SectionWrapper = ({ section, sIndex }) => {
 		<StyledSectionWrapper>
 			<StyledSectionHeader>
 				{name}
-				<ZoomButton level='section' name={name} pathId={sIndex} size={24} />
+				<ZoomButton level='section' name={name} id={sIndex} size={24} />
 			</StyledSectionHeader>
 			<Section section={section} sIndex={sIndex} />
 		</StyledSectionWrapper>
