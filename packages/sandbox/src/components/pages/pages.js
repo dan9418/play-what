@@ -6,6 +6,7 @@ import PodListPage from './PodListPage';
 import PodPage from './PodPage';
 import FretboardPage from './FretboardPage';
 import PodIndexPage from './PodIndexPage';
+import SectionPage from './SectionPage';
 
 export const PAGE = {
 	about: {
@@ -33,15 +34,20 @@ export const PAGE = {
 		name: 'Block',
 		component: BlockPage
 	},
-	fretboard: {
-		id: 'fretboard',
-		name: 'Fretboard',
-		component: FretboardPage
+	section: {
+		id: 'section',
+		name: 'Section',
+		component: SectionPage
 	},
 	chart: {
 		id: 'chart',
 		name: 'Chart',
 		component: ChartPage
+	},
+	fretboard: {
+		id: 'fretboard',
+		name: 'Fretboard',
+		component: FretboardPage
 	}
 };
 

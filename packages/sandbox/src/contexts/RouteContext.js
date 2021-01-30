@@ -9,11 +9,11 @@ const INIT = [
 		name: 'Chart',
 		index: null
 	},
-	/*{
+	{
 		level: 'section',
 		name: 'Section',
 		index: 0
-	},*/
+	},
 	{
 		level: 'block',
 		name: 'Block',
