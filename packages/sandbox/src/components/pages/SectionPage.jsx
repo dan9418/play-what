@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TEST_SONG } from '../../state/songs';
-import Chart from '../modules/Chart/Chart';
+import Section from '../modules/Section/Section';
+import Panel from '../ui/Panel';
 
 const StyledSectionPage = styled.div`
 
 `;
 
 const SectionPage = () => {
-	const [chart, setChart] = useState(TEST_SONG);
+	const [section, setSection] = useState(TEST_SONG.sections[0]);
 	return (
 		<StyledSectionPage>
-			<Chart chart={chart} setChart={setChart} />
+			<Panel name="Section">
+				<Section section={section} setSection={setSection} sIndex={0} />
+			</Panel>
 		</StyledSectionPage>
 	);
 };
