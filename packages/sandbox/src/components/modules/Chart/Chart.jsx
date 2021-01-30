@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../../core/Level';
 import Panel from '../../ui/Panel';
-import Section from '../Section/Section';
+import Section from './Section';
 
 const StyledSectionWrapper = styled.div`
 	width: 100%;
@@ -16,16 +16,16 @@ const StyledSectionHeader = styled.h2`
 	justify-content: space-between;
 `;
 
-const SectionWrapper = ({ section, sIndex }) => {
-	const { name } = section;
+const SectionWrapper = ({ section }) => {
+	const { name, id } = section;
 
 	return (
 		<StyledSectionWrapper>
 			<StyledSectionHeader>
 				{name}
-				<ZoomButton level='section' name={name} id={sIndex} size={24} />
+				<ZoomButton level='section' name={name} id={id} size={24} />
 			</StyledSectionHeader>
-			<Section section={section} sIndex={sIndex} />
+			<Section section={section} />
 		</StyledSectionWrapper>
 	);
 };
@@ -42,7 +42,7 @@ const Chart = () => {
 		<StyledChart>
 			<Panel name="Chart">
 				{chart.sections.map((s, i) => (
-					<SectionWrapper key={s.id} section={s} sIndex={i} />
+					<SectionWrapper key={s.id} section={s} />
 				))}
 			</Panel>
 		</StyledChart>

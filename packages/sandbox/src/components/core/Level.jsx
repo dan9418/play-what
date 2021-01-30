@@ -28,6 +28,8 @@ const getDataAtPath = (chart, path) => {
 		else if (head.level === 'podIndex') {
 			node = node[head.id]
 		}
+		if (typeof node === 'undefined')
+			console.warn('head', head, 'path', path, 'chart', chart);
 	}
 	return node;
 };
