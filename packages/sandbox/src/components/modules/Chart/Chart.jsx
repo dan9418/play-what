@@ -34,11 +34,16 @@ const StyledBlock = styled.div`
 	&.active {
 		border: 1px solid orange;
 	}
+`;
 
-	& svg {
-		* {
-			fill: #555
-		}
+const StyledSectionHeader = styled.h2`
+	margin: 32px 0 16px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	& svg:hover {
+		cursor: pointer;
 	}
 `;
 
@@ -53,26 +58,37 @@ const Section = ({ section, sIndex }) => {
 	};
 	return (
 		<StyledSection>
-			<h2>{name}</h2>
+			<StyledSectionHeader>
+				{name}
+				<Icon
+					iconId="zoom"
+					size={24}
+					onClick={() => push({
+						level: 'section',
+						name,
+						index: sIndex
+					})}
+				/>
+			</StyledSectionHeader>
 			<div className='block-grid' style={style}>
 				{blocks.map((c, i) => {
 					const isActive = sIndex === position[0] && i === position[1]
 					const { keyCenter, intervals } = c;
 					const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
 					const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { id: '?' };
-					const name = `${keyCenterPreset.id} ${intervalsPreset.id}`;
+					const blockName = `${keyCenterPreset.id} ${intervalsPreset.id}`;
 					return (
 						<StyledBlock
 							key={i}
 							className={isActive ? 'active' : null}
 							onClick={() => setPosition([sIndex, i])}
 						>
-							{name}
+							{blockName}
 							<Icon
-								iconId="plus"
+								iconId="zoom"
 								onClick={() => push({
 									level: 'block',
-									name,
+									name: blockName,
 									index: i
 								})}
 							/>
@@ -88,10 +104,6 @@ const StyledChart = styled.div`
 	width: 100%;
     max-width: 1024px;
 	margin: auto;
-
-	h2 {
-		margin: 32px 0 16px;
-	}
 `;
 
 const Chart = ({ chart }) => {

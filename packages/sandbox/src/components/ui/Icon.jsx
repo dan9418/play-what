@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSVG = styled.svg`
-	${({ $color }) => {
+	${({ $color, theme }) => {
 		return `
-				fill: ${$color || 'white'};
+				fill: ${$color || theme.primary};
 				& * {
-					fill: ${$color || 'white'}
+					fill: ${$color || theme.primary}
 				}
 			`;
 	}}
@@ -172,6 +172,21 @@ export const GitHub = props => (
 	</StyledSVG>
 );
 
+export const Zoom = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			width='512pt'
+			height='512pt'
+			viewBox='0 0 512 512'
+			{...props}
+		>
+			<path d='M145.969 423.246h-36.707l84.687-84.375-21.172-21.254-84.476 84.164v-36.203h-30v87.668h87.668zm0 0M366.031 423.246v30H453.7v-87.668h-30v36.203l-84.476-84.164-21.172 21.254 84.687 84.375zm0 0M88.3 110.219l84.477 84.164 21.172-21.254-84.687-84.375h36.707v-30H58.3v87.668h30zm0 0M339.223 194.383l84.476-84.164v36.203h30V58.754h-87.668v30h36.707l-84.687 84.375zm0 0'></path>
+			<path d='M0 0v512h512V0zm482 482H30V30h452zm0 0'></path>
+		</StyledSVG>
+	);
+}
+
 const ICON = {
 	delete: Delete,
 	up: Up,
@@ -182,7 +197,8 @@ const ICON = {
 	confirm: Confirm,
 	cancel: Cancel,
 	menu: Menu,
-	github: GitHub
+	github: GitHub,
+	zoom: Zoom
 }
 
 const Icon = ({ iconId, color, hoverColor, size, ...props }) => {

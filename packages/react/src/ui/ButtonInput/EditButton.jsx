@@ -7,7 +7,7 @@ const EditButton = props => {
 	const { isEditing, setIsEditing } = useEditContext();
 	return (
 		<ButtonInput {...props} onClick={props.onClick || (() => setIsEditing(!isEditing))}>
-			<Icon iconId={isEditing ? 'confirm' : 'edit'} size={12} />
+			<Icon color="white" iconId={isEditing ? 'confirm' : 'edit'} size={12} />
 		</ButtonInput >
 	);
 }
