@@ -6,33 +6,33 @@ const RouteContext = createContext(null);
 const INIT = [
 	{
 		level: 'chart',
-		name: 'Chart',
-		index: null
+		name: 'Out of Nowhere',
+		pathId: null
 	},
 	{
 		level: 'section',
-		name: 'Section',
-		index: 0
+		name: 'Section A',
+		pathId: 'A'
 	},
 	{
 		level: 'block',
-		name: 'Block',
-		index: 0
+		name: 'C Maj',
+		pathId: 0
 	},
 	{
 		level: 'podList',
-		name: 'Pod List',
-		index: 0
+		name: 'Major Chord',
+		pathId: 'intervals'
 	},
 	{
 		level: 'pod',
-		name: 'Pod',
-		index: 0
+		name: 'P1',
+		pathId: 0 // or keyCenter
 	},
 	{
 		level: 'podIndex',
-		name: 'Pod Index',
-		index: 0
+		name: 'Pitch Span',
+		pathId: 0
 	}
 ];
 

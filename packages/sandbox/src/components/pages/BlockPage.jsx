@@ -35,11 +35,11 @@ const BlockPage = () => {
 	return (
 		<StyledBlockPage>
 			<Panel name="Untitled" caption="Block" preview={preview}>
-				<h2>Key Center<ZoomButton name="Key Center" index={0} level="pod" /></h2>
+				<h2>Key Center<ZoomButton name="Key Center" pathId={0} level="pod" /></h2>
 				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} podType="note" />
-				<h2>Intervals<ZoomButton name="Intervals" index={0} level="podList" /></h2>
+				<h2>Intervals<ZoomButton name="Intervals" pathId={0} level="podList" /></h2>
 				<PodListSubpanel pods={intervals} setPods={setIntervals} podType="interval" />
-				<h2>Notes<ZoomButton name="Notes" index={0} level="podList" /></h2>
+				<h2>Notes<ZoomButton name="Notes" pathId={0} level="podList" /></h2>
 				<PodListSubpanel pods={notes} podType="note" />
 			</Panel>
 		</StyledBlockPage>

@@ -11,13 +11,13 @@ const StyledZoomButton = styled.button`
 	background-color: transparent;
 `;
 
-const ZoomButton = ({ level, name, index, size, ...props }) => {
+const ZoomButton = ({ level, name, pathId, size, ...props }) => {
 	const theme = useTheme();
 	const { push } = useRouteContext();
 	const onClick = () => push({
 		level,
 		name,
-		index
+		pathId
 	})
 	return (
 		<StyledZoomButton {...props} onClick={onClick}>

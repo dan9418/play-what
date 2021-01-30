@@ -40,7 +40,7 @@ const SectionPage = () => {
 						return (
 							<div key={i} className="block-wrapper">
 								<BlockSubpanel block={block} />
-								<ZoomButton name={i} level="block" index={0} />
+								<ZoomButton name={i} level="block" pathId={0} />
 							</div>
 						);
 					})
