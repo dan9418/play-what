@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { useLevelContext } from "./Level";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
@@ -27,7 +28,9 @@ const StyledBreadcrumbList = styled.ul`
 	}
 `;
 
-const BreadcrumbList = ({ path = [], currentLevel, popAt }) => {
+const BreadcrumbList = () => {
+
+	const { path, currentLevel, popAt } = useLevelContext();
 
 	return (
 		<StyledBreadcrumbList>

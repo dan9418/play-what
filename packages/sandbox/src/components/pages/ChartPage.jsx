@@ -6,11 +6,11 @@ const StyledChartPage = styled.div`
 
 `;
 
-const ChartPage = ({ data: chart, setData: setChart }) => {
+const ChartPage = ({ data: chart, setData: setChart, push }) => {
 
 	return (
 		<StyledChartPage>
-			<Chart chart={chart} setChart={setChart} />
+			<Chart chart={chart} setChart={setChart} push={push} />
 		</StyledChartPage>
 	);
 };

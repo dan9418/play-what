@@ -1,15 +1,10 @@
 
-import React from 'react';
+import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
-import styled from 'styled-components';
 import SONGS from '../../state/songs';
 import { chartState, pathState } from '../../state/state';
 import { PAGE } from '../pages/pages';
-import BreadcrumbList from '../ui/BreadcrumbList';
-
-const StyledLevel = styled.main`
-	
-`;
+import BreadcrumbList from './BreadcrumbList';
 
 const getDataAtPath = (chart, path) => {
 	let node = SONGS;
@@ -37,7 +32,7 @@ const getDataAtPath = (chart, path) => {
 	return node;
 };
 
-const getPathUtilities = (path, setPath, chart) => {
+const getLevelUtils = (path, setPath, chart) => {
 
 	const currentLevel = path[path.length - 1];
 	const popAt = n => setPath(path.slice(0, n + 1));
@@ -49,28 +44,36 @@ const getPathUtilities = (path, setPath, chart) => {
 	console.log('path', path, data);
 
 	return {
+		// data
+		chart,
+		data,
+		setData,
+		// position
+		path,
 		currentLevel,
 		popAt,
 		push,
-		reset,
-		data,
-		setData
+		reset
 	}
 }
+
+const LevelContext = createContext(null);
+
+export const useLevelContext = () => useContext(LevelContext);
 
 const Level = () => {
 	const [path, setPath] = useRecoilState(pathState);
 	const [chart, setChart] = useRecoilState(chartState);
 
-	const { currentLevel, data, setData, popAt } = getPathUtilities(path, setPath, chart);
+	const levelUtils = getLevelUtils(path, setPath, chart);
 
-	const LevelComponent = PAGE[currentLevel.level].component;
+	const LevelComponent = PAGE[levelUtils.currentLevel.level].component;
 
 	return (
-		<>
-			<BreadcrumbList path={path} currentLevel={currentLevel} popAt={popAt} />
-			<LevelComponent data={data} />
-		</>
+		<LevelContext.Provider value={levelUtils}>
+			<BreadcrumbList />
+			<LevelComponent />
+		</LevelContext.Provider>
 	);
 };
 

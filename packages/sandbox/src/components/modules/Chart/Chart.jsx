@@ -1,6 +1,7 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
+import { useLevelContext } from '../../core/Level';
 import Panel from '../../ui/Panel';
 import Section from '../Section/Section';
 
@@ -22,7 +23,7 @@ const SectionWrapper = ({ section, sIndex }) => {
 		<StyledSectionWrapper>
 			<StyledSectionHeader>
 				{name}
-				<ZoomButton level='section' name={name} pathId={sIndex} size={24}/>
+				<ZoomButton level='section' name={name} pathId={sIndex} size={24} />
 			</StyledSectionHeader>
 			<Section section={section} sIndex={sIndex} />
 		</StyledSectionWrapper>
@@ -35,7 +36,8 @@ const StyledChart = styled.div`
 	margin: auto;
 `;
 
-const Chart = ({ chart}) => {
+const Chart = () => {
+	const { data: chart } = useLevelContext();
 	return (
 		<StyledChart>
 			<Panel name="Chart">
