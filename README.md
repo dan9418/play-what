@@ -1,6 +1,6 @@
 # Play *What*?
 
-Play What is a toolkit for modeling music theory concepts. The suite of tools contains something for musicians and engineers of all levels.
+Play What is a toolkit for modeling music theory blocks. The suite of tools contains something for musicians and engineers of all levels.
 - A simple, efficient, and flexible musical data structure spec
 - A JavaScript API for working with these data structures
 - A React component library for consuming and analyzing these data structures
@@ -16,9 +16,9 @@ This repo is under active development is is highly unstable.
 
 ## How Does It Work?
 ### Pods
-The foundational building block of Play What is a concept called a pod. In it's most raw, basic form, a pod is simply a pair of two numbers.
+The foundational building block of Play What is a block called a pod. In it's most raw, basic form, a pod is simply a pair of two numbers.
 [0,0]
-These numbers have special properties that allow them to model different musical concepts.
+These numbers have special properties that allow them to model different musical blocks.
 #### Discrete Integers
 This simply means that the numbers are always whole numbers - no decimals or fractions are allowed. The integers can be positive, negative, or zero. We refer to a single integer as an **index**.
 #### Cyclical
@@ -30,7 +30,7 @@ This means that we start counting at 0 rather than 1. This makes the math easier
 The indicies are called p and d, respectively, for pitch and degree.
 > `[p, d]`
 
-Each of these represents a basic musical concept
+Each of these represents a basic musical block
 #### Pitch (p)
 Pitch is the measurement of physical frequency in Hertz. This is the fundamental characteristic that makes any given note sound unique from others.
 
@@ -43,7 +43,7 @@ The distance between two adjacent pitches in this system is called a **semitone*
 In the context of pods, the p value can represent an **absolute** pitch (**position**) or **relative** pitch (**distance**). In other words, position is like a specific yard-line on a football field, whereas distance is the number of yard-lines spanned.
 
 #### Degree (d)
-Degree is similar to pitch, but represents a somewhat more abstract concept.
+Degree is similar to pitch, but represents a somewhat more abstract block.
 
 TET provides 12 unique pitch classes within a single octave. However, most music is based on a subset of these at any given time. This is what is meant when music is written in a certain key or improvised from a certain scale. The chosen pitches are each assigned a **degree**, which is denoted by a letter name or **spelling**. Western music generally uses 7 of the 12 available pitches (A-G). The choices are somewhat arbitrary and may change depending on the context and purpose. The first degree is called the **root** and all other notes are named relative to that one. By convention, the most common root is C rather than A.
 
@@ -102,7 +102,7 @@ We can take the abstraction of pod type one step further and analyze lists of po
 
 You may notice that a list of pods is essentially a **matrix**, but we call them **lists** here because the 2nd dimension of the matrix is generally kept intact.
 
-Any operation that can be applied to a single pod can also be applied to a list of pods. This allows us to model more useful musical concepts like chords, scales, melodies, etc... Just like individual pods, pod lists can be defined using notes or intervals.
+Any operation that can be applied to a single pod can also be applied to a list of pods. This allows us to model more useful musical blocks like chords, scales, melodies, etc... Just like individual pods, pod lists can be defined using notes or intervals.
 
 ### Pod List Type
 Similar to how pod type is defined based on what the pod measures, the **pod list type** is defined based on how the constituent pods are **temporally related**.
@@ -115,10 +115,10 @@ In music, this relationship is equivalent to **chords** and **scales**
 **Scales** are sets of notes that are played sequentially
 > `Major Scale = [P1, M2, M3, P4, P5, M6, M7] = [C, D, E, F, G, A, B]`
 
-Just like pod type, the pod list type does not change how we work with pods. It simply provides a mental model to think about the concepts we are working with.
+Just like pod type, the pod list type does not change how we work with pods. It simply provides a mental model to think about the blocks we are working with.
 
 ### Applications
-Given the above properties, we can easily and efficiently perform a number of useful operations on a number of musical concepts.
+Given the above properties, we can easily and efficiently perform a number of useful operations on a number of musical blocks.
 
 #### Transposition
 > `[C, E, G] + M2 = [D, F, A]`
@@ -137,7 +137,7 @@ TBA
 TBA
 
 ## Why Is It Useful?
-The pod concept allows for the qualitative modelling of abstract musical ideas in a way that is extraordinarily simple and efficient to work with.
+The pod block allows for the qualitative modelling of abstract musical ideas in a way that is extraordinarily simple and efficient to work with.
 
 The musical idea can be a...
 - Collection of notes and intervals (Like chords, scales, and melodies)

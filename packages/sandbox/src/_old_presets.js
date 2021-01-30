@@ -272,7 +272,7 @@ const CHARTS = [
                         name: 'A',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Maj7/value',
@@ -286,7 +286,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/Dom7/value',
@@ -320,7 +320,7 @@ const CHARTS = [
                         name: 'B',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -339,7 +339,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/F/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -373,7 +373,7 @@ const CHARTS = [
                         name: 'A',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Maj7/value',
@@ -387,7 +387,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/Dom7/value',
@@ -421,7 +421,7 @@ const CHARTS = [
                         name: 'C',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -465,7 +465,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/E/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -506,7 +506,7 @@ const CHARTS = [
                         name: 'A',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -525,7 +525,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/HalfDim7/value',
@@ -549,7 +549,7 @@ const CHARTS = [
                         name: 'B',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/Eb/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -568,7 +568,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/D/value',
                                         B: '@core/models/podList/preset/chord/HalfDim7/value',
@@ -608,7 +608,7 @@ const CHARTS = [
                         name: 'A',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -627,7 +627,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/F/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -651,7 +651,7 @@ const CHARTS = [
                         name: 'B',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/Eb/value',
                                         B: '@core/models/podList/preset/chord/Maj7/value',
@@ -680,7 +680,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/Eb/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -714,7 +714,7 @@ const CHARTS = [
                         name: 'A',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -733,7 +733,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/F/value',
                                         B: '@core/models/podList/preset/chord/Min7/value',
@@ -757,7 +757,7 @@ const CHARTS = [
                         name: 'C',
                         progressions: [
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/Eb/value',
                                         B: '@core/models/podList/preset/chord/Maj7/value',
@@ -796,7 +796,7 @@ const CHARTS = [
                                 ]
                             },
                             {
-                                concepts: [
+                                blocks: [
                                     {
                                         a: '@core/models/pod/preset/note/C/value',
                                         B: '@core/models/podList/preset/chord/Maj7/value',

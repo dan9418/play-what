@@ -27,7 +27,7 @@ const PodPage = () => {
 
 	return (
 		<StyledPodPage>
-			<Panel name="Untitled" caption="Concept" preview={preview}>
+			<Panel name="Untitled" caption="Block" preview={preview}>
 				<h2>Pitch</h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
 				<h2>Degree</h2>

@@ -18,11 +18,11 @@ const About = () => {
 		<StyledAbout>
 			<h1>Play What?</h1>
 			<p>
-				Play What is a toolkit for modeling and analyzing musical concepts.
+				Play What is a toolkit for modeling and analyzing musical blocks.
 				The project is under active development and is slated for initial release in early 2021.
 			</p>
 			<p>
-				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
+				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core blocks then check out the app to explore its capabilities:
 			</p>
 			<ButtonInput onClick={() => push(PAGE.chart)}>Visit App</ButtonInput>
 		</StyledAbout>

@@ -10,7 +10,7 @@ import Panel from '../../ui/Panel';
 const StyledSection = styled.div`
 	width: 100%;
 
-    & .concept-grid {
+    & .block-grid {
         display: grid;
         width: 100%;
     }
@@ -42,8 +42,8 @@ const StyledBlock = styled.div`
 `;
 
 const Section = ({ section, sIndex }) => {
-	const { id, name, concepts } = section;
-	const widths = concepts.map(c => c.t || 1);
+	const { id, name, blocks } = section;
+	const widths = blocks.map(c => c.t || 1);
 	const [position, setPosition] = useRecoilState(positionState);
 
 	const style = {
@@ -52,8 +52,8 @@ const Section = ({ section, sIndex }) => {
 	return (
 		<StyledSection>
 			<h2>{name}</h2>
-			<div className='concept-grid' style={style}>
-				{concepts.map((c, i) => {
+			<div className='block-grid' style={style}>
+				{blocks.map((c, i) => {
 					const isActive = sIndex === position[0] && i === position[1]
 					const { keyCenter, intervals } = c;
 					const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };

@@ -25,7 +25,7 @@ const PodListPage = () => {
 
 	return (
 		<StyledPodListPage>
-			<Panel name="Untitled" caption="Concept" preview={preview}>
+			<Panel name="Untitled" caption="Block" preview={preview}>
 				<PodListSubpanel pods={pods} setPods={setPods} podType={podType} setPodType={setPodType} />
 			</Panel>
 		</StyledPodListPage>

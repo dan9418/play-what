@@ -1,8 +1,8 @@
 
 import React from 'react';
-import 'react-hot-loader';
 import styled from 'styled-components';
 import useRouteContext from '../../contexts/RouteContext';
+import { PAGE } from '../pages/pages';
 
 const StyledLevel = styled.main`
 	
@@ -10,7 +10,8 @@ const StyledLevel = styled.main`
 
 const Level = () => {
 	const routeContext = useRouteContext();
-	const LevelComponent = routeContext.currentPage.component;
+	const level = routeContext.currentPage.level;
+	const LevelComponent = PAGE[level].component;
 	return (
 		<LevelComponent />
 	);

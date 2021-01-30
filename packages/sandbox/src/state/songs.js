@@ -7,7 +7,7 @@ export const TEST_SONG = {
 		{
 			id: 'A',
 			name: 'A',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: SCALE.Major.value,
@@ -33,7 +33,7 @@ export const TEST_SONG = {
 		{
 			id: 'B',
 			name: 'B',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Maj.value,
@@ -61,7 +61,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'A1',
 			name: 'A',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -97,7 +97,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'B',
 			name: 'B',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
@@ -133,7 +133,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'A2',
 			name: 'A',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -169,7 +169,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'C',
 			name: 'C',
-			concepts: [
+			blocks: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
