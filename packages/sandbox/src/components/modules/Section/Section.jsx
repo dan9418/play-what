@@ -1,5 +1,6 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
+import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -55,14 +56,7 @@ const Section = ({ section, sIndex }) => {
 						onClick={() => setPosition([sIndex, i])}
 					>
 						{blockName}
-						<Icon
-							iconId="zoom"
-							onClick={() => push({
-								level: 'block',
-								name: blockName,
-								index: i
-							})}
-						/>
+						<ZoomButton level='block' name={blockName} index={i} />
 					</StyledBlock>
 				);
 			})}

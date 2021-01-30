@@ -1,7 +1,6 @@
+import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
-import useRouteContext from '../../../contexts/RouteContext';
-import Icon from '../../ui/Icon';
 import Panel from '../../ui/Panel';
 import Section from '../Section/Section';
 
@@ -14,29 +13,16 @@ const StyledSectionHeader = styled.h2`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
-	& svg:hover {
-		cursor: pointer;
-	}
 `;
 
 const SectionWrapper = ({ section, sIndex }) => {
 	const { name } = section;
-	const { push } = useRouteContext();
 
 	return (
 		<StyledSectionWrapper>
 			<StyledSectionHeader>
 				{name}
-				<Icon
-					iconId="zoom"
-					size={24}
-					onClick={() => push({
-						level: 'section',
-						name,
-						index: sIndex
-					})}
-				/>
+				<ZoomButton level='section' name={name} index={sIndex} size={24}/>
 			</StyledSectionHeader>
 			<Section section={section} sIndex={sIndex} />
 		</StyledSectionWrapper>
@@ -49,7 +35,7 @@ const StyledChart = styled.div`
 	margin: auto;
 `;
 
-const Chart = ({ chart }) => {
+const Chart = ({ chart}) => {
 	return (
 		<StyledChart>
 			<Panel name="Chart">
