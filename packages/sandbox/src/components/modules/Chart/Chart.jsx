@@ -3,6 +3,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import useRouteContext from '../../../contexts/RouteContext';
 import { positionState, _chartState } from '../../../state/state';
 import Icon from '../../ui/Icon';
 import Panel from '../../ui/Panel';
@@ -45,6 +46,7 @@ const Section = ({ section, sIndex }) => {
 	const { id, name, blocks } = section;
 	const widths = blocks.map(c => c.t || 1);
 	const [position, setPosition] = useRecoilState(positionState);
+	const { push } = useRouteContext();
 
 	const style = {
 		gridTemplateColumns: widths.map(n => n + 'fr').join(' ')
@@ -62,11 +64,18 @@ const Section = ({ section, sIndex }) => {
 					return (
 						<StyledBlock
 							key={i}
-							onClick={() => setPosition([sIndex, i])}
 							className={isActive ? 'active' : null}
+							onClick={() => setPosition([sIndex, i])}
 						>
 							{name}
-							<Icon iconId="plus" />
+							<Icon
+								iconId="plus"
+								onClick={() => push({
+									level: 'block',
+									name,
+									index: i
+								})}
+							/>
 						</StyledBlock>
 					);
 				})}

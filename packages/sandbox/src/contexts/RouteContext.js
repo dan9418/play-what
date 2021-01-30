@@ -28,6 +28,7 @@ const INIT = [
 
 export const RouteContextProvider = ({ children }) => {
 	const [breadcrumbs, setBreadcrumbs] = useState(INIT);
+
 	const currentPage = breadcrumbs[breadcrumbs.length - 1];
 	const popAt = n => setBreadcrumbs(breadcrumbs.slice(0, n + 1));
 	const push = p => setBreadcrumbs([...breadcrumbs, p]);

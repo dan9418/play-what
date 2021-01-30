@@ -185,9 +185,9 @@ const ICON = {
 	github: GitHub
 }
 
-const Icon = ({ iconId, color, hoverColor, size }) => {
+const Icon = ({ iconId, color, hoverColor, size, ...props }) => {
 	const IconComponent = ICON[iconId];
-	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} />;
+	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} {...props} />;
 }
 
 export default Icon;
