@@ -229,3 +229,10 @@ export const OUT_OF_NOWHERE = {
 		}
 	]
 };
+
+const SONGS = {
+	test: TEST_SONG,
+	outOfNowhere: OUT_OF_NOWHERE
+};
+
+export default SONGS;
