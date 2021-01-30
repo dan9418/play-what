@@ -1,3 +1,4 @@
+import BlockUtils from '@pw/core/src/Block.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
@@ -31,11 +32,12 @@ const BlockPage = () => {
 	const { keyCenter, intervals } = block;
 
 	const notes = PodUtils.addPodList(keyCenter, intervals);
+	const name = BlockUtils.getName(block);
 	const preview = PodListUtils.getPreview(notes, { podType: 'note' });
 
 	return (
 		<StyledBlockPage>
-			<Panel name={currentLevel.name} caption="Block" preview={preview}>
+			<Panel name={name} caption="Block" preview={preview}>
 				<h2>Key Center<ZoomButton name="Key Center" id="keyCenter" level="pod" /></h2>
 				<PodSubpanel pod={keyCenter} setPod={null} podType="note" />
 				<h2>Intervals<ZoomButton name="Intervals" id="intervals" level="podList" /></h2>

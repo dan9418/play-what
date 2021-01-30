@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import PodTable from '../modules/Pod/PodTable';
 import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
+import PodIndexTable from '../modules/PodIndex/PodIndexTable';
 import Panel from '../ui/Panel';
 
 const StyledPodIndexPage = styled.div`
@@ -14,8 +15,9 @@ const StyledPodIndexPage = styled.div`
 		margin: 32px 0 16px;
 	}
 
-	h2 {
-		
+	table {
+		max-width: 512px;
+		margin: auto;	
 	}
 `;
 
@@ -25,8 +27,8 @@ const PodIndexPage = () => {
 
 	return (
 		<StyledPodIndexPage>
-			<Panel name="Untitled" caption="Index" preview={podIndexType}>
-				<PodIndexSubpanel podIndex={podIndex} setPodIndex={null} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
+			<Panel name={podIndexType} caption="Pod Index" preview={podIndex}>
+				<PodIndexTable podIndex={podIndex} podIndexType={podIndexType} />
 			</Panel>
 		</StyledPodIndexPage>
 	);

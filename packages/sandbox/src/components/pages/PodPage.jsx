@@ -30,11 +30,12 @@ const PodPage = () => {
 	const { data: pod, currentLevel } = useLevelContext();
 	const [podType, setPodType] = useState('note');
 
-	const preview = PodUtils.getName(pod, { podType });
+	const preview = JSON.stringify(pod);
+	const name = PodUtils.getName(pod, { podType });
 
 	return (
 		<StyledPodPage>
-			<Panel name={currentLevel.id} caption="Pod" preview={preview}>
+			<Panel name={name} caption="Pod" preview={preview}>
 				<h2>Pitch<ZoomButton name="Pitch" id={0} level="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
 				<h2>Degree<ZoomButton name="Degree" id={1} level="podIndex" /></h2>

@@ -1,3 +1,4 @@
+import BlockUtils from '@pw/core/src/Block.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
@@ -44,12 +45,9 @@ const Section = ({ section, sIndex }) => {
 
 	return (
 		<StyledSection $gridTemplateColumns={gridTemplateColumns}>
-			{blocks.map((c, i) => {
+			{blocks.map((block, i) => {
 				const isActive = sIndex === position[0] && i === position[1]
-				const { keyCenter, intervals } = c;
-				const keyCenterPreset = PodUtils.findPreset(keyCenter, { podType: 'note' }) || { name: '?' };
-				const intervalsPreset = PodListUtils.findPreset(intervals, { podType: 'chord' }) || { id: '?' };
-				const blockName = `${keyCenterPreset.id} ${intervalsPreset.id}`;
+				const blockName = BlockUtils.getName(block);
 				return (
 					<StyledBlock
 						key={i}

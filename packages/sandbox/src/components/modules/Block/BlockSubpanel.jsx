@@ -3,14 +3,13 @@ import React from 'react';
 import Subpanel from '../../ui/Subpanel';
 import PodListTable from '../PodList/PodListTable';
 import PodTable from '../Pod/PodTable';
+import BlockUtils from '@pw/core/src/Block.utils';
 
 const BlockSubpanel = ({ block, setBlock }) => {
 
 	const { keyCenter, intervals } = block;
 
-	const kc = PodUtils.getName(keyCenter, { podType: 'note' });
-	const ivls = PodUtils.getName(intervals, { podType: 'interval' });
-	const name = `${kc} ${ivls}`;
+	const name = BlockUtils.getName(block);
 
 	return (
 		<Subpanel name={name} caption="Block" editable>
