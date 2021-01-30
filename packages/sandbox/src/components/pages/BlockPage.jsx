@@ -4,6 +4,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
@@ -26,8 +27,9 @@ const StyledBlockPage = styled.div`
 `;
 
 const BlockPage = () => {
-	const [keyCenter, setKeyCenter] = useState(NOTE.C.value);
-	const [intervals, setIntervals] = useState(SCALE.Major.value);
+	const { data: block } = useLevelContext();
+
+	const { keyCenter, intervals } = block;
 
 	const notes = PodUtils.addPodList(keyCenter, intervals);
 	const preview = PodListUtils.getPreview(notes, { podType: 'note' });
@@ -36,9 +38,9 @@ const BlockPage = () => {
 		<StyledBlockPage>
 			<Panel name="Untitled" caption="Block" preview={preview}>
 				<h2>Key Center<ZoomButton name="Key Center" id="keyCenter" level="pod" /></h2>
-				<PodSubpanel pod={keyCenter} setPod={setKeyCenter} podType="note" />
+				<PodSubpanel pod={keyCenter} setPod={null} podType="note" />
 				<h2>Intervals<ZoomButton name="Intervals" id="intervals" level="podList" /></h2>
-				<PodListSubpanel pods={intervals} setPods={setIntervals} podType="interval" />
+				<PodListSubpanel pods={intervals} setPods={null} podType="interval" />
 				<h2>Notes<ZoomButton name="Notes" id="notes" level="podList" /></h2>
 				<PodListSubpanel pods={notes} podType="note" />
 			</Panel>
