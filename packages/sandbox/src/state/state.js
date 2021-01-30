@@ -14,7 +14,7 @@ export const pathState = atom({
 			level: 'chart'
 		},
 		{
-			id: 'A1',
+			id: 'A',
 			level: 'section'
 		},
 		{

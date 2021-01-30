@@ -59,7 +59,7 @@ export const OUT_OF_NOWHERE = {
 	name: 'Out of Nowhere',
 	sections: [
 		{
-			id: 'A1',
+			id: 'A',
 			name: 'A',
 			blocks: [
 				{
@@ -131,7 +131,7 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			id: 'A2',
+			id: 'A\'',
 			name: 'A',
 			blocks: [
 				{

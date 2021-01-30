@@ -51,6 +51,10 @@ const StyledSubpanel = styled.section`
 	background-color: #f5f5f5;
 	& > .subpanel-body {
 		padding: 8px 16px;
+
+		h4 {
+			margin: 16px 0 8px 0;
+		}
 	}
 `;
 

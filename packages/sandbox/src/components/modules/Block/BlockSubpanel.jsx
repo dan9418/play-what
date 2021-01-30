@@ -8,13 +8,16 @@ import BlockUtils from '@pw/core/src/Block.utils';
 const BlockSubpanel = ({ block, setBlock }) => {
 
 	const { keyCenter, intervals } = block;
+	console.log(keyCenter, intervals);
 
 	const name = BlockUtils.getName(block);
 
 	return (
 		<Subpanel name={name} caption="Block" editable>
+			<h4>Key Center</h4>
 			<PodTable pod={keyCenter} setPod={null} podType="note" />
-			<PodListTable podList={intervals} setPod={null} podType="interval" />
+			<h4>Intervals</h4>
+			<PodListTable pods={intervals} setPods={null} podType="interval" />
 		</Subpanel>
 	);
 };

@@ -34,7 +34,7 @@ const SectionPage = () => {
 	const { data: section } = useLevelContext();
 	return (
 		<StyledSectionPage>
-			<Panel name={section.name}>
+			<Panel name={section.name} caption="Section"  preview={`${section.blocks.length} Blocks`}>
 				{
 					section.blocks.map((block, i) => {
 						return (
