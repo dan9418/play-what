@@ -4,9 +4,7 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import useRouteContext from '../../../contexts/RouteContext';
 import { positionState } from '../../../state/state';
-import Icon from '../../ui/Icon';
 
 const StyledBlock = styled.div`
 	background-color: #f5f5f5;

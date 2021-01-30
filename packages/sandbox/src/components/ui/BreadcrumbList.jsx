@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import useRouteContext from "../../contexts/RouteContext";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
@@ -28,13 +27,12 @@ const StyledBreadcrumbList = styled.ul`
 	}
 `;
 
-const BreadcrumbList = ({ podType, actions = [] }) => {
-	const { breadcrumbs, currentPage, popAt } = useRouteContext();
+const BreadcrumbList = ({ path = [], currentLevel, popAt }) => {
 
 	return (
 		<StyledBreadcrumbList>
-			{breadcrumbs.map((b, i) => {
-				const className = b.id === currentPage.id ? 'active' : '';
+			{path.map((b, i) => {
+				const className = b.id === currentLevel.id ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
 					<li key={b.id} className={className} onClick={onClick}>{b.name}</li>

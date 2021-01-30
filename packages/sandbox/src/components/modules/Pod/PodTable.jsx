@@ -2,13 +2,11 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
 import React from 'react';
 import useEditContext from '../../../contexts/EditContext';
-import useRouteContext from '../../../contexts/RouteContext';
 import Table from '../../ui/Table';
 
 const PodTable = ({ pod, setPod, podType }) => {
 
 	const { isEditing } = useEditContext();
-	const { push } = useRouteContext();
 
 	const cols = (
 		<>

@@ -1,7 +1,6 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import styled from 'styled-components';
-import useRouteContext from '../../contexts/RouteContext';
 import { PAGE } from './pages';
 
 const StyledAbout = styled.div`
@@ -13,7 +12,6 @@ const StyledAbout = styled.div`
 `;
 
 const About = () => {
-	const { push } = useRouteContext();
 	return (
 		<StyledAbout>
 			<h1>Play What?</h1>
@@ -24,7 +22,7 @@ const About = () => {
 			<p>
 				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core blocks then check out the app to explore its capabilities:
 			</p>
-			<ButtonInput onClick={() => push(PAGE.chart)}>Visit App</ButtonInput>
+			<ButtonInput onClick={null}>Visit App</ButtonInput>
 		</StyledAbout>
 	)
 };

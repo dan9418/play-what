@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
 import Icon from '../../../../sandbox/src/components/ui/Icon';
-import useRouteContext from '../../../../sandbox/src/contexts/RouteContext';
 
 const StyledZoomButton = styled.button`
 	appearance: none;
@@ -13,7 +12,7 @@ const StyledZoomButton = styled.button`
 
 const ZoomButton = ({ level, name, pathId, size, ...props }) => {
 	const theme = useTheme();
-	const { push } = useRouteContext();
+	const { push } = {};
 	const onClick = () => push({
 		level,
 		name,

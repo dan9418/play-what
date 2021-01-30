@@ -2,7 +2,6 @@
 import React from 'react';
 import 'react-hot-loader';
 import styled from 'styled-components';
-import useRouteContext from '../../contexts/RouteContext';
 
 const LINKS = [
 	{
@@ -78,12 +77,11 @@ const StyledNav = styled.nav`
 `;
 
 const Nav = () => {
-	const routeContext = useRouteContext();
-	const { popAt, currentPage, replace } = routeContext;
+
 
 	return (
 		<StyledNav>
-			<div className="logo" onClick={() => popAt(0)}>Play What?</div>
+			<div className="logo" onClick={null}>Play What?</div>
 			<ul className="link-list">
 				{LINKS.map((l, i) => (
 					<li key={i}>
