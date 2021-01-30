@@ -23,6 +23,16 @@ const INIT = [
 		level: 'podList',
 		name: 'Pod List',
 		index: 0
+	},
+	{
+		level: 'pod',
+		name: 'Pod',
+		index: 0
+	},
+	{
+		level: 'podIndex',
+		name: 'Pod Index',
+		index: 0
 	}
 ];
 
