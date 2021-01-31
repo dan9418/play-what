@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../../core/Level';
 import Panel from '../../ui/Panel';
+import SectionSubpanel from '../Section/SectionSubpanel';
 import Section from './Section';
 
 const StyledSectionWrapper = styled.div`
@@ -41,8 +42,11 @@ const Chart = () => {
 	return (
 		<StyledChart>
 			<Panel name={chart.name} caption="Chart" preview={chart.sections.map(s => s.id).join(' ')}>
-				{chart.sections.map((s, i) => (
+				{/*chart.sections.map((s, i) => (
 					<SectionWrapper key={s.id} section={s} />
+				))*/}
+				{chart.sections.map((s, i) => (
+					<SectionSubpanel key={s.id} section={s} />
 				))}
 			</Panel>
 		</StyledChart>

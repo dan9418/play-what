@@ -1,12 +1,32 @@
-import React from 'react';
-import ChartPage from './ChartPage';
 import About from './About';
 import BlockPage from './BlockPage';
-import PodListPage from './PodListPage';
-import PodPage from './PodPage';
+import ChartPage from './ChartPage';
 import FretboardPage from './FretboardPage';
 import PodIndexPage from './PodIndexPage';
+import PodListPage from './PodListPage';
+import PodPage from './PodPage';
 import SectionPage from './SectionPage';
+
+/*
+	podIndex
+		type: array
+		extensible: no
+		type: pitch/degree
+	pod
+		type: array
+		extensible: no
+		type: note/interval
+	podList
+		type: array
+		extensible: yes
+		type: chord/scale
+	block
+		type: object
+		extensible: no
+	group
+		type: namedArray
+		extensible: yes
+*/
 
 export const PAGE = {
 	about: {
