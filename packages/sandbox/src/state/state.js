@@ -1,8 +1,8 @@
 import { atom } from "recoil";
 import { OUT_OF_NOWHERE, TEST_SONG } from "./songs";
 
-export const chartState = atom({
-	key: 'chartState',
+export const dataState = atom({
+	key: 'dataState',
 	default: OUT_OF_NOWHERE
 });
 

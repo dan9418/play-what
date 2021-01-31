@@ -2,7 +2,7 @@
 import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
 import SONGS from '../../state/songs';
-import { chartState, pathState } from '../../state/state';
+import { dataState, pathState } from '../../state/state';
 import { PAGE } from '../pages/pages';
 import BreadcrumbList from './BreadcrumbList';
 
@@ -65,7 +65,7 @@ export const useLevelContext = () => useContext(LevelContext);
 
 const Level = () => {
 	const [path, setPath] = useRecoilState(pathState);
-	const [chart, setChart] = useRecoilState(chartState);
+	const [chart, setChart] = useRecoilState(dataState);
 
 	const levelUtils = getLevelUtils(path, setPath, chart);
 

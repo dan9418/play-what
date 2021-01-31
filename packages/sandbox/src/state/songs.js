@@ -2,54 +2,54 @@ import { CHORD, NOTE, SCALE } from "@pw/core/src/Pod.presets";
 
 export const TEST_SONG = {
 	id: 'test',
-	name: 'test',
-	sections: [
+	type: 'group',
+	subType: null,
+	data: [
 		{
 			id: 'A',
-			name: 'A',
-			blocks: [
+			type: 'group',
+			subType: null,
+			data: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: SCALE.Major.value,
-					t: 4
+					t: 8
 				},
 				{
 					keyCenter: NOTE.B.value,
 					intervals: SCALE.Major.value,
-					t: 4
-				},
-				{
-					keyCenter: NOTE.C.value,
-					intervals: SCALE.Major.value,
-					t: 4
-				},
-				{
-					keyCenter: NOTE.D.value,
-					intervals: SCALE.Major.value,
-					t: 4
+					t: 8
 				}
 			]
 		},
 		{
 			id: 'B',
-			name: 'B',
-			blocks: [
-				{
-					keyCenter: NOTE.A.value,
-					intervals: CHORD.Maj.value,
-					t: 4
-				},
-				{
-					keyCenter: NOTE.B.value,
-					intervals: CHORD.Maj.value,
-					t: 4
-				},
-				{
-					keyCenter: NOTE.C.value,
-					intervals: CHORD.Maj.value,
-					t: 8
-				}
-			]
+			type: 'block',
+			subType: null,
+			data: {
+				keyCenter: NOTE.A.value,
+				intervals: SCALE.Major.value,
+				t: 8
+			}
+		},
+		{
+			id: 'C',
+			type: 'podList',
+			subType: 'scale',
+			data: SCALE.Major.value
+
+		},
+		{
+			id: 'C',
+			type: 'pod',
+			subType: 'note',
+			data: NOTE.A.value
+		},
+		{
+			id: 'D',
+			type: 'podIndex',
+			subType: 'degree',
+			data: 0
 		}
 	]
 };
