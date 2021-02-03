@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import BlockSubpanel from '../modules/Block/BlockSubpanel';
 import Panel from '../ui/Panel';
+import { LEVEL_ID } from './pages';
 
 const StyledSectionPage = styled.div`
 	.panel-body {
@@ -45,7 +46,7 @@ const SectionPage = () => {
 							<div key={i} className="block-wrapper">
 								<div>{i}</div>
 								<BlockSubpanel block={block} />
-								<ZoomButton name={`Block ${i}`} levelId="block" pathId={i} />
+								<ZoomButton name={`Block ${i}`} levelId={LEVEL_ID.Block} pathId={i} />
 							</div>
 						);
 					})

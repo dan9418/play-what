@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import SectionSubpanel from '../modules/Section/SectionSubpanel';
 import Panel from '../ui/Panel';
+import { LEVEL_ID } from './pages';
 
 const StyledChartPage = styled.div`
 	.panel-body {
@@ -43,7 +44,7 @@ const ChartPage = () => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<SectionSubpanel section={s} />
-								<ZoomButton name={`Section ${s.name}`} levelId="section" pathId={s.id} />
+								<ZoomButton name={`Section ${s.name}`} levelId={LEVEL_ID.Section} pathId={s.id} />
 							</div>
 						);
 					})

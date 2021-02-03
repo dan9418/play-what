@@ -1,7 +1,6 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import styled from 'styled-components';
-import { PAGE } from './pages';
 
 const StyledAbout = styled.div`
 	h1, p, button {

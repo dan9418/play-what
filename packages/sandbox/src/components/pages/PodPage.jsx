@@ -8,6 +8,7 @@ import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
 import PodIndexTable from '../modules/PodIndex/PodIndexTable';
 import Panel from '../ui/Panel';
+import { LEVEL_ID } from './pages';
 
 const StyledPodPage = styled.div`
 	.panel-body {
@@ -36,9 +37,9 @@ const PodPage = () => {
 	return (
 		<StyledPodPage>
 			<Panel name={name} caption="Pod" preview={preview}>
-				<h2>Pitch<ZoomButton name="Pitch" pathId={0} levelId="podIndex" /></h2>
+				<h2>Pitch<ZoomButton name="Pitch" pathId={0} levelId={LEVEL_ID.PodIndex} /></h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
-				<h2>Degree<ZoomButton name="Degree" pathId={1} levelId="podIndex" /></h2>
+				<h2>Degree<ZoomButton name="Degree" pathId={1} levelId={LEVEL_ID.PodIndex} /></h2>
 				<PodIndexSubpanel podIndex={pod[1]} podIndexType="degree" />
 			</Panel>
 		</StyledPodPage>

@@ -7,6 +7,7 @@ import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
+import { LEVEL_ID } from './pages';
 
 const StyledPodListPage = styled.div`
 	.panel-body {
@@ -53,7 +54,7 @@ const PodListPage = () => {
 							<div key={i} className="pod-wrapper">
 								<div>{i}</div>
 								<PodSubpanel pod={pod} podType={podType} />
-								<ZoomButton name={`Pod ${i}`} levelId="pod" pathId={i} />
+								<ZoomButton name={`Pod ${i}`} levelId={LEVEL_ID.Pod} pathId={i} />
 							</div>
 						);
 					})

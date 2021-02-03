@@ -2,6 +2,7 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../../core/Level';
+import { LEVEL_ID } from '../../pages/pages';
 import Panel from '../../ui/Panel';
 import SectionSubpanel from '../Section/SectionSubpanel';
 import Section from './Section';
@@ -24,7 +25,7 @@ const SectionWrapper = ({ section }) => {
 		<StyledSectionWrapper>
 			<StyledSectionHeader>
 				{name}
-				<ZoomButton levelId='section' name={name} pathId={id} size={24} />
+				<ZoomButton levelId={LEVEL_ID.Section} name={name} pathId={id} size={24} />
 			</StyledSectionHeader>
 			<Section section={section} />
 		</StyledSectionWrapper>
