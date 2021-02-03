@@ -34,7 +34,7 @@ const StyledPodListPage = styled.div`
 `;
 
 const PodListPage = () => {
-	const { data: podList, currentLevel } = useLevelContext();
+	const { data: podList, pathHead } = useLevelContext();
 
 	const [podType, setPodType] = useState('note');
 
@@ -42,7 +42,7 @@ const PodListPage = () => {
 
 	return (
 		<StyledPodListPage>
-			<Panel name={currentLevel.pathId} caption="Pod List" preview={preview}>
+			<Panel name={pathHead.pathId} caption="Pod List" preview={preview}>
 				{
 					podList.map((pod, i) => {
 						return (

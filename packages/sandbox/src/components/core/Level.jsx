@@ -9,34 +9,34 @@ import BreadcrumbList from './BreadcrumbList';
 const getDataAtPath = (chart, path) => {
 	let node = SONGS;
 	for (let i = 0; i < path.length; i++) {
-		let head = path[i];
-		if (head.levelId === 'chart') {
-			node = node[head.pathId]
+		let pathHead = path[i];
+		if (pathHead.levelId === 'chart') {
+			node = node[pathHead.pathId]
 		}
-		else if (head.levelId === 'section') {
-			node = node.sections.find(s => s.pathId === head.pathId)
+		else if (pathHead.levelId === 'section') {
+			node = node.sections.find(s => s.pathId === pathHead.pathId)
 		}
-		else if (head.levelId === 'block') {
-			node = node.blocks[head.pathId]
+		else if (pathHead.levelId === 'block') {
+			node = node.blocks[pathHead.pathId]
 		}
-		else if (head.levelId === 'podList') {
-			node = node[head.pathId]
+		else if (pathHead.levelId === 'podList') {
+			node = node[pathHead.pathId]
 		}
-		else if (head.levelId === 'pod') {
-			node = node[head.pathId]
+		else if (pathHead.levelId === 'pod') {
+			node = node[pathHead.pathId]
 		}
-		else if (head.levelId === 'podIndex') {
-			node = node[head.pathId]
+		else if (pathHead.levelId === 'podIndex') {
+			node = node[pathHead.pathId]
 		}
 		if (typeof node === 'undefined')
-			console.warn('head', head, 'path', path, 'chart', chart);
+			console.warn('pathHead', pathHead, 'path', path, 'chart', chart);
 	}
 	return node;
 };
 
 const getLevelUtils = (path, setPath, chart) => {
 
-	const currentLevel = path[path.length - 1];
+	const pathHead = path[path.length - 1];
 	const popAt = n => setPath(path.slice(0, n + 1));
 	const push = p => setPath([...path, p]);
 	const reset = () => setPath([]);
@@ -52,7 +52,7 @@ const getLevelUtils = (path, setPath, chart) => {
 		setData,
 		// position
 		path,
-		currentLevel,
+		pathHead,
 		popAt,
 		push,
 		reset
@@ -69,7 +69,7 @@ const Level = () => {
 
 	const levelUtils = getLevelUtils(path, setPath, chart);
 
-	const LevelComponent = PAGE[levelUtils.currentLevel.levelId].component;
+	const LevelComponent = PAGE[levelUtils.pathHead.levelId].component;
 
 	return (
 		<LevelContext.Provider value={levelUtils}>
