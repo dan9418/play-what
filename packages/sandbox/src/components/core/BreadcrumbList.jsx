@@ -30,12 +30,12 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const { path, currentLevel, popAt } = useLevelContext();
+	const { path, popAt } = useLevelContext();
 
 	return (
 		<StyledBreadcrumbList>
 			{path.map((b, i) => {
-				const className = b.id === currentLevel.id ? 'active' : '';
+				const className = b.id === i + 1 === path.length ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
 					<li key={i} className={className} onClick={onClick}>{b.id}</li>

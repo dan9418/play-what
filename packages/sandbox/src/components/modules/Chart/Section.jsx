@@ -55,7 +55,7 @@ const Section = ({ section, sIndex }) => {
 						onClick={() => setPosition([sIndex, i])}
 					>
 						{blockName}
-						<ZoomButton level='block' name={blockName} id={i} />
+						<ZoomButton levelId='block' name={blockName} pathId={i} />
 					</StyledBlock>
 				);
 			})}

@@ -42,13 +42,13 @@ const PodListPage = () => {
 
 	return (
 		<StyledPodListPage>
-			<Panel name={currentLevel.id} caption="Pod List" preview={preview}>
+			<Panel name={currentLevel.pathId} caption="Pod List" preview={preview}>
 				{
 					podList.map((pod, i) => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<PodSubpanel pod={pod} podType={podType} />
-								<ZoomButton name={i} level="pod" id={i} />
+								<ZoomButton name={i} levelId="pod" pathId={i} />
 							</div>
 						);
 					})

@@ -10,23 +10,23 @@ const getDataAtPath = (chart, path) => {
 	let node = SONGS;
 	for (let i = 0; i < path.length; i++) {
 		let head = path[i];
-		if (head.level === 'chart') {
-			node = node[head.id]
+		if (head.levelId === 'chart') {
+			node = node[head.pathId]
 		}
-		else if (head.level === 'section') {
-			node = node.sections.find(s => s.id === head.id)
+		else if (head.levelId === 'section') {
+			node = node.sections.find(s => s.pathId === head.pathId)
 		}
-		else if (head.level === 'block') {
-			node = node.blocks[head.id]
+		else if (head.levelId === 'block') {
+			node = node.blocks[head.pathId]
 		}
-		else if (head.level === 'podList') {
-			node = node[head.id]
+		else if (head.levelId === 'podList') {
+			node = node[head.pathId]
 		}
-		else if (head.level === 'pod') {
-			node = node[head.id]
+		else if (head.levelId === 'pod') {
+			node = node[head.pathId]
 		}
-		else if (head.level === 'podIndex') {
-			node = node[head.id]
+		else if (head.levelId === 'podIndex') {
+			node = node[head.pathId]
 		}
 		if (typeof node === 'undefined')
 			console.warn('head', head, 'path', path, 'chart', chart);
@@ -69,7 +69,7 @@ const Level = () => {
 
 	const levelUtils = getLevelUtils(path, setPath, chart);
 
-	const LevelComponent = PAGE[levelUtils.currentLevel.level].component;
+	const LevelComponent = PAGE[levelUtils.currentLevel.levelId].component;
 
 	return (
 		<LevelContext.Provider value={levelUtils}>

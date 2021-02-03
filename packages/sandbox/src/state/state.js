@@ -10,8 +10,8 @@ export const pathState = atom({
 	key: 'pathState',
 	default: [
 		{
-			id: 'outOfNowhere',
-			level: 'chart'
+			pathId: 'outOfNowhere',
+			levelId: 'chart'
 		}
 		/*{
 			id: 'A',

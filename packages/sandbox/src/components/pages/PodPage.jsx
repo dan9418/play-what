@@ -27,7 +27,7 @@ const StyledPodPage = styled.div`
 `;
 
 const PodPage = () => {
-	const { data: pod, currentLevel } = useLevelContext();
+	const { data: pod } = useLevelContext();
 	const [podType, setPodType] = useState('note');
 
 	const preview = JSON.stringify(pod);
@@ -36,9 +36,9 @@ const PodPage = () => {
 	return (
 		<StyledPodPage>
 			<Panel name={name} caption="Pod" preview={preview}>
-				<h2>Pitch<ZoomButton name="Pitch" id={0} level="podIndex" /></h2>
+				<h2>Pitch<ZoomButton name="Pitch" pathId={0} levelId="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[0]} podIndexType="pitch" />
-				<h2>Degree<ZoomButton name="Degree" id={1} level="podIndex" /></h2>
+				<h2>Degree<ZoomButton name="Degree" pathId={1} levelId="podIndex" /></h2>
 				<PodIndexSubpanel podIndex={pod[1]} podIndexType="degree" />
 			</Panel>
 		</StyledPodPage>
