@@ -24,6 +24,10 @@ const StyledSectionPage = styled.div`
 		width: 100%;
 		max-width: 512px;
 		>:first-child {
+			font-weight: bold;
+			margin-right: 8px;	
+		}
+		>:nth-child(2) {
 			width: 100%;
 			margin-right: 8px;	
 		}
@@ -39,6 +43,7 @@ const SectionPage = () => {
 					section.blocks.map((block, i) => {
 						return (
 							<div key={i} className="block-wrapper">
+								<div>{i}</div>
 								<BlockSubpanel block={block} />
 								<ZoomButton name={`Block ${i}`} levelId="block" pathId={i} />
 							</div>

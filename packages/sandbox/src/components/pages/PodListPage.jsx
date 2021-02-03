@@ -27,6 +27,10 @@ const StyledPodListPage = styled.div`
 		width: 100%;
 		max-width: 512px;
 		>:first-child {
+			font-weight: bold;
+			margin-right: 8px;	
+		}
+		>:nth-child(2) {
 			width: 100%;
 			margin-right: 8px;	
 		}
@@ -47,8 +51,9 @@ const PodListPage = () => {
 					podList.map((pod, i) => {
 						return (
 							<div key={i} className="pod-wrapper">
+								<div>{i}</div>
 								<PodSubpanel pod={pod} podType={podType} />
-								<ZoomButton name={i} levelId="pod" pathId={i} />
+								<ZoomButton name={`Pod ${i}`} levelId="pod" pathId={i} />
 							</div>
 						);
 					})

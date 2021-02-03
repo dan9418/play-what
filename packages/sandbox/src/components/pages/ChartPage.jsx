@@ -43,7 +43,7 @@ const ChartPage = () => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<SectionSubpanel section={s} />
-								<ZoomButton name={s.name} levelId="section" pathId={s.id} />
+								<ZoomButton name={`Section ${s.name}`} levelId="section" pathId={s.id} />
 							</div>
 						);
 					})
