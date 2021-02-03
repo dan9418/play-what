@@ -35,10 +35,10 @@ const BreadcrumbList = () => {
 	return (
 		<StyledBreadcrumbList>
 			{path.map((b, i) => {
-				const className = b.id === i + 1 === path.length ? 'active' : '';
+				const className = i + 1 === path.length ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
-					<li key={i} className={className} onClick={onClick}>{b.id}</li>
+					<li key={i} className={className} onClick={onClick}>{b.name}</li>
 				);
 			})}
 		</StyledBreadcrumbList>

@@ -18,7 +18,7 @@ const ZoomButton = ({ levelId, name, pathId, size, ...props }) => {
 		levelId,
 		name,
 		pathId
-	})
+	});
 	return (
 		<StyledZoomButton {...props} onClick={onClick}>
 			<Icon color={theme.primary} iconId='zoom' size={size} />

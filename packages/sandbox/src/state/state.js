@@ -10,6 +10,7 @@ export const pathState = atom({
 	key: 'pathState',
 	default: [
 		{
+			name: 'Out of Nowhere',
 			pathId: 'outOfNowhere',
 			levelId: 'chart'
 		}

@@ -14,7 +14,7 @@ const getDataAtPath = (chart, path) => {
 			node = node[pathHead.pathId]
 		}
 		else if (pathHead.levelId === 'section') {
-			node = node.sections.find(s => s.pathId === pathHead.pathId)
+			node = node.sections.find(s => s.id === pathHead.pathId)
 		}
 		else if (pathHead.levelId === 'block') {
 			node = node.blocks[pathHead.pathId]
