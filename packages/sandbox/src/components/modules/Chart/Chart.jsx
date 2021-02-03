@@ -42,11 +42,11 @@ const Chart = () => {
 	const { data: chart } = useLevelContext();
 	return (
 		<StyledChart>
-			<Panel name={chart.name} caption="Chart" preview={chart.sections.map(s => s.id).join(' ')}>
-				{/*chart.sections.map((s, i) => (
+			<Panel name={chart.name} caption="Chart" preview={chart.data.map(s => s.id).join(' ')}>
+				{/*chart.data.map((s, i) => (
 					<SectionWrapper key={s.id} section={s} />
 				))*/}
-				{chart.sections.map((s, i) => (
+				{chart.data.map((s, i) => (
 					<SectionSubpanel key={s.id} section={s} />
 				))}
 			</Panel>

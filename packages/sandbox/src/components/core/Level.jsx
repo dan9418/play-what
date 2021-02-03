@@ -3,33 +3,38 @@ import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
 import SONGS from '../../state/songs';
 import { dataState, pathState } from '../../state/state';
-import { LEVEL_ID, LEVEL } from '../pages/pages';
+import { LEVEL, TYPE, TYPE_ID } from '../pages/pages';
 import BreadcrumbList from './BreadcrumbList';
 
 const getDataAtPath = (chart, path) => {
-	let node = SONGS;
-	for (let i = 0; i < path.length; i++) {
-		let pathHead = path[i];
-		if (pathHead.levelId === LEVEL_ID.Chart) {
-			node = node[pathHead.pathId]
+	let node = chart;
+	for (let i = 0; i < path.length - 1; i++) {
+		const pathHead = path[i];
+		const target = path[i + 1];
+		const { levelId, pathId } = pathHead;
+		const { pathId: targetId } = target;
+		const levelTypeId = LEVEL[levelId].typeId;
+
+		console.log(`${LEVEL[levelId].name} - ${TYPE[levelTypeId].name} - ${pathId}`, chart);
+
+		if (levelTypeId === TYPE_ID.Native) {
+			// not used - should only be leaf
 		}
-		else if (pathHead.levelId === LEVEL_ID.Section) {
-			node = node.sections.find(s => s.id === pathHead.pathId)
+		else if (levelTypeId === TYPE_ID.Object || levelTypeId === TYPE_ID.List) {
+			node = node[targetId];
 		}
-		else if (pathHead.levelId === LEVEL_ID.Block) {
-			node = node.blocks[pathHead.pathId]
+		else if (levelTypeId === TYPE_ID.NamedList) {
+			node = node.data[targetId];
 		}
-		else if (pathHead.levelId === LEVEL_ID.PodList) {
-			node = node[pathHead.pathId]
+		else if (levelTypeId === TYPE_ID.NamedKeyedList) {
+			node = node.data.find(s => s.id === targetId);
 		}
-		else if (pathHead.levelId === LEVEL_ID.Pod) {
-			node = node[pathHead.pathId]
+		else {
+			console.error('UNKNOWN DATA TYPE', levelTypeId);
 		}
-		else if (pathHead.levelId === LEVEL_ID.PodIndex) {
-			node = node[pathHead.pathId]
-		}
-		if (typeof node === 'undefined')
-			console.warn('pathHead', pathHead, 'path', path, 'chart', chart);
+
+		if (!node)
+			console.error('UNDEFINED NODE', pathHead, 'path', path, 'chart', chart);
 	}
 	return node;
 };

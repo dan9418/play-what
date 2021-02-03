@@ -34,13 +34,13 @@ const StyledChartPage = styled.div`
 const ChartPage = () => {
 
 	const { data: chart } = useLevelContext();
-	const preview = chart.sections.map(s => s.id).join(' ');
+	const preview = chart.data.map(s => s.id).join(' ');
 
 	return (
 		<StyledChartPage>
 			<Panel name={chart.name} caption="Chart" preview={preview}>
 				{
-					chart.sections.map((s, i) => {
+					chart.data.map((s, i) => {
 						return (
 							<div key={i} className="pod-wrapper">
 								<SectionSubpanel section={s} />

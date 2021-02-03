@@ -8,7 +8,7 @@ const SectionTable = ({ section, setSection }) => {
 		<th>Name</th>
 	</>;
 
-	const rows = section.blocks.map((b, i) => {
+	const rows = section.data.map((b, i) => {
 		return (
 			<tr key={i}>
 				<td>{i}</td>

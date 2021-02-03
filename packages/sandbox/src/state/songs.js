@@ -37,7 +37,6 @@ export const TEST_SONG = {
 			type: 'podList',
 			subType: 'scale',
 			data: SCALE.Major.value
-
 		},
 		{
 			id: 'C',
@@ -57,11 +56,11 @@ export const TEST_SONG = {
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',
 	name: 'Out of Nowhere',
-	sections: [
+	data: [
 		{
 			id: 'A',
 			name: 'A',
-			blocks: [
+			data: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -97,7 +96,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'B',
 			name: 'B',
-			blocks: [
+			data: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
@@ -133,7 +132,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'A\'',
 			name: 'A',
-			blocks: [
+			data: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -169,7 +168,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'C',
 			name: 'C',
-			blocks: [
+			data: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
