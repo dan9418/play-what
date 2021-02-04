@@ -42,14 +42,16 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getList = (list, SubpanelComponent) => {
+const getList = (list, childLevel) => {
+
+	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
 	return list.map((item, i) => {
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
 				<SubpanelComponent data={item} />
-				<ZoomButton name={`Pod ${i}`} levelId={LEVEL_ID.Pod} pathId={i} />
+				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
 			</div>
 		);
 	})
@@ -70,7 +72,7 @@ const Page = () => {
 
 	if (levelTypeId === TYPE_ID.NamedKeyedList) {
 		if (levelId === LEVEL_ID.Chart) {
-			content = getList(data.data, LEVEL[LEVEL_ID.Section].subpanelComponent);
+			content = getList(data.data, LEVEL[LEVEL_ID.Section]);
 		}
 	}
 
