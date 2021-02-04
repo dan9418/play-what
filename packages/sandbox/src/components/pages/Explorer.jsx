@@ -44,11 +44,11 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getNamedList = (list, childLevel) => {
+const NamedList = ({ data, childLevel }) => {
 
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
-	return list.map((item, i) => {
+	return data.map((item, i) => {
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
@@ -59,11 +59,11 @@ const getNamedList = (list, childLevel) => {
 	})
 };
 
-const getNamedKeyedList = (list, childLevel) => {
+const NamedKeyedList = ({ data, childLevel }) => {
 
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
-	return list.map((item, i) => {
+	return data.map((item, i) => {
 		return (
 			<React.Fragment key={item.id}>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
@@ -73,11 +73,11 @@ const getNamedKeyedList = (list, childLevel) => {
 	})
 };
 
-const getLabeledList = (list, childLevel, labels) => {
+const LabeledList = ({ data, childLevel, labels }) => {
 
 	const { subpanelComponent: SubpanelComponent, levelId } = childLevel;
 
-	return list.map((item, i) => {
+	return data.map((item, i) => {
 		const label = labels[i];
 		const { name, pathId } = label;
 		return (
@@ -89,7 +89,7 @@ const getLabeledList = (list, childLevel, labels) => {
 	})
 };
 
-const getObject = (data, properties) => {
+const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
 		const { name, levelId, propertyId } = property;
 		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
@@ -118,17 +118,17 @@ const Explorer = () => {
 
 	if (levelTypeId === TYPE_ID.NamedKeyedList) {
 		if (levelId === LEVEL_ID.Chart) {
-			content = getNamedKeyedList(levelData.data, LEVEL[LEVEL_ID.Section]);
+			content = <NamedKeyedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Section]} />;
 		}
 	}
 	else if (levelTypeId === TYPE_ID.NamedList) {
 		if (levelId === LEVEL_ID.Section) {
-			content = getNamedList(levelData.data, LEVEL[LEVEL_ID.Block]);
+			content = <NamedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Block]} />;
 		}
 	}
 	else if (levelTypeId === TYPE_ID.Object) {
 		if (levelId === LEVEL_ID.Block) {
-			content = getObject(levelData, [
+			const properties = [
 				{
 					propertyId: 'keyCenter',
 					levelId: LEVEL_ID.Pod,
@@ -139,24 +139,25 @@ const Explorer = () => {
 					levelId: LEVEL_ID.PodList,
 					name: 'Intervals'
 				}
-			]);
+			];
+			content = <PWObject data={levelData} properties={properties} />;
 		}
 	}
 	else if (levelTypeId === TYPE_ID.List) {
 		if (levelId === LEVEL_ID.PodList) {
-			content = getNamedList(levelData, LEVEL[LEVEL_ID.Pod]);
+			content = <NamedList data={levelData} childLevel={LEVEL[LEVEL_ID.Pod]} />;
 		}
 	}
 	else if (levelTypeId === TYPE_ID.LabeledList) {
 		if (levelId === LEVEL_ID.Pod) {
-			content = getLabeledList(
-				levelData,
-				LEVEL[LEVEL_ID.PodIndex],
-				[
+			content = <LabeledList
+				data={levelData}
+				childLevel={LEVEL[LEVEL_ID.PodIndex]}
+				labels={[
 					{ pathId: 'pitch', name: 'Pitch' },
 					{ pathId: 'degree', name: 'Degree' }
-				]
-			);
+				]}
+			/>;
 		}
 	}
 	else if (levelTypeId === TYPE_ID.Native) {
