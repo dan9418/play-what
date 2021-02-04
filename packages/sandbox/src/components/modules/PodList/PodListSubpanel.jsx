@@ -16,9 +16,9 @@ const POD_LIST_ACTIONS = [
 	}
 ];
 
-const PodListSubpanel = ({ pods, setPods, podType, setPodType }) => {
+const PodListSubpanel = ({ data: pods }) => {
 
-	const name = PodListUtils.getPreview(pods, { podType });
+	const name = PodListUtils.getPreview(pods, { podType: 'interval' });
 
 	return (
 		<Subpanel
@@ -27,7 +27,7 @@ const PodListSubpanel = ({ pods, setPods, podType, setPodType }) => {
 			actions={POD_LIST_ACTIONS}
 			editable
 		>
-			<PodListTable pods={pods} setPods={setPods} podType={podType} />
+			<PodListTable pods={pods} setPods={null} podType={'interval'} />
 		</Subpanel>
 	);
 };

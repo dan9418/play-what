@@ -77,7 +77,7 @@ const getObject = (data, properties) => {
 		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
 		return (
 			<>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={name} /></h2>
+				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={propertyId} /></h2>
 				<SubpanelComponent data={data[propertyId]} />
 			</>
 		);
@@ -102,20 +102,30 @@ const Page = () => {
 			content = getNamedKeyedList(data.data, LEVEL[LEVEL_ID.Section]);
 		}
 	}
-	if (levelTypeId === TYPE_ID.NamedList) {
+	else if (levelTypeId === TYPE_ID.NamedList) {
 		if (levelId === LEVEL_ID.Section) {
 			content = getNamedList(data.data, LEVEL[LEVEL_ID.Block]);
 		}
 	}
-	if (levelTypeId === TYPE_ID.Object) {
+	else if (levelTypeId === TYPE_ID.Object) {
 		if (levelId === LEVEL_ID.Block) {
 			content = getObject(data, [
 				{
 					propertyId: 'keyCenter',
 					levelId: LEVEL_ID.Pod,
 					name: 'Key Center'
+				},
+				{
+					propertyId: 'intervals',
+					levelId: LEVEL_ID.PodList,
+					name: 'Intervals'
 				}
 			]);
+		}
+	}
+	else if (levelTypeId === TYPE_ID.List) {
+		if (levelId === LEVEL_ID.PodList) {
+			content = getNamedList(data, LEVEL[LEVEL_ID.Pod]);
 		}
 	}
 
