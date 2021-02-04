@@ -1,11 +1,11 @@
-import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
-import { useLevelContext } from '../../contexts/LevelContext';
-import Panel from '../ui/Panel';
-import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from '../core/config';
-import BreadcrumbList from '../core/BreadcrumbList';
 import { useDataContext } from '../../contexts/DataContext';
+import { useLevelContext } from '../../contexts/LevelContext';
+import BreadcrumbList from '../core/BreadcrumbList';
+import { LEVEL, LEVEL_ID, TYPE } from '../core/config';
+import { LabeledList, NamedKeyedList, NamedList, PWObject } from '../core/Types';
+import Panel from '../ui/Panel';
 
 const StyledPage = styled.div`
 	.panel-body {
@@ -43,64 +43,6 @@ const StyledPage = styled.div`
 		}
 	}
 `;
-
-const NamedList = ({ data, childLevel }) => {
-
-	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
-
-	return data.map((item, i) => {
-		return (
-			<div key={i} className="pod-wrapper">
-				<div>{i}</div>
-				<SubpanelComponent data={item} />
-				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
-			</div>
-		);
-	})
-};
-
-const NamedKeyedList = ({ data, childLevel }) => {
-
-	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
-
-	return data.map((item, i) => {
-		return (
-			<React.Fragment key={item.id}>
-				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
-				<SubpanelComponent data={item} />
-			</React.Fragment>
-		);
-	})
-};
-
-const LabeledList = ({ data, childLevel, labels }) => {
-
-	const { subpanelComponent: SubpanelComponent, levelId } = childLevel;
-
-	return data.map((item, i) => {
-		const label = labels[i];
-		const { name, pathId } = label;
-		return (
-			<React.Fragment key={pathId}>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={i} /></h2>
-				<SubpanelComponent data={item} />
-			</React.Fragment>
-		);
-	})
-};
-
-const PWObject = ({ data, properties }) => {
-	return properties.map((property, i) => {
-		const { name, levelId, propertyId } = property;
-		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
-		return (
-			<React.Fragment key={propertyId}>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={propertyId} /></h2>
-				<SubpanelComponent data={data[propertyId]} />
-			</React.Fragment>
-		);
-	})
-};
 
 const getLevelContent = (levelId, levelData) => {
 	let content = null;
