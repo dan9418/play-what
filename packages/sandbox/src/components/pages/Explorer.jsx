@@ -102,18 +102,7 @@ const PWObject = ({ data, properties }) => {
 	})
 };
 
-const Explorer = () => {
-	const { pathHead } = useLevelContext();
-	const { levelData } = useDataContext();
-
-	const { levelId, pathId, name } = pathHead;
-
-	const levelName = LEVEL[levelId].name;
-	const levelTypeId = LEVEL[levelId].typeId;
-	const typeName = TYPE[levelTypeId].name;
-	const caption = `${levelName} | ${typeName}`;
-	const preview = 'preview';
-
+const getLevelContent = (levelId, levelData) => {
 	let content = null;
 
 	if (levelId === LEVEL_ID.Chart) {
@@ -153,6 +142,22 @@ const Explorer = () => {
 	else if (levelId === LEVEL_ID.PodIndex) {
 		content = <div>{`Data: ${levelData}`}</div>;
 	}
+	return content;
+};
+
+const Explorer = () => {
+	const { pathHead } = useLevelContext();
+	const { levelData } = useDataContext();
+
+	const { levelId, name } = pathHead;
+
+	const levelName = LEVEL[levelId].name;
+	const levelTypeId = LEVEL[levelId].typeId;
+	const typeName = TYPE[levelTypeId].name;
+	const caption = `${levelName} | ${typeName}`;
+	const preview = 'preview';
+
+	const content = getLevelContent(levelId, levelData);
 
 	return (
 		<StyledPage>
