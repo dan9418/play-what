@@ -18,29 +18,34 @@ export const TYPE_ID = {
 	Object: 1,
 	List: 2,
 	NamedList: 3,
-	NamedKeyedList: 4
+	NamedKeyedList: 4,
+	LabeledList: 5
 };
 
 export const TYPE = {
 	[TYPE_ID.Native]: {
-		id: TYPE_ID.Native,
+		typeId: TYPE_ID.Native,
 		name: 'Native'
 	},
 	[TYPE_ID.Object]: {
-		id: TYPE_ID.Object,
+		typeId: TYPE_ID.Object,
 		name: 'Object'
 	},
 	[TYPE_ID.List]: {
-		id: TYPE_ID.List,
+		typeId: TYPE_ID.List,
 		name: 'List'
 	},
 	[TYPE_ID.NamedList]: {
-		id: TYPE_ID.NamedList,
+		typeId: TYPE_ID.NamedList,
 		name: 'Named List'
 	},
 	[TYPE_ID.NamedKeyedList]: {
-		id: TYPE_ID.NamedKeyedList,
+		typeId: TYPE_ID.NamedKeyedList,
 		name: 'Named Keyed List'
+	},
+	[TYPE_ID.LabeledList]: {
+		typeId: TYPE_ID.LabeledList,
+		name: 'Labeled List'
 	}
 };
 
@@ -53,7 +58,7 @@ export const LEVEL = {
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
-		typeId: TYPE_ID.List,
+		typeId: TYPE_ID.LabeledList,
 		name: 'Pod',
 		subpanelComponent: PodSubpanel
 	},

@@ -65,10 +65,10 @@ const getNamedKeyedList = (list, childLevel) => {
 
 	return list.map((item, i) => {
 		return (
-			<>
+			<React.Fragment key={item.id}>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
 				<SubpanelComponent data={item} />
-			</>
+			</React.Fragment>
 		);
 	})
 };
@@ -81,10 +81,10 @@ const getLabeledList = (list, childLevel, labels) => {
 		const label = labels[i];
 		const { name, pathId } = label;
 		return (
-			<>
+			<React.Fragment key={pathId}>
 				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={i} /></h2>
 				<SubpanelComponent data={item} />
-			</>
+			</React.Fragment>
 		);
 	})
 };
@@ -94,10 +94,10 @@ const getObject = (data, properties) => {
 		const { name, levelId, propertyId } = property;
 		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
 		return (
-			<>
+			<React.Fragment key={propertyId}>
 				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={propertyId} /></h2>
 				<SubpanelComponent data={data[propertyId]} />
-			</>
+			</React.Fragment>
 		);
 	})
 };
@@ -146,6 +146,8 @@ const Explorer = () => {
 		if (levelId === LEVEL_ID.PodList) {
 			content = getNamedList(levelData, LEVEL[LEVEL_ID.Pod]);
 		}
+	}
+	else if (levelTypeId === TYPE_ID.LabeledList) {
 		if (levelId === LEVEL_ID.Pod) {
 			content = getLabeledList(
 				levelData,

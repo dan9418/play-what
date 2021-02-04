@@ -16,7 +16,7 @@ const getDataAtPath = (data, path) => {
 		if (levelTypeId === TYPE_ID.Native) {
 			// not used - should only be leaf
 		}
-		else if (levelTypeId === TYPE_ID.Object || levelTypeId === TYPE_ID.List) {
+		else if (levelTypeId === TYPE_ID.Object || levelTypeId === TYPE_ID.List || levelTypeId === TYPE_ID.LabeledList) {
 			node = node[targetId];
 		}
 		else if (levelTypeId === TYPE_ID.NamedList) {
