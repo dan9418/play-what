@@ -5,6 +5,7 @@ import { useLevelContext } from '../../contexts/LevelContext';
 import Panel from '../ui/Panel';
 import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from '../core/config';
 import BreadcrumbList from '../core/BreadcrumbList';
+import { useDataContext } from '../../contexts/DataContext';
 
 const StyledPage = styled.div`
 	.panel-body {
@@ -102,7 +103,8 @@ const getObject = (data, properties) => {
 };
 
 const Explorer = () => {
-	const { data, pathHead } = useLevelContext();
+	const { pathHead } = useLevelContext();
+	const { levelData } = useDataContext();
 
 	const { levelId, pathId, name } = pathHead;
 
@@ -116,17 +118,17 @@ const Explorer = () => {
 
 	if (levelTypeId === TYPE_ID.NamedKeyedList) {
 		if (levelId === LEVEL_ID.Chart) {
-			content = getNamedKeyedList(data.data, LEVEL[LEVEL_ID.Section]);
+			content = getNamedKeyedList(levelData.data, LEVEL[LEVEL_ID.Section]);
 		}
 	}
 	else if (levelTypeId === TYPE_ID.NamedList) {
 		if (levelId === LEVEL_ID.Section) {
-			content = getNamedList(data.data, LEVEL[LEVEL_ID.Block]);
+			content = getNamedList(levelData.data, LEVEL[LEVEL_ID.Block]);
 		}
 	}
 	else if (levelTypeId === TYPE_ID.Object) {
 		if (levelId === LEVEL_ID.Block) {
-			content = getObject(data, [
+			content = getObject(levelData, [
 				{
 					propertyId: 'keyCenter',
 					levelId: LEVEL_ID.Pod,
@@ -142,11 +144,11 @@ const Explorer = () => {
 	}
 	else if (levelTypeId === TYPE_ID.List) {
 		if (levelId === LEVEL_ID.PodList) {
-			content = getNamedList(data, LEVEL[LEVEL_ID.Pod]);
+			content = getNamedList(levelData, LEVEL[LEVEL_ID.Pod]);
 		}
 		if (levelId === LEVEL_ID.Pod) {
 			content = getLabeledList(
-				data,
+				levelData,
 				LEVEL[LEVEL_ID.PodIndex],
 				[
 					{ pathId: 'pitch', name: 'Pitch' },
@@ -157,7 +159,7 @@ const Explorer = () => {
 	}
 	else if (levelTypeId === TYPE_ID.Native) {
 		if (levelId === LEVEL_ID.PodIndex) {
-			content = <div>{`Data: ${data}`}</div>;
+			content = <div>{`Data: ${levelData}`}</div>;
 		}
 	}
 

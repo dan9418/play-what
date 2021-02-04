@@ -10,6 +10,7 @@ import { LevelContextProvider } from '../contexts/LevelContext';
 import Nav from './core/Nav';
 import Explorer from './pages/Explorer';
 import { RouteContextConsumer, RouteContextProvider } from '../contexts/RouteContext';
+import { DataContextProvider } from '../contexts/DataContext';
 
 const StyledMain = styled.main`
 	padding: 64px 16px 16px 16px;
@@ -28,9 +29,11 @@ const App = () => {
 						<Nav />
 						<StyledMain>
 							<LevelContextProvider>
-								<RouteContextConsumer>
-									{({Component}) => <Component />}
-								</RouteContextConsumer>
+								<DataContextProvider>
+									<RouteContextConsumer>
+										{({Component}) => <Component />}
+									</RouteContextConsumer>
+								</DataContextProvider>
 							</LevelContextProvider>
 						</StyledMain>
 					</RouteContextProvider>
