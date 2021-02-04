@@ -9,6 +9,7 @@ import ErrorBoundary from './core/ErrorBoundary';
 import { LevelContextProvider } from '../contexts/LevelContext';
 import Nav from './core/Nav';
 import Explorer from './pages/Explorer';
+import { RouteContextConsumer, RouteContextProvider } from '../contexts/RouteContext';
 
 const StyledMain = styled.main`
 	padding: 64px 16px 16px 16px;
@@ -23,12 +24,16 @@ const App = () => {
 		<RecoilRoot>
 			<ThemeProvider theme={THEME}>
 				<ErrorBoundary>
-					<Nav />
-					<StyledMain>
-						<LevelContextProvider>
-							<Explorer />
-						</LevelContextProvider>
-					</StyledMain>
+					<RouteContextProvider>
+						<Nav />
+						<StyledMain>
+							<LevelContextProvider>
+								<RouteContextConsumer>
+									{({Component}) => <Component />}
+								</RouteContextConsumer>
+							</LevelContextProvider>
+						</StyledMain>
+					</RouteContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
 		</RecoilRoot>

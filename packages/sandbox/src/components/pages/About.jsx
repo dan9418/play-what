@@ -1,6 +1,7 @@
 import ButtonInput from '@pw/react/src/ui/ButtonInput/ButtonInput';
 import React from 'react';
 import styled from 'styled-components';
+import { PAGE_ID, useRouteContext } from '../../contexts/RouteContext';
 
 const StyledAbout = styled.div`
 	h1, p, button {
@@ -11,17 +12,18 @@ const StyledAbout = styled.div`
 `;
 
 const About = () => {
+	const routeContext = useRouteContext();
 	return (
 		<StyledAbout>
 			<h1>Play What?</h1>
 			<p>
-				Play What is a toolkit for modeling and analyzing musical blocks.
+				Play What is a toolkit for modeling and analyzing musical concepts.
 				The project is under active development and is slated for initial release in early 2021.
 			</p>
 			<p>
-				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core blocks then check out the app to explore its capabilities:
+				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
-			<ButtonInput onClick={null}>Visit App</ButtonInput>
+			<ButtonInput onClick={() => routeContext.setPageId(PAGE_ID.Explorer)}>Explore!</ButtonInput>
 		</StyledAbout>
 	)
 };
