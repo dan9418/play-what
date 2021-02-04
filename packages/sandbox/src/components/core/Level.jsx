@@ -2,7 +2,7 @@
 import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
 import { dataState, pathState } from '../../state/state';
-import Page from '../pages/Page';
+import Explorer from '../pages/Explorer';
 import BreadcrumbList from './BreadcrumbList';
 import { LEVEL, TYPE_ID } from './config';
 
@@ -75,8 +75,7 @@ const Level = () => {
 
 	return (
 		<LevelContext.Provider value={levelUtils}>
-			<BreadcrumbList />
-			<Page />
+			<Explorer />
 		</LevelContext.Provider>
 	);
 };

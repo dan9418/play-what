@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import Panel from '../ui/Panel';
 import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from '../core/config';
+import BreadcrumbList from '../core/BreadcrumbList';
 
 const StyledPage = styled.div`
 	.panel-body {
@@ -100,7 +101,7 @@ const getObject = (data, properties) => {
 	})
 };
 
-const Page = () => {
+const Explorer = () => {
 	const { data, pathHead } = useLevelContext();
 
 	const { levelId, pathId, name } = pathHead;
@@ -162,6 +163,7 @@ const Page = () => {
 
 	return (
 		<StyledPage>
+			<BreadcrumbList />
 			<Panel name={name} caption={caption} preview={preview}>
 				{content}
 			</Panel>
@@ -169,4 +171,4 @@ const Page = () => {
 	);
 };
 
-export default Page;
+export default Explorer;
