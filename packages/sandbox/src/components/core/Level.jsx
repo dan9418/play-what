@@ -3,6 +3,7 @@ import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
 import SONGS from '../../state/songs';
 import { dataState, pathState } from '../../state/state';
+import Page from '../pages/Page';
 import { LEVEL, TYPE, TYPE_ID } from '../pages/pages';
 import BreadcrumbList from './BreadcrumbList';
 
@@ -72,14 +73,12 @@ const Level = () => {
 
 	const levelUtils = getLevelUtils(path, setPath, chart);
 
-	console.log('path', path, levelUtils);
-
-	const LevelComponent = LEVEL[levelUtils.pathHead.levelId].component;
+	console.log('levelUtils', path, levelUtils);
 
 	return (
 		<LevelContext.Provider value={levelUtils}>
 			<BreadcrumbList />
-			<LevelComponent />
+			<Page />
 		</LevelContext.Provider>
 	);
 };
