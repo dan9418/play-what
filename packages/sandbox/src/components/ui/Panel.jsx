@@ -2,6 +2,7 @@ import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../contexts/EditContext";
+import { useLevelContext } from '../../contexts/LevelContext';
 import Icon from "./Icon";
 
 const StyledPanelHeader = styled.div`
@@ -53,7 +54,8 @@ const StyledPanelHeader = styled.div`
 	}
 `;
 
-const PanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
+const PanelHeader = ({ name, caption, preview }) => {
+	const routeContext = useLevelContext();
 	return (
 		<StyledPanelHeader>
 			<div className='preview-container'>
@@ -63,11 +65,8 @@ const PanelHeader = ({ name, isOpen, setIsOpen, caption, preview }) => {
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>
-			<ButtonInput
-				isActive={isOpen}
-				onClick={() => setIsOpen(!isOpen)}
-			>
-				<Icon iconId={isOpen ? 'minus' : 'plus'} />
+			<ButtonInput onClick={routeContext.pop}>
+				<Icon iconId='delete' />
 			</ButtonInput>
 		</StyledPanelHeader>
 	);
@@ -88,16 +87,13 @@ const StyledPanel = styled.div`
 `;
 
 const Panel = ({ name, caption, preview, leftActions, rightAction,  children }) => {
-	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<StyledPanel>
 			<EditContextProvider>
-				<PanelHeader name={name} isOpen={isOpen} setIsOpen={setIsOpen} preview={preview} caption={caption} />
-				{isOpen && (
-					<div className="panel-body">
-						{children}
-					</div>
-				)}
+				<PanelHeader name={name} preview={preview} caption={caption} />
+				<div className="panel-body">
+					{children}
+				</div>
 			</EditContextProvider>
 		</StyledPanel>
 	);

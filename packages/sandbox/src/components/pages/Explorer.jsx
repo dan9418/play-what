@@ -72,7 +72,7 @@ const Explorer = () => {
 	const type = TYPE[levelTypeId];
 	const typeName = type.name;
 
-	const caption = `${levelName} | ${typeName}`;
+	const caption = `${levelName} (${typeName})`;
 	const preview = 'preview';
 
 	const content = getLevelContent(level, levelData, type);
