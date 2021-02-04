@@ -10,6 +10,10 @@ const StyledPage = styled.div`
 		display: flex;
 		align-items: center;
 		flex-direction: column;
+
+        > * {
+			margin: 16px 0;
+		}
 	}
 
 	h2 {
@@ -38,12 +42,13 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getList = (list) => {
+const getList = (list, SubpanelComponent) => {
+
 	return list.map((item, i) => {
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
-				listItem
+				<SubpanelComponent data={item} />
 				<ZoomButton name={`Pod ${i}`} levelId={LEVEL_ID.Pod} pathId={i} />
 			</div>
 		);
@@ -63,8 +68,10 @@ const Page = () => {
 
 	let content = null;
 
-	if(levelTypeId === TYPE_ID.NamedKeyedList){
-		content = getList(data.data);
+	if (levelTypeId === TYPE_ID.NamedKeyedList) {
+		if (levelId === LEVEL_ID.Chart) {
+			content = getList(data.data, LEVEL[LEVEL_ID.Section].subpanelComponent);
+		}
 	}
 
 	return (

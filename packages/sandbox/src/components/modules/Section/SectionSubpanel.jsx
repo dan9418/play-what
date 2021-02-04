@@ -17,7 +17,7 @@ const SECTION_ACTIONS = [
 	}
 ];
 
-const SectionSubpanel = ({ section, setSection }) => {
+const SectionSubpanel = ({ data: section }) => {
 
 	return (
 		<Subpanel
