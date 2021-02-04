@@ -42,7 +42,7 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getList = (list, childLevel) => {
+const getNamedList = (list, childLevel) => {
 
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
@@ -57,7 +57,7 @@ const getList = (list, childLevel) => {
 	})
 };
 
-const getKeyedList = (list, childLevel) => {
+const getNamedKeyedList = (list, childLevel) => {
 
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
@@ -66,6 +66,19 @@ const getKeyedList = (list, childLevel) => {
 			<>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
 				<SubpanelComponent data={item} />
+			</>
+		);
+	})
+};
+
+const getObject = (data, properties) => {
+	return properties.map((property, i) => {
+		const { name, levelId, propertyId } = property;
+		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
+		return (
+			<>
+				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={name} /></h2>
+				<SubpanelComponent data={data[propertyId]} />
 			</>
 		);
 	})
@@ -86,12 +99,23 @@ const Page = () => {
 
 	if (levelTypeId === TYPE_ID.NamedKeyedList) {
 		if (levelId === LEVEL_ID.Chart) {
-			content = getKeyedList(data.data, LEVEL[LEVEL_ID.Section]);
+			content = getNamedKeyedList(data.data, LEVEL[LEVEL_ID.Section]);
 		}
 	}
 	if (levelTypeId === TYPE_ID.NamedList) {
 		if (levelId === LEVEL_ID.Section) {
-			content = getList(data.data, LEVEL[LEVEL_ID.Block]);
+			content = getNamedList(data.data, LEVEL[LEVEL_ID.Block]);
+		}
+	}
+	if (levelTypeId === TYPE_ID.Object) {
+		if (levelId === LEVEL_ID.Block) {
+			content = getObject(data, [
+				{
+					propertyId: 'keyCenter',
+					levelId: LEVEL_ID.Pod,
+					name: 'Key Center'
+				}
+			]);
 		}
 	}
 

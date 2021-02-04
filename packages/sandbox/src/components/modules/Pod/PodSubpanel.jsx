@@ -16,13 +16,13 @@ const POD_ACTIONS = [
 	}
 ];
 
-const PodSubpanel = ({ pod, setPod, podType, setPodType }) => {
+const PodSubpanel = ({ data: pod }) => {
 
-	const name = PodUtils.getName(pod, { podType });
+	const name = PodUtils.getName(pod, { podType: 'note' });
 
 	return (
 		<Subpanel name={name} caption="Pod" actions={POD_ACTIONS} editable>
-			<PodTable pod={pod} setPod={setPod} podType={podType} />
+			<PodTable pod={pod} setPod={null} podType={'note'} />
 		</Subpanel>
 	);
 };
