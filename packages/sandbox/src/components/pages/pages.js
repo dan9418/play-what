@@ -3,12 +3,6 @@ import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import SectionSubpanel from '../modules/Section/SectionSubpanel';
-import BlockPage from './BlockPage';
-import ChartPage from './ChartPage';
-import PodIndexPage from './PodIndexPage';
-import PodListPage from './PodListPage';
-import PodPage from './PodPage';
-import SectionPage from './SectionPage';
 
 export const LEVEL_ID = {
 	PodIndex: 0,
@@ -55,42 +49,36 @@ export const LEVEL = {
 		levelId: LEVEL_ID.PodIndex,
 		typeId: TYPE_ID.Native,
 		name: 'Pod Index',
-		component: PodIndexPage,
 		subpanelComponent: PodIndexSubpanel
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
 		typeId: TYPE_ID.List,
 		name: 'Pod',
-		component: PodPage,
 		subpanelComponent: PodSubpanel
 	},
 	[LEVEL_ID.PodList]: {
 		levelId: LEVEL_ID.PodList,
 		typeId: TYPE_ID.List,
 		name: 'Pod List',
-		component: PodListPage,
 		subpanelComponent: PodListSubpanel
 	},
 	[LEVEL_ID.Block]: {
 		levelId: LEVEL_ID.Block,
 		typeId: TYPE_ID.Object,
 		name: 'Block',
-		component: BlockPage,
 		subpanelComponent: BlockSubpanel
 	},
 	[LEVEL_ID.Section]: {
 		levelId: LEVEL_ID.Section,
 		typeId: TYPE_ID.NamedList,
 		name: 'Section',
-		component: SectionPage,
 		subpanelComponent: SectionSubpanel
 	},
 	[LEVEL_ID.Chart]: {
 		levelId: LEVEL_ID.Chart,
 		typeId: TYPE_ID.NamedKeyedList,
 		name: 'Chart',
-		component: ChartPage,
 		subpanelComponent: null
 	}
 };
