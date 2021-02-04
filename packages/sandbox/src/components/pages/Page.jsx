@@ -8,7 +8,7 @@ import { useLevelContext } from '../core/Level';
 import PodSubpanel from '../modules/Pod/PodSubpanel';
 import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
-import { LEVEL, LEVEL_ID } from './pages';
+import { LEVEL, LEVEL_ID, TYPE } from './pages';
 
 const StyledBlockPage = styled.div`
 	.panel-body {
@@ -32,13 +32,15 @@ const Page = () => {
 
 	const { levelId, pathId, name } = pathHead;
 
-	const levelName = LEVEL[levelId].component;
+	const levelName = LEVEL[levelId].name;
+	const typeName = TYPE[LEVEL[levelId].typeId].name;
+	const caption = `${levelName} | ${typeName}`;
 
 	const preview = 'preview';
 
 	return (
 		<StyledBlockPage>
-			<Panel name={name} caption="Block" preview={preview}>
+			<Panel name={name} caption={caption} preview={preview}>
                panel
 			</Panel>
 		</StyledBlockPage>

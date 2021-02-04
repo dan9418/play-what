@@ -42,11 +42,11 @@ export const TYPE = {
 	},
 	[TYPE_ID.NamedList]: {
 		id: TYPE_ID.NamedList,
-		name: 'NamedList'
+		name: 'Named List'
 	},
 	[TYPE_ID.NamedKeyedList]: {
 		id: TYPE_ID.NamedKeyedList,
-		name: 'NamedKeyedList'
+		name: 'Named Keyed List'
 	}
 };
 
