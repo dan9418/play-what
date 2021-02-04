@@ -57,6 +57,20 @@ const getList = (list, childLevel) => {
 	})
 };
 
+const getKeyedList = (list, childLevel) => {
+
+	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
+
+	return list.map((item, i) => {
+		return (
+			<>
+				<h2>{item.name}<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={item.id} /></h2>
+				<SubpanelComponent data={item} />
+			</>
+		);
+	})
+};
+
 const Page = () => {
 	const { data, pathHead } = useLevelContext();
 
@@ -72,7 +86,12 @@ const Page = () => {
 
 	if (levelTypeId === TYPE_ID.NamedKeyedList) {
 		if (levelId === LEVEL_ID.Chart) {
-			content = getList(data.data, LEVEL[LEVEL_ID.Section]);
+			content = getKeyedList(data.data, LEVEL[LEVEL_ID.Section]);
+		}
+	}
+	if (levelTypeId === TYPE_ID.NamedList) {
+		if (levelId === LEVEL_ID.Section) {
+			content = getList(data.data, LEVEL[LEVEL_ID.Block]);
 		}
 	}
 

@@ -5,7 +5,7 @@ import PodListTable from '../PodList/PodListTable';
 import PodTable from '../Pod/PodTable';
 import BlockUtils from '@pw/core/src/Block.utils';
 
-const BlockSubpanel = ({ block, setBlock }) => {
+const BlockSubpanel = ({ data: block }) => {
 
 	const { keyCenter, intervals } = block;
 	console.log(keyCenter, intervals);
