@@ -2,8 +2,8 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import { LEVEL } from '../core/config';
 
-export const NamedList = ({ data, childLevel }) => {
-
+export const NamedList = ({ data, childLevelId }) => {
+	const childLevel = LEVEL[childLevelId];
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
 	return data.map((item, i) => {
@@ -17,8 +17,10 @@ export const NamedList = ({ data, childLevel }) => {
 	})
 };
 
-export const NamedKeyedList = ({ data, childLevel }) => {
+export const List = NamedList;
 
+export const NamedKeyedList = ({ data, childLevelId }) => {
+	const childLevel = LEVEL[childLevelId];
 	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
 
 	return data.map((item, i) => {
@@ -31,8 +33,8 @@ export const NamedKeyedList = ({ data, childLevel }) => {
 	})
 };
 
-export const LabeledList = ({ data, childLevel, labels }) => {
-
+export const LabeledList = ({ data, childLevelId, labels }) => {
+	const childLevel = LEVEL[childLevelId];
 	const { subpanelComponent: SubpanelComponent, levelId } = childLevel;
 
 	return data.map((item, i) => {

@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { useLevelContext } from '../../contexts/LevelContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import { LEVEL, LEVEL_ID, TYPE } from '../core/config';
-import { LabeledList, NamedKeyedList, NamedList, PWObject } from '../core/Types';
+import { LEVEL, TYPE, TYPE_ID } from '../core/config';
 import Panel from '../ui/Panel';
 
 const StyledPage = styled.div`
@@ -44,47 +43,20 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getLevelContent = (levelId, levelData) => {
-	let content = null;
+const getLevelContent = (level, levelData, type) => {
 
-	if (levelId === LEVEL_ID.Chart) {
-		content = <NamedKeyedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Section]} />;
-	}
-	else if (levelId === LEVEL_ID.Section) {
-		content = <NamedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Block]} />;
-	}
-	else if (levelId === LEVEL_ID.Block) {
-		const properties = [
-			{
-				propertyId: 'keyCenter',
-				levelId: LEVEL_ID.Pod,
-				name: 'Key Center'
-			},
-			{
-				propertyId: 'intervals',
-				levelId: LEVEL_ID.PodList,
-				name: 'Intervals'
-			}
-		];
-		content = <PWObject data={levelData} properties={properties} />;
-	}
-	else if (levelId === LEVEL_ID.PodList) {
-		content = <NamedList data={levelData} childLevel={LEVEL[LEVEL_ID.Pod]} />;
-	}
-	else if (levelId === LEVEL_ID.Pod) {
-		content = <LabeledList
-			data={levelData}
-			childLevel={LEVEL[LEVEL_ID.PodIndex]}
-			labels={[
-				{ pathId: 'pitch', name: 'Pitch' },
-				{ pathId: 'degree', name: 'Degree' }
-			]}
-		/>;
-	}
-	else if (levelId === LEVEL_ID.PodIndex) {
-		content = <div>{`Data: ${levelData}`}</div>;
-	}
-	return content;
+	const { typeProps } = level;
+	const { component: Component, typeId } = type;
+
+	const data = typeId === TYPE_ID.NamedKeyedList || typeId === TYPE_ID.NamedList ?
+		levelData.data : levelData;
+
+	return (
+		<Component
+			data={data}
+			{...typeProps}
+		/>
+	);
 };
 
 const Explorer = () => {
@@ -93,13 +65,17 @@ const Explorer = () => {
 
 	const { levelId, name } = pathHead;
 
-	const levelName = LEVEL[levelId].name;
-	const levelTypeId = LEVEL[levelId].typeId;
-	const typeName = TYPE[levelTypeId].name;
+	const level = LEVEL[levelId];
+	const levelName = level.name;
+	const levelTypeId = level.typeId;
+
+	const type = TYPE[levelTypeId];
+	const typeName = type.name;
+
 	const caption = `${levelName} | ${typeName}`;
 	const preview = 'preview';
 
-	const content = getLevelContent(levelId, levelData);
+	const content = getLevelContent(level, levelData, type);
 
 	return (
 		<StyledPage>

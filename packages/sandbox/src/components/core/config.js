@@ -1,8 +1,10 @@
+import React from 'react';
 import BlockSubpanel from '../levels/Block/BlockSubpanel';
 import PodSubpanel from '../levels/Pod/PodSubpanel';
 import PodIndexSubpanel from '../levels/PodIndex/PodIndexSubpanel';
 import PodListSubpanel from '../levels/PodList/PodListSubpanel';
 import SectionSubpanel from '../levels/Section/SectionSubpanel';
+import { LabeledList, List, NamedKeyedList, NamedList, PWObject } from './Types';
 
 export const LEVEL_ID = {
 	PodIndex: 0,
@@ -25,27 +27,33 @@ export const TYPE_ID = {
 export const TYPE = {
 	[TYPE_ID.Native]: {
 		typeId: TYPE_ID.Native,
-		name: 'Native'
+		name: 'Native',
+		component: React.Fragment
 	},
 	[TYPE_ID.Object]: {
 		typeId: TYPE_ID.Object,
-		name: 'Object'
+		name: 'Object',
+		component: PWObject
 	},
 	[TYPE_ID.List]: {
 		typeId: TYPE_ID.List,
-		name: 'List'
+		name: 'List',
+		component: List
 	},
 	[TYPE_ID.NamedList]: {
 		typeId: TYPE_ID.NamedList,
-		name: 'Named List'
+		name: 'Named List',
+		component: NamedList
 	},
 	[TYPE_ID.NamedKeyedList]: {
 		typeId: TYPE_ID.NamedKeyedList,
-		name: 'Named Keyed List'
+		name: 'Named Keyed List',
+		component: NamedKeyedList
 	},
 	[TYPE_ID.LabeledList]: {
 		typeId: TYPE_ID.LabeledList,
-		name: 'Labeled List'
+		name: 'Labeled List',
+		component: LabeledList
 	}
 };
 
@@ -54,37 +62,68 @@ export const LEVEL = {
 		levelId: LEVEL_ID.PodIndex,
 		typeId: TYPE_ID.Native,
 		name: 'Pod Index',
-		subpanelComponent: PodIndexSubpanel
+		subpanelComponent: PodIndexSubpanel,
+		typeProps: {}
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
 		typeId: TYPE_ID.LabeledList,
 		name: 'Pod',
-		subpanelComponent: PodSubpanel
+		subpanelComponent: PodSubpanel,
+		typeProps: {
+			childLevelId: LEVEL_ID.PodIndex,
+			labels: [
+				{ pathId: 'pitch', name: 'Pitch' },
+				{ pathId: 'degree', name: 'Degree' }
+			]
+		}
 	},
 	[LEVEL_ID.PodList]: {
 		levelId: LEVEL_ID.PodList,
 		typeId: TYPE_ID.List,
 		name: 'Pod List',
-		subpanelComponent: PodListSubpanel
+		subpanelComponent: PodListSubpanel,
+		typeProps: {
+			childLevelId: LEVEL_ID.Pod
+		}
 	},
 	[LEVEL_ID.Block]: {
 		levelId: LEVEL_ID.Block,
 		typeId: TYPE_ID.Object,
 		name: 'Block',
-		subpanelComponent: BlockSubpanel
+		subpanelComponent: BlockSubpanel,
+		typeProps: {
+			properties: [
+				{
+					propertyId: 'keyCenter',
+					levelId: LEVEL_ID.Pod,
+					name: 'Key Center'
+				},
+				{
+					propertyId: 'intervals',
+					levelId: LEVEL_ID.PodList,
+					name: 'Intervals'
+				}
+			]
+		}
 	},
 	[LEVEL_ID.Section]: {
 		levelId: LEVEL_ID.Section,
 		typeId: TYPE_ID.NamedList,
 		name: 'Section',
-		subpanelComponent: SectionSubpanel
+		subpanelComponent: SectionSubpanel,
+		typeProps: {
+			childLevelId: LEVEL_ID.Block
+		}
 	},
 	[LEVEL_ID.Chart]: {
 		levelId: LEVEL_ID.Chart,
 		typeId: TYPE_ID.NamedKeyedList,
 		name: 'Chart',
-		subpanelComponent: null
+		subpanelComponent: null,
+		typeProps: {
+			childLevelId: LEVEL_ID.Section
+		}
 	}
 };
 
