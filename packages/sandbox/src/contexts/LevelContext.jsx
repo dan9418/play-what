@@ -4,8 +4,8 @@ import { useRecoilState } from 'recoil';
 import { LEVEL, TYPE_ID } from '../components/core/config';
 import { dataState, pathState } from '../state/state';
 
-const getDataAtPath = (chart, path) => {
-	let node = chart;
+const getDataAtPath = (data, path) => {
+	let node = data;
 	for (let i = 0; i < path.length - 1; i++) {
 		const pathHead = path[i];
 		const target = path[i + 1];
@@ -30,24 +30,23 @@ const getDataAtPath = (chart, path) => {
 		}
 
 		if (!node)
-			console.error('UNDEFINED NODE', pathHead, 'path', path, 'chart', chart);
+			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
 	}
 	return node;
 };
 
-const getLevelUtils = (path, setPath, chart) => {
+const getLevelUtils = (path, setPath, data) => {
 
 	const pathHead = path[path.length - 1];
 	const popAt = n => setPath(path.slice(0, n + 1));
 	const push = p => setPath([...path, p]);
 	const reset = () => setPath([]);
-	const data = getDataAtPath(chart, path);
+	const levelData = getDataAtPath(data, path);
 	const setData = () => console.log('not supported');
 
 	return {
 		// data
-		chart,
-		data,
+		data: levelData,
 		setData,
 		// position
 		path,
@@ -64,9 +63,9 @@ export const useLevelContext = () => useContext(LevelContext);
 
 export const LevelContextProvider = ({ children }) => {
 	const [path, setPath] = useRecoilState(pathState);
-	const [chart, setChart] = useRecoilState(dataState);
+	const [data, setData] = useRecoilState(dataState);
 
-	const levelUtils = getLevelUtils(path, setPath, chart);
+	const levelUtils = getLevelUtils(path, setPath, data);
 
 	console.log('PATH', path);
 	console.log('LEVEL', levelUtils);
