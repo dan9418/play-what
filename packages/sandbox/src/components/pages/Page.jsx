@@ -64,7 +64,7 @@ const getKeyedList = (list, childLevel) => {
 	return list.map((item, i) => {
 		return (
 			<>
-				<h2>{item.name}<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={item.id} /></h2>
+				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
 				<SubpanelComponent data={item} />
 			</>
 		);
