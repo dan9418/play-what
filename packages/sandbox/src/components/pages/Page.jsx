@@ -71,6 +71,22 @@ const getNamedKeyedList = (list, childLevel) => {
 	})
 };
 
+const getLabeledList = (list, childLevel, labels) => {
+
+	const { subpanelComponent: SubpanelComponent, levelId } = childLevel;
+
+	return list.map((item, i) => {
+		const label = labels[i];
+		const { name, pathId } = label;
+		return (
+			<>
+				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={pathId} /></h2>
+				<SubpanelComponent data={item} />
+			</>
+		);
+	})
+};
+
 const getObject = (data, properties) => {
 	return properties.map((property, i) => {
 		const { name, levelId, propertyId } = property;
@@ -126,6 +142,16 @@ const Page = () => {
 	else if (levelTypeId === TYPE_ID.List) {
 		if (levelId === LEVEL_ID.PodList) {
 			content = getNamedList(data, LEVEL[LEVEL_ID.Pod]);
+		}
+		if (levelId === LEVEL_ID.Pod) {
+			content = getLabeledList(
+				data,
+				LEVEL[LEVEL_ID.PodIndex],
+				[
+					{ pathId: 'pitch', name: 'Pitch' },
+					{ pathId: 'degree', name: 'Degree' }
+				]
+			);
 		}
 	}
 

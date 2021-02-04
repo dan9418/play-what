@@ -15,11 +15,11 @@ const POD_INDEX_ACTIONS = [
 	}
 ];
 
-const PodIndexSubpanel = ({ podIndex, setPodIndex, podIndexType, setPodIndexType }) => {
+const PodIndexSubpanel = ({ data: podIndex }) => {
 
 	return (
 		<Subpanel name={podIndex} caption="Pod Index" actions={POD_INDEX_ACTIONS} editable>
-			<PodIndexTable podIndex={podIndex} setPodIndex={setPodIndex} podIndexType={podIndexType} setPodIndexType={setPodIndexType} />
+			<PodIndexTable podIndex={podIndex} setPodIndex={null} podIndexType={'pitch'} setPodIndexType={null} />
 		</Subpanel>
 	);
 };
