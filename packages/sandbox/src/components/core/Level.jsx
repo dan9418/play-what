@@ -16,8 +16,6 @@ const getDataAtPath = (chart, path) => {
 		const { pathId: targetId } = target;
 		const levelTypeId = LEVEL[levelId].typeId;
 
-		console.log(`${LEVEL[levelId].name} - ${TYPE[levelTypeId].name} - ${pathId}`, chart);
-
 		if (levelTypeId === TYPE_ID.Native) {
 			// not used - should only be leaf
 		}
@@ -73,7 +71,8 @@ const Level = () => {
 
 	const levelUtils = getLevelUtils(path, setPath, chart);
 
-	console.log('levelUtils', path, levelUtils);
+	console.log('PATH', path);
+	console.log('LEVEL', levelUtils);
 
 	return (
 		<LevelContext.Provider value={levelUtils}>

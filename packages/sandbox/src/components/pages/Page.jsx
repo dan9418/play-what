@@ -80,7 +80,7 @@ const getLabeledList = (list, childLevel, labels) => {
 		const { name, pathId } = label;
 		return (
 			<>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={pathId} /></h2>
+				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={i} /></h2>
 				<SubpanelComponent data={item} />
 			</>
 		);
@@ -152,6 +152,11 @@ const Page = () => {
 					{ pathId: 'degree', name: 'Degree' }
 				]
 			);
+		}
+	}
+	else if (levelTypeId === TYPE_ID.Native) {
+		if (levelId === LEVEL_ID.PodIndex) {
+			content = <div>{`Data: ${data}`}</div>;
 		}
 	}
 
