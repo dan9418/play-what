@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
-import { useLevelContext } from '../../../../sandbox/src/components/core/Level';
+import { useLevelContext } from '../../../../sandbox/src/contexts/LevelContext';
 import Icon from '../../../../sandbox/src/components/ui/Icon';
 
 const StyledZoomButton = styled.button`

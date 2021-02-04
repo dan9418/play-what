@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { useLevelContext } from "./Level";
+import { useLevelContext } from "../../contexts/LevelContext";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;

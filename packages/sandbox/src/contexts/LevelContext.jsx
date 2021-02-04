@@ -1,10 +1,8 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
-import { dataState, pathState } from '../../state/state';
-import Explorer from '../pages/Explorer';
-import BreadcrumbList from './BreadcrumbList';
-import { LEVEL, TYPE_ID } from './config';
+import { LEVEL, TYPE_ID } from '../components/core/config';
+import { dataState, pathState } from '../state/state';
 
 const getDataAtPath = (chart, path) => {
 	let node = chart;
@@ -64,7 +62,7 @@ const LevelContext = createContext(null);
 
 export const useLevelContext = () => useContext(LevelContext);
 
-const Level = () => {
+export const LevelContextProvider = ({ children }) => {
 	const [path, setPath] = useRecoilState(pathState);
 	const [chart, setChart] = useRecoilState(dataState);
 
@@ -75,9 +73,7 @@ const Level = () => {
 
 	return (
 		<LevelContext.Provider value={levelUtils}>
-			<Explorer />
+			{children}
 		</LevelContext.Provider>
 	);
 };
-
-export default Level;

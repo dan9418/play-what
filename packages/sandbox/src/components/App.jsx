@@ -6,8 +6,9 @@ import { RecoilRoot } from 'recoil';
 import styled, { ThemeProvider } from 'styled-components';
 import THEME from '../styles/theme';
 import ErrorBoundary from './core/ErrorBoundary';
-import Level from './core/Level';
+import { LevelContextProvider } from '../contexts/LevelContext';
 import Nav from './core/Nav';
+import Explorer from './pages/Explorer';
 
 const StyledMain = styled.main`
 	padding: 64px 16px 16px 16px;
@@ -24,7 +25,9 @@ const App = () => {
 				<ErrorBoundary>
 					<Nav />
 					<StyledMain>
-						<Level />
+						<LevelContextProvider>
+							<Explorer />
+						</LevelContextProvider>
 					</StyledMain>
 				</ErrorBoundary>
 			</ThemeProvider>
