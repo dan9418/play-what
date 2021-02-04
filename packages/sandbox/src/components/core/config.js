@@ -1,8 +1,8 @@
-import BlockSubpanel from '../modules/Block/BlockSubpanel';
-import PodSubpanel from '../modules/Pod/PodSubpanel';
-import PodIndexSubpanel from '../modules/PodIndex/PodIndexSubpanel';
-import PodListSubpanel from '../modules/PodList/PodListSubpanel';
-import SectionSubpanel from '../modules/Section/SectionSubpanel';
+import BlockSubpanel from '../levels/Block/BlockSubpanel';
+import PodSubpanel from '../levels/Pod/PodSubpanel';
+import PodIndexSubpanel from '../levels/PodIndex/PodIndexSubpanel';
+import PodListSubpanel from '../levels/PodList/PodListSubpanel';
+import SectionSubpanel from '../levels/Section/SectionSubpanel';
 
 export const LEVEL_ID = {
 	PodIndex: 0,
