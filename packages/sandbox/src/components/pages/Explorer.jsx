@@ -116,54 +116,42 @@ const Explorer = () => {
 
 	let content = null;
 
-	if (levelTypeId === TYPE_ID.NamedKeyedList) {
-		if (levelId === LEVEL_ID.Chart) {
-			content = <NamedKeyedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Section]} />;
-		}
+	if (levelId === LEVEL_ID.Chart) {
+		content = <NamedKeyedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Section]} />;
 	}
-	else if (levelTypeId === TYPE_ID.NamedList) {
-		if (levelId === LEVEL_ID.Section) {
-			content = <NamedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Block]} />;
-		}
+	else if (levelId === LEVEL_ID.Section) {
+		content = <NamedList data={levelData.data} childLevel={LEVEL[LEVEL_ID.Block]} />;
 	}
-	else if (levelTypeId === TYPE_ID.Object) {
-		if (levelId === LEVEL_ID.Block) {
-			const properties = [
-				{
-					propertyId: 'keyCenter',
-					levelId: LEVEL_ID.Pod,
-					name: 'Key Center'
-				},
-				{
-					propertyId: 'intervals',
-					levelId: LEVEL_ID.PodList,
-					name: 'Intervals'
-				}
-			];
-			content = <PWObject data={levelData} properties={properties} />;
-		}
+	else if (levelId === LEVEL_ID.Block) {
+		const properties = [
+			{
+				propertyId: 'keyCenter',
+				levelId: LEVEL_ID.Pod,
+				name: 'Key Center'
+			},
+			{
+				propertyId: 'intervals',
+				levelId: LEVEL_ID.PodList,
+				name: 'Intervals'
+			}
+		];
+		content = <PWObject data={levelData} properties={properties} />;
 	}
-	else if (levelTypeId === TYPE_ID.List) {
-		if (levelId === LEVEL_ID.PodList) {
-			content = <NamedList data={levelData} childLevel={LEVEL[LEVEL_ID.Pod]} />;
-		}
+	else if (levelId === LEVEL_ID.PodList) {
+		content = <NamedList data={levelData} childLevel={LEVEL[LEVEL_ID.Pod]} />;
 	}
-	else if (levelTypeId === TYPE_ID.LabeledList) {
-		if (levelId === LEVEL_ID.Pod) {
-			content = <LabeledList
-				data={levelData}
-				childLevel={LEVEL[LEVEL_ID.PodIndex]}
-				labels={[
-					{ pathId: 'pitch', name: 'Pitch' },
-					{ pathId: 'degree', name: 'Degree' }
-				]}
-			/>;
-		}
+	else if (levelId === LEVEL_ID.Pod) {
+		content = <LabeledList
+			data={levelData}
+			childLevel={LEVEL[LEVEL_ID.PodIndex]}
+			labels={[
+				{ pathId: 'pitch', name: 'Pitch' },
+				{ pathId: 'degree', name: 'Degree' }
+			]}
+		/>;
 	}
-	else if (levelTypeId === TYPE_ID.Native) {
-		if (levelId === LEVEL_ID.PodIndex) {
-			content = <div>{`Data: ${levelData}`}</div>;
-		}
+	else if (levelId === LEVEL_ID.PodIndex) {
+		content = <div>{`Data: ${levelData}`}</div>;
 	}
 
 	return (
