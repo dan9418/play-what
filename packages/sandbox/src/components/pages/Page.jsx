@@ -1,16 +1,11 @@
-import BlockUtils from '@pw/core/src/Block.utils';
-import PodUtils from '@pw/core/src/Pod.utils';
-import PodListUtils from '@pw/core/src/PodList.utils';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
-import PodSubpanel from '../modules/Pod/PodSubpanel';
-import PodListSubpanel from '../modules/PodList/PodListSubpanel';
 import Panel from '../ui/Panel';
-import { LEVEL, LEVEL_ID, TYPE } from './pages';
+import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from './pages';
 
-const StyledBlockPage = styled.div`
+const StyledPage = styled.div`
 	.panel-body {
 		display: flex;
 		align-items: center;
@@ -25,7 +20,35 @@ const StyledBlockPage = styled.div`
 		align-items: center;
 		justify-content: space-between;
 	}
+
+    .pod-wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		max-width: 512px;
+		>:first-child {
+			font-weight: bold;
+			margin-right: 8px;	
+		}
+		>:nth-child(2) {
+			width: 100%;
+			margin-right: 8px;	
+		}
+	}
 `;
+
+const getList = (list) => {
+	return list.map((item, i) => {
+		return (
+			<div key={i} className="pod-wrapper">
+				<div>{i}</div>
+				listItem
+				<ZoomButton name={`Pod ${i}`} levelId={LEVEL_ID.Pod} pathId={i} />
+			</div>
+		);
+	})
+};
 
 const Page = () => {
 	const { data, pathHead } = useLevelContext();
@@ -33,17 +56,23 @@ const Page = () => {
 	const { levelId, pathId, name } = pathHead;
 
 	const levelName = LEVEL[levelId].name;
-	const typeName = TYPE[LEVEL[levelId].typeId].name;
+	const levelTypeId = LEVEL[levelId].typeId;
+	const typeName = TYPE[levelTypeId].name;
 	const caption = `${levelName} | ${typeName}`;
-
 	const preview = 'preview';
 
+	let content = null;
+
+	if(levelTypeId === TYPE_ID.NamedKeyedList){
+		content = getList(data.data);
+	}
+
 	return (
-		<StyledBlockPage>
+		<StyledPage>
 			<Panel name={name} caption={caption} preview={preview}>
-               panel
+				{content}
 			</Panel>
-		</StyledBlockPage>
+		</StyledPage>
 	);
 };
 
