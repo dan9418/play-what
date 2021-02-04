@@ -2,7 +2,7 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../../core/Level';
-import { LEVEL_ID } from '../../pages/pages';
+import { LEVEL_ID } from '../../config/config';
 import Panel from '../../ui/Panel';
 import SectionSubpanel from '../Section/SectionSubpanel';
 import Section from './Section';

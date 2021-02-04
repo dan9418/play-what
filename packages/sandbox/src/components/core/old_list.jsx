@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
 import Icon from "../ui/Icon";
-import PanelDelegator from "../pages/Explore/PanelDelegator";
+import PanelDelegator from "../config/Explore/PanelDelegator";
 
 export const getListHelpers = (list, setList, i) => {
 	const isLast = i === list.length - 1;

@@ -1,11 +1,10 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
-import SONGS from '../../state/songs';
 import { dataState, pathState } from '../../state/state';
 import Page from '../pages/Page';
-import { LEVEL, TYPE, TYPE_ID } from '../pages/pages';
 import BreadcrumbList from './BreadcrumbList';
+import { LEVEL, TYPE_ID } from './config';
 
 const getDataAtPath = (chart, path) => {
 	let node = chart;

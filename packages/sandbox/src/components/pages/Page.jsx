@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useLevelContext } from '../core/Level';
 import Panel from '../ui/Panel';
-import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from './pages';
+import { LEVEL, LEVEL_ID, TYPE, TYPE_ID } from '../core/config';
 
 const StyledPage = styled.div`
 	.panel-body {
