@@ -155,7 +155,10 @@ export const LEVEL = {
 				}
 			]
 		},
-		getPreview: block => `${JSON.stringify(block.keyCenter)} + ${JSON.stringify(block.intervals)}`
+		getPreview: block => `
+			${PodUtils.getName(block.keyCenter, { podType: 'note' })}
+			+ 
+			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`
 	},
 	[LEVEL_ID.Section]: {
 		levelId: LEVEL_ID.Section,
