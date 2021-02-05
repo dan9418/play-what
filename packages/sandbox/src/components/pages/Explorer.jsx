@@ -25,22 +25,6 @@ const StyledPage = styled.div`
 		align-items: center;
 		justify-content: space-between;
 	}
-
-    .pod-wrapper {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		width: 100%;
-		max-width: 512px;
-		>:first-child {
-			font-weight: bold;
-			margin-right: 8px;	
-		}
-		>:nth-child(2) {
-			width: 100%;
-			margin-right: 8px;	
-		}
-	}
 `;
 
 const getLevelContent = (pathHead, levelData) => {
@@ -79,7 +63,7 @@ const getPanelProps = (pathHead, levelData) => {
 		name,
 		caption,
 		preview
-	}
+	};
 };
 
 const Explorer = () => {
