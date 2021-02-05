@@ -57,7 +57,8 @@ export const LEVEL = {
 		levelId: LEVEL_ID.PodIndex,
 		typeId: TYPE_ID.Native,
 		name: 'Pod Index',
-		typeProps: {}
+		typeProps: {},
+		getPreview: podIndex => podIndex
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
@@ -69,7 +70,8 @@ export const LEVEL = {
 				{ pathId: 'pitch', name: 'Pitch' },
 				{ pathId: 'degree', name: 'Degree' }
 			]
-		}
+		},
+		getPreview: pod => JSON.stringify(pod)
 	},
 	[LEVEL_ID.PodList]: {
 		levelId: LEVEL_ID.PodList,
@@ -77,7 +79,8 @@ export const LEVEL = {
 		name: 'Pod List',
 		typeProps: {
 			childLevelId: LEVEL_ID.Pod
-		}
+		},
+		getPreview: podList => `${podList.length} Pods`
 	},
 	[LEVEL_ID.Block]: {
 		levelId: LEVEL_ID.Block,
@@ -96,7 +99,8 @@ export const LEVEL = {
 					name: 'Intervals'
 				}
 			]
-		}
+		},
+		getPreview: block => `${JSON.stringify(block.keyCenter)} + ${JSON.stringify(block.intervals)}`
 	},
 	[LEVEL_ID.Section]: {
 		levelId: LEVEL_ID.Section,
@@ -104,7 +108,8 @@ export const LEVEL = {
 		name: 'Section',
 		typeProps: {
 			childLevelId: LEVEL_ID.Block
-		}
+		},
+		getPreview: section => `${section.data.length} Blocks`
 	},
 	[LEVEL_ID.Chart]: {
 		levelId: LEVEL_ID.Chart,
@@ -112,7 +117,8 @@ export const LEVEL = {
 		name: 'Chart',
 		typeProps: {
 			childLevelId: LEVEL_ID.Section
-		}
+		},
+		getPreview: chart => chart.data.map(s => s.name).join(', ')
 	}
 };
 

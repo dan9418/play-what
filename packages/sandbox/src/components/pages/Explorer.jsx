@@ -65,7 +65,7 @@ const getLevelContent = (pathHead, levelData) => {
 	);
 };
 
-const getPanelProps = (pathHead) => {
+const getPanelProps = (pathHead, levelData) => {
 	const { levelId, name } = pathHead;
 
 	const level = LEVEL[levelId];
@@ -76,7 +76,7 @@ const getPanelProps = (pathHead) => {
 	const typeName = type.name;
 
 	const caption = `${levelName} (${typeName})`;
-	const preview = 'preview';
+	const preview = level.getPreview(levelData)
 
 	return {
 		name,
@@ -89,7 +89,7 @@ const Explorer = () => {
 	const { pathHead } = useLevelContext();
 	const { levelData } = useDataContext();
 
-	const panelProps = getPanelProps(pathHead);
+	const panelProps = getPanelProps(pathHead, levelData);
 
 	const content = getLevelContent(pathHead, levelData);
 
