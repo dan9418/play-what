@@ -1,6 +1,5 @@
 import React from 'react';
 import Table from '../../ui/Table';
-import PodListTableRowManager from './PodListTableRowManager';
 
 const PodListTable = ({ headers, rows }) => {
 	const headerCells = headers.map(h => <td key={h}>{h}</td>);
@@ -14,8 +13,6 @@ const PodListTable = ({ headers, rows }) => {
 			</tr>
 		);
 	});
-
-	//const rows = <PodListTableRowManager pods={pods} setPods={setPods} podType={podType} />
 
 	return (
 		<Table
