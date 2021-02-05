@@ -1,3 +1,4 @@
+import CoreUtils from '@pw/core/src/Core.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
@@ -118,16 +119,23 @@ export const LEVEL = {
 			return JSON.stringify(pod);
 		},
 		getTableProps: (pod, theoryId) => {
-			/*if (theoryId === THEORY_ID.Note) {
-				return PodListUtils.getName(podList, { podType: 'chord' });
+			let theoryCol = null;
+			if (theoryId === THEORY_ID.Note) {
+				theoryCol = {
+					header: 'Freq',
+					getData: pod => 'f'
+				};
 			}
 			if (theoryId === THEORY_ID.Interval) {
-				return PodListUtils.getName(podList, { podType: 'scale' });
-			}*/
+				theoryCol = {
+					header: 'Ratio',
+					getData: pod => '1:n'
+				};
+			}
 			return {
-				headers: ['Name', 'P', 'D', 'X'],
+				headers: ['Name', 'P', 'D', theoryCol.header],
 				rows: [{
-					cols: [JSON.stringify(pod), pod[0], pod[1], '?']
+					cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
 				}]
 			};
 		}
