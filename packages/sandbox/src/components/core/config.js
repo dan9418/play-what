@@ -116,6 +116,18 @@ export const LEVEL = {
 				return PodUtils.getName(pod, { podType: 'interval' });
 			}
 			return JSON.stringify(pod);
+		},
+		getTableProps: (pod, theoryId) => {
+			/*if (theoryId === THEORY_ID.Chord) {
+				return PodListUtils.getName(podList, { podType: 'chord' });
+			}
+			if (theoryId === THEORY_ID.Scale) {
+				return PodListUtils.getName(podList, { podType: 'scale' });
+			}*/
+			return {
+				pods: [pod],
+				podType: 'note'
+			};
 		}
 	},
 	[LEVEL_ID.PodList]: {
@@ -133,6 +145,18 @@ export const LEVEL = {
 				return PodListUtils.getName(podList, { podType: 'scale' });
 			}
 			return JSON.stringify(podList);
+		},
+		getTableProps: (podList, theoryId) => {
+			/*if (theoryId === THEORY_ID.Chord) {
+				return PodListUtils.getName(podList, { podType: 'chord' });
+			}
+			if (theoryId === THEORY_ID.Scale) {
+				return PodListUtils.getName(podList, { podType: 'scale' });
+			}*/
+			return {
+				pods: podList,
+				podType: 'interval'
+			};
 		}
 	},
 	[LEVEL_ID.Block]: {

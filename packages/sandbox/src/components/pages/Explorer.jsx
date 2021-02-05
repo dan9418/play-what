@@ -41,6 +41,7 @@ const getLevelContent = (pathHead, levelData) => {
 	return (
 		<Component
 			data={levelData}
+			levelId={levelId}
 			{...typeProps}
 		/>
 	);

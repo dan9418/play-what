@@ -2,6 +2,7 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import { LEVEL } from '../core/config';
+import PodListTable from '../levels/PodList/PodListTable';
 import Subpanel from '../ui/Subpanel';
 
 const StyledTypeRow = styled.div`
@@ -49,27 +50,34 @@ export const NamedList = ({ data, childLevelId }) => {
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
 		const { name, levelId, theoryId, propertyId } = property;
-		const level = LEVEL[levelId];
-		const preview = level.getPreview(data[propertyId], theoryId);
+		const item = data[propertyId];
+
+		const childLevel = LEVEL[levelId];
+		const preview = childLevel.getPreview(item, theoryId);
+		const tableProps = childLevel.getTableProps(item, theoryId);
+
 		return (
 			<StyledTypeRow key={propertyId}>
-				<Subpanel name={name} caption={level.name} preview={preview} />
+				<Subpanel name={name} caption={childLevel.name} preview={preview} ><PodListTable {...tableProps} /></Subpanel>
 				<ZoomButton name={name} levelId={levelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
 	})
 };
 
-export const List = ({ data, childLevelId }) => {
+export const List = ({ data, levelId, childLevelId }) => {
+	const level = LEVEL[levelId];
 	const childLevel = LEVEL[childLevelId];
-	const { name, levelId } = childLevel;
+	const { name, theoryId } = childLevel;
 
 	return data.map((item, i) => {
 		const preview = childLevel.getPreview(item);
+		const tableProps = childLevel.getTableProps(item, theoryId);
+
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={childLevel.name} preview={preview} />
-				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
+				<Subpanel name={i} caption={childLevel.name} preview={preview} ><PodListTable {...tableProps} /></Subpanel>
+				<ZoomButton name={`${name} ${i}`} levelId={childLevelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
