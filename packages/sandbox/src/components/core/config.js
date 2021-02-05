@@ -1,5 +1,5 @@
 import PodUtils from '@pw/core/src/Pod.utils';
-import React from 'react';
+import PodListUtils from '@pw/core/src/PodList.utils';
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
 
 export const LEVEL_ID = {
@@ -24,7 +24,9 @@ export const THEORY_ID = {
 	Pitch: 0,
 	Degree: 1,
 	Note: 2,
-	Interval: 3
+	Interval: 3,
+	Chord: 4,
+	Scale: 5
 };
 
 export const THEORY = {
@@ -43,6 +45,14 @@ export const THEORY = {
 	[THEORY_ID.Interval]: {
 		thoeryId: THEORY_ID.Interval,
 		name: 'Interval'
+	},
+	[THEORY_ID.Chord]: {
+		thoeryId: THEORY_ID.Chord,
+		name: 'Chord'
+	},
+	[THEORY_ID.Scale]: {
+		thoeryId: THEORY_ID.Scale,
+		name: 'Scale'
 	}
 };
 
@@ -102,6 +112,9 @@ export const LEVEL = {
 			if (theoryId === THEORY_ID.Note) {
 				return PodUtils.getName(pod, { podType: 'note' });
 			}
+			if (theoryId === THEORY_ID.Interval) {
+				return PodUtils.getName(pod, { podType: 'interval' });
+			}
 			return JSON.stringify(pod);
 		}
 	},
@@ -112,7 +125,15 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.Pod
 		},
-		getPreview: podList => `${podList.length} Pods`
+		getPreview: (podList, theoryId) => {
+			if (theoryId === THEORY_ID.Chord) {
+				return PodListUtils.getName(podList, { podType: 'chord' });
+			}
+			if (theoryId === THEORY_ID.Scale) {
+				return PodListUtils.getName(podList, { podType: 'scale' });
+			}
+			return JSON.stringify(podList);
+		}
 	},
 	[LEVEL_ID.Block]: {
 		levelId: LEVEL_ID.Block,
@@ -129,7 +150,7 @@ export const LEVEL = {
 				{
 					propertyId: 'intervals',
 					levelId: LEVEL_ID.PodList,
-					theoryId: THEORY_ID.Interval,
+					theoryId: THEORY_ID.Chord,
 					name: 'Intervals'
 				}
 			]

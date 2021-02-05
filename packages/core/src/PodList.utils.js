@@ -56,6 +56,11 @@ class PodListUtils {
 		return data.find(d => PodListUtils.areEqual(podList, d.value)) || null;
 	}
 
+	static getName(podList, options = {}) {
+		const preset = this.findPreset(podList, options);
+		return preset ? preset.id : JSON.stringify(podList);
+	}
+
 }
 
 export default PodListUtils;
