@@ -157,15 +157,27 @@ export const LEVEL = {
 			return JSON.stringify(podList);
 		},
 		getTableProps: (podList, theoryId) => {
-			/*if (theoryId === THEORY_ID.Chord) {
-				return PodListUtils.getName(podList, { podType: 'chord' });
+			let theoryCol = {
+				header: '?',
+				getData: () => '?'
+			};
+			if (theoryId === THEORY_ID.Note) {
+				theoryCol = {
+					header: 'Freq',
+					getData: pod => 'f'
+				};
 			}
-			if (theoryId === THEORY_ID.Scale) {
-				return PodListUtils.getName(podList, { podType: 'scale' });
-			}*/
+			if (theoryId === THEORY_ID.Interval) {
+				theoryCol = {
+					header: 'Ratio',
+					getData: pod => '1:n'
+				};
+			}
 			return {
-				pods: podList,
-				podType: 'interval'
+				headers: ['Name', 'P', 'D', theoryCol.header],
+				rows: podList.map((pod, i) => ({
+					cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
+				}))
 			};
 		}
 	},
