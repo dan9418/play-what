@@ -16,17 +16,3 @@ html, body {
     height: 100%;
     width: 100%;
 }
-
-.input-bar-header {
-    font-size: 70%;
-    font-weight: bold;
-    padding-top: 8px;
-    text-transform: uppercase;
-}
-
-.input-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 4px 0;
-}
