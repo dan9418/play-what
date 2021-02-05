@@ -96,7 +96,31 @@ export const LEVEL = {
 		typeId: TYPE_ID.Native,
 		name: 'Pod Index',
 		typeProps: {},
-		getPreview: podIndex => podIndex
+		getPreview: podIndex => podIndex,
+		getTableProps: (podIndex, theoryId) => {
+			let theoryCol = {
+				header: '?',
+				getData: () => '?'
+			};
+			if (theoryId === THEORY_ID.Note) {
+				theoryCol = {
+					header: 'Freq',
+					getData: pod => 'f'
+				};
+			}
+			if (theoryId === THEORY_ID.Interval) {
+				theoryCol = {
+					header: 'Ratio',
+					getData: pod => '1:n'
+				};
+			}
+			return {
+				headers: ['Name', 'P', 'D'],
+				rows: [{
+					cols: [podIndex, 'p', 'd']
+				}]
+			};
+		}
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
@@ -119,7 +143,10 @@ export const LEVEL = {
 			return JSON.stringify(pod);
 		},
 		getTableProps: (pod, theoryId) => {
-			let theoryCol = null;
+			let theoryCol = {
+				header: '?',
+				getData: () => '?'
+			};
 			if (theoryId === THEORY_ID.Note) {
 				theoryCol = {
 					header: 'Freq',
@@ -204,7 +231,36 @@ export const LEVEL = {
 		getPreview: block => `
 			${PodUtils.getName(block.keyCenter, { podType: 'note' })}
 			+ 
-			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`
+			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`,
+		getTableProps: (block, theoryId) => {
+			let theoryCol = {
+				header: '?',
+				getData: () => '?'
+			};
+			if (theoryId === THEORY_ID.Note) {
+				theoryCol = {
+					header: 'Freq',
+					getData: pod => 'f'
+				};
+			}
+			if (theoryId === THEORY_ID.Interval) {
+				theoryCol = {
+					header: 'Ratio',
+					getData: pod => '1:n'
+				};
+			}
+			return {
+				headers: ['Name', 'P', 'D', theoryCol.header],
+				rows: [
+					{
+						cols: ['Key Center', '?', '?', '?']
+					},
+					{
+						cols: ['Intervals', '?', '?', '?']
+					}
+				]
+			};
+		}
 	},
 	[LEVEL_ID.Section]: {
 		levelId: LEVEL_ID.Section,
@@ -213,7 +269,33 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.Block
 		},
-		getPreview: section => `${section.data.length} Blocks`
+		getPreview: section => `${section.data.length} Blocks`,
+		getTableProps: (section, theoryId) => {
+			let theoryCol = {
+				header: '?',
+				getData: () => '?'
+			};
+			if (theoryId === THEORY_ID.Note) {
+				theoryCol = {
+					header: 'Freq',
+					getData: pod => 'f'
+				};
+			}
+			if (theoryId === THEORY_ID.Interval) {
+				theoryCol = {
+					header: 'Ratio',
+					getData: pod => '1:n'
+				};
+			}
+			return {
+				headers: ['Name', 'P', 'D', theoryCol.header],
+				rows: [
+					{
+						cols: ['sections go here', '?', '?', '?']
+					}
+				]
+			};
+		}
 	},
 	[LEVEL_ID.Chart]: {
 		levelId: LEVEL_ID.Chart,

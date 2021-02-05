@@ -19,13 +19,17 @@ const StyledTypeRow = styled.div`
 
 export const NamedKeyedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
-	const { levelId } = childLevel;
+	const { levelId, theoryId } = childLevel;
 
 	return data.data.map((item, i) => {
 		const preview = childLevel.getPreview(data);
+		const tableProps = childLevel.getTableProps(item, theoryId);
+
 		return (
 			<StyledTypeRow key={item.id}>
-				<Subpanel name={item.name} caption={childLevel.name} preview={preview} />
+				<Subpanel name={item.name} caption={childLevel.name} preview={preview}>
+					<PodListTable {...tableProps} />
+				</Subpanel>
 				<ZoomButton name={item.name} levelId={levelId} pathId={item.id} />
 			</StyledTypeRow>
 		);
@@ -34,13 +38,17 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 
 export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
-	const { name: levelName, levelId } = childLevel;
+	const { name: levelName, levelId, theoryId } = childLevel;
 
 	return data.data.map((item, i) => {
 		const preview = childLevel.getPreview(item);
+		const tableProps = childLevel.getTableProps(item, theoryId);
+
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={levelName} preview={preview} />
+				<Subpanel name={i} caption={levelName} preview={preview}>
+					<PodListTable {...tableProps} />
+				</Subpanel>
 				<ZoomButton name={`${levelName} ${i}`} levelId={levelId} pathId={i} />
 			</StyledTypeRow>
 		);
@@ -58,7 +66,9 @@ export const PWObject = ({ data, properties }) => {
 
 		return (
 			<StyledTypeRow key={propertyId}>
-				<Subpanel name={name} caption={childLevel.name} preview={preview} ><PodListTable {...tableProps} /></Subpanel>
+				<Subpanel name={name} caption={childLevel.name} preview={preview} >
+					<PodListTable {...tableProps} />
+				</Subpanel>
 				<ZoomButton name={name} levelId={levelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
@@ -76,7 +86,9 @@ export const List = ({ data, levelId, childLevelId }) => {
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={childLevel.name} preview={preview} ><PodListTable {...tableProps} /></Subpanel>
+				<Subpanel name={i} caption={childLevel.name} preview={preview} >
+					<PodListTable {...tableProps} />
+				</Subpanel>
 				<ZoomButton name={`${name} ${i}`} levelId={childLevelId} pathId={i} />
 			</StyledTypeRow>
 		);
@@ -91,9 +103,13 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 		const label = labels[i];
 		const { name, pathId, theoryId } = label;
 		const preview = childLevel.getPreview(item, theoryId);
+		const tableProps = childLevel.getTableProps(item, theoryId);
+
 		return (
 			<StyledTypeRow key={pathId}>
-				<Subpanel name={name} caption={childLevel.name} preview={preview} />
+				<Subpanel name={name} caption={childLevel.name} preview={preview}>
+					<PodListTable {...tableProps} />
+				</Subpanel>
 				<ZoomButton name={name} levelId={levelId} pathId={i} />
 			</StyledTypeRow>
 		);
