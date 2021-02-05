@@ -1,3 +1,4 @@
+import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
 
@@ -17,6 +18,32 @@ export const TYPE_ID = {
 	NamedList: 3,
 	NamedKeyedList: 4,
 	LabeledList: 5
+};
+
+export const THEORY_ID = {
+	Pitch: 0,
+	Degree: 1,
+	Note: 2,
+	Interval: 3
+};
+
+export const THEORY = {
+	[THEORY_ID.Pitch]: {
+		thoeryId: THEORY_ID.Pitch,
+		name: 'Pitch'
+	},
+	[THEORY_ID.Degree]: {
+		thoeryId: THEORY_ID.Degree,
+		name: 'Degree'
+	},
+	[THEORY_ID.Note]: {
+		thoeryId: THEORY_ID.Note,
+		name: 'Note'
+	},
+	[THEORY_ID.Interval]: {
+		thoeryId: THEORY_ID.Interval,
+		name: 'Interval'
+	}
 };
 
 export const TYPE = {
@@ -67,11 +94,16 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.PodIndex,
 			labels: [
-				{ pathId: 'pitch', name: 'Pitch' },
-				{ pathId: 'degree', name: 'Degree' }
+				{ pathId: 'pitch', name: 'Pitch', thoeryId: THEORY_ID.Pitch },
+				{ pathId: 'degree', name: 'Degree', thoeryId: THEORY_ID.Degree }
 			]
 		},
-		getPreview: pod => JSON.stringify(pod)
+		getPreview: (pod, theoryId) => {
+			if (theoryId === THEORY_ID.Note) {
+				return PodUtils.getName(pod, { podType: 'note' });
+			}
+			return JSON.stringify(pod);
+		}
 	},
 	[LEVEL_ID.PodList]: {
 		levelId: LEVEL_ID.PodList,
@@ -91,11 +123,13 @@ export const LEVEL = {
 				{
 					propertyId: 'keyCenter',
 					levelId: LEVEL_ID.Pod,
+					theoryId: THEORY_ID.Note,
 					name: 'Key Center'
 				},
 				{
 					propertyId: 'intervals',
 					levelId: LEVEL_ID.PodList,
+					theoryId: THEORY_ID.Interval,
 					name: 'Intervals'
 				}
 			]

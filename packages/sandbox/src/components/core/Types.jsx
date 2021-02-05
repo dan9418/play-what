@@ -48,9 +48,9 @@ export const NamedList = ({ data, childLevelId }) => {
 
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
-		const { name, levelId, propertyId } = property;
+		const { name, levelId, theoryId, propertyId } = property;
 		const level = LEVEL[levelId];
-		const preview = level.getPreview(data[propertyId]);
+		const preview = level.getPreview(data[propertyId], theoryId);
 		return (
 			<StyledTypeRow key={propertyId}>
 				<Subpanel name={name} caption={level.name} preview={preview} />
@@ -81,8 +81,8 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 
 	return data.map((item, i) => {
 		const label = labels[i];
-		const { name, pathId } = label;
-		const preview = childLevel.getPreview(item);
+		const { name, pathId, theoryId } = label;
+		const preview = childLevel.getPreview(item, theoryId);
 		return (
 			<StyledTypeRow key={pathId}>
 				<Subpanel name={name} caption={childLevel.name} preview={preview} />
