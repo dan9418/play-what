@@ -26,12 +26,12 @@ const StyledTable = styled.table`
 	}
 `;
 
-const Table = ({ rows, cols }) => {
+const Table = ({ rows, headers }) => {
 	return (
 		<StyledTable>
 			<thead>
 				<tr>
-					{cols}
+					{headers}
 				</tr>
 			</thead>
 			<tbody>

@@ -66,7 +66,7 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-const Subpanel = ({ name, caption, preview, editable, actions, children }) => {
+const Subpanel = ({ name, caption, preview, editable = true, actions, children }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
