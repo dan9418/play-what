@@ -28,7 +28,7 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 		return (
 			<React.Fragment key={item.id}>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
-				<Subpanel name={name} caption={childLevel.name} />
+				<Subpanel name={item.name} caption={childLevel.name} />
 			</React.Fragment>
 		);
 	})

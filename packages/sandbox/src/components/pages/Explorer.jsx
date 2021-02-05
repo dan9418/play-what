@@ -43,7 +43,13 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getLevelContent = (level, levelData, type) => {
+const getLevelContent = (pathHead, levelData) => {
+	const { levelId } = pathHead;
+
+	const level = LEVEL[levelId];
+	const levelTypeId = level.typeId;
+
+	const type = TYPE[levelTypeId];
 
 	const { typeProps } = level;
 	const { component: Component, typeId } = type;
@@ -59,10 +65,7 @@ const getLevelContent = (level, levelData, type) => {
 	);
 };
 
-const Explorer = () => {
-	const { pathHead } = useLevelContext();
-	const { levelData } = useDataContext();
-
+const getPanelProps = (pathHead) => {
 	const { levelId, name } = pathHead;
 
 	const level = LEVEL[levelId];
@@ -75,12 +78,25 @@ const Explorer = () => {
 	const caption = `${levelName} (${typeName})`;
 	const preview = 'preview';
 
-	const content = getLevelContent(level, levelData, type);
+	return {
+		name,
+		caption,
+		preview
+	}
+};
+
+const Explorer = () => {
+	const { pathHead } = useLevelContext();
+	const { levelData } = useDataContext();
+
+	const panelProps = getPanelProps(pathHead);
+
+	const content = getLevelContent(pathHead, levelData);
 
 	return (
 		<StyledPage>
 			<BreadcrumbList />
-			<Panel name={name} caption={caption} preview={preview}>
+			<Panel {...panelProps}>
 				{content}
 			</Panel>
 		</StyledPage>
