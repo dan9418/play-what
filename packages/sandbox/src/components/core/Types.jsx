@@ -23,32 +23,16 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { name, levelId } = childLevel;
+	const level = LEVEL[levelId];
 
 	return data.data.map((item, i) => {
+		const preview = level.getPreview(item);
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
-				<Subpanel name={name} caption={childLevel.name} />
+				<Subpanel name={i} caption={childLevel.name} preview={preview} />
 				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
 			</div>
-		);
-	})
-};
-
-export const List = NamedList;
-
-export const LabeledList = ({ data, childLevelId, labels }) => {
-	const childLevel = LEVEL[childLevelId];
-	const { levelId } = childLevel;
-
-	return data.map((item, i) => {
-		const label = labels[i];
-		const { name, pathId } = label;
-		return (
-			<React.Fragment key={pathId}>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={i} /></h2>
-				<Subpanel name={name} caption={childLevel.name} />
-			</React.Fragment>
 		);
 	})
 };
@@ -56,12 +40,58 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
 		const { name, levelId, propertyId } = property;
-		const { } = LEVEL[levelId];
+		const level = LEVEL[levelId];
+		const preview = level.getPreview(data[propertyId]);
 		return (
-			<React.Fragment key={propertyId}>
-				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={propertyId} /></h2>
-				<Subpanel name={name} caption={data[propertyId]} />
-			</React.Fragment>
+			<div key={propertyId} className="pod-wrapper">
+				<div>{i}</div>
+				<Subpanel name={name} caption={level.name} preview={preview} />
+				<ZoomButton name={name} levelId={levelId} pathId={propertyId} />
+			</div>
 		);
 	})
+};
+
+export const List = ({ data, childLevelId }) => {
+	const childLevel = LEVEL[childLevelId];
+	const { name, levelId } = childLevel;
+	const level = LEVEL[levelId];
+
+	return data.map((item, i) => {
+		const preview = level.getPreview(item);
+		return (
+			<div key={i} className="pod-wrapper">
+				<div>{i}</div>
+				<Subpanel name={i} caption={childLevel.name} preview={preview} />
+				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
+			</div>
+		);
+	})
+};
+
+export const LabeledList = ({ data, childLevelId, labels }) => {
+	const childLevel = LEVEL[childLevelId];
+	const { levelId } = childLevel;
+	const level = LEVEL[levelId];
+
+	return data.map((item, i) => {
+		const label = labels[i];
+		const { name, pathId } = label;
+		const preview = level.getPreview(item);
+		return (
+			<div key={pathId} className="pod-wrapper">
+				<div>{i}</div>
+				<Subpanel name={name} caption={childLevel.name} preview={preview} />
+				<ZoomButton name={name} levelId={levelId} pathId={i} />
+			</div>
+		);
+	})
+};
+
+export const Native = ({ data }) => {
+	return (
+		<div>
+			{data}
+		</div>
+	);
 };

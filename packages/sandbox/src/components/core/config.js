@@ -1,5 +1,5 @@
 import React from 'react';
-import { LabeledList, List, NamedKeyedList, NamedList, PWObject } from './Types';
+import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
 
 export const LEVEL_ID = {
 	PodIndex: 0,
@@ -23,7 +23,7 @@ export const TYPE = {
 	[TYPE_ID.Native]: {
 		typeId: TYPE_ID.Native,
 		name: 'Native',
-		component: React.Fragment
+		component: Native
 	},
 	[TYPE_ID.Object]: {
 		typeId: TYPE_ID.Object,
