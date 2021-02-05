@@ -1,16 +1,17 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import { LEVEL } from '../core/config';
+import Subpanel from '../ui/Subpanel';
 
 export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
-	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
+	const { name, levelId } = childLevel;
 
 	return data.map((item, i) => {
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
-				<SubpanelComponent data={item} />
+				<Subpanel name={name} caption={childLevel.name} />
 				<ZoomButton name={`${name} ${i}`} levelId={levelId} pathId={i} />
 			</div>
 		);
@@ -21,13 +22,13 @@ export const List = NamedList;
 
 export const NamedKeyedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
-	const { subpanelComponent: SubpanelComponent, name, levelId } = childLevel;
+	const { name, levelId } = childLevel;
 
 	return data.map((item, i) => {
 		return (
 			<React.Fragment key={item.id}>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
-				<SubpanelComponent data={item} />
+				<Subpanel name={name} caption={childLevel.name} />
 			</React.Fragment>
 		);
 	})
@@ -35,7 +36,7 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 
 export const LabeledList = ({ data, childLevelId, labels }) => {
 	const childLevel = LEVEL[childLevelId];
-	const { subpanelComponent: SubpanelComponent, levelId } = childLevel;
+	const { levelId } = childLevel;
 
 	return data.map((item, i) => {
 		const label = labels[i];
@@ -43,7 +44,7 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 		return (
 			<React.Fragment key={pathId}>
 				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={i} /></h2>
-				<SubpanelComponent data={item} />
+				<Subpanel name={name} caption={childLevel.name} />
 			</React.Fragment>
 		);
 	})
@@ -52,11 +53,11 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
 		const { name, levelId, propertyId } = property;
-		const { subpanelComponent: SubpanelComponent } = LEVEL[levelId];
+		const { } = LEVEL[levelId];
 		return (
 			<React.Fragment key={propertyId}>
 				<h2>{name}<ZoomButton name={name} levelId={levelId} pathId={propertyId} /></h2>
-				<SubpanelComponent data={data[propertyId]} />
+				<Subpanel name={name} caption={data[propertyId]} />
 			</React.Fragment>
 		);
 	})

@@ -26,7 +26,7 @@ const PAGE = {
 }
 
 export const RouteContextProvider = ({ children }) => {
-	const [pageId, setPageId] = useState(PAGE_ID.About);
+	const [pageId, setPageId] = useState(PAGE_ID.Explorer);
 
 	const goHome = () => setPageId(PAGE_ID.About);
 

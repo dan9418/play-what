@@ -17,7 +17,12 @@ const StyledTable = styled.table`
 	}
 
 	& thead tr {
-		border-bottom: 1px solid #ccc;
+		background-color: #eee;
+		border: 1px solid #ccc;
+	}
+
+	& tbody tr:not(:last-child) {
+		border-bottom: 1px solid #ddd;
 	}
 `;
 

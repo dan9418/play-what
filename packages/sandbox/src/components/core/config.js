@@ -1,9 +1,4 @@
 import React from 'react';
-import BlockSubpanel from '../levels/Block/BlockSubpanel';
-import PodSubpanel from '../levels/Pod/PodSubpanel';
-import PodIndexSubpanel from '../levels/PodIndex/PodIndexSubpanel';
-import PodListSubpanel from '../levels/PodList/PodListSubpanel';
-import SectionSubpanel from '../levels/Section/SectionSubpanel';
 import { LabeledList, List, NamedKeyedList, NamedList, PWObject } from './Types';
 
 export const LEVEL_ID = {
@@ -62,14 +57,12 @@ export const LEVEL = {
 		levelId: LEVEL_ID.PodIndex,
 		typeId: TYPE_ID.Native,
 		name: 'Pod Index',
-		subpanelComponent: PodIndexSubpanel,
 		typeProps: {}
 	},
 	[LEVEL_ID.Pod]: {
 		levelId: LEVEL_ID.Pod,
 		typeId: TYPE_ID.LabeledList,
 		name: 'Pod',
-		subpanelComponent: PodSubpanel,
 		typeProps: {
 			childLevelId: LEVEL_ID.PodIndex,
 			labels: [
@@ -82,7 +75,6 @@ export const LEVEL = {
 		levelId: LEVEL_ID.PodList,
 		typeId: TYPE_ID.List,
 		name: 'Pod List',
-		subpanelComponent: PodListSubpanel,
 		typeProps: {
 			childLevelId: LEVEL_ID.Pod
 		}
@@ -91,7 +83,6 @@ export const LEVEL = {
 		levelId: LEVEL_ID.Block,
 		typeId: TYPE_ID.Object,
 		name: 'Block',
-		subpanelComponent: BlockSubpanel,
 		typeProps: {
 			properties: [
 				{
@@ -111,7 +102,6 @@ export const LEVEL = {
 		levelId: LEVEL_ID.Section,
 		typeId: TYPE_ID.NamedList,
 		name: 'Section',
-		subpanelComponent: SectionSubpanel,
 		typeProps: {
 			childLevelId: LEVEL_ID.Block
 		}
@@ -120,7 +110,6 @@ export const LEVEL = {
 		levelId: LEVEL_ID.Chart,
 		typeId: TYPE_ID.NamedKeyedList,
 		name: 'Chart',
-		subpanelComponent: null,
 		typeProps: {
 			childLevelId: LEVEL_ID.Section
 		}
