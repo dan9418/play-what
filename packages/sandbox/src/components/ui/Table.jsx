@@ -27,15 +27,28 @@ const StyledTable = styled.table`
 `;
 
 const Table = ({ rows, headers }) => {
+
+	const headerCells = headers.map(h => <td key={h}>{h}</td>);
+
+	const bodyRows = rows.map((r, i) => {
+		return (
+			<tr key={i}>
+				{r.cols.map((c, j) => {
+					return <td key={j}>{c}</td>;
+				})}
+			</tr>
+		);
+	});
+
 	return (
 		<StyledTable>
 			<thead>
 				<tr>
-					{headers}
+					{headerCells}
 				</tr>
 			</thead>
 			<tbody>
-				{rows}
+				{bodyRows}
 			</tbody>
 		</StyledTable>
 	);
