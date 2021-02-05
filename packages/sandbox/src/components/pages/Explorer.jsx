@@ -73,7 +73,7 @@ const getPanelProps = (pathHead, levelData) => {
 	const typeName = type.name;
 
 	const caption = `${levelName} (${typeName})`;
-	const preview = level.getPreview(levelData)
+	const preview = level.getPreview(levelData);
 
 	return {
 		name,

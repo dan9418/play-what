@@ -3,6 +3,23 @@ import React from 'react';
 import { LEVEL } from '../core/config';
 import Subpanel from '../ui/Subpanel';
 
+export const NamedKeyedList = ({ data, childLevelId }) => {
+	const childLevel = LEVEL[childLevelId];
+	const { name, levelId } = childLevel;
+	const level = LEVEL[levelId];
+
+	return data.data.map((item, i) => {
+		const preview = level.getPreview(data);
+		return (
+			<div key={item.id} className="pod-wrapper">
+				<div>{i}</div>
+				<Subpanel name={item.name} caption={childLevel.name} preview={preview} />
+				<ZoomButton name={item.name} levelId={levelId} pathId={item.id} />
+			</div>
+		);
+	})
+};
+
 export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { name, levelId } = childLevel;
@@ -19,20 +36,6 @@ export const NamedList = ({ data, childLevelId }) => {
 };
 
 export const List = NamedList;
-
-export const NamedKeyedList = ({ data, childLevelId }) => {
-	const childLevel = LEVEL[childLevelId];
-	const { name, levelId } = childLevel;
-
-	return data.data.map((item, i) => {
-		return (
-			<React.Fragment key={item.id}>
-				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>
-				<Subpanel name={item.name} caption={childLevel.name} />
-			</React.Fragment>
-		);
-	})
-};
 
 export const LabeledList = ({ data, childLevelId, labels }) => {
 	const childLevel = LEVEL[childLevelId];
