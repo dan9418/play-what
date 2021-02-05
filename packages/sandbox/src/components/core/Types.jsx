@@ -7,7 +7,7 @@ export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { name, levelId } = childLevel;
 
-	return data.map((item, i) => {
+	return data.data.map((item, i) => {
 		return (
 			<div key={i} className="pod-wrapper">
 				<div>{i}</div>
@@ -24,7 +24,7 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { name, levelId } = childLevel;
 
-	return data.map((item, i) => {
+	return data.data.map((item, i) => {
 		return (
 			<React.Fragment key={item.id}>
 				<h2>{item.name}<ZoomButton name={item.name} levelId={levelId} pathId={item.id} /></h2>

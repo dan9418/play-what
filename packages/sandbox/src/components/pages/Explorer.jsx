@@ -52,14 +52,11 @@ const getLevelContent = (pathHead, levelData) => {
 	const type = TYPE[levelTypeId];
 
 	const { typeProps } = level;
-	const { component: Component, typeId } = type;
-
-	const data = typeId === TYPE_ID.NamedKeyedList || typeId === TYPE_ID.NamedList ?
-		levelData.data : levelData;
+	const { component: Component } = type;
 
 	return (
 		<Component
-			data={data}
+			data={levelData}
 			{...typeProps}
 		/>
 	);
