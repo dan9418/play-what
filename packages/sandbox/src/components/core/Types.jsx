@@ -17,18 +17,26 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
+const getTables = (tableProps) => {
+	if (!tableProps) return null;
+
+	const data = Array.isArray(tableProps) ? tableProps : [tableProps];
+
+	return data.map((d, i) => <Table key={i} {...d} />);
+}
+
 export const NamedKeyedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { levelId, theoryId } = childLevel;
 
 	return data.data.map((item, i) => {
-		const preview = childLevel.getPreview(data);
+		const preview = childLevel.getPreview(item);
 		const tableProps = childLevel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={item.id}>
 				<Subpanel name={item.name} caption={childLevel.name} preview={preview}>
-					<Table {...tableProps} />
+					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={item.name} levelId={levelId} pathId={item.id} />
 			</StyledTypeRow>
@@ -47,7 +55,7 @@ export const NamedList = ({ data, childLevelId }) => {
 		return (
 			<StyledTypeRow key={i}>
 				<Subpanel name={i} caption={levelName} preview={preview}>
-					<Table {...tableProps} />
+					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={`${levelName} ${i}`} levelId={levelId} pathId={i} />
 			</StyledTypeRow>
@@ -67,7 +75,7 @@ export const PWObject = ({ data, properties }) => {
 		return (
 			<StyledTypeRow key={propertyId}>
 				<Subpanel name={name} caption={childLevel.name} preview={preview} >
-					<Table {...tableProps} />
+					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={name} levelId={levelId} pathId={propertyId} />
 			</StyledTypeRow>
@@ -87,7 +95,7 @@ export const List = ({ data, levelId, childLevelId }) => {
 		return (
 			<StyledTypeRow key={i}>
 				<Subpanel name={i} caption={childLevel.name} preview={preview} >
-					<Table {...tableProps} />
+					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={`${name} ${i}`} levelId={childLevelId} pathId={i} />
 			</StyledTypeRow>
@@ -108,7 +116,7 @@ export const LabeledList = ({ data, childLevelId, labels }) => {
 		return (
 			<StyledTypeRow key={pathId}>
 				<Subpanel name={name} caption={childLevel.name} preview={preview}>
-					<Table {...tableProps} />
+					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={name} levelId={levelId} pathId={i} />
 			</StyledTypeRow>

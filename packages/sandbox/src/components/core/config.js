@@ -233,33 +233,24 @@ export const LEVEL = {
 			+ 
 			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`,
 		getTableProps: (block, theoryId) => {
-			let theoryCol = {
-				header: '?',
-				getData: () => '?'
-			};
-			if (theoryId === THEORY_ID.Note) {
-				theoryCol = {
-					header: 'Freq',
-					getData: pod => 'f'
-				};
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				theoryCol = {
-					header: 'Ratio',
-					getData: pod => '1:n'
-				};
-			}
-			return {
-				headers: ['Name', 'P', 'D', theoryCol.header],
-				rows: [
-					{
-						cols: ['Key Center', '?', '?', '?']
-					},
-					{
-						cols: ['Intervals', '?', '?', '?']
-					}
-				]
-			};
+			return [
+				{
+					title: 'Key Center',
+					headers: ['Name', 'P', 'D', 'Freq'],
+					rows: [
+						{
+							cols: ['?', '?', '?', '?']
+						}
+					]
+				},
+				{
+					title: 'Intervals',
+					headers: ['Name', 'P', 'D', '?'],
+					rows: [
+
+					]
+				}
+			];
 		}
 	},
 	[LEVEL_ID.Section]: {

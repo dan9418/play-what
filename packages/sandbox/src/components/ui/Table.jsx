@@ -26,7 +26,11 @@ const StyledTable = styled.table`
 	}
 `;
 
-const Table = ({ rows, headers }) => {
+const StyledTableHeader = styled.h3`
+	padding-bottom: 4px;
+`;
+
+const Table = ({ title, rows, headers }) => {
 
 	const headerCells = headers.map(h => <td key={h}>{h}</td>);
 
@@ -41,16 +45,19 @@ const Table = ({ rows, headers }) => {
 	});
 
 	return (
-		<StyledTable>
-			<thead>
-				<tr>
-					{headerCells}
-				</tr>
-			</thead>
-			<tbody>
-				{bodyRows}
-			</tbody>
-		</StyledTable>
+		<>
+			{title && <StyledTableHeader>{title}</StyledTableHeader>}
+			<StyledTable>
+				<thead>
+					<tr>
+						{headerCells}
+					</tr>
+				</thead>
+				<tbody>
+					{bodyRows}
+				</tbody>
+			</StyledTable>
+		</>
 	);
 };
 
