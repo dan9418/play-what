@@ -12,8 +12,10 @@ export const MODEL_ID = {
 	Note: 2,
 	Interval: 3,
 	// List
-	Chord: 4,
-	Scale: 5,
+	NoteChord: 4,
+	IntervalChord: 4.5,
+	NoteScale: 5,
+	IntervalScale: 5.5,
 	// Object
 	RelativeChord: 6, // RelativeChord
 	// Named List
@@ -57,24 +59,24 @@ export const MODEL = {
 			]
 		}
 	},
-	[MODEL_ID.Chord]: {
-		name: 'Chord',
-		modelId: MODEL_ID.Chord,
+	[MODEL_ID.NoteChord]: {
+		name: 'NoteChord',
+		modelId: MODEL_ID.NoteChord,
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
 		}
 	},
-	[MODEL_ID.Scale]: {
-		name: 'Scale',
-		modelId: MODEL_ID.Scale,
+	[MODEL_ID.NoteScale]: {
+		name: 'NoteScale',
+		modelId: MODEL_ID.NoteScale,
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
 		}
 	},
 	[MODEL_ID.RelativeChord]: {
-		name: 'Relative Chord',
+		name: 'Relative NoteChord',
 		modelId: MODEL_ID.RelativeChord,
 		structId: STRUCT_ID.Object,
 		structConfig: {
@@ -86,7 +88,7 @@ export const MODEL = {
 				},
 				{
 					propertyId: 'intervals',
-					modelId: MODEL_ID.Chord,
+					modelId: MODEL_ID.NoteChord,
 					name: 'Intervals'
 				}
 			]

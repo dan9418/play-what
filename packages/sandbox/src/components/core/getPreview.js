@@ -7,11 +7,7 @@ export const getNotePreview = (data) => JSON.stringify(data);
 export const getIntervalPreview = (data) => JSON.stringify(data);
 export const getChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
 export const getScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
-export const getRelativeChordPreview = (data) => {
-	const kcPreview = getNoteName(data.keyCenter);
-	const chordPreview = getChordPreview(data.intervals);
-	return `${kcPreview} + ${chordPreview}`;
-};
+export const getRelativeChordPreview = (data) => "Note + NoteChord";
 export const getSectionPreview = (data) => `${data.items.length} Items`;
 export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
 
@@ -27,9 +23,9 @@ const getPreview = (data, modelId) => {
 		return getNotePreview(data);
 	case MODEL_ID.Interval:
 		return getIntervalPreview(data);
-	case MODEL_ID.Chord:
+	case MODEL_ID.NoteChord:
 		return getChordPreview(data);
-	case MODEL_ID.Scale:
+	case MODEL_ID.NoteScale:
 		return getScalePreview(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordPreview(data);

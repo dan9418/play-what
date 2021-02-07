@@ -6,7 +6,8 @@ const getCaption = (data, modelId) => {
 
 	const model = MODEL[modelId];
 	const struct = STRUCT[model.structId];
-	return `${model.name} (${struct.name})`;
+	return model.name;
+	//return `${model.name} (${struct.name})`;
 };
 
 export default getCaption;
