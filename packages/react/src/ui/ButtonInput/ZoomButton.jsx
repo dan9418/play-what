@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
-import { useLevelContext } from '../../../../sandbox/src/contexts/LevelContext';
+import { useModelContext } from '../../../../sandbox/src/contexts/ModelContext';
 import Icon from '../../../../sandbox/src/components/ui/Icon';
 
 const StyledZoomButton = styled.button`
@@ -11,11 +11,11 @@ const StyledZoomButton = styled.button`
 	background-color: transparent;
 `;
 
-const ZoomButton = ({ levelId, name, pathId, size, ...props }) => {
+const ZoomButton = ({ modelId, name, pathId, size, ...props }) => {
 	const theme = useTheme();
-	const { push } = useLevelContext();
+	const { push } = useModelContext();
 	const onClick = () => push({
-		levelId,
+		modelId,
 		name,
 		pathId
 	});

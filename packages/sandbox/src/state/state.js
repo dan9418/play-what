@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { LEVEL_ID } from "../components/core/LEVEL";
+import { MODEL_ID } from "../components/core/MODEL";
 import { OUT_OF_NOWHERE } from "./songs";
 
 export const dataState = atom({
@@ -13,7 +13,7 @@ export const pathState = atom({
 		{
 			name: 'Out of Nowhere',
 			pathId: 'outOfNowhere',
-			levelId: LEVEL_ID.Chart
+			modelId: MODEL_ID.Chart
 		}
 	]
 });

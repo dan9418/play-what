@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { LEVEL } from '../components/core/LEVEL';
+import { MODEL } from '../components/core/MODEL';
 import { TYPE_ID } from '../components/core/TYPE';
 import { dataState, pathState } from '../state/state';
 
@@ -10,24 +10,24 @@ const getDataAtPath = (data, path) => {
 	for (let i = 0; i < path.length - 1; i++) {
 		const pathHead = path[i];
 		const target = path[i + 1];
-		const { levelId, pathId } = pathHead;
+		const { modelId, pathId } = pathHead;
 		const { pathId: targetId } = target;
-		const levelTypeId = LEVEL[levelId].typeId;
+		const modelTypeId = MODEL[modelId].typeId;
 
-		if (levelTypeId === TYPE_ID.Native) {
+		if (modelTypeId === TYPE_ID.Native) {
 			// not used - should only be leaf
 		}
-		else if (levelTypeId === TYPE_ID.Object || levelTypeId === TYPE_ID.List || levelTypeId === TYPE_ID.LabeledList) {
+		else if (modelTypeId === TYPE_ID.Object || modelTypeId === TYPE_ID.List || modelTypeId === TYPE_ID.LabeledList) {
 			node = node[targetId];
 		}
-		else if (levelTypeId === TYPE_ID.NamedList) {
+		else if (modelTypeId === TYPE_ID.NamedList) {
 			node = node.items[targetId];
 		}
-		else if (levelTypeId === TYPE_ID.NamedKeyedList) {
+		else if (modelTypeId === TYPE_ID.NamedKeyedList) {
 			node = node.items.find(s => s.id === targetId);
 		}
 		else {
-			console.error('UNKNOWN DATA TYPE', levelTypeId);
+			console.error('UNKNOWN DATA TYPE', modelTypeId);
 		}
 
 		if (!node)
@@ -38,14 +38,14 @@ const getDataAtPath = (data, path) => {
 
 const getDataUtils = (path, data, setData) => {
 
-	const levelData = getDataAtPath(data, path);
-	const setLevelData = () => console.log('not supported');
+	const modelData = getDataAtPath(data, path);
+	const setModelData = () => console.log('not supported');
 
 	return {
 		data,
 		setData,
-		levelData,
-		setLevelData
+		modelData,
+		setModelData
 	}
 }
 

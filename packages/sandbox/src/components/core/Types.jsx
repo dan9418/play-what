@@ -1,7 +1,7 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
-import { LEVEL } from './LEVEL';
+import { MODEL } from './MODEL';
 import Subpanel from '../ui/Subpanel';
 import Table from '../ui/Table';
 
@@ -25,39 +25,39 @@ const getTables = (tableProps) => {
 	return data.map((d, i) => <Table key={i} {...d} />);
 }
 
-export const NamedKeyedList = ({ data, childLevelId }) => {
-	const childLevel = LEVEL[childLevelId];
-	const { levelId, theoryId } = childLevel;
+export const NamedKeyedList = ({ data, childModelId }) => {
+	const childModel = MODEL[childModelId];
+	const { modelId, theoryId } = childModel;
 
 	return data.items.map((item, i) => {
-		const preview = childLevel.getPreview(item);
-		const tableProps = childLevel.getTableProps(item, theoryId);
+		const preview = childModel.getPreview(item);
+		const tableProps = childModel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={item.id}>
-				<Subpanel name={item.name} caption={childLevel.name} preview={preview}>
+				<Subpanel name={item.name} caption={childModel.name} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={item.name} levelId={levelId} pathId={item.id} />
+				<ZoomButton name={item.name} modelId={modelId} pathId={item.id} />
 			</StyledTypeRow>
 		);
 	})
 };
 
-export const NamedList = ({ data, childLevelId }) => {
-	const childLevel = LEVEL[childLevelId];
-	const { name: levelName, levelId, theoryId } = childLevel;
+export const NamedList = ({ data, childModelId }) => {
+	const childModel = MODEL[childModelId];
+	const { name: modelName, modelId, theoryId } = childModel;
 
 	return data.items.map((item, i) => {
-		const preview = childLevel.getPreview(item);
-		const tableProps = childLevel.getTableProps(item, theoryId);
+		const preview = childModel.getPreview(item);
+		const tableProps = childModel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={levelName} preview={preview}>
+				<Subpanel name={i} caption={modelName} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={`${levelName} ${i}`} levelId={levelId} pathId={i} />
+				<ZoomButton name={`${modelName} ${i}`} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -65,60 +65,60 @@ export const NamedList = ({ data, childLevelId }) => {
 
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
-		const { name, levelId, theoryId, propertyId } = property;
+		const { name, modelId, theoryId, propertyId } = property;
 		const item = data[propertyId];
 
-		const childLevel = LEVEL[levelId];
-		const preview = childLevel.getPreview(item, theoryId);
-		const tableProps = childLevel.getTableProps(item, theoryId);
+		const childModel = MODEL[modelId];
+		const preview = childModel.getPreview(item, theoryId);
+		const tableProps = childModel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={propertyId}>
-				<Subpanel name={name} caption={childLevel.name} preview={preview} >
+				<Subpanel name={name} caption={childModel.name} preview={preview} >
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={name} levelId={levelId} pathId={propertyId} />
+				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
 	})
 };
 
-export const List = ({ data, levelId, childLevelId }) => {
-	const level = LEVEL[levelId];
-	const childLevel = LEVEL[childLevelId];
-	const { name, theoryId } = childLevel;
+export const List = ({ data, modelId, childModelId }) => {
+	const model = MODEL[modelId];
+	const childModel = MODEL[childModelId];
+	const { name, theoryId } = childModel;
 
 	return data.map((item, i) => {
-		const preview = childLevel.getPreview(item);
-		const tableProps = childLevel.getTableProps(item, theoryId);
+		const preview = childModel.getPreview(item);
+		const tableProps = childModel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={childLevel.name} preview={preview} >
+				<Subpanel name={i} caption={childModel.name} preview={preview} >
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={`${name} ${i}`} levelId={childLevelId} pathId={i} />
+				<ZoomButton name={`${name} ${i}`} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
 };
 
-export const LabeledList = ({ data, childLevelId, labels }) => {
-	const childLevel = LEVEL[childLevelId];
-	const { levelId } = childLevel;
+export const LabeledList = ({ data, childModelId, labels }) => {
+	const childModel = MODEL[childModelId];
+	const { modelId } = childModel;
 
 	return data.map((item, i) => {
 		const label = labels[i];
 		const { name, pathId, theoryId } = label;
-		const preview = childLevel.getPreview(item, theoryId);
-		const tableProps = childLevel.getTableProps(item, theoryId);
+		const preview = childModel.getPreview(item, theoryId);
+		const tableProps = childModel.getTableProps(item, theoryId);
 
 		return (
 			<StyledTypeRow key={pathId}>
-				<Subpanel name={name} caption={childLevel.name} preview={preview}>
+				<Subpanel name={name} caption={childModel.name} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={name} levelId={levelId} pathId={i} />
+				<ZoomButton name={name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})

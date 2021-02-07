@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
-import { useLevelContext } from '../../contexts/LevelContext';
+import { useModelContext } from '../../contexts/ModelContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import { LEVEL } from '../core/LEVEL';
+import { MODEL } from '../core/MODEL';
 import { TYPE } from '../core/TYPE';
 import Panel from '../ui/Panel';
 
@@ -28,38 +28,38 @@ const StyledPage = styled.div`
 	}
 `;
 
-const getLevelContent = (pathHead, levelData) => {
-	const { levelId } = pathHead;
+const getModelContent = (pathHead, modelData) => {
+	const { modelId } = pathHead;
 
-	const level = LEVEL[levelId];
-	const levelTypeId = level.typeId;
+	const model = MODEL[modelId];
+	const modelTypeId = model.typeId;
 
-	const type = TYPE[levelTypeId];
+	const type = TYPE[modelTypeId];
 
-	const { typeProps } = level;
+	const { typeProps } = model;
 	const { component: Component } = type;
 
 	return (
 		<Component
-			data={levelData}
-			levelId={levelId}
+			data={modelData}
+			modelId={modelId}
 			{...typeProps}
 		/>
 	);
 };
 
-const getPanelProps = (pathHead, levelData) => {
-	const { levelId, name } = pathHead;
+const getPanelProps = (pathHead, modelData) => {
+	const { modelId, name } = pathHead;
 
-	const level = LEVEL[levelId];
-	const levelName = level.name;
-	const levelTypeId = level.typeId;
+	const model = MODEL[modelId];
+	const modelName = model.name;
+	const modelTypeId = model.typeId;
 
-	const type = TYPE[levelTypeId];
+	const type = TYPE[modelTypeId];
 	const typeName = type.name;
 
-	const caption = `${levelName} (${typeName})`;
-	const preview = level.getPreview(levelData);
+	const caption = `${modelName} (${typeName})`;
+	const preview = model.getPreview(modelData);
 
 	return {
 		name,
@@ -69,12 +69,12 @@ const getPanelProps = (pathHead, levelData) => {
 };
 
 const Explorer = () => {
-	const { pathHead } = useLevelContext();
-	const { levelData } = useDataContext();
+	const { pathHead } = useModelContext();
+	const { modelData } = useDataContext();
 
-	const panelProps = getPanelProps(pathHead, levelData);
+	const panelProps = getPanelProps(pathHead, modelData);
 
-	const content = getLevelContent(pathHead, levelData);
+	const content = getModelContent(pathHead, modelData);
 
 	return (
 		<StyledPage>
