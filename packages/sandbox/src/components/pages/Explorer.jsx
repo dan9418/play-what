@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { useLevelContext } from '../../contexts/LevelContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import { LEVEL, TYPE, TYPE_ID } from '../core/config';
+import { LEVEL } from '../core/config';
+import { TYPE } from '../core/TYPE';
 import Panel from '../ui/Panel';
 
 const StyledPage = styled.div`

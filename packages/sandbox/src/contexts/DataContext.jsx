@@ -1,7 +1,8 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { LEVEL, TYPE_ID } from '../components/core/config';
+import { LEVEL } from '../components/core/config';
+import { TYPE_ID } from '../components/core/TYPE';
 import { dataState, pathState } from '../state/state';
 
 const getDataAtPath = (data, path) => {
@@ -20,10 +21,10 @@ const getDataAtPath = (data, path) => {
 			node = node[targetId];
 		}
 		else if (levelTypeId === TYPE_ID.NamedList) {
-			node = node.data[targetId];
+			node = node.items[targetId];
 		}
 		else if (levelTypeId === TYPE_ID.NamedKeyedList) {
-			node = node.data.find(s => s.id === targetId);
+			node = node.items.find(s => s.id === targetId);
 		}
 		else {
 			console.error('UNKNOWN DATA TYPE', levelTypeId);
