@@ -24,52 +24,18 @@ export const MODEL_ID = {
 	Chart: 8
 };
 
-const getNoteTableProps = note => {
-	return {
-		headers: ['Name', 'P', 'D', 'Freq'],
-		rows: [{
-			cols: [JSON.stringify(note), note[0], note[1], 'f']
-		}]
-	};
-};
-
-const getChordListTableProps = (chord) => {
-	return {
-		headers: ['Name', 'P', 'D'],
-		rows: chord.map((pod, i) => ({
-			cols: [JSON.stringify(pod), pod[0], pod[1]]
-		}))
-	};
-};
-
 export const MODEL = {
 	[MODEL_ID.Pitch]: {
 		modelId: MODEL_ID.Pitch,
 		structId: STRUCT_ID.Native,
 		name: 'Pitch',
-		typeProps: {},
-		getTableProps: (pitch) => {
-			return {
-				headers: ['Model', 'Value'],
-				rows: [{
-					cols: ['Pitch', pitch]
-				}]
-			};
-		}
+		typeProps: {}
 	},
 	[MODEL_ID.Degree]: {
 		modelId: MODEL_ID.Degree,
 		structId: STRUCT_ID.Native,
 		name: 'Degree',
-		typeProps: {},
-		getTableProps: (degree) => {
-			return {
-				headers: ['Model', 'Value'],
-				rows: [{
-					cols: ['Degree', degree]
-				}]
-			};
-		}
+		typeProps: {}
 	},
 	[MODEL_ID.Note]: {
 		modelId: MODEL_ID.Note,
@@ -80,8 +46,7 @@ export const MODEL = {
 				{ pathId: 'pitch', name: 'Pitch', modelId: MODEL_ID.Pitch },
 				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
 			]
-		},
-		getTableProps: getNoteTableProps
+		}
 	},
 	[MODEL_ID.Interval]: {
 		modelId: MODEL_ID.Interval,
@@ -92,8 +57,7 @@ export const MODEL = {
 				{ pathId: 'pitch', name: 'Pitch', modelId: MODEL_ID.Pitch },
 				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
 			]
-		},
-		getTableProps: getNoteTableProps
+		}
 	},
 	[MODEL_ID.Chord]: {
 		modelId: MODEL_ID.Chord,
@@ -101,8 +65,7 @@ export const MODEL = {
 		name: 'Chord',
 		typeProps: {
 			childModelId: MODEL_ID.Note
-		},
-		getTableProps: getChordListTableProps
+		}
 	},
 	[MODEL_ID.Scale]: {
 		modelId: MODEL_ID.Scale,
@@ -110,8 +73,7 @@ export const MODEL = {
 		name: 'Scale',
 		typeProps: {
 			childModelId: MODEL_ID.Note
-		},
-		getTableProps: getChordListTableProps
+		}
 	},
 	[MODEL_ID.Block]: {
 		modelId: MODEL_ID.Block,
@@ -130,18 +92,6 @@ export const MODEL = {
 					name: 'Intervals'
 				}
 			]
-		},
-		getTableProps: (block) => {
-			return [
-				{
-					title: 'Key Center',
-					...getNoteTableProps(block.keyCenter)
-				},
-				{
-					title: 'Intervals',
-					...getChordListTableProps(block.intervals)
-				}
-			];
 		}
 	},
 	[MODEL_ID.Section]: {
@@ -150,14 +100,6 @@ export const MODEL = {
 		name: 'Section',
 		typeProps: {
 			childModelId: MODEL_ID.Block
-		},
-		getTableProps: (section) => {
-			return {
-				headers: ['#', 'Key Center', 'Intervals', 't'],
-				rows: section.items.map((block, i) => ({
-					cols: [i, PodUtils.getName(block.keyCenter, { podType: 'note' }), PodListUtils.getName(block.intervals, { podType: 'chord' }), block.t || 1]
-				}))
-			};
 		}
 	},
 	[MODEL_ID.Chart]: {

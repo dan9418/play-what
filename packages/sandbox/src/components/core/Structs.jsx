@@ -2,8 +2,8 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
-import Table from '../ui/Table';
 import getPreview from './getPreview';
+import getTables from './getTables';
 import { MODEL } from './MODEL';
 
 const StyledTypeRow = styled.div`
@@ -18,25 +18,17 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
-const getTables = (tableProps) => {
-	if (!tableProps) return null;
-
-	const data = Array.isArray(tableProps) ? tableProps : [tableProps];
-
-	return data.map((d, i) => <Table key={i} {...d} />);
-}
-
 export const NamedKeyedList = ({ data, childModelId }) => {
 	const childModel = MODEL[childModelId];
 
 	return data.items.map((item, i) => {
-		const preview = getPreview(data, childModelId);
-		const tableProps = childModel.getTableProps(item);
+		const preview = getPreview(item, childModelId);
+		const tables = getTables(item, childModelId);
 
 		return (
 			<StyledTypeRow key={item.id}>
 				<Subpanel name={item.name} caption={childModel.name} preview={preview}>
-					{getTables(tableProps)}
+					{tables}
 				</Subpanel>
 				<ZoomButton name={item.name} modelId={childModelId} pathId={item.id} />
 			</StyledTypeRow>
@@ -50,12 +42,12 @@ export const NamedList = ({ data, childModelId }) => {
 
 	return data.items.map((item, i) => {
 		const preview = getPreview(item, childModelId);
-		const tableProps = childModel.getTableProps(item);
+		const tables = getTables(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
 				<Subpanel name={i} caption={modelName} preview={preview}>
-					{getTables(tableProps)}
+					{tables}
 				</Subpanel>
 				<ZoomButton name={`${modelName} ${i}`} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
@@ -71,12 +63,12 @@ export const PWObject = ({ data, properties }) => {
 		const childModel = MODEL[modelId];
 
 		const preview = getPreview(item, modelId);
-		const tableProps = childModel.getTableProps(item);
+		const tables = getTables(item, modelId);
 
 		return (
 			<StyledTypeRow key={propertyId}>
 				<Subpanel name={name} caption={childModel.name} preview={preview} >
-					{getTables(tableProps)}
+					{tables}
 				</Subpanel>
 				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
 			</StyledTypeRow>
@@ -92,12 +84,12 @@ export const List = ({ data, modelId, childModelId }) => {
 	return data.map((item, i) => {
 
 		const preview = getPreview(item, childModelId);
-		const tableProps = childModel.getTableProps(item);
+		const tables = getTables(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
 				<Subpanel name={i} caption={childModel.name} preview={preview} >
-					{getTables(tableProps)}
+					{tables}
 				</Subpanel>
 				<ZoomButton name={`${name} ${i}`} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
@@ -113,12 +105,12 @@ export const LabeledList = ({ data, labels }) => {
 
 		const model = MODEL[modelId];
 		const preview = getPreview(item, modelId);
-		const tableProps = model.getTableProps(item);
+		const tables = getTables(item, modelId);
 
 		return (
 			<StyledTypeRow key={pathId}>
 				<Subpanel name={name} caption={model.name} preview={preview}>
-					{getTables(tableProps)}
+					{tables}
 				</Subpanel>
 				<ZoomButton name={name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
