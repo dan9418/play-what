@@ -29,7 +29,7 @@ export const NamedKeyedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { levelId, theoryId } = childLevel;
 
-	return data.data.map((item, i) => {
+	return data.items.map((item, i) => {
 		const preview = childLevel.getPreview(item);
 		const tableProps = childLevel.getTableProps(item, theoryId);
 
@@ -48,7 +48,7 @@ export const NamedList = ({ data, childLevelId }) => {
 	const childLevel = LEVEL[childLevelId];
 	const { name: levelName, levelId, theoryId } = childLevel;
 
-	return data.data.map((item, i) => {
+	return data.items.map((item, i) => {
 		const preview = childLevel.getPreview(item);
 		const tableProps = childLevel.getTableProps(item, theoryId);
 

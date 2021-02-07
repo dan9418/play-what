@@ -1,66 +1,13 @@
-import { CHORD, NOTE, SCALE } from "@pw/core/src/Pod.presets";
-
-export const TEST_SONG = {
-	id: 'test',
-	type: 'group',
-	subType: null,
-	data: [
-		{
-			id: 'A',
-			type: 'group',
-			subType: null,
-			data: [
-				{
-					keyCenter: NOTE.A.value,
-					intervals: SCALE.Major.value,
-					t: 8
-				},
-				{
-					keyCenter: NOTE.B.value,
-					intervals: SCALE.Major.value,
-					t: 8
-				}
-			]
-		},
-		{
-			id: 'B',
-			type: 'block',
-			subType: null,
-			data: {
-				keyCenter: NOTE.A.value,
-				intervals: SCALE.Major.value,
-				t: 8
-			}
-		},
-		{
-			id: 'C',
-			type: 'podList',
-			subType: 'scale',
-			data: SCALE.Major.value
-		},
-		{
-			id: 'C',
-			type: 'pod',
-			subType: 'note',
-			data: NOTE.A.value
-		},
-		{
-			id: 'D',
-			type: 'podIndex',
-			subType: 'degree',
-			data: 0
-		}
-	]
-};
+import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
 
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',
 	name: 'Out of Nowhere',
-	data: [
+	items: [
 		{
 			id: 'A',
 			name: 'A',
-			data: [
+			items: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -96,7 +43,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'B',
 			name: 'B',
-			data: [
+			items: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
@@ -132,7 +79,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'A\'',
 			name: 'A',
-			data: [
+			items: [
 				{
 					keyCenter: NOTE.G.value,
 					intervals: CHORD.Maj7.value,
@@ -168,7 +115,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			id: 'C',
 			name: 'C',
-			data: [
+			items: [
 				{
 					keyCenter: NOTE.A.value,
 					intervals: CHORD.Min7.value,
@@ -228,10 +175,3 @@ export const OUT_OF_NOWHERE = {
 		}
 	]
 };
-
-const SONGS = {
-	test: TEST_SONG,
-	outOfNowhere: OUT_OF_NOWHERE
-};
-
-export default SONGS;

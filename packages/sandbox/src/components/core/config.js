@@ -1,4 +1,3 @@
-import CoreUtils from '@pw/core/src/Core.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
@@ -240,11 +239,11 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.Block
 		},
-		getPreview: section => `${section.data.length} Blocks`,
+		getPreview: section => `${section.items.length} Blocks`,
 		getTableProps: (section, theoryId) => {
 			return {
 				headers: ['#', 'Key Center', 'Intervals', 't'],
-				rows: section.data.map((block, i) => ({
+				rows: section.items.map((block, i) => ({
 					cols: [i, PodUtils.getName(block.keyCenter, { podType: 'note' }), PodListUtils.getName(block.intervals, { podType: 'chord' }), block.t || 1]
 				}))
 			};
@@ -257,7 +256,7 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.Section
 		},
-		getPreview: chart => chart.data.map(s => s.name).join(', ')
+		getPreview: chart => chart.items.map(s => s.name).join(', ')
 	}
 };
 
