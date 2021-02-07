@@ -32,27 +32,27 @@ export const THEORY_ID = {
 
 export const THEORY = {
 	[THEORY_ID.Pitch]: {
-		thoeryId: THEORY_ID.Pitch,
+		theoryId: THEORY_ID.Pitch,
 		name: 'Pitch'
 	},
 	[THEORY_ID.Degree]: {
-		thoeryId: THEORY_ID.Degree,
+		theoryId: THEORY_ID.Degree,
 		name: 'Degree'
 	},
 	[THEORY_ID.Note]: {
-		thoeryId: THEORY_ID.Note,
+		theoryId: THEORY_ID.Note,
 		name: 'Note'
 	},
 	[THEORY_ID.Interval]: {
-		thoeryId: THEORY_ID.Interval,
+		theoryId: THEORY_ID.Interval,
 		name: 'Interval'
 	},
 	[THEORY_ID.Chord]: {
-		thoeryId: THEORY_ID.Chord,
+		theoryId: THEORY_ID.Chord,
 		name: 'Chord'
 	},
 	[THEORY_ID.Scale]: {
-		thoeryId: THEORY_ID.Scale,
+		theoryId: THEORY_ID.Scale,
 		name: 'Scale'
 	}
 };
@@ -120,7 +120,7 @@ const getPodListTableProps = (podList, theoryId) => {
 		header: '?',
 		getData: () => '?'
 	};
-	if (theoryId === THEORY_ID.Note) {
+	/*if (theoryId === THEORY_ID.Note) {
 		theoryCol = {
 			header: 'Freq',
 			getData: pod => 'f'
@@ -131,7 +131,7 @@ const getPodListTableProps = (podList, theoryId) => {
 			header: 'Ratio',
 			getData: pod => '1:n'
 		};
-	}
+	}*/
 	return {
 		headers: ['Name', 'P', 'D', theoryCol.header],
 		rows: podList.map((pod, i) => ({
@@ -148,26 +148,10 @@ export const LEVEL = {
 		typeProps: {},
 		getPreview: podIndex => podIndex,
 		getTableProps: (podIndex, theoryId) => {
-			let theoryCol = {
-				header: '?',
-				getData: () => '?'
-			};
-			if (theoryId === THEORY_ID.Note) {
-				theoryCol = {
-					header: 'Freq',
-					getData: pod => 'f'
-				};
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				theoryCol = {
-					header: 'Ratio',
-					getData: pod => '1:n'
-				};
-			}
 			return {
-				headers: ['Name', 'P', 'D'],
+				headers: ['Type', 'Value'],
 				rows: [{
-					cols: [podIndex, 'p', 'd']
+					cols: [THEORY[theoryId].name, podIndex]
 				}]
 			};
 		}
@@ -179,8 +163,8 @@ export const LEVEL = {
 		typeProps: {
 			childLevelId: LEVEL_ID.PodIndex,
 			labels: [
-				{ pathId: 'pitch', name: 'Pitch', thoeryId: THEORY_ID.Pitch },
-				{ pathId: 'degree', name: 'Degree', thoeryId: THEORY_ID.Degree }
+				{ pathId: 'pitch', name: 'Pitch', theoryId: THEORY_ID.Pitch },
+				{ pathId: 'degree', name: 'Degree', theoryId: THEORY_ID.Degree }
 			]
 		},
 		getPreview: (pod, theoryId) => {
