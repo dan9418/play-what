@@ -8,7 +8,7 @@ export const getNotePreview = (data) => PodUtils.getName(data, { podType: 'note'
 export const getIntervalPreview = (data) => PodUtils.getName(data, { podType: 'interval' });
 export const getChordPreview = (data) => PodListUtils.getName(data, { podType: 'chord' });
 export const getScalePreview = (data) => PodListUtils.getName(data, { podType: 'scale' });
-export const getBlockPreview = (data) => {
+export const getRelativeChordPreview = (data) => {
 	const kcName = getNotePreview(data.keyCenter);
 	const chordName = getChordPreview(data.intervals);
 	return `${kcName} + ${chordName}`;
@@ -32,8 +32,8 @@ const getPreview = (data, modelId) => {
 		return getChordPreview(data);
 	case MODEL_ID.Scale:
 		return getScalePreview(data);
-	case MODEL_ID.Block:
-		return getBlockPreview(data);
+	case MODEL_ID.RelativeChord:
+		return getRelativeChordPreview(data);
 	case MODEL_ID.Section:
 		return getSectionPreview(data);
 	case MODEL_ID.Chart:

@@ -70,7 +70,7 @@ export const getScaleTables = (data) => {
 	return fromProps(props);
 };
 
-export const getBlockTables = (data) => {
+export const getRelativeChordTables = (data) => {
 	const { keyCenter, intervals } = data;
 	const props = [
 		{
@@ -94,8 +94,8 @@ export const getBlockTables = (data) => {
 export const getSectionTables = (data) => {
 	const props = {
 		headers: ['#', 'Key Center', 'Intervals', 't'],
-		rows: data.items.map((block, i) => ({
-			cols: [i, PodUtils.getName(block.keyCenter, { podType: 'note' }), PodListUtils.getName(block.intervals, { podType: 'chord' }), block.t || 1]
+		rows: data.items.map((relativechord, i) => ({
+			cols: [i, PodUtils.getName(relativechord.keyCenter, { podType: 'note' }), PodListUtils.getName(relativechord.intervals, { podType: 'chord' }), relativechord.t || 1]
 		}))
 	};
 	return fromProps(props);
@@ -128,8 +128,8 @@ const getTables = (data, modelId) => {
 		return getChordTables(data);
 	case MODEL_ID.Scale:
 		return getScaleTables(data);
-	case MODEL_ID.Block:
-		return getBlockTables(data);
+	case MODEL_ID.RelativeChord:
+		return getRelativeChordTables(data);
 	case MODEL_ID.Section:
 		return getSectionTables(data);
 	case MODEL_ID.Chart:

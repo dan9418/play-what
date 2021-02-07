@@ -15,7 +15,7 @@ export const MODEL_ID = {
 	Chord: 4,
 	Scale: 5,
 	// Object
-	Block: 6, // RelativeChord
+	RelativeChord: 6, // RelativeChord
 	// Named List
 	Section: 7,
 	// Named Keyed List
@@ -73,9 +73,9 @@ export const MODEL = {
 			childModelId: MODEL_ID.Note
 		}
 	},
-	[MODEL_ID.Block]: {
-		name: 'Block',
-		modelId: MODEL_ID.Block,
+	[MODEL_ID.RelativeChord]: {
+		name: 'Relative Chord',
+		modelId: MODEL_ID.RelativeChord,
 		structId: STRUCT_ID.Object,
 		structConfig: {
 			properties: [
@@ -97,7 +97,7 @@ export const MODEL = {
 		modelId: MODEL_ID.Section,
 		structId: STRUCT_ID.NamedList,
 		structConfig: {
-			childModelId: MODEL_ID.Block
+			childModelId: MODEL_ID.RelativeChord
 		}
 	},
 	[MODEL_ID.Chart]: {
