@@ -90,6 +90,56 @@ export const TYPE = {
 	}
 };
 
+const getPodTableProps = (pod, theoryId) => {
+	let theoryCol = {
+		header: '?',
+		getData: () => '?'
+	};
+	if (theoryId === THEORY_ID.Note) {
+		theoryCol = {
+			header: 'Freq',
+			getData: pod => 'f'
+		};
+	}
+	if (theoryId === THEORY_ID.Interval) {
+		theoryCol = {
+			header: 'Ratio',
+			getData: pod => '1:n'
+		};
+	}
+	return {
+		headers: ['Name', 'P', 'D', theoryCol.header],
+		rows: [{
+			cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
+		}]
+	};
+};
+
+const getPodListTableProps = (podList, theoryId) => {
+	let theoryCol = {
+		header: '?',
+		getData: () => '?'
+	};
+	if (theoryId === THEORY_ID.Note) {
+		theoryCol = {
+			header: 'Freq',
+			getData: pod => 'f'
+		};
+	}
+	if (theoryId === THEORY_ID.Interval) {
+		theoryCol = {
+			header: 'Ratio',
+			getData: pod => '1:n'
+		};
+	}
+	return {
+		headers: ['Name', 'P', 'D', theoryCol.header],
+		rows: podList.map((pod, i) => ({
+			cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
+		}))
+	};
+};
+
 export const LEVEL = {
 	[LEVEL_ID.PodIndex]: {
 		levelId: LEVEL_ID.PodIndex,
@@ -142,30 +192,7 @@ export const LEVEL = {
 			}
 			return JSON.stringify(pod);
 		},
-		getTableProps: (pod, theoryId) => {
-			let theoryCol = {
-				header: '?',
-				getData: () => '?'
-			};
-			if (theoryId === THEORY_ID.Note) {
-				theoryCol = {
-					header: 'Freq',
-					getData: pod => 'f'
-				};
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				theoryCol = {
-					header: 'Ratio',
-					getData: pod => '1:n'
-				};
-			}
-			return {
-				headers: ['Name', 'P', 'D', theoryCol.header],
-				rows: [{
-					cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
-				}]
-			};
-		}
+		getTableProps: getPodTableProps
 	},
 	[LEVEL_ID.PodList]: {
 		levelId: LEVEL_ID.PodList,
@@ -183,30 +210,7 @@ export const LEVEL = {
 			}
 			return JSON.stringify(podList);
 		},
-		getTableProps: (podList, theoryId) => {
-			let theoryCol = {
-				header: '?',
-				getData: () => '?'
-			};
-			if (theoryId === THEORY_ID.Note) {
-				theoryCol = {
-					header: 'Freq',
-					getData: pod => 'f'
-				};
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				theoryCol = {
-					header: 'Ratio',
-					getData: pod => '1:n'
-				};
-			}
-			return {
-				headers: ['Name', 'P', 'D', theoryCol.header],
-				rows: podList.map((pod, i) => ({
-					cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
-				}))
-			};
-		}
+		getTableProps: getPodListTableProps
 	},
 	[LEVEL_ID.Block]: {
 		levelId: LEVEL_ID.Block,
@@ -236,19 +240,11 @@ export const LEVEL = {
 			return [
 				{
 					title: 'Key Center',
-					headers: ['Name', 'P', 'D', 'Freq'],
-					rows: [
-						{
-							cols: ['?', '?', '?', '?']
-						}
-					]
+					...getPodTableProps(block.keyCenter, 'note')
 				},
 				{
 					title: 'Intervals',
-					headers: ['Name', 'P', 'D', '?'],
-					rows: [
-
-					]
+					...getPodListTableProps(block.intervals, 'chord')
 				}
 			];
 		}
