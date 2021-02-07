@@ -271,29 +271,11 @@ export const LEVEL = {
 		},
 		getPreview: section => `${section.data.length} Blocks`,
 		getTableProps: (section, theoryId) => {
-			let theoryCol = {
-				header: '?',
-				getData: () => '?'
-			};
-			if (theoryId === THEORY_ID.Note) {
-				theoryCol = {
-					header: 'Freq',
-					getData: pod => 'f'
-				};
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				theoryCol = {
-					header: 'Ratio',
-					getData: pod => '1:n'
-				};
-			}
 			return {
-				headers: ['Name', 'P', 'D', theoryCol.header],
-				rows: [
-					{
-						cols: ['sections go here', '?', '?', '?']
-					}
-				]
+				headers: ['#', 'Key Center', 'Intervals', 't'],
+				rows: section.data.map((block, i) => ({
+					cols: [i, PodUtils.getName(block.keyCenter, { podType: 'note' }), PodListUtils.getName(block.intervals, { podType: 'chord' }), block.t || 1]
+				}))
 			};
 		}
 	},
