@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
+import getPreview from '../core/getPreview';
 import { MODEL } from '../core/MODEL';
 import { STRUCT } from '../core/STRUCT';
 import Panel from '../ui/Panel';
@@ -59,7 +60,7 @@ const getPanelProps = (pathHead, modelData) => {
 	const typeName = type.name;
 
 	const caption = `${modelName} (${typeName})`;
-	const preview = model.getPreview(modelData);
+	const preview = getPreview(modelData, modelId);
 
 	return {
 		name,

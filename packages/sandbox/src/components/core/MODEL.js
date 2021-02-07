@@ -3,7 +3,7 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import { STRUCT_ID, STRUCT } from './STRUCT';
 
 /*
-	Defines how to INTERPRET data in the shape of the specified STRUCT_ID
+	Defines how to INTERPRET data in the shape of the specified STRUCT_ID using the STRUCT_CONFIG
 */
 
 export const MODEL_ID = {
@@ -48,7 +48,6 @@ export const MODEL = {
 		structId: STRUCT_ID.Native,
 		name: 'Pitch',
 		typeProps: {},
-		getPreview: pitch => pitch,
 		getTableProps: (pitch) => {
 			return {
 				headers: ['Model', 'Value'],
@@ -63,7 +62,6 @@ export const MODEL = {
 		structId: STRUCT_ID.Native,
 		name: 'Degree',
 		typeProps: {},
-		getPreview: degree => degree,
 		getTableProps: (degree) => {
 			return {
 				headers: ['Model', 'Value'],
@@ -83,9 +81,6 @@ export const MODEL = {
 				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
 			]
 		},
-		getPreview: note => {
-			return JSON.stringify(note);
-		},
 		getTableProps: getNoteTableProps
 	},
 	[MODEL_ID.Interval]: {
@@ -98,9 +93,6 @@ export const MODEL = {
 				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
 			]
 		},
-		getPreview: interval => {
-			return JSON.stringify(interval);
-		},
 		getTableProps: getNoteTableProps
 	},
 	[MODEL_ID.Chord]: {
@@ -110,9 +102,6 @@ export const MODEL = {
 		typeProps: {
 			childModelId: MODEL_ID.Note
 		},
-		getPreview: (chord) => {
-			return JSON.stringify(chord);
-		},
 		getTableProps: getChordListTableProps
 	},
 	[MODEL_ID.Scale]: {
@@ -121,9 +110,6 @@ export const MODEL = {
 		name: 'Scale',
 		typeProps: {
 			childModelId: MODEL_ID.Note
-		},
-		getPreview: (scale) => {
-			return JSON.stringify(scale);
 		},
 		getTableProps: getChordListTableProps
 	},
@@ -145,10 +131,6 @@ export const MODEL = {
 				}
 			]
 		},
-		getPreview: block => `
-			${PodUtils.getName(block.keyCenter, { podType: 'note' })}
-			+ 
-			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`,
 		getTableProps: (block) => {
 			return [
 				{
@@ -169,7 +151,6 @@ export const MODEL = {
 		typeProps: {
 			childModelId: MODEL_ID.Block
 		},
-		getPreview: section => `${section.items.length} Blocks`,
 		getTableProps: (section) => {
 			return {
 				headers: ['#', 'Key Center', 'Intervals', 't'],
@@ -185,8 +166,7 @@ export const MODEL = {
 		name: 'Chart',
 		typeProps: {
 			childModelId: MODEL_ID.Section
-		},
-		getPreview: chart => chart.items.map(s => s.name).join(', ')
+		}
 	}
 };
 

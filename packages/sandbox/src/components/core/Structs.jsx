@@ -1,9 +1,10 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
-import { MODEL } from './MODEL';
 import Subpanel from '../ui/Subpanel';
 import Table from '../ui/Table';
+import getPreview from './getPreview';
+import { MODEL } from './MODEL';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -27,10 +28,9 @@ const getTables = (tableProps) => {
 
 export const NamedKeyedList = ({ data, childModelId }) => {
 	const childModel = MODEL[childModelId];
-	const { modelId } = childModel;
 
 	return data.items.map((item, i) => {
-		const preview = childModel.getPreview(item);
+		const preview = getPreview(data, childModelId);
 		const tableProps = childModel.getTableProps(item);
 
 		return (
@@ -38,7 +38,7 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 				<Subpanel name={item.name} caption={childModel.name} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={item.name} modelId={modelId} pathId={item.id} />
+				<ZoomButton name={item.name} modelId={childModelId} pathId={item.id} />
 			</StyledTypeRow>
 		);
 	})
@@ -46,10 +46,10 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 
 export const NamedList = ({ data, childModelId }) => {
 	const childModel = MODEL[childModelId];
-	const { name: modelName, modelId } = childModel;
+	const { name: modelName } = childModel;
 
 	return data.items.map((item, i) => {
-		const preview = childModel.getPreview(item);
+		const preview = getPreview(item, childModelId);
 		const tableProps = childModel.getTableProps(item);
 
 		return (
@@ -57,7 +57,7 @@ export const NamedList = ({ data, childModelId }) => {
 				<Subpanel name={i} caption={modelName} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
-				<ZoomButton name={`${modelName} ${i}`} modelId={modelId} pathId={i} />
+				<ZoomButton name={`${modelName} ${i}`} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -69,7 +69,8 @@ export const PWObject = ({ data, properties }) => {
 		const item = data[propertyId];
 
 		const childModel = MODEL[modelId];
-		const preview = childModel.getPreview(item);
+
+		const preview = getPreview(item, modelId);
 		const tableProps = childModel.getTableProps(item);
 
 		return (
@@ -89,7 +90,8 @@ export const List = ({ data, modelId, childModelId }) => {
 	const { name } = childModel;
 
 	return data.map((item, i) => {
-		const preview = childModel.getPreview(item);
+
+		const preview = getPreview(item, childModelId);
 		const tableProps = childModel.getTableProps(item);
 
 		return (
@@ -110,7 +112,7 @@ export const LabeledList = ({ data, labels }) => {
 		const { name, pathId, modelId } = label;
 
 		const model = MODEL[modelId];
-		const preview = model.getPreview(item);
+		const preview = getPreview(item, modelId);
 		const tableProps = model.getTableProps(item);
 
 		return (
