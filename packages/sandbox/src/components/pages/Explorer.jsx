@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
-import { useModelContext } from '../../contexts/ModelContext';
+import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import { MODEL } from '../core/MODEL';
 import { TYPE } from '../core/TYPE';
@@ -69,7 +69,7 @@ const getPanelProps = (pathHead, modelData) => {
 };
 
 const Explorer = () => {
-	const { pathHead } = useModelContext();
+	const { pathHead } = usePathContext();
 	const { modelData } = useDataContext();
 
 	const panelProps = getPanelProps(pathHead, modelData);

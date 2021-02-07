@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { useModelContext } from "../../contexts/ModelContext";
+import { usePathContext } from "../../contexts/PathContext";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
@@ -30,7 +30,7 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const { path, popAt } = useModelContext();
+	const { path, popAt } = usePathContext();
 
 	return (
 		<StyledBreadcrumbList>

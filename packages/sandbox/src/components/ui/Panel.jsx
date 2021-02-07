@@ -2,7 +2,7 @@ import { ButtonInput } from '@pw/react';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../contexts/EditContext";
-import { useModelContext } from '../../contexts/ModelContext';
+import { usePathContext } from '../../contexts/PathContext';
 import Icon from "./Icon";
 
 const StyledPanelHeader = styled.div`
@@ -55,7 +55,7 @@ const StyledPanelHeader = styled.div`
 `;
 
 const PanelHeader = ({ name, caption, preview }) => {
-	const routeContext = useModelContext();
+	const routeContext = usePathContext();
 	return (
 		<StyledPanelHeader>
 			<div className='preview-container'>

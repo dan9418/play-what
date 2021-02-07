@@ -3,11 +3,11 @@ import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
 import { pathState } from '../state/state';
 
-const ModelContext = createContext(null);
+const PathContext = createContext(null);
 
-export const useModelContext = () => useContext(ModelContext);
+export const usePathContext = () => useContext(PathContext);
 
-const getModelUtils = (path, setPath) => {
+const getPathUtils = (path, setPath) => {
 
 	const pathHead = path[path.length - 1];
 	const pop = () => setPath(path.slice(0, path.length - 1));
@@ -25,16 +25,16 @@ const getModelUtils = (path, setPath) => {
 	}
 }
 
-export const ModelContextProvider = ({ children }) => {
+export const PathContextProvider = ({ children }) => {
 	const [path, setPath] = useRecoilState(pathState);
 
-	const modelContext = getModelUtils(path, setPath);
+	const pathContext = getPathUtils(path, setPath);
 
-	console.log('modelContext', modelContext);
+	console.log('pathContext', pathContext);
 
 	return (
-		<ModelContext.Provider value={modelContext}>
+		<PathContext.Provider value={pathContext}>
 			{children}
-		</ModelContext.Provider>
+		</PathContext.Provider>
 	);
 };

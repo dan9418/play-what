@@ -6,7 +6,7 @@ import { RecoilRoot } from 'recoil';
 import styled, { ThemeProvider } from 'styled-components';
 import THEME from '../styles/theme';
 import ErrorBoundary from './core/ErrorBoundary';
-import { ModelContextProvider } from '../contexts/ModelContext';
+import { PathContextProvider } from '../contexts/PathContext';
 import Nav from './core/Nav';
 import Explorer from './pages/Explorer';
 import { RouteContextConsumer, RouteContextProvider } from '../contexts/RouteContext';
@@ -28,13 +28,13 @@ const App = () => {
 					<RouteContextProvider>
 						<Nav />
 						<StyledMain>
-							<ModelContextProvider>
+							<PathContextProvider>
 								<DataContextProvider>
 									<RouteContextConsumer>
 										{({Component}) => <Component />}
 									</RouteContextConsumer>
 								</DataContextProvider>
-							</ModelContextProvider>
+							</PathContextProvider>
 						</StyledMain>
 					</RouteContextProvider>
 				</ErrorBoundary>
