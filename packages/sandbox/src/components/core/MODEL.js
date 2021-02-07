@@ -1,6 +1,5 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
-import { THEORY_ID, THEORY } from './THEORY';
 import { STRUCT_ID, STRUCT } from './STRUCT';
 
 export const MODEL_ID = {
@@ -12,52 +11,20 @@ export const MODEL_ID = {
 	Chart: 5
 };
 
-const getPodTableProps = (pod, theoryId) => {
-	let theoryCol = {
-		header: '?',
-		getData: () => '?'
-	};
-	if (theoryId === THEORY_ID.Note) {
-		theoryCol = {
-			header: 'Freq',
-			getData: pod => 'f'
-		};
-	}
-	if (theoryId === THEORY_ID.Interval) {
-		theoryCol = {
-			header: 'Ratio',
-			getData: pod => '1:n'
-		};
-	}
+const getPodTableProps = (pod) => {
 	return {
-		headers: ['Name', 'P', 'D', theoryCol.header],
+		headers: ['Name', 'P', 'D', 'Freq'],
 		rows: [{
-			cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
+			cols: [JSON.stringify(pod), pod[0], pod[1], 'f']
 		}]
 	};
 };
 
-const getPodListTableProps = (podList, theoryId) => {
-	let theoryCol = {
-		header: '?',
-		getData: () => '?'
-	};
-	/*if (theoryId === THEORY_ID.Note) {
-        theoryCol = {
-            header: 'Freq',
-            getData: pod => 'f'
-        };
-    }
-    if (theoryId === THEORY_ID.Interval) {
-        theoryCol = {
-            header: 'Ratio',
-            getData: pod => '1:n'
-        };
-    }*/
+const getPodListTableProps = (podList) => {
 	return {
-		headers: ['Name', 'P', 'D', theoryCol.header],
+		headers: ['Name', 'P', 'D'],
 		rows: podList.map((pod, i) => ({
-			cols: [JSON.stringify(pod), pod[0], pod[1], theoryCol.getData(pod)]
+			cols: [JSON.stringify(pod), pod[0], pod[1]]
 		}))
 	};
 };
@@ -69,11 +36,11 @@ export const MODEL = {
 		name: 'Pod Index',
 		typeProps: {},
 		getPreview: podIndex => podIndex,
-		getTableProps: (podIndex, theoryId) => {
+		getTableProps: (podIndex) => {
 			return {
 				headers: ['Type', 'Value'],
 				rows: [{
-					cols: [THEORY[theoryId].name, podIndex]
+					cols: ['?', podIndex]
 				}]
 			};
 		}
@@ -85,17 +52,11 @@ export const MODEL = {
 		typeProps: {
 			childModelId: MODEL_ID.PodIndex,
 			labels: [
-				{ pathId: 'pitch', name: 'Pitch', theoryId: THEORY_ID.Pitch },
-				{ pathId: 'degree', name: 'Degree', theoryId: THEORY_ID.Degree }
+				{ pathId: 'pitch', name: 'Pitch' },
+				{ pathId: 'degree', name: 'Degree' }
 			]
 		},
-		getPreview: (pod, theoryId) => {
-			if (theoryId === THEORY_ID.Note) {
-				return PodUtils.getName(pod, { podType: 'note' });
-			}
-			if (theoryId === THEORY_ID.Interval) {
-				return PodUtils.getName(pod, { podType: 'interval' });
-			}
+		getPreview: (pod) => {
 			return JSON.stringify(pod);
 		},
 		getTableProps: getPodTableProps
@@ -107,13 +68,7 @@ export const MODEL = {
 		typeProps: {
 			childModelId: MODEL_ID.Pod
 		},
-		getPreview: (podList, theoryId) => {
-			if (theoryId === THEORY_ID.Chord) {
-				return PodListUtils.getName(podList, { podType: 'chord' });
-			}
-			if (theoryId === THEORY_ID.Scale) {
-				return PodListUtils.getName(podList, { podType: 'scale' });
-			}
+		getPreview: (podList) => {
 			return JSON.stringify(podList);
 		},
 		getTableProps: getPodListTableProps
@@ -127,13 +82,11 @@ export const MODEL = {
 				{
 					propertyId: 'keyCenter',
 					modelId: MODEL_ID.Pod,
-					theoryId: THEORY_ID.Note,
 					name: 'Key Center'
 				},
 				{
 					propertyId: 'intervals',
 					modelId: MODEL_ID.PodList,
-					theoryId: THEORY_ID.Chord,
 					name: 'Intervals'
 				}
 			]
@@ -142,7 +95,7 @@ export const MODEL = {
 			${PodUtils.getName(block.keyCenter, { podType: 'note' })}
 			+ 
 			${PodListUtils.getName(block.intervals, { podType: 'chord' })}`,
-		getTableProps: (block, theoryId) => {
+		getTableProps: (block) => {
 			return [
 				{
 					title: 'Key Center',
@@ -163,7 +116,7 @@ export const MODEL = {
 			childModelId: MODEL_ID.Block
 		},
 		getPreview: section => `${section.items.length} Blocks`,
-		getTableProps: (section, theoryId) => {
+		getTableProps: (section) => {
 			return {
 				headers: ['#', 'Key Center', 'Intervals', 't'],
 				rows: section.items.map((block, i) => ({

@@ -27,11 +27,11 @@ const getTables = (tableProps) => {
 
 export const NamedKeyedList = ({ data, childModelId }) => {
 	const childModel = MODEL[childModelId];
-	const { modelId, theoryId } = childModel;
+	const { modelId } = childModel;
 
 	return data.items.map((item, i) => {
 		const preview = childModel.getPreview(item);
-		const tableProps = childModel.getTableProps(item, theoryId);
+		const tableProps = childModel.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={item.id}>
@@ -46,11 +46,11 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 
 export const NamedList = ({ data, childModelId }) => {
 	const childModel = MODEL[childModelId];
-	const { name: modelName, modelId, theoryId } = childModel;
+	const { name: modelName, modelId } = childModel;
 
 	return data.items.map((item, i) => {
 		const preview = childModel.getPreview(item);
-		const tableProps = childModel.getTableProps(item, theoryId);
+		const tableProps = childModel.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={i}>
@@ -65,12 +65,12 @@ export const NamedList = ({ data, childModelId }) => {
 
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
-		const { name, modelId, theoryId, propertyId } = property;
+		const { name, modelId, propertyId } = property;
 		const item = data[propertyId];
 
 		const childModel = MODEL[modelId];
-		const preview = childModel.getPreview(item, theoryId);
-		const tableProps = childModel.getTableProps(item, theoryId);
+		const preview = childModel.getPreview(item);
+		const tableProps = childModel.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={propertyId}>
@@ -86,11 +86,11 @@ export const PWObject = ({ data, properties }) => {
 export const List = ({ data, modelId, childModelId }) => {
 	const model = MODEL[modelId];
 	const childModel = MODEL[childModelId];
-	const { name, theoryId } = childModel;
+	const { name } = childModel;
 
 	return data.map((item, i) => {
 		const preview = childModel.getPreview(item);
-		const tableProps = childModel.getTableProps(item, theoryId);
+		const tableProps = childModel.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={i}>
@@ -109,9 +109,9 @@ export const LabeledList = ({ data, childModelId, labels }) => {
 
 	return data.map((item, i) => {
 		const label = labels[i];
-		const { name, pathId, theoryId } = label;
-		const preview = childModel.getPreview(item, theoryId);
-		const tableProps = childModel.getTableProps(item, theoryId);
+		const { name, pathId } = label;
+		const preview = childModel.getPreview(item);
+		const tableProps = childModel.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={pathId}>
