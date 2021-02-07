@@ -16,7 +16,7 @@ export const getRelativeChordPreview = (data) => {
 export const getSectionPreview = (data) => `${data.items.length} Items`;
 export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
 
-const getPreview = (data, modelId) => {
+const getName = (data, modelId) => {
 	if (!data) return "No Data";
 
 	switch (modelId) {
@@ -43,4 +43,4 @@ const getPreview = (data, modelId) => {
 	}
 };
 
-export default getPreview;
+export default getName;

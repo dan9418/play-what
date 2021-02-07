@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
 import getCaption from './getCaption';
+import getName from './getName';
 import getPreview from './getPreview';
 import getTables from './getTables';
 import { MODEL } from './MODEL';
@@ -24,6 +25,7 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
+		const name = getName(item, childModelId);
 
 		return (
 			<StyledTypeRow key={item.id}>
@@ -37,20 +39,18 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 };
 
 export const NamedList = ({ data, childModelId }) => {
-	const childModel = MODEL[childModelId];
-	const { name: modelName } = childModel;
-
 	return data.items.map((item, i) => {
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
+		const name = getName(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={caption} preview={preview}>
+				<Subpanel name={name} caption={caption} preview={preview}>
 					{tables}
 				</Subpanel>
-				<ZoomButton name={`${modelName} ${i}`} modelId={childModelId} pathId={i} />
+				<ZoomButton name={name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -77,21 +77,19 @@ export const PWObject = ({ data, properties }) => {
 };
 
 export const List = ({ data, modelId, childModelId }) => {
-	const childModel = MODEL[childModelId];
-	const { name } = childModel;
-
 	return data.map((item, i) => {
 
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
+		const name = getName(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={i} caption={caption} preview={preview} >
+				<Subpanel name={name} caption={caption} preview={preview} >
 					{tables}
 				</Subpanel>
-				<ZoomButton name={`${name} ${i}`} modelId={childModelId} pathId={i} />
+				<ZoomButton name={name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
