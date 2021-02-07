@@ -92,13 +92,8 @@ export const getRelativeChordTables = (data) => {
 };
 
 export const getSectionTables = (data) => {
-	const props = {
-		headers: ['#', 'Key Center', 'Intervals', 't'],
-		rows: data.items.map((relativechord, i) => ({
-			cols: [i, PodUtils.getName(relativechord.keyCenter, { podType: 'note' }), PodListUtils.getName(relativechord.intervals, { podType: 'chord' }), relativechord.t || 1]
-		}))
-	};
-	return fromProps(props);
+	//const props = data.items.map((block, i) => null);
+	return fromProps(null);
 };
 
 export const getChartTables = (data) => {

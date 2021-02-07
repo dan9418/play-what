@@ -6,7 +6,6 @@ import getCaption from './getCaption';
 import getName from './getName';
 import getPreview from './getPreview';
 import getTables from './getTables';
-import { MODEL } from './MODEL';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -25,7 +24,6 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
-		const name = getName(item, childModelId);
 
 		return (
 			<StyledTypeRow key={item.id}>
@@ -54,6 +52,25 @@ export const NamedList = ({ data, childModelId }) => {
 			</StyledTypeRow>
 		);
 	})
+};
+
+export const Block = ({ data }) => {
+
+	const { modelId, modelConfig, t } = data;
+	const preview = getPreview(modelConfig, modelId);
+	const tables = getTables(modelConfig, modelId);
+	const caption = getCaption(modelConfig, modelId);
+	const name = getName(modelConfig, modelId);
+
+	return (
+		<StyledTypeRow>
+			<Subpanel name={name} caption={caption} preview={preview}>
+				{tables}
+			</Subpanel>
+			<ZoomButton name={name} modelId={modelId} pathId={'block'} />
+		</StyledTypeRow>
+	);
+
 };
 
 export const PWObject = ({ data, properties }) => {

@@ -1,8 +1,11 @@
-import { MODEL } from "./MODEL";
+import { MODEL, MODEL_ID } from "./MODEL";
 import { STRUCT } from "./STRUCT";
 
 const getCaption = (data, modelId) => {
-	if (!data) return "No Data";
+	if (!data || !modelId) return "No Data";
+
+	if(modelId === MODEL_ID.Block)
+		return MODEL[data.modelId].name
 
 	const model = MODEL[modelId];
 	const struct = STRUCT[model.structId];

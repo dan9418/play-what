@@ -1,5 +1,5 @@
 import { getIntervalName, getNoteName } from "./getName";
-import { MODEL_ID } from "./MODEL";
+import { MODEL, MODEL_ID } from "./MODEL";
 
 export const getPitchPreview = (data) => data;
 export const getDegreePreview = (data) => data;
@@ -10,13 +10,16 @@ export const getIntervalChordPreview = (data) => data.map(d => getIntervalName(d
 export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
 export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d)).join(', ');
 export const getRelativeChordPreview = (data) => "Note + Interval Chord";
-export const getSectionPreview = (data) => `${data.items.length} Items`;
+export const getBlockPreview = (data) => `Various Models`;
+export const getSectionPreview = (data) => `${data.items.length} Blocks`;
 export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
 
 const getPreview = (data, modelId) => {
-	if (!data) return "No Data";
+	if (!data || !modelId) return "No Data";
 
 	switch (modelId) {
+	case MODEL_ID.Block:
+		return getPreview(data.modelConfig, data.modelId);
 	case MODEL_ID.Pitch:
 		return getPitchPreview(data);
 	case MODEL_ID.Degree:

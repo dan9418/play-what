@@ -1,10 +1,10 @@
 import { atom } from "recoil";
 import { MODEL_ID } from "../components/core/MODEL";
-import { OUT_OF_NOWHERE } from "./songs";
+import { OUT_OF_NOWHERE, TEST_SONG } from "./songs";
 
 export const dataState = atom({
 	key: 'dataState',
-	default: OUT_OF_NOWHERE
+	default: TEST_SONG
 });
 
 export const pathState = atom({

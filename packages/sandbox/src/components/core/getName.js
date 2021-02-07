@@ -20,6 +20,8 @@ const getName = (data, modelId) => {
 	if (!data) return "No Data";
 
 	switch (modelId) {
+	case MODEL_ID.Block:
+		return 'Block'
 	case MODEL_ID.Pitch:
 		return getPitchName(data);
 	case MODEL_ID.Degree:
@@ -36,6 +38,8 @@ const getName = (data, modelId) => {
 		return getScaleName(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordName(data);
+	case MODEL_ID.Section:
+		return getSectionName(data);
 	case MODEL_ID.Section:
 		return getSectionName(data);
 	case MODEL_ID.Chart:

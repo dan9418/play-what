@@ -1,4 +1,26 @@
 import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
+import { MODEL_ID } from "../components/core/MODEL";
+
+export const TEST_SONG = {
+	id: 'test',
+	name: 'Test',
+	items: [
+		{
+			id: 'A',
+			name: 'A',
+			items: [
+				{
+					modelId: MODEL_ID.RelativeChord,
+					modelConfig: {
+						keyCenter: NOTE.G.value,
+						intervals: CHORD.Maj7.value
+					},
+					t: 8
+				}
+			]
+		}
+	]
+};
 
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',

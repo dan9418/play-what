@@ -13,15 +13,16 @@ export const MODEL_ID = {
 	Interval: 3,
 	// List
 	NoteChord: 4,
-	IntervalChord: 4.5,
-	NoteScale: 5,
-	IntervalScale: 5.5,
+	IntervalChord: 5,
+	NoteScale: 6,
+	IntervalScale: 7,
 	// Object
-	RelativeChord: 6, // RelativeChord
+	Block: 8,
+	RelativeChord: 9,
 	// Named List
-	Section: 7,
+	Section: 10,
 	// Named Keyed List
-	Chart: 8
+	Chart: 11
 };
 
 export const MODEL = {
@@ -110,12 +111,17 @@ export const MODEL = {
 			]
 		}
 	},
+	[MODEL_ID.Block]: {
+		name: 'Block',
+		modelId: MODEL_ID.Block,
+		structId: STRUCT_ID.Block
+	},
 	[MODEL_ID.Section]: {
 		name: 'Section',
 		modelId: MODEL_ID.Section,
 		structId: STRUCT_ID.NamedList,
 		structConfig: {
-			childModelId: MODEL_ID.RelativeChord
+			childModelId: MODEL_ID.Block
 		}
 	},
 	[MODEL_ID.Chart]: {
