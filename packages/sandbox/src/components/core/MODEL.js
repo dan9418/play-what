@@ -2,6 +2,10 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import { STRUCT_ID, STRUCT } from './STRUCT';
 
+/*
+	Defines how to INTERPRET data in the shape of the specified STRUCT_ID
+*/
+
 export const MODEL_ID = {
 	// Native
 	Pitch: 0,

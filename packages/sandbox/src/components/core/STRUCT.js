@@ -1,12 +1,17 @@
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Structs';
 
+/*
+	Defines SHAPE of data and how to NAVIGATE with a PATH_ID
+*/
+
 export const STRUCT_ID = {
 	Native: 0,
 	Object: 1,
 	List: 2,
 	NamedList: 3,
-	NamedKeyedList: 4,
-	LabeledList: 5
+	KeyedList: 4,
+	NamedKeyedList: 5,
+	LabeledList: 6
 };
 
 export const STRUCT = {

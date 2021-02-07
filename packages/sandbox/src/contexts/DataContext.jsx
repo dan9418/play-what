@@ -9,25 +9,31 @@ const getDataAtPath = (data, path) => {
 	let node = data;
 	for (let i = 0; i < path.length - 1; i++) {
 		const pathHead = path[i];
-		const target = path[i + 1];
-		const { modelId, pathId } = pathHead;
-		const { pathId: targetId } = target;
-		const modelTypeId = MODEL[modelId].structId;
 
-		if (modelTypeId === STRUCT_ID.Native) {
+		const target = path[i + 1];
+		const { pathId: targetId } = target;
+
+		const { modelId } = pathHead;
+		const model = MODEL[modelId];
+		const modelStructId = model.structId;
+
+		if (modelStructId === STRUCT_ID.Native) {
 			// not used - should only be leaf
 		}
-		else if (modelTypeId === STRUCT_ID.Object || modelTypeId === STRUCT_ID.List || modelTypeId === STRUCT_ID.LabeledList) {
+		else if (modelStructId === STRUCT_ID.Object || modelStructId === STRUCT_ID.List || modelStructId === STRUCT_ID.LabeledList) {
 			node = node[targetId];
 		}
-		else if (modelTypeId === STRUCT_ID.NamedList) {
+		else if (modelStructId === STRUCT_ID.NamedList) {
 			node = node.items[targetId];
 		}
-		else if (modelTypeId === STRUCT_ID.NamedKeyedList) {
+		else if (modelStructId === STRUCT_ID.KeyedList) {
+			node = node.find(s => s.id === targetId);
+		}
+		else if (modelStructId === STRUCT_ID.NamedKeyedList) {
 			node = node.items.find(s => s.id === targetId);
 		}
 		else {
-			console.error('UNKNOWN DATA STRUCT', modelTypeId);
+			console.error('UNKNOWN STRUCT_ID', modelStructId);
 		}
 
 		if (!node)
