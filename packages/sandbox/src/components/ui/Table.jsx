@@ -27,7 +27,7 @@ const StyledTable = styled.table`
 `;
 
 const StyledTableHeader = styled.h3`
-	padding-bottom: 4px;
+	padding: 4px 0;
 `;
 
 const Table = ({ title, rows, headers }) => {

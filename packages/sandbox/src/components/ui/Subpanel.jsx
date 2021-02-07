@@ -7,7 +7,7 @@ import ActionBox from './ActionBox';
 
 const StyledSubpanelHeader = styled.h3`
 	width: 100%;
-	padding: 8px 16px;
+	padding: 8px;
 	display: flex;
 	align-items: center;
 	white-space: nowrap;
@@ -34,7 +34,7 @@ const StyledSubpanelHeader = styled.h3`
 	}
 
 	& button {
-		margin: 0 8px;
+		margin-left: 8px;
 	}
 `;
 

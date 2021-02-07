@@ -6,6 +6,7 @@ import getCaption from './getCaption';
 import getName from './getName';
 import getPreview from './getPreview';
 import getTables from './getTables';
+import { MODEL } from './MODEL';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -63,12 +64,16 @@ export const Block = ({ data }) => {
 	const name = getName(modelConfig, modelId);
 
 	return (
-		<StyledTypeRow>
-			<Subpanel name={name} caption={caption} preview={preview}>
-				{tables}
-			</Subpanel>
-			<ZoomButton name={name} modelId={modelId} pathId={'block'} />
-		</StyledTypeRow>
+		<>
+			<div>t = {t}</div>
+			<div>model = {MODEL[modelId].name}</div>
+			<StyledTypeRow>
+				<Subpanel name={name} caption={caption} preview={preview}>
+					{tables}
+				</Subpanel>
+				<ZoomButton name={name} modelId={modelId} pathId={'block'} />
+			</StyledTypeRow>
+		</>
 	);
 
 };
