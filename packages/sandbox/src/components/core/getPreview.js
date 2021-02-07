@@ -1,17 +1,16 @@
-import PodUtils from "@pw/core/src/Pod.utils";
-import PodListUtils from "@pw/core/src/PodList.utils";
+import { getNoteName } from "./getName";
 import { MODEL_ID } from "./MODEL";
 
 export const getPitchPreview = (data) => data;
 export const getDegreePreview = (data) => data;
-export const getNotePreview = (data) => PodUtils.getName(data, { podType: 'note' });
-export const getIntervalPreview = (data) => PodUtils.getName(data, { podType: 'interval' });
-export const getChordPreview = (data) => PodListUtils.getName(data, { podType: 'chord' });
-export const getScalePreview = (data) => PodListUtils.getName(data, { podType: 'scale' });
+export const getNotePreview = (data) => JSON.stringify(data);
+export const getIntervalPreview = (data) => JSON.stringify(data);
+export const getChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
+export const getScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
 export const getRelativeChordPreview = (data) => {
-	const kcName = getNotePreview(data.keyCenter);
-	const chordName = getChordPreview(data.intervals);
-	return `${kcName} + ${chordName}`;
+	const kcPreview = getNoteName(data.keyCenter);
+	const chordPreview = getChordPreview(data.intervals);
+	return `${kcPreview} + ${chordPreview}`;
 };
 export const getSectionPreview = (data) => `${data.items.length} Items`;
 export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
