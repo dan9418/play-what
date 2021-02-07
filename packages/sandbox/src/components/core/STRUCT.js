@@ -1,6 +1,6 @@
 import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
 
-export const TYPE_ID = {
+export const STRUCT_ID = {
 	Native: 0,
 	Object: 1,
 	List: 2,
@@ -9,34 +9,34 @@ export const TYPE_ID = {
 	LabeledList: 5
 };
 
-export const TYPE = {
-	[TYPE_ID.Native]: {
-		typeId: TYPE_ID.Native,
+export const STRUCT = {
+	[STRUCT_ID.Native]: {
+		structId: STRUCT_ID.Native,
 		name: 'Native',
 		component: Native
 	},
-	[TYPE_ID.Object]: {
-		typeId: TYPE_ID.Object,
+	[STRUCT_ID.Object]: {
+		structId: STRUCT_ID.Object,
 		name: 'Object',
 		component: PWObject
 	},
-	[TYPE_ID.List]: {
-		typeId: TYPE_ID.List,
+	[STRUCT_ID.List]: {
+		structId: STRUCT_ID.List,
 		name: 'List',
 		component: List
 	},
-	[TYPE_ID.NamedList]: {
-		typeId: TYPE_ID.NamedList,
+	[STRUCT_ID.NamedList]: {
+		structId: STRUCT_ID.NamedList,
 		name: 'Named List',
 		component: NamedList
 	},
-	[TYPE_ID.NamedKeyedList]: {
-		typeId: TYPE_ID.NamedKeyedList,
+	[STRUCT_ID.NamedKeyedList]: {
+		structId: STRUCT_ID.NamedKeyedList,
 		name: 'Named Keyed List',
 		component: NamedKeyedList
 	},
-	[TYPE_ID.LabeledList]: {
-		typeId: TYPE_ID.LabeledList,
+	[STRUCT_ID.LabeledList]: {
+		structId: STRUCT_ID.LabeledList,
 		name: 'Labeled List',
 		component: LabeledList
 	}

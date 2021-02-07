@@ -2,7 +2,7 @@
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { MODEL } from '../components/core/MODEL';
-import { TYPE_ID } from '../components/core/TYPE';
+import { STRUCT_ID } from '../components/core/STRUCT';
 import { dataState, pathState } from '../state/state';
 
 const getDataAtPath = (data, path) => {
@@ -12,22 +12,22 @@ const getDataAtPath = (data, path) => {
 		const target = path[i + 1];
 		const { modelId, pathId } = pathHead;
 		const { pathId: targetId } = target;
-		const modelTypeId = MODEL[modelId].typeId;
+		const modelTypeId = MODEL[modelId].structId;
 
-		if (modelTypeId === TYPE_ID.Native) {
+		if (modelTypeId === STRUCT_ID.Native) {
 			// not used - should only be leaf
 		}
-		else if (modelTypeId === TYPE_ID.Object || modelTypeId === TYPE_ID.List || modelTypeId === TYPE_ID.LabeledList) {
+		else if (modelTypeId === STRUCT_ID.Object || modelTypeId === STRUCT_ID.List || modelTypeId === STRUCT_ID.LabeledList) {
 			node = node[targetId];
 		}
-		else if (modelTypeId === TYPE_ID.NamedList) {
+		else if (modelTypeId === STRUCT_ID.NamedList) {
 			node = node.items[targetId];
 		}
-		else if (modelTypeId === TYPE_ID.NamedKeyedList) {
+		else if (modelTypeId === STRUCT_ID.NamedKeyedList) {
 			node = node.items.find(s => s.id === targetId);
 		}
 		else {
-			console.error('UNKNOWN DATA TYPE', modelTypeId);
+			console.error('UNKNOWN DATA STRUCT', modelTypeId);
 		}
 
 		if (!node)

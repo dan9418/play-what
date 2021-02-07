@@ -4,7 +4,7 @@ import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import { MODEL } from '../core/MODEL';
-import { TYPE } from '../core/TYPE';
+import { STRUCT } from '../core/STRUCT';
 import Panel from '../ui/Panel';
 
 const StyledPage = styled.div`
@@ -32,9 +32,9 @@ const getModelContent = (pathHead, modelData) => {
 	const { modelId } = pathHead;
 
 	const model = MODEL[modelId];
-	const modelTypeId = model.typeId;
+	const modelTypeId = model.structId;
 
-	const type = TYPE[modelTypeId];
+	const type = STRUCT[modelTypeId];
 
 	const { typeProps } = model;
 	const { component: Component } = type;
@@ -53,9 +53,9 @@ const getPanelProps = (pathHead, modelData) => {
 
 	const model = MODEL[modelId];
 	const modelName = model.name;
-	const modelTypeId = model.typeId;
+	const modelTypeId = model.structId;
 
-	const type = TYPE[modelTypeId];
+	const type = STRUCT[modelTypeId];
 	const typeName = type.name;
 
 	const caption = `${modelName} (${typeName})`;

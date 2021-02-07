@@ -1,7 +1,7 @@
 import PodUtils from '@pw/core/src/Pod.utils';
 import PodListUtils from '@pw/core/src/PodList.utils';
 import { THEORY_ID, THEORY } from './THEORY';
-import { TYPE_ID, TYPE } from './TYPE';
+import { STRUCT_ID, STRUCT } from './STRUCT';
 
 export const MODEL_ID = {
 	PodIndex: 0,
@@ -65,7 +65,7 @@ const getPodListTableProps = (podList, theoryId) => {
 export const MODEL = {
 	[MODEL_ID.PodIndex]: {
 		modelId: MODEL_ID.PodIndex,
-		typeId: TYPE_ID.Native,
+		structId: STRUCT_ID.Native,
 		name: 'Pod Index',
 		typeProps: {},
 		getPreview: podIndex => podIndex,
@@ -80,7 +80,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.Pod]: {
 		modelId: MODEL_ID.Pod,
-		typeId: TYPE_ID.LabeledList,
+		structId: STRUCT_ID.LabeledList,
 		name: 'Pod',
 		typeProps: {
 			childModelId: MODEL_ID.PodIndex,
@@ -102,7 +102,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.PodList]: {
 		modelId: MODEL_ID.PodList,
-		typeId: TYPE_ID.List,
+		structId: STRUCT_ID.List,
 		name: 'Pod List',
 		typeProps: {
 			childModelId: MODEL_ID.Pod
@@ -120,7 +120,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.Block]: {
 		modelId: MODEL_ID.Block,
-		typeId: TYPE_ID.Object,
+		structId: STRUCT_ID.Object,
 		name: 'Block',
 		typeProps: {
 			properties: [
@@ -157,7 +157,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.Section]: {
 		modelId: MODEL_ID.Section,
-		typeId: TYPE_ID.NamedList,
+		structId: STRUCT_ID.NamedList,
 		name: 'Section',
 		typeProps: {
 			childModelId: MODEL_ID.Block
@@ -174,7 +174,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.Chart]: {
 		modelId: MODEL_ID.Chart,
-		typeId: TYPE_ID.NamedKeyedList,
+		structId: STRUCT_ID.NamedKeyedList,
 		name: 'Chart',
 		typeProps: {
 			childModelId: MODEL_ID.Section
