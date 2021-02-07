@@ -1,4 +1,4 @@
-import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Types';
+import { LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Structs';
 
 export const STRUCT_ID = {
 	Native: 0,
