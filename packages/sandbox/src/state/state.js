@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { LEVEL_ID } from "../components/core/config";
+import { LEVEL_ID } from "../components/core/LEVEL";
 import { OUT_OF_NOWHERE } from "./songs";
 
 export const dataState = atom({

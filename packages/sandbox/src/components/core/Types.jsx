@@ -1,7 +1,7 @@
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
-import { LEVEL } from '../core/config';
+import { LEVEL } from './LEVEL';
 import Subpanel from '../ui/Subpanel';
 import Table from '../ui/Table';
 

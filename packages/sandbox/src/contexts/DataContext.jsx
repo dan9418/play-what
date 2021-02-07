@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { LEVEL } from '../components/core/config';
+import { LEVEL } from '../components/core/LEVEL';
 import { TYPE_ID } from '../components/core/TYPE';
 import { dataState, pathState } from '../state/state';
 

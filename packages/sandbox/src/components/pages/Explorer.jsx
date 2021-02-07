@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { useLevelContext } from '../../contexts/LevelContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import { LEVEL } from '../core/config';
+import { LEVEL } from '../core/LEVEL';
 import { TYPE } from '../core/TYPE';
 import Panel from '../ui/Panel';
 
