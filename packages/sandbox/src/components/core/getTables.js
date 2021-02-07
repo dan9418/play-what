@@ -125,8 +125,10 @@ const getTables = (data, modelId) => {
 	case MODEL_ID.Interval:
 		return getIntervalTables(data);
 	case MODEL_ID.NoteChord:
+	case MODEL_ID.IntervalChord:
 		return getChordTables(data);
 	case MODEL_ID.NoteScale:
+	case MODEL_ID.IntervalScale:
 		return getScaleTables(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordTables(data);

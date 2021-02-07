@@ -1,13 +1,15 @@
-import { getNoteName } from "./getName";
+import { getIntervalName, getNoteName } from "./getName";
 import { MODEL_ID } from "./MODEL";
 
 export const getPitchPreview = (data) => data;
 export const getDegreePreview = (data) => data;
 export const getNotePreview = (data) => JSON.stringify(data);
 export const getIntervalPreview = (data) => JSON.stringify(data);
-export const getChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
-export const getScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
-export const getRelativeChordPreview = (data) => "Note + NoteChord";
+export const getNoteChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
+export const getIntervalChordPreview = (data) => data.map(d => getIntervalName(d)).join(', ');
+export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
+export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d)).join(', ');
+export const getRelativeChordPreview = (data) => "Note + Interval Chord";
 export const getSectionPreview = (data) => `${data.items.length} Items`;
 export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
 
@@ -24,9 +26,13 @@ const getPreview = (data, modelId) => {
 	case MODEL_ID.Interval:
 		return getIntervalPreview(data);
 	case MODEL_ID.NoteChord:
-		return getChordPreview(data);
+		return getNoteChordPreview(data);
+	case MODEL_ID.IntervalChord:
+		return getIntervalChordPreview(data);
 	case MODEL_ID.NoteScale:
-		return getScalePreview(data);
+		return getNoteScalePreview(data);
+	case MODEL_ID.IntervalScale:
+		return getIntervalScalePreview(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordPreview(data);
 	case MODEL_ID.Section:

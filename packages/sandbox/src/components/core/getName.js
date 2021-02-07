@@ -29,8 +29,10 @@ const getName = (data, modelId) => {
 	case MODEL_ID.Interval:
 		return getIntervalName(data);
 	case MODEL_ID.NoteChord:
+	case MODEL_ID.IntervalChord:
 		return getChordName(data);
 	case MODEL_ID.NoteScale:
+	case MODEL_ID.IntervalScale:
 		return getScaleName(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordName(data);

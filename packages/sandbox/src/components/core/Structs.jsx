@@ -61,7 +61,7 @@ export const PWObject = ({ data, properties }) => {
 		const { name, modelId, propertyId } = property;
 		const item = data[propertyId];
 
-		const preview = getPreview(item, modelId);
+		const preview = getName(item, modelId);
 		const tables = getTables(item, modelId);
 		const caption = getCaption(item, modelId);
 
