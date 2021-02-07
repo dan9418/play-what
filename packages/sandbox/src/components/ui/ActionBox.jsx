@@ -26,7 +26,7 @@ const StyledActionsContainer = styled.div`
 	justify-content: flex-end;
 `;
 
-const ActionBox = ({ podType, actions = [] }) => {
+const ActionBox = ({ actions = [] }) => {
 	const [action, setAction] = useState(null);
 	const { isEditing } = useEditContext();
 

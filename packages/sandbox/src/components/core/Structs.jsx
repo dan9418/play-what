@@ -103,19 +103,19 @@ export const List = ({ data, modelId, childModelId }) => {
 	})
 };
 
-export const LabeledList = ({ data, childModelId, labels }) => {
-	const childModel = MODEL[childModelId];
-	const { modelId } = childModel;
+export const LabeledList = ({ data, labels }) => {
 
 	return data.map((item, i) => {
 		const label = labels[i];
-		const { name, pathId } = label;
-		const preview = childModel.getPreview(item);
-		const tableProps = childModel.getTableProps(item);
+		const { name, pathId, modelId } = label;
+
+		const model = MODEL[modelId];
+		const preview = model.getPreview(item);
+		const tableProps = model.getTableProps(item);
 
 		return (
 			<StyledTypeRow key={pathId}>
-				<Subpanel name={name} caption={childModel.name} preview={preview}>
+				<Subpanel name={name} caption={model.name} preview={preview}>
 					{getTables(tableProps)}
 				</Subpanel>
 				<ZoomButton name={name} modelId={modelId} pathId={i} />

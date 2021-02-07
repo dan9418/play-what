@@ -17,10 +17,10 @@ const StyledPanelHeader = styled.div`
 		& .name-container {
 			display: flex;
     		align-items: baseline;
-			& .pod-name {
+			& > .name {
 				font-size: 200%;
 			}
-			& .pod-type {
+			& > .caption {
 				padding-left: 8px;
     			color: #555;
 			}
@@ -60,8 +60,8 @@ const PanelHeader = ({ name, caption, preview }) => {
 		<StyledPanelHeader>
 			<div className='preview-container'>
 				<div className='name-container'>
-					<h3 className='pod-name'>{name}</h3>
-					<div className='pod-type'>{caption}</div>
+					<h3 className='name'>{name}</h3>
+					<div className='caption'>{caption}</div>
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>

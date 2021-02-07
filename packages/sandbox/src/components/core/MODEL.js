@@ -3,75 +3,125 @@ import PodListUtils from '@pw/core/src/PodList.utils';
 import { STRUCT_ID, STRUCT } from './STRUCT';
 
 export const MODEL_ID = {
-	PodIndex: 0,
-	Pod: 1,
-	PodList: 2,
-	Block: 3,
-	Section: 4,
-	Chart: 5
+	// Native
+	Pitch: 0,
+	Degree: 1,
+	// LabeledList
+	Note: 2,
+	Interval: 3,
+	// List
+	Chord: 4,
+	Scale: 5,
+	// Object
+	Block: 6, // RelativeChord
+	// Named List
+	Section: 7,
+	// Named Keyed List
+	Chart: 8
 };
 
-const getPodTableProps = (pod) => {
+const getNoteTableProps = note => {
 	return {
 		headers: ['Name', 'P', 'D', 'Freq'],
 		rows: [{
-			cols: [JSON.stringify(pod), pod[0], pod[1], 'f']
+			cols: [JSON.stringify(note), note[0], note[1], 'f']
 		}]
 	};
 };
 
-const getPodListTableProps = (podList) => {
+const getChordListTableProps = (chord) => {
 	return {
 		headers: ['Name', 'P', 'D'],
-		rows: podList.map((pod, i) => ({
+		rows: chord.map((pod, i) => ({
 			cols: [JSON.stringify(pod), pod[0], pod[1]]
 		}))
 	};
 };
 
 export const MODEL = {
-	[MODEL_ID.PodIndex]: {
-		modelId: MODEL_ID.PodIndex,
+	[MODEL_ID.Pitch]: {
+		modelId: MODEL_ID.Pitch,
 		structId: STRUCT_ID.Native,
-		name: 'Pod Index',
+		name: 'Pitch',
 		typeProps: {},
-		getPreview: podIndex => podIndex,
-		getTableProps: (podIndex) => {
+		getPreview: pitch => pitch,
+		getTableProps: (pitch) => {
 			return {
-				headers: ['Type', 'Value'],
+				headers: ['Model', 'Value'],
 				rows: [{
-					cols: ['?', podIndex]
+					cols: ['Pitch', pitch]
 				}]
 			};
 		}
 	},
-	[MODEL_ID.Pod]: {
-		modelId: MODEL_ID.Pod,
+	[MODEL_ID.Degree]: {
+		modelId: MODEL_ID.Degree,
+		structId: STRUCT_ID.Native,
+		name: 'Degree',
+		typeProps: {},
+		getPreview: degree => degree,
+		getTableProps: (degree) => {
+			return {
+				headers: ['Model', 'Value'],
+				rows: [{
+					cols: ['Degree', degree]
+				}]
+			};
+		}
+	},
+	[MODEL_ID.Note]: {
+		modelId: MODEL_ID.Note,
 		structId: STRUCT_ID.LabeledList,
-		name: 'Pod',
+		name: 'Note',
 		typeProps: {
-			childModelId: MODEL_ID.PodIndex,
 			labels: [
-				{ pathId: 'pitch', name: 'Pitch' },
-				{ pathId: 'degree', name: 'Degree' }
+				{ pathId: 'pitch', name: 'Pitch', modelId: MODEL_ID.Pitch },
+				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
 			]
 		},
-		getPreview: (pod) => {
-			return JSON.stringify(pod);
+		getPreview: note => {
+			return JSON.stringify(note);
 		},
-		getTableProps: getPodTableProps
+		getTableProps: getNoteTableProps
 	},
-	[MODEL_ID.PodList]: {
-		modelId: MODEL_ID.PodList,
-		structId: STRUCT_ID.List,
-		name: 'Pod List',
+	[MODEL_ID.Interval]: {
+		modelId: MODEL_ID.Interval,
+		structId: STRUCT_ID.LabeledList,
+		name: 'Interval',
 		typeProps: {
-			childModelId: MODEL_ID.Pod
+			labels: [
+				{ pathId: 'pitch', name: 'Pitch', modelId: MODEL_ID.Pitch },
+				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
+			]
 		},
-		getPreview: (podList) => {
-			return JSON.stringify(podList);
+		getPreview: interval => {
+			return JSON.stringify(interval);
 		},
-		getTableProps: getPodListTableProps
+		getTableProps: getNoteTableProps
+	},
+	[MODEL_ID.Chord]: {
+		modelId: MODEL_ID.Chord,
+		structId: STRUCT_ID.List,
+		name: 'Chord',
+		typeProps: {
+			childModelId: MODEL_ID.Note
+		},
+		getPreview: (chord) => {
+			return JSON.stringify(chord);
+		},
+		getTableProps: getChordListTableProps
+	},
+	[MODEL_ID.Scale]: {
+		modelId: MODEL_ID.Scale,
+		structId: STRUCT_ID.List,
+		name: 'Scale',
+		typeProps: {
+			childModelId: MODEL_ID.Note
+		},
+		getPreview: (scale) => {
+			return JSON.stringify(scale);
+		},
+		getTableProps: getChordListTableProps
 	},
 	[MODEL_ID.Block]: {
 		modelId: MODEL_ID.Block,
@@ -81,12 +131,12 @@ export const MODEL = {
 			properties: [
 				{
 					propertyId: 'keyCenter',
-					modelId: MODEL_ID.Pod,
+					modelId: MODEL_ID.Note,
 					name: 'Key Center'
 				},
 				{
 					propertyId: 'intervals',
-					modelId: MODEL_ID.PodList,
+					modelId: MODEL_ID.Chord,
 					name: 'Intervals'
 				}
 			]
@@ -99,11 +149,11 @@ export const MODEL = {
 			return [
 				{
 					title: 'Key Center',
-					...getPodTableProps(block.keyCenter, 'note')
+					...getNoteTableProps(block.keyCenter)
 				},
 				{
 					title: 'Intervals',
-					...getPodListTableProps(block.intervals, 'chord')
+					...getChordListTableProps(block.intervals)
 				}
 			];
 		}
