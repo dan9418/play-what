@@ -37,14 +37,14 @@ const getModelContent = (pathHead, modelData) => {
 
 	const type = STRUCT[modelTypeId];
 
-	const { typeProps } = model;
+	const { structConfig } = model;
 	const { component: Component } = type;
 
 	return (
 		<Component
 			data={modelData}
 			modelId={modelId}
-			{...typeProps}
+			{...structConfig}
 		/>
 	);
 };
