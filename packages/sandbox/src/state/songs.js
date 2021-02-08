@@ -3,10 +3,10 @@ import { MODEL_ID } from "../components/core/MODEL";
 
 export const TEST_SONG = {
 	modelId: MODEL_ID.Group,
-	modelData: [
+	modelConfig: [
 		{
 			modelId: MODEL_ID.RelativeChord,
-			modelData: {
+			modelConfig: {
 				keyCenter: NOTE.G.value,
 				intervals: CHORD.Maj7.value
 			}

@@ -57,11 +57,11 @@ export const NamedList = ({ data, childModelId }) => {
 
 export const Group = ({ data }) => {
 	return data.map((item, i) => {
-		const { modelId, modelData } = item;
-		const preview = getPreview(modelData, modelId);
-		const tables = getTables(modelData, modelId);
-		const caption = getCaption(modelData, modelId);
-		const name = getName(modelData, modelId);
+		const { modelId, modelConfig } = item;
+		const preview = getPreview(modelConfig, modelId);
+		const tables = getTables(modelConfig, modelId);
+		const caption = getCaption(modelConfig, modelId);
+		const name = getName(modelConfig, modelId);
 
 		return (
 			<StyledTypeRow key={i}>

@@ -5,7 +5,7 @@ const SONG = TEST_SONG;
 
 export const dataState = atom({
 	key: 'dataState',
-	default: SONG.modelData
+	default: SONG.modelConfig
 });
 
 export const pathState = atom({
