@@ -19,7 +19,7 @@ const getPreview = (data, modelId) => {
 
 	switch (modelId) {
 	case MODEL_ID.Group:
-		return "Group Preview"
+		return `${data.length} Items`;
 	case MODEL_ID.Pitch:
 		return getPitchPreview(data);
 	case MODEL_ID.Degree:

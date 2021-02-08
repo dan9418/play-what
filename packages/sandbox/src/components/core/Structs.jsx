@@ -6,7 +6,7 @@ import getCaption from './getCaption';
 import getName from './getName';
 import getPreview from './getPreview';
 import getTables from './getTables';
-import { MODEL } from './MODEL';
+import { MODEL, MODEL_ID } from './MODEL';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -59,10 +59,17 @@ export const Group = ({ data }) => {
 
 	return data.map((item, i) => {
 		const { modelId, modelConfig } = item;
-		const preview = getPreview(modelConfig, modelId);
-		const tables = getTables(modelConfig, modelId);
-		const caption = getCaption(modelConfig, modelId);
-		const name = getName(modelConfig, modelId);
+
+		let data = modelConfig;
+		// Only Groups can contain Groups
+		if(modelId === MODEL_ID.Group)
+			data = item;
+			//console.log(data, item);
+
+		const preview = getPreview(data, modelId);
+		const tables = getTables(data, modelId);
+		const caption = getCaption(data, modelId);
+		const name = getName(data, modelId);
 
 		return (
 			<StyledTypeRow key={i}>
