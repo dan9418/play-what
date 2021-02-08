@@ -55,28 +55,24 @@ export const NamedList = ({ data, childModelId }) => {
 	})
 };
 
-/*export const Block = ({ data }) => {
+export const Group = ({ data }) => {
+	return data.map((item, i) => {
+		const { modelId, modelData } = item;
+		const preview = getPreview(modelData, modelId);
+		const tables = getTables(modelData, modelId);
+		const caption = getCaption(modelData, modelId);
+		const name = getName(modelData, modelId);
 
-	const { modelId, modelConfig, t } = data;
-	const preview = getPreview(modelConfig, modelId);
-	const tables = getTables(modelConfig, modelId);
-	const caption = getCaption(modelConfig, modelId);
-	const name = getName(modelConfig, modelId);
-
-	return (
-		<>
-			<div>t = {t}</div>
-			<div>model = {MODEL[modelId].name}</div>
-			<StyledTypeRow>
+		return (
+			<StyledTypeRow key={i}>
 				<Subpanel name={name} caption={caption} preview={preview}>
 					{tables}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={'block'} />
+				<ZoomButton name={name} modelId={modelId} pathId={0} />
 			</StyledTypeRow>
-		</>
-	);
-
-};*/
+		);
+	})
+};
 
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {

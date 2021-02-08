@@ -21,7 +21,8 @@ export const MODEL_ID = {
 	// Named List
 	Section: 10,
 	// Named Keyed List
-	Chart: 11
+	Chart: 11,
+	Group: 12
 };
 
 export const MODEL = {
@@ -125,6 +126,12 @@ export const MODEL = {
 		structConfig: {
 			childModelId: MODEL_ID.Section
 		}
+	},
+	[MODEL_ID.Group]: {
+		name: 'Group',
+		modelId: MODEL_ID.Group,
+		structId: STRUCT_ID.Group,
+		structConfig: {}
 	}
 };
 

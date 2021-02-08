@@ -5,12 +5,16 @@ const SONG = TEST_SONG;
 
 export const dataState = atom({
 	key: 'dataState',
-	default: SONG.data
+	default: SONG.modelData
 });
 
 export const pathState = atom({
 	key: 'pathState',
-	default: SONG.path
+	default: [{
+		pathId: null,
+		modelId: SONG.modelId,
+		name: SONG.name || 'Untitled'
+	}]
 });
 
 export const positionState = atom({
