@@ -1,26 +1,16 @@
 import { atom } from "recoil";
-import { MODEL_ID } from "../components/core/MODEL";
-import { OUT_OF_NOWHERE, TEST_SONG } from "./songs";
+import { TEST_SONG } from "./songs";
+
+const SONG = TEST_SONG;
 
 export const dataState = atom({
 	key: 'dataState',
-	default: TEST_SONG
+	default: SONG.data
 });
 
 export const pathState = atom({
 	key: 'pathState',
-	default: [
-		{
-			name: 'Test',
-			pathId: 'test',
-			modelId: MODEL_ID.Block
-		}
-		/*{
-			name: 'Out of Nowhere',
-			pathId: 'outOfNowhere',
-			modelId: MODEL_ID.Chart
-		}*/
-	]
+	default: [SONG.config]
 });
 
 export const positionState = atom({
