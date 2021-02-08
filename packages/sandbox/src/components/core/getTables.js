@@ -108,9 +108,11 @@ export const getChartTables = (data) => {
 };
 
 const getTables = (data, modelId) => {
-	if (!data) return "No Data";
+	if (!data) return "No Table Data";
 
 	switch (modelId) {
+	case MODEL_ID.Block:
+		return getTables(data.modelConfig, data.modelId);
 	case MODEL_ID.Pitch:
 		return getPitchTables(data);
 	case MODEL_ID.Degree:
@@ -132,7 +134,7 @@ const getTables = (data, modelId) => {
 	case MODEL_ID.Chart:
 		return getChartTables(data);
 	default:
-		return JSON.stringify(data);
+		return null;
 	}
 };
 

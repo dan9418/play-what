@@ -11,10 +11,15 @@ export const pathState = atom({
 	key: 'pathState',
 	default: [
 		{
+			name: 'Test',
+			pathId: 'test',
+			modelId: MODEL_ID.Block
+		}
+		/*{
 			name: 'Out of Nowhere',
 			pathId: 'outOfNowhere',
 			modelId: MODEL_ID.Chart
-		}
+		}*/
 	]
 });
 
