@@ -5,47 +5,19 @@ export const TEST_SONG = {
 	modelId: MODEL_ID.Group,
 	modelConfig: [
 		{
-			modelId: MODEL_ID.RelativeChord,
-			modelConfig: {
-				keyCenter: NOTE.G.value,
-				intervals: CHORD.Maj7.value
-			}
-		}
-	]
-};
-
-/*export const TEST_SONG = {
-	path: [{
-		name: 'Test',
-		pathId: 'test',
-		modelId: MODEL_ID.RelativeChord
-	}],
-	data: {
-		keyCenter: NOTE.G.value,
-		intervals: CHORD.Maj7.value
-	}
-};*/
-
-/*export const TEST_SONG = {
-	id: 'test',
-	name: 'Test',
-	items: [
-		{
-			id: 'A',
-			name: 'A',
-			items: [
+			modelId: MODEL_ID.Group,
+			modelConfig: [
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
 						keyCenter: NOTE.G.value,
 						intervals: CHORD.Maj7.value
-					},
-					t: 8
+					}
 				}
 			]
 		}
 	]
-};*/
+};
 
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',
