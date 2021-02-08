@@ -10,7 +10,7 @@ export const dataState = atom({
 
 export const pathState = atom({
 	key: 'pathState',
-	default: [SONG.config]
+	default: SONG.path
 });
 
 export const positionState = atom({

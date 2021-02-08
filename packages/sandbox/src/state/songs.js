@@ -2,11 +2,11 @@ import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
 import { MODEL_ID } from "../components/core/MODEL";
 
 export const TEST_SONG = {
-	config: {
+	path: [{
 		name: 'Test',
 		pathId: 'test',
 		modelId: MODEL_ID.RelativeChord
-	},
+	}],
 	data: {
 		keyCenter: NOTE.G.value,
 		intervals: CHORD.Maj7.value
