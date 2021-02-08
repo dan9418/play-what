@@ -56,6 +56,7 @@ export const NamedList = ({ data, childModelId }) => {
 };
 
 export const Group = ({ data }) => {
+
 	return data.map((item, i) => {
 		const { modelId, modelConfig } = item;
 		const preview = getPreview(modelConfig, modelId);

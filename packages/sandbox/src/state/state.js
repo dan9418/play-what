@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import { TEST_SONG } from "./songs";
+import { OUT_OF_NOWHERE, TEST_SONG } from "./songs";
 
-const SONG = TEST_SONG;
+const SONG = OUT_OF_NOWHERE;
 
 export const dataState = atom({
 	key: 'dataState',
@@ -11,7 +11,7 @@ export const dataState = atom({
 export const pathState = atom({
 	key: 'pathState',
 	default: [{
-		pathId: null,
+		pathId: SONG.id || null,
 		modelId: SONG.modelId,
 		name: SONG.name || 'Untitled'
 	}]

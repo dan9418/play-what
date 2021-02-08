@@ -21,7 +21,7 @@ const getName = (data, modelId) => {
 
 	switch (modelId) {
 	case MODEL_ID.Group:
-		return "Group Name";
+		return data.name || "Untitled Group";
 	case MODEL_ID.Pitch:
 		return getPitchName(data);
 	case MODEL_ID.Degree:
