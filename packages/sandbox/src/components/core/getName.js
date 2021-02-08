@@ -20,8 +20,6 @@ const getName = (data, modelId) => {
 	if (!data) return "No Data";
 
 	switch (modelId) {
-	case MODEL_ID.Block:
-		return 'Block'
 	case MODEL_ID.Pitch:
 		return getPitchName(data);
 	case MODEL_ID.Degree:

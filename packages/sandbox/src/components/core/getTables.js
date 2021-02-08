@@ -111,8 +111,6 @@ const getTables = (data, modelId) => {
 	if (!data) return "No Table Data";
 
 	switch (modelId) {
-	case MODEL_ID.Block:
-		return getTables(data.modelConfig, data.modelId);
 	case MODEL_ID.Pitch:
 		return getPitchTables(data);
 	case MODEL_ID.Degree:

@@ -18,8 +18,6 @@ const getPreview = (data, modelId) => {
 	if (!data || !modelId) return "No Data";
 
 	switch (modelId) {
-	case MODEL_ID.Block:
-		return getPreview(data.modelConfig, data.modelId);
 	case MODEL_ID.Pitch:
 		return getPitchPreview(data);
 	case MODEL_ID.Degree:

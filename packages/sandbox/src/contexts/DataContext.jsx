@@ -20,9 +20,9 @@ const getDataAtPath = (data, path) => {
 		if (modelStructId === STRUCT_ID.Native) {
 			// not used - should only be leaf
 		}
-		if (modelStructId === STRUCT_ID.Block) {
+		/*else if (modelStructId === STRUCT_ID.Block) {
 			node = node.modelConfig;
-		}
+		}*/
 		else if (modelStructId === STRUCT_ID.Object || modelStructId === STRUCT_ID.List || modelStructId === STRUCT_ID.LabeledList) {
 			node = node[targetId];
 		}

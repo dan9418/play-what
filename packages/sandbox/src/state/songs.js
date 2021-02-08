@@ -5,15 +5,11 @@ export const TEST_SONG = {
 	config: {
 		name: 'Test',
 		pathId: 'test',
-		modelId: MODEL_ID.Block
+		modelId: MODEL_ID.RelativeChord
 	},
 	data: {
-		modelId: MODEL_ID.RelativeChord,
-		modelConfig: {
-			keyCenter: NOTE.G.value,
-			intervals: CHORD.Maj7.value
-		},
-		t: 8
+		keyCenter: NOTE.G.value,
+		intervals: CHORD.Maj7.value
 	}
 };
 

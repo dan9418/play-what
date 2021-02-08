@@ -55,7 +55,7 @@ export const NamedList = ({ data, childModelId }) => {
 	})
 };
 
-export const Block = ({ data }) => {
+/*export const Block = ({ data }) => {
 
 	const { modelId, modelConfig, t } = data;
 	const preview = getPreview(modelConfig, modelId);
@@ -76,7 +76,7 @@ export const Block = ({ data }) => {
 		</>
 	);
 
-};
+};*/
 
 export const PWObject = ({ data, properties }) => {
 	return properties.map((property, i) => {
