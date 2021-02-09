@@ -44,8 +44,8 @@ export const MODEL = {
 		structId: STRUCT_ID.LabeledList,
 		structConfig: {
 			labels: [
-				{ pathId: 'pitch', name: 'Pitch', modelId: MODEL_ID.Pitch },
-				{ pathId: 'degree', name: 'Degree', modelId: MODEL_ID.Degree }
+				{ name: 'Pitch', modelId: MODEL_ID.Pitch },
+				{ name: 'Degree', modelId: MODEL_ID.Degree }
 			]
 		}
 	},

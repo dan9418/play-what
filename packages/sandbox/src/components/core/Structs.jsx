@@ -119,14 +119,14 @@ export const LabeledList = ({ modelData, labels }) => {
 
 	return modelData.map((item, i) => {
 		const label = labels[i];
-		const { name, pathId, modelId } = label;
+		const { name, modelId } = label;
 
 		const preview = getPreview(item, modelId);
 		const tables = getTables(item, modelId);
 		const caption = getCaption(item, modelId);
 
 		return (
-			<StyledTypeRow key={pathId}>
+			<StyledTypeRow key={i}>
 				<Subpanel name={name} caption={caption} preview={preview}>
 					{tables}
 				</Subpanel>

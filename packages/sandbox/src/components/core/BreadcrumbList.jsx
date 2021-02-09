@@ -8,8 +8,7 @@ const StyledBreadcrumbList = styled.ul`
 	margin-bottom: 8px;
 	list-style-type: none;
 	color: #555;
-	text-transform: uppercase;
-	font-size: 80%;
+	font-size: 90%;
 	font-weight: bold;
 
 	li {

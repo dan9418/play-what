@@ -12,7 +12,7 @@ export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d
 export const getRelativeChordPreview = (data) => `${getNoteName(data.keyCenter)} + ${data.intervals.map(getIntervalName).join(', ')}`;
 
 const getPreview = (data, modelId) => {
-	if (!data || !modelId) return "No Data";
+	if (typeof data === undefined || data === null) return "No Preview Data";
 
 	switch (modelId) {
 	case MODEL_ID.Group:
