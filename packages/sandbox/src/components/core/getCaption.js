@@ -1,4 +1,4 @@
-import { MODEL, MODEL_ID } from "./MODEL";
+import { MODEL } from "./MODEL";
 import { STRUCT } from "./STRUCT";
 
 const getCaption = (data, modelId, includeStruct) => {
@@ -6,7 +6,7 @@ const getCaption = (data, modelId, includeStruct) => {
 
 	const model = MODEL[modelId];
 	const struct = STRUCT[model.structId];
-	return includeStruct ? `${model.name} (${struct.name})` : model.name;
+	return false ? `${model.name} (${struct.name})` : model.name;
 };
 
 export default getCaption;

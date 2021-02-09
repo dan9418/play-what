@@ -1,10 +1,10 @@
 import { getIntervalName, getNoteName } from "./getName";
-import { MODEL, MODEL_ID } from "./MODEL";
+import { MODEL_ID } from "./MODEL";
 
 export const getPitchPreview = (data) => data;
 export const getDegreePreview = (data) => data;
-export const getNotePreview = (data) => JSON.stringify(data);
-export const getIntervalPreview = (data) => JSON.stringify(data);
+export const getNotePreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`
+export const getIntervalPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`
 export const getNoteChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
 export const getIntervalChordPreview = (data) => data.map(d => getIntervalName(d)).join(', ');
 export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');

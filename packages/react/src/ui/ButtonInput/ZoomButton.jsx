@@ -15,9 +15,9 @@ const ZoomButton = ({ modelId, name, pathId, size, ...props }) => {
 	const theme = useTheme();
 	const { push } = usePathContext();
 	const onClick = () => push({
-		modelId,
 		name,
-		pathId
+		pathId,
+		modelId
 	});
 	return (
 		<StyledZoomButton {...props} onClick={onClick}>

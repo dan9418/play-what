@@ -39,7 +39,7 @@ const getDataAtPath = (data, path) => {
 			console.error('UNKNOWN STRUCT_ID', modelStructId);
 		}
 
-		if (!node)
+		if (typeof node === undefined || node === null)
 			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
 	}
 	return node;

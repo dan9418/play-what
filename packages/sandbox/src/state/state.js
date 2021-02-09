@@ -11,9 +11,9 @@ export const dataState = atom({
 export const pathState = atom({
 	key: 'pathState',
 	default: [{
+		name: SONG.name || 'Untitled',
 		pathId: SONG.id || null,
-		modelId: SONG.modelId,
-		name: SONG.name || 'Untitled'
+		modelId: SONG.modelId
 	}]
 });
 

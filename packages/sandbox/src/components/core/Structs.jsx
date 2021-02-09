@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
 import getCaption from './getCaption';
 import getName from './getName';
+import getPanelProps from './getPanelProps';
 import getPreview from './getPreview';
 import getSubpanelContent from './getSubpanelContent';
-import { MODEL, MODEL_ID } from './MODEL';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -21,22 +21,18 @@ const StyledTypeRow = styled.div`
 `;
 
 export const Group = ({ modelData }) => {
-
 	return modelData.map((item, i) => {
-		const { modelId, modelConfig, name: childName } = item;
+		const { modelId, modelConfig, name } = item;
 
-		const preview = getPreview(modelConfig, modelId);
-		const caption = getCaption(modelConfig, modelId);
-		const name = childName || getName(modelConfig, modelId);
-
+		const subpanelProps = getPanelProps(modelConfig, modelId, name);
 		const content = getSubpanelContent(modelConfig, modelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={name} caption={caption} preview={preview}>
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={i} />
+				<ZoomButton name={subpanelProps.name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -44,18 +40,17 @@ export const Group = ({ modelData }) => {
 
 export const NamedKeyedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
+		const { name } = item;
 
-		const preview = getPreview(item, childModelId);
-		const caption = getCaption(item, childModelId);
-
+		const subpanelProps = getPanelProps(item, childModelId, name);
 		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={item.id}>
-				<Subpanel name={item.name} caption={caption} preview={preview}>
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={item.name} modelId={childModelId} pathId={item.id} />
+				<ZoomButton name={name} modelId={childModelId} pathId={item.id} />
 			</StyledTypeRow>
 		);
 	})
@@ -63,18 +58,16 @@ export const NamedKeyedList = ({ modelData, childModelId }) => {
 
 export const NamedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
-		const preview = getPreview(item, childModelId);
-		const caption = getCaption(item, childModelId);
-		const name = getName(item, childModelId);
 
+		const subpanelProps = getPanelProps(item, childModelId);
 		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={name} caption={caption} preview={preview}>
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={childModelId} pathId={i} />
+				<ZoomButton name={subpanelProps.name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -85,14 +78,12 @@ export const PWObject = ({ modelData, properties }) => {
 		const { name, modelId, propertyId } = property;
 		const item = modelData[propertyId];
 
-		const preview = getName(item, modelId);
-		const caption = getCaption(item, modelId);
-
+		const subpanelProps = getPanelProps(item, modelId, name);
 		const content = getSubpanelContent(item, modelId);
 
 		return (
 			<StyledTypeRow key={propertyId}>
-				<Subpanel name={name} caption={caption} preview={preview} >
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
 				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
@@ -101,39 +92,34 @@ export const PWObject = ({ modelData, properties }) => {
 	})
 };
 
-export const List = ({ modelData, modelId, childModelId }) => {
+export const List = ({ modelData, childModelId }) => {
 	return modelData.map((item, i) => {
 
-		const preview = getPreview(item, childModelId);
-		const caption = getCaption(item, childModelId);
-		const name = getName(item, childModelId);
-
+		const subpanelProps = getPanelProps(item, childModelId);
 		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={name} caption={caption} preview={preview} >
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={childModelId} pathId={i} />
+				<ZoomButton name={subpanelProps.name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
 };
 
 export const LabeledList = ({ modelData, labels }) => {
-
 	return modelData.map((item, i) => {
 		const label = labels[i];
 		const { name, modelId } = label;
 
-		const preview = getPreview(item, modelId);
+		const subpanelProps = getPanelProps(item, modelId, name);
 		const content = getSubpanelContent(item, modelId);
-		const caption = getCaption(item, modelId);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={name} caption={caption} preview={preview}>
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
 				<ZoomButton name={name} modelId={modelId} pathId={i} />
