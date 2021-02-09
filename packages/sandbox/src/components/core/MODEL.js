@@ -21,7 +21,7 @@ export const MODEL_ID = {
 	// Named List
 	Section: 10,
 	// Named Keyed List
-	Chart: 11,
+	// Group
 	Group: 12
 };
 
@@ -109,22 +109,6 @@ export const MODEL = {
 					name: 'Intervals'
 				}
 			]
-		}
-	},
-	[MODEL_ID.Section]: {
-		name: 'Section',
-		modelId: MODEL_ID.Section,
-		structId: STRUCT_ID.NamedList,
-		structConfig: {
-			childModelId: MODEL_ID.RelativeChord
-		}
-	},
-	[MODEL_ID.Chart]: {
-		name: 'Chart',
-		modelId: MODEL_ID.Chart,
-		structId: STRUCT_ID.NamedKeyedList,
-		structConfig: {
-			childModelId: MODEL_ID.Section
 		}
 	},
 	[MODEL_ID.Group]: {

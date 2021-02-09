@@ -11,8 +11,6 @@ export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(
 export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d)).join(', ');
 export const getRelativeChordPreview = (data) => "Note + Interval Chord";
 export const getBlockPreview = (data) => `Various Models`;
-export const getSectionPreview = (data) => `${data.items.length} Blocks`;
-export const getChartPreview = (data) => data.items.map(s => s.name).join(', ');
 
 const getPreview = (data, modelId) => {
 	if (!data || !modelId) return "No Data";
@@ -38,10 +36,6 @@ const getPreview = (data, modelId) => {
 		return getIntervalScalePreview(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordPreview(data);
-	case MODEL_ID.Section:
-		return getSectionPreview(data);
-	case MODEL_ID.Chart:
-		return getChartPreview(data);
 	default:
 		return JSON.stringify(data);
 	}

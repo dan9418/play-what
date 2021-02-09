@@ -13,8 +13,6 @@ export const getRelativeChordName = (data) => {
 	const chordName = getChordName(data.intervals);
 	return `${kcName} + ${chordName}`;
 };
-export const getSectionName = (data) => `${data.items.length} Items`;
-export const getChartName = (data) => data.items.map(s => s.name).join(', ');
 
 const getName = (data, modelId) => {
 	if (!data) return "No Data";
@@ -38,12 +36,6 @@ const getName = (data, modelId) => {
 		return getScaleName(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordName(data);
-	case MODEL_ID.Section:
-		return getSectionName(data);
-	case MODEL_ID.Section:
-		return getSectionName(data);
-	case MODEL_ID.Chart:
-		return getChartName(data);
 	default:
 		return JSON.stringify(data);
 	}

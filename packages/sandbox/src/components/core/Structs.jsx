@@ -61,12 +61,15 @@ export const Group = ({ data }) => {
 		const { modelId, modelConfig } = item;
 
 		let data = modelConfig;
+		let previewData = modelConfig;
 		// Only Groups can contain Groups
-		if(modelId === MODEL_ID.Group)
+		if(modelId === MODEL_ID.Group) {
 			data = item;
+			previewData = item.modelConfig;
 			//console.log(data, item);
+		}
 
-		const preview = getPreview(data, modelId);
+		const preview = getPreview(previewData, modelId);
 		const tables = getTables(data, modelId);
 		const caption = getCaption(data, modelId);
 		const name = getName(data, modelId);

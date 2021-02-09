@@ -91,22 +91,6 @@ export const getRelativeChordTables = (data) => {
 	return fromProps(props);
 };
 
-export const getSectionTables = (data) => {
-	//const props = data.items.map((block, i) => null);
-	return fromProps(null);
-};
-
-export const getChartTables = (data) => {
-	return null;
-	/*const props = {
-		headers: ['Name', 'P', 'D'],
-		rows: data.map((pod, i) => ({
-			cols: [JSON.stringify(pod), pod[0], pod[1]]
-		}))
-	};
-	return fromProps(props);*/
-};
-
 const getTables = (data, modelId) => {
 	if (!data) return "No Table Data";
 
@@ -127,10 +111,6 @@ const getTables = (data, modelId) => {
 		return getScaleTables(data);
 	case MODEL_ID.RelativeChord:
 		return getRelativeChordTables(data);
-	case MODEL_ID.Section:
-		return getSectionTables(data);
-	case MODEL_ID.Chart:
-		return getChartTables(data);
 	default:
 		return null;
 	}
