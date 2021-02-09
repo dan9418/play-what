@@ -28,7 +28,7 @@ export const OUT_OF_NOWHERE = {
 	modelConfig: [
 		{
 			id: 'A',
-			name: 'A',
+			name: 'Section A',
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
@@ -83,7 +83,7 @@ export const OUT_OF_NOWHERE = {
 		},
 		{
 			id: 'B',
-			name: 'B',
+			name: 'Section B',
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
@@ -138,7 +138,7 @@ export const OUT_OF_NOWHERE = {
 		},
 		{
 			id: 'A\'',
-			name: 'A',
+			name: 'Section A',
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
@@ -193,7 +193,7 @@ export const OUT_OF_NOWHERE = {
 		},
 		{
 			id: 'C',
-			name: 'C',
+			name: 'Section C',
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{

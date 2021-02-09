@@ -79,7 +79,7 @@ export const Group = ({ data }) => {
 				<Subpanel name={name} caption={caption} preview={preview}>
 					{tables}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={0} />
+				<ZoomButton name={name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})

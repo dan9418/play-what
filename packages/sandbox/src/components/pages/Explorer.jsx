@@ -8,7 +8,7 @@ import { MODEL } from '../core/MODEL';
 import { STRUCT } from '../core/STRUCT';
 import Panel from '../ui/Panel';
 
-const StyledPage = styled.div`
+const StyledExplorer = styled.div`
 	.panel-body {
 		display: flex;
 		align-items: center;
@@ -17,15 +17,6 @@ const StyledPage = styled.div`
         > * {
 			margin: 16px 0;
 		}
-	}
-
-	h2 {
-		width: 100%;
-		max-width: 512px;
-		margin: 32px 0 16px;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
 	}
 `;
 
@@ -59,7 +50,7 @@ const getPanelProps = (pathHead, modelData) => {
 	const type = STRUCT[modelTypeId];
 	const typeName = type.name;
 
-	const caption = `${modelName} (${typeName})`;
+	const caption = modelName === typeName ? modelName : `${modelName} (${typeName})`;
 	const preview = getPreview(modelData, modelId);
 
 	return {
@@ -78,12 +69,12 @@ const Explorer = () => {
 	const content = getModelContent(pathHead, modelData);
 
 	return (
-		<StyledPage>
+		<StyledExplorer>
 			<BreadcrumbList />
 			<Panel {...panelProps}>
 				{content}
 			</Panel>
-		</StyledPage>
+		</StyledExplorer>
 	);
 };
 
