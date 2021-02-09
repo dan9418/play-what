@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
+import getCaption from '../core/getCaption';
 import getPreview from '../core/getPreview';
-import { MODEL } from '../core/MODEL';
+import { MODEL, MODEL_ID } from '../core/MODEL';
 import { STRUCT } from '../core/STRUCT';
 import Panel from '../ui/Panel';
 
@@ -33,7 +34,7 @@ const getModelContent = (pathHead, modelData) => {
 
 	return (
 		<Component
-			data={modelData}
+			modelData={modelData}
 			modelId={modelId}
 			{...structConfig}
 		/>
@@ -43,14 +44,7 @@ const getModelContent = (pathHead, modelData) => {
 const getPanelProps = (pathHead, modelData) => {
 	const { modelId, name } = pathHead;
 
-	const model = MODEL[modelId];
-	const modelName = model.name;
-	const modelTypeId = model.structId;
-
-	const type = STRUCT[modelTypeId];
-	const typeName = type.name;
-
-	const caption = modelName === typeName ? modelName : `${modelName} (${typeName})`;
+	const caption = getCaption(modelData, modelId, modelId !== MODEL_ID.Group);
 	const preview = getPreview(modelData, modelId);
 
 	return {

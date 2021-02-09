@@ -20,8 +20,29 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
-export const NamedKeyedList = ({ data, childModelId }) => {
-	return data.items.map((item, i) => {
+export const Group = ({ modelData }) => {
+
+	return modelData.map((item, i) => {
+		const { modelId, modelConfig, name: childName } = item;
+
+		const preview = getPreview(modelConfig, modelId);
+		const tables = getTables(modelConfig, modelId);
+		const caption = getCaption(modelConfig, modelId);
+		const name = childName || getName(modelConfig, modelId);
+
+		return (
+			<StyledTypeRow key={i}>
+				<Subpanel name={name} caption={caption} preview={preview}>
+					{tables}
+				</Subpanel>
+				<ZoomButton name={name} modelId={modelId} pathId={i} />
+			</StyledTypeRow>
+		);
+	})
+};
+
+export const NamedKeyedList = ({ modelData, childModelId }) => {
+	return modelData.items.map((item, i) => {
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
@@ -37,8 +58,8 @@ export const NamedKeyedList = ({ data, childModelId }) => {
 	})
 };
 
-export const NamedList = ({ data, childModelId }) => {
-	return data.items.map((item, i) => {
+export const NamedList = ({ modelData, childModelId }) => {
+	return modelData.items.map((item, i) => {
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
 		const caption = getCaption(item, childModelId);
@@ -55,40 +76,10 @@ export const NamedList = ({ data, childModelId }) => {
 	})
 };
 
-export const Group = ({ data }) => {
-
-	return data.map((item, i) => {
-		const { modelId, modelConfig } = item;
-
-		let data = modelConfig;
-		let previewData = modelConfig;
-		// Only Groups can contain Groups
-		if(modelId === MODEL_ID.Group) {
-			data = item;
-			previewData = item.modelConfig;
-			//console.log(data, item);
-		}
-
-		const preview = getPreview(previewData, modelId);
-		const tables = getTables(data, modelId);
-		const caption = getCaption(data, modelId);
-		const name = getName(data, modelId);
-
-		return (
-			<StyledTypeRow key={i}>
-				<Subpanel name={name} caption={caption} preview={preview}>
-					{tables}
-				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={i} />
-			</StyledTypeRow>
-		);
-	})
-};
-
-export const PWObject = ({ data, properties }) => {
+export const PWObject = ({ modelData, properties }) => {
 	return properties.map((property, i) => {
 		const { name, modelId, propertyId } = property;
-		const item = data[propertyId];
+		const item = modelData[propertyId];
 
 		const preview = getName(item, modelId);
 		const tables = getTables(item, modelId);
@@ -105,8 +96,8 @@ export const PWObject = ({ data, properties }) => {
 	})
 };
 
-export const List = ({ data, modelId, childModelId }) => {
-	return data.map((item, i) => {
+export const List = ({ modelData, modelId, childModelId }) => {
+	return modelData.map((item, i) => {
 
 		const preview = getPreview(item, childModelId);
 		const tables = getTables(item, childModelId);
@@ -124,9 +115,9 @@ export const List = ({ data, modelId, childModelId }) => {
 	})
 };
 
-export const LabeledList = ({ data, labels }) => {
+export const LabeledList = ({ modelData, labels }) => {
 
-	return data.map((item, i) => {
+	return modelData.map((item, i) => {
 		const label = labels[i];
 		const { name, pathId, modelId } = label;
 
@@ -145,10 +136,10 @@ export const LabeledList = ({ data, labels }) => {
 	})
 };
 
-export const Native = ({ data }) => {
+export const Native = ({ modelData }) => {
 	return (
 		<div>
-			{data}
+			{modelData}
 		</div>
 	);
 };
