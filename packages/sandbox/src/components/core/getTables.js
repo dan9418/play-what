@@ -3,6 +3,9 @@ import PodUtils from "@pw/core/src/Pod.utils";
 import PodListUtils from "@pw/core/src/PodList.utils";
 import Table from "../ui/Table";
 import { MODEL_ID } from "./MODEL";
+import getName from './getName';
+import getCaption from './getCaption';
+import getPreview from './getPreview';
 
 const fromProps = (props) => {
 	if (!props) return null;
@@ -91,10 +94,30 @@ export const getRelativeChordTables = (data) => {
 	return fromProps(props);
 };
 
+export const getGroupTables = (data) => {
+	const props = {
+		headers: ['#', 'Name', 'Type', 'Preview'],
+		rows: data.map((item, i) => {
+			const { modelId, modelConfig, name } = item;
+			return {
+				cols: [
+					i + 1,
+					name || getName(modelConfig, modelId),
+					getCaption(modelConfig, modelId),
+					getPreview(modelConfig, modelId)
+				]
+			}
+		})
+	};
+	return fromProps(props);
+};
+
 const getTables = (data, modelId) => {
 	if (!data) return "No Table Data";
 
 	switch (modelId) {
+	case MODEL_ID.Group:
+		return getGroupTables(data);
 	case MODEL_ID.Pitch:
 		return getPitchTables(data);
 	case MODEL_ID.Degree:

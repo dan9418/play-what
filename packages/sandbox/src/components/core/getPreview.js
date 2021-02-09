@@ -9,8 +9,7 @@ export const getNoteChordPreview = (data) => data.map(d => getNoteName(d)).join(
 export const getIntervalChordPreview = (data) => data.map(d => getIntervalName(d)).join(', ');
 export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
 export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d)).join(', ');
-export const getRelativeChordPreview = (data) => "Note + Interval Chord";
-export const getBlockPreview = (data) => `Various Models`;
+export const getRelativeChordPreview = (data) => `${getNoteName(data.keyCenter)} + ${data.intervals.map(getIntervalName).join(', ')}`;
 
 const getPreview = (data, modelId) => {
 	if (!data || !modelId) return "No Data";
