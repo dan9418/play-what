@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import getCaption from '../core/getCaption';
 import getPanelContent from '../core/getPanelContent';
-import getPreview from '../core/getPreview';
-import { MODEL, MODEL_ID } from '../core/MODEL';
-import { STRUCT } from '../core/STRUCT';
+import getPanelProps from '../core/getPanelProps';
 import Panel from '../ui/Panel';
 
 const StyledExplorer = styled.div`
@@ -22,26 +19,13 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const getPanelProps = (pathHead, modelData) => {
-	const { modelId, name } = pathHead;
-
-	const caption = getCaption(modelData, modelId, modelId !== MODEL_ID.Group);
-	const preview = getPreview(modelData, modelId);
-
-	return {
-		name,
-		caption,
-		preview
-	};
-};
-
 const Explorer = () => {
 	const { pathHead } = usePathContext();
 	const { modelData } = useDataContext();
+	const { modelId, name } = pathHead;
 
-	const panelProps = getPanelProps(pathHead, modelData);
-
-	const content = getPanelContent(pathHead, modelData);
+	const panelProps = getPanelProps(modelData, modelId, name);
+	const content = getPanelContent(modelData, modelId);
 
 	return (
 		<StyledExplorer>

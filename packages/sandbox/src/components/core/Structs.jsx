@@ -26,9 +26,10 @@ export const Group = ({ modelData }) => {
 		const { modelId, modelConfig, name: childName } = item;
 
 		const preview = getPreview(modelConfig, modelId);
-		const content = getSubpanelContent(modelConfig, modelId);
 		const caption = getCaption(modelConfig, modelId);
 		const name = childName || getName(modelConfig, modelId);
+
+		const content = getSubpanelContent(modelConfig, modelId);
 
 		return (
 			<StyledTypeRow key={i}>
@@ -43,9 +44,11 @@ export const Group = ({ modelData }) => {
 
 export const NamedKeyedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
+
 		const preview = getPreview(item, childModelId);
-		const content = getSubpanelContent(item, childModelId);
 		const caption = getCaption(item, childModelId);
+
+		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={item.id}>
@@ -61,9 +64,10 @@ export const NamedKeyedList = ({ modelData, childModelId }) => {
 export const NamedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
 		const preview = getPreview(item, childModelId);
-		const content = getSubpanelContent(item, childModelId);
 		const caption = getCaption(item, childModelId);
 		const name = getName(item, childModelId);
+
+		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>
@@ -82,8 +86,9 @@ export const PWObject = ({ modelData, properties }) => {
 		const item = modelData[propertyId];
 
 		const preview = getName(item, modelId);
-		const content = getSubpanelContent(item, modelId);
 		const caption = getCaption(item, modelId);
+
+		const content = getSubpanelContent(item, modelId);
 
 		return (
 			<StyledTypeRow key={propertyId}>
@@ -100,9 +105,10 @@ export const List = ({ modelData, modelId, childModelId }) => {
 	return modelData.map((item, i) => {
 
 		const preview = getPreview(item, childModelId);
-		const content = getSubpanelContent(item, childModelId);
 		const caption = getCaption(item, childModelId);
 		const name = getName(item, childModelId);
+
+		const content = getSubpanelContent(item, childModelId);
 
 		return (
 			<StyledTypeRow key={i}>

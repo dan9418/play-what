@@ -1,8 +1,8 @@
 import React from 'react';
+import { MODEL } from './MODEL';
+import { STRUCT } from './STRUCT';
 
-const getPanelContent = (pathHead, modelData) => {
-	const { modelId } = pathHead;
-
+const getPanelContent = (modelData, modelId) => {
 	const model = MODEL[modelId];
 	const modelStructId = model.structId;
 
