@@ -112,7 +112,7 @@ export const getGroupTables = (data) => {
 	return fromProps(props);
 };
 
-const getTables = (data, modelId) => {
+const getSubpanelContent = (data, modelId) => {
 	if (!data) return "No Table Data";
 
 	switch (modelId) {
@@ -139,4 +139,4 @@ const getTables = (data, modelId) => {
 	}
 };
 
-export default getTables;
+export default getSubpanelContent;
