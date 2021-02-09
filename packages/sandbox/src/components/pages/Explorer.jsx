@@ -4,6 +4,7 @@ import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import getCaption from '../core/getCaption';
+import getPanelContent from '../core/getPanelContent';
 import getPreview from '../core/getPreview';
 import { MODEL, MODEL_ID } from '../core/MODEL';
 import { STRUCT } from '../core/STRUCT';
@@ -20,26 +21,6 @@ const StyledExplorer = styled.div`
 		}
 	}
 `;
-
-const getModelContent = (pathHead, modelData) => {
-	const { modelId } = pathHead;
-
-	const model = MODEL[modelId];
-	const modelStructId = model.structId;
-
-	const struct = STRUCT[modelStructId];
-
-	const { structConfig } = model;
-	const { component: Component } = struct;
-
-	return (
-		<Component
-			modelData={modelData}
-			modelId={modelId}
-			{...structConfig}
-		/>
-	);
-};
 
 const getPanelProps = (pathHead, modelData) => {
 	const { modelId, name } = pathHead;
@@ -60,7 +41,7 @@ const Explorer = () => {
 
 	const panelProps = getPanelProps(pathHead, modelData);
 
-	const content = getModelContent(pathHead, modelData);
+	const content = getPanelContent(pathHead, modelData);
 
 	return (
 		<StyledExplorer>
