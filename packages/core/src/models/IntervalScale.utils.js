@@ -6,7 +6,7 @@ const getPreview = (data) => data.map(IntervalUtils.getName).join(', ');
 const getCaption = (data) => null;
 
 const getName = (data) => {
-	const preset = INTERVAL_SCALE_VALUES.find(PodUtils.areListsEqual);
+	const preset = INTERVAL_SCALE_VALUES.find(v => PodUtils.areListsEqual(data, v.value));
 	return preset ? preset.id : 'Untitled Scale';
 };
 
