@@ -1,7 +1,11 @@
 import PodUtils from "../Pod.utils";
 
 const getName = (data) => PodUtils.getName(data, { podType: 'note' });
+const getPreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`;
+const getCaption = (data) => null;
 
 export default {
-	getName
+	getName,
+	getPreview,
+	getCaption
 }

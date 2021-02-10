@@ -6,7 +6,11 @@ const getName = (data) => {
 	const chordName = IntervalScaleUtils.getName(data.intervals);
 	return `${kcName} + ${chordName}`;
 };
+const getPreview = (data) => null;
+const getCaption = (data) => null;
 
 export default {
-	getName
+	getName,
+	getPreview,
+	getCaption
 }

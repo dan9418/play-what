@@ -1,43 +1,10 @@
-import { getIntervalName, getNoteName } from "./getName";
-import { MODEL_ID } from "./MODEL";
-
-export const getPitchPreview = (data) => data;
-export const getDegreePreview = (data) => data;
-export const getNotePreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`
-export const getIntervalPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`
-export const getNoteChordPreview = (data) => data.map(d => getNoteName(d)).join(', ');
-export const getIntervalChordPreview = (data) => data.map(d => getIntervalName(d)).join(', ');
-export const getNoteScalePreview = (data) => data.map(d => getNoteName(d)).join(', ');
-export const getIntervalScalePreview = (data) => data.map(d => getIntervalName(d)).join(', ');
-export const getRelativeChordPreview = (data) => `${getNoteName(data.keyCenter)} + ${data.intervals.map(getIntervalName).join(', ')}`;
+import { MODEL } from "./MODEL";
 
 const getPreview = (data, modelId) => {
-	if (typeof data === undefined || data === null) return "No Preview Data";
-	return 'fake'
-	switch (modelId) {
-	case MODEL_ID.Group:
-		return `${data.length} Items`;
-	case MODEL_ID.Pitch:
-		return getPitchPreview(data);
-	case MODEL_ID.Degree:
-		return getDegreePreview(data);
-	case MODEL_ID.Note:
-		return getNotePreview(data);
-	case MODEL_ID.Interval:
-		return getIntervalPreview(data);
-	case MODEL_ID.NoteChord:
-		return getNoteChordPreview(data);
-	case MODEL_ID.IntervalChord:
-		return getIntervalChordPreview(data);
-	case MODEL_ID.NoteScale:
-		return getNoteScalePreview(data);
-	case MODEL_ID.IntervalScale:
-		return getIntervalScalePreview(data);
-	case MODEL_ID.RelativeChord:
-		return getRelativeChordPreview(data);
-	default:
-		return JSON.stringify(data);
-	}
+	if (typeof data === undefined) return "No Name Data";
+	if (typeof modelId === undefined) return "No modelId";
+	const model = MODEL[modelId];
+	return model.utils.getName(data);
 };
 
 export default getPreview;
