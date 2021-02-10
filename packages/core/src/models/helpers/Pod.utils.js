@@ -1,4 +1,4 @@
-import NumberUtils from '../../Number.utils';
+import NumberUtils from '../../general/Number.utils';
 import { MAX_POD } from './Pod.constants';
 
 const areEqual = (a, b) => {
