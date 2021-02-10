@@ -1,6 +1,5 @@
 import { DEGREE } from './models/Degree.constants';
 import { PITCH } from './models/Pitch.constants';
-import { DIATONIC } from './models/_Pod.presets';
 import { INTERVAL } from './models/Interval.constants';
 
 const MAX_PITCH = 12;
@@ -9,6 +8,44 @@ export const MAX = [MAX_PITCH, MAX_DEGREE];
 
 const ROOT_PITCH = PITCH.middleC.value;
 const ROOT_DEGREE = DEGREE.C.value;
+
+export const DIATONIC = {
+	tonic: {
+		id: 'tonic',
+		name: 'Tonic',
+		value: [0, 0]
+	},
+	supertonic: {
+		id: 'supertonic',
+		name: 'Supertonic',
+		value: [2, 1]
+	},
+	mediant: {
+		id: 'mediant',
+		name: 'Mediant',
+		value: [4, 2]
+	},
+	subdominant: {
+		id: 'subdominant',
+		name: 'Subdominant',
+		value: [5, 3]
+	},
+	dominant: {
+		id: 'dominant',
+		name: 'Dominant',
+		value: [7, 4]
+	},
+	submediant: {
+		id: 'submediant',
+		name: 'Submediant',
+		value: [9, 5]
+	},
+	subtonic: {
+		id: 'subtonic',
+		name: 'Subtonic',
+		value: [11, 6]
+	}
+};
 
 const DIATONIC_VALUES = Object.values(DIATONIC);
 
