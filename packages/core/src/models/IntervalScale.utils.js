@@ -1,7 +1,6 @@
-import PodListUtils from "./_PodList.utils";
 import IntervalUtils from "./Interval.utils";
 
-const getName = (data) => PodListUtils.getName(data, { podType: 'scale' });
+const getName = (data) => 'intervalscale';
 const getPreview = (data) => data.map(d => IntervalUtils.getName(d)).join(', ');
 const getCaption = (data) => null;
 

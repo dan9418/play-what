@@ -1,7 +1,6 @@
 import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import PodUtils from '@pw/core/src/models/_Pod.utils';
-import PodListUtils from '@pw/core/src/models/_PodList.utils';
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
@@ -24,7 +23,7 @@ export const Fret = ({
 	const notes = PodUtils.addPodList(keyCenter, intervals);
 
 	const noteIndex = stringTuning + fretIndex;
-	const i = PodListUtils.findIndexOfPodWithPitchClass(notes, noteIndex);
+	const i = PodUtils.findIndexOfPodWithPitchClass(notes, noteIndex);
 	const note = notes[i];
 	const interval = intervals[i];
 

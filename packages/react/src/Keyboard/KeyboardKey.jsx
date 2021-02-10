@@ -3,7 +3,6 @@ import PodUtils from '@pw/core/src/Pod.utils';
 import CoreUtils from '@pw/core/src/Core.utils';
 import * as React from 'react';
 import "./Keyboard.css";
-import PodListUtils from '@pw/core/src/PodList.utils';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -41,7 +40,7 @@ const getScaleStyles = (keyType, scale) => {
 }
 
 const KeyboardKey = ({ noteIndex, scale, pods, podType, colorFn, labelFn, tuningFn, toneFn }) => {
-	const pod = PodListUtils.findPodWithPitch(pods, noteIndex);
+	const pod = PodUtils.findPodWithPitch(pods, noteIndex);
 
 	const color = colorFn(pod)
 	const colorStyles = ColorUtils.getStylesFromBgColor(color);
