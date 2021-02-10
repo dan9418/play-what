@@ -13,7 +13,7 @@ export const getRelativeChordPreview = (data) => `${getNoteName(data.keyCenter)}
 
 const getPreview = (data, modelId) => {
 	if (typeof data === undefined || data === null) return "No Preview Data";
-
+	return 'fake'
 	switch (modelId) {
 	case MODEL_ID.Group:
 		return `${data.length} Items`;

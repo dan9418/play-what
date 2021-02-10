@@ -1,3 +1,13 @@
+import DegreeUtils from '@pw/core/src/models/DegreeUtils';
+import GroupUtils from '@pw/core/src/models/GroupUtils';
+import IntervalChordUtils from '@pw/core/src/models/IntervalChordUtils';
+import IntervalScaleUtils from '@pw/core/src/models/IntervalScaleUtils';
+import IntervalUtils from '@pw/core/src/models/IntervalUtils';
+import NoteChordUtils from '@pw/core/src/models/NoteChordUtils';
+import NoteScaleUtils from '@pw/core/src/models/NoteScaleUtils';
+import NoteUtils from '@pw/core/src/models/NoteUtils';
+import PitchUtils from '@pw/core/src/models/PitchUtils';
+import RelativeChordUtils from '@pw/core/src/models/RelativeChordUtils';
 import { STRUCT_ID } from './STRUCT';
 
 /*
@@ -30,13 +40,15 @@ export const MODEL = {
 		name: 'Pitch',
 		modelId: MODEL_ID.Pitch,
 		structId: STRUCT_ID.Native,
-		structConfig: {}
+		structConfig: {},
+		utils: PitchUtils
 	},
 	[MODEL_ID.Degree]: {
 		name: 'Degree',
 		modelId: MODEL_ID.Degree,
 		structId: STRUCT_ID.Native,
-		structConfig: {}
+		structConfig: {},
+		utils: DegreeUtils
 	},
 	[MODEL_ID.Note]: {
 		name: 'Note',
@@ -47,7 +59,8 @@ export const MODEL = {
 				{ name: 'Pitch', modelId: MODEL_ID.Pitch },
 				{ name: 'Degree', modelId: MODEL_ID.Degree }
 			]
-		}
+		},
+		utils: NoteUtils
 	},
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
@@ -58,7 +71,8 @@ export const MODEL = {
 				{ pathId: 'pitch', name: 'Pitch Span', modelId: MODEL_ID.Pitch },
 				{ pathId: 'degree', name: 'Degree Span', modelId: MODEL_ID.Degree }
 			]
-		}
+		},
+		utils: IntervalUtils
 	},
 	[MODEL_ID.NoteChord]: {
 		name: 'NoteChord',
@@ -66,7 +80,8 @@ export const MODEL = {
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
-		}
+		},
+		utils: NoteChordUtils
 	},
 	[MODEL_ID.IntervalChord]: {
 		name: 'Interval Chord',
@@ -74,7 +89,8 @@ export const MODEL = {
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
-		}
+		},
+		utils: IntervalChordUtils
 	},
 	[MODEL_ID.NoteScale]: {
 		name: 'NoteScale',
@@ -82,7 +98,8 @@ export const MODEL = {
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
-		}
+		},
+		utils: NoteScaleUtils
 	},
 	[MODEL_ID.IntervalScale]: {
 		name: 'Interval Scale',
@@ -90,7 +107,8 @@ export const MODEL = {
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
-		}
+		},
+		utils: IntervalScaleUtils
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
@@ -109,13 +127,15 @@ export const MODEL = {
 					name: 'Intervals'
 				}
 			]
-		}
+		},
+		utils: RelativeChordUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
 		structId: STRUCT_ID.Group,
-		structConfig: {}
+		structConfig: {},
+		utils: GroupUtils
 	}
 };
 
