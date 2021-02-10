@@ -1,5 +1,4 @@
 import PodUtils from '@pw/core/src/Pod.utils';
-import { SCALE } from '@pw/core/src/Pod.presets';
 import React from 'react';
 import { MAX } from '@pw/core/src/Core.constants';
 import './Graph.css';
