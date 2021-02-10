@@ -1,7 +1,7 @@
 import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
 import PodUtils from '@pw/core/src/models/_Pod.utils';
-import PodListUtils from '@pw/core/src/PodList.utils';
+import PodListUtils from '@pw/core/src/models/_PodList.utils';
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";

@@ -1,4 +1,4 @@
-import PodListUtils from "../PodList.utils";
+import PodListUtils from "./_PodList.utils";
 
 const getName = (data) => PodListUtils.getName(data, { podType: 'chord' });
 const getPreview = (data) => data.map(d => getIntervalName(d)).join(', ');

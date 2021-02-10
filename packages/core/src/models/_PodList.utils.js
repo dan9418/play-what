@@ -1,5 +1,5 @@
-import CoreUtils from './Core.utils';
-import PodUtils from './models/_Pod.utils';
+import CoreUtils from '../Core.utils';
+import PodUtils from './_Pod.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];

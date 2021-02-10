@@ -1,4 +1,4 @@
-import PodListUtils from "../PodList.utils";
+import PodListUtils from "./_PodList.utils";
 import NoteUtils from "./Note.utils";
 
 const getName = (data) => PodListUtils.getName(data, { podType: 'scale' });

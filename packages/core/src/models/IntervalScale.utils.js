@@ -1,4 +1,4 @@
-import PodListUtils from "../PodList.utils";
+import PodListUtils from "./_PodList.utils";
 import IntervalUtils from "./Interval.utils";
 
 const getName = (data) => PodListUtils.getName(data, { podType: 'scale' });
