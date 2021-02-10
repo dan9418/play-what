@@ -1,3 +1,5 @@
+export const MAX_DEGREE = 7
+
 export const DEGREE = {
 	C: {
 		id: 'C',
@@ -35,5 +37,7 @@ export const DEGREE = {
 		value: 6
 	}
 };
+
+export const ROOT_DEGREE = DEGREE.C.value;
 
 export const DEGREE_VALUES = Object.values(DEGREE);

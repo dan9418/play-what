@@ -1,3 +1,5 @@
+export const MAX_PITCH = 12;
+
 export const PITCH = {
 	middleC: {
 		id: 'middleC',
@@ -10,5 +12,7 @@ export const PITCH = {
 		value: 60
 	}
 };
+
+export const ROOT_PITCH = PITCH.middleC.value;
 
 export const PITCH_VALUES = Object.values(PITCH);

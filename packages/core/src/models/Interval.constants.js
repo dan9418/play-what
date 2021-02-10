@@ -113,3 +113,53 @@ export const INTERVAL = {
 };
 
 export const INTERVAL_VALUES = Object.values(INTERVAL);
+
+export const CORE_INTERVALS = [
+	[INTERVAL.P1],
+	[INTERVAL.m2, INTERVAL.M2],
+	[INTERVAL.m3, INTERVAL.M3],
+	[INTERVAL.P4],
+	[INTERVAL.P5],
+	[INTERVAL.m6, INTERVAL.M6],
+	[INTERVAL.m7, INTERVAL.M7]
+];
+
+export const INTERVAL_QUALITY = Object.freeze({
+	dim: {
+		id: 'dim',
+		name: 'Diminished',
+		symbol: 'd',
+		down: null,
+		up: 'min'
+	},
+	min: {
+		id: 'min',
+		name: 'Minor',
+		symbol: 'm',
+		down: 'dim',
+		up: 'maj'
+	},
+	perfect: {
+		id: 'perfect',
+		name: 'Perfect',
+		symbol: 'P',
+		down: 'dim',
+		up: 'aug'
+	},
+	maj: {
+		id: 'maj',
+		name: 'Major',
+		symbol: 'M',
+		down: 'min',
+		up: 'aug'
+	},
+	aug: {
+		id: 'aug',
+		name: 'Augmented',
+		symbol: 'A',
+		down: 'maj',
+		up: null
+	}
+});
+
+export const INTERVAL_QUALITY_VALUES = Object.values(INTERVAL_QUALITY);

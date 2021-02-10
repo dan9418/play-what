@@ -1,7 +1,5 @@
 import NumberUtils from '../../Number.utils';
-
-const MAX = [12, 7];
-const DEFAULT_POD = [0, 0];
+import { MAX_POD } from './Pod.constants';
 
 const areEqual = (a, b) => {
 	if (!a || !b || a.length !== 2 || b.length !== 2) return false;
@@ -14,23 +12,23 @@ const addPod = (a, b) => {
 	return [p, d];
 }
 
-const addPodList = (a, B, max = MAX) => {
+const addPodList = (a, B, max = MAX_POD) => {
 	const newValue = B.map((b) => this.addPod(a, b, max));
 	return newValue;
 };
 
-const reduce = (a, max = MAX) => {
+const reduce = (a, max = MAX_POD) => {
 	const p = NumberUtils.modulo(a[0], max[0]);
 	const d = NumberUtils.modulo(a[1], max[1]);
 	return [p, d];
 }
 
-const reduceList = (A, max = MAX) => {
+const reduceList = (A, max = MAX_POD) => {
 	return A.map((a) => PodUtils.reduce(a, max));
 }
 
 const getPitchClass = (pod, options = {}) => {
-	return NumberUtils.modulo(pod[0], MAX[0]);
+	return NumberUtils.modulo(pod[0], MAX_POD[0]);
 }
 
 const getOctave = (pod, options = {}) => {
@@ -38,7 +36,7 @@ const getOctave = (pod, options = {}) => {
 }
 
 const getDegree = (pod, options = {}) => {
-	return NumberUtils.modulo(pod[1], MAX[1]);
+	return NumberUtils.modulo(pod[1], MAX_POD[1]);
 }
 
 const getX = (pod, options = {}) => {

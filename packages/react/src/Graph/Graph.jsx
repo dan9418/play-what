@@ -1,6 +1,6 @@
+import { MAX_POD } from '@pw/core/src/models/helpers/Pod.constants';
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from 'react';
-import { MAX } from '@pw/core/src/Core.constants';
 import './Graph.css';
 import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 
@@ -23,9 +23,9 @@ const Label = ({ axis, children }) => {
 
 const getCells = (origin, pods) => {
 	const cells = [];
-	for (let p = MAX[0] - 1; p >= -1; p--) {
+	for (let p = MAX_POD[0] - 1; p >= -1; p--) {
 		cells.push(<Label key={'p' + p} axis='y'>{p > -1 && p}</Label>)
-		for (let d = 0; d < MAX[1]; d++) {
+		for (let d = 0; d < MAX_POD[1]; d++) {
 			if (p === -1) {
 				cells.push(<Label key={'d' + d} axis='x'>{d}</Label>)
 			}

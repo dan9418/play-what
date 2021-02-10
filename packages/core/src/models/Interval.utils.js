@@ -1,3 +1,4 @@
+import { INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`;
 const getCaption = (data) => null;
@@ -26,8 +27,8 @@ const getName = (pod) => {
 	// determine quality
 	let quality = null;
 	if (!offset) return ivl.id; // unaltered
-	if (offset < 0) quality = QUALITY.dim; // dim
-	if (offset > 0) quality = QUALITY.aug; // aug
+	if (offset < 0) quality = INTERVAL_QUALITY.dim; // dim
+	if (offset > 0) quality = INTERVAL_QUALITY.aug; // aug
 
 	const count = Math.abs(offset);
 	const qualityStr = quality.symbol.repeat(count);

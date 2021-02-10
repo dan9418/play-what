@@ -1,5 +1,6 @@
-import { ACCIDENTAL, ROOT_SCALE } from "../Core.constants";
 import { DEGREE_VALUES } from "./Degree.constants";
+import { ROOT_SCALE } from "./helpers/Scale.constants";
+import { ACCIDENTAL } from "./Note.constants";
 
 const getPreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`;
 const getCaption = (data) => null;
