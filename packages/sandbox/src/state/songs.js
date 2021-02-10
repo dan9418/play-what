@@ -1,4 +1,4 @@
-import { CHORD, NOTE } from "@pw/core/src/Pod.presets";
+import { CHORD, NOTE } from "@pw/core/src/models/_Pod.presets";
 import { MODEL_ID } from "../components/core/MODEL";
 
 export const TEST_SONG = {

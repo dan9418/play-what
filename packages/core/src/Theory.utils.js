@@ -1,7 +1,6 @@
 import { ROOT_SCALE } from './Core.constants';
-import CoreUtils from './Core.utils';
-import { DEGREE_VALUES } from './Pod.presets';
-import { ACCIDENTAL, CORE_INTERVALS, QUALITY, QUALITY_VALUES } from './Theory.constants';
+import { DEGREE_VALUES } from './models/_Pod.presets';
+import { ACCIDENTAL, CORE_INTERVALS, QUALITY } from './Theory.constants';
 class TheoryUtils {
 
 	static getAccidentalOffset(pod) {

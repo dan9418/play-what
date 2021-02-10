@@ -1,5 +1,4 @@
-import CoreUtils from './Core.utils';
-import TheoryUtils from './Theory.utils';
+import CoreUtils from '../Core.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];

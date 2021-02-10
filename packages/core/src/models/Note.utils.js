@@ -1,4 +1,4 @@
-import PodUtils from "../Pod.utils";
+import PodUtils from "./_Pod.utils";
 
 const getName = (data) => PodUtils.getName(data);
 const getPreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`;
