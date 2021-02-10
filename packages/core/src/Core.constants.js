@@ -1,6 +1,7 @@
 import { DEGREE } from './models/Degree.constants';
 import { PITCH } from './models/Pitch.constants';
-import { DIATONIC, INTERVAL } from './models/_Pod.presets';
+import { DIATONIC } from './models/_Pod.presets';
+import { INTERVAL } from './models/Interval.constants';
 
 const MAX_PITCH = 12;
 const MAX_DEGREE = 7
