@@ -1,5 +1,5 @@
-import { TONE_FN } from '@pw/core/src/Tone.constants';
-import { TUNING_FN } from '@pw/core/src/Tuning.constants';
+import { TONE_FN } from '@pw/core/src/tone/Tone.constants';
+import { TUNING_FN } from '@pw/core/src/tuning/Tuning.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 const DEFAULT_FRETBOARD_PROPS = {
