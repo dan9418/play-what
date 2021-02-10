@@ -59,7 +59,7 @@
 
 // }
 
-// Scale.preset = SCALE;
-// Scale.presetValues = SCALE_VALUES;
+// Scale.preset = INTERVAL_SCALE;
+// Scale.presetValues = INTERVAL_SCALE_VALUES;
 
 // export default Scale;

@@ -1,4 +1,4 @@
-import { INTERVAL_QUALITY } from "./Interval.constants";
+import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`;
 const getCaption = (data) => null;

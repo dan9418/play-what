@@ -1,6 +1,6 @@
 import { INTERVAL } from "./Interval.constants";
 
-export const CHORD = {
+export const INTERVAL_CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
 	Maj6: { id: 'Maj6', name: 'Major 6th', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value, INTERVAL.M6.value] },
 	Maj7: { id: 'Maj7', name: 'Major 7th', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value, INTERVAL.M7.value] },
@@ -20,7 +20,7 @@ export const CHORD = {
 	Sus4: { id: 'Sus4', name: 'Suspended 4th', value: [INTERVAL.P1.value, INTERVAL.P4.value, INTERVAL.P5.value] }
 };
 
-export const CHORD_VALUES = Object.values(CHORD);
+export const INTERVAL_CHORD_VALUES = Object.values(INTERVAL_CHORD);
 
 export const NUMERAL = {
 	I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] }
