@@ -33,10 +33,15 @@ const StyledNav = styled.nav`
     left: 0;
     right: 0;
     z-index: 2000;
-    display: flex;
-    align-items: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 	padding: 0 16px;
+
+	> div {
+		width: 100%;
+		max-width: 1024px;
+		margin: auto;
+		display: flex;
+	}
 
 	.logo {
 		font-size: 100%;
@@ -82,14 +87,16 @@ const Nav = () => {
 
 	return (
 		<StyledNav>
-			<div className="logo" onClick={routeContext.goHome}>Play What?</div>
-			<ul className="link-list">
-				{LINKS.map((l, i) => (
-					<li key={i}>
-						<a href={l.href}>{l.name}</a>
-					</li>
-				))}
-			</ul>
+			<div>
+				<div className="logo" onClick={routeContext.goHome}>Play What?</div>
+				<ul className="link-list">
+					{LINKS.map((l, i) => (
+						<li key={i}>
+							<a href={l.href}>{l.name}</a>
+						</li>
+					))}
+				</ul>
+			</div>
 		</StyledNav >
 	);
 };
