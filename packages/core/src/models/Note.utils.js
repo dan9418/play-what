@@ -1,5 +1,5 @@
 import { ACCIDENTAL, ROOT_SCALE } from "../Core.constants";
-import { DEGREE_VALUES } from "./_Pod.presets";
+import { DEGREE_VALUES } from "./Degree.constants";
 
 const getPreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`;
 const getCaption = (data) => null;
