@@ -123,7 +123,7 @@ Given the above properties, we can easily and efficiently perform a number of us
 #### Transposition
 > `[C, E, G] + M2 = [D, F, A]`
 
-#### Key Center + Intervals
+#### Root + Intervals
 >`C + [P1, M3, P5] = [C, E, G]`
 
 This is equivalent to the the (commutation?)  property of transposition

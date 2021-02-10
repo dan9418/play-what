@@ -13,7 +13,7 @@ export const TEST_SONG = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value
 					}
 				}
@@ -35,7 +35,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
 						t: 8
 					}
@@ -43,7 +43,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Bb.value,
+						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -51,7 +51,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Eb.value,
+						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
 						t: 4
 					}
@@ -59,7 +59,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
 						t: 8
 					}
@@ -67,7 +67,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.B.value,
+						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -75,7 +75,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.E.value,
+						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
 						t: 4
 					}
@@ -90,7 +90,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -98,7 +98,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.E.value,
+						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
 						t: 4
 					}
@@ -106,7 +106,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 8
 					}
@@ -114,7 +114,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Eb.value,
+						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
 						t: 8
 					}
@@ -122,7 +122,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Bb.value,
+						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -130,7 +130,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.D.value,
+						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
 						t: 8
 					}
@@ -145,7 +145,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
 						t: 8
 					}
@@ -153,7 +153,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Bb.value,
+						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -161,7 +161,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Eb.value,
+						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
 						t: 4
 					}
@@ -169,7 +169,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
 						t: 8
 					}
@@ -177,7 +177,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.B.value,
+						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -185,7 +185,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.E.value,
+						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
 						t: 4
 					}
@@ -200,7 +200,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -208,7 +208,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.E.value,
+						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
 						t: 4
 					}
@@ -216,7 +216,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -224,7 +224,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.C.value,
+						root: NOTE.C.value,
 						intervals: INTERVAL_CHORD.Min6.value,
 						t: 4
 					}
@@ -232,7 +232,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.B.value,
+						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 2
 					}
@@ -240,7 +240,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.Bb.value,
+						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.HalfDim7.value,
 						t: 2
 					}
@@ -248,7 +248,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 2
 					}
@@ -256,7 +256,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.D.value,
+						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
 						t: 2
 					}
@@ -264,7 +264,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.G.value,
+						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj6.value,
 						t: 8
 					}
@@ -272,7 +272,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.A.value,
+						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
 						t: 4
 					}
@@ -280,7 +280,7 @@ export const OUT_OF_NOWHERE = {
 				{
 					modelId: MODEL_ID.RelativeChord,
 					modelConfig: {
-						keyCenter: NOTE.D.value,
+						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
 						t: 4
 					}

@@ -7,7 +7,7 @@ import "./Fretboard.css";
 
 export const FretboardPanel = props => {
 	const { viewerProps, setViewerProp, name, id } = props;
-	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelProperty, keyCenter, intervals, notes } = viewerProps;
+	const { fretRange, tuning, colorSource, colorProperty, colorScheme, labelSource, labelProperty, root, intervals, notes } = viewerProps;
 	const [fretLow, fretHigh] = fretRange;
 
 	const tuningDef = FRETBOARD_TUNING_VALUES.find(o => o.value === tuning);

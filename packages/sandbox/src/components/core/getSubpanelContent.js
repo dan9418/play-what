@@ -70,13 +70,13 @@ export const getScaleTables = (data) => {
 };
 
 export const getRelativeChordTables = (data) => {
-	const { keyCenter, intervals } = data;
+	const { root, intervals } = data;
 	const props = [
 		{
-			title: 'Key Center',
+			title: 'Root',
 			headers: ['Name', 'P', 'D', 'Freq'],
 			rows: [{
-				cols: [JSON.stringify(keyCenter), keyCenter[0], keyCenter[1], 'f']
+				cols: [JSON.stringify(root), root[0], root[1], 'f']
 			}]
 		},
 		{

@@ -117,7 +117,7 @@ export const MODEL = {
 		structConfig: {
 			properties: [
 				{
-					propertyId: 'keyCenter',
+					propertyId: 'root',
 					modelId: MODEL_ID.Note,
 					name: 'Root'
 				},

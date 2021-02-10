@@ -13,14 +13,14 @@
 // 		return newMode;*/
 // 	};
 
-// 	static getAllModes({ scale, keyCenter }) {
+// 	static getAllModes({ scale, root }) {
 // 		/*const modes = [];
 // 		for (let i = 1; i <= scale.length; i++) {
 // 			modes.push(getMode({ scale, degree: i }));
 // 		}
 // 		return modes.map((m, i) => ({
 // 			name: `Degree ${i + 1}`,
-// 			a: keyCenter,
+// 			a: root,
 // 			B: m
 // 		}));*/
 // 	};
@@ -37,10 +37,10 @@
 // 		return numeral;
 // 	};
 
-// 	static getAllNumerals({ scale, keyCenter }) {
+// 	static getAllNumerals({ scale, root }) {
 // 		/*const numerals = [];
 // 		for (let i = 0; i < scale.length; i++) {
-// 			numerals.push(getNumeral({ scale, keyCenter, degree: i }));
+// 			numerals.push(getNumeral({ scale, root, degree: i }));
 // 		}
 // 		return numerals;*/
 // 	};
