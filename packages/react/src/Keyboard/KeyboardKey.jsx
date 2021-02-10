@@ -1,6 +1,6 @@
 import ColorUtils from '@pw/core/src/Color.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
-import CoreUtils from '@pw/core/src/Core.utils';
+import NumberUtils from '@pw/core/src/Number.utils';
 import * as React from 'react';
 import "./Keyboard.css";
 
@@ -50,7 +50,7 @@ const KeyboardKey = ({ noteIndex, scale, pods, podType, colorFn, labelFn, tuning
 	const frequency = tuningFn(pod);
 	const onClick = () => toneFn(frequency);
 
-	let keyType = BLACK_KEY_INDICES.includes(CoreUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
+	let keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
 	let scaleStyles = getScaleStyles(keyType, scale);
 	let classes = ['keyboard-key', `${keyType}-key`, keyType];

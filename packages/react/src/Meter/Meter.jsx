@@ -1,10 +1,9 @@
 import { COLOR_SCHEME } from '@pw/core/src/Color.constants';
 import ColorUtils from '@pw/core/src/Color.utils';
-import CoreUtils from '@pw/core/src/Core.utils';
+import NumberUtils from '@pw/core/src/Number.utils';
 import React from 'react';
-import DEFAULT_METER_PROPS from './Meter.defaults';
 import styled from 'styled-components';
-import PodUtils from '@pw/core/src/Pod.utils';
+import DEFAULT_METER_PROPS from './Meter.defaults';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -40,10 +39,10 @@ const DotList = ({ pods, podType }) => {
 
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const pod = pods.find(pod => CoreUtils.modulo(pod[0], max) === i);
+		const pod = pods.find(pod => NumberUtils.modulo(pod[0], max) === i);
 		const color = colorFn(pod && pod[0]);
 		const style = ColorUtils.getStylesFromBgColor(color);
-		if (!style.backgroundColor) style.backgroundColor = BLACK_KEY_INDICES.includes(CoreUtils.modulo(i, 12)) ? 'white' : 'black'
+		if (!style.backgroundColor) style.backgroundColor = BLACK_KEY_INDICES.includes(NumberUtils.modulo(i, 12)) ? 'white' : 'black'
 		//style.color = '#ccc';
 
 		const podName = null;

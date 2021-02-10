@@ -1,4 +1,4 @@
-import CoreUtils from '../../Core.utils';
+import NumberUtils from '../../Number.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
@@ -20,8 +20,8 @@ const addPodList = (a, B, max = MAX) => {
 };
 
 const reduce = (a, max = MAX) => {
-	const p = CoreUtils.modulo(a[0], max[0]);
-	const d = CoreUtils.modulo(a[1], max[1]);
+	const p = NumberUtils.modulo(a[0], max[0]);
+	const d = NumberUtils.modulo(a[1], max[1]);
 	return [p, d];
 }
 
@@ -30,7 +30,7 @@ const reduceList = (A, max = MAX) => {
 }
 
 const getPitchClass = (pod, options = {}) => {
-	return CoreUtils.modulo(pod[0], MAX[0]);
+	return NumberUtils.modulo(pod[0], MAX[0]);
 }
 
 const getOctave = (pod, options = {}) => {
@@ -38,7 +38,7 @@ const getOctave = (pod, options = {}) => {
 }
 
 const getDegree = (pod, options = {}) => {
-	return CoreUtils.modulo(pod[1], MAX[1]);
+	return NumberUtils.modulo(pod[1], MAX[1]);
 }
 
 const getX = (pod, options = {}) => {
@@ -60,13 +60,13 @@ const findPodWithPitch = (A, p) => {
 };
 
 const findIndexOfPodWithPitchClass = (A, p) => {
-	const pc = CoreUtils.modulo(p, 12);
-	return A.findIndex(pod => CoreUtils.modulo(pod[0], 12) === pc);
+	const pc = NumberUtils.modulo(p, 12);
+	return A.findIndex(pod => NumberUtils.modulo(pod[0], 12) === pc);
 };
 
 const findPodWithPitchClass = (A, p) => {
-	const pc = CoreUtils.modulo(p, 12);
-	return A.find(pod => CoreUtils.modulo(pod[0], 12) === pc) || null;
+	const pc = NumberUtils.modulo(p, 12);
+	return A.find(pod => NumberUtils.modulo(pod[0], 12) === pc) || null;
 };
 
 const findIndexOfPodWithPitch = (A, p, options) => {
