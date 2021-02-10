@@ -17,12 +17,12 @@ export const MODEL_ID = {
 	NoteScale: 6,
 	IntervalScale: 7,
 	// Object
-	RelativeChord: 9,
-	// Named List
-	Section: 10,
-	// Named Keyed List
+	RelativeChord: 8,
+	RelativeScale: 9,
 	// Group
-	Group: 12
+	Group: 10
+	// Named List
+	// Named Keyed List
 };
 
 export const MODEL = {
