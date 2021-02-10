@@ -1,7 +1,28 @@
-import getCaption from "./getCaption";
-import getName from "./getName";
-import getPreview from "./getPreview";
-import { MODEL_ID } from "./MODEL";
+import { MODEL, MODEL_ID } from "./MODEL";
+import { STRUCT } from "./STRUCT";
+
+export const getName = (data, modelId) => {
+	if (typeof data === undefined) return "No Name Data";
+	if (typeof modelId === undefined) return "No modelId";
+	const model = MODEL[modelId];
+	return model.utils.getName(data);
+};
+
+export const getCaption = (data, modelId, includeStruct) => {
+	if (typeof data === undefined) return "No Caption Data";
+	if (typeof modelId === undefined) return "No modelId";
+
+	const model = MODEL[modelId];
+	const struct = STRUCT[model.structId];
+	return false ? `${model.name} (${struct.name})` : model.name;
+};
+
+export const getPreview = (data, modelId) => {
+	if (typeof data === undefined) return "No Preview Data";
+	if (typeof modelId === undefined) return "No modelId";
+	const model = MODEL[modelId];
+	return model.utils.getName(data);
+};
 
 const getPanelProps = (modelData, modelId, optionalName = null) => {
 	const caption = getCaption(modelData, modelId, modelId !== MODEL_ID.Group);

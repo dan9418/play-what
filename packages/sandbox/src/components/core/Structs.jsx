@@ -2,10 +2,7 @@ import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
-import getCaption from './getCaption';
-import getName from './getName';
 import getPanelProps from './getPanelProps';
-import getPreview from './getPreview';
 import getSubpanelContent from './getSubpanelContent';
 
 const StyledTypeRow = styled.div`

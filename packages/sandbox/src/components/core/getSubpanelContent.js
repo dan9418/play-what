@@ -1,11 +1,7 @@
 import React from 'react';
-import PodUtils from "@pw/core/src/Pod.utils";
-import PodListUtils from "@pw/core/src/PodList.utils";
 import Table from "../ui/Table";
+import { getCaption, getName, getPreview } from './getPanelProps';
 import { MODEL_ID } from "./MODEL";
-import getName from './getName';
-import getCaption from './getCaption';
-import getPreview from './getPreview';
 
 const fromProps = (props) => {
 	if (!props) return null;
