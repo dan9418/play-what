@@ -1,13 +1,13 @@
-import DegreeUtils from '@pw/core/src/models/DegreeUtils';
-import GroupUtils from '@pw/core/src/models/GroupUtils';
-import IntervalChordUtils from '@pw/core/src/models/IntervalChordUtils';
-import IntervalScaleUtils from '@pw/core/src/models/IntervalScaleUtils';
-import IntervalUtils from '@pw/core/src/models/IntervalUtils';
-import NoteChordUtils from '@pw/core/src/models/NoteChordUtils';
-import NoteScaleUtils from '@pw/core/src/models/NoteScaleUtils';
-import NoteUtils from '@pw/core/src/models/NoteUtils';
-import PitchUtils from '@pw/core/src/models/PitchUtils';
-import RelativeChordUtils from '@pw/core/src/models/RelativeChordUtils';
+import DegreeUtils from '@pw/core/src/models/Degree.utils';
+import GroupUtils from '@pw/core/src/models/Group.utils';
+import IntervalChordUtils from '@pw/core/src/models/IntervalChord.utils';
+import IntervalScaleUtils from '@pw/core/src/models/IntervalScale.utils';
+import IntervalUtils from '@pw/core/src/models/Interval.utils';
+import NoteChordUtils from '@pw/core/src/models/NoteChord.utils';
+import NoteScaleUtils from '@pw/core/src/models/NoteScale.utils';
+import NoteUtils from '@pw/core/src/models/Note.utils';
+import PitchUtils from '@pw/core/src/models/Pitch.utils';
+import RelativeChordUtils from '@pw/core/src/models/RelativeChord.utils';
 import { STRUCT_ID } from './STRUCT';
 
 /*

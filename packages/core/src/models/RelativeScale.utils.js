@@ -1,5 +1,5 @@
-import IntervalScaleUtils from "./IntervalScaleUtils";
-import NoteUtils from "./NoteUtils";
+import IntervalScaleUtils from "./IntervalScale.utils";
+import NoteUtils from "./Note.utils";
 
 const getName = (data) => {
 	const kcName = NoteUtils.getName(data.keyCenter);

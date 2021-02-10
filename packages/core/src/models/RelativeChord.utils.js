@@ -1,6 +1,6 @@
-import IntervalChordUtils from "./IntervalChordUtils";
-import IntervalUtils from "./IntervalUtils";
-import NoteUtils from "./NoteUtils";
+import IntervalChordUtils from "./IntervalChord.utils";
+import IntervalUtils from "./Interval.utils";
+import NoteUtils from "./Note.utils";
 
 const getName = (data) => {
 	const kcName = NoteUtils.getName(data.keyCenter);
