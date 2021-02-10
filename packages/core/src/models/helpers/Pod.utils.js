@@ -1,4 +1,4 @@
-import CoreUtils from '../Core.utils';
+import CoreUtils from '../../Core.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
