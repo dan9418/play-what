@@ -11,7 +11,7 @@ export const VIEWER = {
 		id: 'fretboard',
 		name: 'Fretboard',
 		component: Fretboard,
-		panelComponent: FretboardPanel,
+		panelComponent: null,
 		presets: [
 			{
 				id: 'default',

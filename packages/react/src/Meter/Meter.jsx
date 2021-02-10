@@ -46,7 +46,7 @@ const DotList = ({ pods, podType }) => {
 		if (!style.backgroundColor) style.backgroundColor = BLACK_KEY_INDICES.includes(CoreUtils.modulo(i, 12)) ? 'white' : 'black'
 		//style.color = '#ccc';
 
-		const podName = pod ? PodUtils.getName(pod, { podType }) : null;
+		const podName = null;
 
 		list.push(<div className='dot' style={style} key={i}>{podName}</div>);
 	}

@@ -1,10 +1,8 @@
 import CoreUtils from './Core.utils';
-import { INTERVAL_VALUES, NOTE_VALUES } from './Pod.presets';
 import TheoryUtils from './Theory.utils';
 
 const MAX = [12, 7];
 const DEFAULT_POD = [0, 0];
-
 class PodUtils {
 
 	static areEqual(a, b) {
@@ -29,48 +27,8 @@ class PodUtils {
 		return [p, d];
 	}
 
-	static getPresets(options = {}) {
-		if (options.podType === 'note') {
-			return NOTE_VALUES;
-		}
-		else if (options.podType === 'interval') {
-			return INTERVAL_VALUES;
-		}
-		return [];
-	}
-
-	static findPreset(pod, options = {}) {
-		let data = []
-		if (options.podType === 'note') {
-			data = NOTE_VALUES;
-		}
-		else if (options.podType === 'interval') {
-			data = INTERVAL_VALUES;
-		}
-		return data.find(d => PodUtils.areEqual(pod, d.value)) || null;
-	}
-
 	static getName(pod, options = {}) {
-		const { podType } = options;
-		const reduced = this.reduce(pod);
-
-		if (podType === 'interval') {
-			return TheoryUtils.getIntervalName(reduced);
-		}
-		else if (podType === 'note') {
-			return TheoryUtils.getNoteName(reduced);
-		}
-		else return '?';
-	}
-
-	static getProperty(pod, property) {
-		if (!pod) return null;
-		if (property === 'name') return '?';
-		else if (property === 'degree') return pod[1];
-		else if (property === 'pitch') return pod[0];
-		else if (property === 'pitchClass') return this.getPitchClass(pod);
-		else if (property === 'octave') return this.getOctave(pod);
-		return null;
+		return 'lilbitch';
 	}
 
 	static getPitchClass(pod, options = {}) {
