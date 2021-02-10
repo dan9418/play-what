@@ -1,4 +1,4 @@
-import { SOURCES } from "@pw/core/src/Pod.constants";
+/*import { SOURCES } from "@pw/core/src/Pod.constants";
 import * as React from "react";
 import DropdownInput from "../ui/DropdownInput/DropdownInput";
 import NumericInput from "../ui/NumericInput/NumericInput";
@@ -50,10 +50,10 @@ export const FretboardPanel = props => {
 				<div>Property</div>
 				<DropdownInput options={colorSourceDef.properties} value={colorPropertyDef} setValue={v => setViewerProp('colorProperty', v.id)} />
 			</div>
-			{/*<div className='input-bar'>
+			<div className='input-bar'>
 				<div>Scheme</div>
 				<DropdownInput options={colorPropertyDef.schemes} value={colorSchemeDef} setValue={v => setViewerProp('colorScheme', v.value)} />
-			</div>*/}
+			</div>
 			<div className='input-bar-header'>
 				Label
 			</div>
@@ -70,4 +70,4 @@ export const FretboardPanel = props => {
 	);
 }
 
-export default FretboardPanel;
+export default FretboardPanel;*/
