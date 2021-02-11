@@ -90,5 +90,6 @@ export default {
 	getPitchClass,
 	getOctave,
 	getDegree,
-	getX
+	getX,
+	findPodWithPitchClass
 };
