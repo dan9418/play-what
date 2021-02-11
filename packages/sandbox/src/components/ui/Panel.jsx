@@ -1,8 +1,8 @@
-import { ButtonInput } from '@pw/react';
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../contexts/EditContext";
 import { usePathContext } from '../../contexts/PathContext';
+import ButtonInput from "./ButtonInput/ButtonInput";
 import Icon from "./Icon";
 
 const StyledPanelHeader = styled.div`

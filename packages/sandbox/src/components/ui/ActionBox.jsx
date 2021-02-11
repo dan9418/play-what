@@ -1,8 +1,8 @@
-import CloseButton from "@pw/react/src/ui/ButtonInput/CloseButton";
-import TextButton from "@pw/react/src/ui/ButtonInput/TextButton";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
+import CloseButton from "./ButtonInput/CloseButton";
+import TextButton from "./ButtonInput/TextButton";
 
 const StyledActionBox = styled.div`
 	width: 100%;

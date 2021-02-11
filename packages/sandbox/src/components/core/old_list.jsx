@@ -1,9 +1,9 @@
-import ButtonInput from "@pw/react/src/ui/ButtonInput/ButtonInput";
 import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
 import Icon from "../ui/Icon";
 import PanelDelegator from "../config/Explore/PanelDelegator";
+import ButtonInput from "../ui/ButtonInput/ButtonInput";
 
 export const getListHelpers = (list, setList, i) => {
 	const isLast = i === list.length - 1;

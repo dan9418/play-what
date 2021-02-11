@@ -1,9 +1,9 @@
-import EditButton from '@pw/react/src/ui/ButtonInput/EditButton';
-import ExpandButton from '@pw/react/src/ui/ButtonInput/ExpandButton';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { EditContextProvider } from '../../contexts/EditContext';
 import ActionBox from './ActionBox';
+import EditButton from './ButtonInput/EditButton';
+import ExpandButton from './ButtonInput/ExpandButton';
 
 const StyledSubpanelHeader = styled.h3`
 	width: 100%;

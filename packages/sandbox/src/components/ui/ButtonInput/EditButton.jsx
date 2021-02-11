@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from '../../../../sandbox/src/components/ui/Icon';
-import useEditContext from '../../../../sandbox/src/contexts/EditContext';
+import Icon from '../Icon';
+import useEditContext from '../../../contexts/EditContext';
 import ButtonInput from './ButtonInput';
 
 const EditButton = props => {
