@@ -1,6 +1,6 @@
 import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
-import Table from "../ui/Table";
+import Table from "../Table";
 import { getCaption, getName, getPreview } from './getPanelProps';
 
 const fromProps = (props) => {

@@ -1,6 +1,6 @@
 import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
-import STRUCT_COMPONENT from './StructComponents';
+import STRUCT_COMPONENT from '../../core/StructComponents';
 
 const getPanelContent = (modelData, modelId) => {
 	const model = MODEL[modelId];

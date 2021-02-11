@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import getPanelContent from '../core/getPanelContent';
-import getPanelProps from '../core/getPanelProps';
+import getPanelContent from '../ui/layout/getPanelContent';
+import getPanelProps from '../ui/layout/getPanelProps';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`

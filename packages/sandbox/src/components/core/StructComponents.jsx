@@ -3,8 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Subpanel from '../ui/layout/Subpanel';
-import getPanelProps from './getPanelProps';
-import getSubpanelContent from './getSubpanelContent';
+import getPanelProps from '../ui/layout/getPanelProps';
+import getSubpanelContent from '../ui/layout/getSubpanelContent';
 
 const StyledTypeRow = styled.div`
 	display: flex;
