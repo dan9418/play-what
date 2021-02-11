@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
 import getPanelProps from './getPanelProps';
 import getSubpanelContent from './getSubpanelContent';
+import { STRUCT_ID } from './STRUCT';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -17,7 +18,7 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
-export const Group = ({ modelData }) => {
+const Group = ({ modelData }) => {
 	return modelData.map((item, i) => {
 		const { modelId, modelConfig, name } = item;
 
@@ -35,7 +36,7 @@ export const Group = ({ modelData }) => {
 	})
 };
 
-export const NamedKeyedList = ({ modelData, childModelId }) => {
+const NamedKeyedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
 		const { name } = item;
 
@@ -53,7 +54,7 @@ export const NamedKeyedList = ({ modelData, childModelId }) => {
 	})
 };
 
-export const NamedList = ({ modelData, childModelId }) => {
+const NamedList = ({ modelData, childModelId }) => {
 	return modelData.items.map((item, i) => {
 
 		const subpanelProps = getPanelProps(item, childModelId);
@@ -70,7 +71,7 @@ export const NamedList = ({ modelData, childModelId }) => {
 	})
 };
 
-export const PWObject = ({ modelData, properties }) => {
+const PWObject = ({ modelData, properties }) => {
 	return properties.map((property, i) => {
 		const { name, modelId, propertyId } = property;
 		const item = modelData[propertyId];
@@ -89,7 +90,7 @@ export const PWObject = ({ modelData, properties }) => {
 	})
 };
 
-export const List = ({ modelData, childModelId }) => {
+const List = ({ modelData, childModelId }) => {
 	return modelData.map((item, i) => {
 
 		const subpanelProps = getPanelProps(item, childModelId);
@@ -106,7 +107,7 @@ export const List = ({ modelData, childModelId }) => {
 	})
 };
 
-export const LabeledList = ({ modelData, labels }) => {
+const LabeledList = ({ modelData, labels }) => {
 	return modelData.map((item, i) => {
 		const label = labels[i];
 		const { name, modelId } = label;
@@ -125,10 +126,22 @@ export const LabeledList = ({ modelData, labels }) => {
 	})
 };
 
-export const Native = ({ modelData }) => {
+const Native = ({ modelData }) => {
 	return (
 		<div>
 			{modelData}
 		</div>
 	);
 };
+
+const STRUCT_COMPONENT = {
+	[STRUCT_ID.Group]: Group,
+	[STRUCT_ID.NamedKeyedList]: NamedKeyedList,
+	[STRUCT_ID.NamedList]: NamedList,
+	[STRUCT_ID.Object]: PWObject,
+	[STRUCT_ID.List]: List,
+	[STRUCT_ID.LabeledList]: LabeledList,
+	[STRUCT_ID.Native]: Native
+};
+
+export default STRUCT_COMPONENT;

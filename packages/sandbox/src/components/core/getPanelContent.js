@@ -1,18 +1,15 @@
 import React from 'react';
 import { MODEL } from './MODEL';
-import { STRUCT } from './STRUCT';
+import STRUCT_COMPONENT from './StructComponents';
 
 const getPanelContent = (modelData, modelId) => {
 	const model = MODEL[modelId];
-	const modelStructId = model.structId;
+	const { structConfig, structId } = model;
 
-	const struct = STRUCT[modelStructId];
-
-	const { structConfig } = model;
-	const { component: Component } = struct;
+	const SructComponent = STRUCT_COMPONENT[structId];
 
 	return (
-		<Component
+		<SructComponent
 			modelData={modelData}
 			modelId={modelId}
 			{...structConfig}

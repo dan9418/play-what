@@ -1,4 +1,3 @@
-import { Group, LabeledList, List, NamedKeyedList, NamedList, Native, PWObject } from './Structs';
 
 /*
 	Defines SHAPE of data and how to NAVIGATE with a PATH_ID
@@ -18,37 +17,30 @@ export const STRUCT_ID = {
 export const STRUCT = {
 	[STRUCT_ID.Native]: {
 		structId: STRUCT_ID.Native,
-		name: 'Native',
-		component: Native
+		name: 'Native'
 	},
 	[STRUCT_ID.Object]: {
 		structId: STRUCT_ID.Object,
-		name: 'Object',
-		component: PWObject
+		name: 'Object'
 	},
 	[STRUCT_ID.List]: {
 		structId: STRUCT_ID.List,
-		name: 'List',
-		component: List
+		name: 'List'
 	},
 	[STRUCT_ID.NamedList]: {
 		structId: STRUCT_ID.NamedList,
-		name: 'Named List',
-		component: NamedList
+		name: 'Named List'
 	},
 	[STRUCT_ID.NamedKeyedList]: {
 		structId: STRUCT_ID.NamedKeyedList,
-		name: 'Named Keyed List',
-		component: NamedKeyedList
+		name: 'Named Keyed List'
 	},
 	[STRUCT_ID.LabeledList]: {
 		structId: STRUCT_ID.LabeledList,
-		name: 'Labeled List',
-		component: LabeledList
+		name: 'Labeled List'
 	},
 	[STRUCT_ID.Group]: {
 		structId: STRUCT_ID.Group,
-		name: 'Group',
-		component: Group
+		name: 'Group'
 	}
 };
