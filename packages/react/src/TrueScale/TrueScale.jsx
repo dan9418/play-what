@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonInput from '../ui/ButtonInput/ButtonInput';
+import ButtonInput from '../ui/inputs/button/ButtonInput';
 
 const TRUE_INTERVAL_MAP = [
     'P1',

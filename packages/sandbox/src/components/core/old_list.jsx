@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
 import Icon from "../ui/Icon";
 import PanelDelegator from "../config/Explore/PanelDelegator";
-import ButtonInput from "../ui/ButtonInput/ButtonInput";
+import ButtonInput from "../ui/inputs/button/ButtonInput";
 
 export const getListHelpers = (list, setList, i) => {
 	const isLast = i === list.length - 1;

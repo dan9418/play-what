@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PAGE_ID, useRouteContext } from '../../contexts/RouteContext';
-import ButtonInput from '../ui/ButtonInput/ButtonInput';
+import ButtonInput from '../ui/inputs/button/ButtonInput';
 
 const StyledAbout = styled.div`
 	h1, p, button {

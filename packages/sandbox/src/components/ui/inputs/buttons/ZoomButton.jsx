@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
-import { usePathContext } from '../../../contexts/PathContext';
-import Icon from '../Icon';
+import { usePathContext } from '../../../../contexts/PathContext';
+import Icon from '../../Icon';
 
 const StyledZoomButton = styled.button`
 	appearance: none;
