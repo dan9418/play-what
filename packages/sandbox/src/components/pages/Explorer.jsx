@@ -5,7 +5,7 @@ import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import getPanelContent from '../core/getPanelContent';
 import getPanelProps from '../core/getPanelProps';
-import Panel from '../ui/Panel';
+import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
 	.panel-body {

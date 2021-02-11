@@ -1,7 +1,7 @@
 /*import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
-import Icon from "../ui/Icon";
+import Icon from "../ui/assets/Icon";
 import PanelDelegator from "../config/Explore/PanelDelegator";
 import ButtonInput from "../ui/inputs/button/ButtonInput";
 

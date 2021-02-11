@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { EditContextProvider } from '../../contexts/EditContext';
-import EditButton from './inputs/buttons/EditButton';
-import ExpandButton from './inputs/buttons/ExpandButton';
+import { EditContextProvider } from '../../../contexts/EditContext';
+import EditButton from '../inputs/buttons/EditButton';
+import ExpandButton from '../inputs/buttons/ExpandButton';
 
 const StyledSubpanelHeader = styled.h3`
 	width: 100%;

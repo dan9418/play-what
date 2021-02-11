@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../Icon';
+import Icon from '../../assets/Icon';
 import useEditContext from '../../../../contexts/EditContext';
 import ButtonInput from './ButtonInput';
 

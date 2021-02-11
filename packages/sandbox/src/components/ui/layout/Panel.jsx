@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import { EditContextProvider } from "../../contexts/EditContext";
-import { usePathContext } from '../../contexts/PathContext';
-import ButtonInput from "./inputs/buttons/ButtonInput";
-import Icon from "./Icon";
+import { EditContextProvider } from "../../../contexts/EditContext";
+import { usePathContext } from '../../../contexts/PathContext';
+import ButtonInput from "../inputs/buttons/ButtonInput";
+import Icon from "../assets/Icon";
 
 const StyledPanelHeader = styled.div`
 	width: 100%;
