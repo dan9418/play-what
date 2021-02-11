@@ -18,7 +18,7 @@ const Viewer = () => {
 
 	return (
 		<StyledViewerContainer>
-			<Fretboard />
+			<Fretboard data={modelData} modelId={modelId} />
 		</StyledViewerContainer>
 	);
 };
