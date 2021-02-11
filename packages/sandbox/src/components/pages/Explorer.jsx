@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
+import Viewer from '../core/Viewer';
 import getPanelContent from '../ui/layout/getPanelContent';
 import getPanelProps from '../ui/layout/getPanelProps';
 import Panel from '../ui/layout/Panel';
@@ -32,6 +33,7 @@ const Explorer = () => {
 			<BreadcrumbList />
 			<Panel {...panelProps}>
 				{content}
+				<Viewer />
 			</Panel>
 		</StyledExplorer>
 	);
