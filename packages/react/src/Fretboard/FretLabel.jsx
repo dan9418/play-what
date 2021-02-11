@@ -1,3 +1,4 @@
+import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -12,10 +13,15 @@ const StyledFretLabel = styled.div`
 	background-color: ${({ $color }) => $color};
 `;
 
-const FretLabel = ({ stringTuning, stringIndex, fretIndex }) => {
+const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId }) => {
 	const noteIndex = stringTuning + fretIndex;
 
-	const color = 'white';
+	let color = 'white';
+	if (modelId === MODEL_ID.Note) {
+		if(noteIndex === data[0]) {
+			color = 'red';
+		}
+	}
 
 	return (
 		<StyledFretLabel $color={color}>

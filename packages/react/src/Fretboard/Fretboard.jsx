@@ -3,23 +3,21 @@ import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
 
-export const Fret = ({ stringTuning, stringIndex, fretIndex, FretLabel }) => {
+export const Fret = ({ FretLabel, ...rest }) => {
 	const classes = ['fret'];
-	if (fretIndex === 0)
+	if (rest.fretIndex === 0)
 		classes.push('open');
 
 	return (
 		<div className={classes.join(' ')}>
-			{false && <div className='fret-number'>{fretIndex + 1}</div>}
 			<div className='fret-string' />
-			<FretLabel stringTuning={stringTuning} stringIndex={stringIndex} fretIndex={fretIndex} />
-			{false && <div className='fret-dots'>{api.getDotsForFret(fretIndex + 1)}</div>}
+			<FretLabel {...rest} />
 		</div>
 	);
 };
 
 const getFrets = (props) => {
-	const { fretRange, tuning, FretLabel } = props;
+	const { fretRange, tuning, ...rest } = props;
 	const [lo, hi] = fretRange;
 
 	const allFrets = [];
@@ -31,7 +29,7 @@ const getFrets = (props) => {
 					stringTuning={tuning[s]}
 					stringIndex={s}
 					fretIndex={f}
-					FretLabel={FretLabel}
+					{...rest}
 				/>
 			);
 		}
