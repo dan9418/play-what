@@ -1,8 +1,8 @@
 
+import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
+import { STRUCT_ID } from '@pw/core/src/models/helpers/Struct.constants';
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { MODEL } from '../components/core/MODEL';
-import { STRUCT_ID } from '../components/core/STRUCT';
 import { dataState, pathState } from '../state/state';
 
 const getDataAtPath = (data, path) => {

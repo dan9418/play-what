@@ -1,7 +1,7 @@
+import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import Table from "../ui/Table";
 import { getCaption, getName, getPreview } from './getPanelProps';
-import { MODEL_ID } from "./MODEL";
 
 const fromProps = (props) => {
 	if (!props) return null;

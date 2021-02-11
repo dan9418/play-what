@@ -1,10 +1,10 @@
+import { STRUCT_ID } from '@pw/core/src/models/helpers/Struct.constants';
 import ZoomButton from '@pw/react/src/ui/ButtonInput/ZoomButton';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/Subpanel';
 import getPanelProps from './getPanelProps';
 import getSubpanelContent from './getSubpanelContent';
-import { STRUCT_ID } from './STRUCT';
 
 const StyledTypeRow = styled.div`
 	display: flex;

@@ -1,5 +1,6 @@
-import { MODEL, MODEL_ID } from "./MODEL";
-import { STRUCT } from "./STRUCT";
+import { MODEL, MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
+import { STRUCT } from "@pw/core/src/models/helpers/Struct.constants";
+
 
 export const getName = (data, modelId) => {
 	if (typeof data === undefined) return "No Name Data";

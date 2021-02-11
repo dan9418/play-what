@@ -1,14 +1,14 @@
-import DegreeUtils from '@pw/core/src/models/Degree.utils';
-import GroupUtils from '@pw/core/src/models/Group.utils';
-import IntervalChordUtils from '@pw/core/src/models/IntervalChord.utils';
-import IntervalScaleUtils from '@pw/core/src/models/IntervalScale.utils';
-import IntervalUtils from '@pw/core/src/models/Interval.utils';
-import NoteChordUtils from '@pw/core/src/models/NoteChord.utils';
-import NoteScaleUtils from '@pw/core/src/models/NoteScale.utils';
-import NoteUtils from '@pw/core/src/models/Note.utils';
-import PitchUtils from '@pw/core/src/models/Pitch.utils';
-import RelativeChordUtils from '@pw/core/src/models/RelativeChord.utils';
-import { STRUCT_ID } from './STRUCT';
+import DegreeUtils from '../Degree.utils';
+import GroupUtils from '../Group.utils';
+import IntervalChordUtils from '../IntervalChord.utils';
+import IntervalScaleUtils from '../IntervalScale.utils';
+import IntervalUtils from '../Interval.utils';
+import NoteChordUtils from '../NoteChord.utils';
+import NoteScaleUtils from '../NoteScale.utils';
+import NoteUtils from '../Note.utils';
+import PitchUtils from '../Pitch.utils';
+import RelativeChordUtils from '../RelativeChord.utils';
+import { STRUCT_ID } from './Struct.constants';
 
 /*
 	Defines how to INTERPRET data in the shape of the specified STRUCT_ID using the STRUCT_CONFIG

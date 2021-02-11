@@ -1,6 +1,6 @@
 import { NOTE } from "@pw/core/src/models/Note.constants";
 import { INTERVAL_CHORD } from "@pw/core/src/models/IntervalChord.constants";
-import { MODEL_ID } from "../components/core/MODEL";
+import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 
 export const TEST_SONG = {
 	name: 'Test',
