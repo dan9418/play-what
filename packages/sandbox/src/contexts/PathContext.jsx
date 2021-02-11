@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext } from 'react';
 import { useRecoilState } from 'recoil';
-import { pathState } from '../state/state';
+import { pathState } from '../state/pathState';
 
 const PathContext = createContext(null);
 

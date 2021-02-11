@@ -1,6 +1,5 @@
 
 import React from 'react';
-import 'react-hot-loader';
 import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';

@@ -289,3 +289,5 @@ export const OUT_OF_NOWHERE = {
 		}
 	]
 };
+
+export default OUT_OF_NOWHERE;
