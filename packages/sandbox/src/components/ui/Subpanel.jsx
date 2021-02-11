@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { EditContextProvider } from '../../contexts/EditContext';
-import ActionBox from './ActionBox';
-import EditButton from './ButtonInput/EditButton';
-import ExpandButton from './ButtonInput/ExpandButton';
+import EditButton from './inputs/buttons/EditButton';
+import ExpandButton from './inputs/buttons/ExpandButton';
 
 const StyledSubpanelHeader = styled.h3`
 	width: 100%;
@@ -71,7 +70,6 @@ const Subpanel = ({ name, caption, preview, editable = true, actions, children }
 				<SubpanelHeader name={name} caption={caption} preview={preview} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
 				{isOpen && (
 					<div className="subpanel-body">
-						<ActionBox actions={actions} />
 						{children}
 					</div>
 				)}

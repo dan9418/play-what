@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import styled from 'styled-components';
 import useEditContext from "../../contexts/EditContext";
 import Icon from "../ui/Icon";
@@ -71,7 +71,7 @@ const StyledPanelWrapper = styled.div`
     justify-content: center;
 	align-items: center;
 	margin: 16px 0;
-	
+
 	& .controls {
 		display: flex;
 		flex-direction: column;
@@ -88,7 +88,7 @@ const StyledPanelWrapper = styled.div`
 			fill: #fff;
 		}
 	}
-	
+
 	& button.delete {
 		display: inline-flex;
 		align-items: center;
@@ -162,3 +162,4 @@ const PanelList = ({ list, setList, listType }) => {
 };
 
 export default PanelList;
+*/

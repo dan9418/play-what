@@ -1,7 +1,7 @@
 import { STRUCT_ID } from '@pw/core/src/models/helpers/Struct.constants';
 import React from 'react';
 import styled from 'styled-components';
-import ZoomButton from '../ui/inputs/button/ZoomButton';
+import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Subpanel from '../ui/Subpanel';
 import getPanelProps from './getPanelProps';
 import getSubpanelContent from './getSubpanelContent';

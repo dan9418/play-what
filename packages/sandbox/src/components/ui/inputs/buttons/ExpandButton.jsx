@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../Icon';
+import Icon from '../../Icon';
 import ButtonInput from './ButtonInput';
 
 const ExpandButton = ({ isOpen, setIsOpen, ...props }) => {

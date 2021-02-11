@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../contexts/EditContext";
 import { usePathContext } from '../../contexts/PathContext';
-import ButtonInput from "./ButtonInput/ButtonInput";
+import ButtonInput from "./inputs/buttons/ButtonInput";
 import Icon from "./Icon";
 
 const StyledPanelHeader = styled.div`
