@@ -4,14 +4,20 @@ import { EditContextProvider } from "../../../contexts/EditContext";
 import { usePathContext } from '../../../contexts/PathContext';
 import ButtonInput from "../inputs/buttons/ButtonInput";
 import Icon from "../assets/Icon";
+import Meter from "../../../../../react/src/Meter/Meter";
+import { useDataContext } from "../../../contexts/DataContext";
 
 const StyledPanelHeader = styled.div`
 	width: 100%;
 	padding: 16px 0;
-    display: flex;
-    align-items: center;
-	justify-content: space-between;
+    
 	border-bottom: 2px solid #ccc;
+
+	> section {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 	
 	& .preview-container {
 		& .name-container {
@@ -56,21 +62,26 @@ const StyledPanelHeader = styled.div`
 
 const PanelHeader = ({ name, caption, preview }) => {
 	const pathContext = usePathContext();
-	const { pop, path } = pathContext;
+	const { modelData } = useDataContext();
+	const { pop, path, pathHead } = pathContext;
+	const { modelId } = pathHead;
 	return (
 		<StyledPanelHeader>
-			<div className='preview-container'>
-				<div className='name-container'>
-					<h3 className='name'>{name}</h3>
-					<div className='caption'>{caption}</div>
+			<section>
+				<div className='preview-container'>
+					<div className='name-container'>
+						<h3 className='name'>{name}</h3>
+						<div className='caption'>{caption}</div>
+					</div>
+					<div className='preview'>{preview}</div>
 				</div>
-				<div className='preview'>{preview}</div>
-			</div>
-			{path.length > 1 &&
-				<ButtonInput onClick={pop}>
-					<Icon iconId='delete' />
-				</ButtonInput>
-			}
+				{path.length > 1 &&
+					<ButtonInput onClick={pop}>
+						<Icon iconId='delete' />
+					</ButtonInput>
+				}
+			</section>
+			<Meter data={modelData} modelId={modelId} />
 		</StyledPanelHeader>
 	);
 };
@@ -89,7 +100,7 @@ const StyledPanel = styled.div`
 	}
 `;
 
-const Panel = ({ name, caption, preview, leftActions, rightAction,  children }) => {
+const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
 			<EditContextProvider>

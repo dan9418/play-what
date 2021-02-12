@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
-import Meter from '../../../../react/src/Meter/Meter';
 import { useDataContext } from '../../contexts/DataContext';
 import { usePathContext } from '../../contexts/PathContext';
 
@@ -19,7 +18,6 @@ const Viewer = () => {
 
 	return (
 		<StyledViewerContainer>
-			<Meter data={modelData} modelId={modelId} />
 			<Fretboard data={modelData} modelId={modelId} />
 		</StyledViewerContainer>
 	);

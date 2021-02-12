@@ -9,11 +9,11 @@ const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
 const StyledDot = styled.div`
  	${({ $color }) => $color ? `background-color: ${$color}` : ''};
-	min-height: 16px;
+	min-height: 12px;
 	width: 100%;
-	border-radius: 4px;
+	border-radius: 2px;
 	padding: 2px;
-	border: 1px solid #555;
+	border: 1px solid #333;
 	margin: 0 4px;
 	font-size: 80%;
 	display: flex;
@@ -41,7 +41,7 @@ const DotList = ({ data, modelId }) => {
 		const degree = model.utils.getDegreeAtPitch(data, i);
 		const hasDegree = degree !== null;
 
-		let color = BLACK_KEY_INDICES.includes(NumberUtils.modulo(i, 12)) ? '#eee' : '#333';
+		let color = BLACK_KEY_INDICES.includes(NumberUtils.modulo(i, 12)) ? '#fff' : '#ccc';
 		if (hasDegree) {
 			color = COLOR_SCHEME.degree[degree]
 		}
