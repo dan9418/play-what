@@ -66,11 +66,12 @@ const getX = (pod, options = {}) => {
 const getDegreeAtPitch = (pod, p) => {
 	const a = NumberUtils.modulo(pod[0], 12);
 	const b = NumberUtils.modulo(p, 12);
-	return a === b;
+	return a === b ? pod[1] : null;
 };
 
 const listGetDegreeAtPitch = (A, p) => {
-	return A.find(a => getDegreeAtPitch(a, p)) || false;
+	const pod = A.find(a => getDegreeAtPitch(a, p));
+	return pod ? pod[1] : null;
 };
 
 export default {

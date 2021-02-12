@@ -1,3 +1,4 @@
+import { COLOR_SCHEME } from "@pw/core/src/color/Color.constants";
 import ColorUtils from "@pw/core/src/color/Color.utils";
 import { MODEL, MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 import * as React from "react";
@@ -11,7 +12,7 @@ const StyledFretLabel = styled.div`
 	justify-content: center;
 	align-items: center;
 	border-radius: 100%;
-	background-color: ${({ $color }) => $color};
+	background-color: ${({ $color }) => $color ? $color : 'transparent'};
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
@@ -20,14 +21,19 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId }) => {
 
 	const model = MODEL[modelId];
 
-	let color = 'white';
-	if (model.utils.getDegreeAtPitch(data, noteIndex)) {
-		color = 'red';
+	const degree = model.utils.getDegreeAtPitch(data, noteIndex);
+	const hasDegree = degree !== null;
+
+	console.log(degree)
+
+	let color = null;
+	if (hasDegree) {
+		color = COLOR_SCHEME.degree[degree]
 	}
 
 	return (
 		<StyledFretLabel $color={color}>
-			{noteIndex}
+			{degree}
 		</StyledFretLabel>
 	);
 };
