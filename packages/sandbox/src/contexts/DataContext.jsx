@@ -74,6 +74,11 @@ const getDataAtPath = (data, path) => {
 		if (typeof node === undefined || node === null)
 			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
 	}
+
+	if (MODEL[path[path.length - 1].modelId].structId === STRUCT_ID.Object) {
+		return mergeWithOutputs(node, MODEL[path[path.length - 1].modelId].structConfig);
+	}
+
 	return node;
 };
 
