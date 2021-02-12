@@ -24,8 +24,6 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId }) => {
 	const degree = model.utils.getDegreeAtPitch(data, noteIndex);
 	const hasDegree = degree !== null;
 
-	console.log(degree)
-
 	let color = null;
 	if (hasDegree) {
 		color = COLOR_SCHEME.degree[degree]

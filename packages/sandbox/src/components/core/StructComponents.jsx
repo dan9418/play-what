@@ -71,8 +71,8 @@ const NamedList = ({ modelData, childModelId }) => {
 	})
 };
 
-const PWObject = ({ modelData, properties }) => {
-	return properties.map((property, i) => {
+const PWObject = ({ modelData, properties, outputs }) => {
+	const inputPanels = properties.map((property, i) => {
 		const { name, modelId, propertyId } = property;
 		const item = modelData[propertyId];
 
@@ -87,7 +87,39 @@ const PWObject = ({ modelData, properties }) => {
 				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
-	})
+	});
+	const outputPanels = outputs.map((output, i) => {
+		const { name, modelId, propertyId, fn, args } = output;
+
+		const processedArgs = args.map(arg => {
+			if (typeof arg === 'string' && arg.startsWith('./')) {
+				const targetId = arg.slice(2);
+				console.log('dpb', targetId, modelData)
+				return modelData[targetId];
+			}
+			return arg;
+		});
+
+		const result = fn(...processedArgs);
+
+		const subpanelProps = getPanelProps(result, modelId, name);
+		const content = getSubpanelContent(result, modelId);
+
+		return (
+			<StyledTypeRow key={propertyId}>
+				<Subpanel {...subpanelProps}>
+					{content}
+				</Subpanel>
+				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
+			</StyledTypeRow>
+		);
+	});
+	return (
+		<>
+			{inputPanels}
+			{outputPanels}
+		</>
+	);
 };
 
 const List = ({ modelData, childModelId }) => {

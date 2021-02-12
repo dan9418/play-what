@@ -27,7 +27,7 @@ const addPod = (a, b) => {
 }
 
 const addPodList = (a, B, max = MAX_POD) => {
-	const newValue = B.map((b) => this.addPod(a, b, max));
+	const newValue = B.map((b) => addPod(a, b, max));
 	return newValue;
 };
 

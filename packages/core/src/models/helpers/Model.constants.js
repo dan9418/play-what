@@ -9,6 +9,7 @@ import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
 import RelativeChordUtils from '../RelativeChord.utils';
 import { STRUCT_ID } from './Struct.constants';
+import PodUtils from './Pod.utils';
 
 /*
 	Defines how to INTERPRET data in the shape of the specified STRUCT_ID using the STRUCT_CONFIG
@@ -125,6 +126,18 @@ export const MODEL = {
 					propertyId: 'intervals',
 					modelId: MODEL_ID.IntervalChord,
 					name: 'Intervals'
+				}
+			],
+			outputs: [
+				{
+					name: 'Notes',
+					propertyId: 'notes',
+					modelId: MODEL_ID.NoteChord,
+					fn: PodUtils.addPodList,
+					args: [
+						'./root',
+						'./intervals'
+					]
 				}
 			]
 		},
