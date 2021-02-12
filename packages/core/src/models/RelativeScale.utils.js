@@ -8,9 +8,11 @@ const getName = (data) => {
 };
 const getPreview = (data) => null;
 const getCaption = (data) => null;
+const containsPitch = (data, p) => NoteUtils.containsPitch(data.root, p) || IntervalScaleUtils.containsPitch(data.intervals, p);
 
 export default {
 	getName,
 	getPreview,
-	getCaption
+	getCaption,
+	containsPitch
 }

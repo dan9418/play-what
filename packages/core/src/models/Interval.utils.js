@@ -1,3 +1,4 @@
+import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`;
@@ -36,8 +37,11 @@ const getName = (pod) => {
 	return `${qualityStr}${d + 1}`;
 }
 
+const containsPitch = (data, p) => PodUtils.containsPitch(data, p);
+
 export default {
 	getName,
 	getPreview,
-	getCaption
+	getCaption,
+	containsPitch
 }

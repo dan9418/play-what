@@ -63,22 +63,14 @@ const getX = (pod, options = {}) => {
 
 // List Search
 
-const findPodWithPitch = (A, p) => {
-	return A.find((n) => n[0] === p) || null;
+const containsPitch = (pod, p) => {
+	const a = NumberUtils.modulo(pod[0], 12);
+	const b = NumberUtils.modulo(p, 12);
+	return a === b;
 };
 
-const findIndexOfPodWithPitchClass = (A, p) => {
-	const pc = NumberUtils.modulo(p, 12);
-	return A.findIndex(pod => NumberUtils.modulo(pod[0], 12) === pc);
-};
-
-const findPodWithPitchClass = (A, p) => {
-	const pc = NumberUtils.modulo(p, 12);
-	return A.find(pod => NumberUtils.modulo(pod[0], 12) === pc) || null;
-};
-
-const findIndexOfPodWithPitch = (A, p, options) => {
-	return A.findIndex((n) => n[0] === p);
+const listContainsPitch = (A, p) => {
+	return A.find(a => containsPitch(a, p)) || false;
 };
 
 export default {
@@ -91,5 +83,6 @@ export default {
 	getOctave,
 	getDegree,
 	getX,
-	findPodWithPitchClass
+	containsPitch,
+	listContainsPitch
 };

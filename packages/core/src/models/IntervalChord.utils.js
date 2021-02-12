@@ -10,8 +10,11 @@ const getName = (data) => {
 	return preset ? preset.id : 'Untitled Chord';
 };
 
+const containsPitch = (data, p) => PodUtils.listContainsPitch(data, p);
+
 export default {
 	getName,
 	getPreview,
-	getCaption
+	getCaption,
+	containsPitch
 }

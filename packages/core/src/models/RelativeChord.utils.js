@@ -9,9 +9,11 @@ const getName = (data) => {
 };
 const getPreview = (data) => `${NoteUtils.getName(data.root)} + ${data.intervals.map(IntervalUtils.getName).join(', ')}`;
 const getCaption = (data) => null;
+const containsPitch = (data, p) => NoteUtils.containsPitch(data.root, p) || IntervalChordUtils.containsPitch(data.intervals, p);
 
 export default {
 	getName,
 	getPreview,
-	getCaption
+	getCaption,
+	containsPitch
 }

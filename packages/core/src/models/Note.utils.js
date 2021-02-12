@@ -1,4 +1,5 @@
 import { DEGREE_VALUES } from "./Degree.constants";
+import PodUtils from "./helpers/Pod.utils";
 import { ROOT_SCALE } from "./helpers/Scale.constants";
 import { ACCIDENTAL } from "./Note.constants";
 
@@ -31,8 +32,11 @@ const getName = (pod) => {
 	return `${spelling}${accidental}`;
 }
 
+const containsPitch = (data, p) => PodUtils.containsPitch(data, p);
+
 export default {
 	getName,
 	getPreview,
-	getCaption
+	getCaption,
+	containsPitch
 }

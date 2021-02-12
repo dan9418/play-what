@@ -32,8 +32,8 @@ const Explorer = () => {
 		<StyledExplorer>
 			<BreadcrumbList />
 			<Panel {...panelProps}>
-				{content}
 				<Viewer />
+				{content}
 			</Panel>
 		</StyledExplorer>
 	);
