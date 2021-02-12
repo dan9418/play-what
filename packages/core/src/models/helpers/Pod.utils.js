@@ -18,19 +18,6 @@ const areListsEqual = (A, B) => {
 	return true;
 }
 
-// Addition
-
-const addPod = (a, b) => {
-	const p = a[0] + b[0];
-	const d = a[1] + b[1];
-	return [p, d];
-}
-
-const addPodList = (a, B, max = MAX_POD) => {
-	const newValue = B.map((b) => addPod(a, b, max));
-	return newValue;
-};
-
 // Reduction
 
 const reduce = (a, max = MAX_POD) => {
@@ -38,6 +25,20 @@ const reduce = (a, max = MAX_POD) => {
 	const d = NumberUtils.modulo(a[1], max[1]);
 	return [p, d];
 }
+
+// Addition
+
+const addPod = (a, b, reduceResult = true) => {
+	const p = a[0] + b[0];
+	const d = a[1] + b[1];
+	const result = [p, d];
+	return reduceResult ? reduce(result) : result;
+}
+
+const addPodList = (a, B, max = MAX_POD) => {
+	const newValue = B.map((b) => addPod(a, b, max));
+	return newValue;
+};
 
 const reduceList = (A, max = MAX_POD) => {
 	return A.map((a) => PodUtils.reduce(a, max));

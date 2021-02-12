@@ -6,6 +6,32 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import { dataState } from '../state/dataState';
 import { pathState } from '../state/pathState';
 
+const mergeWithOutputs = (modelData, config) => {
+	const outputs = config.outputs.map((output, i) => {
+		const { propertyId, fn, args } = output;
+
+		const processedArgs = args.map(arg => {
+			if (typeof arg === 'string' && arg.startsWith('./')) {
+				const targetId = arg.slice(2);
+				return modelData[targetId];
+			}
+			return arg;
+		});
+
+		return {
+			propertyId,
+			value: fn(...processedArgs)
+		};
+	});
+
+	const returnValue = { ...modelData };
+	outputs.forEach(o => {
+		returnValue[o.propertyId] = o.value
+	});
+
+	return returnValue;
+};
+
 const getDataAtPath = (data, path) => {
 	let node = data;
 	for (let i = 0; i < path.length - 1; i++) {
@@ -17,6 +43,7 @@ const getDataAtPath = (data, path) => {
 		const { modelId } = pathHead;
 		const model = MODEL[modelId];
 		const modelStructId = model.structId;
+		const modelStructConfig = model.structConfig;
 
 		if (modelStructId === STRUCT_ID.Native) {
 			// not used - should only be leaf
@@ -24,7 +51,11 @@ const getDataAtPath = (data, path) => {
 		else if (modelStructId === STRUCT_ID.Group) {
 			node = node[targetId].modelConfig;
 		}
-		else if (modelStructId === STRUCT_ID.Object || modelStructId === STRUCT_ID.List || modelStructId === STRUCT_ID.LabeledList) {
+		else if (modelStructId === STRUCT_ID.Object) {
+			const processedData = mergeWithOutputs(node, modelStructConfig);
+			node = processedData[targetId];
+		}
+		else if (modelStructId === STRUCT_ID.List || modelStructId === STRUCT_ID.LabeledList) {
 			node = node[targetId];
 		}
 		else if (modelStructId === STRUCT_ID.NamedList) {
