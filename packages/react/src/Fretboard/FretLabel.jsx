@@ -21,7 +21,7 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId }) => {
 	const model = MODEL[modelId];
 
 	let color = 'white';
-	if (model.utils.containsPitch(data, noteIndex)) {
+	if (model.utils.getDegreeAtPitch(data, noteIndex)) {
 		color = 'red';
 	}
 

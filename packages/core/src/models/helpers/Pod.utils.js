@@ -63,14 +63,14 @@ const getX = (pod, options = {}) => {
 
 // List Search
 
-const containsPitch = (pod, p) => {
+const getDegreeAtPitch = (pod, p) => {
 	const a = NumberUtils.modulo(pod[0], 12);
 	const b = NumberUtils.modulo(p, 12);
 	return a === b;
 };
 
-const listContainsPitch = (A, p) => {
-	return A.find(a => containsPitch(a, p)) || false;
+const listGetDegreeAtPitch = (A, p) => {
+	return A.find(a => getDegreeAtPitch(a, p)) || false;
 };
 
 export default {
@@ -83,6 +83,6 @@ export default {
 	getOctave,
 	getDegree,
 	getX,
-	containsPitch,
-	listContainsPitch
+	getDegreeAtPitch,
+	listGetDegreeAtPitch
 };
