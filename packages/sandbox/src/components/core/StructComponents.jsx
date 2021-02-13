@@ -30,7 +30,7 @@ const Group = ({ modelData }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={subpanelProps.name} modelId={modelId} pathId={i} />
+				<ZoomButton modelData={modelConfig} name={subpanelProps.name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -48,7 +48,7 @@ const NamedKeyedList = ({ modelData, childModelId }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={childModelId} pathId={item.id} />
+				<ZoomButton modelData={modelData} name={name} modelId={childModelId} pathId={item.id} />
 			</StyledTypeRow>
 		);
 	})
@@ -65,7 +65,7 @@ const NamedList = ({ modelData, childModelId }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={subpanelProps.name} modelId={childModelId} pathId={i} />
+				<ZoomButton modelData={modelData} name={subpanelProps.name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -84,7 +84,7 @@ const PWObject = ({ modelData, properties, outputs }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
+				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
 	});
@@ -110,7 +110,7 @@ const PWObject = ({ modelData, properties, outputs }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={propertyId} />
+				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
 			</StyledTypeRow>
 		);
 	});
@@ -133,7 +133,7 @@ const List = ({ modelData, childModelId }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={subpanelProps.name} modelId={childModelId} pathId={i} />
+				<ZoomButton modelData={modelData} name={subpanelProps.name} modelId={childModelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
@@ -152,7 +152,7 @@ const LabeledList = ({ modelData, labels }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton name={name} modelId={modelId} pathId={i} />
+				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})
