@@ -34,6 +34,7 @@ const mergeWithOutputs = (modelData, config) => {
 
 const getDataAtPath = (data, path) => {
 	let node = data;
+	let root = null;
 	for (let i = 0; i < path.length - 1; i++) {
 		const pathHead = path[i];
 
@@ -71,27 +72,35 @@ const getDataAtPath = (data, path) => {
 			console.error('UNKNOWN STRUCT_ID', modelStructId);
 		}
 
+		if (node && node.root) {
+			root = node.root;
+		}
+
 		if (typeof node === undefined || node === null)
 			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
 	}
 
 	if (MODEL[path[path.length - 1].modelId].structId === STRUCT_ID.Object) {
-		return mergeWithOutputs(node, MODEL[path[path.length - 1].modelId].structConfig);
+		return [
+			mergeWithOutputs(node, MODEL[path[path.length - 1].modelId].structConfig),
+			root
+		];
 	}
 
-	return node;
+	return [node, root];
 };
 
 const getDataUtils = (path, data, setData) => {
 
-	const modelData = getDataAtPath(data, path);
+	const [modelData, root] = getDataAtPath(data, path);
 	const setModelData = () => console.log('not supported');
 
 	return {
 		data,
 		setData,
 		modelData,
-		setModelData
+		setModelData,
+		root
 	}
 }
 

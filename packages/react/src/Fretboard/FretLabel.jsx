@@ -23,7 +23,7 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId, pitchO
 	const model = MODEL[modelId];
 
 
-	const pod = model.utils.getPodAtPitch(data, noteIndex);
+	const pod = model.utils.getPodAtPitch(data, noteIndex - pitchOffset);
 	const hasDegree = pod !== null;
 
 	let color = null;

@@ -14,12 +14,12 @@ const StyledViewerContainer = styled.div`
 
 const Viewer = () => {
 	const { pathHead, pathParent } = usePathContext();
-	const { modelData } = useDataContext();
+	const { modelData, root } = useDataContext();
 	const { modelId, name } = pathHead;
 
 	let pitchOffset = 0;
-	if(modelId === MODEL_ID.IntervalChord || modelId === MODEL_ID.IntervalScale) {
-		pitchOffset = pathParent.modelData.root[0];
+	if(root && [MODEL_ID.Interval, MODEL_ID.IntervalChord, MODEL_ID.IntervalScale].includes(modelId)) {
+		pitchOffset = root[0];
 	}
 
 	return (
