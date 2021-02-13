@@ -1,25 +1,24 @@
 import { NOTE } from "@pw/core/src/models/Note.constants";
-import { INTERVAL_CHORD } from "@pw/core/src/models/IntervalChord.constants";
+import { INTERVAL_CHORD, INTERVAL_CHORD_VALUES } from "@pw/core/src/models/IntervalChord.constants";
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 
-export const TEST_SONG = {
-	name: 'Test',
+const ROOT_POD = NOTE.A;
+
+export const CHORDS = {
+	id: 'chords',
+	name: 'Chords',
 	modelId: MODEL_ID.Group,
-	modelConfig: [
+	modelConfig: INTERVAL_CHORD_VALUES.map(chord => (
 		{
-			name: 'Test Section A',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj7.value
-					}
-				}
-			]
+			id: chord.id,
+			name: chord.name,
+			modelId: MODEL_ID.RelativeChord,
+			modelConfig: {
+				root: ROOT_POD.value,
+				intervals: chord.value
+			}
 		}
-	]
+	))
 };
 
 export const OUT_OF_NOWHERE = {
@@ -290,4 +289,4 @@ export const OUT_OF_NOWHERE = {
 	]
 };
 
-export default OUT_OF_NOWHERE;
+export default CHORDS;
