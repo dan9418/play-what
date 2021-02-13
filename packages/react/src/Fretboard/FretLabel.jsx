@@ -2,6 +2,8 @@ import { COLOR_SCHEME } from "@pw/core/src/color/Color.constants";
 import ColorUtils from "@pw/core/src/color/Color.utils";
 import { DEGREE, DEGREE_VALUES } from "@pw/core/src/models/Degree.constants";
 import { MODEL, MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
+import IntervalUtils from "@pw/core/src/models/Interval.utils";
+import NoteUtils from "@pw/core/src/models/Note.utils";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -22,13 +24,20 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, data, modelId, pitchO
 
 	const model = MODEL[modelId];
 
-
 	const pod = model.utils.getPodAtPitch(data, noteIndex - pitchOffset);
 	const hasDegree = pod !== null;
 
 	let color = null;
 	if (hasDegree) {
 		color = COLOR_SCHEME.degree[pod[1]]
+	}
+
+	let name = null;
+	if(hasDegree) {
+		if(model.isRelative)
+			name = IntervalUtils.getName(pod);
+		else
+			name = NoteUtils.getName(pod);
 	}
 
 	return (

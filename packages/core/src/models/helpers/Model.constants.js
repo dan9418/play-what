@@ -67,6 +67,7 @@ export const MODEL = {
 		name: 'Interval',
 		modelId: MODEL_ID.Interval,
 		structId: STRUCT_ID.LabeledList,
+		isRelative: true,
 		structConfig: {
 			labels: [
 				{ pathId: 'pitch', name: 'Pitch Span', modelId: MODEL_ID.Pitch },
@@ -88,6 +89,7 @@ export const MODEL = {
 		name: 'Interval Chord',
 		modelId: MODEL_ID.IntervalChord,
 		structId: STRUCT_ID.List,
+		isRelative: true,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
 		},
@@ -106,6 +108,7 @@ export const MODEL = {
 		name: 'Interval Scale',
 		modelId: MODEL_ID.IntervalScale,
 		structId: STRUCT_ID.List,
+		isRelative: true,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
 		},
