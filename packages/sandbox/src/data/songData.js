@@ -1,6 +1,8 @@
 import { NOTE } from "@pw/core/src/models/Note.constants";
 import { INTERVAL_CHORD, INTERVAL_CHORD_VALUES } from "@pw/core/src/models/IntervalChord.constants";
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
+import { INTERVAL_SCALE_VALUES } from "@pw/core/src/models/IntervalScale.constants";
+import { OUT_OF_NOWHERE } from "./chartData";
 
 const ROOT_POD = NOTE.A;
 
@@ -21,272 +23,41 @@ export const CHORDS = {
 	))
 };
 
-export const OUT_OF_NOWHERE = {
-	id: 'outOfNowhere',
-	name: 'Out of Nowhere',
+export const SCALES = {
+	id: 'scales',
+	name: 'Scales',
+	modelId: MODEL_ID.Group,
+	modelConfig: INTERVAL_SCALE_VALUES.map(scale => (
+		{
+			id: scale.id,
+			name: scale.name,
+			modelId: MODEL_ID.RelativeChord,
+			modelConfig: {
+				root: ROOT_POD.value,
+				intervals: scale.value
+			}
+		}
+	))
+};
+
+export const CHARTS = {
+	id: 'charts',
+	name: 'Charts',
 	modelId: MODEL_ID.Group,
 	modelConfig: [
-		{
-			id: 'A',
-			name: 'Section A',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Bb.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Eb.value,
-						intervals: INTERVAL_CHORD.Dom7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.B.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.E.value,
-						intervals: INTERVAL_CHORD.Dom7b9.value,
-						t: 4
-					}
-				}
-			]
-		},
-		{
-			id: 'B',
-			name: 'Section B',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.E.value,
-						intervals: INTERVAL_CHORD.Dom7b9.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Eb.value,
-						intervals: INTERVAL_CHORD.Dom7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Bb.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.D.value,
-						intervals: INTERVAL_CHORD.Dom7b9.value,
-						t: 8
-					}
-				}
-			]
-		},
-		{
-			id: 'A\'',
-			name: 'Section A',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Bb.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Eb.value,
-						intervals: INTERVAL_CHORD.Dom7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj7.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.B.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.E.value,
-						intervals: INTERVAL_CHORD.Dom7b9.value,
-						t: 4
-					}
-				}
-			]
-		},
-		{
-			id: 'C',
-			name: 'Section C',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.E.value,
-						intervals: INTERVAL_CHORD.Dom7b9.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.C.value,
-						intervals: INTERVAL_CHORD.Min6.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.B.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 2
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.Bb.value,
-						intervals: INTERVAL_CHORD.HalfDim7.value,
-						t: 2
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 2
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.D.value,
-						intervals: INTERVAL_CHORD.Dom7.value,
-						t: 2
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.G.value,
-						intervals: INTERVAL_CHORD.Maj6.value,
-						t: 8
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.A.value,
-						intervals: INTERVAL_CHORD.Min7.value,
-						t: 4
-					}
-				},
-				{
-					modelId: MODEL_ID.RelativeChord,
-					modelConfig: {
-						root: NOTE.D.value,
-						intervals: INTERVAL_CHORD.Dom7.value,
-						t: 4
-					}
-				}
-			]
-		}
+		OUT_OF_NOWHERE
 	]
 };
 
-export default CHORDS;
+export const SONG_DATA = {
+	id: 'chords',
+	name: 'Chords',
+	modelId: MODEL_ID.Group,
+	modelConfig: [
+		CHORDS,
+		SCALES,
+		CHARTS
+	]
+};
+
+export default SONG_DATA;
