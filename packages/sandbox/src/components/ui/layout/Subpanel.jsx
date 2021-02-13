@@ -35,6 +35,12 @@ const StyledSubpanelHeader = styled.h3`
 	& button {
 		margin-left: 8px;
 	}
+
+	@media(max-width: 512px) {
+		>:nth-child(n + 2) {
+			display: none;
+		}
+	}
 `;
 
 const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, editable }) => {

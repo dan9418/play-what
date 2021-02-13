@@ -67,8 +67,8 @@ export const CHARTS = {
 };
 
 export const SONG_DATA = {
-	id: 'chords',
-	name: 'Chords',
+	id: 'Library',
+	name: 'Library',
 	modelId: MODEL_ID.Group,
 	modelConfig: [
 		CHORDS,

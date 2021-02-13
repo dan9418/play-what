@@ -18,6 +18,8 @@ const Viewer = () => {
 	const { modelId, name } = pathHead;
 	const model = MODEL[modelId];
 
+	if(modelId === MODEL_ID.Group) return null;
+
 	let pitchOffset = 0;
 	if(root && model.isRelative) {
 		pitchOffset = root[0];

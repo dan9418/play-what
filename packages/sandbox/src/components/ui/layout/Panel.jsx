@@ -29,6 +29,9 @@ const StyledPanelHeader = styled.div`
 			& > .caption {
 				padding-left: 8px;
     			color: #555;
+				@media(max-width: 512px) {
+					display: none;
+				}
 			}
 		}
 		& .preview {
@@ -87,13 +90,10 @@ const PanelHeader = ({ name, caption, preview }) => {
 };
 
 const StyledPanel = styled.div`
-    padding: 0 16px;
     width: 100%;
 	margin: 0 auto;
 	max-width: 1024px;
     border-radius: 8px;
-    //background-color: #f5f5f5;
-	//box-shadow: -2px 3px 15px 5px rgba(0, 0, 0, 0.1);
 	
 	& > .panel-body {
 		padding: 0 0 24px 0;

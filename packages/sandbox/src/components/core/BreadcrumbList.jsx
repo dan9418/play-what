@@ -10,6 +10,7 @@ const StyledBreadcrumbList = styled.ul`
 	color: #555;
 	font-size: 90%;
 	font-weight: bold;
+	white-space: nowrap;
 
 	li {
 		margin-right: 4px;
