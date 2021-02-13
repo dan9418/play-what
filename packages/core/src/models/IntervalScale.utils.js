@@ -10,11 +10,11 @@ const getName = (data) => {
 	return preset ? preset.id : 'Untitled Scale';
 };
 
-const getDegreeAtPitch = (data, p) => PodUtils.listGetDegreeAtPitch(data, p);
+const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
 
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getDegreeAtPitch
+	getPodAtPitch
 }

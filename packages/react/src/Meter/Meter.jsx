@@ -38,12 +38,12 @@ const DotList = ({ data, modelId }) => {
 
 	const list = [];
 	for (let i = 0; i < max; i++) {
-		const degree = model.utils.getDegreeAtPitch(data, i);
-		const hasDegree = degree !== null;
+		const pod = model.utils.getPodAtPitch(data, i);
+		const hasDegree = pod !== null;
 
 		let color = BLACK_KEY_INDICES.includes(NumberUtils.modulo(i, 12)) ? '#fff' : '#ccc';
 		if (hasDegree) {
-			color = COLOR_SCHEME.degree[degree]
+			color = COLOR_SCHEME.degree[pod[1]]
 		}
 
 		const podName = null;

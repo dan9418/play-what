@@ -32,11 +32,11 @@ const getName = (pod) => {
 	return `${spelling}${accidental}`;
 }
 
-const getDegreeAtPitch = (data, p) => PodUtils.getDegreeAtPitch(data, p);
+const getPodAtPitch = (data, p) => PodUtils.getPodAtPitch(data, p);
 
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getDegreeAtPitch
+	getPodAtPitch
 }

@@ -10,11 +10,11 @@ const getName = (data) => {
 };
 const getPreview = (data) => `${NoteUtils.getName(data.root)} + ${data.intervals.map(IntervalUtils.getName).join(', ')}`;
 const getCaption = (data) => null;
-const getDegreeAtPitch = (data, p) => NoteChordUtils.getDegreeAtPitch(data.notes, p);
+const getPodAtPitch = (data, p) => NoteChordUtils.getPodAtPitch(data.notes, p);
 
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getDegreeAtPitch
+	getPodAtPitch
 }

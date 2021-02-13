@@ -64,15 +64,15 @@ const getX = (pod, options = {}) => {
 
 // List Search
 
-const getDegreeAtPitch = (pod, p) => {
+const getPodAtPitch = (pod, p) => {
 	const a = NumberUtils.modulo(pod[0], 12);
 	const b = NumberUtils.modulo(p, 12);
-	return a === b ? pod[1] : null;
+	return a === b ? pod : null;
 };
 
-const listGetDegreeAtPitch = (A, p) => {
-	const pod = A.find(a => getDegreeAtPitch(a, p));
-	return pod ? pod[1] : null;
+const listGetPodAtPitch = (A, p) => {
+	const pod = A.find(a => getPodAtPitch(a, p));
+	return pod ? pod : null;
 };
 
 export default {
@@ -85,6 +85,6 @@ export default {
 	getOctave,
 	getDegree,
 	getX,
-	getDegreeAtPitch,
-	listGetDegreeAtPitch
+	getPodAtPitch,
+	listGetPodAtPitch
 };

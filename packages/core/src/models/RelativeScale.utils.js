@@ -8,11 +8,11 @@ const getName = (data) => {
 };
 const getPreview = (data) => null;
 const getCaption = (data) => null;
-const getDegreeAtPitch = (data, p) => NoteUtils.getDegreeAtPitch(data.root, p) || IntervalScaleUtils.getDegreeAtPitch(data.intervals, p);
+const getPodAtPitch = (data, p) => NoteUtils.getPodAtPitch(data.root, p) || IntervalScaleUtils.getPodAtPitch(data.intervals, p);
 
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getDegreeAtPitch
+	getPodAtPitch
 }
