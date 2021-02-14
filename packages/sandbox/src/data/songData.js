@@ -1,7 +1,7 @@
 import { NOTE } from "@pw/core/src/models/Note.constants";
-import { INTERVAL_CHORD, INTERVAL_CHORD_VALUES } from "@pw/core/src/models/RelativeChord.constants";
+import { RELATIVE_CHORD, RELATIVE_CHORD_VALUES } from "@pw/core/src/models/RelativeChord.constants";
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
-import { INTERVAL_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/RelativeScale.constants";
+import { RELATIVE_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/RelativeScale.constants";
 import { OUT_OF_NOWHERE } from "./chartData";
 
 const ROOT_POD = NOTE.A;
@@ -10,7 +10,7 @@ export const CHORDS = {
 	id: 'chords',
 	name: 'Chords',
 	modelId: MODEL_ID.Group,
-	modelConfig: INTERVAL_CHORD_VALUES.map(chord => (
+	modelConfig: RELATIVE_CHORD_VALUES.map(chord => (
 		{
 			id: chord.id,
 			name: chord.name,
@@ -27,7 +27,7 @@ export const SCALES = {
 	id: 'scales',
 	name: 'Scales',
 	modelId: MODEL_ID.Group,
-	modelConfig: INTERVAL_SCALE_VALUES.map(scale => (
+	modelConfig: RELATIVE_SCALE_VALUES.map(scale => (
 		{
 			id: scale.id,
 			name: scale.name,
