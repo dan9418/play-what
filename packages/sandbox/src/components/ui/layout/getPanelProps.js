@@ -32,7 +32,7 @@ const getPanelProps = (modelData, modelId, optionalName = null) => {
 
 	return {
 		name,
-		caption,
+		caption: name === caption ? '' : caption,
 		preview
 	};
 };

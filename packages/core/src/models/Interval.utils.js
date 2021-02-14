@@ -1,7 +1,7 @@
 import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
-const getPreview = (data) => `${data[0]} Semitones + ${data[1]} Degrees`;
+const getPreview = (data) => '1:n';
 const getCaption = (data) => null;
 
 const getIntervalOffset = (pod, coreIvl) => {

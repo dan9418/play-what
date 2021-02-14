@@ -3,7 +3,7 @@ import PodUtils from "./helpers/Pod.utils";
 import { ROOT_SCALE } from "./helpers/Scale.constants";
 import { ACCIDENTAL } from "./Note.constants";
 
-const getPreview = (data) => `Pitch ${data[0]} + Degree ${data[1]}`;
+const getPreview = (data) => 'X Hz';
 const getCaption = (data) => null;
 
 const getAccidentalOffset = (pod) => {
