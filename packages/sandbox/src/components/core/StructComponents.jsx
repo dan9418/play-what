@@ -18,6 +18,15 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
+const StyledPropertyHeader = styled.h3`
+	color: #555;
+	text-align: left;
+	width: 100%;
+	max-width: 512px;
+	text-transform: uppercase;
+	margin: 0;
+`;
+
 const Group = ({ modelData }) => {
 	return modelData.map((item, i) => {
 		const { modelId, modelConfig, name } = item;
@@ -76,16 +85,19 @@ const PWObject = ({ modelData, properties, outputs }) => {
 		const { name, modelId, propertyId } = property;
 		const item = modelData[propertyId];
 
-		const subpanelProps = getPanelProps(item, modelId, name);
+		const subpanelProps = getPanelProps(item, modelId);
 		const content = getSubpanelContent(item, modelId);
 
 		return (
-			<StyledTypeRow key={propertyId}>
-				<Subpanel {...subpanelProps}>
-					{content}
-				</Subpanel>
-				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
-			</StyledTypeRow>
+			<>
+				<StyledPropertyHeader>{name}</StyledPropertyHeader>
+				<StyledTypeRow key={propertyId}>
+					<Subpanel {...subpanelProps}>
+						{content}
+					</Subpanel>
+					<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
+				</StyledTypeRow>
+			</>
 		);
 	});
 	const outputPanels = outputs.map((output, i) => {
@@ -101,16 +113,19 @@ const PWObject = ({ modelData, properties, outputs }) => {
 
 		const result = fn(...processedArgs);
 
-		const subpanelProps = getPanelProps(result, modelId, name);
+		const subpanelProps = getPanelProps(result, modelId);
 		const content = getSubpanelContent(result, modelId);
 
 		return (
-			<StyledTypeRow key={propertyId}>
-				<Subpanel {...subpanelProps}>
-					{content}
-				</Subpanel>
-				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
-			</StyledTypeRow>
+			<>
+				<StyledPropertyHeader>{name}</StyledPropertyHeader>
+				<StyledTypeRow key={propertyId}>
+					<Subpanel {...subpanelProps}>
+						{content}
+					</Subpanel>
+					<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={propertyId} />
+				</StyledTypeRow>
+			</>
 		);
 	});
 	return (
