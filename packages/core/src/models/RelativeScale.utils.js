@@ -1,6 +1,6 @@
 import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
-import { INTERVAL_SCALE_VALUES } from "./IntervalScale.constants";
+import { INTERVAL_SCALE_VALUES } from "./RelativeScale.constants";
 
 const getPreview = (data) => data.map(IntervalUtils.getName).join(', ');
 const getCaption = (data) => null;

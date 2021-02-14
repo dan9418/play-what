@@ -122,11 +122,11 @@ const getSubpanelContent = (data, modelId) => {
 		return getNoteTables(data);
 	case MODEL_ID.Interval:
 		return getIntervalTables(data);
-	case MODEL_ID.NoteChord:
-	case MODEL_ID.IntervalChord:
+	case MODEL_ID.AbsoluteChord:
+	case MODEL_ID.RelativeChord:
 		return getChordTables(data);
-	case MODEL_ID.NoteScale:
-	case MODEL_ID.IntervalScale:
+	case MODEL_ID.AbsoluteScale:
+	case MODEL_ID.RelativeScale:
 		return getScaleTables(data);
 	case MODEL_ID.Chord:
 		return getRelativeChordTables(data);

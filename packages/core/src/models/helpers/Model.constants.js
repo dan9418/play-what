@@ -1,13 +1,13 @@
 import DegreeUtils from '../Degree.utils';
 import GroupUtils from '../Group.utils';
-import IntervalChordUtils from '../IntervalChord.utils';
-import IntervalScaleUtils from '../IntervalScale.utils';
+import RelativeChordUtils from '../RelativeChord.utils';
+import RelativeScaleUtils from '../RelativeScale.utils';
 import IntervalUtils from '../Interval.utils';
-import NoteChordUtils from '../NoteChord.utils';
-import NoteScaleUtils from '../NoteScale.utils';
+import AbsoluteChordUtils from '../AbsoluteChord.utils';
+import AbsoluteScaleUtils from '../AbsoluteScale.utils';
 import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
-import RelativeChordUtils from '../Chord.utils';
+import ChordUtils from '../Chord.utils';
 import { STRUCT_ID } from './Struct.constants';
 import PodUtils from './Pod.utils';
 
@@ -23,10 +23,10 @@ export const MODEL_ID = {
 	Note: 2,
 	Interval: 3,
 	// List
-	NoteChord: 4,
-	IntervalChord: 5,
-	NoteScale: 6,
-	IntervalScale: 7,
+	AbsoluteChord: 4,
+	RelativeChord: 5,
+	AbsoluteScale: 6,
+	RelativeScale: 7,
 	// Object
 	Chord: 8,
 	Scale: 9,
@@ -76,43 +76,43 @@ export const MODEL = {
 		},
 		utils: IntervalUtils
 	},
-	[MODEL_ID.NoteChord]: {
-		name: 'NoteChord',
-		modelId: MODEL_ID.NoteChord,
+	[MODEL_ID.AbsoluteChord]: {
+		name: 'Absolute Chord',
+		modelId: MODEL_ID.AbsoluteChord,
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
 		},
-		utils: NoteChordUtils
+		utils: AbsoluteChordUtils
 	},
-	[MODEL_ID.IntervalChord]: {
-		name: 'Interval Chord',
-		modelId: MODEL_ID.IntervalChord,
+	[MODEL_ID.RelativeChord]: {
+		name: 'Relative Chord',
+		modelId: MODEL_ID.RelativeChord,
 		structId: STRUCT_ID.List,
 		isRelative: true,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
 		},
-		utils: IntervalChordUtils
+		utils: RelativeChordUtils
 	},
-	[MODEL_ID.NoteScale]: {
-		name: 'NoteScale',
-		modelId: MODEL_ID.NoteScale,
+	[MODEL_ID.AbsoluteScale]: {
+		name: 'Absolute Scale',
+		modelId: MODEL_ID.AbsoluteScale,
 		structId: STRUCT_ID.List,
 		structConfig: {
 			childModelId: MODEL_ID.Note
 		},
-		utils: NoteScaleUtils
+		utils: AbsoluteScaleUtils
 	},
-	[MODEL_ID.IntervalScale]: {
-		name: 'Interval Scale',
-		modelId: MODEL_ID.IntervalScale,
+	[MODEL_ID.RelativeScale]: {
+		name: 'Relative Scale',
+		modelId: MODEL_ID.RelativeScale,
 		structId: STRUCT_ID.List,
 		isRelative: true,
 		structConfig: {
 			childModelId: MODEL_ID.Interval
 		},
-		utils: IntervalScaleUtils
+		utils: RelativeScaleUtils
 	},
 	[MODEL_ID.Chord]: {
 		name: 'Chord',
@@ -127,7 +127,7 @@ export const MODEL = {
 				},
 				{
 					propertyId: 'intervals',
-					modelId: MODEL_ID.IntervalChord,
+					modelId: MODEL_ID.RelativeChord,
 					name: 'Intervals'
 				}
 			],
@@ -135,7 +135,7 @@ export const MODEL = {
 				{
 					name: 'Notes',
 					propertyId: 'notes',
-					modelId: MODEL_ID.NoteChord,
+					modelId: MODEL_ID.AbsoluteChord,
 					fn: PodUtils.addPodList,
 					args: [
 						'./root',
@@ -144,7 +144,7 @@ export const MODEL = {
 				}
 			]
 		},
-		utils: RelativeChordUtils
+		utils: ChordUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',

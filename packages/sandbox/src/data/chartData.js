@@ -1,5 +1,5 @@
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
-import { INTERVAL_CHORD } from "@pw/core/src/models/IntervalChord.constants";
+import { INTERVAL_CHORD } from "@pw/core/src/models/RelativeChord.constants";
 import { NOTE } from "@pw/core/src/models/Note.constants";
 
 export const OUT_OF_NOWHERE = {

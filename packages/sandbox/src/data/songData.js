@@ -1,7 +1,7 @@
 import { NOTE } from "@pw/core/src/models/Note.constants";
-import { INTERVAL_CHORD, INTERVAL_CHORD_VALUES } from "@pw/core/src/models/IntervalChord.constants";
+import { INTERVAL_CHORD, INTERVAL_CHORD_VALUES } from "@pw/core/src/models/RelativeChord.constants";
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
-import { INTERVAL_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/IntervalScale.constants";
+import { INTERVAL_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/RelativeScale.constants";
 import { OUT_OF_NOWHERE } from "./chartData";
 
 const ROOT_POD = NOTE.A;
