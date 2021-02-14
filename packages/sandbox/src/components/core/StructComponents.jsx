@@ -94,7 +94,6 @@ const PWObject = ({ modelData, properties, outputs }) => {
 		const processedArgs = args.map(arg => {
 			if (typeof arg === 'string' && arg.startsWith('./')) {
 				const targetId = arg.slice(2);
-				console.log('dpb', targetId, modelData)
 				return modelData[targetId];
 			}
 			return arg;
