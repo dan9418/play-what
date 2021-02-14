@@ -31,7 +31,7 @@ export const SCALES = {
 		{
 			id: scale.id,
 			name: scale.name,
-			modelId: MODEL_ID.Chord,
+			modelId: MODEL_ID.Scale,
 			modelConfig: {
 				root: ROOT_POD.value,
 				intervals: scale.value
@@ -48,7 +48,7 @@ export const MODES = {
 		{
 			id: scale.id,
 			name: scale.name,
-			modelId: MODEL_ID.Chord,
+			modelId: MODEL_ID.Scale,
 			modelConfig: {
 				root: ROOT_POD.value,
 				intervals: scale.value

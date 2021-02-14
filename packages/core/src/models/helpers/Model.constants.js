@@ -146,6 +146,38 @@ export const MODEL = {
 		},
 		utils: ChordUtils
 	},
+	[MODEL_ID.Scale]: {
+		name: 'Scale',
+		modelId: MODEL_ID.Scale,
+		structId: STRUCT_ID.Object,
+		structConfig: {
+			properties: [
+				{
+					propertyId: 'root',
+					modelId: MODEL_ID.Note,
+					name: 'Root'
+				},
+				{
+					propertyId: 'intervals',
+					modelId: MODEL_ID.RelativeScale,
+					name: 'Intervals'
+				}
+			],
+			outputs: [
+				{
+					name: 'Notes',
+					propertyId: 'notes',
+					modelId: MODEL_ID.AbsoluteScale,
+					fn: PodUtils.addPodList,
+					args: [
+						'./root',
+						'./intervals'
+					]
+				}
+			]
+		},
+		utils: ChordUtils
+	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
