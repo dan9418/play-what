@@ -13,7 +13,7 @@ export const OUT_OF_NOWHERE = {
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
@@ -21,7 +21,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -29,7 +29,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
@@ -37,7 +37,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
@@ -45,7 +45,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -53,7 +53,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
@@ -68,7 +68,7 @@ export const OUT_OF_NOWHERE = {
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -76,7 +76,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
@@ -84,7 +84,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -92,7 +92,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
@@ -100,7 +100,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -108,7 +108,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
@@ -123,7 +123,7 @@ export const OUT_OF_NOWHERE = {
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
@@ -131,7 +131,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -139,7 +139,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Eb.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
@@ -147,7 +147,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj7.value,
@@ -155,7 +155,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -163,7 +163,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
@@ -178,7 +178,7 @@ export const OUT_OF_NOWHERE = {
 			modelId: MODEL_ID.Group,
 			modelConfig: [
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -186,7 +186,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.E.value,
 						intervals: INTERVAL_CHORD.Dom7b9.value,
@@ -194,7 +194,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -202,7 +202,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.C.value,
 						intervals: INTERVAL_CHORD.Min6.value,
@@ -210,7 +210,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.B.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -218,7 +218,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.Bb.value,
 						intervals: INTERVAL_CHORD.HalfDim7.value,
@@ -226,7 +226,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -234,7 +234,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7.value,
@@ -242,7 +242,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.G.value,
 						intervals: INTERVAL_CHORD.Maj6.value,
@@ -250,7 +250,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.A.value,
 						intervals: INTERVAL_CHORD.Min7.value,
@@ -258,7 +258,7 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
-					modelId: MODEL_ID.RelativeChord,
+					modelId: MODEL_ID.Chord,
 					modelConfig: {
 						root: NOTE.D.value,
 						intervals: INTERVAL_CHORD.Dom7.value,

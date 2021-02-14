@@ -7,7 +7,7 @@ import NoteChordUtils from '../NoteChord.utils';
 import NoteScaleUtils from '../NoteScale.utils';
 import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
-import RelativeChordUtils from '../RelativeChord.utils';
+import RelativeChordUtils from '../Chord.utils';
 import { STRUCT_ID } from './Struct.constants';
 import PodUtils from './Pod.utils';
 
@@ -28,8 +28,8 @@ export const MODEL_ID = {
 	NoteScale: 6,
 	IntervalScale: 7,
 	// Object
-	RelativeChord: 8,
-	RelativeScale: 9,
+	Chord: 8,
+	Scale: 9,
 	// Group
 	Group: 10
 	// Named List
@@ -114,9 +114,9 @@ export const MODEL = {
 		},
 		utils: IntervalScaleUtils
 	},
-	[MODEL_ID.RelativeChord]: {
-		name: 'Relative Chord',
-		modelId: MODEL_ID.RelativeChord,
+	[MODEL_ID.Chord]: {
+		name: 'Chord',
+		modelId: MODEL_ID.Chord,
 		structId: STRUCT_ID.Object,
 		structConfig: {
 			properties: [
