@@ -15,7 +15,7 @@ const StyledExplorer = styled.div`
 		flex-direction: column;
 
         > * {
-			margin: 16px 0;
+			margin: 9px 0;
 		}
 	}
 `;

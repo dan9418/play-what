@@ -5,30 +5,33 @@ import EditButton from '../inputs/buttons/EditButton';
 import ExpandButton from '../inputs/buttons/ExpandButton';
 
 const StyledSubpanelHeader = styled.h3`
-	width: 100%;
+	
 	padding: 8px;
-	display: flex;
-	align-items: center;
+	
 	white-space: nowrap;
 
 	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc;'}
-	
 
-	& >:nth-child(2) {
+	.top {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+	
+	.caption {
 		font-weight: normal;
 		color: #555;
 		font-size: 80%;
 		margin-left: 8px;
 	}
 
-	& >:nth-child(3) {
+	.preview {
 		font-weight: normal;
 		color: ${({ theme }) => theme.accent};
 		font-size: 70%;
-		margin-left: 8px;
 	}
 
-	& >:nth-child(4) {
+	.spacer {
 		width: 100%	
 	}
 
@@ -36,22 +39,21 @@ const StyledSubpanelHeader = styled.h3`
 		margin-left: 8px;
 	}
 
-	@media(max-width: 512px) {
-		>:nth-child(n + 2) {
-			display: none;
-		}
-	}
 `;
 
 const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, editable }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
-			<span>{name}</span>
-			<span>{caption}</span>
-			<span>{preview}</span>
-			<div />
-			{isOpen && editable && <EditButton />}
-			<ExpandButton isOpen={isOpen} setIsOpen={setIsOpen} />
+			<div className="top">
+				<span className="name">{name}</span>
+				<span className="caption">{caption}</span>
+				<div className="spacer" />
+				{isOpen && editable && <EditButton />}
+				<ExpandButton isOpen={isOpen} setIsOpen={setIsOpen} />
+			</div>
+			<div className="preview">
+				{preview}
+			</div>
 		</StyledSubpanelHeader>
 	);
 };
