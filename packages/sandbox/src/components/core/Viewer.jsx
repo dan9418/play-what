@@ -22,7 +22,7 @@ const Viewer = () => {
 
 	let pitchOffset = 0;
 	if(vars.root && model.isRelative) {
-		pitchOffset = vars.root[0];
+		pitchOffset = vars.root.value[0];
 	}
 
 	return (

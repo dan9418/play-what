@@ -72,7 +72,7 @@ export const SONG_DATA = {
 	name: 'Library',
 	modelId: MODEL_ID.Group,
 	vars: {
-		root: ROOT_POD.value
+		root: ROOT_POD
 	},
 	modelConfig: [
 		CHORDS,
