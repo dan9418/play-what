@@ -3,5 +3,5 @@ import SONG from "../data/songData";
 
 export const dataState = atom({
 	key: 'dataState',
-	default: SONG.modelConfig
+	default: SONG
 });

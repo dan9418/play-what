@@ -15,6 +15,7 @@ export const CHORDS = {
 			id: chord.id,
 			name: chord.name,
 			modelId: MODEL_ID.Chord,
+
 			modelConfig: {
 				root: ROOT_POD.value,
 				intervals: chord.value
@@ -70,6 +71,9 @@ export const SONG_DATA = {
 	id: 'Library',
 	name: 'Library',
 	modelId: MODEL_ID.Group,
+	vars: {
+		root: ROOT_POD.value
+	},
 	modelConfig: [
 		CHORDS,
 		SCALES,

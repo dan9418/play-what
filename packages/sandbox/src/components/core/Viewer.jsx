@@ -14,15 +14,15 @@ const StyledViewerContainer = styled.div`
 
 const Viewer = () => {
 	const { pathHead, pathParent } = usePathContext();
-	const { modelData, root } = useDataContext();
+	const { modelData, vars } = useDataContext();
 	const { modelId, name } = pathHead;
 	const model = MODEL[modelId];
 
 	if(modelId === MODEL_ID.Group) return null;
 
 	let pitchOffset = 0;
-	if(root && model.isRelative) {
-		pitchOffset = root[0];
+	if(vars.root && model.isRelative) {
+		pitchOffset = vars.root[0];
 	}
 
 	return (
