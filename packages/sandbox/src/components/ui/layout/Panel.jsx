@@ -76,7 +76,7 @@ const PanelHeader = ({ name, caption, preview }) => {
 					</div>
 					<div className='preview'>{preview}</div>
 				</div>
-				{path.length > 1 &&
+				{path.length > 0 &&
 					<ButtonInput onClick={pop}>
 						<Icon iconId='delete' />
 					</ButtonInput>

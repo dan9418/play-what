@@ -17,21 +17,21 @@ import PodUtils from './Pod.utils';
 
 export const MODEL_ID = {
 	// Native
-	Pitch: 0,
-	Degree: 1,
+	Pitch: 'pitch',
+	Degree: 'degree',
 	// LabeledList
-	Note: 2,
-	Interval: 3,
+	Note: 'note',
+	Interval: 'interval',
 	// List
-	AbsoluteChord: 4,
-	RelativeChord: 5,
-	AbsoluteScale: 6,
-	RelativeScale: 7,
+	AbsoluteChord: 'absChord',
+	RelativeChord: 'relChord',
+	AbsoluteScale: 'absScale',
+	RelativeScale: 'relScale',
 	// Object
-	Chord: 8,
-	Scale: 9,
+	Chord: 'chord',
+	Scale: 'scale',
 	// Group
-	Group: 10
+	Group: 'group'
 	// Named List
 	// Named Keyed List
 };

@@ -36,46 +36,19 @@ const getDataAtPath = (data, path) => {
 	let node = data;
 	let vars = data.vars || {};
 
-	for (let i = 0; i < path.length - 1; i++) {
-		const pathHead = path[i];
+	for (let i = 0; i < path.length; i++) {
+		console.log('dpb', i, node);
 
-		const target = path[i + 1];
-		const { pathId: targetId } = target;
+		const target = path[i];
+		const { pathId: targetId, modelId } = target;
 
-		const { modelId } = pathHead;
 		const model = MODEL[modelId];
-		const modelStructId = model.structId;
-		const modelStructConfig = model.structConfig;
 
-		if (modelStructId === STRUCT_ID.Native) {
-			// not used - should only be leaf
-		}
-		else if (modelStructId === STRUCT_ID.Group) {
-			node = node[targetId].modelConfig;
-		}
-		else if (modelStructId === STRUCT_ID.Object) {
-			const processedData = mergeWithOutputs(node, modelStructConfig);
-			node = processedData[targetId];
-
-			if (processedData && processedData.vars) {//untested
-				console.log("dpb vars 3", data.vars);
-				vars = { ...vars, ...processedData.vars };
-			}
-		}
-		else if (modelStructId === STRUCT_ID.List || modelStructId === STRUCT_ID.LabeledList) {
-			node = node[targetId];
-		}
-		else if (modelStructId === STRUCT_ID.NamedList) {
-			node = node.items[targetId];
-		}
-		else if (modelStructId === STRUCT_ID.KeyedList) {
-			node = node.find(s => s.id === targetId);
-		}
-		else if (modelStructId === STRUCT_ID.NamedKeyedList) {
-			node = node.items.find(s => s.id === targetId);
+		if (model.structId === STRUCT_ID.Group) {
+			node = node.modelConfig[targetId];
 		}
 		else {
-			console.error('UNKNOWN STRUCT_ID', modelStructId);
+			console.error('UNKNOWN STRUCT_ID', model.structId);
 		}
 
 		if (typeof node === undefined || node === null)
@@ -85,18 +58,15 @@ const getDataAtPath = (data, path) => {
 	return [node, vars];
 };
 
-const getDataUtils = (path, data, setData) => {
+const getDataUtils = (path, data) => {
 
 	const [modelData, vars] = getDataAtPath(data, path);
-	const setModelData = () => console.log('not supported');
 
 	return {
 		// All data
 		data,
-		setData,
 		// Level data
 		modelData,
-		setModelData,
 		vars
 	}
 }
@@ -111,7 +81,7 @@ export const DataContextProvider = ({ children }) => {
 
 	const dataContext = getDataUtils(path, data, setData);
 
-	console.log('dataContext', dataContext);
+	console.log('dpb dataContext', dataContext);
 
 	return (
 		<DataContext.Provider value={dataContext}>

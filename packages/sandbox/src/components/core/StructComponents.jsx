@@ -5,6 +5,7 @@ import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Subpanel from '../ui/layout/Subpanel';
 import getPanelProps from '../ui/layout/getPanelProps';
 import getSubpanelContent from '../ui/layout/getSubpanelContent';
+import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -31,15 +32,17 @@ const Group = ({ modelData: group }) => {
 	return group.modelConfig.map((item, i) => {
 		const { modelId, modelConfig, name } = item;
 
-		const subpanelProps = getPanelProps(modelConfig, modelId, name);
-		const content = getSubpanelContent(modelConfig, modelId);
+		const childData = modelId === MODEL_ID.Group ? item : modelConfig;
+
+		const subpanelProps = getPanelProps(childData, modelId, name);
+		const content = getSubpanelContent(childData, modelId);
 
 		return (
 			<StyledTypeRow key={i}>
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton modelData={modelConfig} name={subpanelProps.name} modelId={modelId} pathId={i} />
+				<ZoomButton modelData={childData} name={subpanelProps.name} modelId={modelId} pathId={i} />
 			</StyledTypeRow>
 		);
 	})

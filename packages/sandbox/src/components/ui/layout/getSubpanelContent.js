@@ -93,14 +93,14 @@ export const getRelativeChordTables = (data) => {
 export const getGroupTables = (data) => {
 	const props = {
 		headers: ['#', 'Name', 'Type', 'Preview'],
-		rows: data.map((item, i) => {
+		rows: data.modelConfig.map((item, i) => {
 			const { modelId, modelConfig, name } = item;
 			return {
 				cols: [
 					i + 1,
-					name || getName(modelConfig, modelId),
-					getCaption(modelConfig, modelId),
-					getPreview(modelConfig, modelId)
+					name || getName(item, modelId),
+					getCaption(item, modelId),
+					getPreview(item, modelId)
 				]
 			}
 		})
@@ -110,6 +110,7 @@ export const getGroupTables = (data) => {
 
 const getSubpanelContent = (data, modelId) => {
 	if (!data) return "No Table Data";
+	return null;
 
 	switch (modelId) {
 	case MODEL_ID.Group:

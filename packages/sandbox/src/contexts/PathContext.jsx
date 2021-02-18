@@ -28,7 +28,7 @@ export const PathContextProvider = ({ children }) => {
 
 	const pathContext = getPathUtils(path, setPath);
 
-	console.log('pathContext', pathContext);
+	console.log('dpb pathContext', pathContext);
 
 	return (
 		<PathContext.Provider value={pathContext}>
