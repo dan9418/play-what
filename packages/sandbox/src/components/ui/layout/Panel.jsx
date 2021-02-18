@@ -64,8 +64,8 @@ const StyledPanelHeader = styled.div`
 const PanelHeader = ({ name, caption, preview }) => {
 	const pathContext = usePathContext();
 	const { modelData } = useDataContext();
-	const { pop, path, pathHead } = pathContext;
-	const { modelId } = pathHead;
+	const { pop, path } = pathContext;
+	const { modelId } = modelData;
 	return (
 		<StyledPanelHeader>
 			<section>

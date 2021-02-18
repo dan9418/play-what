@@ -33,13 +33,8 @@ const mergeWithOutputs = (modelData, config) => {
 };
 
 const getDataAtPath = (data, path) => {
-	let node = data.modelConfig; // TODO always expect group at top level
-	let vars = {};
-
-	if (data && data.vars) {
-		console.log("dpb vars 1", data.vars);
-		vars = data.vars;
-	}
+	let node = data;
+	let vars = data.vars || {};
 
 	for (let i = 0; i < path.length - 1; i++) {
 		const pathHead = path[i];
@@ -57,11 +52,6 @@ const getDataAtPath = (data, path) => {
 		}
 		else if (modelStructId === STRUCT_ID.Group) {
 			node = node[targetId].modelConfig;
-
-			if (node[targetId] && node[targetId].vars) {//untested
-				console.log("dpb vars 2", data.vars);
-				vars = { ...vars, ...node[targetId].vars };
-			}
 		}
 		else if (modelStructId === STRUCT_ID.Object) {
 			const processedData = mergeWithOutputs(node, modelStructConfig);
@@ -92,13 +82,6 @@ const getDataAtPath = (data, path) => {
 			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
 	}
 
-	if (MODEL[path[path.length - 1].modelId].structId === STRUCT_ID.Object) {
-		return [
-			mergeWithOutputs(node, MODEL[path[path.length - 1].modelId].structConfig),
-			vars
-		];
-	}
-
 	return [node, vars];
 };
 
@@ -108,8 +91,10 @@ const getDataUtils = (path, data, setData) => {
 	const setModelData = () => console.log('not supported');
 
 	return {
+		// All data
 		data,
 		setData,
+		// Level data
 		modelData,
 		setModelData,
 		vars

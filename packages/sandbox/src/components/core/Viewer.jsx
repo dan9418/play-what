@@ -3,7 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
 import { useDataContext } from '../../contexts/DataContext';
-import { usePathContext } from '../../contexts/PathContext';
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -13,9 +12,8 @@ const StyledViewerContainer = styled.div`
 `;
 
 const Viewer = () => {
-	const { pathHead, pathParent } = usePathContext();
 	const { modelData, vars } = useDataContext();
-	const { modelId, name } = pathHead;
+	const { modelId } = modelData;
 	const model = MODEL[modelId];
 
 	if(modelId === MODEL_ID.Group) return null;

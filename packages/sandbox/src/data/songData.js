@@ -7,7 +7,6 @@ import { OUT_OF_NOWHERE } from "./chartData";
 const ROOT_POD = NOTE.A;
 
 export const CHORDS = {
-	id: 'chords',
 	name: 'Chords',
 	modelId: MODEL_ID.Group,
 	modelConfig: RELATIVE_CHORD_VALUES.map(chord => (
@@ -25,7 +24,6 @@ export const CHORDS = {
 };
 
 export const SCALES = {
-	id: 'scales',
 	name: 'Scales',
 	modelId: MODEL_ID.Group,
 	modelConfig: RELATIVE_SCALE_VALUES.map(scale => (
@@ -42,7 +40,6 @@ export const SCALES = {
 };
 
 export const MODES = {
-	id: 'modes',
 	name: 'Modes',
 	modelId: MODEL_ID.Group,
 	modelConfig: INTERVAL_MODE_VALUES.map(scale => (
@@ -59,7 +56,6 @@ export const MODES = {
 };
 
 export const CHARTS = {
-	id: 'charts',
 	name: 'Charts',
 	modelId: MODEL_ID.Group,
 	modelConfig: [
@@ -68,7 +64,6 @@ export const CHARTS = {
 };
 
 export const SONG_DATA = {
-	id: 'Library',
 	name: 'Library',
 	modelId: MODEL_ID.Group,
 	vars: {

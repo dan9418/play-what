@@ -27,8 +27,8 @@ const StyledPropertyHeader = styled.h3`
 	margin: 0;
 `;
 
-const Group = ({ modelData }) => {
-	return modelData.map((item, i) => {
+const Group = ({ modelData: group }) => {
+	return group.modelConfig.map((item, i) => {
 		const { modelId, modelConfig, name } = item;
 
 		const subpanelProps = getPanelProps(modelConfig, modelId, name);
