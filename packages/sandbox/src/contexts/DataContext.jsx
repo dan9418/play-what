@@ -46,10 +46,12 @@ const getDataAtPath = (data, path) => {
 		const model = MODEL[modelId];
 
 		if (model.structId === STRUCT_ID.Group) {
-			node = node.groupItems[target.pathId].groupItemData;
+			const groupItem = node.groupItems[target.pathId];
+			node = groupItem.modelId === MODEL_ID.Group ? groupItem : groupItem.groupItemData;
 		}
 		else if (model.structId === STRUCT_ID.Object) {
 			node = node[target.pathId];
+			// TODO add outputs
 		}
 		else {
 			console.error('UNKNOWN STRUCT_ID', model.structId);
