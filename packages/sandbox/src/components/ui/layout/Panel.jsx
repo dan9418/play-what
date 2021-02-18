@@ -11,8 +11,6 @@ const StyledPanelHeader = styled.div`
 	width: 100%;
 	padding: 16px 0;
     
-	border-bottom: 2px solid #ccc;
-
 	> section {
 		display: flex;
 		align-items: center;

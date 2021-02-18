@@ -9,12 +9,12 @@ const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
 const StyledDot = styled.div`
  	${({ $color }) => $color ? `background-color: ${$color}` : ''};
-	min-height: 12px;
+	min-height: 2px;
 	width: 100%;
-	border-radius: 2px;
+	//border-radius: 2px;
 	padding: 2px;
-	border: 1px solid #333;
-	margin: 0 4px;
+	//border: 1px solid #333;
+	margin: 0 2px;
 	font-size: 80%;
 	display: flex;
 	align-items: center;
@@ -23,11 +23,27 @@ const StyledDot = styled.div`
 
 const StyledMeter = styled.div`
  	margin: 16px 0 8px;
+	background-color: #bbb;
+	padding: 8px;
+	border-radius: 8px;
+
+	display: grid;
+grid-template-columns: 1fr 1fr;
+grid-gap: 8px;
+
 	.dot-list {
+		width: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 	}
+`;
+
+const StyledPD = styled.div`
+	background-color: #eee;
+	padding: 8px;
+	border-radius: 8px;
+	text-align: center;
 `;
 
 const DotList = ({ data, modelId }) => {
@@ -63,6 +79,13 @@ const Meter = (userProps) => {
 	return (
 		<StyledMeter>
 			<DotList {...props} />
+			<DotList {...props} />
+			<StyledPD>
+					p (o, pc)
+			</StyledPD>
+			<StyledPD>
+					d (x, dc)
+			</StyledPD>
 		</StyledMeter>
 	);
 }
