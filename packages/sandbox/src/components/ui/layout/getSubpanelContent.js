@@ -93,8 +93,8 @@ export const getRelativeChordTables = (data) => {
 export const getGroupTables = (data) => {
 	const props = {
 		headers: ['#', 'Name', 'Type', 'Preview'],
-		rows: data.modelConfig.map((item, i) => {
-			const { modelId, modelConfig, name } = item;
+		rows: data.groupItems.map((item, i) => {
+			const { modelId, name } = item;
 			return {
 				cols: [
 					i + 1,

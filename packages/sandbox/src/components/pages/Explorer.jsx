@@ -21,8 +21,8 @@ const StyledExplorer = styled.div`
 `;
 
 const Explorer = () => {
-	const { modelData } = useDataContext();
-	const { modelId, name } = modelData;
+	const { modelData, modelId } = useDataContext();
+	const { name } = modelData;
 
 	const panelProps = getPanelProps(modelData, modelId, name);
 	const content = getPanelContent(modelData, modelId);

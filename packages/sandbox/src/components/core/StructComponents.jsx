@@ -29,10 +29,10 @@ const StyledPropertyHeader = styled.h3`
 `;
 
 const Group = ({ modelData: group }) => {
-	return group.modelConfig.map((item, i) => {
-		const { modelId, modelConfig, name } = item;
+	return group.groupItems.map((item, i) => {
+		const { modelId, groupItemData, name } = item;
 
-		const childData = modelId === MODEL_ID.Group ? item : modelConfig;
+		const childData = modelId === MODEL_ID.Group ? item : groupItemData;
 
 		const subpanelProps = getPanelProps(childData, modelId, name);
 		const content = getSubpanelContent(childData, modelId);

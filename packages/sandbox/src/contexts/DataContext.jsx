@@ -1,5 +1,5 @@
 
-import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import { STRUCT_ID } from '@pw/core/src/models/helpers/Struct.constants';
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -37,15 +37,19 @@ const getDataAtPath = (data, path) => {
 	let vars = data.vars || {};
 
 	for (let i = 0; i < path.length; i++) {
-		console.log('dpb', i, node);
-
 		const target = path[i];
-		const { pathId: targetId, modelId } = target;
+		const parent = i === 0 ? null : path[i -1];
 
+		console.log('dpb', i, target.pathId, node);
+
+		const modelId = parent ? parent.modelId : MODEL_ID.Group;
 		const model = MODEL[modelId];
 
 		if (model.structId === STRUCT_ID.Group) {
-			node = node.modelConfig[targetId];
+			node = node.groupItems[target.pathId].groupItemData;
+		}
+		else if (model.structId === STRUCT_ID.Object) {
+			node = node[target.pathId];
 		}
 		else {
 			console.error('UNKNOWN STRUCT_ID', model.structId);
@@ -62,11 +66,15 @@ const getDataUtils = (path, data) => {
 
 	const [modelData, vars] = getDataAtPath(data, path);
 
+	// Get modelId of head, or top group if no path
+	const modelId = path.length ? path[path.length - 1].modelId : modelData.modelId;
+
 	return {
 		// All data
 		data,
 		// Level data
 		modelData,
+		modelId,
 		vars
 	}
 }
