@@ -26,7 +26,7 @@ const StyledPropertyHeader = styled.h3`
 	margin: 0;
 `;
 
-const GenericModel = ({ modelData, modelId }) => {
+const GenericModel = ({ modelData, modelId, inputs }) => {
 	const model = MODEL[modelId];
 	const children = model.getMetaChildren(modelData);
 
@@ -39,7 +39,7 @@ const GenericModel = ({ modelData, modelId }) => {
 
 		const childModel = MODEL[childModelId];
 
-		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData) : childData;
+		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData, inputs) : childData;
 
 		const subpanelProps = getPanelProps(parsedChildData, childModelId, name);
 
@@ -52,7 +52,12 @@ const GenericModel = ({ modelData, modelId }) => {
 				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
-				<ZoomButton modelData={parsedChildData} name={name} modelId={childModelId} pathId={pathId} />
+				<ZoomButton
+					modelData={parsedChildData}
+					name={name}
+					modelId={childModelId}
+					pathId={pathId}
+				/>
 			</StyledTypeRow>
 		);
 	})

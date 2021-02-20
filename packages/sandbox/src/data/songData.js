@@ -89,7 +89,7 @@ export const LIBRARY_GROUP_DATA = [
 					name: 'Out',
 					childModelId: MODEL_ID.Scale,
 					childData: {
-						root: ROOT_POD.value,
+						root: 'pw/inputs/root',
 						intervals: [[0, 0]]
 					}
 				}

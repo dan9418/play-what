@@ -20,13 +20,13 @@ const StyledExplorer = styled.div`
 `;
 
 const Explorer = () => {
-	const { pathHead } = usePathContext();
+	const { pathHead, inputs } = usePathContext();
 	const { modelData, modelId, name } = pathHead;
 
 	const panelProps = getPanelProps(modelData, modelId, name);
 	//const content = getPanelContent(modelData, modelId);
 
-	const content = <GenericModel modelData={modelData} modelId={modelId} />;
+	const content = <GenericModel modelData={modelData} modelId={modelId} inputs={inputs} />;
 
 	return (
 		<StyledExplorer>

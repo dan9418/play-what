@@ -181,10 +181,26 @@ export const MODEL = {
 		name: 'Scale',
 		modelId: MODEL_ID.Scale,
 		getChild: (data, pathId) => data[pathId],
-		getParsedModel: data => {
+		getParsedModel: (data, inputs) => {
 			const { root, intervals } = data;
+
+			let rootValue = root;
+			if (typeof root === 'string' && root.startsWith('pw/inputs/')) {
+				const target = root.slice(10);
+				console.log('target', target, rootValue);
+				for(let i = 0; i < inputs.length; i++) {
+					if(!inputs[i]) continue;
+					for(let j = 0; j < inputs[i].length; j++) {
+						if(inputs[i][j].pathId === target) {
+							rootValue = inputs[i][j].childData;
+						}
+					}
+				}
+				console.log('target', rootValue);
+			}
+
 			return {
-				root,
+				root: rootValue,
 				intervals,
 				notes: PodUtils.addPodList(root, intervals)
 			}
@@ -202,6 +218,12 @@ export const MODEL = {
 					name: 'Intervals',
 					childModelId: MODEL_ID.RelativeScale,
 					childData: data.intervals
+				},
+				{
+					pathId: 'notes',
+					name: 'Notes',
+					childModelId: MODEL_ID.AbsoluteScale,
+					childData: PodUtils.addPodList(data.root, data.intervals)
 				}
 			];
 		},
