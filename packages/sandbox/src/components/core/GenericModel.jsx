@@ -32,8 +32,6 @@ const GenericModel = ({ modelData, modelId, inputs }) => {
 
 	if (!children) return null;
 
-	console.log('dpb generic model START', modelData, modelId);
-
 	return children.map((item, i) => {
 		const { pathId, name, childModelId, childData } = item;
 
@@ -44,8 +42,6 @@ const GenericModel = ({ modelData, modelId, inputs }) => {
 		const subpanelProps = getPanelProps(parsedChildData, childModelId, name);
 
 		const content = null;
-
-		console.log('dpb generic model', item);
 
 		return (
 			<StyledTypeRow key={i}>

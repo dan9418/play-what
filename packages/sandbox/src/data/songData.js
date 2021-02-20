@@ -4,7 +4,7 @@ import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 import { RELATIVE_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/RelativeScale.constants";
 import { OUT_OF_NOWHERE } from "./chartData";
 
-const ROOT_POD = NOTE.A;
+const ROOT_POD = NOTE.C;
 
 export const CHORDS = {
 	pathId: 'chords',
@@ -16,7 +16,7 @@ export const CHORDS = {
 			name: chord.name,
 			childModelId: MODEL_ID.Chord,
 			childData: {
-				root: ROOT_POD.value,
+				root: 'pw/inputs/root',
 				intervals: chord.value
 			}
 		}
@@ -33,7 +33,7 @@ export const SCALES = {
 			name: scale.name,
 			childModelId: MODEL_ID.Scale,
 			childData: {
-				root: ROOT_POD.value,
+				root: 'pw/inputs/root',
 				intervals: scale.value
 			}
 		}
@@ -50,7 +50,7 @@ export const MODES = {
 			name: scale.name,
 			childModelId: MODEL_ID.Scale,
 			childData: {
-				root: ROOT_POD.value,
+				root: 'pw/inputs/root',
 				intervals: scale.value
 			}
 		}
@@ -66,36 +66,25 @@ export const CHARTS = {
 	]
 };
 
-export const LIBRARY_GROUP_DATA = [
-	CHORDS,
-	SCALES,
-	MODES,
-	{
-		pathId: 'test',
-		name: 'Test',
-		childModelId: MODEL_ID.Dictionary,
-		childData: {
-			inputs: [
-				{
-					pathId: 'root',
-					name: 'Root',
-					childModelId: MODEL_ID.Note,
-					childData: [1, 1]
-				}
-			],
-			outputs: [
-				{
-					pathId: 'out',
-					name: 'Out',
-					childModelId: MODEL_ID.Scale,
-					childData: {
-						root: 'pw/inputs/root',
-						intervals: [[0, 0]]
-					}
-				}
-			]
-		}
+export const LIBRARY_PATH_ROOT = {
+	pathId: 'library',
+	name: 'Library',
+	modelId: MODEL_ID.Dictionary,
+	modelData: {
+		inputs: [
+			{
+				pathId: 'root',
+				name: 'Root',
+				childModelId: MODEL_ID.Note,
+				childData: ROOT_POD.value
+			}
+		],
+		outputs: [
+			CHORDS,
+			SCALES,
+			MODES
+		]
 	}
-];
+}
 
-export default LIBRARY_GROUP_DATA;
+export default LIBRARY_PATH_ROOT;

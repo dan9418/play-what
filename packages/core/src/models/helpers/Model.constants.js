@@ -145,10 +145,24 @@ export const MODEL = {
 		name: 'Chord',
 		modelId: MODEL_ID.Chord,
 		getChild: (data, pathId) => data[pathId],
-		getParsedModel: data => {
+		getParsedModel: (data, inputs) => {
 			const { root, intervals } = data;
+
+			let rootValue = root;
+			if (typeof root === 'string' && root.startsWith('pw/inputs/')) {
+				const target = root.slice(10);
+				for (let i = 0; i < inputs.length; i++) {
+					if (!inputs[i]) continue;
+					for (let j = 0; j < inputs[i].length; j++) {
+						if (inputs[i][j].pathId === target) {
+							rootValue = inputs[i][j].childData;
+						}
+					}
+				}
+			}
+
 			return {
-				root,
+				root: rootValue,
 				intervals,
 				notes: PodUtils.addPodList(root, intervals)
 			}
@@ -187,16 +201,14 @@ export const MODEL = {
 			let rootValue = root;
 			if (typeof root === 'string' && root.startsWith('pw/inputs/')) {
 				const target = root.slice(10);
-				console.log('target', target, rootValue);
-				for(let i = 0; i < inputs.length; i++) {
-					if(!inputs[i]) continue;
-					for(let j = 0; j < inputs[i].length; j++) {
-						if(inputs[i][j].pathId === target) {
+				for (let i = 0; i < inputs.length; i++) {
+					if (!inputs[i]) continue;
+					for (let j = 0; j < inputs[i].length; j++) {
+						if (inputs[i][j].pathId === target) {
 							rootValue = inputs[i][j].childData;
 						}
 					}
 				}
-				console.log('target', rootValue);
 			}
 
 			return {
