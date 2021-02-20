@@ -179,10 +179,16 @@ export const GenericModel = ({ modelData, modelId }) => {
 	const model = MODEL[modelId];
 	const children = model.getMetaChildren(modelData);
 
+	if (!children) return null;
+
+	console.log('dpb generic model START', modelData, modelId);
+
 	return children.map((item, i) => {
 		const { pathId, name, childModelId, childData } = item;
 
 		const content = null;
+
+		console.log('dpb generic model', item);
 
 		return (
 			<StyledTypeRow key={i}>

@@ -63,8 +63,7 @@ const StyledPanelHeader = styled.div`
 
 const PanelHeader = ({ name, caption, preview }) => {
 	const pathContext = usePathContext();
-	const { modelData, modelId } = useDataContext();
-	const { pop, path } = pathContext;
+	const { pop, path, pathHead } = pathContext;
 	return (
 		<StyledPanelHeader>
 			<section>
@@ -81,7 +80,7 @@ const PanelHeader = ({ name, caption, preview }) => {
 					</ButtonInput>
 				}
 			</section>
-			<Meter data={modelData} modelId={modelId} />
+			<Meter data={pathHead.modelData} modelId={pathHead.modelId} />
 		</StyledPanelHeader>
 	);
 };

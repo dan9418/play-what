@@ -169,6 +169,12 @@ export const MODEL = {
 					name: 'Intervals',
 					childModelId: MODEL_ID.RelativeChord,
 					childData: data.intervals
+				},
+				{
+					pathId: 'notes',
+					name: 'Notes',
+					childModelId: MODEL_ID.AbsoluteChord,
+					childData: PodUtils.addPodList(data.root, data.intervals)
 				}
 			];
 		},

@@ -13,13 +13,15 @@ const getPathUtils = (path, setPath) => {
 	const popAt = n => setPath(path.slice(0, n + 1));
 	const push = p => setPath([...path, p]);
 	const reset = () => setPath([]);
+	const pathHead = path[path.length - 1];
 
 	return {
 		path,
 		pop,
 		popAt,
 		push,
-		reset
+		reset,
+		pathHead
 	}
 }
 
