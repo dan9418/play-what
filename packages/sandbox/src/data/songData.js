@@ -69,8 +69,33 @@ export const CHARTS = {
 export const LIBRARY_GROUP_DATA = [
 	CHORDS,
 	SCALES,
-	MODES
-	//CHARTS
+	MODES,
+	{
+		pathId: 'test',
+		name: 'Test',
+		childModelId: MODEL_ID.Dictionary,
+		childData: {
+			inputs: [
+				{
+					pathId: 'root',
+					name: 'Root',
+					childModelId: MODEL_ID.Note,
+					childData: [1, 1]
+				}
+			],
+			outputs: [
+				{
+					pathId: 'out',
+					name: 'Out',
+					childModelId: MODEL_ID.Scale,
+					childData: {
+						root: ROOT_POD.value,
+						intervals: [[0, 0]]
+					}
+				}
+			]
+		}
+	}
 ];
 
 export default LIBRARY_GROUP_DATA;

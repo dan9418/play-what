@@ -9,26 +9,21 @@ import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
 import ChordUtils from '../Chord.utils';
 import PodUtils from './Pod.utils';
+import DictionaryUtils from '../Dictionary.utils';
 
 export const MODEL_ID = {
-	// Native
 	Pitch: 'pitch',
 	Degree: 'degree',
-	// LabeledList
 	Note: 'note',
 	Interval: 'interval',
-	// List
 	AbsoluteChord: 'absChord',
 	RelativeChord: 'relChord',
 	AbsoluteScale: 'absScale',
 	RelativeScale: 'relScale',
-	// Object
 	Chord: 'chord',
 	Scale: 'scale',
-	// Group
-	Group: 'group'
-	// Named List
-	// Named Keyed List
+	Group: 'group',
+	Dictionary: 'dict'
 };
 
 export const MODEL = {
@@ -211,6 +206,28 @@ export const MODEL = {
 			];
 		},
 		utils: ChordUtils
+	},
+	[MODEL_ID.Dictionary]: {
+		name: 'Dictionary',
+		modelId: MODEL_ID.Dictionary,
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return [
+				{
+					pathId: 'in',
+					name: 'Inputs',
+					childModelId: MODEL_ID.Group,
+					childData: data.inputs
+				},
+				{
+					pathId: 'out',
+					name: 'Outputs',
+					childModelId: MODEL_ID.Group,
+					childData: data.outputs
+				}
+			];
+		},
+		utils: DictionaryUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
