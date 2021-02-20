@@ -5,7 +5,7 @@ import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Subpanel from '../ui/layout/Subpanel';
 import getPanelProps from '../ui/layout/getPanelProps';
 import getSubpanelContent from '../ui/layout/getSubpanelContent';
-import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -170,6 +170,26 @@ const LabeledList = ({ modelData, labels }) => {
 					{content}
 				</Subpanel>
 				<ZoomButton modelData={modelData} name={name} modelId={modelId} pathId={i} />
+			</StyledTypeRow>
+		);
+	})
+};
+
+export const GenericModel = ({ modelData, modelId }) => {
+	const model = MODEL[modelId];
+	const children = model.getMetaChildren(modelData);
+
+	return children.map((item, i) => {
+		const { pathId, name, childModelId, childData } = item;
+
+		const content = null;
+
+		return (
+			<StyledTypeRow key={i}>
+				<Subpanel name={name} preview={null} caption={childModelId}>
+					{content}
+				</Subpanel>
+				<ZoomButton modelData={childData} name={name} modelId={childModelId} pathId={pathId} />
 			</StyledTypeRow>
 		);
 	})

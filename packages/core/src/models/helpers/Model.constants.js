@@ -40,67 +40,100 @@ export const MODEL = {
 	[MODEL_ID.Pitch]: {
 		name: 'Pitch',
 		modelId: MODEL_ID.Pitch,
-		structId: STRUCT_ID.Native,
-		structConfig: {},
+		getChild: (data, pathId) => null,
+		getMetaChildren: data => null,
 		utils: PitchUtils
 	},
 	[MODEL_ID.Degree]: {
 		name: 'Degree',
 		modelId: MODEL_ID.Degree,
-		structId: STRUCT_ID.Native,
-		structConfig: {},
+		getChild: (data, pathId) => null,
+		getMetaChildren: data => null,
 		utils: DegreeUtils
 	},
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,
-		structId: STRUCT_ID.LabeledList,
-		structConfig: {
-			labels: [
-				{ name: 'Pitch', modelId: MODEL_ID.Pitch },
-				{ name: 'Degree', modelId: MODEL_ID.Degree }
-			]
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return [
+				{
+					pathId: 0,
+					name: 'Pitch',
+					childModelId: MODEL_ID.Pitch,
+					childData: data[0]
+				},
+				{
+					pathId: 1,
+					name: 'Degree',
+					childModelId: MODEL_ID.Degree,
+					childData: data[0]
+				}
+			];
 		},
 		utils: NoteUtils
 	},
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
 		modelId: MODEL_ID.Interval,
-		structId: STRUCT_ID.LabeledList,
-		isRelative: true,
-		structConfig: {
-			labels: [
-				{ pathId: 'pitch', name: 'Pitch Span', modelId: MODEL_ID.Pitch },
-				{ pathId: 'degree', name: 'Degree Span', modelId: MODEL_ID.Degree }
-			]
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return [
+				{
+					pathId: 0,
+					name: 'Pitch Span',
+					childModelId: MODEL_ID.Pitch,
+					childData: data[0]
+				},
+				{
+					pathId: 1,
+					name: 'Degree Span',
+					childModelId: MODEL_ID.Degree,
+					childData: data[0]
+				}
+			];
 		},
 		utils: IntervalUtils
 	},
 	[MODEL_ID.AbsoluteChord]: {
 		name: 'Absolute Chord',
 		modelId: MODEL_ID.AbsoluteChord,
-		structId: STRUCT_ID.List,
-		structConfig: {
-			childModelId: MODEL_ID.Note
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return data.map((d, i) => ({
+				pathId: i,
+				name: 'Note ' + i,
+				childModelId: MODEL_ID.Note,
+				childData: d
+			}));
 		},
 		utils: AbsoluteChordUtils
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
 		modelId: MODEL_ID.RelativeChord,
-		structId: STRUCT_ID.List,
-		isRelative: true,
-		structConfig: {
-			childModelId: MODEL_ID.Interval
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return data.map((d, i) => ({
+				pathId: i,
+				name: 'Interval ' + i,
+				childModelId: MODEL_ID.Interval,
+				childData: d
+			}));
 		},
 		utils: RelativeChordUtils
 	},
 	[MODEL_ID.AbsoluteScale]: {
 		name: 'Absolute Scale',
 		modelId: MODEL_ID.AbsoluteScale,
-		structId: STRUCT_ID.List,
-		structConfig: {
-			childModelId: MODEL_ID.Note
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return data.map((d, i) => ({
+				pathId: i,
+				name: 'Note ' + i,
+				childModelId: MODEL_ID.Note,
+				childData: d
+			}));
 		},
 		utils: AbsoluteScaleUtils
 	},
@@ -108,81 +141,66 @@ export const MODEL = {
 		name: 'Relative Scale',
 		modelId: MODEL_ID.RelativeScale,
 		structId: STRUCT_ID.List,
-		isRelative: true,
-		structConfig: {
-			childModelId: MODEL_ID.Interval
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return data.map((d, i) => ({
+				pathId: i,
+				name: 'Interval ' + i,
+				childModelId: MODEL_ID.Interval,
+				childData: d
+			}));
 		},
 		utils: RelativeScaleUtils
 	},
 	[MODEL_ID.Chord]: {
 		name: 'Chord',
 		modelId: MODEL_ID.Chord,
-		structId: STRUCT_ID.Object,
-		structConfig: {
-			properties: [
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return [
 				{
-					propertyId: 'root',
-					modelId: MODEL_ID.Note,
-					name: 'Root'
+					pathId: 'root',
+					name: 'Root',
+					childModelId: MODEL_ID.Note,
+					childData: data.root
 				},
 				{
-					propertyId: 'intervals',
-					modelId: MODEL_ID.RelativeChord,
-					name: 'Intervals'
+					pathId: 'intervals',
+					name: 'Intervals',
+					childModelId: MODEL_ID.RelativeChord,
+					childData: data.intervals
 				}
-			],
-			outputs: [
-				{
-					name: 'Notes',
-					propertyId: 'notes',
-					modelId: MODEL_ID.AbsoluteChord,
-					fn: PodUtils.addPodList,
-					args: [
-						'./root',
-						'./intervals'
-					]
-				}
-			]
+			];
 		},
 		utils: ChordUtils
 	},
 	[MODEL_ID.Scale]: {
 		name: 'Scale',
 		modelId: MODEL_ID.Scale,
-		structId: STRUCT_ID.Object,
-		structConfig: {
-			properties: [
+		getChild: (data, pathId) => data[pathId],
+		getMetaChildren: data => {
+			return [
 				{
-					propertyId: 'root',
-					modelId: MODEL_ID.Note,
-					name: 'Root'
+					pathId: 'root',
+					name: 'Root',
+					childModelId: MODEL_ID.Note,
+					childData: data.root
 				},
 				{
-					propertyId: 'intervals',
-					modelId: MODEL_ID.RelativeScale,
-					name: 'Intervals'
+					pathId: 'intervals',
+					name: 'Intervals',
+					childModelId: MODEL_ID.RelativeScale,
+					childData: data.intervals
 				}
-			],
-			outputs: [
-				{
-					name: 'Notes',
-					propertyId: 'notes',
-					modelId: MODEL_ID.AbsoluteScale,
-					fn: PodUtils.addPodList,
-					args: [
-						'./root',
-						'./intervals'
-					]
-				}
-			]
+			];
 		},
 		utils: ChordUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
-		structId: STRUCT_ID.Group,
-		structConfig: {},
+		getChild: (data, pathId) => data.groupItems.find(item => item.pathId === pathId),
+		getMetaChildren: data => data.groupItems,
 		utils: GroupUtils
 	}
 };
