@@ -2,6 +2,7 @@ import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
+import getPanelProps from '../ui/layout/getPanelProps';
 import Subpanel from '../ui/layout/Subpanel';
 
 const StyledTypeRow = styled.div`
@@ -40,13 +41,15 @@ const GenericModel = ({ modelData, modelId }) => {
 
 		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData) : childData;
 
+		const subpanelProps = getPanelProps(parsedChildData, childModelId, name);
+
 		const content = null;
 
 		console.log('dpb generic model', item);
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel name={name} preview={null} caption={childModelId}>
+				<Subpanel {...subpanelProps}>
 					{content}
 				</Subpanel>
 				<ZoomButton modelData={parsedChildData} name={name} modelId={childModelId} pathId={pathId} />
