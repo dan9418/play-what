@@ -4,7 +4,7 @@ import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
 import { RELATIVE_SCALE_VALUES, INTERVAL_MODE_VALUES } from "@pw/core/src/models/RelativeScale.constants";
 import { OUT_OF_NOWHERE } from "./chartData";
 
-const ROOT_POD = NOTE.C;
+const ROOT_POD = NOTE.D;
 
 export const CHORDS = {
 	pathId: 'chords',
