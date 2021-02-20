@@ -36,6 +36,10 @@ const GenericModel = ({ modelData, modelId }) => {
 	return children.map((item, i) => {
 		const { pathId, name, childModelId, childData } = item;
 
+		const childModel = MODEL[childModelId];
+
+		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData) : childData;
+
 		const content = null;
 
 		console.log('dpb generic model', item);
@@ -45,7 +49,7 @@ const GenericModel = ({ modelData, modelId }) => {
 				<Subpanel name={name} preview={null} caption={childModelId}>
 					{content}
 				</Subpanel>
-				<ZoomButton modelData={childData} name={name} modelId={childModelId} pathId={pathId} />
+				<ZoomButton modelData={parsedChildData} name={name} modelId={childModelId} pathId={pathId} />
 			</StyledTypeRow>
 		);
 	})

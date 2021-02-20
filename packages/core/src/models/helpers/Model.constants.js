@@ -150,6 +150,14 @@ export const MODEL = {
 		name: 'Chord',
 		modelId: MODEL_ID.Chord,
 		getChild: (data, pathId) => data[pathId],
+		getParsedModel: data => {
+			const { root, intervals } = data;
+			return {
+				root,
+				intervals,
+				notes: PodUtils.addPodList(root, intervals)
+			}
+		},
 		getMetaChildren: data => {
 			return [
 				{
@@ -178,6 +186,14 @@ export const MODEL = {
 		name: 'Scale',
 		modelId: MODEL_ID.Scale,
 		getChild: (data, pathId) => data[pathId],
+		getParsedModel: data => {
+			const { root, intervals } = data;
+			return {
+				root,
+				intervals,
+				notes: PodUtils.addPodList(root, intervals)
+			}
+		},
 		getMetaChildren: data => {
 			return [
 				{

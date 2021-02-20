@@ -10,7 +10,7 @@ const getName = (data) => {
 };
 const getPreview = (data) => `${NoteUtils.getName(data.root)} + ${data.intervals.map(IntervalUtils.getName).join(', ')}`;
 const getCaption = (data) => null;
-const getPodAtPitch = (data, p) => AbsoluteChordUtils.getPodAtPitch(data.intervals, p);
+const getPodAtPitch = (data, p) => AbsoluteChordUtils.getPodAtPitch(data.notes, p);
 
 export default {
 	getName,

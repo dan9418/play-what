@@ -14,12 +14,16 @@ const StyledZoomButton = styled.button`
 const ZoomButton = ({ modelId, modelData, name, pathId, size, ...props }) => {
 	const theme = useTheme();
 	const { push } = usePathContext();
-	const onClick = () => push({
+
+	const childData = {
 		name,
 		pathId,
 		modelId,
 		modelData
-	});
+	};
+
+	const onClick = () => push(childData);
+
 	return (
 		<StyledZoomButton {...props} onClick={onClick}>
 			<Icon color={theme.primary} iconId='zoom' size={size} />
