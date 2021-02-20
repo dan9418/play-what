@@ -199,8 +199,8 @@ export const MODEL = {
 	[MODEL_ID.Group]: {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
-		getChild: (data, pathId) => data.groupItems.find(item => item.pathId === pathId),
-		getMetaChildren: data => data.groupItems,
+		getChild: (data, pathId) => data.find(item => item.pathId === pathId),
+		getMetaChildren: data => data,
 		utils: GroupUtils
 	}
 };

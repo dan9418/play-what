@@ -12,8 +12,7 @@ const StyledViewerContainer = styled.div`
 `;
 
 const Viewer = () => {
-	const { modelData, vars } = useDataContext();
-	const { modelId } = modelData;
+	const { modelData, vars, modelId } = useDataContext();
 	const model = MODEL[modelId];
 
 	if(modelId === MODEL_ID.Group) return null;

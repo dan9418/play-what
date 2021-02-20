@@ -33,33 +33,10 @@ const mergeWithOutputs = (modelData, config) => {
 };
 
 const getDataAtPath = (data, path) => {
-	let node = data;
-	let vars = data.vars || {};
+	let node = null;
+	let vars = {};
 
-	for (let i = 0; i < path.length; i++) {
-		const target = path[i];
-		const parent = i === 0 ? null : path[i -1];
-
-		console.log('dpb', i, target.pathId, node);
-
-		const modelId = parent ? parent.modelId : MODEL_ID.Group;
-		const model = MODEL[modelId];
-
-		if (model.structId === STRUCT_ID.Group) {
-			const groupItem = node.groupItems[target.pathId];
-			node = groupItem.modelId === MODEL_ID.Group ? groupItem : groupItem.groupItemData;
-		}
-		else if (model.structId === STRUCT_ID.Object) {
-			node = node[target.pathId];
-			// TODO add outputs
-		}
-		else {
-			console.error('UNKNOWN STRUCT_ID', model.structId);
-		}
-
-		if (typeof node === undefined || node === null)
-			console.error('UNDEFINED NODE', 'path', path, 'data', data, pathHead);
-	}
+	node = path[path.length - 1].modelData;
 
 	return [node, vars];
 };

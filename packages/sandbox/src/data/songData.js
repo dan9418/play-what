@@ -7,15 +7,15 @@ import { OUT_OF_NOWHERE } from "./chartData";
 const ROOT_POD = NOTE.A;
 
 export const CHORDS = {
+	pathId: 'chords',
 	name: 'Chords',
-	modelId: MODEL_ID.Group,
-	groupItems: RELATIVE_CHORD_VALUES.map(chord => (
+	childModelId: MODEL_ID.Group,
+	childData: RELATIVE_CHORD_VALUES.map(chord => (
 		{
-			id: chord.id,
+			pathId: chord.id,
 			name: chord.name,
-			modelId: MODEL_ID.Chord,
-
-			groupItemData: {
+			childModelId: MODEL_ID.Chord,
+			childData: {
 				root: ROOT_POD.value,
 				intervals: chord.value
 			}
@@ -24,14 +24,15 @@ export const CHORDS = {
 };
 
 export const SCALES = {
+	pathId: 'scales',
 	name: 'Scales',
-	modelId: MODEL_ID.Group,
-	groupItems: RELATIVE_SCALE_VALUES.map(scale => (
+	childModelId: MODEL_ID.Group,
+	childData: RELATIVE_SCALE_VALUES.map(scale => (
 		{
-			id: scale.id,
+			pathId: scale.id,
 			name: scale.name,
-			modelId: MODEL_ID.Scale,
-			groupItemData: {
+			childModelId: MODEL_ID.Scale,
+			childData: {
 				root: ROOT_POD.value,
 				intervals: scale.value
 			}
@@ -40,14 +41,15 @@ export const SCALES = {
 };
 
 export const MODES = {
+	pathId: 'modes',
 	name: 'Modes',
-	modelId: MODEL_ID.Group,
-	groupItems: INTERVAL_MODE_VALUES.map(scale => (
+	childModelId: MODEL_ID.Group,
+	childData: INTERVAL_MODE_VALUES.map(scale => (
 		{
-			id: scale.id,
+			pathId: scale.id,
 			name: scale.name,
-			modelId: MODEL_ID.Scale,
-			groupItemData: {
+			childModelId: MODEL_ID.Scale,
+			childData: {
 				root: ROOT_POD.value,
 				intervals: scale.value
 			}
@@ -56,25 +58,19 @@ export const MODES = {
 };
 
 export const CHARTS = {
+	pathId: 'charts',
 	name: 'Charts',
-	modelId: MODEL_ID.Group,
-	groupItems: [
+	childModelId: MODEL_ID.Group,
+	childData: [
 		OUT_OF_NOWHERE
 	]
 };
 
-export const SONG_DATA = {
-	name: 'Library',
-	modelId: MODEL_ID.Group,
-	vars: {
-		root: ROOT_POD
-	},
-	groupItems: [
-		CHORDS,
-		SCALES,
-		MODES,
-		CHARTS
-	]
-};
+export const LIBRARY_GROUP_DATA = [
+	CHORDS,
+	SCALES,
+	MODES
+	//CHARTS
+];
 
-export default SONG_DATA;
+export default LIBRARY_GROUP_DATA;
