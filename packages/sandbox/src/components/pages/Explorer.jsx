@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useDataContext } from '../../contexts/DataContext';
+import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import GenericModel from '../core/GenericModel';
 import Viewer from '../core/Viewer';
@@ -19,7 +19,8 @@ const StyledExplorer = styled.div`
 `;
 
 const Explorer = () => {
-	const { modelData, modelId } = useDataContext();
+	const { pathHead } = usePathContext();
+	const { modelData, modelId } = pathHead;
 
 	//const panelProps = getPanelProps(modelData, modelId, name);
 	//const content = getPanelContent(modelData, modelId);

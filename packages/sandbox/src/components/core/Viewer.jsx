@@ -2,7 +2,7 @@ import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
-import { useDataContext } from '../../contexts/DataContext';
+import { usePathContext } from '../../contexts/PathContext';
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -12,13 +12,14 @@ const StyledViewerContainer = styled.div`
 `;
 
 const Viewer = () => {
-	const { modelData, vars, modelId } = useDataContext();
+	const { pathHead } = usePathContext();
+	const { modelData, vars, modelId } = pathHead;
 	const model = MODEL[modelId];
 
 	if(modelId === MODEL_ID.Group) return null;
 
 	let pitchOffset = 0;
-	if(vars.root && model.isRelative) {
+	if(vars && vars.root && model.isRelative) {
 		pitchOffset = vars.root.value[0];
 	}
 
