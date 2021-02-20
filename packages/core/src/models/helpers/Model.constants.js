@@ -8,12 +8,7 @@ import AbsoluteScaleUtils from '../AbsoluteScale.utils';
 import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
 import ChordUtils from '../Chord.utils';
-import { STRUCT_ID } from './Struct.constants';
 import PodUtils from './Pod.utils';
-
-/*
-	Defines how to INTERPRET data in the shape of the specified STRUCT_ID using the STRUCT_CONFIG
-*/
 
 export const MODEL_ID = {
 	// Native
@@ -140,7 +135,6 @@ export const MODEL = {
 	[MODEL_ID.RelativeScale]: {
 		name: 'Relative Scale',
 		modelId: MODEL_ID.RelativeScale,
-		structId: STRUCT_ID.List,
 		getChild: (data, pathId) => data[pathId],
 		getMetaChildren: data => {
 			return data.map((d, i) => ({

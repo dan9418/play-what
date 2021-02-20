@@ -1,12 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useDataContext } from '../../contexts/DataContext';
-import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
-import { GenericModel } from '../core/StructComponents';
+import GenericModel from '../core/GenericModel';
 import Viewer from '../core/Viewer';
-import getPanelContent from '../ui/layout/getPanelContent';
-import getPanelProps from '../ui/layout/getPanelProps';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`

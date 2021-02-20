@@ -1,6 +1,4 @@
 
-import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
-import { STRUCT_ID } from '@pw/core/src/models/helpers/Struct.constants';
 import React, { createContext, useContext } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { dataState } from '../state/dataState';

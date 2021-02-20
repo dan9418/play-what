@@ -1,5 +1,4 @@
 import { MODEL, MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
-import { STRUCT } from "@pw/core/src/models/helpers/Struct.constants";
 
 
 export const getName = (data, modelId) => {
@@ -9,13 +8,12 @@ export const getName = (data, modelId) => {
 	return model.utils.getName(data);
 };
 
-export const getCaption = (data, modelId, includeStruct) => {
+export const getCaption = (data, modelId) => {
 	if (typeof data === undefined) return "No Caption Data";
 	if (typeof modelId === undefined) return "No modelId";
 
 	const model = MODEL[modelId];
-	const struct = STRUCT[model.structId];
-	return false ? `${model.name} (${struct.name})` : model.name;
+	return model.name;
 };
 
 export const getPreview = (data, modelId) => {
