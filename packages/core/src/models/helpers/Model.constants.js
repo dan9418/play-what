@@ -9,7 +9,7 @@ import NoteUtils from '../Note.utils';
 import PitchUtils from '../Pitch.utils';
 import ChordUtils from '../Chord.utils';
 import PodUtils from './Pod.utils';
-import DictionaryUtils from '../Dictionary.utils';
+import FrameUtils from '../Frame.utils';
 
 export const MODEL_ID = {
 	Pitch: 'pitch',
@@ -23,7 +23,7 @@ export const MODEL_ID = {
 	Chord: 'chord',
 	Scale: 'scale',
 	Group: 'group',
-	Dictionary: 'dict'
+	Frame: 'dict'
 };
 
 export const MODEL = {
@@ -241,9 +241,9 @@ export const MODEL = {
 		},
 		utils: ChordUtils
 	},
-	[MODEL_ID.Dictionary]: {
-		name: 'Dictionary',
-		modelId: MODEL_ID.Dictionary,
+	[MODEL_ID.Frame]: {
+		name: 'Frame',
+		modelId: MODEL_ID.Frame,
 		getChild: (data, pathId) => data[pathId],
 		getMetaChildren: data => {
 			return [
@@ -261,7 +261,7 @@ export const MODEL = {
 				}
 			];
 		},
-		utils: DictionaryUtils
+		utils: FrameUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
