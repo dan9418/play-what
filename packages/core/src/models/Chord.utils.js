@@ -20,7 +20,7 @@ const getMetaChildren = data => {
 		{
 			pathId: 'root',
 			label: 'Root',
-			name: NoteUtils.getPreview(data.root),
+			name: NoteUtils.getName(data.root),
 			childModelId: MODEL_ID.Note,
 			childData: data.root
 		},

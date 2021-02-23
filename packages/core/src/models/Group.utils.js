@@ -9,8 +9,10 @@ const getMetaChildren = data => {
 		const { childModelId } = child;
 		const model = MODEL[childModelId];
 		const childData = model.utils.parse ? model.utils.parse(child.childData) : child.childData;
+		const name = child.name ? child.name : model.utils.getName(child.childData);
 		return {
 			...child,
+			name,
 			childData
 		}
 	});

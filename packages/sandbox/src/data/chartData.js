@@ -5,56 +5,56 @@ import { NOTE } from "@pw/core/src/models/Note.constants";
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',
 	name: 'Out of Nowhere',
-	modelId: MODEL_ID.Group,
-	modelConfig: [
+	childModelId: MODEL_ID.Group,
+	modelData: [
 		{
-			id: 'A',
+			pathId: 'A',
 			name: 'Section A',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
+			childModelId: MODEL_ID.Group,
+			childData: [
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.G.value,
 						intervals: RELATIVE_CHORD.Maj7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Bb.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Eb.value,
 						intervals: RELATIVE_CHORD.Dom7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.G.value,
 						intervals: RELATIVE_CHORD.Maj7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.B.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.E.value,
 						intervals: RELATIVE_CHORD.Dom7b9.value,
 						t: 4
@@ -63,53 +63,53 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			id: 'B',
+			pathId: 'B',
 			name: 'Section B',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
+			childModelId: MODEL_ID.Group,
+			childData: [
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.E.value,
 						intervals: RELATIVE_CHORD.Dom7b9.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Eb.value,
 						intervals: RELATIVE_CHORD.Dom7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Bb.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.D.value,
 						intervals: RELATIVE_CHORD.Dom7b9.value,
 						t: 8
@@ -118,53 +118,53 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			id: 'A\'',
+			pathId: 'A\'',
 			name: 'Section A',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
+			childModelId: MODEL_ID.Group,
+			childData: [
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.G.value,
 						intervals: RELATIVE_CHORD.Maj7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Bb.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Eb.value,
 						intervals: RELATIVE_CHORD.Dom7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.G.value,
 						intervals: RELATIVE_CHORD.Maj7.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.B.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.E.value,
 						intervals: RELATIVE_CHORD.Dom7b9.value,
 						t: 4
@@ -173,93 +173,93 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			id: 'C',
+			pathId: 'C',
 			name: 'Section C',
-			modelId: MODEL_ID.Group,
-			modelConfig: [
+			childModelId: MODEL_ID.Group,
+			childData: [
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.E.value,
 						intervals: RELATIVE_CHORD.Dom7b9.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.C.value,
 						intervals: RELATIVE_CHORD.Min6.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.B.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 2
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.Bb.value,
 						intervals: RELATIVE_CHORD.HalfDim7.value,
 						t: 2
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 2
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.D.value,
 						intervals: RELATIVE_CHORD.Dom7.value,
 						t: 2
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.G.value,
 						intervals: RELATIVE_CHORD.Maj6.value,
 						t: 8
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.A.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 4
 					}
 				},
 				{
-					modelId: MODEL_ID.Chord,
-					modelConfig: {
+					childModelId: MODEL_ID.Chord,
+					childData: {
 						root: NOTE.D.value,
 						intervals: RELATIVE_CHORD.Dom7.value,
 						t: 4
@@ -269,3 +269,9 @@ export const OUT_OF_NOWHERE = {
 		}
 	]
 };
+
+const CHART_VALUES = [
+	OUT_OF_NOWHERE
+]
+
+export default CHART_VALUES;

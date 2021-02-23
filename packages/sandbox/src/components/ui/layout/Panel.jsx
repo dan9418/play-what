@@ -14,6 +14,8 @@ const StyledPanelHeader = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		padding-bottom: 16px;
+		border-bottom: 2px solid #ccc;
 	}
 	
 	& .preview-container {
@@ -79,7 +81,6 @@ const PanelHeader = ({ name, caption, preview }) => {
 					</ButtonInput>
 				}
 			</section>
-			<Meter data={pathHead.modelData} modelId={pathHead.modelId} />
 		</StyledPanelHeader>
 	);
 };
