@@ -3,6 +3,7 @@ import IntervalUtils from "./Interval.utils";
 import NoteUtils from "./Note.utils";
 import AbsoluteChordUtils from "./AbsoluteChord.utils";
 import PodUtils from "./helpers/Pod.utils";
+import { MODEL_ID } from "./helpers/Model.constants";
 
 
 const getMetaChildren = data => {

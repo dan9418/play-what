@@ -27,7 +27,7 @@ const StyledPropertyHeader = styled.h3`
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, pathId, childModelId, parsedChildData, caption, preview, childData } = child;
+		const { name, pathId, childModelId, caption, preview, childData } = child;
 
 		return (
 			<StyledTypeRow key={i}>
@@ -36,10 +36,11 @@ const getRows = metaChildren => {
 					name={name}
 					preview={preview}
 				>
+					<h3>Raw</h3>
 					{JSON.stringify(childData, null, "\t")}
 				</Subpanel>
 				<ZoomButton
-					modelData={parsedChildData}
+					modelData={childData}
 					name={name}
 					modelId={childModelId}
 					pathId={pathId}

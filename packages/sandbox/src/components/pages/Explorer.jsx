@@ -30,12 +30,12 @@ const getMetaData = pathHead => {
 
 const Explorer = () => {
 	const { pathHead } = usePathContext();
-	const { modelId } = pathHead;
+	const { modelId, modelData } = pathHead;
 
 	const model = MODEL[modelId];
 
 	const metaData = getMetaData(pathHead);
-	const metaChildren = model.utils.getMetaChildren(pathHead);
+	const metaChildren = model.utils.getMetaChildren(modelData);
 
 	return (
 		<StyledExplorer>
