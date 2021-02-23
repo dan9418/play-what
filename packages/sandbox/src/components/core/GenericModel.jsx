@@ -36,7 +36,7 @@ const getRows = metaChildren => {
 					name={name}
 					preview={preview}
 				>
-					{JSON.stringify(childData)}
+					{JSON.stringify(childData, null, "\t")}
 				</Subpanel>
 				<ZoomButton
 					modelData={parsedChildData}

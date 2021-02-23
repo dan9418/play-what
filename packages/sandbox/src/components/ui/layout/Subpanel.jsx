@@ -77,9 +77,9 @@ const Subpanel = ({ name, caption, preview, editable = true, actions, children }
 			<EditContextProvider>
 				<SubpanelHeader name={name} caption={caption} preview={preview} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
 				{isOpen && (
-					<div className="subpanel-body">
+					<pre className="subpanel-body">
 						{children}
-					</div>
+					</pre>
 				)}
 			</EditContextProvider>
 		</StyledSubpanel>
