@@ -1,11 +1,9 @@
+import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import { usePathContext } from '../../contexts/PathContext';
 import BreadcrumbList from '../core/BreadcrumbList';
 import GenericModel from '../core/GenericModel';
-import Viewer from '../core/Viewer';
-import getPanelProps from '../ui/layout/getPanelProps';
-import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
 	.panel-body {
@@ -19,18 +17,30 @@ const StyledExplorer = styled.div`
 	}
 `;
 
+const getMetaData = pathHead => {
+	const { name, modelId, modelData } = pathHead;
+	const model = MODEL[modelId];
+
+	return {
+		name,
+		caption: model.name,
+		preview: model.utils.getPreview(modelData)
+	}
+};
+
 const Explorer = () => {
 	const { pathHead } = usePathContext();
-	const { modelData, modelId, name } = pathHead;
+	const { modelId } = pathHead;
 
-	const panelProps = getPanelProps(modelData, modelId, name);
+	const model = MODEL[modelId];
+
+	const metaData = getMetaData(pathHead);
+	const metaChildren = model.utils.getMetaChildren(pathHead);
 
 	return (
 		<StyledExplorer>
 			<BreadcrumbList />
-			<Panel {...panelProps}>
-				<GenericModel modelData={modelData} modelId={modelId} />
-			</Panel>
+			<GenericModel metaData={metaData} metaChildren={metaChildren} />
 		</StyledExplorer>
 	);
 };

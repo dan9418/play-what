@@ -3,6 +3,23 @@ import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = (data) => '1:n';
 const getCaption = (data) => null;
+const getMetaChildren = data => {
+	return [
+		{
+			pathId: 0,
+			name: 'Pitch Span',
+			childModelId: MODEL_ID.Pitch,
+			childData: data[0]
+		},
+		{
+			pathId: 1,
+			name: 'Degree Span',
+			childModelId: MODEL_ID.Degree,
+			childData: data[0]
+		}
+	];
+};
+
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
@@ -43,5 +60,6 @@ export default {
 	getName,
 	getPreview,
 	getCaption,
-	getPodAtPitch
+	getPodAtPitch,
+	getMetaChildren
 }

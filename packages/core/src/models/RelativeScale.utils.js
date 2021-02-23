@@ -12,9 +12,19 @@ const getName = (data) => {
 
 const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
 
+const getMetaChildren = data => {
+	return data.map((d, i) => ({
+		pathId: i,
+		name: IntervalUtils.getName(d),
+		childModelId: MODEL_ID.Interval,
+		childData: d
+	}));
+};
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getPodAtPitch
+	getPodAtPitch,
+	getMetaChildren
 }

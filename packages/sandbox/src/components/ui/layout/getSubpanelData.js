@@ -36,4 +36,16 @@ const getPanelProps = (modelData, modelId, optionalName = null) => {
 	};
 };
 
-export default getPanelProps;
+const getSubpanelData = (modelData, modelId, optionalName = null) => {
+	const caption = getCaption(modelData, modelId);
+	const preview = getPreview(modelData, modelId);
+	const name = optionalName ? optionalName : getName(modelData, modelId);
+
+	return {
+		name,
+		caption: name === caption ? '' : caption,
+		preview
+	};
+};
+
+export default getSubpanelData;

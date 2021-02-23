@@ -1,4 +1,4 @@
-import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';

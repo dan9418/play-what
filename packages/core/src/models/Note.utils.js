@@ -5,6 +5,23 @@ import { ACCIDENTAL } from "./Note.constants";
 
 const getPreview = (data) => 'X Hz';
 const getCaption = (data) => null;
+const getMetaChildren = data => {
+	return [
+		{
+			pathId: 0,
+			name: 'Pitch',
+			childModelId: MODEL_ID.Pitch,
+			childData: data[0]
+		},
+		{
+			pathId: 1,
+			name: 'Degree',
+			childModelId: MODEL_ID.Degree,
+			childData: data[0]
+		}
+	];
+};
+
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
@@ -38,5 +55,6 @@ export default {
 	getName,
 	getPreview,
 	getCaption,
-	getPodAtPitch
+	getPodAtPitch,
+	getMetaChildren
 }

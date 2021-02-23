@@ -1,8 +1,7 @@
-import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
-import getPanelProps from '../ui/layout/getPanelProps';
+import Panel from '../ui/layout/Panel';
 import Subpanel from '../ui/layout/Subpanel';
 
 const StyledTypeRow = styled.div`
@@ -26,27 +25,18 @@ const StyledPropertyHeader = styled.h3`
 	margin: 0;
 `;
 
-const GenericModel = ({ modelData, modelId }) => {
-	const model = MODEL[modelId];
-	const children = model.getMetaChildren(modelData);
-
-	if (!children) return null;
-
-	return children.map((item, i) => {
-		const { pathId, name, childModelId, childData } = item;
-
-		const childModel = MODEL[childModelId];
-
-		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData) : childData;
-
-		const subpanelProps = getPanelProps(parsedChildData, childModelId, name);
-
-		const content = null;
+const getRows = metaChildren => {
+	return metaChildren.map((child, i) => {
+		const { name, pathId, childModelId, parsedChildData, caption, preview, childData } = child;
 
 		return (
 			<StyledTypeRow key={i}>
-				<Subpanel {...subpanelProps}>
-					{content}
+				<Subpanel
+					caption={caption}
+					name={name}
+					preview={preview}
+				>
+					{JSON.stringify(childData)}
 				</Subpanel>
 				<ZoomButton
 					modelData={parsedChildData}
@@ -57,6 +47,23 @@ const GenericModel = ({ modelData, modelId }) => {
 			</StyledTypeRow>
 		);
 	})
+};
+
+const GenericModel = ({ metaData, metaChildren }) => {
+
+	if(!metaData || metaChildren === null || typeof metaChildren === undefined) {
+		return null;
+	}
+
+	if(Array.isArray(metaChildren)) {
+
+	}
+
+	return (
+		<Panel {...metaData}>
+			{metaChildren && getRows(metaChildren)}
+		</Panel>
+	);
 };
 
 export default GenericModel;
