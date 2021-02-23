@@ -1,6 +1,7 @@
 import RelativeScaleUtils from "./RelativeScale.utils";
 import NoteUtils from "./Note.utils";
 import PodUtils from "./helpers/Pod.utils";
+import AbsoluteScaleUtils from "./AbsoluteScale.utils";
 
 const getName = (data) => {
 	const kcName = NoteUtils.getName(data.root);
@@ -12,24 +13,28 @@ const getCaption = (data) => null;
 const getPodAtPitch = (data, p) => NoteUtils.getPodAtPitch(data.root, p) || RelativeScaleUtils.getPodAtPitch(data.intervals, p);
 
 const getMetaChildren = data => {
+	const notes = PodUtils.addPodList(data.root, data.intervals);
 	return [
 		{
 			pathId: 'root',
-			name: 'Root',
+			label: 'Root',
+			name: NoteUtils.getName(data.root),
 			childModelId: MODEL_ID.Note,
 			childData: data.root
 		},
 		{
 			pathId: 'intervals',
-			name: 'Intervals',
+			label: 'Intervals',
+			name: RelativeScaleUtils.getPreview(data.intervals),
 			childModelId: MODEL_ID.RelativeScale,
 			childData: data.intervals
 		},
 		{
 			pathId: 'notes',
-			name: 'Notes',
+			label: 'Notes',
+			name: AbsoluteScaleUtils.getPreview(data.intervals),
 			childModelId: MODEL_ID.AbsoluteScale,
-			childData: PodUtils.addPodList(data.root, data.intervals)
+			childData: notes
 		}
 	];
 };

@@ -89,10 +89,6 @@ const StyledPanel = styled.div`
 	margin: 0 auto;
 	max-width: 1024px;
     border-radius: 8px;
-	
-	& > .panel-body {
-		padding: 0 0 24px 0;
-	}
 `;
 
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {

@@ -1,8 +1,10 @@
 import { DEGREE_VALUES } from "./Degree.constants";
+import DegreeUtils from "./Degree.utils";
 import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import { ROOT_SCALE } from "./helpers/Scale.constants";
 import { ACCIDENTAL } from "./Note.constants";
+import PitchUtils from "./Pitch.utils";
 
 const getPreview = (data) => 'X Hz';
 const getCaption = (data) => null;
@@ -10,15 +12,17 @@ const getMetaChildren = data => {
 	return [
 		{
 			pathId: 0,
-			name: 'Pitch',
+			label: 'Pitch',
+			name: PitchUtils.getPreview(data[0]),
 			childModelId: MODEL_ID.Pitch,
 			childData: data[0]
 		},
 		{
 			pathId: 1,
-			name: 'Degree',
+			label: 'Degree',
+			name: DegreeUtils.getPreview(data[1]),
 			childModelId: MODEL_ID.Degree,
-			childData: data[0]
+			childData: data[1]
 		}
 	];
 };

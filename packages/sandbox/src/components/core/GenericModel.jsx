@@ -23,46 +23,47 @@ const StyledPropertyHeader = styled.h3`
 	max-width: 512px;
 	text-transform: uppercase;
 	margin: 0;
+	margin-bottom: 2px;
 `;
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, pathId, childModelId, caption, preview, childData } = child;
+		const { name, pathId, childModelId, caption, preview, childData, label } = child;
+
+		const header = label ? <StyledPropertyHeader>{label}</StyledPropertyHeader> : null;
+
+		/*if (typeof childData === 'number' || typeof childData === 'string' ) {
+			return <div>{`${label || name} = ${childData}`}</div>;
+		}*/
 
 		return (
-			<StyledTypeRow key={i}>
-				<Subpanel
-					caption={caption}
-					name={name}
-					preview={preview}
-				>
-					<h3>Raw</h3>
-					{JSON.stringify(childData, null, "\t")}
-				</Subpanel>
-				<ZoomButton
-					modelData={childData}
-					name={name}
-					modelId={childModelId}
-					pathId={pathId}
-				/>
-			</StyledTypeRow>
+			<div key={i}>
+				{header}
+				<StyledTypeRow >
+					<Subpanel
+						caption={caption}
+						name={name}
+						preview={preview}
+					>
+						{JSON.stringify(childData, null, "\t")}
+					</Subpanel>
+					<ZoomButton
+						modelData={childData}
+						name={label || name}
+						modelId={childModelId}
+						pathId={pathId}
+					/>
+				</StyledTypeRow>
+			</div>
 		);
 	})
 };
 
-const GenericModel = ({ metaData, metaChildren }) => {
-
-	if(!metaData || metaChildren === null || typeof metaChildren === undefined) {
-		return null;
-	}
-
-	if(Array.isArray(metaChildren)) {
-
-	}
+const GenericModel = ({ metaData, metaChildren, modelData }) => {
 
 	return (
 		<Panel {...metaData}>
-			{metaChildren && getRows(metaChildren)}
+			{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
 		</Panel>
 	);
 };

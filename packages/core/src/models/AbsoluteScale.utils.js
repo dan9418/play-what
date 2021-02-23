@@ -1,3 +1,4 @@
+import { MODEL_ID } from "./helpers/Model.constants";
 import NoteUtils from "./Note.utils";
 
 const getName = (data) => '<AbsoluteScale>';

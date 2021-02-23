@@ -7,12 +7,15 @@ import GenericModel from '../core/GenericModel';
 
 const StyledExplorer = styled.div`
 	.panel-body {
+		padding: 0 0 24px 0;
 		display: flex;
 		align-items: center;
 		flex-direction: column;
 
         > * {
-			margin: 9px 0;
+			margin: 8px auto;
+			width: 100%;
+			max-width: 512px;
 		}
 	}
 `;
@@ -40,7 +43,7 @@ const Explorer = () => {
 	return (
 		<StyledExplorer>
 			<BreadcrumbList />
-			<GenericModel metaData={metaData} metaChildren={metaChildren} />
+			<GenericModel metaData={metaData} metaChildren={metaChildren} modelData={modelData} />
 		</StyledExplorer>
 	);
 };
