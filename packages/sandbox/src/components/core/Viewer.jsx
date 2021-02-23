@@ -11,29 +11,16 @@ const StyledViewerContainer = styled.div`
     }
 `;
 
-const findInput = (inputs, pathId) => {
-	for (let i = 0; i < inputs.length; i++) {
-		if (!inputs[i]) continue;
-		for (let j = 0; j < inputs[i].length; j++) {
-			if (inputs[i][j].pathId === pathId) {
-				return inputs[i][j].childData;
-			}
-		}
-	}
-	return null;
-};
-
 const Viewer = () => {
-	const { pathHead, inputs } = usePathContext();
+	const { pathHead } = usePathContext();
 	const { modelData, modelId } = pathHead;
 
 	if (modelId === MODEL_ID.Group) return null;
 
 	let pitchOffset = 0;
-	const root = findInput(inputs, 'root');
-	if (root) {
+	/*if (root) {
 		pitchOffset = root[0];
-	}
+	}*/
 
 	return (
 		<StyledViewerContainer>

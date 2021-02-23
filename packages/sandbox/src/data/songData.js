@@ -29,7 +29,7 @@ export const LIBRARY_PATH_ROOT = {
 						name: chord.name,
 						childModelId: MODEL_ID.Chord,
 						childData: {
-							root: 'pw/inputs/root',
+							root: ROOT_POD.value,
 							intervals: chord.value
 						}
 					}
@@ -45,7 +45,7 @@ export const LIBRARY_PATH_ROOT = {
 						name: scale.name,
 						childModelId: MODEL_ID.Scale,
 						childData: {
-							root: 'pw/inputs/root',
+							root: ROOT_POD.value,
 							intervals: scale.value
 						}
 					}
@@ -61,7 +61,7 @@ export const LIBRARY_PATH_ROOT = {
 						name: scale.name,
 						childModelId: MODEL_ID.Scale,
 						childData: {
-							root: 'pw/inputs/root',
+							root: ROOT_POD.value,
 							intervals: scale.value
 						}
 					}

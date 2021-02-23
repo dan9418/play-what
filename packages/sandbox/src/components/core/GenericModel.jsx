@@ -26,7 +26,7 @@ const StyledPropertyHeader = styled.h3`
 	margin: 0;
 `;
 
-const GenericModel = ({ modelData, modelId, inputs }) => {
+const GenericModel = ({ modelData, modelId }) => {
 	const model = MODEL[modelId];
 	const children = model.getMetaChildren(modelData);
 
@@ -37,7 +37,7 @@ const GenericModel = ({ modelData, modelId, inputs }) => {
 
 		const childModel = MODEL[childModelId];
 
-		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData, inputs) : childData;
+		const parsedChildData = childModel.getParsedModel ? childModel.getParsedModel(childData) : childData;
 
 		const subpanelProps = getPanelProps(parsedChildData, childModelId, name);
 
