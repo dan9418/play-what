@@ -4,8 +4,8 @@ import { usePathContext } from "../../contexts/PathContext";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
-	padding: 8px 16px;
-	margin-bottom: 8px;
+	margin-top: 16px;
+	padding: 16px 0;
 	list-style-type: none;
 	color: #555;
 	font-size: 90%;

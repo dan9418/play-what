@@ -6,7 +6,7 @@ import { PathContextProvider } from '../../contexts/PathContext';
 import { RouteContextConsumer } from '../../contexts/RouteContext';
 
 const StyledMain = styled.main`
-	padding: 64px 16px 16px 16px;
+	padding: 48px 8px 0;
 	margin: auto;
 	width: 100%;
 	max-width: 1024px;
