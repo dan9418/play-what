@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Meter from "../../../../../react/src/Meter/Meter";
 import { EditContextProvider } from "../../../contexts/EditContext";
 import { usePathContext } from '../../../contexts/PathContext';
+import Viewer from "../../core/Viewer";
 import Icon from "../assets/Icon";
 import ButtonInput from "../inputs/buttons/ButtonInput";
 
@@ -90,6 +91,25 @@ const StyledPanel = styled.div`
 	margin: 0 auto;
 	max-width: 1024px;
     border-radius: 8px;
+
+	.panel-body {
+		display: grid;
+		grid-gap: 32px;
+		grid-template-columns: 1fr 1fr;
+
+		padding: 0 0 24px 0;
+		
+        > * {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			> * {
+				margin: 8px auto;
+				width: 100%;
+				max-width: 512px;
+			}
+		}
+	}
 `;
 
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
@@ -98,7 +118,10 @@ const Panel = ({ name, caption, preview, leftActions, rightAction, children }) =
 			<EditContextProvider>
 				<PanelHeader name={name} preview={preview} caption={caption} />
 				<div className="panel-body">
-					{children}
+					<Viewer />
+					<div>
+						{children}
+					</div>
 				</div>
 			</EditContextProvider>
 		</StyledPanel>

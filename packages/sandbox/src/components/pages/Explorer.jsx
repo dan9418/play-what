@@ -6,18 +6,7 @@ import BreadcrumbList from '../core/BreadcrumbList';
 import GenericModel from '../core/GenericModel';
 
 const StyledExplorer = styled.div`
-	.panel-body {
-		padding: 0 0 24px 0;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
 
-        > * {
-			margin: 8px auto;
-			width: 100%;
-			max-width: 512px;
-		}
-	}
 `;
 
 const getMetaData = pathHead => {
