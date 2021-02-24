@@ -95,7 +95,12 @@ const StyledPanel = styled.div`
 	.panel-body {
 		display: grid;
 		grid-gap: 32px;
-		grid-template-columns: 1fr 1fr;
+
+		@media(min-width: 1024px) {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		grid-template-columns: 1fr;
 
 		padding: 0 0 24px 0;
 		

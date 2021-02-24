@@ -4,8 +4,9 @@ import { usePathContext } from "../../contexts/PathContext";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
+	flex-wrap: wrap;
 	margin-top: 16px;
-	padding: 16px 0;
+	padding: 8px 0;
 	list-style-type: none;
 	color: #555;
 	font-size: 90%;
@@ -13,7 +14,7 @@ const StyledBreadcrumbList = styled.ul`
 	white-space: nowrap;
 
 	li {
-		margin-right: 4px;
+		margin: 2px 4px;
 		cursor: pointer;
 		
 		&.active {
