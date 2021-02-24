@@ -16,14 +16,13 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
-const StyledPropertyHeader = styled.h3`
+const StyledPropertyHeader = styled.h2`
 	color: #555;
 	text-align: left;
 	width: 100%;
 	max-width: 512px;
 	text-transform: uppercase;
-	margin: 0;
-	margin-bottom: 2px;
+	margin: 16px 0 8px 0;
 `;
 
 const getRows = metaChildren => {

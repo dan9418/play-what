@@ -95,25 +95,18 @@ const StyledPanel = styled.div`
 	.panel-body {
 		display: grid;
 		grid-gap: 32px;
+		width: 100%;
+		max-width: 512px;
+		margin: auto;
 
 		@media(min-width: 1024px) {
 			grid-template-columns: 1fr 1fr;
+			max-width: 100%;
 		}
 
 		grid-template-columns: 1fr;
 
 		padding: 0 0 24px 0;
-		
-        > * {
-			display: flex;
-			align-items: center;
-			flex-direction: column;
-			> * {
-				margin: 8px auto;
-				width: 100%;
-				max-width: 512px;
-			}
-		}
 	}
 `;
 
@@ -123,7 +116,9 @@ const Panel = ({ name, caption, preview, leftActions, rightAction, children }) =
 			<EditContextProvider>
 				<PanelHeader name={name} preview={preview} caption={caption} />
 				<div className="panel-body">
-					<Viewer />
+					<div>
+						<Viewer />
+					</div>
 					<div>
 						{children}
 					</div>
