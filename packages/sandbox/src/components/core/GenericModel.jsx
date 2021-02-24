@@ -6,13 +6,17 @@ import Subpanel from '../ui/layout/Subpanel';
 
 const StyledTypeRow = styled.div`
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
 	width: 100%;
 	max-width: 512px;
 	>:nth-child(1) {
 		width: 100%;
 		margin-right: 8px;	
+	}
+	> button {
+		margin: 14px 4px 0;
+		padding: 4px;
 	}
 `;
 
