@@ -14,10 +14,6 @@ const StyledTypeRow = styled.div`
 		width: 100%;
 		margin-right: 8px;	
 	}
-	> button {
-		margin: 14px 4px 0;
-		padding: 4px;
-	}
 `;
 
 const StyledPropertyHeader = styled.h2`

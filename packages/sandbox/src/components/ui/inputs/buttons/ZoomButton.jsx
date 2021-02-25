@@ -1,15 +1,7 @@
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import { useTheme } from 'styled-components';
 import { usePathContext } from '../../../../contexts/PathContext';
-import Icon from '../../assets/Icon';
-
-const StyledZoomButton = styled.button`
-	appearance: none;
-	outline: none;
-	border: none;
-	cursor: pointer;
-	background-color: transparent;
-`;
+import IconButton from './IconButton';
 
 const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
 	const theme = useTheme();
@@ -25,9 +17,7 @@ const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
 	const onClick = () => push(childData);
 
 	return (
-		<StyledZoomButton {...props} onClick={onClick}>
-			<Icon color={theme.primary} iconId='zoom' size={24} />
-		</StyledZoomButton >
+		<IconButton onClick={onClick} color={theme.primary} iconId='zoom' />
 	);
 }
 

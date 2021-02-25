@@ -1,11 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import Meter from "../../../../../react/src/Meter/Meter";
 import { EditContextProvider } from "../../../contexts/EditContext";
 import { usePathContext } from '../../../contexts/PathContext';
 import Viewer from "../../core/Viewer";
-import Icon from "../assets/Icon";
-import ButtonInput from "../inputs/buttons/ButtonInput";
+import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.div`
 	width: 100%;
@@ -40,36 +38,7 @@ const StyledPanelHeader = styled.div`
 			color: ${({ theme }) => theme.accent}
 		}
 	}
-	& button {
-		height: 64px;
-		width: 64px;
-		border-radius: 100%;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
-		background-color: transparent;
-	}
-	& button:hover {
-		background-color: rgba(0,0,0,0.1);
-	}
-	& svg {
-		height: 24px;
-    	width: 24px;
-	}
-	& svg, & svg * {
-		color: #AAA;
-    	fill: #AAA;
-	}
 `;
-
-const IconButton = ({ iconId, onClick }) => {
-	return (
-		<ButtonInput onClick={onClick}>
-			<Icon iconId={iconId} />
-		</ButtonInput>
-	);
-};
 
 const PanelHeader = ({ name, caption, preview }) => {
 	const pathContext = usePathContext();
@@ -85,7 +54,7 @@ const PanelHeader = ({ name, caption, preview }) => {
 					<div className='preview'>{preview}</div>
 				</div>
 				{path.length > 1 &&
-					<IconButton onClick={pop} iconId='delete' />
+					<IconButton onClick={pop} iconId='up' />
 				}
 			</section>
 		</StyledPanelHeader>
