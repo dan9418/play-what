@@ -23,10 +23,10 @@ const styles = css`
 	}
 `;
 
-const IconButton = ({ iconId, onClick, size = 16, ...rest }) => {
+const IconButton = ({ iconId, onClick, size = 16, color, ...rest }) => {
 	return (
 		<ButtonInput onClick={onClick} css={styles} {...rest} >
-			<Icon iconId={iconId} size={size} />
+			<Icon iconId={iconId} size={size} color={color} />
 		</ButtonInput>
 	);
 };

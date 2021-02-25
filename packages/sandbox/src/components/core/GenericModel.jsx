@@ -17,7 +17,7 @@ const StyledTypeRow = styled.div`
 	}
 `;
 
-const StyledPropertyHeader = styled.h2`
+const StyledPropertyHeader = styled.h4`
 	color: #555;
 	text-align: left;
 	width: 100%;

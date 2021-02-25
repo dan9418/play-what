@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import { usePathContext } from '../../../../contexts/PathContext';
+import THEME from '../../../../styles/theme';
 import IconButton from './IconButton';
 
 const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
@@ -17,7 +18,7 @@ const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
 	const onClick = () => push(childData);
 
 	return (
-		<IconButton onClick={onClick} color={theme.primary} iconId='zoom' />
+		<IconButton onClick={onClick} color={THEME.active} iconId='zoom' />
 	);
 }
 
