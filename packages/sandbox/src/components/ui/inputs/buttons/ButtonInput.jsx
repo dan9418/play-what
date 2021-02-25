@@ -6,7 +6,7 @@ const StyledButton = styled.button`
     border: none;
     outline: none;
     border-radius: 4px;
-    padding: 4px 8px;
+    padding: 8px 16px;
 	color: white;
 	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent};
 

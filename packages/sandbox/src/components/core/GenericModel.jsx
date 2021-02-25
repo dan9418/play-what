@@ -26,14 +26,14 @@ const StyledPropertyHeader = styled.h2`
 	width: 100%;
 	max-width: 512px;
 	text-transform: uppercase;
-	margin: 16px 0 8px 0;
+	margin: 16px 8px 8px;
 `;
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
 		const { name, pathId, childModelId, caption, preview, childData, label } = child;
 
-		const header = label ? <StyledPropertyHeader>{label}</StyledPropertyHeader> : null;
+		const header = <StyledPropertyHeader>{label || i + 1}</StyledPropertyHeader>;
 
 		/*if (typeof childData === 'number' || typeof childData === 'string' ) {
 			return <div>{`${label || name} = ${childData}`}</div>;

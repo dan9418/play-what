@@ -61,7 +61,6 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, editable })
 const StyledSubpanel = styled.section`
 	width: 100%;
 	max-width: 512px;
-	margin: 8px 0;
 	border: 1px solid #ccc;
 	border-radius: 2px;
 	background-color: #f5f5f5;

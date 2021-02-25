@@ -63,6 +63,14 @@ const StyledPanelHeader = styled.div`
 	}
 `;
 
+const IconButton = ({ iconId, onClick }) => {
+	return (
+		<ButtonInput onClick={onClick}>
+			<Icon iconId={iconId} />
+		</ButtonInput>
+	);
+};
+
 const PanelHeader = ({ name, caption, preview }) => {
 	const pathContext = usePathContext();
 	const { pop, path, pathHead } = pathContext;
@@ -76,10 +84,8 @@ const PanelHeader = ({ name, caption, preview }) => {
 					</div>
 					<div className='preview'>{preview}</div>
 				</div>
-				{path.length > 0 &&
-					<ButtonInput onClick={pop}>
-						<Icon iconId='delete' />
-					</ButtonInput>
+				{path.length > 1 &&
+					<IconButton onClick={pop} iconId='delete' />
 				}
 			</section>
 		</StyledPanelHeader>

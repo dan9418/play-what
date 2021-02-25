@@ -11,7 +11,7 @@ const StyledZoomButton = styled.button`
 	background-color: transparent;
 `;
 
-const ZoomButton = ({ modelId, modelData, name, pathId, size, ...props }) => {
+const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
 	const theme = useTheme();
 	const { push } = usePathContext();
 
@@ -26,7 +26,7 @@ const ZoomButton = ({ modelId, modelData, name, pathId, size, ...props }) => {
 
 	return (
 		<StyledZoomButton {...props} onClick={onClick}>
-			<Icon color={theme.primary} iconId='zoom' size={size} />
+			<Icon color={theme.primary} iconId='zoom' size={24} />
 		</StyledZoomButton >
 	);
 }
