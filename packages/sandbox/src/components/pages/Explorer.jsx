@@ -32,7 +32,7 @@ const Explorer = () => {
 	return (
 		<StyledExplorer>
 			<BreadcrumbList />
-			<GenericModel metaData={metaData} metaChildren={metaChildren} modelData={modelData} />
+			<GenericModel modelId={modelId} metaData={metaData} metaChildren={metaChildren} modelData={modelData} />
 		</StyledExplorer>
 	);
 };

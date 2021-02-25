@@ -7,13 +7,20 @@ import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.div`
 	width: 100%;
-	padding: 16px 0;
+	position: sticky;
+	@media(min-width: 1024px) {
+		position: static;
+	}
+    top: 48px;
+	z-index: 1;
+	background-color: #ecefef;
+	padding-top: 8px;
     
 	> section {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-bottom: 16px;
+		padding-bottom: 8px;
 		border-bottom: 2px solid #ccc;
 	}
 	
@@ -66,23 +73,6 @@ const StyledPanel = styled.div`
 	margin: 0 auto;
 	max-width: 1024px;
     border-radius: 8px;
-
-	.panel-body {
-		display: grid;
-		grid-gap: 32px;
-		width: 100%;
-		max-width: 512px;
-		margin: auto;
-
-		@media(min-width: 1024px) {
-			grid-template-columns: 1fr 1fr;
-			max-width: 100%;
-		}
-
-		grid-template-columns: 1fr;
-
-		padding: 0 0 24px 0;
-	}
 `;
 
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
@@ -91,12 +81,7 @@ const Panel = ({ name, caption, preview, leftActions, rightAction, children }) =
 			<EditContextProvider>
 				<PanelHeader name={name} preview={preview} caption={caption} />
 				<div className="panel-body">
-					<div>
-						<Viewer />
-					</div>
-					<div>
-						{children}
-					</div>
+					{children}
 				</div>
 			</EditContextProvider>
 		</StyledPanel>

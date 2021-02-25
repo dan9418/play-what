@@ -35,10 +35,8 @@ const MODEL_VIEWER = {
 const StyledViewerContainer = styled.div`
     width: 100%;
 	max-width: 512px;
-	border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f5f5f5;
-	padding: 16px;
+	
+	padding: 16px 0 1024px;
 
 	> .fretboard {
         //width: 100%;
@@ -68,18 +66,11 @@ const Viewer = () => {
 	}*/
 
 	const viewer = MODEL_VIEWER[modelId];
-	console.log('dpv', viewer)
 
 	return (
-		<>
-			<StyledViewerHeader>
-				{viewer.name}
-				<ButtonInput>Edit</ButtonInput>
-			</StyledViewerHeader>
-			<StyledViewerContainer>
-				<viewer.component data={modelData} modelId={modelId} pitchOffset={pitchOffset} />
-			</StyledViewerContainer>
-		</>
+		<StyledViewerContainer>
+			<viewer.component data={modelData} modelId={modelId} pitchOffset={pitchOffset} />
+		</StyledViewerContainer>
 	);
 };
 

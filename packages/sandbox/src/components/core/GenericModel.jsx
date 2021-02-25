@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Panel from '../ui/layout/Panel';
 import Subpanel from '../ui/layout/Subpanel';
+import Viewer from './Viewer';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -58,12 +59,34 @@ const getRows = metaChildren => {
 	})
 };
 
-const GenericModel = ({ metaData, metaChildren, modelData }) => {
+const StyledGenericModel = styled.div`
+	display: grid;
+	grid-gap: 32px;
+	width: 100%;
+	max-width: 512px;
+	margin: auto;
+
+	@media(min-width: 1024px) {
+		grid-template-columns: 1fr 1fr;
+		max-width: 100%;
+	}
+
+	grid-template-columns: 1fr;
+
+	padding: 0 0 24px 0;
+`;
+
+const GenericModel = ({ modelId, metaData, metaChildren, modelData }) => {
 
 	return (
-		<Panel {...metaData}>
-			{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
-		</Panel>
+		<StyledGenericModel>
+			<Panel {...metaData}>
+				{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
+			</Panel>
+			<Panel name="Output" caption={modelId} preview="Fretboard">
+				<Viewer />
+			</Panel>
+		</StyledGenericModel>
 	);
 };
 
