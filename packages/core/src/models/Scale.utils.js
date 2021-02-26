@@ -8,6 +8,7 @@ const getName = (data) => {
 	const chordName = RelativeScaleUtils.getName(data.intervals);
 	return `${kcName} + ${chordName}`;
 };
+
 const getPreview = (data) => null;
 const getCaption = (data) => null;
 const getPodAtPitch = (data, p) => NoteUtils.getPodAtPitch(data.root, p) || RelativeScaleUtils.getPodAtPitch(data.intervals, p);
@@ -19,20 +20,23 @@ const getMetaChildren = data => {
 			pathId: 'root',
 			label: 'Root',
 			name: NoteUtils.getName(data.root),
+			preview: NoteUtils.getPreview(data.root),
 			modelId: MODEL_ID.Note,
 			modelData: data.root
 		},
 		{
 			pathId: 'intervals',
 			label: 'Intervals',
-			name: RelativeScaleUtils.getPreview(data.intervals),
+			name: RelativeScaleUtils.getName(data.intervals),
+			preview: RelativeScaleUtils.getPreview(data.intervals),
 			modelId: MODEL_ID.RelativeScale,
 			modelData: data.intervals
 		},
 		{
 			pathId: 'notes',
 			label: 'Notes',
-			name: AbsoluteScaleUtils.getPreview(data.intervals),
+			name: AbsoluteScaleUtils.getName(data.intervals),
+			preview: AbsoluteScaleUtils.getPreview(data.intervals),
 			modelId: MODEL_ID.AbsoluteScale,
 			modelData: notes
 		}

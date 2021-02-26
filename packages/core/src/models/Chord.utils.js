@@ -10,6 +10,7 @@ const getName = (data) => {
 	const chordName = RelativeChordUtils.getName(data.intervals);
 	return `${kcName} + ${chordName}`;
 };
+
 const getPreview = (data) => `${NoteUtils.getName(data.root)} + ${data.intervals.map(IntervalUtils.getName).join(', ')}`;
 const getCaption = (data) => null;
 const getPodAtPitch = (data, p) => AbsoluteChordUtils.getPodAtPitch(data.notes, p);
@@ -21,19 +22,22 @@ const getMetaChildren = data => {
 			pathId: 'root',
 			label: 'Root',
 			name: NoteUtils.getName(data.root),
+			preview: NoteUtils.getPreview(data.root),
 			modelId: MODEL_ID.Note,
 			modelData: data.root
 		},
 		{
 			pathId: 'intervals',
-			name: RelativeChordUtils.getPreview(data.intervals),
+			name: RelativeChordUtils.getName(data.intervals),
+			preview: RelativeChordUtils.getPreview(data.intervals),
 			label: 'Intervals',
 			modelId: MODEL_ID.RelativeChord,
 			modelData: data.intervals
 		},
 		{
 			pathId: 'notes',
-			name: AbsoluteChordUtils.getPreview(notes),
+			name: AbsoluteChordUtils.getName(notes),
+			preview: AbsoluteChordUtils.getPreview(notes),
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
 			modelData: notes

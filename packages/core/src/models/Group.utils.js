@@ -13,6 +13,7 @@ const getMetaChildren = data => {
 		return {
 			...child,
 			name,
+			preview: 'preview',
 			modelData
 		}
 	});

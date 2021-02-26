@@ -8,12 +8,14 @@ import PitchUtils from "./Pitch.utils";
 
 const getPreview = (data) => 'X Hz';
 const getCaption = (data) => null;
+
 const getMetaChildren = data => {
 	return [
 		{
 			pathId: 0,
 			label: 'Pitch',
 			name: PitchUtils.getPreview(data[0]),
+			preview: null,
 			modelId: MODEL_ID.Pitch,
 			modelData: data[0]
 		},
@@ -21,6 +23,7 @@ const getMetaChildren = data => {
 			pathId: 1,
 			label: 'Degree',
 			name: DegreeUtils.getPreview(data[1]),
+			preview: null,
 			modelId: MODEL_ID.Degree,
 			modelData: data[1]
 		}
