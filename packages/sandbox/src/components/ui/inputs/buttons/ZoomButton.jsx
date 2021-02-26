@@ -18,7 +18,7 @@ const ZoomButton = ({ modelId, modelData, name, pathId, ...props }) => {
 	const onClick = () => push(childData);
 
 	return (
-		<IconButton onClick={onClick} color={THEME.active} iconId='zoom' />
+		<IconButton onClick={onClick} color={THEME.primary} iconId='zoom' />
 	);
 }
 

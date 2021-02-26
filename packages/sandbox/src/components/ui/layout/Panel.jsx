@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { EditContextProvider } from "../../../contexts/EditContext";
 import { usePathContext } from '../../../contexts/PathContext';
+import THEME from "../../../styles/theme";
 import Viewer from "../../core/Viewer";
 import IconButton from "../inputs/buttons/IconButton";
 
@@ -61,7 +62,7 @@ const PanelHeader = ({ name, caption, preview }) => {
 					<div className='preview'>{preview}</div>
 				</div>
 				{path.length > 1 &&
-					<IconButton onClick={pop} iconId='up' />
+					<IconButton onClick={pop} color={THEME.primary} iconId='up' />
 				}
 			</section>
 		</StyledPanelHeader>

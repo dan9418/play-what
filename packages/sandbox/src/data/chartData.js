@@ -307,7 +307,7 @@ export const ALL_OF_ME = {
 				{
 					childModelId: MODEL_ID.Chord,
 					childData: {
-						root: NOTE.C.value,
+						root: NOTE.D.value,
 						intervals: RELATIVE_CHORD.Min7.value,
 						t: 16
 					}

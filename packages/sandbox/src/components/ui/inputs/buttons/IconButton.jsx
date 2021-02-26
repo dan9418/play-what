@@ -16,11 +16,6 @@ const styles = css`
 	&:hover {
 		background-color: rgba(0,0,0,0.1);
     }
-
-	& svg, & svg * {
-		color: #AAA;
-    	fill: #AAA;
-	}
 `;
 
 const IconButton = ({ iconId, onClick, size = 16, color, ...rest }) => {
