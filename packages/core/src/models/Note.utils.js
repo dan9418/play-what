@@ -2,7 +2,7 @@ import { DEGREE_VALUES } from "./Degree.constants";
 import DegreeUtils from "./Degree.utils";
 import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
-import { ROOT_SCALE } from "./helpers/Scale.constants";
+import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import { ACCIDENTAL } from "./Note.constants";
 import PitchUtils from "./Pitch.utils";
 
