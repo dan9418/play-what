@@ -47,12 +47,7 @@ const getRows = metaChildren => {
 					>
 						{JSON.stringify(modelData, null, "\t")}
 					</Subpanel>
-					<ZoomButton
-						modelData={modelData}
-						name={label || name}
-						modelId={modelId}
-						pathId={pathId}
-					/>
+					<ZoomButton metaChild={child} />
 				</StyledTypeRow>
 			</div>
 		);

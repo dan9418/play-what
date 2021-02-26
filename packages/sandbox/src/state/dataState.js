@@ -1,7 +1,7 @@
 import { atom } from "recoil";
-import SONG from "../data/songData";
+import { LIBRARY_PATH_ROOT } from "../data/songData";
 
 export const dataState = atom({
 	key: 'dataState',
-	default: SONG
+	default: LIBRARY_PATH_ROOT
 });
