@@ -1,11 +1,12 @@
 import React from 'react';
-import { usePathContext } from '../../contexts/PathContext';
+import { useRecoilValue } from 'recoil';
+import { pathHeadState } from '../../state/pathState';
 import Panel from '../ui/layout/Panel';
 import Viewer from './Viewer';
 
 const ViewerPanel = () => {
-	const pathContext = usePathContext();
-	const { modelId } = pathContext.pathHead;
+	const pathHead = useRecoilValue(pathHeadState);
+	const { modelId } = pathHead;
 	return (
 		<Panel name="Output" caption={modelId} preview="Fretboard">
 			<Viewer />

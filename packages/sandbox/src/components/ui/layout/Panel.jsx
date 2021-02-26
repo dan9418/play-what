@@ -1,6 +1,8 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { usePathContext } from '../../../contexts/PathContext';
+import { usePathNavContext } from "../../../contexts/PathNavContext";
+import { pathHeadState, pathState } from "../../../state/pathState";
 import THEME from "../../../styles/theme";
 import IconButton from "../inputs/buttons/IconButton";
 
@@ -47,9 +49,13 @@ const StyledPanelHeader = styled.div`
 `;
 
 const PanelHeader = () => {
-	const pathContext = usePathContext();
-	const { pop, path, pathHead } = pathContext;
+	const pathHead = useRecoilValue(pathHeadState);
 	const { modelId, name, preview } = pathHead;
+
+	const path = useRecoilValue(pathState);
+
+	const { pop } = usePathNavContext();
+
 	return (
 		<StyledPanelHeader>
 			<section>

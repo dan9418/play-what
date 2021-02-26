@@ -3,11 +3,11 @@ import React, { createContext, useContext, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { pathState } from '../state/pathState';
 
-const PathContext = createContext(null);
+const PathNavContext = createContext(null);
 
-export const usePathContext = () => useContext(PathContext);
+export const usePathNavContext = () => useContext(PathNavContext);
 
-const getPathUtils = (path, setPath) => {
+const getPathNavContext = (path, setPath) => {
 
 	const pop = () => {
 		setPath(path.slice(0, path.length - 1));
@@ -25,28 +25,23 @@ const getPathUtils = (path, setPath) => {
 		setPath([]);
 	}
 
-	const pathHead = path[path.length - 1];
-
 	return {
 		path,
 		pop,
 		popAt,
 		push,
-		reset,
-		pathHead
+		reset
 	}
 }
 
-export const PathContextProvider = ({ children }) => {
+export const PathNavContextProvider = ({ children }) => {
 	const [path, setPath] = useRecoilState(pathState);
 
-	const pathContext = getPathUtils(path, setPath);
-
-	console.log('dpb pathContext', pathContext);
+	const pathNavContext = getPathNavContext(path, setPath);
 
 	return (
-		<PathContext.Provider value={pathContext}>
+		<PathNavContext.Provider value={pathNavContext}>
 			{children}
-		</PathContext.Provider>
+		</PathNavContext.Provider>
 	);
 };

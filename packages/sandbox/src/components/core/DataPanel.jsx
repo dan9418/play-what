@@ -1,7 +1,8 @@
 import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { usePathContext } from '../../contexts/PathContext';
+import { pathHeadState } from '../../state/pathState';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Panel from '../ui/layout/Panel';
 import Subpanel from '../ui/layout/Subpanel';
@@ -29,9 +30,11 @@ const StyledPropertyHeader = styled.h4`
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, pathId, modelId, caption, preview, modelData, label } = child;
+		const { name, pathId, modelId, preview, modelData, label } = child;
 
-		const header = <StyledPropertyHeader>{label || i + 1}</StyledPropertyHeader>;
+		const header = <StyledPropertyHeader>
+			{label || i + 1}
+		</StyledPropertyHeader>;
 
 		/*if (typeof modelData === 'number' || typeof modelData === 'string' ) {
 			return <div>{`${label || name} = ${modelData}`}</div>;
@@ -42,7 +45,7 @@ const getRows = metaChildren => {
 				{header}
 				<StyledTypeRow >
 					<Subpanel
-						caption={caption}
+						caption={modelId}
 						name={name}
 						preview={preview}
 					>
@@ -58,7 +61,7 @@ const getRows = metaChildren => {
 
 
 const DataPanel = () => {
-	const { pathHead } = usePathContext();
+	const pathHead= useRecoilValue(pathHeadState);
 	const { modelId, modelData } = pathHead;
 
 	const model = MODEL[modelId];

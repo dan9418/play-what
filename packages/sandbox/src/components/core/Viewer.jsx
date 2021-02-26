@@ -1,9 +1,9 @@
 import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
-import { usePathContext } from '../../contexts/PathContext';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
+import { pathHeadState } from '../../state/pathState';
 
 const Empty = ({ children }) => <div>Please select a viewer for this model type.</div>;
 
@@ -57,7 +57,7 @@ const StyledViewerHeader = styled.h2`
 `;
 
 const Viewer = () => {
-	const { pathHead } = usePathContext();
+	const pathHead = useRecoilValue(pathHeadState);
 	const { modelData, modelId } = pathHead;
 
 	let pitchOffset = 0;

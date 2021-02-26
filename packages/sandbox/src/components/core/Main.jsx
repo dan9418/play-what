@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { PathContextProvider } from '../../contexts/PathContext';
+import { PathNavContextProvider } from '../../contexts/PathNavContext';
 import { RouteContextConsumer } from '../../contexts/RouteContext';
 
 const StyledMain = styled.main`
@@ -15,13 +15,11 @@ const StyledMain = styled.main`
 const Main = () => {
 	return (
 		<StyledMain>
-			<PathContextProvider>
-
+			<PathNavContextProvider>
 				<RouteContextConsumer>
 					{({Component}) => <Component />}
 				</RouteContextConsumer>
-
-			</PathContextProvider>
+			</PathNavContextProvider>
 		</StyledMain>
 	);
 };

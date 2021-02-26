@@ -1,6 +1,8 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { usePathContext } from "../../contexts/PathContext";
+import { usePathNavContext } from "../../contexts/PathNavContext";
+import { pathState } from "../../state/pathState";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
@@ -31,7 +33,8 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const { path, popAt } = usePathContext();
+	const path = useRecoilValue(pathState);
+	const { popAt } = usePathNavContext();
 
 	return (
 		<StyledBreadcrumbList>

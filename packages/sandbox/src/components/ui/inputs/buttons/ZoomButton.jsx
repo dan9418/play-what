@@ -1,10 +1,10 @@
 import React from 'react';
-import { usePathContext } from '../../../../contexts/PathContext';
+import { usePathNavContext } from '../../../../contexts/PathNavContext';
 import THEME from '../../../../styles/theme';
 import IconButton from './IconButton';
 
 const ZoomButton = ({ metaChild }) => {
-	const { push } = usePathContext();
+	const { push } = usePathNavContext();
 	const onClick = () => push(metaChild);
 
 	return (
