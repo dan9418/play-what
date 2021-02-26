@@ -1,7 +1,6 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { DataContextProvider } from '../../contexts/DataContext';
 import { PathContextProvider } from '../../contexts/PathContext';
 import { RouteContextConsumer } from '../../contexts/RouteContext';
 
@@ -17,11 +16,11 @@ const Main = () => {
 	return (
 		<StyledMain>
 			<PathContextProvider>
-				<DataContextProvider>
-					<RouteContextConsumer>
-						{({Component}) => <Component />}
-					</RouteContextConsumer>
-				</DataContextProvider>
+
+				<RouteContextConsumer>
+					{({Component}) => <Component />}
+				</RouteContextConsumer>
+
 			</PathContextProvider>
 		</StyledMain>
 	);

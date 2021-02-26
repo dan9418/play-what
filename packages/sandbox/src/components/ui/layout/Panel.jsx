@@ -1,9 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { EditContextProvider } from "../../../contexts/EditContext";
 import { usePathContext } from '../../../contexts/PathContext';
 import THEME from "../../../styles/theme";
-import Viewer from "../../core/Viewer";
 import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.div`
@@ -79,12 +77,10 @@ const StyledPanel = styled.div`
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
-			<EditContextProvider>
-				<PanelHeader name={name} preview={preview} caption={caption} />
-				<div className="panel-body">
-					{children}
-				</div>
-			</EditContextProvider>
+			<PanelHeader name={name} preview={preview} caption={caption} />
+			<div className="panel-body">
+				{children}
+			</div>
 		</StyledPanel>
 	);
 };

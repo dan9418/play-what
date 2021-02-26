@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { EditContextProvider } from '../../../contexts/EditContext';
 import EditButton from '../inputs/buttons/EditButton';
 import ExpandButton from '../inputs/buttons/ExpandButton';
 
@@ -74,14 +73,12 @@ const Subpanel = ({ name, caption, preview, editable = true, actions, children }
 
 	return (
 		<StyledSubpanel>
-			<EditContextProvider>
-				<SubpanelHeader name={name} caption={caption} preview={preview} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
-				{isOpen && (
-					<pre className="subpanel-body">
-						{children}
-					</pre>
-				)}
-			</EditContextProvider>
+			<SubpanelHeader name={name} caption={caption} preview={preview} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
+			{isOpen && (
+				<pre className="subpanel-body">
+					{children}
+				</pre>
+			)}
 		</StyledSubpanel>
 	);
 };
