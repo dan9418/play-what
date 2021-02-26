@@ -20,8 +20,7 @@ export const MODEL_ID = {
 	RelativeScale: 'relScale',
 	Chord: 'chord',
 	Scale: 'scale',
-	Group: 'group',
-	Frame: 'dict'
+	Group: 'group'
 };
 
 export const MODEL = {
