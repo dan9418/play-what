@@ -1,9 +1,10 @@
+import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
+import { usePathContext } from '../../contexts/PathContext';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Panel from '../ui/layout/Panel';
 import Subpanel from '../ui/layout/Subpanel';
-import Viewer from './Viewer';
 
 const StyledTypeRow = styled.div`
 	display: flex;
@@ -54,35 +55,21 @@ const getRows = metaChildren => {
 	})
 };
 
-const StyledGenericModel = styled.div`
-	display: grid;
-	grid-gap: 32px;
-	width: 100%;
-	max-width: 512px;
-	margin: auto;
 
-	@media(min-width: 1024px) {
-		grid-template-columns: 1fr 1fr;
-		max-width: 100%;
-	}
 
-	grid-template-columns: 1fr;
+const DataPanel = () => {
+	const { pathHead } = usePathContext();
+	const { modelId, modelData } = pathHead;
 
-	padding: 0 0 24px 0;
-`;
+	const model = MODEL[modelId];
 
-const GenericModel = ({ modelId, metaData, metaChildren, modelData }) => {
+	const metaChildren = model.utils.getMetaChildren(modelData);
 
 	return (
-		<StyledGenericModel>
-			<Panel {...metaData}>
-				{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
-			</Panel>
-			<Panel name="Output" caption={modelId} preview="Fretboard">
-				<Viewer />
-			</Panel>
-		</StyledGenericModel>
+		<Panel {...pathHead}>
+			{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
+		</Panel>
 	);
 };
 
-export default GenericModel;
+export default DataPanel;
