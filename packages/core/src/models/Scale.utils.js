@@ -17,7 +17,6 @@ const getMetaChildren = data => {
 	const notes = PodUtils.addPodList(data.root, data.intervals);
 	return [
 		{
-			pathId: 'root',
 			label: 'Root',
 			name: NoteUtils.getName(data.root),
 			preview: NoteUtils.getPreview(data.root),
@@ -25,7 +24,6 @@ const getMetaChildren = data => {
 			modelData: data.root
 		},
 		{
-			pathId: 'intervals',
 			label: 'Intervals',
 			name: RelativeScaleUtils.getName(data.intervals),
 			preview: RelativeScaleUtils.getPreview(data.intervals),
@@ -33,7 +31,6 @@ const getMetaChildren = data => {
 			modelData: data.intervals
 		},
 		{
-			pathId: 'notes',
 			label: 'Notes',
 			name: AbsoluteScaleUtils.getName(data.intervals),
 			preview: AbsoluteScaleUtils.getPreview(data.intervals),

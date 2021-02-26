@@ -15,7 +15,6 @@ const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
 
 const getMetaChildren = data => {
 	return data.map((d, i) => ({
-		pathId: i,
 		name: IntervalUtils.getName(d),
 		preview: IntervalUtils.getPreview(d),
 		modelId: MODEL_ID.Interval,

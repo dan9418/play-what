@@ -8,7 +8,6 @@ export const OUT_OF_NOWHERE = {
 	modelId: MODEL_ID.Group,
 	modelData: [
 		{
-			pathId: 'A',
 			name: 'Section A',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -63,7 +62,6 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			pathId: 'B',
 			name: 'Section B',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -118,7 +116,6 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			pathId: 'A\'',
 			name: 'Section A',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -173,7 +170,6 @@ export const OUT_OF_NOWHERE = {
 			]
 		},
 		{
-			pathId: 'C',
 			name: 'Section C',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -276,7 +272,6 @@ export const ALL_OF_ME = {
 	modelId: MODEL_ID.Group,
 	modelData: [
 		{
-			pathId: 'A',
 			name: 'Section A',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -315,7 +310,6 @@ export const ALL_OF_ME = {
 			]
 		},
 		{
-			pathId: 'B',
 			name: 'Section B',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -362,7 +356,6 @@ export const ALL_OF_ME = {
 			]
 		},
 		{
-			pathId: 'A\'',
 			name: 'Section A\'',
 			modelId: MODEL_ID.Group,
 			modelData: [
@@ -401,7 +394,6 @@ export const ALL_OF_ME = {
 			]
 		},
 		{
-			pathId: 'C',
 			name: 'Section C',
 			modelId: MODEL_ID.Group,
 			modelData: [
