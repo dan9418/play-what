@@ -6,14 +6,14 @@ const getCaption = (data) => null;
 const getPodAtPitch = (data, p) => null;
 const getMetaChildren = data => {
 	return data.map(child => {
-		const { childModelId } = child;
-		const model = MODEL[childModelId];
-		const childData = model.utils.parse ? model.utils.parse(child.childData) : child.childData;
-		const name = child.name ? child.name : model.utils.getName(child.childData);
+		const { modelId } = child;
+		const model = MODEL[modelId];
+		const modelData = model.utils.parse ? model.utils.parse(child.modelData) : child.modelData;
+		const name = child.name ? child.name : model.utils.getName(child.modelData);
 		return {
 			...child,
 			name,
-			childData
+			modelData
 		}
 	});
 };

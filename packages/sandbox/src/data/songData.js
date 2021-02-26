@@ -14,13 +14,13 @@ export const LIBRARY_PATH_ROOT = {
 		{
 			pathId: 'chords',
 			name: 'Chords',
-			childModelId: MODEL_ID.Group,
-			childData: RELATIVE_CHORD_VALUES.map(chord => (
+			modelId: MODEL_ID.Group,
+			modelData: RELATIVE_CHORD_VALUES.map(chord => (
 				{
 					pathId: chord.id,
 					name: chord.name,
-					childModelId: MODEL_ID.Chord,
-					childData: {
+					modelId: MODEL_ID.Chord,
+					modelData: {
 						root: ROOT_POD.value,
 						intervals: chord.value
 					}
@@ -30,13 +30,13 @@ export const LIBRARY_PATH_ROOT = {
 		{
 			pathId: 'scales',
 			name: 'Scales',
-			childModelId: MODEL_ID.Group,
-			childData: RELATIVE_SCALE_VALUES.map(scale => (
+			modelId: MODEL_ID.Group,
+			modelData: RELATIVE_SCALE_VALUES.map(scale => (
 				{
 					pathId: scale.id,
 					name: scale.name,
-					childModelId: MODEL_ID.Scale,
-					childData: {
+					modelId: MODEL_ID.Scale,
+					modelData: {
 						root: ROOT_POD.value,
 						intervals: scale.value
 					}
@@ -46,13 +46,13 @@ export const LIBRARY_PATH_ROOT = {
 		{
 			pathId: 'modes',
 			name: 'Modes',
-			childModelId: MODEL_ID.Group,
-			childData: INTERVAL_MODE_VALUES.map(scale => (
+			modelId: MODEL_ID.Group,
+			modelData: INTERVAL_MODE_VALUES.map(scale => (
 				{
 					pathId: scale.id,
 					name: scale.name,
-					childModelId: MODEL_ID.Scale,
-					childData: {
+					modelId: MODEL_ID.Scale,
+					modelData: {
 						root: ROOT_POD.value,
 						intervals: scale.value
 					}
@@ -62,13 +62,13 @@ export const LIBRARY_PATH_ROOT = {
 		{
 			pathId: 'charts',
 			name: 'Charts',
-			childModelId: MODEL_ID.Group,
-			childData: CHART_VALUES.map(chart => (
+			modelId: MODEL_ID.Group,
+			modelData: CHART_VALUES.map(chart => (
 				{
 					pathId: chart.id,
 					name: chart.name,
-					childModelId: MODEL_ID.Group,
-					childData: chart.modelData
+					modelId: MODEL_ID.Group,
+					modelData: chart.modelData
 				}
 			))
 		}

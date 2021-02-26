@@ -17,8 +17,8 @@ const getMetaChildren = data => {
 	return data.map((d, i) => ({
 		pathId: i,
 		name: IntervalUtils.getName(d),
-		childModelId: MODEL_ID.Interval,
-		childData: d
+		modelId: MODEL_ID.Interval,
+		modelData: d
 	}));
 };
 

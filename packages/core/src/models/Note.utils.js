@@ -14,15 +14,15 @@ const getMetaChildren = data => {
 			pathId: 0,
 			label: 'Pitch',
 			name: PitchUtils.getPreview(data[0]),
-			childModelId: MODEL_ID.Pitch,
-			childData: data[0]
+			modelId: MODEL_ID.Pitch,
+			modelData: data[0]
 		},
 		{
 			pathId: 1,
 			label: 'Degree',
 			name: DegreeUtils.getPreview(data[1]),
-			childModelId: MODEL_ID.Degree,
-			childData: data[1]
+			modelId: MODEL_ID.Degree,
+			modelData: data[1]
 		}
 	];
 };

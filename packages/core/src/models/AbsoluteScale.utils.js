@@ -11,8 +11,8 @@ const getMetaChildren = data => {
 	return data.map((d, i) => ({
 		pathId: i,
 		name: NoteUtils.getName(d),
-		childModelId: MODEL_ID.Note,
-		childData: d
+		modelId: MODEL_ID.Note,
+		modelData: d
 	}));
 };
 

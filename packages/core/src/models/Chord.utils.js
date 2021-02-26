@@ -21,22 +21,22 @@ const getMetaChildren = data => {
 			pathId: 'root',
 			label: 'Root',
 			name: NoteUtils.getName(data.root),
-			childModelId: MODEL_ID.Note,
-			childData: data.root
+			modelId: MODEL_ID.Note,
+			modelData: data.root
 		},
 		{
 			pathId: 'intervals',
 			name: RelativeChordUtils.getPreview(data.intervals),
 			label: 'Intervals',
-			childModelId: MODEL_ID.RelativeChord,
-			childData: data.intervals
+			modelId: MODEL_ID.RelativeChord,
+			modelData: data.intervals
 		},
 		{
 			pathId: 'notes',
 			name: AbsoluteChordUtils.getPreview(notes),
 			label: 'Notes',
-			childModelId: MODEL_ID.AbsoluteChord,
-			childData: notes
+			modelId: MODEL_ID.AbsoluteChord,
+			modelData: notes
 		}
 	];
 };

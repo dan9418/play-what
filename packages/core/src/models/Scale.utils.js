@@ -19,22 +19,22 @@ const getMetaChildren = data => {
 			pathId: 'root',
 			label: 'Root',
 			name: NoteUtils.getName(data.root),
-			childModelId: MODEL_ID.Note,
-			childData: data.root
+			modelId: MODEL_ID.Note,
+			modelData: data.root
 		},
 		{
 			pathId: 'intervals',
 			label: 'Intervals',
 			name: RelativeScaleUtils.getPreview(data.intervals),
-			childModelId: MODEL_ID.RelativeScale,
-			childData: data.intervals
+			modelId: MODEL_ID.RelativeScale,
+			modelData: data.intervals
 		},
 		{
 			pathId: 'notes',
 			label: 'Notes',
 			name: AbsoluteScaleUtils.getPreview(data.intervals),
-			childModelId: MODEL_ID.AbsoluteScale,
-			childData: notes
+			modelId: MODEL_ID.AbsoluteScale,
+			modelData: notes
 		}
 	];
 };

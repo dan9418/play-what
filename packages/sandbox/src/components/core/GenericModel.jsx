@@ -28,12 +28,12 @@ const StyledPropertyHeader = styled.h4`
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, pathId, childModelId, caption, preview, childData, label } = child;
+		const { name, pathId, modelId, caption, preview, modelData, label } = child;
 
 		const header = <StyledPropertyHeader>{label || i + 1}</StyledPropertyHeader>;
 
-		/*if (typeof childData === 'number' || typeof childData === 'string' ) {
-			return <div>{`${label || name} = ${childData}`}</div>;
+		/*if (typeof modelData === 'number' || typeof modelData === 'string' ) {
+			return <div>{`${label || name} = ${modelData}`}</div>;
 		}*/
 
 		return (
@@ -45,12 +45,12 @@ const getRows = metaChildren => {
 						name={name}
 						preview={preview}
 					>
-						{JSON.stringify(childData, null, "\t")}
+						{JSON.stringify(modelData, null, "\t")}
 					</Subpanel>
 					<ZoomButton
-						modelData={childData}
+						modelData={modelData}
 						name={label || name}
-						modelId={childModelId}
+						modelId={modelId}
 						pathId={pathId}
 					/>
 				</StyledTypeRow>
