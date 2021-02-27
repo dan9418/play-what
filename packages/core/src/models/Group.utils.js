@@ -12,7 +12,7 @@ const getMetaChildren = data => {
 		const name = child.name ? child.name : model.utils.getName(child.modelData);
 		return {
 			...child,
-			groupIndex: i,
+			childIndex: i,
 			name,
 			preview: model.utils.getPreview(modelData),
 			modelData

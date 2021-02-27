@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { usePathNavContext } from '../../contexts/PathNavContext';
 import { pathHeadState } from '../../state/pathState';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
+import IconButton from '../ui/inputs/buttons/IconButton';
 
 const StyledPlaybackControls = styled.div`
 	padding: 16px;
@@ -50,9 +50,9 @@ const PlaybackControls = () => {
 
 	return (
 		<StyledPlaybackControls>
-			<div>Tempo: {tempo}</div>
+			<div>Tempo: {tempo}bpm</div>
 			<div>Beats: {numBeats}</div>
-			<ButtonInput className="start-stop" onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
+			<IconButton iconId="playPause" onClick={() => setIsPlaying(!isPlaying)}/>
 		</StyledPlaybackControls>
 	);
 };

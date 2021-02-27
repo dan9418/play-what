@@ -9,6 +9,7 @@ const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
 
 const getMetaChildren = data => {
 	return data.map((d, i) => ({
+		childIndex: i,
 		name: NoteUtils.getName(d),
 		preview: NoteUtils.getPreview(d),
 		modelId: MODEL_ID.Note,

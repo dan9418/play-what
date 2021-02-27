@@ -39,7 +39,7 @@ const StyledButtonContainer = styled.div`
 	top: 0;
 	right: 0;
 	button {
-		margin: 6px;
+		margin: 6px 2px;
 	}
 `;
 

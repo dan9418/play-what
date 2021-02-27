@@ -12,7 +12,7 @@ export const pathHeadState = selector({
 	get: ({ get }) => {
 		const path = get(pathState);
 		const pathHead = path[path.length - 1];
-		console.log('pathHead', pathHead);
+		// console.log('pathHead', pathHead);
 		return pathHead;
 	}
 });
@@ -27,11 +27,11 @@ export const siblingsState = selector({
 		const pathHead = path[path.length - 1];
 		const parent = path[path.length - 2];
 
-		if (parent.modelId !== MODEL_ID.Group) return null;
+		const parentModel = MODEL[parent.modelId];
 
-		const siblings = MODEL[MODEL_ID.Group].utils.getMetaChildren(parent.modelData);
+		const siblings = parentModel.utils.getMetaChildren(parent.modelData);
 
-		const i = pathHead.groupIndex;
+		const i = pathHead.childIndex;
 		const isFirst = i === 0;
 		const isLast = i === siblings.length - 1;
 

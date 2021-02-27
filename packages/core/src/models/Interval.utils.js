@@ -9,6 +9,7 @@ const getCaption = (data) => null;
 const getMetaChildren = data => {
 	return [
 		{
+			childIndex: 0,
 			label: 'Pitch Span',
 			name: PitchUtils.getName(data[0]),
 			preview: null,
@@ -16,6 +17,7 @@ const getMetaChildren = data => {
 			modelData: data[0]
 		},
 		{
+			childIndex: 1,
 			label: 'Degree Span',
 			name: DegreeUtils.getName(data[1]),
 			preview: null,

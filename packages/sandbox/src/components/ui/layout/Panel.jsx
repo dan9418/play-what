@@ -60,7 +60,7 @@ const PanelHeader = () => {
 			<div className='preview-container'>
 				<div className='name-container'>
 					<h3 className='name'>{name}</h3>
-					<div className='caption'>{modelId}</div>
+					<div className='caption'>{model.name}</div>
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>

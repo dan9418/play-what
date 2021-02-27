@@ -12,6 +12,7 @@ const getCaption = (data) => null;
 const getMetaChildren = data => {
 	return [
 		{
+			childIndex: 0,
 			label: 'Pitch',
 			name: PitchUtils.getPreview(data[0]),
 			preview: null,
@@ -19,6 +20,7 @@ const getMetaChildren = data => {
 			modelData: data[0]
 		},
 		{
+			childIndex: 1,
 			label: 'Degree',
 			name: DegreeUtils.getPreview(data[1]),
 			preview: null,
