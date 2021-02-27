@@ -7,24 +7,27 @@ import { pathHeadState } from '../../state/pathState';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 
 const StyledPlaybackControls = styled.div`
-	height: 89px;
+	min-height: 89px;
+	padding: 16px;
 	background-color: #ddd;
 	border-radius: 12px;
-	display: flex;
+	/*display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center;*/
 
-	& > button {
-		margin: 16px;
+	& button {
+		margin-top: 16px;
+		margin-right: 16px;
 	}
 
 `;
 
 const PlaybackControls = () => {
 	const { modelId, modelData } = useRecoilValue(pathHeadState);
-	const { prev, next } = usePathNavContext();
+	const { prev, next, pop } = usePathNavContext();
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [tempo, setTempo] = useState(200);
+	const numBeats = modelData.t || 1;
 
 	const model = MODEL[modelId];
 
@@ -41,7 +44,7 @@ const PlaybackControls = () => {
 	useEffect(() => {
 		if (!isPlaying) return;
 		const secondsPerBeat = 60 / tempo;
-		const numBeats = modelData.t || 1;
+
 
 		const seconds = numBeats * secondsPerBeat;
 		console.log(seconds);
@@ -53,11 +56,19 @@ const PlaybackControls = () => {
 
 	return (
 		<StyledPlaybackControls>
-			<div>Tempo: {tempo}</div>
-			<ButtonInput onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
-			{prev && <ButtonInput onClick={prev}>Prev</ButtonInput>}
-			{next && <ButtonInput onClick={next}>Next</ButtonInput>}
-			{model.utils.playSound && <ButtonInput onClick={() => model.utils.playSound(modelData)}>Play Sound</ButtonInput>}
+			<div className="tempo" >
+				<span>Tempo: {tempo}</span>
+				<span>, Beats: {numBeats}</span>
+			</div>
+			<div>
+				<ButtonInput className="start-stop" onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
+				{model.utils.playSound && <ButtonInput className="play-sound" onClick={() => model.utils.playSound(modelData)}>Play Sound</ButtonInput>}
+			</div>
+			<div>
+				{prev && <ButtonInput className="prev" onClick={prev}>{`< Prev`}</ButtonInput>}
+				<ButtonInput className="up" onClick={pop}>{`Up`}</ButtonInput>
+				{next && <ButtonInput className="next" onClick={next}>{`Next >`}</ButtonInput>}
+			</div>
 		</StyledPlaybackControls>
 	);
 };
