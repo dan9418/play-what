@@ -27,6 +27,7 @@
         "comma-dangle":["error","never"],
         "indent": ["error", "tab"],
         "no-tabs": ["off"],
-        "no-trailing-spaces": "error"
+        "no-trailing-spaces": "error",
+        "react/prop-types": 0
     }
 }

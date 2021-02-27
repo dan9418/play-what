@@ -68,12 +68,12 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-const Subpanel = ({ name, caption, preview, editable = true, actions, children }) => {
+const Subpanel = ({ children, ...props }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<StyledSubpanel>
-			<SubpanelHeader name={name} caption={caption} preview={preview} editable={editable} isOpen={isOpen} setIsOpen={setIsOpen} />
+			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
 			{isOpen && (
 				<pre className="subpanel-body">
 					{children}

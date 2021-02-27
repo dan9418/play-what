@@ -42,16 +42,14 @@ const getRows = metaChildren => {
 		return (
 			<div key={i}>
 				{header}
-				<StyledTypeRow >
-					<Subpanel
-						caption={modelId}
-						name={name}
-						preview={preview}
-					>
-						{JSON.stringify(modelData, null, "\t")}
-					</Subpanel>
-					<ZoomButton metaChild={child} />
-				</StyledTypeRow>
+				<Subpanel
+					metaChild={child}
+					caption={modelId}
+					name={name}
+					preview={preview}
+				>
+					{JSON.stringify(modelData, null, "\t")}
+				</Subpanel>
 			</div>
 		);
 	})

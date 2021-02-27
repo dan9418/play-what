@@ -64,10 +64,13 @@ const PanelHeader = () => {
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>
-			{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelData)} iconId="speaker" />}
-			{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
-			{path.length > 1 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
-			{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
+			<div className='button-container'>
+				{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelData)} iconId="speaker" />}
+				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
+				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
+				{path.length > 1 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+
+			</div>
 		</StyledPanelHeader>
 	);
 };

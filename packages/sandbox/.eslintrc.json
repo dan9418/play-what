@@ -26,6 +26,7 @@
         "arrow-body-style":"off",
         "comma-dangle":["error","never"],
         "indent": ["error", "tab"],
-        "no-tabs": ["off"]
+        "no-tabs": ["off"],
+        "react/prop-types": 0
     }
 }
