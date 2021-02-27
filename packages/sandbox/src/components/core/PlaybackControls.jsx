@@ -24,9 +24,14 @@ const PlaybackControls = () => {
 	const { modelId, modelData } = useRecoilValue(pathHeadState);
 	const { prev, next } = usePathNavContext();
 	const [isPlaying, setIsPlaying] = useState(false);
-	const [tempo, setTempo] = useState(60);
+	const [tempo, setTempo] = useState(200);
 
 	const model = MODEL[modelId];
+
+	// Cancel at end of group
+	useEffect(() => {
+		if (isPlaying && !next) setIsPlaying(false);
+	}, [isPlaying, next]);
 
 	useEffect(() => {
 		if (!isPlaying || !model.utils.playSound) return;
@@ -36,10 +41,14 @@ const PlaybackControls = () => {
 	useEffect(() => {
 		if (!isPlaying) return;
 		const secondsPerBeat = 60 / tempo;
+		const numBeats = modelData.t || 1;
 
-		console.log(secondsPerBeat);
+		const seconds = numBeats * secondsPerBeat;
+		console.log(seconds);
 
-		setTimeout(next, secondsPerBeat * 1000);
+		const timer = setTimeout(next, seconds * 1000);
+
+		return () => clearTimeout(timer);
 	}, [isPlaying, modelData]);
 
 	return (

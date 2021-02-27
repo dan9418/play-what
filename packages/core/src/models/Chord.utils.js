@@ -40,19 +40,27 @@ const getMetaChildren = data => {
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
 			modelData: notes
+		},
+		{
+			name: 'Beats',
+			preview: null,
+			label: null,
+			modelId: MODEL_ID.Pitch,
+			modelData: data.t
 		}
 	];
 };
 
 const parse = (data) => {
-	const { root, intervals } = data;
+	const { root, intervals, t } = data;
 
 	let rootValue = root;
 
 	return {
 		root: rootValue,
 		intervals,
-		notes: PodUtils.addPodList(root, intervals)
+		notes: PodUtils.addPodList(root, intervals),
+		t: t || 1
 	}
 };
 

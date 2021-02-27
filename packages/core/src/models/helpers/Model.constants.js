@@ -10,6 +10,7 @@ import RelativeChordUtils from '../RelativeChord.utils';
 import RelativeScaleUtils from '../RelativeScale.utils';
 
 export const MODEL_ID = {
+	Native: 'native',
 	Pitch: 'pitch',
 	Degree: 'degree',
 	Note: 'note',
