@@ -1,3 +1,4 @@
+import { MODEL } from "@pw/core/src/models/helpers/Model.constants";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -48,10 +49,11 @@ const StyledPanelHeader = styled.section`
 const PanelHeader = () => {
 	const pathHead = useRecoilValue(pathHeadState);
 	const { modelId, name, preview } = pathHead;
+	const model = MODEL[modelId];
 
 	const path = useRecoilValue(pathState);
 
-	const { pop } = usePathNavContext();
+	const { pop, prev, next } = usePathNavContext();
 
 	return (
 		<StyledPanelHeader>
@@ -62,9 +64,10 @@ const PanelHeader = () => {
 				</div>
 				<div className='preview'>{preview}</div>
 			</div>
-			{path.length > 1 &&
-				<IconButton onClick={pop} color={THEME.primary} iconId='up' />
-			}
+			{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelData)} iconId="speaker" />}
+			{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
+			{path.length > 1 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+			{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
 		</StyledPanelHeader>
 	);
 };

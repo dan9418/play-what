@@ -43,7 +43,7 @@ export const Delete = props => (
 	</StyledSVG>
 );
 
-export const Up = props => (
+/*export const Up = props => (
 	<StyledSVG
 		xmlns="http://www.w3.org/2000/svg"
 		x="0"
@@ -56,7 +56,7 @@ export const Up = props => (
 	>
 		<path d="M106.667 53.333L0 160 213.333 160z"></path>
 	</StyledSVG>
-);
+);*/
 
 export const Down = props => (
 	<StyledSVG
@@ -189,7 +189,7 @@ export const Maximize = props => {
 
 export const Zoom = props => {
 	return (
-	  <StyledSVG
+		<StyledSVG
 			xmlns='http://www.w3.org/2000/svg'
 			x='0'
 			y='0'
@@ -198,24 +198,121 @@ export const Zoom = props => {
 			viewBox='0 0 492.004 492.004'
 			xmlSpace='preserve'
 			{...props}
-	  >
+		>
 			<path d='M484.14 226.886L306.46 49.202c-5.072-5.072-11.832-7.856-19.04-7.856-7.216 0-13.972 2.788-19.044 7.856l-16.132 16.136c-5.068 5.064-7.86 11.828-7.86 19.04 0 7.208 2.792 14.2 7.86 19.264L355.9 207.526H26.58C11.732 207.526 0 219.15 0 234.002v22.812c0 14.852 11.732 27.648 26.58 27.648h330.496L252.248 388.926c-5.068 5.072-7.86 11.652-7.86 18.864 0 7.204 2.792 13.88 7.86 18.948l16.132 16.084c5.072 5.072 11.828 7.836 19.044 7.836 7.208 0 13.968-2.8 19.04-7.872l177.68-177.68c5.084-5.088 7.88-11.88 7.86-19.1.016-7.244-2.776-14.04-7.864-19.12z'></path>
-	  </StyledSVG>
+		</StyledSVG>
+	);
+}
+
+export const Speaker = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			width='93.038'
+			height='93.038'
+			x='0'
+			y='0'
+			enableBackground='new 0 0 93.038 93.038'
+			version='1.1'
+			viewBox='0 0 93.038 93.038'
+			xmlSpace='preserve'
+			{...props}
+		>
+			<path d='M46.547 75.521a4.221 4.221 0 01-2.429 3.823 4.222 4.222 0 01-4.493-.571l-23.098-19.14H4.225A4.223 4.223 0 010 55.409V38.576a4.226 4.226 0 014.225-4.226h12.303l23.098-19.14a4.215 4.215 0 014.493-.569 4.224 4.224 0 012.429 3.823l-.001 57.057zm16.237-6.602a4.22 4.22 0 01-3.291-1.226l-.565-.567a4.222 4.222 0 01-.408-5.504 24.381 24.381 0 004.834-14.628c0-5.706-1.896-11.058-5.484-15.478a4.222 4.222 0 01.291-5.65l.564-.565c.844-.844 1.975-1.304 3.199-1.231a4.23 4.23 0 013.061 1.545c4.977 6.09 7.606 13.484 7.606 21.38 0 7.354-2.325 14.354-6.725 20.24a4.228 4.228 0 01-3.082 1.684zm17.468 13.057a4.23 4.23 0 01-6.217.262l-.555-.555a4.226 4.226 0 01-.246-5.707 45.101 45.101 0 0010.568-28.982 44.976 44.976 0 00-11.314-29.847 4.226 4.226 0 01.17-5.783l.554-.555a4.113 4.113 0 013.115-1.242 4.225 4.225 0 013.036 1.417 54.173 54.173 0 0113.675 36.01 54.286 54.286 0 01-12.786 34.982z'></path>
+		</StyledSVG>
+	);
+}
+
+export const PlayPause = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			width='45.974'
+			height='45.975'
+			x='0'
+			y='0'
+			enableBackground='new 0 0 45.974 45.975'
+			version='1.1'
+			viewBox='0 0 45.974 45.975'
+			xmlSpace='preserve'
+			{...props}
+		>
+			<path d='M9.629 44.68a4.04 4.04 0 01-6.907-2.85V4.043a4.04 4.04 0 016.907-2.851l17.862 17.951a5.375 5.375 0 010 7.585L9.629 44.68zM38.252 45.975c-2.763 0-5-2.238-5-5V5c0-2.762 2.237-5 5-5a5 5 0 015 5v35.975a5 5 0 01-5 5z'></path>
+		</StyledSVG>
+	);
+}
+
+export const Up = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			x='0'
+			y='0'
+			enableBackground='new 0 0 240.835 240.835'
+			version='1.1'
+			viewBox='0 0 240.835 240.835'
+			xmlSpace='preserve'
+			{...props}
+		>
+			<path d='M129.007 57.819c-4.68-4.68-12.499-4.68-17.191 0L3.555 165.803c-4.74 4.74-4.74 12.427 0 17.155 4.74 4.74 12.439 4.74 17.179 0l99.683-99.406 99.671 99.418c4.752 4.74 12.439 4.74 17.191 0 4.74-4.74 4.74-12.427 0-17.155L129.007 57.819z'></path>
+		</StyledSVG>
+	);
+}
+
+export const Prev = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			x='0'
+			y='0'
+			enableBackground='new 0 0 240.823 240.823'
+			version='1.1'
+			viewBox='0 0 240.823 240.823'
+			xmlSpace='preserve'
+			{...props}
+		>
+			<path d='M57.633 129.007L165.93 237.268c4.752 4.74 12.451 4.74 17.215 0 4.752-4.74 4.752-12.439 0-17.179l-99.707-99.671 99.695-99.671c4.752-4.74 4.752-12.439 0-17.191-4.752-4.74-12.463-4.74-17.215 0L57.621 111.816c-4.679 4.691-4.679 12.511.012 17.191z'></path>
+		</StyledSVG>
+	);
+}
+
+export const Next = props => {
+	return (
+		<StyledSVG
+			xmlns='http://www.w3.org/2000/svg'
+			x='0'
+			y='0'
+			enableBackground='new 0 0 240.823 240.823'
+			version='1.1'
+			viewBox='0 0 240.823 240.823'
+			xmlSpace='preserve'
+			{...props}
+		>
+			<path d='M183.189 111.816L74.892 3.555c-4.752-4.74-12.451-4.74-17.215 0-4.752 4.74-4.752 12.439 0 17.179l99.707 99.671-99.695 99.671c-4.752 4.74-4.752 12.439 0 17.191 4.752 4.74 12.463 4.74 17.215 0l108.297-108.261c4.68-4.691 4.68-12.511-.012-17.19z'></path>
+		</StyledSVG>
 	);
 }
 
 const ICON = {
-	delete: Delete,
+	// Directions
 	up: Up,
 	down: Down,
-	plus: Plus,
-	minus: Minus,
+	prev: Prev,
+	next: Next,
+	// Actions
+	delete: Delete,
 	edit: Edit,
 	confirm: Confirm,
 	cancel: Cancel,
+	zoom: Zoom,
+	speaker: Speaker,
+	playPause: PlayPause,
+	// Utility
+	plus: Plus,
+	minus: Minus,
 	menu: Menu,
-	github: GitHub,
-	zoom: Zoom
+	// Social
+	github: GitHub
 }
 
 const Icon = ({ iconId, color, hoverColor, size, ...props }) => {

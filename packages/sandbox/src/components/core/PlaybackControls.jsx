@@ -62,12 +62,6 @@ const PlaybackControls = () => {
 			</div>
 			<div>
 				<ButtonInput className="start-stop" onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
-				{model.utils.playSound && <ButtonInput className="play-sound" onClick={() => model.utils.playSound(modelData)}>Play Sound</ButtonInput>}
-			</div>
-			<div>
-				{prev && <ButtonInput className="prev" onClick={prev}>{`< Prev`}</ButtonInput>}
-				<ButtonInput className="up" onClick={pop}>{`Up`}</ButtonInput>
-				{next && <ButtonInput className="next" onClick={next}>{`Next >`}</ButtonInput>}
 			</div>
 		</StyledPlaybackControls>
 	);
