@@ -4,7 +4,7 @@ import Icon from "../../assets/Icon";
 import ButtonInput from "./ButtonInput";
 
 const styles = css`
-    padding: 16px;
+    padding: 12px;
 
     border-radius: 100%;
 

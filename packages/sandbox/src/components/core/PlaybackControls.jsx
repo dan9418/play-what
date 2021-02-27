@@ -7,19 +7,13 @@ import { pathHeadState } from '../../state/pathState';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 
 const StyledPlaybackControls = styled.div`
-	min-height: 89px;
 	padding: 16px;
 	background-color: #ddd;
 	border-radius: 12px;
-	/*display: flex;
+	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;*/
-
-	& button {
-		margin-top: 16px;
-		margin-right: 16px;
-	}
-
+	justify-content: center;
 `;
 
 const PlaybackControls = () => {
@@ -56,13 +50,9 @@ const PlaybackControls = () => {
 
 	return (
 		<StyledPlaybackControls>
-			<div className="tempo" >
-				<span>Tempo: {tempo}</span>
-				<span>, Beats: {numBeats}</span>
-			</div>
-			<div>
-				<ButtonInput className="start-stop" onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
-			</div>
+			<div>Tempo: {tempo}</div>
+			<div>Beats: {numBeats}</div>
+			<ButtonInput className="start-stop" onClick={() => setIsPlaying(!isPlaying)}>{isPlaying ? 'Stop' : 'Start'}</ButtonInput>
 		</StyledPlaybackControls>
 	);
 };

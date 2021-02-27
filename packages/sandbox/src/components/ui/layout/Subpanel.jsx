@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import EditButton from '../inputs/buttons/EditButton';
-import ExpandButton from '../inputs/buttons/ExpandButton';
+import IconButton from '../inputs/buttons/IconButton';
+import ZoomButton from '../inputs/buttons/ZoomButton';
 
 const StyledSubpanelHeader = styled.h3`
-	
 	padding: 8px;
-	
 	white-space: nowrap;
-
+	position: relative;
+	min-height: 52px;
 	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc;'}
 
 	.top {
@@ -33,26 +32,28 @@ const StyledSubpanelHeader = styled.h3`
 	.spacer {
 		width: 100%	
 	}
-
-	& button {
-		margin-left: 8px;
-	}
-
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, editable }) => {
+const StyledButtonContainer = styled.div`
+	position: absolute;
+	top: 0;
+	right: 0;
+	button {
+		margin: 6px;
+	}
+`;
+
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
-			<div className="top">
-				<span className="name">{name}</span>
-				<span className="caption">{caption}</span>
-				<div className="spacer" />
-				{isOpen && editable && <EditButton />}
-				<ExpandButton isOpen={isOpen} setIsOpen={setIsOpen} />
-			</div>
-			<div className="preview">
-				{preview}
-			</div>
+			<span className="name">{name}</span>
+			<span className="caption">{caption}</span>
+			<div className="preview">{preview}</div>
+
+			<StyledButtonContainer>
+				<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
+				<ZoomButton metaChild={metaChild} />
+			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);
 };
@@ -61,10 +62,11 @@ const StyledSubpanel = styled.section`
 	width: 100%;
 	max-width: 512px;
 	border: 1px solid #ccc;
-	border-radius: 2px;
+	border-radius: 8px;
 	background-color: #f5f5f5;
 	& > .subpanel-body {
 		padding: 8px;
+		overflow: auto;
 	}
 `;
 
