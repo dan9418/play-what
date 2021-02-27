@@ -4,7 +4,6 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import ZoomButton from '../ui/inputs/buttons/ZoomButton';
-import Panel from '../ui/layout/Panel';
 import Subpanel from '../ui/layout/Subpanel';
 
 const StyledTypeRow = styled.div`
@@ -61,18 +60,14 @@ const getRows = metaChildren => {
 
 
 const DataPanel = () => {
-	const pathHead= useRecoilValue(pathHeadState);
+	const pathHead = useRecoilValue(pathHeadState);
 	const { modelId, modelData } = pathHead;
 
 	const model = MODEL[modelId];
 
 	const metaChildren = model.utils.getMetaChildren(modelData);
 
-	return (
-		<Panel {...pathHead}>
-			{metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>}
-		</Panel>
-	);
+	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>;
 };
 
 export default DataPanel;

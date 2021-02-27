@@ -6,7 +6,7 @@ import { pathHeadState, pathState } from "../../../state/pathState";
 import THEME from "../../../styles/theme";
 import IconButton from "../inputs/buttons/IconButton";
 
-const StyledPanelHeader = styled.div`
+const StyledPanelHeader = styled.section`
 	width: 100%;
 	position: sticky;
 	@media(min-width: 1024px) {
@@ -16,13 +16,11 @@ const StyledPanelHeader = styled.div`
 	z-index: 1;
 	background-color: #ecefef;
     
-	> section {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 8px 0;
-		border-bottom: 2px solid #ccc;
-	}
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 0;
+	border-bottom: 2px solid #ccc;
 	
 	& .preview-container {
 		& .name-container {
@@ -57,18 +55,16 @@ const PanelHeader = () => {
 
 	return (
 		<StyledPanelHeader>
-			<section>
-				<div className='preview-container'>
-					<div className='name-container'>
-						<h3 className='name'>{name}</h3>
-						<div className='caption'>{modelId}</div>
-					</div>
-					<div className='preview'>{preview}</div>
+			<div className='preview-container'>
+				<div className='name-container'>
+					<h3 className='name'>{name}</h3>
+					<div className='caption'>{modelId}</div>
 				</div>
-				{path.length > 1 &&
-					<IconButton onClick={pop} color={THEME.primary} iconId='up' />
-				}
-			</section>
+				<div className='preview'>{preview}</div>
+			</div>
+			{path.length > 1 &&
+				<IconButton onClick={pop} color={THEME.primary} iconId='up' />
+			}
 		</StyledPanelHeader>
 	);
 };
@@ -80,13 +76,17 @@ const StyledPanel = styled.div`
     border-radius: 8px;
 `;
 
+const StyledPanelBody = styled.section`
+	margin-top: 32px;
+`;
+
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
 			<PanelHeader name={name} preview={preview} caption={caption} />
-			<div className="panel-body">
+			<StyledPanelBody>
 				{children}
-			</div>
+			</StyledPanelBody>
 		</StyledPanel>
 	);
 };

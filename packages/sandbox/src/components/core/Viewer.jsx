@@ -34,26 +34,8 @@ const MODEL_VIEWER = {
 const StyledViewerContainer = styled.div`
     width: 100%;
 	max-width: 512px;
-	
-	padding: 16px 0 1024px;
-
-	> .fretboard {
-        //width: 100%;
-    }
 `;
 
-const StyledViewerHeader = styled.h2`
-	color: #555;
-	text-align: left;
-	width: 100%;
-	max-width: 512px;
-	text-transform: uppercase;
-	margin: 16px 0 8px;
-
-	display: flex;
-	align-items: flex-end;
-	justify-content: space-between;
-`;
 
 const Viewer = () => {
 	const pathHead = useRecoilValue(pathHeadState);

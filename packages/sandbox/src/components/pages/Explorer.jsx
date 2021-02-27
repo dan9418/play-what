@@ -1,8 +1,12 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataPanel from '../core/DataPanel';
+import PlaybackControls from '../core/PlaybackControls';
 import ViewerPanel from '../core/ViewerPanel';
+import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -22,14 +26,18 @@ const StyledExplorer = styled.div`
 `;
 
 const Explorer = () => {
+	const pathHead = useRecoilValue(pathHeadState);
 
 	return (
 		<>
 			<BreadcrumbList />
-			<StyledExplorer>
-				<DataPanel />
-				<ViewerPanel />
-			</StyledExplorer>
+			<Panel {...pathHead}>
+				<StyledExplorer>
+					<PlaybackControls />
+					<ViewerPanel />
+					<DataPanel />
+				</StyledExplorer>
+			</Panel>
 		</>
 	);
 };
