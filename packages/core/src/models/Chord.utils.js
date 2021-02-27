@@ -4,6 +4,8 @@ import NoteUtils from "./Note.utils";
 import AbsoluteChordUtils from "./AbsoluteChord.utils";
 import PodUtils from "./helpers/Pod.utils";
 import { MODEL_ID } from "./helpers/Model.constants";
+import TuningUtils from "../tuning/Tuning.utils";
+import ToneUtils from "../tone/Tone.utils";
 
 const getName = (data) => {
 	const kcName = NoteUtils.getName(data.root);
@@ -42,7 +44,6 @@ const getMetaChildren = data => {
 	];
 };
 
-
 const parse = (data) => {
 	const { root, intervals } = data;
 
@@ -55,11 +56,24 @@ const parse = (data) => {
 	}
 };
 
+const getFrequencies = (modelData) => {
+	const { notes } = modelData;
+
+	return notes.map(n => TuningUtils.getFrequency(n[0]));
+};
+
+const playSound = (modelData) => {
+	const frequencies = getFrequencies(modelData);
+	ToneUtils.playSound(frequencies)
+}
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
 	getPodAtPitch,
 	getMetaChildren,
-	parse
+	parse,
+	getFrequencies,
+	playSound
 }

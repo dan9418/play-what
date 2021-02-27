@@ -17,7 +17,7 @@ MASTER_OUT_POLY.set({
 });
 
 
-const play = (f, duration = .5, velocity = .5) => {
+const playSound = (f, duration = .5, velocity = .5) => {
 	const root = Array.isArray(f) ? MASTER_OUT_POLY : MASTER_OUT;
 	root.triggerAttackRelease(f, duration);
 }
@@ -27,6 +27,6 @@ const stop = () => {
 }
 
 export default {
-	play,
+	playSound,
 	stop
 }

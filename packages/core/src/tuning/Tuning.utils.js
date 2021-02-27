@@ -18,3 +18,7 @@ const CALIBRATION_NOTE = {
 
 const CALIBRATION_CONSTANT = Math.pow(2, 1 / 12);
 */
+
+export default {
+	getFrequency
+}

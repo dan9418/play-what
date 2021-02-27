@@ -11,7 +11,9 @@ export const pathHeadState = selector({
 	key: 'pathHeadState',
 	get: ({ get }) => {
 		const path = get(pathState);
-		return path[path.length - 1];
+		const pathHead = path[path.length - 1];
+		console.log('pathHead', pathHead);
+		return pathHead;
 	}
 });
 
