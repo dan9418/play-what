@@ -42,6 +42,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
+		isRelative: true,
 		modelId: MODEL_ID.Interval,
 		utils: IntervalUtils
 	},
@@ -52,6 +53,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
+		isRelative: true,
 		modelId: MODEL_ID.RelativeChord,
 		utils: RelativeChordUtils
 	},
@@ -62,6 +64,7 @@ export const MODEL = {
 	},
 	[MODEL_ID.RelativeScale]: {
 		name: 'Relative Scale',
+		isRelative: true,
 		modelId: MODEL_ID.RelativeScale,
 		utils: RelativeScaleUtils
 	},
