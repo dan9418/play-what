@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataPanel from '../core/DataPanel';
+import Derivations from '../core/Derivations';
 import PlaybackControls from '../core/PlaybackControls';
 import ViewerPanel from '../core/ViewerPanel';
 import Panel from '../ui/layout/Panel';
@@ -15,10 +16,10 @@ const StyledExplorer = styled.div`
 	max-width: 512px;
 	margin: auto;
 
-	@media(min-width: 1024px) {
+	/*@media(min-width: 1024px) {
 		grid-template-columns: 1fr 1fr;
 		max-width: 100%;
-	}
+	}*/
 
 	grid-template-columns: 1fr;
 
@@ -35,8 +36,8 @@ const Explorer = () => {
 				<StyledExplorer>
 					<ViewerPanel />
 					<PlaybackControls />
-
 					<DataPanel />
+					<Derivations />
 				</StyledExplorer>
 			</Panel>
 		</>

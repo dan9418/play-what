@@ -12,7 +12,7 @@ export const pathHeadState = selector({
 	get: ({ get }) => {
 		const path = get(pathState);
 		const pathHead = path[path.length - 1];
-		// console.log('pathHead', pathHead);
+		console.log('pathHead', pathHead);
 		return pathHead;
 	}
 });
