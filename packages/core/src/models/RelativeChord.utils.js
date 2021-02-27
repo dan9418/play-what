@@ -22,6 +22,10 @@ const getMetaChildren = data => {
 	}));
 };
 
+const playSound = (modelData) => {
+
+}
+
 
 export default {
 	getName,
