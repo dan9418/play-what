@@ -15,13 +15,12 @@ const StyledPanelHeader = styled.div`
     top: 48px;
 	z-index: 1;
 	background-color: #ecefef;
-	padding-top: 8px;
     
 	> section {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding-bottom: 8px;
+		padding: 8px 0;
 		border-bottom: 2px solid #ccc;
 	}
 	

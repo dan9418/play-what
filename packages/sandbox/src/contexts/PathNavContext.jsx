@@ -1,13 +1,13 @@
 
 import React, { createContext, useContext, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { pathState } from '../state/pathState';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { pathState, siblingsState } from '../state/pathState';
 
 const PathNavContext = createContext(null);
 
 export const usePathNavContext = () => useContext(PathNavContext);
 
-const getPathNavContext = (path, setPath) => {
+const getPathNavContext = (path, setPath, siblings) => {
 
 	const pop = () => {
 		setPath(path.slice(0, path.length - 1));
@@ -25,19 +25,30 @@ const getPathNavContext = (path, setPath) => {
 		setPath([]);
 	}
 
+	const prev = siblings && siblings.prev
+		? () => setPath([...path.slice(0, path.length - 1), siblings.prev])
+		: null;
+
+	const next = siblings && siblings.next
+		? () => setPath([...path.slice(0, path.length - 1), siblings.next])
+		: null;
+
 	return {
 		path,
 		pop,
 		popAt,
 		push,
-		reset
+		reset,
+		prev,
+		next
 	}
 }
 
 export const PathNavContextProvider = ({ children }) => {
 	const [path, setPath] = useRecoilState(pathState);
+	const siblings = useRecoilValue(siblingsState);
 
-	const pathNavContext = getPathNavContext(path, setPath);
+	const pathNavContext = getPathNavContext(path, setPath, siblings);
 
 	return (
 		<PathNavContext.Provider value={pathNavContext}>
