@@ -29,7 +29,8 @@ const getMetaChildren = modelConfig => {
 			name: NoteUtils.getName(rootConfig),
 			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelConfig: rootConfig
+			modelConfig: rootConfig,
+			root
 		},
 		{
 			childIndex: 1,
@@ -37,7 +38,8 @@ const getMetaChildren = modelConfig => {
 			name: RelativeScaleUtils.getName(intervalsConfig),
 			preview: RelativeScaleUtils.getPreview(intervalsConfig),
 			modelId: MODEL_ID.RelativeScale,
-			modelConfig: intervalsConfig
+			modelConfig: intervalsConfig,
+			root
 		},
 		{
 			childIndex: 2,
@@ -45,7 +47,8 @@ const getMetaChildren = modelConfig => {
 			name: AbsoluteScaleUtils.getName(notesConfig),
 			preview: AbsoluteScaleUtils.getPreview(notesConfig),
 			modelId: MODEL_ID.AbsoluteScale,
-			modelConfig: notesConfig
+			modelConfig: notesConfig,
+			root
 		}
 	];
 };

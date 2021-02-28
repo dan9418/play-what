@@ -54,7 +54,7 @@ const getRows = metaChildren => {
 
 
 
-const DataPanel = ({ metaChildren }) => {
+const DataPanel = ({ modelConfig, metaChildren }) => {
 
 
 	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;

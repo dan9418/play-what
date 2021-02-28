@@ -33,7 +33,8 @@ const getMetaChildren = modelConfig => {
 			name: NoteUtils.getName(rootConfig),
 			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelConfig: rootConfig
+			modelConfig: rootConfig,
+			root
 		},
 		{
 			childIndex: 1,
@@ -41,7 +42,8 @@ const getMetaChildren = modelConfig => {
 			preview: RelativeChordUtils.getPreview(intervalsConfig),
 			label: 'Intervals',
 			modelId: MODEL_ID.RelativeChord,
-			modelConfig: intervalsConfig
+			modelConfig: intervalsConfig,
+			root
 		},
 		{
 			childIndex: 2,
@@ -49,7 +51,8 @@ const getMetaChildren = modelConfig => {
 			preview: AbsoluteChordUtils.getPreview(notesConfig),
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
-			modelConfig: notesConfig
+			modelConfig: notesConfig,
+			root
 		}
 	];
 };

@@ -39,9 +39,9 @@ const Explorer = () => {
 			<Panel {...pathHead}>
 				<StyledExplorer>
 					<h2>Viewer</h2>
-					<Viewer metaChildren={metaChildren} />
+					<Viewer modelConfig={modelConfig} metaChildren={metaChildren} />
 					<h2>Data</h2>
-					<DataPanel metaChildren={metaChildren} />
+					<DataPanel modelConfig={modelConfig} metaChildren={metaChildren} />
 				</StyledExplorer>
 			</Panel>
 		</>
