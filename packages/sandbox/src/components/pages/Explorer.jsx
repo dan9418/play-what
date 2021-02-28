@@ -1,8 +1,8 @@
 import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { pathHeadState } from '../../state/pathState';
+import { pathHeadState, pathState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataPanel from '../core/DataPanel';
 import Viewer from '../core/Viewer';
@@ -27,21 +27,22 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const pathHead = useRecoilValue(pathHeadState);
+	const path = useRecoilValue(pathState);
 	const { modelId, modelConfig } = pathHead;
 
 	const model = MODEL[modelId];
 
 	const metaChildren = model.utils.getMetaChildren(modelConfig);
 
+	useEffect(() => window.scrollTo(0, 0), [path.length]);
+
 	return (
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
-					<h2>Viewer</h2>
-					<Viewer modelConfig={modelConfig} metaChildren={metaChildren} />
-					<h2>Data</h2>
-					<DataPanel modelConfig={modelConfig} metaChildren={metaChildren} />
+					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
+					<DataPanel modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
 				</StyledExplorer>
 			</Panel>
 		</>

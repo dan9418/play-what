@@ -25,9 +25,16 @@ const getMetaChildren = args => {
 	});
 };
 
+const getPodAtPitch = (modelConfig, metaChildren, p) => {
+	const { root, intervals } = modelConfig;
+	const pitchOffset = root[0]
+	return PodUtils.listGetPodAtPitch(intervals, p - pitchOffset);
+}
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getMetaChildren
+	getMetaChildren,
+	getPodAtPitch
 }

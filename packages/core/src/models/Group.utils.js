@@ -18,8 +18,7 @@ const getMetaChildren = args => {
 			childIndex: i,
 			name,
 			preview: model.utils.getPreview(modelConfig),
-			modelConfig,
-			root
+			modelConfig
 		}
 	});
 };

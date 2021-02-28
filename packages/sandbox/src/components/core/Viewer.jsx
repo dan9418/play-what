@@ -1,16 +1,7 @@
 import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
-import { pathHeadState } from '../../state/pathState';
-
-const Empty = ({ children }) => <div>Please select a viewer for this model type.</div>;
-
-const EMPTY = {
-	name: 'No Viewer',
-	component: Empty
-};
 
 const FRETBOARD = {
 	name: 'Fretboard',
@@ -18,7 +9,7 @@ const FRETBOARD = {
 }
 
 const MODEL_VIEWER = {
-	[MODEL_ID.Group]: EMPTY,
+	[MODEL_ID.Group]: null,
 	[MODEL_ID.Chord]: FRETBOARD,
 	[MODEL_ID.AbsoluteChord]: FRETBOARD,
 	[MODEL_ID.RelativeChord]: FRETBOARD,
@@ -35,21 +26,19 @@ const StyledViewerContainer = styled.div`
 `;
 
 
-const Viewer = ({ metaChildren }) => {
-	const pathHead = useRecoilValue(pathHeadState);
-	const { modelConfig, modelId } = pathHead;
+const Viewer = props => {
 
-	let pitchOffset = 0;
-	/*if (root) {
-		pitchOffset = root[0];
-	}*/
+	const viewer = MODEL_VIEWER[props.modelId];
 
-	const viewer = MODEL_VIEWER[modelId];
+	if (!viewer) return null;
 
 	return (
-		<StyledViewerContainer>
-			<viewer.component metaChildren={metaChildren} modelConfig={modelConfig} modelId={modelId} pitchOffset={pitchOffset} />
-		</StyledViewerContainer>
+		<>
+			<h2>Viewer</h2>
+			<StyledViewerContainer>
+				<viewer.component {...props} />
+			</StyledViewerContainer>
+		</>
 	);
 };
 

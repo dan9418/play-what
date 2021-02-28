@@ -19,12 +19,12 @@ const StyledFretLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const FretLabel = ({ stringTuning, stringIndex, fretIndex, modelConfig, metaChildren, modelId, pitchOffset }) => {
-	const noteIndex = stringTuning + fretIndex;
-
+const FretLabel = ({ stringTuning, stringIndex, fretIndex, modelConfig, metaChildren, modelId }) => {
 	const model = MODEL[modelId];
 
-	const pod = model.utils.getPodAtPitch ? model.utils.getPodAtPitch(modelConfig, metaChildren, noteIndex - pitchOffset) : null;
+	const noteIndex = stringTuning + fretIndex;
+
+	const pod = model.utils.getPodAtPitch ? model.utils.getPodAtPitch(modelConfig, metaChildren, noteIndex) : null;
 	const hasDegree = pod !== null;
 
 	let color = null;

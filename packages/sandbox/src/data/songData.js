@@ -18,9 +18,7 @@ export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
 	modelId: MODEL_ID.Group,
 	modelConfig: {
-		root: {
-			note: NOTE.C.value
-		},
+		root: NOTE.C.value,
 		items: [
 			{
 				name: 'Charts',

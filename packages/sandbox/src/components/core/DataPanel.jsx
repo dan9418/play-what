@@ -1,22 +1,7 @@
 import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { pathHeadState } from '../../state/pathState';
-import ZoomButton from '../ui/inputs/buttons/ZoomButton';
 import Subpanel from '../ui/layout/Subpanel';
-
-const StyledTypeRow = styled.div`
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	width: 100%;
-	max-width: 512px;
-	>:nth-child(1) {
-		width: 100%;
-		margin-right: 8px;	
-	}
-`;
 
 const StyledPropertyHeader = styled.h4`
 	color: #555;
@@ -37,7 +22,7 @@ const getRows = metaChildren => {
 		</StyledPropertyHeader>;
 
 		return (
-			<div key={i}>
+			<div key={name + i}>
 				{header}
 				<Subpanel
 					metaChild={child}
@@ -52,12 +37,16 @@ const getRows = metaChildren => {
 	})
 };
 
-
-
 const DataPanel = ({ modelConfig, metaChildren }) => {
+	if (!metaChildren)
+		return <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 
-
-	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
+	return (
+		<>
+			<h2>Data</h2>
+			{getRows(metaChildren)}
+		</>
+	);
 };
 
 export default DataPanel;
