@@ -3,10 +3,10 @@ import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import PodUtils from "./helpers/Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
-const getPreview = (data) => 'X Hz';
-const getCaption = (data) => null;
+const getPreview = (modelConfig) => 'X Hz';
+const getCaption = (modelConfig) => null;
 
-const getMetaChildren = data => null;
+const getMetaChildren = modelConfig => null;
 
 
 const getAccidentalOffset = (pod) => {
@@ -35,7 +35,7 @@ const getName = (pod) => {
 	return `${spelling}${accidental}`;
 }
 
-const getPodAtPitch = (data, p) => PodUtils.getPodAtPitch(data, p);
+const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.getPodAtPitch(modelConfig, p);
 
 export default {
 	getName,

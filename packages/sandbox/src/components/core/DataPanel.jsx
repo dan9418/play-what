@@ -54,13 +54,8 @@ const getRows = metaChildren => {
 
 
 
-const DataPanel = () => {
-	const pathHead = useRecoilValue(pathHeadState);
-	const { modelId, modelConfig } = pathHead;
+const DataPanel = ({ metaChildren }) => {
 
-	const model = MODEL[modelId];
-
-	const metaChildren = model.utils.getMetaChildren(modelConfig);
 
 	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 };

@@ -1,12 +1,11 @@
+import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataPanel from '../core/DataPanel';
-import Derivations from '../core/Derivations';
-import PlaybackControls from '../core/PlaybackControls';
-import ViewerPanel from '../core/ViewerPanel';
+import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
@@ -28,6 +27,11 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const pathHead = useRecoilValue(pathHeadState);
+	const { modelId, modelConfig } = pathHead;
+
+	const model = MODEL[modelId];
+
+	const metaChildren = model.utils.getMetaChildren(modelConfig);
 
 	return (
 		<>
@@ -35,9 +39,9 @@ const Explorer = () => {
 			<Panel {...pathHead}>
 				<StyledExplorer>
 					<h2>Viewer</h2>
-					<ViewerPanel />
+					<Viewer metaChildren={metaChildren} />
 					<h2>Data</h2>
-					<DataPanel />
+					<DataPanel metaChildren={metaChildren} />
 				</StyledExplorer>
 			</Panel>
 		</>

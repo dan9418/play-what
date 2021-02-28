@@ -11,8 +11,6 @@ const getName = (modelConfig) => {
 	return preset ? preset.id : 'Untitled Scale';
 };
 
-const getPodAtPitch = (modelConfig, p) => PodUtils.listGetPodAtPitch(modelConfig.intervals, p);
-
 const getMetaChildren = args => {
 	const { intervals } = args;
 	return intervals.map((d, i) => ({
@@ -28,6 +26,5 @@ export default {
 	getName,
 	getPreview,
 	getCaption,
-	getPodAtPitch,
 	getMetaChildren
 }

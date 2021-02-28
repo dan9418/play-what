@@ -38,12 +38,9 @@ const getName = (modelConfig) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getPodAtPitch = (data, p) => PodUtils.getPodAtPitch(data, p);
-
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getPodAtPitch,
 	getMetaChildren
 }

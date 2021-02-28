@@ -17,11 +17,11 @@ const StyledPlaybackControls = styled.div`
 `;
 
 const PlaybackControls = () => {
-	const { modelId, modelArgs } = useRecoilValue(pathHeadState);
+	const { modelId, modelConfig } = useRecoilValue(pathHeadState);
 	const { prev, next, pop } = usePathNavContext();
 	const [isPlaying, setIsPlaying] = useState(false);
 	const [tempo, setTempo] = useState(200);
-	const numBeats = modelArgs.t || 1;
+	const numBeats = modelConfig.t || 1;
 
 	const model = MODEL[modelId];
 
@@ -32,8 +32,8 @@ const PlaybackControls = () => {
 
 	useEffect(() => {
 		if (!isPlaying || !model.utils.playSound) return;
-		model.utils.playSound(modelArgs);
-	}, [isPlaying, modelArgs]);
+		model.utils.playSound(modelConfig);
+	}, [isPlaying, modelConfig]);
 
 	useEffect(() => {
 		if (!isPlaying) return;
@@ -46,7 +46,7 @@ const PlaybackControls = () => {
 		const timer = setTimeout(next, seconds * 1000);
 
 		return () => clearTimeout(timer);
-	}, [isPlaying, modelArgs]);
+	}, [isPlaying, modelConfig]);
 
 	return (
 		<StyledPlaybackControls>

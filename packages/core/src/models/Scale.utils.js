@@ -12,7 +12,7 @@ const getName = (modelConfig) => {
 
 const getPreview = (modelConfig) => `${NoteUtils.getName(modelConfig.root)} + ${modelConfig.intervals.map(IntervalUtils.getName).join(', ')}`;
 const getCaption = (modelConfig) => null;
-const getPodAtPitch = (modelConfig, p) => NoteUtils.getPodAtPitch(modelConfig.root, p) || RelativeScaleUtils.getPodAtPitch(modelConfig.intervals, p);
+const getPodAtPitch = (modelConfig, metaChildren, p) => AbsoluteScaleUtils.getPodAtPitch(modelConfig, metaChildren, p);
 
 const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
