@@ -1,16 +1,16 @@
 import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
-const getPreview = (modelArgs) => '1:n';
-const getCaption = (modelArgs) => null;
-const getMetaChildren = modelArgs => null;
+const getPreview = (modelConfig) => '1:n';
+const getCaption = (modelConfig) => null;
+const getMetaChildren = modelConfig => null;
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
 }
 
-const getName = (modelArgs) => {
-	const [p, d] = modelArgs;
+const getName = (modelConfig) => {
+	const [p, d] = modelConfig;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
 
@@ -24,7 +24,7 @@ const getName = (modelArgs) => {
 	else if (p <= loIvl.value[0]) ivl = loIvl; // minor
 	else if (p >= hiIvl.value[0]) ivl = hiIvl; // major
 
-	let offset = getIntervalOffset(modelArgs, ivl);
+	let offset = getIntervalOffset(modelConfig, ivl);
 
 	// determine quality
 	let quality = null;

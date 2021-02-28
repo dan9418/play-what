@@ -17,7 +17,7 @@ const StyledDerivations = styled.div`
 `;
 
 const Derivations = () => {
-	const { modelId, modelData } = useRecoilValue(pathHeadState);
+	const { modelId, modelArgs } = useRecoilValue(pathHeadState);
 	const model = MODEL[modelId];
 
 	const { push } = usePathNavContext();
@@ -29,10 +29,7 @@ const Derivations = () => {
 			modelId: MODEL_ID.Chord,
 			childId: 0,
 			name: 'Derived Chord',
-			modelData: MODEL[MODEL_ID.Chord].utils.parse({
-				root: [0, 0],
-				intervals: modelData
-			})
+			modelArgs
 		});
 	};
 

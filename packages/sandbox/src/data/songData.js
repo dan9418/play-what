@@ -10,37 +10,37 @@ IModelDef
 	name?: string
 	preview?: string
 	modelId: string
-	modelArgs: object
+	modelConfig: object
 
 */
 
 export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
 	modelId: MODEL_ID.Group,
-	modelArgs: {
+	modelConfig: {
 		root: NOTE.C.value,
 		items: [
 			/*{
 				name: 'Charts',
 				modelId: MODEL_ID.Group,
-				modelArgs: CHART_VALUES.map(chart => (
+				modelConfig: CHART_VALUES.map(chart => (
 					{
 						name: chart.name,
 						modelId: MODEL_ID.Group,
-						modelArgs: chart.modelArgs
+						modelConfig: chart.modelConfig
 					}
 				))
 			},*/
 			{
 				name: 'Chords',
 				modelId: MODEL_ID.Group,
-				modelArgs: {
+				modelConfig: {
 					root: NOTE.C.value,
 					items: RELATIVE_CHORD_VALUES.map(chord => (
 						{
 							name: chord.name,
 							modelId: MODEL_ID.RelativeChord,
-							modelArgs: {
+							modelConfig: {
 								intervals: chord.value
 							}
 						}
@@ -50,13 +50,13 @@ export const LIBRARY_PATH_ROOT = {
 			{
 				name: 'Scales',
 				modelId: MODEL_ID.Group,
-				modelArgs: {
+				modelConfig: {
 					root: NOTE.C.value,
 					items: RELATIVE_SCALE_VALUES.map(scale => (
 						{
 							name: scale.name,
 							modelId: MODEL_ID.RelativeScale,
-							modelArgs: {
+							modelConfig: {
 								intervals: scale.value
 							}
 						}
@@ -66,13 +66,13 @@ export const LIBRARY_PATH_ROOT = {
 			{
 				name: 'Modes',
 				modelId: MODEL_ID.Group,
-				modelArgs: {
+				modelConfig: {
 					root: NOTE.C.value,
 					items: INTERVAL_MODE_VALUES.map(scale => (
 						{
 							name: scale.name,
 							modelId: MODEL_ID.RelativeScale,
-							modelArgs: {
+							modelConfig: {
 								intervals: scale.value
 							}
 						}

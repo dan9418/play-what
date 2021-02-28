@@ -29,16 +29,12 @@ const StyledPropertyHeader = styled.h4`
 
 const getRows = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, modelId, preview, modelArgs, label } = child;
+		const { name, modelId, preview, modelConfig, label } = child;
 		const model = MODEL[modelId];
 
 		const header = <StyledPropertyHeader>
 			{label || i + 1}
 		</StyledPropertyHeader>;
-
-		/*if (typeof modelData === 'number' || typeof modelData === 'string' ) {
-			return <div>{`${label || name} = ${modelData}`}</div>;
-		}*/
 
 		return (
 			<div key={i}>
@@ -49,7 +45,7 @@ const getRows = metaChildren => {
 					name={name}
 					preview={preview}
 				>
-					{JSON.stringify(modelArgs, null, "\t")}
+					{JSON.stringify(modelConfig, null, "\t")}
 				</Subpanel>
 			</div>
 		);
@@ -60,13 +56,13 @@ const getRows = metaChildren => {
 
 const DataPanel = () => {
 	const pathHead = useRecoilValue(pathHeadState);
-	const { modelId, modelArgs } = pathHead;
+	const { modelId, modelConfig } = pathHead;
 
 	const model = MODEL[modelId];
 
-	const metaChildren = model.utils.getMetaChildren(modelArgs);
+	const metaChildren = model.utils.getMetaChildren(modelConfig);
 
-	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelArgs, null, '\t')}</pre>;
+	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 };
 
 export default DataPanel;

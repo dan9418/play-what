@@ -13,7 +13,7 @@ const getMetaChildren = data => {
 		name: NoteUtils.getName(d),
 		preview: NoteUtils.getPreview(d),
 		modelId: MODEL_ID.Note,
-		modelData: d
+		modelArgs: d
 	}));
 }
 

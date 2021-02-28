@@ -37,7 +37,7 @@ const StyledViewerContainer = styled.div`
 
 const Viewer = () => {
 	const pathHead = useRecoilValue(pathHeadState);
-	const { modelArgs, modelId } = pathHead;
+	const { modelConfig, modelId } = pathHead;
 
 	let pitchOffset = 0;
 	/*if (root) {
@@ -48,7 +48,7 @@ const Viewer = () => {
 
 	return (
 		<StyledViewerContainer>
-			<viewer.component modelArgs={modelArgs} modelId={modelId} pitchOffset={pitchOffset} />
+			<viewer.component modelConfig={modelConfig} modelId={modelId} pitchOffset={pitchOffset} />
 		</StyledViewerContainer>
 	);
 };

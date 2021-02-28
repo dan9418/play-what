@@ -38,8 +38,6 @@ const Explorer = () => {
 					<ViewerPanel />
 					<h2>Data</h2>
 					<DataPanel />
-					<h2>Transforms</h2>
-					<Derivations />
 				</StyledExplorer>
 			</Panel>
 		</>
