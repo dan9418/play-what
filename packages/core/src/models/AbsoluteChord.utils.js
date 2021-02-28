@@ -2,7 +2,7 @@ import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import NoteUtils from "./Note.utils";
 
-const getName = (modelConfig) => '<AbsoluteChord>';
+const getName = (modelConfig) => 'Root + Intervals';
 const getPreview = (modelConfig) => modelConfig.notes.map(d => NoteUtils.getName(d)).join(', ');
 const getCaption = (modelConfig) => null;
 const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.listGetPodAtPitch(metaChildren[2].modelConfig.notes, p);

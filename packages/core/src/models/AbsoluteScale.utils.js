@@ -1,7 +1,7 @@
 import { MODEL_ID } from "./helpers/Model.constants";
 import NoteUtils from "./Note.utils";
 
-const getName = (modelConfig) => '<AbsoluteScale>';
+const getName = (modelConfig) => 'Root + Intervals';
 const getPreview = (modelConfig) => modelConfig.map(d => NoteUtils.getName(d)).join(', ');
 const getCaption = (modelConfig) => null;
 
