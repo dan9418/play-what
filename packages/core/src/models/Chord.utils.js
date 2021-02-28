@@ -1,54 +1,61 @@
-import RelativeChordUtils from "./RelativeChord.utils";
+import ToneUtils from "../tone/Tone.utils";
+import TuningUtils from "../tuning/Tuning.utils";
+import AbsoluteChordUtils from "./AbsoluteChord.utils";
+import { MODEL_ID } from "./helpers/Model.constants";
+import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
 import NoteUtils from "./Note.utils";
-import AbsoluteChordUtils from "./AbsoluteChord.utils";
-import PodUtils from "./helpers/Pod.utils";
-import { MODEL_ID } from "./helpers/Model.constants";
-import TuningUtils from "../tuning/Tuning.utils";
-import ToneUtils from "../tone/Tone.utils";
+import RelativeChordUtils from "./RelativeChord.utils";
 
-const getName = (data) => {
-	const kcName = NoteUtils.getName(data.root);
-	const chordName = RelativeChordUtils.getName(data.intervals);
+const getName = (modelConfig) => {
+	const { root, intervals } = modelConfig;
+	const kcName = NoteUtils.getName(root);
+	const chordName = RelativeChordUtils.getName({ intervals });
 	return `${kcName} + ${chordName}`;
 };
 
-const getPreview = (data) => `${NoteUtils.getName(data.root)} + ${data.intervals.map(IntervalUtils.getName).join(', ')}`;
-const getCaption = (data) => null;
-const getPodAtPitch = (data, p) => AbsoluteChordUtils.getPodAtPitch(data.notes, p);
+const getPreview = (modelConfig) => `${NoteUtils.getName(modelConfig.root)} + ${modelConfig.intervals.map(IntervalUtils.getName).join(', ')}`;
+const getCaption = (modelConfig) => null;
+const getPodAtPitch = (modelConfig, p) => null; // AbsoluteChordUtils.getPodAtPitch(modelConfig.notes, p);
 
-const getMetaChildren = data => {
-	const notes = PodUtils.addPodList(data.root, data.intervals);
+const getMetaChildren = modelConfig => {
+	const { root, intervals } = modelConfig;
+	const notes = PodUtils.addPodList(root, intervals);
+
+	const rootConfig = root;
+	const intervalsConfig = { intervals };
+	const notesConfig = { notes };
+
 	return [
 		{
 			childIndex: 0,
 			label: 'Root',
-			name: NoteUtils.getName(data.root),
-			preview: NoteUtils.getPreview(data.root),
+			name: NoteUtils.getName(rootConfig),
+			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelData: data.root
+			modelConfig: rootConfig
 		},
 		{
 			childIndex: 1,
-			name: RelativeChordUtils.getName(data.intervals),
-			preview: RelativeChordUtils.getPreview(data.intervals),
+			name: RelativeChordUtils.getName(intervalsConfig),
+			preview: RelativeChordUtils.getPreview(intervalsConfig),
 			label: 'Intervals',
 			modelId: MODEL_ID.RelativeChord,
-			modelData: data.intervals
+			modelConfig: intervalsConfig
 		},
 		{
 			childIndex: 2,
-			name: AbsoluteChordUtils.getName(notes),
-			preview: AbsoluteChordUtils.getPreview(notes),
+			name: AbsoluteChordUtils.getName(notesConfig),
+			preview: AbsoluteChordUtils.getPreview(notesConfig),
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
-			modelData: notes
+			modelConfig: notesConfig
 		}
 	];
 };
 
-const parse = (data) => {
-	const { root, intervals, t } = data;
+const parse = (modelConfig) => {
+	const { root, intervals, t } = modelConfig;
 
 	let rootValue = root;
 
@@ -60,14 +67,14 @@ const parse = (data) => {
 	}
 };
 
-const getFrequencies = (modelData) => {
-	const { notes } = modelData;
+const getFrequencies = (modelConfig) => {
+	const { notes } = modelConfig;
 
 	return notes.map(n => TuningUtils.getFrequency(n[0]));
 };
 
-const playSound = (modelData) => {
-	const frequencies = getFrequencies(modelData);
+const playSound = (modelConfig) => {
+	const frequencies = getFrequencies(modelConfig);
 	ToneUtils.playSound(frequencies)
 }
 

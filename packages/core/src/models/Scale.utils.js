@@ -1,50 +1,57 @@
-import RelativeScaleUtils from "./RelativeScale.utils";
-import NoteUtils from "./Note.utils";
-import PodUtils from "./helpers/Pod.utils";
 import AbsoluteScaleUtils from "./AbsoluteScale.utils";
+import PodUtils from "./helpers/Pod.utils";
+import NoteUtils from "./Note.utils";
+import RelativeScaleUtils from "./RelativeScale.utils";
 
-const getName = (data) => {
-	const kcName = NoteUtils.getName(data.root);
-	const chordName = RelativeScaleUtils.getName(data.intervals);
+const getName = (modelConfig) => {
+	const { root, intervals } = modelConfig;
+	const kcName = NoteUtils.getName(root);
+	const chordName = RelativeScaleUtils.getName({ intervals });
 	return `${kcName} + ${chordName}`;
 };
 
-const getPreview = (data) => null;
-const getCaption = (data) => null;
-const getPodAtPitch = (data, p) => NoteUtils.getPodAtPitch(data.root, p) || RelativeScaleUtils.getPodAtPitch(data.intervals, p);
+const getPreview = (modelConfig) => `${NoteUtils.getName(modelConfig.root)} + ${modelConfig.intervals.map(IntervalUtils.getName).join(', ')}`;
+const getCaption = (modelConfig) => null;
+const getPodAtPitch = (modelConfig, p) => NoteUtils.getPodAtPitch(modelConfig.root, p) || RelativeScaleUtils.getPodAtPitch(modelConfig.intervals, p);
 
-const getMetaChildren = data => {
-	const notes = PodUtils.addPodList(data.root, data.intervals);
+const getMetaChildren = modelConfig => {
+	const { root, intervals } = modelConfig;
+	const notes = PodUtils.addPodList(root, intervals);
+
+	const rootConfig = root;
+	const intervalsConfig = { intervals };
+	const notesConfig = { notes };
+
 	return [
 		{
 			childIndex: 0,
 			label: 'Root',
-			name: NoteUtils.getName(data.root),
-			preview: NoteUtils.getPreview(data.root),
+			name: NoteUtils.getName(rootConfig),
+			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelData: data.root
+			modelConfig: rootConfig
 		},
 		{
 			childIndex: 1,
 			label: 'Intervals',
-			name: RelativeScaleUtils.getName(data.intervals),
-			preview: RelativeScaleUtils.getPreview(data.intervals),
+			name: RelativeScaleUtils.getName(intervalsConfig),
+			preview: RelativeScaleUtils.getPreview(intervalsConfig),
 			modelId: MODEL_ID.RelativeScale,
-			modelData: data.intervals
+			modelConfig: intervalsConfig
 		},
 		{
 			childIndex: 2,
 			label: 'Notes',
-			name: AbsoluteScaleUtils.getName(data.intervals),
-			preview: AbsoluteScaleUtils.getPreview(data.intervals),
+			name: AbsoluteScaleUtils.getName(notesConfig),
+			preview: AbsoluteScaleUtils.getPreview(notesConfig),
 			modelId: MODEL_ID.AbsoluteScale,
-			modelData: notes
+			modelConfig: notesConfig
 		}
 	];
 };
 
-const parse = (data) => {
-	const { root, intervals } = data;
+const parse = (modelConfig) => {
+	const { root, intervals } = modelConfig;
 
 	let rootValue = root;
 

@@ -2,13 +2,13 @@ import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import NoteUtils from "./Note.utils";
 
-const getName = (data) => '<AbsoluteChord>';
-const getPreview = (data) => data.map(d => NoteUtils.getName(d)).join(', ');
-const getCaption = (data) => null;
-const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
+const getName = (modelConfig) => '<AbsoluteChord>';
+const getPreview = (modelConfig) => modelConfig.notes.map(d => NoteUtils.getName(d)).join(', ');
+const getCaption = (modelConfig) => null;
+const getPodAtPitch = (modelConfig, p) => PodUtils.listGetPodAtPitch(modelConfig.notes, p);
 
-const getMetaChildren = data => {
-	return data.map((d, i) => ({
+const getMetaChildren = modelConfig => {
+	return modelConfig.notes.map((d, i) => ({
 		childIndex: i,
 		name: NoteUtils.getName(d),
 		preview: NoteUtils.getPreview(d),

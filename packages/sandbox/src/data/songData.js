@@ -20,22 +20,23 @@ export const LIBRARY_PATH_ROOT = {
 	modelConfig: {
 		root: NOTE.C.value,
 		items: [
-			/*{
+			{
 				name: 'Charts',
 				modelId: MODEL_ID.Group,
-				modelConfig: CHART_VALUES.map(chart => (
-					{
-						name: chart.name,
-						modelId: MODEL_ID.Group,
-						modelConfig: chart.modelConfig
-					}
-				))
-			},*/
+				modelConfig: {
+					items: CHART_VALUES.map(chart => (
+						{
+							name: chart.name,
+							modelId: MODEL_ID.Group,
+							modelConfig: chart.modelConfig
+						}
+					))
+				}
+			},
 			{
 				name: 'Chords',
 				modelId: MODEL_ID.Group,
 				modelConfig: {
-					root: NOTE.C.value,
 					items: RELATIVE_CHORD_VALUES.map(chord => (
 						{
 							name: chord.name,
