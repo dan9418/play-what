@@ -1,16 +1,23 @@
 import AbsoluteScaleUtils from "./AbsoluteScale.utils";
 import PodUtils from "./helpers/Pod.utils";
+import IntervalUtils from "./Interval.utils";
 import NoteUtils from "./Note.utils";
 import RelativeScaleUtils from "./RelativeScale.utils";
 
 const getName = (modelConfig) => {
 	const { root, intervals } = modelConfig;
-	const kcName = NoteUtils.getName(root);
+	const kcName = NoteUtils.getName({ root, note: root });
 	const chordName = RelativeScaleUtils.getName({ intervals });
 	return `${kcName} + ${chordName}`;
 };
 
-const getPreview = (modelConfig) => `${NoteUtils.getName(modelConfig.root)} + ${modelConfig.intervals.map(IntervalUtils.getName).join(', ')}`;
+const getPreview = (modelConfig) => {
+	const { root: note, intervals } = modelConfig;
+	const kcName = NoteUtils.getName({ note });
+	const intervalNames = intervals.map(interval => IntervalUtils.getName({ interval })).join(', ');
+	return `${kcName} + ${intervalNames}`;
+}
+
 const getCaption = (modelConfig) => null;
 const getPodAtPitch = (modelConfig, metaChildren, p) => AbsoluteScaleUtils.getPodAtPitch(modelConfig, metaChildren, p);
 
@@ -18,9 +25,9 @@ const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
 	const notes = PodUtils.addPodList(root, intervals);
 
-	const rootConfig = root;
-	const intervalsConfig = { intervals };
-	const notesConfig = { notes };
+	const rootConfig = { root, note: root };
+	const intervalsConfig = { root, intervals };
+	const notesConfig = { root, notes };
 
 	return [
 		{
@@ -29,8 +36,7 @@ const getMetaChildren = modelConfig => {
 			name: NoteUtils.getName(rootConfig),
 			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelConfig: rootConfig,
-			root
+			modelConfig: rootConfig
 		},
 		{
 			childIndex: 1,
@@ -38,8 +44,7 @@ const getMetaChildren = modelConfig => {
 			name: RelativeScaleUtils.getName(intervalsConfig),
 			preview: RelativeScaleUtils.getPreview(intervalsConfig),
 			modelId: MODEL_ID.RelativeScale,
-			modelConfig: intervalsConfig,
-			root
+			modelConfig: intervalsConfig
 		},
 		{
 			childIndex: 2,
@@ -47,8 +52,7 @@ const getMetaChildren = modelConfig => {
 			name: AbsoluteScaleUtils.getName(notesConfig),
 			preview: AbsoluteScaleUtils.getPreview(notesConfig),
 			modelId: MODEL_ID.AbsoluteScale,
-			modelConfig: notesConfig,
-			root
+			modelConfig: notesConfig
 		}
 	];
 };

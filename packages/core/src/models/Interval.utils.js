@@ -10,7 +10,8 @@ const getIntervalOffset = (pod, coreIvl) => {
 }
 
 const getName = (modelConfig) => {
-	const [p, d] = modelConfig;
+	const { root, interval } = modelConfig;
+	const [p, d] = interval;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
 
@@ -24,7 +25,7 @@ const getName = (modelConfig) => {
 	else if (p <= loIvl.value[0]) ivl = loIvl; // minor
 	else if (p >= hiIvl.value[0]) ivl = hiIvl; // major
 
-	let offset = getIntervalOffset(modelConfig, ivl);
+	let offset = getIntervalOffset(interval, ivl);
 
 	// determine quality
 	let quality = null;

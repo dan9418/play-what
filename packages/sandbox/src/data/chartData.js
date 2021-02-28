@@ -208,7 +208,7 @@ export const OUT_OF_NOWHERE = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Min6.value,
 								t: 4
 							}
@@ -290,7 +290,7 @@ export const ALL_OF_ME = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Maj6.value,
 								t: 16
 							}
@@ -378,7 +378,7 @@ export const ALL_OF_ME = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Maj6.value,
 								t: 16
 							}
@@ -402,7 +402,7 @@ export const ALL_OF_ME = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Min7.value,
 								t: 16
 							}
@@ -434,7 +434,7 @@ export const ALL_OF_ME = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Maj7.value,
 								t: 8
 							}
@@ -466,7 +466,7 @@ export const ALL_OF_ME = {
 						{
 							modelId: MODEL_ID.Chord,
 							modelConfig: {
-								root: NOTE.C.value,
+
 								intervals: RELATIVE_CHORD.Maj6.value,
 								t: 16
 							}

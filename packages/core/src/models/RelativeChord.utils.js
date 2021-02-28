@@ -3,7 +3,7 @@ import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
-const getPreview = (modelConfig) => modelConfig.intervals.map(IntervalUtils.getName).join(', ');
+const getPreview = (modelConfig) => modelConfig.intervals.map(interval => IntervalUtils.getName({ interval })).join(', ');
 const getCaption = (modelConfig) => null;
 
 const getName = (modelConfig) => {
@@ -12,13 +12,16 @@ const getName = (modelConfig) => {
 };
 
 const getMetaChildren = args => {
-	const { intervals } = args;
+	const { root, intervals } = args;
 	return intervals.map((d, i) => ({
 		childIndex: i,
 		name: IntervalUtils.getName(d),
 		preview: IntervalUtils.getPreview(d),
 		modelId: MODEL_ID.Interval,
-		modelConfig: d
+		modelConfig: {
+			root,
+			interval:	d
+		}
 	}));
 };
 

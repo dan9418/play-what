@@ -8,13 +8,18 @@ import NoteUtils from "./Note.utils";
 import RelativeChordUtils from "./RelativeChord.utils";
 
 const getName = (modelConfig) => {
-	const { root, intervals } = modelConfig;
-	const kcName = NoteUtils.getName(root);
+	const { root: note, intervals } = modelConfig;
+	const kcName = NoteUtils.getName({ note });
 	const chordName = RelativeChordUtils.getName({ intervals });
 	return `${kcName} + ${chordName}`;
 };
 
-const getPreview = (modelConfig) => `${NoteUtils.getName(modelConfig.root)} + ${modelConfig.intervals.map(IntervalUtils.getName).join(', ')}`;
+const getPreview = (modelConfig) => {
+	const { root: note, intervals } = modelConfig;
+	const kcName = NoteUtils.getName({ note });
+	const intervalNames = intervals.map(interval => IntervalUtils.getName({ interval })).join(', ');
+	return `${kcName} + ${intervalNames}`;
+}
 const getCaption = (modelConfig) => null;
 const getPodAtPitch = (modelConfig, metaChildren, p) => AbsoluteChordUtils.getPodAtPitch(modelConfig, metaChildren, p);
 
@@ -22,9 +27,9 @@ const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
 	const notes = PodUtils.addPodList(root, intervals);
 
-	const rootConfig = root;
-	const intervalsConfig = { intervals };
-	const notesConfig = { notes };
+	const rootConfig = { root, note: root };
+	const intervalsConfig = { root, intervals };
+	const notesConfig = { root, notes };
 
 	return [
 		{
@@ -33,8 +38,7 @@ const getMetaChildren = modelConfig => {
 			name: NoteUtils.getName(rootConfig),
 			preview: NoteUtils.getPreview(rootConfig),
 			modelId: MODEL_ID.Note,
-			modelConfig: rootConfig,
-			root
+			modelConfig: rootConfig
 		},
 		{
 			childIndex: 1,
@@ -42,8 +46,7 @@ const getMetaChildren = modelConfig => {
 			preview: RelativeChordUtils.getPreview(intervalsConfig),
 			label: 'Intervals',
 			modelId: MODEL_ID.RelativeChord,
-			modelConfig: intervalsConfig,
-			root
+			modelConfig: intervalsConfig
 		},
 		{
 			childIndex: 2,
@@ -51,8 +54,7 @@ const getMetaChildren = modelConfig => {
 			preview: AbsoluteChordUtils.getPreview(notesConfig),
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
-			modelConfig: notesConfig,
-			root
+			modelConfig: notesConfig
 		}
 	];
 };

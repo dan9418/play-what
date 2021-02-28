@@ -28,14 +28,15 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getName = (pod) => {
-	const offset = getAccidentalOffset(pod);
-	const accidental = getAccidentalString(offset, pod[1]);
-	const spelling = DEGREE_VALUES[pod[1]].name;
+const getName = (modelConfig) => {
+	const { root, note } = modelConfig;
+	const offset = getAccidentalOffset(note);
+	const accidental = getAccidentalString(offset, note[1]);
+	const spelling = DEGREE_VALUES[note[1]].name;
 	return `${spelling}${accidental}`;
 }
 
-const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.getPodAtPitch(modelConfig, p);
+const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.getPodAtPitch(modelConfig.note, p);
 
 export default {
 	getName,
