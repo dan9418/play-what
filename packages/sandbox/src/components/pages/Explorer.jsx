@@ -34,9 +34,11 @@ const Explorer = () => {
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
+					<h2>Viewer</h2>
 					<ViewerPanel />
-					<PlaybackControls />
+					<h2>Data</h2>
 					<DataPanel />
+					<h2>Transforms</h2>
 					<Derivations />
 				</StyledExplorer>
 			</Panel>

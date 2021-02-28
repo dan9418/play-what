@@ -43,14 +43,6 @@ const getMetaChildren = data => {
 			label: 'Notes',
 			modelId: MODEL_ID.AbsoluteChord,
 			modelData: notes
-		},
-		{
-			childIndex: 3,
-			name: 'Beats',
-			preview: null,
-			label: null,
-			modelId: MODEL_ID.Pitch,
-			modelData: data.t
 		}
 	];
 };

@@ -1,18 +1,14 @@
 import AbsoluteChordUtils from '../AbsoluteChord.utils';
 import AbsoluteScaleUtils from '../AbsoluteScale.utils';
 import ChordUtils from '../Chord.utils';
-import DegreeUtils from '../Degree.utils';
 import GroupUtils from '../Group.utils';
 import IntervalUtils from '../Interval.utils';
 import NoteUtils from '../Note.utils';
-import PitchUtils from '../Pitch.utils';
 import RelativeChordUtils from '../RelativeChord.utils';
 import RelativeScaleUtils from '../RelativeScale.utils';
 
 export const MODEL_ID = {
 	Native: 'native',
-	Pitch: 'pitch',
-	Degree: 'degree',
 	Note: 'note',
 	Interval: 'interval',
 	AbsoluteChord: 'absChord',
@@ -25,16 +21,6 @@ export const MODEL_ID = {
 };
 
 export const MODEL = {
-	[MODEL_ID.Pitch]: {
-		name: 'Pitch',
-		modelId: MODEL_ID.Pitch,
-		utils: PitchUtils
-	},
-	[MODEL_ID.Degree]: {
-		name: 'Degree',
-		modelId: MODEL_ID.Degree,
-		utils: DegreeUtils
-	},
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,

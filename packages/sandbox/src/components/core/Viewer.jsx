@@ -26,9 +26,7 @@ const MODEL_VIEWER = {
 	[MODEL_ID.AbsoluteScale]: FRETBOARD,
 	[MODEL_ID.RelativeScale]: FRETBOARD,
 	[MODEL_ID.Note]: FRETBOARD,
-	[MODEL_ID.Interval]: FRETBOARD,
-	[MODEL_ID.Pitch]: EMPTY,
-	[MODEL_ID.Degree]: EMPTY
+	[MODEL_ID.Interval]: FRETBOARD
 };
 
 const StyledViewerContainer = styled.div`

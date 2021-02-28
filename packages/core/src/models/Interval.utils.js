@@ -1,31 +1,9 @@
-import DegreeUtils from "./Degree.utils";
-import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
-import PitchUtils from "./Pitch.utils";
 
 const getPreview = (data) => '1:n';
 const getCaption = (data) => null;
-const getMetaChildren = data => {
-	return [
-		{
-			childIndex: 0,
-			label: 'Pitch Span',
-			name: PitchUtils.getName(data[0]),
-			preview: null,
-			modelId: MODEL_ID.Pitch,
-			modelData: data[0]
-		},
-		{
-			childIndex: 1,
-			label: 'Degree Span',
-			name: DegreeUtils.getName(data[1]),
-			preview: null,
-			modelId: MODEL_ID.Degree,
-			modelData: data[1]
-		}
-	];
-};
+const getMetaChildren = data => null;
 
 
 const getIntervalOffset = (pod, coreIvl) => {
