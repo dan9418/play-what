@@ -13,16 +13,16 @@ const getName = (modelConfig) => {
 
 const getMetaChildren = args => {
 	const { root, intervals } = args;
-	return intervals.map((d, i) => ({
-		childIndex: i,
-		name: IntervalUtils.getName(d),
-		preview: IntervalUtils.getPreview(d),
-		modelId: MODEL_ID.Interval,
-		modelConfig: {
-			root,
-			interval: d
+	return intervals.map((interval, i) => {
+		const intervalConfig = { root, interval };
+		return {
+			childIndex: i,
+			name: IntervalUtils.getName(intervalConfig),
+			preview: IntervalUtils.getPreview(intervalConfig),
+			modelId: MODEL_ID.Interval,
+			modelConfig: intervalConfig
 		}
-	}));
+	});
 };
 
 export default {

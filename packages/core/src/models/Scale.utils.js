@@ -19,7 +19,11 @@ const getPreview = (modelConfig) => {
 }
 
 const getCaption = (modelConfig) => null;
-const getPodAtPitch = (modelConfig, metaChildren, p) => AbsoluteScaleUtils.getPodAtPitch(modelConfig, metaChildren, p);
+
+const getPodAtPitch = (modelConfig, metaChildren, p) => {
+	const notesConfig = metaChildren[2].modelConfig;
+	return AbsoluteScaleUtils.getPodAtPitch(notesConfig, metaChildren, p);
+}
 
 const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;

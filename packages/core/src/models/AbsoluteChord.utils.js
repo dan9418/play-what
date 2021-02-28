@@ -5,21 +5,21 @@ import NoteUtils from "./Note.utils";
 const getName = (modelConfig) => 'Root + Intervals';
 const getPreview = (modelConfig) => modelConfig.notes.map(note => NoteUtils.getName({ note })).join(', ');
 const getCaption = (modelConfig) => null;
-const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.listGetPodAtPitch(metaChildren[2].modelConfig.notes, p);
+const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.listGetPodAtPitch(modelConfig.notes, p);
 
-const getMetaChildren = modelConfig => {
-	const { root, notes } = modelConfig;
-	return notes.notes.map((d, i) => ({
-		childIndex: i,
-		name: NoteUtils.getName(d),
-		preview: NoteUtils.getPreview(d),
-		modelId: MODEL_ID.Note,
-		modelConfig: {
-			note: d,
-			root
+const getMetaChildren = args => {
+	const { root, notes } = args;
+	return notes.map((note, i) => {
+		const noteConfig = { root, note };
+		return {
+			childIndex: i,
+			name: NoteUtils.getName(noteConfig),
+			preview: NoteUtils.getPreview(noteConfig),
+			modelId: MODEL_ID.Note,
+			modelConfig: noteConfig
 		}
-	}));
-}
+	});
+};
 
 export default {
 	getName,

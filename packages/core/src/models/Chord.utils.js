@@ -21,7 +21,10 @@ const getPreview = (modelConfig) => {
 	return `${kcName} + ${intervalNames}`;
 }
 const getCaption = (modelConfig) => null;
-const getPodAtPitch = (modelConfig, metaChildren, p) => AbsoluteChordUtils.getPodAtPitch(modelConfig, metaChildren, p);
+const getPodAtPitch = (modelConfig, metaChildren, p) => {
+	const notesConfig = metaChildren[2].modelConfig;
+	return AbsoluteChordUtils.getPodAtPitch(notesConfig, metaChildren, p);
+}
 
 const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
