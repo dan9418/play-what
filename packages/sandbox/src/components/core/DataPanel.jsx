@@ -66,7 +66,7 @@ const DataPanel = () => {
 
 	const metaChildren = model.utils.getMetaChildren(modelArgs);
 
-	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelData, null, '\t')}</pre>;
+	return metaChildren ? getRows(metaChildren) : <pre>{JSON.stringify(modelArgs, null, '\t')}</pre>;
 };
 
 export default DataPanel;

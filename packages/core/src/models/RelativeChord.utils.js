@@ -4,23 +4,23 @@ import IntervalUtils from "./Interval.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 const getPreview = (modelArgs) => modelArgs.intervals.map(IntervalUtils.getName).join(', ');
-const getCaption = (data) => null;
+const getCaption = (modelArgs) => null;
 
 const getName = (modelArgs) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodUtils.areListsEqual(modelArgs.intervals, v.value));
 	return preset ? preset.id : 'Untitled Chord';
 };
 
-const getPodAtPitch = (data, p) => PodUtils.listGetPodAtPitch(data, p);
+const getPodAtPitch = (modelArgs, p) => PodUtils.listGetPodAtPitch(modelArgs.intervals, p);
 
 const getMetaChildren = args => {
 	const { intervals } = args;
 	return intervals.map((d, i) => ({
 		childIndex: i,
-		name: 'name',
-		preview: 'preview',
+		name: IntervalUtils.getName(d),
+		preview: IntervalUtils.getPreview(d),
 		modelId: MODEL_ID.Interval,
-		modelData: d
+		modelArgs: d
 	}));
 };
 

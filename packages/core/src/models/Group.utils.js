@@ -1,8 +1,8 @@
 import { MODEL } from "./helpers/Model.constants";
 
-const getName = (modelArgs, metaChildren) => "Untitled Group";
-const getPreview = (modelArgs, metaChildren) => `${modelArgs.items.length} Items`;
-const getCaption = (modelArgs, metaChildren) => null;
+const getName = (modelArgs) => "Untitled Group";
+const getPreview = (modelArgs) => `${modelArgs.items.length} Items`;
+const getCaption = (modelArgs) => null;
 
 const getPodAtPitch = (data, p) => null;
 
