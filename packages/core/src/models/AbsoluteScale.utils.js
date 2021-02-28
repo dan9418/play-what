@@ -1,3 +1,5 @@
+import ToneUtils from "../tone/Tone.utils";
+import TuningUtils from "../tuning/Tuning.utils";
 import { MODEL_ID } from "./helpers/Model.constants";
 import NoteUtils from "./Note.utils";
 
@@ -21,10 +23,17 @@ const getMetaChildren = args => {
 	});
 };
 
+const playSound = (modelConfig) => {
+	const { notes } = modelConfig;
+	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
+	ToneUtils.playSound(frequencies)
+}
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
 	getPodAtPitch,
-	getMetaChildren
+	getMetaChildren,
+	playSound
 }

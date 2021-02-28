@@ -1,3 +1,5 @@
+import ToneUtils from "../tone/Tone.utils";
+import TuningUtils from "../tuning/Tuning.utils";
 import { DEGREE_VALUES } from "./Degree.constants";
 import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import PodUtils from "./helpers/Pod.utils";
@@ -38,10 +40,17 @@ const getName = (modelConfig) => {
 
 const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.getPodAtPitch(modelConfig.note, p);
 
+const playSound = (modelConfig) => {
+	const { note } = modelConfig;
+	const frequency = TuningUtils.getFrequency(note[0]);
+	ToneUtils.playSound(frequency)
+}
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
 	getPodAtPitch,
-	getMetaChildren
+	getMetaChildren,
+	playSound
 }

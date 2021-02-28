@@ -75,24 +75,11 @@ const parse = (modelConfig) => {
 	}
 };
 
-const getFrequencies = (modelConfig) => {
-	const { notes } = modelConfig;
-
-	return notes.map(n => TuningUtils.getFrequency(n[0]));
-};
-
-const playSound = (modelConfig) => {
-	const frequencies = getFrequencies(modelConfig);
-	ToneUtils.playSound(frequencies)
-}
-
 export default {
 	getName,
 	getPreview,
 	getCaption,
 	getPodAtPitch,
 	getMetaChildren,
-	parse,
-	getFrequencies,
-	playSound
+	parse
 }
