@@ -14,15 +14,13 @@ const StyledExplorer = styled.div`
 	width: 100%;
 	max-width: 512px;
 	margin: auto;
-
-	/*@media(min-width: 1024px) {
-		grid-template-columns: 1fr 1fr;
-		max-width: 100%;
-	}*/
+	padding: 0 0 24px 0;
 
 	grid-template-columns: 1fr;
-
-	padding: 0 0 24px 0;
+	@media(min-width: 1024px) {
+		grid-template-columns: 1fr 1fr;
+		max-width: 100%;
+	}
 `;
 
 const Explorer = () => {

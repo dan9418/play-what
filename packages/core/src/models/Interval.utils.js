@@ -39,9 +39,16 @@ const getName = (modelConfig) => {
 	return `${qualityStr}${d + 1}`;
 }
 
+const getPodAtPitch = (modelConfig, metaChildren, p) => {
+	const { root, interval } = modelConfig;
+	const pitchOffset = root[0]
+	return PodUtils.getPodAtPitch(interval, p - pitchOffset);
+}
+
 export default {
 	getName,
 	getPreview,
 	getCaption,
-	getMetaChildren
+	getMetaChildren,
+	getPodAtPitch
 }

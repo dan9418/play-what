@@ -23,6 +23,7 @@ const MODEL_VIEWER = {
 const StyledViewerContainer = styled.div`
     width: 100%;
 	max-width: 512px;
+	margin-top: 16px;
 `;
 
 
@@ -33,12 +34,12 @@ const Viewer = props => {
 	if (!viewer) return null;
 
 	return (
-		<>
+		<div>
 			<h2>Viewer</h2>
 			<StyledViewerContainer>
 				<viewer.component {...props} />
 			</StyledViewerContainer>
-		</>
+		</div>
 	);
 };
 

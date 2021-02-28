@@ -42,10 +42,10 @@ const DataPanel = ({ modelConfig, metaChildren }) => {
 		return <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 
 	return (
-		<>
+		<div>
 			<h2>Data</h2>
 			{getRows(metaChildren)}
-		</>
+		</div>
 	);
 };
 
