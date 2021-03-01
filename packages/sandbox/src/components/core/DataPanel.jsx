@@ -2,6 +2,7 @@ import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
+import Viewer from './Viewer';
 
 const StyledPropertyHeader = styled.h4`
 	color: #555;
@@ -18,7 +19,7 @@ const getRows = metaChildren => {
 		const model = MODEL[modelId];
 
 		const header = <StyledPropertyHeader>
-			{label || i + 1}
+			{label || null}
 		</StyledPropertyHeader>;
 
 		return (
@@ -30,7 +31,8 @@ const getRows = metaChildren => {
 					name={name}
 					preview={preview}
 				>
-					{JSON.stringify(modelConfig, null, "\t")}
+					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
+					{/*JSON.stringify(modelConfig, null, "\t")*/}
 				</Subpanel>
 			</div>
 		);

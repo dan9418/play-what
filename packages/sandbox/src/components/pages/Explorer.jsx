@@ -1,4 +1,4 @@
-import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL, MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -41,6 +41,7 @@ const Explorer = () => {
 				<StyledExplorer>
 					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
 					<DataPanel modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
+					{modelId === MODEL_ID.Group && <DataPanel modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />}
 				</StyledExplorer>
 			</Panel>
 		</>

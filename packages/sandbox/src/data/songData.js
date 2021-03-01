@@ -18,7 +18,7 @@ export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
 	modelId: MODEL_ID.Group,
 	modelConfig: {
-		root: NOTE.C.value,
+		root: NOTE.B.value,
 		items: [
 			{
 				name: 'Charts',
@@ -52,7 +52,6 @@ export const LIBRARY_PATH_ROOT = {
 				name: 'Scales',
 				modelId: MODEL_ID.Group,
 				modelConfig: {
-
 					items: RELATIVE_SCALE_VALUES.map(scale => (
 						{
 							name: scale.name,
@@ -68,7 +67,6 @@ export const LIBRARY_PATH_ROOT = {
 				name: 'Modes',
 				modelId: MODEL_ID.Group,
 				modelConfig: {
-
 					items: INTERVAL_MODE_VALUES.map(scale => (
 						{
 							name: scale.name,

@@ -1,3 +1,4 @@
+import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
@@ -51,7 +52,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild }
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
+				{metaChild.modelId !== MODEL_ID.Group && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
 				<ZoomButton metaChild={metaChild} />
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
