@@ -1,3 +1,5 @@
+import ToneUtils from "../tone/Tone.utils";
+import TuningUtils from "../tuning/Tuning.utils";
 import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
@@ -20,7 +22,8 @@ const getMetaChildren = (modelValue, modelOptions) => {
 			name: IntervalUtils.getName(interval),
 			preview: IntervalUtils.getPreview(interval),
 			modelId: MODEL_ID.Interval,
-			modelValue: interval
+			modelValue: interval,
+			modelOptions
 		}
 	});
 };
@@ -30,9 +33,16 @@ const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
 	return PodUtils.listGetPodAtPitch(modelValue, p - pitchOffset);
 }
 
+const playSound = (modelValue, modelOptions) => {
+	const notes = PodUtils.addPodList(modelOptions.root, modelValue);
+	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
+	ToneUtils.playSound(frequencies)
+}
+
 export default {
 	getName,
 	getPreview,
 	getMetaChildren,
-	getPodAtPitch
+	getPodAtPitch,
+	playSound
 }
