@@ -10,7 +10,7 @@ IModelDef
 	name?: string
 	preview?: string
 	modelId: string
-	modelConfig: object
+	modelValue: object
 
 */
 
@@ -20,13 +20,13 @@ export const LIBRARY_PATH_ROOT = {
 	modelOptions: {
 		root: NOTE.B.value
 	},
-	modelConfig: {
+	modelValue: {
 		/*
 		inputs: [
 			{
 				name: 'Root',
 				modelId: MODEL_ID.Note,
-				modelConfig: {
+				modelValue: {
 					note: NOTE.B
 				}
 			}
@@ -36,60 +36,55 @@ export const LIBRARY_PATH_ROOT = {
 			{
 				name: 'Charts',
 				modelId: MODEL_ID.Group,
-				modelConfig: {
-					items: CHART_VALUES.map(chart => (
-						{
-							name: chart.name,
-							modelId: MODEL_ID.Group,
-							modelConfig: chart.modelConfig
-						}
-					))
-				}
+				modelValue: CHART_VALUES.map(chart => (
+					{
+						name: chart.name,
+						modelId: MODEL_ID.Group,
+						modelValue: chart.modelValue
+					}
+				))
 			},
 			{
 				name: 'Chords',
 				modelId: MODEL_ID.Group,
-				modelConfig: {
-					items: RELATIVE_CHORD_VALUES.map(chord => (
-						{
-							name: chord.name,
-							modelId: MODEL_ID.RelativeChord,
-							modelConfig: {
-								intervals: chord.value
-							}
+				modelValue:  RELATIVE_CHORD_VALUES.map(chord => (
+					{
+						name: chord.name,
+						modelId: MODEL_ID.RelativeChord,
+						modelValue: chord.value,
+						modelOptions: {
+							root: NOTE.C.value
 						}
-					))
-				}
+					}
+				))
 			},
 			{
 				name: 'Scales',
 				modelId: MODEL_ID.Group,
-				modelConfig: {
-					items: RELATIVE_SCALE_VALUES.map(scale => (
-						{
-							name: scale.name,
-							modelId: MODEL_ID.RelativeScale,
-							modelConfig: {
-								intervals: scale.value
-							}
+				modelValue: RELATIVE_SCALE_VALUES.map(scale => (
+					{
+						name: scale.name,
+						modelId: MODEL_ID.RelativeScale,
+						modelValue: scale.value,
+						modelOptions: {
+							root: NOTE.C.value
 						}
-					))
-				}
+					}
+				))
 			},
 			{
 				name: 'Modes',
 				modelId: MODEL_ID.Group,
-				modelConfig: {
-					items: INTERVAL_MODE_VALUES.map(scale => (
-						{
-							name: scale.name,
-							modelId: MODEL_ID.RelativeScale,
-							modelConfig: {
-								intervals: scale.value
-							}
+				modelValue: INTERVAL_MODE_VALUES.map(scale => (
+					{
+						name: scale.name,
+						modelId: MODEL_ID.RelativeScale,
+						modelValue: scale.value,
+						modelOptions: {
+							root: NOTE.C.value
 						}
-					))
-				}
+					}
+				))
 			}
 		]
 	}
