@@ -1,6 +1,5 @@
 import AbsoluteChordUtils from '../AbsoluteChord.utils';
 import AbsoluteScaleUtils from '../AbsoluteScale.utils';
-import ChordUtils from '../Chord.utils';
 import GroupUtils from '../Group.utils';
 import IntervalUtils from '../Interval.utils';
 import NoteUtils from '../Note.utils';
@@ -53,16 +52,6 @@ export const MODEL = {
 		isRelative: true,
 		modelId: MODEL_ID.RelativeScale,
 		utils: RelativeScaleUtils
-	},
-	[MODEL_ID.Chord]: {
-		name: 'Chord',
-		modelId: MODEL_ID.Chord,
-		utils: ChordUtils
-	},
-	[MODEL_ID.Scale]: {
-		name: 'Scale',
-		modelId: MODEL_ID.Scale,
-		utils: ChordUtils
 	},
 	[MODEL_ID.Group]: {
 		name: 'Group',
