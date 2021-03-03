@@ -23,8 +23,8 @@ const getMetaChildren = (modelValue, modelOptions) => {
 	});
 };
 
-const getPodAtPitch = (modelValue, metaChildren, p) => {
-	const pitchOffset = 0;
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
+	const pitchOffset = modelOptions.root[0];
 	return PodUtils.listGetPodAtPitch(modelValue, p - pitchOffset);
 }
 

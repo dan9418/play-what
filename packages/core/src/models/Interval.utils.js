@@ -38,8 +38,8 @@ const getName = (modelValue) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getPodAtPitch = (modelValue, metaChildren, p) => {
-	const pitchOffset = 0;
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
+	const pitchOffset = modelOptions.root[0];
 	return PodUtils.getPodAtPitch(modelValue, p - pitchOffset);
 }
 

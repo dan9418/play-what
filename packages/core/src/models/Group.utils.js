@@ -3,8 +3,7 @@ import { MODEL } from "./helpers/Model.constants";
 const getName = () => "Untitled Group";
 const getPreview = (modelValue) => `${modelValue.length} Items`;
 const getCaption = () => null;
-
-const getPodAtPitch = (data, p) => null;
+const getPodAtPitch = () => null;
 
 const getMetaChildren = (modelValue, modelOptions) => {
 	return modelValue.map((child, i) => {

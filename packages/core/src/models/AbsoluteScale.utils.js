@@ -7,7 +7,7 @@ const getName = () => 'Root + Intervals';
 const getPreview = (modelValue) => modelValue.map(note => NoteUtils.getName({ note })).join(', ');
 const getCaption = () => null;
 
-const getPodAtPitch = (modelValue, metaChildren, p) => PodUtils.listGetPodAtPitch(modelValue, p);
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.listGetPodAtPitch(modelValue, p);
 
 const getMetaChildren = (modelValue, modelOptions) => {
 	return notes.map((note, i) => {
