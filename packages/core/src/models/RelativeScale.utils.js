@@ -1,5 +1,4 @@
 import { MODEL_ID } from "./helpers/Model.constants";
-import PodUtils from "./helpers/Pod.utils";
 import PodListUtils from "./helpers/PodList.utils";
 import IntervalUtils from "./Interval.utils";
 import NoteUtils from "./Note.utils";
@@ -14,17 +13,7 @@ const getName = (modelValue, modelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getMetaChildren = (modelValue, modelOptions) => {
-	return modelValue.map((interval, i) => {
-		return {
-			childIndex: i,
-			name: IntervalUtils.getName(interval),
-			preview: IntervalUtils.getPreview(interval),
-			modelId: MODEL_ID.Interval,
-			modelValue: interval
-		}
-	});
-};
+const getMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
 
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
 	const pitchOffset = modelOptions.root[0];

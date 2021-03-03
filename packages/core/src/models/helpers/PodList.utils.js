@@ -1,3 +1,4 @@
+import { MODEL } from './Model.constants';
 import { MAX_POD } from './Pod.constants';
 import PodUtils from './Pod.utils';
 
@@ -26,8 +27,25 @@ const getPodAtPitch = (A, p) => {
 	return pod ? pod : null;
 };
 
+// Children
+
+const getMetaChildren = (modelValue, modelOptions, childModelId) => {
+	const model = MODEL[childModelId];
+	return modelValue.map((pod, i) => {
+		return {
+			childIndex: i,
+			name: model.utils.getName(pod),
+			preview: model.utils.getPreview(pod),
+			modelId: childModelId,
+			modelValue: pod,
+			modelOptions
+		}
+	});
+};
+
 export default {
 	areEqual,
 	reduce,
-	getPodAtPitch
+	getPodAtPitch,
+	getMetaChildren
 };
