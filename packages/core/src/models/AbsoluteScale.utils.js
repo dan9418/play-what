@@ -5,7 +5,6 @@ import NoteUtils from "./Note.utils";
 
 const getName = () => 'Root + Intervals';
 const getPreview = (modelValue) => modelValue.map(note => NoteUtils.getName({ note })).join(', ');
-const getCaption = () => null;
 
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.listGetPodAtPitch(modelValue, p);
 
@@ -29,7 +28,6 @@ const playSound = (modelValue) => {
 export default {
 	getName,
 	getPreview,
-	getCaption,
 	getPodAtPitch,
 	getMetaChildren,
 	playSound

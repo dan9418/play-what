@@ -2,7 +2,6 @@ import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = () => '1:n';
-const getCaption = () => null;
 const getMetaChildren = () => null;
 
 const getIntervalOffset = (pod, coreIvl) => {
@@ -46,7 +45,6 @@ const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
 export default {
 	getName,
 	getPreview,
-	getCaption,
 	getMetaChildren,
 	getPodAtPitch
 }

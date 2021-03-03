@@ -4,7 +4,6 @@ import IntervalUtils from "./Interval.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName(interval)).join(', ');
-const getCaption = () => null;
 
 const getName = (modelValue) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodUtils.areListsEqual(modelValue, v.value));
@@ -31,7 +30,6 @@ const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
 export default {
 	getName,
 	getPreview,
-	getCaption,
 	getMetaChildren,
 	getPodAtPitch
 }

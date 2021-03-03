@@ -6,7 +6,6 @@ import PodUtils from "./helpers/Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 const getPreview = () => 'X Hz';
-const getCaption = () => null;
 const getMetaChildren = () => null;
 
 const getAccidentalOffset = (pod) => {
@@ -45,7 +44,6 @@ const playSound = (modelValue) => {
 export default {
 	getName,
 	getPreview,
-	getCaption,
 	getPodAtPitch,
 	getMetaChildren,
 	playSound

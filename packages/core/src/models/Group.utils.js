@@ -2,7 +2,6 @@ import { MODEL } from "./helpers/Model.constants";
 
 const getName = () => "Untitled Group";
 const getPreview = (modelValue) => `${modelValue.length} Items`;
-const getCaption = () => null;
 const getPodAtPitch = () => null;
 
 const getMetaChildren = (modelValue, modelOptions) => {
@@ -22,7 +21,6 @@ const getMetaChildren = (modelValue, modelOptions) => {
 export default {
 	getName,
 	getPreview,
-	getCaption,
 	getPodAtPitch,
 	getMetaChildren
 }
