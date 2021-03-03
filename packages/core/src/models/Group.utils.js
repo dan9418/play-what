@@ -14,7 +14,8 @@ const getMetaChildren = (modelValue, modelOptions) => {
 			...child,
 			childIndex: i,
 			name,
-			preview: model.utils.getPreview(child.modelValue)
+			preview: model.utils.getPreview(child.modelValue),
+			modelValue: child.modelValue
 		}
 	});
 };

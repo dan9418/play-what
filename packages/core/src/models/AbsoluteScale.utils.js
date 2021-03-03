@@ -13,8 +13,8 @@ const getMetaChildren = (modelValue, modelOptions) => {
 	return notes.map((note, i) => {
 		return {
 			childIndex: i,
-			name: NoteUtils.getName(noteConfig),
-			preview: NoteUtils.getPreview(noteConfig),
+			name: NoteUtils.getName(note),
+			preview: NoteUtils.getPreview(note),
 			modelId: MODEL_ID.Note,
 			modelValue: note
 		}
