@@ -10,10 +10,8 @@ const FRETBOARD = {
 
 const MODEL_VIEWER = {
 	[MODEL_ID.Group]: null,
-	[MODEL_ID.Chord]: FRETBOARD,
 	[MODEL_ID.AbsoluteChord]: FRETBOARD,
 	[MODEL_ID.RelativeChord]: FRETBOARD,
-	[MODEL_ID.Scale]: FRETBOARD,
 	[MODEL_ID.AbsoluteScale]: FRETBOARD,
 	[MODEL_ID.RelativeScale]: FRETBOARD,
 	[MODEL_ID.Note]: FRETBOARD,

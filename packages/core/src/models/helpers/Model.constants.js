@@ -14,8 +14,6 @@ export const MODEL_ID = {
 	RelativeChord: 'relChord',
 	AbsoluteScale: 'absScale',
 	RelativeScale: 'relScale',
-	Chord: 'chord',
-	Scale: 'scale',
 	Group: 'group'
 };
 

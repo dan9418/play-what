@@ -26,7 +26,7 @@ const Derivations = () => {
 
 	const addRoot = () => {
 		push({
-			modelId: MODEL_ID.Chord,
+			modelId: null,
 			childId: 0,
 			name: 'Derived Chord',
 			modelValue
