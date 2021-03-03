@@ -6,7 +6,7 @@ import RelativeScaleUtils from "./RelativeScale.utils";
 
 const getName = (modelConfig) => {
 	const { root, intervals } = modelConfig;
-	const kcName = NoteUtils.getName({ root, note: root });
+	const kcName = NoteUtils.getName({ note: root });
 	const chordName = RelativeScaleUtils.getName({ intervals });
 	return `${kcName} + ${chordName}`;
 };
@@ -29,9 +29,9 @@ const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
 	const notes = PodUtils.addPodList(root, intervals);
 
-	const rootConfig = { root, note: root };
-	const intervalsConfig = { root, intervals };
-	const notesConfig = { root, notes };
+	const rootConfig = { note: root };
+	const intervalsConfig = { intervals };
+	const notesConfig = { notes };
 
 	return [
 		{
@@ -64,10 +64,8 @@ const getMetaChildren = modelConfig => {
 const parse = (modelConfig) => {
 	const { root, intervals } = modelConfig;
 
-	let rootValue = root;
-
 	return {
-		root: rootValue,
+		root,
 		intervals,
 		notes: PodUtils.addPodList(root, intervals)
 	}

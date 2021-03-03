@@ -10,9 +10,9 @@ const getCaption = (modelConfig) => null;
 const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.listGetPodAtPitch(modelConfig.notes, p);
 
 const getMetaChildren = args => {
-	const { root, notes } = args;
+	const { notes } = args;
 	return notes.map((note, i) => {
-		const noteConfig = { root, note };
+		const noteConfig = { note };
 		return {
 			childIndex: i,
 			name: NoteUtils.getName(noteConfig),

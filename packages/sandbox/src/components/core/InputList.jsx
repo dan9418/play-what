@@ -41,7 +41,7 @@ const getItems = metaChildren => {
 
 const InputList = ({ modelConfig }) => {
 
-	return <pre>{JSON.stringify(modelConfig.root, null, '\t')}</pre>;
+	return <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 
 	return (
 		<ul>

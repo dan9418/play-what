@@ -7,10 +7,10 @@ const getCaption = (modelConfig) => null;
 const getPodAtPitch = (data, p) => null;
 
 const getMetaChildren = args => {
-	const { root, items } = args;
+	const { items } = args;
 	return items.map((child, i) => {
 		const { modelId, modelConfig: _modelConfig } = child;
-		const modelConfig = { root, ..._modelConfig };
+		const modelConfig = { ..._modelConfig };
 		const model = MODEL[modelId];
 		const name = child.name ? child.name : model.utils.getName(modelConfig);
 		return {

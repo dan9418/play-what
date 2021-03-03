@@ -17,8 +17,21 @@ IModelDef
 export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
 	modelId: MODEL_ID.Group,
+	modelOptions: {
+		root: NOTE.B.value
+	},
 	modelConfig: {
-		root: NOTE.B.value,
+		/*
+		inputs: [
+			{
+				name: 'Root',
+				modelId: MODEL_ID.Note,
+				modelConfig: {
+					note: NOTE.B
+				}
+			}
+		],
+		*/
 		items: [
 			{
 				name: 'Charts',

@@ -10,7 +10,7 @@ const getIntervalOffset = (pod, coreIvl) => {
 }
 
 const getName = (modelConfig) => {
-	const { root, interval } = modelConfig;
+	const { interval } = modelConfig;
 	const [p, d] = interval;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -40,8 +40,8 @@ const getName = (modelConfig) => {
 }
 
 const getPodAtPitch = (modelConfig, metaChildren, p) => {
-	const { root, interval } = modelConfig;
-	const pitchOffset = root[0]
+	const { interval } = modelConfig;
+	const pitchOffset = 0;
 	return PodUtils.getPodAtPitch(interval, p - pitchOffset);
 }
 

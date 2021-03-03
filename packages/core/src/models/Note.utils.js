@@ -31,7 +31,7 @@ const getAccidentalString = (offset, d) => {
 };
 
 const getName = (modelConfig) => {
-	const { root, note } = modelConfig;
+	const { note } = modelConfig;
 	const offset = getAccidentalOffset(note);
 	const accidental = getAccidentalString(offset, note[1]);
 	const spelling = DEGREE_VALUES[note[1]].name;

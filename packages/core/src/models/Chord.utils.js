@@ -30,9 +30,9 @@ const getMetaChildren = modelConfig => {
 	const { root, intervals } = modelConfig;
 	const notes = PodUtils.addPodList(root, intervals);
 
-	const rootConfig = { root, note: root };
-	const intervalsConfig = { root, intervals };
-	const notesConfig = { root, notes };
+	const rootConfig = { note: root };
+	const intervalsConfig = { intervals };
+	const notesConfig = { notes };
 
 	return [
 		{
@@ -65,10 +65,8 @@ const getMetaChildren = modelConfig => {
 const parse = (modelConfig) => {
 	const { root, intervals, t } = modelConfig;
 
-	let rootValue = root;
-
 	return {
-		root: rootValue,
+		root,
 		intervals,
 		notes: PodUtils.addPodList(root, intervals),
 		t: t || 1

@@ -12,9 +12,9 @@ const getName = (modelConfig) => {
 };
 
 const getMetaChildren = args => {
-	const { root, intervals } = args;
+	const { intervals } = args;
 	return intervals.map((interval, i) => {
-		const intervalConfig = { root, interval };
+		const intervalConfig = { interval };
 		return {
 			childIndex: i,
 			name: IntervalUtils.getName(intervalConfig),
@@ -26,8 +26,8 @@ const getMetaChildren = args => {
 };
 
 const getPodAtPitch = (modelConfig, metaChildren, p) => {
-	const { root, intervals } = modelConfig;
-	const pitchOffset = root[0]
+	const { intervals } = modelConfig;
+	const pitchOffset = 0;
 	return PodUtils.listGetPodAtPitch(intervals, p - pitchOffset);
 }
 
