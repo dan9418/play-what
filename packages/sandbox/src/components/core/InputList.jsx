@@ -15,7 +15,7 @@ const StyledPropertyHeader = styled.h4`
 
 const getItems = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, modelId, preview, modelConfig, label } = child;
+		const { name, modelId, preview, modelValue, label } = child;
 		const model = MODEL[modelId];
 
 		const header = <StyledPropertyHeader>
@@ -31,17 +31,16 @@ const getItems = metaChildren => {
 					name={name}
 					preview={preview}
 				>
-					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
-					{/*JSON.stringify(modelConfig, null, "\t")*/}
+					<Viewer modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} />
 				</Subpanel>
 			</li>
 		);
 	})
 };
 
-const InputList = ({ modelConfig }) => {
+const InputList = ({ modelValue }) => {
 
-	return <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
+	return <pre>{JSON.stringify(modelValue, null, '\t')}</pre>;
 
 	return (
 		<ul>

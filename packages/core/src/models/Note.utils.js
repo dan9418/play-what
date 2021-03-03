@@ -5,11 +5,9 @@ import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import PodUtils from "./helpers/Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
-const getPreview = (modelConfig) => 'X Hz';
-const getCaption = (modelConfig) => null;
-
-const getMetaChildren = modelConfig => null;
-
+const getPreview = () => 'X Hz';
+const getCaption = () => null;
+const getMetaChildren = () => null;
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
@@ -30,19 +28,17 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getName = (modelConfig) => {
-	const { note } = modelConfig;
-	const offset = getAccidentalOffset(note);
-	const accidental = getAccidentalString(offset, note[1]);
-	const spelling = DEGREE_VALUES[note[1]].name;
+const getName = (modelValue) => {
+	const offset = getAccidentalOffset(modelValue);
+	const accidental = getAccidentalString(offset, modelValue[1]);
+	const spelling = DEGREE_VALUES[modelValue[1]].name;
 	return `${spelling}${accidental}`;
 }
 
-const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.getPodAtPitch(modelConfig.note, p);
+const getPodAtPitch = (modelValue, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
 
-const playSound = (modelConfig) => {
-	const { note } = modelConfig;
-	const frequency = TuningUtils.getFrequency(note[0]);
+const playSound = (modelValue) => {
+	const frequency = TuningUtils.getFrequency(modelValue[0]);
 	ToneUtils.playSound(frequency)
 }
 

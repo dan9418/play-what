@@ -3,32 +3,29 @@ import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
-const getPreview = (modelConfig) => modelConfig.intervals.map(interval => IntervalUtils.getName({ interval })).join(', ');
-const getCaption = (modelConfig) => null;
+const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName({ interval })).join(', ');
+const getCaption = () => null;
 
-const getName = (modelConfig) => {
-	const preset = RELATIVE_CHORD_VALUES.find(v => PodUtils.areListsEqual(modelConfig.intervals, v.value));
+const getName = (modelValue) => {
+	const preset = RELATIVE_CHORD_VALUES.find(v => PodUtils.areListsEqual(modelValue, v.value));
 	return preset ? preset.id : 'Untitled Chord';
 };
 
-const getMetaChildren = args => {
-	const { intervals } = args;
-	return intervals.map((interval, i) => {
-		const intervalConfig = { interval };
+const getMetaChildren = (modelValue, modelOptions) => {
+	return modelValue.map((interval, i) => {
 		return {
 			childIndex: i,
 			name: IntervalUtils.getName(intervalConfig),
 			preview: IntervalUtils.getPreview(intervalConfig),
 			modelId: MODEL_ID.Interval,
-			modelConfig: intervalConfig
+			modelValue: interval
 		}
 	});
 };
 
-const getPodAtPitch = (modelConfig, metaChildren, p) => {
-	const { intervals } = modelConfig;
+const getPodAtPitch = (modelValue, metaChildren, p) => {
 	const pitchOffset = 0;
-	return PodUtils.listGetPodAtPitch(intervals, p - pitchOffset);
+	return PodUtils.listGetPodAtPitch(modelValue, p - pitchOffset);
 }
 
 export default {

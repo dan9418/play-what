@@ -1,17 +1,16 @@
 import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
-const getPreview = (modelConfig) => '1:n';
-const getCaption = (modelConfig) => null;
-const getMetaChildren = modelConfig => null;
+const getPreview = () => '1:n';
+const getCaption = () => null;
+const getMetaChildren = () => null;
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
 }
 
-const getName = (modelConfig) => {
-	const { interval } = modelConfig;
-	const [p, d] = interval;
+const getName = (modelValue) => {
+	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
 
@@ -25,7 +24,7 @@ const getName = (modelConfig) => {
 	else if (p <= loIvl.value[0]) ivl = loIvl; // minor
 	else if (p >= hiIvl.value[0]) ivl = hiIvl; // major
 
-	let offset = getIntervalOffset(interval, ivl);
+	let offset = getIntervalOffset(modelValue, ivl);
 
 	// determine quality
 	let quality = null;
@@ -39,10 +38,9 @@ const getName = (modelConfig) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getPodAtPitch = (modelConfig, metaChildren, p) => {
-	const { interval } = modelConfig;
+const getPodAtPitch = (modelValue, metaChildren, p) => {
 	const pitchOffset = 0;
-	return PodUtils.getPodAtPitch(interval, p - pitchOffset);
+	return PodUtils.getPodAtPitch(modelValue, p - pitchOffset);
 }
 
 export default {

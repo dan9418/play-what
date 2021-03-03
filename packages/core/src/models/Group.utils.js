@@ -1,24 +1,20 @@
 import { MODEL } from "./helpers/Model.constants";
 
-const getName = (modelConfig) => "Untitled Group";
-const getPreview = (modelConfig) => `${modelConfig.items.length} Items`;
-const getCaption = (modelConfig) => null;
+const getName = () => "Untitled Group";
+const getPreview = (modelValue) => `${modelValue.length} Items`;
+const getCaption = () => null;
 
 const getPodAtPitch = (data, p) => null;
 
-const getMetaChildren = args => {
-	const { items } = args;
-	return items.map((child, i) => {
-		const { modelId, modelConfig: _modelConfig } = child;
-		const modelConfig = { ..._modelConfig };
-		const model = MODEL[modelId];
-		const name = child.name ? child.name : model.utils.getName(modelConfig);
+const getMetaChildren = (modelValue, modelOptions) => {
+	return modelValue.map((child, i) => {
+		const model = MODEL[child.modelId];
+		const name = child.name ? child.name : model.utils.getName(child.modelValue);
 		return {
 			...child,
 			childIndex: i,
 			name,
-			preview: model.utils.getPreview(modelConfig),
-			modelConfig
+			preview: model.utils.getPreview(child.modelValue)
 		}
 	});
 };

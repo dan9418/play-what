@@ -29,7 +29,7 @@ export const siblingsState = selector({
 
 		const parentModel = MODEL[parent.modelId];
 
-		const siblings = parentModel.utils.getMetaChildren(parent.modelConfig);
+		const siblings = parentModel.utils.getMetaChildren(parent.modelValue, parent.modelOptions);
 
 		const i = pathHead.childIndex;
 		const isFirst = i === 0;

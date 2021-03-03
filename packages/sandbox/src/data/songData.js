@@ -20,74 +20,61 @@ export const LIBRARY_PATH_ROOT = {
 	modelOptions: {
 		root: NOTE.B.value
 	},
-	modelValue: {
-		/*
-		inputs: [
-			{
-				name: 'Root',
-				modelId: MODEL_ID.Note,
-				modelValue: {
-					note: NOTE.B
+	modelValue: [
+		{
+			name: 'Charts',
+			modelId: MODEL_ID.Group,
+			modelValue: CHART_VALUES.map(chart => (
+				{
+					name: chart.name,
+					modelId: MODEL_ID.Group,
+					modelValue: chart.modelValue
 				}
-			}
-		],
-		*/
-		items: [
-			{
-				name: 'Charts',
-				modelId: MODEL_ID.Group,
-				modelValue: CHART_VALUES.map(chart => (
-					{
-						name: chart.name,
-						modelId: MODEL_ID.Group,
-						modelValue: chart.modelValue
+			))
+		},
+		{
+			name: 'Chords',
+			modelId: MODEL_ID.Group,
+			modelValue: RELATIVE_CHORD_VALUES.map(chord => (
+				{
+					name: chord.name,
+					modelId: MODEL_ID.RelativeChord,
+					modelValue: chord.value,
+					modelOptions: {
+						root: NOTE.C.value
 					}
-				))
-			},
-			{
-				name: 'Chords',
-				modelId: MODEL_ID.Group,
-				modelValue:  RELATIVE_CHORD_VALUES.map(chord => (
-					{
-						name: chord.name,
-						modelId: MODEL_ID.RelativeChord,
-						modelValue: chord.value,
-						modelOptions: {
-							root: NOTE.C.value
-						}
+				}
+			))
+		},
+		{
+			name: 'Scales',
+			modelId: MODEL_ID.Group,
+			modelValue: RELATIVE_SCALE_VALUES.map(scale => (
+				{
+					name: scale.name,
+					modelId: MODEL_ID.RelativeScale,
+					modelValue: scale.value,
+					modelOptions: {
+						root: NOTE.C.value
 					}
-				))
-			},
-			{
-				name: 'Scales',
-				modelId: MODEL_ID.Group,
-				modelValue: RELATIVE_SCALE_VALUES.map(scale => (
-					{
-						name: scale.name,
-						modelId: MODEL_ID.RelativeScale,
-						modelValue: scale.value,
-						modelOptions: {
-							root: NOTE.C.value
-						}
+				}
+			))
+		},
+		{
+			name: 'Modes',
+			modelId: MODEL_ID.Group,
+			modelValue: INTERVAL_MODE_VALUES.map(scale => (
+				{
+					name: scale.name,
+					modelId: MODEL_ID.RelativeScale,
+					modelValue: scale.value,
+					modelOptions: {
+						root: NOTE.C.value
 					}
-				))
-			},
-			{
-				name: 'Modes',
-				modelId: MODEL_ID.Group,
-				modelValue: INTERVAL_MODE_VALUES.map(scale => (
-					{
-						name: scale.name,
-						modelId: MODEL_ID.RelativeScale,
-						modelValue: scale.value,
-						modelOptions: {
-							root: NOTE.C.value
-						}
-					}
-				))
-			}
-		]
-	}
+				}
+			))
+		}
+	]
 };
 
 export default LIBRARY_PATH_ROOT;

@@ -4,28 +4,25 @@ import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import NoteUtils from "./Note.utils";
 
-const getName = (modelConfig) => 'Root + Intervals';
-const getPreview = (modelConfig) => modelConfig.notes.map(note => NoteUtils.getName({ note })).join(', ');
-const getCaption = (modelConfig) => null;
-const getPodAtPitch = (modelConfig, metaChildren, p) => PodUtils.listGetPodAtPitch(modelConfig.notes, p);
+const getName = () => 'Root + Intervals';
+const getPreview = (modelValue) => modelValue.map(note => NoteUtils.getName({ note })).join(', ');
+const getCaption = () => null;
+const getPodAtPitch = (modelValue, metaChildren, p) => PodUtils.listGetPodAtPitch(modelValue, p);
 
-const getMetaChildren = args => {
-	const { notes } = args;
-	return notes.map((note, i) => {
-		const noteConfig = { note };
+const getMetaChildren = (modelValue, modelOptions) => {
+	return modelValue.map((note, i) => {
 		return {
 			childIndex: i,
 			name: NoteUtils.getName(noteConfig),
 			preview: NoteUtils.getPreview(noteConfig),
 			modelId: MODEL_ID.Note,
-			modelConfig: noteConfig
+			modelValue: note
 		}
 	});
 };
 
-const playSound = (modelConfig) => {
-	const { notes } = modelConfig;
-	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
+const playSound = (modelValue) => {
+	const frequencies = modelValue.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }
 
