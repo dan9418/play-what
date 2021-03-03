@@ -35,8 +35,8 @@ const Explorer = () => {
 
 	useEffect(() => window.scrollTo(0, 0), [path.length]);
 
-	const leftContent = modelId === MODEL_ID.Group ?
-		<InputList modelValue={modelValue} modelOptions={modelOptions} /> :
+	const viewer = modelId === MODEL_ID.Group ?
+		null :
 		<Viewer modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />;
 
 	return (
@@ -44,7 +44,10 @@ const Explorer = () => {
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
-					{leftContent}
+					<div>
+						{viewer}
+						<InputList modelValue={modelValue} modelOptions={modelOptions} />
+					</div>
 					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />
 				</StyledExplorer>
 			</Panel>
