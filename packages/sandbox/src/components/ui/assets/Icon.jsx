@@ -187,7 +187,7 @@ export const Maximize = props => {
 	);
 }
 
-export const ZoomArrow = props => {
+export const Zoom = props => {
 	return (
 		<StyledSVG
 			xmlns='http://www.w3.org/2000/svg'
@@ -204,7 +204,7 @@ export const ZoomArrow = props => {
 	);
 }
 
-export const Zoom = props => {
+export const Search = props => {
 	return (
 		<StyledSVG
 			xmlns="http://www.w3.org/2000/svg"

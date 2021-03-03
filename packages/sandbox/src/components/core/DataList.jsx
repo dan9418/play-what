@@ -13,7 +13,7 @@ const StyledPropertyHeader = styled.h4`
 	margin: 16px 8px 8px;
 `;
 
-const getRows = metaChildren => {
+const getItems = metaChildren => {
 	return metaChildren.map((child, i) => {
 		const { name, modelId, preview, modelConfig, label } = child;
 		const model = MODEL[modelId];
@@ -23,7 +23,7 @@ const getRows = metaChildren => {
 		</StyledPropertyHeader>;
 
 		return (
-			<div key={name + i}>
+			<li key={name + i}>
 				{header}
 				<Subpanel
 					metaChild={child}
@@ -34,21 +34,20 @@ const getRows = metaChildren => {
 					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
 					{/*JSON.stringify(modelConfig, null, "\t")*/}
 				</Subpanel>
-			</div>
+			</li>
 		);
 	})
 };
 
-const DataPanel = ({ modelConfig, metaChildren }) => {
+const DataList = ({ modelConfig, metaChildren }) => {
 	if (!metaChildren)
 		return <pre>{JSON.stringify(modelConfig, null, '\t')}</pre>;
 
 	return (
-		<div>
-			<h2>Data</h2>
-			{getRows(metaChildren)}
-		</div>
+		<ul>
+			{getItems(metaChildren)}
+		</ul>
 	);
 };
 
-export default DataPanel;
+export default DataList;

@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState, pathState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
-import DataPanel from '../core/DataPanel';
+import DataList from '../core/DataList';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -40,8 +40,8 @@ const Explorer = () => {
 			<Panel {...pathHead}>
 				<StyledExplorer>
 					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
-					<DataPanel modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
-					{modelId === MODEL_ID.Group && <DataPanel modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />}
+					<DataList modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
+					{modelId === MODEL_ID.Group && <DataList modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />}
 				</StyledExplorer>
 			</Panel>
 		</>
