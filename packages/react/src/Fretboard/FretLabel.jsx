@@ -35,9 +35,9 @@ const FretLabel = ({ stringTuning, stringIndex, fretIndex, modelId, modelValue, 
 	let name = null;
 	if (hasDegree) {
 		if (model.isRelative)
-			name = IntervalUtils.getName(pod);
+			name = IntervalUtils.getName(pod, modelOptions);
 		else
-			name = NoteUtils.getName(pod);
+			name = NoteUtils.getName(pod, modelOptions);
 	}
 
 	return (

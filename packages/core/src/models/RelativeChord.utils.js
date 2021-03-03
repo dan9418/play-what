@@ -1,13 +1,16 @@
 import { MODEL_ID } from "./helpers/Model.constants";
 import PodUtils from "./helpers/Pod.utils";
 import IntervalUtils from "./Interval.utils";
+import NoteUtils from "./Note.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName(interval)).join(', ');
 
-const getName = (modelValue) => {
+const getName = (modelValue, modelOptions) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodUtils.areListsEqual(modelValue, v.value));
-	return preset ? preset.id : 'Untitled Chord';
+	const rootName = NoteUtils.getName(modelOptions.root);
+	const presetName = preset ? preset.id : 'Untitled Chord';
+	return `${rootName} ${presetName}`;
 };
 
 const getMetaChildren = (modelValue, modelOptions) => {

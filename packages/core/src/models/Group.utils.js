@@ -7,7 +7,7 @@ const getPodAtPitch = () => null;
 const getMetaChildren = (modelValue, modelOptions) => {
 	return modelValue.map((child, i) => {
 		const model = MODEL[child.modelId];
-		const name = child.name ? child.name : model.utils.getName(child.modelValue);
+		const name = child.name ? child.name : model.utils.getName(child.modelValue, child.modelOptions);
 		return {
 			...child,
 			childIndex: i,
