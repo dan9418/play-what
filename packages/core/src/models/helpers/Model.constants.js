@@ -7,32 +7,47 @@ import RelativeChordUtils from '../RelativeChord.utils';
 import RelativeScaleUtils from '../RelativeScale.utils';
 
 export const MODEL_ID = {
-	Native: 'native',
+	// Group
+	Group: 'group',
+	// Absolute
 	Note: 'note',
-	Interval: 'interval',
 	AbsoluteChord: 'absChord',
-	RelativeChord: 'relChord',
 	AbsoluteScale: 'absScale',
-	RelativeScale: 'relScale',
-	Group: 'group'
+	// Relative
+	Interval: 'interval',
+	RelativeChord: 'relChord',
+	RelativeScale: 'relScale'
 };
 
 export const MODEL = {
+	// Group
+	[MODEL_ID.Group]: {
+		name: 'Group',
+		modelId: MODEL_ID.Group,
+		utils: GroupUtils
+	},
+	// Absolute
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,
 		utils: NoteUtils
 	},
+	[MODEL_ID.AbsoluteChord]: {
+		name: 'Absolute Chord',
+		modelId: MODEL_ID.AbsoluteChord,
+		utils: AbsoluteChordUtils
+	},
+	[MODEL_ID.AbsoluteScale]: {
+		name: 'Absolute Scale',
+		modelId: MODEL_ID.AbsoluteScale,
+		utils: AbsoluteScaleUtils
+	},
+	// Relative
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
 		isRelative: true,
 		modelId: MODEL_ID.Interval,
 		utils: IntervalUtils
-	},
-	[MODEL_ID.AbsoluteChord]: {
-		name: 'Absolute Chord',
-		modelId: MODEL_ID.AbsoluteChord,
-		utils: AbsoluteChordUtils
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
@@ -40,21 +55,11 @@ export const MODEL = {
 		modelId: MODEL_ID.RelativeChord,
 		utils: RelativeChordUtils
 	},
-	[MODEL_ID.AbsoluteScale]: {
-		name: 'Absolute Scale',
-		modelId: MODEL_ID.AbsoluteScale,
-		utils: AbsoluteScaleUtils
-	},
 	[MODEL_ID.RelativeScale]: {
 		name: 'Relative Scale',
 		isRelative: true,
 		modelId: MODEL_ID.RelativeScale,
 		utils: RelativeScaleUtils
-	},
-	[MODEL_ID.Group]: {
-		name: 'Group',
-		modelId: MODEL_ID.Group,
-		utils: GroupUtils
 	}
 };
 
