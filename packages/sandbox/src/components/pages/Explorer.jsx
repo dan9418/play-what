@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { pathHeadState, pathState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
+import InputList from '../core/InputList';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -34,14 +35,17 @@ const Explorer = () => {
 
 	useEffect(() => window.scrollTo(0, 0), [path.length]);
 
+	const leftContent = modelId === MODEL_ID.Group ?
+		<InputList modelConfig={modelConfig} /> :
+		<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />;
+
 	return (
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
-					<Viewer modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
+					{leftContent}
 					<DataList modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />
-					{modelId === MODEL_ID.Group && <DataList modelId={modelId} modelConfig={modelConfig} metaChildren={metaChildren} />}
 				</StyledExplorer>
 			</Panel>
 		</>
