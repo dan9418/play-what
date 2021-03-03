@@ -8,16 +8,6 @@ const areEqual = (a, b) => {
 	return a[0] === b[0] && a[1] === b[1];
 }
 
-const areListsEqual = (A, B) => {
-	if (!A || !B || A.length !== B.length) return false;
-	for (let i = 0; i < A.length; i++) {
-		const a = A[i];
-		const b = B[i];
-		if (!areEqual(a, b)) return false;
-	}
-	return true;
-}
-
 // Reduction
 
 const reduce = (a, max = MAX_POD) => {
@@ -40,10 +30,6 @@ const addPodList = (a, B, max = MAX_POD) => {
 	return newValue;
 };
 
-const reduceList = (A, max = MAX_POD) => {
-	return A.map((a) => PodUtils.reduce(a, max));
-}
-
 // Property Derivation
 
 const getPitchClass = (pod, options = {}) => {
@@ -62,7 +48,7 @@ const getX = (pod, options = {}) => {
 	return Math.floor(pod[1] / 7);
 }
 
-// List Search
+// Search
 
 const getPodAtPitch = (pod, p) => {
 	const a = NumberUtils.modulo(pod[0], 12);
@@ -70,14 +56,8 @@ const getPodAtPitch = (pod, p) => {
 	return a === b ? pod : null;
 };
 
-const listGetPodAtPitch = (A, p) => {
-	const pod = A.find(a => getPodAtPitch(a, p));
-	return pod ? pod : null;
-};
-
 export default {
 	areEqual,
-	areListsEqual,
 	addPod,
 	addPodList,
 	reduce,
@@ -85,6 +65,5 @@ export default {
 	getOctave,
 	getDegree,
 	getX,
-	getPodAtPitch,
-	listGetPodAtPitch
+	getPodAtPitch
 };

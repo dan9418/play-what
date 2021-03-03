@@ -6,7 +6,7 @@ import NoteUtils from "./Note.utils";
 
 const getName = () => 'Root + Intervals';
 const getPreview = (modelValue) => modelValue.map(note => NoteUtils.getName({ note })).join(', ');
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.listGetPodAtPitch(modelValue, p);
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodListUtils.getPodAtPitch(modelValue, p);
 
 const getMetaChildren = (modelValue, modelOptions) => {
 	return modelValue.map((note, i) => {
