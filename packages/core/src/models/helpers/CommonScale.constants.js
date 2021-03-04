@@ -1,5 +1,5 @@
 import { ROOT_DEGREE } from "../Degree.constants";
-import { ROOT_PITCH } from "../Pitch.constants";
+import { ROOT_PITCH } from "../../theory/Pitch.constants";
 
 export const DIATONIC = {
 	tonic: {
