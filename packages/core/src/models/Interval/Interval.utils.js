@@ -1,4 +1,4 @@
-import PodUtils from "../helpers/Pod.utils";
+import PodUtils from "../Pod/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 // Wrappers

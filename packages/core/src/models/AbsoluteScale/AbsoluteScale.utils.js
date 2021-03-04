@@ -1,5 +1,5 @@
 import { MODEL_ID } from "../Model.constants";
-import PodListUtils from "../helpers/PodList.utils";
+import PodListUtils from "../PodList/PodList.utils";
 import NoteUtils from "../Note/Note.utils";
 
 // Wrappers
