@@ -1,6 +1,7 @@
 import { MODEL_ID } from "../../../Model.constants";
 import IntervalUtils from "../../../Pod/Interval/Interval.utils";
 import NoteUtils from "../../../Pod/Note/Note.utils";
+import PodUtils from "../../../Pod/Pod.utils";
 import PodListUtils from "../../PodList.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
@@ -16,7 +17,12 @@ const getName = (modelValue, modelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getPreview = (modelValue, modelOptions) => modelValue.map(interval => IntervalUtils.getName(interval, modelOptions)).join(', ');
+const getPreview = (modelValue, modelOptions) => {
+	const intervalNames = modelValue.map(interval => IntervalUtils.getName(interval, modelOptions)).join(', ');
+	const notes = PodUtils.addPodList(modelOptions.root, modelValue);
+	const noteNames = notes.map(note => NoteUtils.getName(note, modelOptions)).join(', ');
+	return `${intervalNames} (${noteNames})`;
+}
 
 export default {
 	getName,

@@ -14,10 +14,10 @@ const getIntervalOffset = (pod, coreIvl) => {
 const getName = (modelValue, modelOptions) => {
 	const options = { ...DEFAULT_INTERVAL_OPTIONS, ...modelOptions };
 
-	if (options.displayName === 'note') {
+	/*if (options.displayName === 'note') {
 		const note = PodUtils.addPod(modelValue, options.root);
 		return NoteUtils.getName(note);
-	}
+	}*/
 
 	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
