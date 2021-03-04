@@ -1,5 +1,5 @@
 import { MODEL_ID } from "@pw/core/src/models/Model.constants";
-import { NOTE } from "@pw/core/src/models/Note/Note.constants";
+import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD } from "@pw/core/src/models/RelativeChord/RelativeChord.constants";
 
 export const OUT_OF_NOWHERE = {

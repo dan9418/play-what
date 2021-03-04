@@ -1,6 +1,6 @@
-import { DEGREE_VALUES } from "../../theory/Degree.constants";
-import { ROOT_SCALE } from "../../theory/Theory.constants";
-import PodUtils from "../Pod/Pod.utils";
+import { DEGREE_VALUES } from "../../../theory/Degree.constants";
+import { ROOT_SCALE } from "../../../theory/Theory.constants";
+import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 // Wrappers

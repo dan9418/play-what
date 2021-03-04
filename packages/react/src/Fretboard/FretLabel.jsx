@@ -1,8 +1,8 @@
 import { COLOR_SCHEME } from "@pw/core/src/color/Color.constants";
 import ColorUtils from "@pw/core/src/color/Color.utils";
 import { MODEL } from "@pw/core/src/models/Model.constants";
-import IntervalUtils from "@pw/core/src/models/Interval/Interval.utils";
-import NoteUtils from "@pw/core/src/models/Note/Note.utils";
+import IntervalUtils from "@pw/core/src/models/Pod/Interval/Interval.utils";
+import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
 import * as React from "react";
 import styled from "styled-components";
 

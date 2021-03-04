@@ -1,7 +1,7 @@
 import { MODEL_ID } from "../Model.constants";
 import PodListUtils from "../PodList/PodList.utils";
-import IntervalUtils from "../Interval/Interval.utils";
-import NoteUtils from "../Note/Note.utils";
+import IntervalUtils from "../Pod/Interval/Interval.utils";
+import NoteUtils from "../Pod/Note/Note.utils";
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 // Wrappers
