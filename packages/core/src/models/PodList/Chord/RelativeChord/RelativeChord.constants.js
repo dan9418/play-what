@@ -1,3 +1,4 @@
+import { MODEL_ID } from "../../../Model.constants";
 import { INTERVAL } from "../../../Pod/Interval/Interval.constants";
 
 export const RELATIVE_CHORD = {
@@ -24,4 +25,8 @@ export const RELATIVE_CHORD_VALUES = Object.values(RELATIVE_CHORD);
 
 export const NUMERAL = {
 	I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] }
+};
+
+export const DEFAULT_RELATIVE_CHORD_OPTIONS = {
+	displayName: MODEL_ID.Interval
 };
