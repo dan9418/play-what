@@ -1,4 +1,4 @@
-import { INTERVAL } from "./Interval.constants";
+import { INTERVAL } from "../Interval/Interval.constants";
 
 export const RELATIVE_CHORD = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },

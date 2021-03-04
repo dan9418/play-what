@@ -1,7 +1,7 @@
-import { MODEL_ID } from "./helpers/Model.constants";
-import PodListUtils from "./helpers/PodList.utils";
-import IntervalUtils from "./Interval.utils";
-import NoteUtils from "./Note.utils";
+import { MODEL_ID } from "../helpers/Model.constants";
+import PodListUtils from "../helpers/PodList.utils";
+import IntervalUtils from "../Interval/Interval.utils";
+import NoteUtils from "../Note/Note.utils";
 import { RELATIVE_SCALE_VALUES } from "./RelativeScale.constants";
 
 // Wrappers

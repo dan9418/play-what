@@ -1,4 +1,4 @@
-import { INTERVAL } from "./Interval.constants";
+import { INTERVAL } from "../Interval/Interval.constants";
 
 export const RELATIVE_SCALE = {
 	Major: { id: 'Major', name: 'Major', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },

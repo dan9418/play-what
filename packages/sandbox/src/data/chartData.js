@@ -1,6 +1,6 @@
 import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
-import { NOTE } from "@pw/core/src/models/Note.constants";
-import { RELATIVE_CHORD } from "@pw/core/src/models/RelativeChord.constants";
+import { NOTE } from "@pw/core/src/models/Note/Note.constants";
+import { RELATIVE_CHORD } from "@pw/core/src/models/RelativeChord/RelativeChord.constants";
 
 export const OUT_OF_NOWHERE = {
 	id: 'outOfNowhere',
