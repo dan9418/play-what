@@ -1,7 +1,7 @@
 import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
-import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/RelativeChord/RelativeChord.constants";
-import { INTERVAL_MODE_VALUES, RELATIVE_SCALE_VALUES } from "@pw/core/src/models/RelativeScale/RelativeScale.constants";
+import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/RelativeChord/RelativeChord.constants";
+import { INTERVAL_MODE_VALUES, RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/RelativeScale/RelativeScale.constants";
 import CHART_VALUES from "./chartData";
 
 /*
