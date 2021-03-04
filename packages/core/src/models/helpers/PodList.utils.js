@@ -24,8 +24,8 @@ const reduce = (A, max = MAX_POD) => {
 
 // Search
 
-const getPodAtPitch = (A, p) => {
-	const pod = A.find(a => PodUtils.getPodAtPitch(a, p));
+const getPodAtPitch = (A, p, root) => {
+	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, root));
 	return pod ? pod : null;
 };
 

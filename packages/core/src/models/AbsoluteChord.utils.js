@@ -8,7 +8,6 @@ const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodListUtil
 const getMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
 const playSound = (modelValue, modelOptions) => PodListUtils.playSound(modelValue, modelOptions.root);
 
-
 export default {
 	getName,
 	getPreview,

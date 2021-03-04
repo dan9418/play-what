@@ -3,6 +3,8 @@ import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getPreview = () => '1:n';
 const getMetaChildren = () => null;
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p, modelOptions.root);
+const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
@@ -36,13 +38,6 @@ const getName = (modelValue) => {
 
 	return `${qualityStr}${d + 1}`;
 }
-
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
-	const pitchOffset = modelOptions.root[0];
-	return PodUtils.getPodAtPitch(modelValue, p - pitchOffset);
-}
-
-const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 export default {
 	getName,

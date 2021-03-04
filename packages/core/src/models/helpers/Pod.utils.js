@@ -52,9 +52,11 @@ const getX = (pod, options = {}) => {
 
 // Search
 
-const getPodAtPitch = (pod, p) => {
+const getPodAtPitch = (pod, p, root) => {
+	const pitchOffset = root ? root[0] : 0;
+	const target = p - pitchOffset;
 	const a = NumberUtils.modulo(pod[0], 12);
-	const b = NumberUtils.modulo(p, 12);
+	const b = NumberUtils.modulo(target, 12);
 	return a === b ? pod : null;
 };
 

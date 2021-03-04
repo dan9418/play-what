@@ -1,5 +1,3 @@
-import ToneUtils from "../tone/Tone.utils";
-import TuningUtils from "../tuning/Tuning.utils";
 import { DEGREE_VALUES } from "./Degree.constants";
 import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import PodUtils from "./helpers/Pod.utils";
@@ -7,6 +5,8 @@ import { ACCIDENTAL } from "./Note.constants";
 
 const getPreview = () => 'X Hz';
 const getMetaChildren = () => null;
+const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
+const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
@@ -33,10 +33,6 @@ const getName = (modelValue) => {
 	const spelling = DEGREE_VALUES[modelValue[1]].name;
 	return `${spelling}${accidental}`;
 }
-
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
-
-const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 export default {
 	getName,
