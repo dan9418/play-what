@@ -1,4 +1,3 @@
-import { MODEL_ID } from "../../Model.constants";
 
 export const INTERVAL = {
 	P1: {
@@ -166,5 +165,5 @@ export const INTERVAL_QUALITY = Object.freeze({
 export const INTERVAL_QUALITY_VALUES = Object.values(INTERVAL_QUALITY);
 
 export const DEFAULT_INTERVAL_OPTIONS = {
-	displayName: MODEL_ID.Interval
+	displayName: 'interval'
 }

@@ -1,4 +1,3 @@
-import { MODEL_ID } from "../../Model.constants";
 
 export const NOTE = {
 	C: { id: 'C', name: 'C', value: [0, 0] },
@@ -50,5 +49,5 @@ export const ACCIDENTAL = Object.freeze({
 export const ACCIDENTAL_VALUES = Object.values(ACCIDENTAL);
 
 export const DEFAULT_NOTE_OPTIONS = {
-	displayName: MODEL_ID.Note
+	displayName: 'note'
 }

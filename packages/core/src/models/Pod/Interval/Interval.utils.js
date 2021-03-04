@@ -1,3 +1,5 @@
+import { MODEL_ID } from "../../Model.constants";
+import NoteUtils from "../Note/Note.utils";
 import PodUtils from "../Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
@@ -10,7 +12,13 @@ const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
 }
 
-const getName = (modelValue) => {
+const getName = (modelValue, modelOptions) => {
+
+	if(modelOptions.displayName === MODEL_ID.Note) {
+		const note = PodUtils.addPod(modelValue, modelOptions.root);
+		return NoteUtils.getName(note);
+	}
+
 	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
