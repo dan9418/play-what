@@ -1,7 +1,6 @@
-import { MODEL_ID } from "../../Model.constants";
 import NoteUtils from "../Note/Note.utils";
 import PodUtils from "../Pod.utils";
-import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
+import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./Interval.constants";
 
 // Wrappers
 const getMetaChildren = () => null;
@@ -13,9 +12,10 @@ const getIntervalOffset = (pod, coreIvl) => {
 }
 
 const getName = (modelValue, modelOptions) => {
+	const options = { ...DEFAULT_INTERVAL_OPTIONS, ...modelOptions };
 
-	if(modelOptions.displayName === MODEL_ID.Note) {
-		const note = PodUtils.addPod(modelValue, modelOptions.root);
+	if (options.displayName === 'note') {
+		const note = PodUtils.addPod(modelValue, options.root);
 		return NoteUtils.getName(note);
 	}
 

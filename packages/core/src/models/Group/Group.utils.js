@@ -1,7 +1,7 @@
 import { MODEL } from "../Model.constants";
 
 const getName = () => "Untitled Group";
-const getPreview = (modelValue) => `${modelValue.length} Items`;
+const getPreview = (modelValue, modelOptions) => `${modelValue.length} Items`;
 const getPodAtPitch = () => null;
 
 const getMetaChildren = (modelValue, modelOptions) => {
@@ -12,7 +12,7 @@ const getMetaChildren = (modelValue, modelOptions) => {
 			...child,
 			childIndex: i,
 			name,
-			preview: model.utils.getPreview(child.modelValue),
+			preview: model.utils.getPreview(child.modelValue, child.modelOptions),
 			modelValue: child.modelValue
 		}
 	});

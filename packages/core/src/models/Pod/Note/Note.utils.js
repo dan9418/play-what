@@ -27,8 +27,8 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getName = (modelValue) => {
-	const offset = getAccidentalOffset(modelValue);
+const getName = (modelValue, modelOptions) => {
+	const offset = getAccidentalOffset(modelValue, modelOptions);
 	const accidental = getAccidentalString(offset, modelValue[1]);
 	const spelling = DEGREE_VALUES[modelValue[1]].name;
 	return `${spelling}${accidental}`;

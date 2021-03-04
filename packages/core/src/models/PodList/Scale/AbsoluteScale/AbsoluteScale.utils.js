@@ -9,7 +9,7 @@ const playSound = (modelValue, modelOptions) => PodListUtils.playSound(modelValu
 
 const getName = () => 'Root + Intervals';
 
-const getPreview = (modelValue) => modelValue.map(note => NoteUtils.getName({ note })).join(', ');
+const getPreview = (modelValue, modelOptions) => modelValue.map(note => NoteUtils.getName(note, modelOptions)).join(', ');
 
 export default {
 	getName,

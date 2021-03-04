@@ -16,7 +16,7 @@ const getName = (modelValue, modelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName(interval)).join(', ');
+const getPreview = (modelValue, modelOptions) => modelValue.map(interval => IntervalUtils.getName(interval, modelOptions)).join(', ');
 
 export default {
 	getName,

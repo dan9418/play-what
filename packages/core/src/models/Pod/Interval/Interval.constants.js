@@ -165,5 +165,5 @@ export const INTERVAL_QUALITY = Object.freeze({
 export const INTERVAL_QUALITY_VALUES = Object.values(INTERVAL_QUALITY);
 
 export const DEFAULT_INTERVAL_OPTIONS = {
-	displayName: 'interval'
+	displayName: 'note'
 }

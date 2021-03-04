@@ -11,7 +11,7 @@ const areEqual = (A, B) => {
 	for (let i = 0; i < A.length; i++) {
 		const a = A[i];
 		const b = B[i];
-		if (!areEqual(a, b)) return false;
+		if (!PodUtils.areEqual(a, b)) return false;
 	}
 	return true;
 }
@@ -36,8 +36,8 @@ const getMetaChildren = (modelValue, modelOptions, childModelId) => {
 	return modelValue.map((pod, i) => {
 		return {
 			childIndex: i,
-			name: model.utils.getName(pod),
-			preview: model.utils.getPreview(pod),
+			name: model.utils.getName(pod, modelOptions),
+			preview: model.utils.getPreview(pod, modelOptions),
 			modelId: childModelId,
 			modelValue: pod,
 			modelOptions
