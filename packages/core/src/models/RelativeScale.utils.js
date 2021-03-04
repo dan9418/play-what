@@ -4,7 +4,7 @@ import IntervalUtils from "./Interval.utils";
 import NoteUtils from "./Note.utils";
 import { RELATIVE_SCALE_VALUES } from "./RelativeScale.constants";
 
-const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName(interval)).join(', ');
+// Wrappers
 const getMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
 const playSound = (modelValue, modelOptions) => PodListUtils.playSound(modelValue, modelOptions.root);
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodListUtils.getPodAtPitch(modelValue, p, modelOptions.root);
@@ -15,6 +15,8 @@ const getName = (modelValue, modelOptions) => {
 	const presetName = preset ? preset.id : 'Untitled Scale';
 	return `${rootName} ${presetName}`;
 };
+
+const getPreview = (modelValue) => modelValue.map(interval => IntervalUtils.getName(interval)).join(', ');
 
 export default {
 	getName,

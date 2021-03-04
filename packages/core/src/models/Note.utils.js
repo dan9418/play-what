@@ -3,7 +3,7 @@ import { ROOT_SCALE } from "./helpers/CommonScale.constants";
 import PodUtils from "./helpers/Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
-const getPreview = () => 'X Hz';
+// Wrappers
 const getMetaChildren = () => null;
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
 const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
@@ -33,6 +33,8 @@ const getName = (modelValue) => {
 	const spelling = DEGREE_VALUES[modelValue[1]].name;
 	return `${spelling}${accidental}`;
 }
+
+const getPreview = () => 'X Hz';
 
 export default {
 	getName,

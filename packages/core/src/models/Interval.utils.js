@@ -1,7 +1,7 @@
 import PodUtils from "./helpers/Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
-const getPreview = () => '1:n';
+// Wrappers
 const getMetaChildren = () => null;
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p, modelOptions.root);
 const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
@@ -38,6 +38,8 @@ const getName = (modelValue) => {
 
 	return `${qualityStr}${d + 1}`;
 }
+
+const getPreview = () => '1:n';
 
 export default {
 	getName,
