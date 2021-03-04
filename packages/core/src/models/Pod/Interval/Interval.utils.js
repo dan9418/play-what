@@ -47,7 +47,12 @@ const getName = (modelValue, modelOptions) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getPreview = () => '1:n';
+const getPreview = (modelData, modelOptions) => {
+	//const note = PodUtils.addPod(modelData, modelOptions.root);
+	//const diff = note[0] - modelData[0];
+	const [p, d] = modelData;
+	return `p = ${p}, d = ${d}`;
+}
 
 export default {
 	getName,

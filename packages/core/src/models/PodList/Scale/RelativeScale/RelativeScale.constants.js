@@ -24,5 +24,6 @@ export const INTERVAL_MODE = {
 export const INTERVAL_MODE_VALUES = Object.values(INTERVAL_MODE);
 
 export const DEFAULT_RELATIVE_SCALE_OPTIONS = {
-	displayName: 'interval'
+	displayName: 'scale',
+	intervalDisplayName: 'interval'
 };

@@ -34,7 +34,10 @@ const getName = (modelValue, modelOptions) => {
 	return `${spelling}${accidental}`;
 }
 
-const getPreview = () => 'X Hz';
+const getPreview = (modelData) => {
+	const [p, d] = modelData;
+	return `p = ${p}, d = ${d}`;
+};
 
 export default {
 	getName,

@@ -27,5 +27,6 @@ export const NUMERAL = {
 };
 
 export const DEFAULT_RELATIVE_CHORD_OPTIONS = {
-	displayName: 'interval'
+	displayName: 'chord',
+	intervalDisplayName: 'interval'
 };
