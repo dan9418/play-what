@@ -23,6 +23,8 @@ export const INTERVAL_MODE = {
 
 export const INTERVAL_MODE_VALUES = Object.values(INTERVAL_MODE);
 
+export const ALL_SCALE_VALUES = [...RELATIVE_SCALE_VALUES, ...INTERVAL_MODE_VALUES];
+
 export const DEFAULT_RELATIVE_SCALE_OPTIONS = {
 	displayName: 'scale',
 	intervalDisplayName: 'interval'

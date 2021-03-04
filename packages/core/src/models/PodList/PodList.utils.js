@@ -53,10 +53,21 @@ const playSound = (modelValue, root = null) => {
 	ToneUtils.playSound(frequencies)
 }
 
+// Other
+
+const containsSubset = (modelValue, subset) => {
+	for (let i = 0; i < subset.length; i++) {
+		if (!modelValue.includes(subset[i]))
+			return false;
+	}
+	return true;
+};
+
 export default {
 	areEqual,
 	reduce,
 	getPodAtPitch,
 	getMetaChildren,
-	playSound
+	playSound,
+	containsSubset
 };

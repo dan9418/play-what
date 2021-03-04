@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState, pathState } from '../../state/pathState';
@@ -26,14 +26,21 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const pathHead = useRecoilValue(pathHeadState);
-	const path = useRecoilValue(pathState);
 	const { modelId, modelValue, modelOptions } = pathHead;
-
 	const model = MODEL[modelId];
 
-	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
+	const [supersets, setSupersets] = useState([]);
 
-	useEffect(() => window.scrollTo(0, 0), [path.length]);
+	const refreshKey = JSON.stringify({ modelId, modelValue, modelOptions });
+
+	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
+
+	useEffect(() => {
+		if (!model.utils.findSupersets) return;
+		setSupersets(model.utils.findSupersets(modelValue, modelOptions));
+	}, [refreshKey]);
+
+	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
 
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
@@ -47,6 +54,8 @@ const Explorer = () => {
 					<div>
 						{viewer}
 						<InputList modelValue={modelValue} modelOptions={modelOptions} />
+						<h2>Supersets</h2>
+						{JSON.stringify(supersets)}
 					</div>
 					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />
 				</StyledExplorer>
