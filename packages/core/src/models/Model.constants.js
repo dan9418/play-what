@@ -1,10 +1,10 @@
 import GroupUtils from './Group/Group.utils';
 import IntervalUtils from './Pod/Interval/Interval.utils';
 import NoteUtils from './Pod/Note/Note.utils';
-import AbsoluteChordUtils from './PodList/AbsoluteChord/AbsoluteChord.utils';
-import AbsoluteScaleUtils from './PodList/AbsoluteScale/AbsoluteScale.utils';
-import RelativeChordUtils from './PodList/RelativeChord/RelativeChord.utils';
-import RelativeScaleUtils from './PodList/RelativeScale/RelativeScale.utils';
+import AbsoluteChordUtils from './PodList/Chord/AbsoluteChord/AbsoluteChord.utils';
+import RelativeChordUtils from './PodList/Chord/RelativeChord/RelativeChord.utils';
+import AbsoluteScaleUtils from './PodList/Scale/AbsoluteScale/AbsoluteScale.utils';
+import RelativeScaleUtils from './PodList/Scale/RelativeScale/RelativeScale.utils';
 
 export const MODEL_ID = {
 	// Group
