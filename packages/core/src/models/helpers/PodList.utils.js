@@ -1,3 +1,5 @@
+import ToneUtils from '../../tone/Tone.utils';
+import TuningUtils from '../../tuning/Tuning.utils';
 import { MODEL } from './Model.constants';
 import { MAX_POD } from './Pod.constants';
 import PodUtils from './Pod.utils';
@@ -43,9 +45,18 @@ const getMetaChildren = (modelValue, modelOptions, childModelId) => {
 	});
 };
 
+// Sound
+
+const playSound = (modelValue, root = null) => {
+	const notes = root ? PodUtils.addPodList(root, modelValue) : modelValue;
+	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
+	ToneUtils.playSound(frequencies)
+}
+
 export default {
 	areEqual,
 	reduce,
 	getPodAtPitch,
-	getMetaChildren
+	getMetaChildren,
+	playSound
 };

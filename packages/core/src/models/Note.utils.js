@@ -36,10 +36,7 @@ const getName = (modelValue) => {
 
 const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
 
-const playSound = (modelValue) => {
-	const frequency = TuningUtils.getFrequency(modelValue[0]);
-	ToneUtils.playSound(frequency)
-}
+const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 export default {
 	getName,

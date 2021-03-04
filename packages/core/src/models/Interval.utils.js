@@ -42,9 +42,12 @@ const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => {
 	return PodUtils.getPodAtPitch(modelValue, p - pitchOffset);
 }
 
+const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
+
 export default {
 	getName,
 	getPreview,
 	getMetaChildren,
-	getPodAtPitch
+	getPodAtPitch,
+	playSound
 }

@@ -1,4 +1,6 @@
 import NumberUtils from '../../general/Number.utils';
+import ToneUtils from '../../tone/Tone.utils';
+import TuningUtils from '../../tuning/Tuning.utils';
 import { MAX_POD } from './Pod.constants';
 
 // Equality
@@ -56,6 +58,14 @@ const getPodAtPitch = (pod, p) => {
 	return a === b ? pod : null;
 };
 
+// Sound
+
+const playSound = (modelValue, root) => {
+	const note = root ? addPod(root, modelValue) : modelValue;
+	const frequency = TuningUtils.getFrequency(note[0]);
+	ToneUtils.playSound(frequency)
+}
+
 export default {
 	areEqual,
 	addPod,
@@ -65,5 +75,6 @@ export default {
 	getOctave,
 	getDegree,
 	getX,
-	getPodAtPitch
+	getPodAtPitch,
+	playSound
 };
