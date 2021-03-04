@@ -1,6 +1,6 @@
 import { COLOR_SCHEME } from '@pw/core/src/color/Color.constants';
 import NumberUtils from '@pw/core/src/general/Number.utils';
-import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import DEFAULT_METER_PROPS from './Meter.defaults';

@@ -1,4 +1,4 @@
-import { MODEL_ID } from "../helpers/Model.constants";
+import { MODEL_ID } from "../Model.constants";
 import PodListUtils from "../helpers/PodList.utils";
 import IntervalUtils from "../Interval/Interval.utils";
 import NoteUtils from "../Note/Note.utils";

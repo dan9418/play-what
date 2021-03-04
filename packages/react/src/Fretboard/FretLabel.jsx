@@ -1,6 +1,6 @@
 import { COLOR_SCHEME } from "@pw/core/src/color/Color.constants";
 import ColorUtils from "@pw/core/src/color/Color.utils";
-import { MODEL } from "@pw/core/src/models/helpers/Model.constants";
+import { MODEL } from "@pw/core/src/models/Model.constants";
 import IntervalUtils from "@pw/core/src/models/Interval/Interval.utils";
 import NoteUtils from "@pw/core/src/models/Note/Note.utils";
 import * as React from "react";

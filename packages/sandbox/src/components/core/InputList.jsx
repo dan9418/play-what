@@ -1,4 +1,4 @@
-import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';

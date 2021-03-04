@@ -1,4 +1,4 @@
-import { MODEL } from "./helpers/Model.constants";
+import { MODEL } from "../Model.constants";
 
 const getName = () => "Untitled Group";
 const getPreview = (modelValue) => `${modelValue.length} Items`;

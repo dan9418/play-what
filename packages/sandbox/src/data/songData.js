@@ -1,4 +1,4 @@
-import { MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
+import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/RelativeChord/RelativeChord.constants";
 import { INTERVAL_MODE_VALUES, RELATIVE_SCALE_VALUES } from "@pw/core/src/models/RelativeScale/RelativeScale.constants";

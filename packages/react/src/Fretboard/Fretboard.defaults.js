@@ -1,4 +1,4 @@
-import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 import FretLabel from './FretLabel';
 

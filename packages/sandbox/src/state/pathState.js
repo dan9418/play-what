@@ -1,4 +1,4 @@
-import { MODEL, MODEL_ID } from "@pw/core/src/models/helpers/Model.constants";
+import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import { atom, selector } from "recoil";
 import LIBRARY_PATH_ROOT from "../data/songData";
 

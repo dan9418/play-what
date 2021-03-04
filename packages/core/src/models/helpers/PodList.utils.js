@@ -1,6 +1,6 @@
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
-import { MODEL } from './Model.constants';
+import { MODEL } from '../Model.constants';
 import { MAX_POD } from './Pod.constants';
 import PodUtils from './Pod.utils';
 

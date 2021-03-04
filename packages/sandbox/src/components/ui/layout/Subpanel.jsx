@@ -1,4 +1,4 @@
-import { MODEL_ID } from '@pw/core/src/models/helpers/Model.constants';
+import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
