@@ -32,8 +32,8 @@ const getName = (modelValue, modelOptions) => {
 	// determine quality
 	let quality = null;
 	if (!offset) return ivl.id; // unaltered
-	if (offset < 0) quality = INTERVAL_QUALITY.dim; // dim
-	if (offset > 0) quality = INTERVAL_QUALITY.aug; // aug
+	if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
+	if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
 
 	const count = Math.abs(offset);
 	const qualityStr = quality.symbol.repeat(count);
