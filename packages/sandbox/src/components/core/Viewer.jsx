@@ -40,14 +40,14 @@ const getSupersetViewers = (supersets, modelOptions) => {
 	});
 };
 
-const Viewer = ({ labelProps }) => {
-
-	const { modelId, modelValue, modelOptions } = labelProps;
+const Viewer = ({ modelId, modelValue, modelOptions }) => {
 
 	const model = MODEL[modelId];
 
 	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, modelOptions) : null;
 	const supersetViewers = getSupersetViewers(supersets, modelOptions);
+
+	const labelProps = { modelId, modelValue, modelOptions };
 
 	return (
 		<div>

@@ -1,4 +1,4 @@
-import { MODEL } from '@pw/core/src/models/Model.constants';
+import { MODEL } from '@pw/core/src/models/helpers/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
@@ -39,12 +39,12 @@ const getItems = metaChildren => {
 };
 
 const InputList = ({ modelValue, modelOptions }) => {
-
+	return null;
 	return <pre>
 		{/*<h2>Model Value</h2>
 		{JSON.stringify(modelValue, null, '\t')}*/}
 		<h2>Model Options</h2>
-		{/*JSON.stringify(modelOptions, null, '\t')*/}
+		{JSON.stringify(modelOptions, null, '\t')}
 	</pre>;
 
 	return (

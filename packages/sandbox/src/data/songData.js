@@ -16,6 +16,7 @@ IModelDef
 
 export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
+	preview: 'Select a group',
 	modelId: MODEL_ID.Group,
 	modelOptions: {
 		root: NOTE.B.value

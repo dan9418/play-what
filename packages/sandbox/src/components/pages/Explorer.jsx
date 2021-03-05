@@ -1,11 +1,10 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { pathHeadState, pathState } from '../../state/pathState';
+import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
-import InputList from '../core/InputList';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -35,15 +34,9 @@ const Explorer = () => {
 
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
 
-	const labelProps = {
-		modelId,
-		modelValue,
-		modelOptions
-	};
-
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
-		<Viewer labelProps={labelProps} />;
+		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
 
 	return (
 		<>
@@ -52,7 +45,6 @@ const Explorer = () => {
 				<StyledExplorer>
 					<div>
 						{viewer}
-						<InputList modelValue={modelValue} modelOptions={modelOptions} />
 					</div>
 					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />
 				</StyledExplorer>
