@@ -15,11 +15,11 @@ const StyledFretLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const FretLabel = ({ noteIndex, modelId, modelValue, modelOptions }) => {
+const FretLabel = ({ noteIndex, modelId, modelValue, modelOptions, superset }) => {
 
 	const model = MODEL[modelId];
 
-	const podProps = model.utils.getPodProps(modelValue, modelOptions, noteIndex);
+	const podProps = model.utils.getPodProps(modelValue, modelOptions, noteIndex, superset);
 
 	if (!podProps) return null;
 

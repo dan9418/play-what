@@ -46,8 +46,13 @@ const Viewer = ({ modelId, modelValue, modelOptions }) => {
 
 	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, modelOptions) : null;
 	const supersetViewers = getSupersetViewers(supersets, modelOptions);
+	const superset = supersets ? {
+		modelId: MODEL_ID.RelativeScale,
+		modelValue: supersets[0].value,
+		modelOptions
+	} : null;
 
-	const labelProps = { modelId, modelValue, modelOptions };
+	const labelProps = { modelId, modelValue, modelOptions, superset };
 
 	return (
 		<div>
