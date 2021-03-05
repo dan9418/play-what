@@ -4,7 +4,7 @@ import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./In
 
 // Wrappers
 const getMetaChildren = () => null;
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p, modelOptions.root);
+const getPodAtPitch = (modelValue, modelOptions, p) => PodUtils.getPodAtPitch(modelValue, p, modelOptions.root);
 const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 const getIntervalOffset = (pod, coreIvl) => {

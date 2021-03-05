@@ -3,7 +3,7 @@ import PodListUtils from "../../PodList.utils";
 import NoteUtils from "../../../Pod/Note/Note.utils";
 
 // Wrappers
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodListUtils.getPodAtPitch(modelValue, p);
+const getPodAtPitch = (modelValue, modelOptions, p) => PodListUtils.getPodAtPitch(modelValue, p);
 const getMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
 const playSound = (modelValue, modelOptions) => PodListUtils.playSound(modelValue, modelOptions.root);
 

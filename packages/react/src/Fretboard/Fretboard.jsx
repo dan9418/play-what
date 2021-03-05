@@ -4,24 +4,27 @@ import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
 import FretLabel from "./FretLabel";
 
-export const Fret = ({ isLowString, ...rest }) => {
+export const Fret = ({ tuning, stringIndex, fretIndex, labelProps }) => {
 	const classes = ['fret'];
-	if (rest.fretIndex === 0)
+	if (fretIndex === 0)
 		classes.push('open');
+
+	const noteIndex = tuning[stringIndex] + fretIndex;
+	const isLowString = stringIndex === tuning.length - 1;
 
 	return (
 		<div className={classes.join(' ')}>
 			<div className='fret-string' />
-			<FretLabel {...rest} />
+			<FretLabel {...labelProps} noteIndex={noteIndex} />
 			<div className="fret-dots">
-				{isLowString && api.getDotsForFret(rest.fretIndex)}
+				{isLowString && api.getDotsForFret(fretIndex)}
 			</div>
 		</div>
 	);
 };
 
 const getFrets = (props) => {
-	const { fretRange, tuning, ...rest } = props;
+	const { fretRange, tuning, labelProps } = props;
 	const [lo, hi] = fretRange;
 
 	const allFrets = [];
@@ -33,8 +36,8 @@ const getFrets = (props) => {
 					stringTuning={tuning[s]}
 					stringIndex={s}
 					fretIndex={f}
-					isLowString={s === tuning.length - 1}
-					{...rest}
+					labelProps={labelProps}
+					tuning={tuning}
 				/>
 			);
 		}

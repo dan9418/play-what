@@ -5,7 +5,7 @@ import { ACCIDENTAL } from "./Note.constants";
 
 // Wrappers
 const getMetaChildren = () => null;
-const getPodAtPitch = (modelValue, modelOptions, metaChildren, p) => PodUtils.getPodAtPitch(modelValue, p);
+const getPodAtPitch = (modelValue, modelOptions, p) => PodUtils.getPodAtPitch(modelValue, p);
 const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
 
 const getAccidentalOffset = (pod) => {

@@ -42,9 +42,16 @@ const Explorer = () => {
 
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
 
+	const labelProps = {
+		modelId,
+		modelValue,
+		metaChildren,
+		modelOptions
+	};
+
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
-		<Viewer modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />;
+		<Viewer labelProps={labelProps} />;
 
 	return (
 		<>

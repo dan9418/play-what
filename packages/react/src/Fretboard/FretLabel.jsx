@@ -3,6 +3,7 @@ import ColorUtils from "@pw/core/src/color/Color.utils";
 import { MODEL } from "@pw/core/src/models/Model.constants";
 import IntervalUtils from "@pw/core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
+import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -18,12 +19,11 @@ const StyledFretLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const FretLabel = ({ stringTuning, stringIndex, fretIndex, modelId, modelValue, modelOptions, metaChildren }) => {
+const FretLabel = ({ noteIndex, modelId, modelValue, modelOptions }) => {
+
 	const model = MODEL[modelId];
 
-	const noteIndex = stringTuning + fretIndex;
-
-	const pod = model.utils.getPodAtPitch ? model.utils.getPodAtPitch(modelValue, modelOptions, metaChildren, noteIndex) : null;
+	const pod = model.utils.getPodAtPitch(modelValue, modelOptions, noteIndex);
 	const hasDegree = pod !== null;
 
 	let color = null;
