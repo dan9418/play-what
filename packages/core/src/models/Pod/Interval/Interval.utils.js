@@ -5,14 +5,14 @@ import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./In
 
 // Wrappers
 const getMetaChildren = () => null;
-const getPodAtPitch = (modelValue, modelOptions, p) => PodUtils.getPodAtPitch(modelValue, p, modelOptions.root);
-const playSound = (modelValue, modelOptions) => PodUtils.playSound(modelValue, modelOptions.root);
+const getPodAtPitch = (modelValue, root, p) => PodUtils.getPodAtPitch(modelValue, p, root);
+const playSound = (modelValue, root) => PodUtils.playSound(modelValue, root);
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
 }
 
-const getName = (modelValue, modelOptions) => {
+const getName = (modelValue) => {
 	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -41,9 +41,7 @@ const getName = (modelValue, modelOptions) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getPreview = (modelData, modelOptions) => {
-	//const note = PodUtils.addPod(modelData, modelOptions.root);
-	//const diff = note[0] - modelData[0];
+const getPreview = (modelData) => {
 	const [p, d] = modelData;
 	return `p = ${p}, d = ${d}`;
 }
@@ -54,8 +52,8 @@ const getPodColor = pod => {
 	return DEFAULT_DEGREE_COLOR_SCHEME[d];
 }
 
-const getPodProps = (modelValue, modelOptions, p) => {
-	const pod = getPodAtPitch(modelValue, modelOptions, p);
+const getPodProps = (modelValue, root, p) => {
+	const pod = getPodAtPitch(modelValue, root, p);
 	if (!pod) return null;
 	const color = getPodColor(pod);
 	const label = getName(pod);

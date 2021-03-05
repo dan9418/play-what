@@ -31,16 +31,16 @@ const getPodAtPitch = (A, p, root) => {
 
 // Children
 
-const getMetaChildren = (modelValue, modelOptions, childModelId) => {
+const getMetaChildren = (modelValue, root, childModelId) => {
 	const model = MODEL[childModelId];
 	return modelValue.map((pod, i) => {
 		return {
 			childIndex: i,
-			name: model.utils.getName(pod, modelOptions),
-			preview: model.utils.getPreview(pod, modelOptions),
+			name: model.utils.getName(pod, root),
+			preview: model.utils.getPreview(pod, root),
 			modelId: childModelId,
 			modelValue: pod,
-			modelOptions
+			root
 		}
 	});
 };

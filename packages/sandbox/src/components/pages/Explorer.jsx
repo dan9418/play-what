@@ -25,18 +25,18 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const pathHead = useRecoilValue(pathHeadState);
-	const { modelId, modelValue, modelOptions } = pathHead;
+	const { modelId, modelValue, root } = pathHead;
 	const model = MODEL[modelId];
 
-	const refreshKey = JSON.stringify({ modelId, modelValue, modelOptions });
+	const refreshKey = JSON.stringify({ modelId, modelValue, root });
 
 	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
 
-	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
+	const metaChildren = model.utils.getMetaChildren(modelValue, root);
 
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
-		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
+		<Viewer modelId={modelId} modelValue={modelValue} root={root} />;
 
 	return (
 		<>
@@ -46,7 +46,7 @@ const Explorer = () => {
 					<div>
 						{viewer}
 					</div>
-					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />
+					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} root={root} />
 				</StyledExplorer>
 			</Panel>
 		</>

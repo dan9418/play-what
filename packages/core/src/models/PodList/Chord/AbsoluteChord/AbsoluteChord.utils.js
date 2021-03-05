@@ -3,16 +3,16 @@ import PodListUtils from "../../PodList.utils";
 import NoteUtils from "../../../Pod/Note/Note.utils";
 
 // Wrappers
-const getPodAtPitch = (modelValue, modelOptions, p) => PodListUtils.getPodAtPitch(modelValue, p);
-const getMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
-const playSound = (modelValue, modelOptions) => PodListUtils.playSound(modelValue, modelOptions.root);
+const getPodAtPitch = (modelValue, root, p) => PodListUtils.getPodAtPitch(modelValue, p);
+const getMetaChildren = (modelValue, root) => PodListUtils.getMetaChildren(modelValue, root, MODEL_ID.Note);
+const playSound = (modelValue, root) => PodListUtils.playSound(modelValue, root);
 
 const getName = () => 'Chord';
 
-const getPreview = (modelValue, modelOptions) => modelValue.map(note => NoteUtils.getName(note, modelOptions)).join(', ');
+const getPreview = (modelValue, root) => modelValue.map(note => NoteUtils.getName(note, root)).join(', ');
 
-const getPodProps = (modelValue, modelOptions, p) => {
-	const pod = getPodAtPitch(modelValue, modelOptions, p);
+const getPodProps = (modelValue, root, p) => {
+	const pod = getPodAtPitch(modelValue, root, p);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
 	const label = NoteUtils.getName(pod);
