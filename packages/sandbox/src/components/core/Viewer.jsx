@@ -1,3 +1,4 @@
+import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
@@ -21,16 +22,41 @@ const StyledViewerContainer = styled.div`
 	margin-top: 16px;
 `;
 
-const Viewer = props => {
+const viewer = VIEWER[VIEWER_ID.Fretboard];
 
-	const viewer = VIEWER[VIEWER_ID.Fretboard];
+const getSupersetViewers = (supersets, modelOptions) => {
+	return supersets.map((s, i) => {
+		const labelProps = {
+			modelId: MODEL_ID.RelativeScale,
+			modelValue: s.value,
+			modelOptions
+		};
+		return (
+			<StyledViewerContainer key={i}>
+				<h3>{s.name}</h3>
+				<viewer.component labelProps={labelProps} />
+			</StyledViewerContainer>
+		);
+	});
+};
+
+const Viewer = ({ labelProps }) => {
+
+	const { modelId, modelValue, modelOptions } = labelProps;
+
+	const model = MODEL[modelId];
+
+	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, modelOptions) : null;
+	const supersetViewers = getSupersetViewers(supersets, modelOptions);
 
 	return (
 		<div>
 			<h2>Viewer</h2>
 			<StyledViewerContainer>
-				<viewer.component {...props} />
+				<viewer.component labelProps={labelProps} />
 			</StyledViewerContainer>
+			<h2>Supersets</h2>
+			{supersetViewers}
 		</div>
 	);
 };

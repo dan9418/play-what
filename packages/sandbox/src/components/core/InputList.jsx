@@ -44,7 +44,7 @@ const InputList = ({ modelValue, modelOptions }) => {
 		{/*<h2>Model Value</h2>
 		{JSON.stringify(modelValue, null, '\t')}*/}
 		<h2>Model Options</h2>
-		{JSON.stringify(modelOptions, null, '\t')}
+		{/*JSON.stringify(modelOptions, null, '\t')*/}
 	</pre>;
 
 	return (

@@ -29,23 +29,15 @@ const Explorer = () => {
 	const { modelId, modelValue, modelOptions } = pathHead;
 	const model = MODEL[modelId];
 
-	const [supersets, setSupersets] = useState([]);
-
 	const refreshKey = JSON.stringify({ modelId, modelValue, modelOptions });
 
 	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
-
-	useEffect(() => {
-		if (!model.utils.findSupersets) return;
-		setSupersets(model.utils.findSupersets(modelValue, modelOptions));
-	}, [refreshKey]);
 
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelOptions);
 
 	const labelProps = {
 		modelId,
 		modelValue,
-		metaChildren,
 		modelOptions
 	};
 
@@ -61,8 +53,6 @@ const Explorer = () => {
 					<div>
 						{viewer}
 						<InputList modelValue={modelValue} modelOptions={modelOptions} />
-						<h2>Supersets</h2>
-						{JSON.stringify(supersets)}
 					</div>
 					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} />
 				</StyledExplorer>

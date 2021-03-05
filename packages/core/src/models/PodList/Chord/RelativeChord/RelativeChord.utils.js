@@ -26,7 +26,7 @@ const getPreview = (modelValue, modelOptions) => {
 }
 
 const findSupersets = (modelValue, modelOptions) => {
-	return ALL_SCALE_VALUES.filter(v => PodListUtils.containsSubset(v.value, modelValue)).map(v => v.name);
+	return ALL_SCALE_VALUES.filter(v => PodListUtils.containsSubset(v.value, modelValue));
 }
 
 const getPodProps = (modelValue, modelOptions, p) => {
