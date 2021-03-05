@@ -2,8 +2,9 @@ import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
+import FretLabel from "./FretLabel";
 
-export const Fret = ({ FretLabel, isLowString, ...rest }) => {
+export const Fret = ({ isLowString, ...rest }) => {
 	const classes = ['fret'];
 	if (rest.fretIndex === 0)
 		classes.push('open');

@@ -1,22 +1,19 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
 
-const FRETBOARD = {
-	name: 'Fretboard',
-	component: Fretboard
+const VIEWER_ID = {
+	Fretboard: 'fretboard',
+	Keyboard: 'keyboard'
 }
 
-const MODEL_VIEWER = {
-	[MODEL_ID.Group]: null,
-	[MODEL_ID.AbsoluteChord]: FRETBOARD,
-	[MODEL_ID.RelativeChord]: FRETBOARD,
-	[MODEL_ID.AbsoluteScale]: FRETBOARD,
-	[MODEL_ID.RelativeScale]: FRETBOARD,
-	[MODEL_ID.Note]: FRETBOARD,
-	[MODEL_ID.Interval]: FRETBOARD
-};
+const VIEWER = {
+	[VIEWER_ID.Fretboard]: {
+		viewerId: VIEWER_ID.Fretboard,
+		name: 'Fretboard',
+		component: Fretboard
+	}
+}
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -24,12 +21,9 @@ const StyledViewerContainer = styled.div`
 	margin-top: 16px;
 `;
 
-
 const Viewer = props => {
 
-	const viewer = MODEL_VIEWER[props.modelId];
-
-	if (!viewer) return null;
+	const viewer = VIEWER[VIEWER_ID.Fretboard];
 
 	return (
 		<div>
