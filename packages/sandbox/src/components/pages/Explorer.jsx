@@ -21,6 +21,12 @@ const StyledExplorer = styled.div`
 		grid-template-columns: 1fr 1fr;
 		max-width: 100%;
 	}
+
+	pre {
+		max-width: 512px;
+		max-height: 256px;
+		overflow: auto;
+	}
 `;
 
 const Explorer = () => {
@@ -35,7 +41,7 @@ const Explorer = () => {
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
 
 	const viewer = modelId === MODEL_ID.Group ?
-		null :
+		<pre>{JSON.stringify(modelValue, null, '\t')}</pre> :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
 
 	return (
@@ -46,7 +52,9 @@ const Explorer = () => {
 					<div>
 						{viewer}
 					</div>
-					<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} />
+					<div>
+						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} />
+					</div>
 				</StyledExplorer>
 			</Panel>
 		</>

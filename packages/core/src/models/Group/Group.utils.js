@@ -6,7 +6,7 @@ const getPodAtPitch = () => null;
 const getPodColor = () => null;
 const getPodLabel = () => null;
 
-const getMetaChildren = (modelValue) => {
+const getMetaChildren = (modelValue, modelRoot) => {
 	return modelValue.map((child, i) => {
 		const model = MODEL[child.modelId];
 		const name = child.name ? child.name : model.utils.getName(child.modelValue, child.modelRoot);
@@ -14,8 +14,9 @@ const getMetaChildren = (modelValue) => {
 			...child,
 			childIndex: i,
 			name,
-			preview: model.utils.getPreview(child.modelValue, child.modelRoot),
-			modelValue: child.modelValue
+			preview: model.utils.getPreview(child.modelValue, child.modelRoot || modelRoot),
+			modelValue: child.modelValue,
+			modelRoot: child.modelRoot || modelRoot
 		}
 	});
 };

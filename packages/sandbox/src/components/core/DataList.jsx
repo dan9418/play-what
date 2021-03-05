@@ -2,6 +2,7 @@ import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
+import RootBox from './RootBox';
 import Viewer from './Viewer';
 
 const StyledPropertyHeader = styled.h4`
@@ -38,14 +39,17 @@ const getItems = metaChildren => {
 	})
 };
 
-const DataList = ({ modelValue, metaChildren }) => {
+const DataList = ({ modelId, modelValue, modelRoot, metaChildren }) => {
 	if (!metaChildren)
 		return <pre>{JSON.stringify(modelValue, null, '\t')}</pre>;
 
 	return (
-		<ul>
-			{getItems(metaChildren)}
-		</ul>
+		<>
+			{modelRoot && <RootBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />}
+			<ul>
+				{getItems(metaChildren)}
+			</ul>
+		</>
 	);
 };
 
