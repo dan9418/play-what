@@ -1,7 +1,7 @@
 import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/RelativeChord/RelativeChord.constants";
-import { INTERVAL_MODE_VALUES, RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
+import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
 import CHART_VALUES from "./chartData";
 
 /*
@@ -48,23 +48,9 @@ export const LIBRARY_PATH_ROOT = {
 			))
 		},
 		{
-			name: 'Scales',
+			name: 'Scales & Modes',
 			modelId: MODEL_ID.Group,
 			modelValue: RELATIVE_SCALE_VALUES.map(scale => (
-				{
-					name: scale.name,
-					modelId: MODEL_ID.RelativeScale,
-					modelValue: scale.value,
-					modelOptions: {
-						root: NOTE.C.value
-					}
-				}
-			))
-		},
-		{
-			name: 'Modes',
-			modelId: MODEL_ID.Group,
-			modelValue: INTERVAL_MODE_VALUES.map(scale => (
 				{
 					name: scale.name,
 					modelId: MODEL_ID.RelativeScale,
