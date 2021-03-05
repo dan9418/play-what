@@ -24,31 +24,31 @@ const reduce = (A, max = MAX_POD) => {
 
 // Search
 
-const getPodAtPitch = (A, p, root) => {
-	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, root));
+const getPodAtPitch = (A, p, modelRoot) => {
+	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelRoot));
 	return pod ? pod : null;
 };
 
 // Children
 
-const getMetaChildren = (modelValue, root, childModelId) => {
+const getMetaChildren = (modelValue, modelRoot, childModelId) => {
 	const model = MODEL[childModelId];
 	return modelValue.map((pod, i) => {
 		return {
 			childIndex: i,
-			name: model.utils.getName(pod, root),
-			preview: model.utils.getPreview(pod, root),
+			name: model.utils.getName(pod, modelRoot),
+			preview: model.utils.getPreview(pod, modelRoot),
 			modelId: childModelId,
 			modelValue: pod,
-			root
+			modelRoot
 		}
 	});
 };
 
 // Sound
 
-const playSound = (modelValue, root = null) => {
-	const notes = root ? PodUtils.addPodList(root, modelValue) : modelValue;
+const playSound = (modelValue, modelRoot = null) => {
+	const notes = modelRoot ? PodUtils.addPodList(modelRoot, modelValue) : modelValue;
 	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }

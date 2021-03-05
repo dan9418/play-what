@@ -15,7 +15,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -23,7 +23,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.Bb.value,
+					modelRoot: NOTE.Bb.value,
 					t: 4
 
 				},
@@ -31,7 +31,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.Eb.value,
+					modelRoot: NOTE.Eb.value,
 					t: 4
 
 				},
@@ -39,7 +39,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -47,7 +47,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.B.value,
+					modelRoot: NOTE.B.value,
 					t: 4
 
 				},
@@ -55,7 +55,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7b9.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 4
 
 				}
@@ -69,7 +69,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 4
 
 				},
@@ -77,7 +77,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7b9.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 4
 
 				},
@@ -85,7 +85,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 8
 
 				},
@@ -93,7 +93,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.Eb.value,
+					modelRoot: NOTE.Eb.value,
 					t: 8
 
 				},
@@ -101,7 +101,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.Bb.value,
+					modelRoot: NOTE.Bb.value,
 					t: 4
 
 				},
@@ -109,7 +109,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7b9.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 8
 
 				}
@@ -123,7 +123,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -131,7 +131,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.Bb.value,
+					modelRoot: NOTE.Bb.value,
 					t: 4
 
 				},
@@ -139,7 +139,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.Eb.value,
+					modelRoot: NOTE.Eb.value,
 					t: 4
 
 				},
@@ -147,7 +147,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -155,7 +155,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.B.value,
+					modelRoot: NOTE.B.value,
 					t: 4
 
 				},
@@ -163,7 +163,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7b9.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 4
 
 				}
@@ -177,7 +177,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 4
 
 				},
@@ -185,7 +185,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7b9.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 4
 
 				},
@@ -193,7 +193,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 4
 
 				},
@@ -201,7 +201,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min6.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 4
 
 				},
@@ -209,7 +209,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.B.value,
+					modelRoot: NOTE.B.value,
 					t: 2
 
 				},
@@ -217,7 +217,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.HalfDim7.value,
 
-					root: NOTE.Bb.value,
+					modelRoot: NOTE.Bb.value,
 					t: 2
 
 				},
@@ -225,7 +225,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 2
 
 				},
@@ -233,7 +233,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 2
 
 				},
@@ -241,7 +241,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj6.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -249,7 +249,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 4
 
 				},
@@ -257,7 +257,7 @@ export const OUT_OF_NOWHERE = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 4
 
 				}
@@ -279,7 +279,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj6.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 16
 
 				},
@@ -287,7 +287,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 16
 
 				},
@@ -295,7 +295,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 16
 
 				},
@@ -303,7 +303,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 16
 
 				}
@@ -317,7 +317,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 16
 
 				},
@@ -325,7 +325,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 16
 
 				},
@@ -333,7 +333,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 16
 
 				},
@@ -341,7 +341,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 8
 
 				},
@@ -349,7 +349,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				}
@@ -363,7 +363,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj6.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 16
 
 				},
@@ -371,7 +371,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.E.value,
+					modelRoot: NOTE.E.value,
 					t: 16
 
 				},
@@ -379,7 +379,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 16
 
 				},
@@ -387,7 +387,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 16
 
 				}
@@ -401,7 +401,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj6.value,
 
-					root: NOTE.F.value,
+					modelRoot: NOTE.F.value,
 					t: 8
 
 				},
@@ -409,7 +409,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min6.value,
 
-					root: NOTE.F.value,
+					modelRoot: NOTE.F.value,
 					t: 8
 
 				},
@@ -417,7 +417,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj7.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 8
 
 				},
@@ -425,7 +425,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.A.value,
+					modelRoot: NOTE.A.value,
 					t: 8
 
 				},
@@ -433,7 +433,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Min7.value,
 
-					root: NOTE.D.value,
+					modelRoot: NOTE.D.value,
 					t: 8
 
 				},
@@ -441,7 +441,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 
-					root: NOTE.G.value,
+					modelRoot: NOTE.G.value,
 					t: 8
 
 				},
@@ -449,7 +449,7 @@ export const ALL_OF_ME = {
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Maj6.value,
 
-					root: NOTE.C.value,
+					modelRoot: NOTE.C.value,
 					t: 16
 
 				}

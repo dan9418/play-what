@@ -7,36 +7,36 @@ import { RELATIVE_SCALE_VALUES } from "../../Scale/RelativeScale/RelativeScale.c
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 // Wrappers
-const getMetaChildren = (modelValue, root) => PodListUtils.getMetaChildren(modelValue, root, MODEL_ID.Interval);
-const playSound = (modelValue, root) => PodListUtils.playSound(modelValue, root);
-const getPodAtPitch = (modelValue, root, p) => PodListUtils.getPodAtPitch(modelValue, p, root);
+const getMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Interval);
+const playSound = (modelValue, modelRoot) => PodListUtils.playSound(modelValue, modelRoot);
+const getPodAtPitch = (modelValue, modelRoot, p) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot);
 
-const getName = (modelValue, root) => {
+const getName = (modelValue, modelRoot) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(root);
+	const rootName = NoteUtils.getName(modelRoot);
 	const presetName = preset ? preset.id : 'Untitled Chord';
 	return `${rootName} ${presetName}`;
 };
 
-const getPreview = (modelValue, root) => {
-	const intervalNames = modelValue.map(interval => IntervalUtils.getName(interval, root)).join(', ');
-	const notes = PodUtils.addPodList(root, modelValue);
-	const noteNames = notes.map(note => NoteUtils.getName(note, root)).join(', ');
+const getPreview = (modelValue, modelRoot) => {
+	const intervalNames = modelValue.map(interval => IntervalUtils.getName(interval, modelRoot)).join(', ');
+	const notes = PodUtils.addPodList(modelRoot, modelValue);
+	const noteNames = notes.map(note => NoteUtils.getName(note, modelRoot)).join(', ');
 	return `${intervalNames} (${noteNames})`;
 }
 
-const findSupersets = (modelValue, root) => {
+const findSupersets = (modelValue, modelRoot) => {
 	return RELATIVE_SCALE_VALUES.filter(v => PodListUtils.containsSubset(v.value, modelValue)).map(v => ({
 		name: v.name,
 		modelId: MODEL_ID.RelativeScale,
 		modelValue: v.value,
-		root
+		modelRoot
 	}));
 }
 
-const getPodProps = (modelValue, root, p, superset) => {
-	const pod = getPodAtPitch(modelValue, root, p);
-	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.root, p) : null;
+const getPodProps = (modelValue, modelRoot, p, superset) => {
+	const pod = getPodAtPitch(modelValue, modelRoot, p);
+	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.modelRoot, p) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: 'white', //`${IntervalUtils.getPodColor(superPod)}33`,

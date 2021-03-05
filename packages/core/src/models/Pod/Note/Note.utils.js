@@ -6,8 +6,8 @@ import { ACCIDENTAL } from "./Note.constants";
 
 // Wrappers
 const getMetaChildren = () => null;
-const getPodAtPitch = (modelValue, root, p) => PodUtils.getPodAtPitch(modelValue, p);
-const playSound = (modelValue, root) => PodUtils.playSound(modelValue, root);
+const getPodAtPitch = (modelValue, modelRoot, p) => PodUtils.getPodAtPitch(modelValue, p);
+const playSound = (modelValue, modelRoot) => PodUtils.playSound(modelValue, modelRoot);
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
@@ -28,8 +28,8 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getName = (modelValue, root) => {
-	const offset = getAccidentalOffset(modelValue, root);
+const getName = (modelValue, modelRoot) => {
+	const offset = getAccidentalOffset(modelValue, modelRoot);
 	const accidental = getAccidentalString(offset, modelValue[1]);
 	const spelling = DEGREE_VALUES[modelValue[1]].name;
 	return `${spelling}${accidental}`;
@@ -46,8 +46,8 @@ const getPodColor = pod => {
 	return DEFAULT_PITCH_COLOR_SCHEME[p];
 }
 
-const getPodProps = (modelValue, root, p) => {
-	const pod = getPodAtPitch(modelValue, root, p);
+const getPodProps = (modelValue, modelRoot, p) => {
+	const pod = getPodAtPitch(modelValue, modelRoot, p);
 	if (!pod) return null;
 	const color = getPodColor(pod);
 	const label = getName(pod);

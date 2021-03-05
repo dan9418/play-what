@@ -5,8 +5,8 @@ import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./In
 
 // Wrappers
 const getMetaChildren = () => null;
-const getPodAtPitch = (modelValue, root, p) => PodUtils.getPodAtPitch(modelValue, p, root);
-const playSound = (modelValue, root) => PodUtils.playSound(modelValue, root);
+const getPodAtPitch = (modelValue, modelRoot, p) => PodUtils.getPodAtPitch(modelValue, p, modelRoot);
+const playSound = (modelValue, modelRoot) => PodUtils.playSound(modelValue, modelRoot);
 
 const getIntervalOffset = (pod, coreIvl) => {
 	return coreIvl.value[0] - pod[0];
@@ -52,8 +52,8 @@ const getPodColor = pod => {
 	return DEFAULT_DEGREE_COLOR_SCHEME[d];
 }
 
-const getPodProps = (modelValue, root, p) => {
-	const pod = getPodAtPitch(modelValue, root, p);
+const getPodProps = (modelValue, modelRoot, p) => {
+	const pod = getPodAtPitch(modelValue, modelRoot, p);
 	if (!pod) return null;
 	const color = getPodColor(pod);
 	const label = getName(pod);

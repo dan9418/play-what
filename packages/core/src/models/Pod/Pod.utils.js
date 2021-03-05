@@ -53,8 +53,8 @@ const getX = (pod, options = {}) => {
 
 // Search
 
-const getPodAtPitch = (pod, p, root) => {
-	const pitchOffset = root ? root[0] : 0;
+const getPodAtPitch = (pod, p, modelRoot) => {
+	const pitchOffset = modelRoot ? modelRoot[0] : 0;
 	const target = p - pitchOffset;
 	const a = NumberUtils.modulo(pod[0], 12);
 	const b = NumberUtils.modulo(target, 12);
@@ -63,8 +63,8 @@ const getPodAtPitch = (pod, p, root) => {
 
 // Sound
 
-const playSound = (modelValue, root) => {
-	const note = root ? addPod(root, modelValue) : modelValue;
+const playSound = (modelValue, modelRoot) => {
+	const note = modelRoot ? addPod(modelRoot, modelValue) : modelValue;
 	const frequency = TuningUtils.getFrequency(note[0]);
 	ToneUtils.playSound(frequency)
 }

@@ -1,6 +1,5 @@
 
 import React from 'react';
-import 'react-hot-loader';
 import styled from 'styled-components';
 import { useRouteContext } from '../../contexts/RouteContext';
 

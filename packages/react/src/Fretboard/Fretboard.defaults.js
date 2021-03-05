@@ -8,7 +8,7 @@ const DEFAULT_FRETBOARD_PROPS = {
 	labelProps: {
 		modelId: MODEL_ID.RelativeChord,
 		modelValue: [],
-		root: [0, 0]
+		modelRoot: [0, 0]
 	}
 };
 

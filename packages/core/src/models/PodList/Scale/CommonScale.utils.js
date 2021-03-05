@@ -8,19 +8,19 @@
 // 		return chord.getInversion({ A, n: d });
 // 		/*let mode = [...A];
 // 		mode = utils.rotate(mode, d);
-// 		const root = mode[0];
-// 		const newMode = mode.map((m) => [m[0] + root[0], m[1] + root[1]]);
+// 		const modelRoot = mode[0];
+// 		const newMode = mode.map((m) => [m[0] + modelRoot[0], m[1] + modelRoot[1]]);
 // 		return newMode;*/
 // 	};
 
-// 	static getAllModes({ scale, root }) {
+// 	static getAllModes({ scale, modelRoot }) {
 // 		/*const modes = [];
 // 		for (let i = 1; i <= scale.length; i++) {
 // 			modes.push(getMode({ scale, degree: i }));
 // 		}
 // 		return modes.map((m, i) => ({
 // 			name: `Degree ${i + 1}`,
-// 			a: root,
+// 			a: modelRoot,
 // 			B: m
 // 		}));*/
 // 	};
@@ -37,10 +37,10 @@
 // 		return numeral;
 // 	};
 
-// 	static getAllNumerals({ scale, root }) {
+// 	static getAllNumerals({ scale, modelRoot }) {
 // 		/*const numerals = [];
 // 		for (let i = 0; i < scale.length; i++) {
-// 			numerals.push(getNumeral({ scale, root, degree: i }));
+// 			numerals.push(getNumeral({ scale, modelRoot, degree: i }));
 // 		}
 // 		return numerals;*/
 // 	};

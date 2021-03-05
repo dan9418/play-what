@@ -25,9 +25,9 @@ const StyledViewerContainer = styled.div`
 
 const viewer = VIEWER[VIEWER_ID.Fretboard];
 
-const NONE = { id: 'none', name: 'None', modelId: MODEL_ID.RelativeScale, modelValue: [], root: [0, 0] };
+const NONE = { id: 'none', name: 'None', modelId: MODEL_ID.RelativeScale, modelValue: [], modelRoot: [0, 0] };
 
-const Viewer = ({ modelId, modelValue, root }) => {
+const Viewer = ({ modelId, modelValue, modelRoot }) => {
 	const [index, setIndex] = useState(0);
 
 	useEffect(() => {
@@ -35,11 +35,11 @@ const Viewer = ({ modelId, modelValue, root }) => {
 	}, [modelId, modelValue]);
 
 	const model = MODEL[modelId];
-	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, root) : [];
+	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, modelRoot) : [];
 	const dropdownOptions = [NONE, ...supersets];
 	const superset = dropdownOptions[index]
 
-	const labelProps = { modelId, modelValue, root, superset };
+	const labelProps = { modelId, modelValue, modelRoot, superset };
 
 	return (
 		<div>

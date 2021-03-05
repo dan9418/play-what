@@ -5,21 +5,21 @@ import NoteUtils from "../../../Pod/Note/Note.utils";
 import { RELATIVE_SCALE_VALUES } from "./RelativeScale.constants";
 
 // Wrappers
-const getMetaChildren = (modelValue, root) => PodListUtils.getMetaChildren(modelValue, root, MODEL_ID.Interval);
-const playSound = (modelValue, root) => PodListUtils.playSound(modelValue, root);
-const getPodAtPitch = (modelValue, root, p) => PodListUtils.getPodAtPitch(modelValue, p, root);
+const getMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Interval);
+const playSound = (modelValue, modelRoot) => PodListUtils.playSound(modelValue, modelRoot);
+const getPodAtPitch = (modelValue, modelRoot, p) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot);
 
-const getName = (modelValue, root) => {
+const getName = (modelValue, modelRoot) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(root);
+	const rootName = NoteUtils.getName(modelRoot);
 	const presetName = preset ? preset.id : 'Untitled Scale';
 	return `${rootName} ${presetName}`;
 };
 
-const getPreview = (modelValue, root) => modelValue.map(interval => IntervalUtils.getName(interval, root)).join(', ');
+const getPreview = (modelValue, modelRoot) => modelValue.map(interval => IntervalUtils.getName(interval, modelRoot)).join(', ');
 
-const getPodProps = (modelValue, root, p) => {
-	const pod = getPodAtPitch(modelValue, root, p);
+const getPodProps = (modelValue, modelRoot, p) => {
+	const pod = getPodAtPitch(modelValue, modelRoot, p);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
 	const label = IntervalUtils.getName(pod);
