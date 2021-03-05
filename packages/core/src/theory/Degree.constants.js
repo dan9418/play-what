@@ -41,3 +41,13 @@ export const DEGREE = {
 export const ROOT_DEGREE = DEGREE.C.value;
 
 export const DEGREE_VALUES = Object.values(DEGREE);
+
+export const DEFAULT_DEGREE_COLOR_SCHEME = [
+	'#E6194B',
+	'#F58231',
+	'#FFE119',
+	'#3CB44B',
+	'#4363D8',
+	'#911DB4',
+	'#F032E6'
+];

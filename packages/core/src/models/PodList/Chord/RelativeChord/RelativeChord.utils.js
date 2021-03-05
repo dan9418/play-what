@@ -29,11 +29,20 @@ const findSupersets = (modelValue, modelOptions) => {
 	return ALL_SCALE_VALUES.filter(v => PodListUtils.containsSubset(v.value, modelValue)).map(v => v.name);
 }
 
+const getPodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	if (!pod) return null;
+	const color = IntervalUtils.getPodColor(pod);
+	const label = IntervalUtils.getName(pod);
+	return { color, label };
+}
+
 export default {
 	getName,
 	getPreview,
 	getMetaChildren,
 	getPodAtPitch,
 	playSound,
-	findSupersets
+	findSupersets,
+	getPodProps
 }

@@ -1,3 +1,4 @@
+import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
 import NoteUtils from "../Note/Note.utils";
 import PodUtils from "../Pod.utils";
 import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./Interval.constants";
@@ -12,13 +13,6 @@ const getIntervalOffset = (pod, coreIvl) => {
 }
 
 const getName = (modelValue, modelOptions) => {
-	const options = { ...DEFAULT_INTERVAL_OPTIONS, ...modelOptions };
-
-	/*if (options.displayName === 'note') {
-		const note = PodUtils.addPod(modelValue, options.root);
-		return NoteUtils.getName(note);
-	}*/
-
 	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -54,10 +48,26 @@ const getPreview = (modelData, modelOptions) => {
 	return `p = ${p}, d = ${d}`;
 }
 
+const getPodColor = pod => {
+	if (!pod) return null;
+	const [p, d] = pod;
+	return DEFAULT_DEGREE_COLOR_SCHEME[d];
+}
+
+const getPodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	if (!pod) return null;
+	const color = getPodColor(pod);
+	const label = getName(pod);
+	return { color, label };
+}
+
 export default {
 	getName,
 	getPreview,
 	getMetaChildren,
 	getPodAtPitch,
-	playSound
+	playSound,
+	getPodColor,
+	getPodProps
 }

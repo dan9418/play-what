@@ -1,4 +1,5 @@
 import { DEGREE_VALUES } from "../../../theory/Degree.constants";
+import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
 import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
@@ -39,10 +40,26 @@ const getPreview = (modelData) => {
 	return `p = ${p}, d = ${d}`;
 };
 
+const getPodColor = pod => {
+	if (!pod) return null;
+	const [p, d] = pod;
+	return DEFAULT_PITCH_COLOR_SCHEME[p];
+}
+
+const getPodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	if (!pod) return null;
+	const color = getPodColor(pod);
+	const label = getName(pod);
+	return { color, label };
+}
+
 export default {
 	getName,
 	getPreview,
 	getPodAtPitch,
 	getMetaChildren,
-	playSound
+	playSound,
+	getPodColor,
+	getPodProps
 }

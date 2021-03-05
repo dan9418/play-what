@@ -1,9 +1,5 @@
-import { COLOR_SCHEME } from "@pw/core/src/color/Color.constants";
 import ColorUtils from "@pw/core/src/color/Color.utils";
 import { MODEL } from "@pw/core/src/models/Model.constants";
-import IntervalUtils from "@pw/core/src/models/Pod/Interval/Interval.utils";
-import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
-import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
 import * as React from "react";
 import styled from "styled-components";
 
@@ -23,25 +19,15 @@ const FretLabel = ({ noteIndex, modelId, modelValue, modelOptions }) => {
 
 	const model = MODEL[modelId];
 
-	const pod = model.utils.getPodAtPitch(modelValue, modelOptions, noteIndex);
-	const hasDegree = pod !== null;
+	const podProps = model.utils.getPodProps(modelValue, modelOptions, noteIndex);
 
-	let color = null;
-	if (hasDegree) {
-		color = COLOR_SCHEME.degree[pod[1]]
-	}
+	if (!podProps) return null;
 
-	let name = null;
-	if (hasDegree) {
-		if (model.isRelative)
-			name = IntervalUtils.getName(pod, modelOptions);
-		else
-			name = NoteUtils.getName(pod, modelOptions);
-	}
+	const { color, label } = podProps;
 
 	return (
 		<StyledFretLabel $color={color}>
-			{name}
+			{label}
 		</StyledFretLabel>
 	);
 };

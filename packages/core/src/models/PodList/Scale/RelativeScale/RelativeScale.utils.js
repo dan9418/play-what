@@ -18,10 +18,19 @@ const getName = (modelValue, modelOptions) => {
 
 const getPreview = (modelValue, modelOptions) => modelValue.map(interval => IntervalUtils.getName(interval, modelOptions)).join(', ');
 
+const getPodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	if (!pod) return null;
+	const color = IntervalUtils.getPodColor(pod);
+	const label = IntervalUtils.getName(pod);
+	return { color, label };
+}
+
 export default {
 	getName,
 	getPreview,
 	getMetaChildren,
 	getPodAtPitch,
-	playSound
+	playSound,
+	getPodProps
 }

@@ -1,6 +1,7 @@
 import NumberUtils from '../../general/Number.utils';
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
+import { MODEL } from '../Model.constants';
 import { MAX_POD } from './Pod.constants';
 
 // Equality
