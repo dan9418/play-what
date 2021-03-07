@@ -3,6 +3,7 @@ import React from 'react';
 import ReactJson from 'react-json-view';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
+import JsonEditor from './JsonEditor';
 import RootBox from './RootBox';
 import Viewer from './Viewer';
 
@@ -43,7 +44,7 @@ const getItems = metaChildren => {
 
 const DataList = ({ modelId, modelValue, modelRoot, metaChildren }) => {
 	if (!metaChildren)
-		return <ReactJson src={modelValue} />;
+		return <JsonEditor src={modelValue} />;
 
 	return (
 		<>

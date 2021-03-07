@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
 import DropdownInput from '../ui/inputs/DropdownInput';
-import ReactJson from 'react-json-view'
 
 const VIEWER_ID = {
 	Fretboard: 'fretboard',

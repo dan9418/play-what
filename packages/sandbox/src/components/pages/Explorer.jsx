@@ -1,11 +1,11 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect } from 'react';
-import ReactJson from 'react-json-view';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
+import JsonEditor from '../core/JsonEditor';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -42,7 +42,7 @@ const Explorer = () => {
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
 
 	const viewer = modelId === MODEL_ID.Group ?
-		<ReactJson src={modelValue} /> :
+		<JsonEditor src={modelValue} /> :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
 
 	return (
