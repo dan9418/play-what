@@ -1,9 +1,11 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
+import ReactJson from 'react-json-view';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
 import RootBox from './RootBox';
 import Viewer from './Viewer';
+
 
 const StyledPropertyHeader = styled.h4`
 	color: #555;
@@ -41,7 +43,7 @@ const getItems = metaChildren => {
 
 const DataList = ({ modelId, modelValue, modelRoot, metaChildren }) => {
 	if (!metaChildren)
-		return <pre>{JSON.stringify(modelValue, null, '\t')}</pre>;
+		return <ReactJson src={modelValue} />;
 
 	return (
 		<>

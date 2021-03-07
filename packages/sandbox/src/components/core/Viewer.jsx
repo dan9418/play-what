@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Fretboard from '../../../../react/src/Fretboard/Fretboard';
 import DropdownInput from '../ui/inputs/DropdownInput';
+import ReactJson from 'react-json-view'
 
 const VIEWER_ID = {
 	Fretboard: 'fretboard',
@@ -48,7 +49,7 @@ const Viewer = ({ modelId, modelValue, modelRoot }) => {
 				<viewer.component labelProps={labelProps} />
 			</StyledViewerContainer>
 			<h2>Supersets</h2>
-			<DropdownInput options={dropdownOptions} value={superset} setValue={(v, i) => setIndex(i)} />
+			<DropdownInput options={dropdownOptions} value={superset} setValue={(v, i) => setIndex(i)} />'
 		</div>
 	);
 };

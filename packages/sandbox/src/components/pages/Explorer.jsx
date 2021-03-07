@@ -1,5 +1,6 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect } from 'react';
+import ReactJson from 'react-json-view';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
@@ -41,7 +42,7 @@ const Explorer = () => {
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
 
 	const viewer = modelId === MODEL_ID.Group ?
-		<pre>{JSON.stringify(modelValue, null, '\t')}</pre> :
+		<ReactJson src={modelValue} /> :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
 
 	return (
