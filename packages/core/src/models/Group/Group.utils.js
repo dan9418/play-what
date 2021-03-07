@@ -6,7 +6,7 @@ const getPodAtPitch = () => null;
 const getPodColor = () => null;
 const getPodLabel = () => null;
 
-const getMetaChildren = (modelValue, modelRoot) => {
+const getMetaChildren = (modelValue, modelRoot, setModelValue) => {
 	return modelValue.map((child, i) => {
 		const model = MODEL[child.modelId];
 		const name = child.name ? child.name : model.utils.getName(child.modelValue, child.modelRoot);
@@ -16,7 +16,8 @@ const getMetaChildren = (modelValue, modelRoot) => {
 			name,
 			preview: model.utils.getPreview(child.modelValue, child.modelRoot || modelRoot),
 			modelValue: child.modelValue,
-			modelRoot: child.modelRoot || modelRoot
+			modelRoot: child.modelRoot || modelRoot,
+			onEdit: v => setModelValue(v)
 		}
 	});
 };

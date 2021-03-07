@@ -1,6 +1,6 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect } from 'react';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
@@ -31,15 +31,15 @@ const StyledExplorer = styled.div`
 `;
 
 const Explorer = () => {
-	const pathHead = useRecoilValue(pathHeadState);
-	const { modelId, modelValue, modelRoot } = pathHead;
+	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
+	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
 	const model = MODEL[modelId];
 
 	const refreshKey = JSON.stringify({ modelId, modelValue, modelRoot });
 
 	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
 
-	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHeadValue);
 
 	const viewer = modelId === MODEL_ID.Group ?
 		/*<JsonEditor src={modelValue} />*/null :

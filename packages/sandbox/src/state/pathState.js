@@ -9,11 +9,21 @@ export const pathState = atom({
 
 export const pathHeadState = selector({
 	key: 'pathHeadState',
-	get: ({ get }) => {
+	get: ({ get, set }) => {
 		const path = get(pathState);
 		const pathHead = path[path.length - 1];
+
 		console.log('pathHead', pathHead);
 		return pathHead;
+	},
+	set: ({ get, set }, modelValue) => {
+		const path = get(pathState);
+		const pathHead = path[path.length - 1];
+		const parents = path.slice(0, path.length - 1);
+		set(pathState, [...parents, {
+			...pathHead,
+			modelValue
+		}])
 	}
 });
 
