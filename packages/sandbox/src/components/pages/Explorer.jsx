@@ -42,8 +42,10 @@ const Explorer = () => {
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHeadValue);
 
 	const viewer = modelId === MODEL_ID.Group ?
-		/*<JsonEditor src={modelValue} />*/null :
+		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
+
+	const json = modelId === MODEL_ID.Group ? null : <JsonEditor src={modelValue} onEdit={setPathHeadValue} />
 
 	return (
 		<>
@@ -52,9 +54,10 @@ const Explorer = () => {
 				<StyledExplorer>
 					<div>
 						{viewer}
+						{json}
 					</div>
 					<div>
-						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} />
+						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
 					</div>
 				</StyledExplorer>
 			</Panel>

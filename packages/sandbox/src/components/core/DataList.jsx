@@ -42,12 +42,12 @@ const getItems = metaChildren => {
 	})
 };
 
-const DataList = ({ modelId, modelValue, modelRoot, metaChildren }) => {
+const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
 
 	return (
 		<>
 			{modelRoot && <RootBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />}
-			{!metaChildren && <JsonEditor src={modelValue} />}
+			{!metaChildren && <JsonEditor src={modelValue} onEdit={onEdit} />}
 			{metaChildren && (
 				<ul>
 					{getItems(metaChildren)}

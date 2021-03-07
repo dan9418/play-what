@@ -7,6 +7,7 @@ const JsonEditor = ({ src, ...rest }) => {
 			src={src}
 			enableClipboard={false}
 			name={null}
+			{...rest}
 		/>
 	);
 };
