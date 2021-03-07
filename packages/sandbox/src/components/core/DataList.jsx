@@ -43,15 +43,16 @@ const getItems = metaChildren => {
 };
 
 const DataList = ({ modelId, modelValue, modelRoot, metaChildren }) => {
-	if (!metaChildren)
-		return <JsonEditor src={modelValue} />;
 
 	return (
 		<>
 			{modelRoot && <RootBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />}
-			<ul>
-				{getItems(metaChildren)}
-			</ul>
+			{!metaChildren && <JsonEditor src={modelValue} />}
+			{metaChildren && (
+				<ul>
+					{getItems(metaChildren)}
+				</ul>
+			)}
 		</>
 	);
 };

@@ -42,7 +42,7 @@ const Explorer = () => {
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
 
 	const viewer = modelId === MODEL_ID.Group ?
-		<JsonEditor src={modelValue} /> :
+		/*<JsonEditor src={modelValue} />*/null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
 
 	return (
