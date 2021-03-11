@@ -30,6 +30,16 @@ const StyledExplorer = styled.div`
 	}
 `;
 
+const StyledActionList = styled.ul`
+	display: flex;
+	> li {
+		padding: 8px;
+		color: darkblue;
+		padding-right: 8px;
+		cursor: pointer;
+	}
+`;
+
 const Explorer = () => {
 	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
@@ -56,6 +66,12 @@ const Explorer = () => {
 				<StyledExplorer>
 					<div>
 						{viewer}
+						<StyledActionList>
+							<li>Load Preset</li>
+							<li>Apply Superset</li>
+							<li>Transpose</li>
+							<li>Inversion</li>
+						</StyledActionList>
 						{json}
 					</div>
 					<div>

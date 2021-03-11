@@ -47,7 +47,6 @@ const Viewer = ({ modelId, modelValue, modelRoot }) => {
 			<StyledViewerContainer>
 				<viewer.component labelProps={labelProps} />
 			</StyledViewerContainer>
-			<h2>Supersets</h2>
 			<DropdownInput options={dropdownOptions} value={superset} setValue={(v, i) => setIndex(i)} />'
 		</div>
 	);
