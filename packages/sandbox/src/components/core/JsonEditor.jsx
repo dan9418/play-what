@@ -1,14 +1,13 @@
+import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
-import ReactJson from 'react-json-view';
+import DropdownInput from '../ui/inputs/DropdownInput';
 
-const JsonEditor = ({ src, ...rest }) => {
+const JsonEditor = ({ modelId, modelValue, modelRoot, onEdit }) => {
+	const model = MODEL[modelId];
+	const options = model.presets;
+	const setValue = v => onEdit(v.value);
 	return (
-		<ReactJson
-			src={src}
-			enableClipboard={false}
-			name={null}
-			{...rest}
-		/>
+		<DropdownInput options={options} setValue={setValue} />
 	);
 };
 

@@ -1,9 +1,13 @@
 import GroupUtils from './Group/Group.utils';
+import { INTERVAL_VALUES } from './Pod/Interval/Interval.constants';
 import IntervalUtils from './Pod/Interval/Interval.utils';
+import { NOTE_VALUES } from './Pod/Note/Note.constants';
 import NoteUtils from './Pod/Note/Note.utils';
 import AbsoluteChordUtils from './PodList/Chord/AbsoluteChord/AbsoluteChord.utils';
+import { RELATIVE_CHORD_VALUES } from './PodList/Chord/RelativeChord/RelativeChord.constants';
 import RelativeChordUtils from './PodList/Chord/RelativeChord/RelativeChord.utils';
 import AbsoluteScaleUtils from './PodList/Scale/AbsoluteScale/AbsoluteScale.utils';
+import { RELATIVE_SCALE_VALUES } from './PodList/Scale/RelativeScale/RelativeScale.constants';
 import RelativeScaleUtils from './PodList/Scale/RelativeScale/RelativeScale.utils';
 
 export const MODEL_ID = {
@@ -24,42 +28,49 @@ export const MODEL = {
 	[MODEL_ID.Group]: {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
-		utils: GroupUtils
+		utils: GroupUtils,
+		presets: []
 	},
 	// Absolute
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,
-		utils: NoteUtils
+		utils: NoteUtils,
+		presets: NOTE_VALUES
 	},
 	[MODEL_ID.AbsoluteChord]: {
 		name: 'Absolute Chord',
 		modelId: MODEL_ID.AbsoluteChord,
-		utils: AbsoluteChordUtils
+		utils: AbsoluteChordUtils,
+		presets: RELATIVE_CHORD_VALUES
 	},
 	[MODEL_ID.AbsoluteScale]: {
 		name: 'Absolute Scale',
 		modelId: MODEL_ID.AbsoluteScale,
-		utils: AbsoluteScaleUtils
+		utils: AbsoluteScaleUtils,
+		presets: RELATIVE_SCALE_VALUES
 	},
 	// Relative
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
 		isRelative: true,
 		modelId: MODEL_ID.Interval,
-		utils: IntervalUtils
+		utils: IntervalUtils,
+		presets: INTERVAL_VALUES
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
 		isRelative: true,
 		modelId: MODEL_ID.RelativeChord,
-		utils: RelativeChordUtils
+		utils: RelativeChordUtils,
+		presets: RELATIVE_CHORD_VALUES
 	},
 	[MODEL_ID.RelativeScale]: {
 		name: 'Relative Scale',
 		isRelative: true,
 		modelId: MODEL_ID.RelativeScale,
-		utils: RelativeScaleUtils
+		utils: RelativeScaleUtils,
+		presets: RELATIVE_SCALE_VALUES
 	}
 };
 

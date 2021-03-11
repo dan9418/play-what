@@ -47,7 +47,7 @@ const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
 	return (
 		<>
 			{modelRoot && <RootBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />}
-			{!metaChildren && <JsonEditor src={modelValue} onEdit={onEdit} />}
+			{false && <JsonEditor src={modelValue} onEdit={onEdit} />}
 			{metaChildren && (
 				<ul>
 					{getItems(metaChildren)}

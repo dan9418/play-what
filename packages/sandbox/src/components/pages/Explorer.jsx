@@ -45,7 +45,9 @@ const Explorer = () => {
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
 
-	const json = modelId === MODEL_ID.Group ? null : <JsonEditor src={modelValue} onEdit={setPathHeadValue} />
+	const json = modelId === MODEL_ID.Group ?
+		null :
+		<JsonEditor modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} onEdit={setPathHeadValue} />
 
 	return (
 		<>

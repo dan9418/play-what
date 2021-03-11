@@ -16,14 +16,14 @@ export const pathHeadState = selector({
 		console.log('pathHead', pathHead);
 		return pathHead;
 	},
-	set: ({ get, set }, jsonUpdateObj) => {
+	set: ({ get, set }, newValue) => {
 		const path = get(pathState);
 		const pathHead = path[path.length - 1];
 		const parents = path.slice(0, path.length - 1);
-		console.log('set pathHead', jsonUpdateObj);
+		console.log('set pathHead', newValue);
 		set(pathState, [...parents, {
 			...pathHead,
-			modelValue: jsonUpdateObj.updated_src
+			modelValue: newValue
 		}])
 	}
 });
