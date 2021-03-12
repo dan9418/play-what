@@ -3,7 +3,7 @@ import React from 'react';
 import ReactJson from 'react-json-view';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
-import JsonEditor from './JsonEditor';
+import JsonEditor from './PresetSelector';
 import RootBox from './RootBox';
 import Viewer from './Viewer';
 

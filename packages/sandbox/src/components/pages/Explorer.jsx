@@ -1,11 +1,12 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
-import JsonEditor from '../core/JsonEditor';
+import PresetSelector from '../core/PresetSelector';
+import SupersetSelector from '../core/SupersetSelector';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -41,6 +42,7 @@ const StyledActionList = styled.ul`
 `;
 
 const Explorer = () => {
+	const [superset, setSuperset] = useState(null);
 	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
 	const model = MODEL[modelId];
@@ -53,11 +55,13 @@ const Explorer = () => {
 
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
-		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
-
-	const json = modelId === MODEL_ID.Group ?
-		null :
-		<JsonEditor modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} onEdit={setPathHeadValue} />
+		<>
+			<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />
+			<h4>Preset</h4>
+			<PresetSelector modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} />
+			<h4>Superset</h4>
+			<SupersetSelector modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setSuperset={setSuperset} />
+		</>;
 
 	return (
 		<>
@@ -72,7 +76,6 @@ const Explorer = () => {
 							<li>Transpose</li>
 							<li>Inversion</li>
 						</StyledActionList>
-						{json}
 					</div>
 					<div>
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
