@@ -15,7 +15,20 @@ const StyledActionList = styled.ul`
 `;
 
 const StyledActionBox = styled.div`
+	margin-top: 16px;
 	padding: 8px;
+	width: 100%;
+	max-width: 512px;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	background-color: #f5f5f5;
+`;
+
+const StyledActionHeader = styled.h3`
+	margin-bottom: 8px;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
 `;
 
 const ACTIONS = [
@@ -25,7 +38,7 @@ const ACTIONS = [
 	},
 	{
 		name: 'Apply Superset',
-		component: PresetSelector
+		component: SupersetSelector
 	}
 ];
 
@@ -33,7 +46,9 @@ const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset }) =>
 	const [selectedActionIndex, setSelectedActionIndex] = useState(null);
 
 	let content = null;
+	let text = null;
 	if (selectedActionIndex === null) {
+		text = 'Actions';
 		content = (
 			<StyledActionList>
 				{ACTIONS.map((a, i) => {
@@ -49,17 +64,18 @@ const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset }) =>
 	else {
 		const action = ACTIONS[selectedActionIndex];
 		const Component = action.component;
+		text = action.name;
 		content = <>
-			<h3>
-				{action.name}
-				<ButtonInput onClick={() => setSelectedActionIndex(null)}>X</ButtonInput>
-			</h3>
 			<Component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setModel} setSuperset={setSuperset} />
 		</>
 	}
 
 	return (
 		<StyledActionBox>
+			<StyledActionHeader>
+				{text}
+				{selectedActionIndex !== null && <ButtonInput onClick={() => setSelectedActionIndex(null)}>X</ButtonInput>}
+			</StyledActionHeader>
 			{content}
 		</StyledActionBox>
 	);
