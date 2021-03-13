@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Icon from '../ui/assets/Icon';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import PresetSelector from './PresetSelector';
 import SupersetSelector from './SupersetSelector';
@@ -74,7 +75,9 @@ const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset }) =>
 		<StyledActionBox>
 			<StyledActionHeader>
 				{text}
-				{selectedActionIndex !== null && <ButtonInput onClick={() => setSelectedActionIndex(null)}>X</ButtonInput>}
+				{selectedActionIndex !== null && <ButtonInput onClick={() => setSelectedActionIndex(null)}>
+					<Icon iconId='delete' color='white' />
+				</ButtonInput>}
 			</StyledActionHeader>
 			{content}
 		</StyledActionBox>
