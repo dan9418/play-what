@@ -7,6 +7,7 @@ import ActionBox from '../core/ActionBox';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
 import Viewer from '../core/Viewer';
+import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
@@ -30,17 +31,17 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const StyledActionList = styled.ul`
+const StyledColHeader = styled.h2`
 	display: flex;
-	> li {
-		padding: 8px;
-		color: darkblue;
-		padding-right: 8px;
-		cursor: pointer;
-	}
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 16px;
 `;
 
 const Explorer = () => {
+	const [isEditingViewer, setIsEditingViewer] = useState(false);
+	const [isEditingData, setIsEditingData] = useState(false);
+
 	const [superset, setSuperset] = useState(null);
 	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
@@ -62,10 +63,21 @@ const Explorer = () => {
 			<Panel {...pathHead}>
 				<StyledExplorer>
 					<div>
+						<StyledColHeader>
+							Viewer
+							<ButtonInput onClick={() => setIsEditingViewer(!isEditingViewer)}>edit</ButtonInput>
+						</StyledColHeader>
+
+						{isEditingViewer &&
+							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+						}
 						{viewer}
-						<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
 					</div>
 					<div>
+						<StyledColHeader>
+							Data
+							<ButtonInput onClick={() => setIsEditingData(!isEditingData)}>edit</ButtonInput>
+						</StyledColHeader>
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
 					</div>
 				</StyledExplorer>

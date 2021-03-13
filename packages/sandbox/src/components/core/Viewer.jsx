@@ -28,12 +28,9 @@ const Viewer = ({ modelId, modelValue, modelRoot, superset }) => {
 	const labelProps = { modelId, modelValue, modelRoot, superset };
 
 	return (
-		<div>
-			<h2>Viewer</h2>
-			<StyledViewerContainer>
-				<viewer.component labelProps={labelProps} />
-			</StyledViewerContainer>
-		</div>
+		<StyledViewerContainer>
+			<viewer.component labelProps={labelProps} />
+		</StyledViewerContainer>
 	);
 };
 
