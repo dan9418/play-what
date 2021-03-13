@@ -1,12 +1,11 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
+import ActionBox from '../core/ActionBox';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
-import PresetSelector from '../core/PresetSelector';
-import SupersetSelector from '../core/SupersetSelector';
 import Viewer from '../core/Viewer';
 import Panel from '../ui/layout/Panel';
 
@@ -55,13 +54,7 @@ const Explorer = () => {
 
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
-		<>
-			<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />
-			<h4>Preset</h4>
-			<PresetSelector modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} />
-			<h4>Superset</h4>
-			<SupersetSelector modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setSuperset={setSuperset} />
-		</>;
+		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
 
 	return (
 		<>
@@ -70,12 +63,7 @@ const Explorer = () => {
 				<StyledExplorer>
 					<div>
 						{viewer}
-						<StyledActionList>
-							<li>Load Preset</li>
-							<li>Apply Superset</li>
-							<li>Transpose</li>
-							<li>Inversion</li>
-						</StyledActionList>
+						<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
 					</div>
 					<div>
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
