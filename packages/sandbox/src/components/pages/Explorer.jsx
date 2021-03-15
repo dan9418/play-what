@@ -8,7 +8,7 @@ import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
 import RootBox from '../core/RootBox';
 import Viewer from '../core/Viewer';
-import IconButton from '../ui/inputs/buttons/IconButton';
+import Col, { StyledColDivider } from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
@@ -24,60 +24,7 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const StyledCol = styled.div`
-	margin-top: 16px;
-	
-	@media(min-width: 1024px) {
-		&:not(:first-child) {
-			margin-left: 24px;
-		}
-		&:first-child {
-			padding-right: 24px;
-			border-right: 1px solid #ccc;
-		}
-	}
-`;
-
-const StyledColHeader = styled.h2`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-`;
-
-const StyledColDivider = styled.div`
-	padding-bottom: 16px;
-	margin-bottom: 16px;
-	border-bottom: 1px solid #ccc;
-`;
-
-const Col = ({ title, editPanel, children }) => {
-	const [isEditing, setIsEditing] = useState(false);
-
-	return (
-		<StyledCol>
-			<StyledColHeader>
-				{title}
-				<IconButton iconId={isEditing ? 'confirm' : 'edit'} onClick={() => setIsEditing(!isEditing)} />
-			</StyledColHeader>
-
-			<StyledColDivider />
-
-			{isEditing &&
-				<>
-					{editPanel}
-					<StyledColDivider />
-				</>
-			}
-
-			{children}
-		</StyledCol>
-	);
-};
-
 const Explorer = () => {
-	const [isEditingViewer, setIsEditingViewer] = useState(false);
-	const [isEditingData, setIsEditingData] = useState(false);
-
 	const [superset, setSuperset] = useState(null);
 	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
