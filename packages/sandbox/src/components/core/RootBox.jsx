@@ -16,7 +16,7 @@ const RootBox = ({ modelRoot }) => {
 			name={name}
 			preview={preview}
 		>
-			{JSON.stringify(modelRoot, null, '\t')}
+			{JSON.stringify(modelRoot)}
 		</Subpanel>
 	);
 };

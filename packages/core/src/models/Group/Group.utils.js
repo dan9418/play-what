@@ -9,14 +9,15 @@ const getPodLabel = () => null;
 const getMetaChildren = (modelValue, modelRoot, setModelValue) => {
 	return modelValue.map((child, i) => {
 		const model = MODEL[child.modelId];
-		const name = child.name ? child.name : model.utils.getName(child.modelValue, child.modelRoot);
+		const calcModelRoot = child.modelRoot || modelRoot;
+		const name = child.name ? child.name : model.utils.getName(child.modelValue, calcModelRoot);
 		return {
 			...child,
 			childIndex: i,
 			name,
-			preview: model.utils.getPreview(child.modelValue, child.modelRoot || modelRoot),
+			preview: model.utils.getPreview(child.modelValue, calcModelRoot),
 			modelValue: child.modelValue,
-			modelRoot: child.modelRoot || modelRoot,
+			modelRoot: calcModelRoot,
 			onEdit: v => setModelValue(v)
 		}
 	});

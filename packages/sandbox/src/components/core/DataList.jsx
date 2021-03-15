@@ -1,10 +1,7 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import React from 'react';
-import ReactJson from 'react-json-view';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
-import JsonEditor from './PresetSelector';
-import RootBox from './RootBox';
 import Viewer from './Viewer';
 
 
@@ -46,8 +43,6 @@ const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
 
 	return (
 		<>
-			{modelRoot && <RootBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />}
-			{false && <JsonEditor src={modelValue} onEdit={onEdit} />}
 			{metaChildren && (
 				<ul>
 					{getItems(metaChildren)}

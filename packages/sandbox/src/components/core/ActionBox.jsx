@@ -32,27 +32,33 @@ const StyledActionHeader = styled.h3`
 	justify-content: space-between;
 `;
 
-const ACTIONS = [
-	{
-		name: 'Load Preset',
-		component: PresetSelector
-	},
-	{
-		name: 'Apply Superset',
-		component: SupersetSelector
-	}
-];
+const ACTIONS = {
+	data: [
+		{
+			name: 'Load Preset',
+			component: PresetSelector
+		}
+	],
+	viewer: [
+		{
+			name: 'Apply Superset',
+			component: SupersetSelector
+		}
+	]
+};
 
-const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset }) => {
+const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset, actionType }) => {
 	const [selectedActionIndex, setSelectedActionIndex] = useState(null);
+
+	const actions = ACTIONS[actionType];
+	const onClose = () => setSelectedActionIndex(null);
 
 	let content = null;
 	let text = null;
 	if (selectedActionIndex === null) {
-		text = 'Actions';
 		content = (
 			<StyledActionList>
-				{ACTIONS.map((a, i) => {
+				{actions.map((a, i) => {
 					return (
 						<li key={a.name}>
 							<ButtonInput onClick={() => setSelectedActionIndex(i)}>{a.name}</ButtonInput>
@@ -63,22 +69,16 @@ const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset }) =>
 		);
 	}
 	else {
-		const action = ACTIONS[selectedActionIndex];
+		const action = actions[selectedActionIndex];
 		const Component = action.component;
 		text = action.name;
 		content = <>
-			<Component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setModel} setSuperset={setSuperset} />
+			<Component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setModel} setSuperset={setSuperset} onClose={onClose} />
 		</>
 	}
 
 	return (
 		<StyledActionBox>
-			<StyledActionHeader>
-				{text}
-				{selectedActionIndex !== null && <ButtonInput onClick={() => setSelectedActionIndex(null)}>
-					<Icon iconId='delete' color='white' />
-				</ButtonInput>}
-			</StyledActionHeader>
 			{content}
 		</StyledActionBox>
 	);

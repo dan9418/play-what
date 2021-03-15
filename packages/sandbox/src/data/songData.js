@@ -18,7 +18,7 @@ export const LIBRARY_PATH_ROOT = {
 	name: 'Library',
 	preview: 'Select a group',
 	modelId: MODEL_ID.Group,
-	modelRoot: NOTE.B.value,
+	modelRoot: NOTE.A.value,
 	modelValue: [
 		{
 			name: 'Charts',
@@ -39,9 +39,7 @@ export const LIBRARY_PATH_ROOT = {
 					name: chord.name,
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: chord.value,
-
-					modelRoot: NOTE.C.value
-
+					modelRoot: NOTE.A.value
 				}
 			))
 		},
@@ -53,7 +51,7 @@ export const LIBRARY_PATH_ROOT = {
 					name: scale.name,
 					modelId: MODEL_ID.RelativeScale,
 					modelValue: scale.value,
-					modelRoot: NOTE.B.value
+					modelRoot: NOTE.A.value
 				}
 			))
 		}

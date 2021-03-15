@@ -8,6 +8,7 @@ import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
 import Viewer from '../core/Viewer';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
+import IconButton from '../ui/inputs/buttons/IconButton';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
@@ -65,19 +66,25 @@ const Explorer = () => {
 					<div>
 						<StyledColHeader>
 							Viewer
-							<ButtonInput onClick={() => setIsEditingViewer(!isEditingViewer)}>edit</ButtonInput>
+							<IconButton iconId={isEditingViewer ? 'confirm' : 'edit'} onClick={() => setIsEditingViewer(!isEditingViewer)} />
 						</StyledColHeader>
 
 						{isEditingViewer &&
-							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />
 						}
+
 						{viewer}
 					</div>
 					<div>
 						<StyledColHeader>
 							Data
-							<ButtonInput onClick={() => setIsEditingData(!isEditingData)}>edit</ButtonInput>
+							<IconButton iconId={isEditingData ? 'confirm' : 'edit'} onClick={() => setIsEditingData(!isEditingData)} />
 						</StyledColHeader>
+
+						{isEditingData &&
+							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
+						}
+
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
 					</div>
 				</StyledExplorer>
