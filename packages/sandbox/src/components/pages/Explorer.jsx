@@ -6,6 +6,7 @@ import { pathHeadState } from '../../state/pathState';
 import ActionBox from '../core/ActionBox';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
+import RootBox from '../core/RootBox';
 import Viewer from '../core/Viewer';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import IconButton from '../ui/inputs/buttons/IconButton';
@@ -47,6 +48,7 @@ const Explorer = () => {
 	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
 	const model = MODEL[modelId];
+	const { isRelative } = model;
 
 	const refreshKey = JSON.stringify({ modelId, modelValue, modelRoot });
 
@@ -57,6 +59,10 @@ const Explorer = () => {
 	const viewer = modelId === MODEL_ID.Group ?
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
+
+	const root = modelId === MODEL_ID.Group || isRelative ?
+		<RootBox modelRoot={modelRoot} />
+		: null;
 
 	return (
 		<>
@@ -85,6 +91,7 @@ const Explorer = () => {
 							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
 						}
 
+						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
 					</div>
 				</StyledExplorer>
