@@ -27,12 +27,14 @@ const StyledExplorer = styled.div`
 const StyledCol = styled.div`
 	margin-top: 16px;
 	
-	&:not(:first-child) {
-		margin-left: 32px;
-	}
-	&:first-child {
-		padding-right: 32px;
-		border-right: 1px solid #ccc;
+	@media(min-width: 1024px) {
+		&:not(:first-child) {
+			margin-left: 24px;
+		}
+		&:first-child {
+			padding-right: 24px;
+			border-right: 1px solid #ccc;
+		}
 	}
 `;
 
@@ -86,8 +88,14 @@ const Explorer = () => {
 							<IconButton iconId={isEditingViewer ? 'confirm' : 'edit'} onClick={() => setIsEditingViewer(!isEditingViewer)} />
 						</StyledColHeader>
 
+						<StyledColDivider />
+
+
 						{isEditingViewer &&
+						<>
 							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />
+							<StyledColDivider />
+						</>
 						}
 
 						{viewer}
@@ -101,7 +109,10 @@ const Explorer = () => {
 						<StyledColDivider />
 
 						{isEditingData &&
-							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
+							<>
+								<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
+								<StyledColDivider />
+							</>
 						}
 
 						{root}

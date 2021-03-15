@@ -11,9 +11,13 @@ export const Fret = ({ tuning, stringIndex, fretIndex, labelProps }) => {
 
 	const noteIndex = tuning[stringIndex] + fretIndex;
 	const isLowString = stringIndex === tuning.length - 1;
+	const isHighString = stringIndex === 0;
 
 	return (
 		<div className={classes.join(' ')}>
+			<div className="fret-number">
+				{isHighString && fretIndex}
+			</div>
 			<div className='fret-string' />
 			<FretLabel {...labelProps} noteIndex={noteIndex} />
 			<div className="fret-dots">
