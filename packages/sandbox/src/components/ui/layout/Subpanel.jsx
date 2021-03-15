@@ -52,10 +52,10 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild }
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				{metaChild.modelId !== MODEL_ID.Group && <>
+				{metaChild && metaChild.modelId !== MODEL_ID.Group && <>
 					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
 				</>}
-				{metaChild.modelId !== MODEL_ID.Note && metaChild.modelId !== MODEL_ID.Interval && <>
+				{metaChild && metaChild.modelId !== MODEL_ID.Note && metaChild.modelId !== MODEL_ID.Interval && <>
 					<ZoomButton metaChild={metaChild} />
 				</>}
 			</StyledButtonContainer>

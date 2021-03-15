@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
-import ActionBox from '../core/ActionBox';
+import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
 import RootBox from '../core/RootBox';
@@ -55,13 +55,13 @@ const Explorer = () => {
 				<StyledExplorer>
 					<Col
 						title="Viewer"
-						editPanel={<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
+						editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
 					>
 						{viewer}
 					</Col>
 					<Col
 						title="Data"
-						editPanel={<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />}
+						editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />}
 					>
 						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
