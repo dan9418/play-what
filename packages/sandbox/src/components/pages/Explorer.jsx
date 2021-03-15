@@ -50,6 +50,30 @@ const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
+const Col = ({ title, editPanel, children }) => {
+	const [isEditing, setIsEditing] = useState(false);
+
+	return (
+		<StyledCol>
+			<StyledColHeader>
+				{title}
+				<IconButton iconId={isEditing ? 'confirm' : 'edit'} onClick={() => setIsEditing(!isEditing)} />
+			</StyledColHeader>
+
+			<StyledColDivider />
+
+			{isEditing &&
+				<>
+					{editPanel}
+					<StyledColDivider />
+				</>
+			}
+
+			{children}
+		</StyledCol>
+	);
+};
+
 const Explorer = () => {
 	const [isEditingViewer, setIsEditingViewer] = useState(false);
 	const [isEditingData, setIsEditingData] = useState(false);
@@ -82,42 +106,19 @@ const Explorer = () => {
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
-					<StyledCol>
-						<StyledColHeader>
-							Viewer
-							<IconButton iconId={isEditingViewer ? 'confirm' : 'edit'} onClick={() => setIsEditingViewer(!isEditingViewer)} />
-						</StyledColHeader>
-
-						<StyledColDivider />
-
-
-						{isEditingViewer &&
-						<>
-							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />
-							<StyledColDivider />
-						</>
-						}
-
+					<Col
+						title="Viewer"
+						editPanel={<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
+					>
 						{viewer}
-					</StyledCol>
-					<StyledCol>
-						<StyledColHeader>
-							Data
-							<IconButton iconId={isEditingData ? 'confirm' : 'edit'} onClick={() => setIsEditingData(!isEditingData)} />
-						</StyledColHeader>
-
-						<StyledColDivider />
-
-						{isEditingData &&
-							<>
-								<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
-								<StyledColDivider />
-							</>
-						}
-
+					</Col>
+					<Col
+						title="Data"
+						editPanel={<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />}
+					>
 						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
-					</StyledCol>
+					</Col>
 				</StyledExplorer>
 			</Panel>
 		</>
