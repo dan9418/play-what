@@ -18,7 +18,7 @@ const VIEWER = {
 const StyledViewerContainer = styled.div`
     width: 100%;
 	max-width: 512px;
-	margin-top: 16px;
+	padding: 16px;
 `;
 
 const viewer = VIEWER[VIEWER_ID.Fretboard];

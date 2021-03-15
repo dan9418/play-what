@@ -69,10 +69,6 @@ const StyledSubpanel = styled.section`
 	border: 1px solid #ccc;
 	border-radius: 8px;
 	background-color: #f5f5f5;
-	& > .subpanel-body {
-		padding: 8px;
-		overflow: auto;
-	}
 `;
 
 const Subpanel = ({ children, ...props }) => {
@@ -81,11 +77,7 @@ const Subpanel = ({ children, ...props }) => {
 	return (
 		<StyledSubpanel>
 			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
-			{isOpen && (
-				<pre className="subpanel-body">
-					{children}
-				</pre>
-			)}
+			{isOpen && children}
 		</StyledSubpanel>
 	);
 };
