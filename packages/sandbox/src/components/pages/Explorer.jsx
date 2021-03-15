@@ -8,28 +8,31 @@ import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
 import RootBox from '../core/RootBox';
 import Viewer from '../core/Viewer';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import IconButton from '../ui/inputs/buttons/IconButton';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
 	display: grid;
-	grid-gap: 32px;
 	width: 100%;
-	max-width: 512px;
 	margin: auto;
-	padding: 0 0 24px 0;
 
 	grid-template-columns: 1fr;
+	max-width: 512px;
 	@media(min-width: 1024px) {
 		grid-template-columns: 1fr 1fr;
 		max-width: 100%;
 	}
+`;
 
-	pre {
-		max-width: 512px;
-		max-height: 256px;
-		overflow: auto;
+const StyledCol = styled.div`
+	margin-top: 16px;
+	
+	&:not(:first-child) {
+		margin-left: 32px;
+	}
+	&:first-child {
+		padding-right: 32px;
+		border-right: 1px solid #ccc;
 	}
 `;
 
@@ -69,7 +72,7 @@ const Explorer = () => {
 			<BreadcrumbList />
 			<Panel {...pathHead}>
 				<StyledExplorer>
-					<div>
+					<StyledCol>
 						<StyledColHeader>
 							Viewer
 							<IconButton iconId={isEditingViewer ? 'confirm' : 'edit'} onClick={() => setIsEditingViewer(!isEditingViewer)} />
@@ -80,8 +83,8 @@ const Explorer = () => {
 						}
 
 						{viewer}
-					</div>
-					<div>
+					</StyledCol>
+					<StyledCol>
 						<StyledColHeader>
 							Data
 							<IconButton iconId={isEditingData ? 'confirm' : 'edit'} onClick={() => setIsEditingData(!isEditingData)} />
@@ -93,7 +96,7 @@ const Explorer = () => {
 
 						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
-					</div>
+					</StyledCol>
 				</StyledExplorer>
 			</Panel>
 		</>

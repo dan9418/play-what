@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Icon from '../ui/assets/Icon';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import PresetSelector from './PresetSelector';
+import { StyledRootBox } from './RootBox';
 import SupersetSelector from './SupersetSelector';
 
 const StyledActionList = styled.ul`
@@ -78,9 +79,11 @@ const ActionBox = ({ modelId, modelValue, modelRoot, setModel, setSuperset, acti
 	}
 
 	return (
-		<StyledActionBox>
-			{content}
-		</StyledActionBox>
+		<StyledRootBox>
+			<StyledActionBox>
+				{content}
+			</StyledActionBox>
+		</StyledRootBox>
 	);
 };
 

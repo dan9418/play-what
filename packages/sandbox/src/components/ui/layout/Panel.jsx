@@ -82,17 +82,13 @@ const StyledPanel = styled.div`
     border-radius: 8px;
 `;
 
-const StyledPanelBody = styled.section`
-	margin-top: 32px;
-`;
+
 
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
 			<PanelHeader name={name} preview={preview} caption={caption} />
-			<StyledPanelBody>
-				{children}
-			</StyledPanelBody>
+			{children}
 		</StyledPanel>
 	);
 };
