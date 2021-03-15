@@ -36,8 +36,9 @@ const getName = (modelValue, modelRoot) => {
 }
 
 const getPreview = (modelData) => {
-	const [p, d] = modelData;
-	return `p = ${p}, d = ${d}`;
+	return JSON.stringify(modelData);
+	//const [p, d] = modelData;
+	//return `p = ${p}, d = ${d}`;
 };
 
 const getPodColor = pod => {

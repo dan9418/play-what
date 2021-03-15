@@ -1,12 +1,12 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { pathHeadState } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
-import RootBox from '../core/RootBox';
+import RootSubpanel from '../core/RootSubpanel';
 import Viewer from '../core/Viewer';
 import Col, { StyledColDivider } from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
@@ -19,8 +19,10 @@ const StyledExplorer = styled.div`
 	grid-template-columns: 1fr;
 	max-width: 512px;
 	@media(min-width: 1024px) {
-		grid-template-columns: 1fr 1fr;
-		max-width: 100%;
+		${({ $isSingle }) => $isSingle ? '' : css`
+			grid-template-columns: 1fr 1fr;
+			max-width: 100%;
+		`}
 	}
 `;
 
@@ -37,13 +39,15 @@ const Explorer = () => {
 
 	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHeadValue);
 
-	const viewer = modelId === MODEL_ID.Group ?
+	const isGroup = modelId === MODEL_ID.Group;
+
+	const viewer = isGroup ?
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
 
-	const root = modelId === MODEL_ID.Group || isRelative ?
+	const root = isGroup || isRelative ?
 		<>
-			<RootBox modelRoot={modelRoot} />
+			<RootSubpanel modelRoot={modelRoot} />
 			<StyledColDivider />
 		</>
 		: null;
@@ -52,13 +56,15 @@ const Explorer = () => {
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
-				<StyledExplorer>
-					<Col
-						title="Viewer"
-						editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
-					>
-						{viewer}
-					</Col>
+				<StyledExplorer $isSingle={isGroup}>
+					{!isGroup &&
+						<Col
+							title="Viewer"
+							editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
+						>
+							{viewer}
+						</Col>
+					}
 					<Col
 						title="Data"
 						editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />}

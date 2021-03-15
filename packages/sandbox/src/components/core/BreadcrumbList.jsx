@@ -36,9 +36,11 @@ const BreadcrumbList = () => {
 	const path = useRecoilValue(pathState);
 	const { popAt } = usePathNavContext();
 
+	const isVisible = path && path.length >= 2;
+
 	return (
 		<StyledBreadcrumbList>
-			{path.map((b, i) => {
+			{isVisible && path.map((b, i) => {
 				const className = i + 1 === path.length ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (

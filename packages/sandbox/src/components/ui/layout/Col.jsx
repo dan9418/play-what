@@ -6,10 +6,10 @@ const StyledCol = styled.div`
 	margin-top: 16px;
 	
 	@media(min-width: 1024px) {
-		&:not(:first-child) {
+		&:last-child:not(:first-child) {
 			margin-left: 24px;
 		}
-		&:first-child {
+		&:first-child:not(:last-child) {
 			padding-right: 24px;
 			border-right: 1px solid #ccc;
 		}
