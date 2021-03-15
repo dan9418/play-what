@@ -44,7 +44,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild, hasChildren }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
 			<span className="name">{name}</span>
@@ -52,12 +52,8 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild }
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				{metaChild && metaChild.modelId !== MODEL_ID.Group && <>
-					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
-				</>}
-				{metaChild && metaChild.modelId !== MODEL_ID.Note && metaChild.modelId !== MODEL_ID.Interval && <>
-					<ZoomButton metaChild={metaChild} />
-				</>}
+				{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
+				{metaChild && <ZoomButton metaChild={metaChild} />}
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);
@@ -76,7 +72,7 @@ const Subpanel = ({ children, ...props }) => {
 
 	return (
 		<StyledSubpanel>
-			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} />
+			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} hasChildren={!!children} />
 			{isOpen && children}
 		</StyledSubpanel>
 	);
