@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
 const StyledCol = styled.div`
@@ -14,6 +14,14 @@ const StyledCol = styled.div`
 			border-right: 1px solid #ccc;
 		}
 	}
+`;
+
+const StyledColBody = styled.div`
+	${({ $isEnabled }) => $isEnabled ? '' : css`
+		opacity: .5;
+		pointer-events: none;
+		cursor: text;
+	`}
 `;
 
 const StyledColHeader = styled.h2`
@@ -47,7 +55,9 @@ const Col = ({ title, editPanel, children }) => {
 				</>
 			}
 
-			{children}
+			<StyledColBody $isEnabled={!isEditing}>
+				{children}
+			</StyledColBody>
 		</StyledCol>
 	);
 };
