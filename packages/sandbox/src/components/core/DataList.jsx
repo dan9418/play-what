@@ -4,14 +4,10 @@ import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
 import Viewer from './Viewer';
 
-
-const StyledPropertyHeader = styled.h4`
-	color: #555;
-	text-align: left;
-	width: 100%;
-	max-width: 512px;
-	text-transform: uppercase;
-	margin: 16px 8px 8px;
+const StyledDataList = styled.ul`
+	& > li {
+		margin-bottom: 16px;
+	}
 `;
 
 const getItems = metaChildren => {
@@ -19,13 +15,8 @@ const getItems = metaChildren => {
 		const { name, modelId, preview, modelValue, modelRoot, label } = child;
 		const model = MODEL[modelId];
 
-		const header = <StyledPropertyHeader>
-			{label || null}
-		</StyledPropertyHeader>;
-
 		return (
 			<li key={name + i}>
-				{header}
 				<Subpanel
 					metaChild={child}
 					caption={model.name}
@@ -44,9 +35,9 @@ const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
 	return (
 		<>
 			{metaChildren && (
-				<ul>
+				<StyledDataList>
 					{getItems(metaChildren)}
-				</ul>
+				</StyledDataList>
 			)}
 		</>
 	);

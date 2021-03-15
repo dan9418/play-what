@@ -40,7 +40,12 @@ const StyledColHeader = styled.h2`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+`;
+
+const StyledColDivider = styled.div`
+	padding-bottom: 16px;
 	margin-bottom: 16px;
+	border-bottom: 1px solid #ccc;
 `;
 
 const Explorer = () => {
@@ -64,7 +69,10 @@ const Explorer = () => {
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
 
 	const root = modelId === MODEL_ID.Group || isRelative ?
-		<RootBox modelRoot={modelRoot} />
+		<>
+			<RootBox modelRoot={modelRoot} />
+			<StyledColDivider />
+		</>
 		: null;
 
 	return (
@@ -89,6 +97,8 @@ const Explorer = () => {
 							Data
 							<IconButton iconId={isEditingData ? 'confirm' : 'edit'} onClick={() => setIsEditingData(!isEditingData)} />
 						</StyledColHeader>
+
+						<StyledColDivider />
 
 						{isEditingData &&
 							<ActionBox modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />
