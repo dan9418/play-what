@@ -51,7 +51,8 @@ export const siblingsState = selector({
 
 		return {
 			prev,
-			next
+			next,
+			parent
 		};
 	}
 });

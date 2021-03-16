@@ -29,26 +29,38 @@ export const MODEL = {
 		name: 'Group',
 		modelId: MODEL_ID.Group,
 		utils: GroupUtils,
-		presets: []
+		presets: [],
+		validChildren: [
+			MODEL_ID.Group,
+			MODEL_ID.Note,
+			MODEL_ID.AbsoluteChord,
+			MODEL_ID.AbsoluteScale,
+			MODEL_ID.Interval,
+			MODEL_ID.RelativeChord,
+			MODEL_ID.RelativeScale
+		]
 	},
 	// Absolute
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,
 		utils: NoteUtils,
-		presets: NOTE_VALUES
+		presets: NOTE_VALUES,
+		validChildren: []
 	},
 	[MODEL_ID.AbsoluteChord]: {
 		name: 'Absolute Chord',
 		modelId: MODEL_ID.AbsoluteChord,
 		utils: AbsoluteChordUtils,
-		presets: RELATIVE_CHORD_VALUES
+		presets: RELATIVE_CHORD_VALUES,
+		validChildren: [MODEL_ID.Note]
 	},
 	[MODEL_ID.AbsoluteScale]: {
 		name: 'Absolute Scale',
 		modelId: MODEL_ID.AbsoluteScale,
 		utils: AbsoluteScaleUtils,
-		presets: RELATIVE_SCALE_VALUES
+		presets: RELATIVE_SCALE_VALUES,
+		validChildren: [MODEL_ID.Note]
 	},
 	// Relative
 	[MODEL_ID.Interval]: {
@@ -56,21 +68,24 @@ export const MODEL = {
 		isRelative: true,
 		modelId: MODEL_ID.Interval,
 		utils: IntervalUtils,
-		presets: INTERVAL_VALUES
+		presets: INTERVAL_VALUES,
+		validChildren: []
 	},
 	[MODEL_ID.RelativeChord]: {
 		name: 'Relative Chord',
 		isRelative: true,
 		modelId: MODEL_ID.RelativeChord,
 		utils: RelativeChordUtils,
-		presets: RELATIVE_CHORD_VALUES
+		presets: RELATIVE_CHORD_VALUES,
+		validChildren: [MODEL_ID.Interval]
 	},
 	[MODEL_ID.RelativeScale]: {
 		name: 'Relative Scale',
 		isRelative: true,
 		modelId: MODEL_ID.RelativeScale,
 		utils: RelativeScaleUtils,
-		presets: RELATIVE_SCALE_VALUES
+		presets: RELATIVE_SCALE_VALUES,
+		validChildren: [MODEL_ID.Interval]
 	}
 };
 
