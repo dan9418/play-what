@@ -1,36 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
-import PresetSelector from './PresetSelector';
-import SupersetSelector from './SupersetSelector';
-
-const ACTIONS = {
-	data: [
-		{
-			name: 'Load Preset',
-			description: 'Import an existing model',
-			component: PresetSelector
-		},
-		{
-			name: 'Transpose',
-			description: 'Shift to another octave',
-			component: PresetSelector
-		},
-		{
-			name: 'Chord Inversion',
-			description: 'Raise the lowest note by an octave',
-			component: PresetSelector
-		}
-	],
-	viewer: [
-		{
-			name: 'Apply Superset',
-			description: 'Superimpose a model containing these pods',
-			component: SupersetSelector
-		}
-	]
-};
-
 
 const StyledActionList = styled.ul`
 	& > li {
@@ -62,14 +32,7 @@ const getItems = actions => {
 };
 
 
-const ActionList = ({ modelId, modelValue, modelRoot, setModel, setSuperset, actionType }) => {
-
-	const actions = ACTIONS[actionType].map(a => ({
-		...a,
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setModel} setSuperset={setSuperset} />
-	})
-	);
-
+const ActionList = ({ actions }) => {
 	return (
 		<StyledActionList>
 			{getItems(actions)}

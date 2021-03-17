@@ -6,7 +6,9 @@ import { pathHeadState } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
+import PresetSelector from '../core/PresetSelector';
 import RootSubpanel from '../core/RootSubpanel';
+import SupersetSelector from '../core/SupersetSelector';
 import Viewer from '../core/Viewer';
 import Col, { StyledColDivider } from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
@@ -25,6 +27,22 @@ const StyledExplorer = styled.div`
 		`}
 	}
 `;
+
+const VIEWER_ACTIONS = [
+	{
+		name: 'Load Preset',
+		description: 'Import an existing model',
+		component: PresetSelector
+	}
+];
+
+const DATA_ACTIONS = [
+	{
+		name: 'Apply Superset',
+		description: 'Superimpose a model containing these pods',
+		component: SupersetSelector
+	}
+];
 
 const Explorer = () => {
 	const [superset, setSuperset] = useState(null);
@@ -52,6 +70,16 @@ const Explorer = () => {
 		</>
 		: null;
 
+	const viewerActions = VIEWER_ACTIONS.map(a => ({
+		...a,
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+	}));
+
+	const dataActions = DATA_ACTIONS.map(a => ({
+		...a,
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+	}));
+
 	return (
 		<>
 			<BreadcrumbList />
@@ -60,14 +88,18 @@ const Explorer = () => {
 					{!isGroup &&
 						<Col
 							title="Viewer"
-							editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="viewer" />}
+							editPanel={(
+								<ActionList actions={viewerActions} />
+							)}
 						>
 							{viewer}
 						</Col>
 					}
 					<Col
 						title="Data"
-						editPanel={<ActionList modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} actionType="data" />}
+						editPanel={(
+							<ActionList actions={dataActions} />
+						)}
 					>
 						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
