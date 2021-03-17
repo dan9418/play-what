@@ -5,6 +5,7 @@ import { pathState } from '../../state/pathState';
 import Icon from '../ui/assets/Icon';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';
+import SubpanelFooter from '../ui/layout/SubpanelFooter';
 
 const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
 	const [modelIndex, setModelIndex] = useState(0);
@@ -28,9 +29,7 @@ const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
 		<>
 			<DropdownInput options={modelOptions} value={selectedModelOption} setValue={(v, i) => setModelIndex(i)} />
 			<DropdownInput options={options} value={value} setValue={setSelection} />
-			<ButtonInput onClick={setValue}>
-				<Icon iconId='confirm' color='white' />
-			</ButtonInput>
+			<SubpanelFooter onSubmit={setValue} />
 		</>
 	);
 };
