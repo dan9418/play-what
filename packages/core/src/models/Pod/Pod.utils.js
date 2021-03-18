@@ -53,11 +53,15 @@ const getX = (pod, options = {}) => {
 
 // Search
 
-const getPodAtPitch = (pod, p, modelRoot) => {
+const getPodAtPitch = (pod, p, modelRoot, matchOctave = false) => {
 	const pitchOffset = modelRoot ? modelRoot[0] : 0;
 	const target = p - pitchOffset;
-	const a = NumberUtils.modulo(pod[0], 12);
-	const b = NumberUtils.modulo(target, 12);
+	let a = pod[0];
+	let b = target;
+	if (!matchOctave) {
+		a = NumberUtils.modulo(a, 12);
+		b = NumberUtils.modulo(b, 12);
+	}
 	return a === b ? pod : null;
 };
 

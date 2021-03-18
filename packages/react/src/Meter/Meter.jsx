@@ -40,7 +40,7 @@ const DotList = ({ modelId, modelValue, modelRoot }) => {
 
 	const list = [];
 	for (let i = -39; i < 48; i++) {
-		const pod = model.utils.getPodAtPitch(modelValue, modelRoot, i);
+		const pod = model.utils.getPodAtPitch(modelValue, modelRoot, i, true);
 		const hasDegree = pod !== null;
 
 		let color = '#fff';

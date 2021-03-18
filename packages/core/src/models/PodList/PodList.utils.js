@@ -24,8 +24,8 @@ const reduce = (A, max = MAX_POD) => {
 
 // Search
 
-const getPodAtPitch = (A, p, modelRoot) => {
-	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelRoot));
+const getPodAtPitch = (A, p, modelRoot, matchOctave) => {
+	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelRoot, matchOctave));
 	return pod ? pod : null;
 };
 
