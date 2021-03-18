@@ -47,7 +47,7 @@ const VIEWER_ACTIONS = [
 
 const Explorer = () => {
 	const [superset, setSuperset] = useState(null);
-	const [pathHead, setPathHeadValue] = useRecoilState(pathHeadState);
+	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
 	const model = MODEL[modelId];
 	const { isRelative } = model;
@@ -56,7 +56,7 @@ const Explorer = () => {
 
 	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
 
-	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHeadValue);
+	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHead);
 
 	const isGroup = modelId === MODEL_ID.Group;
 
@@ -73,12 +73,12 @@ const Explorer = () => {
 
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
 	}));
 
 	const dataActions = DATA_ACTIONS.map(a => ({
 		...a,
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setModel={setPathHeadValue} setSuperset={setSuperset} />
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
 	}));
 
 	return (
@@ -104,7 +104,7 @@ const Explorer = () => {
 						)}
 					>
 						{root}
-						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHeadValue} />
+						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHead} />
 					</Col>
 				</StyledExplorer>
 			</Panel>

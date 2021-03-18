@@ -24,7 +24,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
+const PresetSelector = ({ modelId, modelValue, modelRoot, setPathHead }) => {
 	const [typeIndex, setTypeIndex] = useState(0);
 	const [presetIndex, setPresetIndex] = useState(0);
 
@@ -33,22 +33,25 @@ const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
 
 	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });
-	const selectedModelOption = typeOptions[typeIndex];
+	const selectedTypeOption = typeOptions[typeIndex];
 
 	let presetOptions = [];
 	let selectedPresetOption = null;
 	if (typeIndex > 0) {
-		presetOptions = MODEL[selectedModelOption.value].presets;
+		presetOptions = MODEL[selectedTypeOption.value].presets;
 		selectedPresetOption = presetOptions[presetIndex];
 	}
 
-	const onSubmit = () => setModel(selectedPresetOption.value);
+	const onSubmit = () => setPathHead({
+		modelId: selectedTypeOption.value,
+		modelValue: selectedPresetOption.value
+	});
 
 	return (
 		<>
 			<StyledPresetSelector>
 				<StyledLabel>Type: </StyledLabel>
-				<DropdownInput options={typeOptions} value={selectedModelOption} setValue={(v, i) => setTypeIndex(i)} />
+				<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />
 				{presetOptions.length > 0 &&
 					<>
 						<StyledLabel>Preset: </StyledLabel>

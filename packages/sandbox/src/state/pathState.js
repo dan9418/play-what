@@ -23,7 +23,7 @@ export const pathHeadState = selector({
 		console.log('set pathHead', newValue);
 		set(pathState, [...parents, {
 			...pathHead,
-			modelValue: newValue
+			...newValue
 		}])
 	}
 });
