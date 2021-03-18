@@ -40,15 +40,17 @@ const DotList = ({ modelId, modelValue, modelRoot }) => {
 
 	const list = [];
 	for (let i = -39; i < 48; i++) {
-		const pod = model.utils.getPodAtPitch(modelValue, i, modelRoot);
+		const pod = model.utils.getPodAtPitch(modelValue, modelRoot, i);
 		const hasDegree = pod !== null;
 
 		let color = '#fff';
+		let podName = null;
 		if (hasDegree) {
-			color = DEFAULT_DEGREE_COLOR_SCHEME[pod[1]]
+			color = DEFAULT_DEGREE_COLOR_SCHEME[pod[1]];
+			//podName = pod[1];
 		}
 
-		const podName = null;
+
 
 		list.push(<StyledDot $color={color} key={i}>{podName}</StyledDot>);
 	}
