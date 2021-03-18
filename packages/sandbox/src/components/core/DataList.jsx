@@ -39,6 +39,11 @@ const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
 					{getItems(metaChildren)}
 				</StyledDataList>
 			)}
+			{!metaChildren && (
+				<pre>
+					{JSON.stringify(modelValue, null, '\t')}
+				</pre>
+			)}
 		</>
 	);
 };

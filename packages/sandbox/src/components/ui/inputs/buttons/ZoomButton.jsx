@@ -7,7 +7,7 @@ import IconButton from './IconButton';
 const ZoomButton = ({ metaChild }) => {
 	const { push } = usePathNavContext();
 
-	if(!metaChild || metaChild.modelId === MODEL_ID.Note || metaChild.modelId === MODEL_ID.Interval) {
+	if(!metaChild) {
 		return null;
 	}
 
