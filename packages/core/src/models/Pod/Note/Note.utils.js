@@ -29,9 +29,13 @@ const getAccidentalString = (offset, d) => {
 };
 
 const getName = (modelValue, modelRoot) => {
-	const offset = getAccidentalOffset(modelValue, modelRoot);
-	const accidental = getAccidentalString(offset, modelValue[1]);
-	const spelling = DEGREE_VALUES[modelValue[1]].name;
+	const reducedRoot = PodUtils.reduce(modelRoot);
+	const reducedValue = PodUtils.reduce(modelValue);
+
+	const d = reducedValue[1];
+	const offset = getAccidentalOffset(reducedValue, reducedRoot);
+	const accidental = getAccidentalString(offset, d);
+	const spelling = DEGREE_VALUES[d].name;
 	return `${spelling}${accidental}`;
 }
 

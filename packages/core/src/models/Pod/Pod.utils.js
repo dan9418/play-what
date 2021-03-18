@@ -21,7 +21,7 @@ const reduce = (a, max = MAX_POD) => {
 
 // Addition
 
-const addPod = (a, b, reduceResult = true) => {
+const addPod = (a, b, reduceResult = false) => {
 	const p = a[0] + b[0];
 	const d = a[1] + b[1];
 	const result = [p, d];

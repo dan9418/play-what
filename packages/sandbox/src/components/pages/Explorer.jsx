@@ -10,6 +10,7 @@ import DataList from '../core/DataList';
 import PresetSelector from '../core/PresetSelector';
 import RootSubpanel from '../core/RootSubpanel';
 import SupersetSelector from '../core/SupersetSelector';
+import TransposeSelector from '../core/TransposeSelector';
 import Viewer from '../core/Viewer';
 import Col, { StyledColDivider } from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
@@ -34,6 +35,11 @@ const DATA_ACTIONS = [
 		name: 'Load Preset',
 		description: 'Import an existing model',
 		component: PresetSelector
+	},
+	{
+		name: 'Transpose',
+		description: 'Shift all the notes by the same amount',
+		component: TransposeSelector
 	}
 ];
 

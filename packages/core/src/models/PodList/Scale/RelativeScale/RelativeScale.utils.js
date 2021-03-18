@@ -11,7 +11,7 @@ const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodListUtils.ge
 
 const getName = (modelValue, modelRoot) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(modelRoot);
+	const rootName = NoteUtils.getName(modelRoot, modelRoot);
 	const presetName = preset ? preset.id : 'Untitled Scale';
 	return `${rootName} ${presetName}`;
 };
