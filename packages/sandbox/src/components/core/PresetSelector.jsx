@@ -25,32 +25,38 @@ const StyledLabel = styled.h4`
 `;
 
 const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
-	const [modelIndex, setModelIndex] = useState(0);
-	const [index, setIndex] = useState(0);
+	const [typeIndex, setTypeIndex] = useState(0);
+	const [presetIndex, setPresetIndex] = useState(0);
+
 	const { parent } = useRecoilValue(pathState);
+	let parentModel = MODEL[parent ? parent.modelId : MODEL_ID.Group];
 
-	let parentModel = MODEL[MODEL_ID.Group];
-	if (parent) {
-		parentModel = MODEL[parent.modelId];
+	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
+	typeOptions.unshift({ value: 'none', name: 'Select a type...' });
+	const selectedModelOption = typeOptions[typeIndex];
+
+	let presetOptions = [];
+	let selectedPresetOption = null;
+	if (typeIndex > 0) {
+		presetOptions = MODEL[selectedModelOption.value].presets;
+		selectedPresetOption = presetOptions[presetIndex];
 	}
-	const modelOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
-	const selectedModelOption = modelOptions[modelIndex];
 
-	const options = MODEL[selectedModelOption.value].presets;
-
-	const value = options[index];
-	const setValue = () => setModel(value.value);
-	const setSelection = (v, i) => setIndex(i);
+	const onSubmit = () => setModel(selectedPresetOption.value);
 
 	return (
 		<>
 			<StyledPresetSelector>
 				<StyledLabel>Type: </StyledLabel>
-				<DropdownInput options={modelOptions} value={selectedModelOption} setValue={(v, i) => setModelIndex(i)} />
-				<StyledLabel>Preset: </StyledLabel>
-				<DropdownInput options={options} value={value} setValue={setSelection} />
+				<DropdownInput options={typeOptions} value={selectedModelOption} setValue={(v, i) => setTypeIndex(i)} />
+				{presetOptions.length > 0 &&
+					<>
+						<StyledLabel>Preset: </StyledLabel>
+						<DropdownInput options={presetOptions} value={selectedPresetOption} setValue={(v, i) => setPresetIndex(i)} />
+					</>
+				}
 			</StyledPresetSelector>
-			<SubpanelFooter onSubmit={setValue} />
+			<SubpanelFooter onSubmit={onSubmit} />
 		</>
 	);
 };
