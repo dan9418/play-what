@@ -60,6 +60,10 @@ const Explorer = () => {
 
 	const isGroup = modelId === MODEL_ID.Group;
 
+	const meter = isGroup ?
+		null :
+		<Meter modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
+
 	const viewer = isGroup ?
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
@@ -85,7 +89,7 @@ const Explorer = () => {
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
-				<Meter modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />
+				{meter}
 				<StyledExplorer $isSingle={isGroup}>
 					{!isGroup &&
 						<Col
