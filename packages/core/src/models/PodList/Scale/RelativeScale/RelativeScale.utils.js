@@ -7,7 +7,7 @@ import { RELATIVE_SCALE_VALUES } from "./RelativeScale.constants";
 // Wrappers
 const getMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Interval);
 const playSound = (modelValue, modelRoot) => PodListUtils.playSound(modelValue, modelRoot);
-const getPodAtPitch = (modelValue, modelRoot, p) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot);
+const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
 
 const getName = (modelValue, modelRoot) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
