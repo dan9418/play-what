@@ -5,7 +5,8 @@ import Viewer from './Viewer';
 
 const NOTE_MODEL = MODEL[MODEL_ID.Note];
 
-const RootSubpanel = ({ modelRoot }) => {
+const RootSubpanel = ({ pathHead }) => {
+	const { modelRoot } = pathHead;
 
 	const name = NOTE_MODEL.utils.getName(modelRoot, modelRoot);
 	const caption = "Root Note"; //NOTE_MODEL.name;
@@ -25,14 +26,7 @@ const RootSubpanel = ({ modelRoot }) => {
 	};
 
 	return (
-		<Subpanel
-			metaChild={metaChild}
-			caption={caption}
-			name={name}
-			preview={preview}
-		>
-			<Viewer {...implicitProps} metaChildren={[]} />
-		</Subpanel>
+		<Viewer {...implicitProps} metaChildren={[]} />
 	);
 };
 

@@ -32,6 +32,11 @@ const StyledExplorer = styled.div`
 
 const DATA_ACTIONS = [
 	{
+		name: 'Root',
+		description: 'Set the root note (key center)',
+		component: RootSubpanel
+	},
+	{
 		name: 'Load Preset',
 		description: 'Import an existing model',
 		component: PresetSelector
@@ -74,13 +79,6 @@ const Explorer = () => {
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
 
-	const root = isGroup || isRelative ?
-		<>
-			<RootSubpanel modelRoot={modelRoot} />
-			<StyledColDivider />
-		</>
-		: null;
-
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
 		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
@@ -113,7 +111,6 @@ const Explorer = () => {
 							<ActionList actions={dataActions} />
 						)}
 					>
-						{root}
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHead} />
 					</Col>
 				</StyledExplorer>

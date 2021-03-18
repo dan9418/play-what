@@ -48,7 +48,9 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 
 	const onSubmit = () => {
 		const initModelRoot = pathHead.modelRoot;
-		const modelRoot = PodUtils.addPod(initModelRoot, selectedIntervalOption.value);
+		const modelRoot = selectedDirectionOption.value === 0 ?
+			PodUtils.addPod(initModelRoot, selectedIntervalOption.value) :
+			PodUtils.subtractPod(initModelRoot, selectedIntervalOption.value);
 
 		const { modelId, modelValue } = pathHead;
 		const model = MODEL[modelId];

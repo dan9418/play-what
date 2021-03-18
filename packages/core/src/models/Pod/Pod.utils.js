@@ -28,6 +28,13 @@ const addPod = (a, b, reduceResult = false) => {
 	return reduceResult ? reduce(result) : result;
 }
 
+const subtractPod = (a, b, reduceResult = false) => {
+	const p = a[0] - b[0];
+	const d = a[1] - b[1];
+	const result = [p, d];
+	return reduceResult ? reduce(result) : result;
+}
+
 const addPodList = (a, B, max = MAX_POD) => {
 	const newValue = B.map((b) => addPod(a, b, max));
 	return newValue;
@@ -76,6 +83,7 @@ const playSound = (modelValue, modelRoot) => {
 export default {
 	areEqual,
 	addPod,
+	subtractPod,
 	addPodList,
 	reduce,
 	getPitchClass,
