@@ -1,11 +1,28 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 import { pathState } from '../../state/pathState';
-import Icon from '../ui/assets/Icon';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
+
+const StyledPresetSelector = styled.div`
+	padding: 16px;
+
+	select {
+		width: 100%;
+	}
+`;
+
+const StyledLabel = styled.h4`
+	margin: 8px 0 4px;
+	color: #555;
+	font-weight: bold;
+
+	:first-child {
+		margin-top: 0;
+	}
+`;
 
 const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
 	const [modelIndex, setModelIndex] = useState(0);
@@ -27,8 +44,12 @@ const PresetSelector = ({ modelId, modelValue, modelRoot, setModel }) => {
 
 	return (
 		<>
-			<DropdownInput options={modelOptions} value={selectedModelOption} setValue={(v, i) => setModelIndex(i)} />
-			<DropdownInput options={options} value={value} setValue={setSelection} />
+			<StyledPresetSelector>
+				<StyledLabel>Type: </StyledLabel>
+				<DropdownInput options={modelOptions} value={selectedModelOption} setValue={(v, i) => setModelIndex(i)} />
+				<StyledLabel>Preset: </StyledLabel>
+				<DropdownInput options={options} value={value} setValue={setSelection} />
+			</StyledPresetSelector>
 			<SubpanelFooter onSubmit={setValue} />
 		</>
 	);

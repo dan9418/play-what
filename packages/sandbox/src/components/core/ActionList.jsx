@@ -5,10 +5,6 @@ import Subpanel from '../ui/layout/Subpanel';
 const StyledActionList = styled.ul`
 	& > li {
 		margin-bottom: 16px;
-
-		& > section > *:not(:first-child) {
-			margin: 8px;
-		}
 	}
 `;
 

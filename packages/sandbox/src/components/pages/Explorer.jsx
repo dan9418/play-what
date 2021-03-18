@@ -2,6 +2,7 @@ import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled, { css } from 'styled-components';
+import Meter from '../../../../react/src/Meter/Meter';
 import { pathHeadState } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
@@ -28,7 +29,7 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const VIEWER_ACTIONS = [
+const DATA_ACTIONS = [
 	{
 		name: 'Load Preset',
 		description: 'Import an existing model',
@@ -36,7 +37,7 @@ const VIEWER_ACTIONS = [
 	}
 ];
 
-const DATA_ACTIONS = [
+const VIEWER_ACTIONS = [
 	{
 		name: 'Apply Superset',
 		description: 'Superimpose a model containing these pods',
@@ -84,6 +85,7 @@ const Explorer = () => {
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
+				<Meter modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />
 				<StyledExplorer $isSingle={isGroup}>
 					{!isGroup &&
 						<Col

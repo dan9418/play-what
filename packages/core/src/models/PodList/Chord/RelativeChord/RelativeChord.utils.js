@@ -39,7 +39,7 @@ const getPodProps = (modelValue, modelRoot, p, superset) => {
 	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.modelRoot, p) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
-		color: 'white', //`${IntervalUtils.getPodColor(superPod)}33`,
+		color: 'white', //`${IntervalUtils.getPodColor(superPod)}`,
 		label: IntervalUtils.getName(superPod)
 	};
 	const color = IntervalUtils.getPodColor(pod);
