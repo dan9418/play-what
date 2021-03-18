@@ -24,7 +24,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetSelector = ({ modelId, modelValue, modelRoot, setPathHead }) => {
+const PresetSelector = ({ pathHead, setPathHead }) => {
 	const [typeIndex, setTypeIndex] = useState(0);
 	const [presetIndex, setPresetIndex] = useState(0);
 
@@ -34,6 +34,7 @@ const PresetSelector = ({ modelId, modelValue, modelRoot, setPathHead }) => {
 	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });
 	const selectedTypeOption = typeOptions[typeIndex];
+	const model = MODEL[selectedTypeOption.value];
 
 	let presetOptions = [];
 	let selectedPresetOption = null;
@@ -42,10 +43,17 @@ const PresetSelector = ({ modelId, modelValue, modelRoot, setPathHead }) => {
 		selectedPresetOption = presetOptions[presetIndex];
 	}
 
-	const onSubmit = () => setPathHead({
-		modelId: selectedTypeOption.value,
-		modelValue: selectedPresetOption.value
-	});
+	const onSubmit = () => {
+		const modelId = selectedTypeOption.value;
+		const modelRoot = pathHead.modelRoot;
+		const modelValue = selectedPresetOption.value;
+		setPathHead({
+			modelId,
+			modelValue,
+			name: model.utils.getName(modelValue, modelRoot),
+			preview: model.utils.getPreview(modelValue, modelRoot)
+		});
+	};
 
 	return (
 		<>

@@ -78,7 +78,7 @@ const Explorer = () => {
 
 	const dataActions = DATA_ACTIONS.map(a => ({
 		...a,
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
+		editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
 	}));
 
 	return (
