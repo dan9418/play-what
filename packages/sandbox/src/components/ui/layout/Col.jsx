@@ -36,17 +36,20 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, editPanel, children }) => {
+const Col = ({ title, editPanel, children, hideHeader }) => {
 	const [isEditing, setIsEditing] = useState(false);
 
 	return (
 		<StyledCol>
-			<StyledColHeader>
-				{title}
-				<IconButton iconId={isEditing ? 'confirm' : 'edit'} onClick={() => setIsEditing(!isEditing)} />
-			</StyledColHeader>
-
-			<StyledColDivider />
+			{!hideHeader && (
+				<>
+					<StyledColHeader>
+						{title}
+						<IconButton iconId={isEditing ? 'confirm' : 'edit'} onClick={() => setIsEditing(!isEditing)} />
+					</StyledColHeader>
+					<StyledColDivider />
+				</>
+			)}
 
 			{isEditing &&
 				<>

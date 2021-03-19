@@ -59,6 +59,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild, 
 	);
 };
 
+
 const StyledSubpanel = styled.section`
 	width: 100%;
 	max-width: 512px;

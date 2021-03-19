@@ -9,16 +9,26 @@ const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
 const StyledDot = styled.div`
  	${({ $color }) => $color ? `background-color: ${$color}` : ''};
-	height: 8px;
+	height: 32px;
 	width: 100%;
 	border: 1px solid black;
-	border-radius: 2px;
+	:not(:last-child){
+		border-right: 0;
+	}
+	//border-radius: 2px;
 	padding: 2px;
-	margin: 0 2px;
+	//margin: 0 2px;
 	font-size: 80%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	:last-child {
+		border-radius: 0 4px 4px 0;
+	}
+	:first-child {
+		border-radius: 4px 0 0 4px;
+	}
 `;
 
 const StyledMeter = styled.div`
@@ -49,8 +59,9 @@ const DotList = ({ modelId, modelValue, modelRoot }) => {
 			color = DEFAULT_DEGREE_COLOR_SCHEME[pod[1]];
 			//podName = pod[1];
 		}
-
-
+		if (i === 0) {
+			podName = 'C'
+		}
 
 		list.push(<StyledDot $color={color} key={i}>{podName}</StyledDot>);
 	}

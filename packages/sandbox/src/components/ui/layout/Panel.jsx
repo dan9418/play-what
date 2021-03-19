@@ -20,8 +20,6 @@ const StyledPanelHeader = styled.section`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 8px 0;
-	border-bottom: 2px solid #ccc;
 	
 	& .preview-container {
 		& .name-container {

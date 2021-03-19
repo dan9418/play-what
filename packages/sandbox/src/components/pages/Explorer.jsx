@@ -93,6 +93,7 @@ const Explorer = () => {
 		<>
 			<BreadcrumbList />
 			<Panel {...pathHead}>
+				{!meter && <div css={`border-bottom: 2px solid #ccc;`} />}
 				{meter}
 				<StyledExplorer $isSingle={isGroup}>
 					{!isGroup &&
@@ -110,6 +111,7 @@ const Explorer = () => {
 						editPanel={(
 							<ActionList actions={dataActions} />
 						)}
+						hideHeader={isGroup}
 					>
 						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHead} />
 					</Col>
