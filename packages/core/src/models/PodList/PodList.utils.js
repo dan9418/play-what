@@ -35,7 +35,7 @@ const getMetaChildren = (modelValue, modelRoot, childModelId) => {
 	const model = MODEL[childModelId];
 	return modelValue.map((pod, i) => {
 		return {
-			childIndex: i,
+			pathId: i,
 			name: model.utils.getName(pod, modelRoot),
 			preview: model.utils.getPreview(pod, modelRoot),
 			modelId: childModelId,

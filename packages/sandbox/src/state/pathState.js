@@ -4,18 +4,26 @@ import { dataState } from "./dataState";
 
 export const pathState = atom({
 	key: 'pathState',
-	default: [null]
+	default: []
 });
 
 export const pathHeadState = selector({
 	key: 'pathHeadState',
-	get: ({ get, set }) => {
+	get: ({ get }) => {
 		const path = get(pathState);
 		const data = get(dataState);
 
+		/*
+			name
+			preview
+			modelId
+			modelRoot
+			modelValue
+		*/
+
 		let node = data;
 		for (let i = 0; i < path.length; i++) {
-
+			node = node.modelValue[path[i]]
 		}
 
 		console.log('pathHead', node);
@@ -33,21 +41,36 @@ export const pathHeadState = selector({
 	}
 });
 
+export const pathParentState = selector({
+	key: 'pathParentState',
+	get: ({ get }) => {
+		const path = get(pathState);
+		const data = get(dataState);
+
+		let node = data;
+		for (let i = 0; i < path.length; i++) {
+			node = node.modelValue[path[i]]
+		}
+
+		console.log('pathParent', node);
+		return node;
+	}
+});
+
 export const siblingsState = selector({
 	key: 'siblingsState',
 	get: ({ get }) => {
 		const path = get(pathState);
+		const pathHead = get(pathHeadState);
+		const pathParent = get(pathParentState);
 
 		if (path.length < 2) return null;
 
-		const pathHead = path[path.length - 1];
-		const parent = path[path.length - 2];
+		const parentModel = MODEL[pathParent.modelId];
 
-		const parentModel = MODEL[parent.modelId];
+		const siblings = parentModel.utils.getMetaChildren(pathParent.modelValue, pathParent.modelRoot);
 
-		const siblings = parentModel.utils.getMetaChildren(parent.modelValue, parent.modelRoot);
-
-		const i = pathHead.childIndex;
+		const i = pathHead.pathId;
 		const isFirst = i === 0;
 		const isLast = i === siblings.length - 1;
 
@@ -57,7 +80,7 @@ export const siblingsState = selector({
 		return {
 			prev,
 			next,
-			parent
+			parent: pathParent
 		};
 	}
 });

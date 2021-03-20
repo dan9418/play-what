@@ -33,7 +33,7 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const path = [];//useRecoilValue(pathState);
+	const path = useRecoilValue(pathState);
 	const { popAt } = usePathNavContext();
 
 	const isVisible = path && path.length >= 2;
@@ -44,7 +44,7 @@ const BreadcrumbList = () => {
 				const className = i + 1 === path.length ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
-					<li key={i} className={className} onClick={onClick}>{b.name}</li>
+					<li key={i} className={className} onClick={onClick}>{/*b.name*/b}</li>
 				);
 			})}
 		</StyledBreadcrumbList>

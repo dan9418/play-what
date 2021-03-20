@@ -13,7 +13,7 @@ const getMetaChildren = (modelValue, modelRoot, setModelValue) => {
 		const name = child.name ? child.name : model.utils.getName(child.modelValue, calcModelRoot);
 		return {
 			...child,
-			childIndex: i,
+			pathId: i,
 			name,
 			preview: model.utils.getPreview(child.modelValue, calcModelRoot),
 			modelValue: child.modelValue,

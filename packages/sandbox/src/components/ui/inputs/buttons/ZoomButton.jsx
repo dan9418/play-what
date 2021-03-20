@@ -11,7 +11,7 @@ const ZoomButton = ({ metaChild }) => {
 		return null;
 	}
 
-	const onClick = () => push(metaChild);
+	const onClick = () => push(metaChild.pathId);
 
 	return (
 		<IconButton onClick={onClick} color={THEME.primary} iconId='zoom' />
