@@ -34,14 +34,14 @@ export const pathHeadState = selector({
 		return node;
 	},
 	set: ({ get, set }, newValue) => {
-		const path = get(pathState);
-		const pathHead = path[path.length - 1];
-		const parents = path.slice(0, path.length - 1);
+		/*const path = get(pathState);
+		const data = get(dataState);
+
+		const parentIds = path.slice(0, path.length - 1);
+		const newData = JSON.parse(JSON.stringify(data));*/
+
 		console.log('set pathHead', newValue);
-		set(pathState, [...parents, {
-			...pathHead,
-			...newValue
-		}])
+		// set(dataState, newData);
 	}
 });
 
