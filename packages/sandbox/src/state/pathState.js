@@ -23,7 +23,11 @@ export const pathHeadState = selector({
 
 		let node = data;
 		for (let i = 0; i < path.length; i++) {
-			node = node.modelValue[path[i]]
+			const pathId = path[i];
+			const { modelId, modelValue, modelRoot } = node;
+			const model = MODEL[modelId];
+			const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+			node = metaChildren[pathId];
 		}
 
 		console.log('pathHead', node);
@@ -47,9 +51,15 @@ export const pathParentState = selector({
 		const path = get(pathState);
 		const data = get(dataState);
 
+		if (!path.length) return null;
+
 		let node = data;
-		for (let i = 0; i < path.length; i++) {
-			node = node.modelValue[path[i]]
+		for (let i = 0; i < path.length - 1; i++) {
+			const pathId = path[i];
+			const { modelId, modelValue, modelRoot } = node;
+			const model = MODEL[modelId];
+			const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+			node = metaChildren[pathId];
 		}
 
 		console.log('pathParent', node);
