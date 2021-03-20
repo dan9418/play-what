@@ -33,7 +33,7 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const path = useRecoilValue(pathState);
+	const path = [];//useRecoilValue(pathState);
 	const { popAt } = usePathNavContext();
 
 	const isVisible = path && path.length >= 2;

@@ -3,7 +3,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { usePathNavContext } from "../../../contexts/PathNavContext";
-import { pathHeadState, pathState } from "../../../state/pathState";
+import { pathHeadState } from "../../../state/pathState";
 import THEME from "../../../styles/theme";
 import IconButton from "../inputs/buttons/IconButton";
 
@@ -49,7 +49,6 @@ const PanelHeader = () => {
 	const { modelId, name, preview, modelValue, modelRoot } = pathHead;
 	const model = MODEL[modelId];
 
-	const path = useRecoilValue(pathState);
 
 	const { pop, prev, next } = usePathNavContext();
 
@@ -66,7 +65,7 @@ const PanelHeader = () => {
 				{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelRoot)} iconId="speaker" />}
 				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
 				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
-				{path.length > 1 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+				{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
 
 			</div>
 		</StyledPanelHeader>

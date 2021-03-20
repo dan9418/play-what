@@ -2,7 +2,7 @@ import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { pathState } from '../../state/pathState';
+import { siblingsState } from '../../state/pathState';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
 
@@ -28,7 +28,7 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 	const [typeIndex, setTypeIndex] = useState(0);
 	const [presetIndex, setPresetIndex] = useState(0);
 
-	const { parent } = useRecoilValue(pathState);
+	const { parent } = useRecoilValue(siblingsState);
 	let parentModel = MODEL[parent ? parent.modelId : MODEL_ID.Group];
 
 	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));

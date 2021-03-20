@@ -1,20 +1,25 @@
-import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { MODEL } from "@pw/core/src/models/Model.constants";
 import { atom, selector } from "recoil";
-import LIBRARY_PATH_ROOT from "../data/songData";
+import { dataState } from "./dataState";
 
 export const pathState = atom({
 	key: 'pathState',
-	default: [LIBRARY_PATH_ROOT]
+	default: [null]
 });
 
 export const pathHeadState = selector({
 	key: 'pathHeadState',
 	get: ({ get, set }) => {
 		const path = get(pathState);
-		const pathHead = path[path.length - 1];
+		const data = get(dataState);
 
-		console.log('pathHead', pathHead);
-		return pathHead;
+		let node = data;
+		for (let i = 0; i < path.length; i++) {
+
+		}
+
+		console.log('pathHead', node);
+		return node;
 	},
 	set: ({ get, set }, newValue) => {
 		const path = get(pathState);
