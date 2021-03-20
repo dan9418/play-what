@@ -1,9 +1,9 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../react/src/Meter/Meter';
-import { pathHeadState } from '../../state/pathState';
+import { metaChildrenState, pathHeadState, pathState } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
@@ -58,16 +58,12 @@ const VIEWER_ACTIONS = [
 
 const Explorer = () => {
 	const [superset, setSuperset] = useState(null);
+	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const { modelId, modelValue, modelRoot, onEdit } = pathHead;
-	const model = MODEL[modelId];
-	const { isRelative } = model;
+	const metaChildren = useRecoilValue(metaChildrenState);
+	const { modelId, modelValue, modelRoot, pathId } = pathHead;
 
-	const refreshKey = JSON.stringify({ modelId, modelValue, modelRoot });
-
-	useEffect(() => window.scrollTo(0, 0), [refreshKey]);
-
-	const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot, setPathHead);
+	useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
 	const isGroup = modelId === MODEL_ID.Group;
 

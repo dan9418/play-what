@@ -67,6 +67,20 @@ export const pathParentState = selector({
 	}
 });
 
+export const metaChildrenState = selector({
+	key: 'metaChildrenState',
+	get: ({ get }) => {
+		const pathHead = get(pathHeadState);
+
+		const { modelId, modelValue, modelRoot } = pathHead;
+		const model = MODEL[modelId];
+		const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+
+		console.log('metaChildren', metaChildren);
+		return metaChildren;
+	}
+});
+
 export const siblingsState = selector({
 	key: 'siblingsState',
 	get: ({ get }) => {
