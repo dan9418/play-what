@@ -13,7 +13,7 @@ const StyledDataList = styled.ul`
 
 const getItems = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, modelId, preview, modelValue, modelRoot } = child;
+		const { name, modelId, preview, modelValue, modelOptions } = child;
 		const model = MODEL[modelId];
 
 		const isGroup = modelId === MODEL_ID.Group;
@@ -34,7 +34,7 @@ const getItems = metaChildren => {
 				preview={preview}
 			>
 				{/* @ts-ignore */}
-				<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} metaChildren={metaChildren} />
+				<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} metaChildren={metaChildren} />
 			</Subpanel>
 		);
 
@@ -46,7 +46,7 @@ const getItems = metaChildren => {
 	})
 };
 
-const DataList = ({ modelId, modelValue, modelRoot, metaChildren, onEdit }) => {
+const DataList = ({ modelId, modelValue, modelOptions, metaChildren, onEdit }) => {
 
 	return (
 		<>

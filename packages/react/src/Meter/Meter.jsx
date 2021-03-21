@@ -43,10 +43,10 @@ const StyledMeter = styled.div`
 	}
 `;
 
-const DotList = ({ modelId, modelValue, modelRoot }) => {
+const DotList = ({ modelId, modelValue, modelOptions }) => {
 	const list = [];
 	for (let i = -39; i < 48; i++) {
-		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelRoot, i, true);
+		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelOptions, i, true);
 		const hasDegree = pod !== null;
 
 		let color = '#fff';

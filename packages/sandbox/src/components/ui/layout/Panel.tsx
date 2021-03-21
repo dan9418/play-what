@@ -46,7 +46,7 @@ const StyledPanelHeader = styled.section`
 
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
-	const { modelId, name, preview, modelValue, modelRoot } = pathHead;
+	const { modelId, name, preview, modelValue, modelOptions } = pathHead;
 	const model = MODEL[modelId];
 
 
@@ -62,7 +62,7 @@ const PanelHeader = () => {
 				<div className='preview'>{preview}</div>
 			</div>
 			<div className='button-container'>
-				{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelRoot)} iconId="speaker" />}
+				{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelOptions)} iconId="speaker" />}
 				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
 				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
 				{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}

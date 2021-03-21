@@ -61,7 +61,7 @@ const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const metaChildren = useRecoilValue(metaChildrenState);
-	const { modelId, modelValue, modelRoot, pathId } = (pathHead as any);
+	const { modelId, modelValue, modelOptions, pathId } = (pathHead as any);
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
@@ -69,16 +69,16 @@ const Explorer = () => {
 
 	const meter = isGroup ?
 		null :
-		<Meter modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} />;
+		<Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
 
 	const viewer = isGroup ?
 		null :
-		<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} superset={superset} />;
+		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} superset={superset} />;
 
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
 		/* @ts-ignore */
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} setPathHead={setPathHead} setSuperset={setSuperset} />
 	}));
 
 	const dataActions = DATA_ACTIONS.map(a => ({
@@ -114,7 +114,7 @@ const Explorer = () => {
 						)}
 						hideHeader={isGroup}
 					>
-						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelRoot={modelRoot} onEdit={setPathHead} />
+						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} onEdit={setPathHead} />
 					</Col>
 				</StyledExplorer>
 			</Panel>

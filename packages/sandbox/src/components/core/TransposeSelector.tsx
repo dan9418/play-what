@@ -6,7 +6,6 @@ import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
 
-
 const StyledTransposeSelector = styled.div`
 	padding: 16px;
 
@@ -43,10 +42,8 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 	const selectedDirectionOption = DIRECTION_OPTIONS[directionIndex];
 	const selectedIntervalOption = INTERVAL_VALUES[intervalIndex];
 
-
-
 	const onSubmit = () => {
-		const initModelRoot = pathHead.modelRoot;
+		const initModelRoot = pathHead.modelOptions.modelRoot;
 		const modelRoot = selectedDirectionOption.value === 0 ?
 			PodUtils.addPod(initModelRoot, selectedIntervalOption.value) :
 			PodUtils.subtractPod(initModelRoot, selectedIntervalOption.value);
@@ -56,7 +53,11 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 		setPathHead({
 			modelRoot,
 			name: ModelUtils.getName(modelId, modelValue, modelRoot),
-			preview: ModelUtils.getPreview(modelId, modelValue, modelRoot)
+			preview: ModelUtils.getPreview(modelId, modelValue, modelRoot),
+			modelOptions: {
+				...pathHead.modelOptions,
+				modelRoot
+			}
 		});
 	};
 

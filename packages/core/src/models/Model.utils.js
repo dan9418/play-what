@@ -10,8 +10,8 @@ import { RELATIVE_SCALE_VALUES } from "./PodList/Scale/RelativeScale/RelativeSca
 
 // Name
 
-const getNoteName = (modelValue, modelRoot) => {
-	const reducedRoot = PodUtils.reduce(modelRoot);
+const getNoteName = (modelValue, modelOptions) => {
+	const reducedRoot = PodUtils.reduce(modelOptions.modelRoot);
 	const reducedValue = PodUtils.reduce(modelValue);
 
 	const d = reducedValue[1];
@@ -50,32 +50,32 @@ const getIntervalName = (modelValue) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getRelativeChordName = (modelValue, modelRoot) => {
+const getRelativeChordName = (modelValue, modelOptions) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(modelRoot, modelRoot);
+	const rootName = NoteUtils.getName(modelOptions, modelOptions);
 	const presetName = preset ? preset.id : 'Untitled Chord';
 	return `${rootName} ${presetName}`;
 };
 
-const getRelativeScaleName = (modelValue, modelRoot) => {
+const getRelativeScaleName = (modelValue, modelOptions) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(modelRoot, modelRoot);
+	const rootName = NoteUtils.getName(modelOptions, modelOptions);
 	const presetName = preset ? preset.id : 'Untitled Scale';
 	return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId, modelValue, modelRoot) => {
+const getName = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
 	case MODEL_ID.Note:
-		return getNoteName(modelValue, modelRoot)
+		return getNoteName(modelValue, modelOptions)
 	case MODEL_ID.Interval:
-		return getIntervalName(modelValue, modelRoot);
+		return getIntervalName(modelValue, modelOptions);
 	case MODEL_ID.Group:
 		return 'Group';
 	case MODEL_ID.RelativeChord:
-		return getRelativeChordName(modelValue, modelRoot);
+		return getRelativeChordName(modelValue, modelOptions);
 	case MODEL_ID.RelativeScale:
-		return getRelativeScaleName(modelValue, modelRoot);
+		return getRelativeScaleName(modelValue, modelOptions);
 	case MODEL_ID.AbsoluteChord:
 		return 'Chord';
 	case MODEL_ID.AbsoluteScale:
@@ -89,25 +89,25 @@ const getName = (modelId, modelValue, modelRoot) => {
 
 const getGroupPreview = (modelValue) => `${modelValue.length} Items`;
 
-const getRelativePreview = (modelValue, modelRoot) => {
-	const intervalNames = modelValue.map(interval => getIntervalName(interval, modelRoot)).join(', ');
-	const notes = PodUtils.addPodList(modelRoot, modelValue);
-	const noteNames = notes.map(note => getNoteName(note, modelRoot)).join(', ');
+const getRelativePreview = (modelValue, modelOptions) => {
+	const intervalNames = modelValue.map(interval => getIntervalName(interval, modelOptions)).join(', ');
+	const notes = PodUtils.addPodList(modelOptions.modelRoot, modelValue);
+	const noteNames = notes.map(note => getNoteName(note, modelOptions)).join(', ');
 	return `${intervalNames} (${noteNames})`;
 }
 
-const getAbsolutePreview = (modelValue, modelRoot) => modelValue.map(note => getNoteName(note, modelRoot)).join(', ');
+const getAbsolutePreview = (modelValue, modelOptions) => modelValue.map(note => getNoteName(note, modelOptions)).join(', ');
 
-const getPreview = (modelId, modelValue, modelRoot) => {
+const getPreview = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
 	case MODEL_ID.Group:
-		return getGroupPreview(modelValue, modelRoot);
+		return getGroupPreview(modelValue, modelOptions);
 	case MODEL_ID.RelativeChord:
 	case MODEL_ID.RelativeScale:
-		return getRelativePreview(modelValue, modelRoot);
+		return getRelativePreview(modelValue, modelOptions);
 	case MODEL_ID.AbsoluteChord:
 	case MODEL_ID.AbsoluteScale:
-		return getAbsolutePreview(modelValue, modelRoot);
+		return getAbsolutePreview(modelValue, modelOptions);
 	default:
 		return null;
 	}
@@ -115,20 +115,20 @@ const getPreview = (modelId, modelValue, modelRoot) => {
 
 // getPodAtPitch
 
-const getPodAtPitchInSingle = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
+const getPodAtPitchInSingle = (modelValue, modelOptions, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelOptions, matchOctave);
 
-const getPodAtPitchInList = (modelValue, modelRoot, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
+const getPodAtPitchInList = (modelValue, modelOptions, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelOptions, matchOctave);
 
-const getPodAtPitch = (modelId, modelValue, modelRoot, noteIndex, matchOctave) => {
+const getPodAtPitch = (modelId, modelValue, modelOptions, noteIndex, matchOctave) => {
 	switch (modelId) {
 	case MODEL_ID.Note:
 	case MODEL_ID.Interval:
-		return getPodAtPitchInSingle(modelValue, modelRoot, noteIndex, matchOctave);
+		return getPodAtPitchInSingle(modelValue, modelOptions, noteIndex, matchOctave);
 	case MODEL_ID.RelativeChord:
 	case MODEL_ID.RelativeScale:
 	case MODEL_ID.AbsoluteChord:
 	case MODEL_ID.AbsoluteScale:
-		return getPodAtPitchInList(modelValue, modelRoot, noteIndex, matchOctave);
+		return getPodAtPitchInList(modelValue, modelOptions, noteIndex, matchOctave);
 	default:
 		return null;
 	}
@@ -136,33 +136,33 @@ const getPodAtPitch = (modelId, modelValue, modelRoot, noteIndex, matchOctave) =
 
 // getPodProps
 
-const getNotePodProps = (modelValue, modelRoot, p) => {
-	const pod = getPodAtPitch(modelValue, modelRoot, p);
+const getNotePodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
 	const label = getNoteName(pod);
 	return { color, label };
 }
 
-const getIntervalPodProps = (modelValue, modelRoot, p) => {
-	const pod = getPodAtPitch(modelValue, modelRoot, p);
+const getIntervalPodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitch(modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
 	const label = getIntervalName(pod);
 	return { color, label };
 }
 
-const getAbsolutePodProps = (modelValue, modelRoot, p) => {
-	const pod = getPodAtPitchInList(modelValue, modelRoot, p);
+const getAbsolutePodProps = (modelValue, modelOptions, p) => {
+	const pod = getPodAtPitchInList(modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
 	const label = getNoteName(pod);
 	return { color, label };
 }
 
-const getRelativePodProps = (modelValue, modelRoot, p, superset) => {
-	const pod = getPodAtPitchInList(modelValue, modelRoot, p);
-	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.modelRoot, p) : null;
+const getRelativePodProps = (modelValue, modelOptions, p, superset) => {
+	const pod = getPodAtPitchInList(modelValue, modelOptions, p);
+	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.modelOptions, p) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: 'white',
@@ -173,18 +173,18 @@ const getRelativePodProps = (modelValue, modelRoot, p, superset) => {
 	return { color, label };
 }
 
-const getPodProps = (modelId, modelValue, modelRoot, noteIndex, superset) => {
+const getPodProps = (modelId, modelValue, modelOptions, noteIndex, superset) => {
 	switch (modelId) {
 	case MODEL_ID.Note:
-		return getNotePodProps(modelValue, modelRoot, noteIndex, superset)
+		return getNotePodProps(modelValue, modelOptions, noteIndex, superset)
 	case MODEL_ID.Interval:
-		return getIntervalPodProps(modelValue, modelRoot, noteIndex, superset);
+		return getIntervalPodProps(modelValue, modelOptions, noteIndex, superset);
 	case MODEL_ID.RelativeChord:
 	case MODEL_ID.RelativeScale:
-		return getRelativePodProps(modelValue, modelRoot, noteIndex, superset);
+		return getRelativePodProps(modelValue, modelOptions, noteIndex, superset);
 	case MODEL_ID.AbsoluteChord:
 	case MODEL_ID.AbsoluteScale:
-		return getAbsolutePodProps(modelValue, modelRoot, noteIndex, superset);
+		return getAbsolutePodProps(modelValue, modelOptions, noteIndex, superset);
 	default:
 		return null;
 	}
@@ -192,36 +192,36 @@ const getPodProps = (modelId, modelValue, modelRoot, noteIndex, superset) => {
 
 // Meta Children
 
-const getGroupMetaChildren = (modelValue, modelRoot) => {
+const getGroupMetaChildren = (modelValue, modelOptions) => {
 	return modelValue.map((child, i) => {
 		const model = MODEL[child.modelId];
-		const calcModelRoot = child.modelRoot || modelRoot;
-		const name = child.name ? child.name : model.utils.getName(child.modelValue, calcModelRoot);
+		const calcModelOptions = child.modelOptions || modelOptions;
+		const name = child.name ? child.name : model.utils.getName(child.modelValue, calcModelOptions);
 		return {
 			...child,
 			pathId: i,
 			name,
-			preview: getPreview(child.modelId, child.modelValue, calcModelRoot),
+			preview: getPreview(child.modelId, child.modelValue, calcModelOptions),
 			modelValue: child.modelValue,
-			modelRoot: calcModelRoot
+			modelOptions: calcModelOptions
 		}
 	});
 };
 
-const getAbsoluteMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Note);
+const getAbsoluteMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
 
-const getRelativeMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Interval);
+const getRelativeMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
 
-const getMetaChildren = (modelId, modelValue, modelRoot) => {
+const getMetaChildren = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
 	case MODEL_ID.Group:
-		return getGroupMetaChildren(modelValue, modelRoot);
+		return getGroupMetaChildren(modelValue, modelOptions);
 	case MODEL_ID.RelativeChord:
 	case MODEL_ID.RelativeScale:
-		return getRelativeMetaChildren(modelValue, modelRoot);
+		return getRelativeMetaChildren(modelValue, modelOptions);
 	case MODEL_ID.AbsoluteChord:
 	case MODEL_ID.AbsoluteScale:
-		return getAbsoluteMetaChildren(modelValue, modelRoot);
+		return getAbsoluteMetaChildren(modelValue, modelOptions);
 	default:
 		return null;
 	}

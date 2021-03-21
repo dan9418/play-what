@@ -46,13 +46,13 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 
 	const onSubmit = () => {
 		const modelId = selectedTypeOption.value;
-		const modelRoot = pathHead.modelRoot;
+		const modelOptions = pathHead.modelOptions;
 		const modelValue = selectedPresetOption.value;
 		setPathHead({
 			modelId,
 			modelValue,
-			name: ModelUtils.getName(modelId, modelValue, modelRoot),
-			preview: ModelUtils.getPreview(modelId, modelValue, modelRoot)
+			name: ModelUtils.getName(modelId, modelValue, modelOptions),
+			preview: ModelUtils.getPreview(modelId, modelValue, modelOptions)
 		});
 	};
 

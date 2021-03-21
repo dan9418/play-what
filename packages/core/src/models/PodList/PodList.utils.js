@@ -25,30 +25,30 @@ const reduce = (A, max = MAX_POD) => {
 
 // Search
 
-const getPodAtPitch = (A, p, modelRoot, matchOctave) => {
-	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelRoot, matchOctave));
+const getPodAtPitch = (A, p, modelOptions, matchOctave) => {
+	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelOptions, matchOctave));
 	return pod ? pod : null;
 };
 
 // Children
 
-const getMetaChildren = (modelValue, modelRoot, childModelId) => {
+const getMetaChildren = (modelValue, modelOptions, childModelId) => {
 	return modelValue.map((pod, i) => {
 		return {
 			pathId: i,
-			name: ModelUtils.getName(childModelId, pod, modelRoot),
-			preview: ModelUtils.getPreview(childModelId, pod, modelRoot),
+			name: ModelUtils.getName(childModelId, pod, modelOptions),
+			preview: ModelUtils.getPreview(childModelId, pod, modelOptions),
 			modelId: childModelId,
 			modelValue: pod,
-			modelRoot
+			modelOptions
 		}
 	});
 };
 
 // Sound
 
-const playSound = (modelValue, modelRoot = null) => {
-	const notes = modelRoot ? PodUtils.addPodList(modelRoot, modelValue) : modelValue;
+const playSound = (modelValue, modelOptions = {}) => {
+	const notes = modelOptions.modelRoot ? PodUtils.addPodList(modelOptions.modelRoot, modelValue) : modelValue;
 	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }

@@ -13,19 +13,11 @@ export const pathHeadState = selector({
 		const path = get(pathState);
 		const data = get(dataState);
 
-		/*
-			name
-			preview
-			modelId
-			modelRoot
-			modelValue
-		*/
-
 		let node = data;
 		for (let i = 0; i < path.length; i++) {
 			const pathId = path[i];
-			const { modelId, modelValue, modelRoot } = node;
-			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
+			const { modelId, modelValue, modelOptions } = node;
+			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
 			node = metaChildren[pathId];
 		}
 
@@ -55,8 +47,8 @@ export const pathParentState = selector({
 		let node = data;
 		for (let i = 0; i < path.length - 1; i++) {
 			const pathId = path[i];
-			const { modelId, modelValue, modelRoot } = node;
-			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
+			const { modelId, modelValue, modelOptions } = node;
+			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
 			node = metaChildren[pathId];
 		}
 
@@ -70,8 +62,8 @@ export const metaChildrenState = selector({
 	get: ({ get }) => {
 		const pathHead: any = get(pathHeadState);
 
-		const { modelId, modelValue, modelRoot } = pathHead;
-		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
+		const { modelId, modelValue, modelOptions } = pathHead;
+		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
 
 		console.log('metaChildren', metaChildren);
 		return metaChildren;
@@ -87,7 +79,7 @@ export const siblingsState = selector({
 
 		if (path.length < 2) return null;
 
-		const siblings = ModelUtils.getMetaChildren(pathParent.modelId, pathParent.modelValue, pathParent.modelRoot);
+		const siblings = ModelUtils.getMetaChildren(pathParent.modelId, pathParent.modelValue, pathParent.modelOptions);
 
 		const i = pathHead.pathId;
 		const isFirst = i === 0;
