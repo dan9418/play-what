@@ -2,13 +2,25 @@ import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/RelativeChord/RelativeChord.constants";
 import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
-interface IModelDef {
+
+export interface IModelOptions {
+	modelRoot: any[];
+	name?: string;
+	preview?: string;
+}
+
+export interface IModelDef {
 	modelId: string;
 	modelValue: any[];
-	modelOptions: {
-		modelRoot: any[];
-		name?: string;
-		preview?: string;
+	modelOptions: IModelOptions
+}
+
+export interface IComputedModelDef extends IModelDef {
+	computed: {
+		name: string;
+		preview?; string;
+		modelRoot?: any[];
+		superset?: any;
 	}
 }
 
