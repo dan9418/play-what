@@ -1,6 +1,6 @@
 import { MAX_POD } from '@pw/core/src/models/helpers/Pod.constants';
 import PodUtils from '@pw/core/src/Pod.utils';
-import React from 'react';
+const React = require("react");
 import './Graph.css';
 import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 

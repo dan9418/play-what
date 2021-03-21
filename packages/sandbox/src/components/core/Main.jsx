@@ -1,5 +1,5 @@
 
-import React from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import { PathNavContextProvider } from '../../contexts/PathNavContext';
 import { RouteContextConsumer } from '../../contexts/RouteContext';

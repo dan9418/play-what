@@ -1,4 +1,4 @@
-import * as React from 'react';
+const React = require("react");
 
 export default class ErrorBoundary extends React.Component {
 	constructor(props) {

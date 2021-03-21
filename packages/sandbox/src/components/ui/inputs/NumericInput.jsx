@@ -1,4 +1,4 @@
-import React from 'react';
+const React = require("react");
 import styled from 'styled-components';
 
 const StyledNumbericInput = styled.input`

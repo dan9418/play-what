@@ -1,11 +1,11 @@
 
-import React, { createContext, useContext, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pathState, siblingsState } from '../state/pathState';
+const React = require("react");
 
-const PathNavContext = createContext(null);
+const PathNavContext = React.createContext(null);
 
-export const usePathNavContext = () => useContext(PathNavContext);
+export const usePathNavContext = () => React.useContext(PathNavContext);
 
 const getPathNavContext = (path, setPath, siblings) => {
 

@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React from 'react';
+const React = require("react");
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { usePathNavContext } from '../../contexts/PathNavContext';

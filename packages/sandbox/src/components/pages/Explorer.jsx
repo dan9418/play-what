@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useEffect, useState } from 'react';
+const React = require("react");
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../react/src/Meter/Meter';
@@ -57,13 +57,13 @@ const VIEWER_ACTIONS = [
 ];
 
 const Explorer = () => {
-	const [superset, setSuperset] = useState(null);
+	const [superset, setSuperset] = React.useState(null);
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const metaChildren = useRecoilValue(metaChildrenState);
 	const { modelId, modelValue, modelRoot, pathId } = pathHead;
 
-	useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
+	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
 	const isGroup = modelId === MODEL_ID.Group;
 

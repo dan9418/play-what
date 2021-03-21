@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import Icon from '../assets/Icon';
 import ButtonInput from '../inputs/buttons/ButtonInput';

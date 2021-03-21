@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useState } from 'react';
+const React = require("react");
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { siblingsState } from '../../state/pathState';
@@ -25,8 +25,8 @@ const StyledLabel = styled.h4`
 `;
 
 const PresetSelector = ({ pathHead, setPathHead }) => {
-	const [typeIndex, setTypeIndex] = useState(0);
-	const [presetIndex, setPresetIndex] = useState(0);
+	const [typeIndex, setTypeIndex] = React.useState(0);
+	const [presetIndex, setPresetIndex] = React.useState(0);
 
 	const { parent } = useRecoilValue(siblingsState);
 	let parentModel = MODEL[parent ? parent.modelId : MODEL_ID.Group];

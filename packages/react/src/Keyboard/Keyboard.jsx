@@ -27,9 +27,9 @@ const Keyboard = (userProps) => {
 
 	const props = { ...DEFAULT_PROPS, ...userProps };
 
-	const [dims, setDims] = React.useState([512, 512]);
+	const [dims, setDims] = React.React.useState([512, 512]);
 
-	React.useEffect(() => {
+	React.React.useEffect(() => {
 		const resetDimensions = (e) => {
 			const el = document.getElementById('keyboard');
 			setDims([el.clientWidth, el.clientHeight])

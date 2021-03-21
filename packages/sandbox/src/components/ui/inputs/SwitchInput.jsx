@@ -1,4 +1,4 @@
-import * as React from 'react';
+const React = require("react");
 import styled from 'styled-components';
 
 const StyledSwitch = styled.button`

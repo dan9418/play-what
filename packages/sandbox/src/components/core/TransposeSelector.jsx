@@ -1,7 +1,7 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
-import React, { useState } from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
@@ -36,8 +36,8 @@ const DIRECTION_OPTIONS = [
 ];
 
 const TransposeSelector = ({ pathHead, setPathHead }) => {
-	const [directionIndex, setDirectionIndex] = useState(0);
-	const [intervalIndex, setIntervalIndex] = useState(0);
+	const [directionIndex, setDirectionIndex] = React.useState(0);
+	const [intervalIndex, setIntervalIndex] = React.useState(0);
 
 	const selectedDirectionOption = DIRECTION_OPTIONS[directionIndex];
 	const selectedIntervalOption = INTERVAL_VALUES[intervalIndex];

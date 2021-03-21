@@ -1,4 +1,4 @@
-import React from 'react';
+const React = require("react");
 import './HarmonicSeries.css';
 
 const PRIMES = {

@@ -1,5 +1,5 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
-import React, { useEffect, useState } from 'react';
+const React = require("react");
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { usePathNavContext } from '../../contexts/PathNavContext';
@@ -19,23 +19,23 @@ const StyledPlaybackControls = styled.div`
 const PlaybackControls = () => {
 	const { modelId, modelConfig } = useRecoilValue(pathHeadState);
 	const { prev, next, pop } = usePathNavContext();
-	const [isPlaying, setIsPlaying] = useState(false);
-	const [tempo, setTempo] = useState(200);
+	const [isPlaying, setIsPlaying] = React.useState(false);
+	const [tempo, setTempo] = React.useState(200);
 	const numBeats = modelConfig.t || 1;
 
 	const model = MODEL[modelId];
 
 	// Cancel at end of group
-	useEffect(() => {
+	React.useEffect(() => {
 		if (isPlaying && !next) setIsPlaying(false);
 	}, [isPlaying, next]);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!isPlaying || !model.utils.playSound) return;
 		model.utils.playSound(modelConfig);
 	}, [isPlaying, modelConfig]);
 
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!isPlaying) return;
 		const secondsPerBeat = 60 / tempo;
 

@@ -1,4 +1,4 @@
-import React from 'react';
+const React = require("react");
 import ButtonInput from '../ui/inputs/button/ButtonInput';
 
 const TRUE_INTERVAL_MAP = [

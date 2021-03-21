@@ -1,7 +1,7 @@
 import NumberUtils from '@pw/core/src/general/Number.utils';
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import { DEFAULT_DEGREE_COLOR_SCHEME } from '@pw/core/src/theory/Degree.constants';
-import React from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import DEFAULT_METER_PROPS from './Meter.defaults';
 

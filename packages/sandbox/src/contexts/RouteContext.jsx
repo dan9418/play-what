@@ -1,11 +1,11 @@
 
-import React, { createContext, useContext, useState } from 'react';
 import About from '../components/pages/About';
 import Explorer from '../components/pages/Explorer';
+const React = require("react");
 
-const RouteContext = createContext(null);
+const RouteContext = React.createContext(null);
 
-export const useRouteContext = () => useContext(RouteContext);
+export const useRouteContext = () => React.useContext(RouteContext);
 
 export const PAGE_ID = {
 	About: 0,
@@ -26,7 +26,7 @@ const PAGE = {
 }
 
 export const RouteContextProvider = ({ children }) => {
-	const [pageId, setPageId] = useState(PAGE_ID.Explorer);
+	const [pageId, setPageId] = React.useState(PAGE_ID.Explorer);
 
 	const goHome = () => setPageId(PAGE_ID.About);
 

@@ -1,4 +1,4 @@
 node_modules/
 .vscode/
 
-packages/sandbox/src/components/pages/Abouz
+packages/sandbox/src/components/pages/About.jsx

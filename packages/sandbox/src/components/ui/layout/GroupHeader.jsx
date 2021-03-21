@@ -1,5 +1,5 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useState } from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
@@ -67,7 +67,7 @@ const StyledGroupHeader = styled.section`
 `;
 
 const GroupHeader = ({ children, ...props }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = React.useState(false);
 
 	return (
 		<StyledGroupHeader>

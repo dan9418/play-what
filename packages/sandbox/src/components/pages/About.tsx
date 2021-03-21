@@ -1,4 +1,4 @@
-const React = require("React");
+const React = require("react");
 import styled from 'styled-components';
 import { PAGE_ID, useRouteContext } from '../../contexts/RouteContext';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';

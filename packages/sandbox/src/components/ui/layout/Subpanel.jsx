@@ -1,5 +1,5 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React, { useState } from 'react';
+const React = require("react");
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
@@ -69,7 +69,7 @@ const StyledSubpanel = styled.section`
 `;
 
 const Subpanel = ({ children, ...props }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = React.useState(false);
 
 	return (
 		<StyledSubpanel>

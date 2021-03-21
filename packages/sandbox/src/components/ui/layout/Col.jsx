@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+const React = require("react");
 import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
@@ -37,7 +37,7 @@ export const StyledColDivider = styled.div`
 `;
 
 const Col = ({ title, editPanel, children, hideHeader }) => {
-	const [isEditing, setIsEditing] = useState(false);
+	const [isEditing, setIsEditing] = React.useState(false);
 
 	return (
 		<StyledCol>
