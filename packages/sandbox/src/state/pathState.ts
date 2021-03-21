@@ -13,7 +13,7 @@ export const pathHeadState = selector({
 		const path = get(pathState);
 		const data = get(dataState);
 
-		let node = data;
+		let node  = data;
 		for (let i = 0; i < path.length; i++) {
 			const pathId = path[i];
 			const { modelId, modelValue, modelOptions } = node;
