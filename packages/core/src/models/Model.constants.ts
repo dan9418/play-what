@@ -100,17 +100,17 @@ export interface IModelOptions {
 	superset?: any;
 }
 
-export interface IModelDef {
+export interface IModelConfig {
 	modelId: string;
 	modelValue: IModel;
 	modelOptions: IModelOptions
 }
 
-export interface IComputedModelDef extends IModelDef {
-	computed: {
-		name: string;
-		preview?; string;
-		modelRoot?: IModel;
-		superset?: IComputedModelDef;
-	}
+export interface IModelData {
+	pathId: number;
+	name: string;
+	preview: string;
+	modelRoot: IModel;
+	superset: IModelConfig;
+	metaChildren: any[];
 }

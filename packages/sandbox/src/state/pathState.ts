@@ -1,6 +1,6 @@
-import { metaChildrenState } from './pathState';
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import { atom, selector } from "recoil";
+import { IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
 import { dataState } from "./dataState";
 
 export const pathState = atom({
@@ -8,25 +8,54 @@ export const pathState = atom({
 	default: []
 });
 
+interface IPathNode {
+	config: IModelConfig;
+	data: IModelData;
+};
+
 export const pathHeadState = selector({
 	key: 'pathHeadState',
-	get: ({ get }) => {
-		const path = get(pathState);
-		const data = get(dataState);
+	get: ({ get }): IPathNode => {
+		const path: number[] = get(pathState);
+		const data: IModelConfig = get(dataState);
 
-		let node = data;
+		// Get head
+		let config: IModelConfig = data;
+		let pathId: number = 0;
 		for (let i = 0; i < path.length; i++) {
-			const pathId = path[i];
-			const { modelId, modelValue, modelOptions } = node;
+			const { modelId, modelValue, modelOptions } = config;
 			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
-			node = metaChildren[pathId];
-		}
-		const { modelId, modelValue, modelOptions } = node;
-		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
-		node.metaChildren = metaChildren;
 
-		console.log('pathHead', node);
-		return node;
+			const oldOptions = config.modelOptions;
+
+			pathId = path[i];
+			config = metaChildren[pathId];
+			config.modelOptions = { ...oldOptions, ...config.modelOptions }
+		}
+
+		// Compute data
+		const { modelId, modelValue, modelOptions } = config;
+		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
+
+		const name = ModelUtils.getName(modelId, modelValue, modelOptions);
+		const preview = ModelUtils.getPreview(modelId, modelValue, modelOptions);
+
+		const modelData: IModelData = {
+			pathId,
+			name,
+			preview,
+			metaChildren,
+			modelRoot: modelOptions.modelRoot,
+			superset: modelOptions.superset
+		};
+
+		const pathHead = {
+			config,
+			data: modelData
+		}
+
+		console.log('pathHead', pathHead);
+		return pathHead;
 	},
 	set: ({ get, set }, newValue) => {
 		/*const path = get(pathState);

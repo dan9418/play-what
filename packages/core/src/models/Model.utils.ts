@@ -1,5 +1,5 @@
 import { DEGREE_VALUES } from "../theory/Degree.constants";
-import { MODEL, MODEL_ID, IModel, IComputedModelDef, IModelDef, IModelOptions } from "./Model.constants";
+import { MODEL, MODEL_ID, IModel, IModelConfig, IModelData, IModelOptions } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -221,7 +221,7 @@ const getListMetaChildren = (modelValue: IModel, modelOptions: IModelOptions, ch
 	});
 };
 
-const getMetaChildren = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
+const getMetaChildren = (modelId: string, modelValue: IModel, modelOptions: IModelOptions): IModelConfig[] => {
 	switch (modelId) {
 		case MODEL_ID.Group:
 			return getGroupMetaChildren(modelValue, modelOptions);

@@ -3,7 +3,7 @@ import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../react/src/Meter/Meter';
-import { metaChildrenState, pathHeadState, pathState } from '../../state/pathState';
+import { pathHeadState, pathState } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
