@@ -1,4 +1,4 @@
-const React = require("react");
+import React from "react";
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';

@@ -1,7 +1,7 @@
 
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pathState, siblingsState } from '../state/pathState';
-const React = require("react");
+import React from "react";
 
 const PathNavContext = React.createContext(null);
 

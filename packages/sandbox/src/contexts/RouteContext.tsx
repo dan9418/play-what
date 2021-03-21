@@ -1,7 +1,7 @@
 
 import About from '../components/pages/About';
 import Explorer from '../components/pages/Explorer';
-const React = require("react");
+import React from "react";
 
 const RouteContext = React.createContext(null);
 

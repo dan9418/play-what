@@ -1,7 +1,7 @@
 import ColorUtils from '@pw/core/src/Color.utils';
 import PodUtils from '@pw/core/src/Pod.utils';
 import NumberUtils from '@pw/core/src/Number.utils';
-const React = require("react");
+import React from "react";
 import "./Keyboard.css";
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];

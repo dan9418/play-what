@@ -1,5 +1,5 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
-const React = require("react");
+import React from "react";
 import { usePathNavContext } from '../../../../contexts/PathNavContext';
 import THEME from '../../../../styles/theme';
 import IconButton from './IconButton';

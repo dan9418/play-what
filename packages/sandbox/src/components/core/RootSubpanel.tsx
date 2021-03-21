@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-const React = require("react");
+import React from "react";
 import Subpanel from '../ui/layout/Subpanel';
 import Viewer from './Viewer';
 

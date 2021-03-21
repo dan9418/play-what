@@ -1,4 +1,4 @@
-const React = require("react");
+import React from "react";
 interface IErrorBoundaryState {
 	error: any;
 	errorInfo: any;

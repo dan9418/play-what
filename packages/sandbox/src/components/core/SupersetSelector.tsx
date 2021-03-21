@@ -1,5 +1,5 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
-const React = require("react");
+import React from "react";
 import Icon from '../ui/assets/Icon';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';

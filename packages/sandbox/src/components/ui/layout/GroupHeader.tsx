@@ -1,5 +1,5 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
-const React = require("react");
+import React from "react";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';

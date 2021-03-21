@@ -1,7 +1,7 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
-const React = require("react");
+import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';

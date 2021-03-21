@@ -1,4 +1,4 @@
-const React = require("react");
+import React from "react";
 import styled from 'styled-components';
 import Icon from '../assets/Icon';
 import ButtonInput from '../inputs/buttons/ButtonInput';

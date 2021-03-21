@@ -1,5 +1,5 @@
 
-const React = require("react");
+import React from "react";
 import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';

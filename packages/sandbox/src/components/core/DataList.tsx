@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-const React = require("react");
+import React from "react";
 import styled from 'styled-components';
 import GroupHeader from '../ui/layout/GroupHeader';
 import Subpanel from '../ui/layout/Subpanel';
