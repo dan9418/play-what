@@ -1,4 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -50,8 +51,8 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 		setPathHead({
 			modelId,
 			modelValue,
-			name: model.utils.getName(modelValue, modelRoot),
-			preview: model.utils.getPreview(modelValue, modelRoot)
+			name: ModelUtils.getName(modelId, modelValue, modelRoot),
+			preview: ModelUtils.getPreview(modelId, modelValue, modelRoot)
 		});
 	};
 

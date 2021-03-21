@@ -1,12 +1,6 @@
-import { DEGREE_VALUES } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
-import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
-
-// Wrappers
-const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
-const playSound = (modelValue, modelRoot) => PodUtils.playSound(modelValue, modelRoot);
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
@@ -27,42 +21,14 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getName = (modelValue, modelRoot) => {
-	const reducedRoot = PodUtils.reduce(modelRoot);
-	const reducedValue = PodUtils.reduce(modelValue);
-
-	const d = reducedValue[1];
-	const offset = getAccidentalOffset(reducedValue, reducedRoot);
-	const accidental = getAccidentalString(offset, d);
-	const spelling = DEGREE_VALUES[d].name;
-	return `${spelling}${accidental}`;
-}
-
-const getPreview = (modelData) => {
-	return JSON.stringify(modelData);
-	//const [p, d] = modelData;
-	//return `p = ${p}, d = ${d}`;
-};
-
 const getPodColor = pod => {
 	if (!pod) return null;
 	const [p, d] = pod;
 	return DEFAULT_PITCH_COLOR_SCHEME[p];
 }
 
-const getPodProps = (modelValue, modelRoot, p) => {
-	const pod = getPodAtPitch(modelValue, modelRoot, p);
-	if (!pod) return null;
-	const color = getPodColor(pod);
-	const label = getName(pod);
-	return { color, label };
-}
-
 export default {
-	getName,
-	getPreview,
-	getPodAtPitch,
-	playSound,
-	getPodColor,
-	getPodProps
+	getAccidentalOffset,
+	getAccidentalString,
+	getPodColor
 }

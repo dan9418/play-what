@@ -1,6 +1,7 @@
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
 import { MODEL } from '../Model.constants';
+import ModelUtils from '../Model.utils';
 import { MAX_POD } from '../Pod/Pod.constants';
 import PodUtils from '../Pod/Pod.utils';
 
@@ -32,12 +33,11 @@ const getPodAtPitch = (A, p, modelRoot, matchOctave) => {
 // Children
 
 const getMetaChildren = (modelValue, modelRoot, childModelId) => {
-	const model = MODEL[childModelId];
 	return modelValue.map((pod, i) => {
 		return {
 			pathId: i,
-			name: model.utils.getName(pod, modelRoot),
-			preview: model.utils.getPreview(pod, modelRoot),
+			name: ModelUtils.getName(childModelId, pod, modelRoot),
+			preview: ModelUtils.getPreview(childModelId, pod, modelRoot),
 			modelId: childModelId,
 			modelValue: pod,
 			modelRoot

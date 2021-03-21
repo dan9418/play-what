@@ -1,5 +1,6 @@
 import NumberUtils from '@pw/core/src/general/Number.utils';
 import { MODEL } from '@pw/core/src/models/Model.constants';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import { DEFAULT_DEGREE_COLOR_SCHEME } from '@pw/core/src/theory/Degree.constants';
 import React from "react";
 import styled from 'styled-components';
@@ -45,12 +46,9 @@ const StyledMeter = styled.div`
 `;
 
 const DotList = ({ modelId, modelValue, modelRoot }) => {
-
-	const model = MODEL[modelId];
-
 	const list = [];
 	for (let i = -39; i < 48; i++) {
-		const pod = model.utils.getPodAtPitch(modelValue, modelRoot, i, true);
+		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelRoot, i, true);
 		const hasDegree = pod !== null;
 
 		let color = '#fff';

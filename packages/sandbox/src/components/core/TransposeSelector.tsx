@@ -1,10 +1,11 @@
-import { MODEL } from '@pw/core/src/models/Model.constants';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
+
 
 const StyledTransposeSelector = styled.div`
 	padding: 16px;
@@ -51,12 +52,11 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 			PodUtils.subtractPod(initModelRoot, selectedIntervalOption.value);
 
 		const { modelId, modelValue } = pathHead;
-		const model = MODEL[modelId];
 
 		setPathHead({
 			modelRoot,
-			name: model.utils.getName(modelValue, modelRoot),
-			preview: model.utils.getPreview(modelValue, modelRoot)
+			name: ModelUtils.getName(modelId, modelValue, modelRoot),
+			preview: ModelUtils.getPreview(modelId, modelValue, modelRoot)
 		});
 	};
 
