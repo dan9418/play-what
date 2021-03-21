@@ -3,5 +3,4 @@ node_modules/
 
 packages/sandbox/src/**/*.jsx
 packages/sandbox/src/**/*.js
-packages/core/src/models/Model.constants.js
-#packages/core/src/models/Model.utils.js
+packages/core/src/models/*.js
