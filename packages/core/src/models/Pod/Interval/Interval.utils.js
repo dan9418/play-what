@@ -1,10 +1,8 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
-import NoteUtils from "../Note/Note.utils";
 import PodUtils from "../Pod.utils";
-import { CORE_INTERVALS, DEFAULT_INTERVAL_OPTIONS, INTERVAL_QUALITY } from "./Interval.constants";
+import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 // Wrappers
-const getMetaChildren = () => null;
 const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
 const playSound = (modelValue, modelRoot) => PodUtils.playSound(modelValue, modelRoot);
 
@@ -64,7 +62,6 @@ const getPodProps = (modelValue, modelRoot, p) => {
 export default {
 	getName,
 	getPreview,
-	getMetaChildren,
 	getPodAtPitch,
 	playSound,
 	getPodColor,

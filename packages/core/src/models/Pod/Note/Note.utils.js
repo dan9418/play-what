@@ -5,7 +5,6 @@ import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 // Wrappers
-const getMetaChildren = () => null;
 const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
 const playSound = (modelValue, modelRoot) => PodUtils.playSound(modelValue, modelRoot);
 
@@ -63,7 +62,6 @@ export default {
 	getName,
 	getPreview,
 	getPodAtPitch,
-	getMetaChildren,
 	playSound,
 	getPodColor,
 	getPodProps

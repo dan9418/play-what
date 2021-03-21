@@ -1,10 +1,8 @@
-import { MODEL_ID } from "../../../Model.constants";
-import PodListUtils from "../../PodList.utils";
 import NoteUtils from "../../../Pod/Note/Note.utils";
+import PodListUtils from "../../PodList.utils";
 
 // Wrappers
 const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, modelRoot, p, matchOctave);
-const getMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Note);
 const playSound = (modelValue, modelRoot) => PodListUtils.playSound(modelValue, modelRoot);
 
 const getName = () => 'Chord';
@@ -23,7 +21,6 @@ export default {
 	getName,
 	getPreview,
 	getPodAtPitch,
-	getMetaChildren,
 	playSound,
 	getPodProps
 }

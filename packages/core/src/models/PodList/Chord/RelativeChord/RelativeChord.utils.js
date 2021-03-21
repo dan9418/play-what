@@ -7,7 +7,6 @@ import { RELATIVE_SCALE_VALUES } from "../../Scale/RelativeScale/RelativeScale.c
 import { RELATIVE_CHORD_VALUES } from "./RelativeChord.constants";
 
 // Wrappers
-const getMetaChildren = (modelValue, modelRoot) => PodListUtils.getMetaChildren(modelValue, modelRoot, MODEL_ID.Interval);
 const playSound = (modelValue, modelRoot) => PodListUtils.playSound(modelValue, modelRoot);
 const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
 
@@ -50,7 +49,6 @@ const getPodProps = (modelValue, modelRoot, p, superset) => {
 export default {
 	getName,
 	getPreview,
-	getMetaChildren,
 	getPodAtPitch,
 	playSound,
 	findSupersets,

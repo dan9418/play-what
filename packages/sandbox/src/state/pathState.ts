@@ -1,4 +1,4 @@
-import { MODEL } from "@pw/core/src/models/Model.constants";
+import ModelUtils from "@pw/core/src/models/Model.utils";
 import { atom, selector } from "recoil";
 import { dataState } from "./dataState";
 
@@ -25,8 +25,7 @@ export const pathHeadState = selector({
 		for (let i = 0; i < path.length; i++) {
 			const pathId = path[i];
 			const { modelId, modelValue, modelRoot } = node;
-			const model = MODEL[modelId];
-			const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
 			node = metaChildren[pathId];
 		}
 
@@ -57,8 +56,7 @@ export const pathParentState = selector({
 		for (let i = 0; i < path.length - 1; i++) {
 			const pathId = path[i];
 			const { modelId, modelValue, modelRoot } = node;
-			const model = MODEL[modelId];
-			const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
 			node = metaChildren[pathId];
 		}
 
@@ -73,8 +71,7 @@ export const metaChildrenState = selector({
 		const pathHead: any = get(pathHeadState);
 
 		const { modelId, modelValue, modelRoot } = pathHead;
-		const model = MODEL[modelId];
-		const metaChildren = model.utils.getMetaChildren(modelValue, modelRoot);
+		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelRoot);
 
 		console.log('metaChildren', metaChildren);
 		return metaChildren;
@@ -90,9 +87,7 @@ export const siblingsState = selector({
 
 		if (path.length < 2) return null;
 
-		const parentModel = MODEL[pathParent.modelId];
-
-		const siblings = parentModel.utils.getMetaChildren(pathParent.modelValue, pathParent.modelRoot);
+		const siblings = ModelUtils.getMetaChildren(pathParent.modelId, pathParent.modelValue, pathParent.modelRoot);
 
 		const i = pathHead.pathId;
 		const isFirst = i === 0;
