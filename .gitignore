@@ -2,3 +2,4 @@ node_modules/
 .vscode/
 
 packages/sandbox/src/components/pages/About.jsx
+packages/sandbox/src/data/*.js

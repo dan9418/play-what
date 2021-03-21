@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import LIBRARY_PATH_ROOT from "../data/songData";
+import LIBRARY_PATH_ROOT from "../data/library";
 
 export const dataState = atom({
 	key: 'dataState',

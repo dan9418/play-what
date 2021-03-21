@@ -3,18 +3,15 @@ import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/RelativeChord/RelativeChord.constants";
 import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
 import CHART_VALUES from "./charts";
+interface IModelDef {
+	name?: string;
+	preview?: string;
+	modelId: string;
+	modelValue: any[];
+	modelRoot?: any;
+}
 
-/*
-
-IModelDef
-	name?: string
-	preview?: string
-	modelId: string
-	modelValue: object
-
-*/
-
-export const LIBRARY_PATH_ROOT = {
+export const LIBRARY_PATH_ROOT: IModelDef = {
 	name: 'Library',
 	preview: 'Select a group',
 	modelId: MODEL_ID.Group,
