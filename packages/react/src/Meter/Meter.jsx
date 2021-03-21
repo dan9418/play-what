@@ -1,5 +1,3 @@
-import NumberUtils from '@pw/core/src/general/Number.utils';
-import { MODEL } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import { DEFAULT_DEGREE_COLOR_SCHEME } from '@pw/core/src/theory/Degree.constants';
 import React from "react";

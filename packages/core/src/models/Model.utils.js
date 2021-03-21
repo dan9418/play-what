@@ -1,7 +1,12 @@
-import { MODEL_ID, MODEL } from "./Model.constants";
+import { DEGREE_VALUES } from "../theory/Degree.constants";
+import { MODEL, MODEL_ID } from "./Model.constants";
+import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
+import PodUtils from "./Pod/Pod.utils";
+import { RELATIVE_CHORD_VALUES } from "./PodList/Chord/RelativeChord/RelativeChord.constants";
 import PodListUtils from "./PodList/PodList.utils";
+import { RELATIVE_SCALE_VALUES } from "./PodList/Scale/RelativeScale/RelativeScale.constants";
 
 // Name
 
@@ -108,11 +113,28 @@ const getPreview = (modelId, modelValue, modelRoot) => {
 	}
 }
 
-// Pods
+// getPodAtPitch
 
-const getPodAtPitch = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
+const getPodAtPitchInSingle = (modelValue, modelRoot, p, matchOctave) => PodUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
 
 const getPodAtPitchInList = (modelValue, modelRoot, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelRoot, matchOctave);
+
+const getPodAtPitch = (modelId, modelValue, modelRoot, noteIndex, matchOctave) => {
+	switch (modelId) {
+	case MODEL_ID.Note:
+	case MODEL_ID.Interval:
+		return getPodAtPitchInSingle(modelValue, modelRoot, noteIndex, matchOctave);
+	case MODEL_ID.RelativeChord:
+	case MODEL_ID.RelativeScale:
+	case MODEL_ID.AbsoluteChord:
+	case MODEL_ID.AbsoluteScale:
+		return getPodAtPitchInList(modelValue, modelRoot, noteIndex, matchOctave);
+	default:
+		return null;
+	}
+}
+
+// getPodProps
 
 const getNotePodProps = (modelValue, modelRoot, p) => {
 	const pod = getPodAtPitch(modelValue, modelRoot, p);
@@ -210,6 +232,7 @@ const getMetaChildren = (modelId, modelValue, modelRoot) => {
 export default {
 	getName,
 	getPreview,
+	getPodAtPitch,
 	getPodProps,
 	getMetaChildren
 }
