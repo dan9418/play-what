@@ -97,7 +97,7 @@ export interface IModelOptions {
 	modelRoot: IModel;
 	name?: string;
 	preview?: string;
-	superset: any;
+	superset?: any;
 }
 
 export interface IModelDef {

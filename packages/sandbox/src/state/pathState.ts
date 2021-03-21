@@ -39,6 +39,7 @@ export const pathHeadState = selector({
 export const pathParentState = selector({
 	key: 'pathParentState',
 	get: ({ get }) => {
+		return null;
 		const path = get(pathState);
 		const data = get(dataState);
 
@@ -77,7 +78,7 @@ export const siblingsState = selector({
 		const pathHead: any = get(pathHeadState);
 		const pathParent: any = get(pathParentState);
 
-		if (path.length < 2) return null;
+		if (!pathParent || path.length < 2) return null;
 
 		const siblings = ModelUtils.getMetaChildren(pathParent.modelId, pathParent.modelValue, pathParent.modelOptions);
 
