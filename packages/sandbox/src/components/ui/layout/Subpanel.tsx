@@ -1,4 +1,3 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
@@ -44,7 +43,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild, hasChildren }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathId, hasChildren }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
 			<span className="name">{name}</span>
@@ -53,7 +52,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild, 
 
 			<StyledButtonContainer>
 				{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
-				{metaChild && <ZoomButton metaChild={metaChild} />}
+				<ZoomButton pathId={pathId} />
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);

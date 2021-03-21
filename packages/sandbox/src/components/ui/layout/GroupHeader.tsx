@@ -44,7 +44,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const GroupHeaderHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChild, hasChildren }) => {
+const GroupHeaderHeader = ({ name, caption, preview, isOpen, setIsOpen, pathId, hasChildren }) => {
 	return (
 		<StyledGroupHeaderHeader $showBorder={isOpen}>
 			<span className="name">{name}</span>
@@ -53,7 +53,7 @@ const GroupHeaderHeader = ({ name, caption, preview, isOpen, setIsOpen, metaChil
 
 			<StyledButtonContainer>
 				{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
-				{metaChild && <ZoomButton metaChild={metaChild} />}
+				<ZoomButton pathId={pathId} />
 			</StyledButtonContainer>
 		</StyledGroupHeaderHeader>
 	);

@@ -13,14 +13,15 @@ const StyledDataList = styled.ul`
 
 const getItems = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { name, modelId, preview, modelValue, modelOptions } = child;
+		const { modelId, modelValue, modelOptions } = child;
+		const { name, preview } = modelOptions;
 		const model = MODEL[modelId];
 
 		const isGroup = modelId === MODEL_ID.Group;
 
 		const content = isGroup ? (
 			<GroupHeader
-				metaChild={child}
+				pathId={i}
 				caption={model.name}
 				name={name}
 				preview={preview}
@@ -28,7 +29,7 @@ const getItems = metaChildren => {
 			</GroupHeader>
 		) : (
 			<Subpanel
-				metaChild={child}
+				pathId={i}
 				caption={model.name}
 				name={name}
 				preview={preview}

@@ -109,7 +109,7 @@ const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOpt
 		case MODEL_ID.AbsoluteScale:
 			return getAbsolutePreview(modelValue, modelOptions);
 		default:
-			return null;
+			return JSON.stringify(modelValue);
 	}
 }
 
@@ -195,15 +195,9 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 
 const getGroupMetaChildren = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return modelValue.map((child, i) => {
-		const calcModelOptions = { ...modelOptions, ...child.modelOptions } || modelOptions;
-		const name = child.name ? child.name : getName(child.modelId, child.modelValue, calcModelOptions);
 		return {
 			...child,
-			pathId: i,
-			name,
-			preview: getPreview(child.modelId, child.modelValue, calcModelOptions),
-			modelValue: child.modelValue,
-			modelOptions: calcModelOptions
+			modelOptions: { ...modelOptions, ...child.modelOptions }
 		}
 	});
 };
