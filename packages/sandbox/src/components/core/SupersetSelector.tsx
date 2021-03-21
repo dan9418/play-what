@@ -3,7 +3,7 @@ import React from "react";
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';
 
-const SupersetSelector = ({ modelId, modelValue, modelOptions, setSuperset }) => {
+const SupersetSelector = ({ modelId, modelValue, modelOptions, pathHead, setPathHead }) => {
 	const [index, setIndex] = React.useState(0);
 
 	const model = MODEL[modelId];
@@ -19,14 +19,22 @@ const SupersetSelector = ({ modelId, modelValue, modelOptions, setSuperset }) =>
 	supersets.unshift(none);
 
 	const value = supersets[index];
-	const setValue = () => setSuperset(value);
-	const reset = () => setSuperset(none);
 	const setSelection = (v, i) => setIndex(i);
+
+	const onSubmit = () => {
+		setPathHead({
+			...pathHead,
+			modelOptions: {
+				...pathHead.modelOptions
+				// TODO
+			}
+		});
+	};
 
 	return (
 		<>
 			<DropdownInput options={supersets} value={value} setValue={setSelection} />
-			<ButtonInput onClick={setValue}>Apply</ButtonInput>
+			<ButtonInput onClick={onSubmit}>Apply</ButtonInput>
 		</>
 	);
 };

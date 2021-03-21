@@ -23,9 +23,9 @@ const StyledViewerContainer = styled.div`
 
 const viewer = VIEWER[VIEWER_ID.Fretboard];
 
-const Viewer = ({ modelId, modelValue, modelOptions, superset }) => {
+const Viewer = ({ modelId, modelValue, modelOptions }) => {
 
-	const labelProps = { modelId, modelValue, modelOptions, superset };
+	const labelProps = { modelId, modelValue, modelOptions };
 
 	return (
 		<StyledViewerContainer>

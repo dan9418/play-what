@@ -97,6 +97,7 @@ export interface IModelOptions {
 	modelRoot: IModel;
 	name?: string;
 	preview?: string;
+	superset: any;
 }
 
 export interface IModelDef {
@@ -110,6 +111,6 @@ export interface IComputedModelDef extends IModelDef {
 		name: string;
 		preview?; string;
 		modelRoot?: IModel;
-		superset?: IModelDef;
+		superset?: IComputedModelDef;
 	}
 }

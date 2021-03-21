@@ -57,7 +57,6 @@ const VIEWER_ACTIONS = [
 ];
 
 const Explorer = () => {
-	const [superset, setSuperset] = React.useState(null);
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const metaChildren = useRecoilValue(metaChildrenState);
@@ -73,12 +72,12 @@ const Explorer = () => {
 
 	const viewer = isGroup ?
 		null :
-		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} superset={superset} />;
+		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
 
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
 		/* @ts-ignore */
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} setPathHead={setPathHead} setSuperset={setSuperset} />
+		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} setPathHead={setPathHead} />
 	}));
 
 	const dataActions = DATA_ACTIONS.map(a => ({

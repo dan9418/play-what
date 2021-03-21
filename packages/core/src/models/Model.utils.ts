@@ -160,8 +160,9 @@ const getAbsolutePodProps = (modelValue: IModel, modelOptions: IModelOptions, no
 	return { color, label };
 }
 
-const getRelativePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, superset: IModelDef) => {
+const getRelativePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
+	const superset = modelOptions.superset;
 	const superPod = superset ? getPodAtPitch(MODEL_ID.RelativeChord, superset.modelValue, superset.modelOptions, noteIndex) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
@@ -173,7 +174,7 @@ const getRelativePodProps = (modelValue: IModel, modelOptions: IModelOptions, no
 	return { color, label };
 }
 
-const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex, superset) => {
+const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex) => {
 	switch (modelId) {
 		case MODEL_ID.Note:
 			return getNotePodProps(modelValue, modelOptions, noteIndex)
@@ -181,7 +182,7 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 			return getIntervalPodProps(modelValue, modelOptions, noteIndex);
 		case MODEL_ID.RelativeChord:
 		case MODEL_ID.RelativeScale:
-			return getRelativePodProps(modelValue, modelOptions, noteIndex, superset);
+			return getRelativePodProps(modelValue, modelOptions, noteIndex);
 		case MODEL_ID.AbsoluteChord:
 		case MODEL_ID.AbsoluteScale:
 			return getAbsolutePodProps(modelValue, modelOptions, noteIndex);
