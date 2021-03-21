@@ -8,7 +8,7 @@ export const pathState = atom({
 	default: []
 });
 
-interface IPathNode {
+export interface IPathNode {
 	config: IModelConfig;
 	data: IModelData;
 };

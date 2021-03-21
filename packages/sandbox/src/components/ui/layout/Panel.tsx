@@ -46,7 +46,8 @@ const StyledPanelHeader = styled.section`
 
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
-	const { modelId, name, preview, modelValue, modelOptions } = pathHead;
+	const { modelId, modelValue, modelOptions } = pathHead.config;
+	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];
 
 

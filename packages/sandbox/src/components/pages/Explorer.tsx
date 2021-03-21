@@ -3,7 +3,7 @@ import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../react/src/Meter/Meter';
-import { pathHeadState, pathState } from '../../state/pathState';
+import { pathHeadState, pathState, IPathNode } from '../../state/pathState';
 import ActionList from '../core/ActionList';
 import BreadcrumbList from '../core/BreadcrumbList';
 import DataList from '../core/DataList';
@@ -59,7 +59,8 @@ const VIEWER_ACTIONS = [
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const { modelId, modelValue, modelOptions, pathId, metaChildren } = (pathHead as any);
+	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
+	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
