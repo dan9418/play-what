@@ -1,5 +1,5 @@
-import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 const React = require("react");
+import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../react/src/Meter/Meter';
@@ -12,7 +12,7 @@ import RootSubpanel from '../core/RootSubpanel';
 import SupersetSelector from '../core/SupersetSelector';
 import TransposeSelector from '../core/TransposeSelector';
 import Viewer from '../core/Viewer';
-import Col, { StyledColDivider } from '../ui/layout/Col';
+import Col from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
 
 const StyledExplorer = styled.div`
