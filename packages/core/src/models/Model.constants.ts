@@ -91,15 +91,17 @@ export const MODEL = {
 
 export const MODEL_VALUES = Object.values(MODEL);
 
+export type IModel = any[];
+
 export interface IModelOptions {
-	modelRoot: any[];
+	modelRoot: IModel;
 	name?: string;
 	preview?: string;
 }
 
 export interface IModelDef {
 	modelId: string;
-	modelValue: any[];
+	modelValue: IModel;
 	modelOptions: IModelOptions
 }
 
@@ -107,7 +109,7 @@ export interface IComputedModelDef extends IModelDef {
 	computed: {
 		name: string;
 		preview?; string;
-		modelRoot?: any[];
-		superset?: any;
+		modelRoot?: IModel;
+		superset?: IModelDef;
 	}
 }
