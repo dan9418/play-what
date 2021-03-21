@@ -67,5 +67,10 @@
     /* Advanced Options */
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
-  }
+  },
+  "include": [
+    // "packages/sandbox/src/*/*.ts",
+    // "packages/sandbox/src/*/*.tsx",
+    "packages/sandbox/src/index.tsx"
+  ]
 }

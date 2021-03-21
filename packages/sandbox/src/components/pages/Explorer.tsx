@@ -61,7 +61,7 @@ const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const metaChildren = useRecoilValue(metaChildrenState);
-	const { modelId, modelValue, modelRoot, pathId } = pathHead;
+	const { modelId, modelValue, modelRoot, pathId } = (pathHead as any);
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
@@ -77,22 +77,27 @@ const Explorer = () => {
 
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
+		/* @ts-ignore */
 		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} setPathHead={setPathHead} setSuperset={setSuperset} />
 	}));
 
 	const dataActions = DATA_ACTIONS.map(a => ({
 		...a,
+		/* @ts-ignore */
 		editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
 	}));
 
 	return (
 		<>
 			<BreadcrumbList />
+			{/* @ts-ignore */}
 			<Panel {...pathHead}>
+				{/* @ts-ignore */}
 				{!meter && <div css={`border-bottom: 2px solid #ccc;`} />}
 				{meter}
 				<StyledExplorer $isSingle={isGroup}>
 					{!isGroup &&
+						/* @ts-ignore */
 						<Col
 							title="Viewer"
 							editPanel={(

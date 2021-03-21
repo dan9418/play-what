@@ -71,6 +71,7 @@ const GroupHeader = ({ children, ...props }) => {
 
 	return (
 		<StyledGroupHeader>
+			{/* @ts-ignore */}
 			<GroupHeaderHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} hasChildren={!!children} />
 			{isOpen && children}
 		</StyledGroupHeader>

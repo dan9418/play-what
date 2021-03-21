@@ -45,7 +45,7 @@ const StyledPanelHeader = styled.section`
 `;
 
 const PanelHeader = () => {
-	const pathHead = useRecoilValue(pathHeadState);
+	const pathHead: any = useRecoilValue(pathHeadState);
 	const { modelId, name, preview, modelValue, modelRoot } = pathHead;
 	const model = MODEL[modelId];
 
@@ -84,6 +84,7 @@ const StyledPanel = styled.div`
 const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
+			{/* @ts-ignore */}
 			<PanelHeader name={name} preview={preview} caption={caption} />
 			{children}
 		</StyledPanel>

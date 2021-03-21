@@ -13,6 +13,7 @@ const App = () => {
 	return (
 		<RecoilRoot>
 			<ThemeProvider theme={THEME}>
+				{/* @ts-ignore */}
 				<ErrorBoundary>
 					<RouteContextProvider>
 						<Nav />

@@ -1,6 +1,9 @@
 const React = require("react");
-
-export default class ErrorBoundary extends React.Component {
+interface IErrorBoundaryState {
+	error: any;
+	errorInfo: any;
+}
+class ErrorBoundary extends React.Component<{}, IErrorBoundaryState> {
 	constructor(props) {
 		super(props);
 		this.state = { error: null, errorInfo: null };
@@ -18,12 +21,12 @@ export default class ErrorBoundary extends React.Component {
 		if (this.state.errorInfo) {
 			return (
 				<div className='error-boundary' style={{ color: 'red' }}>
-                    Sorry, something went wrong.
+					Sorry, something went wrong.
 					<pre>
-						{JSON.parse(this.state.error.name, null, 2)}
+						{JSON.parse(this.state.error.name, null)}
 					</pre>
 					<pre>
-						{JSON.parse(this.state.errorInfo.componentStack, null, 2)}
+						{JSON.parse(this.state.errorInfo.componentStack, null)}
 					</pre>
 				</div>
 			);
@@ -31,3 +34,5 @@ export default class ErrorBoundary extends React.Component {
 		return this.props.children;
 	}
 }
+
+export default ErrorBoundary;

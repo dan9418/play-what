@@ -73,6 +73,7 @@ const Subpanel = ({ children, ...props }) => {
 
 	return (
 		<StyledSubpanel>
+			{/* @ts-ignore */}
 			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} hasChildren={!!children} />
 			{isOpen && children}
 		</StyledSubpanel>

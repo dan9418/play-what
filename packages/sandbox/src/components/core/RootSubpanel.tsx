@@ -26,6 +26,7 @@ const RootSubpanel = ({ pathHead }) => {
 	};
 
 	return (
+		/* @ts-ignore */
 		<Viewer {...implicitProps} metaChildren={[]} />
 	);
 };

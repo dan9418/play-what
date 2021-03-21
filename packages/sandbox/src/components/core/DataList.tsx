@@ -33,6 +33,7 @@ const getItems = metaChildren => {
 				name={name}
 				preview={preview}
 			>
+				{/* @ts-ignore */}
 				<Viewer modelId={modelId} modelValue={modelValue} modelRoot={modelRoot} metaChildren={metaChildren} />
 			</Subpanel>
 		);
