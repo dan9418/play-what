@@ -59,8 +59,7 @@ const VIEWER_ACTIONS = [
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const metaChildren = useRecoilValue(metaChildrenState);
-	const { modelId, modelValue, modelOptions, pathId } = (pathHead as any);
+	const { modelId, modelValue, modelOptions, pathId, metaChildren } = (pathHead as any);
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
