@@ -90,3 +90,24 @@ export const MODEL = {
 };
 
 export const MODEL_VALUES = Object.values(MODEL);
+
+export interface IModelOptions {
+	modelRoot: any[];
+	name?: string;
+	preview?: string;
+}
+
+export interface IModelDef {
+	modelId: string;
+	modelValue: any[];
+	modelOptions: IModelOptions
+}
+
+export interface IComputedModelDef extends IModelDef {
+	computed: {
+		name: string;
+		preview?; string;
+		modelRoot?: any[];
+		superset?: any;
+	}
+}

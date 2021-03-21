@@ -1,28 +1,7 @@
-import { MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { MODEL_ID, IModelDef } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/RelativeChord/RelativeChord.constants";
 import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
-
-export interface IModelOptions {
-	modelRoot: any[];
-	name?: string;
-	preview?: string;
-}
-
-export interface IModelDef {
-	modelId: string;
-	modelValue: any[];
-	modelOptions: IModelOptions
-}
-
-export interface IComputedModelDef extends IModelDef {
-	computed: {
-		name: string;
-		preview?; string;
-		modelRoot?: any[];
-		superset?: any;
-	}
-}
 
 export const LIBRARY_PATH_ROOT: IModelDef = {
 	modelId: MODEL_ID.Group,

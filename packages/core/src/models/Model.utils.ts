@@ -15,13 +15,13 @@ const getNoteName = (modelValue, modelOptions) => {
 	const reducedValue = PodUtils.reduce(modelValue);
 
 	const d = reducedValue[1];
-	const offset = NoteUtils.getAccidentalOffset(reducedValue, reducedRoot);
+	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
 	const spelling = DEGREE_VALUES[d].name;
 	return `${spelling}${accidental}`;
 }
 
-const getIntervalName = (modelValue) => {
+const getIntervalName = (modelValue, modelOptions) => {
 	const [p, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -66,28 +66,28 @@ const getRelativeScaleName = (modelValue, modelOptions) => {
 
 const getName = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
-	case MODEL_ID.Note:
-		return getNoteName(modelValue, modelOptions)
-	case MODEL_ID.Interval:
-		return getIntervalName(modelValue, modelOptions);
-	case MODEL_ID.Group:
-		return 'Group';
-	case MODEL_ID.RelativeChord:
-		return getRelativeChordName(modelValue, modelOptions);
-	case MODEL_ID.RelativeScale:
-		return getRelativeScaleName(modelValue, modelOptions);
-	case MODEL_ID.AbsoluteChord:
-		return 'Chord';
-	case MODEL_ID.AbsoluteScale:
-		return 'Scale'
-	default:
-		return null;
+		case MODEL_ID.Note:
+			return getNoteName(modelValue, modelOptions)
+		case MODEL_ID.Interval:
+			return getIntervalName(modelValue, modelOptions);
+		case MODEL_ID.Group:
+			return 'Group';
+		case MODEL_ID.RelativeChord:
+			return getRelativeChordName(modelValue, modelOptions);
+		case MODEL_ID.RelativeScale:
+			return getRelativeScaleName(modelValue, modelOptions);
+		case MODEL_ID.AbsoluteChord:
+			return 'Chord';
+		case MODEL_ID.AbsoluteScale:
+			return 'Scale'
+		default:
+			return null;
 	}
 }
 
 // Preview
 
-const getGroupPreview = (modelValue) => `${modelValue.length} Items`;
+const getGroupPreview = (modelValue, modelOptions) => `${modelValue.length} Items`;
 
 const getRelativePreview = (modelValue, modelOptions) => {
 	const intervalNames = modelValue.map(interval => getIntervalName(interval, modelOptions)).join(', ');
@@ -100,16 +100,16 @@ const getAbsolutePreview = (modelValue, modelOptions) => modelValue.map(note => 
 
 const getPreview = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
-	case MODEL_ID.Group:
-		return getGroupPreview(modelValue, modelOptions);
-	case MODEL_ID.RelativeChord:
-	case MODEL_ID.RelativeScale:
-		return getRelativePreview(modelValue, modelOptions);
-	case MODEL_ID.AbsoluteChord:
-	case MODEL_ID.AbsoluteScale:
-		return getAbsolutePreview(modelValue, modelOptions);
-	default:
-		return null;
+		case MODEL_ID.Group:
+			return getGroupPreview(modelValue, modelOptions);
+		case MODEL_ID.RelativeChord:
+		case MODEL_ID.RelativeScale:
+			return getRelativePreview(modelValue, modelOptions);
+		case MODEL_ID.AbsoluteChord:
+		case MODEL_ID.AbsoluteScale:
+			return getAbsolutePreview(modelValue, modelOptions);
+		default:
+			return null;
 	}
 }
 
@@ -119,74 +119,74 @@ const getPodAtPitchInSingle = (modelValue, modelOptions, p, matchOctave) => PodU
 
 const getPodAtPitchInList = (modelValue, modelOptions, p, matchOctave) => PodListUtils.getPodAtPitch(modelValue, p, modelOptions, matchOctave);
 
-const getPodAtPitch = (modelId, modelValue, modelOptions, noteIndex, matchOctave) => {
+const getPodAtPitch = (modelId, modelValue, modelOptions, noteIndex, matchOctave?) => {
 	switch (modelId) {
-	case MODEL_ID.Note:
-	case MODEL_ID.Interval:
-		return getPodAtPitchInSingle(modelValue, modelOptions, noteIndex, matchOctave);
-	case MODEL_ID.RelativeChord:
-	case MODEL_ID.RelativeScale:
-	case MODEL_ID.AbsoluteChord:
-	case MODEL_ID.AbsoluteScale:
-		return getPodAtPitchInList(modelValue, modelOptions, noteIndex, matchOctave);
-	default:
-		return null;
+		case MODEL_ID.Note:
+		case MODEL_ID.Interval:
+			return getPodAtPitchInSingle(modelValue, modelOptions, noteIndex, matchOctave);
+		case MODEL_ID.RelativeChord:
+		case MODEL_ID.RelativeScale:
+		case MODEL_ID.AbsoluteChord:
+		case MODEL_ID.AbsoluteScale:
+			return getPodAtPitchInList(modelValue, modelOptions, noteIndex, matchOctave);
+		default:
+			return null;
 	}
 }
 
 // getPodProps
 
 const getNotePodProps = (modelValue, modelOptions, p) => {
-	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	const pod = getPodAtPitch(MODEL_ID.Note, modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
-	const label = getNoteName(pod);
+	const label = getNoteName(pod, modelOptions);
 	return { color, label };
 }
 
 const getIntervalPodProps = (modelValue, modelOptions, p) => {
-	const pod = getPodAtPitch(modelValue, modelOptions, p);
+	const pod = getPodAtPitch(MODEL_ID.Interval, modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
-	const label = getIntervalName(pod);
+	const label = getIntervalName(pod, modelOptions);
 	return { color, label };
 }
 
 const getAbsolutePodProps = (modelValue, modelOptions, p) => {
-	const pod = getPodAtPitchInList(modelValue, modelOptions, p);
+	const pod = getPodAtPitchInList(MODEL_ID.AbsoluteChord, modelValue, modelOptions, p);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
-	const label = getNoteName(pod);
+	const label = getNoteName(pod, modelOptions);
 	return { color, label };
 }
 
 const getRelativePodProps = (modelValue, modelOptions, p, superset) => {
-	const pod = getPodAtPitchInList(modelValue, modelOptions, p);
-	const superPod = superset ? getPodAtPitch(superset.modelValue, superset.modelOptions, p) : null;
+	const pod = getPodAtPitchInList(MODEL_ID.RelativeChord, modelValue, modelOptions, p);
+	const superPod = superset ? getPodAtPitch(MODEL_ID.RelativeChord, superset.modelValue, superset.modelOptions, p) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: 'white',
-		label: getIntervalName(superPod)
+		label: getIntervalName(superPod, modelOptions)
 	};
 	const color = IntervalUtils.getPodColor(pod);
-	const label = getIntervalName(pod);
+	const label = getIntervalName(pod, modelOptions);
 	return { color, label };
 }
 
 const getPodProps = (modelId, modelValue, modelOptions, noteIndex, superset) => {
 	switch (modelId) {
-	case MODEL_ID.Note:
-		return getNotePodProps(modelValue, modelOptions, noteIndex, superset)
-	case MODEL_ID.Interval:
-		return getIntervalPodProps(modelValue, modelOptions, noteIndex, superset);
-	case MODEL_ID.RelativeChord:
-	case MODEL_ID.RelativeScale:
-		return getRelativePodProps(modelValue, modelOptions, noteIndex, superset);
-	case MODEL_ID.AbsoluteChord:
-	case MODEL_ID.AbsoluteScale:
-		return getAbsolutePodProps(modelValue, modelOptions, noteIndex, superset);
-	default:
-		return null;
+		case MODEL_ID.Note:
+			return getNotePodProps(modelValue, modelOptions, noteIndex)
+		case MODEL_ID.Interval:
+			return getIntervalPodProps(modelValue, modelOptions, noteIndex);
+		case MODEL_ID.RelativeChord:
+		case MODEL_ID.RelativeScale:
+			return getRelativePodProps(modelValue, modelOptions, noteIndex, superset);
+		case MODEL_ID.AbsoluteChord:
+		case MODEL_ID.AbsoluteScale:
+			return getAbsolutePodProps(modelValue, modelOptions, noteIndex);
+		default:
+			return null;
 	}
 }
 
@@ -222,16 +222,16 @@ const getListMetaChildren = (modelValue, modelOptions, childModelId) => {
 
 const getMetaChildren = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
-	case MODEL_ID.Group:
-		return getGroupMetaChildren(modelValue, modelOptions);
-	case MODEL_ID.RelativeChord:
-	case MODEL_ID.RelativeScale:
-		return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
-	case MODEL_ID.AbsoluteChord:
-	case MODEL_ID.AbsoluteScale:
-		return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
-	default:
-		return null;
+		case MODEL_ID.Group:
+			return getGroupMetaChildren(modelValue, modelOptions);
+		case MODEL_ID.RelativeChord:
+		case MODEL_ID.RelativeScale:
+			return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
+		case MODEL_ID.AbsoluteChord:
+		case MODEL_ID.AbsoluteScale:
+			return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
+		default:
+			return null;
 	}
 }
 
