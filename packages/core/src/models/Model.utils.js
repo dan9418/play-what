@@ -52,14 +52,14 @@ const getIntervalName = (modelValue) => {
 
 const getRelativeChordName = (modelValue, modelOptions) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(modelOptions, modelOptions);
+	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.id : 'Untitled Chord';
 	return `${rootName} ${presetName}`;
 };
 
 const getRelativeScaleName = (modelValue, modelOptions) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const rootName = NoteUtils.getName(modelOptions, modelOptions);
+	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.id : 'Untitled Scale';
 	return `${rootName} ${presetName}`;
 };
@@ -194,9 +194,8 @@ const getPodProps = (modelId, modelValue, modelOptions, noteIndex, superset) => 
 
 const getGroupMetaChildren = (modelValue, modelOptions) => {
 	return modelValue.map((child, i) => {
-		const model = MODEL[child.modelId];
-		const calcModelOptions = child.modelOptions || modelOptions;
-		const name = child.name ? child.name : model.utils.getName(child.modelValue, calcModelOptions);
+		const calcModelOptions = { ...modelOptions, ...child.modelOptions } || modelOptions;
+		const name = child.name ? child.name : getName(child.modelId, child.modelValue, calcModelOptions);
 		return {
 			...child,
 			pathId: i,
@@ -208,9 +207,18 @@ const getGroupMetaChildren = (modelValue, modelOptions) => {
 	});
 };
 
-const getAbsoluteMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
-
-const getRelativeMetaChildren = (modelValue, modelOptions) => PodListUtils.getMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
+const getListMetaChildren = (modelValue, modelOptions, childModelId) => {
+	return modelValue.map((pod, i) => {
+		return {
+			pathId: i,
+			name: getName(childModelId, pod, modelOptions),
+			preview: getPreview(childModelId, pod, modelOptions),
+			modelId: childModelId,
+			modelValue: pod,
+			modelOptions
+		}
+	});
+};
 
 const getMetaChildren = (modelId, modelValue, modelOptions) => {
 	switch (modelId) {
@@ -218,10 +226,10 @@ const getMetaChildren = (modelId, modelValue, modelOptions) => {
 		return getGroupMetaChildren(modelValue, modelOptions);
 	case MODEL_ID.RelativeChord:
 	case MODEL_ID.RelativeScale:
-		return getRelativeMetaChildren(modelValue, modelOptions);
+		return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
 	case MODEL_ID.AbsoluteChord:
 	case MODEL_ID.AbsoluteScale:
-		return getAbsoluteMetaChildren(modelValue, modelOptions);
+		return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
 	default:
 		return null;
 	}

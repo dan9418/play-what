@@ -3,21 +3,21 @@ import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { RELATIVE_CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/RelativeChord/RelativeChord.constants";
 import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/RelativeScale/RelativeScale.constants";
 interface IModelDef {
-	name?: string;
-	preview?: string;
 	modelId: string;
 	modelValue: any[];
 	modelOptions: {
 		modelRoot: any[];
+		name?: string;
+		preview?: string;
 	}
 }
 
 export const LIBRARY_PATH_ROOT: IModelDef = {
-	name: 'Library',
-	preview: 'Select a group',
 	modelId: MODEL_ID.Group,
 	modelOptions: {
 		modelRoot: NOTE.A.value,
+		name: 'Library',
+		preview: 'Select a group',
 	},
 	modelValue: [
 		/*{
@@ -36,9 +36,11 @@ export const LIBRARY_PATH_ROOT: IModelDef = {
 			modelId: MODEL_ID.Group,
 			modelValue: RELATIVE_CHORD_VALUES.map(chord => (
 				{
-					name: chord.name,
 					modelId: MODEL_ID.RelativeChord,
-					modelValue: chord.value
+					modelValue: chord.value,
+					modelOptions: {
+						name: chord.name,
+					}
 				}
 			))
 		},
@@ -47,9 +49,11 @@ export const LIBRARY_PATH_ROOT: IModelDef = {
 			modelId: MODEL_ID.Group,
 			modelValue: RELATIVE_SCALE_VALUES.map(scale => (
 				{
-					name: scale.name,
 					modelId: MODEL_ID.RelativeScale,
-					modelValue: scale.value
+					modelValue: scale.value,
+					modelOptions: {
+						name: scale.name,
+					}
 				}
 			))
 		}

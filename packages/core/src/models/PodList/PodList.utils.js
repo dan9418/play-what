@@ -1,7 +1,5 @@
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
-import { MODEL } from '../Model.constants';
-import ModelUtils from '../Model.utils';
 import { MAX_POD } from '../Pod/Pod.constants';
 import PodUtils from '../Pod/Pod.utils';
 
@@ -30,21 +28,6 @@ const getPodAtPitch = (A, p, modelOptions, matchOctave) => {
 	return pod ? pod : null;
 };
 
-// Children
-
-const getMetaChildren = (modelValue, modelOptions, childModelId) => {
-	return modelValue.map((pod, i) => {
-		return {
-			pathId: i,
-			name: ModelUtils.getName(childModelId, pod, modelOptions),
-			preview: ModelUtils.getPreview(childModelId, pod, modelOptions),
-			modelId: childModelId,
-			modelValue: pod,
-			modelOptions
-		}
-	});
-};
-
 // Sound
 
 const playSound = (modelValue, modelOptions = {}) => {
@@ -67,7 +50,6 @@ export default {
 	areEqual,
 	reduce,
 	getPodAtPitch,
-	getMetaChildren,
 	playSound,
 	containsSubset
 };
