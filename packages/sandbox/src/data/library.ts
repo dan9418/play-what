@@ -6,7 +6,7 @@ import { RELATIVE_SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Relativ
 export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelId: MODEL_ID.Group,
 	modelOptions: {
-		modelRoot: NOTE.A.value,
+		modelRoot: NOTE.D.value,
 		name: 'Library',
 		preview: 'Select a group',
 	},

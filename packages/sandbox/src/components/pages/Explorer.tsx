@@ -90,7 +90,7 @@ const Explorer = () => {
 		<>
 			<BreadcrumbList />
 			{/* @ts-ignore */}
-			<Panel {...pathHead}>
+			<Panel name={name} preview={preview} caption={null} >
 				{/* @ts-ignore */}
 				{!meter && <div css={`border-bottom: 2px solid #ccc;`} />}
 				{meter}
