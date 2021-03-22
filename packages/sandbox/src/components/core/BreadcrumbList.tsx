@@ -2,7 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { usePathNavContext } from "../../contexts/PathNavContext";
-import { pathState } from "../../state/pathState";
+import { fullPathState } from "../../state/pathState";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
@@ -33,18 +33,18 @@ const StyledBreadcrumbList = styled.ul`
 
 const BreadcrumbList = () => {
 
-	const path = useRecoilValue(pathState);
+	const fullPath = useRecoilValue(fullPathState);
 	const { popAt } = usePathNavContext();
 
-	const isVisible = path && path.length >= 2;
+	const isVisible = fullPath && fullPath.length >= 2;
 
 	return (
 		<StyledBreadcrumbList>
-			{isVisible && path.map((b, i) => {
-				const className = i + 1 === path.length ? 'active' : '';
+			{isVisible && fullPath.map((b, i) => {
+				const className = i + 1 === fullPath.length ? 'active' : '';
 				const onClick = () => popAt(i);
 				return (
-					<li key={i} className={className} onClick={onClick}>{/*b.name*/b}</li>
+					<li key={i} className={className} onClick={onClick}>{b.data.name}</li>
 				);
 			})}
 		</StyledBreadcrumbList>

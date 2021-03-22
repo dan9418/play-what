@@ -13,9 +13,9 @@ export interface IPathNode {
 	data: IModelData;
 };
 
-export const pathHeadState = selector({
-	key: 'pathHeadState',
-	get: ({ get }): IPathNode => {
+export const fullPathState = selector({
+	key: 'fullPathState',
+	get: ({ get }) => {
 		const path: number[] = get(pathState);
 		const _data: IModelConfig = get(dataState);
 
@@ -32,6 +32,16 @@ export const pathHeadState = selector({
 
 			nodes.push(child);
 		}
+
+		console.log('fullPathState', nodes);
+		return nodes;
+	}
+});
+
+export const pathHeadState = selector({
+	key: 'pathHeadState',
+	get: ({ get }): IPathNode => {
+		const nodes: any[] = get(fullPathState);
 
 		const pathHead = nodes[nodes.length - 1];
 		console.log('pathHead', pathHead);
