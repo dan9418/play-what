@@ -22,18 +22,28 @@ const StyledPanelHeader = styled.section`
 	justify-content: space-between;
 	
 	& .preview-container {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		width: 100%;
+
+		@media(min-width: 512px) {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
 		& .name-container {
 			display: flex;
-    		align-items: baseline;
+			flex-direction: column;
+
 			& > .name {
 				font-size: 200%;
 			}
 			& > .caption {
+				padding-top: 4px;
 				padding-left: 8px;
     			color: #555;
-				@media(max-width: 512px) {
-					display: none;
-				}
 			}
 		}
 		& .preview {
