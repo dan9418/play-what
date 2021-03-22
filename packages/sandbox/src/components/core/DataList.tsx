@@ -13,8 +13,8 @@ const StyledDataList = styled.ul`
 
 const getItems = metaChildren => {
 	return metaChildren.map((child, i) => {
-		const { modelId, modelValue, modelOptions } = child;
-		const { name, preview } = modelOptions;
+		const { modelId, modelValue, modelOptions } = child.config;
+		const { name, preview } = child.data;
 		const model = MODEL[modelId];
 
 		const isGroup = modelId === MODEL_ID.Group;

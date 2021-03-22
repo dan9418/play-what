@@ -197,24 +197,30 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 
 // Parse
 
-const getGroupMetaChildren = (modelValue: IModel, modelOptions: IModelOptions) => {
+const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return modelValue.map((child, i) => {
 		return {
 			...child,
-			modelOptions: { ...modelOptions, ...child.modelOptions }
+			modelOptions: {
+				...modelOptions,
+				...child.modelOptions,
+				name: child.modelOptions.name,
+				preview: child.modelOptions.preview
+			}
 		}
 	});
 };
 
-const getListMetaChildren = (modelValue: IModel, modelOptions: IModelOptions, childModelId) => {
+const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, childModelId) => {
 	return modelValue.map((pod, i) => {
 		return {
-			pathId: i,
-			name: getName(childModelId, pod, modelOptions),
-			preview: getPreview(childModelId, pod, modelOptions),
 			modelId: childModelId,
 			modelValue: pod,
-			modelOptions
+			modelOptions: {
+				...modelOptions,
+				name: modelOptions.name,
+				preview: modelOptions.preview
+			}
 		}
 	});
 };
@@ -227,9 +233,19 @@ const getChildModelId = (modelId: string): string => {
 const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
-	const metaChildren = modelId === MODEL_ID.Group ?
-		getGroupMetaChildren(modelValue, modelOptions) :
-		getListMetaChildren(modelValue, modelOptions, getChildModelId(modelId));
+	const childConfigs = modelId === MODEL_ID.Group ?
+		getGroupChildConfigs(modelValue, modelOptions) :
+		modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval ?
+			null :
+			getListChildConfigs(modelValue, modelOptions, getChildModelId(modelId));
+
+	const metaChildren = childConfigs ? childConfigs.map((config, i) => {
+		const data = getData(config, i);
+		return {
+			config,
+			data
+		};
+	}) : null;
 
 	const name = getName(modelId, modelValue, modelOptions);
 	const preview = getPreview(modelId, modelValue, modelOptions);
