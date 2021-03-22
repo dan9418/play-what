@@ -53,14 +53,14 @@ const getIntervalName = (modelValue: IModel, modelOptions: IModelOptions) => {
 const getRelativeChordName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
-	const presetName = preset ? preset.id : 'Untitled Chord';
+	const presetName = preset ? preset.name : 'Chord';
 	return `${rootName} ${presetName}`;
 };
 
 const getRelativeScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
-	const presetName = preset ? preset.id : 'Untitled Scale';
+	const presetName = preset ? preset.name : 'Scale';
 	return `${rootName} ${presetName}`;
 };
 
@@ -218,8 +218,8 @@ const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, ch
 			modelValue: pod,
 			modelOptions: {
 				...modelOptions,
-				name: modelOptions.name,
-				preview: modelOptions.preview
+				name: undefined,
+				preview: undefined
 			}
 		}
 	});
