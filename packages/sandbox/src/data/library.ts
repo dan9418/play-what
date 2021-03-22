@@ -23,7 +23,6 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 			))
 		},*/
 		{
-			name: 'Chords',
 			modelId: MODEL_ID.Group,
 			modelValue: RELATIVE_CHORD_VALUES.map(chord => (
 				{
@@ -33,10 +32,12 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 						name: chord.name,
 					}
 				}
-			))
+			)),
+			modelOptions: {
+				name: 'Chords',
+			}
 		},
 		{
-			name: 'Scales & Modes',
 			modelId: MODEL_ID.Group,
 			modelValue: RELATIVE_SCALE_VALUES.map(scale => (
 				{
@@ -46,7 +47,10 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 						name: scale.name,
 					}
 				}
-			))
+			)),
+			modelOptions: {
+				name: 'Scales & Modes'
+			}
 		}
 	]
 };

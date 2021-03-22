@@ -65,6 +65,8 @@ const getRelativeScaleName = (modelValue: IModel, modelOptions: IModelOptions) =
 };
 
 const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
+	if (modelOptions.name) return modelOptions.name;
+
 	switch (modelId) {
 		case MODEL_ID.Note:
 			return getNoteName(modelValue, modelOptions)
@@ -99,6 +101,8 @@ const getRelativePreview = (modelValue: IModel, modelOptions: IModelOptions) => 
 const getAbsolutePreview = (modelValue: IModel, modelOptions: IModelOptions) => modelValue.map(note => getNoteName(note, modelOptions)).join(', ');
 
 const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
+	if (modelOptions.preview) return modelOptions.preview;
+
 	switch (modelId) {
 		case MODEL_ID.Group:
 			return getGroupPreview(modelValue, modelOptions);
@@ -191,7 +195,7 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 	}
 }
 
-// Meta Children
+// Parse
 
 const getGroupMetaChildren = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return modelValue.map((child, i) => {
@@ -215,20 +219,30 @@ const getListMetaChildren = (modelValue: IModel, modelOptions: IModelOptions, ch
 	});
 };
 
-const getMetaChildren = (modelId: string, modelValue: IModel, modelOptions: IModelOptions): IModelConfig[] => {
-	switch (modelId) {
-		case MODEL_ID.Group:
-			return getGroupMetaChildren(modelValue, modelOptions);
-		case MODEL_ID.RelativeChord:
-		case MODEL_ID.RelativeScale:
-			return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Interval);
-		case MODEL_ID.AbsoluteChord:
-		case MODEL_ID.AbsoluteScale:
-			return getListMetaChildren(modelValue, modelOptions, MODEL_ID.Note);
-		default:
-			return null;
-	}
+const getChildModelId = (modelId: string): string => {
+	const model = MODEL[modelId];
+	return model.isRelative ? MODEL_ID.Interval : MODEL_ID.Note;
 }
+
+const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
+	const { modelId, modelValue, modelOptions } = modelConfig;
+
+	const metaChildren = modelId === MODEL_ID.Group ?
+		getGroupMetaChildren(modelValue, modelOptions) :
+		getListMetaChildren(modelValue, modelOptions, getChildModelId(modelId));
+
+	const name = getName(modelId, modelValue, modelOptions);
+	const preview = getPreview(modelId, modelValue, modelOptions);
+
+	return {
+		pathId,
+		name,
+		preview,
+		metaChildren,
+		modelRoot: modelOptions.modelRoot,
+		superset: modelOptions.superset
+	}
+};
 
 // export
 
@@ -237,5 +251,5 @@ export default {
 	getPreview,
 	getPodAtPitch,
 	getPodProps,
-	getMetaChildren
+	getData
 }

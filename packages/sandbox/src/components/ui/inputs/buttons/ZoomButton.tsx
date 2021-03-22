@@ -1,4 +1,3 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { usePathNavContext } from '../../../../contexts/PathNavContext';
 import THEME from '../../../../styles/theme';

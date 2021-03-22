@@ -113,7 +113,7 @@ const Explorer = () => {
 						)}
 						hideHeader={isGroup}
 					>
-						<DataList modelId={modelId} modelValue={modelValue} metaChildren={metaChildren} modelOptions={modelOptions} onEdit={setPathHead} />
+						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
 					</Col>
 				</StyledExplorer>
 			</Panel>

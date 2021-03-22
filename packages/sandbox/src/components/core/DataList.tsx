@@ -47,7 +47,7 @@ const getItems = metaChildren => {
 	})
 };
 
-const DataList = ({ modelId, modelValue, modelOptions, metaChildren, onEdit }) => {
+const DataList = ({ modelValue, metaChildren, setPathHead }) => {
 
 	return (
 		<>

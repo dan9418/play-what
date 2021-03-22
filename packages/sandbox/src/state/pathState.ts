@@ -17,45 +17,27 @@ export const pathHeadState = selector({
 	key: 'pathHeadState',
 	get: ({ get }): IPathNode => {
 		const path: number[] = get(pathState);
-		const data: IModelConfig = get(dataState);
+		const _data: IModelConfig = get(dataState);
 
-		// Get head
-		let config: IModelConfig = data;
-		let pathId: number = 0;
+		// Get head	
+		let config: IModelConfig = _data;
+		let data = ModelUtils.getData(config);
+		let node = { config, data };
+		let nodes = [node];
+
+		let pathHead = nodes[0];
 		for (let i = 0; i < path.length; i++) {
-			const { modelId, modelValue, modelOptions } = config;
-			const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
+			pathHead = nodes[i];
+			const pathId = i;
+			config = pathHead.data.metaChildren[pathId];
+			data = ModelUtils.getData(config);
 
-			const oldOptions = config.modelOptions;
-
-			pathId = path[i];
-			config = metaChildren[pathId];
-			config.modelOptions = { ...oldOptions, ...config.modelOptions }
+			node = { config, data };
+			nodes.push(node);
 		}
 
-		// Compute data
-		const { modelId, modelValue, modelOptions } = config;
-		const metaChildren = ModelUtils.getMetaChildren(modelId, modelValue, modelOptions);
-
-		const name = ModelUtils.getName(modelId, modelValue, modelOptions);
-		const preview = ModelUtils.getPreview(modelId, modelValue, modelOptions);
-
-		const modelData: IModelData = {
-			pathId,
-			name,
-			preview,
-			metaChildren,
-			modelRoot: modelOptions.modelRoot,
-			superset: modelOptions.superset
-		};
-
-		const pathHead = {
-			config,
-			data: modelData
-		}
-
-		console.log('pathHead', pathHead);
-		return pathHead;
+		console.log('pathHead', node);
+		return node;
 	},
 	set: ({ get, set }, newValue) => {
 		/*const path = get(pathState);
