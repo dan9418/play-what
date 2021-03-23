@@ -64,10 +64,14 @@ const StyledGroupHeader = styled.section`
 	width: 100%;
 	max-width: 512px;
 	border-bottom: 1px solid #ccc;
+
+	& > * {
+		margin: 16px 0;
+	}
 `;
 
 const GroupHeader = ({ children, ...props }) => {
-	const [isOpen, setIsOpen] = React.useState(false);
+	const [isOpen, setIsOpen] = React.useState(true);
 
 	return (
 		<StyledGroupHeader>
