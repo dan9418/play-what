@@ -2,6 +2,7 @@ import ModelUtils from "@pw/core/src/models/Model.utils";
 import { atom, selector } from "recoil";
 import { IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
 import { dataState } from "./dataState";
+import _ from 'lodash';
 
 export const pathState = atom({
 	key: 'pathState',
@@ -47,15 +48,19 @@ export const pathHeadState = selector({
 		console.log('pathHead', pathHead);
 		return pathHead;
 	},
-	set: ({ get, set }, newValue) => {
-		/*const path = get(pathState);
+	set: ({ get, set }, newValue: any) => {
+		const path = get(pathState);
 		const data = get(dataState);
 
-		const parentIds = path.slice(0, path.length - 1);
-		const newData = JSON.parse(JSON.stringify(data));*/
+		const newData = _.cloneDeep(data);
 
-		console.log('set pathHead', newValue);
-		// set(dataState, newData);
+		const pathStr = `modelValue.${path.join('.modelValue.')}`;
+		const oldValue = _.get(newData, pathStr);
+		const merged = { ...oldValue, ...newValue };
+		_.set(newData, pathStr, merged);
+
+		console.log('set pathHead', pathStr, newData);
+		set(dataState, newData);
 	}
 });
 

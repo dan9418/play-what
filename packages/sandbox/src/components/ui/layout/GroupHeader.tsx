@@ -71,7 +71,7 @@ const StyledGroupHeader = styled.section`
 `;
 
 const GroupHeader = ({ children, ...props }) => {
-	const [isOpen, setIsOpen] = React.useState(true);
+	const [isOpen, setIsOpen] = React.useState(false);
 
 	return (
 		<StyledGroupHeader>
