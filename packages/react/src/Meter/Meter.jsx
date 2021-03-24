@@ -31,7 +31,6 @@ const StyledDot = styled.div`
 `;
 
 const StyledMeter = styled.div`
- 	margin: 16px 0 8px;
 	display: flex;
 	justify-content: space-between;
 

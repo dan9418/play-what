@@ -26,7 +26,7 @@ const StyledPanelHeader = styled.section`
 		margin-left: 16px;
 	}
 	
-	& .preview-container {
+	& .text-container {
 		display: flex;
 		justify-content: space-between;
 		flex-direction: column;
@@ -38,31 +38,39 @@ const StyledPanelHeader = styled.section`
 			justify-content: space-between;
 		}
 
-		& .name-container {
+		& .name-caption--preview {
 			display: flex;
 			flex-direction: column;
-
-			& > .name {
-				font-size: 200%;
+			& > .name-caption {
+				display: flex;
+				align-items: baseline;
+				white-space: nowrap;
+				& > .name {
+					font-size: 200%;
+				}
+				& > .caption {
+					font-size: unset;
+					color: #555;
+					margin-top: 8px;
+					margin-left: 8px;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					@media(min-width: 512px) {
+						margin-top: 0;
+						justify-content: flex-end;
+					}
+				}
 			}
-			& > .caption {
+			& .preview {
 				padding-top: 4px;
-    			color: #555;
+				display: flex;
+				align-items: center;
+				font-size: 140%;
+				color: ${({ theme }) => theme.accent}
 			}
 		}
-		& .preview {
-			display: flex;
-			align-items: center;
-
-			margin-top: 8px;
-			justify-content: flex-start;
-			@media(min-width: 512px) {
-				margin-top: 0;
-				justify-content: flex-end;
-			}
-			font-size: 140%;
-			color: ${({ theme }) => theme.accent}
-		}
+		
 	}
 `;
 
@@ -72,23 +80,24 @@ const PanelHeader = () => {
 	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];
 
-
 	const { pop, prev, next } = usePathNavContext();
 
 	return (
 		<StyledPanelHeader>
-			<div className='preview-container'>
-				<div className='name-container'>
-					<h3 className='name'>{name}</h3>
-					<div className='caption'>{model.name}</div>
+			<div className='text-container'>
+				<div className='name-caption--preview'>
+					<div className='name-caption'>
+						<h3 className='name'>{name}</h3>
+						<div className='caption'>{model.name}</div>
+					</div>
+					<div className='preview'>{preview}</div>
 				</div>
-				<div className='preview'>{preview}</div>
-			</div>
-			<div className='button-container'>
-				{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelOptions)} iconId="speaker" />}
-				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
-				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
-				{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+				<div className='button-container'>
+					{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelOptions)} iconId="speaker" />}
+					{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
+					{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
+					{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+				</div>
 			</div>
 		</StyledPanelHeader>
 	);
