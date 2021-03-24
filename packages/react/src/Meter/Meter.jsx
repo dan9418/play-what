@@ -42,10 +42,11 @@ const StyledMeter = styled.div`
 	}
 `;
 
-const DotList = ({ modelId, modelValue, modelOptions }) => {
+const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave = true }) => {
 	const list = [];
-	for (let i = -39; i < 48; i++) {
-		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelOptions, i, true);
+
+	for (let i = range[0]; i < range[1]; i++) {
+		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelOptions, i, matchOctave);
 		const hasDegree = pod !== null;
 
 		let color = '#fff';

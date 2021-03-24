@@ -14,6 +14,7 @@ import TransposeSelector from '../core/TransposeSelector';
 import Viewer from '../core/Viewer';
 import Col from '../ui/layout/Col';
 import Panel from '../ui/layout/Panel';
+import { useIsTablet, useIsDesktop } from '../../hooks/useWindowSize';
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -59,16 +60,27 @@ const VIEWER_ACTIONS = [
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
+	const isTablet = useIsTablet();
+	const isDesktop = useIsDesktop();
+
 	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
 	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
+	let range = [0, 12];
+	if (isTablet) {
+		range = [-12, 12]
+	}
+	if (isDesktop) {
+		range = [-39, 48]
+	}
+
 	const isGroup = modelId === MODEL_ID.Group;
 
 	const meter = isGroup ?
 		null :
-		<Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
+		<Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={isDesktop} />;
 
 	const viewer = isGroup ?
 		null :

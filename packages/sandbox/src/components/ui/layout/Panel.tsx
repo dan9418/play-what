@@ -24,7 +24,11 @@ const StyledPanelHeader = styled.section`
 	padding: 16px 0;
 
 	& .button-container {
-		margin-left: 16px;
+		margin: 8px 0 0;
+
+		@media(min-width: 512px) {
+			margin: 16px 0 0;
+		}
 	}
 	
 	& .text-container {
