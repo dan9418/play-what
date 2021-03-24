@@ -9,17 +9,22 @@ import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.section`
 	width: 100%;
+
 	position: sticky;
-	@media(min-width: 1024px) {
-		position: static;
-	}
     top: 48px;
 	z-index: 1;
+
 	background-color: #ecefef;
     
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	padding: 16px 0;
+
+	& .button-container {
+		margin-left: 16px;
+	}
 	
 	& .preview-container {
 		display: flex;
@@ -42,13 +47,20 @@ const StyledPanelHeader = styled.section`
 			}
 			& > .caption {
 				padding-top: 4px;
-				padding-left: 8px;
     			color: #555;
 			}
 		}
 		& .preview {
+			display: flex;
+			align-items: center;
+
+			margin-top: 8px;
+			justify-content: flex-start;
+			@media(min-width: 512px) {
+				margin-top: 0;
+				justify-content: flex-end;
+			}
 			font-size: 140%;
-			padding: 4px;
 			color: ${({ theme }) => theme.accent}
 		}
 	}
@@ -77,7 +89,6 @@ const PanelHeader = () => {
 				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
 				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
 				{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
-
 			</div>
 		</StyledPanelHeader>
 	);

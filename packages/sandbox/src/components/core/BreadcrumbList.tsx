@@ -8,7 +8,6 @@ const StyledBreadcrumbList = styled.ul`
 	display: flex;
 	flex-wrap: wrap;
 	margin-top: 16px;
-	padding: 8px 0 16px;
 	list-style-type: none;
 	color: #555;
 	font-size: 90%;
