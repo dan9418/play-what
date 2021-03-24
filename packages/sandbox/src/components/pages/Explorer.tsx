@@ -21,7 +21,7 @@ const StyledExplorer = styled.div`
 	margin: auto;
 
 	grid-template-columns: 1fr;
-	max-width: 512px;
+	max-width: 768px;
 	@media(min-width: 1024px) {
 		${({ $isSingle }) => $isSingle ? '' : css`
 			grid-template-columns: 1fr 1fr;
@@ -92,7 +92,6 @@ const Explorer = () => {
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
 				{/* @ts-ignore */}
-				{!meter && <div css={`border-bottom: 2px solid #ccc;`} />}
 				{meter}
 				<StyledExplorer $isSingle={isGroup}>
 					{!isGroup &&

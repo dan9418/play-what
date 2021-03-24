@@ -17,7 +17,6 @@ const VIEWER = {
 
 const StyledViewerContainer = styled.div`
     width: 100%;
-	max-width: 512px;
 	padding: 16px;
 `;
 

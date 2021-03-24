@@ -1,4 +1,4 @@
-import { MODEL } from "@pw/core/src/models/Model.constants";
+import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -15,6 +15,7 @@ const StyledPanelHeader = styled.section`
 	z-index: 1;
 
 	background-color: #ecefef;
+	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc;' : ''}
     
 	display: flex;
 	align-items: center;
@@ -83,7 +84,7 @@ const PanelHeader = () => {
 	const { pop, prev, next } = usePathNavContext();
 
 	return (
-		<StyledPanelHeader>
+		<StyledPanelHeader $showBorder={modelId === MODEL_ID.Group}>
 			<div className='text-container'>
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
