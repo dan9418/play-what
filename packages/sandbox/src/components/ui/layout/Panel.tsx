@@ -11,7 +11,7 @@ const StyledPanelHeader = styled.section`
 	width: 100%;
 
 	position: sticky;
-    top: 48px;
+    top: 32px;
 	z-index: 1;
 
 	background-color: #ecefef;

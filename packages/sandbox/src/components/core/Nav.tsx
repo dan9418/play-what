@@ -24,8 +24,8 @@ const LINKS = [
 const StyledNav = styled.nav`
 	color: white;
 	background-color: ${({ theme }) => theme.primary};
-    height: 48px;
-    line-height: 48px;
+    height: 32px;
+    line-height: 32px;
     box-sizing: border-box;
     position: fixed;
     top: 0;
@@ -33,7 +33,7 @@ const StyledNav = styled.nav`
     right: 0;
     z-index: 2000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
-	padding: 0 16px;
+	padding: 0 8px;
 
 	> div {
 		width: 100%;
@@ -43,7 +43,7 @@ const StyledNav = styled.nav`
 	}
 
 	.logo {
-		font-size: 100%;
+		font-size: 90%;
 		text-transform: uppercase;
 		letter-spacing: 8px;
 		font-weight: 300;
