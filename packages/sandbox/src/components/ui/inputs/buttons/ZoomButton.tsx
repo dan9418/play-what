@@ -3,10 +3,10 @@ import { usePathNavContext } from '../../../../contexts/PathNavContext';
 import THEME from '../../../../styles/theme';
 import IconButton from './IconButton';
 
-const ZoomButton = ({ pathId }) => {
+const ZoomButton = ({ pathIds }) => {
 	const { push } = usePathNavContext();
 
-	const onClick = () => push(pathId);
+	const onClick = () => push(pathIds);
 
 	return (
 		<IconButton onClick={onClick} color={THEME.primary} iconId='zoom' />

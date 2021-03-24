@@ -81,7 +81,7 @@ const PanelHeader = () => {
 	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];
 
-	const { pop, prev, next } = usePathNavContext();
+	const { pop, prev, next, path } = usePathNavContext();
 
 	return (
 		<StyledPanelHeader $showBorder={modelId === MODEL_ID.Group}>
@@ -97,7 +97,7 @@ const PanelHeader = () => {
 					{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelOptions)} iconId="speaker" />}
 					{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
 					{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
-					{true && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+					{path.length > 0 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
 				</div>
 			</div>
 		</StyledPanelHeader>

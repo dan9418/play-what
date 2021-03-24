@@ -11,7 +11,7 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = metaChildren => {
+const getItems = (metaChildren, pathIds) => {
 	return metaChildren.map((child, i) => {
 		const { modelId, modelValue, modelOptions } = child.config;
 		const { name, preview, metaChildren: grandchildren } = child.data;
@@ -19,18 +19,20 @@ const getItems = metaChildren => {
 
 		const isGroup = modelId === MODEL_ID.Group;
 
+		const newPathIds = [...pathIds, i];
+
 		const content = isGroup ? (
 			<Subpanel
-				pathId={i}
+				pathIds={newPathIds}
 				caption={model.name}
 				name={name}
 				preview={preview}
 			>
-				{getItems(grandchildren)}
+				{getItems(grandchildren, newPathIds)}
 			</Subpanel>
 		) : (
 			<Subpanel
-				pathId={i}
+				pathIds={newPathIds}
 				caption={model.name}
 				name={name}
 				preview={preview}
@@ -54,7 +56,7 @@ const DataList = ({ modelValue, metaChildren, setPathHead }) => {
 		<>
 			{metaChildren && (
 				<StyledDataList>
-					{getItems(metaChildren)}
+					{getItems(metaChildren, [])}
 				</StyledDataList>
 			)}
 			{!metaChildren && (

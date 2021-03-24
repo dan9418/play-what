@@ -64,40 +64,19 @@ export const pathHeadState = selector({
 	}
 });
 
-export const pathParentState = selector({
-	key: 'pathParentState',
-	get: ({ get }) => {
-		return null;
-		const path = get(pathState);
-		const data = get(dataState);
-
-		if (!path.length) return null;
-
-		let node = data;
-		for (let i = 0; i < path.length - 1; i++) {
-			const pathId = path[i];
-			const { modelId, modelValue, modelOptions } = node;
-			const metaChildren = ModelUtils.getData(node);
-			node = metaChildren[pathId];
-		}
-
-		console.log('pathParent', node);
-		return node;
-	}
-});
-
 export const siblingsState = selector({
 	key: 'siblingsState',
 	get: ({ get }) => {
-		/*const path = get(pathState);
-		const pathHead: any = get(pathHeadState);
-		const pathParent: any = get(pathParentState);
+		const fullPath = get(fullPathState);
 
-		if (!pathParent || path.length < 2) return null;
+		if (fullPath.length < 2) return null;
 
-		const siblings = ModelUtils.getData(pathParent);
+		const head = fullPath[fullPath.length - 1];
+		const parent = fullPath[fullPath.length - 2];
 
-		const i = pathHead.pathId;
+		const siblings = parent.data.metaChildren;
+
+		const i = head.data.pathId;
 		const isFirst = i === 0;
 		const isLast = i === siblings.length - 1;
 
@@ -107,11 +86,7 @@ export const siblingsState = selector({
 		return {
 			prev,
 			next,
-			parent: pathParent
-		};*/
-
-		return {
-			parent: null
-		}
+			parent
+		};
 	}
 });

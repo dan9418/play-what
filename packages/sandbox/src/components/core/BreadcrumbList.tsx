@@ -41,7 +41,7 @@ const BreadcrumbList = () => {
 		<StyledBreadcrumbList>
 			{isVisible && fullPath.map((b, i) => {
 				const className = i + 1 === fullPath.length ? 'active' : '';
-				const onClick = () => popAt(i);
+				const onClick = () => popAt(i - 1);
 				return (
 					<li key={i} className={className} onClick={onClick}>{b.data.name}</li>
 				);

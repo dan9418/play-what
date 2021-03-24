@@ -43,7 +43,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathId, hasChildren }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
 			<span className="name">{name}</span>
@@ -52,7 +52,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathId, has
 
 			<StyledButtonContainer>
 				{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
-				<ZoomButton pathId={pathId} />
+				<ZoomButton pathIds={pathIds} />
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);

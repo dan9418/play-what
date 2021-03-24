@@ -18,7 +18,7 @@ const getPathNavContext = (path, setPath, siblings) => {
 	}
 
 	const push = p => {
-		setPath([...path, p]);
+		setPath([...path, ...p]);
 	};
 
 	const reset = () => {
@@ -26,11 +26,11 @@ const getPathNavContext = (path, setPath, siblings) => {
 	}
 
 	const prev = siblings && siblings.prev
-		? () => setPath([...path.slice(0, path.length - 1), siblings.prev])
+		? () => setPath([...path.slice(0, path.length - 1), siblings.prev.data.pathId])
 		: null;
 
 	const next = siblings && siblings.next
-		? () => setPath([...path.slice(0, path.length - 1), siblings.next])
+		? () => setPath([...path.slice(0, path.length - 1), siblings.next.data.pathId])
 		: null;
 
 	return {
