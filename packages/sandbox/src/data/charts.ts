@@ -31,6 +31,22 @@ export const OUT_OF_NOWHERE = {
 					}
 				},
 				{
+					modelId: MODEL_ID.Group,
+					modelValue: [
+						{
+							modelId: MODEL_ID.RelativeChord,
+							modelValue: RELATIVE_CHORD.Maj7.value,
+							modelOptions: {
+								modelRoot: NOTE.G.value,
+								t: 8
+							}
+						}
+					],
+					modelOptions: {
+						name: "test"
+					}
+				},
+				{
 					modelId: MODEL_ID.RelativeChord,
 					modelValue: RELATIVE_CHORD.Dom7.value,
 					modelOptions: {

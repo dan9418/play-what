@@ -20,14 +20,14 @@ const getItems = metaChildren => {
 		const isGroup = modelId === MODEL_ID.Group;
 
 		const content = isGroup ? (
-			<GroupHeader
+			<Subpanel
 				pathId={i}
 				caption={model.name}
 				name={name}
 				preview={preview}
 			>
 				{getItems(grandchildren)}
-			</GroupHeader>
+			</Subpanel>
 		) : (
 			<Subpanel
 				pathId={i}
