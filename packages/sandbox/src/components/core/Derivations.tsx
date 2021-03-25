@@ -22,7 +22,7 @@ const Derivations = () => {
 
 	const { push } = usePathNavContext();
 
-	if (!model.isRelative) return null;
+	return null;
 
 	const addRoot = () => {
 		push({

@@ -1,4 +1,4 @@
-import { INTERVAL } from "../../../Pod/Interval/Interval.constants";
+import { INTERVAL } from "../../Pod/Interval/Interval.constants";
 
 export const RELATIVE_SCALE = {
 	Ionian: { id: 'Ionian', name: 'Ionian', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },

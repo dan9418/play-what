@@ -4,9 +4,9 @@ import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.consta
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
 import PodUtils from "./Pod/Pod.utils";
-import { RELATIVE_CHORD_VALUES } from "./PodList/Chord/RelativeChord/RelativeChord.constants";
+import { RELATIVE_CHORD_VALUES } from "./PodList/Chord/Chord.constants";
 import PodListUtils from "./PodList/PodList.utils";
-import { RELATIVE_SCALE_VALUES } from "./PodList/Scale/RelativeScale/RelativeScale.constants";
+import { RELATIVE_SCALE_VALUES } from "./PodList/Scale/Scale.constants";
 
 // Name
 
@@ -50,14 +50,14 @@ const getIntervalName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getRelativeChordName = (modelValue: IModel, modelOptions: IModelOptions) => {
+const getChordName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.name : 'Chord';
 	return `${rootName} ${presetName}`;
 };
 
-const getRelativeScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
+const getScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.name : 'Scale';
@@ -75,9 +75,9 @@ const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOption
 		case MODEL_ID.Group:
 			return 'Group';
 		case MODEL_ID.Chord:
-			return getRelativeChordName(modelValue, modelOptions);
+			return getChordName(modelValue, modelOptions);
 		case MODEL_ID.Scale:
-			return getRelativeScaleName(modelValue, modelOptions);
+			return getScaleName(modelValue, modelOptions);
 		default:
 			return null;
 	}
@@ -87,7 +87,7 @@ const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOption
 
 const getGroupPreview = (modelValue: IModel, modelOptions: IModelOptions) => `${modelValue.length} Items`;
 
-const getRelativePreview = (modelValue: IModel, modelOptions: IModelOptions) => {
+const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const intervalNames = modelValue.map(interval => getIntervalName(interval, modelOptions)).join(', ');
 	const notes = PodUtils.addPodList(modelOptions.modelRoot, modelValue);
 	const noteNames = notes.map(note => getNoteName(note, modelOptions)).join(', ');
@@ -102,7 +102,7 @@ const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOpt
 			return getGroupPreview(modelValue, modelOptions);
 		case MODEL_ID.Chord:
 		case MODEL_ID.Scale:
-			return getRelativePreview(modelValue, modelOptions);
+			return getPodListPreview(modelValue, modelOptions);
 		default:
 			return JSON.stringify(modelValue);
 	}
@@ -145,10 +145,10 @@ const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions, no
 	return { color, label };
 }
 
-const getRelativePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
+const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
 	const superset = modelOptions.superset;
-	const superPod = superset ? getPodAtPitch(MODEL_ID.RelativeChord, superset.modelValue, superset.modelOptions, noteIndex) : null;
+	const superPod = superset ? getPodAtPitch(MODEL_ID.Chord, superset.modelValue, superset.modelOptions, noteIndex) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: 'white',
@@ -167,7 +167,7 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 			return getIntervalPodProps(modelValue, modelOptions, noteIndex);
 		case MODEL_ID.Chord:
 		case MODEL_ID.Scale:
-			return getRelativePodProps(modelValue, modelOptions, noteIndex);
+			return getPodListProps(modelValue, modelOptions, noteIndex);
 		default:
 			return null;
 	}
@@ -205,7 +205,7 @@ const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, ch
 
 const getChildModelId = (modelId: string): string => {
 	const model = MODEL[modelId];
-	return model.isRelative ? MODEL_ID.Interval : MODEL_ID.Note;
+	return MODEL_ID.Interval;
 }
 
 const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
