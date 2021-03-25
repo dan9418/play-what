@@ -46,15 +46,16 @@ const DATA_ACTIONS = [
 		name: 'Transpose',
 		description: 'Shift all the notes by the same amount',
 		component: TransposeSelector
-	}
-];
-
-const VIEWER_ACTIONS = [
+	},\
 	{
 		name: 'Apply Superset',
 		description: 'Superimpose a model containing these pods',
 		component: SupersetSelector
 	}
+];
+
+const VIEWER_ACTIONS = [
+	
 ];
 
 const Explorer = () => {
@@ -106,6 +107,15 @@ const Explorer = () => {
 				{/* @ts-ignore */}
 				{meter}
 				<StyledExplorer $isSingle={isGroup}>
+					<Col
+						title="Data"
+						editPanel={(
+							<ActionList actions={dataActions} />
+						)}
+						hideHeader={isGroup}
+					>
+						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
+					</Col>
 					{!isGroup &&
 						/* @ts-ignore */
 						<Col
@@ -117,15 +127,6 @@ const Explorer = () => {
 							{viewer}
 						</Col>
 					}
-					<Col
-						title="Data"
-						editPanel={(
-							<ActionList actions={dataActions} />
-						)}
-						hideHeader={isGroup}
-					>
-						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
-					</Col>
 				</StyledExplorer>
 			</Panel>
 		</>

@@ -1,14 +1,10 @@
 import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
+import _ from 'lodash';
 import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
-import SubpanelFooter from '../ui/layout/SubpanelFooter';
-import _ from 'lodash';
-
-const StyledTransposeSelector = styled.div`
-	padding: 16px;
-`;
+import ActionForm from './ActionForm';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -50,18 +46,15 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 	};
 
 	return (
-		<>
-			<StyledTransposeSelector>
+		<ActionForm onSubmit={onSubmit}>
 
-				<StyledLabel>Direction: </StyledLabel>
-				<DropdownInput options={DIRECTION_OPTIONS} value={selectedDirectionOption} setValue={(v, i) => setDirectionIndex(i)} />
+			<StyledLabel>Direction: </StyledLabel>
+			<DropdownInput options={DIRECTION_OPTIONS} value={selectedDirectionOption} setValue={(v, i) => setDirectionIndex(i)} />
 
-				<StyledLabel>Interval: </StyledLabel>
-				<DropdownInput options={INTERVAL_VALUES} value={selectedIntervalOption} setValue={(v, i) => setIntervalIndex(i)} />
+			<StyledLabel>Interval: </StyledLabel>
+			<DropdownInput options={INTERVAL_VALUES} value={selectedIntervalOption} setValue={(v, i) => setIntervalIndex(i)} />
 
-			</StyledTransposeSelector>
-			<SubpanelFooter onSubmit={onSubmit} />
-		</>
+		</ActionForm>
 	);
 };
 

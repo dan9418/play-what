@@ -1,9 +1,13 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
+import _ from 'lodash';
 import React from "react";
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';
+import ActionForm from './ActionForm';
 
-const SupersetSelector = ({ modelId, modelValue, modelOptions, pathHead, setPathHead }) => {
+const SupersetSelector = ({ pathHead, setPathHead }) => {
+	const { modelId, modelValue, modelOptions } = pathHead.config;
+
 	const [index, setIndex] = React.useState(0);
 
 	const model = MODEL[modelId];
@@ -22,20 +26,16 @@ const SupersetSelector = ({ modelId, modelValue, modelOptions, pathHead, setPath
 	const setSelection = (v, i) => setIndex(i);
 
 	const onSubmit = () => {
-		setPathHead({
-			...pathHead,
-			modelOptions: {
-				...pathHead.modelOptions
-				// TODO
-			}
-		});
+		const newData = _.cloneDeep(pathHead);
+		_.set(newData, 'modelOptions.superset', value);
+
+		setPathHead(newData);
 	};
 
 	return (
-		<>
+		<ActionForm onSubmit={onSubmit}>
 			<DropdownInput options={supersets} value={value} setValue={setSelection} />
-			<ButtonInput onClick={onSubmit}>Apply</ButtonInput>
-		</>
+		</ActionForm>
 	);
 };
 
