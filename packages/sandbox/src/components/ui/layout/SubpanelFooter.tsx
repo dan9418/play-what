@@ -14,7 +14,7 @@ const StyledSubpanelFooter = styled.h3`
 		align-items: center;
 
 		& >:first-child {
-			margin-right: 8px;
+			margin-left: 8px;
 		}
 	}
 `;
@@ -23,8 +23,8 @@ const SubpanelFooter = ({ onSubmit }) => {
 	return (
 		<StyledSubpanelFooter>
 			<ButtonInput onClick={onSubmit}>
+				Apply
 				<Icon iconId='confirm' color='white' />
-				Done
 			</ButtonInput>
 		</StyledSubpanelFooter>
 	);

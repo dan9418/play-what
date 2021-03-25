@@ -4,13 +4,10 @@ import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import SubpanelFooter from '../ui/layout/SubpanelFooter';
+import _ from 'lodash';
 
 const StyledTransposeSelector = styled.div`
 	padding: 16px;
-
-	select {
-		width: 100%;
-	}
 `;
 
 const StyledLabel = styled.h4`
@@ -42,18 +39,14 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 	const selectedIntervalOption = INTERVAL_VALUES[intervalIndex];
 
 	const onSubmit = () => {
-		const initModelRoot = pathHead.modelOptions.modelRoot;
+		const initModelRoot = pathHead.config.modelOptions.modelRoot;
 		const modelRoot = selectedDirectionOption.value === 0 ?
 			PodUtils.addPod(initModelRoot, selectedIntervalOption.value) :
 			PodUtils.subtractPod(initModelRoot, selectedIntervalOption.value);
 
-		setPathHead({
-			...pathHead,
-			modelOptions: {
-				...pathHead.modelOptions,
-				modelRoot
-			}
-		});
+		const newData = _.cloneDeep(pathHead);
+		_.set(newData, 'modelOptions.modelRoot', modelRoot);
+		setPathHead(newData);
 	};
 
 	return (
