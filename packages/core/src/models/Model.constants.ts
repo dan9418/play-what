@@ -3,9 +3,9 @@ import { INTERVAL_VALUES } from './Pod/Interval/Interval.constants';
 import IntervalUtils from './Pod/Interval/Interval.utils';
 import { NOTE_VALUES } from './Pod/Note/Note.constants';
 import NoteUtils from './Pod/Note/Note.utils';
-import { RELATIVE_CHORD_VALUES } from './PodList/Chord/Chord.constants';
+import { CHORD_VALUES } from './PodList/Chord/Chord.constants';
 import ChordUtils from './PodList/Chord/Chord.utils';
-import { RELATIVE_SCALE_VALUES } from './PodList/Scale/Scale.constants';
+import { SCALE_VALUES } from './PodList/Scale/Scale.constants';
 import ScaleUtils from './PodList/Scale/Scale.utils';
 
 export const MODEL_ID = {
@@ -54,14 +54,14 @@ export const MODEL = {
 		name: 'Chord',
 		modelId: MODEL_ID.Chord,
 		utils: ChordUtils,
-		presets: RELATIVE_CHORD_VALUES,
+		presets: CHORD_VALUES,
 		validChildren: [MODEL_ID.Interval]
 	},
 	[MODEL_ID.Scale]: {
 		name: 'Scale',
 		modelId: MODEL_ID.Scale,
 		utils: ScaleUtils,
-		presets: RELATIVE_SCALE_VALUES,
+		presets: SCALE_VALUES,
 		validChildren: [MODEL_ID.Interval]
 	}
 };

@@ -4,9 +4,9 @@ import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.consta
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
 import PodUtils from "./Pod/Pod.utils";
-import { RELATIVE_CHORD_VALUES } from "./PodList/Chord/Chord.constants";
+import { CHORD_VALUES } from "./PodList/Chord/Chord.constants";
 import PodListUtils from "./PodList/PodList.utils";
-import { RELATIVE_SCALE_VALUES } from "./PodList/Scale/Scale.constants";
+import { SCALE_VALUES } from "./PodList/Scale/Scale.constants";
 
 // Name
 
@@ -51,14 +51,14 @@ const getIntervalName = (modelValue: IModel, modelOptions: IModelOptions) => {
 }
 
 const getChordName = (modelValue: IModel, modelOptions: IModelOptions) => {
-	const preset = RELATIVE_CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
+	const preset = CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.name : 'Chord';
 	return `${rootName} ${presetName}`;
 };
 
 const getScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
-	const preset = RELATIVE_SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
+	const preset = SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const rootName = getNoteName(modelOptions.modelRoot, modelOptions);
 	const presetName = preset ? preset.name : 'Scale';
 	return `${rootName} ${presetName}`;

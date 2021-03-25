@@ -1,6 +1,6 @@
 import { INTERVAL } from "../../Pod/Interval/Interval.constants";
 
-export const RELATIVE_SCALE = {
+export const SCALE = {
 	Ionian: { id: 'Ionian', name: 'Ionian', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.M7.value] },
 	Dorian: { id: 'Dorian', name: 'Dorian', value: [INTERVAL.P1.value, INTERVAL.M2.value, INTERVAL.m3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.M6.value, INTERVAL.m7.value] },
 	Phrygian: { id: 'Phrygian', name: 'Phrygian', value: [INTERVAL.P1.value, INTERVAL.m2.value, INTERVAL.m3.value, INTERVAL.P4.value, INTERVAL.P5.value, INTERVAL.m6.value, INTERVAL.m7.value] },
@@ -21,9 +21,9 @@ export const RELATIVE_SCALE = {
 	//Chromatic: { id: 'Chromatic', name: 'Chromatic', value: [INTERVAL.P1.value, INTERVAL.m2.value, INTERVAL.M2.value, INTERVAL.m3.value, INTERVAL.M3.value, INTERVAL.P4.value, INTERVAL.A4.value, INTERVAL.P5.value, INTERVAL.m6.value, INTERVAL.M6.value, INTERVAL.m7.value, INTERVAL.M7.value] }
 };
 
-export const RELATIVE_SCALE_VALUES = Object.values(RELATIVE_SCALE);
+export const SCALE_VALUES = Object.values(SCALE);
 
-export const DEFAULT_RELATIVE_SCALE_OPTIONS = {
+export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',
 	intervalDisplayName: 'interval'
 };
