@@ -46,7 +46,7 @@ const DATA_ACTIONS = [
 		name: 'Transpose',
 		description: 'Shift all the notes by the same amount',
 		component: TransposeSelector
-	},\
+	},
 	{
 		name: 'Apply Superset',
 		description: 'Superimpose a model containing these pods',

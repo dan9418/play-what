@@ -1,7 +1,6 @@
 import { MODEL } from '@pw/core/src/models/Model.constants';
 import _ from 'lodash';
 import React from "react";
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../ui/inputs/DropdownInput';
 import ActionForm from './ActionForm';
 

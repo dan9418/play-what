@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
-import SubpanelFooter from '../ui/layout/SubpanelFooter';
-
 
 const StyledActionList = styled.ul`
 	& > li {
@@ -10,11 +8,11 @@ const StyledActionList = styled.ul`
 	}
 `;
 
-
-
-const getItems = actions => {
+const getItems = (actions, activeIndex, setActiveIndex) => {
 	return actions.map((child, i) => {
 		const { name, description, editPanel } = child;
+
+		console.log(activeIndex, activeIndex === i);
 
 		return (
 			<li key={name + i}>
@@ -23,6 +21,9 @@ const getItems = actions => {
 					caption={null}
 					name={name}
 					preview={description}
+					isEditable={true}
+					isActive={activeIndex === i}
+					setIsActive={() => setActiveIndex(activeIndex === i ? null : i)}
 				>
 					{editPanel}
 				</Subpanel>
@@ -33,9 +34,10 @@ const getItems = actions => {
 
 
 const ActionList = ({ actions }) => {
+	const [activeIndex, setActiveIndex] = useState(null);
 	return (
 		<StyledActionList>
-			{getItems(actions)}
+			{getItems(actions, activeIndex, setActiveIndex)}
 		</StyledActionList>
 	);
 };

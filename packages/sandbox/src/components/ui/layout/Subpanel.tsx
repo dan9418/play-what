@@ -43,7 +43,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren, isEditable }) => {
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen}>
 			<span className="name">{name}</span>
@@ -51,8 +51,17 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, ha
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
-				<ZoomButton pathIds={pathIds} />
+				{isEditable && (
+					<>
+						{hasChildren && <IconButton iconId={isOpen ? 'cancel' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
+					</>
+				)}
+				{!isEditable && (
+					<>
+						{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
+						<ZoomButton pathIds={pathIds} />
+					</>
+				)}
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);
@@ -67,8 +76,10 @@ const StyledSubpanel = styled.section`
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 `;
 
-const Subpanel = ({ children, ...props }) => {
-	const [isOpen, setIsOpen] = React.useState(false);
+const Subpanel = ({ children, isActive, setIsActive, ...props }) => {
+	let [isOpen, setIsOpen] = React.useState(false);
+	isOpen = typeof isActive === 'boolean' ? isActive : isOpen;
+	setIsOpen = typeof setIsActive === 'function' ? setIsActive : setIsOpen;
 
 	return (
 		<StyledSubpanel>

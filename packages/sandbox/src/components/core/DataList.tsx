@@ -24,6 +24,7 @@ const getItems = (metaChildren, pathIds) => {
 		const newPathIds = [...pathIds, i];
 
 		const content = isGroup ? (
+			/* @ts-ignore */
 			<Subpanel
 				pathIds={newPathIds}
 				caption={model.name}
@@ -36,6 +37,7 @@ const getItems = (metaChildren, pathIds) => {
 				</ul>
 			</Subpanel>
 		) : (
+			/* @ts-ignore */
 			<Subpanel
 				pathIds={newPathIds}
 				caption={model.name}
