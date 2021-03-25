@@ -74,14 +74,10 @@ const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOption
 			return getIntervalName(modelValue, modelOptions);
 		case MODEL_ID.Group:
 			return 'Group';
-		case MODEL_ID.RelativeChord:
+		case MODEL_ID.Chord:
 			return getRelativeChordName(modelValue, modelOptions);
-		case MODEL_ID.RelativeScale:
+		case MODEL_ID.Scale:
 			return getRelativeScaleName(modelValue, modelOptions);
-		case MODEL_ID.AbsoluteChord:
-			return 'Chord';
-		case MODEL_ID.AbsoluteScale:
-			return 'Scale'
 		default:
 			return null;
 	}
@@ -98,20 +94,15 @@ const getRelativePreview = (modelValue: IModel, modelOptions: IModelOptions) => 
 	return `${intervalNames} (${noteNames})`;
 }
 
-const getAbsolutePreview = (modelValue: IModel, modelOptions: IModelOptions) => modelValue.map(note => getNoteName(note, modelOptions)).join(', ');
-
 const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
 	if (modelOptions.preview) return modelOptions.preview;
 
 	switch (modelId) {
 		case MODEL_ID.Group:
 			return getGroupPreview(modelValue, modelOptions);
-		case MODEL_ID.RelativeChord:
-		case MODEL_ID.RelativeScale:
+		case MODEL_ID.Chord:
+		case MODEL_ID.Scale:
 			return getRelativePreview(modelValue, modelOptions);
-		case MODEL_ID.AbsoluteChord:
-		case MODEL_ID.AbsoluteScale:
-			return getAbsolutePreview(modelValue, modelOptions);
 		default:
 			return JSON.stringify(modelValue);
 	}
@@ -128,10 +119,8 @@ const getPodAtPitch = (modelId: string, modelValue: IModel, modelOptions: IModel
 		case MODEL_ID.Note:
 		case MODEL_ID.Interval:
 			return getPodAtPitchInSingle(modelValue, modelOptions, noteIndex, matchOctave);
-		case MODEL_ID.RelativeChord:
-		case MODEL_ID.RelativeScale:
-		case MODEL_ID.AbsoluteChord:
-		case MODEL_ID.AbsoluteScale:
+		case MODEL_ID.Chord:
+		case MODEL_ID.Scale:
 			return getPodAtPitchInList(modelValue, modelOptions, noteIndex, matchOctave);
 		default:
 			return null;
@@ -156,14 +145,6 @@ const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions, no
 	return { color, label };
 }
 
-const getAbsolutePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
-	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
-	if (!pod) return null;
-	const color = NoteUtils.getPodColor(pod);
-	const label = getNoteName(pod, modelOptions);
-	return { color, label };
-}
-
 const getRelativePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
 	const superset = modelOptions.superset;
@@ -184,12 +165,9 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 			return getNotePodProps(modelValue, modelOptions, noteIndex)
 		case MODEL_ID.Interval:
 			return getIntervalPodProps(modelValue, modelOptions, noteIndex);
-		case MODEL_ID.RelativeChord:
-		case MODEL_ID.RelativeScale:
+		case MODEL_ID.Chord:
+		case MODEL_ID.Scale:
 			return getRelativePodProps(modelValue, modelOptions, noteIndex);
-		case MODEL_ID.AbsoluteChord:
-		case MODEL_ID.AbsoluteScale:
-			return getAbsolutePodProps(modelValue, modelOptions, noteIndex);
 		default:
 			return null;
 	}

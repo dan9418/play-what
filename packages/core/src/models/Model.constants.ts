@@ -3,24 +3,20 @@ import { INTERVAL_VALUES } from './Pod/Interval/Interval.constants';
 import IntervalUtils from './Pod/Interval/Interval.utils';
 import { NOTE_VALUES } from './Pod/Note/Note.constants';
 import NoteUtils from './Pod/Note/Note.utils';
-import AbsoluteChordUtils from './PodList/Chord/AbsoluteChord/AbsoluteChord.utils';
 import { RELATIVE_CHORD_VALUES } from './PodList/Chord/RelativeChord/RelativeChord.constants';
 import RelativeChordUtils from './PodList/Chord/RelativeChord/RelativeChord.utils';
-import AbsoluteScaleUtils from './PodList/Scale/AbsoluteScale/AbsoluteScale.utils';
 import { RELATIVE_SCALE_VALUES } from './PodList/Scale/RelativeScale/RelativeScale.constants';
 import RelativeScaleUtils from './PodList/Scale/RelativeScale/RelativeScale.utils';
 
 export const MODEL_ID = {
 	// Group
 	Group: 'group',
-	// Absolute
+	// Pod
 	Note: 'note',
-	AbsoluteChord: 'absChord',
-	AbsoluteScale: 'absScale',
-	// Relative
 	Interval: 'interval',
-	RelativeChord: 'relChord',
-	RelativeScale: 'relScale'
+	// Pod[]
+	Chord: 'chord',
+	Scale: 'scale'
 };
 
 export const MODEL = {
@@ -33,14 +29,12 @@ export const MODEL = {
 		validChildren: [
 			MODEL_ID.Group,
 			MODEL_ID.Note,
-			MODEL_ID.AbsoluteChord,
-			MODEL_ID.AbsoluteScale,
 			MODEL_ID.Interval,
-			MODEL_ID.RelativeChord,
-			MODEL_ID.RelativeScale
+			MODEL_ID.Chord,
+			MODEL_ID.Scale
 		]
 	},
-	// Absolute
+	// Pod
 	[MODEL_ID.Note]: {
 		name: 'Note',
 		modelId: MODEL_ID.Note,
@@ -48,21 +42,6 @@ export const MODEL = {
 		presets: NOTE_VALUES,
 		validChildren: []
 	},
-	[MODEL_ID.AbsoluteChord]: {
-		name: 'Absolute Chord',
-		modelId: MODEL_ID.AbsoluteChord,
-		utils: AbsoluteChordUtils,
-		presets: RELATIVE_CHORD_VALUES,
-		validChildren: [MODEL_ID.Note]
-	},
-	[MODEL_ID.AbsoluteScale]: {
-		name: 'Absolute Scale',
-		modelId: MODEL_ID.AbsoluteScale,
-		utils: AbsoluteScaleUtils,
-		presets: RELATIVE_SCALE_VALUES,
-		validChildren: [MODEL_ID.Note]
-	},
-	// Relative
 	[MODEL_ID.Interval]: {
 		name: 'Interval',
 		isRelative: true,
@@ -71,18 +50,19 @@ export const MODEL = {
 		presets: INTERVAL_VALUES,
 		validChildren: []
 	},
-	[MODEL_ID.RelativeChord]: {
-		name: 'Relative Chord',
+	// Pod[]
+	[MODEL_ID.Chord]: {
+		name: 'Chord',
 		isRelative: true,
-		modelId: MODEL_ID.RelativeChord,
+		modelId: MODEL_ID.Chord,
 		utils: RelativeChordUtils,
 		presets: RELATIVE_CHORD_VALUES,
 		validChildren: [MODEL_ID.Interval]
 	},
-	[MODEL_ID.RelativeScale]: {
-		name: 'Relative Scale',
+	[MODEL_ID.Scale]: {
+		name: 'Scale',
 		isRelative: true,
-		modelId: MODEL_ID.RelativeScale,
+		modelId: MODEL_ID.Scale,
 		utils: RelativeScaleUtils,
 		presets: RELATIVE_SCALE_VALUES,
 		validChildren: [MODEL_ID.Interval]
