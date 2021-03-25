@@ -4,15 +4,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { siblingsState } from '../../state/pathState';
 import DropdownInput from '../ui/inputs/DropdownInput';
-import SubpanelFooter from '../ui/layout/SubpanelFooter';
-
-const StyledPresetSelector = styled.div`
-	padding: 16px;
-
-	select {
-		width: 100%;
-	}
-`;
+import ActionForm from './ActionForm';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -53,19 +45,16 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 	};
 
 	return (
-		<>
-			<StyledPresetSelector>
-				<StyledLabel>Type: </StyledLabel>
-				<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />
-				{presetOptions.length > 0 &&
-					<>
-						<StyledLabel>Preset: </StyledLabel>
-						<DropdownInput options={presetOptions} value={selectedPresetOption} setValue={(v, i) => setPresetIndex(i)} />
-					</>
-				}
-			</StyledPresetSelector>
-			<SubpanelFooter onSubmit={onSubmit} />
-		</>
+		<ActionForm onSubmit={onSubmit}>
+			<StyledLabel>Type: </StyledLabel>
+			<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />
+			{presetOptions.length > 0 &&
+				<>
+					<StyledLabel>Preset: </StyledLabel>
+					<DropdownInput options={presetOptions} value={selectedPresetOption} setValue={(v, i) => setPresetIndex(i)} />
+				</>
+			}
+		</ActionForm>
 	);
 };
 

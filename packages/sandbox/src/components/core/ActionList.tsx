@@ -1,12 +1,16 @@
 import React from "react";
 import styled from 'styled-components';
 import Subpanel from '../ui/layout/Subpanel';
+import SubpanelFooter from '../ui/layout/SubpanelFooter';
+
 
 const StyledActionList = styled.ul`
 	& > li {
 		margin-bottom: 16px;
 	}
 `;
+
+
 
 const getItems = actions => {
 	return actions.map((child, i) => {

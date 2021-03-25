@@ -6,8 +6,10 @@ import Subpanel from '../ui/layout/Subpanel';
 import Viewer from './Viewer';
 
 const StyledDataList = styled.ul`
-	& > li {
-		margin-bottom: 16px;
+	padding: 16px 8px;
+
+	& li {
+		margin: 16px 0;
 	}
 `;
 
@@ -28,7 +30,10 @@ const getItems = (metaChildren, pathIds) => {
 				name={name}
 				preview={preview}
 			>
-				{getItems(grandchildren, newPathIds)}
+				{/* @ts-ignore */}
+				<ul css="padding: 0 8px">
+					{getItems(grandchildren, newPathIds)}
+				</ul>
 			</Subpanel>
 		) : (
 			<Subpanel

@@ -89,7 +89,7 @@ const Explorer = () => {
 	const viewerActions = VIEWER_ACTIONS.map(a => ({
 		...a,
 		/* @ts-ignore */
-		editPanel: <a.component modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} setPathHead={setPathHead} />
+		editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
 	}));
 
 	const dataActions = DATA_ACTIONS.map(a => ({

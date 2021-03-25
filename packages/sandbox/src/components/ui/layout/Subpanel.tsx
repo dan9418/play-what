@@ -65,16 +65,6 @@ const StyledSubpanel = styled.section`
 	border-radius: 8px;
 	background-color: #f5f5f5;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
-
-	& > .subpanel-body {
-		padding: 16px 8px;
-		//background-color: #eee;
-		border-radius: 0 0 8px 8px;
-
-		& > *:not(:last-child) {
-			margin-bottom: 8px;
-		}
-	}
 `;
 
 const Subpanel = ({ children, ...props }) => {
