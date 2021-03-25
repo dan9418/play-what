@@ -1,29 +1,20 @@
-import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import ModelUtils from '@pw/core/src/models/Model.utils';
-import PresetSelector from '../core/PresetSelector';
+import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import _ from 'lodash';
 import React from "react";
-import Viewer from './Viewer';
+import PresetSelector from '../core/PresetSelector';
 
-const NOTE_MODEL = MODEL[MODEL_ID.Note];
+const RootSubpanel = ({ pathHead, setPathHead }) => {
 
-const RootSubpanel = ({ pathHead }) => {
-	const { config } = pathHead;
-	const { modelOptions } = config;
-	const { modelRoot } = modelOptions;
-
-	const name = ModelUtils.getName(MODEL_ID.Note, modelRoot, modelOptions);
-	const caption = "Root Note"; //NOTE_MODEL.name;
-	const preview = ModelUtils.getPreview(MODEL_ID.Note, modelRoot, modelOptions);
-
-	const implicitProps = {
-		modelId: NOTE_MODEL.modelId,
-		modelValue: modelRoot,
-		modelOptions
+	const onSubmit = root => {
+		console.log(root);
+		const newData = _.cloneDeep(pathHead);
+		_.set(newData, 'modelOptions.modelRoot', root.modelValue);
+		setPathHead(newData);
 	};
 
 	return (
 		<>
-			<PresetSelector pathHead={pathHead} setPathHead={null} />
+			<PresetSelector pathHead={pathHead} setPathHead={onSubmit} type={MODEL_ID.Note} />
 		</>
 	);
 };

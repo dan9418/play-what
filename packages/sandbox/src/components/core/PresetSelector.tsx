@@ -16,7 +16,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetSelector = ({ pathHead, setPathHead }) => {
+const PresetSelector = ({ pathHead, setPathHead, type = null }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
@@ -30,8 +30,8 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 
 	let presetOptions = [];
 	let selectedPresetOption = null;
-	if (typeIndex > 0) {
-		presetOptions = MODEL[selectedTypeOption.value].presets;
+	if (type || typeIndex > 0) {
+		presetOptions = MODEL[type || selectedTypeOption.value].presets;
 		selectedPresetOption = presetOptions[presetIndex];
 	}
 
@@ -46,8 +46,12 @@ const PresetSelector = ({ pathHead, setPathHead }) => {
 
 	return (
 		<ActionForm onSubmit={onSubmit}>
-			<StyledLabel>Type: </StyledLabel>
-			<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />
+			{!type &&
+				<>
+					<StyledLabel>Type: </StyledLabel>
+					<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />
+				</>
+			}
 			{presetOptions.length > 0 &&
 				<>
 					<StyledLabel>Preset: </StyledLabel>

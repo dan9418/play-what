@@ -33,7 +33,7 @@ const StyledExplorer = styled.div`
 
 const DATA_ACTIONS = [
 	{
-		name: 'Root',
+		name: 'Change Key',
 		description: 'Set the root note (key center)',
 		component: RootSubpanel
 	},
