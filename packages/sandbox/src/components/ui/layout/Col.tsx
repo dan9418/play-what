@@ -36,8 +36,7 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, editPanel, children, hideHeader }) => {
-	const [isEditing, setIsEditing] = React.useState(false);
+const Col = ({ title, editPanel, children, hideHeader, isOpen, setIsOpen }) => {
 
 	return (
 		<StyledCol>
@@ -45,20 +44,20 @@ const Col = ({ title, editPanel, children, hideHeader }) => {
 				<>
 					<StyledColHeader>
 						{title}
-						<IconButton iconId={isEditing ? 'confirm' : 'edit'} onClick={() => setIsEditing(!isEditing)} />
+						<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
 					</StyledColHeader>
 					<StyledColDivider />
 				</>
 			)}
 
-			{isEditing &&
+			{isOpen &&
 				<>
 					{editPanel}
 					<StyledColDivider />
 				</>
 			}
 
-			<StyledColBody $isEnabled={!isEditing}>
+			<StyledColBody $isEnabled={!isOpen}>
 				{children}
 			</StyledColBody>
 		</StyledCol>

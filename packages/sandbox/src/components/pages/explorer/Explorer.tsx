@@ -1,5 +1,5 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
@@ -32,12 +32,16 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
+	const [edit, setEdit] = useState(null);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 
 	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
 	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
 
-	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
+	React.useEffect(() => {
+		window.scrollTo(0, 0), [path.length, pathId];
+		setEdit(null);
+	}, [path.length, pathId]);
 
 	const isGroup = modelId === MODEL_ID.Group;
 
@@ -63,15 +67,19 @@ const Explorer = () => {
 						editPanel={(
 							<ActionList actions={dataActions} />
 						)}
+						isOpen={edit === 'data'}
+						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
 						hideHeader={isGroup}
 					>
 						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
-						
+
 					</Col>
 					{!isGroup &&
 						/* @ts-ignore */
 						<Col
 							title="Viewer"
+							isOpen={edit === 'viewer'}
+							setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
 							editPanel={(
 								<ActionList actions={viewerActions} />
 							)}
