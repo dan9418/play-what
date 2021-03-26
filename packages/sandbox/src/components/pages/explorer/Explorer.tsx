@@ -2,14 +2,13 @@ import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
-import Meter from '../../../../../react/src/Meter/Meter';
-import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
 import getActions from './getActions';
+import MeterWrapper from './MeterWrapper';
 import ActionList from './shared/ActionList';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
@@ -33,27 +32,17 @@ const StyledExplorer = styled.div`
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const isTablet = useIsTablet();
-	const isDesktop = useIsDesktop();
 
 	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
 	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
 
 	React.useEffect(() => window.scrollTo(0, 0), [path.length, pathId]);
 
-	let range = [0, 12];
-	if (isTablet) {
-		range = [-12, 12]
-	}
-	if (isDesktop) {
-		range = [-39, 48]
-	}
-
 	const isGroup = modelId === MODEL_ID.Group;
 
 	const meter = isGroup ?
 		null :
-		<Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={isDesktop} />;
+		<MeterWrapper />;
 
 	const viewer = isGroup ?
 		null :
