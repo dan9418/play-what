@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { RouteContextProvider } from '../contexts/RouteContext';
 import THEME from '../styles/theme';
 import ErrorBoundary from './core/ErrorBoundary';
-import Main from './core/Main';
+import Main from './pages/Main';
 import Nav from './core/Nav';
 
 const App = () => {
