@@ -7,6 +7,7 @@ import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
+import DataCard from './dataCol/DataCard';
 import getActions from './getActions';
 import MeterWrapper from './MeterWrapper';
 import ActionList from './shared/ActionList';
@@ -65,6 +66,7 @@ const Explorer = () => {
 						hideHeader={isGroup}
 					>
 						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
+						
 					</Col>
 					{!isGroup &&
 						/* @ts-ignore */
@@ -75,6 +77,7 @@ const Explorer = () => {
 							)}
 						>
 							{viewer}
+							<DataCard pathHead={pathHead} />
 						</Col>
 					}
 				</StyledExplorer>

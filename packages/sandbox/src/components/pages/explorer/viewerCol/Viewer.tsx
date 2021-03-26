@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import Fretboard from '../../../../../../react/src/Fretboard/Fretboard';
 import Keyboard from '../../../../../../react/src/Keyboard/Keyboard';
 import { IPathNode, pathHeadState, pathState } from '../../../../state/pathState';
+import StyledCard from '../../../ui/layout/StyledCard'
+
 
 const VIEWER_ID = {
 	Fretboard: 'fretboard',
@@ -25,7 +27,7 @@ export const VIEWER = {
 
 const StyledViewerContainer = styled.div`
     width: 100%;
-	padding: 16px;
+	margin-bottom: 16px;
 `;
 
 const Viewer = () => {
