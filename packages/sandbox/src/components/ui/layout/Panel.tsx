@@ -12,7 +12,7 @@ const StyledPanelHeader = styled.section`
 
 	position: sticky;
     top: 32px;
-	z-index: 1;
+	z-index: 100;
 
 	background-color: #ecefef;
 	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc;' : ''}

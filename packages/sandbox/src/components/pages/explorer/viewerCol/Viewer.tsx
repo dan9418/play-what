@@ -10,14 +10,14 @@ const VIEWER_ID = {
 	Keyboard: 'keyboard'
 }
 
-const VIEWER = {
+export const VIEWER = {
 	[VIEWER_ID.Fretboard]: {
-		viewerId: VIEWER_ID.Fretboard,
+		id: VIEWER_ID.Fretboard,
 		name: 'Fretboard',
 		component: Fretboard
 	},
 	[VIEWER_ID.Keyboard]: {
-		viewerId: VIEWER_ID.Fretboard,
+		id: VIEWER_ID.Keyboard,
 		name: 'Keyboard',
 		component: Keyboard
 	}

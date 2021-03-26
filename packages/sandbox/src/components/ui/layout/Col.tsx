@@ -18,9 +18,9 @@ const StyledCol = styled.div`
 
 const StyledColBody = styled.div`
 	${({ $isEnabled }) => $isEnabled ? '' : css`
-		opacity: .5;
-		pointer-events: none;
-		cursor: text;
+		//opacity: .5;
+		//pointer-events: none;
+		//cursor: text;
 	`}
 `;
 
