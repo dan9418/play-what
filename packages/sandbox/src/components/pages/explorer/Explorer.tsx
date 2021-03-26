@@ -44,9 +44,7 @@ const Explorer = () => {
 		null :
 		<MeterWrapper />;
 
-	const viewer = isGroup ?
-		null :
-		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
+	const viewer = isGroup ? null : <Viewer />;
 
 	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHead);
 	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHead);

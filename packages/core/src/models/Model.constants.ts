@@ -75,6 +75,8 @@ export interface IModelOptions {
 	name?: string;
 	preview?: string;
 	superset?: any;
+	viewerId?: string;
+	viewerProps?: any;
 }
 
 export interface IModelConfig {
