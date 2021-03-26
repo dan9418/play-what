@@ -1,8 +1,7 @@
-import ColorUtils from '@pw/core/src/Color.utils';
-import PodUtils from '@pw/core/src/Pod.utils';
-import NumberUtils from '@pw/core/src/Number.utils';
-import React from "react";
+import NumberUtils from '@pw/core/src/general/Number.utils';
+import ModelUtils from "@pw/core/src/models/Model.utils";
 import "./Keyboard.css";
+import React from "react";
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -39,16 +38,13 @@ const getScaleStyles = (keyType, scale) => {
 	}
 }
 
-const KeyboardKey = ({ noteIndex, scale, pods, podType, colorFn, labelFn, tuningFn, toneFn }) => {
-	const pod = PodUtils.findPodWithPitch(pods, noteIndex);
+const KeyboardKey = ({ noteIndex, scale, modelId, modelValue, modelOptions }) => {
 
-	const color = colorFn(pod)
-	const colorStyles = ColorUtils.getStylesFromBgColor(color);
+	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex);
 
-	const label = labelFn(pod);
+	const { color, label } = podProps || { color: null, label: null };
 
-	const frequency = tuningFn(pod);
-	const onClick = () => toneFn(frequency);
+	const colorStyles = { backgroundColor: color };
 
 	let keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
@@ -59,8 +55,8 @@ const KeyboardKey = ({ noteIndex, scale, pods, podType, colorFn, labelFn, tuning
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
 
 	return (
-		<div className={`${keyType}-key-container`} onClick={onClick}>
-			<div className={classes.join(' ')} style={keyStyles} onClick={() => null}>
+		<div className={`${keyType}-key-container`} onClick={null}>
+			<div className={classes.join(' ')} style={keyStyles} onClick={null}>
 				<div className='keyboard-key-label' style={labelStyles}>
 					{label}
 				</div>

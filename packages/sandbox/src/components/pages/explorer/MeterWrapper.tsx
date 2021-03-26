@@ -20,7 +20,7 @@ const MeterWrapper = () => {
     }
 
     return (
-        <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={isDesktop} />;
+        <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={isDesktop} />
 	);
 };
 

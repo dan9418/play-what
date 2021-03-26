@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import "./Keyboard.css";
 import DEFAULT_PROPS from "./Keyboard.defaults";
 import KeyboardKey from "./KeyboardKey";
@@ -27,9 +27,9 @@ const Keyboard = (userProps) => {
 
 	const props = { ...DEFAULT_PROPS, ...userProps };
 
-	const [dims, setDims] = React.React.useState([512, 512]);
+	const [dims, setDims] = useState([512, 512]);
 
-	React.React.useEffect(() => {
+	useEffect(() => {
 		const resetDimensions = (e) => {
 			const el = document.getElementById('keyboard');
 			setDims([el.clientWidth, el.clientHeight])
