@@ -1,20 +1,19 @@
-import React from "react";
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import Meter from '../../../../../react/src/Meter/Meter';
-import { pathHeadState, pathState, IPathNode } from '../../../state/pathState';
-import ActionList from './shared/ActionList';
-import BreadcrumbList from './shared/BreadcrumbList';
-import DataList from './dataCol/DataList';
-import Viewer from './viewerCol/Viewer';
+import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
+import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
-import { useIsTablet, useIsDesktop } from '../../../hooks/useWindowSize';
-import PresetAction from './dataCol/actions/PresetAction';
-import SupersetAction from './dataCol/actions/SupersetAction';
-import TransposeAction from './dataCol/actions/TransposeAction';
-import RootAction from './dataCol/actions/RootAction';
+import DATA_ACTIONS from './dataCol/actions/dataActions';
+import DataList from './dataCol/DataList';
+import getActions from './getActions';
+import ActionList from './shared/ActionList';
+import BreadcrumbList from './shared/BreadcrumbList';
+import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
+import Viewer from './viewerCol/Viewer';
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -30,33 +29,6 @@ const StyledExplorer = styled.div`
 		`}
 	}
 `;
-
-const DATA_ACTIONS = [
-	{
-		name: 'Change Key',
-		description: 'Set the root note (key center)',
-		component: RootAction
-	},
-	{
-		name: 'Load Preset',
-		description: 'Import an existing model',
-		component: PresetAction
-	},
-	{
-		name: 'Transpose',
-		description: 'Shift all the notes by the same amount',
-		component: TransposeAction
-	},
-	{
-		name: 'Apply Superset',
-		description: 'Superimpose a model containing these pods',
-		component: SupersetAction
-	}
-];
-
-const VIEWER_ACTIONS = [
-
-];
 
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
@@ -87,17 +59,8 @@ const Explorer = () => {
 		null :
 		<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} />;
 
-	const viewerActions = VIEWER_ACTIONS.map(a => ({
-		...a,
-		/* @ts-ignore */
-		editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
-	}));
-
-	const dataActions = DATA_ACTIONS.map(a => ({
-		...a,
-		/* @ts-ignore */
-		editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
-	}));
+	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHead);
+	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHead);
 
 	return (
 		<>
