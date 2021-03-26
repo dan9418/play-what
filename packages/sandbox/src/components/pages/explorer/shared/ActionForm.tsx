@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import SubpanelFooter from '../ui/layout/SubpanelFooter';
+import ActionFooter from './ActionFooter';
 
 const StyledActionForm = styled.form`
     > :first-child {
@@ -16,7 +16,7 @@ const ActionForm = ({ children, onSubmit }) => {
     return (
         <StyledActionForm>
             <div>{children}</div>
-            <SubpanelFooter onSubmit={onSubmit} />
+            <ActionFooter onSubmit={onSubmit} />
         </StyledActionForm>
     );
 };

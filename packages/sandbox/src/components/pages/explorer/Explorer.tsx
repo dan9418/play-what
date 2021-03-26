@@ -2,19 +2,19 @@ import React from "react";
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
-import Meter from '../../../../react/src/Meter/Meter';
-import { pathHeadState, pathState, IPathNode } from '../../state/pathState';
-import ActionList from '../core/ActionList';
-import BreadcrumbList from '../core/BreadcrumbList';
-import DataList from '../core/DataList';
-import PresetSelector from '../core/PresetSelector';
-import RootSubpanel from '../core/RootSubpanel';
-import SupersetSelector from '../core/SupersetSelector';
-import TransposeSelector from '../core/TransposeSelector';
-import Viewer from '../core/Viewer';
-import Col from '../ui/layout/Col';
-import Panel from '../ui/layout/Panel';
-import { useIsTablet, useIsDesktop } from '../../hooks/useWindowSize';
+import Meter from '../../../../../react/src/Meter/Meter';
+import { pathHeadState, pathState, IPathNode } from '../../../state/pathState';
+import ActionList from './shared/ActionList';
+import BreadcrumbList from './shared/BreadcrumbList';
+import DataList from './dataCol/DataList';
+import Viewer from './viewerCol/Viewer';
+import Col from '../../ui/layout/Col';
+import Panel from '../../ui/layout/Panel';
+import { useIsTablet, useIsDesktop } from '../../../hooks/useWindowSize';
+import PresetAction from './dataCol/actions/PresetAction';
+import SupersetAction from './dataCol/actions/SupersetAction';
+import TransposeAction from './dataCol/actions/TransposeAction';
+import RootAction from './dataCol/actions/RootAction';
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -35,27 +35,27 @@ const DATA_ACTIONS = [
 	{
 		name: 'Change Key',
 		description: 'Set the root note (key center)',
-		component: RootSubpanel
+		component: RootAction
 	},
 	{
 		name: 'Load Preset',
 		description: 'Import an existing model',
-		component: PresetSelector
+		component: PresetAction
 	},
 	{
 		name: 'Transpose',
 		description: 'Shift all the notes by the same amount',
-		component: TransposeSelector
+		component: TransposeAction
 	},
 	{
 		name: 'Apply Superset',
 		description: 'Superimpose a model containing these pods',
-		component: SupersetSelector
+		component: SupersetAction
 	}
 ];
 
 const VIEWER_ACTIONS = [
-	
+
 ];
 
 const Explorer = () => {

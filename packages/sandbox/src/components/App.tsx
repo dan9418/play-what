@@ -5,9 +5,9 @@ import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { RouteContextProvider } from '../contexts/RouteContext';
 import THEME from '../styles/theme';
-import ErrorBoundary from './core/ErrorBoundary';
+import ErrorBoundary from './utils/ErrorBoundary';
 import Main from './pages/Main';
-import Nav from './core/Nav';
+import Nav from './pages/Nav';
 
 const App = () => {
 	return (

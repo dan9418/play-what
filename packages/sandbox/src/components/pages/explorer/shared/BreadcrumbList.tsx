@@ -1,8 +1,8 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { usePathNavContext } from "../../contexts/PathNavContext";
-import { fullPathState } from "../../state/pathState";
+import { usePathNavContext } from "../../../../contexts/PathNavContext";
+import { fullPathState } from "../../../../state/pathState";
 
 const StyledBreadcrumbList = styled.ul`
 	display: flex;

@@ -2,9 +2,9 @@ import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { siblingsState } from '../../state/pathState';
-import DropdownInput from '../ui/inputs/DropdownInput';
-import ActionForm from './ActionForm';
+import { siblingsState } from '../../../../../state/pathState';
+import DropdownInput from '../../../../ui/inputs/DropdownInput';
+import ActionForm from '../../shared/ActionForm';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -16,7 +16,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetSelector = ({ pathHead, setPathHead, type = null }) => {
+const PresetAction = ({ pathHead, setPathHead, type = null }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
@@ -62,4 +62,4 @@ const PresetSelector = ({ pathHead, setPathHead, type = null }) => {
 	);
 };
 
-export default PresetSelector;
+export default PresetAction;

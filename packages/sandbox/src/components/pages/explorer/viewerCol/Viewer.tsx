@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Fretboard from '../../../../react/src/Fretboard/Fretboard';
+import Fretboard from '../../../../../../react/src/Fretboard/Fretboard';
 
 const VIEWER_ID = {
 	Fretboard: 'fretboard',

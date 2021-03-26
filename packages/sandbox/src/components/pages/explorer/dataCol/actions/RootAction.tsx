@@ -1,9 +1,9 @@
 import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import _ from 'lodash';
 import React from "react";
-import PresetSelector from '../core/PresetSelector';
+import PresetAction from './PresetAction';
 
-const RootSubpanel = ({ pathHead, setPathHead }) => {
+const RootAction = ({ pathHead, setPathHead }) => {
 
 	const onSubmit = root => {
 		console.log(root);
@@ -14,9 +14,9 @@ const RootSubpanel = ({ pathHead, setPathHead }) => {
 
 	return (
 		<>
-			<PresetSelector pathHead={pathHead} setPathHead={onSubmit} type={MODEL_ID.Note} />
+			<PresetAction pathHead={pathHead} setPathHead={onSubmit} type={MODEL_ID.Note} />
 		</>
 	);
 };
 
-export default RootSubpanel;
+export default RootAction;

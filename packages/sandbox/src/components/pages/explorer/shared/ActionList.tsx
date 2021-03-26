@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Subpanel from '../ui/layout/Subpanel';
+import Subpanel from '../../../ui/layout/Subpanel';
 
 const StyledActionList = styled.ul`
 	& > li {

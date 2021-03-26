@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import Icon from '../assets/Icon';
-import ButtonInput from '../inputs/buttons/ButtonInput';
+import Icon from '../../../ui/Icon';
+import ButtonInput from '../../../ui/inputs/buttons/ButtonInput';
 
-const StyledSubpanelFooter = styled.h3`
+const StyledActionFooter = styled.h3`
 	padding: 8px;
 	border-top: 1px solid #ccc;
 	display: flex;
@@ -19,15 +19,15 @@ const StyledSubpanelFooter = styled.h3`
 	}
 `;
 
-const SubpanelFooter = ({ onSubmit }) => {
+const ActionFooter = ({ onSubmit }) => {
 	return (
-		<StyledSubpanelFooter>
+		<StyledActionFooter>
 			<ButtonInput onClick={onSubmit}>
 				Apply
 				<Icon iconId='confirm' color='white' />
 			</ButtonInput>
-		</StyledSubpanelFooter>
+		</StyledActionFooter>
 	);
 };
 
-export default SubpanelFooter;
+export default ActionFooter;

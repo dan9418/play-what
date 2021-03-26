@@ -1,6 +1,6 @@
 
-import About from '../components/pages/About';
-import Explorer from '../components/pages/Explorer';
+import About from '../components/pages/about/About';
+import Explorer from '../components/pages/explorer/Explorer';
 import React from "react";
 
 const RouteContext = React.createContext(null);

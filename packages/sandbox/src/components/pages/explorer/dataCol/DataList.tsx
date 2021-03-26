@@ -1,9 +1,8 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import styled from 'styled-components';
-import GroupHeader from '../ui/layout/GroupHeader';
-import Subpanel from '../ui/layout/Subpanel';
-import Viewer from './Viewer';
+import Subpanel from '../../../ui/layout/Subpanel';
+import Viewer from '../viewerCol/Viewer';
 
 const StyledDataList = styled.ul`
 	padding: 16px 8px;

@@ -3,8 +3,8 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import _ from 'lodash';
 import React from "react";
 import styled from 'styled-components';
-import DropdownInput from '../ui/inputs/DropdownInput';
-import ActionForm from './ActionForm';
+import DropdownInput from '../../../../ui/inputs/DropdownInput';
+import ActionForm from '../../shared/ActionForm';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -27,7 +27,7 @@ const DIRECTION_OPTIONS = [
 	}
 ];
 
-const TransposeSelector = ({ pathHead, setPathHead }) => {
+const TransposeAction = ({ pathHead, setPathHead }) => {
 	const [directionIndex, setDirectionIndex] = React.useState(0);
 	const [intervalIndex, setIntervalIndex] = React.useState(0);
 
@@ -58,4 +58,4 @@ const TransposeSelector = ({ pathHead, setPathHead }) => {
 	);
 };
 
-export default TransposeSelector;
+export default TransposeAction;
