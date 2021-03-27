@@ -75,6 +75,7 @@ const Explorer = () => {
 						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
 
 					</Col>
+
 					{!isGroup &&
 						/* @ts-ignore */
 						<Col
@@ -87,9 +88,10 @@ const Explorer = () => {
 						>
 							{viewer}
 							<StyledColDivider />
-							<DataCard pathHead={pathHead} />
+							<DataCard pathHead={pathHead} setPathHead={setPathHead} />
 						</Col>
 					}
+
 				</StyledExplorer>
 			</Panel>
 		</>

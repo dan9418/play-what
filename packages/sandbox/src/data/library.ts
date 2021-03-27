@@ -10,7 +10,7 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 		modelRoot: NOTE.D.value,
 		name: 'Library',
 		preview: 'Select a group',
-		viewerId: 'keyboard',
+		viewerId: 'fretboard',
 		viewerProps: {}
 	},
 	modelValue: [
