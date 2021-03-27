@@ -1,24 +1,23 @@
-
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import { useRouteContext } from '../../contexts/RouteContext';
 
 const LINKS = [
-	{
-		id: 'about',
-		name: 'About',
-		href: 'https://github.com/dan9418/play-what/'
-	},
-	{
-		id: 'docs',
-		name: 'Docs',
-		href: 'https://github.com/dan9418/play-what/'
-	},
-	{
-		id: 'source',
-		name: 'Source',
-		href: 'https://github.com/dan9418/play-what/'
-	}
+  {
+    id: 'about',
+    name: 'About',
+    href: 'https://github.com/dan9418/play-what/'
+  },
+  {
+    id: 'docs',
+    name: 'Docs',
+    href: 'https://github.com/dan9418/play-what/'
+  },
+  {
+    id: 'source',
+    name: 'Source',
+    href: 'https://github.com/dan9418/play-what/'
+  }
 ];
 
 const StyledNav = styled.nav`
@@ -82,22 +81,22 @@ const StyledNav = styled.nav`
 `;
 
 const Nav = () => {
-	const routeContext = useRouteContext();
+  const routeContext = useRouteContext();
 
-	return (
-		<StyledNav>
-			<div>
-				<div className="logo" onClick={routeContext.goHome}>Play What?</div>
-				<ul className="link-list">
-					{LINKS.map((l, i) => (
-						<li key={i}>
-							<a href={l.href}>{l.name}</a>
-						</li>
-					))}
-				</ul>
-			</div>
-		</StyledNav >
-	);
+  return (
+    <StyledNav>
+      <div>
+        <div className="logo" onClick={routeContext.goHome}>Play What?</div>
+        <ul className="link-list">
+          {LINKS.map((l, i) => (
+            <li key={i}>
+              <a href={l.href}>{l.name}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </StyledNav>
+  );
 };
 
 export default Nav;

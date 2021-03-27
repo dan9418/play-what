@@ -1,5 +1,4 @@
-
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
 import { PathNavContextProvider } from '../../contexts/PathNavContext';
 import { RouteContextConsumer } from '../../contexts/RouteContext';
@@ -13,15 +12,15 @@ const StyledMain = styled.main`
 `;
 
 const Main = () => {
-	return (
-		<StyledMain>
-			<PathNavContextProvider>
-				<RouteContextConsumer>
-					{({Component}) => <Component />}
-				</RouteContextConsumer>
-			</PathNavContextProvider>
-		</StyledMain>
-	);
+  return (
+    <StyledMain>
+      <PathNavContextProvider>
+        <RouteContextConsumer>
+          {({ Component }) => <Component />}
+        </RouteContextConsumer>
+      </PathNavContextProvider>
+    </StyledMain>
+  );
 };
 
 export default Main;
