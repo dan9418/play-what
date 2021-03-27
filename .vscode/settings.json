@@ -3,7 +3,7 @@
     "explorer.confirmDragAndDrop": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
     "workbench.colorTheme": "Visual Studio Dark",
-    "typescript.suggest.enabled": false,
+    "typescript.suggest.enabled": true,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
     "window.zoomLevel": 1,

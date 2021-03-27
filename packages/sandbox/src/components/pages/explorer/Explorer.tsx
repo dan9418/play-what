@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
-import Col from '../../ui/layout/Col';
+import Col, { StyledColDivider } from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
@@ -14,6 +14,7 @@ import ActionList from './shared/ActionList';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
 import Viewer from './viewerCol/Viewer';
+
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -85,6 +86,7 @@ const Explorer = () => {
 							)}
 						>
 							{viewer}
+							<StyledColDivider />
 							<DataCard pathHead={pathHead} />
 						</Col>
 					}
