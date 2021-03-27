@@ -76,16 +76,20 @@ const StyledSubpanel = styled.section`
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 `;
 
-const Subpanel = ({ children, isActive, setIsActive, ...props }) => {
-	let [isOpen, setIsOpen] = React.useState(false);
-	isOpen = typeof isActive === 'boolean' ? isActive : isOpen;
-	setIsOpen = typeof setIsActive === 'function' ? setIsActive : setIsOpen;
+const Subpanel = ({ children = null, isActive = false, setIsActive = null, ...props }) => {
+	const [isOpen, setIsOpen] = React.useState(isActive);
+
+	const _isOpen = isActive || isOpen;
+	const _setIsOpen = x => {
+		if (setIsActive) setIsActive(x);
+		else setIsOpen(x);
+	};
 
 	return (
 		<StyledSubpanel>
 			{/* @ts-ignore */}
-			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} hasChildren={!!children} />
-			{isOpen &&
+			<SubpanelHeader {...props} isOpen={_isOpen} setIsOpen={_setIsOpen} hasChildren={!!children} />
+			{_isOpen &&
 				<div className="subpanel-body">
 					{children}
 				</div>
