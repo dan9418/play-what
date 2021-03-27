@@ -3,7 +3,7 @@ interface IErrorBoundaryState {
 	error: any;
 	errorInfo: any;
 }
-class ErrorBoundary extends React.Component<{}, IErrorBoundaryState> {
+class ErrorBoundary extends React.Component<unknown, IErrorBoundaryState> {
 	constructor(props) {
 		super(props);
 		this.state = { error: null, errorInfo: null };

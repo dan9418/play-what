@@ -34,7 +34,9 @@ module.exports = {
     "no-trailing-spaces": "error",
     "react/prop-types": 0,
     'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any":"off"
   },
   settings: {
     "import/resolver": {
