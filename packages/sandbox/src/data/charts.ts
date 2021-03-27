@@ -5,13 +5,13 @@ import { CHORD } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 export const OUT_OF_NOWHERE = {
 	modelId: MODEL_ID.Group,
 	modelOptions: {
-		name: 'Out of Nowhere',
+		name: 'Out of Nowhere'
 	},
 	modelValue: [
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section A',
+				name: 'Section A'
 			},
 			modelValue: [
 				{
@@ -83,7 +83,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section B',
+				name: 'Section B'
 			},
 			modelValue: [
 				{
@@ -139,7 +139,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section A',
+				name: 'Section A'
 			},
 			modelValue: [
 				{
@@ -195,7 +195,7 @@ export const OUT_OF_NOWHERE = {
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section C',
+				name: 'Section C'
 			},
 			modelValue: [
 				{
@@ -388,7 +388,7 @@ export const ALL_OF_ME = {
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section A\'',
+				name: 'Section A\''
 			},
 			modelValue: [
 				{
@@ -428,7 +428,7 @@ export const ALL_OF_ME = {
 		{
 			modelId: MODEL_ID.Group,
 			modelOptions: {
-				name: 'Section C',
+				name: 'Section C'
 			},
 			modelValue: [
 				{

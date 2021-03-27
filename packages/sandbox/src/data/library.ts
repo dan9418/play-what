@@ -18,7 +18,7 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 			modelId: MODEL_ID.Group,
 			modelValue: CHART_VALUES,
 			modelOptions: {
-				name: 'Charts',
+				name: 'Charts'
 			}
 		},
 		{
@@ -28,12 +28,12 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 					modelId: MODEL_ID.Chord,
 					modelValue: chord.value,
 					modelOptions: {
-						name: chord.name,
+						name: chord.name
 					}
 				}
 			)),
 			modelOptions: {
-				name: 'Chords',
+				name: 'Chords'
 			}
 		},
 		{
@@ -43,7 +43,7 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 					modelId: MODEL_ID.Scale,
 					modelValue: scale.value,
 					modelOptions: {
-						name: scale.name,
+						name: scale.name
 					}
 				}
 			)),

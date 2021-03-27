@@ -12,7 +12,7 @@ export const pathState = atom({
 export interface IPathNode {
 	config: IModelConfig;
 	data: IModelData;
-};
+}
 
 export const fullPathState = selector({
 	key: 'fullPathState',
@@ -20,10 +20,10 @@ export const fullPathState = selector({
 		const path: number[] = get(pathState);
 		const _data: IModelConfig = get(dataState);
 
-		// Get head	
-		let config: IModelConfig = _data;
-		let data = ModelUtils.getData(config);
-		let nodes = [{ config, data }];
+		// Get head
+		const config: IModelConfig = _data;
+		const data = ModelUtils.getData(config);
+		const nodes = [{ config, data }];
 
 		for (let i = 0; i < path.length; i++) {
 			const head = nodes[i];

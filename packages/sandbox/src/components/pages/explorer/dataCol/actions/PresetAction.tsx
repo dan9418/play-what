@@ -21,7 +21,7 @@ const PresetAction = ({ pathHead, setPathHead, type = null }) => {
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
 	const { parent } = useRecoilValue(siblingsState);
-	let parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
+	const parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
 
 	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });

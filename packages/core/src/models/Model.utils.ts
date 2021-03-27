@@ -36,7 +36,7 @@ const getIntervalName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	else if (noteIndex <= loIvl.value[0]) ivl = loIvl; // minor
 	else if (noteIndex >= hiIvl.value[0]) ivl = hiIvl; // major
 
-	let offset = IntervalUtils.getIntervalOffset(modelValue, ivl);
+	const offset = IntervalUtils.getIntervalOffset(modelValue, ivl);
 
 	// determine quality
 	let quality = null;

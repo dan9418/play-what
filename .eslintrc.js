@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true,
+    es6: true,
   },
   extends: [
     'plugin:react/recommended',
@@ -34,7 +34,7 @@ module.exports = {
     "no-trailing-spaces": "error",
     "react/prop-types": 0,
     'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
-    "import/extensions": ["error", "never"]
+    "import/extensions": "off"
   },
   settings: {
     "import/resolver": {
