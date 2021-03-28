@@ -16,14 +16,15 @@ const StyledDataList = styled.ul`
 
 const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 
-	const { config, data } = pathHead;
-	const { metaChildren } = data;
+	const { metaChildren } = pathHead.data;
+	if (!metaChildren) return null;
 	const setMetaChilren = null;
 
-
 	return metaChildren.map((child, i) => {
-		const { modelId, modelValue, modelOptions } = child.config;
+
+		const { modelId } = child.config;
 		const { name, preview, metaChildren: grandchildren } = child.data;
+
 		const model = MODEL[modelId];
 
 		const listHelpers = getListHelpers(metaChildren, setMetaChilren, i);
@@ -55,7 +56,7 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 				preview={preview}
 			>
 				{/* @ts-ignore */}
-				<Viewer modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} metaChildren={metaChildren} />
+				<Viewer {...child.config} metaChildren={metaChildren} />
 			</Subpanel>
 		);
 
@@ -74,7 +75,7 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 
 const DataList = ({ pathHead, setPathHead, isEditing }) => {
 
-	if (!pathHead.data.metaChildren.length) return null;
+	if (!pathHead.data.metaChildren) return null;
 
 	return (
 		<StyledDataList>
