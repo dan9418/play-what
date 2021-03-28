@@ -1,29 +1,8 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import Fretboard from '../../../../../../react/src/Fretboard/Fretboard';
-import Keyboard from '../../../../../../react/src/Keyboard/Keyboard';
-import { IPathNode, pathHeadState, pathState } from '../../../../state/pathState';
-import StyledCard from '../../../ui/layout/StyledCard'
-
-
-const VIEWER_ID = {
-	Fretboard: 'fretboard',
-	Keyboard: 'keyboard'
-}
-
-export const VIEWER = {
-	[VIEWER_ID.Fretboard]: {
-		id: VIEWER_ID.Fretboard,
-		name: 'Fretboard',
-		component: Fretboard
-	},
-	[VIEWER_ID.Keyboard]: {
-		id: VIEWER_ID.Keyboard,
-		name: 'Keyboard',
-		component: Keyboard
-	}
-}
+import { IPathNode, pathHeadState } from '../../../../state/pathState';
+import { VIEWER } from "./actions/viewerActions";
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -40,7 +19,7 @@ const Viewer = () => {
 
 	const labelProps = { modelId, modelValue, modelOptions };
 
-	const ViewerComponent: any = VIEWER[viewerId].component;
+	const ViewerComponent = VIEWER[viewerId].component;
 
 	return (
 		<StyledViewerContainer>
