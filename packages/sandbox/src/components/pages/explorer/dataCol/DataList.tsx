@@ -1,5 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import InsertButton from '@pw/sandbox/src/components/ui/inputs/buttons/InsertButton';
+import InsertButton from '../../../../components/ui/inputs/buttons/InsertButton';
 import _ from 'lodash';
 import React from "react";
 import styled from 'styled-components';

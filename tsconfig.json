@@ -75,7 +75,7 @@
   "include": [
     // "packages/sandbox/src/*/*.ts",
     // "packages/sandbox/src/*/*.tsx",
-    "packages/sandbox/src/index.tsx",
-    "packages/core/src/**/*.ts"
+    "**/*.ts",
+    "**/*.tsx",
   ]
 }
