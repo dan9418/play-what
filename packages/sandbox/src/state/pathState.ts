@@ -48,19 +48,26 @@ export const pathHeadState = selector({
 		console.log('pathHead', pathHead);
 		return pathHead;
 	},
-	set: ({ get, set }, newValue: any) => {
+	set: ({ get, set }, _newValue: any) => {
 		const path = get(pathState);
 		const data = get(dataState);
 
-		const newData = _.cloneDeep(data);
+		let { _direct, ...newValue } = _newValue;
+		if (_direct) newValue = newValue.config;
+
+		const copy = _.cloneDeep(data);
 
 		const pathStr = `modelValue.${path.join('.modelValue.')}`;
-		const oldValue = _.get(newData, pathStr);
-		const merged = { ...oldValue, ...newValue };
-		_.set(newData, pathStr, merged);
+		const oldValue = _.get(copy, pathStr);
 
-		console.log('set pathHead', pathStr, newData);
-		set(dataState, newData);
+		console.log(oldValue, newValue, copy, pathStr);
+
+
+		const merged = { ...oldValue, ...newValue };
+		_.set(copy, pathStr, merged);
+
+		console.log('set pathHead', pathStr, copy);
+		set(dataState, copy);
 	}
 });
 

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
 import Viewer from '../viewerCol/Viewer';
 import getListHelpers from './getListHelpers';
+import _ from 'lodash';
 
 const StyledDataList = styled.ul`
 	padding: 16px 8px;
@@ -18,17 +19,25 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 
 	const { metaChildren } = pathHead.data;
 	if (!metaChildren) return null;
-	const setMetaChilren = null;
+
+	const { modelValue } = pathHead.config;
+	const setModelValue = (data) => {
+		const copy = _.cloneDeep(pathHead);
+		const pathStr = `config.modelValue`;
+		_.set(copy, pathStr, data);
+		copy._direct = true;
+		setPathHead(copy);
+	};
 
 	return metaChildren.map((child, i) => {
 
 		const { modelId } = child.config;
-		const { name, preview, metaChildren: grandchildren } = child.data;
+		const { name, preview } = child.data;
 
 		const model = MODEL[modelId];
 
-		const listHelpers = getListHelpers(metaChildren, setMetaChilren, i);
-		const { isLast } = listHelpers;
+		const listHelpers = getListHelpers(modelValue, setModelValue, i);
+		const { isLast, onInsertAbove, onInsertBelow } = listHelpers;
 
 		const isGroup = modelId === MODEL_ID.Group;
 
@@ -60,8 +69,8 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 			</Subpanel>
 		);
 
-		const above = isEditing ? <ButtonInput>Insert</ButtonInput> : null;
-		const below = !isEditing ? null : isLast ? <ButtonInput>Insert</ButtonInput> : null;
+		const above = isEditing ? <ButtonInput onClick={onInsertAbove}>Insert</ButtonInput> : null;
+		const below = !isEditing ? null : isLast ? <ButtonInput onClick={onInsertBelow}>Insert</ButtonInput> : null;
 
 		return (
 			<React.Fragment key={name + i}>
