@@ -14,13 +14,19 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (metaChildren, pathIds, isEditing) => {
+const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
+
+	const { config, data } = pathHead;
+	const { metaChildren } = data;
+	const setMetaChilren = null;
+
+
 	return metaChildren.map((child, i) => {
 		const { modelId, modelValue, modelOptions } = child.config;
 		const { name, preview, metaChildren: grandchildren } = child.data;
 		const model = MODEL[modelId];
 
-		const listHelpers = getListHelpers(metaChildren, null, i);
+		const listHelpers = getListHelpers(metaChildren, setMetaChilren, i);
 		const { isLast } = listHelpers;
 
 		const isGroup = modelId === MODEL_ID.Group;
@@ -37,7 +43,7 @@ const getItems = (metaChildren, pathIds, isEditing) => {
 			>
 				{/* @ts-ignore */}
 				<ul css="padding: 0 8px">
-					{getItems(grandchildren, newPathIds, isEditing)}
+					{getItems(child, null, newPathIds, isEditing)}
 				</ul>
 			</Subpanel>
 		) : (
@@ -53,8 +59,8 @@ const getItems = (metaChildren, pathIds, isEditing) => {
 			</Subpanel>
 		);
 
-		const above = <ButtonInput>Insert</ButtonInput>;
-		const below = isLast ? <ButtonInput>Insert</ButtonInput> : null;
+		const above = isEditing ? <ButtonInput>Insert</ButtonInput> : null;
+		const below = !isEditing ? null : isLast ? <ButtonInput>Insert</ButtonInput> : null;
 
 		return (
 			<React.Fragment key={name + i}>
@@ -66,16 +72,14 @@ const getItems = (metaChildren, pathIds, isEditing) => {
 	})
 };
 
-const DataList = ({ modelValue, metaChildren, setPathHead, isEditing }) => {
+const DataList = ({ pathHead, setPathHead, isEditing }) => {
+
+	if (!pathHead.data.metaChildren.length) return null;
 
 	return (
-		<>
-			{metaChildren && (
-				<StyledDataList>
-					{getItems(metaChildren, [], isEditing)}
-				</StyledDataList>
-			)}
-		</>
+		<StyledDataList>
+			{getItems(pathHead, setPathHead, [], isEditing)}
+		</StyledDataList>
 	);
 };
 
