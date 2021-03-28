@@ -27,6 +27,7 @@ module.exports = {
     "no-case-declarations": "off",
     "no-console": "off",
     "no-debugger": "off",
+    "no-unused-vars": "off",
     "max-len": "off",
     "arrow-body-style": "off",
     "comma-dangle": ["error", "never"],

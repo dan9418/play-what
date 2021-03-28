@@ -11,9 +11,6 @@ const StyledActionList = styled.ul`
 const getItems = (actions, activeIndex, setActiveIndex) => {
 	return actions.map((child, i) => {
 		const { name, description, editPanel } = child;
-
-		console.log(activeIndex, activeIndex === i);
-
 		return (
 			<li key={name + i}>
 				<Subpanel

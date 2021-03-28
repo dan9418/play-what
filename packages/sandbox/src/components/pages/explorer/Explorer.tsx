@@ -72,8 +72,7 @@ const Explorer = () => {
 						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
 						hideHeader={isGroup}
 					>
-						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} />
-
+						<DataList metaChildren={metaChildren} modelValue={modelValue} setPathHead={setPathHead} isEditing={edit === 'data'} />
 					</Col>
 
 					{!isGroup &&
