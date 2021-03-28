@@ -1,11 +1,11 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import InsertButton from '@pw/sandbox/src/components/ui/inputs/buttons/InsertButton';
+import _ from 'lodash';
 import React from "react";
-import ButtonInput from '@pw/sandbox/src/components/ui/inputs/buttons/ButtonInput';
 import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
 import Viewer from '../viewerCol/Viewer';
 import getListHelpers from './getListHelpers';
-import _ from 'lodash';
 
 const StyledDataList = styled.ul`
 	padding: 16px 8px;
@@ -69,8 +69,8 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 			</Subpanel>
 		);
 
-		const above = isEditing ? <ButtonInput onClick={onInsertAbove}>Insert</ButtonInput> : null;
-		const below = !isEditing ? null : isLast ? <ButtonInput onClick={onInsertBelow}>Insert</ButtonInput> : null;
+		const above = isEditing ? <InsertButton onInsert={onInsertAbove}>Insert</InsertButton> : null;
+		const below = !isEditing ? null : isLast ? <InsertButton onInsert={onInsertBelow}>Insert</InsertButton> : null;
 
 		return (
 			<React.Fragment key={name + i}>
