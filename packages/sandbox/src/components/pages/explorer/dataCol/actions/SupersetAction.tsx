@@ -1,4 +1,4 @@
-import { MODEL } from '@pw/core/src/models/Model.constants';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import _ from 'lodash';
 import React from "react";
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
@@ -9,8 +9,7 @@ const SupersetAction = ({ pathHead, setPathHead }) => {
 
 	const [index, setIndex] = React.useState(0);
 
-	const model = MODEL[modelId];
-	const supersets = model.utils.findSupersets ? model.utils.findSupersets(modelValue, modelOptions) : [];
+	const supersets = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
 
 	const none = {
 		name: 'None',
@@ -26,7 +25,7 @@ const SupersetAction = ({ pathHead, setPathHead }) => {
 
 	const onSubmit = () => {
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'modelOptions.superset', value);
+		_.set(newData, 'config.modelOptions.superset', value);
 
 		setPathHead(newData);
 	};

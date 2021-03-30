@@ -1,5 +1,5 @@
 import { DEGREE_VALUES } from "../theory/Degree.constants";
-import { MODEL, MODEL_ID, IModel, IModelConfig, IModelData, IModelOptions } from "./Model.constants";
+import { IModel, IModelConfig, IModelData, IModelOptions, MODEL, MODEL_ID } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -238,6 +238,33 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	}
 };
 
+const getSupersets = (modelId: string, modelValue: IModel, modelOptions: IModelOptions): any[] => {
+	const { modelRoot } = modelOptions;
+
+	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
+
+	return SCALE_VALUES.filter(compareValues).map(v => ({
+		modelId: MODEL_ID.Scale,
+		modelValue: v.value,
+		modelOptions: {
+			...modelOptions,
+			name: v.name,
+			preview: getPreview(MODEL_ID.Scale, v.value, modelOptions)
+		}
+	}));
+
+	switch (modelId) {
+		case MODEL_ID.Note:
+		case MODEL_ID.Interval:
+			return [];
+		case MODEL_ID.Chord:
+		case MODEL_ID.Scale:
+			return [];
+		default:
+			return [];
+	}
+};
+
 // export
 
 export default {
@@ -245,5 +272,6 @@ export default {
 	getPreview,
 	getPodAtPitch,
 	getPodProps,
-	getData
+	getData,
+	getSupersets
 }

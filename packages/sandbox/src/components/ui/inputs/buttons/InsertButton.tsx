@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from 'styled-components';
 import Icon from "../../Icon";
 import ButtonInput from "./ButtonInput";
+import StyledCard from '../../layout/StyledCard';
 
 const styles = css`
     display: flex;
@@ -27,11 +28,24 @@ interface IInsertButtonProps {
 }
 
 const InsertButton: React.FC<IInsertButtonProps> = ({ onInsert, ...rest }) => {
+    const [isActive, setIsActive] = useState(false);
+
+
     return (
         <StyledWrapper>
-            <ButtonInput onClick={onInsert} css={styles} {...rest} >
-                <Icon iconId={'plus'} />
-            </ButtonInput>
+            {isActive ?
+                <>
+                    <StyledCard onClick={() => setIsActive(!isActive)}>
+                        Select type...
+                    </StyledCard>
+                </>
+                :
+                <>
+                    <ButtonInput onClick={() => setIsActive(!isActive)} css={styles} {...rest} >
+                        <Icon iconId={'plus'} />
+                    </ButtonInput>
+                </>
+            }
         </StyledWrapper>
     );
 };
