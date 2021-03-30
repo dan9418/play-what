@@ -239,7 +239,6 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 };
 
 const getSupersets = (modelId: string, modelValue: IModel, modelOptions: IModelOptions): any[] => {
-	const { modelRoot } = modelOptions;
 
 	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
 

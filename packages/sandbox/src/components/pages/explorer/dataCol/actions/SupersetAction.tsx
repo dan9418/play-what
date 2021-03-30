@@ -11,6 +11,8 @@ const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 
 	const supersets = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
 
+	console.log('supersets', supersets.length, modelId, modelValue, modelOptions);
+
 	/*useEffect(() => {
 		const val = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
 		setSupersets(val);

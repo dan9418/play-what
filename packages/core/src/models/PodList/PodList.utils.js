@@ -40,7 +40,7 @@ const playSound = (modelValue, modelOptions = {}) => {
 
 const containsSubset = (modelValue, subset) => {
 	for (let i = 0; i < subset.length; i++) {
-		if (!modelValue.includes(subset[i]))
+		if (!modelValue.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
 			return false;
 	}
 	return true;
