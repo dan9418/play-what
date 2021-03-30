@@ -57,7 +57,7 @@ export const pathHeadState = selector({
 		const pathStr = `modelValue.${path.join('.modelValue.')}`;
 		const oldValue = _.get(copy, pathStr);
 
-		console.log(oldValue, newValue, copy, pathStr);
+		console.log('SET', '\nold:\n', oldValue, '\nnew:\n', newValue, '\ncopy:\n', copy, '\npath:\n', pathStr);
 
 		const merged = { ...oldValue, ...newValue };
 		_.set(copy, pathStr, merged);

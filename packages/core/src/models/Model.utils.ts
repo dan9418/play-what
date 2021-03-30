@@ -244,12 +244,15 @@ const getSupersets = (modelId: string, modelValue: IModel, modelOptions: IModelO
 	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
 
 	return SCALE_VALUES.filter(compareValues).map(v => ({
+		id: v.name,
+		name: v.name,
+
 		modelId: MODEL_ID.Scale,
 		modelValue: v.value,
 		modelOptions: {
 			...modelOptions,
 			name: v.name,
-			preview: getPreview(MODEL_ID.Scale, v.value, modelOptions)
+			preview: getPreview(MODEL_ID.Scale, v.value, modelOptions) + v.name
 		}
 	}));
 
