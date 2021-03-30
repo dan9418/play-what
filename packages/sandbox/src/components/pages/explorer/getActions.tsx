@@ -1,9 +1,9 @@
 import React from "react";
 
-const getActions = (actions, pathHead, setPathHead) => actions.map(a => ({
+const getActions = (actions, pathHead, setPathHeadConfig) => actions.map(a => ({
     ...a,
     /* @ts-ignore */
-    editPanel: <a.component pathHead={pathHead} setPathHead={setPathHead} />
+    editPanel: <a.component pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} />
 }));
 
 export default getActions;

@@ -5,7 +5,7 @@ import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { IPathNode, pathHeadState } from '../../../state/pathState';
 
 const MeterWrapper = () => {
-    const [pathHead, setPathHead] = useRecoilState(pathHeadState);
+    const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
     const isTablet = useIsTablet();
     const isDesktop = useIsDesktop();
 

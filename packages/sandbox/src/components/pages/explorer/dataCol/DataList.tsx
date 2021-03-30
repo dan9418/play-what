@@ -15,7 +15,7 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
+const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 
 	const { metaChildren } = pathHead.data;
 	if (!metaChildren) return null;
@@ -25,7 +25,7 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 		const copy = _.cloneDeep(pathHead);
 		const pathStr = `config.modelValue`;
 		_.set(copy, pathStr, data);
-		setPathHead(copy.config);
+		setPathHeadConfig(copy.config);
 	};
 
 	return metaChildren.map((child, i) => {
@@ -81,13 +81,13 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 	})
 };
 
-const DataList = ({ pathHead, setPathHead, isEditing }) => {
+const DataList = ({ pathHead, setPathHeadConfig, isEditing }) => {
 
 	if (!pathHead.data.metaChildren) return null;
 
 	return (
 		<StyledDataList>
-			{getItems(pathHead, setPathHead, [], isEditing)}
+			{getItems(pathHead, setPathHeadConfig, [], isEditing)}
 		</StyledDataList>
 	);
 };

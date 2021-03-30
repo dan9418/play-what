@@ -11,7 +11,7 @@ const StyledViewerContainer = styled.div`
 
 const Viewer = () => {
 
-	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
+	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
 	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
 

@@ -27,7 +27,7 @@ const DIRECTION_OPTIONS = [
 	}
 ];
 
-const TransposeAction = ({ pathHead, setPathHead }) => {
+const TransposeAction = ({ pathHead, setPathHeadConfig }) => {
 	const [directionIndex, setDirectionIndex] = React.useState(0);
 	const [intervalIndex, setIntervalIndex] = React.useState(0);
 
@@ -42,7 +42,7 @@ const TransposeAction = ({ pathHead, setPathHead }) => {
 
 		const newData = _.cloneDeep(pathHead);
 		_.set(newData, 'modelOptions.modelRoot', modelRoot);
-		setPathHead(newData);
+		setPathHeadConfig(newData);
 	};
 
 	return (

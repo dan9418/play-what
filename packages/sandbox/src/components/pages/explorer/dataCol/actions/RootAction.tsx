@@ -3,18 +3,18 @@ import _ from 'lodash';
 import React from "react";
 import PresetAction from './PresetAction';
 
-const RootAction = ({ pathHead, setPathHead }) => {
+const RootAction = ({ pathHead, setPathHeadConfig }) => {
 
 	const onSubmit = root => {
 		console.log(root);
 		const newData = _.cloneDeep(pathHead);
 		_.set(newData, 'modelOptions.modelRoot', root.modelValue);
-		setPathHead(newData);
+		setPathHeadConfig(newData);
 	};
 
 	return (
 		<>
-			<PresetAction pathHead={pathHead} setPathHead={onSubmit} type={MODEL_ID.Note} />
+			<PresetAction pathHead={pathHead} setPathHeadConfig={onSubmit} type={MODEL_ID.Note} />
 		</>
 	);
 };

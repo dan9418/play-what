@@ -15,7 +15,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const DataCard = ({ pathHead = null, setPathHead = null, type = null }) => {
+const DataCard = ({ pathHead = null, setPathHeadConfig = null, type = null }) => {
 
 	const { modelId, modelValue, modelOptions } = pathHead.config;
 
@@ -25,7 +25,7 @@ const DataCard = ({ pathHead = null, setPathHead = null, type = null }) => {
 		if (typeof data.existing_value === 'number')
 			console.log('only strings');
 		else
-			setPathHead(data.updated_src);
+			setPathHeadConfig(data.updated_src);
 	};
 
 	return (

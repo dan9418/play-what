@@ -34,7 +34,7 @@ const StyledExplorer = styled.div`
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
 	const [edit, setEdit] = useState(null);
-	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
+	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
 	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
 	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
@@ -52,8 +52,8 @@ const Explorer = () => {
 
 	const viewer = isGroup ? null : <Viewer />;
 
-	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHead);
-	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHead);
+	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig);
+	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig);
 
 	return (
 		<>
@@ -72,7 +72,7 @@ const Explorer = () => {
 						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
 						hideHeader={isGroup}
 					>
-						<DataList pathHead={pathHead} setPathHead={setPathHead} isEditing={edit === 'data'} />
+						<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} />
 					</Col>
 
 					{!isGroup &&
@@ -87,7 +87,7 @@ const Explorer = () => {
 						>
 							{viewer}
 							<StyledColDivider />
-							<DataCard pathHead={pathHead} setPathHead={setPathHead} />
+							<DataCard pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} />
 						</Col>
 					}
 

@@ -4,7 +4,7 @@ import React from "react";
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
 
-const SupersetAction = ({ pathHead, setPathHead }) => {
+const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 	const { modelId, modelValue, modelOptions } = pathHead.config;
 
 	const [index, setIndex] = React.useState(0);
@@ -27,7 +27,7 @@ const SupersetAction = ({ pathHead, setPathHead }) => {
 		const newData = _.cloneDeep(pathHead);
 		_.set(newData, 'config.modelOptions.superset', value);
 
-		setPathHead(newData);
+		setPathHeadConfig(newData);
 	};
 
 	return (
