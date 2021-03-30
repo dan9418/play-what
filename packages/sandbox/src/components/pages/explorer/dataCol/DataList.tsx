@@ -25,8 +25,7 @@ const getItems = (pathHead, setPathHead, pathIds, isEditing) => {
 		const copy = _.cloneDeep(pathHead);
 		const pathStr = `config.modelValue`;
 		_.set(copy, pathStr, data);
-		copy._direct = true;
-		setPathHead(copy);
+		setPathHead(copy.config);
 	};
 
 	return metaChildren.map((child, i) => {
