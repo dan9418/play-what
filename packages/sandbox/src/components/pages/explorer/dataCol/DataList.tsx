@@ -8,8 +8,6 @@ import Viewer from '../viewerCol/Viewer';
 import getListHelpers from './getListHelpers';
 
 const StyledDataList = styled.ul`
-	padding: 16px 8px;
-
 	& li {
 		margin: 16px 0;
 	}

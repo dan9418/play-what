@@ -3,18 +3,17 @@ import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
-import Col, { StyledColDivider } from '../../ui/layout/Col';
+import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
+import StyledCard from '../../ui/layout/StyledCard';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
-import DataCard from './dataCol/DataCard';
 import getActions from './getActions';
 import MeterWrapper from './MeterWrapper';
 import ActionList from './shared/ActionList';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
 import Viewer from './viewerCol/Viewer';
-
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -50,7 +49,7 @@ const Explorer = () => {
 		null :
 		<MeterWrapper />;
 
-	const viewer = isGroup ? null : <Viewer />;
+	const viewer = <Viewer isBlank={isGroup} />;
 
 	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig);
 	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig);
@@ -62,7 +61,7 @@ const Explorer = () => {
 			<Panel name={name} preview={preview} caption={null} >
 				{/* @ts-ignore */}
 				{meter}
-				<StyledExplorer $isSingle={isGroup}>
+				<StyledExplorer>
 					<Col
 						title="Data"
 						editPanel={(
@@ -70,27 +69,19 @@ const Explorer = () => {
 						)}
 						isOpen={edit === 'data'}
 						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
-						hideHeader={isGroup}
 					>
 						<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} />
 					</Col>
-
-					{!isGroup &&
-						/* @ts-ignore */
-						<Col
-							title="Viewer"
-							isOpen={edit === 'viewer'}
-							setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
-							editPanel={(
-								<ActionList actions={viewerActions} />
-							)}
-						>
-							{viewer}
-							<StyledColDivider />
-							<DataCard pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} />
-						</Col>
-					}
-
+					<Col
+						title="Viewer"
+						isOpen={edit === 'viewer'}
+						setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
+						editPanel={(
+							<ActionList actions={viewerActions} />
+						)}
+					>
+						{viewer}
+					</Col>
 				</StyledExplorer>
 			</Panel>
 		</>

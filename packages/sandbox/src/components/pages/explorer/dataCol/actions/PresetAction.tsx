@@ -20,7 +20,8 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
-	const { parent } = useRecoilValue(siblingsState);
+	const siblingState = useRecoilValue(siblingsState) || {};
+	const { parent } = siblingState;
 	const parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
 
 	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL[x].name }));

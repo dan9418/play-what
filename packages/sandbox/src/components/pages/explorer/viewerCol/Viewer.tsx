@@ -1,3 +1,4 @@
+import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -9,7 +10,7 @@ const StyledViewerContainer = styled.div`
 	margin-bottom: 16px;
 `;
 
-const Viewer = () => {
+const Viewer = ({ isBlank }) => {
 
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
@@ -17,7 +18,11 @@ const Viewer = () => {
 
 	const { viewerId, viewerProps } = modelOptions;
 
-	const labelProps = { modelId, modelValue, modelOptions };
+	const labelProps = {
+		modelId: isBlank ? MODEL_ID.Chord : modelId,
+		modelValue: isBlank ? [] : modelValue,
+		modelOptions
+	};
 
 	const ViewerComponent = VIEWER[viewerId].component;
 

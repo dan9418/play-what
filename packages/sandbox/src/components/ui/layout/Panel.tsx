@@ -22,6 +22,7 @@ const StyledPanelHeader = styled.section`
 	justify-content: space-between;
 
 	padding: 16px 0;
+	margin-bottom: 16px;
 
 	& .button-container {
 		margin: 8px 0 0;
