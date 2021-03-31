@@ -16,22 +16,24 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetAction = ({ pathHead, setPathHeadConfig, type = null }) => {
+const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
 	const { parent } = useRecoilValue(siblingsState);
 	const parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
 
-	const typeOptions = parentModel.validChildren.map(x => ({ value: x, name: MODEL[x].name }));
+	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL[x].name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });
 	const selectedTypeOption = typeOptions[typeIndex];
 	const model = MODEL[selectedTypeOption.value];
 
+	const _type = validTypes.length === 1 ? validTypes[0] : type;
+
 	let presetOptions = [];
 	let selectedPresetOption = null;
-	if (type || typeIndex > 0) {
-		presetOptions = MODEL[type || selectedTypeOption.value].presets;
+	if (_type || typeIndex > 0) {
+		presetOptions = MODEL[_type || selectedTypeOption.value].presets;
 		selectedPresetOption = presetOptions[presetIndex];
 	}
 
@@ -46,7 +48,7 @@ const PresetAction = ({ pathHead, setPathHeadConfig, type = null }) => {
 
 	return (
 		<ActionForm onSubmit={onSubmit}>
-			{!type &&
+			{!_type &&
 				<>
 					<StyledLabel>Type: </StyledLabel>
 					<DropdownInput options={typeOptions} value={selectedTypeOption} setValue={(v, i) => setTypeIndex(i)} />

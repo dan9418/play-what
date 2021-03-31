@@ -36,7 +36,7 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 		const model = MODEL[modelId];
 
 		const listHelpers = getListHelpers(modelValue, setModelValue, i);
-		const { isLast, onInsertAbove, onInsertBelow } = listHelpers;
+		const { isLast, onInsertAbove, onInsertAtEnd } = listHelpers;
 
 		const isGroup = modelId === MODEL_ID.Group;
 
@@ -68,14 +68,14 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 			</Subpanel>
 		);
 
-		const above = isEditing ? <InsertButton onInsert={onInsertAbove}>Insert</InsertButton> : null;
-		const below = !isEditing ? null : isLast ? <InsertButton onInsert={onInsertBelow}>Insert</InsertButton> : null;
+		const above = isEditing ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAbove}>Insert</InsertButton></li> : null;
+		const below = !isEditing ? null : isLast ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAtEnd}>Insert</InsertButton></li> : null;
 
 		return (
 			<React.Fragment key={name + i}>
-				<li>{above}</li>
+				{above}
 				<li>{content}</li>
-				<li>{below}</li>
+				{below}
 			</React.Fragment>
 		);
 	})

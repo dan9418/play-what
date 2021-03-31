@@ -7,14 +7,14 @@ export const getListHelpers = (list, setList, i) => {
 		data,
 		...list.slice(i + 1)
 	]);
-	const onInsertAbove = () => setList([
+	const onInsertAbove = data => setList([
 		...list.slice(0, i),
-		list[i],
+		data,
 		...list.slice(i)
 	]);
-	const onInsertBelow = () => setList([
+	const onInsertAtEnd = data => setList([
 		...list,
-		list[list.length - 1]
+		data
 	]);
 	const onMoveUp = () => setList([
 		...list.slice(0, i - 1),
@@ -38,7 +38,7 @@ export const getListHelpers = (list, setList, i) => {
 		data,
 		setData,
 		onInsertAbove,
-		onInsertBelow,
+		onInsertAtEnd,
 		onMoveUp,
 		onMoveDown,
 		onDelete

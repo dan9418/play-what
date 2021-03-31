@@ -3,6 +3,9 @@ import styled, { css } from 'styled-components';
 import Icon from "../../Icon";
 import ButtonInput from "./ButtonInput";
 import StyledCard from '../../layout/StyledCard';
+import PresetAction from "../../../../components/pages/explorer/dataCol/actions/PresetAction";
+import IconButton from "./IconButton";
+import { MODEL } from "@pw/core/src/models/Model.constants";
 
 const styles = css`
     display: flex;
@@ -24,19 +27,24 @@ const StyledWrapper = styled.div`
 `;
 
 interface IInsertButtonProps {
+    pathHead: any;
     onInsert?: any
 }
 
-const InsertButton: React.FC<IInsertButtonProps> = ({ onInsert, ...rest }) => {
+const InsertButton: React.FC<IInsertButtonProps> = ({ pathHead, onInsert, ...rest }) => {
     const [isActive, setIsActive] = useState(false);
 
+    const handler = presetConfig => { onInsert(presetConfig.modelValue) };
+
+    const model = MODEL[pathHead.config.modelId]
 
     return (
         <StyledWrapper>
             {isActive ?
                 <>
-                    <StyledCard onClick={() => setIsActive(!isActive)}>
-                        Select type...
+                    <StyledCard>
+                        <PresetAction setPathHeadConfig={handler} validTypes={model.validChildren} />
+                        <IconButton iconId="cancel" onClick={() => setIsActive(!isActive)} />
                     </StyledCard>
                 </>
                 :
