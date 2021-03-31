@@ -1,11 +1,10 @@
+import { MODEL } from "@pw/core/src/models/Model.constants";
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
-import Icon from "../../Icon";
-import ButtonInput from "./ButtonInput";
-import StyledCard from '../../layout/StyledCard';
 import PresetAction from "../../../../components/pages/explorer/dataCol/actions/PresetAction";
-import IconButton from "./IconButton";
-import { MODEL } from "@pw/core/src/models/Model.constants";
+import Icon from "../../Icon";
+import StyledCard from '../../layout/StyledCard';
+import ButtonInput from "./ButtonInput";
 
 const styles = css`
     display: flex;
@@ -43,13 +42,12 @@ const InsertButton: React.FC<IInsertButtonProps> = ({ pathHead, onInsert, ...res
             {isActive ?
                 <>
                     <StyledCard>
-                        <PresetAction setPathHeadConfig={handler} validTypes={model.validChildren} />
-                        <IconButton iconId="cancel" onClick={() => setIsActive(!isActive)} />
+                        <PresetAction setPathHeadConfig={handler} validTypes={model.validChildren} onCancel={() => setIsActive(false)} />
                     </StyledCard>
                 </>
                 :
                 <>
-                    <ButtonInput onClick={() => setIsActive(!isActive)} css={styles} {...rest} >
+                    <ButtonInput onClick={() => setIsActive(true)} css={styles} {...rest} >
                         <Icon iconId={'plus'} />
                     </ButtonInput>
                 </>

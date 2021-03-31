@@ -12,11 +12,11 @@ const StyledActionForm = styled.form`
     }
 `;
 
-const ActionForm = ({ children, onSubmit }) => {
+const ActionForm = ({ children, onSubmit, onCancel }) => {
     return (
         <StyledActionForm>
             <div>{children}</div>
-            <ActionFooter onSubmit={onSubmit} />
+            <ActionFooter onSubmit={onSubmit} onCancel={onCancel} />
         </StyledActionForm>
     );
 };

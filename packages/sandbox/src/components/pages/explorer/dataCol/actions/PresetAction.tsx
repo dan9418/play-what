@@ -16,7 +16,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes }) => {
+const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes, onCancel }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
@@ -47,7 +47,7 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 	};
 
 	return (
-		<ActionForm onSubmit={onSubmit}>
+		<ActionForm onSubmit={onSubmit} onCancel={onCancel}>
 			{!_type &&
 				<>
 					<StyledLabel>Type: </StyledLabel>

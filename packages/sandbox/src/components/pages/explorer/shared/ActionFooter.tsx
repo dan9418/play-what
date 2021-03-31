@@ -16,12 +16,24 @@ const StyledActionFooter = styled.h3`
 		& >:first-child {
 			margin-left: 8px;
 		}
+
+		:not(:last-child) {
+			margin-right: 16px;
+		}
 	}
 `;
 
-const ActionFooter = ({ onSubmit }) => {
+const ActionFooter = ({ onSubmit, onCancel }) => {
 	return (
 		<StyledActionFooter>
+			{onCancel &&
+				<>
+					<ButtonInput onClick={onCancel}>
+						Cancel
+						<Icon iconId='cancel' color='white' />
+					</ButtonInput>
+				</>
+			}
 			<ButtonInput onClick={onSubmit}>
 				Apply
 				<Icon iconId='confirm' color='white' />
