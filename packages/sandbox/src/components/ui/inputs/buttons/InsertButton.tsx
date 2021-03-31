@@ -12,7 +12,7 @@ const styles = css`
     justify-content: center;
     
     svg {
-        margin: 0 16px;
+        margin: 0 32px;
     }
     svg, svg * {
         fill: white;

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { usePathNavContext } from "../../../contexts/PathNavContext";
 import { pathHeadState } from "../../../state/pathState";
 import THEME from "../../../styles/theme";
+import MeterWrapper from "../../pages/explorer/MeterWrapper";
 import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.section`
@@ -15,14 +16,14 @@ const StyledPanelHeader = styled.section`
 	z-index: 100;
 
 	background-color: #ecefef;
-	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc;' : ''}
-    
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
 
-	padding: 16px 0;
+	
 	margin-bottom: 16px;
+
+	>:nth-child(2) {
+		${({ $showBorder }) => !$showBorder ? 'margin-top: 8px;' : ''}
+	}
 
 	& .button-container {
 		margin: 8px 0 0;
@@ -88,8 +89,10 @@ const PanelHeader = () => {
 
 	const { pop, prev, next, path } = usePathNavContext();
 
+	const isGroup = modelId === MODEL_ID.Group;
+
 	return (
-		<StyledPanelHeader $showBorder={modelId === MODEL_ID.Group}>
+		<StyledPanelHeader $showBorder={isGroup}>
 			<div className='text-container'>
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
@@ -105,6 +108,7 @@ const PanelHeader = () => {
 					{path.length > 0 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
 				</div>
 			</div>
+			{!isGroup && <MeterWrapper />}
 		</StyledPanelHeader>
 	);
 };

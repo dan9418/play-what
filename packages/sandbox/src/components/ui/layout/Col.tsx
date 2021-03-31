@@ -3,6 +3,9 @@ import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
 const StyledCol = styled.div`
+	max-width: 512px;
+	width: 100%;
+	margin: auto;
 
 	:not(:first-child) {
 		margin-top: 16px;

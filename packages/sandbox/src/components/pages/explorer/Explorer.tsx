@@ -5,11 +5,9 @@ import styled, { css } from 'styled-components';
 import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
-import StyledCard from '../../ui/layout/StyledCard';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
 import getActions from './getActions';
-import MeterWrapper from './MeterWrapper';
 import ActionList from './shared/ActionList';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
@@ -45,10 +43,6 @@ const Explorer = () => {
 
 	const isGroup = modelId === MODEL_ID.Group;
 
-	const meter = isGroup ?
-		null :
-		<MeterWrapper />;
-
 	const viewer = <Viewer isBlank={isGroup} />;
 
 	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig);
@@ -59,8 +53,6 @@ const Explorer = () => {
 			<BreadcrumbList />
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
-				{/* @ts-ignore */}
-				{meter}
 				<StyledExplorer>
 					<Col
 						title="Data"
