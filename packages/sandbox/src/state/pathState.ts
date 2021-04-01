@@ -1,6 +1,6 @@
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import { atom, selector } from "recoil";
-import { IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
+import { IModelDef, IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
 import { dataState } from "./dataState";
 import _ from 'lodash';
 
@@ -8,11 +8,6 @@ export const pathState = atom({
 	key: 'pathState',
 	default: []
 });
-
-export interface IPathNode {
-	config: IModelConfig;
-	data: IModelData;
-}
 
 export const fullPathState = selector({
 	key: 'fullPathState',
@@ -41,7 +36,7 @@ export const fullPathState = selector({
 
 export const pathHeadState = selector({
 	key: 'pathHeadState',
-	get: ({ get }): IPathNode => {
+	get: ({ get }): IModelDef => {
 		const nodes: any[] = get(fullPathState);
 
 		const pathHead = nodes[nodes.length - 1];

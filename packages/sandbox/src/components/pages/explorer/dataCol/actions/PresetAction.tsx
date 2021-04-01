@@ -16,11 +16,11 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes, onCancel }) => {
+const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes = null, onCancel = null }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
-	const siblingState = useRecoilValue(siblingsState) || {};
+	const siblingState = useRecoilValue(siblingsState) || { parent: null };
 	const { parent } = siblingState;
 	const parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
 

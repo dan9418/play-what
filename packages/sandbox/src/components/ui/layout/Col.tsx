@@ -48,7 +48,7 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, editPanel, children, hideHeader, isOpen, setIsOpen }) => {
+const Col = ({ title, editPanel, children, hideHeader = false, isOpen, setIsOpen }) => {
 
 	return (
 		<StyledCol>

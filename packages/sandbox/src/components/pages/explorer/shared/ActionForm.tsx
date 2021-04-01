@@ -12,7 +12,7 @@ const StyledActionForm = styled.form`
     }
 `;
 
-const ActionForm = ({ children, onSubmit, onCancel }) => {
+const ActionForm = ({ children, onSubmit, onCancel = null }) => {
     return (
         <StyledActionForm>
             <div>{children}</div>

@@ -1,8 +1,8 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
-import { IPathNode, pathHeadState, pathState } from '../../../state/pathState';
+import { pathHeadState, pathState } from '../../../state/pathState';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
@@ -33,8 +33,8 @@ const Explorer = () => {
 	const [edit, setEdit] = useState(null);
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
-	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
-	const { name, preview, pathId, metaChildren } = (pathHead as IPathNode).data;
+	const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
+	const { name, preview, pathId, metaChildren } = (pathHead as IModelDef).data;
 
 	React.useEffect(() => {
 		window.scrollTo(0, 0), [path.length, pathId];

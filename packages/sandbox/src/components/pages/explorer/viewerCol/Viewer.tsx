@@ -1,8 +1,8 @@
-import { MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { IModelDef, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { IPathNode, pathHeadState } from '../../../../state/pathState';
+import { pathHeadState } from '../../../../state/pathState';
 import { VIEWER } from "./actions/viewerActions";
 
 const StyledViewerContainer = styled.div`
@@ -14,7 +14,7 @@ const Viewer = ({ isBlank }) => {
 
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
-	const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
+	const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
 	const { viewerId, viewerProps } = modelOptions;
 

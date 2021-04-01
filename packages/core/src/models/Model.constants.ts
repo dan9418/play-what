@@ -93,3 +93,8 @@ export interface IModelData {
 	superset: IModelConfig;
 	metaChildren: any[];
 }
+
+export interface IModelDef {
+	config: IModelConfig;
+	data: IModelData;
+}

@@ -1,15 +1,16 @@
+import { IModelDef } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState } from 'recoil';
 import Meter from '../../../../../react/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
-import { IPathNode, pathHeadState } from '../../../state/pathState';
+import { pathHeadState } from '../../../state/pathState';
 
 const MeterWrapper = () => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
     const isTablet = useIsTablet();
     const isDesktop = useIsDesktop();
 
-    const { modelId, modelValue, modelOptions } = (pathHead as IPathNode).config;
+    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
     let range = [0, 12];
     if (isTablet) {
