@@ -4,9 +4,9 @@ export const TONE_FN = {
 	sine: {
 		id: 'sine',
 		name: 'Sine',
-		value: f => {
+		value: (f: number): void => {
 			if (!f) return null;
-			ToneUtils.play(f);
+			(ToneUtils as any).play(f);
 		}
 	}
 };

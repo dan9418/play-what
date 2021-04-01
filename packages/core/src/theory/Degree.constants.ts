@@ -1,6 +1,11 @@
 export const MAX_DEGREE = 7
+export interface IDegree {
+	id: string;
+	name: string;
+	value: number
+}
 
-export const DEGREE = {
+export const DEGREE: { [x: string]: IDegree } = {
 	C: {
 		id: 'C',
 		name: 'C',

@@ -1,9 +1,10 @@
+import { IPod } from "../models/Model.constants";
 
 export const TUNING_FN = {
 	TET: {
 		id: 'TET',
 		name: 'TET',
-		value: pod => {
+		value: (pod: IPod): number | null => {
 			if (!pod) return null;
 			const [p, d] = pod;
 			const a = p + 3;

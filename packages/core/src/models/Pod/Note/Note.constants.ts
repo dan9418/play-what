@@ -1,5 +1,12 @@
+import { IPod } from "../../Model.constants";
 
-export const NOTE = {
+export interface INote {
+	id: string;
+	name: string;
+	value: IPod
+}
+
+export const NOTE: { [x: string]: INote } = {
 	C: { id: 'C', name: 'C', value: [0, 0] },
 	'C#': { id: 'C#', name: 'C#', value: [1, 0] },
 	Db: { id: 'Db', name: 'Db', value: [1, 1] },
@@ -25,7 +32,14 @@ export const NOTE = {
 
 export const NOTE_VALUES = Object.values(NOTE);
 
-export const ACCIDENTAL = Object.freeze({
+interface IAccidental {
+	id: string;
+	name: string;
+	symbol: string;
+	value: number;
+}
+
+export const ACCIDENTAL: { [x: string]: IAccidental } = {
 	flat: {
 		id: 'flat',
 		name: 'Flat',
@@ -44,7 +58,7 @@ export const ACCIDENTAL = Object.freeze({
 		symbol: '#',
 		value: 1
 	}
-});
+};
 
 export const ACCIDENTAL_VALUES = Object.values(ACCIDENTAL);
 

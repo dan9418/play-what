@@ -1,4 +1,12 @@
-export const DIATONIC = {
+import { IPod } from "../models/Model.constants";
+
+export interface IDiatonic {
+	id: string;
+	name: string;
+	value: IPod
+}
+
+export const DIATONIC: { [x: string]: IDiatonic } = {
 	tonic: {
 		id: 'tonic',
 		name: 'Tonic',

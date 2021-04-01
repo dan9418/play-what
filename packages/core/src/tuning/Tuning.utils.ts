@@ -1,4 +1,4 @@
-export const getFrequency = (p) => {
+export const getFrequency = (p: number): number => {
 	const a = p + 3;
 	const b = a / 12;
 	const c = Math.pow(2, b);

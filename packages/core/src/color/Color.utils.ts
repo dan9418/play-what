@@ -1,11 +1,11 @@
 import color from 'color';
 
-const getFgColor = (bg) => {
+const getFgColor = (bg?: string): string => {
 	if (!bg) return "#000";
 	return color(bg).isDark() ? "#fff" : "#000";
 };
 
-const getStylesFromBgColor = (bg) => {
+const getStylesFromBgColor = (bg?: string): any => {
 	if (!bg) return {};
 	const fg = getFgColor(bg);
 	return {

@@ -49,7 +49,7 @@ const getIntervalName = (modelValue: IModel) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getChordName = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getChordName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Chord';
 
@@ -59,7 +59,7 @@ const getChordName = (modelValue: IModel, modelOptions: IModelOptions<IModelConf
 	return `${rootName} ${presetName}`;
 };
 
-const getScaleName = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const preset = SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Scale';
 
@@ -69,7 +69,7 @@ const getScaleName = (modelValue: IModel, modelOptions: IModelOptions<IModelConf
 	return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
 	if (modelOptions && modelOptions.name) return modelOptions.name;
 
 	switch (modelId) {
@@ -92,7 +92,7 @@ const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOption
 
 const getGroupPreview = (modelValue: IModel) => `${modelValue.length} Items`;
 
-const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions) => {
 	const intervalNames = modelValue.map(interval => getIntervalName(interval)).join(', ');
 
 	if (!modelOptions || !modelOptions.modelRoot) return intervalNames;
@@ -102,7 +102,7 @@ const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions<IMode
 	return `${intervalNames} (${noteNames})`;
 }
 
-const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
 	if (modelOptions.preview) return modelOptions.preview;
 
 	switch (modelId) {
@@ -118,11 +118,11 @@ const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOpt
 
 // getPodAtPitch
 
-const getPodAtPitchInSingle = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number, matchOctave: boolean) => PodUtils.getPodAtPitch(modelValue, noteIndex, modelOptions, matchOctave);
+const getPodAtPitchInSingle = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave: boolean) => PodUtils.getPodAtPitch(modelValue, noteIndex, modelOptions, matchOctave);
 
-const getPodAtPitchInList = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number, matchOctave: boolean) => PodListUtils.getPodAtPitch(modelValue, noteIndex, modelOptions, matchOctave);
+const getPodAtPitchInList = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave: boolean) => PodListUtils.getPodAtPitch(modelValue, noteIndex, modelOptions, matchOctave);
 
-const getPodAtPitch = (modelId: string, modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number, matchOctave?: boolean) => {
+const getPodAtPitch = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave?: boolean) => {
 	switch (modelId) {
 		case MODEL_ID.Note:
 		case MODEL_ID.Interval:
@@ -137,7 +137,7 @@ const getPodAtPitch = (modelId: string, modelValue: IModel, modelOptions: IModel
 
 // getPodProps
 
-const getNotePodProps = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number) => {
+const getNotePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitch(MODEL_ID.Note, modelValue, modelOptions, noteIndex);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
@@ -145,7 +145,7 @@ const getNotePodProps = (modelValue: IModel, modelOptions: IModelOptions<IModelC
 	return { color, label };
 }
 
-const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number) => {
+const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitch(MODEL_ID.Interval, modelValue, modelOptions, noteIndex);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
@@ -153,7 +153,7 @@ const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions<IMo
 	return { color, label };
 }
 
-const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number) => {
+const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
 	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
 	const projection = modelOptions.projection;
 	const superPod = projection ? getPodAtPitch(MODEL_ID.Chord, projection.podList, null, noteIndex) : null;
@@ -167,7 +167,7 @@ const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions<IModelC
 	return { color, label };
 }
 
-const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex) => {
+const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex) => {
 	switch (modelId) {
 		case MODEL_ID.Note:
 			return getNotePodProps(modelValue, modelOptions, noteIndex)
@@ -183,7 +183,7 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 
 // Parse
 
-const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>) => {
+const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return modelValue.map((child, i) => {
 		return {
 			...child,
@@ -197,7 +197,7 @@ const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions<IM
 	});
 };
 
-const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, childModelId) => {
+const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, childModelId) => {
 	return modelValue.map((pod, i) => {
 		return {
 			modelId: childModelId,
@@ -246,7 +246,12 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	}
 };
 
-const getSupersets = (modelId: string, modelValue: IModel, modelOptions: IModelOptions<IModelConfig>): IModelConfig[] => {
+interface ISupersetOption extends IModelConfig {
+	id: string;
+	name: string;
+}
+
+const getSupersets = (modelId: string, modelValue: IModel, modelOptions: IModelOptions): ISupersetOption[] => {
 
 	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
 

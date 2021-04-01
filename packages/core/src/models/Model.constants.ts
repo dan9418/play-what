@@ -19,7 +19,15 @@ export const MODEL_ID = {
 	Scale: 'scale'
 };
 
-export const MODEL = {
+export interface IModelMap {
+	name: string;
+	modelId: string;
+	utils: any;
+	presets: any[];
+	validChildren: any[];
+}
+
+export const MODEL: { [x: string]: IModelMap } = {
 	// Group
 	[MODEL_ID.Group]: {
 		name: 'Group',
@@ -81,8 +89,8 @@ export interface IProjection {
 	podList: IPodList;
 }
 
-export interface IModelOptions<T> {
-	modelRoot: IPod;
+export interface IModelOptions {
+	modelRoot?: IPod;
 	name?: string;
 	preview?: string;
 	projection?: IProjection;
@@ -93,7 +101,7 @@ export interface IModelOptions<T> {
 export interface IModelConfig {
 	modelId: string;
 	modelValue: IModel;
-	modelOptions: IModelOptions<IModelConfig>
+	modelOptions: IModelOptions
 }
 
 export interface IModelData {

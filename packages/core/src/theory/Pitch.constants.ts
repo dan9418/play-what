@@ -1,6 +1,11 @@
 export const MAX_PITCH = 12;
+export interface IPitch {
+	id: string;
+	name: string;
+	value: number
+}
 
-export const PITCH = {
+export const PITCH: { [x: string]: IPitch } = {
 	middleC: {
 		id: 'middleC',
 		name: 'Middle C',

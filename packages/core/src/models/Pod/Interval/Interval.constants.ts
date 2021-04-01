@@ -1,5 +1,11 @@
+import { IPod } from "../../Model.constants";
+export interface IInterval {
+	id: string;
+	name: string;
+	value: IPod
+}
 
-export const INTERVAL = {
+export const INTERVAL: { [x: string]: IInterval } = {
 	P1: {
 		id: 'P1',
 		name: 'Perfect Unison',
@@ -124,7 +130,15 @@ export const CORE_INTERVALS = [
 	[INTERVAL.m7, INTERVAL.M7]
 ];
 
-export const INTERVAL_QUALITY = Object.freeze({
+export interface IIntervalQuality {
+	id: string;
+	name: string;
+	symbol: string;
+	up?: string;
+	down?: string;
+}
+
+export const INTERVAL_QUALITY: { [x: string]: IIntervalQuality } = {
 	dim: {
 		id: 'dim',
 		name: 'Diminished',
@@ -160,7 +174,7 @@ export const INTERVAL_QUALITY = Object.freeze({
 		down: 'maj',
 		up: null
 	}
-});
+};
 
 export const INTERVAL_QUALITY_VALUES = Object.values(INTERVAL_QUALITY);
 

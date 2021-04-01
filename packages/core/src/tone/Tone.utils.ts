@@ -17,12 +17,12 @@ MASTER_OUT_POLY.set({
 });
 
 
-const playSound = (f, duration = .5, velocity = .5) => {
-	const root = Array.isArray(f) ? MASTER_OUT_POLY : MASTER_OUT;
-	root.triggerAttackRelease(f, duration);
+const playSound = (f: number | number[], duration = .5, velocity = .5): void => {
+	const masterOut: any = Array.isArray(f) ? MASTER_OUT_POLY : MASTER_OUT;
+	masterOut.triggerAttackRelease(f, duration);
 }
 
-const stop = () => {
+const stop = (): void => {
 	MASTER_OUT_POLY.releaseAll();
 }
 

@@ -1,8 +1,8 @@
-const modulo = (a, b) => {
+const modulo = (a: number, b: number): number => {
 	return ((a % b) + b) % b;
 }
 
-const moduloSum = (a, b, divisor) => {
+const moduloSum = (a: number, b: number, divisor: number): number => {
 	const offset = 0;
 	const subtraction = false;
 	const dividend = (subtraction) ? ((a - offset) - (b - offset)) : ((a - offset) + (b - offset));

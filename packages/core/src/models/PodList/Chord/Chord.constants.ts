@@ -1,6 +1,13 @@
+import { IPodList } from './../../Model.constants';
 import { INTERVAL } from "../../Pod/Interval/Interval.constants";
 
-export const CHORD = {
+export interface INote {
+	id: string;
+	name: string;
+	value: IPodList
+}
+
+export const CHORD: { [x: string]: INote } = {
 	Maj: { id: 'Maj', name: 'Major Triad', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] },
 	Maj6: { id: 'Maj6', name: 'Major 6th', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value, INTERVAL.M6.value] },
 	Maj7: { id: 'Maj7', name: 'Major 7th', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value, INTERVAL.M7.value] },
@@ -22,7 +29,7 @@ export const CHORD = {
 
 export const CHORD_VALUES = Object.values(CHORD);
 
-export const NUMERAL = {
+export const NUMERAL: { [x: string]: INote } = {
 	I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] }
 };
 
