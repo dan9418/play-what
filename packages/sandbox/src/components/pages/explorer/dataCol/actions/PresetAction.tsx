@@ -29,7 +29,7 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 	const selectedTypeOption = typeOptions[typeIndex];
 	const model = MODEL[selectedTypeOption.value];
 
-	const _type = validTypes.length === 1 ? validTypes[0] : type;
+	const _type = (validTypes && validTypes.length === 1) ? validTypes[0] : type;
 
 	let presetOptions = [];
 	let selectedPresetOption = null;
