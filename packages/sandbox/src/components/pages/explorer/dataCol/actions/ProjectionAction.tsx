@@ -4,19 +4,12 @@ import React, { useEffect, useState } from "react";
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
 
-const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
+const ProjectionAction = ({ pathHead, setPathHeadConfig }) => {
 	const { modelId, modelValue, modelOptions } = pathHead.config;
 
 	const [index, setIndex] = React.useState(0);
 
 	const supersetOptions = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
-
-	console.log('supersets', supersetOptions.length, modelId, modelValue, modelOptions);
-
-	/*useEffect(() => {
-		const val = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
-		setSupersets(val);
-	}, [pathHead]);*/
 
 	const none = {
 		id: 'None',
@@ -47,4 +40,4 @@ const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 	);
 };
 
-export default SupersetAction;
+export default ProjectionAction;

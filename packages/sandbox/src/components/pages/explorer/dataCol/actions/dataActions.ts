@@ -1,5 +1,5 @@
 import PresetAction from './PresetAction';
-import SupersetAction from './SupersetAction';
+import ProjectionAction from './ProjectionAction';
 import TransposeAction from './TransposeAction';
 import RootAction from './RootAction';
 
@@ -20,9 +20,9 @@ const DATA_ACTIONS = [
 		component: TransposeAction
 	},
 	{
-		name: 'Apply Superset',
-		description: 'Superimpose a model containing these pods',
-		component: SupersetAction
+		name: 'Apply Projection',
+		description: 'Superimpose additional pods over these pods',
+		component: ProjectionAction
 	}
 ];
 
