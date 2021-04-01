@@ -155,8 +155,8 @@ const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions<IMo
 
 const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions<IModelConfig>, noteIndex: number) => {
 	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
-	const superset = modelOptions.superset;
-	const superPod = superset ? getPodAtPitch(MODEL_ID.Chord, superset.podList, null, noteIndex) : null;
+	const projection = modelOptions.projection;
+	const superPod = projection ? getPodAtPitch(MODEL_ID.Chord, projection.podList, null, noteIndex) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: 'white',
@@ -242,7 +242,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		preview,
 		metaChildren,
 		modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
-		superset: (modelOptions && modelOptions.superset) ? modelOptions.superset : undefined
+		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
 	}
 };
 

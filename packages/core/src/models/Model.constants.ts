@@ -85,7 +85,7 @@ export interface IModelOptions<T> {
 	modelRoot: IPod;
 	name?: string;
 	preview?: string;
-	superset?: IProjection;
+	projection?: IProjection;
 	viewerId?: string;
 	viewerProps?: any;
 }
@@ -101,7 +101,7 @@ export interface IModelData {
 	name: string;
 	preview: string;
 	modelRoot: IModel;
-	superset: IProjection;
+	projection: IProjection;
 	metaChildren: any[];
 }
 

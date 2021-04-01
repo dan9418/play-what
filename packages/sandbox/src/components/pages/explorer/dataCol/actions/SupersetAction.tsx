@@ -34,8 +34,8 @@ const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 	const onSubmit = () => {
 		const copy = _.cloneDeep(pathHead);
 		const modelValueCopy = _.cloneDeep(selectedValue.modelValue);
-		const superset = { podList: modelValueCopy };
-		_.set(copy, 'config.modelOptions.superset', superset);
+		const projection = { podList: modelValueCopy };
+		_.set(copy, 'config.modelOptions.projection', projection);
 
 		setPathHeadConfig(copy.config);
 	};
