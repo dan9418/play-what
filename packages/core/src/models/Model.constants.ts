@@ -68,7 +68,14 @@ export const MODEL = {
 
 export const MODEL_VALUES = Object.values(MODEL);
 
-export type IModel = any[];
+export type IGroup<T> = T[];
+
+export type IPod = [number, number];
+export type IPodList = IPod[];
+type IPodType = IPod | IPodList;
+
+// @ts-ignore
+export type IModel = IPodType | IGroup<IPodType | IModel>;
 
 export interface IModelOptions {
 	modelRoot: IModel;
