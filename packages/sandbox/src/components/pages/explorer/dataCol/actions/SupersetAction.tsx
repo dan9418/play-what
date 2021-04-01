@@ -9,9 +9,9 @@ const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 
 	const [index, setIndex] = React.useState(0);
 
-	const supersets = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
+	const supersetOptions = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
 
-	console.log('supersets', supersets.length, modelId, modelValue, modelOptions);
+	console.log('supersets', supersetOptions.length, modelId, modelValue, modelOptions);
 
 	/*useEffect(() => {
 		const val = ModelUtils.getSupersets(modelId, modelValue, modelOptions);
@@ -26,22 +26,23 @@ const SupersetAction = ({ pathHead, setPathHeadConfig }) => {
 		modelValue: []
 	};
 
-	supersets.unshift(none);
+	supersetOptions.unshift(none);
 
-	const value = supersets[index];
+	const selectedValue = supersetOptions[index];
 	const setSelection = (v, i) => setIndex(i);
 
 	const onSubmit = () => {
 		const copy = _.cloneDeep(pathHead);
-		const valueCopy = _.cloneDeep(value);
-		_.set(copy, 'config.modelOptions.superset', valueCopy);
+		const modelValueCopy = _.cloneDeep(selectedValue.modelValue);
+		const superset = { podList: modelValueCopy };
+		_.set(copy, 'config.modelOptions.superset', superset);
 
 		setPathHeadConfig(copy.config);
 	};
 
 	return (
 		<ActionForm onSubmit={onSubmit}>
-			<DropdownInput options={supersets} value={value} setValue={setSelection} />
+			<DropdownInput options={supersetOptions} value={selectedValue} setValue={setSelection} />
 		</ActionForm>
 	);
 };

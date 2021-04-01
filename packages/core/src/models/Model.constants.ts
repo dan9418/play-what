@@ -77,11 +77,15 @@ type IPodType = IPod | IPodList;
 // @ts-ignore
 export type IModel = IPodType | IGroup<IPodType | IModel>;
 
+export interface IProjection {
+	podList: IPodList;
+}
+
 export interface IModelOptions<T> {
 	modelRoot: IPod;
 	name?: string;
 	preview?: string;
-	superset?: T;
+	superset?: IProjection;
 	viewerId?: string;
 	viewerProps?: any;
 }
@@ -97,7 +101,7 @@ export interface IModelData {
 	name: string;
 	preview: string;
 	modelRoot: IModel;
-	superset: IModelConfig;
+	superset: IProjection;
 	metaChildren: any[];
 }
 

@@ -31,7 +31,7 @@ const getPodAtPitch = (A, p, modelOptions, matchOctave) => {
 // Sound
 
 const playSound = (modelValue, modelOptions = {}) => {
-	const notes = modelOptions.modelRoot ? PodUtils.addPodList(modelOptions.modelRoot, modelValue) : modelValue;
+	const notes = (modelOptions && modelOptions.modelRoot) ? PodUtils.addPodList(modelOptions.modelRoot, modelValue) : modelValue;
 	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }
