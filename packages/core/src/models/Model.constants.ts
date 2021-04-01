@@ -77,11 +77,11 @@ type IPodType = IPod | IPodList;
 // @ts-ignore
 export type IModel = IPodType | IGroup<IPodType | IModel>;
 
-export interface IModelOptions {
-	modelRoot: IModel;
+export interface IModelOptions<T> {
+	modelRoot: IPod;
 	name?: string;
 	preview?: string;
-	superset?: any;
+	superset?: T;
 	viewerId?: string;
 	viewerProps?: any;
 }
@@ -89,7 +89,7 @@ export interface IModelOptions {
 export interface IModelConfig {
 	modelId: string;
 	modelValue: IModel;
-	modelOptions: IModelOptions
+	modelOptions: IModelOptions<IModelConfig>
 }
 
 export interface IModelData {
