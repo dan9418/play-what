@@ -2,11 +2,8 @@ import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { usePathNavContext } from "../../../contexts/PathNavContext";
 import { pathHeadState } from "../../../state/pathState";
-import THEME from "../../../styles/theme";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
-import IconButton from "../inputs/buttons/IconButton";
 
 const StyledPanelHeader = styled.section`
 	width: 100%;
@@ -83,11 +80,9 @@ const StyledPanelHeader = styled.section`
 
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
-	const { modelId, modelValue, modelOptions } = pathHead.config;
+	const { modelId } = pathHead.config;
 	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];
-
-	const { pop, prev, next, path } = usePathNavContext();
 
 	const isGroup = modelId === MODEL_ID.Group;
 
@@ -100,12 +95,6 @@ const PanelHeader = () => {
 						<div className='caption'>{model.name}</div>
 					</div>
 					<div className='preview'>{preview}</div>
-				</div>
-				<div className='button-container'>
-					{model.utils.playSound && <IconButton onClick={() => model.utils.playSound(modelValue, modelOptions)} iconId="speaker" />}
-					{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
-					{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
-					{path.length > 0 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
 				</div>
 			</div>
 			{!isGroup && <MeterWrapper />}
