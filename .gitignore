@@ -1,6 +1,10 @@
 node_modules/
 .vscode/
 
+packages/core/src/**/*.js
+
+packages/react/src/**/*.jsx
+packages/react/src/**/*.js
+
 packages/sandbox/src/**/*.jsx
 packages/sandbox/src/**/*.js
-packages/core/src/**/*.js
