@@ -7,7 +7,7 @@ import { VIEWER } from "./actions/viewerActions";
 
 const StyledViewerContainer = styled.div`
     width: 100%;
-	margin-bottom: 16px;
+	padding: 16px;
 `;
 
 const Viewer = ({ isBlank }) => {
