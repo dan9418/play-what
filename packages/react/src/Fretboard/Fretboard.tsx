@@ -37,7 +37,6 @@ const getFrets = (props) => {
 			allFrets.push(
 				<Fret
 					key={`s${s}-f${f}`}
-					stringTuning={tuning[s]}
 					stringIndex={s}
 					fretIndex={f}
 					labelProps={labelProps}

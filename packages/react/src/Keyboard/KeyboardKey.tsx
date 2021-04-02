@@ -46,10 +46,10 @@ const KeyboardKey = ({ noteIndex, scale, modelId, modelValue, modelOptions }) =>
 
 	const colorStyles = { backgroundColor: color };
 
-	let keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
+	const keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
-	let scaleStyles = getScaleStyles(keyType, scale);
-	let classes = ['keyboard-key', `${keyType}-key`, keyType];
+	const scaleStyles = getScaleStyles(keyType, scale);
+	const classes = ['keyboard-key', `${keyType}-key`, keyType];
 
 	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};

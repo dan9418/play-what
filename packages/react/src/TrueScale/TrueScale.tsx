@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonInput from '../ui/inputs/button/ButtonInput';
 
 const TRUE_INTERVAL_MAP = [
     'P1',
@@ -37,7 +36,7 @@ const getButtons = (fundamental, n) => {
         }
     }
     freq.sort((a, b) => a - b);
-    return freq.map((f, i) => <ButtonInput key={i} onClick={}>{TRUE_INTERVAL_MAP[i]}</ButtonInput>);
+    return freq.map((f, i) => <button key={i} onClick={null}>{TRUE_INTERVAL_MAP[i]}</button>);
 }
 
 

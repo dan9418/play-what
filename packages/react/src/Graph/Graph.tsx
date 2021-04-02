@@ -1,4 +1,6 @@
+// @ts-ignore
 import { MAX_POD } from '@pw/core/src/models/helpers/Pod.constants';
+// @ts-ignore
 import PodUtils from '@pw/core/src/Pod.utils';
 import React from "react";
 import './Graph.css';
