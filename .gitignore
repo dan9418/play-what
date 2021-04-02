@@ -3,8 +3,8 @@ node_modules/
 
 packages/core/src/**/*.js
 
-packages/react/src/**/*.jsx
-packages/react/src/**/*.js
+packages/viewers/src/**/*.jsx
+packages/viewers/src/**/*.js
 
 packages/sandbox/src/**/*.jsx
 packages/sandbox/src/**/*.js

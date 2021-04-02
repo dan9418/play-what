@@ -1,6 +1,6 @@
 import ViewerTypeAction from './ViewerTypeAction';
-import Fretboard from '../../../../../../../react/src/Fretboard/Fretboard';
-import Keyboard from '../../../../../../../react/src/Keyboard/Keyboard';
+import Fretboard from '../../../../../../../viewers/src/Fretboard/Fretboard';
+import Keyboard from '../../../../../../../viewers/src/Keyboard/Keyboard';
 
 enum VIEWER_ID {
 	Fretboard = 'fretboard',

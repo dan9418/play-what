@@ -1,7 +1,7 @@
 import { IModelDef } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState } from 'recoil';
-import Meter from '../../../../../react/src/Meter/Meter';
+import Meter from '../../../../../viewers/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { pathHeadState } from '../../../state/pathState';
 
