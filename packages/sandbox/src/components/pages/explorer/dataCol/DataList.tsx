@@ -13,7 +13,7 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
+const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 
 	const { metaChildren } = pathHead.data;
 	if (!metaChildren) return null;
@@ -47,10 +47,11 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 				caption={model.name}
 				name={name}
 				preview={preview}
+				level={level}
 			>
 				{/* @ts-ignore */}
 				<ul css="padding: 0 8px">
-					{getItems(child, null, newPathIds, isEditing)}
+					{getItems(child, null, newPathIds, isEditing, level + 1)}
 				</ul>
 			</Subpanel>
 		) : (
@@ -60,6 +61,7 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 				caption={model.name}
 				name={name}
 				preview={preview}
+				level={level}
 			>
 				{/* @ts-ignore */}
 				<Viewer {...child.config} metaChildren={metaChildren} />
@@ -79,13 +81,13 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing) => {
 	})
 };
 
-const DataList = ({ pathHead, setPathHeadConfig, isEditing }) => {
+const DataList = ({ pathHead, setPathHeadConfig, isEditing, level = 0 }) => {
 
 	if (!pathHead.data.metaChildren) return null;
 
 	return (
 		<StyledDataList>
-			{getItems(pathHead, setPathHeadConfig, [], isEditing)}
+			{getItems(pathHead, setPathHeadConfig, [], isEditing, level)}
 		</StyledDataList>
 	);
 };

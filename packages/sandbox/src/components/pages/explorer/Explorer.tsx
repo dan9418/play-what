@@ -55,16 +55,6 @@ const Explorer = () => {
 			<Panel name={name} preview={preview} caption={null} >
 				<StyledExplorer>
 					<Col
-						title="Data"
-						editPanel={(
-							<ActionList actions={dataActions} />
-						)}
-						isOpen={edit === 'data'}
-						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
-					>
-						<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} />
-					</Col>
-					<Col
 						title="Viewer"
 						isOpen={edit === 'viewer'}
 						setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
@@ -73,6 +63,16 @@ const Explorer = () => {
 						)}
 					>
 						{viewer}
+					</Col>
+					<Col
+						title="Data"
+						editPanel={(
+							<ActionList actions={dataActions} />
+						)}
+						isOpen={edit === 'data'}
+						setIsOpen={x => x ? setEdit('data') : setEdit(null)}
+					>
+						<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
 					</Col>
 				</StyledExplorer>
 			</Panel>
