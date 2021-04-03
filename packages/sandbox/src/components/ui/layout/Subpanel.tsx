@@ -1,10 +1,12 @@
 import { DEFAULT_PITCH_COLOR_SCHEME } from "@pw/core/src/theory/Pitch.constants";
 import React from "react";
 import styled from 'styled-components';
+import DATA_ACTIONS from "../../pages/explorer/dataCol/actions/dataActions";
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
+import OverflowMenu from "./OverflowMenu";
 
-const StyledSubpanelHeader = styled.h3`
+const StyledSubpanelHeader = styled.div`
 	padding: 8px;
 	white-space: nowrap;
 	position: relative;
@@ -14,6 +16,9 @@ const StyledSubpanelHeader = styled.h3`
 
 	background-color: ${({ $color }) => `${$color}11`};
 	
+	.name {
+		display: inline-block;
+	}
 
 	.top {
 		display: flex;
@@ -31,7 +36,7 @@ const StyledSubpanelHeader = styled.h3`
 	.preview {
 		font-weight: normal;
 		color: ${({ theme }) => theme.accent};
-		font-size: 70%;
+		font-size: 80%;
 	}
 
 	.spacer {
@@ -40,6 +45,7 @@ const StyledSubpanelHeader = styled.h3`
 `;
 
 const StyledButtonContainer = styled.div`
+	display: flex;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -50,9 +56,12 @@ const StyledButtonContainer = styled.div`
 
 const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren, isEditable, isEditing, level }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
+
+	const actions = DATA_ACTIONS;
+
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color}>
-			<span className="name">{name}</span>
+			<h3 className="name">{name}</h3>
 			<span className="caption">{caption}</span>
 			<div className="preview">{preview}</div>
 
@@ -60,7 +69,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, ha
 				<>
 					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
 					{isEditing ?
-						<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
+						<OverflowMenu actions={actions} />
 						:
 						<ZoomButton pathIds={pathIds} />
 					}

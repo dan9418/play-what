@@ -7,7 +7,6 @@ import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
-import getActions from './getActions';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
 import Viewer from './viewerCol/Viewer';
@@ -44,8 +43,8 @@ const Explorer = () => {
 
 	const viewer = <Viewer isBlank={isGroup} />;
 
-	const viewerActions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig);
-	const dataActions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig);
+	const viewerActions = VIEWER_ACTIONS;
+	const dataActions = DATA_ACTIONS;
 
 	return (
 		<>

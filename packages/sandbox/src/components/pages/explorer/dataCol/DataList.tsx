@@ -5,7 +5,7 @@ import Subpanel from '../../../ui/layout/Subpanel';
 import Viewer from '../viewerCol/Viewer';
 
 const StyledDataList = styled.ul`
-	& li {
+	.data-item {
 		margin: 16px 0;
 	}
 `;
@@ -44,7 +44,7 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		);
 
 		return (
-			<li key={name + i}>
+			<li key={name + i} className='data-item'>
 				<Subpanel
 					pathIds={newPathIds}
 					caption={model.name}
