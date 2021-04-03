@@ -1,11 +1,8 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
-import InsertButton from '../../../../components/ui/inputs/buttons/InsertButton';
-import _ from 'lodash';
 import React from "react";
 import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
 import Viewer from '../viewerCol/Viewer';
-import getListHelpers from './getListHelpers';
 
 const StyledDataList = styled.ul`
 	& li {
@@ -18,13 +15,13 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 	const { metaChildren } = pathHead.data;
 	if (!metaChildren) return null;
 
-	const { modelValue } = pathHead.config;
+	/*const { modelValue } = pathHead.config;
 	const setModelValue = (data) => {
 		const copy = _.cloneDeep(pathHead);
 		const pathStr = `config.modelValue`;
 		_.set(copy, pathStr, data);
 		setPathHeadConfig(copy.config);
-	};
+	};*/
 
 	return metaChildren.map((child, i) => {
 
@@ -32,9 +29,6 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		const { name, preview } = child.data;
 
 		const model = MODEL[modelId];
-
-		const listHelpers = getListHelpers(modelValue, setModelValue, i);
-		const { isLast, onInsertAbove, onInsertAtEnd } = listHelpers;
 
 		const isGroup = modelId === MODEL_ID.Group;
 
@@ -48,9 +42,6 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		) : (
 			<Viewer {...child.config} metaChildren={metaChildren} />
 		);
-
-		const above = isEditing ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAbove}>Insert</InsertButton></li> : null;
-		const below = !isEditing ? null : isLast ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAtEnd}>Insert</InsertButton></li> : null;
 
 		return (
 			<li key={name + i}>

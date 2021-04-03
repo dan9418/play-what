@@ -8,7 +8,6 @@ import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
 import getActions from './getActions';
-import ActionList from './shared/ActionList';
 import BreadcrumbList from './shared/BreadcrumbList';
 import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
 import Viewer from './viewerCol/Viewer';
@@ -58,16 +57,14 @@ const Explorer = () => {
 						title="Viewer"
 						isOpen={edit === 'viewer'}
 						setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
-						editPanel={(
-							<ActionList actions={viewerActions} />
-						)}
+						actions={viewerActions}
 					>
 						{viewer}
 					</Col>
 					<div>
 						<Col
 							title="Root"
-							editPanel={null}
+							actions={dataActions}
 							isOpen={edit === 'data'}
 							setIsOpen={x => x ? setEdit('data') : setEdit(null)}
 						>
@@ -75,9 +72,7 @@ const Explorer = () => {
 						</Col>
 						<Col
 							title="Intervals"
-							editPanel={(
-								<ActionList actions={dataActions} />
-							)}
+							actions={dataActions}
 							isOpen={edit === 'data'}
 							setIsOpen={x => x ? setEdit('data') : setEdit(null)}
 						>

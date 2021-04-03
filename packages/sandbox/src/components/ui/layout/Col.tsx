@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
+import OverflowMenu from "./OverflowMenu";
 
 const StyledCol = styled.div`
 	max-width: 512px;
@@ -36,11 +37,15 @@ const StyledColBody = styled.div`
 	`}
 `;
 
-const StyledColHeader = styled.h2`
+const StyledColHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 8px 0;
+
+	> div {
+		display: flex;
+	}
 `;
 
 export const StyledColDivider = styled.div`
@@ -49,17 +54,19 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, editPanel, children, hideHeader = false, isOpen, setIsOpen }) => {
+const Col = ({ title, actions, children, hideHeader = false, isOpen, setIsOpen }) => {
 
 	return (
 		<StyledCol>
 			{!hideHeader && (
 				<>
 					<StyledColHeader>
-						{title}
+						<h2>
+							{title}
+						</h2>
 						<div>
 							<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
-							<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
+							<OverflowMenu actions={actions} />
 						</div>
 					</StyledColHeader>
 					<StyledColDivider $hideTop />
