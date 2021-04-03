@@ -27,7 +27,8 @@ interface IIconButtonProps {
 
 const IconButton: React.FC<IIconButtonProps> = ({ iconId, onClick, size = 16, color, ...rest }) => {
     return (
-        <ButtonInput onClick={onClick} css={styles} {...rest} >
+        // @ts-ignore
+        <ButtonInput onClick={onClick} css={styles} {...rest} className={`btn-${iconId} ${rest.className ? rest.className : ''}`}>
             <Icon iconId={iconId} size={size} color={color} />
         </ButtonInput>
     );

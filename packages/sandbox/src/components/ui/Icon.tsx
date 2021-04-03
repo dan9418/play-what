@@ -336,6 +336,7 @@ const ICON = {
 	prev: Prev,
 	next: Next,
 	// Actions
+	close: Delete,
 	delete: Delete,
 	edit: Edit,
 	confirm: Confirm,

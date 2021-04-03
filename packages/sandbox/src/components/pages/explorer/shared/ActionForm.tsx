@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import ActionFooter from './ActionFooter';
 
 const StyledActionForm = styled.form`
-    > :first-child {
-        padding: 16px;
-    }
-
+    padding: 16px;
     select {
         width: 100%;
     }

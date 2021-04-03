@@ -4,10 +4,9 @@ import Icon from '../../../ui/Icon';
 import ButtonInput from '../../../ui/inputs/buttons/ButtonInput';
 
 const StyledActionFooter = styled.h3`
-	padding: 8px;
-	border-top: 1px solid #ccc;
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 16px;
 
 	button {
 		display: flex;
