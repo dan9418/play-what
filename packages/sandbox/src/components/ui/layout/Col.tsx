@@ -57,19 +57,16 @@ const Col = ({ title, editPanel, children, hideHeader = false, isOpen, setIsOpen
 				<>
 					<StyledColHeader>
 						{title}
-						<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
+						<div>
+							{isOpen &&
+								<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
+							}
+							<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
+						</div>
 					</StyledColHeader>
 					<StyledColDivider $hideTop />
 				</>
 			)}
-
-			{isOpen &&
-				<>
-					{editPanel}
-					<StyledColDivider $hideTop />
-				</>
-			}
-
 			<StyledColBody $isEnabled={!isOpen}>
 				{children}
 			</StyledColBody>

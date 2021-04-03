@@ -41,31 +41,12 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		const newPathIds = [...pathIds, i];
 
 		const content = isGroup ? (
-			/* @ts-ignore */
-			<Subpanel
-				pathIds={newPathIds}
-				caption={model.name}
-				name={name}
-				preview={preview}
-				level={level}
-			>
-				{/* @ts-ignore */}
-				<ul css="padding: 0 8px">
-					{getItems(child, null, newPathIds, isEditing, level + 1)}
-				</ul>
-			</Subpanel>
+			//  @ts-ignore
+			<ul css="padding: 0 8px">
+				{getItems(child, null, newPathIds, isEditing, level + 1)}
+			</ul>
 		) : (
-			/* @ts-ignore */
-			<Subpanel
-				pathIds={newPathIds}
-				caption={model.name}
-				name={name}
-				preview={preview}
-				level={level}
-			>
-				{/* @ts-ignore */}
-				<Viewer {...child.config} metaChildren={metaChildren} />
-			</Subpanel>
+			<Viewer {...child.config} metaChildren={metaChildren} />
 		);
 
 		const above = isEditing ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAbove}>Insert</InsertButton></li> : null;
@@ -74,7 +55,17 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		return (
 			<React.Fragment key={name + i}>
 				{above}
-				<li>{content}</li>
+				<li>
+					<Subpanel
+						pathIds={newPathIds}
+						caption={model.name}
+						name={name}
+						preview={preview}
+						level={level}
+					>
+						{content}
+					</Subpanel>
+				</li>
 				{below}
 			</React.Fragment>
 		);

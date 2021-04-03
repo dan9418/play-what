@@ -310,6 +310,25 @@ export const Next = props => {
 	);
 }
 
+export const More = props => {
+	return (
+		<StyledSVG
+			xmlns="http://www.w3.org/2000/svg"
+			width="401.991"
+			height="401.991"
+			x="0"
+			y="0"
+			enableBackground="new 0 0 401.991 401.991"
+			version="1.1"
+			viewBox="0 0 401.991 401.991"
+			xmlSpace="preserve"
+			{...props}
+		>
+			<path d="M228.406 292.362H173.59c-7.616 0-14.084 2.662-19.414 7.99-5.33 5.329-7.994 11.797-7.994 19.411v54.826c0 7.611 2.664 14.086 7.994 19.41 5.327 5.332 11.798 7.991 19.414 7.991h54.816c7.614 0 14.082-2.663 19.41-7.991s7.994-11.799 7.994-19.41v-54.826c0-7.614-2.666-14.082-7.994-19.411-5.321-5.328-11.796-7.99-19.41-7.99zM228.406 146.181H173.59c-7.616 0-14.084 2.664-19.414 7.994s-7.994 11.798-7.994 19.414v54.819c0 7.618 2.664 14.086 7.994 19.411 5.327 5.332 11.798 7.994 19.414 7.994h54.816c7.614 0 14.082-2.662 19.41-7.994 5.328-5.325 7.994-11.793 7.994-19.411v-54.819c0-7.616-2.666-14.087-7.994-19.414-5.321-5.33-11.796-7.994-19.41-7.994zM247.816 7.993C242.488 2.666 236.02 0 228.406 0H173.59c-7.616 0-14.084 2.663-19.414 7.993-5.33 5.33-7.994 11.803-7.994 19.414v54.821c0 7.616 2.664 14.084 7.994 19.414 5.327 5.327 11.798 7.994 19.414 7.994h54.816c7.614 0 14.082-2.664 19.41-7.994 5.328-5.327 7.994-11.798 7.994-19.414V27.406c.003-7.611-2.659-14.084-7.994-19.413z"></path>
+		</StyledSVG>
+	);
+}
+
 const ICON = {
 	// Directions
 	up: Up,
@@ -328,6 +347,7 @@ const ICON = {
 	plus: Plus,
 	minus: Minus,
 	menu: Menu,
+	more: More,
 	// Social
 	github: GitHub
 }
@@ -339,7 +359,7 @@ interface IIconProps {
 	size?: number;
 }
 
-const Icon : React.FC<IIconProps> = ({ iconId, color, hoverColor, size, ...props }) => {
+const Icon: React.FC<IIconProps> = ({ iconId, color, hoverColor, size, ...props }) => {
 	const IconComponent = ICON[iconId];
 	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} {...props} />;
 }
