@@ -58,10 +58,8 @@ const Col = ({ title, editPanel, children, hideHeader = false, isOpen, setIsOpen
 					<StyledColHeader>
 						{title}
 						<div>
-							{isOpen &&
-								<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
-							}
 							<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
+							<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
 						</div>
 					</StyledColHeader>
 					<StyledColDivider $hideTop />

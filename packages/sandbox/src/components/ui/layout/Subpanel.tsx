@@ -44,11 +44,11 @@ const StyledButtonContainer = styled.div`
 	top: 0;
 	right: 0;
 	button {
-		margin: 6px 2px;
+		margin: 6px 0;
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren, isEditable, level }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren, isEditable, isEditing, level }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color}>
@@ -57,17 +57,14 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, ha
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				{isEditable && (
-					<>
-						{hasChildren && <IconButton iconId={isOpen ? 'cancel' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
-					</>
-				)}
-				{!isEditable && (
-					<>
-						{hasChildren && <IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />}
+				<>
+					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
+					{isEditing ?
+						<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
+						:
 						<ZoomButton pathIds={pathIds} />
-					</>
-				)}
+					}
+				</>
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);
@@ -82,7 +79,7 @@ const StyledSubpanel = styled.section`
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 `;
 
-const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, ...props }) => {
+const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, isEditing = false, ...props }) => {
 	const [isOpen, setIsOpen] = React.useState(isActive);
 
 	const _isOpen = isActive || isOpen;
@@ -94,7 +91,7 @@ const Subpanel = ({ children = null, isActive = false, setIsActive = null, level
 	return (
 		<StyledSubpanel>
 			{/* @ts-ignore */}
-			<SubpanelHeader {...props} isOpen={_isOpen} setIsOpen={_setIsOpen} hasChildren={!!children} level={level} />
+			<SubpanelHeader {...props} isOpen={_isOpen} isEditing={isEditing} setIsOpen={_setIsOpen} hasChildren={!!children} level={level} />
 			{_isOpen &&
 				<div className="subpanel-body">
 					{children}

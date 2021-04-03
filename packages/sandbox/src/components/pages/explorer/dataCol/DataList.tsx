@@ -53,21 +53,18 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		const below = !isEditing ? null : isLast ? <li><InsertButton pathHead={pathHead} onInsert={onInsertAtEnd}>Insert</InsertButton></li> : null;
 
 		return (
-			<React.Fragment key={name + i}>
-				{above}
-				<li>
-					<Subpanel
-						pathIds={newPathIds}
-						caption={model.name}
-						name={name}
-						preview={preview}
-						level={level}
-					>
-						{content}
-					</Subpanel>
-				</li>
-				{below}
-			</React.Fragment>
+			<li key={name + i}>
+				<Subpanel
+					pathIds={newPathIds}
+					caption={model.name}
+					name={name}
+					preview={preview}
+					level={level}
+					isEditing={isEditing}
+				>
+					{content}
+				</Subpanel>
+			</li>
 		);
 	})
 };
