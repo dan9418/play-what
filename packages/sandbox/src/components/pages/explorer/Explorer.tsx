@@ -15,6 +15,7 @@ const StyledExplorer = styled.div`
 	display: grid;
 	width: 100%;
 	margin: auto;
+	margin-top: 16px;
 
 	grid-template-columns: 1fr;
 	max-width: 768px;
@@ -23,6 +24,12 @@ const StyledExplorer = styled.div`
 			grid-template-columns: 1fr 1fr;
 			max-width: 100%;
 		`}
+	}
+
+	.double {
+		width: 100%;
+		max-width: 512px;
+		margin: auto;
 	}
 `;
 
@@ -57,10 +64,11 @@ const Explorer = () => {
 						isOpen={edit === 'viewer'}
 						setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
 						actions={viewerActions}
+						hasBorder
 					>
 						{viewer}
 					</Col>
-					<div>
+					<div className="double">
 						<Col
 							title="Root"
 							actions={dataActions}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
@@ -49,9 +49,32 @@ const getActionItems = actions => {
 const OverflowMenu = ({ actions }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
+	useEffect(() => {
+		if (!isOpen) return;
+
+		const listener = document.addEventListener(
+			"click",
+			(e) => {
+				// @ts-ignore
+				const isBtnClick = e.target.matches(".button-close-overflow");
+				// @ts-ignore
+				const isOutClick = !e.target.closest(".overflow");
+
+				if (isBtnClick || isOutClick) setIsOpen(false);
+			},
+			false
+		);
+		// @ts-ignore
+		return () => document.removeEventListener("click", listener);
+
+	}, [isOpen]);
+
+	const onClick = isOpen ? null : () => setIsOpen(true);
+
 	return (
-		<StyledWrapper>
-			<IconButton iconId={'more'} onClick={() => setIsOpen(!isOpen)} />
+		<StyledWrapper className="overflow">
+			{/* @ts-ignore */}
+			<IconButton iconId={'more'} onClick={onClick} className="button-close-overflow" />
 			{isOpen && <StyledOverflowMenu>{getActionItems(actions)}</StyledOverflowMenu>}
 		</StyledWrapper>
 	);

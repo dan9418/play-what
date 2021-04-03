@@ -6,26 +6,24 @@ import OverflowMenu from "./OverflowMenu";
 const StyledCol = styled.div`
 	max-width: 512px;
 	width: 100%;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
 	display: flex;
 	flex-direction: column;	
 
 	:not(:first-child) {
-		margin-top: 16px;
+		margin-top: 8px;
 	}
 	
 	@media(min-width: 1024px) {
 		:not(:first-child) {
 			margin-top: 0;
 		}
-		&:last-child:not(:first-child) {
-			margin-left: 16px;
-			padding-right: 16px;
-		}
-		&:first-child:not(:last-child) {
-			padding-left: 16px;
+		${({ $hasBorder }) => !$hasBorder ? 'padding-left: 16px;' : css`
 			padding-right: 16px;
 			border-right: 1px solid #ccc;
-		}
+		`}
 	}
 `;
 
@@ -41,7 +39,8 @@ const StyledColHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 8px 0;
+	padding-bottom: 16px;
+	border-bottom: 1px solid #ccc;
 
 	> div {
 		display: flex;
@@ -54,24 +53,19 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, actions, children, hideHeader = false, isOpen, setIsOpen }) => {
+const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
 
 	return (
-		<StyledCol>
-			{!hideHeader && (
-				<>
-					<StyledColHeader>
-						<h2>
-							{title}
-						</h2>
-						<div>
-							<IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />
-							<OverflowMenu actions={actions} />
-						</div>
-					</StyledColHeader>
-					<StyledColDivider $hideTop />
-				</>
-			)}
+		<StyledCol $hasBorder={hasBorder}>
+			<StyledColHeader>
+				<h2>
+					{title}
+				</h2>
+				<div>
+					{!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
+					<OverflowMenu actions={actions} />
+				</div>
+			</StyledColHeader>
 			<StyledColBody $isEnabled={!isOpen}>
 				{children}
 			</StyledColBody>

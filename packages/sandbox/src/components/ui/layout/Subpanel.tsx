@@ -16,6 +16,7 @@ const StyledSubpanelHeader = styled.div`
 
 	background-color: ${({ $color }) => `${$color}11`};
 	
+	
 	.name {
 		display: inline-block;
 	}

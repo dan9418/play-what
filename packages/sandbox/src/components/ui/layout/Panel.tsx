@@ -15,9 +15,6 @@ const StyledPanelHeader = styled.section`
 	background-color: #ecefef;
 	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
 
-	
-	margin-bottom: 16px;
-
 	>:nth-child(2) {
 		${({ $showBorder }) => !$showBorder ? 'margin-top: 8px;' : ''}
 	}
