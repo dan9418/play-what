@@ -99,7 +99,7 @@ const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions) => {
 
 	const notes = PodUtils.addPodList(modelOptions.modelRoot, modelValue);
 	const noteNames = notes.map(note => getNoteName(note)).join(', ');
-	return `${intervalNames} (${noteNames})`;
+	return noteNames;
 }
 
 const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
