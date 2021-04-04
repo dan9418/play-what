@@ -1,8 +1,14 @@
 import PresetAction from './PresetAction';
 import ProjectionAction from './ProjectionAction';
 import TransposeAction from './TransposeAction';
+import RootAction from './RootAction';
 
 const DATA_ACTIONS = [
+	{
+		name: 'Set Root',
+		description: 'Set the root note (key center) for intervals',
+		component: RootAction
+	},
 	{
 		name: 'Load Preset',
 		description: 'Import an existing model',
