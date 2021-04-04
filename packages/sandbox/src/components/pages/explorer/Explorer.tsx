@@ -53,6 +53,10 @@ const Explorer = () => {
 	const viewerActions = VIEWER_ACTIONS;
 	const dataActions = DATA_ACTIONS;
 
+	const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
+
+	const dataName = isGroup ? 'Items' : hasRoot ? 'Intervals' : 'Notes';
+
 	return (
 		<>
 			<BreadcrumbList />
@@ -69,16 +73,18 @@ const Explorer = () => {
 						{viewer}
 					</Col>
 					<div className="double">
+						{hasRoot &&
+							<Col
+								title="Root"
+								actions={dataActions}
+								isOpen={edit === 'data'}
+								setIsOpen={x => x ? setEdit('data') : setEdit(null)}
+							>
+								<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
+							</Col>
+						}
 						<Col
-							title="Root"
-							actions={dataActions}
-							isOpen={edit === 'data'}
-							setIsOpen={x => x ? setEdit('data') : setEdit(null)}
-						>
-							<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
-						</Col>
-						<Col
-							title="Intervals"
+							title={dataName}
 							actions={dataActions}
 							isOpen={edit === 'data'}
 							setIsOpen={x => x ? setEdit('data') : setEdit(null)}
