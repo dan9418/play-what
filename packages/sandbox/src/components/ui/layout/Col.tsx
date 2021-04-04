@@ -1,7 +1,10 @@
 import React from "react";
+import { useRecoilState } from "recoil";
+import { pathHeadState } from "@pw/sandbox/src/state/pathState";
 import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import OverflowMenu from "./OverflowMenu";
+import _ from 'lodash';
 
 const StyledCol = styled.div`
 	max-width: 512px;
@@ -55,6 +58,16 @@ export const StyledColDivider = styled.div`
 
 const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
 
+	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+
+	/*const { modelValue } = pathHead.config;
+	const setModelValue = (data) => {
+		const copy = _.cloneDeep(pathHead);
+		const pathStr = `config.modelValue`;
+		_.set(copy, pathStr, data);
+		setPathHeadConfig(copy.config);
+	};*/
+
 	return (
 		<StyledCol $hasBorder={hasBorder}>
 			<StyledColHeader>
@@ -63,7 +76,7 @@ const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen })
 				</h2>
 				<div>
 					{!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
-					<OverflowMenu actions={actions} />
+					<OverflowMenu actions={actions} pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} />
 				</div>
 			</StyledColHeader>
 			<StyledColBody $isEnabled={!isOpen}>

@@ -88,29 +88,28 @@ const Modal = ({ children, onClose }) => {
 	);
 };
 
-const ListItem = ({ action, setModalContent }) => {
-	const modalContent = <action.component />;
+const ListItem = ({ action, setModalComponent }) => {
 	return (
 		<li>
-			<button type="button" onClick={() => setModalContent(modalContent)}>{action.name}</button>
+			<button type="button" onClick={() => setModalComponent(() => action.component)}>{action.name}</button>
 		</li>
 	);
 };
 
-const getActionItems = (actions, setModalContent) => {
+const getActionItems = (actions, setModalComponent) => {
 	const items = [];
 	for (let i = 0; i < actions.length; i++) {
 		const action = actions[i];
 		items.push(
-			<ListItem key={i} action={action} setModalContent={setModalContent} />
+			<ListItem key={i} action={action} setModalComponent={setModalComponent} />
 		);
 	}
 	return items;
 }
 
-const OverflowMenu = ({ actions }) => {
+const OverflowMenu = ({ actions, pathHead, setPathHeadConfig }) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [modalContent, setModalContent] = useState(null);
+	const [ModalComponent, setModalComponent] = useState(null);
 
 	useEffect(() => {
 		if (!isOpen) return;
@@ -138,8 +137,10 @@ const OverflowMenu = ({ actions }) => {
 		<StyledWrapper className="overflow">
 			{/* @ts-ignore */}
 			<IconButton iconId={'more'} onClick={onClick} className="button-close-overflow" />
-			{isOpen && <StyledOverflowMenu>{getActionItems(actions, setModalContent)}</StyledOverflowMenu>}
-			{modalContent && <Modal onClose={() => setModalContent(null)}>{modalContent}</Modal>}
+			{isOpen && <StyledOverflowMenu>{getActionItems(actions, setModalComponent)}</StyledOverflowMenu>}
+			{ModalComponent !== null && <Modal onClose={() => setModalComponent(null)}>
+				<ModalComponent pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} />
+			</Modal>}
 		</StyledWrapper>
 	);
 };

@@ -70,6 +70,7 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, ha
 				<>
 					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
 					{isEditing ?
+						// @ts-ignore
 						<OverflowMenu actions={actions} />
 						:
 						<ZoomButton pathIds={pathIds} />
