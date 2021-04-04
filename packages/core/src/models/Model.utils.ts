@@ -189,10 +189,12 @@ const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions) =
 		return {
 			...child,
 			modelOptions: {
-				...modelOptions,
-				...child.modelOptions,
-				name: child.modelOptions.name,
-				preview: child.modelOptions.preview
+				//...modelOptions,
+				viewerId: modelOptions.viewerId,
+				viewerProp: modelOptions.viewerProps,
+				...child.modelOptions
+				/*name: child.modelOptions.name,
+				preview: child.modelOptions.preview*/
 			}
 		}
 	});
