@@ -101,7 +101,7 @@ export interface IModelOptions {
 export interface IModelConfig {
 	modelId: string;
 	modelValue: IModel;
-	modelOptions: IModelOptions
+	modelOptions?: IModelOptions
 }
 
 export interface IModelData {

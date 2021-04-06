@@ -10,18 +10,7 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
-
-	const { metaChildren } = pathHead.data;
-	if (!metaChildren) return null;
-
-	/*const { modelValue } = pathHead.config;
-	const setModelValue = (data) => {
-		const copy = _.cloneDeep(pathHead);
-		const pathStr = `config.modelValue`;
-		_.set(copy, pathStr, data);
-		setPathHeadConfig(copy.config);
-	};*/
+const getItems = (metaChildren, pathIds, isEditing, level) => {
 
 	return metaChildren.map((child, i) => {
 
@@ -37,7 +26,7 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 		const content = isGroup ? (
 			//  @ts-ignore
 			<ul css="padding: 0 8px">
-				{getItems(child, null, newPathIds, isEditing, level + 1)}
+				{getItems(child, newPathIds, isEditing, level + 1)}
 			</ul>
 		) : (
 			<Viewer {...child.config} metaChildren={metaChildren} />
@@ -60,13 +49,13 @@ const getItems = (pathHead, setPathHeadConfig, pathIds, isEditing, level) => {
 	})
 };
 
-const DataList = ({ pathHead, setPathHeadConfig, isEditing, level = 0 }) => {
+const DataList = ({ metaChildren, isEditing, level = 0 }) => {
 
-	if (!pathHead.data.metaChildren) return null;
+	if (!metaChildren) return null;
 
 	return (
 		<StyledDataList>
-			{getItems(pathHead, setPathHeadConfig, [], isEditing, level)}
+			{getItems(metaChildren, [], isEditing, level)}
 		</StyledDataList>
 	);
 };

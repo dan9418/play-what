@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import { pathHeadState, pathState } from '../../../state/pathState';
-import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
-import DATA_ACTIONS from './dataCol/actions/dataActions';
-import DataList from './dataCol/DataList';
+import DataCol from './dataCol/DataCol';
 import BreadcrumbList from './shared/BreadcrumbList';
 import ViewerCol from './viewerCol/ViewerCol';
 
@@ -34,24 +32,16 @@ const StyledExplorer = styled.div`
 
 const Explorer = () => {
 	const path = useRecoilValue(pathState);
-	const [edit, setEdit] = useState(null);
+	const [editId, setEditId] = useState(null);
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
-	const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-	const { name, preview, pathId, metaChildren } = (pathHead as IModelDef).data;
+	const { name, preview, pathId } = (pathHead as IModelDef).data;
 
 	React.useEffect(() => {
 		window.scrollTo(0, 0), [path.length, pathId];
-		setEdit(null);
+		setEditId(null);
 	}, [path.length, pathId]);
 
-	const isGroup = modelId === MODEL_ID.Group;
-
-	const dataActions = DATA_ACTIONS;
-
-	const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
-
-	const dataName = isGroup ? 'Items' : hasRoot ? 'Intervals' : 'Notes';
 
 	return (
 		<>
@@ -59,27 +49,8 @@ const Explorer = () => {
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
 				<StyledExplorer>
-					<ViewerCol />
-					<div className="double">
-						{hasRoot &&
-							<Col
-								title="Root"
-								actions={[]}
-								isOpen={edit === 'root'}
-								setIsOpen={x => x ? setEdit('root') : setEdit(null)}
-							>
-								<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
-							</Col>
-						}
-						<Col
-							title={dataName}
-							actions={dataActions}
-							isOpen={edit === 'data'}
-							setIsOpen={x => x ? setEdit('data') : setEdit(null)}
-						>
-							<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
-						</Col>
-					</div>
+					<ViewerCol editId={editId} setEditId={setEditId} />
+					<DataCol editId={editId} setEditId={setEditId} />
 				</StyledExplorer>
 			</Panel>
 		</>
