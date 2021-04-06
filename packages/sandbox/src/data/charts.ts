@@ -492,7 +492,354 @@ export const ALL_OF_ME = {
 	]
 };
 
+export const IT_COULD_HAPPEN_TO_YOU = {
+	modelId: MODEL_ID.Group,
+	modelOptions: {
+		name: 'It Could Happen To You'
+	},
+	modelValue: [
+		{
+			modelId: MODEL_ID.Group,
+			modelOptions: {
+				name: 'Section A'
+			},
+			modelValue: [
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.A.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.D.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.Ab.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.C.value,
+						t: 8
+					}
+				}
+			]
+		},
+		{
+			modelId: MODEL_ID.Group,
+			modelOptions: {
+				name: 'Section B'
+			},
+			modelValue: [
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min6.value,
+					modelOptions: {
+						modelRoot: NOTE.Ab.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.D.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.C.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.Bb.value,
+						t: 8
+					}
+				}
+			]
+		},
+		{
+			modelId: MODEL_ID.Group,
+			modelOptions: {
+				name: 'Section A\''
+			},
+			modelValue: [
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.A.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.D.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.Ab.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.C.value,
+						t: 8
+					}
+				}
+			]
+		},
+		{
+			modelId: MODEL_ID.Group,
+			modelOptions: {
+				name: 'Section C'
+			},
+			modelValue: [
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min6.value,
+					modelOptions: {
+						modelRoot: NOTE.Ab.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.Ab.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.HalfDim7.value,
+					modelOptions: {
+						modelRoot: NOTE.G.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7b9.value,
+					modelOptions: {
+						modelRoot: NOTE.C.value,
+						t: 4
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Min7.value,
+					modelOptions: {
+						modelRoot: NOTE.F.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Dom7.value,
+					modelOptions: {
+						modelRoot: NOTE.Bb.value,
+						t: 8
+					}
+				},
+				{
+					modelId: MODEL_ID.Chord,
+					modelValue: CHORD.Maj7.value,
+					modelOptions: {
+						modelRoot: NOTE.Eb.value,
+						t: 16
+					}
+				}
+			]
+		}
+	]
+};
+
+
 export const CHART_VALUES = [
 	OUT_OF_NOWHERE,
-	ALL_OF_ME
+	ALL_OF_ME,
+	IT_COULD_HAPPEN_TO_YOU
 ];

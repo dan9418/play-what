@@ -33,11 +33,16 @@ const getItems = (metaChildren, pathIds, isEditing, level) => {
 			<Viewer {...child.config} metaChildren={metaChildren} />
 		);
 
+		let caption = model.name;
+
+		if (child.config.modelOptions && child.config.modelOptions.t)
+			caption = `${model.name} (${child.config.modelOptions.t})`;
+
 		return (
 			<li key={name + i} className='data-item'>
 				<Subpanel
 					pathIds={newPathIds}
-					caption={model.name}
+					caption={caption}
 					name={name}
 					preview={preview}
 					level={level}
