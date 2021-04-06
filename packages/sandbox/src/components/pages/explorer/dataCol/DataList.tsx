@@ -26,7 +26,7 @@ const getItems = (metaChildren, pathIds, isEditing, level) => {
 		const content = isGroup ? (
 			//  @ts-ignore
 			<ul css="padding: 0 8px">
-				{getItems(child, newPathIds, isEditing, level + 1)}
+				{getItems(child.data.metaChildren, newPathIds, isEditing, level + 1)}
 			</ul>
 		) : (
 			<Viewer {...child.config} metaChildren={metaChildren} />

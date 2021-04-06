@@ -1,5 +1,6 @@
 import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
+import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pathHeadState, pathState } from '../../../../state/pathState';
@@ -74,20 +75,35 @@ const getRootedProps = (modelId, modelRoot, modelValue, metaChildren) => {
         data: rootData
     }];
 
-    const intervalConfig = {
-        modelId,
-        modelValue
-    };
-    const intervalData = ModelUtils.getData(intervalConfig)
-    const intervals = [{
-        config: intervalConfig,
-        data: intervalData
-    }];
+    const intervals = modelValue.map(ivl => {
+        const intervalConfig = {
+            modelId: MODEL_ID.Interval,
+            modelValue: ivl
+        };
+        const intervalData = ModelUtils.getData(intervalConfig)
+        return {
+            config: intervalConfig,
+            data: intervalData
+        };
+    });
+
+    const notePods = PodUtils.addPodList(modelRoot, modelValue);
+    const notes = notePods.map(ivl => {
+        const noteConfig = {
+            modelId: MODEL_ID.Note,
+            modelValue: ivl
+        };
+        const noteData = ModelUtils.getData(noteConfig)
+        return {
+            config: noteConfig,
+            data: noteData
+        };
+    });
 
     return {
         root,
         intervals,
-        notes: metaChildren
+        notes
     };
 }
 
@@ -106,7 +122,7 @@ const DataCol = props => {
 
 
     if (isGroup)
-        return <GroupCol intervals={metaChildren} level={path.length} {...props} />;
+        return <GroupCol items={metaChildren} level={path.length} {...props} />;
 
     return hasRoot ?
         <RootedCol {...getRootedProps(modelId, modelOptions.modelRoot, modelValue, metaChildren)} level={path.length} {...props} />

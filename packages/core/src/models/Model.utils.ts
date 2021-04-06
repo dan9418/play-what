@@ -104,7 +104,7 @@ const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions) => {
 }
 
 const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
-	if (modelOptions.preview) return modelOptions.preview;
+	if (modelOptions && modelOptions.preview) return modelOptions.preview;
 
 	switch (modelId) {
 		case MODEL_ID.Group:
