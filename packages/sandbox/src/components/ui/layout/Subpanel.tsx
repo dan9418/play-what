@@ -14,8 +14,10 @@ const StyledSubpanelHeader = styled.div`
 	border-radius: 8px;
 	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc; border-radius: 8px 8px 0 0;'}
 
-	background-color: ${({ $color }) => `${$color}11`};
-	
+	background-color: #efefef;
+	:hover {
+		background-color: #f5f5f5
+	}
 	
 	.name {
 		display: inline-block;
@@ -88,6 +90,11 @@ const StyledSubpanel = styled.section`
 	border-radius: 8px;
 	background-color: #f5f5f5;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+
+	& .subpanel-body {
+		background-color: ${({ $color }) => `${$color}11`};
+		padding: 8px;
+	}
 `;
 
 const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, isEditing = false, ...props }) => {
@@ -99,8 +106,10 @@ const Subpanel = ({ children = null, isActive = false, setIsActive = null, level
 		else setIsOpen(x);
 	};
 
+	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
+
 	return (
-		<StyledSubpanel>
+		<StyledSubpanel $color={color}>
 			{/* @ts-ignore */}
 			<SubpanelHeader {...props} isOpen={_isOpen} isEditing={isEditing} setIsOpen={_setIsOpen} hasChildren={!!children} level={level} />
 			{_isOpen &&
