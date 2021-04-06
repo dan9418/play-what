@@ -8,8 +8,7 @@ import Panel from '../../ui/layout/Panel';
 import DATA_ACTIONS from './dataCol/actions/dataActions';
 import DataList from './dataCol/DataList';
 import BreadcrumbList from './shared/BreadcrumbList';
-import VIEWER_ACTIONS from './viewerCol/actions/viewerActions';
-import Viewer from './viewerCol/Viewer';
+import ViewerCol from './viewerCol/ViewerCol';
 
 const StyledExplorer = styled.div`
 	display: grid;
@@ -48,9 +47,6 @@ const Explorer = () => {
 
 	const isGroup = modelId === MODEL_ID.Group;
 
-	const viewer = <Viewer isBlank={isGroup} />;
-
-	const viewerActions = VIEWER_ACTIONS;
 	const dataActions = DATA_ACTIONS;
 
 	const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
@@ -63,22 +59,14 @@ const Explorer = () => {
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
 				<StyledExplorer>
-					<Col
-						title="Viewer"
-						isOpen={edit === 'viewer'}
-						setIsOpen={x => x ? setEdit('viewer') : setEdit(null)}
-						actions={viewerActions}
-						hasBorder
-					>
-						{viewer}
-					</Col>
+					<ViewerCol />
 					<div className="double">
 						{hasRoot &&
 							<Col
 								title="Root"
-								actions={dataActions}
-								isOpen={edit === 'data'}
-								setIsOpen={x => x ? setEdit('data') : setEdit(null)}
+								actions={[]}
+								isOpen={edit === 'root'}
+								setIsOpen={x => x ? setEdit('root') : setEdit(null)}
 							>
 								<DataList pathHead={pathHead} setPathHeadConfig={setPathHeadConfig} isEditing={edit === 'data'} level={path.length} />
 							</Col>
