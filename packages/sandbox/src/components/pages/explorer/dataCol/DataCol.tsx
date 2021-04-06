@@ -1,19 +1,17 @@
 import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pathHeadState, pathState } from '../../../../state/pathState';
 import Col from '../../../ui/layout/Col';
-import VIEWER_ACTIONS from './../viewerCol/actions/viewerActions';
-import Viewer from './../viewerCol/Viewer';
 import DATA_ACTIONS from './actions/dataActions';
 import DataList from './DataList';
 
-const GroupCol = ({ editId, setEditId, items, level }) => {
+const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     return <Col
         title="Items"
-        actions={[]}
+        actions={itemsActions}
         isOpen={editId === 'items'}
         setIsOpen={x => x ? setEditId('items') : setEditId(null)}
     >
@@ -21,10 +19,10 @@ const GroupCol = ({ editId, setEditId, items, level }) => {
     </Col>
 };
 
-const UnrootedCol = ({ editId, setEditId, intervals, level }) => {
+const UnrootedCol = ({ editId, setEditId, intervals, level, intervalsActions }) => {
     return <Col
         title="Intervals"
-        actions={[]}
+        actions={intervalsActions}
         isOpen={editId === 'intervals'}
         setIsOpen={x => x ? setEditId('data') : setEditId(null)}
     >
@@ -32,12 +30,12 @@ const UnrootedCol = ({ editId, setEditId, intervals, level }) => {
     </Col>
 };
 
-const RootedCol = ({ editId, setEditId, root, intervals, notes, level }) => {
+const RootedCol = ({ editId, setEditId, root, rootActions, intervals, intervalsActions, notes, notesActions, level }) => {
     return (
         <div className="double">
             <Col
                 title="Root"
-                actions={[]}
+                actions={rootActions}
                 isOpen={editId === 'root'}
                 setIsOpen={x => x ? setEditId('root') : setEditId(null)}
             >
@@ -45,7 +43,7 @@ const RootedCol = ({ editId, setEditId, root, intervals, notes, level }) => {
             </Col>
             <Col
                 title="Intervals"
-                actions={[]}
+                actions={intervalsActions}
                 isOpen={editId === 'intervals'}
                 setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
             >
@@ -53,7 +51,7 @@ const RootedCol = ({ editId, setEditId, root, intervals, notes, level }) => {
             </Col>
             <Col
                 title="Notes"
-                actions={[]}
+                actions={notesActions}
                 isOpen={editId === 'notes'}
                 setIsOpen={x => x ? setEditId('notes') : setEditId(null)}
             >
@@ -63,7 +61,7 @@ const RootedCol = ({ editId, setEditId, root, intervals, notes, level }) => {
     );
 };
 
-const getRootedProps = (modelId, modelRoot, modelValue, metaChildren) => {
+const getRootedProps = (modelRoot, modelValue) => {
 
     const rootConfig = {
         modelId: MODEL_ID.Note,
@@ -112,22 +110,21 @@ const DataCol = props => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-    const { name, preview, metaChildren } = (pathHead as IModelDef).data;
+    const { metaChildren } = (pathHead as IModelDef).data;
+
+    if(!metaChildren) return null;
 
     const isGroup = modelId === MODEL_ID.Group;
 
-    const dataActions = DATA_ACTIONS;
-
     const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
 
-
     if (isGroup)
-        return <GroupCol items={metaChildren} level={path.length} {...props} />;
+        return <GroupCol items={metaChildren} level={path.length} itemsActions={DATA_ACTIONS} {...props} />;
 
     return hasRoot ?
-        <RootedCol {...getRootedProps(modelId, modelOptions.modelRoot, modelValue, metaChildren)} level={path.length} {...props} />
+        <RootedCol {...getRootedProps(modelOptions.modelRoot, modelValue)} level={path.length} rootActions={DATA_ACTIONS} intervalsActions={DATA_ACTIONS} notesActions={DATA_ACTIONS} {...props} />
         :
-        <UnrootedCol intervals={metaChildren} level={path.length} {...props} />;
+        <UnrootedCol intervals={metaChildren} level={path.length} intervalsActions={DATA_ACTIONS}{...props} />;
 
 };
 
