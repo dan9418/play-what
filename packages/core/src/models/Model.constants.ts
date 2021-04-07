@@ -110,7 +110,6 @@ export interface IModelData {
 	preview: string;
 	modelRoot: IModel;
 	projection: IProjection;
-	metaChildren: any[];
 }
 
 export interface IModelDef {

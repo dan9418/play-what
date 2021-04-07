@@ -184,6 +184,26 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 
 // Parse
 
+const getChildModelId = (modelId: string): string => {
+	const model = MODEL[modelId];
+	return MODEL_ID.Interval;
+}
+
+const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
+	const { modelId, modelValue, modelOptions } = modelConfig;
+
+	const name = getName(modelId, modelValue, modelOptions);
+	const preview = getPreview(modelId, modelValue, modelOptions);
+
+	return {
+		pathId,
+		name,
+		preview,
+		modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
+		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
+	}
+};
+
 const getGroupChildConfigs = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return modelValue.map((child, i) => {
 		return {
@@ -214,12 +234,7 @@ const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, ch
 	});
 };
 
-const getChildModelId = (modelId: string): string => {
-	const model = MODEL[modelId];
-	return MODEL_ID.Interval;
-}
-
-const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
+const getMetaChildren = (modelConfig: IModelConfig): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
 	const childConfigs = modelId === MODEL_ID.Group ?
@@ -236,17 +251,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		};
 	}) : null;
 
-	const name = getName(modelId, modelValue, modelOptions);
-	const preview = getPreview(modelId, modelValue, modelOptions);
-
-	return {
-		pathId,
-		name,
-		preview,
-		metaChildren,
-		modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
-		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
-	}
+	return metaChildren;
 };
 
 interface ISupersetOption extends IModelConfig {
@@ -280,5 +285,6 @@ export default {
 	getPodAtPitch,
 	getPodProps,
 	getData,
+	getMetaChildren,
 	getSupersets
 }

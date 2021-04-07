@@ -110,9 +110,9 @@ const DataCol = props => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-    const { metaChildren } = (pathHead as IModelDef).data;
+    const { metaChildren } = pathHead
 
-    if(!metaChildren) return null;
+    if (!metaChildren) return null;
 
     const isGroup = modelId === MODEL_ID.Group;
 

@@ -1,4 +1,5 @@
 import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import React from "react";
 import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
@@ -27,7 +28,7 @@ const getItems = (metaChildren, pathIds, isEditing, level) => {
 		const content = isGroup ? (
 			//  @ts-ignore
 			<ul>
-				{getItems(child.data.metaChildren, newPathIds, isEditing, level + 1)}
+				{getItems(ModelUtils.getMetaChildren(child.config), newPathIds, isEditing, level + 1)}
 			</ul>
 		) : (
 			<Viewer {...child.config} metaChildren={metaChildren} />

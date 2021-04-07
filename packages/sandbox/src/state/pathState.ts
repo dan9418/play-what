@@ -9,24 +9,33 @@ export const pathState = atom({
 	default: []
 });
 
+const getNodeFromConfig = config => {
+	const data = ModelUtils.getData(config);
+	const metaChildren = ModelUtils.getMetaChildren(config);
+
+	const node = {
+		config,
+		data,
+		metaChildren
+	}
+
+	return node;
+};
+
 export const fullPathState = selector({
 	key: 'fullPathState',
 	get: ({ get }) => {
 		const path: number[] = get(pathState);
-		const _data: IModelConfig = get(dataState);
+		const lib: IModelConfig = get(dataState);
 
-		// Get head
-		const config: IModelConfig = _data;
-		const data = ModelUtils.getData(config);
-		const nodes = [{ config, data }];
+		const nodes = [getNodeFromConfig(lib)];
 
 		for (let i = 0; i < path.length; i++) {
-			const head = nodes[i];
 			const pathId = path[i];
-
-			const child = head.data.metaChildren[pathId];
-
-			nodes.push(child);
+			const head = nodes[i];
+			const child = head.metaChildren[pathId];
+			const node = getNodeFromConfig(child.config)
+			nodes.push(node);
 		}
 
 		console.log('fullPathState', nodes);
@@ -72,7 +81,7 @@ export const siblingsState = selector({
 		const head = fullPath[fullPath.length - 1];
 		const parent = fullPath[fullPath.length - 2];
 
-		const siblings = parent.data.metaChildren;
+		const siblings = parent.metaChildren;
 
 		const i = head.data.pathId;
 		const isFirst = i === 0;
