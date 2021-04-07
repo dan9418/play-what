@@ -61,7 +61,7 @@ const RootedCol = ({ editId, setEditId, root, rootActions, intervals, intervalsA
     );
 };
 
-const getRootedProps = (modelRoot, modelValue) => {
+const getRootedProps = (modelRoot, _modelValue, hasChildren) => {
 
     const rootConfig = {
         modelId: MODEL_ID.Note,
@@ -72,6 +72,8 @@ const getRootedProps = (modelRoot, modelValue) => {
         config: rootConfig,
         data: rootData
     }];
+
+    const modelValue = hasChildren ? _modelValue : [_modelValue];
 
     const intervals = modelValue.map(ivl => {
         const intervalConfig = {
@@ -112,8 +114,6 @@ const DataCol = props => {
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
     const { metaChildren } = pathHead
 
-    if (!metaChildren) return null;
-
     const isGroup = modelId === MODEL_ID.Group;
 
     const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
@@ -122,7 +122,7 @@ const DataCol = props => {
         return <GroupCol items={metaChildren} level={path.length} itemsActions={DATA_ACTIONS} {...props} />;
 
     return hasRoot ?
-        <RootedCol {...getRootedProps(modelOptions.modelRoot, modelValue)} level={path.length} rootActions={DATA_ACTIONS} intervalsActions={DATA_ACTIONS} notesActions={DATA_ACTIONS} {...props} />
+        <RootedCol {...getRootedProps(modelOptions.modelRoot, modelValue, !!metaChildren)} level={path.length} rootActions={DATA_ACTIONS} intervalsActions={DATA_ACTIONS} notesActions={DATA_ACTIONS} {...props} />
         :
         <UnrootedCol intervals={metaChildren} level={path.length} intervalsActions={DATA_ACTIONS}{...props} />;
 

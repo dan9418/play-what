@@ -1,4 +1,3 @@
-import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilState } from 'recoil';
 import { pathHeadState } from '../../../../state/pathState';
@@ -8,10 +7,6 @@ import Viewer from './../viewerCol/Viewer';
 
 const ViewerCol = ({ editId, setEditId }) => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
-
-    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-
-    const isGroup = modelId === MODEL_ID.Group;
 
     const viewerActions = VIEWER_ACTIONS;
 
@@ -23,7 +18,7 @@ const ViewerCol = ({ editId, setEditId }) => {
             actions={viewerActions}
             hasBorder
         >
-            <Viewer isBlank={isGroup} />
+            <Viewer modelConfig={pathHead.config} />
         </Col>
     );
 };

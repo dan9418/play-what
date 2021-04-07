@@ -12,9 +12,8 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (metaChildren, pathIds, isEditing, level) => {
-
-	return metaChildren.map((child, i) => {
+const getItems = (defs, pathIds, isEditing, level) => {
+	return defs.map((child, i) => {
 
 		const { modelId } = child.config;
 		const { name, preview } = child.data;
@@ -25,14 +24,14 @@ const getItems = (metaChildren, pathIds, isEditing, level) => {
 
 		const newPathIds = [...pathIds, i];
 
-		const content = isGroup ? (
+		const metaChildren = ModelUtils.getMetaChildren(child.config);
+
+		const list = isGroup ? (
 			//  @ts-ignore
 			<ul>
-				{getItems(ModelUtils.getMetaChildren(child.config), newPathIds, isEditing, level + 1)}
+				{getItems(metaChildren, newPathIds, isEditing, level + 1)}
 			</ul>
-		) : (
-			<Viewer {...child.config} metaChildren={metaChildren} />
-		);
+		) : null;
 
 		let caption = model.name;
 
@@ -49,7 +48,8 @@ const getItems = (metaChildren, pathIds, isEditing, level) => {
 					level={level}
 					isEditing={isEditing}
 				>
-					{content}
+					<Viewer modelConfig={child.config} />
+					{list}
 				</Subpanel>
 			</li>
 		);

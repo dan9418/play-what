@@ -48,7 +48,7 @@ const StyledModal = styled.div`
 	background-color: #f5f5f5;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 	left: 0;
-	top: 0;
+	top: 50%;
 	bottom: 0;
 	@media(min-width: 512px) {
 		top: 25%;

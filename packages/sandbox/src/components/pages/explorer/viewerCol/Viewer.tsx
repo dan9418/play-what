@@ -10,13 +10,12 @@ const StyledViewerContainer = styled.div`
 	padding: 16px;
 `;
 
-const Viewer = ({ isBlank }) => {
+const Viewer = ({ modelConfig }) => {
 
-	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
-
-	const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-
+	const { modelId, modelValue, modelOptions } = modelConfig;
 	const { viewerId, viewerProps } = modelOptions;
+
+	const isBlank = modelId === MODEL_ID.Group;
 
 	const labelProps = {
 		modelId: isBlank ? MODEL_ID.Chord : modelId,
