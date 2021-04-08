@@ -15,7 +15,7 @@ const Viewer = ({ modelConfig }) => {
 	const matchOctave = useRecoilValue(matchOctaveState);
 
 	const { modelId, modelValue, modelOptions } = modelConfig;
-	const { viewerId, viewerProps } = modelOptions;
+	const { viewerId, viewerProps } = modelOptions || { viewerId: VIEWER.fretboard.id, viewerProps: {} };
 
 	const isBlank = modelId === MODEL_ID.Group;
 
