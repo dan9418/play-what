@@ -75,12 +75,12 @@ const getRootedProps = (modelRoot, _modelValue, hasChildren) => {
 
     const modelValue = hasChildren ? _modelValue : [_modelValue];
 
-    const intervals = modelValue.map(ivl => {
+    const intervals = modelValue.map((ivl, i) => {
         const intervalConfig = {
             modelId: MODEL_ID.Interval,
             modelValue: ivl
         };
-        const intervalData = ModelUtils.getData(intervalConfig)
+        const intervalData = ModelUtils.getData(intervalConfig, i)
         return {
             config: intervalConfig,
             data: intervalData
@@ -88,12 +88,12 @@ const getRootedProps = (modelRoot, _modelValue, hasChildren) => {
     });
 
     const notePods = PodUtils.addPodList(modelRoot, modelValue);
-    const notes = notePods.map(ivl => {
+    const notes = notePods.map((ivl, i) => {
         const noteConfig = {
             modelId: MODEL_ID.Note,
             modelValue: ivl
         };
-        const noteData = ModelUtils.getData(noteConfig)
+        const noteData = ModelUtils.getData(noteConfig, i)
         return {
             config: noteConfig,
             data: noteData

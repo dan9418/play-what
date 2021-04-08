@@ -14,8 +14,8 @@ export const matchOctaveState = atom({
 	default: true
 });
 
-const getNodeFromConfig = config => {
-	const data = ModelUtils.getData(config);
+const getNodeFromConfig = (config, i = 0) => {
+	const data = ModelUtils.getData(config, i);
 	const metaChildren = ModelUtils.getMetaChildren(config);
 
 	const node = {
@@ -39,7 +39,7 @@ export const fullPathState = selector({
 			const pathId = path[i];
 			const head = nodes[i];
 			const child = head.metaChildren[pathId];
-			const node = getNodeFromConfig(child.config)
+			const node = getNodeFromConfig(child.config, pathId)
 			nodes.push(node);
 		}
 
