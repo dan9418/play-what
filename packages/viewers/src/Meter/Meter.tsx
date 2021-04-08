@@ -50,14 +50,14 @@ const StyledMeter = styled.div`
 	}
 `;
 
-const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave = true }) => {
+const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave }) => {
 	const list = [];
 
 	const root = modelOptions && modelOptions.modelRoot ? modelOptions.modelRoot : null;
 
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, i, true);
+		const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, i, matchOctave);
 
 		const hasDegree = podProps !== null;
 
@@ -74,7 +74,7 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 			podName = PodUtils.getOctave(indexPod, true);
 		}
 
-		const isRoot = root[0] === i;
+		const isRoot = root && root[0] === i;
 		const isMiddleC = i === 0;
 
 		list.push(

@@ -1,8 +1,8 @@
-import { IModelDef, MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { pathHeadState } from '../../../../state/pathState';
+import { matchOctaveState } from '../../../../state/pathState';
 import { VIEWER } from "./actions/viewerActions";
 
 const StyledViewerContainer = styled.div`
@@ -12,6 +12,8 @@ const StyledViewerContainer = styled.div`
 
 const Viewer = ({ modelConfig }) => {
 
+	const matchOctave = useRecoilValue(matchOctaveState);
+
 	const { modelId, modelValue, modelOptions } = modelConfig;
 	const { viewerId, viewerProps } = modelOptions;
 
@@ -20,7 +22,8 @@ const Viewer = ({ modelConfig }) => {
 	const labelProps = {
 		modelId: isBlank ? MODEL_ID.Chord : modelId,
 		modelValue: isBlank ? [] : modelValue,
-		modelOptions
+		modelOptions,
+		matchOctave
 	};
 
 	const ViewerComponent = VIEWER[viewerId].component;

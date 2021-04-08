@@ -2,7 +2,7 @@ import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { pathHeadState } from "../../../state/pathState";
+import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
 
 const StyledPanelHeader = styled.section`
@@ -77,6 +77,7 @@ const StyledPanelHeader = styled.section`
 
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
+
 	const { modelId } = pathHead.config;
 	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];

@@ -1,12 +1,13 @@
 import { IModelDef } from "@pw/core/src/models/Model.constants";
 import React from "react";
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
-import { pathHeadState } from '../../../state/pathState';
+import { matchOctaveState, pathHeadState } from '../../../state/pathState';
 
 const MeterWrapper = () => {
-    const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+    const pathHead = useRecoilValue(pathHeadState);
+    const matchOctave = useRecoilValue(matchOctaveState);
     const isTablet = useIsTablet();
     const isDesktop = useIsDesktop();
 
@@ -21,8 +22,8 @@ const MeterWrapper = () => {
     }
 
     return (
-        <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={isDesktop} />
-	);
+        <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} />
+    );
 };
 
 export default MeterWrapper;

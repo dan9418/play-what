@@ -96,6 +96,7 @@ export interface IModelOptions {
 	projection?: IProjection;
 	viewerId?: string;
 	viewerProps?: any;
+	matchOctave?: boolean;
 }
 
 export interface IModelConfig {

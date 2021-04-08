@@ -9,6 +9,11 @@ export const pathState = atom({
 	default: []
 });
 
+export const matchOctaveState = atom({
+	key: 'matchOctaveState',
+	default: true
+});
+
 const getNodeFromConfig = config => {
 	const data = ModelUtils.getData(config);
 	const metaChildren = ModelUtils.getMetaChildren(config);
