@@ -56,8 +56,10 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 	const root = modelOptions && modelOptions.modelRoot ? modelOptions.modelRoot : null;
 
 	for (let i = range[0]; i < range[1]; i++) {
-		const pod = ModelUtils.getPodAtPitch(modelId, modelValue, modelOptions, i, matchOctave);
-		const hasDegree = pod !== null;
+
+		const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, i, true);
+
+		const hasDegree = podProps !== null;
 
 		let color = '#fff';
 		let podName = null;
@@ -65,7 +67,7 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
 		if (hasDegree) {
-			color = DEFAULT_DEGREE_COLOR_SCHEME[pod[1]];
+			color = podProps.color;
 			//podName = pod[1];
 		}
 		if (pitchClass === 0) {

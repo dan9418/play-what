@@ -139,29 +139,29 @@ const getPodAtPitch = (modelId: string, modelValue: IModel, modelOptions: IModel
 
 // getPodProps
 
-const getNotePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
-	const pod = getPodAtPitch(MODEL_ID.Note, modelValue, modelOptions, noteIndex);
+const getNotePodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave) => {
+	const pod = getPodAtPitch(MODEL_ID.Note, modelValue, modelOptions, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
 	const label = getNoteName(pod);
 	return { color, label };
 }
 
-const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
-	const pod = getPodAtPitch(MODEL_ID.Interval, modelValue, modelOptions, noteIndex);
+const getIntervalPodProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave) => {
+	const pod = getPodAtPitch(MODEL_ID.Interval, modelValue, modelOptions, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
 	const label = getIntervalName(pod);
 	return { color, label };
 }
 
-const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number) => {
-	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, false);
+const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions, noteIndex: number, matchOctave) => {
+	const pod = getPodAtPitchInList(modelValue, modelOptions, noteIndex, matchOctave);
 	const projection = modelOptions.projection;
-	const superPod = projection ? getPodAtPitch(MODEL_ID.Chord, projection.podList, null, noteIndex) : null;
+	const superPod = projection ? getPodAtPitch(MODEL_ID.Chord, projection.podList, null, noteIndex, matchOctave) : null;
 	if (!pod && !superPod) return null;
 	if (!pod) return {
-		color: 'white',
+		color: '#eee',
 		label: getIntervalName(superPod)
 	};
 	const color = IntervalUtils.getPodColor(pod);
@@ -169,15 +169,15 @@ const getPodListProps = (modelValue: IModel, modelOptions: IModelOptions, noteIn
 	return { color, label };
 }
 
-const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex) => {
+const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOptions, noteIndex, matchOctave = false) => {
 	switch (modelId) {
 		case MODEL_ID.Note:
-			return getNotePodProps(modelValue, modelOptions, noteIndex)
+			return getNotePodProps(modelValue, modelOptions, noteIndex, matchOctave)
 		case MODEL_ID.Interval:
-			return getIntervalPodProps(modelValue, modelOptions, noteIndex);
+			return getIntervalPodProps(modelValue, modelOptions, noteIndex, matchOctave);
 		case MODEL_ID.Chord:
 		case MODEL_ID.Scale:
-			return getPodListProps(modelValue, modelOptions, noteIndex);
+			return getPodListProps(modelValue, modelOptions, noteIndex, matchOctave);
 		default:
 			return null;
 	}
