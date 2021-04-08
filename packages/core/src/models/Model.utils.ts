@@ -18,7 +18,8 @@ const getNoteName = (modelValue: IModel) => {
 	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
 	const spelling = DEGREE_VALUES[d].name;
-	return `${spelling}${accidental}`;
+	const octave = PodUtils.getOctave(modelValue, true);
+	return `${spelling}${accidental}${octave}`;
 }
 
 const getIntervalName = (modelValue: IModel) => {

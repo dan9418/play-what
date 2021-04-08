@@ -46,8 +46,9 @@ const getPitchClass = (pod: IPod): number => {
 	return NumberUtils.modulo(pod[0], MAX_POD[0]);
 }
 
-const getOctave = (pod: IPod): number => {
-	return Math.floor(pod[0] / 12);
+const getOctave = (pod: IPod, midi = false): number => {
+	const raw = Math.floor(pod[0] / 12);
+	return midi ? raw + 4 : raw;
 }
 
 const getDegree = (pod: IPod): number => {
