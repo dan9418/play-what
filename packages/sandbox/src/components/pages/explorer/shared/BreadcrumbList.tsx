@@ -6,8 +6,14 @@ import styled from 'styled-components';
 import { usePathNavContext } from "../../../../contexts/PathNavContext";
 import { fullPathState } from "../../../../state/pathState";
 import Icon from "@pw/sandbox/src/components/ui/Icon";
+import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 
 const StyledWrapper = styled.div`
+	position: sticky;
+    top: 32px;
+	z-index: 100;
+	background-color: #ecefef;
+
 	margin-top: 16px;
 	display: flex;
 	align-items: center;
@@ -54,11 +60,12 @@ const BreadcrumbList = () => {
 	const { popAt, pop, prev, next, path } = usePathNavContext();
 
 	const isVisible = fullPath && fullPath.length >= 2;
+	const isMobile = useIsMobile();
 
 	return (
 		<StyledWrapper>
 			<StyledBreadcrumbList>
-				{isVisible && fullPath.map((b, i) => {
+				{!isMobile && isVisible && fullPath.map((b, i) => {
 					const className = i + 1 === fullPath.length ? 'active' : '';
 					const onClick = () => popAt(i - 1);
 					return (
@@ -74,6 +81,25 @@ const BreadcrumbList = () => {
 						</React.Fragment>
 					);
 				})}
+				{isMobile && isVisible && (
+					<>
+						<li>
+							<button type="button" onClick={() => popAt(0)}>
+								Home
+							</button>
+						</li>
+						<li>
+							<span>...</span>
+						</li>
+						<li>
+							<button type="button" className='active' onClick={null}>
+								{fullPath[fullPath.length - 1].data.name}
+							</button>
+						</li>
+					</>
+				)
+
+				}
 			</StyledBreadcrumbList>
 			<StyledButtonWrapper>
 				{false && <IconButton onClick={null} iconId="speaker" />}

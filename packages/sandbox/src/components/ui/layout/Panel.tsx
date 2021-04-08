@@ -9,11 +9,6 @@ import SwitchInput from "../inputs/SwitchInput";
 const StyledPanelHeader = styled.section`
 	width: 100%;
 
-	position: sticky;
-    top: 32px;
-	z-index: 100;
-
-	background-color: #ecefef;
 	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
 
 	>:nth-child(2) {
@@ -31,13 +26,11 @@ const StyledPanelHeader = styled.section`
 	& .top-container {
 		display: flex;
 		justify-content: space-between;
-		flex-direction: column;
+		//flex-direction: column;
 		width: 100%;
 
 		@media(min-width: 512px) {
-			display: flex;
 			flex-direction: row;
-			justify-content: space-between;
 		}
 
 		& .name-caption--preview {
@@ -83,6 +76,10 @@ const StyledPanelHeader = styled.section`
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
+
+			@media(max-width: 512px) {
+				align-items: flex-end;
+			}
 		}
 	}
 `;
