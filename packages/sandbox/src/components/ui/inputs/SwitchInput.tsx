@@ -15,6 +15,9 @@ const StyledSwitch = styled.button`
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
 	background-color: ${({ $active, theme }) => $active ? theme.accent : '#aaa'};	
+	&:hover {
+		background-color: ${({ theme }) => theme.active};	
+	}
 
 	& .ball {
 		height: 20px;

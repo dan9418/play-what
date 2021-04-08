@@ -1,9 +1,14 @@
 import { IModelDef } from "@pw/core/src/models/Model.constants";
 import React from "react";
+import styled from "styled-components";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { matchOctaveState, pathHeadState } from '../../../state/pathState';
+
+const StyledMeterWrapper = styled.div`
+    padding-bottom: 4px;
+`;
 
 const MeterWrapper = () => {
     const pathHead = useRecoilValue(pathHeadState);
@@ -22,7 +27,9 @@ const MeterWrapper = () => {
     }
 
     return (
-        <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} />
+        <StyledMeterWrapper>
+            <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} />
+        </StyledMeterWrapper>
     );
 };
 

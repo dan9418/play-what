@@ -5,6 +5,7 @@ import THEME from "@pw/sandbox/src/styles/theme";
 import styled from 'styled-components';
 import { usePathNavContext } from "../../../../contexts/PathNavContext";
 import { fullPathState } from "../../../../state/pathState";
+import Icon from "@pw/sandbox/src/components/ui/Icon";
 
 const StyledWrapper = styled.div`
 	margin-top: 16px;
@@ -19,21 +20,22 @@ const StyledBreadcrumbList = styled.ul`
 	
 	list-style-type: none;
 	color: #555;
-	font-size: 90%;
-	font-weight: bold;
 	white-space: nowrap;
 
 	li {
 		margin: 2px 4px;
-		cursor: pointer;
-		
-		&.active {
-			color: ${({ theme }) => theme.accent};
-		}
-
-		:not(:last-child){
-			::after {
-				content: '    >'
+		button {
+			border: none;
+			cursor: pointer;
+			appearance: none;
+			font-weight: bold;
+			font-size: 90%;
+			color: ${({ theme }) => theme.primary};
+			&.active {
+				color: ${({ theme }) => theme.accent};
+			}
+			&:hover {
+				color: ${({ theme }) => theme.active};
 			}
 		}
 	}
@@ -60,7 +62,16 @@ const BreadcrumbList = () => {
 					const className = i + 1 === fullPath.length ? 'active' : '';
 					const onClick = () => popAt(i - 1);
 					return (
-						<li key={i} className={className} onClick={onClick}>{b.data.name}</li>
+						<React.Fragment key={i}>
+							<li>
+								<button type="button" className={className} onClick={onClick}>
+									{b.data.name}
+								</button>
+							</li>
+							<li>
+								<Icon iconId="next" size={8} />
+							</li>
+						</React.Fragment>
 					);
 				})}
 			</StyledBreadcrumbList>

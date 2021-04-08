@@ -57,7 +57,7 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, hasChildren, isEditable, isEditing, level }) => {
+const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
 
 	const actions = DATA_ACTIONS;
@@ -69,15 +69,17 @@ const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, ha
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>
-				<>
-					<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
-					{isEditing ?
-						// @ts-ignore
-						<OverflowMenu actions={actions} />
-						:
-						<ZoomButton pathIds={pathIds} />
-					}
-				</>
+				{isLeaf ? null :
+					<>
+						<IconButton iconId={isOpen ? 'minus' : 'plus'} onClick={() => setIsOpen(!isOpen)} />
+						{isEditing ?
+							// @ts-ignore
+							<OverflowMenu actions={actions} />
+							:
+							<ZoomButton pathIds={pathIds} />
+						}
+					</>
+				}
 			</StyledButtonContainer>
 		</StyledSubpanelHeader>
 	);
@@ -97,7 +99,7 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, isEditing = false, ...props }) => {
+const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, ...props }) => {
 	const [isOpen, setIsOpen] = React.useState(isActive);
 
 	const _isOpen = isActive || isOpen;
@@ -111,7 +113,7 @@ const Subpanel = ({ children = null, isActive = false, setIsActive = null, level
 	return (
 		<StyledSubpanel $color={color}>
 			{/* @ts-ignore */}
-			<SubpanelHeader {...props} isOpen={_isOpen} isEditing={isEditing} setIsOpen={_setIsOpen} hasChildren={!!children} level={level} />
+			<SubpanelHeader {...props} isOpen={_isOpen} setIsOpen={_setIsOpen} level={level} />
 			{_isOpen &&
 				<div className="subpanel-body">
 					{children}

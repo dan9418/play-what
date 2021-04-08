@@ -107,10 +107,12 @@ const PanelHeader = () => {
 					</div>
 					<div className='preview'>{preview}</div>
 				</div>
-				<div className='switch-container'>
-					<span>Match Octave?</span>
-					<SwitchInput value={matchOctave} setValue={setMatchOctave} />
-				</div>
+				{isGroup ? null :
+					<div className='switch-container'>
+						<span>Match Octave?</span>
+						<SwitchInput value={matchOctave} setValue={setMatchOctave} />
+					</div>
+				}
 			</div>
 			{!isGroup && <MeterWrapper />}
 		</StyledPanelHeader>
