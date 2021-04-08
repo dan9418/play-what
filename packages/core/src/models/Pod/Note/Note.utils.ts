@@ -4,7 +4,7 @@ import { ACCIDENTAL } from "./Note.constants";
 
 const getAccidentalOffset = (pod) => {
 	const [p, d] = pod;
-	let offset = p - ROOT_SCALE[d][0];
+	const offset = p - ROOT_SCALE[d][0];
 	return offset;
 }
 
