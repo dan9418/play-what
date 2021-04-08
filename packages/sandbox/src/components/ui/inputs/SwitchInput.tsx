@@ -6,19 +6,19 @@ const StyledSwitch = styled.button`
 
 	-ms-user-select: none;
     user-select: none;
-    height: 16px;
+    height: 24px;
     width: 48px;
-    border-radius: 16px;
+    border-radius: 24px;
 	display: inline-flex;
     align-items: center;
 	cursor: pointer;
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.active : '#555'};	
+	background-color: ${({ $active, theme }) => $active ? theme.accent : '#aaa'};	
 
 	& .ball {
-		height: 12px;
-		width: 12px;
+		height: 20px;
+		width: 20px;
 		margin: 2px;
 		border-radius: 100%;
 		background-color: #fff;

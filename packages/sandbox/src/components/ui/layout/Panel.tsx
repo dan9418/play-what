@@ -1,9 +1,10 @@
 import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
+import SwitchInput from "../inputs/SwitchInput";
 
 const StyledPanelHeader = styled.section`
 	width: 100%;
@@ -27,7 +28,7 @@ const StyledPanelHeader = styled.section`
 		}
 	}
 	
-	& .text-container {
+	& .top-container {
 		display: flex;
 		justify-content: space-between;
 		flex-direction: column;
@@ -71,12 +72,24 @@ const StyledPanelHeader = styled.section`
 				color: ${({ theme }) => theme.accent}
 			}
 		}
-		
+
+		.switch-container {
+			span {
+				font-weight: bold;
+				margin-bottom: 4px;
+			}
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
 	}
 `;
 
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
+	const [matchOctave, setMatchOctave] = useRecoilState(matchOctaveState);
 
 	const { modelId } = pathHead.config;
 	const { name, preview } = pathHead.data;
@@ -86,13 +99,17 @@ const PanelHeader = () => {
 
 	return (
 		<StyledPanelHeader $showBorder={isGroup}>
-			<div className='text-container'>
+			<div className='top-container'>
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
 						<h3 className='name'>{name}</h3>
 						<div className='caption'>{model.name}</div>
 					</div>
 					<div className='preview'>{preview}</div>
+				</div>
+				<div className='switch-container'>
+					<span>Match Octave?</span>
+					<SwitchInput value={matchOctave} setValue={setMatchOctave} />
 				</div>
 			</div>
 			{!isGroup && <MeterWrapper />}
