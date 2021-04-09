@@ -73,16 +73,17 @@ const BreadcrumbList = () => {
 	//const { modelId, modelValue, modelOptions } = pathHead.config;
 
 	const { popAt, pop, prev, next, path } = usePathNavContext();
+	const isMobile = useIsMobile();
 
 	const isVisible = fullPath && fullPath.length >= 2;
-	const isMobile = useIsMobile();
+	if (!isVisible) return null;
 
 	const middle = fullPath.slice(1, fullPath.length - 1);
 	const actions = middle.map(x => ({ name: x.data.name }));
 
 	return (
 		<StyledWrapper>
-			{isMobile && isVisible && (
+			{isMobile && (
 				<div className='m'>
 					<button type="button" onClick={() => popAt(0)}>
 						Home
@@ -95,7 +96,7 @@ const BreadcrumbList = () => {
 				</div>
 			)}
 			<StyledBreadcrumbList>
-				{!isMobile && isVisible && fullPath.map((b, i) => {
+				{!isMobile && fullPath.map((b, i) => {
 					const className = i + 1 === fullPath.length ? 'active' : '';
 					const onClick = () => popAt(i - 1);
 					return (
