@@ -28,6 +28,10 @@ const StyledBreadcrumbList = styled.ul`
 	color: #555;
 	white-space: nowrap;
 
+	.more {
+		padding: 4px;
+	}
+
 	li {
 		margin: 2px 4px;
 		button {
@@ -37,6 +41,7 @@ const StyledBreadcrumbList = styled.ul`
 			font-weight: bold;
 			font-size: 90%;
 			color: ${({ theme }) => theme.primary};
+			background-color: transparent;
 			&.active {
 				color: ${({ theme }) => theme.accent};
 			}
@@ -89,7 +94,9 @@ const BreadcrumbList = () => {
 							</button>
 						</li>
 						<li>
-							<span>...</span>
+							<button type="button" onClick={() => popAt(0)} className="more">
+								<Icon iconId="more" rotate={90} size={8} />
+							</button>
 						</li>
 						<li>
 							<button type="button" className='active' onClick={null}>

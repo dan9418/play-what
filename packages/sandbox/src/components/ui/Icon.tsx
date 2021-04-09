@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 
 const StyledSVG = styled.svg`
+	${({ $rotate }) => $rotate ? `transform: rotate(${$rotate}deg)` : ''};
 	${({ $color, theme }) => {
 		return `
 				fill: ${$color || theme.primary};
@@ -358,11 +359,12 @@ interface IIconProps {
 	color?: string;
 	hoverColor?: string;
 	size?: number;
+	rotate?: number;
 }
 
-const Icon: React.FC<IIconProps> = ({ iconId, color, hoverColor, size, ...props }) => {
+const Icon: React.FC<IIconProps> = ({ iconId, color, hoverColor, size, rotate, ...props }) => {
 	const IconComponent = ICON[iconId];
-	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} {...props} />;
+	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} $rotate={rotate} {...props} />;
 }
 
 export default Icon;
