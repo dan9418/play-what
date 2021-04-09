@@ -9,7 +9,6 @@ const StyledWrapper = styled.div`
 const StyledOverflowMenu = styled.div`
 	position: absolute;
 	top: 100%;
-	right: 0;
 	z-index: 99;
 
 	padding: 8px;
@@ -17,6 +16,8 @@ const StyledOverflowMenu = styled.div`
 	border-radius: 8px;
 
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+
+	${({ $direction }) => `${$direction}: 0;`}
 
 	li {
 		> button {
@@ -58,7 +59,13 @@ const getActionItems = (items) => {
 	return listItems;
 }
 
-const OverflowMenu = ({ items = [], iconProps = {} }) => {
+interface IOverflowMenuProps {
+	items?: any[];
+	iconProps?: any;
+	direction?: 'left' | 'right'
+}
+
+const OverflowMenu: React.FC<IOverflowMenuProps> = ({ items = [], iconProps = {}, direction = 'right' }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
@@ -86,8 +93,8 @@ const OverflowMenu = ({ items = [], iconProps = {} }) => {
 	return (
 		<StyledWrapper className="overflow">
 			{/* @ts-ignore */}
-			<IconButton iconId={'more'} onClick={onClick} className="button-close-overflow" {...iconProps} />
-			{isOpen && <StyledOverflowMenu>{getActionItems(items)}</StyledOverflowMenu>}
+			<IconButton iconId={'more'} onClick={onClick} className="button-close-overflow" iconProps={iconProps} />
+			{isOpen && <StyledOverflowMenu $direction={direction}>{getActionItems(items)}</StyledOverflowMenu>}
 		</StyledWrapper>
 	);
 };

@@ -7,6 +7,7 @@ import { usePathNavContext } from "../../../../contexts/PathNavContext";
 import { fullPathState } from "../../../../state/pathState";
 import Icon from "@pw/sandbox/src/components/ui/Icon";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
+import OverflowMenu, { StyledOverflowMenu } from "@pw/sandbox/src/components/ui/layout/OverflowMenu";
 
 const StyledWrapper = styled.div`
 	position: sticky;
@@ -28,8 +29,8 @@ const StyledBreadcrumbList = styled.ul`
 	color: #555;
 	white-space: nowrap;
 
-	.more {
-		padding: 4px;
+	.overflow > button {
+		padding: 6px;
 	}
 
 	li {
@@ -94,9 +95,7 @@ const BreadcrumbList = () => {
 							</button>
 						</li>
 						<li>
-							<button type="button" onClick={() => popAt(0)} className="more">
-								<Icon iconId="more" rotate={90} size={8} />
-							</button>
+							<OverflowMenu iconProps={{ rotate: 90, size: 8 }} direction="left" />
 						</li>
 						<li>
 							<button type="button" className='active' onClick={null}>

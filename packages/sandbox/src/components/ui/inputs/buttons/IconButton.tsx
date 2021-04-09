@@ -23,13 +23,14 @@ interface IIconButtonProps {
     color?: string;
     size?: number;
     onClick?: any
+    iconProps?: any;
 }
 
-const IconButton: React.FC<IIconButtonProps> = ({ iconId, onClick, size = 16, color, ...rest }) => {
+const IconButton: React.FC<IIconButtonProps> = ({ iconId, onClick, size = 16, color, iconProps = {}, ...rest }) => {
     return (
         // @ts-ignore
         <ButtonInput onClick={onClick} css={styles} {...rest} className={`btn-${iconId} ${rest.className ? rest.className : ''}`}>
-            <Icon iconId={iconId} size={size} color={color} />
+            <Icon iconId={iconId} size={size} color={color} {...iconProps} />
         </ButtonInput>
     );
 };

@@ -90,8 +90,10 @@ export const siblingsState = selector({
 
 		const i = head.data.pathId;
 		const isFirst = i === 0;
+		// @ts-ignore
 		const isLast = i === siblings.length - 1;
 
+		// @ts-ignore
 		const prev = isFirst ? siblings[siblings.length - 1] : siblings[i - 1];
 		const next = isLast ? siblings[0] : siblings[i + 1];
 
