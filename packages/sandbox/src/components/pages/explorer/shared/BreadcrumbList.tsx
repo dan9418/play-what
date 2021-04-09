@@ -1,13 +1,13 @@
+import Icon from "@pw/sandbox/src/components/ui/Icon";
+import IconButton from "@pw/sandbox/src/components/ui/inputs/buttons/IconButton";
+import OverflowMenu from "@pw/sandbox/src/components/ui/layout/OverflowMenu";
+import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
+import THEME from "@pw/sandbox/src/styles/theme";
 import React from "react";
 import { useRecoilValue } from "recoil";
-import IconButton from "@pw/sandbox/src/components/ui/inputs/buttons/IconButton";
-import THEME from "@pw/sandbox/src/styles/theme";
 import styled from 'styled-components';
 import { usePathNavContext } from "../../../../contexts/PathNavContext";
 import { fullPathState } from "../../../../state/pathState";
-import Icon from "@pw/sandbox/src/components/ui/Icon";
-import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
-import OverflowMenu, { StyledOverflowMenu } from "@pw/sandbox/src/components/ui/layout/OverflowMenu";
 
 const StyledWrapper = styled.div`
 	position: sticky;
@@ -19,6 +19,34 @@ const StyledWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	.m {
+		display: flex;
+		> svg {
+			margin: 6px 12px;
+		}
+	}
+
+	.overflow > button {
+		padding: 6px 12px;
+	}
+
+	button {
+		border: none;
+		cursor: pointer;
+		appearance: none;
+		font-weight: bold;
+		font-size: 90%;
+		color: ${({ theme }) => theme.primary};
+		background-color: transparent;
+		&.active {
+			color: ${({ theme }) => theme.accent};
+		}
+		&:hover {
+			color: ${({ theme }) => theme.active};
+		}
+	}
+
 `;
 
 const StyledBreadcrumbList = styled.ul`
@@ -28,28 +56,9 @@ const StyledBreadcrumbList = styled.ul`
 	list-style-type: none;
 	color: #555;
 	white-space: nowrap;
-
-	.overflow > button {
-		padding: 6px;
-	}
-
+	
 	li {
 		margin: 2px 4px;
-		button {
-			border: none;
-			cursor: pointer;
-			appearance: none;
-			font-weight: bold;
-			font-size: 90%;
-			color: ${({ theme }) => theme.primary};
-			background-color: transparent;
-			&.active {
-				color: ${({ theme }) => theme.accent};
-			}
-			&:hover {
-				color: ${({ theme }) => theme.active};
-			}
-		}
 	}
 `;
 
@@ -68,8 +77,23 @@ const BreadcrumbList = () => {
 	const isVisible = fullPath && fullPath.length >= 2;
 	const isMobile = useIsMobile();
 
+	const middle = fullPath.slice(1, fullPath.length - 1);
+	const actions = middle.map(x => ({ name: x.data.name }));
+
 	return (
 		<StyledWrapper>
+			{isMobile && isVisible && (
+				<div className='m'>
+					<button type="button" onClick={() => popAt(0)}>
+						Home
+					</button>
+					{fullPath.length < 3 && <Icon iconId="next" size={8} />}
+					{fullPath.length >= 3 && <OverflowMenu iconProps={{ rotate: 90, size: 8 }} direction="left" items={actions} />}
+					<button type="button" className='active' onClick={null}>
+						{fullPath[fullPath.length - 1].data.name}
+					</button>
+				</div>
+			)}
 			<StyledBreadcrumbList>
 				{!isMobile && isVisible && fullPath.map((b, i) => {
 					const className = i + 1 === fullPath.length ? 'active' : '';
@@ -87,25 +111,6 @@ const BreadcrumbList = () => {
 						</React.Fragment>
 					);
 				})}
-				{isMobile && isVisible && (
-					<>
-						<li>
-							<button type="button" onClick={() => popAt(0)}>
-								Home
-							</button>
-						</li>
-						<li>
-							<OverflowMenu iconProps={{ rotate: 90, size: 8 }} direction="left" />
-						</li>
-						<li>
-							<button type="button" className='active' onClick={null}>
-								{fullPath[fullPath.length - 1].data.name}
-							</button>
-						</li>
-					</>
-				)
-
-				}
 			</StyledBreadcrumbList>
 			<StyledButtonWrapper>
 				{false && <IconButton onClick={null} iconId="speaker" />}

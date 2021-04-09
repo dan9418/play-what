@@ -59,8 +59,13 @@ const getActionItems = (items) => {
 	return listItems;
 }
 
+interface IAction {
+	name: string;
+	onClick?: any;
+}
+
 interface IOverflowMenuProps {
-	items?: any[];
+	items?: IAction[];
 	iconProps?: any;
 	direction?: 'left' | 'right'
 }
