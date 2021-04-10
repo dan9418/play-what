@@ -9,48 +9,25 @@ import Col from '../../../ui/layout/Col';
 import DATA_ACTIONS from './actions/dataActions';
 import DataList from './DataList';
 
-const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
-    return <Col
-        title="Items"
-        actions={itemsActions}
-        isOpen={editId === 'items'}
-        setIsOpen={x => x ? setEditId('items') : setEditId(null)}
-    >
-        <DataList metaChildren={items} isEditing={editId === 'items'} level={level} />
-    </Col>
-};
-
-const PodCol = ({ editId, setEditId, pods, podActions, level, root }) => {
-    return (
-        <Col
-            title={root ? "Notes" : "Intervals"}
-            subtitle={root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)"}
-            actions={podActions}
-            isOpen={editId === 'intervals'}
-            setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
-        >
-            <DataList metaChildren={pods} isEditing={editId === 'intervals'} level={level} />
-        </Col>
-    );
-};
-
-const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
+const getColProps = (pathHead, setPathHeadConfig, setModal) => {
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
     const root = modelOptions && modelOptions.modelRoot;
+    const isGroup = modelId === MODEL_ID.Group;
 
-    /*const rootConfig = {
-        modelId: MODEL_ID.Note,
-        modelValue: hasRoot ? modelOptions.modelRoot : [0, 0]
-    };
-    const rootData = ModelUtils.getData(rootConfig)
-    const root = [{
-        config: rootConfig,
-        data: rootData
-    }];*/
+    if (isGroup) {
+        return {
+            title: "Items",
+            subtitle: "",
+            actions: []
+        };
+    }
 
-    const podActions = DATA_ACTIONS.map(a => {
+    const title = root ? "Notes" : "Intervals";
+    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)";
+
+    const actions = DATA_ACTIONS.map(a => {
         const { component, ...rest } = a;
 
         return {
@@ -67,38 +44,33 @@ const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
     });
 
     return {
-        root,
-        pods: pathHead.metaChildren,
-        podActions
+        title,
+        subtitle,
+        actions
     };
 }
 
-const DataCol = props => {
+const getEditProps = (editId, setEditId, id) => {
+    return {
+        isOpen: editId === id,
+        setIsOpen: x => setEditId(x ? id : null)
+    }
+}
+
+const DataCol = ({ editId, setEditId }) => {
     const path = useRecoilValue(pathState);
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
     const setModal = useSetRecoilState(modalState);
 
-    const { modelId } = (pathHead as IModelDef).config;
-
-    const isGroup = modelId === MODEL_ID.Group;
     const level = path.length;
 
-    if (isGroup)
-        return (
-            <GroupCol
-                items={pathHead.metaChildren}
-                level={level}
-                itemsActions={[]}
-                {...props}
-            />
-        );
+    const colProps = getColProps(pathHead, setPathHeadConfig, setModal);
+    const editProps = getEditProps(editId, setEditId, 'data');
 
     return (
-        <PodCol
-            level={level}
-            {...getPodColProps(pathHead, setPathHeadConfig, setModal)}
-            {...props}
-        />
+        <Col {...colProps} {...editProps}>
+            <DataList metaChildren={pathHead.metaChildren} isEditing={editProps.isOpen} level={level} />
+        </Col>
     );
 };
 
