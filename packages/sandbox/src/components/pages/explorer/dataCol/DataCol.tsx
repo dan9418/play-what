@@ -1,6 +1,5 @@
 import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { pathHeadState, pathState } from '../../../../state/pathState';
@@ -19,11 +18,11 @@ const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     </Col>
 };
 
-const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalsActions, level }) => {
+const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActions, level }) => {
     return (
         <div className="double">
             <Col
-                title="Root Note"
+                title="Root"
                 actions={rootActions}
                 isOpen={editId === 'root'}
                 setIsOpen={x => x ? setEditId('root') : setEditId(null)}
@@ -31,8 +30,8 @@ const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalsActi
                 <DataList metaChildren={root} isEditing={editId === 'root'} level={level} />
             </Col>
             <Col
-                title="Intervals & Notes"
-                actions={intervalsActions}
+                title="Notes"
+                actions={intervalActions}
                 isOpen={editId === 'intervals'}
                 setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
             >
@@ -61,7 +60,8 @@ const getColProps = (_modelValue, modelOptions, hasChildren) => {
     const intervals = modelValue.map((ivl, i) => {
         const intervalConfig = {
             modelId: MODEL_ID.Interval,
-            modelValue: ivl
+            modelValue: ivl,
+            modelOptions
         };
         const intervalData = ModelUtils.getData(intervalConfig, i)
         return {
@@ -72,7 +72,9 @@ const getColProps = (_modelValue, modelOptions, hasChildren) => {
 
     return {
         root,
-        intervals
+        rootActions: DATA_ACTIONS,
+        intervals,
+        intervalActions: DATA_ACTIONS
     };
 }
 
@@ -91,9 +93,6 @@ const DataCol = props => {
     return <PodCol
         {...getColProps(modelValue, modelOptions, !!metaChildren)}
         level={path.length}
-        rootActions={DATA_ACTIONS}
-        intervalsActions={DATA_ACTIONS}
-        notesActions={DATA_ACTIONS}
         {...props}
     />;
 };

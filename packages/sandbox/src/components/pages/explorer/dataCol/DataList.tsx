@@ -18,16 +18,17 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
 
 	return defs.map((child, i) => {
 
+		// Model helpers
 		const { modelId } = child.config;
-		const { name, preview } = child.data;
-
 		const model = MODEL[modelId];
-
 		const isGroup = modelId === MODEL_ID.Group;
 		const isPod = modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval;
 
-		const newPathIds = [...pathIds, i];
+		// Name, Caption, Preview
+		const { name, preview, caption } = child.data;
 
+		// Path & Metachildren
+		const newPathIds = [...pathIds, i];
 		const metaChildren = ModelUtils.getMetaChildren(child.config);
 
 		const list = isGroup ? (
@@ -36,11 +37,6 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
 				{getItems(metaChildren, newPathIds, isEditing, level + 1, isPod)}
 			</ul>
 		) : null;
-
-		let caption = model.name;
-
-		if (child.config.modelOptions && child.config.modelOptions.t)
-			caption = `${model.name} (${child.config.modelOptions.t})`;
 
 		return (
 			<li key={name + i} className='data-item'>

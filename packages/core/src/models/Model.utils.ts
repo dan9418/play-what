@@ -1,3 +1,4 @@
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import { DEGREE_VALUES } from "../theory/Degree.constants";
 import { IModel, IModelConfig, IModelData, IModelOptions, MODEL, MODEL_ID } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
@@ -70,7 +71,7 @@ const getScaleName = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
+const getName = (modelId: string, modelValue: IModel, modelOptions: IModelOptions = null) => {
 	if (modelOptions && modelOptions.name) return modelOptions.name;
 
 	switch (modelId) {
@@ -103,7 +104,7 @@ const getPodListPreview = (modelValue: IModel, modelOptions: IModelOptions) => {
 	return noteNames;
 }
 
-const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions) => {
+const getPreview = (modelId: string, modelValue: IModel, modelOptions: IModelOptions = null) => {
 	if (modelOptions && modelOptions.preview) return modelOptions.preview;
 
 	switch (modelId) {
@@ -192,13 +193,58 @@ const getChildModelId = (modelId: string): string => {
 const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
-	const name = getName(modelId, modelValue, modelOptions);
-	const preview = getPreview(modelId, modelValue, modelOptions);
+	if (modelId === MODEL_ID.Group) {
+		return {
+			pathId,
+			name: (modelOptions && modelOptions.name) ? modelOptions.name : getName(MODEL_ID.Group, modelValue),
+			preview: (modelOptions && modelOptions.preview) ? modelOptions.preview : getPreview(MODEL_ID.Group, modelValue),
+			modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
+			projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
+		}
+	}
+
+	const hasRoot = modelOptions && modelOptions.modelRoot;
+
+	let name = null;
+	let preview = null;
+	let caption = null;
+
+	if (hasRoot) {
+		const intervalName = getName(MODEL_ID.Interval, modelValue);
+		const intervalPreview = getPreview(MODEL_ID.Interval, modelValue);
+
+		const rootName = getName(MODEL_ID.Note, modelOptions.modelRoot);
+		const rootPreview = getPreview(MODEL_ID.Note, modelOptions.modelRoot);
+
+		if (modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval) {
+			const note = PodUtils.addPod(modelOptions.modelRoot, modelValue);
+			const noteName = getName(MODEL_ID.Note, note, modelOptions);
+			const notePreview = getPreview(MODEL_ID.Note, note, modelOptions);
+			name = noteName;
+			caption = intervalName;
+			preview = `${rootPreview} + ${intervalPreview} = ${notePreview} `;
+		}
+		else {
+			const modelName = getName(modelId, modelValue);
+			const modelPreview = getPreview(modelId, modelValue, modelOptions);
+			name = `${rootName} ${modelName}`;
+			caption = modelId;
+			preview = modelPreview;
+		}
+	}
+	else {
+		const modelName = getName(modelId, modelValue);
+		const modelPreview = getPreview(modelId, modelValue, modelOptions);
+		name = modelName;
+		caption = modelId;
+		preview = modelPreview;
+	}
 
 	return {
 		pathId,
 		name,
 		preview,
+		caption,
 		modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
 		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
 	}
@@ -237,7 +283,7 @@ const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, ch
 const getMetaChildren = (modelConfig: IModelConfig): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
-	if(modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval) return null;
+	if (modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval) return null;
 
 	const childConfigs = modelId === MODEL_ID.Group ?
 		getGroupChildConfigs(modelValue, modelOptions) :
