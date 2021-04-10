@@ -18,7 +18,7 @@ const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     </Col>
 };
 
-const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActions, level, isImplicitRoot }) => {
+const PodCol = ({ editId, setEditId, root, rootActions, pods, podActions, level, isImplicitRoot }) => {
     return (
         <div className="double">
             <Col
@@ -31,18 +31,20 @@ const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActio
                 <DataList metaChildren={root} isEditing={editId === 'root'} level={level} />
             </Col>
             <Col
-                title="Notes"
-                actions={intervalActions}
+                title={isImplicitRoot ? "Intervals" : "Notes"}
+                actions={podActions}
                 isOpen={editId === 'intervals'}
                 setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
             >
-                <DataList metaChildren={intervals} isEditing={editId === 'intervals'} level={level} />
+                <DataList metaChildren={pods} isEditing={editId === 'intervals'} level={level} />
             </Col>
         </div>
     );
 };
 
-const getColProps = (_modelValue, modelOptions, hasChildren) => {
+const getPodColProps = (pathHead, setPathHeadConfig) => {
+
+    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
     const hasRoot = !!(modelOptions && modelOptions.modelRoot);
 
@@ -56,27 +58,14 @@ const getColProps = (_modelValue, modelOptions, hasChildren) => {
         data: rootData
     }];
 
-    const modelValue = hasChildren ? _modelValue : [_modelValue];
-
-    const intervals = modelValue.map((ivl, i) => {
-        const intervalConfig = {
-            modelId: MODEL_ID.Interval,
-            modelValue: ivl,
-            modelOptions
-        };
-        const intervalData = ModelUtils.getData(intervalConfig, i)
-        return {
-            config: intervalConfig,
-            data: intervalData
-        };
-    });
+    const podActions = DATA_ACTIONS;
 
     return {
         isImplicitRoot: !hasRoot,
         root,
-        rootActions: DATA_ACTIONS,
-        intervals,
-        intervalActions: DATA_ACTIONS
+        rootActions: [],
+        pods: pathHead.metaChildren,
+        podActions
     };
 }
 
@@ -84,19 +73,28 @@ const DataCol = props => {
     const path = useRecoilValue(pathState);
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
-    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
-    const { metaChildren } = pathHead
+    const { modelId } = (pathHead as IModelDef).config;
 
     const isGroup = modelId === MODEL_ID.Group;
+    const level = path.length;
 
     if (isGroup)
-        return <GroupCol items={metaChildren} level={path.length} itemsActions={DATA_ACTIONS} {...props} />;
+        return (
+            <GroupCol
+                items={pathHead.metaChildren}
+                level={level}
+                itemsActions={DATA_ACTIONS}
+                {...props}
+            />
+        );
 
-    return <PodCol
-        {...getColProps(modelValue, modelOptions, !!metaChildren)}
-        level={path.length}
-        {...props}
-    />;
+    return (
+        <PodCol
+            level={level}
+            {...getPodColProps(pathHead, setPathHeadConfig)}
+            {...props}
+        />
+    );
 };
 
 export default DataCol;
