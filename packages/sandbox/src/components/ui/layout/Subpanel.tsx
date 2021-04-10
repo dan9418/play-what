@@ -13,9 +13,9 @@ const StyledSubpanelHeader = styled.div`
 	border-radius: 8px;
 	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc; border-radius: 8px 8px 0 0;'}
 
-	background-color: #efefef;
+	background-color: #f5f5f5;
 	:hover {
-		background-color: #f5f5f5
+		background-color: #fff
 	}
 	
 	.name {
