@@ -79,7 +79,10 @@ const BreadcrumbList = () => {
 	if (!isVisible) return null;
 
 	const middle = fullPath.slice(1, fullPath.length - 1);
-	const actions = middle.map(x => ({ name: x.data.name }));
+	const actions = middle.map((x, i) => ({
+		name: x.data.name,
+		onClick: () => popAt(i)
+	}));
 
 	return (
 		<StyledWrapper>
