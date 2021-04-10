@@ -19,22 +19,11 @@ const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     </Col>
 };
 
-const UnrootedCol = ({ editId, setEditId, intervals, level, intervalsActions }) => {
-    return <Col
-        title="Intervals"
-        actions={intervalsActions}
-        isOpen={editId === 'intervals'}
-        setIsOpen={x => x ? setEditId('data') : setEditId(null)}
-    >
-        <DataList metaChildren={intervals} isEditing={editId === 'intervals'} level={level} />
-    </Col>
-};
-
-const RootedCol = ({ editId, setEditId, root, rootActions, intervals, intervalsActions, notes, notesActions, level }) => {
+const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalsActions, level }) => {
     return (
         <div className="double">
             <Col
-                title="Root"
+                title="Root Note"
                 actions={rootActions}
                 isOpen={editId === 'root'}
                 setIsOpen={x => x ? setEditId('root') : setEditId(null)}
@@ -42,30 +31,24 @@ const RootedCol = ({ editId, setEditId, root, rootActions, intervals, intervalsA
                 <DataList metaChildren={root} isEditing={editId === 'root'} level={level} />
             </Col>
             <Col
-                title="Intervals"
+                title="Intervals & Notes"
                 actions={intervalsActions}
                 isOpen={editId === 'intervals'}
                 setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
             >
                 <DataList metaChildren={intervals} isEditing={editId === 'intervals'} level={level} />
             </Col>
-            <Col
-                title="Notes"
-                actions={notesActions}
-                isOpen={editId === 'notes'}
-                setIsOpen={x => x ? setEditId('notes') : setEditId(null)}
-            >
-                <DataList metaChildren={notes} isEditing={editId === 'notes'} level={level} />
-            </Col>
         </div>
     );
 };
 
-const getRootedProps = (modelRoot, _modelValue, hasChildren) => {
+const getColProps = (_modelValue, modelOptions, hasChildren) => {
+
+    const hasRoot = modelOptions && modelOptions.modelRoot;
 
     const rootConfig = {
         modelId: MODEL_ID.Note,
-        modelValue: modelRoot
+        modelValue: hasRoot ? modelOptions.modelRoot : [0, 0]
     };
     const rootData = ModelUtils.getData(rootConfig)
     const root = [{
@@ -87,23 +70,9 @@ const getRootedProps = (modelRoot, _modelValue, hasChildren) => {
         };
     });
 
-    const notePods = PodUtils.addPodList(modelRoot, modelValue);
-    const notes = notePods.map((ivl, i) => {
-        const noteConfig = {
-            modelId: MODEL_ID.Note,
-            modelValue: ivl
-        };
-        const noteData = ModelUtils.getData(noteConfig, i)
-        return {
-            config: noteConfig,
-            data: noteData
-        };
-    });
-
     return {
         root,
-        intervals,
-        notes
+        intervals
     };
 }
 
@@ -116,16 +85,17 @@ const DataCol = props => {
 
     const isGroup = modelId === MODEL_ID.Group;
 
-    const hasRoot = !isGroup && modelOptions && modelOptions.modelRoot;
-
     if (isGroup)
         return <GroupCol items={metaChildren} level={path.length} itemsActions={DATA_ACTIONS} {...props} />;
 
-    return hasRoot ?
-        <RootedCol {...getRootedProps(modelOptions.modelRoot, modelValue, !!metaChildren)} level={path.length} rootActions={DATA_ACTIONS} intervalsActions={DATA_ACTIONS} notesActions={DATA_ACTIONS} {...props} />
-        :
-        <UnrootedCol intervals={metaChildren} level={path.length} intervalsActions={DATA_ACTIONS}{...props} />;
-
+    return <PodCol
+        {...getColProps(modelValue, modelOptions, !!metaChildren)}
+        level={path.length}
+        rootActions={DATA_ACTIONS}
+        intervalsActions={DATA_ACTIONS}
+        notesActions={DATA_ACTIONS}
+        {...props}
+    />;
 };
 
 export default DataCol;

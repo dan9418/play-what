@@ -237,19 +237,19 @@ const getListChildConfigs = (modelValue: IModel, modelOptions: IModelOptions, ch
 const getMetaChildren = (modelConfig: IModelConfig): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
+	if(modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval) return null;
+
 	const childConfigs = modelId === MODEL_ID.Group ?
 		getGroupChildConfigs(modelValue, modelOptions) :
-		modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval ?
-			null :
-			getListChildConfigs(modelValue, modelOptions, getChildModelId(modelId));
+		getListChildConfigs(modelValue, modelOptions, getChildModelId(modelId));
 
-	const metaChildren = childConfigs ? childConfigs.map((config, i) => {
+	const metaChildren = childConfigs.map((config, i) => {
 		const data = getData(config, i);
 		return {
 			config,
 			data
 		};
-	}) : null;
+	});
 
 	return metaChildren;
 };

@@ -71,8 +71,6 @@ const DataList = ({ metaChildren, isEditing, level = 0 }) => {
 		(fullPath[fullPath.length - 2].config.modelId === MODEL_ID.Chord || fullPath[fullPath.length - 2].config.modelId === MODEL_ID.Scale) &&
 		(fullPath[fullPath.length - 1].config.modelId === MODEL_ID.Note || fullPath[fullPath.length - 1].config.modelId === MODEL_ID.Interval)
 
-		console.log(isLeaf, fullPath);
-
 	return (
 		<StyledDataList>
 			{getItems(metaChildren, [], isEditing, level, isLeaf)}
