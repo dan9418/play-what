@@ -5,6 +5,7 @@ import { pathHeadState } from '../../../../state/pathState';
 import Col from '../../../ui/layout/Col';
 import VIEWER_ACTIONS, { VIEWER } from './../viewerCol/actions/viewerActions';
 import Viewer from './../viewerCol/Viewer';
+import getActions from "../shared/getActions";
 
 interface IViewerColProps {
     editId: string | null,
@@ -20,21 +21,7 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
 
     const viewerName = VIEWER[viewerId].name;
 
-    const actions = VIEWER_ACTIONS.map(a => {
-        const { component, ...rest } = a;
-
-        return {
-            name: a.name,
-            onClick: () => setModal({
-                ...rest,
-                component,
-                props: {
-                    pathHead,
-                    setPathHeadConfig
-                }
-            })
-        }
-    });
+    const actions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig, setModal);
 
     return (
         <Col

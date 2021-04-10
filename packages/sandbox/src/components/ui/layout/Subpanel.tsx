@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
-import OverflowMenu from "./OverflowMenu";
+import OverflowMenu, { IAction } from "./OverflowMenu";
 
 const StyledSubpanelHeader = styled.div`
 	padding: 8px;
@@ -66,13 +66,12 @@ interface ISubpanelHeaderProps {
 	isLeaf: boolean;
 	isEditing: boolean;
 	level: number;
+	actions: IAction[];
 }
 
 
-const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level }) => {
+const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level, actions }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
-
-	const actions = [];
 
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color}>
@@ -111,7 +110,7 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-interface ISubpanelProps extends ISubpanelHeaderProps {
+interface ISubpanelProps extends Omit<ISubpanelHeaderProps, 'isOpen' | 'setIsOpen'> {
 	children: any;
 }
 

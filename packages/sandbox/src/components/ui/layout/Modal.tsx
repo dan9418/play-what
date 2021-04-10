@@ -1,21 +1,18 @@
 import React from "react";
+import { useSetRecoilState } from "recoil";
+import { modalState } from "@pw/sandbox/src/state/dataState";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
 const StyledModal = styled.div`
-	position: fixed;
 	width: 100%;
+	height: 50%;
 	padding: 0 16px;
-	z-index: 3000;
 	background-color: #f5f5f5;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
-	left: 0;
-	top: 50%;
-	bottom: 0;
+
 	@media(min-width: 512px) {
-		top: 25%;
-		bottom: unset;
-		left: 25%;
+		height: unset;
 		max-width: 512px;
 		border-radius: 16px;
 	}
@@ -28,6 +25,14 @@ const StyledOverlay = styled.div`
 	right: 0;
 	bottom: 0;
 	z-index: 2999;
+
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+
+	@media(min-width: 512px) {
+		align-items: center;
+	}
 	
 	background-color: rgba(0, 0, 0, 0.2);
 `;
@@ -61,8 +66,9 @@ interface IModalProps {
 }
 
 const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) => {
+	const setModal = useSetRecoilState(modalState);
 	return (
-		<>
+		<StyledOverlay onClick={null/*() => setModal(null)*/}>
 			<StyledModal>
 				<StyledModalHeader>
 					<div>
@@ -73,8 +79,7 @@ const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) 
 				</StyledModalHeader>
 				{children}
 			</StyledModal>
-			<StyledOverlay />
-		</>
+		</StyledOverlay>
 	);
 };
 

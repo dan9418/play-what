@@ -185,11 +185,6 @@ const getPodProps = (modelId: string, modelValue: IModel, modelOptions: IModelOp
 
 // Parse
 
-const getChildModelId = (modelId: string): string => {
-	const model = MODEL[modelId];
-	return MODEL_ID.Interval;
-}
-
 const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
@@ -198,7 +193,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 			pathId,
 			name: (modelOptions && modelOptions.name) ? modelOptions.name : getName(MODEL_ID.Group, modelValue),
 			preview: (modelOptions && modelOptions.preview) ? modelOptions.preview : getPreview(MODEL_ID.Group, modelValue),
-			caption: modelId,
+			caption: MODEL[modelId].name,
 			modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
 			projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
 		}
@@ -229,7 +224,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 			const modelName = getName(modelId, modelValue);
 			const modelPreview = getPreview(modelId, modelValue, modelOptions);
 			name = `${rootName} ${modelName}`;
-			caption = modelId;
+			caption = MODEL[modelId].name;
 			preview = modelPreview;
 		}
 	}
@@ -237,7 +232,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		const modelName = getName(modelId, modelValue);
 		const modelPreview = getPreview(modelId, modelValue, modelOptions);
 		name = modelName;
-		caption = modelId;
+		caption = MODEL[modelId].name;
 		preview = modelPreview;
 	}
 
@@ -285,10 +280,11 @@ const getMetaChildren = (modelConfig: IModelConfig): IModelData => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 
 	if (modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval) return null;
+	//const hasRoot = modelOptions && modelOptions.modelRoot;
 
 	const childConfigs = modelId === MODEL_ID.Group ?
 		getGroupChildConfigs(modelValue, modelOptions) :
-		getListChildConfigs(modelValue, modelOptions, getChildModelId(modelId));
+		getListChildConfigs(modelValue, modelOptions, MODEL_ID.Interval);
 
 	const metaChildren = childConfigs.map((config, i) => {
 		const data = getData(config, i);

@@ -1,11 +1,14 @@
-import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import React from "react";
-import { useRecoilValue } from 'recoil';
+import { modalState } from '@pw/sandbox/src/state/dataState';
 import { fullPathState } from '@pw/sandbox/src/state/pathState';
+import React from "react";
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
+import getActions from '../shared/getActions';
 import Viewer from '../viewerCol/Viewer';
+import DATA_ACTIONS from './actions/dataActions';
 
 const StyledDataList = styled.ul`
 	padding: 0;
@@ -14,13 +17,12 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
+const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null) => {
 
 	return defs.map((child, i) => {
 
 		// Model helpers
 		const { modelId } = child.config;
-		const model = MODEL[modelId];
 		const isGroup = modelId === MODEL_ID.Group;
 		const isPod = modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval;
 
@@ -34,9 +36,14 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
 		const list = isGroup ? (
 			//  @ts-ignore
 			<ul>
-				{getItems(metaChildren, newPathIds, isEditing, level + 1, isPod)}
+				{getItems(metaChildren, newPathIds, isEditing, level + 1, isPod, setModal)}
 			</ul>
 		) : null;
+
+		const pathHead = child;
+		const setPathHeadConfig = null;
+
+		const actions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig, setModal);
 
 		return (
 			<li key={name + i} className='data-item'>
@@ -48,6 +55,7 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
 					level={level}
 					isEditing={isEditing}
 					isLeaf={isLeaf}
+					actions={actions}
 				>
 					<Viewer modelConfig={child.config} />
 					{list}
@@ -66,6 +74,7 @@ interface IDataListProps {
 const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0 }) => {
 
 	const fullPath = useRecoilValue(fullPathState);
+	const setModal = useSetRecoilState(modalState);
 
 	if (!metaChildren) return null;
 
@@ -75,7 +84,7 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 
 	return (
 		<StyledDataList>
-			{getItems(metaChildren, [], isEditing, level, isLeaf)}
+			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal)}
 		</StyledDataList>
 	);
 };

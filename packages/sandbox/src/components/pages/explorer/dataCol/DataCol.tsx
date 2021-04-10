@@ -1,11 +1,11 @@
 import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import React from "react";
-import { useSetRecoilState } from 'recoil';
-import { useRecoilState, useRecoilValue } from 'recoil';
 import { modalState } from '@pw/sandbox/src/state/dataState';
+import React from "react";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { pathHeadState, pathState } from '../../../../state/pathState';
 import Col from '../../../ui/layout/Col';
+import getActions from '../shared/getActions';
 import DATA_ACTIONS from './actions/dataActions';
 import DataList from './DataList';
 
@@ -16,21 +16,7 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
     const root = modelOptions && modelOptions.modelRoot;
     const isGroup = modelId === MODEL_ID.Group;
 
-    const actions = DATA_ACTIONS.map(a => {
-        const { component, ...rest } = a;
-
-        return {
-            name: a.name,
-            onClick: () => setModal({
-                ...rest,
-                component,
-                props: {
-                    pathHead,
-                    setPathHeadConfig
-                }
-            })
-        }
-    });
+    const actions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig, setModal);
 
     if (isGroup) {
         return {
@@ -41,7 +27,7 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
     }
 
     const title = root ? "Notes" : "Intervals";
-    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)";
+    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C4 (implicit)";
 
     return {
         title,
