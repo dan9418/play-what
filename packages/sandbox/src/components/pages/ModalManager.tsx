@@ -8,9 +8,11 @@ const ModalManager = () => {
 
     if (!modal) return null;
 
+    const { props, name, description } = modal;
+
     return (
-        <Modal onClose={() => setModal(null)}>
-            <modal.component {...modal.props} />
+        <Modal onClose={() => setModal(null)} name={name} description={description}>
+            <modal.component {...props} />
         </Modal>
     );
 };

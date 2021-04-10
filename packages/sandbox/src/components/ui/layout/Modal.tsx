@@ -5,8 +5,7 @@ import IconButton from '../inputs/buttons/IconButton';
 const StyledModal = styled.div`
 	position: fixed;
 	width: 100%;
-	padding: 16px;
-	padding-top: 32px;
+	padding: 0 16px;
 	z-index: 3000;
 	background-color: #f5f5f5;
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
@@ -19,12 +18,6 @@ const StyledModal = styled.div`
 		left: 25%;
 		max-width: 512px;
 		border-radius: 16px;
-	}
-
-	.btn-close {
-		position: absolute;
-		top: 8px;
-		right: 8px;
 	}
 `;
 
@@ -39,16 +32,36 @@ const StyledOverlay = styled.div`
 	background-color: rgba(0, 0, 0, 0.2);
 `;
 
-const Modal = ({ children, onClose }) => {
-    return (
-        <>
-            <StyledModal>
-                <IconButton iconId="close" onClick={onClose} />
-                {children}
-            </StyledModal>
-            <StyledOverlay />
-        </>
-    );
+const StyledModalHeader = styled.div`
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 16px 0;
+	border-bottom: 1px solid #ccc;
+
+	.description {
+		font-weight: normal;
+		color: ${({ theme }) => theme.accent};
+		font-size: 80%;
+	}
+`;
+
+const Modal = ({ children, onClose, name, description }) => {
+	return (
+		<>
+			<StyledModal>
+				<StyledModalHeader>
+					<div>
+						<h3 className="name">{name}</h3>
+						<div className="description">{description}</div>
+					</div>
+					<IconButton iconId="close" onClick={onClose} />
+				</StyledModalHeader>
+				{children}
+			</StyledModal>
+			<StyledOverlay />
+		</>
+	);
 };
 
 export default Modal;

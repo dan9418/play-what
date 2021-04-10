@@ -66,6 +66,7 @@ const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
         return {
             ...rest,
             onClick: () => setModal({
+                ...rest,
                 component,
                 props: {
                     pathHead,
