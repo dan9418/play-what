@@ -18,7 +18,7 @@ const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     </Col>
 };
 
-const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActions, level }) => {
+const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActions, level, isImplicitRoot }) => {
     return (
         <div className="double">
             <Col
@@ -26,6 +26,7 @@ const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActio
                 actions={rootActions}
                 isOpen={editId === 'root'}
                 setIsOpen={x => x ? setEditId('root') : setEditId(null)}
+                isDisabled={isImplicitRoot}
             >
                 <DataList metaChildren={root} isEditing={editId === 'root'} level={level} />
             </Col>
@@ -43,7 +44,7 @@ const PodCol = ({ editId, setEditId, root, rootActions, intervals, intervalActio
 
 const getColProps = (_modelValue, modelOptions, hasChildren) => {
 
-    const hasRoot = modelOptions && modelOptions.modelRoot;
+    const hasRoot = !!(modelOptions && modelOptions.modelRoot);
 
     const rootConfig = {
         modelId: MODEL_ID.Note,
@@ -71,6 +72,7 @@ const getColProps = (_modelValue, modelOptions, hasChildren) => {
     });
 
     return {
+        isImplicitRoot: !hasRoot,
         root,
         rootActions: DATA_ACTIONS,
         intervals,

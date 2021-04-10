@@ -198,6 +198,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 			pathId,
 			name: (modelOptions && modelOptions.name) ? modelOptions.name : getName(MODEL_ID.Group, modelValue),
 			preview: (modelOptions && modelOptions.preview) ? modelOptions.preview : getPreview(MODEL_ID.Group, modelValue),
+			caption: modelId,
 			modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
 			projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
 		}

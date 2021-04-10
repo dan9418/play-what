@@ -25,6 +25,9 @@ const StyledCol = styled.div`
 			border-right: 1px solid #ccc;
 		`}
 	}
+
+
+	${({ $isDisabled }) => $isDisabled ? 'opacity: .5; pointer-events: none;' : ''};
 `;
 
 const StyledColBody = styled.div`
@@ -53,10 +56,10 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
+const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen, isDisabled = false }) => {
 
 	return (
-		<StyledCol $hasBorder={hasBorder}>
+		<StyledCol $hasBorder={hasBorder} $isDisabled={isDisabled}>
 			<StyledColHeader>
 				<h2>
 					{title}

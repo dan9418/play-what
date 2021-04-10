@@ -108,6 +108,7 @@ export interface IModelConfig {
 export interface IModelData {
 	pathId: number;
 	name: string;
+	caption: string;
 	preview: string;
 	modelRoot: IModel;
 	projection: IProjection;
