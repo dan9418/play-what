@@ -47,6 +47,13 @@ const StyledColHeader = styled.div`
 
 	> div {
 		display: flex;
+		&.titles {
+			flex-direction: column;
+			>:last-child {
+				color: ${({ theme }) => theme.accent};
+				font-size: 80%;
+			}
+		}
 	}
 `;
 
@@ -56,14 +63,19 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, actions, children, hasBorder = false, isOpen, setIsOpen, isDisabled = false }) => {
+const Col = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen, isDisabled = false }) => {
 
 	return (
 		<StyledCol $hasBorder={hasBorder} $isDisabled={isDisabled}>
 			<StyledColHeader>
-				<h2>
-					{title}
-				</h2>
+				<div className="titles">
+					<h2>
+						{title}
+					</h2>
+					<h3>
+						{subtitle}
+					</h3>
+				</div>
 				<div>
 					{!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
 					<OverflowMenu items={actions} />

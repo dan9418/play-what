@@ -20,27 +20,17 @@ const GroupCol = ({ editId, setEditId, items, level, itemsActions }) => {
     </Col>
 };
 
-const PodCol = ({ editId, setEditId, root, rootActions, pods, podActions, level, isImplicitRoot }) => {
+const PodCol = ({ editId, setEditId, pods, podActions, level, root }) => {
     return (
-        <div className="double">
-            <Col
-                title="Root"
-                actions={rootActions}
-                isOpen={editId === 'root'}
-                setIsOpen={x => x ? setEditId('root') : setEditId(null)}
-                isDisabled={isImplicitRoot}
-            >
-                <DataList metaChildren={root} isEditing={editId === 'root'} level={level} />
-            </Col>
-            <Col
-                title={isImplicitRoot ? "Intervals" : "Notes"}
-                actions={podActions}
-                isOpen={editId === 'intervals'}
-                setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
-            >
-                <DataList metaChildren={pods} isEditing={editId === 'intervals'} level={level} />
-            </Col>
-        </div>
+        <Col
+            title={root ? "Notes" : "Intervals"}
+            subtitle={root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)"}
+            actions={podActions}
+            isOpen={editId === 'intervals'}
+            setIsOpen={x => x ? setEditId('intervals') : setEditId(null)}
+        >
+            <DataList metaChildren={pods} isEditing={editId === 'intervals'} level={level} />
+        </Col>
     );
 };
 
@@ -48,9 +38,9 @@ const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
-    const hasRoot = !!(modelOptions && modelOptions.modelRoot);
+    const root = modelOptions && modelOptions.modelRoot;
 
-    const rootConfig = {
+    /*const rootConfig = {
         modelId: MODEL_ID.Note,
         modelValue: hasRoot ? modelOptions.modelRoot : [0, 0]
     };
@@ -58,7 +48,7 @@ const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
     const root = [{
         config: rootConfig,
         data: rootData
-    }];
+    }];*/
 
     const podActions = DATA_ACTIONS.map(a => {
         const { component, ...rest } = a;
@@ -77,9 +67,7 @@ const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
     });
 
     return {
-        isImplicitRoot: !hasRoot,
         root,
-        rootActions: [],
         pods: pathHead.metaChildren,
         podActions
     };
