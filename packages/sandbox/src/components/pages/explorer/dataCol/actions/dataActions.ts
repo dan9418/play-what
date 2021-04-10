@@ -1,9 +1,10 @@
+import { IModalAction } from '@pw/sandbox/src/components/ui/layout/Modal';
 import PresetAction from './PresetAction';
 import ProjectionAction from './ProjectionAction';
-import TransposeAction from './TransposeAction';
 import RootAction from './RootAction';
+import TransposeAction from './TransposeAction';
 
-const DATA_ACTIONS = [
+const DATA_ACTIONS: IModalAction[] = [
 	{
 		name: 'Set Root',
 		description: 'Set the root note (key center) for intervals',

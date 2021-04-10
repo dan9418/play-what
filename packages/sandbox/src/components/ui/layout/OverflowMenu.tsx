@@ -59,9 +59,9 @@ const getActionItems = (items) => {
 	return listItems;
 }
 
-interface IAction {
+export interface IAction {
 	name: string;
-	onClick?: any;
+	onClick: any;
 }
 
 interface IOverflowMenuProps {

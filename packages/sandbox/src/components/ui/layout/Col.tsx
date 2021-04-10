@@ -63,10 +63,20 @@ export const StyledColDivider = styled.div`
 	border-bottom: 1px solid #ccc;
 `;
 
-const Col = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen, isDisabled = false }) => {
+interface IColProps {
+	title: string;
+	subtitle?: string;
+	actions: any[];
+	children: any;
+	hasBorder?: boolean;
+	isOpen: boolean;
+	setIsOpen: any;
+}
+
+const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
 
 	return (
-		<StyledCol $hasBorder={hasBorder} $isDisabled={isDisabled}>
+		<StyledCol $hasBorder={hasBorder}>
 			<StyledColHeader>
 				<div className="titles">
 					<h2>

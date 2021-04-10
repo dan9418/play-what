@@ -5,7 +5,12 @@ import Col from '../../../ui/layout/Col';
 import VIEWER_ACTIONS from './../viewerCol/actions/viewerActions';
 import Viewer from './../viewerCol/Viewer';
 
-const ViewerCol = ({ editId, setEditId }) => {
+interface IViewerColProps {
+    editId: string | null,
+    setEditId: any;
+}
+
+const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 
     const viewerActions = VIEWER_ACTIONS;

@@ -46,7 +46,21 @@ const StyledModalHeader = styled.div`
 	}
 `;
 
-const Modal = ({ children, onClose, name, description }) => {
+export interface IModalAction {
+	name: string;
+	description: string;
+	component: any;
+	props?: any;
+}
+
+interface IModalProps {
+	name: string;
+	description: string;
+	onClose: any;
+	children: any;
+}
+
+const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) => {
 	return (
 		<>
 			<StyledModal>

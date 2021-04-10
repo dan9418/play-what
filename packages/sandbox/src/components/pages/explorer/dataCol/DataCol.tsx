@@ -16,22 +16,11 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
     const root = modelOptions && modelOptions.modelRoot;
     const isGroup = modelId === MODEL_ID.Group;
 
-    if (isGroup) {
-        return {
-            title: "Items",
-            subtitle: "",
-            actions: []
-        };
-    }
-
-    const title = root ? "Notes" : "Intervals";
-    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)";
-
     const actions = DATA_ACTIONS.map(a => {
         const { component, ...rest } = a;
 
         return {
-            ...rest,
+            name: a.name,
             onClick: () => setModal({
                 ...rest,
                 component,
@@ -42,6 +31,16 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
             })
         }
     });
+
+    if (isGroup) {
+        return {
+            title: "Items",
+            actions
+        };
+    }
+
+    const title = root ? "Notes" : "Intervals";
+    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C (implicit)";
 
     return {
         title,
@@ -57,7 +56,12 @@ const getEditProps = (editId, setEditId, id) => {
     }
 }
 
-const DataCol = ({ editId, setEditId }) => {
+interface IDataColProps {
+    editId: string | null,
+    setEditId: any;
+}
+
+const DataCol: React.FC<IDataColProps> = ({ editId, setEditId }) => {
     const path = useRecoilValue(pathState);
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
     const setModal = useSetRecoilState(modalState);
