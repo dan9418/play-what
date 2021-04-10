@@ -1,7 +1,9 @@
 import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import React from "react";
+import { useSetRecoilState } from 'recoil';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { modalState } from '@pw/sandbox/src/state/dataState';
 import { pathHeadState, pathState } from '../../../../state/pathState';
 import Col from '../../../ui/layout/Col';
 import DATA_ACTIONS from './actions/dataActions';
@@ -42,7 +44,7 @@ const PodCol = ({ editId, setEditId, root, rootActions, pods, podActions, level,
     );
 };
 
-const getPodColProps = (pathHead, setPathHeadConfig) => {
+const getPodColProps = (pathHead, setPathHeadConfig, setModal) => {
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
@@ -58,7 +60,20 @@ const getPodColProps = (pathHead, setPathHeadConfig) => {
         data: rootData
     }];
 
-    const podActions = DATA_ACTIONS;
+    const podActions = DATA_ACTIONS.map(a => {
+        const { component, ...rest } = a;
+
+        return {
+            ...rest,
+            onClick: () => setModal({
+                component,
+                props: {
+                    pathHead,
+                    setPathHeadConfig
+                }
+            })
+        }
+    });
 
     return {
         isImplicitRoot: !hasRoot,
@@ -72,6 +87,7 @@ const getPodColProps = (pathHead, setPathHeadConfig) => {
 const DataCol = props => {
     const path = useRecoilValue(pathState);
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+    const setModal = useSetRecoilState(modalState);
 
     const { modelId } = (pathHead as IModelDef).config;
 
@@ -83,7 +99,7 @@ const DataCol = props => {
             <GroupCol
                 items={pathHead.metaChildren}
                 level={level}
-                itemsActions={DATA_ACTIONS}
+                itemsActions={[]}
                 {...props}
             />
         );
@@ -91,7 +107,7 @@ const DataCol = props => {
     return (
         <PodCol
             level={level}
-            {...getPodColProps(pathHead, setPathHeadConfig)}
+            {...getPodColProps(pathHead, setPathHeadConfig, setModal)}
             {...props}
         />
     );

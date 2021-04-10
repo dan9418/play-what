@@ -1,7 +1,6 @@
 import { DEFAULT_PITCH_COLOR_SCHEME } from "@pw/core/src/theory/Pitch.constants";
 import React from "react";
 import styled from 'styled-components';
-import DATA_ACTIONS from "../../pages/explorer/dataCol/actions/dataActions";
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
 import OverflowMenu from "./OverflowMenu";
@@ -60,7 +59,7 @@ const StyledButtonContainer = styled.div`
 const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
 
-	const actions = DATA_ACTIONS;
+	const actions = [];
 
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color}>

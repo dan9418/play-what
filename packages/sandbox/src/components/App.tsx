@@ -8,6 +8,7 @@ import THEME from '../styles/theme';
 import ErrorBoundary from './utils/ErrorBoundary';
 import Main from './pages/Main';
 import Nav from './pages/Nav';
+import ModalManager from "./pages/ModalManager";
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<RouteContextProvider>
 						<Nav />
 						<Main />
+						<ModalManager />
 					</RouteContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
