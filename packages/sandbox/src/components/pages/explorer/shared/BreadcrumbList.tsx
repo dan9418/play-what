@@ -13,12 +13,15 @@ const StyledWrapper = styled.div`
 	position: sticky;
     top: 32px;
 	z-index: 100;
-	background-color: #ecefef;
+	border-bottom: 1px solid #ccc;
 
-	margin-top: 16px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+
+	height: 48px;
+
+	background-color: #ecefef;
 
 	.m {
 		display: flex;
@@ -76,7 +79,7 @@ const BreadcrumbList = () => {
 	const isMobile = useIsMobile();
 
 	const isVisible = fullPath && fullPath.length >= 2;
-	if (!isVisible) return null;
+	if (!isVisible) return <StyledWrapper />;
 
 	const middle = fullPath.slice(1, fullPath.length - 1);
 	const actions = middle.map((x, i) => ({

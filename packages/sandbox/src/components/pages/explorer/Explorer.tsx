@@ -12,7 +12,6 @@ const StyledExplorer = styled.div`
 	display: grid;
 	width: 100%;
 	margin: auto;
-	margin-top: 16px;
 
 	grid-template-columns: 1fr;
 	max-width: 768px;

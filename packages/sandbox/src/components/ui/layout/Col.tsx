@@ -20,8 +20,7 @@ const StyledCol = styled.div`
 		:not(:first-child) {
 			margin-top: 0;
 		}
-		${({ $hasBorder }) => !$hasBorder ? 'padding-left: 16px;' : css`
-			padding-right: 16px;
+		${({ $hasBorder }) => !$hasBorder ? '' : css`
 			border-right: 1px solid #ccc;
 		`}
 	}
@@ -31,6 +30,7 @@ const StyledCol = styled.div`
 `;
 
 const StyledColBody = styled.div`
+	padding: 16px;
 	${({ $isEnabled }) => $isEnabled ? '' : css`
 		//opacity: .5;
 		//pointer-events: none;
@@ -42,8 +42,16 @@ const StyledColHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-bottom: 16px;
+
+	height: 64px;
+	padding: 0 16px;
+
 	border-bottom: 1px solid #ccc;
+
+	position: sticky;
+	top: 80px;
+	z-index: 100;
+	background-color: #ecefef;
 
 	> div {
 		display: flex;

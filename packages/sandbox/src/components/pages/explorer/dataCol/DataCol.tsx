@@ -34,7 +34,8 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
 
     if (isGroup) {
         return {
-            title: "Items",
+            title: "Data",
+            subtitle: ModelUtils.getPreview(modelId, modelValue, modelOptions),
             actions
         };
     }

@@ -1,8 +1,9 @@
 import React from "react";
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { modalState } from "@pw/sandbox/src/state/dataState";
 import { pathHeadState } from '../../../../state/pathState';
 import Col from '../../../ui/layout/Col';
-import VIEWER_ACTIONS from './../viewerCol/actions/viewerActions';
+import VIEWER_ACTIONS, { VIEWER } from './../viewerCol/actions/viewerActions';
 import Viewer from './../viewerCol/Viewer';
 
 interface IViewerColProps {
@@ -12,15 +13,36 @@ interface IViewerColProps {
 
 const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
     const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+    const setModal = useSetRecoilState(modalState);
 
-    const viewerActions = VIEWER_ACTIONS;
+    const { modelOptions } = pathHead.config;
+    const { viewerId } = modelOptions || { viewerId: VIEWER.fretboard.id };
+
+    const viewerName = VIEWER[viewerId].name;
+
+    const actions = VIEWER_ACTIONS.map(a => {
+        const { component, ...rest } = a;
+
+        return {
+            name: a.name,
+            onClick: () => setModal({
+                ...rest,
+                component,
+                props: {
+                    pathHead,
+                    setPathHeadConfig
+                }
+            })
+        }
+    });
 
     return (
         <Col
             title="Viewer"
+            subtitle={viewerName}
             isOpen={editId === 'viewer'}
             setIsOpen={x => x ? setEditId('viewer') : setEditId(null)}
-            actions={viewerActions}
+            actions={actions}
             hasBorder
         >
             <Viewer modelConfig={pathHead.config} />

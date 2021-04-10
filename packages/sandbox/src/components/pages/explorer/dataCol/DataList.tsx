@@ -57,7 +57,13 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false) => {
 	})
 };
 
-const DataList = ({ metaChildren, isEditing, level = 0 }) => {
+interface IDataListProps {
+	metaChildren: any[];
+	isEditing: boolean;
+	level?: number;
+}
+
+const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0 }) => {
 
 	const fullPath = useRecoilValue(fullPathState);
 

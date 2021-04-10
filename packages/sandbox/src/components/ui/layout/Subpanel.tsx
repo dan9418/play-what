@@ -56,7 +56,20 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const SubpanelHeader = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level }) => {
+interface ISubpanelHeaderProps {
+	name: string;
+	caption: string;
+	preview: string;
+	isOpen: boolean;
+	setIsOpen: any;
+	pathIds: any[];
+	isLeaf: boolean;
+	isEditing: boolean;
+	level: number;
+}
+
+
+const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
 
 	const actions = [];
@@ -98,22 +111,20 @@ const StyledSubpanel = styled.section`
 	}
 `;
 
-const Subpanel = ({ children = null, isActive = false, setIsActive = null, level = 0, ...props }) => {
-	const [isOpen, setIsOpen] = React.useState(isActive);
+interface ISubpanelProps extends ISubpanelHeaderProps {
+	children: any;
+}
 
-	const _isOpen = isActive || isOpen;
-	const _setIsOpen = x => {
-		if (setIsActive) setIsActive(x);
-		else setIsOpen(x);
-	};
+const Subpanel: React.FC<ISubpanelProps> = ({ children = null, level = 0, ...props }) => {
+	const [isOpen, setIsOpen] = React.useState(false);
 
-	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
+	const color = DEFAULT_PITCH_COLOR_SCHEME[(level * 2) % 12];
 
 	return (
 		<StyledSubpanel $color={color}>
 			{/* @ts-ignore */}
-			<SubpanelHeader {...props} isOpen={_isOpen} setIsOpen={_setIsOpen} level={level} />
-			{_isOpen &&
+			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} level={level} />
+			{isOpen &&
 				<div className="subpanel-body">
 					{children}
 				</div>

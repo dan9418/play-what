@@ -7,7 +7,7 @@ import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { matchOctaveState, pathHeadState } from '../../../state/pathState';
 
 const StyledMeterWrapper = styled.div`
-    padding-bottom: 4px;
+    padding: 0 4px 4px;
 `;
 
 const MeterWrapper = () => {

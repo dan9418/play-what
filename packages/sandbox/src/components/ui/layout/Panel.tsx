@@ -9,7 +9,7 @@ import SwitchInput from "../inputs/SwitchInput";
 const StyledPanelHeader = styled.section`
 	width: 100%;
 
-	${({ $showBorder }) => $showBorder ? 'border-bottom: 2px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
+	${({ $showBorder }) => $showBorder ? 'border-bottom: 1px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
 
 	>:nth-child(2) {
 		${({ $showBorder }) => !$showBorder ? 'margin-top: 8px;' : ''}
@@ -102,7 +102,7 @@ const PanelHeader = () => {
 						<h3 className='name'>{name}</h3>
 						<div className='caption'>{model.name}</div>
 					</div>
-					<div className='preview'>{preview}</div>
+					{isGroup ? null : <div className='preview'>{preview}</div>}
 				</div>
 				{isGroup ? null :
 					<div className='switch-container'>
