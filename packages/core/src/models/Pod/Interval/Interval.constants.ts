@@ -141,7 +141,7 @@ export const INTERVAL_PRESET_MAP: { [x: string]: IModelPreset<IPod> } = {
 	)
 };
 
-export const INTERVAL_VALUES = Object.values(INTERVAL_PRESET_MAP);
+export const INTERVAL_PRESETS = Object.values(INTERVAL_PRESET_MAP);
 
 export const CORE_INTERVALS = [
 	[INTERVAL_PRESET_MAP.P1],

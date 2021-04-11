@@ -49,7 +49,7 @@ export const CHORD_PRESET_MAP: { [x: string]: IModelPreset<IPod[]> } = {
 	[ChordId.Sus4]: formatPreset(ChordId.Sus4, 'Suspended 4th', [IntervalId.P1, IntervalId.P4, IntervalId.P5])
 };
 
-export const CHORD_VALUES = Object.values(CHORD_PRESET_MAP);
+export const CHORD_PRESETS = Object.values(CHORD_PRESET_MAP);
 
 export const NUMERAL: { [x: string]: IModelPreset<IPod[]> } = {
 	I: { id: 'I', name: 'I', value: [INTERVAL_PRESET_MAP.P1.value, INTERVAL_PRESET_MAP.M3.value, INTERVAL_PRESET_MAP.P5.value] }

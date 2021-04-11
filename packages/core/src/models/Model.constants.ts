@@ -1,11 +1,11 @@
 import GroupUtils from './Group/Group.utils';
-import { INTERVAL_VALUES } from './Pod/Interval/Interval.constants';
+import { INTERVAL_PRESETS } from './Pod/Interval/Interval.constants';
 import IntervalUtils from './Pod/Interval/Interval.utils';
-import { NOTE_VALUES } from './Pod/Note/Note.constants';
+import { NOTE_PRESETS } from './Pod/Note/Note.constants';
 import NoteUtils from './Pod/Note/Note.utils';
-import { CHORD_VALUES } from './PodList/Chord/Chord.constants';
+import { CHORD_PRESETS } from './PodList/Chord/Chord.constants';
 import ChordUtils from './PodList/Chord/Chord.utils';
-import { SCALE_VALUES } from './PodList/Scale/Scale.constants';
+import { SCALE_PRESETS } from './PodList/Scale/Scale.constants';
 import ScaleUtils from './PodList/Scale/Scale.utils';
 
 export enum ModelId {
@@ -47,14 +47,14 @@ export const MODEL: { [x: string]: IModelMap } = {
 		name: 'Note',
 		modelId: ModelId.Note,
 		utils: NoteUtils,
-		presets: NOTE_VALUES,
+		presets: NOTE_PRESETS,
 		validChildren: []
 	},
 	[ModelId.Interval]: {
 		name: 'Interval',
 		modelId: ModelId.Interval,
 		utils: IntervalUtils,
-		presets: INTERVAL_VALUES,
+		presets: INTERVAL_PRESETS,
 		validChildren: []
 	},
 	// Pod[]
@@ -62,14 +62,14 @@ export const MODEL: { [x: string]: IModelMap } = {
 		name: 'Chord',
 		modelId: ModelId.Chord,
 		utils: ChordUtils,
-		presets: CHORD_VALUES,
+		presets: CHORD_PRESETS,
 		validChildren: [ModelId.Interval]
 	},
 	[ModelId.Scale]: {
 		name: 'Scale',
 		modelId: ModelId.Scale,
 		utils: ScaleUtils,
-		presets: SCALE_VALUES,
+		presets: SCALE_PRESETS,
 		validChildren: [ModelId.Interval]
 	}
 };

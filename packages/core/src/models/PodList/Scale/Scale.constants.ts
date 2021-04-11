@@ -50,7 +50,7 @@ export const SCALE_PRESET_MAP: { [x: string]: IModelPreset<IPod[]> } = {
 	//Chromatic: formatPreset(ScaleId.Chromatic, 'Chromatic', [IntervalId.P1, IntervalId.m2, IntervalId.M2, IntervalId.m3, IntervalId.M3, IntervalId.P4, IntervalId.A4, IntervalId.P5, IntervalId.m6, IntervalId.M6, IntervalId.m7, IntervalId.M7])
 };
 
-export const SCALE_VALUES = Object.values(SCALE_PRESET_MAP);
+export const SCALE_PRESETS = Object.values(SCALE_PRESET_MAP);
 
 export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',

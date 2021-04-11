@@ -60,6 +60,6 @@
 // }
 
 // Scale.preset = SCALE_PRESET_MAP;
-// Scale.presetValues = SCALE_VALUES;
+// Scale.presetValues = SCALE_PRESETS;
 
 // export default Scale;

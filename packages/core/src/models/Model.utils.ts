@@ -5,9 +5,9 @@ import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.consta
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
 import PodUtils from "./Pod/Pod.utils";
-import { CHORD_VALUES } from "./PodList/Chord/Chord.constants";
+import { CHORD_PRESETS } from "./PodList/Chord/Chord.constants";
 import PodListUtils from "./PodList/PodList.utils";
-import { SCALE_VALUES } from "./PodList/Scale/Scale.constants";
+import { SCALE_PRESETS } from "./PodList/Scale/Scale.constants";
 
 // Name
 
@@ -52,7 +52,7 @@ const getIntervalName = (modelValue: IPod) => {
 }
 
 const getChordName = (modelValue: IPod[], modelOptions: IModelOptions) => {
-	const preset = CHORD_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
+	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Chord';
 
 	if (!modelOptions || !modelOptions.modelRoot) return presetName;
@@ -62,7 +62,7 @@ const getChordName = (modelValue: IPod[], modelOptions: IModelOptions) => {
 };
 
 const getScaleName = (modelValue: IPod[], modelOptions: IModelOptions) => {
-	const preset = SCALE_VALUES.find(v => PodListUtils.areEqual(modelValue, v.value));
+	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Scale';
 
 	if (!modelOptions || !modelOptions.modelRoot) return presetName;
@@ -311,7 +311,7 @@ const getSupersets = (modelId: ModelId, modelValue: IPod[], modelOptions: IModel
 
 	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
 
-	return SCALE_VALUES.filter(compareValues).map(v => ({
+	return SCALE_PRESETS.filter(compareValues).map(v => ({
 		id: v.name,
 		name: v.name,
 

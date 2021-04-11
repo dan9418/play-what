@@ -1,9 +1,9 @@
-import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
-import { GROUP_VALUES } from "@pw/core/src/models/Group/Group.constants";
+import { INTERVAL_PRESETS } from '@pw/core/src/models/Pod/Interval/Interval.constants';
+import { GROUP_PRESETS } from "@pw/core/src/models/Group/Group.constants";
 import { IModelConfig, IModelPreset, ModelId, IModelValue } from "@pw/core/src/models/Model.constants";
-import { NOTE_PRESET_MAP, NOTE_VALUES } from "@pw/core/src/models/Pod/Note/Note.constants";
-import { CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/Chord.constants";
-import { SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Scale.constants";
+import { NOTE_PRESET_MAP, NOTE_PRESETS } from "@pw/core/src/models/Pod/Note/Note.constants";
+import { CHORD_PRESETS } from "@pw/core/src/models/PodList/Chord/Chord.constants";
+import { SCALE_PRESETS } from "@pw/core/src/models/PodList/Scale/Scale.constants";
 
 const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPreset<T>[], dataType: ModelId): IModelConfig => {
 	return {
@@ -30,11 +30,11 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 		viewerProps: {}
 	},
 	modelValue: [
-		formatPresetGroup('Chords', CHORD_VALUES, ModelId.Chord),
-		formatPresetGroup('Scales', SCALE_VALUES, ModelId.Scale),
-		formatPresetGroup('Charts', GROUP_VALUES, ModelId.Group),
-		formatPresetGroup('Notes', NOTE_VALUES, ModelId.Note),
-		formatPresetGroup('Intervals', INTERVAL_VALUES, ModelId.Interval)
+		formatPresetGroup('Chords', CHORD_PRESETS, ModelId.Chord),
+		formatPresetGroup('Scales', SCALE_PRESETS, ModelId.Scale),
+		formatPresetGroup('Charts', GROUP_PRESETS, ModelId.Group),
+		formatPresetGroup('Notes', NOTE_PRESETS, ModelId.Note),
+		formatPresetGroup('Intervals', INTERVAL_PRESETS, ModelId.Interval)
 	]
 };
 

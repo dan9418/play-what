@@ -6,8 +6,8 @@ export enum GroupPresetId {
 	AllOfMe = 'AllOfMe'
 }
 
-export const GROUP: { [x: string]: IModelPreset<IModelValue> } = {
+export const GROUP_MAP: { [x: string]: IModelPreset<IModelValue> } = {
 	[GroupPresetId.AllOfMe]: GroupUtils.getGroupPresetFromChartConfig(CHART.ALL_OF_ME_CONFIG)
 };
 
-export const GROUP_VALUES = Object.values(GROUP);
+export const GROUP_PRESETS = Object.values(GROUP_MAP);
