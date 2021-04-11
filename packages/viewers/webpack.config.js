@@ -16,8 +16,11 @@ var config = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
-				query: {
-					presets: ['@babel/react']
+				options: {
+					presets: [
+						"@babel/preset-env",
+						"@babel/preset-react"
+					]
 				}
 			},
 			{
@@ -26,7 +29,6 @@ var config = {
 			}
 		]
 	},
-	//externals: { 'react': 'commonjs react' },
 	externals: {
 		'react': 'react'
 	}

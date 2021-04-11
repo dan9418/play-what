@@ -17,8 +17,11 @@ module.exports = {
 				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
-				query: {
-					presets: ['@babel/react']
+				options: {
+					presets: [
+						"@babel/preset-env",
+						"@babel/preset-react"
+					]
 				}
 			},
 			{
@@ -44,9 +47,5 @@ module.exports = {
 		contentBase: `${__dirname}/build/`,
 		port: 9000,
 		hot: true
-	},
-	plugins: [
-		//new WebpackConfigDumpPlugin({ outputPath: './', name: 'dump.txt' })
-		//new webpack.HotModuleReplacementPlugin()
-	]
+	}
 };
