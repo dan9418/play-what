@@ -24,7 +24,7 @@ const StyledMain = styled.main`
 const Main = () => {
   return (
     <StyledMain>
-      <div className="gutter" />
+      {/*<div className="gutter" />*/}
       <PathNavContextProvider>
         <RouteContextConsumer>
           {({ Component }) => <Component />}
