@@ -1,18 +1,22 @@
 import ModelUtils from "@pw/core/src/models/Model.utils";
-import { atom, selector } from "recoil";
+import { atom, RecoilState, selector } from "recoil";
 import { IModelDef, IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
 import { dataState } from "./dataState";
 import _ from 'lodash';
 
-export const pathState = atom({
+export const pathState: RecoilState<number[]> = atom({
 	key: 'pathState',
 	default: []
 });
 
-export const matchOctaveState = atom({
+export const matchOctaveState: RecoilState<boolean> = atom({
 	key: 'matchOctaveState',
 	default: true
 });
+
+interface IPathNode {
+
+}
 
 const getNodeFromConfig = (config, i = 0) => {
 	const data = ModelUtils.getData(config, i);
@@ -27,7 +31,7 @@ const getNodeFromConfig = (config, i = 0) => {
 	return node;
 };
 
-export const fullPathState = selector({
+export const fullPathState: RecoilState<boolean> = selector({
 	key: 'fullPathState',
 	get: ({ get }) => {
 		const path: number[] = get(pathState);
@@ -48,7 +52,7 @@ export const fullPathState = selector({
 	}
 });
 
-export const pathHeadState = selector({
+export const pathHeadState: RecoilState<boolean> = selector({
 	key: 'pathHeadState',
 	get: ({ get }): IModelDef => {
 		const nodes: any[] = get(fullPathState);
@@ -76,7 +80,7 @@ export const pathHeadState = selector({
 	}
 });
 
-export const siblingsState = selector({
+export const siblingsState: RecoilState<boolean> = selector({
 	key: 'siblingsState',
 	get: ({ get }) => {
 		const fullPath = get(fullPathState);
