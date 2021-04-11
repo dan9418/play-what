@@ -13,10 +13,8 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-
-  },
-  "devDependencies": {
-    
+    "@pw/core": "0.0.0",
+    "@pw/viewers": "0.0.0"
   },
   "babel": {
     "plugins": [

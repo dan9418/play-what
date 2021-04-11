@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add -W -D typescript webpack webpack-cli @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-config-airbnb eslint-config-prettier eslint-plugin-importeslint-plugin-jsx-a11y eslint-plugin-prettier babel babel-loader @babel/core cross-env css-loader style-loader lerna prettier
 
 PATH: 
   C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\nodejs\;C:\Users\dan94\AppData\Local\Microsoft\WindowsApps;C:\Users\dan94\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\dan94\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Users\dan94\AppData\Local\Yarn\bin;C:\Users\dan94\AppData\Roaming\npm
@@ -14,12 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  SyntaxError: C:\_dev\play-what\packages\viewers\package.json: Unexpected token } in JSON at position 347
-      at JSON.parse (<anonymous>)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+  Error: https://registry.yarnpkg.com/eslint-plugin-importeslint-plugin-jsx-a11y: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
+      at Request.emit (node:events:369:20)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141721:10)
+      at Request.emit (node:events:369:20)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141643:12)
+      at Object.onceWrapper (node:events:475:28)
+      at IncomingMessage.emit (node:events:381:22)
+      at endReadableNT (node:internal/streams/readable:1307:12)
+      at processTicksAndRejections (node:internal/process/task_queues:81:21)
 
 npm manifest: 
   {
@@ -33,30 +38,6 @@ npm manifest:
       "start-debug": "yarn workspace @pw/sandbox start-debug",
       "lint": "eslint --fix",
       "build": "lerna run build"
-    },
-    "devDependencies": {
-      "@types/node": "^14.14.37",
-      "@types/react": "^17.0.3",
-      "@types/react-dom": "^17.0.3",
-      "@typescript-eslint/eslint-plugin": "^4.20.0",
-      "@typescript-eslint/parser": "^4.20.0",
-      "cross-env": "^7.0.3",
-      "eslint": "^7.23.0",
-      "eslint-config-airbnb": "^18.2.1",
-      "eslint-config-prettier": "^8.1.0",
-      "eslint-plugin-import": "^2.22.1",
-      "eslint-plugin-jsx-a11y": "^6.4.1",
-      "eslint-plugin-prettier": "^3.3.1",
-      "eslint-plugin-react": "^7.23.1",
-      "eslint-plugin-react-hooks": "^4.2.0",
-      "lerna": "^4.0.0",
-      "prettier": "^2.2.1",
-      "typescript": "^4.2.3",
-      "webpack": "^5.30.0",
-      "webpack-cli": "^4.6.0"
-    },
-    "dependencies": {
-      "lodash": "^4.17.21"
     }
   }
 

@@ -14,12 +14,6 @@
   "author": "Dan Bednarczyk",
   "license": "ISC",
   "dependencies": {
-    "@pw/core": "0.0.0",
-  },
-  "devDependencies": {
-    
-  },
-  "peerDependencies": {
-
+    "@pw/core": "0.0.0"
   }
 }
