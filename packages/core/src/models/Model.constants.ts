@@ -79,14 +79,12 @@ export const MODEL_VALUES = Object.values(MODEL);
 export type IGroup<T> = T[];
 
 export type IPod = [number, number];
-export type IPodList = IPod[];
-type IPodType = IPod | IPodList;
 
 // @ts-ignore
-export type IModel = IPodType | IGroup<IPodType | IModel>;
+export type IModel = IPod | IPod[] | IGroup<IPod | IPod[] | IModel>;
 
 export interface IProjection {
-	podList: IPodList;
+	podList: IPod[];
 }
 
 export interface IModelOptions {

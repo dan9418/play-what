@@ -1,14 +1,14 @@
 import { modalState } from "@pw/sandbox/src/state/dataState";
 import React from "react";
 import { useRecoilState } from 'recoil';
-import Modal, { IModalAction } from "../ui/layout/Modal";
+import Modal from "../ui/layout/Modal";
 
 const ModalManager: React.FC = () => {
     const [modal, setModal] = useRecoilState(modalState);
 
     if (!modal) return null;
 
-    const { props, name, description } = modal as IModalAction;
+    const { props, name, description } = modal;
 
     return (
         <Modal onClose={() => setModal(null)} name={name} description={description}>

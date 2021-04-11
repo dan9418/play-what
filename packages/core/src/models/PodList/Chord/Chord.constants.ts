@@ -1,10 +1,10 @@
-import { IPodList } from './../../Model.constants';
+import { IPod } from './../../Model.constants';
 import { INTERVAL } from "../../Pod/Interval/Interval.constants";
 
 export interface INote {
 	id: string;
 	name: string;
-	value: IPodList
+	value: IPod[]
 }
 
 export const CHORD: { [x: string]: INote } = {

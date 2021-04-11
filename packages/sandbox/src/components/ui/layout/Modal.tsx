@@ -1,6 +1,4 @@
 import React from "react";
-import { useSetRecoilState } from "recoil";
-import { modalState } from "@pw/sandbox/src/state/dataState";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
@@ -66,9 +64,8 @@ interface IModalProps {
 }
 
 const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) => {
-	const setModal = useSetRecoilState(modalState);
 	return (
-		<StyledOverlay onClick={null/*() => setModal(null)*/}>
+		<StyledOverlay onClick={null/*onClose*/}>
 			<StyledModal>
 				<StyledModalHeader>
 					<div>

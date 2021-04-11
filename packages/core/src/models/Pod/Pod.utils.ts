@@ -1,4 +1,4 @@
-import { IPod, IPodList, IModelOptions } from './../Model.constants';
+import { IPod, IModelOptions } from './../Model.constants';
 import NumberUtils from '../../general/Number.utils';
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
@@ -35,7 +35,7 @@ const subtractPod = (a: IPod, b: IPod, reduceResult = false): IPod => {
 	return reduceResult ? reduce(result) : result;
 }
 
-const addPodList = (a: IPod, B: IPodList): IPodList => {
+const addPodList = (a: IPod, B: IPod[]): IPod[] => {
 	const newValue = B.map((b) => addPod(a, b));
 	return newValue;
 };
