@@ -35,6 +35,7 @@ const StyledDot = styled.div`
 		position: absolute;
 		bottom: 100%;
 		width: 100%;
+		text-align: center;
 	}
 `;
 

@@ -8,11 +8,11 @@ import SwitchInput from "../inputs/SwitchInput";
 
 const StyledPanelHeader = styled.section`
 	width: 100%;
+	padding: 16px;
 
-	${({ $showBorder }) => $showBorder ? 'border-bottom: 1px solid #ccc; padding: 16px 0;' : 'padding: 16px 0 0;'}
-
-	>:nth-child(2) {
-		${({ $showBorder }) => !$showBorder ? 'margin-top: 8px;' : ''}
+	${({ $showBorder }) => $showBorder ?
+		'border-bottom: 1px solid #ccc;' :
+		''
 	}
 
 	& .button-container {

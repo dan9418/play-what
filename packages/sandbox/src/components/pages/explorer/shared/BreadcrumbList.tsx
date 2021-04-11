@@ -12,9 +12,10 @@ import { fullPathState } from "../../../../state/pathState";
 const StyledWrapper = styled.div`
 	position: sticky;
     top: 32px;
-	z-index: 100;
+	z-index: 101;
 	border-bottom: 1px solid #ccc;
 
+	padding-left: 16px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -55,7 +56,7 @@ const StyledWrapper = styled.div`
 const StyledBreadcrumbList = styled.ul`
 	display: flex;
 	flex-wrap: wrap;
-	
+
 	list-style-type: none;
 	color: #555;
 	white-space: nowrap;
@@ -105,6 +106,7 @@ const BreadcrumbList = () => {
 				{!isMobile && fullPath.map((b, i) => {
 					const className = i + 1 === fullPath.length ? 'active' : '';
 					const onClick = () => popAt(i - 1);
+					const isLast = i === fullPath.length - 1;
 					return (
 						<React.Fragment key={i}>
 							<li>
@@ -112,9 +114,11 @@ const BreadcrumbList = () => {
 									{b.data.name}
 								</button>
 							</li>
-							<li>
-								<Icon iconId="next" size={8} />
-							</li>
+							{!isLast && (
+								<li>
+									<Icon iconId="next" size={8} />
+								</li>
+							)}
 						</React.Fragment>
 					);
 				})}

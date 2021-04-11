@@ -2,7 +2,7 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.colorTheme": "Default Light+",
     "typescript.suggest.enabled": true,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
