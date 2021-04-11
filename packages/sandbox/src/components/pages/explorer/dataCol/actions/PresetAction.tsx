@@ -1,4 +1,4 @@
-import { MODEL, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { MODEL, ModelId } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -22,7 +22,7 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 
 	const siblingState = useRecoilValue(siblingsState) || { parent: null };
 	const { parent } = siblingState;
-	const parentModel = MODEL[parent ? parent.config.modelId : MODEL_ID.Group];
+	const parentModel = MODEL[parent ? parent.config.modelId : ModelId.Group];
 
 	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL[x].name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });

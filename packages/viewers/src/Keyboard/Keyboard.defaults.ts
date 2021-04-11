@@ -1,9 +1,9 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { ModelId } from '@pw/core/src/models/Model.constants';
 
 const DEFAULT_KEYBOARD_PROPS = {
 	keyRange: [-12, 12],
 	labelProps: {
-		modelId: MODEL_ID.Chord,
+		modelId: ModelId.Chord,
 		modelValue: [],
 		modelOptions: {}
 	}

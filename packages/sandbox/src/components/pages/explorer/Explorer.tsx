@@ -1,4 +1,4 @@
-import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { IModelDef, ModelId } from '@pw/core/src/models/Model.constants';
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';

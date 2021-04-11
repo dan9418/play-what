@@ -1,4 +1,4 @@
-import { IModelDef, MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { IModelDef, ModelId } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import { modalState } from '@pw/sandbox/src/state/dataState';
 import React from "react";
@@ -14,7 +14,7 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
     const root = modelOptions && modelOptions.modelRoot;
-    const isGroup = modelId === MODEL_ID.Group;
+    const isGroup = modelId === ModelId.Group;
 
     const actions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig, setModal);
 
@@ -27,7 +27,7 @@ const getColProps = (pathHead, setPathHeadConfig, setModal) => {
     }
 
     const title = root ? "Notes" : "Intervals";
-    const subtitle = root ? `Root = ${ModelUtils.getName(MODEL_ID.Note, root)}` : "Root = C4 (implicit)";
+    const subtitle = root ? `Root = ${ModelUtils.getName(ModelId.Note, root)}` : "Root = C4 (implicit)";
 
     return {
         title,

@@ -1,4 +1,4 @@
-import { MODEL, MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { MODEL, ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -92,7 +92,7 @@ const PanelHeader = () => {
 	const { name, preview } = pathHead.data;
 	const model = MODEL[modelId];
 
-	const isGroup = modelId === MODEL_ID.Group;
+	const isGroup = modelId === ModelId.Group;
 
 	return (
 		<StyledPanelHeader $showBorder={isGroup}>

@@ -1,4 +1,4 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { ModelId } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import { modalState } from '@pw/sandbox/src/state/dataState';
 import { fullPathState, pathHeadState } from '@pw/sandbox/src/state/pathState';
@@ -43,8 +43,8 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = nu
 
 		// Model helpers
 		const { modelId } = child.config;
-		const isGroup = modelId === MODEL_ID.Group;
-		const isPod = modelId === MODEL_ID.Note || modelId === MODEL_ID.Interval;
+		const isGroup = modelId === ModelId.Group;
+		const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
 
 		// Name, Caption, Preview
 		const { name, preview, caption } = child.data;
@@ -99,8 +99,8 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 	if (!metaChildren) return null;
 
 	const isLeaf = fullPath.length > 1 &&
-		(fullPath[fullPath.length - 2].config.modelId === MODEL_ID.Chord || fullPath[fullPath.length - 2].config.modelId === MODEL_ID.Scale) &&
-		(fullPath[fullPath.length - 1].config.modelId === MODEL_ID.Note || fullPath[fullPath.length - 1].config.modelId === MODEL_ID.Interval)
+		(fullPath[fullPath.length - 2].config.modelId === ModelId.Chord || fullPath[fullPath.length - 2].config.modelId === ModelId.Scale) &&
+		(fullPath[fullPath.length - 1].config.modelId === ModelId.Note || fullPath[fullPath.length - 1].config.modelId === ModelId.Interval)
 
 	return (
 		<StyledDataList>

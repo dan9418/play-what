@@ -1,4 +1,4 @@
-import { MODEL_ID } from '@pw/core/src/models/Model.constants';
+import { ModelId } from '@pw/core/src/models/Model.constants';
 import _ from 'lodash';
 import React from "react";
 import PresetAction from './PresetAction';
@@ -14,7 +14,7 @@ const RootAction = ({ pathHead, setPathHeadConfig }) => {
 
 	return (
 		<>
-			<PresetAction pathHead={pathHead} setPathHeadConfig={onSubmit} type={MODEL_ID.Note} />
+			<PresetAction pathHead={pathHead} setPathHeadConfig={onSubmit} type={ModelId.Note} />
 		</>
 	);
 };

@@ -1,4 +1,4 @@
-import { MODEL_ID } from "@pw/core/src/models/Model.constants";
+import { ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import StyledCard from "@pw/sandbox/src/components/ui/layout/StyledCard";
@@ -28,10 +28,10 @@ const Viewer = ({ modelConfig }) => {
 	const { modelId, modelValue, modelOptions } = modelConfig;
 	const { viewerId, viewerProps } = modelOptions || { viewerId: VIEWER.fretboard.id, viewerProps: {} };
 
-	const isBlank = modelId === MODEL_ID.Group;
+	const isBlank = modelId === ModelId.Group;
 
 	const labelProps = {
-		modelId: isBlank ? MODEL_ID.Chord : modelId,
+		modelId: isBlank ? ModelId.Chord : modelId,
 		modelValue: isBlank ? [] : modelValue,
 		modelOptions,
 		matchOctave

@@ -1,11 +1,11 @@
-import { MODEL_ID, IModelConfig } from "@pw/core/src/models/Model.constants";
+import { ModelId, IModelConfig } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import { SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Scale.constants";
 import { CHART_VALUES } from './charts';
 
 export const LIBRARY_PATH_ROOT: IModelConfig = {
-	modelId: MODEL_ID.Group,
+	modelId: ModelId.Group,
 	modelOptions: {
 		modelRoot: NOTE.D.value,
 		name: 'Library',
@@ -14,17 +14,17 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 	},
 	modelValue: [
 		{
-			modelId: MODEL_ID.Group,
+			modelId: ModelId.Group,
 			modelValue: CHART_VALUES,
 			modelOptions: {
 				name: 'Charts'
 			}
 		},
 		{
-			modelId: MODEL_ID.Group,
+			modelId: ModelId.Group,
 			modelValue: CHORD_VALUES.map(chord => (
 				{
-					modelId: MODEL_ID.Chord,
+					modelId: ModelId.Chord,
 					modelValue: chord.value,
 					modelOptions: {
 						name: chord.name
@@ -36,10 +36,10 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 			}
 		},
 		{
-			modelId: MODEL_ID.Group,
+			modelId: ModelId.Group,
 			modelValue: SCALE_VALUES.map(scale => (
 				{
-					modelId: MODEL_ID.Scale,
+					modelId: ModelId.Scale,
 					modelValue: scale.value,
 					modelOptions: {
 						name: scale.name
