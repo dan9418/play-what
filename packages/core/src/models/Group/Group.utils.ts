@@ -1,8 +1,8 @@
-import { CHORD } from '@pw/core/src/models/PodList/Chord/Chord.constants';
+import { CHORD_PRESET_MAP } from '@pw/core/src/models/PodList/Chord/Chord.constants';
 import { IModelConfig, ModelId } from './../Model.constants';
 import { IChartConfig } from './Group.charts';
 import { IModelPreset, IModelValue } from "../Model.constants";
-import { NOTE } from '../Pod/Note/Note.constants';
+import { NOTE_PRESET_MAP } from '../Pod/Note/Note.constants';
 
 const getGroupPresetFromChartConfig = (chartConfig: IChartConfig): IModelPreset<IModelValue> | null => {
 
@@ -16,10 +16,10 @@ const getGroupPresetFromChartConfig = (chartConfig: IChartConfig): IModelPreset<
                 return {
                     modelId: ModelId.Chord,
                     modelOptions: {
-                        root: NOTE[rootId].value,
+                        root: NOTE_PRESET_MAP[rootId].value,
                         t
                     },
-                    modelValue: CHORD[chordId].value
+                    modelValue: CHORD_PRESET_MAP[chordId].value
                 } as IModelConfig;
             })
         } as IModelConfig

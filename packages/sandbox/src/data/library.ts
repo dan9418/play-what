@@ -1,7 +1,7 @@
 import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import { GROUP_VALUES } from "@pw/core/src/models/Group/Group.constants";
 import { IModelConfig, IModelPreset, ModelId, IModelValue } from "@pw/core/src/models/Model.constants";
-import { NOTE, NOTE_VALUES } from "@pw/core/src/models/Pod/Note/Note.constants";
+import { NOTE_PRESET_MAP, NOTE_VALUES } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import { SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Scale.constants";
 
@@ -24,7 +24,7 @@ const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPres
 export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelId: ModelId.Group,
 	modelOptions: {
-		modelRoot: NOTE.D.value,
+		modelRoot: NOTE_PRESET_MAP.D.value,
 		name: 'Library',
 		viewerId: 'fretboard',
 		viewerProps: {}

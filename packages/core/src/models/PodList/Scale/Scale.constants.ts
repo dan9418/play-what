@@ -1,6 +1,6 @@
 import { IntervalId } from './../../Pod/Interval/Interval.constants';
 import { IPod, IModelPreset } from './../../Model.constants';
-import { INTERVAL } from "../../Pod/Interval/Interval.constants";
+import { INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
 
 export enum ScaleId {
 	Ionian = 'Ionian',
@@ -26,10 +26,10 @@ export enum ScaleId {
 const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[]) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL[id].value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP[id].value)
 });
 
-export const SCALE: { [x: string]: IModelPreset<IPod[]> } = {
+export const SCALE_PRESET_MAP: { [x: string]: IModelPreset<IPod[]> } = {
 	[ScaleId.Ionian]: formatPreset(ScaleId.Ionian, 'Ionian', [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.M7]),
 	[ScaleId.Dorian]: formatPreset(ScaleId.Dorian, 'Dorian', [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.m7]),
 	[ScaleId.Phrygian]: formatPreset(ScaleId.Phrygian, 'Phrygian', [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7]),
@@ -50,7 +50,7 @@ export const SCALE: { [x: string]: IModelPreset<IPod[]> } = {
 	//Chromatic: formatPreset(ScaleId.Chromatic, 'Chromatic', [IntervalId.P1, IntervalId.m2, IntervalId.M2, IntervalId.m3, IntervalId.M3, IntervalId.P4, IntervalId.A4, IntervalId.P5, IntervalId.m6, IntervalId.M6, IntervalId.m7, IntervalId.M7])
 };
 
-export const SCALE_VALUES = Object.values(SCALE);
+export const SCALE_VALUES = Object.values(SCALE_PRESET_MAP);
 
 export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',

@@ -28,7 +28,7 @@ export enum IntervalId {
 
 const formatPreset = (id: IntervalId, name: string, value: IPod) => ({ id, name, value });
 
-export const INTERVAL: { [x: string]: IModelPreset<IPod> } = {
+export const INTERVAL_PRESET_MAP: { [x: string]: IModelPreset<IPod> } = {
 	[IntervalId.P1]: formatPreset(
 		IntervalId.P1,
 		'Perfect Unison',
@@ -141,16 +141,16 @@ export const INTERVAL: { [x: string]: IModelPreset<IPod> } = {
 	)
 };
 
-export const INTERVAL_VALUES = Object.values(INTERVAL);
+export const INTERVAL_VALUES = Object.values(INTERVAL_PRESET_MAP);
 
 export const CORE_INTERVALS = [
-	[INTERVAL.P1],
-	[INTERVAL.m2, INTERVAL.M2],
-	[INTERVAL.m3, INTERVAL.M3],
-	[INTERVAL.P4],
-	[INTERVAL.P5],
-	[INTERVAL.m6, INTERVAL.M6],
-	[INTERVAL.m7, INTERVAL.M7]
+	[INTERVAL_PRESET_MAP.P1],
+	[INTERVAL_PRESET_MAP.m2, INTERVAL_PRESET_MAP.M2],
+	[INTERVAL_PRESET_MAP.m3, INTERVAL_PRESET_MAP.M3],
+	[INTERVAL_PRESET_MAP.P4],
+	[INTERVAL_PRESET_MAP.P5],
+	[INTERVAL_PRESET_MAP.m6, INTERVAL_PRESET_MAP.M6],
+	[INTERVAL_PRESET_MAP.m7, INTERVAL_PRESET_MAP.M7]
 ];
 
 export interface IIntervalQuality {

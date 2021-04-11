@@ -27,7 +27,7 @@ export enum NoteId {
 
 const formatPreset = (id: NoteId, name: string, value: IPod) => ({ id, name, value });
 
-export const NOTE: { [x: string]: IModelPreset<IPod> } = {
+export const NOTE_PRESET_MAP: { [x: string]: IModelPreset<IPod> } = {
 	[NoteId.C]: formatPreset(NoteId.C, 'C', [0, 0]),
 	[NoteId.Cs]: formatPreset(NoteId.Cs, 'C#', [1, 0]),
 	[NoteId.Db]: formatPreset(NoteId.Db, 'Db', [1, 1]),
@@ -51,7 +51,7 @@ export const NOTE: { [x: string]: IModelPreset<IPod> } = {
 	[NoteId.Cb]: formatPreset(NoteId.Cb, 'Cb', [11, 0])
 };
 
-export const NOTE_VALUES = Object.values(NOTE);
+export const NOTE_VALUES = Object.values(NOTE_PRESET_MAP);
 
 interface IAccidental {
 	id: string;

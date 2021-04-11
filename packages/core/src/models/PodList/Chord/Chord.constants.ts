@@ -1,6 +1,6 @@
 import { IntervalId } from './../../Pod/Interval/Interval.constants';
 import { IPod, IModelPreset } from './../../Model.constants';
-import { INTERVAL } from "../../Pod/Interval/Interval.constants";
+import { INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
 
 export enum ChordId {
 	MajTri = 'MajTri',
@@ -25,11 +25,11 @@ export enum ChordId {
 const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[]) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL[id].value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP[id].value)
 });
 
 
-export const CHORD: { [x: string]: IModelPreset<IPod[]> } = {
+export const CHORD_PRESET_MAP: { [x: string]: IModelPreset<IPod[]> } = {
 	[ChordId.MajTri]: formatPreset(ChordId.MajTri, 'Major Triad', [IntervalId.P1, IntervalId.M3, IntervalId.P5]),
 	[ChordId.Maj6]: formatPreset(ChordId.Maj6, 'Major 6th', [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M6]),
 	[ChordId.Maj7]: formatPreset(ChordId.Maj7, 'Major 7th', [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7]),
@@ -49,10 +49,10 @@ export const CHORD: { [x: string]: IModelPreset<IPod[]> } = {
 	[ChordId.Sus4]: formatPreset(ChordId.Sus4, 'Suspended 4th', [IntervalId.P1, IntervalId.P4, IntervalId.P5])
 };
 
-export const CHORD_VALUES = Object.values(CHORD);
+export const CHORD_VALUES = Object.values(CHORD_PRESET_MAP);
 
 export const NUMERAL: { [x: string]: IModelPreset<IPod[]> } = {
-	I: { id: 'I', name: 'I', value: [INTERVAL.P1.value, INTERVAL.M3.value, INTERVAL.P5.value] }
+	I: { id: 'I', name: 'I', value: [INTERVAL_PRESET_MAP.P1.value, INTERVAL_PRESET_MAP.M3.value, INTERVAL_PRESET_MAP.P5.value] }
 };
 
 export const DEFAULT_CHORD_OPTIONS = {

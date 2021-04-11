@@ -1,13 +1,13 @@
 /*import Pod from '../pod/Pod';
 import utils from '../../Core.utils';
-import { INTERVAL } from '../pod/Interval';
+import { INTERVAL_PRESET_MAP } from '../pod/Interval';
 import PodList from './PodList';
 
 class Chord extends PodList {
 	static getInversion({ A, n }) {
 		let result = [...A];
 		result = utils.rotate(result, n);
-		const octave = INTERVAL.P8.value;
+		const octave = INTERVAL_PRESET_MAP.P8.value;
 		for (let i = 1; i <= n; i++) {
 			const index = result.length - i;
 			const a = result[index];

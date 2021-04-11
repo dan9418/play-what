@@ -1,4 +1,4 @@
-// import { INTERVAL } from '../pod/Interval';
+// import { INTERVAL_PRESET_MAP } from '../pod/Interval';
 // import index from '../index/PodIndex';
 // import chord from './Chord';
 // import PodList from './PodList';
@@ -59,7 +59,7 @@
 
 // }
 
-// Scale.preset = SCALE;
+// Scale.preset = SCALE_PRESET_MAP;
 // Scale.presetValues = SCALE_VALUES;
 
 // export default Scale;
