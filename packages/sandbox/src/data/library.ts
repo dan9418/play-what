@@ -1,8 +1,8 @@
-import { ModelId, IModelConfig } from "@pw/core/src/models/Model.constants";
+import { GROUP_VALUES } from "@pw/core/src/models/Group/Group.constants";
+import { IModelConfig, ModelId } from "@pw/core/src/models/Model.constants";
 import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import { SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Scale.constants";
-import { CHART_VALUES } from './charts';
 
 export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelId: ModelId.Group,
@@ -15,7 +15,15 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelValue: [
 		{
 			modelId: ModelId.Group,
-			modelValue: CHART_VALUES,
+			modelValue: GROUP_VALUES.map(group => (
+				{
+					modelId: ModelId.Group,
+					modelValue: group.value,
+					modelOptions: {
+						name: group.name
+					}
+				}
+			)),
 			modelOptions: {
 				name: 'Charts'
 			}
