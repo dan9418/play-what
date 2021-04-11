@@ -1,7 +1,7 @@
 import { IModelPreset } from './../../Model.constants';
 import { IPod } from "../../Model.constants";
 
-enum IntervalId {
+export enum IntervalId {
 	P1 = 'P1',
 	m2 = 'm2',
 	M2 = 'M2',
