@@ -51,7 +51,7 @@ export const NOTE_PRESET_MAP = new Map<NoteId, IModelPreset<IPod>>([
 	[NoteId.Cb, formatPreset(NoteId.Cb, 'Cb', [11, 0])]
 ]);
 
-export const NOTE_PRESETS = Object.values(NOTE_PRESET_MAP);
+export const NOTE_PRESETS = Array.from(NOTE_PRESET_MAP).map(([k, v]) => v);
 
 interface IAccidental {
 	id: string;

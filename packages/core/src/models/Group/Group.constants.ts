@@ -10,4 +10,4 @@ export const GROUP_MAP = new Map<GroupId, IModelPreset<IModelValue>>([
 	[GroupId.AllOfMe, GroupUtils.getGroupPresetFromChartConfig(CHART.ALL_OF_ME_CONFIG)]
 ]);
 
-export const GROUP_PRESETS = Object.values(GROUP_MAP);
+export const GROUP_PRESETS = Array.from(GROUP_MAP).map(([k, v]) => v);

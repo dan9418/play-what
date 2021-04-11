@@ -25,7 +25,7 @@ export enum ChordId {
 const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[]) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL_PRESET_MAP[id].value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value)
 });
 
 
@@ -49,7 +49,7 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelPreset<IPod[]>>([
 	[ChordId.Sus4, formatPreset(ChordId.Sus4, 'Suspended 4th', [IntervalId.P1, IntervalId.P4, IntervalId.P5])]
 ]);
 
-export const CHORD_PRESETS = Object.values(CHORD_PRESET_MAP);
+export const CHORD_PRESETS = Array.from(CHORD_PRESET_MAP).map(([k, v]) => v);
 
 export const DEFAULT_CHORD_OPTIONS = {
 	displayName: 'chord',

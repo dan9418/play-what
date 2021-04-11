@@ -141,7 +141,7 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelPreset<IPod>>([
 	)]
 ]);
 
-export const INTERVAL_PRESETS = Object.values(INTERVAL_PRESET_MAP);
+export const INTERVAL_PRESETS = Array.from(INTERVAL_PRESET_MAP).map(([k, v]) => v);
 
 export const CORE_INTERVALS = [
 	[INTERVAL_PRESET_MAP.get(IntervalId.P1)],

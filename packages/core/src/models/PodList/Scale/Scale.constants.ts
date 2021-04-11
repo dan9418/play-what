@@ -26,7 +26,7 @@ export enum ScaleId {
 const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[]) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL_PRESET_MAP[id].value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value)
 });
 
 export const SCALE_PRESET_MAP = new Map<ScaleId, IModelPreset<IPod[]>>([
@@ -49,7 +49,7 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelPreset<IPod[]>>([
 	[ScaleId.MinorBlues, formatPreset(ScaleId.MinorBlues, 'Minor Blues', [IntervalId.P1, IntervalId.m3, IntervalId.P4, IntervalId.d5, IntervalId.P5, IntervalId.m7])]
 ]);
 
-export const SCALE_PRESETS = Object.values(SCALE_PRESET_MAP);
+export const SCALE_PRESETS = Array.from(SCALE_PRESET_MAP).map(([k, v]) => v);
 
 export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',
