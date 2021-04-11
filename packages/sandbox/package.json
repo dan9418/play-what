@@ -21,5 +21,15 @@
       "babel-plugin-styled-components",
       "react-hot-loader/babel"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.13.13",
+    "@hot-loader/react-dom": "^17.0.1",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
+    "babel-plugin-styled-components": "^1.12.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
