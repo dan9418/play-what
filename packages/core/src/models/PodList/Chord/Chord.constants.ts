@@ -51,10 +51,6 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelPreset<IPod[]>>([
 
 export const CHORD_PRESETS = Object.values(CHORD_PRESET_MAP);
 
-export const NUMERAL: { [x: string]: IModelPreset<IPod[]> } = {
-	I: { id: 'I', name: 'I', value: [INTERVAL_PRESET_MAP.P1.value, INTERVAL_PRESET_MAP.M3.value, INTERVAL_PRESET_MAP.P5.value] }
-};
-
 export const DEFAULT_CHORD_OPTIONS = {
 	displayName: 'chord',
 	intervalDisplayName: 'interval'
