@@ -1,8 +1,13 @@
 import { CHORD_PRESET_MAP } from '@pw/core/src/models/PodList/Chord/Chord.constants';
-import { IModelConfig, ModelId } from './../Model.constants';
 import { IChartConfig } from './Group.charts';
-import { IModelPreset, IModelValue } from "../Model.constants";
+import { IModelPreset, IModelValue, IModelConfig } from "../Model.constants";
 import { NOTE_PRESET_MAP } from '../Pod/Note/Note.constants';
+
+// TODO Circular dependency
+const ModelId = {
+    Group: 'group',
+    Chord: 'chord'
+}
 
 const getGroupPresetFromChartConfig = (chartConfig: IChartConfig): IModelPreset<IModelValue> | null => {
 

@@ -1,21 +1,13 @@
 import { GROUP_PRESETS } from '@pw/core/src/models/Group/Group.constants';
-import GroupUtils from './Group/Group.utils';
 import { INTERVAL_PRESETS } from './Pod/Interval/Interval.constants';
-import IntervalUtils from './Pod/Interval/Interval.utils';
 import { NOTE_PRESETS } from './Pod/Note/Note.constants';
-import NoteUtils from './Pod/Note/Note.utils';
 import { CHORD_PRESETS } from './PodList/Chord/Chord.constants';
-import ChordUtils from './PodList/Chord/Chord.utils';
 import { SCALE_PRESETS } from './PodList/Scale/Scale.constants';
-import ScaleUtils from './PodList/Scale/Scale.utils';
 
 export enum ModelId {
-	// Group
 	Group = 'group',
-	// Pod
 	Note = 'note',
 	Interval = 'interval',
-	// Pod[]
 	Chord = 'chord',
 	Scale = 'scale'
 }
@@ -23,7 +15,6 @@ export enum ModelId {
 export interface IModelAttrs {
 	name: string;
 	modelId: ModelId;
-	utils: any;
 	presets: any[];
 	validChildren: any[];
 }
@@ -32,7 +23,6 @@ export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
 	[ModelId.Group, {
 		name: 'Group',
 		modelId: ModelId.Group,
-		utils: GroupUtils,
 		presets: GROUP_PRESETS,
 		validChildren: [
 			ModelId.Group,
@@ -45,28 +35,24 @@ export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
 	[ModelId.Note, {
 		name: 'Note',
 		modelId: ModelId.Note,
-		utils: NoteUtils,
 		presets: NOTE_PRESETS,
 		validChildren: []
 	}],
 	[ModelId.Interval, {
 		name: 'Interval',
 		modelId: ModelId.Interval,
-		utils: IntervalUtils,
 		presets: INTERVAL_PRESETS,
 		validChildren: []
 	}],
 	[ModelId.Chord, {
 		name: 'Chord',
 		modelId: ModelId.Chord,
-		utils: ChordUtils,
 		presets: CHORD_PRESETS,
 		validChildren: [ModelId.Interval]
 	}],
 	[ModelId.Scale, {
 		name: 'Scale',
 		modelId: ModelId.Scale,
-		utils: ScaleUtils,
 		presets: SCALE_PRESETS,
 		validChildren: [ModelId.Interval]
 	}]
