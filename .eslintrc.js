@@ -37,7 +37,8 @@ module.exports = {
     'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
     "import/extensions": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "@typescript-eslint/no-explicit-any":"off"
+    "@typescript-eslint/no-explicit-any":"off",
+    "@typescript-eslint/no-unused-vars":"off"
   },
   settings: {
     "import/resolver": {

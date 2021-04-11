@@ -79,10 +79,6 @@ export const MODEL_VALUES = Object.values(MODEL);
 export type IGroup<T> = T[];
 
 export type IPod = [number, number];
-
-// @ts-ignore
-export type IModel = IPod | IPod[] | IGroup<IPod | IPod[] | IModel>;
-
 export interface IProjection {
 	podList: IPod[];
 }
@@ -99,20 +95,27 @@ export interface IModelOptions {
 
 export interface IModelConfig {
 	modelId: string;
-	modelValue: IModel;
+	modelValue: IPod | IPod[] | IModelConfig[];
 	modelOptions?: IModelOptions
 }
+
+// @ts-ignore
+export type IModelValue = IPod | IPod[] | IModelConfig[];
 
 export interface IModelData {
 	pathId: number;
 	name: string;
 	caption: string;
 	preview: string;
-	modelRoot: IModel;
+	modelRoot: IPod;
 	projection: IProjection;
 }
 
 export interface IModelDef {
 	config: IModelConfig;
 	data: IModelData;
+}
+
+export interface IModelNode extends IModelDef {
+	metaChildren: IModelDef[];
 }

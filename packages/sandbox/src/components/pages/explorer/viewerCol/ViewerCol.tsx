@@ -6,6 +6,7 @@ import Col from '../../../ui/layout/Col';
 import VIEWER_ACTIONS, { VIEWER } from './../viewerCol/actions/viewerActions';
 import Viewer from './../viewerCol/Viewer';
 import getActions from "../shared/getActions";
+import { IModelNode } from "core/src/models/Model.constants";
 
 interface IViewerColProps {
     editId: string | null,
@@ -13,7 +14,7 @@ interface IViewerColProps {
 }
 
 const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
-    const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+    const [pathHead, setPathHeadConfig] = useRecoilState<IModelNode>(pathHeadState);
     const setModal = useSetRecoilState(modalState);
 
     const { modelOptions } = pathHead.config;

@@ -1,6 +1,6 @@
 import ModelUtils from "@pw/core/src/models/Model.utils";
-import { atom, RecoilState, selector } from "recoil";
-import { IModelDef, IModelConfig, IModelData } from './../../../core/src/models/Model.constants';
+import { atom, RecoilState, RecoilValue, RecoilValueReadOnly, selector } from "recoil";
+import { IModelDef, IModelConfig, IModelData, IModelNode } from './../../../core/src/models/Model.constants';
 import { dataState } from "./dataState";
 import _ from 'lodash';
 
@@ -14,11 +14,7 @@ export const matchOctaveState: RecoilState<boolean> = atom({
 	default: true
 });
 
-interface IPathNode {
-
-}
-
-const getNodeFromConfig = (config, i = 0) => {
+const getNodeFromConfig = (config, i = 0): IModelNode => {
 	const data = ModelUtils.getData(config, i);
 	const metaChildren = ModelUtils.getMetaChildren(config);
 
@@ -31,7 +27,7 @@ const getNodeFromConfig = (config, i = 0) => {
 	return node;
 };
 
-export const fullPathState: RecoilState<boolean> = selector({
+export const fullPathState: RecoilValueReadOnly<IModelNode[]> = selector({
 	key: 'fullPathState',
 	get: ({ get }) => {
 		const path: number[] = get(pathState);
@@ -52,7 +48,7 @@ export const fullPathState: RecoilState<boolean> = selector({
 	}
 });
 
-export const pathHeadState: RecoilState<boolean> = selector({
+export const pathHeadState: RecoilState<IModelNode> = selector({
 	key: 'pathHeadState',
 	get: ({ get }): IModelDef => {
 		const nodes: any[] = get(fullPathState);
@@ -80,7 +76,13 @@ export const pathHeadState: RecoilState<boolean> = selector({
 	}
 });
 
-export const siblingsState: RecoilState<boolean> = selector({
+interface ISiblingsState {
+	prev: IModelDef | null,
+	next: IModelDef | null,
+	parent: IModelDef | null
+}
+
+export const siblingsState: RecoilValueReadOnly<ISiblingsState | null> = selector({
 	key: 'siblingsState',
 	get: ({ get }) => {
 		const fullPath = get(fullPathState);
