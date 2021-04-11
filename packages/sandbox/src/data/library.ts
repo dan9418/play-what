@@ -1,8 +1,25 @@
+import { INTERVAL_VALUES } from '@pw/core/src/models/Pod/Interval/Interval.constants';
 import { GROUP_VALUES } from "@pw/core/src/models/Group/Group.constants";
-import { IModelConfig, ModelId } from "@pw/core/src/models/Model.constants";
-import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
+import { IModelConfig, IModelPreset, ModelId, IModelValue } from "@pw/core/src/models/Model.constants";
+import { NOTE, NOTE_VALUES } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_VALUES } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import { SCALE_VALUES } from "@pw/core/src/models/PodList/Scale/Scale.constants";
+
+const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPreset<T>[], dataType: ModelId): IModelConfig => {
+	return {
+		modelId: ModelId.Group,
+		modelOptions: { name },
+		modelValue: data.map(d => (
+			{
+				modelId: dataType,
+				modelValue: d.value,
+				modelOptions: {
+					name: d.name
+				}
+			}
+		))
+	}
+}
 
 export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelId: ModelId.Group,
@@ -13,51 +30,11 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 		viewerProps: {}
 	},
 	modelValue: [
-		{
-			modelId: ModelId.Group,
-			modelValue: GROUP_VALUES.map(group => (
-				{
-					modelId: ModelId.Group,
-					modelValue: group.value,
-					modelOptions: {
-						name: group.name
-					}
-				}
-			)),
-			modelOptions: {
-				name: 'Charts'
-			}
-		},
-		{
-			modelId: ModelId.Group,
-			modelValue: CHORD_VALUES.map(chord => (
-				{
-					modelId: ModelId.Chord,
-					modelValue: chord.value,
-					modelOptions: {
-						name: chord.name
-					}
-				}
-			)),
-			modelOptions: {
-				name: 'Chords'
-			}
-		},
-		{
-			modelId: ModelId.Group,
-			modelValue: SCALE_VALUES.map(scale => (
-				{
-					modelId: ModelId.Scale,
-					modelValue: scale.value,
-					modelOptions: {
-						name: scale.name
-					}
-				}
-			)),
-			modelOptions: {
-				name: 'Scales & Modes'
-			}
-		}
+		formatPresetGroup('Chords', CHORD_VALUES, ModelId.Chord),
+		formatPresetGroup('Scales', SCALE_VALUES, ModelId.Scale),
+		formatPresetGroup('Charts', GROUP_VALUES, ModelId.Group),
+		formatPresetGroup('Notes', NOTE_VALUES, ModelId.Note),
+		formatPresetGroup('Intervals', INTERVAL_VALUES, ModelId.Interval)
 	]
 };
 
