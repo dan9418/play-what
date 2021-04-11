@@ -1,26 +1,25 @@
+import { IPreset } from './../models/Model.constants';
 export const MAX_PITCH = 12;
-export interface IPitch {
-	id: string;
-	name: string;
-	value: number
+
+export enum PitchId {
+	MiddleC = 'MiddleC',
+	Midi = 'Midi'
 }
 
-export const PITCH: { [x: string]: IPitch } = {
-	middleC: {
-		id: 'middleC',
+export const PITCH_PRESET_MAP = new Map<PitchId, IPreset<number>>([
+	[PitchId.MiddleC, {
+		id: PitchId.MiddleC,
 		name: 'Middle C',
 		value: 0
-	},
-	midi: {
-		id: 'midi',
+	}],
+	[PitchId.Midi, {
+		id: PitchId.Midi,
 		name: 'MIDI',
 		value: 60
-	}
-};
+	}]
+]);
 
-export const ROOT_PITCH = PITCH.middleC.value;
-
-export const PITCH_VALUES = Object.values(PITCH);
+export const ROOT_PITCH = PITCH_PRESET_MAP.get(PitchId.MiddleC).value;
 
 export const DEFAULT_PITCH_COLOR_SCHEME = [
 	'#ED1C24',

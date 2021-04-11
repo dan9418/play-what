@@ -1,5 +1,5 @@
 import { IModelDef } from '@pw/core/src/models/Model.constants';
-import { DEGREE_VALUES } from "../theory/Degree.constants";
+import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import { IPod, IModelConfig, IModelData, IModelOptions, IModelValue, MODEL_MAP, ModelId } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
@@ -17,7 +17,7 @@ const getNoteName = (modelValue: IPod) => {
 	const d = reducedValue[1];
 	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
-	const spelling = DEGREE_VALUES[d].name;
+	const spelling = DEGREE_PRESETS[d].name;
 	const octave = PodUtils.getOctave(modelValue, true);
 	return `${spelling}${accidental}${octave}`;
 }

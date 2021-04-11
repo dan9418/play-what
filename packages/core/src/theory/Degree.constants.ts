@@ -1,51 +1,58 @@
+import { IPreset } from "../models/Model.constants"
+
 export const MAX_DEGREE = 7
-export interface IDegree {
-	id: string;
-	name: string;
-	value: number
+
+export enum DegreeId {
+	C = 'C',
+	D = 'D',
+	E = 'E',
+	F = 'F',
+	G = 'G',
+	A = 'A',
+	B = 'B',
 }
 
-export const DEGREE: { [x: string]: IDegree } = {
-	C: {
-		id: 'C',
+export const DEGREE_PRESET_MAP = new Map<DegreeId, IPreset<number>>([
+	[DegreeId.C, {
+		id: DegreeId.C,
 		name: 'C',
 		value: 0
-	},
-	D: {
-		id: 'D',
+	}],
+	[DegreeId.D, {
+		id: DegreeId.D,
 		name: 'D',
 		value: 1
-	},
-	E: {
-		id: 'E',
+	}],
+	[DegreeId.E, {
+		id: DegreeId.E,
 		name: 'E',
 		value: 2
-	},
-	F: {
-		id: 'F',
+	}],
+	[DegreeId.F, {
+		id: DegreeId.F,
 		name: 'F',
 		value: 3
-	},
-	G: {
-		id: 'G',
+	}],
+	[DegreeId.G, {
+		id: DegreeId.G,
 		name: 'G',
 		value: 4
-	},
-	A: {
-		id: 'A',
+	}],
+	[DegreeId.A, {
+		id: DegreeId.A,
 		name: 'A',
 		value: 5
-	},
-	B: {
-		id: 'B',
+	}],
+	[DegreeId.B, {
+		id: DegreeId.B,
 		name: 'B',
 		value: 6
-	}
-};
+	}]
+]);
 
-export const ROOT_DEGREE = DEGREE.C.value;
+export const ROOT_DEGREE = DEGREE_PRESET_MAP.get(DegreeId.C).value;
 
-export const DEGREE_VALUES = Object.values(DEGREE);
+export const DEGREE_PRESETS = Array.from(DEGREE_PRESET_MAP).map(([k, v]) => v);
 
 export const DEFAULT_DEGREE_COLOR_SCHEME = [
 	'#E6194B',

@@ -103,6 +103,12 @@ export interface IModelDef {
 export interface IModelNode extends IModelDef {
 	metaChildren: IModelDef[];
 }
+
+export interface IPreset<T> {
+	id: string;
+	name: string;
+	value: T
+}
 export interface IModelPreset<T extends IModelValue> {
 	id: string;
 	name: string;
