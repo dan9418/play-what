@@ -1,117 +1,144 @@
 import { IModelPreset } from './../../Model.constants';
 import { IPod } from "../../Model.constants";
 
+enum IntervalId {
+	P1 = 'P1',
+	m2 = 'm2',
+	M2 = 'M2',
+	A2 = 'A2',
+	d3 = 'd3',
+	m3 = 'm3',
+	M3 = 'M3',
+	A3 = 'A3',
+	d4 = 'd4',
+	P4 = 'P4',
+	A4 = 'A4',
+	d5 = 'd5',
+	P5 = 'P5',
+	A5 = 'A5',
+	d6 = 'd6',
+	m6 = 'm6',
+	M6 = 'M6',
+	A6 = 'A6',
+	d7 = 'd7',
+	m7 = 'm7',
+	M7 = 'M7',
+	P8 = 'P8'
+}
+
+const formatPreset = (id: IntervalId, name: string, value: IPod) => ({ id, name, value });
+
 export const INTERVAL: { [x: string]: IModelPreset<IPod> } = {
-	P1: {
-		id: 'P1',
-		name: 'Perfect Unison',
-		value: [0, 0]
-	},
-	m2: {
-		id: 'm2',
-		name: 'Minor 2nd',
-		value: [1, 1]
-	},
-	M2: {
-		id: 'M2',
-		name: 'Major 2nd',
-		value: [2, 1]
-	},
-	A2: {
-		id: 'A2',
-		name: 'Augmented 2nd',
-		value: [3, 1]
-	},
-	d3: {
-		id: 'd3',
-		name: 'Diminished 3rd',
-		value: [2, 2]
-	},
-	m3: {
-		id: 'm3',
-		name: 'Minor 3rd',
-		value: [3, 2]
-	},
-	M3: {
-		id: 'M3',
-		name: 'Major 3rd',
-		value: [4, 2]
-	},
-	A3: {
-		id: 'A3',
-		name: 'Augmented 3rd',
-		value: [5, 2]
-	},
-	d4: {
-		id: 'd4',
-		name: 'Diminished 4th',
-		value: [4, 3]
-	},
-	P4: {
-		id: 'P4',
-		name: 'Perfect 4th',
-		value: [5, 3]
-	},
-	A4: {
-		id: 'A4',
-		name: 'Augmented 4th',
-		value: [6, 3]
-	},
-	d5: {
-		id: 'd5',
-		name: 'Diminished 5th',
-		value: [6, 4]
-	},
-	P5: {
-		id: 'P5',
-		name: 'Perfect 5th',
-		value: [7, 4]
-	},
-	A5: {
-		id: 'A5',
-		name: 'Augmented 5th',
-		value: [8, 4]
-	},
-	d6: {
-		id: 'd6',
-		name: 'Diminished 6th',
-		value: [7, 5]
-	},
-	m6: {
-		id: 'm6',
-		name: 'Minor 6th',
-		value: [8, 5]
-	},
-	M6: {
-		id: 'M6',
-		name: 'Major 6th',
-		value: [9, 5]
-	},
-	A6: {
-		id: 'A6',
-		name: 'Augmented 6th',
-		value: [10, 5]
-	},
-	d7: {
-		id: 'd7',
-		name: 'Diminished 7th',
-		value: [9, 6]
-	},
-	m7: {
-		id: 'm7',
-		name: 'Minor 7th',
-		value: [10, 6]
-	},
-	M7: {
-		id: 'M7',
-		name: 'Major 7th',
-		value: [11, 6]
-	},
-	P8: {
-		id: 'P8',
-		name: 'Octave',
-		value: [12, 7]
-	}
+	[IntervalId.P1]: formatPreset(
+		IntervalId.P1,
+		'Perfect Unison',
+		[0, 0]
+	),
+	[IntervalId.m2]: formatPreset(
+		IntervalId.m2,
+		'Minor 2nd',
+		[1, 1]
+	),
+	[IntervalId.M2]: formatPreset(
+		IntervalId.M2,
+		'Major 2nd',
+		[2, 1]
+	),
+	[IntervalId.A2]: formatPreset(
+		IntervalId.A2,
+		'Augmented 2nd',
+		[3, 1]
+	),
+	[IntervalId.d3]: formatPreset(
+		IntervalId.d3,
+		'Diminished 3rd',
+		[2, 2]
+	),
+	[IntervalId.m3]: formatPreset(
+		IntervalId.m3,
+		'Minor 3rd',
+		[3, 2]
+	),
+	[IntervalId.M3]: formatPreset(
+		IntervalId.M3,
+		'Major 3rd',
+		[4, 2]
+	),
+	[IntervalId.A3]: formatPreset(
+		IntervalId.A3,
+		'Augmented 3rd',
+		[5, 2]
+	),
+	[IntervalId.d4]: formatPreset(
+		IntervalId.d4,
+		'Diminished 4th',
+		[4, 3]
+	),
+	[IntervalId.P4]: formatPreset(
+		IntervalId.P4,
+		'Perfect 4th',
+		[5, 3]
+	),
+	[IntervalId.A4]: formatPreset(
+		IntervalId.A4,
+		'Augmented 4th',
+		[6, 3]
+	),
+	[IntervalId.d5]: formatPreset(
+		IntervalId.d5,
+		'Diminished 5th',
+		[6, 4]
+	),
+	[IntervalId.P5]: formatPreset(
+		IntervalId.P5,
+		'Perfect 5th',
+		[7, 4]
+	),
+	[IntervalId.A5]: formatPreset(
+		IntervalId.A5,
+		'Augmented 5th',
+		[8, 4]
+	),
+	[IntervalId.d6]: formatPreset(
+		IntervalId.d6,
+		'Diminished 6th',
+		[7, 5]
+	),
+	[IntervalId.m6]: formatPreset(
+		IntervalId.m6,
+		'Minor 6th',
+		[8, 5]
+	),
+	[IntervalId.M6]: formatPreset(
+		IntervalId.M6,
+		'Major 6th',
+		[9, 5]
+	),
+	[IntervalId.A6]: formatPreset(
+		IntervalId.A6,
+		'Augmented 6th',
+		[10, 5]
+	),
+	[IntervalId.d7]: formatPreset(
+		IntervalId.d7,
+		'Diminished 7th',
+		[9, 6]
+	),
+	[IntervalId.m7]: formatPreset(
+		IntervalId.m7,
+		'Minor 7th',
+		[10, 6]
+	),
+	[IntervalId.M7]: formatPreset(
+		IntervalId.M7,
+		'Major 7th',
+		[11, 6]
+	),
+	[IntervalId.P8]: formatPreset(
+		IntervalId.P8,
+		'Octave',
+		[12, 7]
+	)
 };
 
 export const INTERVAL_VALUES = Object.values(INTERVAL);
