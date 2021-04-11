@@ -27,29 +27,29 @@ export enum NoteId {
 
 const formatPreset = (id: NoteId, name: string, value: IPod) => ({ id, name, value });
 
-export const NOTE_PRESET_MAP: { [x: string]: IModelPreset<IPod> } = {
-	[NoteId.C]: formatPreset(NoteId.C, 'C', [0, 0]),
-	[NoteId.Cs]: formatPreset(NoteId.Cs, 'C#', [1, 0]),
-	[NoteId.Db]: formatPreset(NoteId.Db, 'Db', [1, 1]),
-	[NoteId.D]: formatPreset(NoteId.D, 'D', [2, 1]),
-	[NoteId.Ds]: formatPreset(NoteId.Ds, 'D#', [3, 1]),
-	[NoteId.Eb]: formatPreset(NoteId.Eb, 'Eb', [3, 2]),
-	[NoteId.E]: formatPreset(NoteId.E, 'E', [4, 2]),
-	[NoteId.Es]: formatPreset(NoteId.Es, 'E#', [5, 2]),
-	[NoteId.Fb]: formatPreset(NoteId.Fb, 'Fb', [4, 3]),
-	[NoteId.F]: formatPreset(NoteId.F, 'F', [5, 3]),
-	[NoteId.Fs]: formatPreset(NoteId.Fs, 'F#', [6, 3]),
-	[NoteId.Gb]: formatPreset(NoteId.Gb, 'Gb', [6, 4]),
-	[NoteId.G]: formatPreset(NoteId.G, 'G', [7, 4]),
-	[NoteId.Gs]: formatPreset(NoteId.Gs, 'G#', [8, 4]),
-	[NoteId.Ab]: formatPreset(NoteId.Ab, 'Ab', [8, 5]),
-	[NoteId.A]: formatPreset(NoteId.A, 'A', [9, 5]),
-	[NoteId.As]: formatPreset(NoteId.As, 'A#', [10, 5]),
-	[NoteId.Bb]: formatPreset(NoteId.Bb, 'Bb', [10, 6]),
-	[NoteId.B]: formatPreset(NoteId.B, 'B', [11, 6]),
-	[NoteId.Bs]: formatPreset(NoteId.Bs, 'B#', [0, 6]),
-	[NoteId.Cb]: formatPreset(NoteId.Cb, 'Cb', [11, 0])
-};
+export const NOTE_PRESET_MAP = new Map<NoteId, IModelPreset<IPod>>([
+	[NoteId.C, formatPreset(NoteId.C, 'C', [0, 0])],
+	[NoteId.Cs, formatPreset(NoteId.Cs, 'C#', [1, 0])],
+	[NoteId.Db, formatPreset(NoteId.Db, 'Db', [1, 1])],
+	[NoteId.D, formatPreset(NoteId.D, 'D', [2, 1])],
+	[NoteId.Ds, formatPreset(NoteId.Ds, 'D#', [3, 1])],
+	[NoteId.Eb, formatPreset(NoteId.Eb, 'Eb', [3, 2])],
+	[NoteId.E, formatPreset(NoteId.E, 'E', [4, 2])],
+	[NoteId.Es, formatPreset(NoteId.Es, 'E#', [5, 2])],
+	[NoteId.Fb, formatPreset(NoteId.Fb, 'Fb', [4, 3])],
+	[NoteId.F, formatPreset(NoteId.F, 'F', [5, 3])],
+	[NoteId.Fs, formatPreset(NoteId.Fs, 'F#', [6, 3])],
+	[NoteId.Gb, formatPreset(NoteId.Gb, 'Gb', [6, 4])],
+	[NoteId.G, formatPreset(NoteId.G, 'G', [7, 4])],
+	[NoteId.Gs, formatPreset(NoteId.Gs, 'G#', [8, 4])],
+	[NoteId.Ab, formatPreset(NoteId.Ab, 'Ab', [8, 5])],
+	[NoteId.A, formatPreset(NoteId.A, 'A', [9, 5])],
+	[NoteId.As, formatPreset(NoteId.As, 'A#', [10, 5])],
+	[NoteId.Bb, formatPreset(NoteId.Bb, 'Bb', [10, 6])],
+	[NoteId.B, formatPreset(NoteId.B, 'B', [11, 6])],
+	[NoteId.Bs, formatPreset(NoteId.Bs, 'B#', [0, 6])],
+	[NoteId.Cb, formatPreset(NoteId.Cb, 'Cb', [11, 0])]
+]);
 
 export const NOTE_PRESETS = Object.values(NOTE_PRESET_MAP);
 
