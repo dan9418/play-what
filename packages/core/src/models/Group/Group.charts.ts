@@ -1,12 +1,11 @@
-import { IModelValue, ModelId } from "@pw/core/src/models/Model.constants";
-import { NOTE } from "@pw/core/src/models/Pod/Note/Note.constants";
-import { CHORD } from "@pw/core/src/models/PodList/Chord/Chord.constants";
+import { NoteId } from "@pw/core/src/models/Pod/Note/Note.constants";
+import { ChordId } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 
-type ISectionChord = [rootId: string, chordId: string, t: number];
+type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];
 
 interface ISectionConfig {
     name: string;
-    models: ISectionChord[]
+    chords: ISectionChord[]
 }
 
 export interface IChartConfig {
@@ -19,42 +18,42 @@ export const ALL_OF_ME_CONFIG: IChartConfig = {
     sections: [
         {
             name: 'A',
-            models: [
-                ['C', 'Maj6', 16],
-                ['E', 'Dom7', 16],
-                ['A', 'Dom7', 16],
-                ['D', 'Min7', 16]
+            chords: [
+                [NoteId.C, ChordId.Maj6, 16],
+                [NoteId.E, ChordId.Dom7, 16],
+                [NoteId.A, ChordId.Dom7, 16],
+                [NoteId.D, ChordId.Min7, 16]
             ]
         },
         {
             name: 'B',
-            models: [
-                ['E', 'Dom7', 16],
-                ['A', 'Min7', 16],
-                ['D', 'Dom7', 16],
-                ['D', 'Min7', 8],
-                ['G', 'Dom7', 8]
+            chords: [
+                [NoteId.E, ChordId.Dom7, 16],
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Dom7, 16],
+                [NoteId.D, ChordId.Min7, 8],
+                [NoteId.G, ChordId.Dom7, 8]
             ]
         },
         {
             name: 'A\'',
-            models: [
-                ['C', 'Maj6', 16],
-                ['E', 'Dom7', 16],
-                ['A', 'Dom7', 16],
-                ['D', 'Min7', 16]
+            chords: [
+                [NoteId.C, ChordId.Maj6, 16],
+                [NoteId.E, ChordId.Dom7, 16],
+                [NoteId.A, ChordId.Dom7, 16],
+                [NoteId.D, ChordId.Min7, 16]
             ]
         },
         {
             name: 'C',
-            models: [
-                ['C', 'Maj6', 8],
-                ['F', 'Min6', 8],
-                ['C', 'Maj7', 8],
-                ['A', 'Dom7', 8],
-                ['D', 'Min7', 8],
-                ['G', 'Dom7', 8],
-                ['C', 'Maj7', 8]
+            chords: [
+                [NoteId.C, ChordId.Maj6, 8],
+                [NoteId.F, ChordId.Min6, 8],
+                [NoteId.C, ChordId.Maj7, 8],
+                [NoteId.A, ChordId.Dom7, 8],
+                [NoteId.D, ChordId.Min7, 8],
+                [NoteId.G, ChordId.Dom7, 8],
+                [NoteId.C, ChordId.Maj7, 8]
             ]
         }
     ]

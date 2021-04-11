@@ -7,11 +7,11 @@ import { NOTE } from '../Pod/Note/Note.constants';
 const getGroupPresetFromChartConfig = (chartConfig: IChartConfig): IModelPreset<IModelValue> | null => {
 
     const chartValue: IModelConfig[] = chartConfig.sections.map(section => {
-        const { name, models } = section;
+        const { name, chords } = section;
         return {
             modelId: ModelId.Group,
             modelOptions: { name },
-            modelValue: models.map(model => {
+            modelValue: chords.map(model => {
                 const [rootId, chordId, t] = model;
                 return {
                     modelId: ModelId.Chord,
