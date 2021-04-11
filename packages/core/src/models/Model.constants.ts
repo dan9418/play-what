@@ -21,7 +21,7 @@ export enum ModelId {
 
 export interface IModelMap {
 	name: string;
-	modelId: string;
+	modelId: ModelId;
 	utils: any;
 	presets: any[];
 	validChildren: any[];
@@ -94,7 +94,7 @@ export interface IModelOptions {
 }
 
 export interface IModelConfig {
-	modelId: string;
+	modelId: ModelId;
 	modelValue: IPod | IPod[] | IModelConfig[];
 	modelOptions?: IModelOptions
 }

@@ -71,7 +71,7 @@ const getScaleName = (modelValue: IPod[], modelOptions: IModelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId: string, modelValue: IModelValue, modelOptions: IModelOptions = null): string => {
+const getName = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions = null): string => {
 	if (modelOptions && modelOptions.name) return modelOptions.name;
 
 	switch (modelId) {
@@ -104,7 +104,7 @@ const getPodListPreview = (modelValue: IPod[], modelOptions: IModelOptions): str
 	return noteNames;
 }
 
-const getPreview = (modelId: string, modelValue: IModelValue, modelOptions: IModelOptions = null): string => {
+const getPreview = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions = null): string => {
 	if (modelOptions && modelOptions.preview) return modelOptions.preview;
 
 	switch (modelId) {
@@ -124,7 +124,7 @@ const getPodAtPitchInSingle = (modelValue: IPod, modelOptions: IModelOptions, no
 
 const getPodAtPitchInList = (modelValue: IPod[], modelOptions: IModelOptions, noteIndex: number, matchOctave: boolean) => PodListUtils.getPodAtPitch(modelValue, noteIndex, modelOptions, matchOctave);
 
-const getPodAtPitch = (modelId: string, modelValue: IModelValue, modelOptions: IModelOptions, noteIndex: number, matchOctave?: boolean): IPod | null => {
+const getPodAtPitch = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions, noteIndex: number, matchOctave?: boolean): IPod | null => {
 	switch (modelId) {
 		case ModelId.Note:
 		case ModelId.Interval:
@@ -174,7 +174,7 @@ const getPodListProps = (modelValue: IPod[], modelOptions: IModelOptions, noteIn
 	return { color, label };
 }
 
-const getPodProps = (modelId: string, modelValue: IModelValue, modelOptions: IModelOptions, noteIndex: number, matchOctave = false): IPodProps | null => {
+const getPodProps = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions, noteIndex: number, matchOctave = false): IPodProps | null => {
 	switch (modelId) {
 		case ModelId.Note:
 			return getNotePodProps(modelValue as IPod, modelOptions, noteIndex, matchOctave)
@@ -307,7 +307,7 @@ interface ISupersetOption extends IModelConfig {
 	name: string;
 }
 
-const getSupersets = (modelId: string, modelValue: IPod[], modelOptions: IModelOptions): ISupersetOption[] => {
+const getSupersets = (modelId: ModelId, modelValue: IPod[], modelOptions: IModelOptions): ISupersetOption[] => {
 
 	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
 
