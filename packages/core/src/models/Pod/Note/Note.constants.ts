@@ -1,12 +1,7 @@
+import { IModelPreset } from './../../Model.constants';
 import { IPod } from "../../Model.constants";
 
-export interface INote {
-	id: string;
-	name: string;
-	value: IPod
-}
-
-export const NOTE: { [x: string]: INote } = {
+export const NOTE: { [x: string]: IModelPreset<IPod> } = {
 	C: { id: 'C', name: 'C', value: [0, 0] },
 	'C#': { id: 'C#', name: 'C#', value: [1, 0] },
 	Db: { id: 'Db', name: 'Db', value: [1, 1] },

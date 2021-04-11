@@ -1,8 +1,7 @@
-import { IPod } from './../../Model.constants';
+import { IPod, IModelPreset } from './../../Model.constants';
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
-import { IInterval } from "./Interval.constants";
 
-const getIntervalOffset = (pod: IPod, coreIvl: IInterval) => {
+const getIntervalOffset = (pod: IPod, coreIvl: IModelPreset<IPod>) => {
 	return coreIvl.value[0] - pod[0];
 }
 

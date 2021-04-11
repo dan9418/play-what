@@ -1,11 +1,7 @@
+import { IModelPreset } from './../../Model.constants';
 import { IPod } from "../../Model.constants";
-export interface IInterval {
-	id: string;
-	name: string;
-	value: IPod
-}
 
-export const INTERVAL: { [x: string]: IInterval } = {
+export const INTERVAL: { [x: string]: IModelPreset<IPod> } = {
 	P1: {
 		id: 'P1',
 		name: 'Perfect Unison',
