@@ -1,4 +1,4 @@
-import { MODEL, ModelId } from '@pw/core/src/models/Model.constants';
+import { MODEL_MAP, ModelId } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -22,19 +22,18 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 
 	const siblingState = useRecoilValue(siblingsState) || { parent: null };
 	const { parent } = siblingState;
-	const parentModel = MODEL[parent ? parent.config.modelId : ModelId.Group];
+	const parentModel = MODEL_MAP.get(parent ? parent.config.modelId : ModelId.Group);
 
-	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL[x].name }));
+	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL_MAP.get(x).name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });
 	const selectedTypeOption = typeOptions[typeIndex];
-	const model = MODEL[selectedTypeOption.value];
 
 	const _type = (validTypes && validTypes.length === 1) ? validTypes[0] : type;
 
 	let presetOptions = [];
 	let selectedPresetOption = null;
 	if (_type || typeIndex > 0) {
-		presetOptions = MODEL[_type || selectedTypeOption.value].presets;
+		presetOptions = MODEL_MAP.get(_type || selectedTypeOption.value).presets;
 		selectedPresetOption = presetOptions[presetIndex];
 	}
 

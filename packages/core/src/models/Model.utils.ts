@@ -1,6 +1,6 @@
 import { IModelDef } from '@pw/core/src/models/Model.constants';
 import { DEGREE_VALUES } from "../theory/Degree.constants";
-import { IPod, IModelConfig, IModelData, IModelOptions, IModelValue, MODEL, ModelId } from "./Model.constants";
+import { IPod, IModelConfig, IModelData, IModelOptions, IModelValue, MODEL_MAP, ModelId } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -198,7 +198,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 			pathId,
 			name: (modelOptions && modelOptions.name) ? modelOptions.name : getName(ModelId.Group, modelValue),
 			preview: (modelOptions && modelOptions.preview) ? modelOptions.preview : getPreview(ModelId.Group, modelValue),
-			caption: MODEL[modelId].name,
+			caption: MODEL_MAP.get(modelId).name,
 			modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
 			projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
 		}
@@ -229,7 +229,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 			const modelName = getName(modelId, modelValue);
 			const modelPreview = getPreview(modelId, modelValue, modelOptions);
 			name = `${rootName} ${modelName}`;
-			caption = MODEL[modelId].name;
+			caption = MODEL_MAP.get(modelId).name;
 			preview = modelPreview;
 		}
 	}
@@ -237,7 +237,7 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		const modelName = getName(modelId, modelValue);
 		const modelPreview = getPreview(modelId, modelValue, modelOptions);
 		name = modelName;
-		caption = MODEL[modelId].name;
+		caption = MODEL_MAP.get(modelId).name;
 		preview = modelPreview;
 	}
 

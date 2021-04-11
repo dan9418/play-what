@@ -1,4 +1,4 @@
-import { MODEL } from "@pw/core/src/models/Model.constants";
+import { MODEL_MAP } from "@pw/core/src/models/Model.constants";
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
 import PresetAction from "../../../../components/pages/explorer/dataCol/actions/PresetAction";
@@ -35,7 +35,7 @@ const InsertButton: React.FC<IInsertButtonProps> = ({ pathHead, onInsert, ...res
 
     const handler = presetConfig => { onInsert(presetConfig.modelValue) };
 
-    const model = MODEL[pathHead.config.modelId]
+    const model = MODEL_MAP.get(pathHead.config.modelId)
 
     return (
         <StyledWrapper>

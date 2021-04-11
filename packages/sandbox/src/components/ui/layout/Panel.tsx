@@ -1,4 +1,4 @@
-import { MODEL, ModelId } from "@pw/core/src/models/Model.constants";
+import { MODEL_MAP, ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -90,7 +90,7 @@ const PanelHeader = () => {
 
 	const { modelId } = pathHead.config;
 	const { name, preview } = pathHead.data;
-	const model = MODEL[modelId];
+	const model = MODEL_MAP.get(modelId);
 
 	const isGroup = modelId === ModelId.Group;
 

@@ -1,5 +1,5 @@
 import ColorUtils from "@pw/core/src/color/Color.utils";
-import { MODEL } from "@pw/core/src/models/Model.constants";
+import { MODEL_MAP } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import * as React from "react";
 import styled from "styled-components";
