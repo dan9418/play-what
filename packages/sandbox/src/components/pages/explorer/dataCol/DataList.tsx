@@ -1,6 +1,6 @@
 import { ModelId } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import { modalState } from '@pw/sandbox/src/state/dataState';
+import { hoveredIndexState, modalState } from '@pw/sandbox/src/state/dataState';
 import { fullPathState, pathHeadState } from '@pw/sandbox/src/state/pathState';
 import React from "react";
 import { useRecoilState } from 'recoil';
@@ -24,8 +24,8 @@ const getChildUtils = (pathHead, setPathHeadConfig, child, path) => {
 
 	const pathStr = `modelValue.${path.join('.modelValue.')}`;
 
-	if (!path[path.length - 1])
-		console.log('CHILD', '\ncopy:\n', copy, '\npath:\n', pathStr);
+	//if (!path[path.length - 1])
+	//	console.log('CHILD', '\ncopy:\n', copy, '\npath:\n', pathStr);
 
 	const set = newConfig => {
 		console.log('A', copy);
@@ -37,12 +37,12 @@ const getChildUtils = (pathHead, setPathHeadConfig, child, path) => {
 	return [child.config, set];
 }
 
-const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null, pathHead = null, setPathHeadConfig = null) => {
+const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null, pathHead = null, setPathHeadConfig = null, hoveredIndex = null) => {
 
 	return defs.map((child, i) => {
 
 		// Model helpers
-		const { modelId } = child.config;
+		const { modelId, modelValue } = child.config;
 		const isGroup = modelId === ModelId.Group;
 		const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
 
@@ -75,6 +75,8 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = nu
 					isEditing={isEditing}
 					isLeaf={isLeaf}
 					actions={actions}
+					pod={isPod && modelValue}
+					isHovered={isPod && modelValue[0] === hoveredIndex}
 				>
 					<Viewer modelConfig={child.config} />
 					{list}
@@ -95,6 +97,7 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 	const fullPath = useRecoilValue(fullPathState);
 	const setModal = useSetRecoilState(modalState);
+	const hoveredIndex = useRecoilValue(hoveredIndexState);
 
 	if (!metaChildren) return null;
 
@@ -104,7 +107,7 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 
 	return (
 		<StyledDataList>
-			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal, pathHead, setPathHeadConfig)}
+			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal, pathHead, setPathHeadConfig, hoveredIndex)}
 		</StyledDataList>
 	);
 };

@@ -12,3 +12,8 @@ export const modalState: RecoilState<IModalAction | null> = atom({
 	key: 'modalState',
 	default: null
 });
+
+export const hoveredIndexState: RecoilState<number | null> = atom({
+	key: 'hoveredIndexState',
+	default: null
+});
