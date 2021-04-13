@@ -8,7 +8,7 @@ import DataCol from './dataCol/DataCol';
 import BreadcrumbList from './shared/BreadcrumbList';
 import ViewerCol from './viewerCol/ViewerCol';
 
-const StyledExplorer = styled.div`
+const StyledExplorePage = styled.div`
 	display: grid;
 	width: 100%;
 	margin: auto;
@@ -29,7 +29,7 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const Explorer: React.FC = () => {
+const ExplorePage: React.FC = () => {
 	const path = useRecoilValue(pathState);
 	const [editId, setEditId] = useState(null);
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
@@ -47,13 +47,13 @@ const Explorer: React.FC = () => {
 			<BreadcrumbList />
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
-				<StyledExplorer>
+				<StyledExplorePage>
 					<ViewerCol editId={editId} setEditId={setEditId} />
 					<DataCol editId={editId} setEditId={setEditId} />
-				</StyledExplorer>
+				</StyledExplorePage>
 			</Panel>
 		</>
 	);
 };
 
-export default Explorer;
+export default ExplorePage;

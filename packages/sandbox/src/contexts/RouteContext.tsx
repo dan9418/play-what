@@ -1,6 +1,6 @@
 
-import About from '../components/pages/about/About';
-import Explorer from '../components/pages/explorer/Explorer';
+import AboutPage from '../components/pages/about/AboutPage';
+import ExplorePage from '../components/pages/explorer/ExplorePage';
 import React from "react";
 
 type ParamType = { [x: string]: string | number };
@@ -22,24 +22,24 @@ export const useRouteContext = (): IRouteContext => React.useContext(RouteContex
 
 export enum PageId {
 	About,
-	Explorer
+	Explore
 }
 
 const PAGE_MAP = new Map<PageId, IRoute>([
 	[PageId.About, {
 		pageId: PageId.About,
 		name: 'About',
-		Component: About
+		Component: AboutPage
 	}],
-	[PageId.Explorer, {
-		pageId: PageId.Explorer,
-		name: 'Explorer',
-		Component: Explorer
+	[PageId.Explore, {
+		pageId: PageId.Explore,
+		name: 'Explore',
+		Component: ExplorePage
 	}]
 ]);
 
 export const RouteContextProvider: React.FC = ({ children }) => {
-	const [pageId, setPageId] = React.useState(PageId.Explorer);
+	const [pageId, setPageId] = React.useState(PageId.About);
 	const [pageParams, setPageParams] = React.useState(null);
 
 	const setPage = (pageId: PageId, params: ParamType = {}) => {
