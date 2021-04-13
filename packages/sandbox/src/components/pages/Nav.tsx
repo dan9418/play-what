@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useRouteContext } from '../../contexts/RouteContext';
+import { PageId, useRouteContext } from '../../contexts/RouteContext';
 
-const LINKS = [
+interface INavLink {
+	text: string;
+	pageId?: PageId;
+	href?: string;
+}
+
+const NAV_LINKS: INavLink[] = [
 	{
-		id: 'about',
-		name: 'About',
-		href: 'https://github.com/dan9418/play-what/'
+		text: 'About',
+		pageId: PageId.About
 	},
 	{
-		id: 'docs',
-		name: 'Docs',
-		href: 'https://github.com/dan9418/play-what/'
-	},
-	{
-		id: 'source',
-		name: 'Source',
+		text: 'Source',
 		href: 'https://github.com/dan9418/play-what/'
 	}
 ];
@@ -44,12 +43,20 @@ const StyledNav = styled.nav`
 		justify-content: space-between;
 
 		.logo {
+			color: white;
+			appearance: none;
+			background-color: transparent;
+			border: none;
 			font-size: 90%;
 			text-transform: uppercase;
 			letter-spacing: 8px;
 			font-weight: 300;
 			cursor: pointer;
 			white-space: nowrap;
+
+			&:hover {
+				color: ${({ theme }) => theme.active};
+			}
 		}
 		
 		.link-list {
@@ -60,7 +67,7 @@ const StyledNav = styled.nav`
 
 			list-style-type: none;
 
-			a {
+			> li > a, button {
 				cursor: pointer;
 				display: flex;
 				align-items: center;
@@ -87,11 +94,16 @@ const Nav: React.FC = () => {
 	return (
 		<StyledNav>
 			<div>
-				<div className="logo" onClick={routeContext.goHome}>Play What?</div>
+				<button type="button" className="logo" onClick={() => routeContext.setPageId(PageId.About)}>Play What?</button>
 				<ul className="link-list">
-					{LINKS.map((l, i) => (
+					{NAV_LINKS.map((l, i) => (
 						<li key={i}>
-							<a href={l.href}>{l.name}</a>
+							{
+								l.href ?
+									<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
+									:
+									<button type="button" onClick={() => routeContext.setPageId(l.pageId)}>{l.text}</button>
+							}
 						</li>
 					))}
 				</ul>

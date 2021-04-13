@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { PAGE_ID, useRouteContext } from '../../../contexts/RouteContext';
+import { PageId, useRouteContext } from '../../../contexts/RouteContext';
 import ButtonInput from '../../ui/inputs/buttons/ButtonInput';
 
 const StyledAbout = styled.div`
@@ -23,7 +23,7 @@ const About = () => {
 			<p>
 				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
-			<ButtonInput onClick={() => routeContext.setPageId(PAGE_ID.Explorer)}>Explore!</ButtonInput>
+			<ButtonInput onClick={() => routeContext.setPageId(PageId.Explorer)}>Explore!</ButtonInput>
 		</StyledAbout>
 	)
 };

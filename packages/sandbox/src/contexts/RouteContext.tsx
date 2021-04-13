@@ -3,37 +3,44 @@ import About from '../components/pages/about/About';
 import Explorer from '../components/pages/explorer/Explorer';
 import React from "react";
 
-const RouteContext = React.createContext(null);
-
-export const useRouteContext = () => React.useContext(RouteContext);
-
-export const PAGE_ID = {
-	About: 0,
-	Explorer: 1
-};
-
-const PAGE = {
-	[PAGE_ID.About]: {
-		pageId: PAGE_ID.About,
-		name: 'About',
-		Component: About
-	},
-	[PAGE_ID.Explorer]: {
-		pageId: PAGE_ID.Explorer,
-		name: 'Explorer',
-		Component: Explorer
-	}
+interface IRoute {
+	pageId: PageId;
+	name: string;
+	Component: any;
 }
 
-export const RouteContextProvider = ({ children }) => {
-	const [pageId, setPageId] = React.useState(PAGE_ID.Explorer);
+interface IRouteContext extends IRoute {
+	setPageId: (PageId) => void
+}
 
-	const goHome = () => setPageId(PAGE_ID.About);
+const RouteContext = React.createContext(null);
 
-	const routeContext = {
-		...PAGE[pageId],
-		setPageId,
-		goHome
+export const useRouteContext = (): IRouteContext => React.useContext(RouteContext);
+
+export enum PageId {
+	About,
+	Explorer
+}
+
+const PAGE_MAP = new Map<PageId, IRoute>([
+	[PageId.About, {
+		pageId: PageId.About,
+		name: 'About',
+		Component: About
+	}],
+	[PageId.Explorer, {
+		pageId: PageId.Explorer,
+		name: 'Explorer',
+		Component: Explorer
+	}]
+]);
+
+export const RouteContextProvider: React.FC = ({ children }) => {
+	const [pageId, setPageId] = React.useState(PageId.Explorer);
+
+	const routeContext: IRouteContext = {
+		...PAGE_MAP.get(pageId),
+		setPageId
 	};
 
 	return (

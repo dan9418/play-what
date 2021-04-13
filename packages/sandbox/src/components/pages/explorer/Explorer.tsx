@@ -37,7 +37,7 @@ const Explorer = () => {
 	const { name, preview, pathId } = (pathHead as IModelDef).data;
 
 	React.useEffect(() => {
-		window.scrollTo(0, 0), [path.length, pathId];
+		//window.scrollTo(0, 0), [path.length, pathId];
 		setEditId(null);
 	}, [path.length, pathId]);
 
