@@ -3,14 +3,17 @@ import About from '../components/pages/about/About';
 import Explorer from '../components/pages/explorer/Explorer';
 import React from "react";
 
+type ParamType = { [x: string]: string | number };
+
 interface IRoute {
 	pageId: PageId;
 	name: string;
 	Component: any;
+	params?: ParamType;
 }
 
 interface IRouteContext extends IRoute {
-	setPageId: (PageId) => void
+	setPage: (PageId, ParamType?) => void
 }
 
 const RouteContext = React.createContext(null);
@@ -37,10 +40,16 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 
 export const RouteContextProvider: React.FC = ({ children }) => {
 	const [pageId, setPageId] = React.useState(PageId.Explorer);
+	const [pageParams, setPageParams] = React.useState(null);
+
+	const setPage = (pageId: PageId, params: ParamType = {}) => {
+		setPageId(pageId);
+		setPageParams(params);
+	}
 
 	const routeContext: IRouteContext = {
 		...PAGE_MAP.get(pageId),
-		setPageId
+		setPage
 	};
 
 	return (

@@ -27,7 +27,7 @@ const Main = () => {
       {/*<div className="gutter" />*/}
       <PathNavContextProvider>
         <RouteContextConsumer>
-          {({ Component }) => <Component />}
+          {({ Component, params }) => <Component params={params} />}
         </RouteContextConsumer>
       </PathNavContextProvider>
     </StyledMain>

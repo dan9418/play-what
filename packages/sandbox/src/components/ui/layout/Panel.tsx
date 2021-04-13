@@ -68,18 +68,13 @@ const StyledPanelHeader = styled.section`
 
 		.switch-container {
 			span {
-				font-weight: bold;
-				margin-bottom: 4px;
+				font-size: 80%;
+				font-weight: 500;
+				margin-right: 4px;
 			}
 
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
 			align-items: center;
-
-			@media(max-width: 512px) {
-				align-items: flex-end;
-			}
 		}
 	}
 `;

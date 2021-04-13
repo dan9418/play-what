@@ -97,7 +97,7 @@ const Nav: React.FC = () => {
 	return (
 		<StyledNav>
 			<div>
-				<button type="button" className="logo" onClick={() => routeContext.setPageId(PageId.About)}>Play What?</button>
+				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.About)}>Play What?</button>
 				<ul className="link-list">
 					{NAV_LINKS.map((l, i) => (
 						<li key={i}>
@@ -105,7 +105,7 @@ const Nav: React.FC = () => {
 								l.href ?
 									<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
 									:
-									<button type="button" onClick={() => routeContext.setPageId(l.pageId)}>{l.text}</button>
+									<button type="button" onClick={() => routeContext.setPage(l.pageId)}>{l.text}</button>
 							}
 						</li>
 					))}

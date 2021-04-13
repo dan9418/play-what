@@ -51,7 +51,7 @@ const About: React.FC = () => {
 			<p>
 				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
-			<ButtonInput onClick={() => routeContext.setPageId(PageId.Explorer)}>Explore!</ButtonInput>
+			<ButtonInput onClick={() => routeContext.setPage(PageId.Explorer)}>Explore!</ButtonInput>
 		</StyledAbout>
 	)
 };
