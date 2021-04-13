@@ -5,14 +5,17 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from '../../../hooks/useWindowSize';
 import { matchOctaveState, pathHeadState } from '../../../state/pathState';
+import { hoveredIndexState } from "../../../state/dataState";
 
 const StyledMeterWrapper = styled.div`
     margin-top: 16px;
 `;
 
-const MeterWrapper = () => {
+const MeterWrapper: React.FC = () => {
     const pathHead = useRecoilValue(pathHeadState);
     const matchOctave = useRecoilValue(matchOctaveState);
+    const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);
+
     const isTablet = useIsTablet();
     const isDesktop = useIsDesktop();
 
@@ -28,7 +31,7 @@ const MeterWrapper = () => {
 
     return (
         <StyledMeterWrapper>
-            <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} />
+            <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} hoveredIndex={hoveredIndex} setHoveredIndex={setHoveredIndex} />
         </StyledMeterWrapper>
     );
 };

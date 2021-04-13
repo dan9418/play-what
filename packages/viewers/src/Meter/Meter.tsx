@@ -1,13 +1,18 @@
+import { IModelOptions, IModelValue, IPod, ModelId } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import { DEFAULT_DEGREE_COLOR_SCHEME } from '@pw/core/src/theory/Degree.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from "react";
 import styled from 'styled-components';
-import DEFAULT_METER_PROPS from './Meter.defaults';
-import { IPod } from '@pw/core/src/models/Model.constants';
 
 const StyledDot = styled.div`
  	${({ $color }) => $color ? `background-color: ${$color}` : ''};
+	${({ $isDimmed }) => $isDimmed ? 'opacity: 0.4;' : ''};
+
+	:hover {
+		cursor: pointer;
+		background-color: #eee;;
+	}
+
 	height: 32px;
 	width: 100%;
 	border: 1px solid black;
@@ -51,7 +56,17 @@ const StyledMeter = styled.div`
 	}
 `;
 
-const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave }) => {
+interface IMeterProps {
+	modelId: ModelId;
+	modelValue: IModelValue;
+	modelOptions: IModelOptions;
+	range: number[];
+	matchOctave: boolean;
+	hoveredIndex: number | null;
+	setHoveredIndex: any;
+}
+
+const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave, hoveredIndex, setHoveredIndex }) => {
 	const list = [];
 
 	const root = modelOptions && modelOptions.modelRoot ? modelOptions.modelRoot : null;
@@ -67,9 +82,13 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
+
+		let onMouseEnter = null;
+		let onMouseLeave = null;
 		if (hasDegree) {
 			color = podProps.color;
-			//podName = pod[1];
+			onMouseEnter = () => setHoveredIndex(i)
+			onMouseLeave = () => setHoveredIndex(null);
 		}
 		if (pitchClass === 0) {
 			podName = PodUtils.getOctave(indexPod, true);
@@ -82,6 +101,9 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 			<StyledDot
 				$color={color}
 				key={i}
+				$isDimmed={hoveredIndex !== null && hoveredIndex !== i}
+				onMouseEnter={onMouseEnter}
+				onMouseLeave={onMouseLeave}
 			>
 				{podName}
 				{isRoot ? <span className="label">R</span> : null}
@@ -96,9 +118,7 @@ const DotList = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOcta
 	);
 };
 
-const Meter = (userProps) => {
-	const props = { ...DEFAULT_METER_PROPS, ...userProps };
-
+const Meter: React.FC<IMeterProps> = (props) => {
 	return (
 		<StyledMeter>
 			<DotList {...props} />
