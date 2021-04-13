@@ -38,9 +38,8 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
 	const [data, setData] = useRecoilState(dataState);
 
-
 	React.useEffect(() => {
-		setData(EMPTY_GROUP)
+		setData(params.data)
 	}, []);
 
 	React.useEffect(() => {

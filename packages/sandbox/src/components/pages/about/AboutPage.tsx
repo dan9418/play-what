@@ -1,4 +1,6 @@
+import { EMPTY_GROUP } from "@pw/core/src/models/Group/Group.constants";
 import React from "react";
+import LIBRARY_PATH_ROOT from "@pw/sandbox/src/data/library";
 import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../../contexts/RouteContext';
 import ButtonInput from '../../ui/inputs/buttons/ButtonInput';
@@ -51,7 +53,8 @@ const AboutPage: React.FC = () => {
 			<p>
 				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
 			</p>
-			<ButtonInput onClick={() => routeContext.setPage(PageId.Explore)}>Explore!</ButtonInput>
+			<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>
+			<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch</ButtonInput>
 		</StyledAboutPage>
 	)
 };

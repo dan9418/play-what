@@ -1,9 +1,9 @@
 
+import React from "react";
 import AboutPage from '../components/pages/about/AboutPage';
 import ExplorePage from '../components/pages/explorer/ExplorePage';
-import React from "react";
 
-export type ParamType = { [x: string]: string | number };
+export type ParamType = { [x: string]: any/*string | number*/ };
 
 interface IRoute {
 	pageId: PageId;
@@ -49,7 +49,8 @@ export const RouteContextProvider: React.FC = ({ children }) => {
 
 	const routeContext: IRouteContext = {
 		...PAGE_MAP.get(pageId),
-		setPage
+		setPage,
+		params: pageParams
 	};
 
 	return (
