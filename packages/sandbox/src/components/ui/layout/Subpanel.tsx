@@ -100,6 +100,7 @@ const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview
 const StyledSubpanel = styled.section`
 	width: 100%;
 	border-radius: 8px;
+	cursor: pointer;
 
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 
@@ -127,8 +128,6 @@ const Subpanel: React.FC<ISubpanelProps> = ({ pod, isHovered, children = null, l
 
 	const color = DEFAULT_PITCH_COLOR_SCHEME[(level * 2) % 12];
 	let podColor = null;
-
-	console.log(hoveredIndex)
 
 	let onMouseEnter = null;
 	let onMouseLeave = null;

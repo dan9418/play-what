@@ -1,10 +1,11 @@
 import { ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import StyledCard from "@pw/sandbox/src/components/ui/layout/StyledCard";
 import styled from 'styled-components';
 import { matchOctaveState } from '../../../../state/pathState';
 import { VIEWER } from "./actions/viewerActions";
+import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -24,6 +25,7 @@ const StyledViewerHelp = styled(StyledCard)`
 const Viewer = ({ modelConfig }) => {
 
 	const matchOctave = useRecoilValue(matchOctaveState);
+	const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);
 
 	const { modelId, modelValue, modelOptions } = modelConfig;
 	const { viewerId, viewerProps } = modelOptions || { viewerId: VIEWER.fretboard.id, viewerProps: {} };
@@ -34,7 +36,9 @@ const Viewer = ({ modelConfig }) => {
 		modelId: isBlank ? ModelId.Chord : modelId,
 		modelValue: isBlank ? [] : modelValue,
 		modelOptions,
-		matchOctave
+		matchOctave,
+		hoveredIndex,
+		setHoveredIndex
 	};
 
 	const ViewerComponent = VIEWER[viewerId].component;
