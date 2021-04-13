@@ -52,6 +52,7 @@ const StyledNav = styled.nav`
 			letter-spacing: 8px;
 			font-weight: 300;
 			cursor: pointer;
+			height: 100%;
 			white-space: nowrap;
 
 			&:hover {
@@ -63,11 +64,14 @@ const StyledNav = styled.nav`
 			display: flex;
 			align-items: center;
 			justify-content: flex-end;
+			height: 100%;
 			width: 100%;
 
 			list-style-type: none;
 
 			> li > a, button {
+				display: inline-block;
+				height: 100%;
 				cursor: pointer;
 				display: flex;
 				align-items: center;
@@ -75,7 +79,6 @@ const StyledNav = styled.nav`
 				text-decoration: none;
 				padding: 0 8px;
 				background-color: transparent;
-				outline: none;
 				border: none;
 				font-size: 80%;
 				font-weight: normal;

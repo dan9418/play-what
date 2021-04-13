@@ -29,7 +29,7 @@ const StyledExplorer = styled.div`
 	}
 `;
 
-const Explorer = () => {
+const Explorer: React.FC = () => {
 	const path = useRecoilValue(pathState);
 	const [editId, setEditId] = useState(null);
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
