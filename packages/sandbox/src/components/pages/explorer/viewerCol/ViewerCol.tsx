@@ -18,7 +18,10 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
     const setModal = useSetRecoilState(modalState);
 
     const { modelOptions } = pathHead.config;
-    const { viewerId } = modelOptions || { viewerId: VIEWER.fretboard.id };
+
+    if (!modelOptions || !modelOptions.viewerId) return null;
+
+    const { viewerId } = modelOptions;
 
     const viewerName = VIEWER[viewerId].name;
 

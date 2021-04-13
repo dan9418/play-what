@@ -1,9 +1,12 @@
-import { IModelDef, ModelId } from '@pw/core/src/models/Model.constants';
+import { IModelDef } from '@pw/core/src/models/Model.constants';
+import { EMPTY_GROUP } from '@pw/core/src/models/Group/Group.constants';
 import React, { useState } from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { dataState } from '@pw/sandbox/src/state/dataState';
 import styled, { css } from 'styled-components';
 import { pathHeadState, pathState } from '../../../state/pathState';
 import Panel from '../../ui/layout/Panel';
+import { IPageProps } from '../Page';
 import DataCol from './dataCol/DataCol';
 import BreadcrumbList from './shared/BreadcrumbList';
 import ViewerCol from './viewerCol/ViewerCol';
@@ -29,18 +32,25 @@ const StyledExplorePage = styled.div`
 	}
 `;
 
-const ExplorePage: React.FC = () => {
+const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const path = useRecoilValue(pathState);
 	const [editId, setEditId] = useState(null);
 	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+	const [data, setData] = useRecoilState(dataState);
 
-	const { name, preview, pathId } = (pathHead as IModelDef).data;
+
+	React.useEffect(() => {
+		setData(EMPTY_GROUP)
+	}, []);
 
 	React.useEffect(() => {
 		//window.scrollTo(0, 0), [path.length, pathId];
 		setEditId(null);
-	}, [path.length, pathId]);
+	}, [path.length /*pathId*/]);
 
+	if (!pathHead) return null;
+
+	const { name, preview, pathId } = (pathHead as IModelDef).data;
 
 	return (
 		<>

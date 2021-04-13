@@ -1,4 +1,4 @@
-import { IModelPreset, IModelValue } from '../Model.constants';
+import { IModelPreset, IModelValue, ModelId } from '../Model.constants';
 import GroupUtils from './Group.utils';
 import * as CHART from './Group.charts';
 
@@ -11,3 +11,9 @@ export const GROUP_MAP = new Map<GroupId, IModelPreset<IModelValue>>([
 ]);
 
 export const GROUP_PRESETS = Array.from(GROUP_MAP).map(([k, v]) => v);
+
+export const EMPTY_GROUP = {
+	modelId: ModelId.Group,
+	modelOptions: { name: 'Custom Group' },
+	modelValue: []
+}

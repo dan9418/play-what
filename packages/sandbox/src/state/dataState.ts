@@ -5,7 +5,7 @@ import LIBRARY_PATH_ROOT from "../data/library";
 
 export const dataState: RecoilState<IModelConfig> = atom({
 	key: 'dataState',
-	default: LIBRARY_PATH_ROOT
+	default: null
 });
 
 export const modalState: RecoilState<IModalAction | null> = atom({
