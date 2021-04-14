@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
+import IconButton from "../inputs/buttons/IconButton";
 import SwitchInput from "../inputs/SwitchInput";
 
 const StyledPanelHeader = styled.section`
@@ -79,6 +80,37 @@ const StyledPanelHeader = styled.section`
 	}
 `;
 
+const StyledToolbox = styled.div`
+		background-color: #ddd;
+		border-radius: 8px;
+		height: 100%;
+		padding: 8px;
+
+		> div {
+			> span {
+				font-size: 80%;
+				font-weight: 500;
+				margin-right: 4px;
+				color: #555;
+			}
+
+			display: flex;
+			align-items: center;
+			justify-content: flex-end;
+			:not(:last-child) {
+				margin-bottom: 8px;
+			}
+
+			.btn-speaker {
+				height: 24px;
+				width: 48px;
+				border-radius: 4px;
+			}
+		}
+	}
+`;
+
+
 const PanelHeader = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
 	const [matchOctave, setMatchOctave] = useRecoilState(matchOctaveState);
@@ -100,10 +132,16 @@ const PanelHeader = () => {
 					{isGroup ? null : <div className='preview'>{preview}</div>}
 				</div>
 				{isGroup ? null :
-					<div className='switch-container'>
-						<span>Match Octave?</span>
-						<SwitchInput value={matchOctave} setValue={setMatchOctave} />
-					</div>
+					<StyledToolbox>
+						<div>
+							<span>Match Octave?</span>
+							<SwitchInput value={matchOctave} setValue={setMatchOctave} />
+						</div>
+						<div>
+							<span>Play Sound</span>
+							<IconButton iconId="speaker" />
+						</div>
+					</StyledToolbox>
 				}
 			</div>
 			{!isGroup && <MeterWrapper />}
