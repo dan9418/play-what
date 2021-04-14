@@ -1,4 +1,5 @@
 import { MODEL_MAP, ModelId } from "@pw/core/src/models/Model.constants";
+import ModelUtils from "@pw/core/src/models/Model.utils";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
@@ -139,7 +140,7 @@ const PanelHeader = () => {
 						</div>
 						<div>
 							<span>Play Sound</span>
-							<IconButton iconId="speaker" />
+							<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(pathHead.config)} />
 						</div>
 					</StyledToolbox>
 				}

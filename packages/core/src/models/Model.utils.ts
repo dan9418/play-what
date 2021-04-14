@@ -1,5 +1,7 @@
 import { IModelDef } from '@pw/core/src/models/Model.constants';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
+import ToneUtils from '../tone/Tone.utils';
+import TuningUtils from '../tuning/Tuning.utils';
 import { IPod, IModelConfig, IModelData, IModelOptions, IModelValue, MODEL_MAP, ModelId } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
@@ -325,6 +327,23 @@ const getSupersets = (modelId: ModelId, modelValue: IPod[], modelOptions: IModel
 	}));
 };
 
+const playSound = (modelConfig: IModelConfig, pathId = 0): IModelData => {
+	const { modelId, modelValue, modelOptions } = modelConfig;
+
+	if (modelId === ModelId.Group) return;
+
+	const hasRoot = modelOptions && modelOptions.modelRoot;
+
+	const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
+
+	let pods = isPod ? [modelValue] : modelValue;
+	if (hasRoot) {
+		pods = PodUtils.addPodList(modelOptions.modelRoot, modelValue as IPod[]);
+	}
+	const f = pods.map(pod => TuningUtils.getFrequency(pod[0]));
+	ToneUtils.playSound(f);
+};
+
 // export
 
 export default {
@@ -334,5 +353,6 @@ export default {
 	getPodProps,
 	getData,
 	getMetaChildren,
-	getSupersets
+	getSupersets,
+	playSound
 }
