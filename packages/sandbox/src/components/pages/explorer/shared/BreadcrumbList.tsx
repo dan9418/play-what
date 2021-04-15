@@ -70,7 +70,7 @@ const StyledButtonWrapper = styled.div`
 	white-space: nowrap;
 `;
 
-const BreadcrumbList = () => {
+const BreadcrumbList: React.FC = () => {
 
 	const fullPath = useRecoilValue(fullPathState);
 	//const pathHead = fullPath.length ? fullPath[fullPath.length - 1] : null;
@@ -80,7 +80,7 @@ const BreadcrumbList = () => {
 	const isMobile = useIsMobile();
 
 	const isVisible = fullPath && fullPath.length >= 2;
-	if (!isVisible) return <StyledWrapper />;
+	if (!isVisible) return null;
 
 	const middle = fullPath.slice(1, fullPath.length - 1);
 	const actions = middle.map((x, i) => ({
