@@ -1,4 +1,5 @@
 import { IModelDef } from '@pw/core/src/models/Model.constants';
+import ColorUtils from '../color/Color.utils';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
@@ -13,7 +14,7 @@ import { SCALE_PRESETS } from "./PodList/Scale/Scale.constants";
 
 // Name
 
-const getNoteName = (modelValue: IPod) => {
+const getNoteName = (modelValue: IPod, isShort = false) => {
 	const reducedValue = PodUtils.reduce(modelValue);
 
 	const d = reducedValue[1];
@@ -24,7 +25,7 @@ const getNoteName = (modelValue: IPod) => {
 	return `${spelling}${accidental}${octave}`;
 }
 
-const getIntervalName = (modelValue: IPod) => {
+const getIntervalName = (modelValue: IPod, isShort = false) => {
 	const [noteIndex, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -53,7 +54,7 @@ const getIntervalName = (modelValue: IPod) => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getChordName = (modelValue: IPod[], modelOptions: IModelOptions) => {
+const getChordName = (modelValue: IPod[], modelOptions: IModelOptions, isShort = false) => {
 	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Chord';
 
@@ -63,7 +64,7 @@ const getChordName = (modelValue: IPod[], modelOptions: IModelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getScaleName = (modelValue: IPod[], modelOptions: IModelOptions) => {
+const getScaleName = (modelValue: IPod[], modelOptions: IModelOptions, isShort = false) => {
 	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
 	const presetName = preset ? preset.name : 'Scale';
 
@@ -73,20 +74,20 @@ const getScaleName = (modelValue: IPod[], modelOptions: IModelOptions) => {
 	return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions = null): string => {
+const getName = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions = null, isShort = false): string => {
 	if (modelOptions && modelOptions.name) return modelOptions.name;
 
 	switch (modelId) {
 		case ModelId.Note:
-			return getNoteName(modelValue as IPod)
+			return getNoteName(modelValue as IPod, isShort)
 		case ModelId.Interval:
-			return getIntervalName(modelValue as IPod);
+			return getIntervalName(modelValue as IPod, isShort);
 		case ModelId.Group:
 			return 'Group';
 		case ModelId.Chord:
-			return getChordName(modelValue as IPod[], modelOptions);
+			return getChordName(modelValue as IPod[], modelOptions, isShort);
 		case ModelId.Scale:
-			return getScaleName(modelValue as IPod[], modelOptions);
+			return getScaleName(modelValue as IPod[], modelOptions, isShort);
 		default:
 			return '?';
 	}
@@ -143,6 +144,7 @@ const getPodAtPitch = (modelId: ModelId, modelValue: IModelValue, modelOptions: 
 
 interface IPodProps {
 	color: string | null,
+	fgColor: string | null,
 	label: string | null
 }
 
@@ -150,16 +152,18 @@ const getNotePodProps = (modelValue: IPod, modelOptions: IModelOptions, noteInde
 	const pod = getPodAtPitch(ModelId.Note, modelValue, modelOptions, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
+	const fgColor = ColorUtils.getFgColor(color);
 	const label = getNoteName(pod);
-	return { color, label };
+	return { color, fgColor, label };
 }
 
 const getIntervalPodProps = (modelValue: IPod, modelOptions: IModelOptions, noteIndex: number, matchOctave): IPodProps => {
 	const pod = getPodAtPitch(ModelId.Interval, modelValue, modelOptions, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
+	const fgColor = ColorUtils.getFgColor(color);
 	const label = getIntervalName(pod);
-	return { color, label };
+	return { color, fgColor, label };
 }
 
 const getPodListProps = (modelValue: IPod[], modelOptions: IModelOptions, noteIndex: number, matchOctave): IPodProps => {
@@ -169,11 +173,17 @@ const getPodListProps = (modelValue: IPod[], modelOptions: IModelOptions, noteIn
 	if (!pod && !superPod) return null;
 	if (!pod) return {
 		color: '#eee',
+		fgColor: '#555',
 		label: getIntervalName(superPod)
 	};
 	const color = IntervalUtils.getPodColor(pod);
-	const label = getIntervalName(pod);
-	return { color, label };
+	const fgColor = ColorUtils.getFgColor(color);
+
+	const hasRoot = modelOptions && modelOptions.modelRoot;
+	const note = hasRoot ? PodUtils.addPod(modelOptions.modelRoot, pod) : null;
+
+	const label = note ? getNoteName(pod) : getIntervalName(pod);
+	return { color, fgColor, label };
 }
 
 const getPodProps = (modelId: ModelId, modelValue: IModelValue, modelOptions: IModelOptions, noteIndex: number, matchOctave = false): IPodProps | null => {

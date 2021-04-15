@@ -15,6 +15,7 @@ const StyledSubpanelHeader = styled.div`
 	position: relative;
 	min-height: 52px;
 	border-radius: 8px;
+	cursor: pointer;
 	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc; border-radius: 8px 8px 0 0;'}
 	
 	.name {
@@ -100,7 +101,6 @@ const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview
 const StyledSubpanel = styled.section`
 	width: 100%;
 	border-radius: 8px;
-	cursor: pointer;
 
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 

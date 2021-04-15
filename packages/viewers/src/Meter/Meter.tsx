@@ -5,13 +5,18 @@ import React from "react";
 import styled from 'styled-components';
 
 const StyledDot = styled.div`
- 	${({ $color }) => $color ? `background-color: ${$color}` : ''};
-	${({ $isDimmed }) => $isDimmed ? 'opacity: 0.4;' : ''};
-
-	:hover {
-		cursor: pointer;
-		background-color: #eee;;
-	}
+ 	${({ $color }) => $color ? `
+	 	background-color: ${$color};
+		:hover {
+			cursor: pointer;
+			opacity: 1;
+		}
+	 ` : `
+		:hover {
+			background-color: #eee;
+		}
+	 `};
+	opacity: ${({ $isDimmed }) => $isDimmed ? .4 : .9};
 
 	height: 32px;
 	width: 100%;
@@ -35,11 +40,22 @@ const StyledDot = styled.div`
 	}
 
 	position: relative;
+	${({ $fgColor }) => $fgColor ? `color: ${$fgColor}` : ''};
 	.label {
+		color: #333;
 		font-size: 90%;
 		padding-top: 4px;
 		position: absolute;
 		top: 100%;
+		width: 100%;
+		text-align: center;
+	}
+	.octave {
+		color: #333;
+		font-size: 90%;
+		padding-bottom: 4px;
+		position: absolute;
+		bottom: 100%;
 		width: 100%;
 		text-align: center;
 	}
@@ -79,34 +95,39 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, ran
 		const hasDegree = podProps !== null;
 
 		let color = '#fff';
-		let podName = null;
+		let fgColor = '#333';
 
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
 
 		let onMouseEnter = null;
 		let onMouseLeave = null;
+		let name = null;
 		if (hasDegree) {
+			name = podProps.label;
 			color = podProps.color;
+			fgColor = podProps.fgColor;
 			onMouseEnter = () => setHoveredIndex(i)
 			onMouseLeave = () => setHoveredIndex(null);
-		}
-		if (pitchClass === 0) {
-			podName = PodUtils.getOctave(indexPod, true);
 		}
 
 		const isRoot = root && root[0] === i;
 		const isMiddleC = i === 0;
+		const isOctave = pitchClass === 9;
+
+		const octave = isOctave ? PodUtils.getOctave(indexPod, true) : null;
 
 		list.push(
 			<StyledDot
 				$color={color}
+				$fgColor={fgColor}
 				key={i}
 				$isDimmed={hoveredIndex !== null && hoveredIndex !== i}
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 			>
-				{podName}
+				{name}
+				{isOctave ? <span className="octave">{octave}</span> : null}
 				{isRoot ? <span className="label">R</span> : null}
 				{!isRoot && isMiddleC ? <span className="label">C</span> : null}
 			</StyledDot>

@@ -68,6 +68,7 @@ const StyledBreadcrumbList = styled.ul`
 
 const StyledButtonWrapper = styled.div`
 	white-space: nowrap;
+	margin-right: 24px;
 `;
 
 const BreadcrumbList: React.FC = () => {

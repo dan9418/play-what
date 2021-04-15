@@ -30,6 +30,7 @@ const StyledPanelHeader = styled.section`
 		justify-content: space-between;
 		//flex-direction: column;
 		width: 100%;
+		padding-bottom: 4px;
 
 		@media(min-width: 512px) {
 			flex-direction: row;
