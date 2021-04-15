@@ -1,4 +1,4 @@
-import { ModelId } from "@pw/core/src/models/Model.constants";
+import { IModelConfig, ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
 import StyledCard from "@pw/sandbox/src/components/ui/layout/StyledCard";
@@ -22,7 +22,11 @@ const StyledViewerHelp = styled(StyledCard)`
 	}
 `
 
-const Viewer: React.FC = ({ modelConfig }) => {
+interface IViewerProps {
+	modelConfig: IModelConfig
+}
+
+const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 
 	const matchOctave = useRecoilValue(matchOctaveState);
 	const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);

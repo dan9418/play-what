@@ -32,9 +32,8 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
             title="Viewer"
             subtitle={viewerName}
             isOpen={editId === 'viewer'}
-            setIsOpen={x => x ? setEditId('viewer') : setEditId(null)}
+            setIsOpen={x => setEditId(x ? 'viewer' : null)}
             actions={actions}
-            hasBorder
         >
             <Viewer modelConfig={pathHead.config} />
         </Col>

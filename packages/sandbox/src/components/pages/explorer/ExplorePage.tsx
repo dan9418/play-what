@@ -57,8 +57,8 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 			{/* @ts-ignore */}
 			<Panel name={name} preview={preview} caption={null} >
 				<StyledExplorePage>
-					<ViewerCol editId={editId} setEditId={setEditId} />
 					<DataCol editId={editId} setEditId={setEditId} />
+					<ViewerCol editId={editId} setEditId={setEditId} />
 				</StyledExplorePage>
 			</Panel>
 		</>

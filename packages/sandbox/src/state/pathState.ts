@@ -73,6 +73,7 @@ export const pathHeadState: RecoilState<IModelNode> = selector({
 		console.log('SET', '\nold:\n', oldValue, '\nnew:\n', newValue, '\ncopy:\n', copy, '\npath:\n', pathStr);
 
 		const merged = { ...oldValue, ...newValue };
+		console.log('merged', merged);
 		_.set(copy, pathStr, merged);
 
 		console.log('set pathHead', pathStr, copy);

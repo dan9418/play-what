@@ -59,7 +59,7 @@ const DataCol: React.FC<IDataColProps> = ({ editId, setEditId }) => {
     const editProps = getEditProps(editId, setEditId, 'data');
 
     return (
-        <Col {...colProps} {...editProps}>
+        <Col {...colProps} {...editProps} hasBorder>
             <DataList metaChildren={pathHead.metaChildren} isEditing={editProps.isOpen} level={level} />
         </Col>
     );
