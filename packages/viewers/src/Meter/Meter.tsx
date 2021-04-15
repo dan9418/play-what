@@ -36,9 +36,10 @@ const StyledDot = styled.div`
 
 	position: relative;
 	.label {
-		padding-bottom: 4px;
+		font-size: 90%;
+		padding-top: 4px;
 		position: absolute;
-		bottom: 100%;
+		top: 100%;
 		width: 100%;
 		text-align: center;
 	}
@@ -107,7 +108,7 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, ran
 			>
 				{podName}
 				{isRoot ? <span className="label">R</span> : null}
-				{isMiddleC ? <span className="label">C</span> : null}
+				{!isRoot && isMiddleC ? <span className="label">C</span> : null}
 			</StyledDot>
 		);
 	}

@@ -44,7 +44,7 @@ const StyledColHeader = styled.div`
 	justify-content: space-between;
 
 	height: 64px;
-	padding: 0 16px;
+	padding: 0 24px 0 16px;
 
 	border-bottom: 1px solid #ccc;
 
@@ -60,6 +60,7 @@ const StyledColHeader = styled.div`
 			>:last-child {
 				color: ${({ theme }) => theme.accent};
 				font-size: 80%;
+				font-weight: normal;
 			}
 		}
 	}
@@ -95,7 +96,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorde
 					</h3>
 				</div>
 				<div>
-					{!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />}
+					{/*!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />*/}
 					<OverflowMenu items={actions} />
 				</div>
 			</StyledColHeader>

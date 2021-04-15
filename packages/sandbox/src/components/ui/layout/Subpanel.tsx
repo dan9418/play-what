@@ -49,9 +49,9 @@ const StyledButtonContainer = styled.div`
 	display: flex;
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: 6px;
 	button {
-		margin: 6px 0;
+		margin: 6px 2px;
 	}
 `;
 
