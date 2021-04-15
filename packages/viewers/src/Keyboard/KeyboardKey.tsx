@@ -2,6 +2,9 @@ import NumberUtils from '@pw/core/src/general/Number.utils';
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import "./Keyboard.css";
 import React from "react";
+import styled from 'styled-components';
+import { IModelOptions, IModelValue, ModelId } from 'core/src/models/Model.constants';
+import ColorUtils from '@pw/core/src/color/Color.utils';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -19,49 +22,75 @@ export const KEY_TYPE = {
 
 const getScaleStyles = (keyType, scale) => {
 	switch (keyType) {
-	case KEY_TYPE.White:
-		return {
-			width: scale + 'px',
-			height: KEY__DIMS.WhW_WhH * scale + 'px'
-		};
-	case KEY_TYPE.Black:
-		return {
-			width: KEY__DIMS.WhW_BlW * scale + 'px',
-			height: KEY__DIMS.WhW_BlH * scale + 'px',
-			right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'
-		};
-	default:
-		return {
-			width: '0px',
-			height: '0px'
-		};
+		case KEY_TYPE.White:
+			return {
+				width: scale + 'px',
+				height: KEY__DIMS.WhW_WhH * scale + 'px'
+			};
+		case KEY_TYPE.Black:
+			return {
+				width: KEY__DIMS.WhW_BlW * scale + 'px',
+				height: KEY__DIMS.WhW_BlH * scale + 'px',
+				right: .5 * KEY__DIMS.WhW_BlW * scale + 'px'
+			};
+		default:
+			return {
+				width: '0px',
+				height: '0px'
+			};
 	}
 }
 
-const KeyboardKey = ({ noteIndex, scale, modelId, modelValue, modelOptions }) => {
+const StyledKey = styled.div`
+	background-color: ${({ $color }) => $color ? $color : 'transparent'};
+	color: ${({ $color }) => ColorUtils.getFgColor($color)};
+	${({ $isDimmed }) => $isDimmed ? 'opacity: 0.4;' : ''};
+`;
+
+const StyledKeyLabel = styled.div`
+	color: ${({ $color }) => ColorUtils.getFgColor($color)};
+`;
+interface IKeyLabelProps {
+	noteIndex: number;
+	modelId: ModelId;
+	modelValue: IModelValue;
+	modelOptions: IModelOptions;
+	scale: number;
+	range: number[];
+	matchOctave: boolean;
+	hoveredIndex: number | null;
+	setHoveredIndex: any;
+}
+
+const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, modelId, modelValue, modelOptions, hoveredIndex, setHoveredIndex }) => {
 
 	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex);
 
-	const { color, label } = podProps || { color: null, label: null };
-
-	const colorStyles = { backgroundColor: color };
+	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 
 	const keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
 	const scaleStyles = getScaleStyles(keyType, scale);
 	const classes = ['keyboard-key', `${keyType}-key`, keyType];
 
+	const colorStyles = {
+		backgroundColor: color
+	}
+
 	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
 
+	const onMouseEnter = () => setHoveredIndex(noteIndex)
+	const onMouseLeave = () => setHoveredIndex(null);
+
 	return (
-		<div className={`${keyType}-key-container`} onClick={null}>
-			<div className={classes.join(' ')} style={keyStyles} onClick={null}>
-				<div className='keyboard-key-label' style={labelStyles}>
+		<StyledKeyLabel className={`${keyType}-key-container`} $isDimmed={keyType === KEY_TYPE.White && hoveredIndex !== null && hoveredIndex !== noteIndex}>
+			<div className={classes.join(' ')} style={keyStyles} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={color}>
 					{label}
-				</div>
+				</StyledKeyLabel>
 			</div>
-		</div>
+		</StyledKeyLabel>
 	);
 }
 

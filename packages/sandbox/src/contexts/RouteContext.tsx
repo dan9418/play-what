@@ -2,6 +2,7 @@
 import React from "react";
 import AboutPage from '../components/pages/about/AboutPage';
 import ExplorePage from '../components/pages/explorer/ExplorePage';
+import LIBRARY_PATH_ROOT from "../data/library";
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 
@@ -38,9 +39,14 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 	}]
 ]);
 
+const DEFAULT_PAGE = PageId.Explore;
+const DEFAULT_PAGE_PARAMS = {
+	data: LIBRARY_PATH_ROOT
+};
+
 export const RouteContextProvider: React.FC = ({ children }) => {
-	const [pageId, setPageId] = React.useState(PageId.About);
-	const [pageParams, setPageParams] = React.useState(null);
+	const [pageId, setPageId] = React.useState(DEFAULT_PAGE);
+	const [pageParams, setPageParams] = React.useState(DEFAULT_PAGE_PARAMS);
 
 	const setPage = (pageId: PageId, params: ParamType = {}) => {
 		setPageId(pageId);

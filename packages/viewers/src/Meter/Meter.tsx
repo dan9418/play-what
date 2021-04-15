@@ -100,15 +100,13 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, ran
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
 
-		let onMouseEnter = null;
-		let onMouseLeave = null;
+		const onMouseEnter = () => setHoveredIndex(i)
+		const onMouseLeave = () => setHoveredIndex(null);
 		let name = null;
 		if (hasDegree) {
 			name = podProps.label;
 			color = podProps.color;
 			fgColor = podProps.fgColor;
-			onMouseEnter = () => setHoveredIndex(i)
-			onMouseLeave = () => setHoveredIndex(null);
 		}
 
 		const isRoot = root && root[0] === i;

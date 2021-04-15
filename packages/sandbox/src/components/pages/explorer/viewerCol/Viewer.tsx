@@ -22,7 +22,7 @@ const StyledViewerHelp = styled(StyledCard)`
 	}
 `
 
-const Viewer = ({ modelConfig }) => {
+const Viewer: React.FC = ({ modelConfig }) => {
 
 	const matchOctave = useRecoilValue(matchOctaveState);
 	const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);
