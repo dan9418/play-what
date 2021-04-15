@@ -1,6 +1,7 @@
+import { fullPathState } from "@pw/sandbox/src/state/pathState";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled, { css } from 'styled-components';
-import IconButton from '../inputs/buttons/IconButton';
 import OverflowMenu from "./OverflowMenu";
 
 const StyledCol = styled.div`
@@ -49,7 +50,7 @@ const StyledColHeader = styled.div`
 	border-bottom: 1px solid #ccc;
 
 	position: sticky;
-	top: 80px;
+	top: ${({ $isCompact }) => $isCompact ? 32 : 80}px;
 	z-index: 100;
 	background-color: #ecefef;
 
@@ -84,9 +85,12 @@ interface IColProps {
 
 const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
 
+	const fullPath = useRecoilValue(fullPathState);
+	const isCompact = !fullPath || fullPath.length < 2;
+
 	return (
 		<StyledCol $hasBorder={hasBorder}>
-			<StyledColHeader>
+			<StyledColHeader $isCompact={isCompact}>
 				<div className="titles">
 					<h2>
 						{title}
