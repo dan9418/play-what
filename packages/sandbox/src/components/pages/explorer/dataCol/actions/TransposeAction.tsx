@@ -5,6 +5,7 @@ import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
+import { IActionProps } from '../../shared/getActions';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -29,7 +30,7 @@ const DIRECTION_OPTIONS = [
 
 const PRESETS = INTERVAL_PRESETS.filter(ivl => ivl.value[0])
 
-const TransposeAction: React.FC = ({ pathHead, setPathHead }) => {
+const TransposeAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 	const [directionIndex, setDirectionIndex] = React.useState(0);
 	const [intervalIndex, setIntervalIndex] = React.useState(0);
 
@@ -44,7 +45,7 @@ const TransposeAction: React.FC = ({ pathHead, setPathHead }) => {
 
 		const newData = _.cloneDeep(pathHead);
 		_.set(newData, 'config.modelOptions.modelRoot', modelRoot);
-		setPathHead(newData.config);
+		setPathHead(newData);
 	};
 
 	return (

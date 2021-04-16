@@ -1,10 +1,11 @@
-import { MODEL_MAP, ModelId } from '@pw/core/src/models/Model.constants';
+import { ModelId, MODEL_MAP } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { siblingsState } from '../../../../../state/pathState';
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
+import { IActionProps } from '../../shared/getActions';
 
 const StyledLabel = styled.h4`
 	margin: 8px 0 4px;
@@ -16,7 +17,13 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetAction = ({ pathHead = null, setPathHead, type = null, validTypes = null, onCancel = null }) => {
+interface IPresetActionProps extends IActionProps {
+	type?: any;
+	validTypes?: any[];
+	onCancel?: any;
+}
+
+const PresetAction: React.FC<IPresetActionProps> = ({ pathHead = null, setPathHead, type = null, validTypes = null, onCancel = null }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
@@ -40,10 +47,13 @@ const PresetAction = ({ pathHead = null, setPathHead, type = null, validTypes = 
 	const onSubmit = () => {
 		const modelId = selectedTypeOption.value;
 		const modelValue = selectedPresetOption.value;
-		setPathHead({
-			modelId,
-			modelValue
-		});
+		const newPathHead = {
+			config: {
+				modelId,
+				modelValue
+			}
+		}
+		setPathHead(newPathHead);
 	};
 
 	return (

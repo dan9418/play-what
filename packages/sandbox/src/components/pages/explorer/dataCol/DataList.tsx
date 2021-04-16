@@ -53,9 +53,9 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = nu
 		const newPathIds = [...pathIds, i];
 		const metaChildren = ModelUtils.getMetaChildren(child.config);
 
-		const [childPathHead, setChildPathHeadConfig] = getChildUtils(pathHead, setPathHead, child, newPathIds);
+		const [childPathHead, setChildPathHead] = getChildUtils(pathHead, setPathHead, child, newPathIds);
 
-		const actions = getActions(DATA_ACTIONS, childPathHead, setChildPathHeadConfig, setModal);
+		const actions = getActions(DATA_ACTIONS, childPathHead, setChildPathHead, setModal);
 
 		return (
 			<li key={name + i} className='data-item'>

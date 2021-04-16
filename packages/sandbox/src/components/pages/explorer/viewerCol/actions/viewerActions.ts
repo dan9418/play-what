@@ -1,13 +1,26 @@
-import ViewerTypeAction from './ViewerTypeAction';
+import { IModalAction } from '@pw/sandbox/src/components/ui/layout/Modal';
 import Fretboard from '../../../../../../../viewers/src/Fretboard/Fretboard';
 import Keyboard from '../../../../../../../viewers/src/Keyboard/Keyboard';
+import ViewerTypeAction from './ViewerTypeAction';
 
 enum VIEWER_ID {
 	Fretboard = 'fretboard',
 	Keyboard = 'keyboard'
 }
 
-export const VIEWER = {
+
+interface IOption {
+	name: string;
+	component: any;
+}
+export interface IViewer {
+	id: string;
+	name: string;
+	component: any;
+	options: IOption[];
+}
+
+export const VIEWER: { [x: string]: IViewer } = {
 	[VIEWER_ID.Fretboard]: {
 		id: VIEWER_ID.Fretboard,
 		name: 'Fretboard',
@@ -38,7 +51,7 @@ export const VIEWER = {
 
 export const VIEWER_OPTIONS = Object.values(VIEWER);
 
-const VIEWER_ACTIONS = [
+const VIEWER_ACTIONS: IModalAction[] = [
 	{
 		name: 'Change Viewer',
 		description: 'Set the viewer type',

@@ -1,14 +1,15 @@
 import { ModelId } from '@pw/core/src/models/Model.constants';
 import _ from 'lodash';
 import React from "react";
+import { IActionProps } from '../../shared/getActions';
 import PresetAction from './PresetAction';
 
-const RootAction = ({ pathHead, setPathHead }) => {
+const RootAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 
-	const onSubmit = root => {
-		console.log(root);
+	const onSubmit = presetPathHead => {
+		console.log(presetPathHead);
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'modelOptions.modelRoot', root.modelValue);
+		_.set(newData, 'config.modelOptions.modelRoot', presetPathHead.config.modelValue);
 		setPathHead(newData);
 	};
 

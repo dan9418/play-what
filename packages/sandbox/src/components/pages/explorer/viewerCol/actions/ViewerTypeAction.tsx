@@ -3,6 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
+import { IActionProps } from '../../shared/getActions';
 import { VIEWER_OPTIONS } from './viewerActions';
 
 const StyledLabel = styled.h4`
@@ -15,14 +16,14 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const ViewerTypeAction = ({ pathHead, setPathHead }) => {
+const ViewerTypeAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 	const [viewerIndex, setViewerIndex] = React.useState(0);
 
 	const selectedViewerOption = VIEWER_OPTIONS[viewerIndex];
 
 	const onSubmit = () => {
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'modelOptions.viewerId', selectedViewerOption.id);
+		_.set(newData, 'config.modelOptions.viewerId', selectedViewerOption.id);
 		setPathHead(newData);
 	};
 
