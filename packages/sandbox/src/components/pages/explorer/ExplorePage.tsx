@@ -35,7 +35,7 @@ const StyledExplorePage = styled.div`
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const path = useRecoilValue(pathState);
 	const [editId, setEditId] = useState(null);
-	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const [data, setData] = useRecoilState(dataState);
 
 	React.useEffect(() => {

@@ -9,14 +9,14 @@ import getActions from '../shared/getActions';
 import DATA_ACTIONS from './actions/dataActions';
 import DataList from './DataList';
 
-const getColProps = (pathHead, setPathHeadConfig, setModal) => {
+const getColProps = (pathHead, setPathHead, setModal) => {
 
     const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
 
     const root = modelOptions && modelOptions.modelRoot;
     const isGroup = modelId === ModelId.Group;
 
-    const actions = getActions(DATA_ACTIONS, pathHead, setPathHeadConfig, setModal);
+    const actions = getActions(DATA_ACTIONS, pathHead, setPathHead, setModal);
 
     if (isGroup) {
         return {
@@ -50,12 +50,12 @@ interface IDataColProps {
 
 const DataCol: React.FC<IDataColProps> = ({ editId, setEditId }) => {
     const path = useRecoilValue(pathState);
-    const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+    const [pathHead, setPathHead] = useRecoilState(pathHeadState);
     const setModal = useSetRecoilState(modalState);
 
     const level = path.length;
 
-    const colProps = getColProps(pathHead, setPathHeadConfig, setModal);
+    const colProps = getColProps(pathHead, setPathHead, setModal);
     const editProps = getEditProps(editId, setEditId, 'data');
 
     return (

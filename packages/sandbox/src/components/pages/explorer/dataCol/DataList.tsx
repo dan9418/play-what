@@ -19,7 +19,7 @@ const StyledDataList = styled.ul`
 	}
 `;
 
-const getChildUtils = (pathHead, setPathHeadConfig, child, path) => {
+const getChildUtils = (pathHead, setPathHead, child, path) => {
 	const copy = _.cloneDeep(pathHead.config);
 
 	const pathStr = `modelValue.${path.join('.modelValue.')}`;
@@ -31,13 +31,13 @@ const getChildUtils = (pathHead, setPathHeadConfig, child, path) => {
 		console.log('A', copy);
 		_.set(copy, pathStr, newConfig);
 		console.log('B', copy);
-		setPathHeadConfig(copy);
+		setPathHead(copy);
 	}
 
 	return [child.config, set];
 }
 
-const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null, pathHead = null, setPathHeadConfig = null, hoveredIndex = null, DataList = null) => {
+const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null, pathHead = null, setPathHead = null, hoveredIndex = null, DataList = null) => {
 
 	return defs.map((child, i) => {
 
@@ -53,7 +53,7 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = nu
 		const newPathIds = [...pathIds, i];
 		const metaChildren = ModelUtils.getMetaChildren(child.config);
 
-		const [childPathHead, setChildPathHeadConfig] = getChildUtils(pathHead, setPathHeadConfig, child, newPathIds);
+		const [childPathHead, setChildPathHeadConfig] = getChildUtils(pathHead, setPathHead, child, newPathIds);
 
 		const actions = getActions(DATA_ACTIONS, childPathHead, setChildPathHeadConfig, setModal);
 
@@ -87,7 +87,7 @@ interface IDataListProps {
 
 const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0 }) => {
 
-	const [pathHead, setPathHeadConfig] = useRecoilState(pathHeadState);
+	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const fullPath = useRecoilValue(fullPathState);
 	const setModal = useSetRecoilState(modalState);
 	const hoveredIndex = useRecoilValue(hoveredIndexState);
@@ -100,7 +100,7 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 
 	return (
 		<StyledDataList>
-			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal, pathHead, setPathHeadConfig, hoveredIndex, DataList)}
+			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal, pathHead, setPathHead, hoveredIndex, DataList)}
 		</StyledDataList>
 	);
 };

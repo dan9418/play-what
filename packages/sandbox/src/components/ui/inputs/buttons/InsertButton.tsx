@@ -42,7 +42,7 @@ const InsertButton: React.FC<IInsertButtonProps> = ({ pathHead, onInsert, ...res
             {isActive ?
                 <>
                     <StyledCard>
-                        <PresetAction setPathHeadConfig={handler} validTypes={model.validChildren} onCancel={() => setIsActive(false)} />
+                        <PresetAction setPathHead={handler} validTypes={model.validChildren} onCancel={() => setIsActive(false)} />
                     </StyledCard>
                 </>
                 :

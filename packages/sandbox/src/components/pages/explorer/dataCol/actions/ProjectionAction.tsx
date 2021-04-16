@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
 
-const ProjectionAction = ({ pathHead, setPathHeadConfig }) => {
+const ProjectionAction = ({ pathHead, setPathHead }) => {
 	const { modelId, modelValue, modelOptions } = pathHead.config;
 
 	const [index, setIndex] = React.useState(0);
@@ -30,7 +30,7 @@ const ProjectionAction = ({ pathHead, setPathHeadConfig }) => {
 		const projection = { podList: modelValueCopy };
 		_.set(copy, 'config.modelOptions.projection', projection);
 
-		setPathHeadConfig(copy.config);
+		setPathHead(copy.config);
 	};
 
 	return (

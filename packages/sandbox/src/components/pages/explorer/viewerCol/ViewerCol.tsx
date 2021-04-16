@@ -14,7 +14,7 @@ interface IViewerColProps {
 }
 
 const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
-    const [pathHead, setPathHeadConfig] = useRecoilState<IModelNode>(pathHeadState);
+    const [pathHead, setPathHead] = useRecoilState<IModelNode>(pathHeadState);
     const setModal = useSetRecoilState(modalState);
 
     const { modelOptions } = pathHead.config;
@@ -25,7 +25,7 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
 
     const viewerName = VIEWER[viewerId].name;
 
-    const actions = getActions(VIEWER_ACTIONS, pathHead, setPathHeadConfig, setModal);
+    const actions = getActions(VIEWER_ACTIONS, pathHead, setPathHead, setModal);
 
     return (
         <Col

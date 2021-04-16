@@ -15,7 +15,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const ViewerTypeAction = ({ pathHead, setPathHeadConfig }) => {
+const ViewerTypeAction = ({ pathHead, setPathHead }) => {
 	const [viewerIndex, setViewerIndex] = React.useState(0);
 
 	const selectedViewerOption = VIEWER_OPTIONS[viewerIndex];
@@ -23,7 +23,7 @@ const ViewerTypeAction = ({ pathHead, setPathHeadConfig }) => {
 	const onSubmit = () => {
 		const newData = _.cloneDeep(pathHead);
 		_.set(newData, 'modelOptions.viewerId', selectedViewerOption.id);
-		setPathHeadConfig(newData);
+		setPathHead(newData);
 	};
 
 	return (

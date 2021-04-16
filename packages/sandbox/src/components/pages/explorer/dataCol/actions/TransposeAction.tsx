@@ -27,12 +27,14 @@ const DIRECTION_OPTIONS = [
 	}
 ];
 
-const TransposeAction = ({ pathHead, setPathHeadConfig }) => {
+const PRESETS = INTERVAL_PRESETS.filter(ivl => ivl.value[0])
+
+const TransposeAction: React.FC = ({ pathHead, setPathHead }) => {
 	const [directionIndex, setDirectionIndex] = React.useState(0);
 	const [intervalIndex, setIntervalIndex] = React.useState(0);
 
 	const selectedDirectionOption = DIRECTION_OPTIONS[directionIndex];
-	const selectedIntervalOption = INTERVAL_PRESETS[intervalIndex];
+	const selectedIntervalOption = PRESETS[intervalIndex];
 
 	const onSubmit = () => {
 		const initModelRoot = pathHead.config.modelOptions.modelRoot;
@@ -41,8 +43,8 @@ const TransposeAction = ({ pathHead, setPathHeadConfig }) => {
 			PodUtils.subtractPod(initModelRoot, selectedIntervalOption.value);
 
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'modelOptions.modelRoot', modelRoot);
-		setPathHeadConfig(newData);
+		_.set(newData, 'config.modelOptions.modelRoot', modelRoot);
+		setPathHead(newData.config);
 	};
 
 	return (
@@ -52,7 +54,7 @@ const TransposeAction = ({ pathHead, setPathHeadConfig }) => {
 			<DropdownInput options={DIRECTION_OPTIONS} value={selectedDirectionOption} setValue={(v, i) => setDirectionIndex(i)} />
 
 			<StyledLabel>Interval: </StyledLabel>
-			<DropdownInput options={INTERVAL_PRESETS} value={selectedIntervalOption} setValue={(v, i) => setIntervalIndex(i)} />
+			<DropdownInput options={PRESETS} value={selectedIntervalOption} setValue={(v, i) => setIntervalIndex(i)} />
 
 		</ActionForm>
 	);

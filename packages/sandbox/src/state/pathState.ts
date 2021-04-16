@@ -52,7 +52,7 @@ export const fullPathState: RecoilValueReadOnly<IModelNode[]> = selector({
 
 export const pathHeadState: RecoilState<IModelNode> = selector({
 	key: 'pathHeadState',
-	get: ({ get }): IModelDef => {
+	get: ({ get }): IModelNode => {
 		const nodes: any[] = get(fullPathState);
 
 		if (!nodes.length) return null;
@@ -61,7 +61,7 @@ export const pathHeadState: RecoilState<IModelNode> = selector({
 		console.log('pathHead', pathHead);
 		return pathHead;
 	},
-	set: ({ get, set }, newValue: any) => {
+	set: ({ get, set }, newValue: IModelNode) => {
 		const path = get(pathState);
 		const data = get(dataState);
 

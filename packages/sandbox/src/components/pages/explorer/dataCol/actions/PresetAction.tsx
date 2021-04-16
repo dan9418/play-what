@@ -16,7 +16,7 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTypes = null, onCancel = null }) => {
+const PresetAction = ({ pathHead = null, setPathHead, type = null, validTypes = null, onCancel = null }) => {
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
@@ -40,7 +40,7 @@ const PresetAction = ({ pathHead = null, setPathHeadConfig, type = null, validTy
 	const onSubmit = () => {
 		const modelId = selectedTypeOption.value;
 		const modelValue = selectedPresetOption.value;
-		setPathHeadConfig({
+		setPathHead({
 			modelId,
 			modelValue
 		});
