@@ -182,7 +182,7 @@ const getPodListProps = (modelValue: IPod[], modelOptions: IModelOptions, noteIn
 	const hasRoot = modelOptions && modelOptions.modelRoot;
 	const note = hasRoot ? PodUtils.addPod(modelOptions.modelRoot, pod) : null;
 
-	const label = note ? getNoteName(pod) : getIntervalName(pod);
+	const label = note ? getNoteName(note) : getIntervalName(pod);
 	return { color, fgColor, label };
 }
 

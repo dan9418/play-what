@@ -84,13 +84,13 @@ const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, modelId, mode
 	const onMouseLeave = () => setHoveredIndex(null);
 
 	return (
-		<StyledKeyLabel className={`${keyType}-key-container`} $isDimmed={keyType === KEY_TYPE.White && hoveredIndex !== null && hoveredIndex !== noteIndex}>
+		<StyledKey className={`${keyType}-key-container`} $isDimmed={keyType === KEY_TYPE.White && hoveredIndex !== null && hoveredIndex !== noteIndex}>
 			<div className={classes.join(' ')} style={keyStyles} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
 				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={color}>
 					{label}
 				</StyledKeyLabel>
 			</div>
-		</StyledKeyLabel>
+		</StyledKey>
 	);
 }
 

@@ -30,7 +30,7 @@ const ProjectionAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => 
 		const copy = _.cloneDeep(pathHead);
 		const modelValueCopy = _.cloneDeep(selectedValue.modelValue);
 		const projection = { podList: modelValueCopy };
-		_.set(copy, 'config.config.modelOptions.projection', projection);
+		_.set(copy, 'config.modelOptions.projection', projection);
 
 		setPathHead(copy);
 	};
