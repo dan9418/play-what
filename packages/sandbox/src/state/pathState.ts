@@ -59,9 +59,15 @@ export const pathHeadState: RecoilState<IModelNode> = selector({
 
 		const pathHead = nodes[nodes.length - 1];
 		console.log('pathHead', pathHead);
+
+		if(!pathHead.config) debugger;
+
 		return pathHead;
 	},
 	set: ({ get, set }, newValue: IModelNode) => {
+
+		if(!newValue.config) debugger;
+
 		const path = get(pathState);
 		const data = get(dataState);
 

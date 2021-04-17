@@ -55,7 +55,7 @@ const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = nu
 
 		const [childPathHead, setChildPathHead] = getChildUtils(pathHead, setPathHead, child, newPathIds);
 
-		const actions = getActions(DATA_ACTIONS, childPathHead, setChildPathHead, setModal);
+		const actions = [];//getActions(DATA_ACTIONS, childPathHead, setChildPathHead, setModal);
 
 		return (
 			<li key={name + i} className='data-item'>

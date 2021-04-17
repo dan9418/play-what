@@ -9,7 +9,9 @@ export interface IActionProps {
 
 const getActions = (actionConfigs: IModalAction[], pathHead: IModelNode, setPathHead: (IModelNode) => void, setModal: (any) => void): IAction[] => {
     const actions = actionConfigs.map(a => {
-        const { component, ...rest } = a;
+        const { component, validTypes, ...rest } = a;
+
+        if (validTypes && !validTypes.includes(pathHead.config.modelId)) return null;
 
         return {
             name: a.name,
@@ -23,7 +25,7 @@ const getActions = (actionConfigs: IModalAction[], pathHead: IModelNode, setPath
             })
         }
     });
-    return actions;
+    return actions.filter(a => a);
 }
 
 export default getActions;
