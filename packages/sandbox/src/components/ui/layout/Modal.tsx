@@ -1,3 +1,4 @@
+import { ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
@@ -54,6 +55,7 @@ export interface IModalAction {
 	description: string;
 	component: any;
 	props?: any;
+	validTypes?: ModelId[]
 }
 
 interface IModalProps {

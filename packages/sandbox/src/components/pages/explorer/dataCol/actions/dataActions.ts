@@ -1,3 +1,4 @@
+import { ModelId } from '@pw/core/src/models/Model.constants';
 import { IModalAction } from '@pw/sandbox/src/components/ui/layout/Modal';
 import PresetAction from './PresetAction';
 import ProjectionAction from './ProjectionAction';
@@ -18,12 +19,14 @@ const DATA_ACTIONS: IModalAction[] = [
 	{
 		name: 'Transpose',
 		description: 'Shift all the notes by the same amount',
-		component: TransposeAction
+		component: TransposeAction,
+		validTypes: [ModelId.Note, ModelId.Interval, ModelId.Chord, ModelId.Scale]
 	},
 	{
 		name: 'Apply Projection',
 		description: 'Superimpose additional pods over these pods',
-		component: ProjectionAction
+		component: ProjectionAction,
+		validTypes: [ModelId.Chord, ModelId.Scale]
 	}
 ];
 
