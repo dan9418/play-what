@@ -24,7 +24,7 @@ const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPres
 export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelId: ModelId.Group,
 	modelOptions: {
-		modelRoot: NOTE_PRESET_MAP.get(NoteId.C).value,
+		//modelRoot: NOTE_PRESET_MAP.get(NoteId.C).value,
 		name: 'Library',
 		viewerId: 'fretboard',
 		viewerProps: {}
