@@ -60,18 +60,25 @@ export const pathHeadState: RecoilState<IModelNode> = selector({
 		const pathHead = nodes[nodes.length - 1];
 		console.log('pathHead', pathHead);
 
-		if(!pathHead.config) debugger;
+		if (!pathHead.config) debugger;
 
 		return pathHead;
 	},
 	set: ({ get, set }, newValue: IModelNode) => {
 
-		if(!newValue.config) debugger;
+		if (!newValue.config) debugger;
 
 		const path = get(pathState);
 		const data = get(dataState);
 
 		const copy = _.cloneDeep(data);
+
+		if (!path.length) {
+			const merged = { ...copy, ...newValue.config };
+			console.log('SET - merged (top)', merged);
+			set(dataState, merged);
+			return;
+		}
 
 		const pathStr = `modelValue.${path.join('.modelValue.')}`;
 		const oldValue = _.get(copy, pathStr);
