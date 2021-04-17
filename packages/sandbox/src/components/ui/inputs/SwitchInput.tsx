@@ -29,7 +29,12 @@ const StyledSwitch = styled.button`
 `;
 
 
-const SwitchInput: React.FC = ({ value, setValue }) => {
+interface ISwitchInputProps {
+	value: boolean;
+	setValue: (boolean) => void;
+}
+
+const SwitchInput: React.FC<ISwitchInputProps> = ({ value, setValue }) => {
 	return (
 		<StyledSwitch $active={value} onClick={() => setValue(!value)}>
 			<div className='ball' />

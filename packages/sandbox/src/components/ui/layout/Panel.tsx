@@ -2,6 +2,7 @@ import { MODEL_MAP, ModelId } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
+import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import styled, { css } from 'styled-components';
 import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
@@ -83,32 +84,42 @@ const StyledPanelHeader = styled.section`
 `;
 
 const StyledToolbox = styled.div`
-		///display: none;
-		background-color: #ddd;
-		border-radius: 8px;
+	background-color: #ddd;
+	border-radius: 8px;
+	padding: 8px;
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	@media(min-width: 512px) {
+		display: unset;
 		height: 100%;
-		padding: 8px;
+	}
 
-		> div {
-			> span {
-				font-size: 80%;
-				font-weight: 500;
-				margin-right: 4px;
-				color: #555;
-			}
+	> div {
+		> span {
+			font-size: 80%;
+			font-weight: 500;
+			margin-right: 4px;
+			color: #555;
+		}
 
-			display: flex;
-			align-items: center;
-			justify-content: flex-end;
-			:not(:last-child) {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		
+		:not(:last-child) {
+			margin-right: 8px;
+			@media(min-width: 512px) {
+				margin-right: 0;
 				margin-bottom: 8px;
 			}
-
-			.btn-speaker {
-				height: 24px;
-				width: 48px;
-				border-radius: 4px;
-			}
+		}
+		
+		.btn-speaker {
+			height: 24px;
+			width: 48px;
+			border-radius: 4px;
 		}
 	}
 `;
@@ -117,6 +128,7 @@ const StyledToolbox = styled.div`
 const PanelHeader: React.FC = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
 	const [matchOctave, setMatchOctave] = useRecoilState(matchOctaveState);
+	const isMobile = useIsMobile();
 
 	const { modelId } = pathHead.config;
 	const { name, preview } = pathHead.data;
@@ -134,7 +146,7 @@ const PanelHeader: React.FC = () => {
 					</div>
 					{isGroup ? null : <div className='preview'>{preview}</div>}
 				</div>
-				{isGroup ? null :
+				{(isGroup || isMobile) ? null :
 					<StyledToolbox>
 						<div>
 							<span>Match Octave?</span>
@@ -147,6 +159,18 @@ const PanelHeader: React.FC = () => {
 					</StyledToolbox>
 				}
 			</div>
+			{(isGroup || !isMobile) ? null :
+				<StyledToolbox>
+					<div>
+						<span>Match Octave?</span>
+						<SwitchInput value={matchOctave} setValue={setMatchOctave} />
+					</div>
+					<div>
+						<span>Play Sound</span>
+						<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(pathHead.config)} />
+					</div>
+				</StyledToolbox>
+			}
 			{!isGroup && <MeterWrapper />}
 		</StyledPanelHeader>
 	);
@@ -161,7 +185,7 @@ const StyledPanel = styled.div`
 
 
 
-const Panel: React.FC = ({ name, caption, preview, leftActions, rightAction, children }) => {
+const Panel: React.FC<any> = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
 			{/* @ts-ignore */}
