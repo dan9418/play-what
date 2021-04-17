@@ -19,23 +19,28 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
 
     const { modelOptions } = pathHead.config;
 
-    if (!modelOptions || !modelOptions.viewerId) return null;
+    const hasViewer = modelOptions && modelOptions.viewerId;
 
-    const { viewerId } = modelOptions;
+    const viewer = (hasViewer) ?
+        <Viewer modelConfig={pathHead.config} />
+        :
+        <div>
+            There is no viewer, yet...
+        </div>
 
-    const viewerName = VIEWER[viewerId].name;
+    const name = hasViewer ? VIEWER[modelOptions.viewerId].name : 'None';
 
     const actions = getActions(VIEWER_ACTIONS, pathHead, setPathHead, setModal);
 
     return (
         <Col
             title="Viewer"
-            subtitle={viewerName}
+            subtitle={name}
             isOpen={editId === 'viewer'}
             setIsOpen={x => setEditId(x ? 'viewer' : null)}
             actions={actions}
         >
-            <Viewer modelConfig={pathHead.config} />
+            {viewer}
         </Col>
     );
 };

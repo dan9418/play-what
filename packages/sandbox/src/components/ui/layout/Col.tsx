@@ -32,6 +32,7 @@ const StyledCol = styled.div`
 
 const StyledColBody = styled.div`
 	padding: 16px;
+	min-height: 256px;
 	${({ $isEnabled }) => $isEnabled ? '' : css`
 		//opacity: .5;
 		//pointer-events: none;
