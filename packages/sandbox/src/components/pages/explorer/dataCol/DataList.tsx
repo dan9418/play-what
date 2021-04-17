@@ -37,46 +37,46 @@ const getChildUtils = (pathHead, setPathHead, child, path) => {
 	return [child.config, set];
 }
 
-const getItems = (defs, pathIds, isEditing, level, isLeaf = false, setModal = null, pathHead = null, setPathHead = null, hoveredIndex = null, DataList = null) => {
+const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList) => {
+	const { config, data } = pathHead;
+	// Model helpers
+	const { modelId, modelValue } = config;
+	const isGroup = modelId === ModelId.Group;
+	const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
 
+	// Name, Caption, Preview
+	const { name, preview, caption } = data;
+
+	// Path & Metachildren
+	const newPathIds = [...pathIds, i];
+	const metaChildren = ModelUtils.getMetaChildren(config);
+
+	const actions = [];
+
+	return (
+		<li key={name + i} className='data-item'>
+			<Subpanel
+				pathIds={newPathIds}
+				caption={caption}
+				name={name}
+				preview={preview}
+				level={level}
+				isEditing={isEditing}
+				actions={actions}
+				pod={isPod && modelValue}
+				isHovered={isPod && modelValue[0] === hoveredIndex}
+			>
+				<Viewer modelConfig={config} />
+				<DataList metaChildren={metaChildren} isEditing={isEditing} level={level + 1} />
+			</Subpanel>
+		</li>
+	);
+}
+
+const getItems = (defs, pathIds, isEditing, level, hoveredIndex = null, DataList = null) => {
 	return defs.map((child, i) => {
-
-		// Model helpers
-		const { modelId, modelValue } = child.config;
-		const isGroup = modelId === ModelId.Group;
-		const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
-
-		// Name, Caption, Preview
-		const { name, preview, caption } = child.data;
-
-		// Path & Metachildren
-		const newPathIds = [...pathIds, i];
-		const metaChildren = ModelUtils.getMetaChildren(child.config);
-
-		const [childPathHead, setChildPathHead] = getChildUtils(pathHead, setPathHead, child, newPathIds);
-
-		const actions = [];//getActions(DATA_ACTIONS, childPathHead, setChildPathHead, setModal);
-
-		return (
-			<li key={name + i} className='data-item'>
-				<Subpanel
-					pathIds={newPathIds}
-					caption={caption}
-					name={name}
-					preview={preview}
-					level={level}
-					isEditing={isEditing}
-					isLeaf={isLeaf}
-					actions={actions}
-					pod={isPod && modelValue}
-					isHovered={isPod && modelValue[0] === hoveredIndex}
-				>
-					<Viewer modelConfig={child.config} />
-					<DataList metaChildren={metaChildren} isEditing={isEditing} level={level + 1} />
-				</Subpanel>
-			</li>
-		);
-	})
+		return getItem(child, pathIds, level, i, hoveredIndex, isEditing, DataList);
+	});
 };
 
 interface IDataListProps {
@@ -92,15 +92,17 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 	const setModal = useSetRecoilState(modalState);
 	const hoveredIndex = useRecoilValue(hoveredIndexState);
 
-	if (!metaChildren) return null;
-
-	const isLeaf = fullPath.length > 1 &&
-		(fullPath[fullPath.length - 2].config.modelId === ModelId.Chord || fullPath[fullPath.length - 2].config.modelId === ModelId.Scale) &&
-		(fullPath[fullPath.length - 1].config.modelId === ModelId.Note || fullPath[fullPath.length - 1].config.modelId === ModelId.Interval)
+	if (!metaChildren) {
+		return (
+			<StyledDataList>
+				{getItem(pathHead, [], level, null, hoveredIndex, isEditing, DataList)}
+			</StyledDataList>
+		);
+	}
 
 	return (
 		<StyledDataList>
-			{getItems(metaChildren, [], isEditing, level, isLeaf, setModal, pathHead, setPathHead, hoveredIndex, DataList)}
+			{getItems(metaChildren, [], isEditing, level, hoveredIndex, DataList)}
 		</StyledDataList>
 	);
 };

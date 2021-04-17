@@ -63,7 +63,6 @@ interface ISubpanelHeaderProps {
 	isOpen: boolean;
 	setIsOpen: any;
 	pathIds: any[];
-	isLeaf: boolean;
 	isEditing: boolean;
 	isHovered: boolean;
 	level: number;
@@ -71,8 +70,10 @@ interface ISubpanelHeaderProps {
 }
 
 
-const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isLeaf, isEditing, level, actions, ...rest }) => {
+const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isEditing, level, actions, ...rest }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
+
+	const isLeaf = pathIds[pathIds.length - 1] === null;
 
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color} {...rest}>
