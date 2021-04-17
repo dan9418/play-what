@@ -20,9 +20,9 @@ const StyledSwitch = styled.button`
 	}
 
 	& .ball {
-		height: 20px;
-		width: 20px;
-		margin: 2px;
+		height: 16px;
+		width: 16px;
+		margin: 4px;
 		border-radius: 100%;
 		background-color: #fff;
 	}

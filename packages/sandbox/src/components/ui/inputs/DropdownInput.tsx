@@ -6,7 +6,6 @@ const StyledDropdownInput = styled.select`
     min-width: 128px;
     line-height: 40px;
     font-size: 16px;
-    outline: none;
     cursor: pointer;
     border: 1px solid #aaa;
     border-radius: 4px;
