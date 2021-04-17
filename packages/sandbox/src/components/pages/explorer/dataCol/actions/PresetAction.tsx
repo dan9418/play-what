@@ -1,4 +1,4 @@
-import { ModelId, MODEL_MAP } from '@pw/core/src/models/Model.constants';
+import { IModelNode, ModelId, MODEL_MAP } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
@@ -17,10 +17,12 @@ const StyledLabel = styled.h4`
 	}
 `;
 
-interface IPresetActionProps extends IActionProps {
+interface IPresetActionProps extends Partial<IActionProps> {
 	type?: any;
 	validTypes?: any[];
 	onCancel?: any;
+	pathHead?: IModelNode;
+	setPathHead?: any;
 }
 
 const PresetAction: React.FC<IPresetActionProps> = ({ pathHead = null, setPathHead, type = null, validTypes = null, onCancel = null }) => {

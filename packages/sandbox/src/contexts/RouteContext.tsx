@@ -40,7 +40,7 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 ]);
 
 const DEFAULT_PAGE = PageId.Explore;
-const DEFAULT_PAGE_PARAMS = {
+const DEFAULT_PAGE_PARAMS: ParamType = {
 	data: LIBRARY_PATH_ROOT
 };
 
