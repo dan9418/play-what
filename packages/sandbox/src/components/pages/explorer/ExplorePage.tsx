@@ -35,11 +35,13 @@ const StyledExplorePage = styled.div`
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const path = useRecoilValue(pathState);
 	const [editId, setEditId] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const [data, setData] = useRecoilState(dataState);
 
 	React.useEffect(() => {
-		setData(params.data)
+		setData(params.data);
+		setIsLoading(false);
 	}, []);
 
 	React.useEffect(() => {
@@ -47,7 +49,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 		setEditId(null);
 	}, [path.length /*pathId*/]);
 
-	if (!pathHead) return null;
+	if (isLoading || !pathHead) return null;
 
 	const { name, preview, pathId } = (pathHead as IModelDef).data;
 

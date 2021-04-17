@@ -9,7 +9,8 @@ const DATA_ACTIONS: IModalAction[] = [
 	{
 		name: 'Set Root',
 		description: 'Set the root note (key center) for intervals',
-		component: RootAction
+		component: RootAction,
+		validTypes: [ModelId.Group, ModelId.Chord, ModelId.Scale]
 	},
 	{
 		name: 'Load Preset',

@@ -49,7 +49,7 @@ const StyledNav = styled.nav`
 			border: none;
 			font-size: 90%;
 			text-transform: uppercase;
-			letter-spacing: 8px;
+			letter-spacing: 4px;
 			font-weight: 300;
 			cursor: pointer;
 			height: 100%;
@@ -97,7 +97,9 @@ const Nav: React.FC = () => {
 	return (
 		<StyledNav>
 			<div>
-				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.About)}>Play What?</button>
+				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.About)}>
+					Play <em><b>What?</b></em>
+				</button>
 				<ul className="link-list">
 					{NAV_LINKS.map((l, i) => (
 						<li key={i}>

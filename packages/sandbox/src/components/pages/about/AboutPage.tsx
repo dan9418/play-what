@@ -26,6 +26,10 @@ const StyledAboutPage = styled.div`
 		color: #222;
 		padding-bottom: 16px;
 		border-bottom: 1px solid #ccc;
+
+		b {
+			font-weight: 800;
+		}
 	}
 
 	> p {
@@ -46,7 +50,7 @@ const AboutPage: React.FC = () => {
 	const routeContext = useRouteContext();
 	return (
 		<StyledAboutPage>
-			<h1>Play <em>What?</em></h1>
+			<h1>Play <em><b>What?</b></em></h1>
 			<p>
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
 				The project is under active development and is slated for initial release in early 2021.
