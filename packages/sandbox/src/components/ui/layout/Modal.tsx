@@ -7,7 +7,7 @@ const StyledModal = styled.div`
 	width: 100%;
 	height: 50%;
 	padding: 0 16px;
-	background-color: #f5f5f5;
+	background-color: ${({ theme }) => theme.card};
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 
 	@media(min-width: 512px) {
@@ -41,7 +41,7 @@ const StyledModalHeader = styled.div`
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 16px 0;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	.description {
 		font-weight: normal;

@@ -4,7 +4,7 @@ import { DEFAULT_PITCH_COLOR_SCHEME } from "@pw/core/src/theory/Pitch.constants"
 import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 import React from "react";
 import { useRecoilState } from "recoil";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
 import OverflowMenu, { IAction } from "./OverflowMenu";
@@ -16,7 +16,10 @@ const StyledSubpanelHeader = styled.div`
 	min-height: 52px;
 	border-radius: 8px;
 	cursor: pointer;
-	${({ $showBorder }) => $showBorder && 'border-bottom: 1px solid #ccc; border-radius: 8px 8px 0 0;'}
+	${({ $showBorder }) => $showBorder && css`
+		border-bottom: 1px solid ${({ theme }) => theme.border};
+		border-radius: 8px 8px 0 0;`
+	}
 	
 	.name {
 		display: inline-block;
@@ -105,8 +108,8 @@ const StyledSubpanel = styled.section`
 
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 
-	${({ $podColor }) => `border: 1px solid ${$podColor !== null ? $podColor : '#ccc'};`};
-	background-color: #f5f5f5;
+	${({ $podColor, theme }) => `border: 1px solid ${$podColor !== null ? $podColor : theme.border};`};
+	background-color: ${({ theme }) => theme.card};
 	:hover {
 		background-color: #fff
 	}

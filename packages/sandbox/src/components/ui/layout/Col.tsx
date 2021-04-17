@@ -22,7 +22,7 @@ const StyledCol = styled.div`
 			margin-top: 0;
 		}
 		${({ $hasBorder }) => !$hasBorder ? '' : css`
-			border-right: 1px solid #ccc;
+			border-right: 1px solid ${({ theme }) => theme.border};
 		`}
 	}
 
@@ -48,7 +48,7 @@ const StyledColHeader = styled.div`
 	height: 64px;
 	padding: 0 24px 0 16px;
 
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	position: sticky;
 	top: ${({ $isCompact }) => $isCompact ? 32 : 80}px;
@@ -71,7 +71,7 @@ const StyledColHeader = styled.div`
 export const StyledColDivider = styled.div`
 	${({ $hideTop }) => $hideTop ? '' : 'margin-top: 16px;'}
 	${({ $hideBottom }) => $hideBottom ? '' : 'margin-bottom: 16px;'}
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid ${({ theme }) => theme.border};
 `;
 
 interface IColProps {

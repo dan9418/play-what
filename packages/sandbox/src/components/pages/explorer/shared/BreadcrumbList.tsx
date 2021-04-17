@@ -13,7 +13,7 @@ const StyledWrapper = styled.div`
 	position: sticky;
     top: 32px;
 	z-index: 101;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	padding-left: 16px;
 	display: flex;

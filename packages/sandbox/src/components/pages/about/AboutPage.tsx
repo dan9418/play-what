@@ -25,7 +25,7 @@ const StyledAboutPage = styled.div`
 		font-size: 300%;
 		color: #222;
 		padding-bottom: 16px;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid ${({ theme }) => theme.border};
 
 		b {
 			font-weight: 800;

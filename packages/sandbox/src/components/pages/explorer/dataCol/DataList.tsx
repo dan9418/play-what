@@ -69,6 +69,7 @@ const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0
 	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
 	const hoveredIndex = useRecoilValue(hoveredIndexState);
 
+	// pathHead.config.modelId === ModelId.Interval || pathHead.config.modelId === ModelId.Note
 	if (!metaChildren) {
 		return (
 			<StyledDataList>

@@ -14,7 +14,7 @@ const StyledSwitch = styled.button`
 	cursor: pointer;
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.accent : '#aaa'};	
+	background-color: ${({ $active, theme }) => $active ? theme.accent : theme.light};	
 	&:hover {
 		background-color: ${({ theme }) => theme.active};	
 	}
@@ -29,7 +29,7 @@ const StyledSwitch = styled.button`
 `;
 
 
-const SwitchInput = ({ value, setValue }) => {
+const SwitchInput: React.FC = ({ value, setValue }) => {
 	return (
 		<StyledSwitch $active={value} onClick={() => setValue(!value)}>
 			<div className='ball' />

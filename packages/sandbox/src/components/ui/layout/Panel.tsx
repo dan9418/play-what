@@ -2,7 +2,7 @@ import { MODEL_MAP, ModelId } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
 import IconButton from "../inputs/buttons/IconButton";
@@ -13,7 +13,7 @@ const StyledPanelHeader = styled.section`
 	padding: 16px;
 
 	${({ $showBorder }) => $showBorder ?
-		'border-bottom: 1px solid #ccc;' :
+		css`border-bottom: 1px solid ${({ theme }) => theme.border};` :
 		''
 	}
 
@@ -83,7 +83,7 @@ const StyledPanelHeader = styled.section`
 `;
 
 const StyledToolbox = styled.div`
-display: none;
+		///display: none;
 		background-color: #ddd;
 		border-radius: 8px;
 		height: 100%;
@@ -114,7 +114,7 @@ display: none;
 `;
 
 
-const PanelHeader = () => {
+const PanelHeader: React.FC = () => {
 	const pathHead: any = useRecoilValue(pathHeadState);
 	const [matchOctave, setMatchOctave] = useRecoilState(matchOctaveState);
 
@@ -161,7 +161,7 @@ const StyledPanel = styled.div`
 
 
 
-const Panel = ({ name, caption, preview, leftActions, rightAction, children }) => {
+const Panel: React.FC = ({ name, caption, preview, leftActions, rightAction, children }) => {
 	return (
 		<StyledPanel>
 			{/* @ts-ignore */}
