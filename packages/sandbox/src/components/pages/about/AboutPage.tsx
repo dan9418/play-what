@@ -37,12 +37,48 @@ const StyledAboutPage = styled.div`
 		font-size: 120%;
 		color: #555;
 	}
+`;
+
+
+const StyledButtonContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100%;
+	@media(min-width: 512px) {
+		flex-direction: row;
+	}
 
 	> button {
 		font-size: 110%;
 		font-weight: bold;
 		width: 100%;
-		max-width: 256px;
+		max-width: 90%;
+		border: 1px solid transparent;
+
+		:first-child {
+			margin-bottom: 16px;
+		}
+		:last-child {
+			background-color: transparent;
+			border-color: ${({ theme }) => theme.accent};
+			color: ${({ theme }) => theme.accent};
+			:hover {
+				background-color: rgba(0,0,0, .1);;
+			}
+		}
+
+		@media(min-width: 512px) {
+			max-width: 256px;
+			:first-child {
+				margin-bottom: 0;
+				margin-right: 16px;
+			}
+			:last-child {
+			
+			}
+		}
 	}
 `;
 
@@ -53,13 +89,15 @@ const AboutPage: React.FC = () => {
 			<h1>Play <em><b>What?</b></em></h1>
 			<p>
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
-				The project is under active development and is slated for initial release in early 2021.
+				The beta release is slated for April 2021.
 			</p>
 			<p>
-				Visit the <a href="https://github.com/dan9418/play-what">documentation</a> to understand the core concepts then check out the app to explore its capabilities:
+				Read the <a href="https://github.com/dan9418/play-what">documentation</a>.
 			</p>
-			<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>
-			<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch</ButtonInput>
+			<StyledButtonContainer>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch</ButtonInput>
+			</StyledButtonContainer>
 		</StyledAboutPage>
 	)
 };
