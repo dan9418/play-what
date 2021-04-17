@@ -21,7 +21,7 @@ const DATA_ACTIONS: IModalAction[] = [
 		name: 'Transpose',
 		description: 'Shift all the notes by the same amount',
 		component: TransposeAction,
-		validTypes: [ModelId.Note, ModelId.Interval, ModelId.Chord, ModelId.Scale]
+		validTypes: [ModelId.Note, ModelId.Chord, ModelId.Scale]
 	},
 	{
 		name: 'Apply Projection',

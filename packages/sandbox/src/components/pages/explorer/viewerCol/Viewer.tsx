@@ -1,7 +1,7 @@
 import { IModelConfig, ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import StyledCard from "@pw/sandbox/src/components/ui/layout/StyledCard";
+import { StyledHelpCard } from "@pw/sandbox/src/components/ui/layout/StyledCard";
 import styled from 'styled-components';
 import { matchOctaveState } from '../../../../state/pathState';
 import { VIEWER } from "./actions/viewerActions";
@@ -11,22 +11,6 @@ const StyledViewerContainer = styled.div`
     width: 100%;
 	padding: 16px;
 `;
-
-const StyledViewerHelp = styled(StyledCard)`
-	margin-top: 16px;
-	
-	p {
-		margin-top: 16px;
-		color: #555;
-		font-style: italic;
-	}
-
-	h4 {
-		color: ${({ theme }) => theme.accent};
-		padding-bottom: 4px;
-		border-bottom: 1px solid #ccc;
-	}
-`
 
 interface IViewerProps {
 	modelConfig: IModelConfig
@@ -57,7 +41,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 		<StyledViewerContainer>
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
 			{isBlank && (
-				<StyledViewerHelp>
+				<StyledHelpCard>
 					<h4>This Viewer Is Empty</h4>
 					<p>
 						Zoom in to see notes applied to this {VIEWER[viewerId].name}!
@@ -65,7 +49,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 					<p>
 						Any viewer changes made to this group will apply to all subitems
 					</p>
-				</StyledViewerHelp>
+				</StyledHelpCard>
 			)}
 		</StyledViewerContainer>
 	);

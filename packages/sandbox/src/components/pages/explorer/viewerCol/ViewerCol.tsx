@@ -6,7 +6,8 @@ import Col from '../../../ui/layout/Col';
 import VIEWER_ACTIONS, { VIEWER } from './../viewerCol/actions/viewerActions';
 import Viewer from './../viewerCol/Viewer';
 import getActions from "../shared/getActions";
-import { IModelNode } from "core/src/models/Model.constants";
+import { IModelNode } from "@pw/core/src/models/Model.constants";
+import { StyledHelpCard } from "@pw/sandbox/src/components/ui/layout/StyledCard";
 
 interface IViewerColProps {
     editId: string | null,
@@ -24,9 +25,12 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
     const viewer = (hasViewer) ?
         <Viewer modelConfig={pathHead.config} />
         :
-        <div>
-            There is no viewer, yet...
-        </div>
+        <StyledHelpCard>
+            <h4>No Viewer</h4>
+            <p>
+                You can select a viewer from the action menu.
+			</p>
+        </StyledHelpCard>
 
     const name = hasViewer ? VIEWER[modelOptions.viewerId].name : 'None';
 

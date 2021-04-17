@@ -9,4 +9,20 @@ const StyledCard = styled.section`
 	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
 `;
 
+export const StyledHelpCard = styled(StyledCard)`
+	margin-top: 16px;
+	
+	p {
+		margin-top: 16px;
+		color: #555;
+		font-style: italic;
+	}
+
+	h4 {
+		color: ${({ theme }) => theme.accent};
+		padding-bottom: 4px;
+		border-bottom: 1px solid #ccc;
+	}
+`
+
 export default StyledCard;
