@@ -1,34 +1,55 @@
 import React from "react";
+import styled from 'styled-components';
+import ButtonInput from "../ui/inputs/buttons/ButtonInput";
 interface IErrorBoundaryState {
-	error: any;
-	errorInfo: any;
+	hasError: boolean;
 }
+
+const StyledErrorPage = styled.section`
+	height: 100vh;
+	width: 100vw;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	> div {
+		max-width: 512px;
+		text-align: center;
+
+		p {
+			margin: 16px 0;
+			color: red;
+		}
+	}
+`;
 class ErrorBoundary extends React.Component<unknown, IErrorBoundaryState> {
 	constructor(props) {
 		super(props);
-		this.state = { error: null, errorInfo: null };
+		this.state = { hasError: false };
+	}
+
+	static getDerivedStateFromError(error) {
+		// Update state so the next render will show the fallback UI.
+		return { hasError: true };
 	}
 
 	componentDidCatch(error, errorInfo) {
 		console.error(error, errorInfo);
-		this.setState({
-			error: error,
-			errorInfo: errorInfo
-		})
 	}
 
 	render() {
-		if (this.state.errorInfo) {
+		if (this.state.hasError) {
 			return (
-				<div className='error-boundary' style={{ color: 'red' }}>
-					Sorry, something went wrong.
-					<pre>
-						{JSON.parse(this.state.error.name, null)}
-					</pre>
-					<pre>
-						{JSON.parse(this.state.errorInfo.componentStack, null)}
-					</pre>
-				</div>
+				<StyledErrorPage>
+					<div>
+						<h1>Sorry, something went wrong.</h1>
+						<p>
+							This app is still unstable and prone to errors.
+						</p>
+						<ButtonInput onClick={() => location.reload()}>Refresh</ButtonInput>
+					</div>
+				</StyledErrorPage >
 			);
 		}
 		return this.props.children;
