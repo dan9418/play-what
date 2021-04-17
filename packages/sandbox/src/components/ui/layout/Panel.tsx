@@ -83,6 +83,7 @@ const StyledPanelHeader = styled.section`
 `;
 
 const StyledToolbox = styled.div`
+display: none;
 		background-color: #ddd;
 		border-radius: 8px;
 		height: 100%;

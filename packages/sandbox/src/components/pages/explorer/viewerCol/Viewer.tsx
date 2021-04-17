@@ -14,11 +14,17 @@ const StyledViewerContainer = styled.div`
 
 const StyledViewerHelp = styled(StyledCard)`
 	margin-top: 16px;
-	color: #555;
-	font-style: italic;
+	
+	p {
+		margin-top: 16px;
+		color: #555;
+		font-style: italic;
+	}
 
-	p:not(:last-child) {
-		margin-bottom: 16px;
+	h4 {
+		color: ${({ theme }) => theme.accent};
+		padding-bottom: 4px;
+		border-bottom: 1px solid #ccc;
 	}
 `
 
@@ -52,6 +58,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
 			{isBlank && (
 				<StyledViewerHelp>
+					<h4>This Viewer Is Empty</h4>
 					<p>
 						Zoom in to see notes applied to this {VIEWER[viewerId].name}!
 					</p>

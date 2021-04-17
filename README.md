@@ -1,12 +1,8 @@
 # Play *What*?
 
-Play What is a toolkit for modeling music theory blocks. The suite of tools contains something for musicians and engineers of all levels.
-- A simple, efficient, and flexible musical data structure spec
-- A JavaScript API for working with these data structures
-- A React component library for consuming and analyzing these data structures
-- A free web app demonstrating its abilities
-- An open-source repository designed to be easily forked and extended
-- A young community of technical music theory enthusiasts
+Play What is a toolkit for modeling, visualizing, and building music theory concepts. The app supports custom musical strcutures like chords, scales, and songs - all of which can be zoomed in at any level and displayed on a number of instruments. It also supports musical transforms like chord inversions and transposition.
+
+Under the hood, Play What is an open source JavaScript library and data structure spec. The project is intended to be easily forked and extended by developers, but the technical documentation is not yet ready.
 
 To check out the work-in-progress, please [visit the app](https://dan9418.github.io/play-what/) on GitHub Pages.
 
@@ -15,6 +11,41 @@ To check out the work-in-progress, please [visit the app](https://dan9418.github
 This repo is under active development is is highly unstable.
 
 ## How Does It Work?
+
+You can think of the interface like a folder tree. A folder can contain subfolders or musical concepts. Play What currently supports the following concepts:
+
+- Notes
+- Intervals
+- Chords
+- Scales/Modes
+
+### The Basics
+
+The most basic concept is the **interval**. An interval measures the difference between two notes. A list of interval presets is available *here*.
+
+If we give the interval a *root*, it then becomes a **note**. Think of it this way: the root itself is a note, so it provides a point of reference for measuring distance. The point on the other end of that distance is also a note, which is defined by the starting note and the distance from it. A list of note presets can be found *here*.
+
+Chords, Scales, and Modes are simply lists of notes or intervals. In Play What terms, chords are notes played simultanously and scales are notes played sequentially. If a chord or scale is defined with intervals, it simply describes a list of musical distances. Likewise, if we provide root note, we can add all of those distances to the root and derive a list of notes. See here for presets.
+
+We can abstract these concepts one level further by putting serveral of them in a folder, or **group**. A group is intentionally flexible, and can represent a number of concepts like chord progressions, song sections, and melodies.
+
+### Using the App
+
+The relationship between these concepts becomes more evident when we see them in action. The app allows us to create or import presents from each of these concepts and organize them in a folder tree specific to our needs. If we create a group, we can zoom in to see its subitems. If we create a chord, we can zoom in to see its constituent notes. And so on.
+
+At each level of the tree, we see the *name* of the data, the *type* of the data, and a *preview* of its contents.
+
+You'll notice right away the lower interface is divided into two halves. One half is for the data, which we have already covered. The other half is for a **viewer**, or visualization of the data. Viewers do not display data in groups, but they can still be edited at the group level so the same viewer is applied to all of its children. You can easily tell whether or not you are in a group by the presence of the *meter*. The meter shows the distribution of notes, similar to a keyboard.
+
+Every concept and group in your folder tree is independently customizable. That means that every **node** can have a different root, instrument viewer, etc...
+
+At every level, we can preview the details of its subitems by clicking the *expand* button (+). This will keep you on the current level, but give you more details about the child. We can also focus on just the child by clicking the *zoom* button (=>).
+
+Also at every level, we have number of configuration options and actions available. These can be accessed through the *action* button (...) The exact options are determined by the context of the data. More detailed documentation coming soon...
+
+Finally, we have the ability to toggle the *octave filter* and *play sound*.
+
+## Show Me The Math
 ### Pods
 The foundational building block of Play What is a block called a pod. In it's most raw, basic form, a pod is simply a pair of two numbers.
 [0,0]

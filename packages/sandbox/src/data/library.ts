@@ -26,7 +26,7 @@ export const LIBRARY_PATH_ROOT: IModelConfig = {
 	modelOptions: {
 		modelRoot: NOTE_PRESET_MAP.get(NoteId.C).value,
 		name: 'Library',
-		viewerId: 'keyboard',
+		viewerId: 'fretboard',
 		viewerProps: {}
 	},
 	modelValue: [
