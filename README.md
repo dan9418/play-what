@@ -1,51 +1,79 @@
 # Play *What*?
 
-Play What is a toolkit for modeling, visualizing, and building music theory concepts. The app supports custom musical strcutures like chords, scales, and songs - all of which can be zoomed in at any level and displayed on a number of instruments. It also supports musical transforms like chord inversions and transposition.
+[Play What](https://dan9418.github.io/play-what/) is a toolkit for modeling, visualizing, and building music theory concepts. The app supports custom musical strcutures like chords, scales, and songs - all of which can be zoomed in at any level and displayed on a number of instruments. It also supports musical transforms like chord inversions and transposition.
 
-Under the hood, Play What is an open source JavaScript library and data structure spec. The project is intended to be easily forked and extended by developers, but the technical documentation is not yet ready.
-
-To check out the work-in-progress, please [visit the app](https://dan9418.github.io/play-what/) on GitHub Pages.
+Under the hood, Play What is an open source JavaScript library and data structure spec. The project is intended to be easily forked and extended by other web developers. 
 
 ### Disclaimer
 
-This repo is under active development is is highly unstable.
+This app is in beta and is under active development. Some features may be unstable and the documentation is not yet complete.
 
 ## How Does It Work?
 
-You can think of the interface like a folder tree. A folder can contain subfolders or musical concepts. Play What currently supports the following concepts:
+You can think of the interface like a folder tree. A folder can contain files or subfolders. In Play What, *files* and *folders* are called *models* and *groups*, respectively.
 
-- Notes
+Play What currently supports the following models:
 - Intervals
+- Notes
 - Chords
 - Scales/Modes
 
-### The Basics
+### Models: The Basics
 
-The most basic concept is the **interval**. An interval measures the difference between two notes. A list of interval presets is available *here*.
+The most fundamental model is the **note**. In general terms, a note is just the name we give to a specific *pitch*, or frequency. The name we assign to any given frequency can vary depending on the context, and so can the frequency that a certain name refers to.
 
-If we give the interval a *root*, it then becomes a **note**. Think of it this way: the root itself is a note, so it provides a point of reference for measuring distance. The point on the other end of that distance is also a note, which is defined by the starting note and the distance from it. A list of note presets can be found *here*.
+The other core model is the **interval**. An interval simply measures the *distance* between two notes. Similarly, the name we give to an interval depends on how we measure that distance. More on this later.
 
-Chords, Scales, and Modes are simply lists of notes or intervals. In Play What terms, chords are notes played simultanously and scales are notes played sequentially. If a chord or scale is defined with intervals, it simply describes a list of musical distances. Likewise, if we provide root note, we can add all of those distances to the root and derive a list of notes. See here for presets.
+If we start at a note (a specific pitch) and move by an interval (a specific distance), we arrive at another note. In this case, we call the starting note the **root**. The root is a point of reference for measuring distance.
 
-We can abstract these concepts one level further by putting serveral of them in a folder, or **group**. A group is intentionally flexible, and can represent a number of concepts like chord progressions, song sections, and melodies.
+### Compound Models
 
-### Using the App
+When we put two or more of these core models in a list, we have a **compound model**. These can represent a number of musical concepts, like chords, scales, modes, and medodies.
 
-The relationship between these concepts becomes more evident when we see them in action. The app allows us to create or import presents from each of these concepts and organize them in a folder tree specific to our needs. If we create a group, we can zoom in to see its subitems. If we create a chord, we can zoom in to see its constituent notes. And so on.
+In Play What, we define two types of compound models, **chords** and **scales**. Chords are notes played *simultanously* and scales are notes played *sequentially*.
 
-At each level of the tree, we see the *name* of the data, the *type* of the data, and a *preview* of its contents.
+Chords and scales are best defined with intervals. In other words, we use the relative distances of their intervals to describe their shape rather than specific notes. From here, we can easily assign a single root for all the intervals to get the resulting notes.
 
-You'll notice right away the lower interface is divided into two halves. One half is for the data, which we have already covered. The other half is for a **viewer**, or visualization of the data. Viewers do not display data in groups, but they can still be edited at the group level so the same viewer is applied to all of its children. You can easily tell whether or not you are in a group by the presence of the *meter*. The meter shows the distribution of notes, similar to a keyboard.
+For a list of model presets, please see the appendix at the end of this document.
 
-Every concept and group in your folder tree is independently customizable. That means that every **node** can have a different root, instrument viewer, etc...
+### Groups
 
-At every level, we can preview the details of its subitems by clicking the *expand* button (+). This will keep you on the current level, but give you more details about the child. We can also focus on just the child by clicking the *zoom* button (=>).
+We can abstract models one level further by adding them to a special model called a **group**. Groups are intentionally flexible and can represent a number of different concepts, like chord progressions, song sections, and melodies. A group can contain any type of model, including more groups.
 
-Also at every level, we have number of configuration options and actions available. These can be accessed through the *action* button (...) The exact options are determined by the context of the data. More detailed documentation coming soon...
+## Using the App
 
-Finally, we have the ability to toggle the *octave filter* and *play sound*.
+This app essentially provides a hierarchical interface for working with the models described above. We can organize them in a folder tree specific to our own needs. If we create a group, we can zoom in to see its subitems. If we create a chord, we can zoom in to see its constituent notes. And so on.
+
+### The Interface
+
+At each level of the tree, we see the *name* of the data, the *type* of the data, and a *preview* of its contents. We also have a number of options available for editing the data, which will be saved when navigating elsewhere in the tree.
+
+You'll notice right away the lower interface is divided into two halves. The first half is for the data itself. The second half is dedicated to a **viewer**, or visualization of the data. Just like the data, this is configurable and persisted at every *node* in the tree.
+
+When in *groups*, the viewers do not display data. You must zoom in to see the data applied to the viewer. But viewers can still be configured at the group level, so all the subitems inherit the same viewer.
+
+You can easily tell whether or not you are in a group by the presence of the *meter* right below the header. The meter shows the distribution of notes, similar to a keyboard. The notes are colored according to their degree. If you hover or tap on a note in the meter, it will be focused on the viewer as well.
+
+### Navigation Controls
+
+At every level, we can preview the details of its subitems by clicking the *expand* button (+) on that item. This will keep you on the current level, but give you more details about the child. To zoom into the child itself, click the *zoom* button (arrow).
+
+At the very top of the page, you will find a list of *breadcrumbs*. These provide quick context to where you are in the tree and quick links for navigating upwards. On the right, you will see buttons for navigating to the direct parent model and the previous/next sibling models.
+
+### Editing
+
+To edit the contents of any level, use the *action* buttons at the top-right of the data and viewer columns. The available options differ on the context, but include operations like loading presets, changing the viewer, setting the root note, and transposing notes. More detailed documentaion on these operations coming soon. This is the most unstable portion of the beta.
+
+### Other Tools
+
+Finally, we have a few options that are not saved within the data itself. In the header, you will see an **octave filter** switch and a **play sound** button. The sound button provides a very simple preview of the frequencies in the model. The octave filter toggles whether the app will match equivalent pitches in all octaves or just the exact pitch specified in the model data.
+
+That's all you need to know to start using Play What. Please [visit the app](https://dan9418.github.io/play-what/) and start exploring. More features are planned and feedback is encouraged.
 
 ## Show Me The Math
+
+
+
 ### Pods
 The foundational building block of Play What is a block called a pod. In it's most raw, basic form, a pod is simply a pair of two numbers.
 [0,0]
@@ -179,26 +207,3 @@ For example, in Roman Numeral chord analysis, which is the basic for most popula
 Additionally, having a consistent model of the operation, and namely, the musical CHARACTER of the operation, allows us to separate it from the source material, and even more, the source musical system. Using this abstraction, we can essentially reverse-engineer the musical system to get chords from altered tuning systems, degree definitions, etc... As a result, it is flexible enough to accommodate nearly any musical system and moreover provide an interchange format between them.
 
 Additionally, it can be used to connect variations on a musical idea in the universe of musical ideas. For example, a major chord may be essentially identical in character to some other inverted chord. Pods clearly expose this relationship, which can be useful in songwriting or algorithmic music generation. The pod model provides a framework for finding those relationships.
-
-## Links
-
-This is an open source project, but the code is not yet ready for public contribution.
-Details will be published here when available.
-
-For now, here are some useful links:
-
-### Latest Version
-- [App](https://dan9418.github.io/play-what/)
-- [Monorepo](https://github.com/dan9418/play-what)
-### Beta Version
-#### Sample
-- [Demo](https://github.com/dan9418/play-what-sample)
-- [Repo](https://github.com/dan9418/play-what-sample)
-#### Sandbox
-						
-- [Demo](https://github.com/dan9418/play-what-sandbox)
-- [Repo](https://dan9418.github.io/play-what-sandbox/)
-#### Packages
-				
-- [Repo (Core)](https://github.com/dan9418/play-what-beta)
-- [Repo (React)](https://github.com/dan9418/play-what-react-viewers)

@@ -91,13 +91,13 @@ const AboutPage: React.FC = () => {
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
 				The beta release is slated for April 2021.
 			</p>
-			<p>
-				Read the <a href="https://github.com/dan9418/play-what" target="_blank" rel="noreferrer">documentation</a>.
-			</p>
 			<StyledButtonContainer>
 				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>
 				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch (BETA)</ButtonInput>
 			</StyledButtonContainer>
+			<p>
+				<a href="https://github.com/dan9418/play-what" target="_blank" rel="noreferrer">Documentation</a>
+			</p>
 		</StyledAboutPage>
 	)
 };
