@@ -1,6 +1,6 @@
 # Play *What*?
 
-[Play What](https://dan9418.github.io/play-what/) is a toolkit for modeling, visualizing, and building music theory concepts. The app supports custom musical strcutures like chords, scales, and songs - all of which can be zoomed in at any level and displayed on a number of instruments. It also supports musical transforms like chord inversions and transposition.
+[Play What](https://dan9418.github.io/play-what/) is a toolkit for modeling, visualizing, and building music theory concepts. The app supports custom musical structures like chords, scales, and songs - all of which can be zoomed in at any level and displayed on a number of instruments. It also supports musical transforms like chord inversions and transposition.
 
 Under the hood, Play What is an open source JavaScript library and data structure spec. The project is intended to be easily forked and extended by other web developers. 
 
@@ -62,7 +62,7 @@ At the very top of the page, you will find a list of *breadcrumbs*. These provid
 
 ### Editing
 
-To edit the contents of any level, use the *action* buttons at the top-right of the data and viewer columns. The available options differ on the context, but include operations like loading presets, changing the viewer, setting the root note, and transposing notes. More detailed documentaion on these operations coming soon. This is the most unstable portion of the beta.
+To edit the contents of any level, use the *action* buttons at the top-right of the data and viewer columns. The available options differ based on the context, but include operations like loading presets, changing the viewer, setting the root note, and transposing notes. More detailed documentaion on these operations coming soon. This is the most unstable portion of the beta.
 
 ### Other Tools
 
@@ -126,9 +126,13 @@ TET provides 12 unique pitch classes within a single octave. However, music is o
 
 Like pitch, degree can specify a *position* or *distance*.
 
+### Pods to Models
+
+Since pitch and degree can represent both position and distance, we are reminded of our core models, notes and intervals. When we combine p and d, we create a pod that can be either a note or an interval, depending on what it represents mathmatically.  
+
 ### Reducing Pods
 
-In theory, there are no minimun or maximum values for p and d. However, it is often useful to *octave reduce* pods to see their relationship within the span of a single octave. That means we have a total of 12 p choices (0-11) and 7 d choices (0-6). Any values outside this range wrap around to the beginning, as descrived earlier.  
+In theory, there are no minimun or maximum values for p and d. However, it is often useful to *octave reduce* pods to see their relationship within the span of a single octave. That means we have a total of 12 p choices (0-11) and 7 d choices (0-6). Any values outside this range wrap around to the beginning, as described earlier. The max value of either dimension is independent of the other.  
 
 #### Octave (o)
 When octave reducing the pitch, we discover a third, implicit value. The pitch can be dissected into two parts, **octave** and **pitch class**.
@@ -147,36 +151,50 @@ You may recognize that pods are simply a special kind of vector, which represent
 
 Furthmore, compound pods are simply 2xN matricies. However, we generally call them *lists* because the 2nd dimension of the matrix is kept intact.
 
-### Pod Arithmetic
-
 ### Applications
-Given the above properties, we can easily and efficiently perform a number of useful operations on a number of musical blocks.
+Given the simplicity of the pod system, we can easily and efficiently perform a number of musical operations using simple mathmatical algorithms.
 
-#### Transposition
+#### Derivation of Names
+*Coming soon!*
+
+#### Transposition of Notes
 > `[C, E, G] + M2 = [D, F, A]`
 
-#### Root + Intervals
+#### Derivation of Notes from Root & Intervals
 >`C + [P1, M3, P5] = [C, E, G]`
 
-This is equivalent to the the (commutation?)  property of transposition
 #### Chordal Inversions
-TBA
+*Coming soon!*
+
 #### Melodic Inversions
-TBA
-#### Roman Numerals
-TBA
-#### Supersets
-TBA
+*Coming soon!*
 
-## Why Is It Useful?
-The pod block allows for the qualitative modelling of abstract musical ideas in a way that is extraordinarily simple and efficient to work with.
+#### Derivation of Roman Numerals
+*Coming soon!*
 
-The musical idea can be a...
-- Collection of notes and intervals (Like chords, scales, and melodies)
-- Musical operation (Like transpositions or inversions)
+#### Finding Supersets
+*Coming soon!*
 
-For example, in Roman Numeral chord analysis, which is the basic for most popular Western music, all the available chords are derived from a single scale. The derivation is essentially an algorithm, so the structured representation of pods makes them well suited to operate on.
+## What Else Can Pods Do?
+The pod system allows for the qualitative modelling of abstract musical ideas in a way that is extraordinarily simple and efficient to work with.
 
-Additionally, having a consistent model of the operation, and namely, the musical CHARACTER of the operation, allows us to separate it from the source material, and even more, the source musical system. Using this abstraction, we can essentially reverse-engineer the musical system to get chords from altered tuning systems, degree definitions, etc... As a result, it is flexible enough to accommodate nearly any musical system and moreover provide an interchange format between them.
+The musical idea can be a collection of notes/intervals (like chords, scales, and melodies) or a musical operation (like transposition and inversion).
 
-Additionally, it can be used to connect variations on a musical idea in the universe of musical ideas. For example, a major chord may be essentially identical in character to some other inverted chord. Pods clearly expose this relationship, which can be useful in songwriting or algorithmic music generation. The pod model provides a framework for finding those relationships.
+For example, in roman numeral chord analysis, which is the basis for most popular Western music, all the available chords are derived from a single scale. This derivation is essentially an algorithm, so the structured representation of pods makes them well suited to operate on.
+
+Moreover, having a consistent model of the operation, and namely, the musical CHARACTER of the operation, allows us to separate it from the source material and even the underlying musical system. Using this abstraction, we can essentially reverse-engineer the framework of music theory to derive ideas from altered tuning systems, custom degree definitions, etc...
+
+To this end, pods are flexible enough to accommodate nearly any musical system and can also provide an interchange format between them in some cases. For example, the "algorithm" of roman numeral chord derivation could be applied to Eastern microtonal music systems, or modified appropriately to suit such systems.
+
+Additionally, pods can be used to make connections between variations of a musical idea within the universe of musical ideas. For example, a certain chord may be essentially identical in character to some other chord when inverted. These relationships are often intuitive to musicians, but pods can identify them clearly and unambigously, which could be useful in songwriting or algorithmic music generation.
+
+These are just some of the far-reaching applications of pods that I hope to explore in the future.
+
+## Appendix C: Show Me The Code
+
+This is an open source project, but the code is not yet ready for public contribution (or scrutiny - lol).
+Details will be published here when available.
+
+## Appendix D: Planned Features
+
+*Coming soon!*
