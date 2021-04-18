@@ -22,9 +22,9 @@ export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
                 [NoteId.C, ChordId.Min7, 16],
                 [NoteId.F, ChordId.Dom7, 16],
                 [NoteId.Bb, ChordId.Maj7, 16],
-                [NoteId.Eb, ChordId.Maj7, 16]
-                [NoteId.A, ChordId.HalfDim7, 16]
-                [NoteId.D, ChordId.Dom7, 16]
+                [NoteId.Eb, ChordId.Maj7, 16],
+                [NoteId.A, ChordId.HalfDim7, 16],
+                [NoteId.D, ChordId.Dom7, 16],
                 [NoteId.G, ChordId.Min6, 32]
             ]
         },
@@ -34,9 +34,9 @@ export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
                 [NoteId.C, ChordId.Min7, 16],
                 [NoteId.F, ChordId.Dom7, 16],
                 [NoteId.Bb, ChordId.Maj7, 16],
-                [NoteId.Eb, ChordId.Maj7, 16]
-                [NoteId.A, ChordId.HalfDim7, 16]
-                [NoteId.D, ChordId.Dom7, 16]
+                [NoteId.Eb, ChordId.Maj7, 16],
+                [NoteId.A, ChordId.HalfDim7, 16],
+                [NoteId.D, ChordId.Dom7, 16],
                 [NoteId.G, ChordId.Min6, 32]
             ]
         },
@@ -46,8 +46,8 @@ export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
                 [NoteId.A, ChordId.Maj6, 16],
                 [NoteId.D, ChordId.Dom7, 16],
                 [NoteId.G, ChordId.Dom7, 32],
-                [NoteId.C, ChordId.Min7, 16]
-                [NoteId.F, ChordId.Min7, 16]
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.F, ChordId.Min7, 16],
                 [NoteId.Bb, ChordId.Min7, 32]
             ]
         },
