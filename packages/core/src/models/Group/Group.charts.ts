@@ -258,41 +258,10 @@ export const SO_WHAT_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
+                [NoteId.D, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Min7, 16],
+                [NoteId.Eb, ChordId.Min7, 16],
                 [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'B',
-            chords: [
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8]
-            ]
-        },
-        {
-            name: 'A\'',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'C',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 8],
-                [NoteId.F, ChordId.Min6, 8],
-                [NoteId.C, ChordId.Maj7, 8],
-                [NoteId.A, ChordId.Dom7, 8],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8],
-                [NoteId.C, ChordId.Maj7, 8]
             ]
         }
     ]
@@ -594,41 +563,41 @@ export const ALONE_AGAIN_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
+                [NoteId.G, ChordId.Maj7, 16],
+                [NoteId.B, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Min7, 16],
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.B, ChordId.Min7, 8],
+                [NoteId.E, ChordId.Dom7, 8],
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.G, ChordId.Maj7, 8],
+                [NoteId.G, ChordId.AugTri, 8],
+                [NoteId.G, ChordId.Maj6, 8],
+                [NoteId.Fs, ChordId.Dom7, 8],
+                [NoteId.B, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Min7, 8],
+                [NoteId.E, ChordId.Dom7, 8],
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.G, ChordId.Maj7, 16],
+                [NoteId.B, ChordId.Min7, 8],
+                [NoteId.E, ChordId.Dom7, 8],
+                [NoteId.A, ChordId.Min7, 8],
+                [NoteId.D, ChordId.Dom7, 8],
+                [NoteId.G, ChordId.Maj7, 16]
             ]
         },
         {
             name: 'B',
             chords: [
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8]
-            ]
-        },
-        {
-            name: 'A\'',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'C',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 8],
-                [NoteId.F, ChordId.Min6, 8],
-                [NoteId.C, ChordId.Maj7, 8],
-                [NoteId.A, ChordId.Dom7, 8],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8],
-                [NoteId.C, ChordId.Maj7, 8]
+                [NoteId.Bb, ChordId.Maj7, 16],
+                [NoteId.F, ChordId.Maj7, 16],
+                [NoteId.C, ChordId.Min7, 8],
+                [NoteId.D, ChordId.Dom7, 8],
+                [NoteId.Bb, ChordId.Maj7, 16],
+                [NoteId.D, ChordId.Maj7, 16],
+                [NoteId.A, ChordId.Min7, 8],
+                [NoteId.D, ChordId.Dom7, 8]
             ]
         }
     ]
