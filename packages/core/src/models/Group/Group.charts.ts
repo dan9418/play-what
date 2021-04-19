@@ -526,7 +526,51 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.MajTri, 16]
+                [NoteId.G, ChordId.Maj7, 32],
+                [NoteId.Bb, ChordId.Min7, 16],
+                [NoteId.Eb, ChordId.Dom7, 16],
+                [NoteId.G, ChordId.MajTri, 32],
+                [NoteId.B, ChordId.Min7, 16],
+                [NoteId.E, ChordId.Dom7b9, 16]
+            ]
+        },
+        {
+            name: 'B',
+            chords: [
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.E, ChordId.Dom7b9, 16],
+                [NoteId.A, ChordId.Min7, 32],
+                [NoteId.Eb, ChordId.Dom7, 32],
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Dom7, 16]
+            ]
+        },
+        {
+            name: 'A\'',
+            chords: [
+                [NoteId.G, ChordId.Maj7, 32],
+                [NoteId.Bb, ChordId.Min7, 16],
+                [NoteId.Eb, ChordId.Dom7, 16],
+                [NoteId.G, ChordId.MajTri, 32],
+                [NoteId.B, ChordId.Min7, 16],
+                [NoteId.E, ChordId.Dom7b9, 16]
+            ]
+        },
+        {
+            name: 'C',
+            chords: [
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.E, ChordId.Dom7b9, 16],
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.C, ChordId.Min6, 16],
+                [NoteId.B, ChordId.Min7, 8],
+                [NoteId.Bb, ChordId.HalfDim7, 8],
+                [NoteId.A, ChordId.Min7, 8],
+                [NoteId.D, ChordId.Dom7, 8],
+                [NoteId.G, ChordId.Maj6, 16],
+                [NoteId.A, ChordId.Min7, 8],
+                [NoteId.D, ChordId.Dom7, 8]
+
             ]
         }
     ]
