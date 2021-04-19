@@ -431,6 +431,18 @@ export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
             ]
         },
         {
+            name: 'B',
+            chords: [
+                [NoteId.A, ChordId.Min7, 16],
+                [NoteId.D, ChordId.Dom7, 16],
+                [NoteId.G, ChordId.Maj7, 32],
+                [NoteId.Fs, ChordId.Min7, 16],
+                [NoteId.B, ChordId.Dom7, 16],
+                [NoteId.E, ChordId.Maj7, 16],
+                [NoteId.C, ChordId.Dom7, 16]
+            ]
+        },
+        {
             name: 'A\'\'',
             chords: [
                 [NoteId.F, ChordId.Min7, 16],
@@ -445,18 +457,6 @@ export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
                 [NoteId.Eb, ChordId.Dom7, 16],
                 [NoteId.Ab, ChordId.Maj7, 32]
             ]
-        },
-        {
-            name: 'B',
-            chords: [
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.G, ChordId.Maj7, 32],
-                [NoteId.Fs, ChordId.Min7, 16],
-                [NoteId.B, ChordId.Dom7, 16],
-                [NoteId.E, ChordId.Maj7, 16],
-                [NoteId.C, ChordId.Dom7, 16]
-            ]
         }
     ]
 }
@@ -469,47 +469,56 @@ export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
+                [NoteId.E, ChordId.HalfDim7, 16],
                 [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.F, ChordId.Dom7, 16],
+                [NoteId.F, ChordId.Min7, 16],
+                [NoteId.Db, ChordId.Dom7, 16],
+                [NoteId.Eb, ChordId.Maj7, 16],
+                [NoteId.Ab, ChordId.Dom7, 16]
             ]
         },
         {
             name: 'B',
             chords: [
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8]
-            ]
-        },
-        {
-            name: 'A\'',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
+                [NoteId.Bb, ChordId.Maj7, 16],
+                [NoteId.E, ChordId.HalfDim7, 8],
+                [NoteId.A, ChordId.Dom7b9, 8],
+                [NoteId.D, ChordId.Min7, 16],
+                [NoteId.Bb, ChordId.Min7, 8],
+                [NoteId.Eb, ChordId.Maj7, 8],
+                [NoteId.F, ChordId.Maj7, 16],
+                [NoteId.E, ChordId.HalfDim7, 8],
+                [NoteId.A, ChordId.Dom7b9, 8],
+                [NoteId.A, ChordId.HalfDim7, 16],
+                [NoteId.D, ChordId.Dom7b9, 16]
             ]
         },
         {
             name: 'C',
             chords: [
-                [NoteId.C, ChordId.Maj6, 8],
-                [NoteId.F, ChordId.Min6, 8],
-                [NoteId.C, ChordId.Maj7, 8],
-                [NoteId.A, ChordId.Dom7, 8],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8],
-                [NoteId.C, ChordId.Maj7, 8]
+                [NoteId.G, ChordId.Dom7, 32],
+                [NoteId.C, ChordId.Min7, 32],
+                [NoteId.Ab, ChordId.Dom7, 32],
+                [NoteId.Bb, ChordId.Maj7, 32]
+            ]
+        },
+        {
+            name: 'A\'',
+            chords: [
+                [NoteId.E, ChordId.HalfDim7, 16],
+                [NoteId.A, ChordId.Dom7b9, 16],
+                [NoteId.D, ChordId.HalfDim7, 16],
+                [NoteId.G, ChordId.Dom7b9, 16],
+                [NoteId.C, ChordId.HalfDim7, 16],
+                [NoteId.F, ChordId.Dom7b9, 16],
+                [NoteId.Bb, ChordId.Maj7, 32]
             ]
         }
+
     ]
 }
-
-
 
 export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
     name: 'Out Of Nowhere',
@@ -517,47 +526,11 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'B',
-            chords: [
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8]
-            ]
-        },
-        {
-            name: 'A\'',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'C',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 8],
-                [NoteId.F, ChordId.Min6, 8],
-                [NoteId.C, ChordId.Maj7, 8],
-                [NoteId.A, ChordId.Dom7, 8],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8],
-                [NoteId.C, ChordId.Maj7, 8]
+                [NoteId.C, ChordId.MajTri, 16]
             ]
         }
     ]
 }
-
-
 
 export const ITS_A_BLUE_WORLD_CONFIG: IChartConfig = {
     name: 'It\'s A Blue World',
@@ -565,47 +538,11 @@ export const ITS_A_BLUE_WORLD_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'B',
-            chords: [
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Min7, 16],
-                [NoteId.D, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8]
-            ]
-        },
-        {
-            name: 'A\'',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 16],
-                [NoteId.E, ChordId.Dom7, 16],
-                [NoteId.A, ChordId.Dom7, 16],
-                [NoteId.D, ChordId.Min7, 16]
-            ]
-        },
-        {
-            name: 'C',
-            chords: [
-                [NoteId.C, ChordId.Maj6, 8],
-                [NoteId.F, ChordId.Min6, 8],
-                [NoteId.C, ChordId.Maj7, 8],
-                [NoteId.A, ChordId.Dom7, 8],
-                [NoteId.D, ChordId.Min7, 8],
-                [NoteId.G, ChordId.Dom7, 8],
-                [NoteId.C, ChordId.Maj7, 8]
+                [NoteId.C, ChordId.MajTri, 16]
             ]
         }
     ]
 }
-
-
 
 export const ALONE_AGAIN_CONFIG: IChartConfig = {
     name: 'Alone Again',
