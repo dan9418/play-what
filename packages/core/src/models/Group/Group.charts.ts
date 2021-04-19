@@ -582,7 +582,55 @@ export const ITS_A_BLUE_WORLD_CONFIG: IChartConfig = {
         {
             name: 'A',
             chords: [
-                [NoteId.C, ChordId.MajTri, 16]
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.F, ChordId.Dom7, 16],
+                [NoteId.Bb, ChordId.Maj7, 32],
+                [NoteId.F, ChordId.Min7, 16],
+                [NoteId.Bb, ChordId.Dom7, 16],
+                [NoteId.Eb, ChordId.Maj7, 32]
+            ]
+        },
+        {
+            name: 'B',
+            chords: [
+                [NoteId.Eb, ChordId.Maj7, 16],
+                [NoteId.Eb, ChordId.Min7, 8],
+                [NoteId.F, ChordId.Dom7, 8],
+                [NoteId.Bb, ChordId.Maj7, 8],
+                [NoteId.Bb, ChordId.Dom7, 8],
+                [NoteId.Eb, ChordId.Min7, 8],
+                [NoteId.Gb, ChordId.Maj7, 8],
+                [NoteId.F, ChordId.Maj7, 8],
+                [NoteId.Gb, ChordId.Maj7, 8],
+                [NoteId.F, ChordId.Maj7, 8],
+                [NoteId.F, ChordId.Dom7, 8]
+            ]
+        },
+        {
+            name: 'A\'',
+            chords: [
+                [NoteId.C, ChordId.Min7, 16],
+                [NoteId.F, ChordId.Dom7, 16],
+                [NoteId.Bb, ChordId.Maj7, 32],
+                [NoteId.F, ChordId.Min7, 16],
+                [NoteId.Bb, ChordId.Dom7, 16],
+                [NoteId.Eb, ChordId.Maj7, 32]
+            ]
+        },
+        {
+            name: 'C',
+            chords: [
+                [NoteId.Eb, ChordId.Maj7, 16],
+                [NoteId.Eb, ChordId.Min7, 8],
+                [NoteId.Ab, ChordId.Maj7, 8],
+                [NoteId.Bb, ChordId.Maj7, 8],
+                [NoteId.C, ChordId.Min7, 8],
+                [NoteId.D, ChordId.HalfDim7, 8],
+                [NoteId.G, ChordId.Dom7, 8],
+                [NoteId.C, ChordId.Maj7, 16],
+                [NoteId.C, ChordId.Min7, 8],
+                [NoteId.F, ChordId.Dom7, 8],
+                [NoteId.Bb, ChordId.Maj7, 32]
             ]
         }
     ]
