@@ -38,6 +38,13 @@ const StyledColBody = styled.div`
 		//pointer-events: none;
 		//cursor: text;
 	`}
+
+	position: sticky;
+	@media(min-width: 1024px) {
+		${({ $hasBorder, $isCompact }) => $hasBorder ? '' : css`
+			top: ${$isCompact ? 96 : 144}px;
+		`}
+	}
 `;
 
 const StyledColHeader = styled.div`
@@ -105,7 +112,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorde
 					<OverflowMenu items={actions} />
 				</div>
 			</StyledColHeader>
-			<StyledColBody $isEnabled={!isOpen}>
+			<StyledColBody $isEnabled={!isOpen} $hasBorder={hasBorder} $isCompact={isCompact}>
 				{children}
 			</StyledColBody>
 		</StyledCol>
