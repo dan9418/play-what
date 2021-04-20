@@ -42,12 +42,12 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
 			{isBlank && (
 				<StyledHelpCard>
-					<h4>This Viewer Is Empty</h4>
+					<h4>No Data To Display</h4>
 					<p>
-						Zoom in to see notes applied to this {VIEWER[viewerId].name}!
+						Zoom in to see notes applied to this {VIEWER[viewerId].name}
 					</p>
 					<p>
-						Any viewer changes made to this group will apply to all subitems
+						Any changes made to this group will also apply to its subitems
 					</p>
 				</StyledHelpCard>
 			)}

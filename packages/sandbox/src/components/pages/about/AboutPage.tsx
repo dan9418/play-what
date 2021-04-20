@@ -96,7 +96,7 @@ const AboutPage: React.FC = () => {
 				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch (BETA)</ButtonInput>
 			</StyledButtonContainer>
 			<p>
-				<a href="https://github.com/dan9418/play-what" target="_blank" rel="noreferrer">Documentation</a>
+				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>
 			</p>
 		</StyledAboutPage>
 	)

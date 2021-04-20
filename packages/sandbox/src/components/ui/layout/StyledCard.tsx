@@ -11,16 +11,16 @@ const StyledCard = styled.section`
 
 export const StyledHelpCard = styled(StyledCard)`
 	margin-top: 16px;
+	font-size: 90%;
 	
 	p {
-		margin-top: 16px;
+		margin-top: 8px;
 		color: #555;
-		font-style: italic;
 	}
 
 	h4 {
 		color: ${({ theme }) => theme.accent};
-		padding-bottom: 4px;
+		padding-bottom: 8px;
 		border-bottom: 1px solid ${({ theme }) => theme.border};
 	}
 `

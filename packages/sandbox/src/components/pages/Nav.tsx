@@ -10,11 +10,15 @@ interface INavLink {
 
 const NAV_LINKS: INavLink[] = [
 	{
-		text: 'About',
+		text: 'Home',
 		pageId: PageId.About
 	},
 	{
-		text: 'Source',
+		text: 'Docs',
+		href: 'https://github.com/dan9418/play-what/blob/master/README.md'
+	},
+	{
+		text: 'Code',
 		href: 'https://github.com/dan9418/play-what/'
 	}
 ];
