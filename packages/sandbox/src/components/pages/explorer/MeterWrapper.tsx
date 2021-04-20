@@ -9,6 +9,7 @@ import { hoveredIndexState } from "../../../state/dataState";
 
 const StyledMeterWrapper = styled.div`
     margin-top: 16px;
+    overflow: auto;
 `;
 
 const MeterWrapper: React.FC = () => {

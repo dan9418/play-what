@@ -10,6 +10,7 @@ import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 const StyledViewerContainer = styled.div`
     width: 100%;
 	padding: 16px;
+	overflow: auto;
 `;
 
 interface IViewerProps {
