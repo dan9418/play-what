@@ -15,6 +15,16 @@ const StyledModal = styled.div`
 		max-width: 512px;
 		border-radius: 16px;
 	}
+
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 3000;
+	@media(min-width: 512px) {
+		bottom: 50%;
+		margin: auto;
+	}
 `;
 
 const StyledOverlay = styled.div`
@@ -24,15 +34,6 @@ const StyledOverlay = styled.div`
 	right: 0;
 	bottom: 0;
 	z-index: 2999;
-
-	display: flex;
-	align-items: flex-end;
-	justify-content: center;
-
-	@media(min-width: 512px) {
-		align-items: center;
-	}
-	
 	background-color: rgba(0, 0, 0, 0.2);
 `;
 
@@ -67,7 +68,8 @@ interface IModalProps {
 
 const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) => {
 	return (
-		<StyledOverlay onClick={null/*onClose*/}>
+		<>
+			<StyledOverlay onClick={onClose} />
 			<StyledModal>
 				<StyledModalHeader>
 					<div>
@@ -78,7 +80,7 @@ const Modal: React.FC<IModalProps> = ({ children, onClose, name, description }) 
 				</StyledModalHeader>
 				{children}
 			</StyledModal>
-		</StyledOverlay>
+		</>
 	);
 };
 

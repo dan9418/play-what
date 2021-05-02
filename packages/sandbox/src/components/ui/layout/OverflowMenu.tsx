@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 
 const StyledWrapper = styled.div`
 	position: relative;
+`;
+
+const StyledOutClickArea = styled.div`
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 98;
 `;
 
 const StyledOverflowMenu = styled.div`
@@ -27,11 +36,11 @@ const StyledOverflowMenu = styled.div`
 			background-color: transparent;
 			appearance: none;
 			padding: 8px;
-			color: #555;
 			cursor: pointer;
+			border-radius: 4px;
 
 			:hover {
-				color: black;
+				background-color: rgba(0, 0, 0, 0.1);
 			}
 		}
 	}
@@ -40,20 +49,25 @@ const StyledOverflowMenu = styled.div`
 	
 `;
 
-const ListItem = ({ action }) => {
+const ListItem = ({ action, onClose }) => {
+	const onClick = () => {
+		onClose();
+		action.onClick();
+	};
+
 	return (
 		<li>
-			<button type="button" onClick={action.onClick}>{action.name}</button>
+			<button type="button" onClick={onClick}>{action.name}</button>
 		</li>
 	);
 };
 
-const getActionItems = (items) => {
+const getActionItems = (items, onClose) => {
 	const listItems = [];
 	for (let i = 0; i < items.length; i++) {
 		const action = items[i];
 		listItems.push(
-			<ListItem key={i} action={action} />
+			<ListItem key={i} action={action} onClose={onClose} />
 		);
 	}
 	return listItems;
@@ -73,33 +87,18 @@ interface IOverflowMenuProps {
 const OverflowMenu: React.FC<IOverflowMenuProps> = ({ items = [], iconProps = {}, direction = 'right' }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	useEffect(() => {
-		if (!isOpen) return;
-
-		const listener = document.addEventListener(
-			"click",
-			(e) => {
-				// @ts-ignore
-				const isBtnClick = e.target.matches(".button-close-overflow");
-				// @ts-ignore
-				const isOutClick = !e.target.closest(".overflow");
-
-				if (isBtnClick || isOutClick) setIsOpen(false);
-			},
-			false
-		);
-		// @ts-ignore
-		return () => document.removeEventListener("click", listener);
-
-	}, [isOpen]);
-
-	const onClick = isOpen ? null : () => setIsOpen(true);
+	const onClose = () => setIsOpen(false);
 
 	return (
 		<StyledWrapper className="overflow">
 			{/* @ts-ignore */}
-			<IconButton iconId={'more'} onClick={onClick} className="button-close-overflow" iconProps={iconProps} />
-			{isOpen && <StyledOverflowMenu $direction={direction}>{getActionItems(items)}</StyledOverflowMenu>}
+			<IconButton iconId={'more'} onClick={() => setIsOpen(true)} className="button-close-overflow" iconProps={iconProps} />
+			{isOpen &&
+				<>
+					<StyledOverflowMenu $direction={direction}>{getActionItems(items, onClose)}</StyledOverflowMenu>
+					<StyledOutClickArea onClick={onClose} />
+				</>
+			}
 		</StyledWrapper>
 	);
 };
