@@ -21,7 +21,7 @@ const getNoteName = (modelValue: IPod, isShort = false) => {
 	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
 	const spelling = DEGREE_PRESETS[d].name;
-	const octave = PodUtils.getOctave(modelValue, true);
+	const octave = '';//PodUtils.getOctave(modelValue, true);
 	return `${spelling}${accidental}${octave}`;
 }
 
