@@ -75,6 +75,7 @@ export interface IModelOptions {
 	viewerId?: string;
 	viewerProps?: any;
 	matchOctave?: boolean;
+	t?: number;
 }
 
 export interface IModelConfig {
@@ -93,6 +94,7 @@ export interface IModelData {
 	preview: string;
 	modelRoot: IPod;
 	projection: IProjection;
+	t?: number;
 }
 
 export interface IModelDef {

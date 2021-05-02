@@ -35,7 +35,9 @@ const StyledAboutPage = styled.div`
 	> p {
 		max-width: 768px;
 		font-size: 120%;
-		color: #555;
+		color: #333;
+		text-align: center;
+		line-height: 150%;
 	}
 `;
 
@@ -89,7 +91,7 @@ const AboutPage: React.FC = () => {
 			<h1>Play <em><b>What?</b></em></h1>
 			<p>
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
-				The beta release is slated for April 2021.
+				The app is currently unstable and is slated for a full release in Summer 2021.
 			</p>
 			<StyledButtonContainer>
 				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>

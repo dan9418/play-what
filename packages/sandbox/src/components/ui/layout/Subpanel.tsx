@@ -63,6 +63,7 @@ interface ISubpanelHeaderProps {
 	name: string;
 	caption: string;
 	preview: string;
+	t?: number;
 	isOpen: boolean;
 	setIsOpen: any;
 	pathIds: any[];
@@ -73,15 +74,17 @@ interface ISubpanelHeaderProps {
 }
 
 
-const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, isOpen, setIsOpen, pathIds, isEditing, level, actions, ...rest }) => {
+const SubpanelHeader: React.FC<ISubpanelHeaderProps> = ({ name, caption, preview, t, isOpen, setIsOpen, pathIds, isEditing, level, actions, ...rest }) => {
 	const color = DEFAULT_PITCH_COLOR_SCHEME[level * 2];
 
 	const isLeaf = pathIds[pathIds.length - 1] === null;
 
+	const hasBars = typeof t !== 'undefined';
+
 	return (
 		<StyledSubpanelHeader $showBorder={isOpen} $color={color} {...rest}>
 			<h3 className="name">{name}</h3>
-			<span className="caption">{caption}</span>
+			<span className="caption">{caption}{hasBars && ` (${t} Bars)`}</span>
 			<div className="preview">{preview}</div>
 
 			<StyledButtonContainer>

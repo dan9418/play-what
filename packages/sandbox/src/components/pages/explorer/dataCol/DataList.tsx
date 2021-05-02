@@ -23,7 +23,7 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 	const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
 
 	// Name, Caption, Preview
-	const { name, preview, caption } = data;
+	const { name, preview, caption, t } = data;
 
 	// Path & Metachildren
 	const newPathIds = [...pathIds, i];
@@ -38,6 +38,7 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 				caption={caption}
 				name={name}
 				preview={preview}
+				t={t}
 				level={level}
 				isEditing={isEditing}
 				actions={actions}

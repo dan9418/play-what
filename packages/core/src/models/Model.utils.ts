@@ -259,7 +259,8 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		preview,
 		caption,
 		modelRoot: (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot : undefined,
-		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined
+		projection: (modelOptions && modelOptions.projection) ? modelOptions.projection : undefined,
+		t: (modelOptions && modelOptions.t && modelId !== ModelId.Note && modelId !== ModelId.Interval) ? modelOptions.t : undefined
 	}
 };
 

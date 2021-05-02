@@ -43,7 +43,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
 			{isBlank && (
 				<StyledHelpCard>
-					<h4>No Data To Display</h4>
+					<h4>No Data At This Level</h4>
 					<p>
 						Zoom in to see notes applied to this {VIEWER[viewerId].name}
 					</p>

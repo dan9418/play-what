@@ -8,8 +8,7 @@ import { matchOctaveState, pathHeadState } from '../../../state/pathState';
 import { hoveredIndexState } from "../../../state/dataState";
 
 const StyledMeterWrapper = styled.div`
-    margin-top: 16px;
-    overflow: auto;
+    padding-top: 16px;
 `;
 
 const MeterWrapper: React.FC = () => {
