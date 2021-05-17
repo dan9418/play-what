@@ -46,7 +46,7 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 				isHovered={isPod && modelValue[0] === hoveredIndex}
 			>
 				<Viewer modelConfig={config} />
-				<DataList metaChildren={metaChildren} isEditing={isEditing} level={level + 1} pathIds={newPathIds} />
+				{!isPod && <DataList metaChildren={metaChildren} isEditing={isEditing} level={level + 1} pathIds={newPathIds} />}
 			</Subpanel>
 		</li>
 	);
