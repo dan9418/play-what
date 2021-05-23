@@ -2,6 +2,7 @@ import { IModalAction } from '@pw/sandbox/src/components/ui/layout/Modal';
 import Fretboard from '../../../../../../../viewers/src/Fretboard/Fretboard';
 import Keyboard from '../../../../../../../viewers/src/Keyboard/Keyboard';
 import ViewerTypeAction from './ViewerTypeAction';
+import FullScreenAction from './FullScreenAction';
 
 enum VIEWER_ID {
 	Fretboard = 'fretboard',
@@ -56,6 +57,11 @@ const VIEWER_ACTIONS: IModalAction[] = [
 		name: 'Change Viewer',
 		description: 'Set the viewer type',
 		component: ViewerTypeAction
+	},
+	{
+		name: 'Full Screen',
+		description: 'Maximize viewer size',
+		component: FullScreenAction
 	}
 ];
 

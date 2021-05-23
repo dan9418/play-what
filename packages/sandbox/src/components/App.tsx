@@ -9,6 +9,7 @@ import ErrorBoundary from './utils/ErrorBoundary';
 import Main from './pages/Main';
 import Nav from './pages/Nav';
 import ModalManager from "./pages/ModalManager";
+import FullScreenManager from "./pages/FullScreenManager";
 
 const App = () => {
 	return (
@@ -20,6 +21,7 @@ const App = () => {
 						<Nav />
 						<Main />
 						<ModalManager />
+						<FullScreenManager />
 					</RouteContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
