@@ -16,12 +16,12 @@ export const Fret = ({ tuning, stringIndex, fretIndex, labelProps }) => {
 	return (
 		<div className={classes.join(' ')}>
 			<div className="fret-number">
-				{isHighString && fretIndex}
+				{isHighString && fretIndex > 0 && fretIndex}
 			</div>
 			<div className='fret-string' />
 			<FretLabel {...labelProps} noteIndex={noteIndex} />
 			<div className="fret-dots">
-				{isLowString && api.getDotsForFret(fretIndex)}
+				{isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
 			</div>
 		</div>
 	);
