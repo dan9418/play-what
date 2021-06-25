@@ -1,5 +1,6 @@
 import { MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
+import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
@@ -69,11 +70,11 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
 	if (false) return debugComponent;
 
-	console.log(MODEL_VALUES);
+	const resultPods = root ? PodUtils.addPodList(root, modelConfig.isCompound ? data.value : [data.value]) : data.value;
 
 	const labelProps = {
 		modelId,
-		modelValue: data.value
+		modelValue: resultPods
 	}
 
 	return (
@@ -107,7 +108,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 			<div>
 				<h2>Result</h2>
 				<LabelRow label="meter" />
-				<Meter modelId={modelId} modelValue={data.value} />
+				<Meter modelId={modelId} modelValue={resultPods} />
 				<LabelRow label="viewer" />
 				<Fretboard labelProps={labelProps} />
 			</div>
