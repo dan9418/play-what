@@ -70,11 +70,10 @@ const AboutPage: React.FC = () => {
 				The app is currently unstable and is slated for a full release in Summer 2021.
 			</p>
 			<StyledButtonContainer>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Note })}>Notes</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Interval })}>Intervals</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chord })}>Chords</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Scale })}>Scales</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chart })}>Charts</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Interval })}>Interval</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chord })}>Chord</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Scale })}>Scale</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chart })}>Chart</ButtonInput>
 			</StyledButtonContainer>
 			<p>
 				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>

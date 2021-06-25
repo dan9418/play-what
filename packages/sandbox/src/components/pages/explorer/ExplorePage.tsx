@@ -1,4 +1,5 @@
 import { MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
+import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import DropdownInput from '../../ui/inputs/DropdownInput';
@@ -10,10 +11,25 @@ const StyledExplorePage = styled.div`
 		margin: 24px 0;
 		text-align: center;
 	}
+	h2 {
+		color: white;
+		background-color: ${({ theme }) => theme.accent};
+		padding: 8px;
+		border-radius: 8px;
+	}
 
 	width: 100%;
 	max-width: 768px;
 	margin: auto;
+	margin-top: 32px;
+
+	display: grid;
+	grid-gap: 16px;
+	grid-template-columns: 1fr 1fr;
+
+	& :nth-child(3) {
+		grid-column: 1 / span 2
+	}
 `;
 
 const StyledLabelRow = styled.div`
@@ -35,6 +51,7 @@ const LabelRow: React.FC<any> = ({ label, children }) => {
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const [modelId, setModelId] = useState(params.modelId);
 	const [data, setData] = useState(null);
+	const [root, setRoot] = useState(null);
 
 	const modelConfig = MODEL_MAP.get(modelId);
 
@@ -51,20 +68,37 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 
 	return (
 		<StyledExplorePage>
-			<h1>{modelConfig.name}</h1>
-			<LabelRow label="model"  >
-				<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
-			</LabelRow>
-			<LabelRow label="preset">
-				<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
-			</LabelRow>
-			<LabelRow label="pods" />
-			{
-				modelConfig.isCompound ?
-					<PodCardList pods={data.value} />
-					:
-					<PodCard pod={data.value} />
-			}
+			<div>
+				<h2>Data</h2>
+				<LabelRow label="model"  >
+					<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
+				</LabelRow>
+				<LabelRow label="preset">
+					<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
+				</LabelRow>
+				<LabelRow label="pods" />
+				{
+					modelConfig.isCompound ?
+						<PodCardList pods={data.value} />
+						:
+						<PodCard pod={data.value} />
+				}
+			</div>
+
+			<div>
+				<h2>Root</h2>
+				<LabelRow label="model" >Note</LabelRow>
+				<LabelRow label="preset"  >
+					<DropdownInput value={root} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
+				</LabelRow>
+				{root ? <PodCard pod={root} /> : <div>None</div>}
+			</div>
+
+			<div>
+				<h2>Result</h2>
+test
+				</div>
+
 		</StyledExplorePage>
 	);
 };
