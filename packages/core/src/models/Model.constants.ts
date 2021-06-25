@@ -1,4 +1,3 @@
-import { GROUP_PRESETS } from '@pw/core/src/models/Group/Group.constants';
 import { INTERVAL_PRESETS } from './Pod/Interval/Interval.constants';
 import { NOTE_PRESETS } from './Pod/Note/Note.constants';
 import { CHORD_PRESETS } from './PodList/Chord/Chord.constants';
@@ -22,18 +21,6 @@ export interface IModelAttrs {
 }
 
 export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
-	/*[ModelId.Group, {
-		name: 'Group',
-		modelId: ModelId.Group,
-		presets: GROUP_PRESETS,
-		validChildren: [
-			ModelId.Group,
-			ModelId.Note,
-			ModelId.Interval,
-			ModelId.Chord,
-			ModelId.Scale
-		]
-	}],*/
 	[ModelId.Note, {
 		name: 'Note',
 		modelId: ModelId.Note,

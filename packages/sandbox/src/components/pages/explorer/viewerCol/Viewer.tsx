@@ -25,11 +25,9 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 	const { modelId, modelValue } = modelConfig;
 	const { viewerId, viewerProps } = { viewerId: VIEWER.fretboard.id, viewerProps: {} };
 
-	const isBlank = modelId === ModelId.Group;
-
 	const labelProps = {
-		modelId: isBlank ? ModelId.Chord : modelId,
-		modelValue: isBlank ? [] : modelValue,
+		modelId,
+		modelValue,
 		matchOctave,
 		hoveredIndex,
 		setHoveredIndex
@@ -40,7 +38,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 	return (
 		<StyledViewerContainer>
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
-			{isBlank && false && (
+			{false && (
 				<StyledHelpCard>
 					<h4>No Notes At This Level</h4>
 					<p>

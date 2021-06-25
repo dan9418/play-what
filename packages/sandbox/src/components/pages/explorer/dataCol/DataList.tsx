@@ -19,7 +19,6 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 	const { config, data } = pathHead;
 	// Model helpers
 	const { modelId, modelValue } = config;
-	const isGroup = modelId === ModelId.Group;
 	const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
 
 	// Name, Caption, Preview

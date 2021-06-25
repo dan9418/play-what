@@ -15,7 +15,7 @@ const getColProps = (pathHead, setPathHead, setModal) => {
     const { modelId, modelValue } = (pathHead as IModelDef).config;
 
     const root = null;
-    const isGroup = modelId === ModelId.Group;
+    const isGroup = false;
 
     const actions = getActions(DATA_ACTIONS, pathHead, setPathHead, setModal);
 

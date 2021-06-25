@@ -1,8 +1,8 @@
-import { MODEL_MAP, ModelId } from "@pw/core/src/models/Model.constants";
+import { MODEL_MAP } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
+import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import styled, { css } from 'styled-components';
 import { matchOctaveState, pathHeadState } from "../../../state/pathState";
 import MeterWrapper from "../../pages/explorer/MeterWrapper";
@@ -134,19 +134,17 @@ const PanelHeader: React.FC = () => {
 	const { name, preview } = pathHead.data;
 	const model = MODEL_MAP.get(modelId);
 
-	const isGroup = modelId === ModelId.Group;
-
 	return (
-		<StyledPanelHeader $showBorder={isGroup}>
+		<StyledPanelHeader $showBorder={false}>
 			<div className='top-container'>
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
 						<h3 className='name'>{name}</h3>
 						<div className='caption'>{model.name}</div>
 					</div>
-					{isGroup ? null : <div className='preview'>{preview}</div>}
+					<div className='preview'>{preview}</div>
 				</div>
-				{(isGroup || isMobile) ? null :
+				{(isMobile) ? null :
 					<StyledToolbox>
 						<div>
 							<span>Match Octave?</span>
@@ -159,7 +157,7 @@ const PanelHeader: React.FC = () => {
 					</StyledToolbox>
 				}
 			</div>
-			{(isGroup || !isMobile) ? null :
+			{(!isMobile) ? null :
 				<StyledToolbox>
 					<div>
 						<span>Match Octave?</span>
@@ -171,7 +169,7 @@ const PanelHeader: React.FC = () => {
 					</div>
 				</StyledToolbox>
 			}
-			{!isGroup && <MeterWrapper />}
+			<MeterWrapper />
 		</StyledPanelHeader>
 	);
 };

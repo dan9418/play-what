@@ -31,7 +31,7 @@ const PresetAction: React.FC<IPresetActionProps> = ({ pathHead = null, setPathHe
 
 	const siblingState = useRecoilValue(siblingsState) || { parent: null };
 	const { parent } = siblingState;
-	const parentModel = MODEL_MAP.get(parent ? parent.config.modelId : ModelId.Group);
+	const parentModel = MODEL_MAP.get(parent ? parent.config.modelId : null);
 
 	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL_MAP.get(x).name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });

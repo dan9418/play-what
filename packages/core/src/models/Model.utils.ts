@@ -80,8 +80,6 @@ const getName = (modelId: ModelId, modelValue: IModelValue, isShort = false): st
 			return getNoteName(modelValue as IPod, isShort)
 		case ModelId.Interval:
 			return getIntervalName(modelValue as IPod, isShort);
-		case ModelId.Group:
-			return 'Group';
 		case ModelId.Chord:
 			return getChordName(modelValue as IPod[]);
 		case ModelId.Scale:
@@ -107,8 +105,6 @@ const getPodListPreview = (modelValue: IPod[]): string => {
 
 const getPreview = (modelId: ModelId, modelValue: IModelValue): string => {
 	switch (modelId) {
-		case ModelId.Group:
-			return getGroupPreview(modelValue);
 		case ModelId.Chord:
 		case ModelId.Scale:
 			return getPodListPreview(modelValue as IPod[]);
@@ -201,17 +197,6 @@ const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: numbe
 const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 	const { modelId, modelValue } = modelConfig;
 
-	if (modelId === ModelId.Group) {
-		return {
-			pathId,
-			name: getName(ModelId.Group, modelValue),
-			preview: getPreview(ModelId.Group, modelValue),
-			caption: MODEL_MAP.get(modelId).name,
-			modelRoot: undefined,
-			projection: undefined
-		}
-	}
-
 	const hasRoot = false;
 
 	let name = null;
@@ -282,9 +267,7 @@ const getMetaChildren = (modelConfig: IModelConfig): IModelDef[] => {
 
 	if (modelId === ModelId.Note || modelId === ModelId.Interval) return null;
 
-	const childConfigs = modelId === ModelId.Group ?
-		getGroupChildConfigs(modelValue) :
-		getListChildConfigs(modelValue, ModelId.Interval);
+	const childConfigs = getListChildConfigs(modelValue, ModelId.Interval);
 
 	const metaChildren = childConfigs.map((config, i) => {
 		const data = getData(config, i);
@@ -315,10 +298,8 @@ const getSupersets = (modelId: ModelId, modelValue: IPod[]): ISupersetOption[] =
 	}));
 };
 
-const playSound = (modelConfig: IModelConfig, pathId = 0): IModelData => {
+const playSound = (modelConfig: IModelConfig, pathId = 0): void => {
 	const { modelId, modelValue } = modelConfig;
-
-	if (modelId === ModelId.Group) return;
 
 	const hasRoot = false;
 
