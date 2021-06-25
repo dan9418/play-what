@@ -1,8 +1,6 @@
-import { IModelNode, ModelId, MODEL_MAP } from '@pw/core/src/models/Model.constants';
+import { IModelNode, MODEL_MAP } from '@pw/core/src/models/Model.constants';
 import React from "react";
-import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { siblingsState } from '../../../../../state/pathState';
 import DropdownInput from '../../../../ui/inputs/DropdownInput';
 import ActionForm from '../../shared/ActionForm';
 import { IActionProps } from '../../shared/getActions';
@@ -29,9 +27,7 @@ const PresetAction: React.FC<IPresetActionProps> = ({ pathHead = null, setPathHe
 	const [typeIndex, setTypeIndex] = React.useState(0);
 	const [presetIndex, setPresetIndex] = React.useState(0);
 
-	const siblingState = useRecoilValue(siblingsState) || { parent: null };
-	const { parent } = siblingState;
-	const parentModel = MODEL_MAP.get(parent ? parent.config.modelId : null);
+	const parentModel = null;
 
 	const typeOptions = (validTypes || parentModel.validChildren).map(x => ({ value: x, name: MODEL_MAP.get(x).name }));
 	typeOptions.unshift({ value: 'none', name: 'Select a type...' });

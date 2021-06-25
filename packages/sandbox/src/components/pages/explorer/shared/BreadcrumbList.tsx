@@ -4,10 +4,8 @@ import OverflowMenu from "@pw/sandbox/src/components/ui/layout/OverflowMenu";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import THEME from "@pw/sandbox/src/styles/theme";
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { usePathNavContext } from "../../../../contexts/PathNavContext";
-import { fullPathState } from "../../../../state/pathState";
 
 const StyledWrapper = styled.div`
 	position: sticky;
@@ -73,9 +71,7 @@ const StyledButtonWrapper = styled.div`
 
 const BreadcrumbList: React.FC = () => {
 
-	const fullPath = useRecoilValue(fullPathState);
-	//const pathHead = fullPath.length ? fullPath[fullPath.length - 1] : null;
-	//const { modelId, modelValue } = pathHead.config;
+	const fullPath = [];
 
 	const { popAt, pop, prev, next, path } = usePathNavContext();
 	const isMobile = useIsMobile();

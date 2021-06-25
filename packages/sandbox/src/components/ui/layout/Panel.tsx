@@ -2,10 +2,7 @@ import { MODEL_MAP } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 import styled, { css } from 'styled-components';
-import { matchOctaveState, pathHeadState } from "../../../state/pathState";
-import MeterWrapper from "../../pages/explorer/MeterWrapper";
 import IconButton from "../inputs/buttons/IconButton";
 import SwitchInput from "../inputs/SwitchInput";
 
@@ -125,13 +122,9 @@ const StyledToolbox = styled.div`
 `;
 
 
-const PanelHeader: React.FC = () => {
-	const pathHead: any = useRecoilValue(pathHeadState);
-	const [matchOctave, setMatchOctave] = useRecoilState(matchOctaveState);
+const PanelHeader: React.FC<any> = ({ modelId, name, preview }) => {
 	const isMobile = useIsMobile();
 
-	const { modelId } = pathHead.config;
-	const { name, preview } = pathHead.data;
 	const model = MODEL_MAP.get(modelId);
 
 	return (
@@ -148,11 +141,11 @@ const PanelHeader: React.FC = () => {
 					<StyledToolbox>
 						<div>
 							<span>Match Octave?</span>
-							<SwitchInput value={matchOctave} setValue={setMatchOctave} />
+							<SwitchInput value={false} setValue={null} />
 						</div>
 						<div>
 							<span>Play Sound</span>
-							<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(pathHead.config)} />
+							<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(null)} />
 						</div>
 					</StyledToolbox>
 				}
@@ -161,15 +154,14 @@ const PanelHeader: React.FC = () => {
 				<StyledToolbox>
 					<div>
 						<span>Match Octave?</span>
-						<SwitchInput value={matchOctave} setValue={setMatchOctave} />
+						<SwitchInput value={false} setValue={null} />
 					</div>
 					<div>
 						<span>Play Sound</span>
-						<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(pathHead.config)} />
+						<IconButton iconId="speaker" onClick={() => ModelUtils.playSound(null)} />
 					</div>
 				</StyledToolbox>
 			}
-			<MeterWrapper />
 		</StyledPanelHeader>
 	);
 };

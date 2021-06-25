@@ -1,12 +1,7 @@
 import { ModelId } from '@pw/core/src/models/Model.constants';
-import ModelUtils from '@pw/core/src/models/Model.utils';
-import { hoveredIndexState } from '@pw/sandbox/src/state/dataState';
-import { pathHeadState } from '@pw/sandbox/src/state/pathState';
 import React from "react";
-import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import Subpanel from '../../../ui/layout/Subpanel';
-import Viewer from '../viewerCol/Viewer';
 
 const StyledDataList = styled.ul`
 	padding: 0;
@@ -26,7 +21,7 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 
 	// Path & Metachildren
 	const newPathIds = [...pathIds, i];
-	const metaChildren = ModelUtils.getMetaChildren(config);
+	const metaChildren = [];
 
 	const actions = [];
 
@@ -44,7 +39,6 @@ const getItem = (pathHead, pathIds, level, i, hoveredIndex, isEditing, DataList)
 				pod={isPod && modelValue}
 				isHovered={isPod && modelValue[0] === hoveredIndex}
 			>
-				<Viewer modelConfig={config} />
 				{!isPod && <DataList metaChildren={metaChildren} isEditing={isEditing} level={level + 1} pathIds={newPathIds} />}
 			</Subpanel>
 		</li>
@@ -66,21 +60,18 @@ interface IDataListProps {
 
 const DataList: React.FC<IDataListProps> = ({ metaChildren, isEditing, level = 0, pathIds = [] }) => {
 
-	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const hoveredIndex = useRecoilValue(hoveredIndexState);
-
 	// pathHead.config.modelId === ModelId.Interval || pathHead.config.modelId === ModelId.Note
 	if (!metaChildren) {
 		return (
 			<StyledDataList>
-				{getItem(pathHead, [], level, null, hoveredIndex, isEditing, DataList)}
+				{getItem(null, [], level, null, null, isEditing, DataList)}
 			</StyledDataList>
 		);
 	}
 
 	return (
 		<StyledDataList>
-			{getItems(metaChildren, pathIds, isEditing, level, hoveredIndex, DataList)}
+			{getItems(metaChildren, pathIds, isEditing, level, null, DataList)}
 		</StyledDataList>
 	);
 };

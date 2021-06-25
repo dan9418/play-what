@@ -1,6 +1,4 @@
-import { fullPathState } from "@pw/sandbox/src/state/pathState";
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled, { css } from 'styled-components';
 import OverflowMenu from "./OverflowMenu";
 
@@ -93,12 +91,11 @@ interface IColProps {
 
 const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
 
-	const fullPath = useRecoilValue(fullPathState);
-	const isCompact = !fullPath || fullPath.length < 2;
+	const fullPath = []
 
 	return (
 		<StyledCol $hasBorder={hasBorder}>
-			<StyledColHeader $isCompact={isCompact}>
+			<StyledColHeader $isCompact={false}>
 				<div className="titles">
 					<h2>
 						{title}
@@ -112,7 +109,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorde
 					<OverflowMenu items={actions} />
 				</div>
 			</StyledColHeader>
-			<StyledColBody $isEnabled={!isOpen} $hasBorder={hasBorder} $isCompact={isCompact}>
+			<StyledColBody $isEnabled={!isOpen} $hasBorder={hasBorder} $isCompact={false}>
 				{children}
 			</StyledColBody>
 		</StyledCol>

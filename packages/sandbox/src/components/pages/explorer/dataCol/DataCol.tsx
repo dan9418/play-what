@@ -1,10 +1,7 @@
-import { IModelDef, ModelId } from '@pw/core/src/models/Model.constants';
+import { ModelId } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import { modalState } from '@pw/sandbox/src/state/dataState';
-import React from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 import { StyledHelpCard } from '@pw/sandbox/src/components/ui/layout/StyledCard';
-import { pathHeadState, pathState } from '../../../../state/pathState';
+import React from "react";
 import Col from '../../../ui/layout/Col';
 import getActions from '../shared/getActions';
 import DATA_ACTIONS from './actions/dataActions';
@@ -39,16 +36,12 @@ interface IDataColProps {
 }
 
 const DataCol: React.FC<IDataColProps> = ({ editId, setEditId }) => {
-    const path = useRecoilValue(pathState);
-    const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-    const setModal = useSetRecoilState(modalState);
+    const level = 0;
 
-    const level = path.length;
-
-    const colProps = getColProps(pathHead, setPathHead, setModal);
+    const colProps = getColProps(null, null, null);
     const editProps = getEditProps(editId, setEditId, 'data');
 
-    const isEmpty = !path.length && !pathHead.config.modelValue.length
+    const isEmpty = true;
 
     return (
         <Col {...colProps} {...editProps} hasBorder>
@@ -57,10 +50,10 @@ const DataCol: React.FC<IDataColProps> = ({ editId, setEditId }) => {
                     <h4>No Data</h4>
                     <p>
                         You can import a preset and set a root from the action menu.
-					</p>
+                    </p>
                 </StyledHelpCard>
             )}
-            <DataList metaChildren={pathHead.metaChildren} isEditing={editProps.isOpen} level={level} />
+            <DataList metaChildren={[]} isEditing={editProps.isOpen} level={level} />
         </Col>
     );
 };

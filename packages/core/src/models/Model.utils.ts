@@ -14,7 +14,7 @@ import { SCALE_PRESETS } from "./PodList/Scale/Scale.constants";
 
 // Name
 
-const getNoteName = (modelValue: IPod, isShort = false) => {
+const getNoteName = (modelValue: IPod): string => {
 	const reducedValue = PodUtils.reduce(modelValue);
 
 	const d = reducedValue[1];
@@ -25,7 +25,7 @@ const getNoteName = (modelValue: IPod, isShort = false) => {
 	return `${spelling}${accidental}${octave}`;
 }
 
-export const getIntervalName = (modelValue: IPod, isShort = false) => {
+export const getIntervalName = (modelValue: IPod): string => {
 	const [noteIndex, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -74,12 +74,12 @@ const getScaleName = (modelValue: IPod[], isShort = false) => {
 	//return `${rootName} ${presetName}`;
 };
 
-const getName = (modelId: ModelId, modelValue: IModelValue, isShort = false): string => {
+const getName = (modelId: ModelId, modelValue: IModelValue): string => {
 	switch (modelId) {
 		case ModelId.Note:
-			return getNoteName(modelValue as IPod, isShort)
+			return getNoteName(modelValue as IPod)
 		case ModelId.Interval:
-			return getIntervalName(modelValue as IPod, isShort);
+			return getIntervalName(modelValue as IPod);
 		case ModelId.Chord:
 			return getChordName(modelValue as IPod[]);
 		case ModelId.Scale:
@@ -190,85 +190,7 @@ const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: numbe
 	}
 }
 
-// Parse
-
-const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
-	const { modelId, modelValue } = modelConfig;
-
-	const hasRoot = false;
-
-	let name = null;
-	let preview = null;
-	let caption = null;
-
-	if (hasRoot) {
-		const intervalName = getName(ModelId.Interval, modelValue);
-		const intervalPreview = getPreview(ModelId.Interval, modelValue);
-
-		const rootName = getName(ModelId.Note, null);
-		const rootPreview = getPreview(ModelId.Note, null);
-
-		if (modelId === ModelId.Note || modelId === ModelId.Interval) {
-			const note = PodUtils.addPod(null, modelValue as IPod);
-			const noteName = getName(ModelId.Note, note, null);
-			const notePreview = getPreview(ModelId.Note, note);
-			name = noteName;
-			caption = intervalName;
-			preview = `${rootPreview} + ${intervalPreview} = ${notePreview} `;
-		}
-		else {
-			const modelName = getName(modelId, modelValue);
-			const modelPreview = getPreview(modelId, modelValue);
-			name = `${rootName} ${modelName}`;
-			caption = MODEL_MAP.get(modelId).name;
-			preview = modelPreview;
-		}
-	}
-	else {
-		const modelName = getName(modelId, modelValue);
-		const modelPreview = getPreview(modelId, modelValue);
-		name = modelName;
-		caption = MODEL_MAP.get(modelId).name;
-		preview = modelPreview;
-	}
-
-	return {
-		pathId,
-		name,
-		preview,
-		caption,
-		modelRoot: undefined,
-		projection: undefined,
-		t: undefined
-	}
-};
-
-const getListChildConfigs = (modelValue: IModelValue, childModelId) => {
-	return modelValue.map((pod, i) => {
-		return {
-			modelId: childModelId,
-			modelValue: pod
-		}
-	});
-};
-
-const getMetaChildren = (modelConfig: IModelConfig): IModelDef[] => {
-	const { modelId, modelValue } = modelConfig;
-
-	if (modelId === ModelId.Note || modelId === ModelId.Interval) return null;
-
-	const childConfigs = getListChildConfigs(modelValue, ModelId.Interval);
-
-	const metaChildren = childConfigs.map((config, i) => {
-		const data = getData(config, i);
-		return {
-			config,
-			data
-		};
-	});
-
-	return metaChildren;
-};
+// Misc
 
 interface ISupersetOption extends IModelConfig {
 	id: string;
@@ -310,8 +232,6 @@ export default {
 	getPreview,
 	getPodAtPitch,
 	getPodProps,
-	getData,
-	getMetaChildren,
 	getSupersets,
 	playSound
 }

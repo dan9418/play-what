@@ -1,9 +1,6 @@
 import { IPod } from "@pw/core/src/models/Model.constants";
-import { DEFAULT_DEGREE_COLOR_SCHEME } from "@pw/core/src/theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "@pw/core/src/theory/Pitch.constants";
-import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled, { css } from 'styled-components';
 import IconButton from '../inputs/buttons/IconButton';
 import ZoomButton from '../inputs/buttons/ZoomButton';
@@ -131,24 +128,11 @@ interface ISubpanelProps extends Omit<ISubpanelHeaderProps, 'isOpen' | 'setIsOpe
 
 const Subpanel: React.FC<ISubpanelProps> = ({ pod, isHovered, children = null, level = 0, ...props }) => {
 	const [isOpen, setIsOpen] = React.useState(false);
-	const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);
 
 	const color = DEFAULT_PITCH_COLOR_SCHEME[(level * 2) % 12];
-	let podColor = null;
-
-	let onMouseEnter = null;
-	let onMouseLeave = null;
-
-	if (pod) {
-		if (!isHovered) onMouseEnter = () => setHoveredIndex(pod[0]);
-		if (isHovered) {
-			onMouseLeave = () => setHoveredIndex(null);
-			podColor = DEFAULT_DEGREE_COLOR_SCHEME[pod[1] % 7];
-		}
-	}
 
 	return (
-		<StyledSubpanel $color={color} $podColor={podColor} >
+		<StyledSubpanel $color={color} $podColor={null} >
 			{/* @ts-ignore */}
 			<SubpanelHeader {...props} isOpen={isOpen} setIsOpen={setIsOpen} level={level} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} />
 			{isOpen &&
