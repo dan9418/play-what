@@ -6,8 +6,7 @@ const DEFAULT_FRETBOARD_PROPS = {
 	tuning: FRETBOARD_TUNING.standard.value,
 	labelProps: {
 		modelId: ModelId.Chord,
-		modelValue: [],
-		modelOptions: {}
+		modelValue: []
 	}
 };
 

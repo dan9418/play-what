@@ -54,7 +54,6 @@ interface IKeyLabelProps {
 	noteIndex: number;
 	modelId: ModelId;
 	modelValue: IModelValue;
-	modelOptions: IModelOptions;
 	scale: number;
 	range: number[];
 	matchOctave: boolean;
@@ -62,9 +61,9 @@ interface IKeyLabelProps {
 	setHoveredIndex: any;
 }
 
-const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, modelId, modelValue, modelOptions, hoveredIndex, setHoveredIndex }) => {
+const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, modelId, modelValue, hoveredIndex, setHoveredIndex }) => {
 
-	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex);
+	const podProps = ModelUtils.getPodProps(modelId, modelValue, noteIndex);
 
 	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 

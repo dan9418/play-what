@@ -7,17 +7,16 @@ import ActionForm from '../../shared/ActionForm';
 import { IActionProps } from '../../shared/getActions';
 
 const ProjectionAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
-	const { modelId, modelValue, modelOptions } = pathHead.config;
+	const { modelId, modelValue } = pathHead.config;
 
 	const [index, setIndex] = React.useState(0);
 
-	const supersetOptions = ModelUtils.getSupersets(modelId, modelValue as IPod[], modelOptions);
+	const supersetOptions = ModelUtils.getSupersets(modelId, modelValue as IPod[]);
 
 	const none = {
 		id: 'None',
 		name: 'None',
 		modelId,
-		modelOptions,
 		modelValue: []
 	};
 
@@ -30,9 +29,9 @@ const ProjectionAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => 
 		const copy = _.cloneDeep(pathHead);
 		const modelValueCopy = _.cloneDeep(selectedValue.modelValue);
 		const projection = { podList: modelValueCopy };
-		_.set(copy, 'config.modelOptions.projection', projection);
+		//_.set(copy, '', projection);
 
-		setPathHead(copy);
+		//setPathHead(copy);
 	};
 
 	return (

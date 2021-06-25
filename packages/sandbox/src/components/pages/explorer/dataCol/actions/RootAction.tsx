@@ -9,8 +9,8 @@ const RootAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 	const onSubmit = presetPathHead => {
 		console.log(presetPathHead);
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'config.modelOptions.modelRoot', presetPathHead.config.modelValue);
-		setPathHead(newData);
+		//_.set(newData, '', presetPathHead.config.modelValue);
+		//setPathHead(newData);
 	};
 
 	return (

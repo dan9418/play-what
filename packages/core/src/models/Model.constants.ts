@@ -87,7 +87,6 @@ export interface IModelOptions {
 export interface IModelConfig {
 	modelId: ModelId;
 	modelValue: IPod | IPod[] | IModelConfig[];
-	modelOptions?: IModelOptions
 }
 
 // @ts-ignore

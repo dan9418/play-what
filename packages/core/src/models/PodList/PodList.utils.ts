@@ -24,15 +24,15 @@ const reduce = (A: IPod[]): IPod[] => {
 
 // Search
 
-const getPodAtPitch = (A: IPod[], p: number, modelOptions: IModelOptions, matchOctave: boolean): IPod | null => {
-	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, modelOptions, matchOctave));
+const getPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): IPod | null => {
+	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, matchOctave));
 	return pod ? pod : null;
 };
 
 // Sound
 
-const playSound = (modelValue: IPod[], modelOptions: IModelOptions): void => {
-	const notes = (modelOptions && modelOptions.modelRoot) ? PodUtils.addPodList(modelOptions.modelRoot, modelValue) : modelValue;
+const playSound = (modelValue: IPod[]): void => {
+	const notes = modelValue;
 	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }

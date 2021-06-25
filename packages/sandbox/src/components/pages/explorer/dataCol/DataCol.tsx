@@ -12,9 +12,9 @@ import DataList from './DataList';
 
 const getColProps = (pathHead, setPathHead, setModal) => {
 
-    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
+    const { modelId, modelValue } = (pathHead as IModelDef).config;
 
-    const root = modelOptions && modelOptions.modelRoot;
+    const root = null;
     const isGroup = modelId === ModelId.Group;
 
     const actions = getActions(DATA_ACTIONS, pathHead, setPathHead, setModal);
@@ -22,7 +22,7 @@ const getColProps = (pathHead, setPathHead, setModal) => {
     if (isGroup) {
         return {
             title: "Data",
-            subtitle: ModelUtils.getPreview(modelId, modelValue, modelOptions),
+            subtitle: ModelUtils.getPreview(modelId, modelValue),
             actions
         };
     }

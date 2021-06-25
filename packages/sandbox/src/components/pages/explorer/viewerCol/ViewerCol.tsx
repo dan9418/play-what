@@ -18,9 +18,7 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
     const [pathHead, setPathHead] = useRecoilState<IModelNode>(pathHeadState);
     const setModal = useSetRecoilState(modalState);
 
-    const { modelOptions } = pathHead.config;
-
-    const hasViewer = modelOptions && modelOptions.viewerId;
+    const hasViewer = false;
 
     const viewer = (hasViewer) ?
         <Viewer modelConfig={pathHead.config} />
@@ -32,7 +30,7 @@ const ViewerCol: React.FC<IViewerColProps> = ({ editId, setEditId }) => {
 			</p>
         </StyledHelpCard>
 
-    const name = hasViewer ? VIEWER[modelOptions.viewerId].name : 'None';
+    const name = hasViewer ? VIEWER[''].name : 'None';
 
     const actions = getActions(VIEWER_ACTIONS, pathHead, setPathHead, setModal);
 

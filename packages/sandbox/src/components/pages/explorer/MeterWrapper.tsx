@@ -19,7 +19,7 @@ const MeterWrapper: React.FC = () => {
     const isTablet = useIsTablet();
     const isDesktop = useIsDesktop();
 
-    const { modelId, modelValue, modelOptions } = (pathHead as IModelDef).config;
+    const { modelId, modelValue } = (pathHead as IModelDef).config;
 
     let range = [0, 12];
     if (isTablet) {
@@ -31,7 +31,7 @@ const MeterWrapper: React.FC = () => {
 
     return (
         <StyledMeterWrapper>
-            <Meter modelId={modelId} modelValue={modelValue} modelOptions={modelOptions} range={range} matchOctave={matchOctave} hoveredIndex={hoveredIndex} setHoveredIndex={setHoveredIndex} />
+            <Meter modelId={modelId} modelValue={modelValue} range={range} matchOctave={matchOctave} hoveredIndex={hoveredIndex} setHoveredIndex={setHoveredIndex} />
         </StyledMeterWrapper>
     );
 };

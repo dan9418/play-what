@@ -61,8 +61,8 @@ const getX = (pod: IPod): number => {
 
 // Search
 
-const getPodAtPitch = (pod: IPod, p: number, modelOptions: IModelOptions, matchOctave = false): IPod | null => {
-	const pitchOffset = (modelOptions && modelOptions.modelRoot) ? modelOptions.modelRoot[0] : 0;
+const getPodAtPitch = (pod: IPod, p: number, matchOctave = false): IPod | null => {
+	const pitchOffset = 0;
 	const target = p - pitchOffset;
 	let a = pod[0];
 	let b = target;
@@ -75,8 +75,8 @@ const getPodAtPitch = (pod: IPod, p: number, modelOptions: IModelOptions, matchO
 
 // Sound
 
-const playSound = (modelValue: IPod, modelOptions: IModelOptions): void => {
-	const note = (modelOptions && modelOptions.modelRoot) ? addPod(modelOptions.modelRoot, modelValue) : modelValue;
+const playSound = (modelValue: IPod): void => {
+	const note = modelValue;
 	const frequency = TuningUtils.getFrequency(note[0]);
 	ToneUtils.playSound(frequency)
 }

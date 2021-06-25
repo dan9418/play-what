@@ -76,21 +76,20 @@ const StyledMeter = styled.div`
 interface IMeterProps {
 	modelId: ModelId;
 	modelValue: IModelValue;
-	modelOptions?: IModelOptions;
 	range?: number[];
 	matchOctave?: boolean;
 	hoveredIndex?: number | null;
 	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions = {}, range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
+const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
 	const list = [];
 
-	const root = modelOptions && modelOptions.modelRoot ? modelOptions.modelRoot : null;
+	const root = null;
 
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, i, matchOctave);
+		const podProps = ModelUtils.getPodProps(modelId, modelValue, i, matchOctave);
 
 		const hasDegree = podProps !== null;
 

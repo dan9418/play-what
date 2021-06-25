@@ -33,12 +33,10 @@ const PRESETS = INTERVAL_PRESETS.filter(ivl => ivl.value[0])
 const TransposeAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 	const [directionIndex, setDirectionIndex] = React.useState(0);
 	const [intervalIndex, setIntervalIndex] = React.useState(0);
-	const [root, setRoot] = React.useState(pathHead.config.modelOptions.modelRoot);
+	const [root, setRoot] = React.useState(null);
 
 	const selectedDirectionOption = DIRECTION_OPTIONS[directionIndex];
 	const selectedIntervalOption = PRESETS[intervalIndex];
-
-	console.log('dpb');
 
 	const onSubmit = () => {
 		const modelRoot = selectedDirectionOption.value === 0 ?
@@ -46,9 +44,9 @@ const TransposeAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => {
 			PodUtils.subtractPod(root, selectedIntervalOption.value);
 
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'config.modelOptions.modelRoot', modelRoot);
-		setPathHead(newData);
-		setRoot(modelRoot);
+		//_.set(newData, '', modelRoot);
+		//setPathHead(newData);
+		//setRoot(modelRoot);
 	};
 
 

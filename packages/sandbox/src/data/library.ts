@@ -8,14 +8,10 @@ import { SCALE_PRESETS } from "@pw/core/src/models/PodList/Scale/Scale.constants
 const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPreset<T>[], dataType: ModelId): IModelConfig => {
 	return {
 		modelId: ModelId.Group,
-		modelOptions: { name },
 		modelValue: data.map(d => (
 			{
 				modelId: dataType,
-				modelValue: d.value,
-				modelOptions: {
-					name: d.name
-				}
+				modelValue: d.value
 			}
 		))
 	}

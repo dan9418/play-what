@@ -4,8 +4,7 @@ const DEFAULT_KEYBOARD_PROPS = {
 	keyRange: [-12, 12],
 	labelProps: {
 		modelId: ModelId.Chord,
-		modelValue: [],
-		modelOptions: {}
+		modelValue: []
 	}
 };
 

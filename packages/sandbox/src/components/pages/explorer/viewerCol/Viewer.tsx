@@ -22,15 +22,14 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 	const matchOctave = useRecoilValue(matchOctaveState);
 	const [hoveredIndex, setHoveredIndex] = useRecoilState(hoveredIndexState);
 
-	const { modelId, modelValue, modelOptions } = modelConfig;
-	const { viewerId, viewerProps } = modelOptions || { viewerId: VIEWER.fretboard.id, viewerProps: {} };
+	const { modelId, modelValue } = modelConfig;
+	const { viewerId, viewerProps } = { viewerId: VIEWER.fretboard.id, viewerProps: {} };
 
 	const isBlank = modelId === ModelId.Group;
 
 	const labelProps = {
 		modelId: isBlank ? ModelId.Chord : modelId,
 		modelValue: isBlank ? [] : modelValue,
-		modelOptions,
 		matchOctave,
 		hoveredIndex,
 		setHoveredIndex

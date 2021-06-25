@@ -75,7 +75,7 @@ const BreadcrumbList: React.FC = () => {
 
 	const fullPath = useRecoilValue(fullPathState);
 	//const pathHead = fullPath.length ? fullPath[fullPath.length - 1] : null;
-	//const { modelId, modelValue, modelOptions } = pathHead.config;
+	//const { modelId, modelValue } = pathHead.config;
 
 	const { popAt, pop, prev, next, path } = usePathNavContext();
 	const isMobile = useIsMobile();

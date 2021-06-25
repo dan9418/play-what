@@ -15,15 +15,10 @@ const getGroupPresetFromChartConfig = (chartConfig: IChartConfig): IModelPreset<
         const { name, chords } = section;
         return {
             modelId: ModelId.Group,
-            modelOptions: { name: `Section ${name}` },
             modelValue: chords.map(model => {
                 const [rootId, chordId, t] = model;
                 return {
                     modelId: ModelId.Chord,
-                    modelOptions: {
-                        modelRoot: NOTE_PRESET_MAP.get(rootId).value,
-                        t
-                    },
                     modelValue: CHORD_PRESET_MAP.get(chordId).value
                 } as IModelConfig;
             })

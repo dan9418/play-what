@@ -22,16 +22,15 @@ interface IFretLabelProps {
 	noteIndex: number;
 	modelId: ModelId;
 	modelValue: IModelValue;
-	modelOptions: IModelOptions;
 	range: number[];
 	matchOctave: boolean;
 	hoveredIndex: number | null;
 	setHoveredIndex: any;
 }
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, modelOptions = {}, matchOctave = false, hoveredIndex = null, setHoveredIndex = null }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, matchOctave = false, hoveredIndex = null, setHoveredIndex = null }) => {
 
-	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex, matchOctave);
+	const podProps = ModelUtils.getPodProps(modelId, modelValue, noteIndex, matchOctave);
 
 	if (!podProps) return null;
 

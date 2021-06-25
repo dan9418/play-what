@@ -23,8 +23,8 @@ const ViewerTypeAction: React.FC<IActionProps> = ({ pathHead, setPathHead }) => 
 
 	const onSubmit = () => {
 		const newData = _.cloneDeep(pathHead);
-		_.set(newData, 'config.modelOptions.viewerId', selectedViewerOption.id);
-		setPathHead(newData);
+		//_.set(newData, '', selectedViewerOption.id);
+		//setPathHead(newData);
 	};
 
 	return (
