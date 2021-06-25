@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Meter from '../../../../../viewers/src/Meter/Meter';
+import ButtonInput from '../../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import { IPageProps } from '../Page';
 import PodCard, { PodCardList } from './cards/PodCard';
@@ -36,6 +37,13 @@ const StyledExplorePage = styled.div`
 			margin: 16px 0;
 		}
 	}
+
+	.set-root-btn {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 `;
 
 const StyledLabelRow = styled.div`
@@ -58,6 +66,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const [modelId, setModelId] = useState(params.modelId);
 	const [data, setData] = useState(null);
 	const [root, setRoot] = useState(null);
+	const [isAddingRoot, setIsAddingRoot] = useState(false);
 
 	const modelConfig = MODEL_MAP.get(modelId);
 
@@ -98,11 +107,20 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 
 			<div>
 				<h2>Root</h2>
-				<LabelRow label="model" >Note</LabelRow>
-				<LabelRow label="preset"  >
-					<DropdownInput value={root} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
-				</LabelRow>
-				{root ? <PodCard pod={root} /> : <div>None</div>}
+				{
+					root || isAddingRoot ?
+						<>
+							<LabelRow label="model" >Note</LabelRow>
+							<LabelRow label="preset"  >
+								<DropdownInput value={root} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
+							</LabelRow>
+							{root && <PodCard pod={root} />}
+						</>
+						:
+						<div className="set-root-btn">
+							<ButtonInput onClick={() => setIsAddingRoot(true)} >Set Root</ButtonInput>
+						</div>
+				}
 			</div>
 
 			<div>
@@ -110,7 +128,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 				<LabelRow label="meter" />
 				<Meter modelId={modelId} modelValue={resultPods} />
 				<LabelRow label="viewer" />
-				<Fretboard labelProps={labelProps} />
+				{root && <Fretboard labelProps={labelProps} />}
 			</div>
 
 		</StyledExplorePage>

@@ -33,8 +33,6 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, 
 
 	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex, matchOctave);
 
-	console.log(modelId, modelValue, modelOptions, noteIndex, matchOctave)
-
 	if (!podProps) return null;
 
 	const onMouseEnter = null;//() => setHoveredIndex(noteIndex)
