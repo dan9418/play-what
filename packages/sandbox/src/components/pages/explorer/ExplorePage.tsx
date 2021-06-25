@@ -1,32 +1,36 @@
 import { MODEL_MAP } from '@pw/core/src/models/Model.constants';
-import { dataState } from '@pw/sandbox/src/state/dataState';
 import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from 'recoil';
-import styled, { css } from 'styled-components';
-import { pathHeadState, pathState } from '../../../state/pathState';
+import styled from 'styled-components';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import { IPageProps } from '../Page';
+import PodCard, { PodCardList } from './cards/PodCard';
 
 const StyledExplorePage = styled.div`
-	display: grid;
-	width: 100%;
-	margin: auto;
-
-	grid-template-columns: 1fr;
-	max-width: 768px;
-	@media(min-width: 1024px) {
-		${({ $isSingle }) => $isSingle ? '' : css`
-			grid-template-columns: 1fr 1fr;
-			max-width: 100%;
-		`}
+	h1 {
+		margin: 24px 0;
+		text-align: center;
 	}
 
-	.double {
-		width: 100%;
-		max-width: 512px;
-		margin: auto;
+	width: 100%;
+	max-width: 768px;
+	margin: auto;
+`;
+
+const StyledLabelRow = styled.div`
+	margin: 8px;
+	b {
+		margin-right: 8px;
 	}
 `;
+
+const LabelRow: React.FC<any> = ({ label, children }) => {
+	return (
+		<StyledLabelRow>
+			<b>{label}:</b>
+			{children}
+		</StyledLabelRow>
+	);
+};
 
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const [data, setData] = useState(null);
@@ -38,18 +42,28 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 		setData(modelConfig.presets[0])
 	}, []);
 
+	if (!data) return <div>Loading...</div>;
 
-
-
-
-	if(!data) return <div>Loading...</div>;
+	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
+	if (false) return debugComponent;
 
 	return (
-		<>
+		<StyledExplorePage>
 			<h1>{modelConfig.name}</h1>
-			<DropdownInput value={data} setValue={setData} options={modelConfig.presets}/>
-			<pre>{JSON.stringify(data, null, '  ')}</pre>
-		</>
+			<LabelRow label="modelId"  >
+				{modelId}
+			</LabelRow>
+			<LabelRow label="preset">
+				<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
+			</LabelRow>
+			<LabelRow label="pods" />
+			{
+				modelConfig.isCompound ?
+					<PodCardList pods={data.value} />
+					:
+					<PodCard pod={data.value} />
+			}
+		</StyledExplorePage>
 	);
 };
 

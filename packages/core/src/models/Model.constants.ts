@@ -18,10 +18,11 @@ export interface IModelAttrs {
 	modelId: ModelId;
 	presets: any[];
 	validChildren: any[];
+	isCompound: boolean;
 }
 
 export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
-	[ModelId.Group, {
+	/*[ModelId.Group, {
 		name: 'Group',
 		modelId: ModelId.Group,
 		presets: GROUP_PRESETS,
@@ -32,28 +33,32 @@ export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
 			ModelId.Chord,
 			ModelId.Scale
 		]
-	}],
+	}],*/
 	[ModelId.Note, {
 		name: 'Note',
 		modelId: ModelId.Note,
+		isCompound: false,
 		presets: NOTE_PRESETS,
 		validChildren: []
 	}],
 	[ModelId.Interval, {
 		name: 'Interval',
 		modelId: ModelId.Interval,
+		isCompound: false,
 		presets: INTERVAL_PRESETS,
 		validChildren: []
 	}],
 	[ModelId.Chord, {
 		name: 'Chord',
 		modelId: ModelId.Chord,
+		isCompound: true,
 		presets: CHORD_PRESETS,
 		validChildren: [ModelId.Interval]
 	}],
 	[ModelId.Scale, {
 		name: 'Scale',
 		modelId: ModelId.Scale,
+		isCompound: true,
 		presets: SCALE_PRESETS,
 		validChildren: [ModelId.Interval]
 	}]
