@@ -1,6 +1,5 @@
 
 import React from "react";
-import { useRecoilState, useRecoilValue } from 'recoil';
 
 const PathNavContext = React.createContext(null);
 
@@ -54,10 +53,8 @@ const getPathNavContext = (path, setPath, siblings): IPathNavContext => {
 }
 
 export const PathNavContextProvider: React.FC = ({ children }) => {
-	const [path, setPath] = useRecoilState(null);
-	const siblings = useRecoilValue(null);
 
-	const pathNavContext = getPathNavContext(path, setPath, siblings);
+	const pathNavContext = getPathNavContext([], null, null);
 
 	return (
 		<PathNavContext.Provider value={pathNavContext}>
