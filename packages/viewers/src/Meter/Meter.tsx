@@ -76,14 +76,14 @@ const StyledMeter = styled.div`
 interface IMeterProps {
 	modelId: ModelId;
 	modelValue: IModelValue;
-	modelOptions: IModelOptions;
-	range: number[];
-	matchOctave: boolean;
-	hoveredIndex: number | null;
-	setHoveredIndex: any;
+	modelOptions?: IModelOptions;
+	range?: number[];
+	matchOctave?: boolean;
+	hoveredIndex?: number | null;
+	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, range = [0, 12], matchOctave, hoveredIndex, setHoveredIndex }) => {
+const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions = {}, range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
 	const list = [];
 
 	const root = modelOptions && modelOptions.modelRoot ? modelOptions.modelRoot : null;
@@ -100,8 +100,8 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, modelOptions, ran
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
 
-		const onMouseEnter = () => setHoveredIndex(i)
-		const onMouseLeave = () => setHoveredIndex(null);
+		const onMouseEnter = null; //() => setHoveredIndex(i)
+		const onMouseLeave = null; //() => setHoveredIndex(null);
 		let name = null;
 		if (hasDegree) {
 			name = podProps.label;

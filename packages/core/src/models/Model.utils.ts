@@ -25,7 +25,7 @@ const getNoteName = (modelValue: IPod, isShort = false) => {
 	return `${spelling}${accidental}${octave}`;
 }
 
-const getIntervalName = (modelValue: IPod, isShort = false) => {
+export const getIntervalName = (modelValue: IPod, isShort = false) => {
 	const [noteIndex, d] = modelValue;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';

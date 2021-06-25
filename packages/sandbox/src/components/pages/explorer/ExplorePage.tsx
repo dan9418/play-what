@@ -2,6 +2,8 @@ import { MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
+import Meter from '../../../../../viewers/src/Meter/Meter';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import { IPageProps } from '../Page';
 import PodCard, { PodCardList } from './cards/PodCard';
@@ -27,8 +29,11 @@ const StyledExplorePage = styled.div`
 	grid-gap: 16px;
 	grid-template-columns: 1fr 1fr;
 
-	& :nth-child(3) {
-		grid-column: 1 / span 2
+	& >:nth-child(3) {
+		grid-column: 1 / span 2;
+		.dot-list {
+			margin: 16px 0;
+		}
 	}
 `;
 
@@ -64,7 +69,12 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
 	if (false) return debugComponent;
 
-	console.log(MODEL_VALUES)
+	console.log(MODEL_VALUES);
+
+	const labelProps = {
+		modelId,
+		modelValue: data.value
+	}
 
 	return (
 		<StyledExplorePage>
@@ -96,8 +106,11 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 
 			<div>
 				<h2>Result</h2>
-test
-				</div>
+				<LabelRow label="meter" />
+				<Meter modelId={modelId} modelValue={data.value} />
+				<LabelRow label="viewer" />
+				<Fretboard labelProps={labelProps} />
+			</div>
 
 		</StyledExplorePage>
 	);

@@ -1,5 +1,5 @@
 import ColorUtils from "@pw/core/src/color/Color.utils";
-import { IModelOptions, IModelValue, ModelId, MODEL_MAP } from "@pw/core/src/models/Model.constants";
+import { IModelOptions, IModelValue, ModelId } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import * as React from "react";
 import styled from "styled-components";
@@ -29,14 +29,16 @@ interface IFretLabelProps {
 	setHoveredIndex: any;
 }
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, modelOptions, matchOctave, hoveredIndex, setHoveredIndex }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, modelOptions = {}, matchOctave = false, hoveredIndex = null, setHoveredIndex = null }) => {
 
 	const podProps = ModelUtils.getPodProps(modelId, modelValue, modelOptions, noteIndex, matchOctave);
 
+	console.log(modelId, modelValue, modelOptions, noteIndex, matchOctave)
+
 	if (!podProps) return null;
 
-	const onMouseEnter = () => setHoveredIndex(noteIndex)
-	const onMouseLeave = () => setHoveredIndex(null);
+	const onMouseEnter = null;//() => setHoveredIndex(noteIndex)
+	const onMouseLeave = null;//() => setHoveredIndex(null);
 
 	const { color, label } = podProps;
 
