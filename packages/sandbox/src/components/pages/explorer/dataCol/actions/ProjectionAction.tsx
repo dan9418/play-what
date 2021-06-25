@@ -1,5 +1,5 @@
 import ModelUtils from '@pw/core/src/models/Model.utils';
-import { IPod } from 'core/src/models/Model.constants';
+import { IPod } from '@pw/core/src/models/Model.constants';
 import _ from 'lodash';
 import React, { useEffect, useState } from "react";
 import DropdownInput from '../../../../ui/inputs/DropdownInput';

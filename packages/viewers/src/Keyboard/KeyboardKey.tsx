@@ -3,7 +3,7 @@ import ModelUtils from "@pw/core/src/models/Model.utils";
 import "./Keyboard.css";
 import React from "react";
 import styled from 'styled-components';
-import { IModelOptions, IModelValue, ModelId } from 'core/src/models/Model.constants';
+import { IModelOptions, IModelValue, ModelId } from '@pw/core/src/models/Model.constants';
 import ColorUtils from '@pw/core/src/color/Color.utils';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];

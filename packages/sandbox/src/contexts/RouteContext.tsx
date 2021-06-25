@@ -2,7 +2,6 @@
 import React from "react";
 import AboutPage from '../components/pages/about/AboutPage';
 import ExplorePage from '../components/pages/explorer/ExplorePage';
-import LIBRARY_PATH_ROOT from "../data/library";
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 
@@ -38,11 +37,6 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 		Component: ExplorePage
 	}]
 ]);
-
-/*const DEFAULT_PAGE = PageId.Explore;
-const DEFAULT_PAGE_PARAMS: ParamType = {
-	data: LIBRARY_PATH_ROOT
-};*/
 
 const DEFAULT_PAGE = PageId.About;
 const DEFAULT_PAGE_PARAMS: ParamType = {};

@@ -9,7 +9,8 @@ export enum ModelId {
 	Note = 'note',
 	Interval = 'interval',
 	Chord = 'chord',
-	Scale = 'scale'
+	Scale = 'scale',
+	Chart = 'scale'
 }
 
 export interface IModelAttrs {

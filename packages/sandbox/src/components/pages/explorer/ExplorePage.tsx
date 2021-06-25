@@ -1,15 +1,11 @@
-import { IModelDef } from '@pw/core/src/models/Model.constants';
-import { EMPTY_GROUP } from '@pw/core/src/models/Group/Group.constants';
-import React, { useState } from "react";
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { MODEL_MAP } from '@pw/core/src/models/Model.constants';
 import { dataState } from '@pw/sandbox/src/state/dataState';
+import React, { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled, { css } from 'styled-components';
 import { pathHeadState, pathState } from '../../../state/pathState';
-import Panel from '../../ui/layout/Panel';
+import DropdownInput from '../../ui/inputs/DropdownInput';
 import { IPageProps } from '../Page';
-import DataCol from './dataCol/DataCol';
-import BreadcrumbList from './shared/BreadcrumbList';
-import ViewerCol from './viewerCol/ViewerCol';
 
 const StyledExplorePage = styled.div`
 	display: grid;
@@ -33,36 +29,26 @@ const StyledExplorePage = styled.div`
 `;
 
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
-	const path = useRecoilValue(pathState);
-	const [editId, setEditId] = useState(null);
-	const [isLoading, setIsLoading] = useState(true);
-	const [pathHead, setPathHead] = useRecoilState(pathHeadState);
-	const [data, setData] = useRecoilState(dataState);
+	const [data, setData] = useState(null);
 
-	React.useEffect(() => {
-		setData(params.data);
-		setIsLoading(false);
+	const { modelId } = params;
+	const modelConfig = MODEL_MAP.get(modelId);
+
+	useEffect(() => {
+		setData(modelConfig.presets[0])
 	}, []);
 
-	React.useEffect(() => {
-		//window.scrollTo(0, 0), [path.length, pathId];
-		setEditId(null);
-	}, [path.length /*pathId*/]);
 
-	if (isLoading || !pathHead) return null;
 
-	const { name, preview, pathId } = (pathHead as IModelDef).data;
+
+
+	if(!data) return <div>Loading...</div>;
 
 	return (
 		<>
-			<BreadcrumbList />
-			{/* @ts-ignore */}
-			<Panel name={name} preview={preview} caption={null} >
-				<StyledExplorePage>
-					<DataCol editId={editId} setEditId={setEditId} />
-					<ViewerCol editId={editId} setEditId={setEditId} />
-				</StyledExplorePage>
-			</Panel>
+			<h1>{modelConfig.name}</h1>
+			<DropdownInput value={data} setValue={setData} options={modelConfig.presets}/>
+			<pre>{JSON.stringify(data, null, '  ')}</pre>
 		</>
 	);
 };

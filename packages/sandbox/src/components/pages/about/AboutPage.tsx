@@ -1,6 +1,5 @@
-import { EMPTY_GROUP } from "@pw/core/src/models/Group/Group.constants";
+import { ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
-import LIBRARY_PATH_ROOT from "@pw/sandbox/src/data/library";
 import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../../contexts/RouteContext';
 import ButtonInput from '../../ui/inputs/buttons/ButtonInput';
@@ -53,34 +52,11 @@ const StyledButtonContainer = styled.div`
 	}
 
 	> button {
-		font-size: 110%;
 		font-weight: bold;
 		width: 100%;
 		max-width: 90%;
 		border: 1px solid transparent;
-
-		:first-child {
-			margin-bottom: 16px;
-		}
-		:last-child {
-			background-color: transparent;
-			border-color: ${({ theme }) => theme.accent};
-			color: ${({ theme }) => theme.accent};
-			:hover {
-				background-color: rgba(0,0,0, .1);;
-			}
-		}
-
-		@media(min-width: 512px) {
-			max-width: 256px;
-			:first-child {
-				margin-bottom: 0;
-				margin-right: 16px;
-			}
-			:last-child {
-			
-			}
-		}
+		margin: 8px;
 	}
 `;
 
@@ -94,8 +70,11 @@ const AboutPage: React.FC = () => {
 				The app is currently unstable and is slated for a full release in Summer 2021.
 			</p>
 			<StyledButtonContainer>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: LIBRARY_PATH_ROOT })}>Browse Presets</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { data: EMPTY_GROUP })}>Start From Scratch (BETA)</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Note })}>Notes</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Interval })}>Intervals</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chord })}>Chords</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Scale })}>Scales</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chart })}>Charts</ButtonInput>
 			</StyledButtonContainer>
 			<p>
 				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>

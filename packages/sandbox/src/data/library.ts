@@ -21,21 +21,12 @@ const formatPresetGroup = <T extends IModelValue>(name: string, data: IModelPres
 	}
 }
 
-export const LIBRARY_PATH_ROOT: IModelConfig = {
-	modelId: ModelId.Group,
-	modelOptions: {
-		//modelRoot: NOTE_PRESET_MAP.get(NoteId.C).value,
-		name: 'Library',
-		viewerId: 'fretboard',
-		viewerProps: {}
-	},
-	modelValue: [
-		formatPresetGroup('Chords', CHORD_PRESETS, ModelId.Chord),
-		formatPresetGroup('Scales', SCALE_PRESETS, ModelId.Scale),
-		formatPresetGroup('Charts', GROUP_PRESETS, ModelId.Group),
-		formatPresetGroup('Notes', NOTE_PRESETS, ModelId.Note),
-		formatPresetGroup('Intervals', INTERVAL_PRESETS, ModelId.Interval)
-	]
+export const LIBRARY = {
+	[ModelId.Note]: formatPresetGroup('Notes', NOTE_PRESETS, ModelId.Note),
+	[ModelId.Interval]: formatPresetGroup('Intervals', INTERVAL_PRESETS, ModelId.Interval),
+	[ModelId.Chord]: formatPresetGroup('Chords', CHORD_PRESETS, ModelId.Chord),
+	[ModelId.Scale]: formatPresetGroup('Scales', SCALE_PRESETS, ModelId.Scale),
+	[ModelId.Chart]: formatPresetGroup('Charts', GROUP_PRESETS, ModelId.Chart)
 };
 
-export default LIBRARY_PATH_ROOT;
+export default LIBRARY;

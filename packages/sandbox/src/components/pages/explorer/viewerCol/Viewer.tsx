@@ -41,7 +41,7 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 	return (
 		<StyledViewerContainer>
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
-			{isBlank && (
+			{isBlank && false && (
 				<StyledHelpCard>
 					<h4>No Notes At This Level</h4>
 					<p>

@@ -11,7 +11,7 @@
     "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "skipLibCheck": true, /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
-    "baseUrl": "./packages",
+    /*"baseUrl": "./packages",
     "paths": {
       "@pw/core": [
         "@pw/core"
@@ -22,7 +22,7 @@
       "@pw/sandbox": [
         "@pw/sandbox"
       ],
-    },
+    },*/
     // "incremental": true,                         /* Enable incremental compilation */
     // "lib": [],                                   /* Specify library files to be included in the compilation. */
     // "declaration": true,                         /* Generates corresponding '.d.ts' file. */
