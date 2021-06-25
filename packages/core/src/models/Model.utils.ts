@@ -91,8 +91,6 @@ const getName = (modelId: ModelId, modelValue: IModelValue, isShort = false): st
 
 // Preview
 
-const getGroupPreview = (modelValue: IModelValue): string => `${modelValue.length} Items`;
-
 const getPodListPreview = (modelValue: IPod[]): string => {
 	const intervalNames = modelValue.map(interval => getIntervalName(interval)).join(', ');
 
@@ -243,14 +241,6 @@ const getData = (modelConfig: IModelConfig, pathId = 0): IModelData => {
 		projection: undefined,
 		t: undefined
 	}
-};
-
-const getGroupChildConfigs = (modelValue: IModelValue) => {
-	return modelValue.map((child, i) => {
-		return {
-			...child
-		}
-	});
 };
 
 const getListChildConfigs = (modelValue: IModelValue, childModelId) => {

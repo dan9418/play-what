@@ -4,7 +4,6 @@ import { CHORD_PRESETS } from './PodList/Chord/Chord.constants';
 import { SCALE_PRESETS } from './PodList/Scale/Scale.constants';
 
 export enum ModelId {
-	Group = 'group',
 	Note = 'note',
 	Interval = 'interval',
 	Chord = 'chord',
@@ -52,8 +51,6 @@ export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
 ]);
 
 export const MODEL_VALUES = Array.from(MODEL_MAP, ([k, v]) => v);
-
-export type IGroup<T> = T[];
 
 export type IPod = [number, number];
 export interface IProjection {

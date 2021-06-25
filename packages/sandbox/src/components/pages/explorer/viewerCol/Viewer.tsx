@@ -1,11 +1,10 @@
-import { IModelConfig, ModelId } from "@pw/core/src/models/Model.constants";
+import { IModelConfig } from "@pw/core/src/models/Model.constants";
+import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 import React from "react";
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { StyledHelpCard } from "@pw/sandbox/src/components/ui/layout/StyledCard";
 import styled from 'styled-components';
 import { matchOctaveState } from '../../../../state/pathState';
 import { VIEWER } from "./actions/viewerActions";
-import { hoveredIndexState } from "@pw/sandbox/src/state/dataState";
 
 const StyledViewerContainer = styled.div`
     width: 100%;
@@ -38,17 +37,6 @@ const Viewer: React.FC<IViewerProps> = ({ modelConfig }) => {
 	return (
 		<StyledViewerContainer>
 			<ViewerComponent {...viewerProps} labelProps={labelProps} />
-			{false && (
-				<StyledHelpCard>
-					<h4>No Notes At This Level</h4>
-					<p>
-						Zoom in to see notes applied to this {VIEWER[viewerId].name}
-					</p>
-					<p>
-						Any changes made to this group will also apply to its subitems
-					</p>
-				</StyledHelpCard>
-			)}
 		</StyledViewerContainer>
 	);
 };

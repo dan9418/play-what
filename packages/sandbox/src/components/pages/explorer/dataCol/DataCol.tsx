@@ -12,20 +12,9 @@ import DataList from './DataList';
 
 const getColProps = (pathHead, setPathHead, setModal) => {
 
-    const { modelId, modelValue } = (pathHead as IModelDef).config;
-
     const root = null;
-    const isGroup = false;
 
     const actions = getActions(DATA_ACTIONS, pathHead, setPathHead, setModal);
-
-    if (isGroup) {
-        return {
-            title: "Data",
-            subtitle: ModelUtils.getPreview(modelId, modelValue),
-            actions
-        };
-    }
 
     const title = root ? "Notes" : "Intervals";
     const subtitle = root ? `Root = ${ModelUtils.getName(ModelId.Note, root)}` : "Root = C4 (implicit)";
