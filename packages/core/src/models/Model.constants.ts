@@ -64,7 +64,7 @@ export const MODEL_MAP = new Map<ModelId, IModelAttrs>([
 	}]
 ]);
 
-export const MODEL_VALUES = Object.values(MODEL_MAP);
+export const MODEL_VALUES = Array.from(MODEL_MAP, ([k, v]) => v);
 
 export type IGroup<T> = T[];
 

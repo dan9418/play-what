@@ -1,4 +1,4 @@
-import { MODEL_MAP } from '@pw/core/src/models/Model.constants';
+import { MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import DropdownInput from '../../ui/inputs/DropdownInput';
@@ -33,25 +33,27 @@ const LabelRow: React.FC<any> = ({ label, children }) => {
 };
 
 const ExplorePage: React.FC<IPageProps> = ({ params }) => {
+	const [modelId, setModelId] = useState(params.modelId);
 	const [data, setData] = useState(null);
 
-	const { modelId } = params;
 	const modelConfig = MODEL_MAP.get(modelId);
 
 	useEffect(() => {
 		setData(modelConfig.presets[0])
-	}, []);
+	}, [modelId]);
 
 	if (!data) return <div>Loading...</div>;
 
 	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
 	if (false) return debugComponent;
 
+	console.log(MODEL_VALUES)
+
 	return (
 		<StyledExplorePage>
 			<h1>{modelConfig.name}</h1>
-			<LabelRow label="modelId"  >
-				{modelId}
+			<LabelRow label="model"  >
+				<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 			</LabelRow>
 			<LabelRow label="preset">
 				<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
