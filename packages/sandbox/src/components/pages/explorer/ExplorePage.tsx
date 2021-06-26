@@ -1,8 +1,9 @@
-import { MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
+import { ModelId, MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import ModelUtils from '../../../../../core/src/models/Model.utils';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import DropdownInput from '../../ui/inputs/DropdownInput';
@@ -13,7 +14,7 @@ import PodCard, { PodCardList } from './cards/PodCard';
 
 const StyledExplorePage = styled.div`
 	width: 100%;
-	max-width: 768px;
+	max-width: 1024px;
 	margin: auto;
 
 	display: grid;
@@ -64,7 +65,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
 	if (false) return debugComponent;
 
-	const resultPods = root ? PodUtils.addPodList(root, modelConfig.isCompound ? data.value : [data.value]) : data.value;
+	const resultPods = root ? PodUtils.addPodList(root, data.value) : data.value;
 
 	const labelProps = {
 		modelId,
@@ -73,10 +74,17 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 
 	const rootValue = root || [0, 0];
 
+	const rootName = ModelUtils.getName(ModelId.Note, rootValue);
+	const intervalsName = ModelUtils.getName(modelId, data.value);
+	const intervalsRel = ModelUtils.getPreview(modelId, data.value);
+	const intervalsAbs = ModelUtils.getPreview(modelId, data.value, rootValue);
+	const name = `${rootName} ${intervalsName}`;
+	const preview = `${rootName} + ${intervalsRel} = ${intervalsAbs}`;
+
 	return (
-		<Panel name="name" caption="caption" preview="preview" >
+		<Panel name={name} caption={modelConfig.name} preview={preview} >
 			<StyledExplorePage>
-				<Col title="Root" subtitle="subtitle">
+				<Col title="Root" subtitle={rootName}>
 					<LabelRow label="model" >Note</LabelRow>
 					<LabelRow label="preset"  >
 						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
@@ -84,7 +92,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 					<PodCard pod={rootValue} />
 				</Col>
 
-				<Col title="Intervals" subtitle="subtitle">
+				<Col title="Intervals" subtitle={intervalsName}>
 					<LabelRow label="model"  >
 						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
@@ -100,7 +108,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 					}
 				</Col>
 
-				<Col title="Intervals" subtitle="subtitle">
+				<Col title="Notes" subtitle={intervalsAbs}>
 					<LabelRow label="meter" />
 					<Meter modelId={modelId} modelValue={resultPods} />
 					<LabelRow label="viewer" />

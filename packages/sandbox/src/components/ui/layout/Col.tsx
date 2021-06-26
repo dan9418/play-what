@@ -30,11 +30,7 @@ const StyledCol = styled.div`
 
 const StyledColBody = styled.div`
 	padding: 16px;
-	min-height: 256px;
-	
-
 	position: sticky;
-	
 `;
 
 const StyledColHeader = styled.div`

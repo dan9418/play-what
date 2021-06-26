@@ -1,9 +1,8 @@
-import { IModelDef } from '@pw/core/src/models/Model.constants';
 import ColorUtils from '../color/Color.utils';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
-import { IPod, IModelConfig, IModelData, IModelOptions, IModelValue, MODEL_MAP, ModelId } from "./Model.constants";
+import { IModelConfig, IModelValue, IPod, ModelId, MODEL_MAP } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -91,23 +90,25 @@ const getName = (modelId: ModelId, modelValue: IModelValue): string => {
 
 // Preview
 
-const getPodListPreview = (modelValue: IPod[]): string => {
-	const intervalNames = modelValue.map(interval => getIntervalName(interval)).join(', ');
+const getPodListPreview = (modelValue: IPod[], isAbsolute = false): string => {
+	const nameFn = isAbsolute ? getNoteName : getIntervalName;
+	const intervalNames = modelValue.map(pod => nameFn(pod)).join(', ');
 
 	return intervalNames;
-
-	//const notes = PodUtils.addPodList(modelRoot, modelValue);
-	//const noteNames = notes.map(note => getNoteName(note)).join(', ');
-	//return noteNames;
 }
 
-const getPreview = (modelId: ModelId, modelValue: IModelValue): string => {
+const getPreview = (modelId: ModelId, modelValue: IModelValue, modelRoot?: IPod): string => {
+	const modelConfig = MODEL_MAP.get(modelId);
+	let pods = (modelConfig.isCompound ? modelValue : [modelValue]) as IPod[];
+	if (modelRoot) {
+		pods = PodUtils.addPodList(modelRoot, pods);
+	}
 	switch (modelId) {
 		case ModelId.Chord:
 		case ModelId.Scale:
-			return getPodListPreview(modelValue as IPod[]);
+			return getPodListPreview(pods, !!modelRoot);
 		default:
-			return JSON.stringify(modelValue);
+			return JSON.stringify(pods);
 	}
 }
 
