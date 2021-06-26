@@ -41,6 +41,10 @@ const StyledDot = styled.div`
 
 	position: relative;
 	${({ $fgColor }) => $fgColor ? `color: ${$fgColor}` : ''};
+	.note {
+		font-weight: bold;
+		margin-right: 4px;
+	}
 	.label {
 		color: #333;
 		font-size: 90%;
@@ -74,24 +78,28 @@ const StyledMeter = styled.div`
 `;
 
 interface IMeterProps {
-	modelId: ModelId;
-	modelValue: IModelValue;
+	modelRoot: IPod;
+	modelValue: IPod[];
 	range?: number[];
 	matchOctave?: boolean;
 	hoveredIndex?: number | null;
 	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
+const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
 	const list = [];
 
 	const root = null;
 
+	const intervals = modelValue;
+	const notes = PodUtils.addPodList(modelRoot, modelValue)
+
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const podProps = ModelUtils.getPodProps(modelId, modelValue, i, matchOctave);
+		const intervalProps = ModelUtils.getPodProps(ModelId.Chord, intervals, i, matchOctave);
+		const noteProps = ModelUtils.getPodProps(ModelId.Chord, notes, i, matchOctave, true);
 
-		const hasDegree = podProps !== null;
+		const hasDegree = intervalProps !== null;
 
 		let color = '#fff';
 		let fgColor = '#333';
@@ -103,9 +111,9 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, range = [0, 12], 
 		const onMouseLeave = null; //() => setHoveredIndex(null);
 		let name = null;
 		if (hasDegree) {
-			name = podProps.label;
-			color = podProps.color;
-			fgColor = podProps.fgColor;
+			name = intervalProps.label;
+			color = intervalProps.color;
+			fgColor = intervalProps.fgColor;
 		}
 
 		const isRoot = root && root[0] === i;
@@ -123,7 +131,8 @@ const DotList: React.FC<IMeterProps> = ({ modelId, modelValue, range = [0, 12], 
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 			>
-				{name}
+				<span className="note">{noteProps && noteProps.label}</span>
+				{name && <span className="interval">({name})</span>}
 				{isOctave ? <span className="octave">{octave}</span> : null}
 				{isRoot ? <span className="label">R</span> : null}
 				{!isRoot && isMiddleC ? <span className="label">C</span> : null}

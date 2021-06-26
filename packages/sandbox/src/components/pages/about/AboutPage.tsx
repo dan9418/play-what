@@ -1,4 +1,3 @@
-import { ModelId } from "@pw/core/src/models/Model.constants";
 import React from "react";
 import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../../contexts/RouteContext';
@@ -54,7 +53,7 @@ const StyledButtonContainer = styled.div`
 	> button {
 		font-weight: bold;
 		width: 100%;
-		max-width: 90%;
+		max-width: 256px;
 		border: 1px solid transparent;
 		margin: 8px;
 	}
@@ -67,13 +66,10 @@ const AboutPage: React.FC = () => {
 			<h1>Play <em><b>What?</b></em></h1>
 			<p>
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
-				The app is currently unstable and is slated for a full release in Summer 2021.
+				The app is currently unstable but is slated for a full release this summer.
 			</p>
 			<StyledButtonContainer>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Interval })}>Interval</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chord })}>Chord</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Scale })}>Scale</ButtonInput>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore, { modelId: ModelId.Chart })}>Chart</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore)}>Try it out!</ButtonInput>
 			</StyledButtonContainer>
 			<p>
 				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>

@@ -157,7 +157,7 @@ const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): 
 	return { color, fgColor, label };
 }
 
-const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave): IPodProps => {
+const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave, isAbsolute = false): IPodProps => {
 	const pod = getPodAtPitchInList(modelValue, noteIndex, matchOctave);
 	const projection = null;
 	const superPod = projection ? getPodAtPitch(ModelId.Chord, projection.podList, noteIndex, matchOctave) : null;
@@ -170,14 +170,11 @@ const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave): IP
 	const color = IntervalUtils.getPodColor(pod);
 	const fgColor = ColorUtils.getFgColor(color);
 
-	const hasRoot = false;
-	const note = hasRoot ? PodUtils.addPod(null, pod) : null;
-
-	const label = note ? getNoteName(note) : getIntervalName(pod);
+	const label = isAbsolute ? getNoteName(pod) : getIntervalName(pod);
 	return { color, fgColor, label };
 }
 
-const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: number, matchOctave = false): IPodProps | null => {
+const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps | null => {
 	switch (modelId) {
 		case ModelId.Note:
 			return getNotePodProps(modelValue as IPod, noteIndex, matchOctave)
@@ -185,7 +182,7 @@ const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: numbe
 			return getIntervalPodProps(modelValue as IPod, noteIndex, matchOctave);
 		case ModelId.Chord:
 		case ModelId.Scale:
-			return getPodListProps(modelValue as IPod[], noteIndex, matchOctave);
+			return getPodListProps(modelValue as IPod[], noteIndex, matchOctave, isAbsolute);
 		default:
 			return null;
 	}

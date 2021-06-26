@@ -24,27 +24,19 @@ interface IFretLabelProps {
 	modelValue: IModelValue;
 	range: number[];
 	matchOctave: boolean;
-	hoveredIndex: number | null;
-	setHoveredIndex: any;
 }
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, matchOctave = false, hoveredIndex = null, setHoveredIndex = null }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, matchOctave = false }) => {
 
 	const podProps = ModelUtils.getPodProps(modelId, modelValue, noteIndex, matchOctave);
 
 	if (!podProps) return null;
-
-	const onMouseEnter = null;//() => setHoveredIndex(noteIndex)
-	const onMouseLeave = null;//() => setHoveredIndex(null);
 
 	const { color, label } = podProps;
 
 	return (
 		<StyledFretLabel
 			$color={color}
-			$isDimmed={hoveredIndex !== null && hoveredIndex !== noteIndex}
-			onMouseEnter={onMouseEnter}
-			onMouseLeave={onMouseLeave}
 		>
 			{label}
 		</StyledFretLabel>

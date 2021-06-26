@@ -49,10 +49,16 @@ const LabelRow: React.FC<any> = ({ label, children }) => {
 	);
 };
 
-const ExplorePage: React.FC<IPageProps> = ({ params }) => {
+const DEFAULT_PARAMS = {
+	modelId: ModelId.Chord,
+	root: null
+}
+
+const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
+	const params = DEFAULT_PARAMS;
 	const [modelId, setModelId] = useState(params.modelId);
+	const [root, setRoot] = useState(params.root);
 	const [data, setData] = useState(null);
-	const [root, setRoot] = useState(null);
 
 	const modelConfig = MODEL_MAP.get(modelId);
 
@@ -62,8 +68,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 
 	if (!data) return <div>Loading...</div>;
 
-	const debugComponent = <pre>{JSON.stringify(data, null, '  ')}</pre>;
-	if (false) return debugComponent;
+	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
 
 	const resultPods = root ? PodUtils.addPodList(root, data.value) : data.value;
 
@@ -103,7 +108,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 				</Col>
 
 				<Col title="Notes" subtitle={intervalsAbs}>
-					<Meter modelId={modelId} modelValue={resultPods} />
+					<Meter modelRoot={rootValue} modelValue={resultPods} />
 				</Col>
 
 				<Col title="Viewer" subtitle="Fretboard">
