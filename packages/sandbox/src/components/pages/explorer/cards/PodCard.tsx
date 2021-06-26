@@ -1,6 +1,7 @@
-import { getIntervalName } from '@pw/core/src/models/Model.utils';
+import ModelUtils, { getIntervalName } from '@pw/core/src/models/Model.utils';
 import React from "react";
 import styled from 'styled-components';
+import { IPod, ModelId } from '../../../../../../core/src/models/Model.constants';
 
 const StyledPodCard = styled.div`
 	background-color: white;
@@ -15,10 +16,10 @@ const StyledPodCard = styled.div`
     }
 `;
 
-const PodCard: React.FC<any> = ({ pod }) => {
+const PodCard: React.FC<any> = ({ podType, pod }) => {
     return (
         <StyledPodCard>
-            <div className="name">{getIntervalName(pod)}</div>
+            <div className="name">{ModelUtils.getName(podType, pod as IPod)}</div>
             <div className="numeric">[{pod[0]}, {pod[1]}]</div>
         </StyledPodCard>
     );
@@ -39,12 +40,12 @@ const StyledPodCardList = styled.ul`
     }
 `;
 
-export const PodCardList: React.FC<any> = ({ pods }) => {
+export const PodCardList: React.FC<any> = ({ podType, pods }) => {
     return (
         <StyledPodCardList>
             {pods.map((pod, i) =>
                 <li key={i}>
-                    <PodCard pod={pod} />
+                    <PodCard podType={podType} pod={pod} />
                 </li>
             )}
         </StyledPodCardList>

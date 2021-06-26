@@ -89,10 +89,10 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 					<LabelRow label="preset"  >
 						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
 					</LabelRow>
-					<PodCard pod={rootValue} />
+					<PodCardList podType={ModelId.Note} pods={[rootValue]} />
 				</Col>
 
-				<Col title="Intervals" subtitle={intervalsName}>
+				<Col title="Intervals" subtitle={intervalsRel}>
 					<LabelRow label="model"  >
 						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
@@ -102,7 +102,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 					<LabelRow label="pods" />
 					{
 						modelConfig.isCompound ?
-							<PodCardList pods={data.value} />
+							<PodCardList podType={ModelId.Interval} pods={data.value} />
 							:
 							<PodCard pod={data.value} />
 					}
