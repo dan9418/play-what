@@ -37,6 +37,7 @@ const StyledColHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	background-color: #e5e8e8;
 
 	height: 64px;
 	padding: 0 24px 0 16px;
@@ -46,7 +47,6 @@ const StyledColHeader = styled.div`
 	position: sticky;
 	top: ${({ $isCompact }) => $isCompact ? 32 : 32}px;
 	z-index: 100;
-	background-color: #ecefef;
 
 	> div {
 		display: flex;

@@ -79,7 +79,8 @@ const StyledPanelHeader = styled.section`
 `;
 
 const StyledToolbox = styled.div`
-	background-color: #ddd;
+	background-color: #e5e8e8;
+	border: 1px solid ${({ theme }) => theme.border};
 	border-radius: 8px;
 	padding: 8px;
 

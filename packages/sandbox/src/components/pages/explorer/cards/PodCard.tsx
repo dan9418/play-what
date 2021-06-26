@@ -1,12 +1,12 @@
-import ModelUtils, { getIntervalName } from '@pw/core/src/models/Model.utils';
+import ModelUtils from '@pw/core/src/models/Model.utils';
 import React from "react";
 import styled from 'styled-components';
-import { IPod, ModelId } from '../../../../../../core/src/models/Model.constants';
 
 const StyledPodCard = styled.div`
 	background-color: white;
     border-radius: 8px;
     padding: 8px;
+    border: 1px solid ${props => props.$color};
 
     .name {
         font-weight: bold;
@@ -17,9 +17,10 @@ const StyledPodCard = styled.div`
 `;
 
 const PodCard: React.FC<any> = ({ podType, pod }) => {
+    const podProps = ModelUtils.getPodProps(podType, pod, pod[0], false)
     return (
-        <StyledPodCard>
-            <div className="name">{ModelUtils.getName(podType, pod as IPod)}</div>
+        <StyledPodCard $color={podProps.color} $fgColor={podProps.fgColor}>
+            <div className="name">{podProps.label}</div>
             <div className="numeric">[{pod[0]}, {pod[1]}]</div>
         </StyledPodCard>
     );

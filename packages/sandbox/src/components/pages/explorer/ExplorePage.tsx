@@ -10,7 +10,7 @@ import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import { IPageProps } from '../Page';
-import PodCard, { PodCardList } from './cards/PodCard';
+import { PodCardList } from './cards/PodCard';
 
 const StyledExplorePage = styled.div`
 	width: 100%;
@@ -22,7 +22,7 @@ const StyledExplorePage = styled.div`
 
 	border-top: 1px solid ${({ theme }) => theme.border};
 
-	& >:nth-child(3) {
+	& >:nth-child(3), >:nth-child(4) {
 		max-width: 100%;
 		border-top: 1px solid ${({ theme }) => theme.border};
 
@@ -34,10 +34,10 @@ const StyledExplorePage = styled.div`
 `;
 
 const StyledLabelRow = styled.div`
-	margin: 8px;
-	b {
-		margin-right: 8px;
-	}
+	margin: 8px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 `;
 
 const LabelRow: React.FC<any> = ({ label, children }) => {
@@ -85,33 +85,28 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 		<Panel name={name} caption={modelConfig.name} preview={preview} >
 			<StyledExplorePage>
 				<Col title="Root" subtitle={rootName}>
-					<LabelRow label="model" >Note</LabelRow>
-					<LabelRow label="preset"  >
+					<LabelRow label="Model" >Note</LabelRow>
+					<LabelRow label="Preset"  >
 						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
 					</LabelRow>
 					<PodCardList podType={ModelId.Note} pods={[rootValue]} />
 				</Col>
 
 				<Col title="Intervals" subtitle={intervalsRel}>
-					<LabelRow label="model"  >
+					<LabelRow label="Model"  >
 						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
-					<LabelRow label="preset">
+					<LabelRow label="Preset">
 						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
 					</LabelRow>
-					<LabelRow label="pods" />
-					{
-						modelConfig.isCompound ?
-							<PodCardList podType={ModelId.Interval} pods={data.value} />
-							:
-							<PodCard pod={data.value} />
-					}
+					<PodCardList podType={ModelId.Interval} pods={data.value} />
 				</Col>
 
 				<Col title="Notes" subtitle={intervalsAbs}>
-					<LabelRow label="meter" />
 					<Meter modelId={modelId} modelValue={resultPods} />
-					<LabelRow label="viewer" />
+				</Col>
+
+				<Col title="Viewer" subtitle="Fretboard">
 					<Fretboard labelProps={labelProps} />
 				</Col>
 
