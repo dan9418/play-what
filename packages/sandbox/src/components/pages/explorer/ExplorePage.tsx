@@ -108,7 +108,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 				</Col>
 
 				<Col title="Notes" subtitle={intervalsAbs}>
-					<Meter modelRoot={rootValue} modelValue={resultPods} />
+					<Meter modelRoot={rootValue} modelValue={data.value} />
 				</Col>
 
 				<Col title="Viewer" subtitle="Fretboard">

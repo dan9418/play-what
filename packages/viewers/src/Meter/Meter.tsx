@@ -86,7 +86,7 @@ interface IMeterProps {
 	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range = [0, 12], matchOctave = true, hoveredIndex = null, setHoveredIndex = 0 }) => {
+const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range = [0, 12], matchOctave = false, hoveredIndex = null, setHoveredIndex = 0 }) => {
 	const list = [];
 
 	const root = null;
@@ -96,7 +96,7 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const intervalProps = ModelUtils.getPodProps(ModelId.Chord, intervals, i, matchOctave);
+		const intervalProps = ModelUtils.getPodProps(ModelId.Chord, notes, i, matchOctave);
 		const noteProps = ModelUtils.getPodProps(ModelId.Chord, notes, i, matchOctave, true);
 
 		const hasDegree = intervalProps !== null;

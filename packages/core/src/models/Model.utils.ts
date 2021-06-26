@@ -1,4 +1,5 @@
 import ColorUtils from '../color/Color.utils';
+import NumberUtils from '../general/Number.utils';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
@@ -25,7 +26,8 @@ const getNoteName = (modelValue: IPod): string => {
 }
 
 export const getIntervalName = (modelValue: IPod): string => {
-	const [noteIndex, d] = modelValue;
+	const reduced = PodUtils.reduce(modelValue)
+	const [noteIndex, d] = reduced;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
 
@@ -39,7 +41,7 @@ export const getIntervalName = (modelValue: IPod): string => {
 	else if (noteIndex <= loIvl.value[0]) ivl = loIvl; // minor
 	else if (noteIndex >= hiIvl.value[0]) ivl = hiIvl; // major
 
-	const offset = IntervalUtils.getIntervalOffset(modelValue, ivl);
+	const offset = IntervalUtils.getIntervalOffset(reduced, ivl);
 
 	// determine quality
 	let quality = null;
@@ -157,7 +159,7 @@ const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): 
 	return { color, fgColor, label };
 }
 
-const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave, isAbsolute = false): IPodProps => {
+const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps => {
 	const pod = getPodAtPitchInList(modelValue, noteIndex, matchOctave);
 	const projection = null;
 	const superPod = projection ? getPodAtPitch(ModelId.Chord, projection.podList, noteIndex, matchOctave) : null;
@@ -167,10 +169,12 @@ const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave, isA
 		fgColor: '#555',
 		label: getIntervalName(superPod)
 	};
-	const color = IntervalUtils.getPodColor(pod);
+	const reduced = PodUtils.reduce(pod);
+
+	const color = IntervalUtils.getPodColor(reduced);
 	const fgColor = ColorUtils.getFgColor(color);
 
-	const label = isAbsolute ? getNoteName(pod) : getIntervalName(pod);
+	const label = isAbsolute ? getNoteName(reduced) : getIntervalName(reduced);
 	return { color, fgColor, label };
 }
 
