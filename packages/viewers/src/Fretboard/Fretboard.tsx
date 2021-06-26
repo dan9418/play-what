@@ -31,8 +31,6 @@ const getFrets = (props) => {
 	const { fretRange, tuning, labelProps } = props;
 	const [lo, hi] = fretRange;
 
-	console.log(labelProps, props)
-
 	const allFrets = [];
 	for (let s = 0; s < tuning.length; s++) {
 		for (let f = lo; f <= hi; f++) {
@@ -52,8 +50,6 @@ const getFrets = (props) => {
 
 const Fretboard = (userProps) => {
 	const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
-
-
 
 	const [lo, hi] = props.fretRange;
 	const numFrets = hi - lo + 1;

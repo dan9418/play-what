@@ -11,8 +11,8 @@ const StyledCol = styled.div`
 	display: flex;
 	flex-direction: column;	
 
-	:not(:first-child) {
-		margin-top: 8px;
+	:first-child {
+		border-right: 1px solid ${({ theme }) => theme.border};
 	}
 	
 	@media(min-width: 1024px) {
@@ -31,18 +31,10 @@ const StyledCol = styled.div`
 const StyledColBody = styled.div`
 	padding: 16px;
 	min-height: 256px;
-	${({ $isEnabled }) => $isEnabled ? '' : css`
-		//opacity: .5;
-		//pointer-events: none;
-		//cursor: text;
-	`}
+	
 
 	position: sticky;
-	@media(min-width: 1024px) {
-		${({ $hasBorder, $isCompact }) => $hasBorder ? '' : css`
-			top: ${$isCompact ? 96 : 144}px;
-		`}
-	}
+	
 `;
 
 const StyledColHeader = styled.div`
@@ -56,7 +48,7 @@ const StyledColHeader = styled.div`
 	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	position: sticky;
-	top: ${({ $isCompact }) => $isCompact ? 32 : 80}px;
+	top: ${({ $isCompact }) => $isCompact ? 32 : 32}px;
 	z-index: 100;
 	background-color: #ecefef;
 
@@ -82,16 +74,14 @@ export const StyledColDivider = styled.div`
 interface IColProps {
 	title: string;
 	subtitle?: string;
-	actions: any[];
+	actions?: any[];
 	children: any;
 	hasBorder?: boolean;
-	isOpen: boolean;
-	setIsOpen: any;
+	isOpen?: boolean;
+	setIsOpen?: any;
 }
 
-const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorder = false, isOpen, setIsOpen }) => {
-
-	const fullPath = []
+const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = null, hasBorder = false }) => {
 
 	return (
 		<StyledCol $hasBorder={hasBorder}>
@@ -105,11 +95,10 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions, children, hasBorde
 					</h3>
 				</div>
 				<div>
-					{/*!hasBorder && <IconButton iconId={isOpen ? 'confirm' : 'edit'} onClick={() => setIsOpen(!isOpen)} />*/}
 					<OverflowMenu items={actions} />
 				</div>
 			</StyledColHeader>
-			<StyledColBody $isEnabled={!isOpen} $hasBorder={hasBorder} $isCompact={false}>
+			<StyledColBody $isEnabled={true} $hasBorder={hasBorder} $isCompact={false}>
 				{children}
 			</StyledColBody>
 		</StyledCol>

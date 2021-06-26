@@ -1,4 +1,3 @@
-import { MODEL_MAP } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import React from "react";
@@ -28,7 +27,6 @@ const StyledPanelHeader = styled.section`
 		justify-content: space-between;
 		//flex-direction: column;
 		width: 100%;
-		padding-bottom: 4px;
 
 		@media(min-width: 512px) {
 			flex-direction: row;
@@ -122,10 +120,8 @@ const StyledToolbox = styled.div`
 `;
 
 
-const PanelHeader: React.FC<any> = ({ modelId, name, preview }) => {
+const PanelHeader: React.FC<any> = ({ name, caption, preview }) => {
 	const isMobile = useIsMobile();
-
-	const model = MODEL_MAP.get(modelId);
 
 	return (
 		<StyledPanelHeader $showBorder={false}>
@@ -133,7 +129,7 @@ const PanelHeader: React.FC<any> = ({ modelId, name, preview }) => {
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
 						<h3 className='name'>{name}</h3>
-						<div className='caption'>{model.name}</div>
+						<div className='caption'>{caption}</div>
 					</div>
 					<div className='preview'>{preview}</div>
 				</div>
@@ -175,7 +171,7 @@ const StyledPanel = styled.div`
 
 
 
-const Panel: React.FC<any> = ({ name, caption, preview, leftActions, rightAction, children }) => {
+const Panel: React.FC<any> = ({ name, caption, preview, children }) => {
 	return (
 		<StyledPanel>
 			{/* @ts-ignore */}

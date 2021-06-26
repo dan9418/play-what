@@ -5,33 +5,26 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Meter from '../../../../../viewers/src/Meter/Meter';
-import ButtonInput from '../../ui/inputs/buttons/ButtonInput';
 import DropdownInput from '../../ui/inputs/DropdownInput';
+import Col from '../../ui/layout/Col';
+import Panel from '../../ui/layout/Panel';
 import { IPageProps } from '../Page';
 import PodCard, { PodCardList } from './cards/PodCard';
 
 const StyledExplorePage = styled.div`
-	h1 {
-		margin: 24px 0;
-		text-align: center;
-	}
-	h2 {
-		color: white;
-		background-color: ${({ theme }) => theme.accent};
-		padding: 8px;
-		border-radius: 8px;
-	}
-
 	width: 100%;
 	max-width: 768px;
 	margin: auto;
-	margin-top: 32px;
 
 	display: grid;
-	grid-gap: 16px;
 	grid-template-columns: 1fr 1fr;
 
+	border-top: 1px solid ${({ theme }) => theme.border};
+
 	& >:nth-child(3) {
+		max-width: 100%;
+		border-top: 1px solid ${({ theme }) => theme.border};
+
 		grid-column: 1 / span 2;
 		.dot-list {
 			margin: 16px 0;
@@ -81,44 +74,41 @@ const ExplorePage: React.FC<IPageProps> = ({ params }) => {
 	const rootValue = root || [0, 0];
 
 	return (
-		<StyledExplorePage>
-			<div>
-				<h2>Data</h2>
-				<LabelRow label="model"  >
-					<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
-				</LabelRow>
-				<LabelRow label="preset">
-					<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
-				</LabelRow>
-				<LabelRow label="pods" />
-				{
-					modelConfig.isCompound ?
-						<PodCardList pods={data.value} />
-						:
-						<PodCard pod={data.value} />
-				}
-			</div>
-
-			<div>
-				<h2>Root {root ? null : ' (Default)'}</h2>
-				<>
+		<Panel name="name" caption="caption" preview="preview" >
+			<StyledExplorePage>
+				<Col title="Root" subtitle="subtitle">
 					<LabelRow label="model" >Note</LabelRow>
 					<LabelRow label="preset"  >
 						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
 					</LabelRow>
 					<PodCard pod={rootValue} />
-				</>
-			</div>
+				</Col>
 
-			<div>
-				<h2>Result</h2>
-				<LabelRow label="meter" />
-				<Meter modelId={modelId} modelValue={resultPods} />
-				<LabelRow label="viewer" />
-				<Fretboard labelProps={labelProps} />
-			</div>
+				<Col title="Intervals" subtitle="subtitle">
+					<LabelRow label="model"  >
+						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
+					</LabelRow>
+					<LabelRow label="preset">
+						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
+					</LabelRow>
+					<LabelRow label="pods" />
+					{
+						modelConfig.isCompound ?
+							<PodCardList pods={data.value} />
+							:
+							<PodCard pod={data.value} />
+					}
+				</Col>
 
-		</StyledExplorePage>
+				<Col title="Intervals" subtitle="subtitle">
+					<LabelRow label="meter" />
+					<Meter modelId={modelId} modelValue={resultPods} />
+					<LabelRow label="viewer" />
+					<Fretboard labelProps={labelProps} />
+				</Col>
+
+			</StyledExplorePage>
+		</Panel>
 	);
 };
 
