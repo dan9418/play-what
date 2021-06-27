@@ -161,14 +161,8 @@ const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): 
 
 const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps => {
 	const pod = getPodAtPitchInList(modelValue, noteIndex, matchOctave);
-	const projection = null;
-	const superPod = projection ? getPodAtPitch(ModelId.Chord, projection.podList, noteIndex, matchOctave) : null;
-	if (!pod && !superPod) return null;
-	if (!pod) return {
-		color: '#eee',
-		fgColor: '#555',
-		label: getIntervalName(superPod)
-	};
+	if (!pod) return null;
+
 	const reduced = PodUtils.reduce(pod);
 
 	const color = IntervalUtils.getPodColor(reduced);
@@ -194,24 +188,6 @@ const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: numbe
 
 // Misc
 
-interface ISupersetOption extends IModelConfig {
-	id: string;
-	name: string;
-}
-
-const getSupersets = (modelId: ModelId, modelValue: IPod[]): ISupersetOption[] => {
-
-	const compareValues = v => PodListUtils.containsSubset(v.value, modelValue);
-
-	return SCALE_PRESETS.filter(compareValues).map(v => ({
-		id: v.name,
-		name: v.name,
-
-		modelId: ModelId.Scale,
-		modelValue: v.value
-	}));
-};
-
 const playSound = (modelConfig: IModelConfig, pathId = 0): void => {
 	const { modelId, modelValue } = modelConfig;
 
@@ -234,6 +210,5 @@ export default {
 	getPreview,
 	getPodAtPitch,
 	getPodProps,
-	getSupersets,
 	playSound
 }
