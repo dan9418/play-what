@@ -114,25 +114,6 @@ const getPreview = (modelId: ModelId, modelValue: IModelValue, modelRoot?: IPod)
 	}
 }
 
-// getPodAtPitch
-
-const getPodAtPitchInSingle = (modelValue: IPod, noteIndex: number, matchOctave: boolean) => PodUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
-
-const getPodAtPitchInList = (modelValue: IPod[], noteIndex: number, matchOctave: boolean) => PodListUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
-
-const getPodAtPitch = (modelId: ModelId, modelValue: IModelValue, noteIndex: number, matchOctave?: boolean): IPod | null => {
-	switch (modelId) {
-		case ModelId.Note:
-		case ModelId.Interval:
-			return getPodAtPitchInSingle(modelValue as IPod, noteIndex, matchOctave);
-		case ModelId.Chord:
-		case ModelId.Scale:
-			return getPodAtPitchInList(modelValue as IPod[], noteIndex, matchOctave);
-		default:
-			return null;
-	}
-}
-
 // getPodProps
 
 interface IPodProps {
@@ -142,7 +123,7 @@ interface IPodProps {
 }
 
 const getNotePodProps = (modelValue: IPod, noteIndex: number, matchOctave): IPodProps => {
-	const pod = getPodAtPitch(ModelId.Note, modelValue, noteIndex, matchOctave);
+	const pod = PodUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = NoteUtils.getPodColor(pod);
 	const fgColor = ColorUtils.getFgColor(color);
@@ -151,7 +132,7 @@ const getNotePodProps = (modelValue: IPod, noteIndex: number, matchOctave): IPod
 }
 
 const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): IPodProps => {
-	const pod = getPodAtPitch(ModelId.Interval, modelValue, noteIndex, matchOctave);
+	const pod = PodUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
 	if (!pod) return null;
 	const color = IntervalUtils.getPodColor(pod);
 	const fgColor = ColorUtils.getFgColor(color);
@@ -160,7 +141,7 @@ const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): 
 }
 
 const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps => {
-	const pod = getPodAtPitchInList(modelValue, noteIndex, matchOctave);
+	const pod = PodListUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
 	if (!pod) return null;
 
 	const reduced = PodUtils.reduce(pod);
@@ -208,7 +189,6 @@ const playSound = (modelConfig: IModelConfig, pathId = 0): void => {
 export default {
 	getName,
 	getPreview,
-	getPodAtPitch,
 	getPodProps,
 	playSound
 }
