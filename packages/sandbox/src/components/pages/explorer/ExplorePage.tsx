@@ -4,6 +4,8 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
+import Meter from '../../../../../viewers/src/Meter/Meter';
+import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
@@ -111,13 +113,13 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 					<PodCardList podType={ModelId.Interval} pods={intervals} />
 				</Col>
 
-				{/*<Col title="Notes" subtitle={notesPreview}>
+				<Col title="Notes" subtitle={notesPreview}>
 					<Meter modelRoot={rootValue} modelValue={data.value} />
 				</Col>
 
 				<Col title="Viewer" subtitle="Fretboard">
 					<Fretboard labelProps={labelProps} />
-	</Col>*/}
+	</Col>
 
 			</StyledExplorePage>
 		</Panel>
