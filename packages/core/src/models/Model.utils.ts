@@ -118,26 +118,13 @@ interface IPodProps {
 	label: string | null
 }
 
-const getNotePodProps = (modelValue: IPod, noteIndex: number, matchOctave): IPodProps => {
-	const pod = PodUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
-	if (!pod) return null;
-	const color = NoteUtils.getPodColor(pod);
-	const fgColor = ColorUtils.getFgColor(color);
-	const label = getNoteName(pod);
-	return { color, fgColor, label };
+interface IPodPropsOptions {
+	matchOctave?: boolean;
+	podType?: PodType
 }
 
-const getIntervalPodProps = (modelValue: IPod, noteIndex: number, matchOctave): IPodProps => {
-	const pod = PodUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
-	if (!pod) return null;
-	const color = IntervalUtils.getPodColor(pod);
-	const fgColor = ColorUtils.getFgColor(color);
-	const label = getIntervalName(pod);
-	return { color, fgColor, label };
-}
-
-const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps => {
-	const pod = PodListUtils.getPodAtPitch(modelValue, noteIndex, matchOctave);
+const getPodProps = (modelValue: IPod[], noteIndex: number, options: IPodPropsOptions = {}): IPodProps => {
+	const pod = PodListUtils.getPodAtPitch(modelValue, noteIndex, options.matchOctave);
 	if (!pod) return null;
 
 	const reduced = PodUtils.reduce(pod);
@@ -145,23 +132,10 @@ const getPodListProps = (modelValue: IPod[], noteIndex: number, matchOctave = fa
 	const color = IntervalUtils.getPodColor(reduced);
 	const fgColor = ColorUtils.getFgColor(color);
 
-	const label = isAbsolute ? getNoteName(reduced) : getIntervalName(reduced);
+	const label = options.podType === ModelId.Interval ? getIntervalName(reduced) : getNoteName(reduced);
 	return { color, fgColor, label };
 }
 
-const getPodProps = (modelId: ModelId, modelValue: IModelValue, noteIndex: number, matchOctave = false, isAbsolute = false): IPodProps | null => {
-	switch (modelId) {
-		case ModelId.Note:
-			return getNotePodProps(modelValue as IPod, noteIndex, matchOctave)
-		case ModelId.Interval:
-			return getIntervalPodProps(modelValue as IPod, noteIndex, matchOctave);
-		case ModelId.Chord:
-		case ModelId.Scale:
-			return getPodListProps(modelValue as IPod[], noteIndex, matchOctave, isAbsolute);
-		default:
-			return null;
-	}
-}
 
 // Misc
 

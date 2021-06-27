@@ -3,7 +3,7 @@ import ModelUtils from "@pw/core/src/models/Model.utils";
 import "./Keyboard.css";
 import React from "react";
 import styled from 'styled-components';
-import { IModelOptions, IModelValue, ModelId } from '@pw/core/src/models/Model.constants';
+import { IModelOptions, IModelValue, IPod, ModelId } from '@pw/core/src/models/Model.constants';
 import ColorUtils from '@pw/core/src/color/Color.utils';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
@@ -53,7 +53,7 @@ const StyledKeyLabel = styled.div`
 interface IKeyLabelProps {
 	noteIndex: number;
 	modelId: ModelId;
-	modelValue: IModelValue;
+	modelValue: IPod[];
 	scale: number;
 	range: number[];
 	matchOctave: boolean;
@@ -63,7 +63,7 @@ interface IKeyLabelProps {
 
 const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, modelId, modelValue, hoveredIndex, setHoveredIndex }) => {
 
-	const podProps = ModelUtils.getPodProps(modelId, modelValue, noteIndex);
+	const podProps = ModelUtils.getPodProps(modelValue, noteIndex);
 
 	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 

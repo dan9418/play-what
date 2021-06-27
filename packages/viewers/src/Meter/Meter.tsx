@@ -91,15 +91,11 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 
 	const root = null;
 
-	const intervals = modelValue;
-	const notes = PodUtils.addPodList(modelRoot, modelValue)
-
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const intervalProps = ModelUtils.getPodProps(ModelId.Chord, notes, i, matchOctave);
-		const noteProps = ModelUtils.getPodProps(ModelId.Chord, notes, i, matchOctave, true);
+		const podProps = ModelUtils.getPodProps(modelValue, i);
 
-		const hasDegree = intervalProps !== null;
+		const hasDegree = podProps !== null;
 
 		let color = '#fff';
 		let fgColor = '#333';
@@ -111,9 +107,9 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 		const onMouseLeave = null; //() => setHoveredIndex(null);
 		let name = null;
 		if (hasDegree) {
-			name = intervalProps.label;
-			color = intervalProps.color;
-			fgColor = intervalProps.fgColor;
+			name = podProps.label;
+			color = podProps.color;
+			fgColor = podProps.fgColor;
 		}
 
 		const isRoot = root && root[0] === i;
@@ -131,8 +127,8 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 				onMouseEnter={onMouseEnter}
 				onMouseLeave={onMouseLeave}
 			>
-				<span className="note">{noteProps && noteProps.label}</span>
-				{name && <span className="interval">({name})</span>}
+				{/*<span className="note">{hasDegree && podProps.label}</span>*/}
+				{name && <span className="interval">{name}</span>}
 				{isOctave ? <span className="octave">{octave}</span> : null}
 				{isRoot ? <span className="label">R</span> : null}
 				{!isRoot && isMiddleC ? <span className="label">C</span> : null}

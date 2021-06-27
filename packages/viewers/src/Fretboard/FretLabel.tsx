@@ -1,5 +1,5 @@
 import ColorUtils from "@pw/core/src/color/Color.utils";
-import { IModelOptions, IModelValue, ModelId } from "@pw/core/src/models/Model.constants";
+import { IModelOptions, IModelValue, IPod, ModelId } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import * as React from "react";
 import styled from "styled-components";
@@ -21,14 +21,14 @@ const StyledFretLabel = styled.div`
 interface IFretLabelProps {
 	noteIndex: number;
 	modelId: ModelId;
-	modelValue: IModelValue;
+	modelValue: IPod[];
 	range: number[];
 	matchOctave: boolean;
 }
 
 const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, matchOctave = false }) => {
 
-	const podProps = ModelUtils.getPodProps(modelId, modelValue, noteIndex, matchOctave);
+	const podProps = ModelUtils.getPodProps(modelValue, noteIndex);
 
 	if (!podProps) return null;
 

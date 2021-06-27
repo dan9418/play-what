@@ -4,8 +4,8 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
-import Meter from '../../../../../viewers/src/Meter/Meter';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
+import Meter from '../../../../../viewers/src/Meter/Meter';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
@@ -75,22 +75,29 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 	const intervals = modelConfig.isCompound ? data.value : [data.value];
 	const notes = root ? PodUtils.addPodList(root, intervals) : intervals;
 
-	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
+	console.log('PW data', '\nroot', rootValue, '\nintervals', intervals, '\nnotes', notes);
 
-	const labelProps = {
-		modelId,
-		modelValue: notes
-	}
+	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
 
 	// Name
 	const rootName = ModelUtils.getName(ModelId.Note, [rootValue]);
 	const intervalsName = ModelUtils.getName(modelId, intervals);
 	const name = `${rootName} ${intervalsName}`;
 
+	console.log('PW names', '\nroot', rootName, '\nintervals', intervalsName);
+
+	const labelProps = {
+		modelId,
+		modelValue: notes
+	}
+
 	// Preview
 	const intervalsPreview = ModelUtils.getPreview(intervals, { podType: ModelId.Interval });
 	const notesPreview = ModelUtils.getPreview(notes, { podType: ModelId.Note });
 	const preview = `${rootName} + ${intervalsPreview} = ${notesPreview}`;
+
+	console.log('PW previews', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
+
 
 	return (
 		<Panel name={name} caption={modelConfig.name} preview={preview} >
@@ -105,7 +112,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 
 				<Col title="Intervals" subtitle={intervalsPreview}>
 					<LabelRow label="Model"  >
-						<DropdownInput value={modelId} setValue={setModelId} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
+						<DropdownInput value={modelId} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
 					<LabelRow label="Preset">
 						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
@@ -114,12 +121,12 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 				</Col>
 
 				<Col title="Notes" subtitle={notesPreview}>
-					<Meter modelRoot={rootValue} modelValue={data.value} />
+					<Meter modelRoot={rootValue} modelValue={notes} />
 				</Col>
 
 				<Col title="Viewer" subtitle="Fretboard">
 					<Fretboard labelProps={labelProps} />
-	</Col>
+				</Col>
 
 			</StyledExplorePage>
 		</Panel>
