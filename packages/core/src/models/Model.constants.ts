@@ -11,6 +11,9 @@ export enum ModelId {
 	Chart = 'scale'
 }
 
+export type PodType = ModelId.Note | ModelId.Interval;
+export type PodListType = ModelId.Chord | ModelId.Scale;
+
 export interface IModelAttrs {
 	name: string;
 	modelId: ModelId;

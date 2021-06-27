@@ -4,8 +4,6 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
-import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
-import Meter from '../../../../../viewers/src/Meter/Meter';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
@@ -68,23 +66,27 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 
 	if (!data) return <div>Loading...</div>;
 
-	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
+	// Data
+	const rootValue = root || [0, 0];
+	const intervals = modelConfig.isCompound ? data.value : [data.value];
+	const notes = root ? PodUtils.addPodList(root, intervals) : intervals;
 
-	const resultPods = root ? PodUtils.addPodList(root, data.value) : data.value;
+	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
 
 	const labelProps = {
 		modelId,
-		modelValue: resultPods
+		modelValue: notes
 	}
 
-	const rootValue = root || [0, 0];
-
+	// Name
 	const rootName = ModelUtils.getName(ModelId.Note, rootValue);
-	const intervalsName = ModelUtils.getName(modelId, data.value);
-	const intervalsRel = ModelUtils.getPreview(modelId, data.value);
-	const intervalsAbs = ModelUtils.getPreview(modelId, data.value, rootValue);
+	const intervalsName = ModelUtils.getName(modelId, intervals);
 	const name = `${rootName} ${intervalsName}`;
-	const preview = `${rootName} + ${intervalsRel} = ${intervalsAbs}`;
+
+	// Preview
+	const intervalsPreview = ModelUtils.getPreview(intervals, { podType: ModelId.Interval });
+	const notesPreview = ModelUtils.getPreview(notes, { podType: ModelId.Note });
+	const preview = `${rootName} + ${intervalsPreview} = ${notesPreview}`;
 
 	return (
 		<Panel name={name} caption={modelConfig.name} preview={preview} >
@@ -97,7 +99,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 					<PodCardList podType={ModelId.Note} pods={[rootValue]} />
 				</Col>
 
-				<Col title="Intervals" subtitle={intervalsRel}>
+				<Col title="Intervals" subtitle={intervalsPreview}>
 					<LabelRow label="Model"  >
 						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
@@ -107,13 +109,13 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 					<PodCardList podType={ModelId.Interval} pods={data.value} />
 				</Col>
 
-				<Col title="Notes" subtitle={intervalsAbs}>
+				{/*<Col title="Notes" subtitle={notesPreview}>
 					<Meter modelRoot={rootValue} modelValue={data.value} />
 				</Col>
 
 				<Col title="Viewer" subtitle="Fretboard">
 					<Fretboard labelProps={labelProps} />
-				</Col>
+	</Col>*/}
 
 			</StyledExplorePage>
 		</Panel>

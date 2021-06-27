@@ -1,9 +1,8 @@
 import ColorUtils from '../color/Color.utils';
-import NumberUtils from '../general/Number.utils';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
-import { IModelConfig, IModelValue, IPod, ModelId, MODEL_MAP } from "./Model.constants";
+import { IModelConfig, IModelValue, IPod, ModelId, MODEL_MAP, PodType } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -14,18 +13,26 @@ import { SCALE_PRESETS } from "./PodList/Scale/Scale.constants";
 
 // Name
 
-const getNoteName = (modelValue: IPod): string => {
+interface INoteNameOptions {
+	includeOctave?: boolean;
+}
+
+export const getNoteName = (modelValue: IPod, options: INoteNameOptions = {}): string => {
 	const reducedValue = PodUtils.reduce(modelValue);
 
 	const d = reducedValue[1];
 	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
 	const spelling = DEGREE_PRESETS[d].name;
-	const octave = '';//PodUtils.getOctave(modelValue, true);
+	const octave = options.includeOctave ? PodUtils.getOctave(modelValue, true) : '';
 	return `${spelling}${accidental}${octave}`;
 }
 
-export const getIntervalName = (modelValue: IPod): string => {
+interface IIntervalNameOptions {
+	useLongName?: boolean;
+}
+
+export const getIntervalName = (modelValue: IPod, options: IIntervalNameOptions = {}): string => {
 	const reduced = PodUtils.reduce(modelValue)
 	const [noteIndex, d] = reduced;
 	const degreeIntervals = CORE_INTERVALS[d];
@@ -55,24 +62,24 @@ export const getIntervalName = (modelValue: IPod): string => {
 	return `${qualityStr}${d + 1}`;
 }
 
-const getChordName = (modelValue: IPod[]) => {
+interface IChordNameOptions {
+	useLongName?: boolean;
+}
+
+export const getChordName = (modelValue: IPod[], options: IChordNameOptions = {}): string => {
 	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const presetName = preset ? preset.name : 'Chord';
-
+	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Chord';
 	return presetName;
-
-	//const rootName = getNoteName(modelRoot);
-	//return `${rootName} ${presetName}`;
 };
 
-const getScaleName = (modelValue: IPod[], isShort = false) => {
+interface IScaleNameOptions {
+	useLongName?: boolean;
+}
+
+export const getScaleName = (modelValue: IPod[], options: IScaleNameOptions = {}): string => {
 	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
-	const presetName = preset ? preset.name : 'Scale';
-
+	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
 	return presetName;
-
-	//const rootName = getNoteName(modelRoot);
-	//return `${rootName} ${presetName}`;
 };
 
 const getName = (modelId: ModelId, modelValue: IModelValue): string => {
@@ -92,26 +99,15 @@ const getName = (modelId: ModelId, modelValue: IModelValue): string => {
 
 // Preview
 
-const getPodListPreview = (modelValue: IPod[], isAbsolute = false): string => {
-	const nameFn = isAbsolute ? getNoteName : getIntervalName;
+interface IPreviewOptions {
+	podType?: PodType;
+}
+
+const getPreview = (modelValue: IPod[], options: IPreviewOptions = {}): string => {
+	const nameFn = options.podType === ModelId.Interval ? getIntervalName : getNoteName;
 	const intervalNames = modelValue.map(pod => nameFn(pod)).join(', ');
 
 	return intervalNames;
-}
-
-const getPreview = (modelId: ModelId, modelValue: IModelValue, modelRoot?: IPod): string => {
-	const modelConfig = MODEL_MAP.get(modelId);
-	let pods = (modelConfig.isCompound ? modelValue : [modelValue]) as IPod[];
-	if (modelRoot) {
-		pods = PodUtils.addPodList(modelRoot, pods);
-	}
-	switch (modelId) {
-		case ModelId.Chord:
-		case ModelId.Scale:
-			return getPodListPreview(pods, !!modelRoot);
-		default:
-			return JSON.stringify(pods);
-	}
 }
 
 // getPodProps
