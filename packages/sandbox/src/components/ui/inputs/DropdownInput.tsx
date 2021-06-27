@@ -30,7 +30,7 @@ const DropdownInput = props => {
 			value={value ? value[idProperty || 'id'] : ''}
 		>
 			{(options || []).map((v, i) => (
-				<option key={i} value={v.id}>{displayProperty ? v[displayProperty] : v.name}</option>
+				<option key={i} value={v[idProperty || 'id']}>{displayProperty ? v[displayProperty] : v.name}</option>
 			))}
 		</StyledDropdownInput>
 	);

@@ -66,9 +66,12 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 		setData(config.presets[0]);
 	}
 
+	if (!data) return <div>Loading...</div>;
+
 	const modelConfig = MODEL_MAP.get(modelId);
 
-	if (!data) return <div>Loading...</div>;
+	console.log('PW init', '\ndata', data, '\nmodelConfig', modelConfig);
+
 
 	// Data
 	const rootValue = root || [0, 0];
@@ -111,8 +114,8 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 				</Col>
 
 				<Col title="Intervals" subtitle={intervalsPreview}>
-					<LabelRow label="Model"  >
-						<DropdownInput value={modelId} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
+					<LabelRow label="Model">
+						<DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
 					<LabelRow label="Preset">
 						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
