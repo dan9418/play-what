@@ -82,16 +82,16 @@ export const getScaleName = (modelValue: IPod[], options: IScaleNameOptions = {}
 	return presetName;
 };
 
-const getName = (modelId: ModelId, modelValue: IModelValue): string => {
+const getName = (modelId: ModelId, modelValue: IPod[]): string => {
 	switch (modelId) {
 		case ModelId.Note:
-			return getNoteName(modelValue as IPod)
+			return getNoteName(modelValue[0])
 		case ModelId.Interval:
-			return getIntervalName(modelValue as IPod);
+			return getIntervalName(modelValue[0]);
 		case ModelId.Chord:
-			return getChordName(modelValue as IPod[]);
+			return getChordName(modelValue);
 		case ModelId.Scale:
-			return getScaleName(modelValue as IPod[]);
+			return getScaleName(modelValue);
 		default:
 			return '?';
 	}
@@ -105,7 +105,7 @@ interface IPreviewOptions {
 
 const getPreview = (modelValue: IPod[], options: IPreviewOptions = {}): string => {
 	const nameFn = options.podType === ModelId.Interval ? getIntervalName : getNoteName;
-	const intervalNames = modelValue.map(pod => nameFn(pod)).join(', ');
+	const intervalNames = modelValue.map(nameFn as any).join(', ');
 
 	return intervalNames;
 }

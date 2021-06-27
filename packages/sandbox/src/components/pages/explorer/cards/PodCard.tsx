@@ -17,7 +17,8 @@ const StyledPodCard = styled.div`
 `;
 
 const PodCard: React.FC<any> = ({ podType, pod }) => {
-    const podProps = ModelUtils.getPodProps(podType, pod, pod[0], false)
+    const podProps = ModelUtils.getPodProps(podType, pod, pod[0], false);
+    if (!podProps) return null;
     return (
         <StyledPodCard $color={podProps.color} $fgColor={podProps.fgColor}>
             <div className="name">{podProps.label}</div>

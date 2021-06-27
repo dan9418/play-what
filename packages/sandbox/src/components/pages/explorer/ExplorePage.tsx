@@ -1,7 +1,7 @@
 import { ModelId, MODEL_MAP, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
 import DropdownInput from '../../ui/inputs/DropdownInput';
@@ -49,20 +49,22 @@ const LabelRow: React.FC<any> = ({ label, children }) => {
 
 const DEFAULT_PARAMS = {
 	modelId: ModelId.Chord,
-	root: null
+	root: null,
+	data: MODEL_MAP.get(ModelId.Chord).presets[0]
 }
 
 const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 	const params = DEFAULT_PARAMS;
-	const [modelId, setModelId] = useState(params.modelId);
+	const [modelId, _setModelId] = useState(params.modelId);
 	const [root, setRoot] = useState(params.root);
-	const [data, setData] = useState(null);
+	const [data, setData] = useState(params.data);
+
+	const setModelId = config => {
+		_setModelId(config.modelId);
+		setData(config.presets[0]);
+	}
 
 	const modelConfig = MODEL_MAP.get(modelId);
-
-	useEffect(() => {
-		setData(modelConfig.presets[0])
-	}, [modelId]);
 
 	if (!data) return <div>Loading...</div>;
 
@@ -79,7 +81,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 	}
 
 	// Name
-	const rootName = ModelUtils.getName(ModelId.Note, rootValue);
+	const rootName = ModelUtils.getName(ModelId.Note, [rootValue]);
 	const intervalsName = ModelUtils.getName(modelId, intervals);
 	const name = `${rootName} ${intervalsName}`;
 
@@ -101,12 +103,12 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 
 				<Col title="Intervals" subtitle={intervalsPreview}>
 					<LabelRow label="Model"  >
-						<DropdownInput value={modelId} setValue={config => setModelId(config.modelId)} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
+						<DropdownInput value={modelId} setValue={setModelId} options={MODEL_VALUES} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
 					<LabelRow label="Preset">
 						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
 					</LabelRow>
-					<PodCardList podType={ModelId.Interval} pods={data.value} />
+					<PodCardList podType={ModelId.Interval} pods={intervals} />
 				</Col>
 
 				{/*<Col title="Notes" subtitle={notesPreview}>
