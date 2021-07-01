@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from 'styled-components';
+import { useModalContext } from "../../../contexts/ModalContext";
 import IconButton from "../inputs/buttons/IconButton";
 
 const StyledCol = styled.div`
@@ -9,10 +10,17 @@ const StyledCol = styled.div`
 	margin-top: 0;
 	margin-bottom: 0;
 	display: flex;
-	flex-direction: column;	
+	flex-direction: column;
+
+	.header {
+		border-top: 1px solid ${({ theme }) => theme.border};
+	}
 
 	:first-child {
-		border-right: 1px solid ${({ theme }) => theme.border};
+		@media(min-width: 512px) {
+			border-right: 1px solid ${({ theme }) => theme.border};
+		}
+		
 		.header {
 			border-right: none;
 		}
@@ -78,14 +86,16 @@ export const StyledColDivider = styled.div`
 interface IColProps {
 	title: string;
 	subtitle?: string;
-	actions?: any[];
+	modal: any;
 	children: any;
 	hasBorder?: boolean;
 	isOpen?: boolean;
 	setIsOpen?: any;
 }
 
-const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = null }) => {
+const Col: React.FC<IColProps> = ({ title, subtitle, modal, children = null }) => {
+
+	const modalContext = useModalContext();
 
 	return (
 		<StyledCol>
@@ -99,7 +109,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = nu
 					</h3>
 				</div>
 				<div>
-					<IconButton iconId="edit" />
+					<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
 				</div>
 			</StyledColHeader>
 			<StyledColBody $isEnabled={true} $isCompact={false}>

@@ -24,11 +24,8 @@ const StyledExplorePage = styled.div`
 		grid-template-columns: 1fr 1fr;
 	}
 
-	border-top: 1px solid ${({ theme }) => theme.border};
-
 	& >:nth-child(3), >:nth-child(4) {
 		max-width: 100%;
-		border-top: 1px solid ${({ theme }) => theme.border};
 
 		@media(min-width: 512px) {
 			grid-column: 1 / span 2;
@@ -107,11 +104,16 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 
 	console.log('PW previews', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
 
+	const rootModal = <h2>Edit Root</h2>;
+	const intervalsModal = <h2>Edit Intervals</h2>;
+	const notesModal = <h2>Edit Notes</h2>;
+	const viewerModal = <h2>Edit Viewer</h2>;
+
 
 	return (
 		<Panel name={name} caption={modelConfig.name} preview={preview} >
 			<StyledExplorePage>
-				<Col title="Root" subtitle={rootName}>
+				<Col title="Root" subtitle={rootName} modal={rootModal}>
 					<LabelRow label="Model" >Note</LabelRow>
 					<LabelRow label="Preset"  >
 						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
@@ -119,7 +121,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 					<PodCardList podType={ModelId.Note} pods={[rootValue]} />
 				</Col>
 
-				<Col title="Intervals" subtitle={intervalsPreview}>
+				<Col title="Intervals" subtitle={intervalsPreview} modal={intervalsModal}>
 					<LabelRow label="Model">
 						<DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
 					</LabelRow>
@@ -129,11 +131,11 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 					<PodCardList podType={ModelId.Interval} pods={intervals} />
 				</Col>
 
-				<Col title="Notes" subtitle={notesPreview}>
+				<Col title="Notes" subtitle={notesPreview} modal={notesModal}>
 					<Meter modelRoot={rootValue} modelValue={notes} />
 				</Col>
 
-				<Col title="Viewer" subtitle="Fretboard">
+				<Col title="Viewer" subtitle="Fretboard" modal={viewerModal}>
 					<Fretboard labelProps={labelProps} />
 				</Col>
 
