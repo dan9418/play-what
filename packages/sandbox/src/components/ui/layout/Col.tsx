@@ -13,15 +13,20 @@ const StyledCol = styled.div`
 
 	:first-child {
 		border-right: 1px solid ${({ theme }) => theme.border};
+		.header {
+			border-right: none;
+		}
 	}
-	
+	:nth-child(2) {
+		.header {
+			border-left: none;
+		}
+	}
+
 	@media(min-width: 1024px) {
 		:not(:first-child) {
 			margin-top: 0;
 		}
-		${({ $hasBorder }) => !$hasBorder ? '' : css`
-			border-right: 1px solid ${({ theme }) => theme.border};
-		`}
 	}
 
 
@@ -37,12 +42,15 @@ const StyledColHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: #e5e8e8;
-
+	//background-color: #e5e8e8;
+	//background: rgb(229,232,232);
+	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
 	height: 64px;
 	padding: 0 24px 0 16px;
 
 	border-bottom: 1px solid ${({ theme }) => theme.border};
+	border-left: 1px solid ${({ theme }) => theme.border};
+	border-right: 1px solid ${({ theme }) => theme.border};
 
 	position: sticky;
 	top: ${({ $isCompact }) => $isCompact ? 32 : 32}px;
@@ -77,11 +85,11 @@ interface IColProps {
 	setIsOpen?: any;
 }
 
-const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = null, hasBorder = false }) => {
+const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = null }) => {
 
 	return (
-		<StyledCol $hasBorder={hasBorder}>
-			<StyledColHeader $isCompact={false}>
+		<StyledCol>
+			<StyledColHeader $isCompact={false} className="header">
 				<div className="titles">
 					<h2>
 						{title}
@@ -94,7 +102,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = nu
 					<OverflowMenu items={actions} />
 				</div>
 			</StyledColHeader>
-			<StyledColBody $isEnabled={true} $hasBorder={hasBorder} $isCompact={false}>
+			<StyledColBody $isEnabled={true} $isCompact={false}>
 				{children}
 			</StyledColBody>
 		</StyledCol>

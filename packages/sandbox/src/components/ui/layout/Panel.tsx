@@ -9,6 +9,10 @@ const StyledPanelHeader = styled.section`
 	width: 100%;
 	padding: 16px;
 
+	@media(min-width: 1024px) {
+		padding: 16px 0;
+	}
+
 	${({ $showBorder }) => $showBorder ?
 		css`border-bottom: 1px solid ${({ theme }) => theme.border};` :
 		''
