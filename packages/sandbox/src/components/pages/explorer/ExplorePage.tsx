@@ -16,9 +16,13 @@ const StyledExplorePage = styled.div`
 	width: 100%;
 	max-width: 1024px;
 	margin: auto;
+	padding-bottom: 512px;
 
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr;
+	@media(min-width: 512px) {
+		grid-template-columns: 1fr 1fr;
+	}
 
 	border-top: 1px solid ${({ theme }) => theme.border};
 
@@ -26,7 +30,9 @@ const StyledExplorePage = styled.div`
 		max-width: 100%;
 		border-top: 1px solid ${({ theme }) => theme.border};
 
-		grid-column: 1 / span 2;
+		@media(min-width: 512px) {
+			grid-column: 1 / span 2;
+		}
 		.dot-list {
 			margin: 16px 0;
 		}

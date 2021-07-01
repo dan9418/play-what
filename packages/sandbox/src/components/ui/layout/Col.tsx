@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from 'styled-components';
-import OverflowMenu from "./OverflowMenu";
+import IconButton from "../inputs/buttons/IconButton";
 
 const StyledCol = styled.div`
 	max-width: 512px;
@@ -34,7 +34,7 @@ const StyledCol = styled.div`
 `;
 
 const StyledColBody = styled.div`
-	padding: 16px;
+	padding: 8px 16px;
 	position: sticky;
 `;
 
@@ -46,7 +46,7 @@ const StyledColHeader = styled.div`
 	//background: rgb(229,232,232);
 	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
 	height: 64px;
-	padding: 0 24px 0 16px;
+	padding: 0 16px;
 
 	border-bottom: 1px solid ${({ theme }) => theme.border};
 	border-left: 1px solid ${({ theme }) => theme.border};
@@ -99,7 +99,7 @@ const Col: React.FC<IColProps> = ({ title, subtitle, actions = [], children = nu
 					</h3>
 				</div>
 				<div>
-					<OverflowMenu items={actions} />
+					<IconButton iconId="edit" />
 				</div>
 			</StyledColHeader>
 			<StyledColBody $isEnabled={true} $isCompact={false}>
