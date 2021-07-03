@@ -8,8 +8,8 @@ import Fretboard from '../../../../viewers/src/Fretboard/Fretboard';
 import Meter from '../../../../viewers/src/Meter/Meter';
 import { IPageProps } from '../../contexts/RouteContext';
 import DropdownInput from '../shared/ui/inputs/DropdownInput';
-import Col from '../shared/ui/layout/Col';
-import Panel from '../shared/ui/layout/Panel';
+import Col from './Col';
+import Panel from './Panel';
 import { PodCardList } from './PodCard';
 
 const StyledExplorePage = styled.div`
@@ -109,38 +109,36 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 	const notesModal = <h2>Edit Notes</h2>;
 	const viewerModal = <h2>Edit Viewer</h2>;
 
-
 	return (
-		<Panel name={name} caption={modelConfig.name} preview={preview} >
-			<StyledExplorePage>
-				<Col title="Root" subtitle={rootName} modal={rootModal}>
-					<LabelRow label="Model" >Note</LabelRow>
-					<LabelRow label="Preset"  >
-						<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
-					</LabelRow>
-					<PodCardList podType={ModelId.Note} pods={[rootValue]} />
-				</Col>
+		<StyledExplorePage>
+			<Panel name={name} caption={modelConfig.name} preview={preview} />
+			<Col title="Root" subtitle={rootName} modal={rootModal}>
+				<LabelRow label="Model" >Note</LabelRow>
+				<LabelRow label="Preset"  >
+					<DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
+				</LabelRow>
+				<PodCardList podType={ModelId.Note} pods={[rootValue]} />
+			</Col>
 
-				<Col title="Intervals" subtitle={intervalsPreview} modal={intervalsModal}>
-					<LabelRow label="Model">
-						<DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
-					</LabelRow>
-					<LabelRow label="Preset">
-						<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
-					</LabelRow>
-					<PodCardList podType={ModelId.Interval} pods={intervals} />
-				</Col>
+			<Col title="Intervals" subtitle={intervalsPreview} modal={intervalsModal}>
+				<LabelRow label="Model">
+					<DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
+				</LabelRow>
+				<LabelRow label="Preset">
+					<DropdownInput value={data} setValue={setData} options={modelConfig.presets} />
+				</LabelRow>
+				<PodCardList podType={ModelId.Interval} pods={intervals} />
+			</Col>
 
-				<Col title="Notes" subtitle={notesPreview} modal={notesModal}>
-					<Meter modelRoot={rootValue} modelValue={notes} />
-				</Col>
+			<Col title="Notes" subtitle={notesPreview} modal={notesModal}>
+				<Meter modelRoot={rootValue} modelValue={notes} />
+			</Col>
 
-				<Col title="Viewer" subtitle="Fretboard" modal={viewerModal}>
-					<Fretboard labelProps={labelProps} />
-				</Col>
+			<Col title="Viewer" subtitle="Fretboard" modal={viewerModal}>
+				<Fretboard labelProps={labelProps} />
+			</Col>
 
-			</StyledExplorePage>
-		</Panel>
+		</StyledExplorePage>
 	);
 };
 

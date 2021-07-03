@@ -2,8 +2,8 @@ import ModelUtils from "@pw/core/src/models/Model.utils";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import React from "react";
 import styled, { css } from 'styled-components';
-import IconButton from "../inputs/buttons/IconButton";
-import SwitchInput from "../inputs/SwitchInput";
+import IconButton from "../shared/ui/inputs/buttons/IconButton";
+import SwitchInput from "../shared/ui/inputs/SwitchInput";
 
 const StyledPanelHeader = styled.section`
 	width: 100%;
