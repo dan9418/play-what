@@ -5,7 +5,6 @@ import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import THEME from "@pw/sandbox/src/styles/theme";
 import React from "react";
 import styled from 'styled-components';
-import { usePathNavContext } from "../../../../contexts/PathNavContext";
 
 const StyledWrapper = styled.div`
 	position: sticky;
@@ -73,7 +72,7 @@ const BreadcrumbList: React.FC = () => {
 
 	const fullPath = [];
 
-	const { popAt, pop, prev, next, path } = usePathNavContext();
+	const { popAt, pop, prev, next, path } = {} as any;
 	const isMobile = useIsMobile();
 
 	const isVisible = fullPath && fullPath.length >= 2;

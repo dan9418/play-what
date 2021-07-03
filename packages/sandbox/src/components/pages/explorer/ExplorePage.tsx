@@ -10,7 +10,7 @@ import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
 import { IPageProps } from '../Page';
-import { PodCardList } from './cards/PodCard';
+import { PodCardList } from './PodCard';
 
 const StyledExplorePage = styled.div`
 	width: 100%;
