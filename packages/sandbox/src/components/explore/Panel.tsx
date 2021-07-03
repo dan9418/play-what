@@ -15,35 +15,6 @@ const StyledPanel = styled.div`
 	.header {
 		border-top: 1px solid ${({ theme }) => theme.border};
 	}
-
-	:first-child {
-		@media(min-width: 512px) {
-			border-right: 1px solid ${({ theme }) => theme.border};
-		}
-		
-		.header {
-			border-right: none;
-		}
-	}
-	:nth-child(2) {
-		.header {
-			border-left: none;
-		}
-	}
-
-	@media(min-width: 1024px) {
-		:not(:first-child) {
-			margin-top: 0;
-		}
-	}
-
-
-	${({ $isDisabled }) => $isDisabled ? 'opacity: .5; pointer-events: none;' : ''};
-`;
-
-const StyledPanelBody = styled.div`
-	padding: 8px 16px;
-	position: sticky;
 `;
 
 const StyledPanelHeader = styled.div`
@@ -51,7 +22,6 @@ const StyledPanelHeader = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	//background-color: #e5e8e8;
-	//background: rgb(229,232,232);
 	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
 	height: 64px;
 	padding: 0 16px;
@@ -61,7 +31,6 @@ const StyledPanelHeader = styled.div`
 	border-right: 1px solid ${({ theme }) => theme.border};
 
 	position: sticky;
-	top: ${({ $isCompact }) => $isCompact ? 32 : 32}px;
 	z-index: 100;
 
 	> div {
@@ -77,10 +46,9 @@ const StyledPanelHeader = styled.div`
 	}
 `;
 
-export const StyledPanelDivider = styled.div`
-	${({ $hideTop }) => $hideTop ? '' : 'margin-top: 16px;'}
-	${({ $hideBottom }) => $hideBottom ? '' : 'margin-bottom: 16px;'}
-	border-bottom: 1px solid ${({ theme }) => theme.border};
+const StyledPanelBody = styled.div`
+	padding: 8px 16px;
+	position: sticky;
 `;
 
 interface IPanelProps {
@@ -98,8 +66,8 @@ const Panel: React.FC<IPanelProps> = ({ title, subtitle, modal, children = null 
 	const modalContext = useModalContext();
 
 	return (
-		<StyledPanel>
-			<StyledPanelHeader $isCompact={false} className="header">
+		<StyledPanel className={`panel ${title}`}>
+			<StyledPanelHeader className="header">
 				<div className="titles">
 					<h2>
 						{title}
@@ -112,7 +80,7 @@ const Panel: React.FC<IPanelProps> = ({ title, subtitle, modal, children = null 
 					<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
 				</div>
 			</StyledPanelHeader>
-			<StyledPanelBody $isEnabled={true} $isCompact={false}>
+			<StyledPanelBody $isEnabled={true}>
 				{children}
 			</StyledPanelBody>
 		</StyledPanel>
