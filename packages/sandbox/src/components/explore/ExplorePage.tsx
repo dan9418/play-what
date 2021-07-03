@@ -25,14 +25,35 @@ const StyledExplorePanelGrid = styled.div`
 		grid-template-columns: 1fr 1fr;
 	}
 
+	.panel.Root {
+		@media(min-width: 512px) {
+			border-right: 1px solid ${({ theme }) => theme.border};
+		}
+		.panel-header {
+			border-left: 1px solid ${({ theme }) => theme.border};
+		}
+	}
+
+	.panel.Intervals {
+		.panel-header {
+			border-right: 1px solid ${({ theme }) => theme.border};
+		}
+	}
+
 	.panel.Notes, .panel.Viewer {
 		max-width: 100%;
 		@media(min-width: 512px) {
 			grid-column: 1 / span 2;
 		}
-		.dot-list {
-			margin: 16px 0;
+		
+		.panel-header {
+			border-left: 1px solid ${({ theme }) => theme.border};
+			border-right: 1px solid ${({ theme }) => theme.border};
 		}
+	}
+
+	.dot-list {
+		margin: 16px 0;
 	}
 `;
 
