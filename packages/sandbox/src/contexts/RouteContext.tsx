@@ -1,12 +1,12 @@
 
 import React from "react";
-import HomePage from '../components/home/HomePage';
 import ExplorePage from '../components/explore/ExplorePage';
+import HomePage from '../components/home/HomePage';
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 
 export interface IPageProps {
-    params: ParamType
+	params: ParamType
 }
 
 interface IRoute {
@@ -43,21 +43,20 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 ]);
 
 const DEFAULT_PAGE = PageId.Home;
-const DEFAULT_PAGE_PARAMS: ParamType = {};
 
 export const RouteContextProvider: React.FC = ({ children }) => {
 	const [pageId, setPageId] = React.useState(DEFAULT_PAGE);
-	const [pageParams, setPageParams] = React.useState(DEFAULT_PAGE_PARAMS);
+	const [params, setParams] = React.useState(null);
 
-	const setPage = (pageId: PageId, params: ParamType = {}) => {
+	const setPage = (pageId: PageId, params: ParamType) => {
 		setPageId(pageId);
-		setPageParams(params);
+		setParams(params);
 	}
 
 	const routeContext: IRouteContext = {
 		...PAGE_MAP.get(pageId),
 		setPage,
-		params: pageParams
+		params
 	};
 
 	return (
