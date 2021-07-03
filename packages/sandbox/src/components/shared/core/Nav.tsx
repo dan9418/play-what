@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PageId, useRouteContext } from '../../contexts/RouteContext';
+import { PageId, useRouteContext } from '../../../contexts/RouteContext';
 
 interface INavLink {
 	text: string;
@@ -11,7 +11,7 @@ interface INavLink {
 const NAV_LINKS: INavLink[] = [
 	{
 		text: 'Home',
-		pageId: PageId.About
+		pageId: PageId.Home
 	},
 	{
 		text: 'Docs',
@@ -101,7 +101,7 @@ const Nav: React.FC = () => {
 	return (
 		<StyledNav>
 			<div>
-				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.About)}>
+				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.Home)}>
 					Play <em><b>What?</b></em>
 				</button>
 				<ul className="link-list">

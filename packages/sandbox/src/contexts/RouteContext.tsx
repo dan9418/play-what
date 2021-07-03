@@ -1,7 +1,7 @@
 
 import React from "react";
-import AboutPage from '../components/about/AboutPage';
-import ExplorePage from '../components/explorer/ExplorePage';
+import HomePage from '../components/home/HomePage';
+import ExplorePage from '../components/explore/ExplorePage';
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 
@@ -25,15 +25,15 @@ const RouteContext = React.createContext(null);
 export const useRouteContext = (): IRouteContext => React.useContext(RouteContext);
 
 export enum PageId {
-	About,
+	Home,
 	Explore
 }
 
 const PAGE_MAP = new Map<PageId, IRoute>([
-	[PageId.About, {
-		pageId: PageId.About,
-		name: 'About',
-		Component: AboutPage
+	[PageId.Home, {
+		pageId: PageId.Home,
+		name: 'Home',
+		Component: HomePage
 	}],
 	[PageId.Explore, {
 		pageId: PageId.Explore,
@@ -42,7 +42,7 @@ const PAGE_MAP = new Map<PageId, IRoute>([
 	}]
 ]);
 
-const DEFAULT_PAGE = PageId.About;
+const DEFAULT_PAGE = PageId.Home;
 const DEFAULT_PAGE_PARAMS: ParamType = {};
 
 export const RouteContextProvider: React.FC = ({ children }) => {

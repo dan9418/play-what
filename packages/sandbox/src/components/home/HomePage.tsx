@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../contexts/RouteContext';
 import ButtonInput from '../shared/ui/inputs/buttons/ButtonInput';
 
-const StyledAboutPage = styled.div`
+const StyledHomePage = styled.div`
 	width: 100%;
 	max-width: 1024px;
 	margin: auto;
@@ -59,10 +59,10 @@ const StyledButtonContainer = styled.div`
 	}
 `;
 
-const AboutPage: React.FC = () => {
+const HomePage: React.FC = () => {
 	const routeContext = useRouteContext();
 	return (
-		<StyledAboutPage>
+		<StyledHomePage>
 			<h1>Play <em><b>What?</b></em></h1>
 			<p>
 				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
@@ -74,8 +74,8 @@ const AboutPage: React.FC = () => {
 			<p>
 				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>
 			</p>
-		</StyledAboutPage>
+		</StyledHomePage>
 	)
 };
 
-export default AboutPage;
+export default HomePage;
