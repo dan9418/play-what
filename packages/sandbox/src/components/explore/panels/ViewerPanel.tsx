@@ -12,7 +12,7 @@ const ViewerPanel: React.FC<any> = ({ modelId, notes }) => {
     const viewerModal = <h2>Edit Viewer</h2>;
 
     return (
-        <Panel title="Viewer" subtitle="Fretboard" modal={viewerModal}>
+        <Panel name="Viewer" preview="Fretboard" modal={viewerModal}>
             <Fretboard labelProps={labelProps} />
         </Panel>
     );

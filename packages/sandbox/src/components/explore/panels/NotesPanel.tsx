@@ -7,7 +7,7 @@ const NotesPanel: React.FC<any> = ({ rootValue, notes, preview }) => {
     const notesModal = <h2>Edit Notes</h2>;
 
     return (
-        <Panel title="Notes" subtitle={preview} modal={notesModal}>
+        <Panel name="Notes" preview={preview} modal={notesModal}>
             <Meter modelRoot={rootValue} modelValue={notes} />
         </Panel>
     );

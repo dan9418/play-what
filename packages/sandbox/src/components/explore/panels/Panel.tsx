@@ -18,16 +18,16 @@ const StyledPanel = styled.div`
 `;
 
 interface IPanelProps {
-	title: string;
-	subtitle?: string;
+	name: string;
+	preview?: string;
 	modal: any;
 	children: any;
 }
 
-const Panel: React.FC<IPanelProps> = ({ title, subtitle, modal, children = null }) => {
+const Panel: React.FC<IPanelProps> = ({ name, preview, modal, children = null }) => {
 	return (
-		<StyledPanel className={`panel ${title}`}>
-			<PanelHeader title={title} subtitle={subtitle} modal={modal} />
+		<StyledPanel className={`panel ${name}`}>
+			<PanelHeader name={name} preview={preview} modal={modal} />
 			<div className="panel-body">
 				{children}
 			</div>

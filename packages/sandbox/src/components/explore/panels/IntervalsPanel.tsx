@@ -10,7 +10,7 @@ const IntervalsPanel: React.FC<any> = ({ preview, modelConfig, setModelId, prese
     const intervalsModal = <h2>Edit Intervals</h2>;
 
     return (
-        <Panel title="Intervals" subtitle={preview} modal={intervalsModal}>
+        <Panel name="Intervals" preview={preview} modal={intervalsModal}>
             <LabelRow label="Model">
                 <DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
             </LabelRow>

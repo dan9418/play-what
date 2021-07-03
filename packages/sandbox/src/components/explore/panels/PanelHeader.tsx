@@ -28,9 +28,9 @@ const StyledPanelHeader = styled.div`
 
 	> div {
 		display: flex;
-		&.titles {
+		&.name-preview {
 			flex-direction: column;
-			>:last-child {
+			.preview {
 				color: ${({ theme }) => theme.accent};
 				font-size: 80%;
 				font-weight: normal;
@@ -40,23 +40,23 @@ const StyledPanelHeader = styled.div`
 `;
 
 interface IPanelHeaderProps {
-    title: string;
-    subtitle?: string;
+    name: string;
+    preview?: string;
     modal: any;
 }
 
-const PanelHeader: React.FC<IPanelHeaderProps> = ({ title, subtitle, modal }) => {
+const PanelHeader: React.FC<IPanelHeaderProps> = ({ name, preview, modal }) => {
 
     const modalContext = useModalContext();
 
     return (
         <StyledPanelHeader className="panel-header">
-            <div className="titles">
-                <h2>
-                    {title}
+            <div className="name-preview">
+                <h2 className="name">
+                    {name}
                 </h2>
-                <h3>
-                    {subtitle}
+                <h3 className="preview">
+                    {preview}
                 </h3>
             </div>
             <div>
