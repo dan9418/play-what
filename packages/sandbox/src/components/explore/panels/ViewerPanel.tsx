@@ -1,5 +1,5 @@
 import React from "react";
-import Fretboard from '../../../../viewers/src/Fretboard/Fretboard';
+import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Panel from './Panel';
 
 const ViewerPanel: React.FC<any> = ({ modelId, notes }) => {

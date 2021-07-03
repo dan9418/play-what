@@ -1,9 +1,9 @@
 import { ModelId, MODEL_VALUES } from '@pw/core/src/models/Model.constants';
 import React from "react";
-import DropdownInput from '../shared/ui/inputs/DropdownInput';
-import LabelRow from './LabelRow';
+import DropdownInput from '../../shared/ui/inputs/DropdownInput';
+import LabelRow from './../LabelRow';
 import Panel from './Panel';
-import { PodCardList } from './PodCard';
+import { PodCardList } from '../PodCard';
 
 const IntervalsPanel: React.FC<any> = ({ intervalsPreview, modelConfig, setModelId, data, setData, intervals }) => {
 

@@ -5,10 +5,10 @@ import styled from 'styled-components';
 import ModelUtils from '../../../../core/src/models/Model.utils';
 import { IPageProps } from '../../contexts/RouteContext';
 import ExploreHeader from './ExploreHeader';
-import IntervalsPanel from './IntervalsPanel';
-import NotesPanel from './NotesPanel';
-import RootPanel from './RootPanel';
-import ViewerPanel from './ViewerPanel';
+import IntervalsPanel from './panels/IntervalsPanel';
+import NotesPanel from './panels/NotesPanel';
+import RootPanel from './panels/RootPanel';
+import ViewerPanel from './panels/ViewerPanel';
 
 const StyledExplorePage = styled.div`
 	width: 100%;

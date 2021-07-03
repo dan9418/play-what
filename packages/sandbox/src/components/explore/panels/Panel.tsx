@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { useModalContext } from "../../contexts/ModalContext";
-import IconButton from "../shared/ui/inputs/buttons/IconButton";
+import { useModalContext } from "../../../contexts/ModalContext";
+import IconButton from "../../shared/ui/inputs/buttons/IconButton";
 
 const StyledPanel = styled.div`
 	max-width: 512px;
