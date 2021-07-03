@@ -5,6 +5,10 @@ import ExplorePage from '../components/pages/explorer/ExplorePage';
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 
+export interface IPageProps {
+    params: ParamType
+}
+
 interface IRoute {
 	pageId: PageId;
 	name: string;

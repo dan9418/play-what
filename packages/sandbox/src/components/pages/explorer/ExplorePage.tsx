@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Meter from '../../../../../viewers/src/Meter/Meter';
+import { IPageProps } from '../../../contexts/RouteContext';
 import DropdownInput from '../../ui/inputs/DropdownInput';
 import Col from '../../ui/layout/Col';
 import Panel from '../../ui/layout/Panel';
-import { IPageProps } from '../Page';
 import { PodCardList } from './PodCard';
 
 const StyledExplorePage = styled.div`
