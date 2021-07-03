@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import IconButton from "../shared/ui/inputs/buttons/IconButton";
 import SwitchInput from "../shared/ui/inputs/SwitchInput";
 
-const StyledPanelHeader = styled.section`
+const StyledExploreHeader = styled.section`
 	width: 100%;
 	padding: 16px;
 
@@ -127,11 +127,11 @@ const StyledToolbox = styled.div`
 `;
 
 
-const PanelHeader: React.FC<any> = ({ name, caption, preview }) => {
+const ExploreHeader: React.FC<any> = ({ name, caption, preview }) => {
 	const isMobile = useIsMobile();
 
 	return (
-		<StyledPanelHeader $showBorder={false}>
+		<StyledExploreHeader $showBorder={false}>
 			<div className='top-container'>
 				<div className='name-caption--preview'>
 					<div className='name-caption'>
@@ -165,27 +165,8 @@ const PanelHeader: React.FC<any> = ({ name, caption, preview }) => {
 					</div>
 				</StyledToolbox>
 			}
-		</StyledPanelHeader>
+		</StyledExploreHeader>
 	);
 };
 
-const StyledPanel = styled.div`
-    width: 100%;
-	margin: 0 auto;
-	max-width: 1024px;
-    border-radius: 8px;
-`;
-
-
-
-const Panel: React.FC<any> = ({ name, caption, preview, children }) => {
-	return (
-		<StyledPanel>
-			{/* @ts-ignore */}
-			<PanelHeader name={name} preview={preview} caption={caption} />
-			{children}
-		</StyledPanel>
-	);
-};
-
-export default Panel;
+export default ExploreHeader;

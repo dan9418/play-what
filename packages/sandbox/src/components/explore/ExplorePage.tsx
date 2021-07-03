@@ -9,7 +9,7 @@ import Meter from '../../../../viewers/src/Meter/Meter';
 import { IPageProps } from '../../contexts/RouteContext';
 import DropdownInput from '../shared/ui/inputs/DropdownInput';
 import Col from './Col';
-import Panel from './Panel';
+import ExploreHeader from './ExploreHeader';
 import { PodCardList } from './PodCard';
 
 const StyledExplorePage = styled.div`
@@ -111,7 +111,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params: pageParams }) => {
 
 	return (
 		<StyledExplorePage>
-			<Panel name={name} caption={modelConfig.name} preview={preview} />
+			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} />
 			<Col title="Root" subtitle={rootName} modal={rootModal}>
 				<LabelRow label="Model" >Note</LabelRow>
 				<LabelRow label="Preset"  >
