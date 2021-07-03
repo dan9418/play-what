@@ -1,9 +1,9 @@
 import React from "react";
-import styled, { css } from 'styled-components';
-import { useModalContext } from "../../../../contexts/ModalContext";
-import IconButton from "../inputs/buttons/IconButton";
+import styled from 'styled-components';
+import { useModalContext } from "../../contexts/ModalContext";
+import IconButton from "../shared/ui/inputs/buttons/IconButton";
 
-const StyledCol = styled.div`
+const StyledPanel = styled.div`
 	max-width: 512px;
 	width: 100%;
 	margin: auto;
@@ -41,12 +41,12 @@ const StyledCol = styled.div`
 	${({ $isDisabled }) => $isDisabled ? 'opacity: .5; pointer-events: none;' : ''};
 `;
 
-const StyledColBody = styled.div`
+const StyledPanelBody = styled.div`
 	padding: 8px 16px;
 	position: sticky;
 `;
 
-const StyledColHeader = styled.div`
+const StyledPanelHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -77,13 +77,13 @@ const StyledColHeader = styled.div`
 	}
 `;
 
-export const StyledColDivider = styled.div`
+export const StyledPanelDivider = styled.div`
 	${({ $hideTop }) => $hideTop ? '' : 'margin-top: 16px;'}
 	${({ $hideBottom }) => $hideBottom ? '' : 'margin-bottom: 16px;'}
 	border-bottom: 1px solid ${({ theme }) => theme.border};
 `;
 
-interface IColProps {
+interface IPanelProps {
 	title: string;
 	subtitle?: string;
 	modal: any;
@@ -93,13 +93,13 @@ interface IColProps {
 	setIsOpen?: any;
 }
 
-const Col: React.FC<IColProps> = ({ title, subtitle, modal, children = null }) => {
+const Panel: React.FC<IPanelProps> = ({ title, subtitle, modal, children = null }) => {
 
 	const modalContext = useModalContext();
 
 	return (
-		<StyledCol>
-			<StyledColHeader $isCompact={false} className="header">
+		<StyledPanel>
+			<StyledPanelHeader $isCompact={false} className="header">
 				<div className="titles">
 					<h2>
 						{title}
@@ -111,12 +111,12 @@ const Col: React.FC<IColProps> = ({ title, subtitle, modal, children = null }) =
 				<div>
 					<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
 				</div>
-			</StyledColHeader>
-			<StyledColBody $isEnabled={true} $isCompact={false}>
+			</StyledPanelHeader>
+			<StyledPanelBody $isEnabled={true} $isCompact={false}>
 				{children}
-			</StyledColBody>
-		</StyledCol>
+			</StyledPanelBody>
+		</StyledPanel>
 	);
 };
 
-export default Col;
+export default Panel;
