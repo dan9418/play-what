@@ -62,13 +62,14 @@ const DEFAULT_PARAMS = {
 	modelId: ModelId.Chord,
 	presetId: ChordId.Maj7,
 	root: null,
-	data: MODEL_MAP.get(ModelId.Chord).presets[0]
+	matchOctave: false
 }
 
 const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 	const [modelId, _setModelId] = useState(params.modelId);
 	const [presetId, setPresetId] = useState(params.presetId);
 	const [_root, setRoot] = useState(params.root);
+	const [matchOctave, setMatchOctave] = useState(params.matchOctave);
 
 	const setModelId = config => {
 		_setModelId(config.modelId);
@@ -79,32 +80,32 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 	const modelConfig = MODEL_MAP.get(modelId);
 	const presetConfig = modelConfig.presets.find(p => p.id === presetId);
 
-	console.log('PW config', '\presetConfig', presetConfig, '\nmodelConfig', modelConfig);
+	console.log('PW-Config', '\presetConfig', presetConfig, '\nmodelConfig', modelConfig);
 
 	// Data
 	const root = _root || [0, 0];
 	const intervals = modelConfig.isCompound ? presetConfig.value : [presetConfig.value];
 	const notes = root ? PodUtils.addPodList(root, intervals) : intervals;
 
-	console.log('PW data', '\nroot', root, '\nintervals', intervals, '\nnotes', notes);
+	console.log('PW-Data', '\nroot', root, '\nintervals', intervals, '\nnotes', notes);
 
 	// Name
 	const rootName = ModelUtils.getName(ModelId.Note, [root]);
 	const intervalsName = ModelUtils.getName(modelId, intervals);
 	const name = `${rootName} ${intervalsName}`;
 
-	console.log('PW names', '\nroot', rootName, '\nintervals', intervalsName);
+	console.log('PW-Name', '\nroot', rootName, '\nintervals', intervalsName);
 
 	// Preview
 	const intervalsPreview = ModelUtils.getPreview(intervals, { podType: ModelId.Interval });
 	const notesPreview = ModelUtils.getPreview(notes, { podType: ModelId.Note });
 	const preview = `${rootName} + ${intervalsPreview} = ${notesPreview}`;
 
-	console.log('PW previews', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
+	console.log('PW-Preview', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
 
 	return (
 		<StyledExplorePage>
-			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} />
+			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} matchOctave={matchOctave} setMatchOctave={setMatchOctave} />
 			<StyledExplorePanelGrid>
 				<RootPanel preview={rootName} root={root} setRoot={setRoot} />
 				<IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />

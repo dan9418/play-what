@@ -78,7 +78,7 @@ const StyledExploreHeader = styled.section`
 	}
 `;
 
-const ExploreHeader: React.FC<any> = ({ name, caption, preview }) => {
+const ExploreHeader: React.FC<any> = ({ name, caption, preview, matchOctave, setMatchOctave }) => {
 	const isMobile = useIsMobile();
 
 	return (
@@ -91,9 +91,9 @@ const ExploreHeader: React.FC<any> = ({ name, caption, preview }) => {
 					</div>
 					<div className='preview'>{preview}</div>
 				</div>
-				{!isMobile && <Toolbox />}
+				{!isMobile && <Toolbox matchOctave={matchOctave} setMatchOctave={setMatchOctave} />}
 			</div>
-			{isMobile && <Toolbox />}
+			{isMobile && <Toolbox matchOctave={matchOctave} setMatchOctave={setMatchOctave} />}
 		</StyledExploreHeader>
 	);
 };
