@@ -11,7 +11,7 @@ const StyledPodCard = styled.div`
     .name {
         font-weight: bold;
     }
-    .numberic {
+    .numeric {
         color: gray;
     }
 `;
