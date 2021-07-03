@@ -3,6 +3,7 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../core/src/models/Model.utils';
+import { ChordId } from '../../../../core/src/models/PodList/Chord/Chord.constants';
 import { IPageProps } from '../../contexts/RouteContext';
 import ExploreHeader from './ExploreHeader';
 import IntervalsPanel from './panels/IntervalsPanel';
@@ -59,37 +60,36 @@ const StyledExplorePanelGrid = styled.div`
 
 const DEFAULT_PARAMS = {
 	modelId: ModelId.Chord,
+	presetId: ChordId.Maj7,
 	root: null,
 	data: MODEL_MAP.get(ModelId.Chord).presets[0]
 }
 
 const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 	const [modelId, _setModelId] = useState(params.modelId);
-	const [root, setRoot] = useState(params.root);
-	const [data, setData] = useState(params.data);
+	const [presetId, setPresetId] = useState(params.presetId);
+	const [_root, setRoot] = useState(params.root);
 
 	const setModelId = config => {
 		_setModelId(config.modelId);
-		setData(config.presets[0]);
+		setPresetId(config.presets[0].id);
 	}
 
-	if (!data) return <div>Loading...</div>;
-
+	// Config
 	const modelConfig = MODEL_MAP.get(modelId);
+	const presetConfig = modelConfig.presets.find(p => p.id === presetId);
 
-	console.log('PW init', '\ndata', data, '\nmodelConfig', modelConfig);
+	console.log('PW config', '\presetConfig', presetConfig, '\nmodelConfig', modelConfig);
 
 	// Data
-	const rootValue = root || [0, 0];
-	const intervals = modelConfig.isCompound ? data.value : [data.value];
+	const root = _root || [0, 0];
+	const intervals = modelConfig.isCompound ? presetConfig.value : [presetConfig.value];
 	const notes = root ? PodUtils.addPodList(root, intervals) : intervals;
 
-	console.log('PW data', '\nroot', rootValue, '\nintervals', intervals, '\nnotes', notes);
-
-	// return <pre>{JSON.stringify(data, null, '  ')}</pre>;
+	console.log('PW data', '\nroot', root, '\nintervals', intervals, '\nnotes', notes);
 
 	// Name
-	const rootName = ModelUtils.getName(ModelId.Note, [rootValue]);
+	const rootName = ModelUtils.getName(ModelId.Note, [root]);
 	const intervalsName = ModelUtils.getName(modelId, intervals);
 	const name = `${rootName} ${intervalsName}`;
 
@@ -106,9 +106,9 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 		<StyledExplorePage>
 			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} />
 			<StyledExplorePanelGrid>
-				<RootPanel rootName={rootName} rootValue={rootValue} setRoot={setRoot} />
-				<IntervalsPanel intervalsPreview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} data={data} setData={setData} intervals={intervals} />
-				<NotesPanel rootValue={rootValue} notes={notes} notesPreview={notesPreview} />
+				<RootPanel preview={rootName} root={root} setRoot={setRoot} />
+				<IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />
+				<NotesPanel preview={notesPreview} root={root} notes={notes} />
 				<ViewerPanel modelId={modelId} notes={notes} />
 			</StyledExplorePanelGrid>
 		</StyledExplorePage>

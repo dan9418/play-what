@@ -6,16 +6,16 @@ import LabelRow from '../LabelRow';
 import { PodCardList } from '../PodCard';
 import Panel from './Panel';
 
-const RootPanel: React.FC<any> = ({ rootName, rootValue, setRoot }) => {
+const RootPanel: React.FC<any> = ({ preview, root, setRoot }) => {
     const rootModal = <h2>Edit Root</h2>;
 
     return (
-        <Panel title="Root" subtitle={rootName} modal={rootModal}>
+        <Panel title="Root" subtitle={preview} modal={rootModal}>
             <LabelRow label="Model" >Note</LabelRow>
             <LabelRow label="Preset"  >
-                <DropdownInput value={rootValue} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
+                <DropdownInput value={root} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
             </LabelRow>
-            <PodCardList podType={ModelId.Note} pods={[rootValue]} />
+            <PodCardList podType={ModelId.Note} pods={[root]} />
         </Panel>
     );
 };
