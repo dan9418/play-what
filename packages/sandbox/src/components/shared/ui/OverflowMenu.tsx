@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import IconButton from '../inputs/buttons/IconButton';
+import IconButton from './inputs/buttons/IconButton';
 
 const StyledWrapper = styled.div`
 	position: relative;

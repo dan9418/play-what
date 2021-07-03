@@ -1,7 +1,7 @@
 
 import React from "react";
-import AboutPage from '../components/pages/about/AboutPage';
-import ExplorePage from '../components/pages/explorer/ExplorePage';
+import AboutPage from '../components/about/AboutPage';
+import ExplorePage from '../components/explorer/ExplorePage';
 
 export type ParamType = { [x: string]: any/*string | number*/ };
 

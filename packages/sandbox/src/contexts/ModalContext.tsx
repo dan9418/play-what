@@ -1,7 +1,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import IconButton from "../components/ui/inputs/buttons/IconButton";
+import IconButton from "../components/shared/ui/inputs/buttons/IconButton";
 
 const ModalContext = React.createContext(null);
 

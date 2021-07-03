@@ -1,6 +1,6 @@
 import React from "react";
-import { usePathNavContext } from '../../../../contexts/PathNavContext';
-import THEME from '../../../../styles/theme';
+import { usePathNavContext } from '../../../../../contexts/PathNavContext';
+import THEME from '../../../../../styles/theme';
 import IconButton from './IconButton';
 
 interface IZoomButtonProps {

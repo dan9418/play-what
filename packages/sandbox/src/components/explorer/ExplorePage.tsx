@@ -3,13 +3,13 @@ import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import styled from 'styled-components';
-import ModelUtils from '../../../../../core/src/models/Model.utils';
-import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
-import Meter from '../../../../../viewers/src/Meter/Meter';
-import { IPageProps } from '../../../contexts/RouteContext';
-import DropdownInput from '../../ui/inputs/DropdownInput';
-import Col from '../../ui/layout/Col';
-import Panel from '../../ui/layout/Panel';
+import ModelUtils from '../../../../core/src/models/Model.utils';
+import Fretboard from '../../../../viewers/src/Fretboard/Fretboard';
+import Meter from '../../../../viewers/src/Meter/Meter';
+import { IPageProps } from '../../contexts/RouteContext';
+import DropdownInput from '../shared/ui/inputs/DropdownInput';
+import Col from '../shared/ui/layout/Col';
+import Panel from '../shared/ui/layout/Panel';
 import { PodCardList } from './PodCard';
 
 const StyledExplorePage = styled.div`

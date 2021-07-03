@@ -8,7 +8,7 @@ import { RouteContextProvider } from '../contexts/RouteContext';
 import THEME from '../styles/theme';
 import Main from './pages/Main';
 import Nav from './pages/Nav';
-import ErrorBoundary from './utils/ErrorBoundary';
+import ErrorBoundary from './shared/utils/ErrorBoundary';
 
 const App = () => {
 	return (

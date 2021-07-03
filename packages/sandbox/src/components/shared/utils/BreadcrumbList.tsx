@@ -1,6 +1,6 @@
-import Icon from "@pw/sandbox/src/components/ui/Icon";
-import IconButton from "@pw/sandbox/src/components/ui/inputs/buttons/IconButton";
-import OverflowMenu from "@pw/sandbox/src/components/ui/layout/OverflowMenu";
+import Icon from "@pw/sandbox/src/components/shared/ui/Icon";
+import IconButton from "@pw/sandbox/src/components/shared/ui/inputs/buttons/IconButton";
+import OverflowMenu from "@pw/sandbox/src/components/shared/ui/OverflowMenu";
 import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
 import THEME from "@pw/sandbox/src/styles/theme";
 import React from "react";
