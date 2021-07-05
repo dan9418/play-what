@@ -16,7 +16,6 @@ const StyledDot = styled.div`
 			background-color: #eee;
 		}
 	 `};
-	opacity: ${({ $isDimmed }) => $isDimmed ? .4 : .9};
 
 	height: 32px;
 	width: 100%;
@@ -78,22 +77,20 @@ const StyledMeter = styled.div`
 `;
 
 interface IMeterProps {
-	modelRoot: IPod;
-	modelValue: IPod[];
+	root: IPod;
+	notes: IPod[];
 	range?: number[];
 	matchOctave?: boolean;
 	hoveredIndex?: number | null;
 	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range = [0, 12], matchOctave = false, hoveredIndex = null, setHoveredIndex = 0 }) => {
+const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12], matchOctave = false}) => {
 	const list = [];
-
-	const root = null;
 
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const podProps = ModelUtils.getPodProps(modelValue, i);
+		const podProps = ModelUtils.getPodProps(notes, i);
 
 		const hasDegree = podProps !== null;
 
@@ -103,8 +100,6 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 		const indexPod: IPod = [i, 0];
 		const pitchClass = PodUtils.getPitchClass(indexPod);
 
-		const onMouseEnter = null; //() => setHoveredIndex(i)
-		const onMouseLeave = null; //() => setHoveredIndex(null);
 		let name = null;
 		if (hasDegree) {
 			name = podProps.label;
@@ -123,9 +118,6 @@ const DotList: React.FC<IMeterProps> = ({ modelValue, modelRoot = [0, 0], range 
 				$color={color}
 				$fgColor={fgColor}
 				key={i}
-				$isDimmed={hoveredIndex !== null && hoveredIndex !== i}
-				onMouseEnter={onMouseEnter}
-				onMouseLeave={onMouseLeave}
 			>
 				{/*<span className="note">{hasDegree && podProps.label}</span>*/}
 				{name && <span className="interval">{name}</span>}
