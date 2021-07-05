@@ -11,12 +11,10 @@ const IntervalsPanel: React.FC<any> = ({ preview, modelConfig, setModelId, prese
 
     return (
         <Panel name="Intervals" preview={preview} modal={intervalsModal}>
-            <LabelRow label="Model">
-                <DropdownInput value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />
-            </LabelRow>
-            <LabelRow label="Preset">
-                <DropdownInput value={presetConfig} setValue={config => setPresetId(config.id)} options={modelConfig.presets} />
-            </LabelRow>
+            <LabelRow labels={[
+                <DropdownInput key="1" value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />,
+                <DropdownInput key="2" value={presetConfig} setValue={config => setPresetId(config.id)} options={modelConfig.presets} />
+            ]} />
             <PodCardList podType={ModelId.Interval} pods={intervals} />
         </Panel>
     );
