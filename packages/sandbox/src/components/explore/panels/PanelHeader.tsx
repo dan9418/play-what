@@ -9,8 +9,7 @@ const StyledPanelHeader = styled.div`
 	justify-content: space-between;
 	//background-color: #e5e8e8;
 	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
-	height: 64px;
-	padding: 0 16px;
+	padding: 8px 16px;
 
     border-top: 1px solid ${({ theme }) => theme.border};
 	border-bottom: 1px solid ${({ theme }) => theme.border};
@@ -29,6 +28,8 @@ const StyledPanelHeader = styled.div`
 	> div {
 		display: flex;
 		&.name-preview {
+			width: 100%;
+			padding-right: 16px;
 			flex-direction: column;
 			.preview {
 				color: ${({ theme }) => theme.accent};
@@ -40,30 +41,31 @@ const StyledPanelHeader = styled.div`
 `;
 
 interface IPanelHeaderProps {
-    name: string;
-    preview?: string;
-    modal: any;
+	name: string;
+	preview?: string;
+	modal: any;
 }
 
-const PanelHeader: React.FC<IPanelHeaderProps> = ({ name, preview, modal }) => {
+const PanelHeader: React.FC<IPanelHeaderProps> = ({ name, preview, modal, children }) => {
 
-    const modalContext = useModalContext();
+	const modalContext = useModalContext();
 
-    return (
-        <StyledPanelHeader className="panel-header">
-            <div className="name-preview">
-                <h2 className="name">
-                    {name}
-                </h2>
-                <h3 className="preview">
-                    {preview}
-                </h3>
-            </div>
-            <div>
-                <IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
-            </div>
-        </StyledPanelHeader>
-    );
+	return (
+		<StyledPanelHeader className="panel-header">
+			<div className="name-preview">
+				<h2 className="name">
+					{name}
+				</h2>
+				<h3 className="preview">
+					{preview}
+				</h3>
+				{children}
+			</div>
+			<div>
+				<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
+			</div>
+		</StyledPanelHeader>
+	);
 };
 
 export default PanelHeader;

@@ -52,10 +52,6 @@ const StyledExplorePanelGrid = styled.div`
 			border-right: 1px solid ${({ theme }) => theme.border};
 		}
 	}
-
-	.dot-list {
-		margin: 16px 0;
-	}
 `;
 
 const DEFAULT_PARAMS = {

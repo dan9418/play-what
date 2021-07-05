@@ -17,26 +17,23 @@ const StyledDot = styled.div`
 		}
 	 `};
 
-	height: 32px;
+	height: 16px;
 	width: 100%;
+	max-width: 16px;
 	border: 1px solid black;
 	:not(:last-child){
 		border-right: 0;
 	}
-	//border-radius: 2px;
-	padding: 2px;
-	//margin: 0 2px;
-	font-size: 80%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
 	:last-child {
 		border-radius: 0 4px 4px 0;
 	}
 	:first-child {
 		border-radius: 4px 0 0 4px;
 	}
+	font-size: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	position: relative;
 	${({ $fgColor }) => $fgColor ? `color: ${$fgColor}` : ''};
@@ -69,6 +66,7 @@ const StyledMeter = styled.div`
 	justify-content: space-between;
 
 	.dot-list {
+		margin: 16px 0 8px 0;
 		width: 100%;
 		display: flex;
 		align-items: center;
@@ -120,10 +118,10 @@ const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12],
 				key={i}
 			>
 				{/*<span className="note">{hasDegree && podProps.label}</span>*/}
-				{name && <span className="interval">{name}</span>}
-				{isOctave ? <span className="octave">{octave}</span> : null}
-				{isRoot ? <span className="label">R</span> : null}
-				{!isRoot && isMiddleC ? <span className="label">C</span> : null}
+				{/*name && <span className="interval">{name}</span>*/}
+				{/*isOctave ? <span className="octave">{octave}</span> : null*/}
+				{/*isRoot ? <span className="label">R</span> : null*/}
+				{/*!isRoot && isMiddleC ? <span className="label">C</span> : null*/}
 			</StyledDot>
 		);
 	}

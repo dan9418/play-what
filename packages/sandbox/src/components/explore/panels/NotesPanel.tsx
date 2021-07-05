@@ -34,8 +34,8 @@ const NotesPanel: React.FC<INotesPanelProps> = ({ root, notes, preview }) => {
     const notesModal = <h2>Edit Notes</h2>;
 
     return (
-        <Panel name="Notes" preview={preview} modal={notesModal}>
-            <Meter root={root} notes={notes} range={deviceRange} />
+        <Panel name="Notes" preview={preview} modal={notesModal} headerChildren={<Meter root={root} notes={notes} range={deviceRange} />}>
+            stuff here
         </Panel>
     );
 };
