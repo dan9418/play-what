@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { IPod } from "../../../../../core/src/models/Model.constants";
+import { IPod, ModelId } from "../../../../../core/src/models/Model.constants";
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { useIsDesktop, useIsTablet } from "../../../hooks/useWindowSize";
+import { PodCardList } from '../PodCard';
 import Panel from './Panel';
+
 
 interface INotesPanelProps {
     root: IPod;
@@ -34,8 +36,9 @@ const NotesPanel: React.FC<INotesPanelProps> = ({ root, notes, preview }) => {
     const notesModal = <h2>Edit Notes</h2>;
 
     return (
-        <Panel name="Notes" preview={preview} modal={notesModal} headerChildren={<Meter root={root} notes={notes} range={deviceRange} />}>
-            stuff here
+        <Panel name="Notes" preview={preview} modal={notesModal}>
+            <PodCardList podType={ModelId.Note} pods={notes} />
+            <Meter root={root} notes={notes} range={deviceRange} />
         </Panel>
     );
 };

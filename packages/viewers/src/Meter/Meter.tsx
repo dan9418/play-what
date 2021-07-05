@@ -19,7 +19,6 @@ const StyledDot = styled.div`
 
 	height: 16px;
 	width: 100%;
-	max-width: 16px;
 	border: 1px solid black;
 	:not(:last-child){
 		border-right: 0;
@@ -66,7 +65,7 @@ const StyledMeter = styled.div`
 	justify-content: space-between;
 
 	.dot-list {
-		margin: 16px 0 8px 0;
+		margin: 8px 0;
 		width: 100%;
 		display: flex;
 		align-items: center;

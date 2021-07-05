@@ -21,7 +21,7 @@ interface IPanelProps {
 	name: string;
 	preview?: string;
 	modal: any;
-	headerChildren: any;
+	headerChildren?: any;
 	children: any;
 }
 

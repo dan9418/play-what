@@ -8,7 +8,7 @@ const StyledExploreHeader = styled.section`
 	padding: 16px;
 
 	background: #ECEFEF;
-	border-bottom: 1px solid ${({ theme }) => theme.border};
+	//border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	@media(min-width: ${1024 + 16}px) {
 		padding: 16px 0;
