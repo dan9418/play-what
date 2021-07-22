@@ -1,5 +1,5 @@
-import { NoteId } from "@pw/core/src/models/Pod/Note/Note.constants";
-import { ChordId } from "@pw/core/src/models/PodList/Chord/Chord.constants";
+import { NoteId } from "../models/Pod/Note/Note.constants";
+import { ChordId } from "../models/PodList/Chord/Chord.constants";
 
 type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];
 
@@ -273,8 +273,6 @@ export const SO_WHAT_CONFIG: IChartConfig = {
     ]
 }
 
-
-
 export const ON_GREEN_DOLPIN_STREET_CONFIG: IChartConfig = {
     name: 'On Green Dolphin Street',
     sections: [
@@ -399,8 +397,6 @@ export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
     ]
 }
 
-
-
 export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
     name: 'All The Things You Are',
     sections: [
@@ -460,8 +456,6 @@ export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
         }
     ]
 }
-
-
 
 export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
     name: 'Stella By Starlight',
