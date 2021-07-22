@@ -2,7 +2,7 @@
     "typescript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDragAndDrop": false,
     "javascript.updateImportsOnFileMove.enabled": "always",
-    "workbench.colorTheme": "GitHub Light",
+    "workbench.colorTheme": "Monokai Dimmed",
     "typescript.suggest.enabled": true,
     "typescript.suggest.includeAutomaticOptionalChainCompletions": false,
     "editor.autoClosingOvertype": "never",
