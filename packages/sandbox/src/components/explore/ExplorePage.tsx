@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import ModelUtils from '../../../../core/src/models/Model.utils';
 import { ChordId } from '../../../../core/src/models/PodList/Chord/Chord.constants';
 import { IPageProps } from '../../contexts/RouteContext';
+import ExploreNav from '../shared/core/ExploreNav';
 import ExploreHeader from './ExploreHeader';
 import IntervalsPanel from './panels/IntervalsPanel';
 import NotesPanel from './panels/NotesPanel';
@@ -100,6 +101,8 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 	console.log('PW-Preview', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
 
 	return (
+		<>
+		<ExploreNav />
 		<StyledExplorePage>
 			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} matchOctave={matchOctave} setMatchOctave={setMatchOctave} />
 			<StyledExplorePanelGrid>
@@ -109,6 +112,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 				<ViewerPanel modelId={modelId} notes={notes} />
 			</StyledExplorePanelGrid>
 		</StyledExplorePage>
+		</>
 	);
 };
 

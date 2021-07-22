@@ -4,7 +4,7 @@ import { PathNavContextProvider } from '../../../contexts/PathNavContext';
 import { RouteContextConsumer } from '../../../contexts/RouteContext';
 
 const StyledMain = styled.main`
-	padding: 32px 0px;
+	padding: 64px 0px;
 	margin: auto;
 	width: 100%;
 	max-width: 1024px;
@@ -21,7 +21,7 @@ const StyledMain = styled.main`
 	}
 `;
 
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <StyledMain>
       {/*<div className="gutter" />*/}

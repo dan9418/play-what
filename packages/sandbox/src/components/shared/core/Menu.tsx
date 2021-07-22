@@ -11,7 +11,7 @@ const StyledMenu = styled.div`
 
     position: fixed;
     z-index: 1999;
-    top: 32px;
+    top: 64px;
     bottom: 0;
     right: 0;
 

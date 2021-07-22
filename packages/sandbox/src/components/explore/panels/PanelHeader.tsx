@@ -15,7 +15,7 @@ const StyledPanelHeader = styled.div`
 	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	position: sticky;
-	top: 32px;
+	top: 64px;
 
 	@media(max-width: 1024px) {
 		border-left: none !important;

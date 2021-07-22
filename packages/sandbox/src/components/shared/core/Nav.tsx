@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../../contexts/RouteContext';
-import Icon from '../ui/Icon';
 import Menu from './Menu';
 
 interface INavLink {
@@ -65,27 +64,6 @@ const StyledNav = styled.nav`
 				color: ${({ theme }) => theme.active};
 			}
 		}
-
-		.menu {
-			svg, svg * {
-				fill: white;
-			}
-			color: white;
-			appearance: none;
-			background-color: transparent;
-			border: none;
-			cursor: pointer;
-			height: 100%;
-
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			padding: 0 8px;
-
-			&:hover {
-				background-color: rgba(255, 255, 255, .25);
-			}
-		}
 		
 		.link-list {
 			display: flex;
@@ -141,9 +119,6 @@ const Nav: React.FC = () => {
 							</li>
 						))}
 					</ul>
-					<button type="button" className="menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-						<Icon iconId="menu" />
-					</button>
 				</div>
 			</StyledNav>
 			{isMenuOpen && <Menu />}

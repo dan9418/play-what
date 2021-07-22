@@ -23,7 +23,7 @@ const StyledModal = styled.div`
 		margin: 8px;
 		height: 90%;
 		width: 90%;
-		margin-top: 32px;
+		margin-top: 64px;
 		position: relative;
 		max-width: 512px;
 		padding: 16px;
