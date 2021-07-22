@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PageId, useRouteContext } from '../../../contexts/RouteContext';
+import Icon from '../ui/Icon';
+import Menu from './Menu';
 
 interface INavLink {
 	text: string;
@@ -40,7 +42,7 @@ const StyledNav = styled.nav`
 	> div {
 		height: 100%;
 		width: 100%;
-		max-width: 1024px;
+		// max-width: 1024px;
 		margin: auto;
 		display: flex;
 		align-items: center;
@@ -61,6 +63,27 @@ const StyledNav = styled.nav`
 
 			&:hover {
 				color: ${({ theme }) => theme.active};
+			}
+		}
+
+		.menu {
+			svg, svg * {
+				fill: white;
+			}
+			color: white;
+			appearance: none;
+			background-color: transparent;
+			border: none;
+			cursor: pointer;
+			height: 100%;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 8px;
+
+			&:hover {
+				background-color: rgba(255, 255, 255, .25);
 			}
 		}
 		
@@ -97,27 +120,34 @@ const StyledNav = styled.nav`
 
 const Nav: React.FC = () => {
 	const routeContext = useRouteContext();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
-		<StyledNav>
-			<div>
-				<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.Home)}>
-					Play <em><b>What?</b></em>
-				</button>
-				<ul className="link-list">
-					{NAV_LINKS.map((l, i) => (
-						<li key={i}>
-							{
-								l.href ?
-									<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
-									:
-									<button type="button" onClick={() => routeContext.setPage(l.pageId)}>{l.text}</button>
-							}
-						</li>
-					))}
-				</ul>
-			</div>
-		</StyledNav>
+		<>
+			<StyledNav>
+				<div>
+					<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.Home)}>
+						Play <em><b>What?</b></em>
+					</button>
+					<ul className="link-list">
+						{NAV_LINKS.map((l, i) => (
+							<li key={i}>
+								{
+									l.href ?
+										<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
+										:
+										<button type="button" onClick={() => routeContext.setPage(l.pageId)}>{l.text}</button>
+								}
+							</li>
+						))}
+					</ul>
+					<button type="button" className="menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+						<Icon iconId="menu" />
+					</button>
+				</div>
+			</StyledNav>
+			{isMenuOpen && <Menu />}
+		</>
 	);
 };
 
