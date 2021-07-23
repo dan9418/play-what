@@ -7,10 +7,6 @@ import { NOTE_PRESET_MAP } from '../../../../core/src/models/Pod/Note/Note.const
 import { ChordId } from '../../../../core/src/models/PodList/Chord/Chord.constants';
 import { IPageProps } from '../../contexts/RouteContext';
 import ExploreNav from '../shared/core/ExploreNav';
-import ExploreHeader from './ExploreHeader';
-import IntervalsPanel from './panels/IntervalsPanel';
-import NotesPanel from './panels/NotesPanel';
-import RootPanel from './panels/RootPanel';
 import ViewerPanel from './panels/ViewerPanel';
 
 const StyledExplorePage = styled.div`
@@ -107,17 +103,21 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 
 	console.log('PW-Preview', '\nintervals', intervalsPreview, '\nnotes', notesPreview);
 
+	const navConfig = {
+		name,
+		caption: modelConfig.name,
+		preview,
+		rootPreview: rootName,
+		intervalsPreview,
+		notesPreview,
+		viewerPreview: 'Fretboard'
+	}
+
 	return (
 		<>
-			<ExploreNav setExploreState={setExploreState} />
+			<ExploreNav setExploreState={setExploreState} navConfig={navConfig} />
 			<StyledExplorePage>
-				<ExploreHeader name={name} caption={modelConfig.name} preview={preview} matchOctave={matchOctave} setMatchOctave={setMatchOctave} />
-				<StyledExplorePanelGrid>
-					<RootPanel preview={rootName} root={root} setRoot={setRoot} />
-					<IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />
-					<NotesPanel preview={notesPreview} root={root} notes={notes} />
-					<ViewerPanel modelId={modelId} notes={notes} />
-				</StyledExplorePanelGrid>
+				<ViewerPanel modelId={modelId} notes={notes} />
 			</StyledExplorePage>
 		</>
 	);

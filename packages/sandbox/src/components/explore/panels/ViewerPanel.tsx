@@ -1,6 +1,12 @@
 import React from "react";
 import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
 import Panel from './Panel';
+import styled from 'styled-components';
+
+const StyledViewerWrapper = styled.div`
+    width: 100%;
+    padding: 16px;
+`;
 
 const ViewerPanel: React.FC<any> = ({ modelId, notes }) => {
 
@@ -9,12 +15,11 @@ const ViewerPanel: React.FC<any> = ({ modelId, notes }) => {
         modelValue: notes
     }
 
-    const viewerModal = <h2>Edit Viewer</h2>;
 
     return (
-        <Panel name="Viewer" preview="Fretboard" modal={viewerModal}>
+        <StyledViewerWrapper>
             <Fretboard labelProps={labelProps} />
-        </Panel>
+        </StyledViewerWrapper>
     );
 };
 
