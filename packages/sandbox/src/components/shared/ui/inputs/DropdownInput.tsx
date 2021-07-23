@@ -9,6 +9,7 @@ const StyledDropdownInput = styled.select`
     cursor: pointer;
     border: 1px solid #aaa;
     border-radius: 4px;
+	background-color: #ddd;
     border: none;
 
 	> option {

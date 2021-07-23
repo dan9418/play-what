@@ -7,6 +7,7 @@ import { NOTE_PRESET_MAP } from '../../../../core/src/models/Pod/Note/Note.const
 import { ChordId } from '../../../../core/src/models/PodList/Chord/Chord.constants';
 import { IPageProps } from '../../contexts/RouteContext';
 import ExploreNav from '../shared/core/ExploreNav';
+import IntervalsPanel from './panels/IntervalsPanel';
 import RootPanel from './panels/RootPanel';
 import ViewerPanel from './panels/ViewerPanel';
 
@@ -108,8 +109,14 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 		title: 'Edit Root',
 		content: <RootPanel preview={rootName} root={root} setRoot={setRoot} />
 	};
-	const intervalsModal = null;
-	const viewerModal = null;
+	const intervalsModal = {
+		title: 'Edit Intervals',
+		content: <IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />
+	};
+	const viewerModal = {
+		title: 'Edit Viewer',
+		content: 'Coming Soon!'
+	};
 
 	const navConfig = {
 		name,

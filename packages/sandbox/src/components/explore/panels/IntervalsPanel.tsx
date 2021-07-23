@@ -7,16 +7,14 @@ import { PodCardList } from '../PodCard';
 
 const IntervalsPanel: React.FC<any> = ({ preview, modelConfig, setModelId, presetConfig, setPresetId, intervals }) => {
 
-    const intervalsModal = <h2>Edit Intervals</h2>;
-
     return (
-        <Panel name="Intervals" preview={preview} modal={intervalsModal}>
+        <>
             <LabelRow labels={[
                 <DropdownInput key="1" value={modelConfig} setValue={setModelId} options={MODEL_VALUES.filter(c => c.modelId !== ModelId.Note)} idProperty="modelId" displayProperty="name" />,
                 <DropdownInput key="2" value={presetConfig} setValue={config => setPresetId(config.id)} options={modelConfig.presets} />
             ]} />
             <PodCardList podType={ModelId.Interval} pods={intervals} />
-        </Panel>
+        </>
     );
 };
 
