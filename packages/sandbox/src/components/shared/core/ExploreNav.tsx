@@ -106,9 +106,9 @@ const ExploreNav: React.FC<any> = ({ setExploreState, navConfig }) => {
 						<div className="preview">{navConfig.notesPreview}</div>
 					</StyledModel>
 					<StyledSeparator />
-					<QuickLink name="Root" preview={navConfig.rootPreview} />
-					<QuickLink name="Intervals" preview={navConfig.intervalsPreview} />
-					<QuickLink name="Viewer" preview={navConfig.viewerPreview} />
+					<QuickLink name="Root" preview={navConfig.rootPreview} modal={navConfig.rootModal} />
+					<QuickLink name="Intervals" preview={navConfig.intervalsPreview} modal={navConfig.intervalsModal} />
+					<QuickLink name="Viewer" preview={navConfig.viewerPreview} modal={navConfig.viewerModal} />
 				</div>
 				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
 					<Icon iconId="menu" size={32} />

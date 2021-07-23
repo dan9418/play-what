@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import IconButton from "../components/shared/ui/inputs/buttons/IconButton";
 
@@ -17,22 +17,33 @@ const StyledModal = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	> div {
+	.container {
 		background: white;
 		border-radius: 8px;
-		margin: 8px;
-		height: 90%;
+
+		position: fixed;
+		top: 112px;
+		bottom: 32px;
 		width: 90%;
-		margin-top: 64px;
-		position: relative;
 		max-width: 512px;
+
+		position: relative;
 		padding: 16px;
+	}
+
+	.header {
+		border-bottom: 1px solid ${({ theme }) => theme.border};
+		padding-bottom: 8px;
 
 		> button {
 			position: absolute;
 			right: 8px;
 			top: 8px;
 		}
+	}
+
+	.body {
+		padding-top: 8px;
 	}
 `;
 
@@ -50,7 +61,19 @@ export const ModalContextProvider: React.FC = ({ children }) => {
 	return (
 		<ModalContext.Provider value={modalContext}>
 			{children}
-			{modalContent && <StyledModal onClick={closeModal}><div><IconButton iconId="close" onClick={closeModal} />{modalContent}</div></StyledModal>}
+			{modalContent && (
+				<StyledModal>
+					<div className="container">
+						<div className="header">
+							<h2>{modalContent.title}</h2>
+							<IconButton iconId="close" onClick={closeModal} />
+						</div>
+						<div className="body">
+							{modalContent.content}
+						</div>
+					</div>
+				</StyledModal>
+			)}
 		</ModalContext.Provider>
 	);
 };

@@ -10,13 +10,13 @@ const RootPanel: React.FC<any> = ({ preview, root, setRoot }) => {
     const rootModal = <h2>Edit Root</h2>;
 
     return (
-        <Panel name="Root" preview={preview} modal={rootModal}>
+        <>
             <LabelRow labels={[
                 'Note',
                 <DropdownInput key="2" value={root} setValue={config => setRoot(config.value)} options={NOTE_PRESETS} displayProperty="name" />
             ]} />
             <PodCardList podType={ModelId.Note} pods={[root]} />
-        </Panel>
+        </>
     );
 };
 
