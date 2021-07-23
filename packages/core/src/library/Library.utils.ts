@@ -13,7 +13,8 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
             chordItems.push({
                 itemType: FolderItemType.Item,
                 name: root + ' ' + intervals,
-                value: intervals
+                rootId: root,
+                presetId: intervals
             });
         }
         sectionItems.push({

@@ -5,8 +5,7 @@ import Menu from './Menu';
 
 
 const StyledExploreNav = styled.nav`
-    height: 32px;
-	padding: 0 16px;
+    height: 64px;
 
     position: fixed;
     top: 32px;
@@ -15,11 +14,11 @@ const StyledExploreNav = styled.nav`
     z-index: 2000;
 
 	color: white;
-	background-color: ${({ theme }) => theme.medium};
+	background-color: ${({ theme }) => theme.primaryLight};
 
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-end;
 
 	.menu {
 		svg, svg * {
@@ -30,7 +29,8 @@ const StyledExploreNav = styled.nav`
 		background-color: transparent;
 		border: none;
 		cursor: pointer;
-		height: 100%;
+		height: 64px;
+		width: 64px;
 
 		display: flex;
 		align-items: center;
@@ -42,20 +42,29 @@ const StyledExploreNav = styled.nav`
 		}
 	}
 
+	.menu.open {
+		svg, svg * {
+			fill: black;
+		}
+		background-color: ${({ theme }) => theme.card};
+		&:hover {
+			background-color: rgba(255, 255, 255, .25);
+		}
+	}
+
 `;
 
-const ExploreNav: React.FC = () => {
+const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	return (
 		<>
 			<StyledExploreNav>
-				Explore
-				<button type="button" className="menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-					<Icon iconId="menu" />
+				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+					<Icon iconId="menu" size={32} />
 				</button>
 			</StyledExploreNav>
-			{isMenuOpen && <Menu />}
+			{isMenuOpen && <Menu closeMenu={() => setIsMenuOpen(false)} setExploreState={setExploreState} />}
 		</>
 	);
 };

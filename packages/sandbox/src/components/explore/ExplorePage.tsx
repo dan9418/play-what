@@ -3,6 +3,7 @@ import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React, { useState } from "react";
 import styled from 'styled-components';
 import ModelUtils from '../../../../core/src/models/Model.utils';
+import { NOTE_PRESET_MAP } from '../../../../core/src/models/Pod/Note/Note.constants';
 import { ChordId } from '../../../../core/src/models/PodList/Chord/Chord.constants';
 import { IPageProps } from '../../contexts/RouteContext';
 import ExploreNav from '../shared/core/ExploreNav';
@@ -73,11 +74,17 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 		setPresetId(config.presets[0].id);
 	}
 
+	const setExploreState = config => {
+		_setModelId(ModelId.Chord);
+		setRoot(NOTE_PRESET_MAP.get(config.root).value);
+		setPresetId(config.presetId);
+	}
+
 	// Config
 	const modelConfig = MODEL_MAP.get(modelId);
 	const presetConfig = modelConfig.presets.find(p => p.id === presetId);
 
-	console.log('PW-Config', '\presetConfig', presetConfig, '\nmodelConfig', modelConfig);
+	console.log('PW-Config', '\npresetConfig', presetConfig, '\nmodelConfig', modelConfig);
 
 	// Data
 	const root = _root || [0, 0];
@@ -102,16 +109,16 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 
 	return (
 		<>
-		<ExploreNav />
-		<StyledExplorePage>
-			<ExploreHeader name={name} caption={modelConfig.name} preview={preview} matchOctave={matchOctave} setMatchOctave={setMatchOctave} />
-			<StyledExplorePanelGrid>
-				<RootPanel preview={rootName} root={root} setRoot={setRoot} />
-				<IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />
-				<NotesPanel preview={notesPreview} root={root} notes={notes} />
-				<ViewerPanel modelId={modelId} notes={notes} />
-			</StyledExplorePanelGrid>
-		</StyledExplorePage>
+			<ExploreNav setExploreState={setExploreState} />
+			<StyledExplorePage>
+				<ExploreHeader name={name} caption={modelConfig.name} preview={preview} matchOctave={matchOctave} setMatchOctave={setMatchOctave} />
+				<StyledExplorePanelGrid>
+					<RootPanel preview={rootName} root={root} setRoot={setRoot} />
+					<IntervalsPanel preview={intervalsPreview} modelConfig={modelConfig} setModelId={setModelId} presetConfig={presetConfig} setPresetId={setPresetId} intervals={intervals} />
+					<NotesPanel preview={notesPreview} root={root} notes={notes} />
+					<ViewerPanel modelId={modelId} notes={notes} />
+				</StyledExplorePanelGrid>
+			</StyledExplorePage>
 		</>
 	);
 };

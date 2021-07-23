@@ -4,7 +4,7 @@ import { PathNavContextProvider } from '../../../contexts/PathNavContext';
 import { RouteContextConsumer } from '../../../contexts/RouteContext';
 
 const StyledMain = styled.main`
-	padding: 64px 0px;
+	padding: 96px 0px;
 	margin: auto;
 	width: 100%;
 	max-width: 1024px;

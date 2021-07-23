@@ -1,5 +1,6 @@
 const THEME = {
 	primary: '#25283D',
+	primaryLight: '#44496f',
 	accent: '#87A330',
 	active: '#F58231',
 	border: '#ccc',

@@ -13,6 +13,7 @@ const StyledPodCard = styled.div`
     }
     .numeric {
         color: gray;
+        white-space: nowrap;
     }
 `;
 
