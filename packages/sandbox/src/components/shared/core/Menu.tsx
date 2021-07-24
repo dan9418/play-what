@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FolderNode, IFolder, IFolderItem, IFolderNode } from '../../../../../core/src/library/Library.constants';
+import { NodeType, IFolder, IFolderItem, IFolderNode, IClickableFolderItem } from '../../../../../core/src/library/Library.constants';
 import { LIBRARY } from '../../../../../core/src/library/Library.utils';
 import THEME from '../../../styles/theme';
 import Icon from '../ui/Icon';
@@ -77,12 +77,12 @@ const StyledOverlay = styled.div`
 
 const MenuItem: React.FC<any> = ({ item, level }) => {
     return (
-        <li><button className="item" type="button" onClick={null}>{item.text}</button></li>
+        <li><button className="item" type="button" onClick={item.onClick}>{item.text}</button></li>
     );
 };
 
 const MenuFolder: React.FC<any> = ({ folder, level, getMenuItems }) => {
-    const [isOpen, setIsOpen] = useState(level < 2);
+    const [isOpen, setIsOpen] = useState(level < 1);
     return (
         <>
             <li>
@@ -95,14 +95,49 @@ const MenuFolder: React.FC<any> = ({ folder, level, getMenuItems }) => {
 };
 
 const getMenuItems = (node: IFolderNode, level) => {
-    return node.nodeType === FolderNode.Folder ?
+    return node.nodeType === NodeType.Folder ?
         <MenuFolder folder={node} level={level + 1} getMenuItems={getMenuItems} /> :
         <MenuItem item={node} level={level} />;
 }
 
-const MENU_ITEMS = [
+const EDIT_MENU_CONFIG: IFolder = {
+    nodeType: NodeType.Folder,
+    text: 'Edit',
+    items: [
+        {
+            nodeType: NodeType.Item,
+            text: 'Edit Root'
+        },
+        {
+            nodeType: NodeType.Item,
+            text: 'Edit Intervals'
+        },
+        {
+            nodeType: NodeType.Item,
+            text: 'Edit Viewer'
+        }
+    ]
+}
 
-]
+const MY_LIBRARY_MENU_CONFIG: IFolder = {
+    nodeType: NodeType.Folder,
+    text: 'My Library',
+    items: []
+}
+
+const PRESETS_MENU_CONFIG: IFolder = LIBRARY;
+
+const attachClickHandler = (node: IFolderNode, clickHandler: Function): IFolder | IClickableFolderItem<any> => {
+    return node.nodeType === NodeType.Folder ?
+        {
+            ...(node as IFolder),
+            items: (node as IFolder).items.map(item => attachClickHandler(item, clickHandler))
+        } :
+        {
+            ...(node as IFolderItem<any>),
+            onClick: () => clickHandler((node as IFolderItem<any>).value)
+        };
+};
 
 const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
     useEffect(() => {
@@ -115,13 +150,18 @@ const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
             },
             false
         )
-    }, [])
+    }, []);
+
+    const editMenuConfig = attachClickHandler(EDIT_MENU_CONFIG, null);
+    const presetsConfig = attachClickHandler(PRESETS_MENU_CONFIG, v => setExploreState(v));
 
     return (
         <>
             <StyledOverlay />
             <StyledMenu className="menu">
-                {getMenuItems(LIBRARY, 0)}
+                {getMenuItems(editMenuConfig, 0)}
+                {getMenuItems(presetsConfig, 0)}
+                {getMenuItems(MY_LIBRARY_MENU_CONFIG, 0)}
             </StyledMenu>
         </>
     );

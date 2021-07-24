@@ -74,7 +74,7 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 
 	const setExploreState = config => {
 		_setModelId(ModelId.Chord);
-		setRoot(NOTE_PRESET_MAP.get(config.root).value);
+		setRoot(NOTE_PRESET_MAP.get(config.rootId).value);
 		setPresetId(config.presetId);
 	}
 

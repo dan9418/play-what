@@ -1,5 +1,5 @@
 import { IChartConfig } from "./Library.charts";
-import { FolderNode, IFolder } from "./Library.constants";
+import { NodeType, IFolder } from "./Library.constants";
 import * as CHARTS from './Library.charts';
 
 export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
@@ -11,7 +11,7 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
             const chord = section.chords[c];
             const [root, intervals, t] = chord;
             chordItems.push({
-                nodeType: FolderNode.Item,
+                nodeType: NodeType.Item,
                 text: root + ' ' + intervals,
                 value: {
                     rootId: root,
@@ -20,14 +20,14 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
             });
         }
         sectionItems.push({
-            nodeType: FolderNode.Folder,
+            nodeType: NodeType.Folder,
             text: 'Section ' + section.name,
             items: chordItems
         });
     }
 
     return {
-        nodeType: FolderNode.Folder,
+        nodeType: NodeType.Folder,
         text: config.name,
         items: sectionItems
     };
@@ -36,8 +36,8 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
 
 export const getLibrary = (): IFolder => {
     return {
-        nodeType: FolderNode.Folder,
-        text: 'Library',
+        nodeType: NodeType.Folder,
+        text: 'Browse Presets',
         items: Object.values(CHARTS).map(getFolderItemFromChartConfig)
     }
 }
