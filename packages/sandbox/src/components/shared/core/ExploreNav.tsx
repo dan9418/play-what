@@ -61,10 +61,16 @@ const StyledExploreNav = styled.nav`
 		background-color: ${({ theme }) => theme.accent};
 	}
 
+	.main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+	}
+
 	.quick-links {
 		display: flex;
 		align-items: center;
-		width: 100%;
 
 		.quick-link {
 			appearance: none;
@@ -98,11 +104,13 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	return (
 		<>
 			<StyledExploreNav>
-				<div className="quick-links">
+				<div className="main">
 					<Model />
-					<QuickLink name="Root" preview={rootDetails.name} modal={null} />
-					<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
-					<QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+					<div className="quick-links">
+						<QuickLink name="Root" preview={rootDetails.name} modal={null} />
+						<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
+						<QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+					</div>
 				</div>
 				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
 					<Icon iconId="menu" size={32} />

@@ -17,7 +17,7 @@ const StyledDot = styled.div`
 		}
 	 `};
 
-	height: 16px;
+	height: 20px;
 	width: 100%;
 	border: 1px solid black;
 	:not(:last-child){
@@ -65,7 +65,6 @@ const StyledMeter = styled.div`
 	justify-content: space-between;
 
 	.dot-list {
-		margin: 8px 0;
 		width: 100%;
 		display: flex;
 		align-items: center;
@@ -74,7 +73,7 @@ const StyledMeter = styled.div`
 `;
 
 interface IMeterProps {
-	root: IPod;
+	root?: IPod;
 	notes: IPod[];
 	range?: number[];
 	matchOctave?: boolean;
@@ -133,7 +132,7 @@ const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12],
 
 const Meter: React.FC<IMeterProps> = (props) => {
 	return (
-		<StyledMeter>
+		<StyledMeter className="meter">
 			<DotList {...props} />
 		</StyledMeter>
 	);

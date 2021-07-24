@@ -5,11 +5,6 @@ import styled from 'styled-components';
 import { modelIdState, notesDetailsState, notesState } from "../../../state/state";
 import { useRecoilState } from "recoil";
 
-const StyledViewerWrapper = styled.div`
-    width: 100%;
-    padding: 16px;
-`;
-
 const ViewerPanel: React.FC<any> = () => {
 
     // @ts-ignore
@@ -25,9 +20,7 @@ const ViewerPanel: React.FC<any> = () => {
     }
 
     return (
-        <StyledViewerWrapper>
-            <Fretboard labelProps={labelProps} />
-        </StyledViewerWrapper>
+        <Fretboard labelProps={labelProps} />
     );
 };
 

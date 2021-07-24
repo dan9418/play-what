@@ -8,6 +8,7 @@ const StyledQuickLink = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	height: 64px;
+	white-space: nowrap;
 	
 	> div {
 		display: flex;
