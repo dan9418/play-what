@@ -124,14 +124,13 @@ const ExplorePage: React.FC<IPageProps> = ({ params = DEFAULT_PARAMS }) => {
 		preview,
 		rootPreview: rootName,
 		rootModal,
+		intervalsName,
 		intervalsPreview,
 		intervalsModal,
 		notesPreview,
 		viewerPreview: 'Fretboard',
 		viewerModal
 	}
-
-
 
 	return (
 		<>

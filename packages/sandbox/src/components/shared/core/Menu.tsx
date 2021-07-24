@@ -36,6 +36,7 @@ const StyledMenu = styled.div`
 
     li {
         position: relative;
+        font-size: 160%;
     }
 
     svg {

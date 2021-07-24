@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import PanelHeader from '../../explore/panels/PanelHeader';
 import QuickLink from '../../explore/panels/QuickLink';
 import Icon from '../ui/Icon';
 import Menu from './Menu';
+import Model from './Model';
 
 const StyledModel = styled.div`
 	padding: 0 16px;
@@ -101,11 +101,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState, navConfig }) => {
 		<>
 			<StyledExploreNav>
 				<div className="quick-links">
-					<StyledModel>
-						<h2 className="name">{navConfig.name}</h2>
-						<div className="preview">{navConfig.notesPreview}</div>
-					</StyledModel>
-					<StyledSeparator />
+					<Model navConfig={navConfig} />
 					<QuickLink name="Root" preview={navConfig.rootPreview} modal={navConfig.rootModal} />
 					<QuickLink name="Intervals" preview={navConfig.intervalsPreview} modal={navConfig.intervalsModal} />
 					<QuickLink name="Viewer" preview={navConfig.viewerPreview} modal={navConfig.viewerModal} />
