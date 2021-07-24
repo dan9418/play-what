@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
-import QuickLink from '../../explore/panels/QuickLink';
 import Icon from '../ui/Icon';
+import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 import Menu from './Menu';
 import Model from './Model';
 
 const StyledSeparator = styled.div`
-	height: 8px;
-	width: 8px;
-	border-radius: 8px;
-	margin: 0 16px;
+    margin: 0 16px;
+	height: 48px;
+	width: 1px;
 	background-color: ${({ theme }) => theme.border};
 `
 
@@ -78,7 +75,7 @@ const StyledExploreNav = styled.nav`
 			border: none;
 			cursor: pointer;
 			height: 100%;
-			padding: 0 16px;
+			padding: 0 8px;
 
 			&:not(:last-child) {
 				border-right: 1px solid ${({ theme }) => theme.border};
@@ -87,29 +84,34 @@ const StyledExploreNav = styled.nav`
 		}
 	}
 
+	.import-export {
+        display: grid;
+        grid-template-columns: 64px;
+		//margin-right: 16px;
+		padding-right: 16px;
+		border-right: 1px solid ${({ theme }) => theme.border};
+        button {
+            margin: 2px 0;
+            padding: 0 4px;
+            height: 20px;
+            font-weight: bold;
+            font-size: 70%;
+        }
+    }
+
 `;
 
 const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-	// @ts-ignore
-	const [rootDetails] = useRecoilState(rootDetailsState);
-	// @ts-ignore
-	const [intervalsDetails] = useRecoilState(intervalsDetailsState);
-	// @ts-ignore
-	const [notesDetails] = useRecoilState(notesDetailsState);
-
-	console.log(rootDetails, intervalsDetails, notesDetails);
 
 	return (
 		<>
 			<StyledExploreNav>
 				<div className="main">
 					<Model />
-					<div className="quick-links">
-						<QuickLink name="Root" preview={rootDetails.name} modal={null} />
-						<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
-						<QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+					<div className="import-export">
+						<ButtonInput>IMPORT</ButtonInput>
+						<ButtonInput>EXPORT</ButtonInput>
 					</div>
 				</div>
 				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>

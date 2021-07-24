@@ -14,7 +14,7 @@ const StyledQuickLink = styled.div`
 		display: flex;
 		&.name-preview {
 			width: 100%;
-			padding-right: 16px;
+			padding-right: 8px;
 			flex-direction: column;
 			.name {
 				font-weight: bold;

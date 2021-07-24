@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
+import QuickLink from '../../explore/panels/QuickLink';
 import Icon from '../ui/Icon';
 import ButtonInput from '../ui/inputs/buttons/ButtonInput';
 
@@ -71,17 +72,6 @@ const StyledModel = styled.div`
             }
         }
     }
-    .import-export {
-        display: grid;
-        grid-template-columns: 64px; 
-        button {
-            margin: 2px 0;
-            padding: 0 4px;
-            height: 20px;
-            font-weight: bold;
-            font-size: 70%;
-        }
-    }
     .sound {
         border: none;
         padding: 8px;
@@ -126,11 +116,11 @@ const Model: React.FC<any> = () => {
                 </div>
             </div>
             <StyledSeparator />
-            <div className="import-export">
-                <ButtonInput>IMPORT</ButtonInput>
-                <ButtonInput>EXPORT</ButtonInput>
+            <div className="quick-links">
+                <QuickLink name="Root" preview={rootDetails.name} modal={null} />
+                <QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
+                <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
             </div>
-            <StyledSeparator />
         </StyledModel>
     );
 };
