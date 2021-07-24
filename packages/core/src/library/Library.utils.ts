@@ -1,5 +1,5 @@
 import { IChartConfig } from "./Library.charts";
-import { FolderItemType, IFolder } from "./Library.constants";
+import { FolderNode, IFolder } from "./Library.constants";
 import * as CHARTS from './Library.charts';
 
 export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
@@ -11,22 +11,24 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
             const chord = section.chords[c];
             const [root, intervals, t] = chord;
             chordItems.push({
-                itemType: FolderItemType.Item,
-                name: root + ' ' + intervals,
-                rootId: root,
-                presetId: intervals
+                nodeType: FolderNode.Item,
+                text: root + ' ' + intervals,
+                value: {
+                    rootId: root,
+                    presetId: intervals
+                }
             });
         }
         sectionItems.push({
-            itemType: FolderItemType.Folder,
-            name: 'Section ' + section.name,
+            nodeType: FolderNode.Folder,
+            text: 'Section ' + section.name,
             items: chordItems
         });
     }
 
     return {
-        itemType: FolderItemType.Folder,
-        name: config.name,
+        nodeType: FolderNode.Folder,
+        text: config.name,
         items: sectionItems
     };
 }
@@ -34,8 +36,8 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
 
 export const getLibrary = (): IFolder => {
     return {
-        itemType: FolderItemType.Folder,
-        name: 'Library',
+        nodeType: FolderNode.Folder,
+        text: 'Library',
         items: Object.values(CHARTS).map(getFolderItemFromChartConfig)
     }
 }

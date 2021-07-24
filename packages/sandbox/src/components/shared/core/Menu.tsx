@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FolderItemType, IFolder, IFolderItem } from '../../../../../core/src/library/Library.constants';
+import { FolderNode, IFolder, IFolderItem, IFolderNode } from '../../../../../core/src/library/Library.constants';
 import { LIBRARY } from '../../../../../core/src/library/Library.utils';
 import THEME from '../../../styles/theme';
 import Icon from '../ui/Icon';
@@ -75,36 +75,34 @@ const StyledOverlay = styled.div`
     background: rgba(0,0,0,.25);
 `;
 
-const MenuItem: React.FC<any> = ({ item, level, setExploreState }) => {
+const MenuItem: React.FC<any> = ({ item, level }) => {
     return (
-        <li><button className="item" type="button" onClick={() => {
-            console.log(item);
-            setExploreState({
-                presetId: item.presetId,
-                root: item.rootId
-            })
-        }}>{item.name}</button></li>
+        <li><button className="item" type="button" onClick={null}>{item.text}</button></li>
     );
 };
 
-const MenuFolder: React.FC<any> = ({ folder, level, getMenuItems, setExploreState }) => {
+const MenuFolder: React.FC<any> = ({ folder, level, getMenuItems }) => {
     const [isOpen, setIsOpen] = useState(level < 2);
     return (
         <>
             <li>
-                <button className="folder" type="button" onClick={() => setIsOpen(!isOpen)}>{folder.name}</button>
+                <button className="folder" type="button" onClick={() => setIsOpen(!isOpen)}>{folder.text}</button>
                 <Icon iconId={isOpen ? 'minus' : 'plus'} />
             </li>
-            {isOpen && <ul>{folder.items.map((item) => getMenuItems(item, level + 1, setExploreState))}</ul>}
+            {isOpen && <ul>{folder.items.map((item) => getMenuItems(item, level + 1))}</ul>}
         </>
     );
 };
 
-const getMenuItems = (folderItem: IFolder | IFolderItem, level, setExploreState) => {
-    return folderItem.itemType === FolderItemType.Folder ?
-        <MenuFolder folder={folderItem} level={level + 1} getMenuItems={getMenuItems} setExploreState={setExploreState} /> :
-        <MenuItem item={folderItem} level={level} setExploreState={setExploreState} />;
+const getMenuItems = (node: IFolderNode, level) => {
+    return node.nodeType === FolderNode.Folder ?
+        <MenuFolder folder={node} level={level + 1} getMenuItems={getMenuItems} /> :
+        <MenuItem item={node} level={level} />;
 }
+
+const MENU_ITEMS = [
+
+]
 
 const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
     useEffect(() => {
@@ -123,7 +121,7 @@ const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
         <>
             <StyledOverlay />
             <StyledMenu className="menu">
-                {getMenuItems(LIBRARY, 0, setExploreState)}
+                {getMenuItems(LIBRARY, 0)}
             </StyledMenu>
         </>
     );

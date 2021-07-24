@@ -2,19 +2,22 @@ import { ChordId } from './../models/PodList/Chord/Chord.constants';
 import { NoteId } from './../models/Pod/Note/Note.constants';
 import { IModelPreset } from './../models/Model.constants';
 
-export enum FolderItemType {
+export enum FolderNode {
     Folder,
     Item,
 }
 
-export interface IFolderItem {
-    itemType: FolderItemType.Item
-    rootId: NoteId,
-    presetId: ChordId
+export interface IFolderNode {
+    nodeType: FolderNode;
+    text: string;
 }
 
-export interface IFolder {
-    itemType: FolderItemType.Folder,
-    name: string;
-    items: Array<IFolder | IFolderItem>
+export interface IFolderItem<T> extends IFolderNode {
+    nodeType: FolderNode.Item
+    value: T
+}
+
+export interface IFolder extends IFolderNode {
+    nodeType: FolderNode.Folder,
+    items: Array<IFolderNode>
 }
