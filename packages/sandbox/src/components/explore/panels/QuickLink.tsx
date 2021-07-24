@@ -48,7 +48,7 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, children }
 				{children}
 			</div>
 			<div>
-				<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
+				<IconButton iconId="edit" onClick={() => modalContext.setModal(modal)} />
 			</div>
 		</StyledQuickLink>
 	);

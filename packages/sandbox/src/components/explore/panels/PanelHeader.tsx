@@ -62,7 +62,7 @@ const PanelHeader: React.FC<IPanelHeaderProps> = ({ name, preview, modal, childr
 				{children}
 			</div>
 			<div>
-				<IconButton iconId="edit" onClick={() => modalContext.setModalContent(modal)} />
+				<IconButton iconId="edit" onClick={() => modalContext.setModal(modal)} />
 			</div>
 		</StyledPanelHeader>
 	);

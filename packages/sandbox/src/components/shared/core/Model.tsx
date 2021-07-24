@@ -3,9 +3,11 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import Meter from '../../../../../viewers/src/Meter/Meter';
 import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
+import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
 import QuickLink from '../../explore/panels/QuickLink';
+import RootQuickLink from '../../explore/RootQuickLink';
 import Icon from '../ui/Icon';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
+import SwitchInput from '../ui/inputs/SwitchInput';
 
 const StyledSeparator = styled.div`
     margin: 0 16px;
@@ -82,6 +84,19 @@ const StyledModel = styled.div`
             background-color: rgba(0,0,0,0.1);
         }
     }
+
+    .match-octave {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        label {
+            color: #333;
+            font-weight: bold;
+            font-size: 80%;
+            margin-bottom: 4px;
+        }
+    }
 `
 
 const Model: React.FC<any> = () => {
@@ -101,9 +116,12 @@ const Model: React.FC<any> = () => {
                 <div className="preview">{notesDetails.preview}</div>
             </div>
             <StyledSeparator />
-            <button type="button" className={`sound`} onClick={() => null}>
-                <Icon iconId="speaker" size={32} />
-            </button>
+            <div className="quick-links">
+                <RootQuickLink />
+                <IntervalsQuickLink />
+                <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+            </div>
+
             <StyledSeparator />
             <div className="meter-container">
                 <div className="row">
@@ -116,11 +134,15 @@ const Model: React.FC<any> = () => {
                 </div>
             </div>
             <StyledSeparator />
-            <div className="quick-links">
-                <QuickLink name="Root" preview={rootDetails.name} modal={null} />
-                <QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
-                <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+            <button type="button" className={`sound`} onClick={() => null}>
+                <Icon iconId="speaker" size={32} />
+            </button>
+            <StyledSeparator />
+            <div className="match-octave">
+                <label>Match Octave?</label>
+                <SwitchInput value={false} setValue={null} />
             </div>
+
         </StyledModel>
     );
 };
