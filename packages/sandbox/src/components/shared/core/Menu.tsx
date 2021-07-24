@@ -159,6 +159,7 @@ const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
         <>
             <StyledOverlay />
             <StyledMenu className="menu">
+                <h2>Menu</h2>
                 {getMenuItems(editMenuConfig, 0)}
                 {getMenuItems(presetsConfig, 0)}
                 {getMenuItems(MY_LIBRARY_MENU_CONFIG, 0)}

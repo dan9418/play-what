@@ -1,5 +1,7 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
 
 const StyledModel = styled.div`
 	margin-left: 16px;
@@ -30,14 +32,21 @@ const StyledModel = styled.div`
 	}
 `
 
-const Model: React.FC<any> = ({ navConfig }) => {
+const Model: React.FC<any> = () => {
+
+    // @ts-ignore
+    const [rootDetails] = useRecoilState(rootDetailsState);
+    // @ts-ignore
+	const [intervalsDetails] = useRecoilState(intervalsDetailsState);
+    // @ts-ignore
+	const [notesDetails] = useRecoilState(notesDetailsState);
 
     return (
         <StyledModel>
-            <div className="root">{navConfig.rootPreview}</div>
+            <div className="root">{rootDetails.name}</div>
             <div className="name-preview">
-                <div className="name">{navConfig.intervalsName}</div>
-                <div className="preview">{navConfig.notesPreview}</div>
+                <div className="name">{intervalsDetails.name}</div>
+                <div className="preview">{notesDetails.preview}</div>
             </div>
         </StyledModel>
     );

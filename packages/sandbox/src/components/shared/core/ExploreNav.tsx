@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
 import QuickLink from '../../explore/panels/QuickLink';
 import Icon from '../ui/Icon';
 import Menu from './Menu';
@@ -94,17 +96,26 @@ const StyledExploreNav = styled.nav`
 
 `;
 
-const ExploreNav: React.FC<any> = ({ setExploreState, navConfig }) => {
+const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	// @ts-ignore
+	const [rootDetails] = useRecoilState(rootDetailsState);
+	// @ts-ignore
+	const [intervalsDetails] = useRecoilState(intervalsDetailsState);
+	// @ts-ignore
+	const [notesDetails] = useRecoilState(notesDetailsState);
+
+	console.log(rootDetails, intervalsDetails, notesDetails);
 
 	return (
 		<>
 			<StyledExploreNav>
 				<div className="quick-links">
-					<Model navConfig={navConfig} />
-					<QuickLink name="Root" preview={navConfig.rootPreview} modal={navConfig.rootModal} />
-					<QuickLink name="Intervals" preview={navConfig.intervalsPreview} modal={navConfig.intervalsModal} />
-					<QuickLink name="Viewer" preview={navConfig.viewerPreview} modal={navConfig.viewerModal} />
+					<Model />
+					<QuickLink name="Root" preview={rootDetails.preview} modal={null} />
+					<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
+					<QuickLink name="Viewer" preview={notesDetails.preview} modal={null} />
 				</div>
 				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
 					<Icon iconId="menu" size={32} />
