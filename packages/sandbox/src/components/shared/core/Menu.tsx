@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { NodeType, IFolder, IFolderItem, IFolderNode, IClickableFolderItem } from '../../../../../core/src/library/Library.constants';
 import { LIBRARY } from '../../../../../core/src/library/Library.utils';
+import { NOTE_PRESET_MAP } from '../../../../../core/src/models/Pod/Note/Note.constants';
+import { CHORD_PRESET_MAP } from '../../../../../core/src/models/PodList/Chord/Chord.constants';
+import { intervalsState, rootState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import Icon from '../ui/Icon';
 
@@ -139,7 +143,11 @@ const attachClickHandler = (node: IFolderNode, clickHandler: Function): IFolder 
         };
 };
 
-const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
+const Menu: React.FC<any> = ({ closeMenu }) => {
+
+    const setRootState = useSetRecoilState(rootState);
+    const setIntervalsState = useSetRecoilState(intervalsState);
+
     useEffect(() => {
         document.addEventListener(
             "click",
@@ -151,6 +159,13 @@ const Menu: React.FC<any> = ({ setExploreState, closeMenu }) => {
             false
         )
     }, []);
+
+    const setExploreState = config => {
+        const root = NOTE_PRESET_MAP.get(config.rootId).value;
+        const intervals = CHORD_PRESET_MAP.get(config.presetId).value;
+        setRootState(root);
+        setIntervalsState(intervals);
+    }
 
     const editMenuConfig = attachClickHandler(EDIT_MENU_CONFIG, null);
     const presetsConfig = attachClickHandler(PRESETS_MENU_CONFIG, v => setExploreState(v));

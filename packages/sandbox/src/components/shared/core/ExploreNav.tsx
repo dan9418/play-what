@@ -7,19 +7,6 @@ import Icon from '../ui/Icon';
 import Menu from './Menu';
 import Model from './Model';
 
-const StyledModel = styled.div`
-	padding: 0 16px;
-	display: flex;
-	flex-direction: column;
-	white-space: nowrap;
-	.name {
-		font-weight: bold;
-	}
-	.preview {
-		color: ${({ theme }) => theme.accent};
-	}
-`
-
 const StyledSeparator = styled.div`
 	height: 8px;
 	width: 8px;
@@ -113,7 +100,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 			<StyledExploreNav>
 				<div className="quick-links">
 					<Model />
-					<QuickLink name="Root" preview={rootDetails.preview} modal={null} />
+					<QuickLink name="Root" preview={rootDetails.name} modal={null} />
 					<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
 					<QuickLink name="Viewer" preview={notesDetails.preview} modal={null} />
 				</div>
