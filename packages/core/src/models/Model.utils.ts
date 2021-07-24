@@ -1,8 +1,10 @@
+import { NoteId } from './Pod/Note/Note.constants';
 import ColorUtils from '../color/Color.utils';
+import { IFolder, IFolderItem, NodeType } from '../library/Library.constants';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
-import { IModelConfig, IModelValue, IPod, ModelId, MODEL_MAP, PodType } from "./Model.constants";
+import { IModelConfig, IModelPreset, IPod, ModelId, PodType } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -153,6 +155,18 @@ const playSound = (modelConfig: IModelConfig, pathId = 0): void => {
 	const f = pods.map(pod => TuningUtils.getFrequency(pod[0]));
 	ToneUtils.playSound(f);
 };
+
+
+export const getFolderItemFromModelPreset = (preset: IModelPreset<IPod>): IFolderItem<{ rootId: NoteId, presetId: string }> => {
+	return {
+		nodeType: NodeType.Item,
+		text: preset.name,
+		value: {
+			rootId: NoteId.C,
+			presetId: preset.id
+		}
+	}
+}
 
 // export
 

@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { NodeType, IFolder, IFolderItem, IFolderNode, IClickableFolderItem } from '../../../../../core/src/library/Library.constants';
-import { LIBRARY } from '../../../../../core/src/library/Library.utils';
+import { IClickableFolderItem, IFolder, IFolderItem, IFolderNode, NodeType } from '../../../../../core/src/library/Library.constants';
 import { NOTE_PRESET_MAP } from '../../../../../core/src/models/Pod/Note/Note.constants';
-import { CHORD_PRESET_MAP } from '../../../../../core/src/models/PodList/Chord/Chord.constants';
+import { CHORD_PRESETS, CHORD_PRESET_MAP } from '../../../../../core/src/models/PodList/Chord/Chord.constants';
 import { intervalsState, rootState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import Icon from '../ui/Icon';
+import * as CHARTS from '../../../../../core/src/library/Library.charts';
+import { getFolderItemFromChartConfig } from '../../../../../core/src/library/Library.utils';
+import { getFolderItemFromModelPreset } from '../../../../../core/src/models/Model.utils';
 
 const StyledMenu = styled.div`
     width: 100%;
@@ -129,7 +131,22 @@ const MY_LIBRARY_MENU_CONFIG: IFolder = {
     items: []
 }
 
-const PRESETS_MENU_CONFIG: IFolder = LIBRARY;
+const PRESETS_MENU_CONFIG: IFolder = {
+    nodeType: NodeType.Folder,
+    text: 'Browse Presets',
+    items: [
+        {
+            nodeType: NodeType.Folder,
+            text: 'Charts',
+            items: Object.values(CHARTS).map(getFolderItemFromChartConfig)
+        },
+        {
+            nodeType: NodeType.Folder,
+            text: 'Chords',
+            items: CHORD_PRESETS.map(getFolderItemFromModelPreset as any)
+        }
+    ] as IFolder[]
+}
 
 const attachClickHandler = (node: IFolderNode, clickHandler: Function): IFolder | IClickableFolderItem<any> => {
     return node.nodeType === NodeType.Folder ?

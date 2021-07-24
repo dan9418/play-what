@@ -32,14 +32,3 @@ export const getFolderItemFromChartConfig = (config: IChartConfig): IFolder => {
         items: sectionItems
     };
 }
-
-
-export const getLibrary = (): IFolder => {
-    return {
-        nodeType: NodeType.Folder,
-        text: 'Browse Presets',
-        items: Object.values(CHARTS).map(getFolderItemFromChartConfig)
-    }
-}
-
-export const LIBRARY = getLibrary();

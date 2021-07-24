@@ -102,7 +102,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 					<Model />
 					<QuickLink name="Root" preview={rootDetails.name} modal={null} />
 					<QuickLink name="Intervals" preview={intervalsDetails.preview} modal={null} />
-					<QuickLink name="Viewer" preview={notesDetails.preview} modal={null} />
+					<QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
 				</div>
 				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
 					<Icon iconId="menu" size={32} />
