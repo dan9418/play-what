@@ -7,6 +7,7 @@ import { useModalContext } from '../../contexts/ModalContext';
 import { intervalsDetailsState, intervalsState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
 import IntervalInput from './IntervalInput';
+import IntervalListInput from './IntervalListInput';
 import QuickLink from './panels/QuickLink';
 
 const StyledIntervalsModal = styled.div`
@@ -57,7 +58,7 @@ const IntervalsModal = () => {
                         </tr>
                     </ tbody>
                 </ table>
-                <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
+                <IntervalListInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             </StyledIntervalsModal>
         </Modal>
     )
