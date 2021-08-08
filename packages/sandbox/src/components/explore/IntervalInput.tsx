@@ -43,7 +43,7 @@ const StyledIntervalInput = styled.div`
 `;
 
 const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl }) => {
-    const onClick = () => setIvl(ivl);
+    const onClick = () => setIvl(preset.value);
 
     return (
         <button type="button" className={''} onClick={onClick}>{preset.id}</button>

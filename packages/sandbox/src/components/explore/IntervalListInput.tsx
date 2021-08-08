@@ -61,7 +61,17 @@ const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl })
 const IntervalListInput = ({ intervals, setIntervals }) => {
     const [selectedIvl, setSelectedIvl] = useState<IPod>(intervals[0]);
 
-    const setIvl = null;
+
+    const setIvl = newIvl => {
+        const selectedIvlIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, selectedIvl));
+        console.log(selectedIvlIndex);
+        let copy = [];
+        // copy = [...intervals, preset.value];
+        // copy = [...intervals.slice(0, selectedIvlIndex), ...intervals.slice(selectedIvlIndex + 1)];
+        copy = [...intervals.slice(0, selectedIvlIndex), newIvl, ...intervals.slice(selectedIvlIndex + 1)];
+        setIntervals(copy);
+        setSelectedIvl(newIvl);
+    };
 
     return (
         <StyledIntervalListInput>
