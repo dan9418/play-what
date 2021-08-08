@@ -23,7 +23,16 @@ export enum IntervalId {
 	d7 = 'd7',
 	m7 = 'm7',
 	M7 = 'M7',
-	P8 = 'P8'
+	P8 = 'P8',
+	b9 = 'b9',
+	x9 = '9',
+	s9 = '#9',
+	b11 = 'b11',
+	x11 = '11',
+	s11 = '#11',
+	b13 = 'b13',
+	x13 = '13',
+	s13 = '#13',
 }
 
 const formatPreset = (id: IntervalId, name: string, value: IPod) => ({ id, name, value });
@@ -138,6 +147,51 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelPreset<IPod>>([
 		IntervalId.P8,
 		'Octave',
 		[12, 7]
+	)],
+	[IntervalId.b9, formatPreset(
+		IntervalId.b9,
+		'Flat Ninth',
+		[13, 8]
+	)],
+	[IntervalId.x9, formatPreset(
+		IntervalId.x9,
+		'Ninth',
+		[14, 8]
+	)],
+	[IntervalId.s9, formatPreset(
+		IntervalId.s9,
+		'Sharp Ninth',
+		[15, 8]
+	)],
+	[IntervalId.b11, formatPreset(
+		IntervalId.b11,
+		'Flat Eleventh',
+		[16, 10]
+	)],
+	[IntervalId.x11, formatPreset(
+		IntervalId.x11,
+		'Eleventh',
+		[17, 10]
+	)],
+	[IntervalId.s11, formatPreset(
+		IntervalId.s11,
+		'Sharp Eleventh',
+		[18, 10]
+	)],
+	[IntervalId.b13, formatPreset(
+		IntervalId.b13,
+		'Flat Thirteenth',
+		[20, 12]
+	)],
+	[IntervalId.x13, formatPreset(
+		IntervalId.x13,
+		'Thirteenth',
+		[21, 12]
+	)],
+	[IntervalId.s13, formatPreset(
+		IntervalId.s13,
+		'Sharp Thirteenth',
+		[22, 12]
 	)]
 ]);
 

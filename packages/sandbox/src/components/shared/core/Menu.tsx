@@ -169,6 +169,7 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
         document.addEventListener(
             "click",
             e => {
+                // @ts-ignore
                 if (!e.target.closest(".menu")) {
                     closeMenu()
                 }
