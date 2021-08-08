@@ -4,7 +4,9 @@ import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 
 const StyledIntervalInput = styled.div`
-    background: salmon;
+    border: 3px solid ${({ theme }) => theme.active};
+    background-color: white;
+
     padding: 8px;
     border-radius: 8px;
     table {
@@ -41,9 +43,8 @@ const StyledIntervalInput = styled.div`
 `;
 
 const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl }) => {
-    const onClick = () => {
-        setIvl(ivl);
-    }
+    const onClick = () => setIvl(ivl);
+
     return (
         <button type="button" className={''} onClick={onClick}>{preset.id}</button>
     );

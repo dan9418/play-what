@@ -9,13 +9,19 @@ const StyledIntervalButton = styled.button`
     appearance: none;
     background-color: white;
     border: 1px solid black;
-    padding: 4px;
+    padding: 8px;
     margin: 0 8px;
     border-radius: 4px;
-    cursor: pointer;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #aaa;
+    }
 
     &.active {
-        background-color: ${({ theme }) => theme.accent};
+        background-color: ${({ theme }) => theme.active};
+        color: white;
+        font-weight: bold;
     }
 `;
 
@@ -55,10 +61,12 @@ const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl })
 const IntervalListInput = ({ intervals, setIntervals }) => {
     const [selectedIvl, setSelectedIvl] = useState<IPod>(intervals[0]);
 
+    const setIvl = null;
+
     return (
         <StyledIntervalListInput>
             <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
-            <IntervalInput ivl={selectedIvl} setIvl={setSelectedIvl} />
+            <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
         </StyledIntervalListInput>
     );
 }
