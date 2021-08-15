@@ -23,10 +23,12 @@ const StyledModal = styled.div`
 		border-radius: 8px;
 
 		position: fixed;
-		top: 112px;
+		top: 0;
 		bottom: 32px;
 		width: 90%;
 		max-width: 768px;
+		max-height: 512px;
+		overflow: auto;
 
 		position: relative;
 		padding: 16px;

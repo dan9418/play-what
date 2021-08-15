@@ -3,15 +3,15 @@ import styled from 'styled-components';
 import { IPod } from '../../../../core/src/models/Model.constants';
 import { INTERVAL_PRESETS } from '../../../../core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
+import IconButton from '../shared/ui/inputs/buttons/IconButton';
 import IntervalInput from './IntervalInput';
 
 const StyledIntervalButton = styled.button`
     appearance: none;
-    background-color: white;
-    border: 1px solid black;
-    padding: 8px;
-    margin: 0 8px;
-    border-radius: 4px;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 8px 16px;
+    border-radius: 4px 4px 0 0;
 
     &:hover {
         cursor: pointer;
@@ -20,23 +20,35 @@ const StyledIntervalButton = styled.button`
 
     &.active {
         background-color: ${({ theme }) => theme.active};
+        border-color: ${({ theme }) => theme.active};
         color: white;
         font-weight: bold;
     }
 `;
 
-const StyledIconButton = styled.button`
-    
-`;
-
 const StyledIntervalListInput = styled.div`
-    
+    .box {
+        border: 3px solid ${({ theme }) => theme.active};
+        background-color: #f5f5f5;
+
+        padding: 8px;
+        border-radius: 0 8px 8px 8px;
+
+        margin-bottom: 16px;
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+
+        border-bottom: 1px solid #aaa;
+    }
 `;
 
 const StyledIntervalList = styled.div`
-    margin: 16px;
-    display: flex;
-    justify-content: center;
 `;
 
 const IntervalButton: React.FC<any> = ({ pod, intervals, setSelectedIvl, selectedIvl }) => {
@@ -60,7 +72,7 @@ const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl })
 
 const IntervalListInput = ({ intervals, setIntervals }) => {
     const [selectedIvl, setSelectedIvl] = useState<IPod>(intervals[0]);
-
+    const selectedPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, selectedIvl));
 
     const setIvl = newIvl => {
         const selectedIvlIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, selectedIvl));
@@ -76,7 +88,17 @@ const IntervalListInput = ({ intervals, setIntervals }) => {
     return (
         <StyledIntervalListInput>
             <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
-            <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
+            <div className="box">
+                <div className="controls">
+                    <h3>{selectedPreset.name}</h3>
+                    <div>
+                        <IconButton iconId="prev" />
+                        <IconButton iconId="next" />
+                        <IconButton iconId="delete" />
+                    </div>
+                </div>
+                <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
+            </div>
         </StyledIntervalListInput>
     );
 }

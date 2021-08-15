@@ -33,6 +33,7 @@ const IntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
+            <IntervalListInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <StyledIntervalsModal>
                 <table>
                     <thead>
@@ -58,7 +59,6 @@ const IntervalsModal = () => {
                         </tr>
                     </ tbody>
                 </ table>
-                <IntervalListInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             </StyledIntervalsModal>
         </Modal>
     )

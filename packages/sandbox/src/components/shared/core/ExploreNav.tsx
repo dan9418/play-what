@@ -84,6 +84,16 @@ const StyledExploreNav = styled.nav`
 		}
 	}
 
+	.import {
+		button {
+            margin-right: 16px;
+            padding: 6p 16px;
+            height: 100%;
+            font-weight: bold;
+			letter-spacing: 1px;
+        }
+	}
+
 	.import-export {
         display: grid;
         grid-template-columns: 64px;
@@ -109,14 +119,13 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 			<StyledExploreNav>
 				<div className="main">
 					<Model />
-					<div className="import-export">
-						<ButtonInput>IMPORT</ButtonInput>
-						<ButtonInput>EXPORT</ButtonInput>
+					<div className="import">
+						<ButtonInput>IMPORT PRESET</ButtonInput>
 					</div>
 				</div>
-				<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+				{/*<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
 					<Icon iconId="menu" size={32} />
-				</button>
+	</button>*/}
 			</StyledExploreNav>
 			{isMenuOpen && <Menu closeMenu={() => setIsMenuOpen(false)} setExploreState={setExploreState} />}
 		</>

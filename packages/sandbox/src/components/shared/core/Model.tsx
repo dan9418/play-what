@@ -76,13 +76,20 @@ const StyledModel = styled.div`
     }
     .sound {
         border: none;
-        padding: 8px;
-        cursor: pointer;
-        border-radius: 4px;
-        background-color: transparent;
-        &:hover {
-            background-color: rgba(0,0,0,0.1);
-        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    height: 24px;
+    width: 48px;
+    border-radius: 24px;
+	cursor: pointer;
+	
+	background-color: ${({ $active, theme }) => $active ? theme.accent : theme.light};	
+	&:hover {
+		background-color: ${({ theme }) => theme.active};	
+	}
     }
 
     .match-octave {
@@ -134,9 +141,12 @@ const Model: React.FC<any> = () => {
                 </div>
             </div>
             <StyledSeparator />
-            <button type="button" className={`sound`} onClick={() => null}>
-                <Icon iconId="speaker" size={32} />
-            </button>
+            <div className="match-octave">
+                <label>Play Sound</label>
+                <button type="button" className={`sound`} onClick={() => null}>
+                    <Icon iconId="speaker" size={20} color="white" />
+                </button>
+            </div>
             <StyledSeparator />
             <div className="match-octave">
                 <label>Match Octave?</label>

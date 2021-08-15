@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod/Interval/Interval.constants';
-import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 
 const StyledIntervalInput = styled.div`
-    border: 3px solid ${({ theme }) => theme.active};
-    background-color: white;
-
-    padding: 8px;
-    border-radius: 8px;
+    th {    
+        text-align: center;
+    }
     table {
         width: 100%;
         table-layout: fixed;
@@ -56,18 +53,18 @@ const IntervalInput = ({ ivl, setIvl }) => {
             <table>
                 <thead>
                     <tr>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                        <td>5</td>
-                        <td>6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
+                        <th>0</th>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4</th>
+                        <th>5</th>
+                        <th>6</th>
+                        <th>7</th>
+                        <th>8</th>
+                        <th>9</th>
+                        <th>10</th>
+                        <th>11</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,18 +117,18 @@ const IntervalInput = ({ ivl, setIvl }) => {
             <table>
                 <thead>
                     <tr>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
+                        <th>12</th>
+                        <th>13</th>
+                        <th>14</th>
+                        <th>15</th>
+                        <th>16</th>
+                        <th>17</th>
+                        <th>18</th>
+                        <th>19</th>
+                        <th>20</th>
+                        <th>21</th>
+                        <th>22</th>
+                        <th>23</th>
                     </tr>
                 </thead>
                 <tbody>
