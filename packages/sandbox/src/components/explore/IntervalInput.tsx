@@ -62,7 +62,7 @@ const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl, intervals }) => {
     );
 }
 
-const IntervalInput = ({ ivl, setIvl, intervals }) => {
+const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
     return (
         <StyledIntervalInput>
             <table>

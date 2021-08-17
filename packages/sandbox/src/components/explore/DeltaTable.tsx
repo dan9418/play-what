@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ModelId } from '../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../core/src/models/Model.utils';
 
-const StyledIntervalsListDelta = styled.div`
+const StyledDeltaTable = styled.div`
     table {
         text-align: center;
         font-size: 120%;
@@ -15,10 +15,10 @@ const StyledIntervalsListDelta = styled.div`
     }
 `;
 
-const IntervalsListDelta: React.FC<any> = ({ intervals, afterIntervals }) => {
+const DeltaTable: React.FC<any> = ({ before, after }) => {
 
     return (
-        <StyledIntervalsListDelta>
+        <StyledDeltaTable>
             <table>
                 <thead>
                     <tr>
@@ -28,13 +28,13 @@ const IntervalsListDelta: React.FC<any> = ({ intervals, afterIntervals }) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{ModelUtils.getPreview(intervals, { podType: ModelId.Interval })}</td>
-                        <td>{ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })}</td>
+                        <td>{before}</td>
+                        <td>{after}</td>
                     </tr>
-                </ tbody>
-            </ table>
-        </StyledIntervalsListDelta>
+                </tbody>
+            </table>
+        </StyledDeltaTable>
     )
 }
 
-export default IntervalsListDelta;
+export default DeltaTable;

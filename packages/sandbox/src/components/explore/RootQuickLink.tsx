@@ -4,25 +4,72 @@ import styled from 'styled-components';
 import { useModalContext } from '../../contexts/ModalContext';
 import { rootDetailsState, rootState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
+import DeltaTable from './DeltaTable';
 import QuickLink from './panels/QuickLink';
 
 const StyledRootModal = styled.div`
     .sketchpad {
+        background-color: #f5f5f5;
+
+        padding: 8px;
+        border-radius: 4px;
+
         display: flex;
         flex-direction: column;
         align-items: center;
-        button {
-            background-color: ${({ theme }) => theme.light};
-            border-radius: 4px;
-            border: 0;
-            padding: 4px;
-            margin: 4px;
-            font-size: 150%;
-            cursor: pointer;
+
+        h2 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 16px 0 8px;
+
+            .spelling {
+                font-size: 200%;
+            }
+            .accidental {
+                align-self: flex-start;
+                font-weight: 200;
+            }
+            .octave {
+                align-self: flex-end;
+                font-weight: 200;
+                font-size: 80%;
+                padding-bottom: 8px;
+            }
         }
 
-        .spelling {
-           
+        h3 {
+            margin-top: 8px;
+            color: #555;
+        }
+
+        button {
+            appearance: none;
+            background-color: ${({ theme }) => theme.accent};
+            color: white;
+            font-weight: bold;
+
+            border: 1px solid #aaa;
+            margin: 4px;
+            border-radius: 100%;
+
+            width: 48px;
+            height: 48px;
+
+            &:hover {
+                cursor: pointer;
+                background-color: ${({ theme }) => theme.active};
+                color: white;
+            }
+
+            &.active {
+                background-color: ${({ theme }) => theme.active};
+                border-color: ${({ theme }) => theme.active};
+                color: white;
+                font-weight: bold;
+            }
         }
     }
 `;
@@ -38,13 +85,13 @@ const RootModal = () => {
     return (
         <Modal title="Edit Root" onSubmit={() => setRoot([1, 2])} closeModal={modalContext.closeModal} >
             <StyledRootModal>
-                <h3>Before:</h3>
-                <div>{rootDetails.name}</div>
-                <div>{JSON.stringify(root)}</div>
-                <h3>After:</h3>
-                <div>{rootDetails.name}</div>
-                <div>{JSON.stringify(root)}</div>
                 <div className="sketchpad">
+                    <h2>
+                        <span className="spelling">C</span>
+                        <span className="accidental">b</span>
+                        <span className="octave">4</span>
+                    </h2>
+                    <h3>Spelling</h3>
                     <div className="spelling">
                         <button type="button">C</button>
                         <button type="button">D</button>
@@ -54,6 +101,7 @@ const RootModal = () => {
                         <button type="button">A</button>
                         <button type="button">B</button>
                     </div>
+                    <h3>Accidental</h3>
                     <div className="accidental">
                         <button type="button">bb</button>
                         <button type="button">b</button>
@@ -61,6 +109,7 @@ const RootModal = () => {
                         <button type="button">#</button>
                         <button type="button">x</button>
                     </div>
+                    <h3>Octave</h3>
                     <div className="octave">
                         <button type="button">0</button>
                         <button type="button">1</button>
@@ -75,6 +124,7 @@ const RootModal = () => {
                         <button type="button">10</button>
                     </div>
                 </div>
+                <DeltaTable before={rootDetails.name} after={rootDetails.name} />
             </StyledRootModal>
         </Modal>
     )

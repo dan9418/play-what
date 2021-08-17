@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { IPod } from '../../../../core/src/models/Model.constants';
 import { INTERVAL_PRESETS } from '../../../../core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
-import IntervalInput from './IntervalInput';
 
 const StyledIntervalButton = styled.button`
     appearance: none;
@@ -81,7 +79,7 @@ const IntervalButton: React.FC<any> = ({ pod, intervals, setSelectedIvl, selecte
     );
 }
 
-const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl }) => {
+const IntervalSelector: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl }) => {
     return (
         <StyledIntervalList>
             <StyledIntervalButton className="insert">+</StyledIntervalButton>
@@ -95,29 +93,4 @@ const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl })
     );
 }
 
-const IntervalListInput = ({ intervals, setIntervals }) => {
-    const [selectedIvl, setSelectedIvl] = useState<IPod>(intervals[0]);
-    const selectedPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, selectedIvl));
-
-    const setIvl = newIvl => {
-        const selectedIvlIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, selectedIvl));
-        console.log(selectedIvlIndex);
-        let copy = [];
-        // copy = [...intervals, preset.value];
-        // copy = [...intervals.slice(0, selectedIvlIndex), ...intervals.slice(selectedIvlIndex + 1)];
-        copy = [...intervals.slice(0, selectedIvlIndex), newIvl, ...intervals.slice(selectedIvlIndex + 1)];
-        setIntervals(copy);
-        setSelectedIvl(newIvl);
-    };
-
-    return (
-        <StyledIntervalListInput>
-            <h2 className="ivl-name">{selectedPreset.name}</h2>
-            <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
-            <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
-            <IntervalInput intervals={intervals} ivl={selectedIvl} setIvl={setIvl} />
-        </StyledIntervalListInput>
-    );
-}
-
-export default IntervalListInput;
+export default IntervalSelector;
