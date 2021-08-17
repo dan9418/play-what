@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import React from 'react';
 import styled from 'styled-components';
 import { ModelId } from '../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../core/src/models/Model.utils';
-import { intervalsDetailsState, intervalsState } from '../../state/state';
 
 const StyledIntervalsListDelta = styled.div`
     table {
-        text-align: left;
+        text-align: center;
+        font-size: 120%;
         border-collapse: collapse;
         width: 100%;
         td, th {
@@ -23,17 +22,13 @@ const IntervalsListDelta: React.FC<any> = ({ intervals, afterIntervals }) => {
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>Intervals</th>
+                        <th>Before</th>
+                        <th>After</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th>Before</th>
                         <td>{ModelUtils.getPreview(intervals, { podType: ModelId.Interval })}</td>
-                    </tr>
-                    <tr>
-                        <th>After</th>
                         <td>{ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })}</td>
                     </tr>
                 </ tbody>

@@ -6,6 +6,7 @@ import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 const StyledIntervalInput = styled.div`
     th {    
         text-align: center;
+        color: #aaa;
     }
     table {
         width: 100%;

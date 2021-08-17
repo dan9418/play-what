@@ -14,12 +14,12 @@ const StyledIntervalButton = styled.button`
     border: 1px solid #aaa;
     padding: 16px;
     margin: 8px;
-    border-radius: 4px;
+    border-radius: 100%;
 
     &.insert {
         background-color: #eee;
         color: #aaa;
-        border-radius: 100%;
+        
         padding: 8px;
 
         width: 32px;
@@ -51,7 +51,7 @@ const StyledIntervalListInput = styled.div`
 
     .ivl-name {
         text-align: center;
-        margin-top: 24px;
+        margin-top: 16px;
         margin-bottom: 0;
     }
     .ivl-summary {
@@ -66,6 +66,7 @@ const StyledIntervalListInput = styled.div`
 
 const StyledIntervalList = styled.div`
     text-align: center;
+    margin-bottom: 16px;
     //border: 1px solid ${({ theme }) => theme.medium};
 `;
 
@@ -111,9 +112,9 @@ const IntervalListInput = ({ intervals, setIntervals }) => {
 
     return (
         <StyledIntervalListInput>
-            <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
-            <h3 className="ivl-name">{selectedPreset.name}</h3>
+            <h2 className="ivl-name">{selectedPreset.name}</h2>
             <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
+            <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
             <IntervalInput intervals={intervals} ivl={selectedIvl} setIvl={setIvl} />
         </StyledIntervalListInput>
     );

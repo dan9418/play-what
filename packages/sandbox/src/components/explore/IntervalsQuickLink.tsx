@@ -32,7 +32,6 @@ const IntervalsModal = () => {
     return (
         <Modal title="Edit Intervals" onSubmit={() => setIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
             <IntervalListInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
-            <h3>Preview</h3>
             <IntervalListDelta intervals={intervals} afterIntervals={afterIntervals} />
         </Modal>
     )
