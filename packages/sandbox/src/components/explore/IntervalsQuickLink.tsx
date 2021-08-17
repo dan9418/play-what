@@ -34,28 +34,23 @@ const IntervalsModal = () => {
     return (
         <Modal title="Edit Intervals" onSubmit={() => setIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
             <IntervalListInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
+            <h3>Preview</h3>
             <StyledIntervalsModal>
                 <table>
                     <thead>
                         <tr>
                             <th></th>
                             <th>Intervals</th>
-                            <th>Interpret As</th>
-                            <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th>Before</th>
                             <td>{ModelUtils.getPreview(intervals, { podType: ModelId.Interval })}</td>
-                            <td>Chord</td>
-                            <td>{ModelUtils.getName(ModelId.Chord, intervals)}</td>
                         </tr>
                         <tr>
                             <th>After</th>
                             <td>{ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })}</td>
-                            <td>Chord</td>
-                            <td>{ModelUtils.getName(ModelId.Chord, afterIntervals)}</td>
                         </tr>
                     </ tbody>
                 </ table>

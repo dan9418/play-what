@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod/Interval/Interval.constants';
+import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 
 const StyledIntervalInput = styled.div`
     th {    
@@ -13,29 +14,30 @@ const StyledIntervalInput = styled.div`
         border-collapse: collapse;
     }
     button {
-        background-color: ${({ theme }) => theme.accent};
-        color: white;
+        background-color: transparent;
+        color: #555;
         border: none;
+        border-radius: 4px;
+
         :hover {
-            background-color: #eee;
-            color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.accent};
+            color: white;
         }
 
         &.active {
             background-color: ${({ theme }) => theme.active};
+            color: white;
             :hover {
-                background-color: #eee;
+                background-color: #fff;
                 color: ${({ theme }) => theme.active};
             }
         }
 
-        border-radius: 4px;
         padding: 4px;
-        margin: 4px;
         font-size: 150%;
         cursor: pointer;
-        height: 90%;
-        width: 90%;
+        height: 100%;
+        width: 100%;
     }
 `;
 
@@ -43,7 +45,7 @@ const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl }) => {
     const onClick = () => setIvl(preset.value);
 
     return (
-        <button type="button" className={''} onClick={onClick}>{preset.id}</button>
+        <button type="button" className={PodUtils.areEqual(ivl, preset.value) ? 'active' : ''} onClick={onClick}>{preset.id}</button>
     );
 }
 
@@ -114,7 +116,7 @@ const IntervalInput = ({ ivl, setIvl }) => {
                     </tr>
                 </tbody>
             </table>
-            <table>
+            {/*<table>
                 <thead>
                     <tr>
                         <th>12</th>
@@ -146,7 +148,7 @@ const IntervalInput = ({ ivl, setIvl }) => {
                         <td><IntervalButton ivl={ivl} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.s13)} /></td>
                     </tr>
                 </tbody>
-            </table>
+            </table>*/}
         </StyledIntervalInput>
     );
 }

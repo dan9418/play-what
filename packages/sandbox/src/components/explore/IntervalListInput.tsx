@@ -3,15 +3,23 @@ import styled from 'styled-components';
 import { IPod } from '../../../../core/src/models/Model.constants';
 import { INTERVAL_PRESETS } from '../../../../core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
-import IconButton from '../shared/ui/inputs/buttons/IconButton';
 import IntervalInput from './IntervalInput';
 
 const StyledIntervalButton = styled.button`
     appearance: none;
     background-color: #eee;
     border: 1px solid #aaa;
-    padding: 8px 16px;
-    border-radius: 4px 4px 0 0;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 4px;
+
+    &.insert {
+        border-radius: 100%;
+        padding: 8px;
+
+        width: 32px;
+        height: 32px;
+    }
 
     &:hover {
         cursor: pointer;
@@ -27,28 +35,32 @@ const StyledIntervalButton = styled.button`
 `;
 
 const StyledIntervalListInput = styled.div`
-    .box {
-        border: 3px solid ${({ theme }) => theme.active};
-        background-color: #f5f5f5;
+    // border: 1px solid ${({ theme }) => theme.medium};
+    background-color: #f5f5f5;
 
-        padding: 8px;
-        border-radius: 0 8px 8px 8px;
+    padding: 8px;
+    border-radius: 4px;
 
-        margin-bottom: 16px;
+    margin-bottom: 16px;
+
+    .ivl-name {
+        text-align: center;
+        margin-top: 24px;
+        margin-bottom: 0;
     }
-
-    .controls {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-
-        border-bottom: 1px solid #aaa;
+    .ivl-summary {
+        text-align: center;
+        margin-bottom: 24px;
+        margin-top: 4px;
+        font-style: italic;
+        color: #555;
     }
+    
 `;
 
 const StyledIntervalList = styled.div`
+    text-align: center;
+    //border: 1px solid ${({ theme }) => theme.medium};
 `;
 
 const IntervalButton: React.FC<any> = ({ pod, intervals, setSelectedIvl, selectedIvl }) => {
@@ -65,7 +77,13 @@ const IntervalButton: React.FC<any> = ({ pod, intervals, setSelectedIvl, selecte
 const IntervalList: React.FC<any> = ({ intervals, selectedIvl, setSelectedIvl }) => {
     return (
         <StyledIntervalList>
-            {intervals.map(ivl => <IntervalButton key={null} pod={ivl} setSelectedIvl={setSelectedIvl} selectedIvl={selectedIvl} intervals={intervals} />)}
+            <StyledIntervalButton className="insert">+</StyledIntervalButton>
+            {intervals.map(ivl => (
+                <>
+                    <IntervalButton key={null} pod={ivl} setSelectedIvl={setSelectedIvl} selectedIvl={selectedIvl} intervals={intervals} />
+                    <StyledIntervalButton className="insert">+</StyledIntervalButton>
+                </>
+            ))}
         </StyledIntervalList>
     );
 }
@@ -87,18 +105,11 @@ const IntervalListInput = ({ intervals, setIntervals }) => {
 
     return (
         <StyledIntervalListInput>
+            <h3>Intervals</h3>
             <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
-            <div className="box">
-                <div className="controls">
-                    <h3>{selectedPreset.name}</h3>
-                    <div>
-                        <IconButton iconId="prev" />
-                        <IconButton iconId="next" />
-                        <IconButton iconId="delete" />
-                    </div>
-                </div>
-                <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
-            </div>
+            <h3 className="ivl-name">{selectedPreset.name}</h3>
+            <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
+            <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
         </StyledIntervalListInput>
     );
 }
