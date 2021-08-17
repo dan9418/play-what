@@ -9,14 +9,15 @@ import QuickLink from './panels/QuickLink';
 
 const StyledRootModal = styled.div`
     .sketchpad {
-        background-color: #f5f5f5;
+        //background-color: #f5f5f5;
+        // border-radius: 4px;
 
-        padding: 8px;
-        border-radius: 4px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        .input-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
 
         h2 {
             display: flex;
@@ -41,22 +42,26 @@ const StyledRootModal = styled.div`
         }
 
         h3 {
-            margin-top: 8px;
             color: #555;
         }
 
         button {
             appearance: none;
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.light};
             color: white;
             font-weight: bold;
 
             border: 1px solid #aaa;
-            margin: 4px;
-            border-radius: 100%;
 
-            width: 48px;
-            height: 48px;
+            &:first-child {
+                border-radius: 4px 0 0 4px;
+            }
+            &:last-child {
+                border-radius: 0 4px 4px 0;
+            }
+
+            width: 32px;
+            height: 32px;
 
             &:hover {
                 cursor: pointer;
@@ -91,37 +96,43 @@ const RootModal = () => {
                         <span className="accidental">b</span>
                         <span className="octave">4</span>
                     </h2>
-                    <h3>Spelling</h3>
-                    <div className="spelling">
-                        <button type="button">C</button>
-                        <button type="button">D</button>
-                        <button type="button">E</button>
-                        <button type="button">F</button>
-                        <button type="button">G</button>
-                        <button type="button">A</button>
-                        <button type="button">B</button>
+                    <div className="input-row">
+                        <h3>Spelling</h3>
+                        <div className="spelling">
+                            <button type="button">C</button>
+                            <button type="button">D</button>
+                            <button type="button">E</button>
+                            <button type="button">F</button>
+                            <button type="button">G</button>
+                            <button type="button">A</button>
+                            <button type="button">B</button>
+                        </div>
                     </div>
-                    <h3>Accidental</h3>
-                    <div className="accidental">
-                        <button type="button">bb</button>
-                        <button type="button">b</button>
-                        <button type="button">N</button>
-                        <button type="button">#</button>
-                        <button type="button">x</button>
+                    <div className="input-row">
+                        <h3>Accidental</h3>
+                        <div className="accidental">
+                            <button type="button">bb</button>
+                            <button type="button">b</button>
+                            <button type="button">N</button>
+                            <button type="button">#</button>
+                            <button type="button">x</button>
+                        </div>
                     </div>
-                    <h3>Octave</h3>
-                    <div className="octave">
-                        <button type="button">0</button>
-                        <button type="button">1</button>
-                        <button type="button">2</button>
-                        <button type="button">3</button>
-                        <button type="button">4</button>
-                        <button type="button">5</button>
-                        <button type="button">6</button>
-                        <button type="button">7</button>
-                        <button type="button">8</button>
-                        <button type="button">9</button>
-                        <button type="button">10</button>
+                    <div className="input-row">
+                        <h3>Octave</h3>
+                        <div className="octave">
+                            <button type="button">0</button>
+                            <button type="button">1</button>
+                            <button type="button">2</button>
+                            <button type="button">3</button>
+                            <button type="button">4</button>
+                            <button type="button">5</button>
+                            <button type="button">6</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button">10</button>
+                        </div>
                     </div>
                 </div>
                 <DeltaTable before={rootDetails.name} after={rootDetails.name} />

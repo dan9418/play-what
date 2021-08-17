@@ -31,12 +31,16 @@ const StyledModal = styled.div`
 		overflow: auto;
 
 		position: relative;
-		padding: 16px;
 	}
 
 	.header {
 		border-bottom: 1px solid ${({ theme }) => theme.border};
+		background-color: ${({ theme }) => theme.medium};
+		color: white;
+
 		padding-bottom: 8px;
+
+		padding: 16px 16px 8px;
 
 		> button {
 			position: absolute;
@@ -46,11 +50,11 @@ const StyledModal = styled.div`
 	}
 
 	.body {
-		padding: 16px 0;
+		padding: 0 16px;
 	}
 
 	.footer {
-		padding-top: 8px;
+		padding: 8px 16px 16px;
 		border-top: 1px solid ${({ theme }) => theme.border};
 
 		display: flex;
@@ -69,7 +73,7 @@ export const Modal: React.FC<any> = ({ title, children, closeModal, onSubmit }) 
 			<div className="container">
 				<div className="header">
 					<h2>{title}</h2>
-					<IconButton iconId="close" onClick={closeModal} />
+					<IconButton iconId="close" onClick={closeModal} color="white" />
 				</div>
 				<div className="body">
 					{children}

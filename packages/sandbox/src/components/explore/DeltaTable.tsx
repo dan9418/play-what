@@ -4,6 +4,7 @@ import { ModelId } from '../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../core/src/models/Model.utils';
 
 const StyledDeltaTable = styled.div`
+    margin: 16px 0;
     table {
         text-align: center;
         font-size: 120%;

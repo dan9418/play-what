@@ -11,18 +11,8 @@ import { Modal } from '../shared/core/Modal';
 import DeltaTable from './DeltaTable';
 import IntervalInput from './IntervalInput';
 import IntervalSelector from './IntervalSelector';
+import ModalTitle from './ModalTitle';
 import QuickLink from './panels/QuickLink';
-
-const StyledIntervalsModal = styled.div`
-    table {
-        text-align: left;
-        border-collapse: collapse;
-        width: 100%;
-        td, th {
-            padding: 4px;
-        }
-    }
-`;
 
 const StyledTitle = styled.div`
     // border: 1px solid ${({ theme }) => theme.medium};
@@ -73,10 +63,7 @@ const IntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <StyledTitle>
-                <h2 className="ivl-name">{selectedPreset.name}</h2>
-                <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
-            </StyledTitle>
+            <ModalTitle title={selectedPreset.name} subtitle={`p = ${selectedIvl[0]}, d = ${selectedIvl[1]}`} />
             <IntervalSelector intervals={afterIntervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
             <IntervalInput intervals={afterIntervals} ivl={selectedIvl} setIvl={setIvl} />
             <DeltaTable
@@ -84,7 +71,7 @@ const IntervalsModal = () => {
                 after={ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })}
             />
         </Modal>
-    )
+    );
 }
 
 const IntervalsQuickLink: React.FC<any> = () => {
