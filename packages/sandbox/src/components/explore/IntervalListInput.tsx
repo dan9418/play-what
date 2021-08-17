@@ -7,13 +7,18 @@ import IntervalInput from './IntervalInput';
 
 const StyledIntervalButton = styled.button`
     appearance: none;
-    background-color: #eee;
+    background-color: ${({ theme }) => theme.accent};
+    color: white;
+    font-weight: bold;
+
     border: 1px solid #aaa;
     padding: 16px;
     margin: 8px;
     border-radius: 4px;
 
     &.insert {
+        background-color: #eee;
+        color: #aaa;
         border-radius: 100%;
         padding: 8px;
 
@@ -23,7 +28,8 @@ const StyledIntervalButton = styled.button`
 
     &:hover {
         cursor: pointer;
-        background-color: #aaa;
+        background-color: ${({ theme }) => theme.active};
+        color: white;
     }
 
     &.active {
@@ -105,11 +111,10 @@ const IntervalListInput = ({ intervals, setIntervals }) => {
 
     return (
         <StyledIntervalListInput>
-            <h3>Intervals</h3>
             <IntervalList intervals={intervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
             <h3 className="ivl-name">{selectedPreset.name}</h3>
             <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
-            <IntervalInput ivl={selectedIvl} setIvl={setIvl} />
+            <IntervalInput intervals={intervals} ivl={selectedIvl} setIvl={setIvl} />
         </StyledIntervalListInput>
     );
 }
