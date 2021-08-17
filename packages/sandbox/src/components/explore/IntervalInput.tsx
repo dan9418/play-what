@@ -26,7 +26,7 @@ const StyledIntervalInput = styled.div`
         }
 
         &.inactive {
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.light};
             color: white;
             :hover {
                 background-color: #fff;
@@ -44,7 +44,8 @@ const StyledIntervalInput = styled.div`
         }
 
         padding: 4px;
-        font-size: 150%;
+        font-size: 110%;
+        color: #555;
         cursor: pointer;
         height: 100%;
         width: 100%;

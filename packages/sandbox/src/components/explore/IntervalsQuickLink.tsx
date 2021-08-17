@@ -11,7 +11,6 @@ import { Modal } from '../shared/core/Modal';
 import DeltaTable from './DeltaTable';
 import IntervalInput from './IntervalInput';
 import IntervalSelector from './IntervalSelector';
-import IntervalListInput from './IntervalSelector';
 import QuickLink from './panels/QuickLink';
 
 const StyledIntervalsModal = styled.div`
@@ -23,6 +22,30 @@ const StyledIntervalsModal = styled.div`
             padding: 4px;
         }
     }
+`;
+
+const StyledTitle = styled.div`
+    // border: 1px solid ${({ theme }) => theme.medium};
+    /*background-color: #f5f5f5;
+
+    padding: 8px;
+    border-radius: 4px;
+
+    margin-bottom: 16px;*/
+
+    .ivl-name {
+        text-align: center;
+        margin-top: 16px;
+        margin-bottom: 0;
+    }
+    .ivl-summary {
+        text-align: center;
+        margin-bottom: 24px;
+        margin-top: 4px;
+        font-style: italic;
+        color: #555;
+    }
+    
 `;
 
 const IntervalsModal = () => {
@@ -50,8 +73,10 @@ const IntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <h2 className="ivl-name">{selectedPreset.name}</h2>
-            <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
+            <StyledTitle>
+                <h2 className="ivl-name">{selectedPreset.name}</h2>
+                <div className="ivl-summary">p = {selectedIvl[0]}, d = {selectedIvl[1]}</div>
+            </StyledTitle>
             <IntervalSelector intervals={afterIntervals} selectedIvl={selectedIvl} setSelectedIvl={setSelectedIvl} />
             <IntervalInput intervals={afterIntervals} ivl={selectedIvl} setIvl={setIvl} />
             <DeltaTable

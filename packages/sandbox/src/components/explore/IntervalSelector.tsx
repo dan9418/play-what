@@ -38,29 +38,7 @@ const StyledIntervalButton = styled.button`
     }
 `;
 
-const StyledIntervalListInput = styled.div`
-    // border: 1px solid ${({ theme }) => theme.medium};
-    background-color: #f5f5f5;
 
-    padding: 8px;
-    border-radius: 4px;
-
-    margin-bottom: 16px;
-
-    .ivl-name {
-        text-align: center;
-        margin-top: 16px;
-        margin-bottom: 0;
-    }
-    .ivl-summary {
-        text-align: center;
-        margin-bottom: 24px;
-        margin-top: 4px;
-        font-style: italic;
-        color: #555;
-    }
-    
-`;
 
 const StyledIntervalList = styled.div`
     text-align: center;
