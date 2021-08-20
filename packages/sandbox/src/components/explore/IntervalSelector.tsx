@@ -5,8 +5,8 @@ import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 
 const StyledIntervalButton = styled.button`
     appearance: none;
-    background-color: ${({ theme }) => theme.accent};
-    color: white;
+    color: ${({ theme }) => theme.medium};
+    background-color: #efefef;
     font-weight: bold;
 
     border: 1px solid #aaa;
@@ -15,8 +15,8 @@ const StyledIntervalButton = styled.button`
     border-radius: 100%;
 
     &.insert {
-        background-color: #eee;
-        color: #aaa;
+        background-color: ${({ theme }) => theme.accent};
+        color: white;
         
         padding: 8px;
 

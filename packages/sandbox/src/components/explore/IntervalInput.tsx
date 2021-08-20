@@ -4,51 +4,93 @@ import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 
 const StyledIntervalInput = styled.div`
-    th {    
-        text-align: center;
-        color: #aaa;
+
+    button {
+        background-color: #efefef;
+        color: ${({ theme }) => theme.medium};
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        padding: 4px;
+        cursor: pointer;
+        font-weight: bold;
+        height: 100%;
+        width: 100%;
+
+        :hover {
+            background-color: ${({ theme }) => theme.active};
+            color: white;
+        }
+
+        &.inactive {
+            background-color: ${({ theme }) => theme.light};
+            color: ${({ theme }) => theme.medium};
+        }
+
+        &.active {
+            background-color: white;
+            color: ${({ theme }) => theme.active};
+        }
+    }
+
+    td, th {
+        padding: 4px;
+    }
+
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
+        background-color: ${({ theme }) => theme.light};
+        color: ${({ theme }) => theme.medium};
+        cursor: not-allowed;
+
+        button {
+            background-color: transparent;
+            color: #aaa;
+            cursor: not-allowed;
+
+            &.inactive {
+                background-color: ${({ theme }) => theme.light};
+                color: white;
+                border-color: white;
+            }
+        }
+    }
+
+    ${({ $activeCol }) => `th:nth-child(${$activeCol + 1})`},
+    ${({ $activeCol }) => `td:nth-child(${$activeCol + 1})`} {
+        background-color: ${({ theme }) => theme.active};
+        color: white;
+
+        button {
+            background-color: #efefef;
+            color: ${({ theme }) => theme.medium}; 
+
+            &.active {
+                background-color: ${({ theme }) => theme.active};
+                color: white;
+                border-color: white;
+                cursor: not-allowed; 
+            }
+        }
+    }
+
+    tfoot {
+        border-top: 1px solid #aaa;
+        th {
+            padding: 4px;    
+            text-align: center;
+            font-weight: normal;
+            color: ${({ theme }) => theme.medium};
+            &.active {
+                background-color: ${({ theme }) => theme.light};
+                color: ${({ theme }) => theme.medium};
+            }
+        }
     }
     table {
         width: 100%;
         table-layout: fixed;
         text-align: center;
         border-collapse: collapse;
-    }
-    button {
-        background-color: transparent;
-        color: #555;
-        border: none;
-        border-radius: 4px;
-
-        :hover {
-            background-color: ${({ theme }) => theme.accent};
-            color: white;
-        }
-
-        &.inactive {
-            background-color: ${({ theme }) => theme.light};
-            color: white;
-            :hover {
-                background-color: #fff;
-                color: ${({ theme }) => theme.accent};
-            }
-        }
-
-        &.active {
-            background-color: ${({ theme }) => theme.active};
-            color: white;
-            :hover {
-                background-color: #fff;
-                color: ${({ theme }) => theme.active};
-            }
-        }
-
-        padding: 4px;
-        font-size: 110%;
-        color: #555;
-        cursor: pointer;
-        height: 100%;
-        width: 100%;
     }
 `;
 
@@ -64,10 +106,11 @@ const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl, intervals }) => {
 }
 
 const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
+    const inactiveCols = intervals.map(i => i[0]);
     return (
-        <StyledIntervalInput>
+        <StyledIntervalInput $inactiveCols={inactiveCols} $activeCol={ivl[0]}>
             <table>
-                <thead>
+                <tfoot>
                     <tr>
                         <th>0</th>
                         <th>1</th>
@@ -82,7 +125,7 @@ const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
                         <th>10</th>
                         <th>11</th>
                     </tr>
-                </thead>
+                </tfoot>
                 <tbody>
                     <tr>
                         <td><div /></td>
