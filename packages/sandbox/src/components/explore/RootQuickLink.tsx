@@ -1,12 +1,13 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 import NoteUtils from '../../../../core/src/models/Pod/Note/Note.utils';
+import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 import { useModalContext } from '../../contexts/ModalContext';
 import { rootDetailsState, rootState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
 import DeltaTable from './DeltaTable';
+import ModalTitle from './ModalTitle';
 import QuickLink from './panels/QuickLink';
 
 const StyledRootModal = styled.div`
@@ -22,12 +23,6 @@ const StyledRootModal = styled.div`
         }
 
         h2 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            margin: 16px 0 8px;
-
             .spelling {
                 font-size: 200%;
             }
@@ -50,7 +45,7 @@ const StyledRootModal = styled.div`
         button {
             appearance: none;
             background-color: efefef;
-            color: color: ${({ theme }) => theme.light};;
+            color: ${({ theme }) => theme.medium};;
             font-weight: bold;
 
             border: 1px solid #aaa;
@@ -115,11 +110,14 @@ const RootModal = () => {
         <Modal title="Edit Root" onSubmit={() => setRoot([1, 2])} closeModal={modalContext.closeModal} >
             <StyledRootModal>
                 <div className="sketchpad">
-                    <h2>
-                        <span className="spelling">C</span>
-                        <span className="accidental">b</span>
-                        <span className="octave">4</span>
-                    </h2>
+                    <ModalTitle title={(
+                        <>
+                            <span className="spelling">C</span>
+                            <span className="accidental">b</span>
+                            <span className="octave">4</span>
+                        </>
+                    )} subtitle={`p = ${pitchClass}, d = ${degree}`} />
+
                     <div className="input-row">
                         <h3>Spelling</h3>
                         <div className="spelling">

@@ -2,7 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledTitle = styled.div`
-    margin: 24px 0;
+    margin: 16px 0;
+
+    background-color: #efefef;
+    border-radius: 8px;
+    padding: 8px;
 
     .ivl-name {
         text-align: center;
