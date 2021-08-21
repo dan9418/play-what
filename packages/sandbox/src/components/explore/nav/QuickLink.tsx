@@ -1,14 +1,22 @@
 import React from "react";
 import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
-import IconButton from "../../shared/inputs/IconButton";
+import Icon from "../../shared/ui/Icon";
 
-const StyledQuickLink = styled.div`
+const StyledQuickLink = styled.button`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	height: 64px;
+	height: 100%;
+	padding: 0 16px;
 	white-space: nowrap;
+
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.25);
+	}
 	
 	> div {
 		display: flex;
@@ -37,7 +45,7 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, children }
 	const modalContext = useModalContext();
 
 	return (
-		<StyledQuickLink className="quick-link">
+		<StyledQuickLink className="quick-link" type="button" onClick={() => modalContext.setModal(modal)}>
 			<div className="name-preview">
 				<h3 className="name">
 					{name}
@@ -48,7 +56,7 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, children }
 				{children}
 			</div>
 			<div>
-				<IconButton iconId="edit" onClick={() => modalContext.setModal(modal)} />
+				<Icon iconId="edit" />
 			</div>
 		</StyledQuickLink>
 	);

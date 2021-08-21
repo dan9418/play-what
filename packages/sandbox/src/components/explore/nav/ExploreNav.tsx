@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ActionBox from './ActionBox';
+import ActionBox, { StyledActionBox } from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
 import MasterPreview from './MasterPreview';
+import { IntervalsQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
@@ -17,21 +18,25 @@ const StyledExploreNav = styled.nav`
 
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 
-	padding: 8px 8px;
+	${StyledActionBox} {
+		position: absolute;
+		right: 16px;
+	}
 `;
 
 const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	return (
 		<StyledExploreNav>
 			<MasterPreview />
-			<ActionBox />
 			<StyledSeparator />
-			{/*<QuickLinkContainer />*/}
-			{/*<div className="import">
-						<ButtonInput>IMPORT PRESET</ButtonInput>
-				</div>*/}
+			<RootQuickLink />
+			<StyledSeparator />
+			<IntervalsQuickLink />
+			<StyledSeparator />
+			<ViewerQuickLink />
+			<ActionBox />
 		</StyledExploreNav>
 	);
 };

@@ -2,7 +2,7 @@ import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
 import IconButton from '../../shared/inputs/IconButton';
 
-const StyledActionBox = styled.div`
+export const StyledActionBox = styled.div`
     display: grid;
     grid-gap: 4px;
     grid-template-columns: 1fr 1fr;

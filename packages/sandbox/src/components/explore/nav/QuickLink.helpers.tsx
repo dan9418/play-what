@@ -6,38 +6,9 @@ import { intervalsDetailsState, rootDetailsState, viewerState } from '../../../s
 import EditIntervalsModal from '../modals/EditIntervalsModal';
 import EditRootModal from '../modals/EditRootModal';
 import ViewerModal from '../modals/EditViewerModal';
-import { StyledSeparator } from './ExploreNav.shared';
 import QuickLink from './QuickLink';
 
-const StyledQuickLinkContainer = styled.div`
-    padding: 0 16px;
-	display: flex;
-    align-items: center;
-    border-radius: 4px;
-	
-	white-space: nowrap;
-    .name-preview {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-    }
-    .root {
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 40px;
-        margin-right: 8px;
-    }
-	.name {
-		font-weight: bold;
-        font-size: 120%;
-	}
-	.preview {
-		color: ${({ theme }) => theme.accent};
-        font-size: 80%;
-	}
-`
-
-const IntervalsQuickLink: React.FC<any> = () => {
+export const IntervalsQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
     const [intervalsDetails] = useRecoilState(intervalsDetailsState);
@@ -47,7 +18,7 @@ const IntervalsQuickLink: React.FC<any> = () => {
     );
 };
 
-const RootQuickLink: React.FC<any> = () => {
+export const RootQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
     const [rootDetails] = useRecoilState(rootDetailsState);
@@ -57,7 +28,7 @@ const RootQuickLink: React.FC<any> = () => {
     );
 };
 
-const ViewerQuickLink: React.FC<any> = () => {
+export const ViewerQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
     const [viewerId, setViewerId] = useRecoilState(viewerState);
@@ -66,17 +37,5 @@ const ViewerQuickLink: React.FC<any> = () => {
 
     return (
         <QuickLink name="Viewer" preview={viewerConfig.name} modal={<ViewerModal viewerId={viewerId} setViewerId={setViewerId} />} />
-    );
-};
-
-export const QuickLinkContainer: React.FC<any> = () => {
-    return (
-        <StyledQuickLinkContainer>
-            <RootQuickLink />
-            <StyledSeparator />
-            <IntervalsQuickLink />
-            <StyledSeparator />
-            <ViewerQuickLink />
-        </StyledQuickLinkContainer>
     );
 };

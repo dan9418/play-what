@@ -7,6 +7,10 @@ const StyledMasterPreview = styled.div`
 	display: flex;
     align-items: center;
 	white-space: nowrap;
+
+    padding: 8px 16px 8px 8px;
+    min-width: 128px;
+
     .name-preview {
         display: flex;
         justify-content: center;
