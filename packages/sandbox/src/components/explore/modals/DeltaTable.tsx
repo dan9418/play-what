@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import Viewer from '../Viewer';
+import PodTable from './PodTable';
 
 const StyledDeltaTable = styled.div`
     margin: 16px 0;
@@ -47,7 +50,10 @@ const StyledDeltaTable = styled.div`
     return rows;
 }*/
 
-const DeltaTable: React.FC<any> = ({ before, after }) => {
+const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, afterIntervals }) => {
+    const beforeNotes = PodUtils.addPodList(beforeRoot, beforeIntervals);
+    const afterNotes = PodUtils.addPodList(afterRoot, afterIntervals);
+
     return (
         <StyledDeltaTable>
             <table>
@@ -59,8 +65,14 @@ const DeltaTable: React.FC<any> = ({ before, after }) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{before}</td>
-                        <td>{after}</td>
+                        <td>
+                            <Viewer modelValue={beforeNotes} hideLabel />
+                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeNotes} />
+                        </td>
+                        <td>
+                            <Viewer modelValue={afterNotes} hideLabel />
+                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterNotes} />
+                        </td>
                     </tr>
                 </tbody>
             </table>

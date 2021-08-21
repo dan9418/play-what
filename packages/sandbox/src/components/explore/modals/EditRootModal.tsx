@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../../core/src/models/Model.constants';
-import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../shared/inputs/RootInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
-import Viewer from '../Viewer';
 import DeltaTable from './DeltaTable';
 
 const StyledRootModal = styled.div`
@@ -71,27 +69,12 @@ const EditRootModal = () => {
 
     const modalContext = useModalContext();
 
-    const beforeNotes = PodUtils.addPodList(beforeRoot, intervals);
-    const afterNotes = PodUtils.addPodList(afterRoot, intervals);
-
-    const before = (
-        <>
-            <Viewer modelValue={beforeNotes} hideLabel />
-        </>
-    );
-
-    const after = (
-        <>
-            <Viewer modelValue={afterNotes} hideLabel />
-        </>
-    );
-
     return (
         <Modal title="Edit Root" onSubmit={() => setBeforeRoot(afterRoot as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
                 <ModalTitle title={`root`} />
                 <RootInput root={afterRoot} setRoot={setAfterRoot} />
-                <DeltaTable before={before} after={after} />
+                <DeltaTable beforeRoot={beforeRoot} afterRoot={afterRoot} beforeIntervals={intervals} afterIntervals={intervals} />
             </StyledRootModal>
         </Modal>
     )
