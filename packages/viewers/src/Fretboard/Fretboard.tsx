@@ -4,7 +4,7 @@ import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
 import FretLabel from "./FretLabel";
 
-export const Fret = ({ tuning, stringIndex, fretIndex, labelProps }) => {
+export const Fret = ({ tuning, stringIndex, fretIndex, labelProps, hideLabel }) => {
 	const classes = ['fret'];
 	if (fretIndex === 0)
 		classes.push('open');
@@ -16,19 +16,19 @@ export const Fret = ({ tuning, stringIndex, fretIndex, labelProps }) => {
 	return (
 		<div className={classes.join(' ')}>
 			<div className="fret-number">
-				{isHighString && fretIndex > 0 && fretIndex}
+				{!hideLabel && isHighString && fretIndex > 0 && fretIndex}
 			</div>
 			<div className='fret-string' />
-			<FretLabel {...labelProps} noteIndex={noteIndex} />
+			<FretLabel {...labelProps} noteIndex={noteIndex} hideLabel={hideLabel} />
 			<div className="fret-dots">
-				{isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
+				{!hideLabel && isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
 			</div>
 		</div>
 	);
 };
 
 const getFrets = (props) => {
-	const { fretRange, tuning, labelProps } = props;
+	const { fretRange, tuning, labelProps, hideLabel } = props;
 	const [lo, hi] = fretRange;
 
 	const allFrets = [];
@@ -40,6 +40,7 @@ const getFrets = (props) => {
 					stringIndex={s}
 					fretIndex={f}
 					labelProps={labelProps}
+					hideLabel={hideLabel}
 					tuning={tuning}
 				/>
 			);

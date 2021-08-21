@@ -10,6 +10,7 @@ const StyledDeltaTable = styled.div`
         width: 100%;
         td, th {
             padding: 4px;
+            width: 50%;
         }
     }
 `;

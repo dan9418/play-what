@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../../core/src/models/Model.constants';
+import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { rootState } from '../../../state/state';
+import { intervalsState, rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../shared/inputs/RootInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
+import Viewer from '../Viewer';
 import DeltaTable from './DeltaTable';
 
 const StyledRootModal = styled.div`
@@ -63,19 +65,24 @@ const EditRootModal = () => {
 
     // @ts-ignore
     const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
+    // @ts-ignore
+    const [intervals] = useRecoilState(intervalsState);
     const [afterRoot, setAfterRoot] = useState(beforeRoot);
 
     const modalContext = useModalContext();
 
+    const beforeNotes = PodUtils.addPodList(beforeRoot, intervals);
+    const afterNotes = PodUtils.addPodList(afterRoot, intervals);
+
     const before = (
         <>
-            {JSON.stringify(beforeRoot)}
+            <Viewer modelValue={beforeNotes} hideLabel />
         </>
     );
 
     const after = (
         <>
-            {JSON.stringify(afterRoot)}
+            <Viewer modelValue={afterNotes} hideLabel />
         </>
     );
 
