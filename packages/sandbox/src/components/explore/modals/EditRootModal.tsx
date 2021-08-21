@@ -20,7 +20,7 @@ const StyledRootModal = styled.div`
             justify-content: space-between;
             margin-bottom: 8px;
         }
-        
+
         button {
             appearance: none;
             background-color: efefef;
@@ -67,12 +67,24 @@ const EditRootModal = () => {
 
     const modalContext = useModalContext();
 
+    const before = (
+        <>
+            {JSON.stringify(beforeRoot)}
+        </>
+    );
+
+    const after = (
+        <>
+            {JSON.stringify(afterRoot)}
+        </>
+    );
+
     return (
         <Modal title="Edit Root" onSubmit={() => setBeforeRoot(afterRoot as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
                 <ModalTitle title={`root`} />
                 <RootInput root={afterRoot} setRoot={setAfterRoot} />
-                <DeltaTable beforePods={[beforeRoot]} afterPods={[afterRoot]} />
+                <DeltaTable before={before} after={after} />
             </StyledRootModal>
         </Modal>
     )

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ModelUtils from '../../../../../core/src/models/Model.utils';
 
 const StyledDeltaTable = styled.div`
     margin: 16px 0;
@@ -15,7 +14,7 @@ const StyledDeltaTable = styled.div`
     }
 `;
 
-const getRows = (beforePods, afterPods, nameFn) => {
+/*const getRows = (beforePods, afterPods, nameFn) => {
 
     const rows = [];
     for (let i = 0; i < beforePods.length || i < afterPods.length; i++) {
@@ -45,21 +44,23 @@ const getRows = (beforePods, afterPods, nameFn) => {
         }
     }
     return rows;
-}
+}*/
 
-const DeltaTable: React.FC<any> = ({ beforePods, afterPods, isInterval }) => {
-    const nameFn = isInterval ? ModelUtils.getIntervalName : ModelUtils.getNoteName;
+const DeltaTable: React.FC<any> = ({ before, after }) => {
     return (
         <StyledDeltaTable>
             <table>
                 <thead>
                     <tr>
-                        <th colSpan={2}>Before</th>
-                        <th colSpan={2}>After</th>
+                        <th>Before</th>
+                        <th>After</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {getRows(beforePods, afterPods, nameFn)}
+                    <tr>
+                        <td>{before}</td>
+                        <td>{after}</td>
+                    </tr>
                 </tbody>
             </table>
         </StyledDeltaTable>
