@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { IPod } from '../../../../core/src/models/Model.constants';
-import { ACCIDENTAL, ACCIDENTAL_VALUES } from '../../../../core/src/models/Pod/Note/Note.constants';
-import NoteUtils from '../../../../core/src/models/Pod/Note/Note.utils';
-import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
-import { DEGREE_PRESETS } from '../../../../core/src/theory/Degree.constants';
-import { useModalContext } from '../../contexts/ModalContext';
-import { rootDetailsState, rootState } from '../../state/state';
-import { Modal } from '../shared/core/Modal';
+import { IPod } from '../../../../../core/src/models/Model.constants';
+import { ACCIDENTAL, ACCIDENTAL_VALUES } from '../../../../../core/src/models/Pod/Note/Note.constants';
+import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
+import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import { DEGREE_PRESETS } from '../../../../../core/src/theory/Degree.constants';
+import { useModalContext } from '../../../contexts/ModalContext';
+import { rootDetailsState, rootState } from '../../../state/state';
+import { Modal } from '../../shared/core/Modal';
 import DeltaTable from './DeltaTable';
 import ModalTitle from './ModalTitle';
 import QuickLink from './panels/QuickLink';
@@ -144,15 +144,3 @@ const RootModal = () => {
         </Modal>
     )
 }
-
-const RootQuickLink: React.FC<any> = () => {
-
-    // @ts-ignore
-    const [rootDetails] = useRecoilState(rootDetailsState);
-
-    return (
-        <QuickLink name="Root" preview={rootDetails.name} modal={<RootModal />} />
-    );
-};
-
-export default RootQuickLink;

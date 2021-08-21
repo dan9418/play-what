@@ -1,8 +1,10 @@
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { IPageProps } from '../../contexts/RouteContext';
-import ExploreNav from '../shared/core/ExploreNav';
-import ViewerPanel from './panels/ViewerPanel';
+import { VIEWER_PRESET_MAP } from "../../../../viewers/src/viewer.constants";
+import { IPageProps } from '../../contexts/_RouteContext';
+import { modelIdState, notesState, viewerState } from "../../state/state";
+import ExploreNav from './nav/ExploreNav';
 
 const StyledExplorePage = styled.div`
 	position: fixed;
@@ -24,11 +26,28 @@ const StyledExplorePage = styled.div`
 
 const ExplorePage: React.FC<IPageProps> = () => {
 
+	// @ts-ignore
+	const [modelId] = useRecoilState(modelIdState);
+	// @ts-ignore
+	const [modelValue] = useRecoilState(notesState);
+	// @ts-ignore
+	const [viewerId] = useRecoilState(viewerState);
+
+	if (!modelValue.length) return <>No intervals set.</>;
+
+	const labelProps = {
+		modelId,
+		modelValue
+	};
+
+	const viewerConfig = VIEWER_PRESET_MAP.get(viewerId).value;
+
+
 	return (
 		<>
 			<ExploreNav />
 			<StyledExplorePage>
-				<ViewerPanel />
+				<viewerConfig.component {...viewerConfig.props} labelProps={labelProps} />
 			</StyledExplorePage>
 		</>
 	);

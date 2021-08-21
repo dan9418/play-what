@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PathNavContextProvider } from '../../../contexts/PathNavContext';
-import { RouteContextConsumer } from '../../../contexts/RouteContext';
+import { PathNavContextProvider } from '../../../contexts/_PathNavContext';
+import { RouteContextConsumer } from '../../../contexts/_RouteContext';
 
 const StyledMain = styled.main`
 	padding: 96px 0px;

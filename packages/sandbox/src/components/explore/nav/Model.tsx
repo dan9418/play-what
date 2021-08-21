@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
 import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
 import QuickLink from '../../explore/panels/QuickLink';
-import RootQuickLink from '../../explore/RootQuickLink';
-import ViewerQuickLink from '../../explore/ViewerQuickLink';
-import IconButton from '../ui/inputs/buttons/IconButton';
+import RootQuickLink from '../modals/EditRootModal';
+import ViewerQuickLink from '../modals/EditViewerModal';
+import IconButton from '../../shared/ui/inputs/buttons/IconButton';
 
 const StyledSeparator = styled.div`
     margin: 0 16px;

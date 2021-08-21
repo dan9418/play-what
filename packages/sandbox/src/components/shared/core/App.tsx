@@ -4,7 +4,7 @@ import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { ModalContextProvider } from '../../../contexts/ModalContext';
-import { RouteContextProvider } from '../../../contexts/RouteContext';
+import { RouteContextProvider } from '../../../contexts/_RouteContext';
 import THEME from '../../../styles/theme';
 import Main from './Main';
 import Nav from './Nav';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PageId, useRouteContext } from '../../../contexts/RouteContext';
-import Menu from './Menu';
+import { PageId, useRouteContext } from '../../../contexts/_RouteContext';
+import Menu from './_Menu';
 
 interface INavLink {
 	text: string;

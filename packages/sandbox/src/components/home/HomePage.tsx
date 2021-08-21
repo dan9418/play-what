@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { PageId, useRouteContext } from '../../contexts/RouteContext';
-import ButtonInput from '../shared/ui/inputs/buttons/ButtonInput';
+import { PageId, useRouteContext } from '../../contexts/_RouteContext';
+import ButtonInput from '../shared/ui/ButtonInput';
 
 const StyledHomePage = styled.div`
 	width: 100%;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ModelUtils from '../../../../core/src/models/Model.utils';
+import ModelUtils from '../../../../../core/src/models/Model.utils';
 
 const StyledDeltaTable = styled.div`
     margin: 16px 0;

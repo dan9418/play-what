@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod/Interval/Interval.constants';
-import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
-import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
+import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../../core/src/models/Pod/Interval/Interval.constants';
+import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 
 const StyledIntervalInput = styled.div`
 

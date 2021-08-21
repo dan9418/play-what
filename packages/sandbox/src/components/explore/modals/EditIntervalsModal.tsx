@@ -29,15 +29,3 @@ const IntervalsModal = () => {
         </Modal>
     );
 }
-
-const IntervalsQuickLink: React.FC<any> = () => {
-
-    // @ts-ignore
-    const [intervalsDetails] = useRecoilState(intervalsDetailsState);
-
-    return (
-        <QuickLink name="Intervals" preview={intervalsDetails.preview} modal={<IntervalsModal />} />
-    );
-};
-
-export default IntervalsQuickLink;

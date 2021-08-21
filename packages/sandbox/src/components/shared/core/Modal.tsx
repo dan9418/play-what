@@ -1,10 +1,8 @@
 
 import React from "react";
 import styled from "styled-components";
-import ButtonInput from "../ui/inputs/buttons/ButtonInput";
+import ButtonInput from "../ui/ButtonInput";
 import IconButton from "../ui/inputs/buttons/IconButton";
-
-const ModalContext = React.createContext(null);
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -86,5 +84,3 @@ export const Modal: React.FC<any> = ({ title, children, closeModal, onSubmit }) 
 		</StyledModal>
 	);
 };
-
-export const useModalContext = () => React.useContext(ModalContext);

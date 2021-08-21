@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Icon from '../ui/Icon';
-import ButtonInput from '../ui/inputs/buttons/ButtonInput';
-import Menu from './Menu';
+import Icon from '../../shared/ui/Icon';
+import ButtonInput from '../../shared/ui/ButtonInput';
+import Menu from '../../shared/core/_Menu';
 import Model from './Model';
 
 const StyledSeparator = styled.div`
