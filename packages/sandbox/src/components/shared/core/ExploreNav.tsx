@@ -123,9 +123,6 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 						<ButtonInput>IMPORT PRESET</ButtonInput>
 					</div>
 				</div>
-				{/*<button type="button" className={`menu ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-					<Icon iconId="menu" size={32} />
-	</button>*/}
 			</StyledExploreNav>
 			{isMenuOpen && <Menu closeMenu={() => setIsMenuOpen(false)} setExploreState={setExploreState} />}
 		</>

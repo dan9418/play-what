@@ -6,7 +6,6 @@ import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
 import QuickLink from '../../explore/panels/QuickLink';
 import RootQuickLink from '../../explore/RootQuickLink';
 import IconButton from '../ui/inputs/buttons/IconButton';
-import SwitchInput from '../ui/inputs/SwitchInput';
 
 const StyledSeparator = styled.div`
     margin: 0 16px;
@@ -45,19 +44,6 @@ const StyledModel = styled.div`
     .sound {
         margin-left: 16px;
     }
-
-    .match-octave {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        label {
-            color: #333;
-            font-weight: bold;
-            font-size: 80%;
-            margin-bottom: 4px;
-        }
-    }
 `
 
 const Model: React.FC<any> = () => {
@@ -84,11 +70,6 @@ const Model: React.FC<any> = () => {
                 <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
             </div>
             <StyledSeparator />
-            <div className="match-octave">
-                <label>Match Octave?</label>
-                <SwitchInput value={false} setValue={null} />
-            </div>
-
         </StyledModel>
     );
 };
