@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledHighlightBox = styled.div`
+export const StyledHighlightBox = styled.div`
 
     display: flex;
     align-items: center;

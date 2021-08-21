@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
+import { StyledHighlightBox } from "../ui/HighlightBox";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -11,24 +12,43 @@ const StyledModal = styled.div`
 	bottom: 0;
 	right: 0;
 	left: 0;
-	z-index: 1001;
+	z-index: 10000;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
+	${StyledHighlightBox} {
+		margin-bottom: 16px;
+	}
+
+	.header, .footer {
+		width: 100%;
+	}
+
 	.container {
 		background: white;
-		border-radius: 8px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: column;
 
 		position: fixed;
-		top: 16px;
-		bottom: 32px;
-		width: 90%;
-		max-width: 768px;
-		max-height: 768px;
-		overflow: auto;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
 
+		width: 100%;
+		max-width: 512px;
+		
 		position: relative;
+
+		height: 80%;
+		@media(min-width: 512px) {
+			border-radius: 8px;
+		}
+
 	}
 
 	.header {
@@ -37,6 +57,10 @@ const StyledModal = styled.div`
 		color: white;
 
 		padding-bottom: 8px;
+		
+		@media(min-width: 512px) {
+			border-radius: 8px 8px 0 0;
+		}
 
 		padding: 16px 16px 8px;
 
@@ -48,7 +72,10 @@ const StyledModal = styled.div`
 	}
 
 	.body {
-		padding: 0 16px;
+		padding: 16px;
+		overflow: auto;
+		height: 100%;
+		width: 100%;
 	}
 
 	.footer {
