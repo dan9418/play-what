@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { ModelId } from '../../../../core/src/models/Model.constants';
-import ModelUtils from '../../../../core/src/models/Model.utils';
 import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
 import { useModalContext } from '../../contexts/ModalContext';
 import { intervalsDetailsState, intervalsState } from '../../state/state';
@@ -24,8 +22,8 @@ const IntervalsModal = () => {
             <ModalTitle title={PodListUtils.getName(afterIntervals)} subtitle={JSON.stringify(afterIntervals)} />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
-                before={ModelUtils.getPreview(beforeIntervals, { podType: ModelId.Interval })}
-                after={ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })}
+                beforePods={beforeIntervals}
+                afterPods={afterIntervals}
             />
         </Modal>
     );

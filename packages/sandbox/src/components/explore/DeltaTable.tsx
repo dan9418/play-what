@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModelId } from '../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../core/src/models/Model.utils';
 
 const StyledDeltaTable = styled.div`
@@ -16,22 +15,51 @@ const StyledDeltaTable = styled.div`
     }
 `;
 
-const DeltaTable: React.FC<any> = ({ before, after }) => {
+const getRows = (beforePods, afterPods) => {
+
+    const rows = [];
+    for (let i = 0; i < beforePods.length || i < afterPods.length; i++) {
+        if (beforePods[i] && afterPods[i]) {
+            rows.push(<tr>
+                <td>{ModelUtils.getIntervalName(beforePods[i])}</td>
+                <td>{JSON.stringify(beforePods[i])}</td>
+                <td>{ModelUtils.getIntervalName(afterPods[i])}</td>
+                <td>{JSON.stringify(afterPods[i])}</td>
+            </tr>)
+        }
+        else if (beforePods[i]) {
+            rows.push(<tr>
+                <td>{ModelUtils.getIntervalName(beforePods[i])}</td>
+                <td>{JSON.stringify(beforePods[i])}</td>
+                <td></td>
+                <td></td>
+            </tr>)
+        }
+        else if (afterPods[i]) {
+            rows.push(<tr>
+                <td></td>
+                <td></td>
+                <td>{ModelUtils.getIntervalName(afterPods[i])}</td>
+                <td>{JSON.stringify(afterPods[i])}</td>
+            </tr>)
+        }
+    }
+    return rows;
+}
+
+const DeltaTable: React.FC<any> = ({ beforePods, afterPods }) => {
 
     return (
         <StyledDeltaTable>
             <table>
                 <thead>
                     <tr>
-                        <th>Before</th>
-                        <th>After</th>
+                        <th colSpan={2}>Before</th>
+                        <th colSpan={2}>After</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>{before}</td>
-                        <td>{after}</td>
-                    </tr>
+                    {getRows(beforePods, afterPods)}
                 </tbody>
             </table>
         </StyledDeltaTable>

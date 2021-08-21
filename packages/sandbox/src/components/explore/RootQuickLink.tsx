@@ -157,7 +157,7 @@ const RootModal = () => {
                         </div>
                     </div>
                 </div>
-                <DeltaTable before={rootDetails.name} after={rootDetails.name} />
+                <DeltaTable beforePods={[root]} afterPods={[root]} />
             </StyledRootModal>
         </Modal>
     )
