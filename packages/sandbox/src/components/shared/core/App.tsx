@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import { ModalContextProvider } from '../../../contexts/ModalContext';
 import THEME from '../../../styles/theme';
 import ErrorBoundary from '../utils/ErrorBoundary';
-//import Main from './Main';
+import Main from './Main';
 import Nav from './Nav';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
 				<ErrorBoundary>
 					<ModalContextProvider>
 						<Nav />
-						{/*<Main />*/}
+						<Main />
 					</ModalContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
