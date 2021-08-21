@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { IPod } from '../../../../core/src/models/Model.constants';
 import NoteUtils from '../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
 import { useModalContext } from '../../contexts/ModalContext';
@@ -90,74 +91,72 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 const RootModal = () => {
 
     // @ts-ignore
-    const [rootDetails] = useRecoilState(rootDetailsState);
     const [root, setRoot] = useRecoilState(rootState);
 
     const modalContext = useModalContext();
 
-    const pitchClass = PodUtils.getPitchClass(root);
-    const accidental = NoteUtils.getAccidentalOffset(root);
-    const octave = PodUtils.getOctave(root);
-    const degree = PodUtils.getDegree(root);
+    const beforeAccidental = NoteUtils.getAccidentalOffset(root);
+    const beforeOctave = PodUtils.getOctave(root);
+    const beforeDegree = PodUtils.getDegree(root);
 
-    let setDegree;
-    let setOctave;
-    let setAccidental;
+    const [afterDegree, setAfterDegree] = useState(beforeDegree);
+    const [afterAccidental, setAfterAccidental] = useState(beforeAccidental);
+    const [afterOctave, setAfterOctave] = useState(beforeOctave);
 
-    console.log('dpb root', pitchClass, octave, degree);
+    const afterPod = NoteUtils.createPod(afterDegree, afterAccidental, afterOctave);
 
     return (
-        <Modal title="Edit Root" onSubmit={() => setRoot([1, 2])} closeModal={modalContext.closeModal} >
+        <Modal title="Edit Root" onSubmit={() => setRoot(afterPod as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
                 <div className="sketchpad">
                     <ModalTitle title={(
                         <>
-                            <span className="spelling">C</span>
-                            <span className="accidental">b</span>
-                            <span className="octave">4</span>
+                            <span className="spelling">x</span>
+                            <span className="accidental">x</span>
+                            <span className="octave">x</span>
                         </>
-                    )} subtitle={`[${pitchClass}, ${degree}]`} />
+                    )} subtitle={`x`} />
 
                     <div className="input-row">
                         <h3>Spelling</h3>
                         <div className="spelling">
-                            <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
-                            <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={0}>C</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={1}>D</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={2}>E</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={3}>F</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={4}>G</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={5}>A</RootButton>
+                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={6}>B</RootButton>
                         </div>
                     </div>
                     <div className="input-row">
                         <h3>Accidental</h3>
                         <div className="accidental">
-                            <RootButton value={accidental} setValue={setAccidental} buttonValue={-2}>bb</RootButton>
-                            <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
-                            <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
-                            <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
-                            <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>x</RootButton>
+                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={-2}>bb</RootButton>
+                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={-1}>b</RootButton>
+                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={0}>N</RootButton>
+                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={1}>#</RootButton>
+                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={2}>x</RootButton>
                         </div>
                     </div>
                     <div className="input-row">
                         <h3>Octave</h3>
                         <div className="octave">
-                            <RootButton value={octave} setValue={setOctave} buttonValue={0}>0</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={1}>1</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={2}>2</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={3}>3</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={4}>4</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={5}>5</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={6}>6</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={7}>7</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={8}>8</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={9}>9</RootButton>
-                            <RootButton value={octave} setValue={setOctave} buttonValue={10}>10</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={0}>0</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={1}>1</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={2}>2</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={3}>3</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={4}>4</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={5}>5</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={6}>6</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={7}>7</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={8}>8</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={9}>9</RootButton>
+                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={10}>10</RootButton>
                         </div>
                     </div>
                 </div>
-                <DeltaTable beforePods={[root]} afterPods={[root]} />
+                <DeltaTable beforePods={[root]} afterPods={[afterPod]} />
             </StyledRootModal>
         </Modal>
     )

@@ -27,8 +27,15 @@ const getPodColor = pod => {
 	return DEFAULT_PITCH_COLOR_SCHEME[p];
 }
 
+const createPod = (degree, accidental, octave) => {
+	const pitchClass = ROOT_SCALE[degree][0] + accidental;
+	const pitch = (octave * 12) + pitchClass;
+	return [pitch, degree];
+}
+
 export default {
 	getAccidentalOffset,
 	getAccidentalString,
-	getPodColor
+	getPodColor,
+	createPod
 }
