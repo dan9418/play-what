@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { IPod, ModelId } from '../../../../core/src/models/Model.constants';
+import { ModelId } from '../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../core/src/models/Model.utils';
-import { INTERVAL_PRESETS } from '../../../../core/src/models/Pod/Interval/Interval.constants';
-import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
+import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
 import { useModalContext } from '../../contexts/ModalContext';
 import { intervalsDetailsState, intervalsState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
@@ -22,7 +21,7 @@ const IntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setBeforeIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <ModalTitle title={ModelUtils.getPreview(afterIntervals, { podType: ModelId.Interval })} subtitle={JSON.stringify(afterIntervals)} />
+            <ModalTitle title={PodListUtils.getName(afterIntervals)} subtitle={JSON.stringify(afterIntervals)} />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
                 before={ModelUtils.getPreview(beforeIntervals, { podType: ModelId.Interval })}

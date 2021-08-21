@@ -47,10 +47,30 @@ const containsSubset = (modelValue: IPod[], subset: IPod[]): boolean => {
 	return true;
 };
 
+const getName = (modelValue: IPod[]): string => {
+	if(modelValue.length === 0) {
+		return "No Selection";
+	}
+	else if(modelValue.length === 1) {
+		return 'single dingle';
+	}
+	else if(modelValue.length === 2) {
+		return 'double dingle';
+	}
+	else if(modelValue.length >= 3 && modelValue.length < 5) {
+		return 'chord';
+	}
+	else {
+		return 'scale';
+	}
+};
+
+
 export default {
 	areEqual,
 	reduce,
 	getPodAtPitch,
 	playSound,
-	containsSubset
+	containsSubset,
+	getName
 };
