@@ -11,6 +11,8 @@ const StyledMasterPreview = styled.div`
     padding: 8px 16px 8px 8px;
     min-width: 128px;
 
+    color: ${({ theme }) => theme.primary};
+
     .name-preview {
         display: flex;
         justify-content: center;

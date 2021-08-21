@@ -10,8 +10,6 @@ const StyledHighlightBox = styled.div`
     background-color: #efefef;
     border-radius: 8px;
     padding: 8px;
-    height: 100%;
-    border: 1px solid #aaa;
 
     .title {
         text-align: center;

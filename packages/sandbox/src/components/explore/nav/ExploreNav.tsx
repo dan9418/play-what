@@ -36,6 +36,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 			<IntervalsQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
+			<StyledSeparator />
 			<ActionBox />
 		</StyledExploreNav>
 	);

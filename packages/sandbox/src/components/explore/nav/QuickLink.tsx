@@ -4,33 +4,40 @@ import { useModalContext } from "../../../contexts/ModalContext";
 import Icon from "../../shared/ui/Icon";
 
 const StyledQuickLink = styled.button`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	height: 100%;
 	padding: 0 16px;
-	white-space: nowrap;
 
+	white-space: nowrap;
 	cursor: pointer;
 	border: none;
+	text-align: left;
+
+	display: flex;
+	align-items: center;
+
+	.name {
+		font-weight: bold;
+		margin-bottom: 2px;
+		color: ${({ theme }) => theme.primary};
+	}
+
+	.preview {
+		color: ${({ theme }) => theme.accent};
+		font-size: 140%;
+	}
+
+	svg {
+		margin-left: 16px;
+
+		fill: ${({ theme }) => theme.primary};
+		* {
+			fill: ${({ theme }) => theme.primary};
+		}
+	}
+
 	background-color: transparent;
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.25);
-	}
-	
-	> div {
-		display: flex;
-		&.name-preview {
-			width: 100%;
-			padding-right: 8px;
-			flex-direction: column;
-			.name {
-				font-weight: bold;
-			}
-			.preview {
-				color: ${({ theme }) => theme.accent};
-			}
-		}
 	}
 `;
 
@@ -47,17 +54,10 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, children }
 	return (
 		<StyledQuickLink className="quick-link" type="button" onClick={() => modalContext.setModal(modal)}>
 			<div className="name-preview">
-				<h3 className="name">
-					{name}
-				</h3>
-				<div className="preview">
-					{preview}
-				</div>
-				{children}
+				<div className="name">{name}</div>
+				<div className="preview">{preview}</div>
 			</div>
-			<div>
-				<Icon iconId="edit" />
-			</div>
+			<Icon iconId="edit" />
 		</StyledQuickLink>
 	);
 };
