@@ -15,21 +15,21 @@ const StyledDeltaTable = styled.div`
     }
 `;
 
-const getRows = (beforePods, afterPods) => {
+const getRows = (beforePods, afterPods, nameFn) => {
 
     const rows = [];
     for (let i = 0; i < beforePods.length || i < afterPods.length; i++) {
         if (beforePods[i] && afterPods[i]) {
             rows.push(<tr>
-                <td>{ModelUtils.getIntervalName(beforePods[i])}</td>
+                <td>{nameFn(beforePods[i])}</td>
                 <td>{JSON.stringify(beforePods[i])}</td>
-                <td>{ModelUtils.getIntervalName(afterPods[i])}</td>
+                <td>{nameFn(afterPods[i])}</td>
                 <td>{JSON.stringify(afterPods[i])}</td>
             </tr>)
         }
         else if (beforePods[i]) {
             rows.push(<tr>
-                <td>{ModelUtils.getIntervalName(beforePods[i])}</td>
+                <td>{nameFn(beforePods[i])}</td>
                 <td>{JSON.stringify(beforePods[i])}</td>
                 <td></td>
                 <td></td>
@@ -39,7 +39,7 @@ const getRows = (beforePods, afterPods) => {
             rows.push(<tr>
                 <td></td>
                 <td></td>
-                <td>{ModelUtils.getIntervalName(afterPods[i])}</td>
+                <td>{nameFn(afterPods[i])}</td>
                 <td>{JSON.stringify(afterPods[i])}</td>
             </tr>)
         }
@@ -47,8 +47,8 @@ const getRows = (beforePods, afterPods) => {
     return rows;
 }
 
-const DeltaTable: React.FC<any> = ({ beforePods, afterPods }) => {
-
+const DeltaTable: React.FC<any> = ({ beforePods, afterPods, isInterval }) => {
+    const nameFn = isInterval ? ModelUtils.getIntervalName : ModelUtils.getNoteName;
     return (
         <StyledDeltaTable>
             <table>
@@ -59,7 +59,7 @@ const DeltaTable: React.FC<any> = ({ beforePods, afterPods }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {getRows(beforePods, afterPods)}
+                    {getRows(beforePods, afterPods, nameFn)}
                 </tbody>
             </table>
         </StyledDeltaTable>

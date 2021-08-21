@@ -172,6 +172,7 @@ export const getFolderItemFromModelPreset = (preset: IModelPreset<IPod>): IFolde
 
 export default {
 	getIntervalName,
+	getNoteName,
 	getName,
 	getPreview,
 	getPodProps,

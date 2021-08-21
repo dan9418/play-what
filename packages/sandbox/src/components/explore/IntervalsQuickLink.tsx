@@ -24,6 +24,7 @@ const IntervalsModal = () => {
             <DeltaTable
                 beforePods={beforeIntervals}
                 afterPods={afterIntervals}
+                isInterval
             />
         </Modal>
     );
