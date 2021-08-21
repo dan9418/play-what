@@ -5,6 +5,7 @@ import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../.
 import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
 import QuickLink from '../../explore/panels/QuickLink';
 import RootQuickLink from '../../explore/RootQuickLink';
+import ViewerQuickLink from '../../explore/ViewerQuickLink';
 import IconButton from '../ui/inputs/buttons/IconButton';
 
 const StyledSeparator = styled.div`
@@ -67,7 +68,7 @@ const Model: React.FC<any> = () => {
             <div className="quick-links">
                 <RootQuickLink />
                 <IntervalsQuickLink />
-                <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
+                <ViewerQuickLink />
             </div>
             <StyledSeparator />
         </StyledModel>

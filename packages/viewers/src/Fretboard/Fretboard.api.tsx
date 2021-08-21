@@ -25,6 +25,11 @@ export const FRETBOARD_TUNING = {
 		name: 'Standard',
 		value: [16, 11, 7, 2, -3, -8] // e B G D A E
 	},
+	standardBass: {
+		id: 'standardBass',
+		name: 'Bass',
+		value: [7, 2, -3, -8] // G D A E
+	},
 	dropD: {
 		id: 'dropD',
 		name: 'Drop D',

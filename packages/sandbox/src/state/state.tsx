@@ -4,6 +4,7 @@ import ModelUtils from '../../../core/src/models/Model.utils';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
+import { ViewerId } from '../../../viewers/src/viewer.constants';
 
 export interface IDetailsState<T> {
     value: T,
@@ -24,6 +25,11 @@ export const modelIdState = atom<ModelId | null>({
 export const intervalsState = atom<IPod[]>({
     key: 'intervalsState',
     default: CHORD_PRESET_MAP.get(ChordId.Maj7).value
+});
+
+export const viewerState = atom<any>({
+    key: 'viewerState',
+    default: ViewerId.Guitar
 });
 
 export const notesState = selector<IPod[]>({

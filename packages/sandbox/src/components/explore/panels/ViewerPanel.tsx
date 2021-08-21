@@ -1,9 +1,7 @@
 import React from "react";
-import Fretboard from '../../../../../viewers/src/Fretboard/Fretboard';
-import Panel from './Panel';
-import styled from 'styled-components';
-import { modelIdState, notesDetailsState, notesState } from "../../../state/state";
 import { useRecoilState } from "recoil";
+import { VIEWER_PRESET_MAP } from "../../../../../viewers/src/viewer.constants";
+import { modelIdState, notesState, viewerState } from "../../../state/state";
 
 const ViewerPanel: React.FC<any> = () => {
 
@@ -11,16 +9,20 @@ const ViewerPanel: React.FC<any> = () => {
     const [modelId] = useRecoilState(modelIdState);
     // @ts-ignore
     const [modelValue] = useRecoilState(notesState);
+    // @ts-ignore
+    const [viewerId] = useRecoilState(viewerState);
 
-    if (!modelValue.length) return <>'Please set a root'</>;
+    if (!modelValue.length) return <>No intervals set.</>;
 
     const labelProps = {
         modelId,
         modelValue
-    }
+    };
+
+    const viewerConfig = VIEWER_PRESET_MAP.get(viewerId).value;
 
     return (
-        <Fretboard labelProps={labelProps} />
+        <viewerConfig.component {...viewerConfig.props} labelProps={labelProps} />
     );
 };
 
