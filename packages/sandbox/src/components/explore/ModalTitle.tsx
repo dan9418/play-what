@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 const StyledTitle = styled.div`
     margin: 16px 0;
+    min-height: 96px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     background-color: #efefef;
     border-radius: 8px;
@@ -23,7 +27,7 @@ const ModalTitle: React.FC<any> = ({ title, subtitle }) => {
     return (
         <StyledTitle>
             <h2 className="ivl-name">{title}</h2>
-            <div className="ivl-summary">{subtitle}</div>
+            <div className="ivl-summary"></div>
         </StyledTitle>
     )
 }
