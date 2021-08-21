@@ -3,7 +3,7 @@ import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { VIEWER_PRESET_MAP } from "../../../../viewers/src/viewer.constants";
 import { modelIdState, notesState, viewerState } from "../../state/state";
-//import ExploreNav from './nav/ExploreNav';
+import ExploreNav from './nav/ExploreNav';
 
 const StyledExplorePage = styled.div`
 	position: fixed;
@@ -43,9 +43,9 @@ const ExplorePage: React.FC<any> = () => {
 
 	return (
 		<>
-			{/*<ExploreNav />*/}
+			<ExploreNav />
 			<StyledExplorePage>
-				{/*<viewerConfig.component {...viewerConfig.props} labelProps={labelProps} />*/}
+				<viewerConfig.component {...viewerConfig.props} labelProps={labelProps} />
 			</StyledExplorePage>
 		</>
 	);
