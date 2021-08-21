@@ -61,6 +61,12 @@ interface IAccidental {
 }
 
 export const ACCIDENTAL: { [x: string]: IAccidental } = {
+	doubleFlat: {
+		id: 'doubleFlat',
+		name: 'Double Flat',
+		symbol: 'bb',
+		value: -2
+	},
 	flat: {
 		id: 'flat',
 		name: 'Flat',
@@ -78,6 +84,12 @@ export const ACCIDENTAL: { [x: string]: IAccidental } = {
 		name: 'Sharp',
 		symbol: '#',
 		value: 1
+	},
+	doubleSharp: {
+		id: 'doubleSharp',
+		name: 'Double Sharp',
+		symbol: 'x',
+		value: 2
 	}
 };
 

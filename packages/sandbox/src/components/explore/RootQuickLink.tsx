@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../core/src/models/Model.constants';
+import { ACCIDENTAL, ACCIDENTAL_VALUES } from '../../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
+import { DEGREE_PRESETS } from '../../../../core/src/theory/Degree.constants';
 import { useModalContext } from '../../contexts/ModalContext';
 import { rootDetailsState, rootState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
@@ -21,22 +23,6 @@ const StyledRootModal = styled.div`
             align-items: center;
             justify-content: space-between;
             margin-bottom: 8px;
-        }
-
-        h2 {
-            .spelling {
-                font-size: 200%;
-            }
-            .accidental {
-                align-self: flex-start;
-                font-weight: 200;
-            }
-            .octave {
-                align-self: flex-end;
-                font-weight: 200;
-                font-size: 80%;
-                padding-bottom: 8px;
-            }
         }
 
         h3 {
@@ -103,19 +89,16 @@ const RootModal = () => {
     const [afterAccidental, setAfterAccidental] = useState(beforeAccidental);
     const [afterOctave, setAfterOctave] = useState(beforeOctave);
 
+    const afterDegreeText = DEGREE_PRESETS.find(x => x.value === afterDegree).name;
+    const afterAccidentalText = ACCIDENTAL_VALUES.find(x => x.value === afterAccidental).symbol;
+
     const afterPod = NoteUtils.createPod(afterDegree, afterAccidental, afterOctave);
 
     return (
         <Modal title="Edit Root" onSubmit={() => setRoot(afterPod as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
                 <div className="sketchpad">
-                    <ModalTitle title={(
-                        <>
-                            <span className="spelling">x</span>
-                            <span className="accidental">x</span>
-                            <span className="octave">x</span>
-                        </>
-                    )} subtitle={`x`} />
+                    <ModalTitle title={`${afterDegreeText}${afterAccidentalText}${afterOctave}`} />
 
                     <div className="input-row">
                         <h3>Spelling</h3>
