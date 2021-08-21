@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { PageId, useRouteContext } from '../../../contexts/_RouteContext';
-import Menu from './_Menu';
 
 interface INavLink {
 	text: string;
-	pageId?: PageId;
-	href?: string;
+	href: string;
 }
 
 const NAV_LINKS: INavLink[] = [
 	{
 		text: 'Home',
-		pageId: PageId.Home
+		href: '/'
 	},
 	{
 		text: 'Docs',
@@ -97,32 +94,26 @@ const StyledNav = styled.nav`
 `;
 
 const Nav: React.FC = () => {
-	const routeContext = useRouteContext();
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 	return (
-		<>
-			<StyledNav>
-				<div>
-					<button type="button" className="logo" onClick={() => routeContext.setPage(PageId.Home)}>
-						Play <em><b>What?</b></em>
-					</button>
-					<ul className="link-list">
-						{NAV_LINKS.map((l, i) => (
-							<li key={i}>
-								{
-									l.href ?
-										<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
-										:
-										<button type="button" onClick={() => routeContext.setPage(l.pageId)}>{l.text}</button>
-								}
-							</li>
-						))}
-					</ul>
-				</div>
-			</StyledNav>
-			{isMenuOpen && <Menu />}
-		</>
+		<StyledNav>
+			<div>
+				<button type="button" className="logo">
+					Play <em><b>What?</b></em>
+				</button>
+				<ul className="link-list">
+					{NAV_LINKS.map((l, i) => (
+						<li key={i}>
+							{
+								l.href ?
+									<a href={l.href} target="_blank" rel="noreferrer">{l.text}</a>
+									:
+									<button type="button">{l.text}</button>
+							}
+						</li>
+					))}
+				</ul>
+			</div>
+		</StyledNav>
 	);
 };
 

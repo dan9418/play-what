@@ -7,7 +7,7 @@ import { ModalContextProvider } from '../../../contexts/ModalContext';
 import THEME from '../../../styles/theme';
 import ErrorBoundary from '../utils/ErrorBoundary';
 //import Main from './Main';
-//import Nav from './Nav';
+import Nav from './Nav';
 
 const App = () => {
 	return (
@@ -16,9 +16,8 @@ const App = () => {
 				{/* @ts-ignore */}
 				<ErrorBoundary>
 					<ModalContextProvider>
-						test
-						{/*<Nav />
-						<Main />*/}
+						<Nav />
+						{/*<Main />*/}
 					</ModalContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
