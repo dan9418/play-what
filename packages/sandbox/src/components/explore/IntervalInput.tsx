@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '../../../../core/src/models/Pod/Pod.utils';
+import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
 
 const StyledIntervalInput = styled.div`
 
@@ -103,7 +104,8 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
         }
         // Add new interval
         else {
-            setIntervals([...intervals, preset.value]);
+            const newIvls = [...intervals, preset.value];
+            setIntervals(PodListUtils.sort(newIvls));
         }
     }
 

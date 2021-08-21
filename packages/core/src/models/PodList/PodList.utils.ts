@@ -1,8 +1,8 @@
-import { IPod, IModelOptions } from './../Model.constants';
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
-import { MAX_POD } from '../Pod/Pod.constants';
 import PodUtils from '../Pod/Pod.utils';
+import { IPod } from './../Model.constants';
+import { IntervalId, INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './../Pod/Interval/Interval.constants';
 
 // Equality
 
@@ -48,16 +48,22 @@ const containsSubset = (modelValue: IPod[], subset: IPod[]): boolean => {
 };
 
 const getName = (modelValue: IPod[]): string => {
-	if(modelValue.length === 0) {
+	if (modelValue.length === 0) {
 		return "No Selection";
 	}
-	else if(modelValue.length === 1) {
-		return 'single dingle';
+	else if (modelValue.length === 1) {
+		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, modelValue[0]));
+		return ivlPreset.name;
 	}
-	else if(modelValue.length === 2) {
-		return 'double dingle';
+	else if (modelValue.length === 2 && PodUtils.areEqual(modelValue[0], INTERVAL_PRESET_MAP.get(IntervalId.P1).value)) {
+		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, modelValue[1]));
+		return ivlPreset.name;
 	}
-	else if(modelValue.length >= 3 && modelValue.length < 5) {
+	else if (modelValue.length === 2) {
+		return 'Unknown Interval Pair';
+	}
+	else if (modelValue.length >= 3 && modelValue.length < 5) {
+		let qualifier;
 		return 'chord';
 	}
 	else {
@@ -65,6 +71,17 @@ const getName = (modelValue: IPod[]): string => {
 	}
 };
 
+const sort = (modelValue: IPod[]) => {
+	return modelValue.sort((a, b) => {
+		if (a[0] < b[0]) return -1;
+		else if (a[0] > b[0]) return 1;
+		else {
+			if (a[1] < b[1]) return -1;
+			else if (a[1] > b[1]) return 1;
+			else return 0;
+		}
+	});
+}
 
 export default {
 	areEqual,
@@ -72,5 +89,6 @@ export default {
 	getPodAtPitch,
 	playSound,
 	containsSubset,
-	getName
+	getName,
+	sort
 };
