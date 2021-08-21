@@ -13,10 +13,11 @@ const StyledPodTable = styled.div`
         margin-bottom: 4px;
     }
     .preview {
-        color: ${({ theme }) => theme.primary};
+        color: ${({ theme }) => theme.medium};
         margin-bottom: 4px;
     }
     .pods {
+        display: none;
         font-size: 80%;
         color: ${({ theme }) => theme.accent};
 

@@ -6,7 +6,9 @@ import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState, viewerState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/inputs/DropdownInput';
+import SwitchInput from '../../shared/inputs/SwitchInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
+import InputRow from '../../shared/ui/InputRow';
 import DeltaTable from './DeltaTable';
 
 const StyledViewerModal = styled.div`
@@ -32,7 +34,12 @@ const EditViewerModal = () => {
         <Modal title="Edit Root" onSubmit={onSubmit} closeModal={modalContext.closeModal} >
             <StyledViewerModal>
                 <ModalTitle title={`Fretboard`} />
-                <DropdownInput value={afterViewerId} setValue={setValue} options={VIEWER_PRESETS} />
+                <InputRow label="Preset">
+                    <DropdownInput value={{ id: afterViewerId }} setValue={setValue} options={VIEWER_PRESETS} />
+                </InputRow>
+                <InputRow label="Match Octave?">
+                    <SwitchInput value={false} setValue={null} />
+                </InputRow>
                 <DeltaTable
                     beforeRoot={root}
                     afterRoot={root}
