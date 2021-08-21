@@ -24,6 +24,7 @@ interface IIconButtonProps {
     size?: number;
     onClick?: any
     iconProps?: any;
+    className?: string;
 }
 
 const IconButton: React.FC<IIconButtonProps> = ({ iconId, onClick, size = 16, color, iconProps = {}, ...rest }) => {

@@ -17,18 +17,12 @@ const StyledDot = styled.div`
 		}
 	 `};
 
-	height: 20px;
-	width: 100%;
+	height: 16px;
+	width: 16px;
+
+	border-radius: 100%;
 	border: 1px solid black;
-	:not(:last-child){
-		border-right: 0;
-	}
-	:last-child {
-		border-radius: 0 4px 4px 0;
-	}
-	:first-child {
-		border-radius: 4px 0 0 4px;
-	}
+
 	font-size: 80%;
 	display: flex;
 	align-items: center;

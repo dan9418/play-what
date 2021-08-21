@@ -1,12 +1,11 @@
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import Meter from '../../../../../viewers/src/Meter/Meter';
 import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
 import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
 import QuickLink from '../../explore/panels/QuickLink';
 import RootQuickLink from '../../explore/RootQuickLink';
-import Icon from '../ui/Icon';
+import IconButton from '../ui/inputs/buttons/IconButton';
 import SwitchInput from '../ui/inputs/SwitchInput';
 
 const StyledSeparator = styled.div`
@@ -42,54 +41,9 @@ const StyledModel = styled.div`
 		color: ${({ theme }) => theme.accent};
         font-size: 80%;
 	}
-    .meter-container {
-        .meter {
-            width: 128px;
-        }
-       
-        .row {
-            display: flex;
-            align-items: center;
-            &:first-child {
-                margin-bottom: 4px;
-            }
-        }
 
-        .pd {
-            margin-left: 4px;
-            border: none;
-            padding: 2px 4px;
-            cursor: pointer;
-            border-radius: 4px;
-            background-color: transparent;
-            text-align: left;
-            color: #333;
-            font-style: italic;
-            &:hover {
-                background-color: rgba(0,0,0,0.1);
-            }
-            &.selected {
-                background-color: rgba(0,0,0,0.1);
-                cursor: unset;
-            }
-        }
-    }
     .sound {
-        border: none;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-    height: 24px;
-    width: 48px;
-    border-radius: 24px;
-	cursor: pointer;
-	
-	background-color: ${({ $active, theme }) => $active ? theme.accent : theme.light};	
-	&:hover {
-		background-color: ${({ theme }) => theme.active};	
-	}
+        margin-left: 16px;
     }
 
     .match-octave {
@@ -122,30 +76,12 @@ const Model: React.FC<any> = () => {
                 <div className="name">{intervalsDetails.name}</div>
                 <div className="preview">{notesDetails.preview}</div>
             </div>
+            <IconButton iconId="speaker" className="sound" onClick={() => null} />
             <StyledSeparator />
             <div className="quick-links">
                 <RootQuickLink />
                 <IntervalsQuickLink />
                 <QuickLink name="Viewer" preview={"Fretboard"} modal={null} />
-            </div>
-
-            <StyledSeparator />
-            <div className="meter-container">
-                <div className="row">
-                    <Meter notes={notesDetails.value} range={[0, 12]} />
-                    <button type="button" className={`pd`} onClick={() => null}>pitch</button>
-                </div>
-                <div className="row">
-                    <Meter notes={notesDetails.value} range={[0, 7]} />
-                    <button type="button" className={`pd selected`} onClick={() => null}>degree</button>
-                </div>
-            </div>
-            <StyledSeparator />
-            <div className="match-octave">
-                <label>Play Sound</label>
-                <button type="button" className={`sound`} onClick={() => null}>
-                    <Icon iconId="speaker" size={20} color="white" />
-                </button>
             </div>
             <StyledSeparator />
             <div className="match-octave">
