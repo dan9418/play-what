@@ -2,16 +2,15 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../../core/src/models/Model.constants';
-import { ACCIDENTAL, ACCIDENTAL_VALUES } from '../../../../../core/src/models/Pod/Note/Note.constants';
+import { ACCIDENTAL_VALUES } from '../../../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
 import { DEGREE_PRESETS } from '../../../../../core/src/theory/Degree.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { rootDetailsState, rootState } from '../../../state/state';
+import { rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
-import DeltaTable from './DeltaTable';
 import ModalTitle from '../../shared/ui/HighlightBox';
-import QuickLink from './panels/QuickLink';
+import DeltaTable from './DeltaTable';
 
 const StyledRootModal = styled.div`
     .sketchpad {
@@ -74,7 +73,7 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
     );
 }
 
-const RootModal = () => {
+const EditRootModal = () => {
 
     // @ts-ignore
     const [root, setRoot] = useRecoilState(rootState);
@@ -144,3 +143,5 @@ const RootModal = () => {
         </Modal>
     )
 }
+
+export default EditRootModal;

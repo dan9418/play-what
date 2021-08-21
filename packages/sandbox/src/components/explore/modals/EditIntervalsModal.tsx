@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
-import { useModalContext } from '../../contexts/ModalContext';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import { useModalContext } from '../../../contexts/ModalContext';
+import { intervalsState } from '../../../state/state';
+import { Modal } from '../../shared/core/Modal';
 import IntervalInput from '../../shared/inputs/IntervalInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
-import { intervalsState } from '../../state/state';
-import { Modal } from '../shared/core/Modal';
 import DeltaTable from './DeltaTable';
 
-const IntervalsModal = () => {
+const EditIntervalsModal = () => {
 
     // @ts-ignore
     const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
@@ -28,3 +28,5 @@ const IntervalsModal = () => {
         </Modal>
     );
 }
+
+export default EditIntervalsModal;

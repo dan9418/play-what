@@ -1,8 +1,8 @@
 
 import React from "react";
 import styled from "styled-components";
-import ButtonInput from "../ui/ButtonInput";
-import IconButton from "../ui/inputs/buttons/IconButton";
+import ButtonInput from "../inputs/ButtonInput";
+import IconButton from "../inputs/IconButton";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);

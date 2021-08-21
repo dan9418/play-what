@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { VIEWER_PRESETS } from '../../../../../viewers/src/viewer.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { Modal } from '../../shared/core/Modal';
-import DropdownInput from '../../shared/ui/DropdownInput';
+import DropdownInput from '../../shared/inputs/DropdownInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
 
 const StyledViewerModal = styled.div`
@@ -25,3 +25,6 @@ const ViewerModal = ({ viewerId, setViewerId }) => {
         </Modal>
     )
 }
+
+
+export default ViewerModal;

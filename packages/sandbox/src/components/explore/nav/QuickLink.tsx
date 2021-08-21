@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
-import IconButton from "../../shared/ui/inputs/buttons/IconButton";
+import IconButton from "../../shared/inputs/IconButton";
 
 const StyledQuickLink = styled.div`
 	display: flex;

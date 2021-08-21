@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { QuickLinkContainer } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     height: 64px;
@@ -59,6 +60,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	return (
 		<StyledExploreNav>
 			<div className="main">
+				<QuickLinkContainer />
 				{/*<div className="import">
 						<ButtonInput>IMPORT PRESET</ButtonInput>
 				</div>*/}
