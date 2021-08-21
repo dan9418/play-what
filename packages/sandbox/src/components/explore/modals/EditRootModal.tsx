@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../../core/src/models/Model.constants';
-import { ACCIDENTAL_VALUES } from '../../../../../core/src/models/Pod/Note/Note.constants';
-import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
-import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
-import { DEGREE_PRESETS } from '../../../../../core/src/theory/Degree.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
+import RootInput from '../../shared/inputs/RootInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
 import DeltaTable from './DeltaTable';
 
@@ -23,11 +20,7 @@ const StyledRootModal = styled.div`
             justify-content: space-between;
             margin-bottom: 8px;
         }
-
-        h3 {
-            color: #555;
-        }
-
+        
         button {
             appearance: none;
             background-color: efefef;
@@ -66,79 +59,20 @@ const StyledRootModal = styled.div`
     }
 `;
 
-const RootButton = ({ children, value, setValue, buttonValue }) => {
-    const className = value === buttonValue ? 'active' : undefined;
-    return (
-        <button type="button" onClick={() => setValue(buttonValue)} className={className}>{children}</button>
-    );
-}
-
 const EditRootModal = () => {
 
     // @ts-ignore
-    const [root, setRoot] = useRecoilState(rootState);
+    const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
+    const [afterRoot, setAfterRoot] = useState(beforeRoot);
 
     const modalContext = useModalContext();
 
-    const beforeAccidental = NoteUtils.getAccidentalOffset(root);
-    const beforeOctave = PodUtils.getOctave(root);
-    const beforeDegree = PodUtils.getDegree(root);
-
-    const [afterDegree, setAfterDegree] = useState(beforeDegree);
-    const [afterAccidental, setAfterAccidental] = useState(beforeAccidental);
-    const [afterOctave, setAfterOctave] = useState(beforeOctave);
-
-    const afterDegreeText = DEGREE_PRESETS.find(x => x.value === afterDegree).name;
-    const afterAccidentalText = ACCIDENTAL_VALUES.find(x => x.value === afterAccidental).symbol;
-
-    const afterPod = NoteUtils.createPod(afterDegree, afterAccidental, afterOctave);
-
     return (
-        <Modal title="Edit Root" onSubmit={() => setRoot(afterPod as IPod)} closeModal={modalContext.closeModal} >
+        <Modal title="Edit Root" onSubmit={() => setBeforeRoot(afterRoot as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
-                <div className="sketchpad">
-                    <ModalTitle title={`${afterDegreeText}${afterAccidentalText}${afterOctave}`} />
-
-                    <div className="input-row">
-                        <h3>Spelling</h3>
-                        <div className="spelling">
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={0}>C</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={1}>D</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={2}>E</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={3}>F</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={4}>G</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={5}>A</RootButton>
-                            <RootButton value={afterDegree} setValue={setAfterDegree} buttonValue={6}>B</RootButton>
-                        </div>
-                    </div>
-                    <div className="input-row">
-                        <h3>Accidental</h3>
-                        <div className="accidental">
-                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={-2}>bb</RootButton>
-                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={-1}>b</RootButton>
-                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={0}>N</RootButton>
-                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={1}>#</RootButton>
-                            <RootButton value={afterAccidental} setValue={setAfterAccidental} buttonValue={2}>x</RootButton>
-                        </div>
-                    </div>
-                    <div className="input-row">
-                        <h3>Octave</h3>
-                        <div className="octave">
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={0}>0</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={1}>1</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={2}>2</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={3}>3</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={4}>4</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={5}>5</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={6}>6</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={7}>7</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={8}>8</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={9}>9</RootButton>
-                            <RootButton value={afterOctave} setValue={setAfterOctave} buttonValue={10}>10</RootButton>
-                        </div>
-                    </div>
-                </div>
-                <DeltaTable beforePods={[root]} afterPods={[afterPod]} />
+                <ModalTitle title={`root`} />
+                <RootInput root={afterRoot} setRoot={setAfterRoot} />
+                <DeltaTable beforePods={[beforeRoot]} afterPods={[afterRoot]} />
             </StyledRootModal>
         </Modal>
     )

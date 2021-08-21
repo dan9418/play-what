@@ -8,6 +8,7 @@ const StyledDeltaTable = styled.div`
         text-align: center;
         font-size: 120%;
         border-collapse: collapse;
+        width: 100%;
         td, th {
             padding: 4px;
         }

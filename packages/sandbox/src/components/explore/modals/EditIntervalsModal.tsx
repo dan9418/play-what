@@ -18,7 +18,7 @@ const EditIntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setBeforeIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <ModalTitle title={PodListUtils.getName(afterIntervals)} subtitle={JSON.stringify(afterIntervals)} />
+            <ModalTitle title={PodListUtils.getName(afterIntervals)} />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
                 beforePods={beforeIntervals}
