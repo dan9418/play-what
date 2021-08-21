@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Icon from '../../shared/ui/Icon';
 import ButtonInput from '../../shared/ui/ButtonInput';
 import Menu from '../../shared/core/_Menu';
-import Model from './Model';
+import Model from './Preview';
 
 const StyledSeparator = styled.div`
     margin: 0 16px;

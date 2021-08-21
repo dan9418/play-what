@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import PodListUtils from '../../../../core/src/models/PodList/PodList.utils';
 import { useModalContext } from '../../contexts/ModalContext';
-import { intervalsDetailsState, intervalsState } from '../../state/state';
+import IntervalInput from '../../shared/inputs/IntervalInput';
+import ModalTitle from '../../shared/ui/HighlightBox';
+import { intervalsState } from '../../state/state';
 import { Modal } from '../shared/core/Modal';
 import DeltaTable from './DeltaTable';
-import IntervalInput from './IntervalInput';
-import ModalTitle from './ModalTitle';
-import QuickLink from './panels/QuickLink';
 
 const IntervalsModal = () => {
 

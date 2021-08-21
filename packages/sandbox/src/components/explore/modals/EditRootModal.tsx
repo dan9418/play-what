@@ -10,7 +10,7 @@ import { useModalContext } from '../../../contexts/ModalContext';
 import { rootDetailsState, rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DeltaTable from './DeltaTable';
-import ModalTitle from './ModalTitle';
+import ModalTitle from '../../shared/ui/HighlightBox';
 import QuickLink from './panels/QuickLink';
 
 const StyledRootModal = styled.div`

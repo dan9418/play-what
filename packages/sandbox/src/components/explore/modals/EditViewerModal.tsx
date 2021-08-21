@@ -4,7 +4,7 @@ import { VIEWER_PRESETS } from '../../../../../viewers/src/viewer.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/ui/DropdownInput';
-import ModalTitle from './ModalTitle';
+import ModalTitle from '../../shared/ui/HighlightBox';
 
 const StyledViewerModal = styled.div`
    

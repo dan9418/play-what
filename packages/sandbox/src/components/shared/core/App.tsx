@@ -4,11 +4,10 @@ import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { ModalContextProvider } from '../../../contexts/ModalContext';
-import { RouteContextProvider } from '../../../contexts/_RouteContext';
 import THEME from '../../../styles/theme';
-import Main from './Main';
-import Nav from './Nav';
 import ErrorBoundary from '../utils/ErrorBoundary';
+//import Main from './Main';
+//import Nav from './Nav';
 
 const App = () => {
 	return (
@@ -17,10 +16,9 @@ const App = () => {
 				{/* @ts-ignore */}
 				<ErrorBoundary>
 					<ModalContextProvider>
-						<RouteContextProvider>
-							<Nav />
-							<Main />
-						</RouteContextProvider>
+						test
+						{/*<Nav />
+						<Main />*/}
 					</ModalContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>

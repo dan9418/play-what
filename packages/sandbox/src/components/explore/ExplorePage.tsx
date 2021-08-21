@@ -2,7 +2,6 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { VIEWER_PRESET_MAP } from "../../../../viewers/src/viewer.constants";
-import { IPageProps } from '../../contexts/_RouteContext';
 import { modelIdState, notesState, viewerState } from "../../state/state";
 import ExploreNav from './nav/ExploreNav';
 
@@ -24,7 +23,7 @@ const StyledExplorePage = styled.div`
 `;
 
 
-const ExplorePage: React.FC<IPageProps> = () => {
+const ExplorePage: React.FC<any> = () => {
 
 	// @ts-ignore
 	const [modelId] = useRecoilState(modelIdState);
