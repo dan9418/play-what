@@ -6,14 +6,8 @@ import { intervalsDetailsState, rootDetailsState, viewerState } from '../../../s
 import EditIntervalsModal from '../modals/EditIntervalsModal';
 import EditRootModal from '../modals/EditRootModal';
 import ViewerModal from '../modals/EditViewerModal';
+import { StyledSeparator } from './ExploreNav.shared';
 import QuickLink from './QuickLink';
-
-const StyledSeparator = styled.div`
-    margin: 0 16px;
-	height: 48px;
-	width: 1px;
-	background-color: ${({ theme }) => theme.border};
-`
 
 const StyledQuickLinkContainer = styled.div`
     padding: 0 16px;
@@ -78,13 +72,11 @@ const ViewerQuickLink: React.FC<any> = () => {
 export const QuickLinkContainer: React.FC<any> = () => {
     return (
         <StyledQuickLinkContainer>
-            <StyledSeparator />
             <RootQuickLink />
             <StyledSeparator />
             <IntervalsQuickLink />
             <StyledSeparator />
             <ViewerQuickLink />
-            <StyledSeparator />
         </StyledQuickLinkContainer>
     );
 };

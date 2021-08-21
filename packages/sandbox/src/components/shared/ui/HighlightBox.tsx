@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledTitle = styled.div`
-    margin: 16px 0;
-    min-height: 96px;
+const StyledHighlightBox = styled.div`
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,11 +10,13 @@ const StyledTitle = styled.div`
     background-color: #efefef;
     border-radius: 8px;
     padding: 8px;
+    height: 100%;
+    border: 1px solid #aaa;
 
-    .ivl-name {
+    .title {
         text-align: center;
     }
-    .ivl-summary {
+    .subtitle {
         text-align: center;
         margin-top: 4px;
         font-style: italic;
@@ -23,13 +24,14 @@ const StyledTitle = styled.div`
     }
 `;
 
-const ModalTitle: React.FC<any> = ({ title, subtitle }) => {
+const HighlightBox: React.FC<any> = ({ children, title, subtitle }) => {
     return (
-        <StyledTitle>
-            <h2 className="ivl-name">{title}</h2>
-            <div className="ivl-summary"></div>
-        </StyledTitle>
+        <StyledHighlightBox>
+            {title && <h2 className="title">{title}</h2>}
+            {subtitle && <div className="subtitle">{subtitle}</div>}
+            {children}
+        </StyledHighlightBox>
     )
 }
 
-export default ModalTitle;
+export default HighlightBox;

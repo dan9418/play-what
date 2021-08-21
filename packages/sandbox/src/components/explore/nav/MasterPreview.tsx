@@ -2,25 +2,10 @@ import React from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
-import IntervalsQuickLink from '../../explore/IntervalsQuickLink';
-import QuickLink from '../../explore/panels/QuickLink';
-import RootQuickLink from '../modals/EditRootModal';
-import ViewerQuickLink from '../modals/EditViewerModal';
-import IconButton from '../../shared/ui/inputs/buttons/IconButton';
 
-const StyledSeparator = styled.div`
-    margin: 0 16px;
-	height: 48px;
-	width: 1px;
-	background-color: ${({ theme }) => theme.border};
-`
-
-const StyledModel = styled.div`
-    padding: 0 16px;
+const StyledMasterPreview = styled.div`
 	display: flex;
     align-items: center;
-    border-radius: 4px;
-	
 	white-space: nowrap;
     .name-preview {
         display: flex;
@@ -41,13 +26,9 @@ const StyledModel = styled.div`
 		color: ${({ theme }) => theme.accent};
         font-size: 80%;
 	}
-
-    .sound {
-        margin-left: 16px;
-    }
 `
 
-const Model: React.FC<any> = () => {
+const MasterPreview: React.FC<any> = () => {
 
     // @ts-ignore
     const [rootDetails] = useRecoilState(rootDetailsState);
@@ -57,22 +38,14 @@ const Model: React.FC<any> = () => {
     const [notesDetails] = useRecoilState(notesDetailsState);
 
     return (
-        <StyledModel>
+        <StyledMasterPreview>
             <div className="root">{rootDetails.name}</div>
             <div className="name-preview">
                 <div className="name">{intervalsDetails.name}</div>
                 <div className="preview">{notesDetails.preview}</div>
             </div>
-            <IconButton iconId="speaker" className="sound" onClick={() => null} />
-            <StyledSeparator />
-            <div className="quick-links">
-                <RootQuickLink />
-                <IntervalsQuickLink />
-                <ViewerQuickLink />
-            </div>
-            <StyledSeparator />
-        </StyledModel>
+        </StyledMasterPreview>
     );
 };
 
-export default Model;
+export default MasterPreview;
