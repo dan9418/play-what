@@ -116,7 +116,7 @@ const RootModal = () => {
                             <span className="accidental">b</span>
                             <span className="octave">4</span>
                         </>
-                    )} subtitle={`p = ${pitchClass}, d = ${degree}`} />
+                    )} subtitle={`[${pitchClass}, ${degree}]`} />
 
                     <div className="input-row">
                         <h3>Spelling</h3>

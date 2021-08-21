@@ -36,41 +36,20 @@ const StyledIntervalInput = styled.div`
         padding: 4px;
     }
 
-    ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
-    ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
-        background-color: ${({ theme }) => theme.light};
-        color: ${({ theme }) => theme.medium};
-        cursor: not-allowed;
+    button {
+        background-color: #efefef;
+        color: background-color: ${({ theme }) => theme.medium};;
+        cursor: pointer;
 
-        button {
-            background-color: transparent;
-            color: #aaa;
-            cursor: not-allowed;
-
-            &.inactive {
-                background-color: ${({ theme }) => theme.light};
-                color: white;
-                border-color: white;
-            }
+        &.inactive, &.active {
+            background-color: ${({ theme }) => theme.active};
+            color: white;
         }
     }
 
-    ${({ $activeCol }) => `th:nth-child(${$activeCol + 1})`},
-    ${({ $activeCol }) => `td:nth-child(${$activeCol + 1})`} {
-        background-color: ${({ theme }) => theme.active};
-        color: white;
-
-        button {
-            background-color: #efefef;
-            color: ${({ theme }) => theme.medium}; 
-
-            &.active {
-                background-color: ${({ theme }) => theme.active};
-                color: white;
-                border-color: white;
-                cursor: not-allowed; 
-            }
-        }
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
+        background-color: ${({ theme }) => theme.light};
     }
 
     tfoot {
@@ -94,21 +73,49 @@ const StyledIntervalInput = styled.div`
     }
 `;
 
-const IntervalButton: React.FC<any> = ({ preset, ivl, setIvl, intervals }) => {
-    const onClick = () => setIvl(preset.value);
+const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 
-    const className = PodUtils.areEqual(ivl, preset.value) ? 'active' :
-        intervals.find(i => PodUtils.areEqual(i, preset.value)) ? 'inactive' : ''
+    const intervalIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, preset.value));
+    const intervalIsActive = intervalIndex !== -1;
+    const indexOfIvlWithSamePitch = intervals.findIndex(ivl => ivl[0] === preset.value[0]);
+    const pitchClassIsTaken = indexOfIvlWithSamePitch !== -1;
+
+    const classes = [];
+    if (intervalIsActive) {
+        classes.push('active');
+    }
+
+    const onClick = () => {
+        // Remove existing interval
+        if (intervalIsActive) {
+            setIntervals([
+                ...intervals.slice(0, intervalIndex),
+                ...intervals.slice(intervalIndex + 1)
+            ])
+        }
+        // Replace interval
+        else if (pitchClassIsTaken) {
+            setIntervals([
+                ...intervals.slice(0, indexOfIvlWithSamePitch),
+                preset.value,
+                ...intervals.slice(indexOfIvlWithSamePitch + 1)
+            ])
+        }
+        // Add new interval
+        else {
+            setIntervals([...intervals, preset.value]);
+        }
+    }
 
     return (
-        <button type="button" className={className} onClick={onClick}>{preset.id}</button>
+        <button type="button" className={classes.join(' ')} onClick={onClick}>{preset.id}</button>
     );
 }
 
-const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
+const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
     const inactiveCols = intervals.map(i => i[0]);
     return (
-        <StyledIntervalInput $inactiveCols={inactiveCols} $activeCol={ivl[0]}>
+        <StyledIntervalInput $inactiveCols={inactiveCols}>
             <table>
                 <tfoot>
                     <tr>
@@ -131,43 +138,43 @@ const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
                         <td><div /></td>
                         <td><div /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.A2)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.A2)} /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.A3)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.A4)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.A3)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.A4)} /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.A5)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.A5)} /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.A6)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.A6)} /></td>
                         <td><div /></td>
                     </tr>
 
                     <tr>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.P1)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.m2)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.M2)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.m3)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.M3)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.P4)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.P1)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.m2)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.M2)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.m3)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.M3)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.P4)} /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.P5)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.m6)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.M6)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.m7)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.M7)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.P5)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.m6)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.M6)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.m7)} /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.M7)} /></td>
                     </tr>
 
                     <tr>
                         <td><div /></td>
                         <td><div /></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.d3)}>d3</IntervalButton></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.d3)}>d3</IntervalButton></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.d4)}>d4</IntervalButton></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.d4)}>d4</IntervalButton></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.d5)}>d5</IntervalButton></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.d6)}>d6</IntervalButton></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.d5)}>d5</IntervalButton></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.d6)}>d6</IntervalButton></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.d7)}>d7</IntervalButton></td>
+                        <td><IntervalButton intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.d7)}>d7</IntervalButton></td>
                         <td><div /></td>
                         <td><div /></td>
                     </tr>
@@ -192,17 +199,17 @@ const IntervalInput: React.FC<any> = ({ ivl, setIvl, intervals }) => {
                 </thead>
                 <tbody>
                     <tr>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.P8)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.b9)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.x9)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.s9)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.b11)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.x11)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.s11)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.P8)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b9)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x9)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s9)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b11)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x11)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s11)} /></td>
                         <td><div /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.b13)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.x13)} /></td>
-                        <td><IntervalButton ivl={ivl} intervals={intervals} setIvl={setIvl} preset={INTERVAL_PRESET_MAP.get(IntervalId.s13)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b13)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x13)} /></td>
+                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s13)} /></td>
                     </tr>
                 </tbody>
             </table>*/}
