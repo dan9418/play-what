@@ -74,7 +74,12 @@ const EditRootModal = () => {
             <StyledRootModal>
                 <ModalTitle title={`root`} />
                 <RootInput root={afterRoot} setRoot={setAfterRoot} />
-                <DeltaTable beforeRoot={beforeRoot} afterRoot={afterRoot} beforeIntervals={intervals} afterIntervals={intervals} />
+                <DeltaTable
+                    beforeRoot={beforeRoot}
+                    afterRoot={afterRoot}
+                    beforeIntervals={intervals}
+                    afterIntervals={intervals}
+                />
             </StyledRootModal>
         </Modal>
     )

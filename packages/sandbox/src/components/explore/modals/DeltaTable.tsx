@@ -14,6 +14,7 @@ const StyledDeltaTable = styled.div`
         td, th {
             padding: 4px;
             width: 50%;
+            max-width: 64px;
         }
     }
 `;
@@ -50,7 +51,7 @@ const StyledDeltaTable = styled.div`
     return rows;
 }*/
 
-const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, afterIntervals }) => {
+const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, afterIntervals, beforeViewerId, afterViewerId }) => {
     const beforeNotes = PodUtils.addPodList(beforeRoot, beforeIntervals);
     const afterNotes = PodUtils.addPodList(afterRoot, afterIntervals);
 
@@ -66,11 +67,11 @@ const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, aft
                 <tbody>
                     <tr>
                         <td>
-                            <Viewer modelValue={beforeNotes} hideLabel />
+                            <Viewer viewerId={beforeViewerId} modelValue={beforeNotes} hideLabel />
                             <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeNotes} />
                         </td>
                         <td>
-                            <Viewer modelValue={afterNotes} hideLabel />
+                            <Viewer viewerId={afterViewerId} modelValue={afterNotes} hideLabel />
                             <PodTable root={afterRoot} intervals={afterIntervals} notes={afterNotes} />
                         </td>
                     </tr>

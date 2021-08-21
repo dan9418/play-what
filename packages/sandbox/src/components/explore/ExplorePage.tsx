@@ -15,7 +15,7 @@ const StyledExplorePage = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	.fretboard {
+	.fretboard, .keyboard {
 		box-shadow: 0px 0px 30px 30px rgba(0,0,0,0.08)
 	}
 `;

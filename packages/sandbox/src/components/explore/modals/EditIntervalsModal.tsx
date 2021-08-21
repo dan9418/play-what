@@ -27,7 +27,6 @@ const EditIntervalsModal = () => {
                 afterRoot={root}
                 beforeIntervals={beforeIntervals}
                 afterIntervals={afterIntervals}
-                isInterval
             />
         </Modal>
     );
