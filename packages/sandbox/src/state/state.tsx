@@ -1,7 +1,7 @@
 import { atom, selector } from 'recoil';
 import { IPod } from '../../../core/src/models/Model.constants';
-import ModelUtils from '../../../core/src/models/Model.utils';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
+import NoteUtils from '../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import { ViewerId } from '../../../viewers/src/viewer.constants';
@@ -54,7 +54,7 @@ export const rootDetailsState = selector<IDetailsState<IPod>>({
 
         return {
             value: root as IPod,
-            name: ModelUtils.getNoteName(root),
+            name: NoteUtils.getName(root),
             preview: ''
         }
     }

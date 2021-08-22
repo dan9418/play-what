@@ -1,9 +1,9 @@
 import ColorUtils from '@pw/core/src/color/Color.utils';
 import NumberUtils from '@pw/core/src/general/Number.utils';
 import { IPod } from '@pw/core/src/models/Model.constants';
-import ModelUtils from "@pw/core/src/models/Model.utils";
 import React from "react";
 import styled from 'styled-components';
+import viewerUtils from '../viewer.utils';
 import "./Keyboard.css";
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
@@ -64,7 +64,7 @@ interface IKeyLabelProps {
 
 const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, root, intervals, notes, hoveredIndex, setHoveredIndex }) => {
 
-	const podProps = ModelUtils.getPodProps(notes, noteIndex);
+	const podProps = viewerUtils.getPodProps(notes, noteIndex);
 
 	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 

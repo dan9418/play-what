@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import ModelUtils from '../../../../../core/src/models/Model.utils';
+import { PodType } from '../../../../../core/src/models/Model.constants';
+import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 
 const StyledPodTable = styled.div`
     text-align: left;
@@ -28,13 +30,13 @@ const PodTable: React.FC<any> = ({ root, intervals, notes }) => {
     return (
         <StyledPodTable>
             <label>Root</label>
-            <div className="preview">{ModelUtils.getNotePreview(root)}</div>
+            <div className="preview">{NoteUtils.getName(root)}</div>
             <div className="pods">{JSON.stringify(root)}</div>
             <label>Intervals</label>
-            <div className="preview">{ModelUtils.getIntervalPreview(intervals, true)}</div>
+            <div className="preview">{PodListUtils.getName(intervals, PodType.Interval)}</div>
             <div className="pods">{JSON.stringify(intervals)}</div>
             <label>Notes</label>
-            <div className="preview">{ModelUtils.getNotePreview(notes, true)}</div>
+            <div className="preview">{PodListUtils.getName(notes, PodType.Note)}</div>
             <div className="pods">{JSON.stringify(notes)}</div>
         </StyledPodTable>
     );

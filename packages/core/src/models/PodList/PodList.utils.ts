@@ -1,7 +1,9 @@
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
+import IntervalUtils from '../Pod/Interval/Interval.utils';
+import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { IPod } from './../Model.constants';
+import { IPod, PodType } from './../Model.constants';
 
 // Equality
 
@@ -69,6 +71,13 @@ const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
 	}
 };*/
 
+const getName = (podList: IPod[], podType: PodType): string => {
+	const nameFn = podType === PodType.Interval ? IntervalUtils.getName : NoteUtils.getName;
+	const nameArr = podList.map(nameFn as any);
+	return nameArr.join(', ');
+
+};
+
 const sort = (podList: IPod[]) => {
 	return podList.sort((a, b) => {
 		if (a[0] < b[0]) return -1;
@@ -87,5 +96,6 @@ export default {
 	getPodAtPitch,
 	playSound,
 	containsSubset,
-	sort
+	sort,
+	getName
 };

@@ -19,7 +19,7 @@ interface IIntervalNameOptions {
 }
 
 export const getName = (interval: IPod, isList = false, options: IIntervalNameOptions = {}): string => {
-	if (isList) return interval.map(getName).join(', ');
+	if (isList) return interval.map(getName as any).join(', ');
 
 	const reduced = PodUtils.reduce(interval)
 	const [noteIndex, d] = reduced;

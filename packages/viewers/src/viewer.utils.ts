@@ -1,5 +1,5 @@
 import ColorUtils from "../../core/src/color/Color.utils";
-import { PodType } from "../../core/src/models/Model.constants";
+import { IPod, PodType } from "../../core/src/models/Model.constants";
 import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../core/src/models/Pod/Pod.utils";

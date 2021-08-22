@@ -1,8 +1,8 @@
 import { IPod } from '@pw/core/src/models/Model.constants';
-import ModelUtils from '@pw/core/src/models/Model.utils';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from "react";
 import styled from 'styled-components';
+import viewerUtils from '../viewer.utils';
 
 const StyledDot = styled.div`
  	${({ $color }) => $color ? `
@@ -80,7 +80,7 @@ const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12],
 
 	for (let i = range[0]; i < range[1]; i++) {
 
-		const podProps = ModelUtils.getPodProps(notes, i);
+		const podProps = viewerUtils.getPodProps(notes, i);
 
 		const hasDegree = podProps !== null;
 
