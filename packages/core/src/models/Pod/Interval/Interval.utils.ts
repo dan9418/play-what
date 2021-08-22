@@ -1,4 +1,5 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
+import PodUtils from "../Pod.utils";
 import { IPod, IPreset } from './../../Model.constants';
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
@@ -18,6 +19,8 @@ interface IIntervalNameOptions {
 }
 
 export const getName = (interval: IPod, isList = false, options: IIntervalNameOptions = {}): string => {
+	if (isList) return interval.map(getName).join(', ');
+
 	const reduced = PodUtils.reduce(interval)
 	const [noteIndex, d] = reduced;
 	const degreeIntervals = CORE_INTERVALS[d];

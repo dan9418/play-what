@@ -1,6 +1,7 @@
 import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
+import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 const getAccidentalOffset = (pod) => {
@@ -39,7 +40,7 @@ interface INoteNameOptions {
 }
 
 export const getName = (note: any, isList = false, options: INoteNameOptions = {}): string => {
-	if (isList) return joinList(note, getNoteName);
+	if (isList) return note.map(getName).join(', ');
 
 	const reducedValue = PodUtils.reduce(note);
 
