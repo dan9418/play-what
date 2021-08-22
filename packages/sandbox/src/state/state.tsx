@@ -1,9 +1,10 @@
 import { atom, selector } from 'recoil';
-import { IPod } from '../../../core/src/models/Model.constants';
+import { IPod, PodType } from '../../../core/src/models/Model.constants';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
+import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
 import { ViewerId } from '../../../viewers/src/viewer.constants';
 
 export interface IDetailsState<T> {
@@ -65,10 +66,14 @@ export const intervalsDetailsState = selector<IDetailsState<IPod[]>>({
     get: ({ get }) => {
         const intervals = get(intervalsState);
 
+        const name = PodListUtils.getName(intervals, PodType.Interval);
+        const preset = PodListUtils.findPreset(intervals);
+        const preview = preset ? preset.name : name;
+
         return {
             value: intervals,
-            name: 'intervals name',
-            preview: 'intervals preview'
+            name,
+            preview
         }
     }
 });
@@ -89,7 +94,7 @@ export const notesDetailsState = selector<IDetailsState<IPod[]>>({
         return {
             value: notes,
             name: `${rootDetails.name} ${intervalsDetails.name}`,
-            preview: 'notes preview'
+            preview: PodListUtils.getName(notes, PodType.Note)
         }
     }
 });

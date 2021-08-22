@@ -25,7 +25,8 @@ const getPodProps = (podList: IPod[], noteIndex: number, options: IPodPropsOptio
     const color = IntervalUtils.getPodColor(reduced);
     const fgColor = ColorUtils.getFgColor(color);
 
-    const label = options.podType === PodType.Interval ? IntervalUtils.getName(reduced) : NoteUtils.getName(reduced);
+    // const label = options.podType === PodType.Interval ? IntervalUtils.getName(reduced) : NoteUtils.getName(reduced);
+    const label = NoteUtils.getName(reduced);
     return { color, fgColor, label };
 }
 

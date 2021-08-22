@@ -13,7 +13,7 @@ export const IntervalsQuickLink: React.FC<any> = () => {
     const [intervalsDetails] = useRecoilState(intervalsDetailsState);
 
     return (
-        <QuickLink name="Intervals" preview={intervalsDetails.preview} modal={<EditIntervalsModal />} />
+        <QuickLink name="Intervals" preview={intervalsDetails.name} modal={<EditIntervalsModal />} />
     );
 };
 

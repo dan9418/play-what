@@ -65,8 +65,8 @@ const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, aft
     const _afterRoot = afterRoot ? afterRoot : root;
     const _beforeIntervals = beforeIntervals ? beforeIntervals : intervals;
     const _afterIntervals = afterIntervals ? afterIntervals : intervals;
-    const _beforeViewerId = beforeRoot ? beforeRoot : viewerId;
-    const _afterViewerId = beforeRoot ? beforeRoot : viewerId
+    const _beforeViewerId = beforeViewerId ? beforeViewerId : viewerId;
+    const _afterViewerId = afterViewerId ? afterViewerId : viewerId
 
     const beforeNotes = PodUtils.addPodList(_beforeRoot, _beforeIntervals);
     const afterNotes = PodUtils.addPodList(_afterRoot, _afterIntervals);

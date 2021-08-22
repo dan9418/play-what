@@ -35,12 +35,17 @@ const ImportPresetModal = () => {
     ];
 
     const [presetSubtype, setPresetSubtype] = useState('unselected');
-    const setPresetType = x => { _setPresetType(x); setPresetSubtype('unselected') }
 
     const [preset, setPreset] = useState(presetOptions[0]);
     const filteredPresetOptions = presetSubtype === 'unselected' ?
         presetOptions :
         presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
+
+    const setPresetType = x => {
+        _setPresetType(x);
+        setPresetSubtype('unselected');
+        setPreset(MASTER_PRESETS.find(y => y.tags.includes(x));
+    }
 
     return (
         <Modal title="Import Preset" onSubmit={() => setBeforeIntervals(preset.value)} closeModal={modalContext.closeModal} >

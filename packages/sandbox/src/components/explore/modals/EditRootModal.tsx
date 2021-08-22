@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IPod } from '../../../../../core/src/models/Model.constants';
+import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
@@ -71,7 +72,7 @@ const EditRootModal = () => {
     return (
         <Modal title="Edit Root" onSubmit={() => setBeforeRoot(afterRoot as IPod)} closeModal={modalContext.closeModal} >
             <StyledRootModal>
-                <ModalTitle title={`root`} />
+                <ModalTitle title={NoteUtils.getName(afterRoot)} />
                 <RootInput root={afterRoot} setRoot={setAfterRoot} />
                 <DeltaTable
                     beforeRoot={beforeRoot}

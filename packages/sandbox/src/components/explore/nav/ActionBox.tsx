@@ -27,6 +27,7 @@ export const StyledActionBox = styled.div`
 `
 
 const ActionBox: React.FC<CSSProperties> = () => {
+    return null;
     return (
         <StyledActionBox>
             <IconButton iconId="speaker" className="sound" color="white" onClick={() => null} />

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
+import { PodType } from '../../../../../core/src/models/Model.constants';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { intervalsState, rootState } from '../../../state/state';
+import { intervalsState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import IntervalInput from '../../shared/inputs/IntervalInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
@@ -16,9 +18,14 @@ const EditIntervalsModal = () => {
 
     const modalContext = useModalContext();
 
+    const title = PodListUtils.getName(afterIntervals, PodType.Interval);
+    const preset = PodListUtils.findPreset(afterIntervals);
+
+    const subtitle = preset ? preset.name : 'Unknown';
+
     return (
         <Modal title="Edit Intervals" onSubmit={() => setBeforeIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <ModalTitle title="preset name here" />
+            <ModalTitle title={title} subtitle={subtitle} />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
                 beforeIntervals={beforeIntervals}

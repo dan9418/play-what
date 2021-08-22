@@ -47,7 +47,7 @@ const MasterPreview: React.FC<any> = () => {
         <StyledMasterPreview>
             <div className="root">{rootDetails.name}</div>
             <div className="name-preview">
-                <div className="name">{intervalsDetails.name}</div>
+                <div className="name">{intervalsDetails.preview}</div>
                 <div className="preview">{notesDetails.preview}</div>
             </div>
         </StyledMasterPreview>
