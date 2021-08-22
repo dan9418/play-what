@@ -18,7 +18,10 @@ export enum PresetTag {
 	Augmented = 'augmented',
 	Perfect = 'perfect',
 	Triad = 'triad',
+	Sixth = 'sixth',
 	Seventh = 'seventh',
+	Suspended = 'suspended',
+	Dominant = 'dominant',
 	Extended = 'extended',
 	Altered = 'altered'
 }

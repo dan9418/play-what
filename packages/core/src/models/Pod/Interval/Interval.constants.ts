@@ -52,37 +52,44 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.M2, formatPreset(
 		IntervalId.M2,
 		'Major 2nd',
-		[2, 1]
+		[2, 1],
+		[PresetTag.Major]
 	)],
 	[IntervalId.A2, formatPreset(
 		IntervalId.A2,
 		'Augmented 2nd',
-		[3, 1]
+		[3, 1],
+		[PresetTag.Augmented]
 	)],
 	[IntervalId.d3, formatPreset(
 		IntervalId.d3,
 		'Diminished 3rd',
-		[2, 2]
+		[2, 2],
+		[PresetTag.Diminished]
 	)],
 	[IntervalId.m3, formatPreset(
 		IntervalId.m3,
 		'Minor 3rd',
-		[3, 2]
+		[3, 2],
+		[PresetTag.Minor]
 	)],
 	[IntervalId.M3, formatPreset(
 		IntervalId.M3,
 		'Major 3rd',
-		[4, 2]
+		[4, 2],
+		[PresetTag.Major]
 	)],
 	[IntervalId.A3, formatPreset(
 		IntervalId.A3,
 		'Augmented 3rd',
-		[5, 2]
+		[5, 2],
+		[PresetTag.Augmented]
 	)],
 	[IntervalId.d4, formatPreset(
 		IntervalId.d4,
 		'Diminished 4th',
-		[4, 3]
+		[4, 3],
+		[PresetTag.Diminished]
 	)],
 	[IntervalId.P4, formatPreset(
 		IntervalId.P4,
@@ -93,12 +100,14 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.A4, formatPreset(
 		IntervalId.A4,
 		'Augmented 4th',
-		[6, 3]
+		[6, 3],
+		[PresetTag.Augmented]
 	)],
 	[IntervalId.d5, formatPreset(
 		IntervalId.d5,
 		'Diminished 5th',
-		[6, 4]
+		[6, 4],
+		[PresetTag.Diminished]
 	)],
 	[IntervalId.P5, formatPreset(
 		IntervalId.P5,
@@ -109,42 +118,50 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.A5, formatPreset(
 		IntervalId.A5,
 		'Augmented 5th',
-		[8, 4]
+		[8, 4],
+		[PresetTag.Augmented]
 	)],
 	[IntervalId.d6, formatPreset(
 		IntervalId.d6,
 		'Diminished 6th',
-		[7, 5]
+		[7, 5],
+		[PresetTag.Diminished]
 	)],
 	[IntervalId.m6, formatPreset(
 		IntervalId.m6,
 		'Minor 6th',
-		[8, 5]
+		[8, 5],
+		[PresetTag.Minor]
 	)],
 	[IntervalId.M6, formatPreset(
 		IntervalId.M6,
 		'Major 6th',
-		[9, 5]
+		[9, 5],
+		[PresetTag.Major]
 	)],
 	[IntervalId.A6, formatPreset(
 		IntervalId.A6,
 		'Augmented 6th',
-		[10, 5]
+		[10, 5],
+		[PresetTag.Augmented]
 	)],
 	[IntervalId.d7, formatPreset(
 		IntervalId.d7,
 		'Diminished 7th',
-		[9, 6]
+		[9, 6],
+		[PresetTag.Diminished]
 	)],
 	[IntervalId.m7, formatPreset(
 		IntervalId.m7,
 		'Minor 7th',
-		[10, 6]
+		[10, 6],
+		[PresetTag.Minor]
 	)],
 	[IntervalId.M7, formatPreset(
 		IntervalId.M7,
 		'Major 7th',
-		[11, 6]
+		[11, 6],
+		[PresetTag.Major]
 	)],
 	[IntervalId.P8, formatPreset(
 		IntervalId.P8,
@@ -155,47 +172,56 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.b9, formatPreset(
 		IntervalId.b9,
 		'Flat Ninth',
-		[13, 8]
+		[13, 8],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.x9, formatPreset(
 		IntervalId.x9,
 		'Ninth',
-		[14, 8]
+		[14, 8],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.s9, formatPreset(
 		IntervalId.s9,
 		'Sharp Ninth',
-		[15, 8]
+		[15, 8],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.b11, formatPreset(
 		IntervalId.b11,
 		'Flat Eleventh',
-		[16, 10]
+		[16, 10],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.x11, formatPreset(
 		IntervalId.x11,
 		'Eleventh',
-		[17, 10]
+		[17, 10],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.s11, formatPreset(
 		IntervalId.s11,
 		'Sharp Eleventh',
-		[18, 10]
+		[18, 10],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.b13, formatPreset(
 		IntervalId.b13,
 		'Flat Thirteenth',
-		[20, 12]
+		[20, 12],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.x13, formatPreset(
 		IntervalId.x13,
 		'Thirteenth',
-		[21, 12]
+		[21, 12],
+		[PresetTag.Extended]
 	)],
 	[IntervalId.s13, formatPreset(
 		IntervalId.s13,
 		'Sharp Thirteenth',
-		[22, 12]
+		[22, 12],
+		[PresetTag.Extended]
 	)]
 ]);
 
