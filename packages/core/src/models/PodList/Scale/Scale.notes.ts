@@ -63,3 +63,14 @@
 // Scale.presetValues = SCALE_PRESETS;
 
 // export default Scale;
+
+
+// interface IScaleNameOptions {
+// 	useLongName?: boolean;
+// }
+
+// export const getScaleName = (scale: IPod[], options: IScaleNameOptions = {}): string => {
+// 	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(scale, v.value));
+// 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
+// 	return presetName;
+// };

@@ -1,3 +1,4 @@
+import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
 import { ACCIDENTAL } from "./Note.constants";
@@ -33,9 +34,27 @@ const createPod = (degree, accidental, octave) => {
 	return [pitch, degree];
 }
 
+interface INoteNameOptions {
+	includeOctave?: boolean;
+}
+
+export const getName = (note: any, isList = false, options: INoteNameOptions = {}): string => {
+	if (isList) return joinList(note, getNoteName);
+
+	const reducedValue = PodUtils.reduce(note);
+
+	const d = reducedValue[1];
+	const offset = getAccidentalOffset(reducedValue);
+	const accidental = getAccidentalString(offset, d);
+	const spelling = DEGREE_PRESETS[d].name;
+	const octave = options.includeOctave ? PodUtils.getOctave(note, true) : '';
+	return `${spelling}${accidental}${octave}`;
+}
+
 export default {
 	getAccidentalOffset,
 	getAccidentalString,
 	getPodColor,
-	createPod
+	createPod,
+	getName
 }

@@ -31,3 +31,15 @@ class Chord extends PodList {
 
 
 export default Chord;*/
+
+
+
+// interface IChordNameOptions {
+// 	useLongName?: boolean;
+// }
+
+// export const getChordName = (chord: IPod[], options: IChordNameOptions = {}): string => {
+// 	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(chord, v.value));
+// 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Chord';
+// 	return presetName;
+// };
