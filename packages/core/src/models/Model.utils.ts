@@ -1,10 +1,8 @@
-import { NoteId } from './Pod/Note/Note.constants';
 import ColorUtils from '../color/Color.utils';
-import { IFolder, IFolderItem, NodeType } from '../library/Library.constants';
 import { DEGREE_PRESETS } from "../theory/Degree.constants";
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
-import { IModelConfig, IModelPreset, IPod, ModelId, PodType } from "./Model.constants";
+import { IPod, PodType } from "./Model.constants";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Pod/Interval/Interval.constants";
 import IntervalUtils from "./Pod/Interval/Interval.utils";
 import NoteUtils from "./Pod/Note/Note.utils";
@@ -13,20 +11,28 @@ import { CHORD_PRESETS } from "./PodList/Chord/Chord.constants";
 import PodListUtils from "./PodList/PodList.utils";
 import { SCALE_PRESETS } from "./PodList/Scale/Scale.constants";
 
+// Utils
+
+const joinList = (list: any, textFn: Function): string => {
+	return list.map(textFn).join(', ');
+}
+
 // Name
 
 interface INoteNameOptions {
 	includeOctave?: boolean;
 }
 
-export const getNoteName = (modelValue: IPod, options: INoteNameOptions = {}): string => {
-	const reducedValue = PodUtils.reduce(modelValue);
+export const getNoteName = (note: any, isList = false, options: INoteNameOptions = {}): string => {
+	if (isList) return joinList(note, getNoteName);
+
+	const reducedValue = PodUtils.reduce(note);
 
 	const d = reducedValue[1];
 	const offset = NoteUtils.getAccidentalOffset(reducedValue);
 	const accidental = NoteUtils.getAccidentalString(offset, d);
 	const spelling = DEGREE_PRESETS[d].name;
-	const octave = options.includeOctave ? PodUtils.getOctave(modelValue, true) : '';
+	const octave = options.includeOctave ? PodUtils.getOctave(note, true) : '';
 	return `${spelling}${accidental}${octave}`;
 }
 
@@ -34,8 +40,8 @@ interface IIntervalNameOptions {
 	useLongName?: boolean;
 }
 
-export const getIntervalName = (modelValue: IPod, options: IIntervalNameOptions = {}): string => {
-	const reduced = PodUtils.reduce(modelValue)
+export const getIntervalName = (interval: IPod, isList = false, options: IIntervalNameOptions = {}): string => {
+	const reduced = PodUtils.reduce(interval)
 	const [noteIndex, d] = reduced;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
@@ -68,8 +74,8 @@ interface IChordNameOptions {
 	useLongName?: boolean;
 }
 
-export const getChordName = (modelValue: IPod[], options: IChordNameOptions = {}): string => {
-	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
+export const getChordName = (chord: IPod[], options: IChordNameOptions = {}): string => {
+	const preset = CHORD_PRESETS.find(v => PodListUtils.areEqual(chord, v.value));
 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Chord';
 	return presetName;
 };
@@ -78,39 +84,11 @@ interface IScaleNameOptions {
 	useLongName?: boolean;
 }
 
-export const getScaleName = (modelValue: IPod[], options: IScaleNameOptions = {}): string => {
-	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(modelValue, v.value));
+export const getScaleName = (scale: IPod[], options: IScaleNameOptions = {}): string => {
+	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(scale, v.value));
 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
 	return presetName;
 };
-
-const getName = (modelId: ModelId, modelValue: IPod[]): string => {
-	switch (modelId) {
-		case ModelId.Note:
-			return getNoteName(modelValue[0])
-		case ModelId.Interval:
-			return getIntervalName(modelValue[0]);
-		case ModelId.Chord:
-			return getChordName(modelValue);
-		case ModelId.Scale:
-			return getScaleName(modelValue);
-		default:
-			return '?';
-	}
-}
-
-// Preview
-
-interface IPreviewOptions {
-	podType?: PodType;
-}
-
-const getPreview = (modelValue: IPod[], options: IPreviewOptions = {}): string => {
-	const nameFn = options.podType === ModelId.Interval ? getIntervalName : getNoteName;
-	const intervalNames = modelValue.map(nameFn as any).join(', ');
-
-	return intervalNames;
-}
 
 // getPodProps
 
@@ -125,8 +103,8 @@ interface IPodPropsOptions {
 	podType?: PodType
 }
 
-const getPodProps = (modelValue: IPod[], noteIndex: number, options: IPodPropsOptions = {}): IPodProps => {
-	const pod = PodListUtils.getPodAtPitch(modelValue, noteIndex, options.matchOctave);
+const getPodProps = (podList: IPod[], noteIndex: number, options: IPodPropsOptions = { podType: PodType.Interval }): IPodProps => {
+	const pod = PodListUtils.getPodAtPitch(podList, noteIndex, options.matchOctave);
 	if (!pod) return null;
 
 	const reduced = PodUtils.reduce(pod);
@@ -134,47 +112,25 @@ const getPodProps = (modelValue: IPod[], noteIndex: number, options: IPodPropsOp
 	const color = IntervalUtils.getPodColor(reduced);
 	const fgColor = ColorUtils.getFgColor(color);
 
-	const label = options.podType === ModelId.Interval ? getIntervalName(reduced) : getNoteName(reduced);
+	const label = options.podType === PodType.Interval ? getIntervalName(reduced) : getNoteName(reduced);
 	return { color, fgColor, label };
 }
 
 
 // Misc
 
-const playSound = (modelConfig: IModelConfig, pathId = 0): void => {
-	const { modelId, modelValue } = modelConfig;
-
-	const hasRoot = false;
-
-	const isPod = modelId === ModelId.Note || modelId === ModelId.Interval;
-
-	let pods = isPod ? [modelValue] : modelValue;
-	if (hasRoot) {
-		pods = PodUtils.addPodList(null, modelValue as IPod[]);
-	}
-	const f = pods.map(pod => TuningUtils.getFrequency(pod[0]));
+const playSound = (notes): void => {
+	const f = notes.map(pod => TuningUtils.getFrequency(pod[0]));
 	ToneUtils.playSound(f);
 };
-
-
-export const getFolderItemFromModelPreset = (preset: IModelPreset<IPod>): IFolderItem<{ rootId: NoteId, presetId: string }> => {
-	return {
-		nodeType: NodeType.Item,
-		text: preset.name,
-		value: {
-			rootId: NoteId.C,
-			presetId: preset.id
-		}
-	}
-}
 
 // export
 
 export default {
-	getIntervalName,
 	getNoteName,
-	getName,
-	getPreview,
+	getIntervalName,
+	getNotePreview,
+	getIntervalPreview,
 	getPodProps,
 	playSound
 }
