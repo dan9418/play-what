@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { ModelId } from '../../../../../core/src/models/Model.constants';
 import ModelUtils from '../../../../../core/src/models/Model.utils';
 
 const StyledPodTable = styled.div`
@@ -29,13 +28,13 @@ const PodTable: React.FC<any> = ({ root, intervals, notes }) => {
     return (
         <StyledPodTable>
             <label>Root</label>
-            <div className="preview">{ModelUtils.getPreview([root], { podType: ModelId.Note })}</div>
+            <div className="preview">{ModelUtils.getNotePreview(root)}</div>
             <div className="pods">{JSON.stringify(root)}</div>
             <label>Intervals</label>
-            <div className="preview">{ModelUtils.getPreview(intervals, { podType: ModelId.Interval })}</div>
+            <div className="preview">{ModelUtils.getIntervalPreview(intervals, true)}</div>
             <div className="pods">{JSON.stringify(intervals)}</div>
             <label>Notes</label>
-            <div className="preview">{ModelUtils.getPreview(notes, { podType: ModelId.Note })}</div>
+            <div className="preview">{ModelUtils.getNotePreview(notes, true)}</div>
             <div className="pods">{JSON.stringify(notes)}</div>
         </StyledPodTable>
     );

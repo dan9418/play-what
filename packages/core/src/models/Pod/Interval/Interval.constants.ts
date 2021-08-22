@@ -1,5 +1,4 @@
-import { IPod } from "../../Model.constants";
-import { IModelPreset } from './../../Model.constants';
+import { IPod, IPreset } from "../../Model.constants";
 
 export enum IntervalId {
 	P1 = 'P1',
@@ -37,7 +36,7 @@ export enum IntervalId {
 
 const formatPreset = (id: IntervalId, name: string, value: IPod) => ({ id, name, value });
 
-export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelPreset<IPod>>([
+export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.P1, formatPreset(
 		IntervalId.P1,
 		'Perfect Unison',

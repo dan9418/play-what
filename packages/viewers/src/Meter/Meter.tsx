@@ -1,4 +1,4 @@
-import { IModelOptions, IModelValue, IPod, ModelId } from '@pw/core/src/models/Model.constants';
+import { IPod } from '@pw/core/src/models/Model.constants';
 import ModelUtils from '@pw/core/src/models/Model.utils';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from "react";
@@ -75,7 +75,7 @@ interface IMeterProps {
 	setHoveredIndex?: any;
 }
 
-const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12], matchOctave = false}) => {
+const DotList: React.FC<IMeterProps> = ({ notes, root = [0, 0], range = [0, 12], matchOctave = false }) => {
 	const list = [];
 
 	for (let i = range[0]; i < range[1]; i++) {

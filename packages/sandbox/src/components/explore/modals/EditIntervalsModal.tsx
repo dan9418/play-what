@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
@@ -20,7 +19,7 @@ const EditIntervalsModal = () => {
 
     return (
         <Modal title="Edit Intervals" onSubmit={() => setBeforeIntervals(afterIntervals)} closeModal={modalContext.closeModal} >
-            <ModalTitle title={PodListUtils.getName(afterIntervals)} />
+            <ModalTitle title="preset name here" />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
                 beforeRoot={root}

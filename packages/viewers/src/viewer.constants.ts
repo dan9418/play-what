@@ -1,4 +1,4 @@
-import { IModelPreset } from './../../core/src/models/Model.constants';
+import { IPreset } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
 import Keyboard from './Keyboard/Keyboard';
@@ -11,7 +11,7 @@ export enum ViewerId {
 
 const formatPreset = (id: ViewerId, name: string, value: any) => ({ id, name, value });
 
-export const VIEWER_PRESET_MAP = new Map<ViewerId, IModelPreset<any>>([
+export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<any>>([
     [ViewerId.Guitar, formatPreset(ViewerId.Guitar, 'Guitar', {
         component: Fretboard,
         props: {

@@ -1,7 +1,7 @@
-import { IPod, IModelOptions } from './../Model.constants';
 import NumberUtils from '../../general/Number.utils';
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
+import { IPod } from './../Model.constants';
 import { MAX_POD } from './Pod.constants';
 
 // Equality
@@ -75,8 +75,7 @@ const getPodAtPitch = (pod: IPod, p: number, matchOctave = false): IPod | null =
 
 // Sound
 
-const playSound = (modelValue: IPod): void => {
-	const note = modelValue;
+const playSound = (note: IPod): void => {
 	const frequency = TuningUtils.getFrequency(note[0]);
 	ToneUtils.playSound(frequency)
 }

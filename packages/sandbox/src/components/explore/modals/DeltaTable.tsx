@@ -67,11 +67,11 @@ const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, aft
                 <tbody>
                     <tr>
                         <td>
-                            <Viewer viewerId={beforeViewerId} modelValue={beforeNotes} hideLabel />
+                            <Viewer viewerId={beforeViewerId} notes={beforeNotes} hideLabel />
                             <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeNotes} />
                         </td>
                         <td>
-                            <Viewer viewerId={afterViewerId} modelValue={afterNotes} hideLabel />
+                            <Viewer viewerId={afterViewerId} notes={afterNotes} hideLabel />
                             <PodTable root={afterRoot} intervals={afterIntervals} notes={afterNotes} />
                         </td>
                     </tr>

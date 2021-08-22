@@ -2,7 +2,6 @@ import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
 import PodUtils from '../Pod/Pod.utils';
 import { IPod } from './../Model.constants';
-import { IntervalId, INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './../Pod/Interval/Interval.constants';
 
 // Equality
 
@@ -31,48 +30,47 @@ const getPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): IPod | null 
 
 // Sound
 
-const playSound = (modelValue: IPod[]): void => {
-	const notes = modelValue;
+const playSound = (notes: IPod[]): void => {
 	const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
 	ToneUtils.playSound(frequencies)
 }
 
 // Other
 
-const containsSubset = (modelValue: IPod[], subset: IPod[]): boolean => {
+const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
 	for (let i = 0; i < subset.length; i++) {
-		if (!modelValue.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
+		if (!podList.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
 			return false;
 	}
 	return true;
 };
 
-const getName = (modelValue: IPod[]): string => {
-	if (modelValue.length === 0) {
+/*const getName = (podList: IPod[]): string => {
+	if (podList.length === 0) {
 		return "No Selection";
 	}
-	else if (modelValue.length === 1) {
-		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, modelValue[0]));
+	else if (podList.length === 1) {
+		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, podList[0]));
 		return ivlPreset.name;
 	}
-	else if (modelValue.length === 2 && PodUtils.areEqual(modelValue[0], INTERVAL_PRESET_MAP.get(IntervalId.P1).value)) {
-		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, modelValue[1]));
+	else if (podList.length === 2 && PodUtils.areEqual(podList[0], INTERVAL_PRESET_MAP.get(IntervalId.P1).value)) {
+		const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, podList[1]));
 		return ivlPreset.name;
 	}
-	else if (modelValue.length === 2) {
+	else if (podList.length === 2) {
 		return 'Unknown Interval Pair';
 	}
-	else if (modelValue.length >= 3 && modelValue.length < 5) {
+	else if (podList.length >= 3 && podList.length < 5) {
 		let qualifier;
 		return 'chord';
 	}
 	else {
 		return 'scale';
 	}
-};
+};*/
 
-const sort = (modelValue: IPod[]) => {
-	return modelValue.sort((a, b) => {
+const sort = (podList: IPod[]) => {
+	return podList.sort((a, b) => {
 		if (a[0] < b[0]) return -1;
 		else if (a[0] > b[0]) return 1;
 		else {
@@ -89,6 +87,5 @@ export default {
 	getPodAtPitch,
 	playSound,
 	containsSubset,
-	getName,
 	sort
 };

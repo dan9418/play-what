@@ -1,5 +1,5 @@
 import ColorUtils from "@pw/core/src/color/Color.utils";
-import { IPod, ModelId } from "@pw/core/src/models/Model.constants";
+import { IPod } from "@pw/core/src/models/Model.constants";
 import ModelUtils from "@pw/core/src/models/Model.utils";
 import * as React from "react";
 import styled from "styled-components";
@@ -20,16 +20,17 @@ const StyledFretLabel = styled.div`
 
 interface IFretLabelProps {
 	noteIndex: number;
-	modelId: ModelId;
-	modelValue: IPod[];
+	root: IPod;
+	intervals: IPod[];
+	notes: IPod[];
 	range: number[];
 	matchOctave: boolean;
 	hideLabel: boolean;
 }
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, modelId, modelValue, hideLabel = false, matchOctave = false }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, root, intervals, notes, hideLabel = false, matchOctave = false }) => {
 
-	const podProps = ModelUtils.getPodProps(modelValue, noteIndex);
+	const podProps = ModelUtils.getPodProps(notes, noteIndex);
 
 	if (!podProps) return null;
 
