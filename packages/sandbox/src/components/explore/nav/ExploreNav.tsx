@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ActionBox, { StyledActionBox } from './ActionBox';
+import ActionBox from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
 import MasterPreview from './MasterPreview';
+import PresetButton, { StyledPresetButton } from './PresetButton';
 import { IntervalsQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
@@ -20,7 +21,7 @@ const StyledExploreNav = styled.nav`
 	align-items: center;
 	justify-content: flex-start;
 
-	${StyledActionBox} {
+	${StyledPresetButton} {
 		position: absolute;
 		right: 16px;
 	}
@@ -38,6 +39,7 @@ const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 			<ViewerQuickLink />
 			<StyledSeparator />
 			<ActionBox />
+			<PresetButton />
 		</StyledExploreNav>
 	);
 };

@@ -14,13 +14,6 @@ export const StyledActionBox = styled.div`
             background-color: rgba(0,0,0,0.3);
         }
 
-        &:last-child {
-            background-color: ${({ theme }) => theme.accent};
-            :hover {
-                background-color: ${({ theme }) => theme.active};
-            }
-        }
-
         border: none;
 
         cursor: pointer;
@@ -38,7 +31,6 @@ const ActionBox: React.FC<CSSProperties> = () => {
         <StyledActionBox>
             <IconButton iconId="speaker" className="sound" color="white" onClick={() => null} />
             <IconButton iconId="more" className="settings" color="white" onClick={() => null} />
-            <button type="button" onClick={() => null} >IMPORT PRESET</button>
         </StyledActionBox>
     );
 };
