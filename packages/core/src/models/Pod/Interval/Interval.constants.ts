@@ -40,12 +40,14 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.P1, formatPreset(
 		IntervalId.P1,
 		'Perfect Unison',
-		[0, 0]
+		[0, 0],
+		[PresetTag.Perfect]
 	)],
 	[IntervalId.m2, formatPreset(
 		IntervalId.m2,
 		'Minor 2nd',
-		[1, 1]
+		[1, 1],
+		[PresetTag.Minor]
 	)],
 	[IntervalId.M2, formatPreset(
 		IntervalId.M2,
@@ -85,7 +87,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.P4, formatPreset(
 		IntervalId.P4,
 		'Perfect 4th',
-		[5, 3]
+		[5, 3],
+		[PresetTag.Perfect]
 	)],
 	[IntervalId.A4, formatPreset(
 		IntervalId.A4,
@@ -100,7 +103,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.P5, formatPreset(
 		IntervalId.P5,
 		'Perfect 5th',
-		[7, 4]
+		[7, 4],
+		[PresetTag.Perfect]
 	)],
 	[IntervalId.A5, formatPreset(
 		IntervalId.A5,
@@ -145,7 +149,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 	[IntervalId.P8, formatPreset(
 		IntervalId.P8,
 		'Octave',
-		[12, 7]
+		[12, 7],
+		[PresetTag.Perfect]
 	)],
 	[IntervalId.b9, formatPreset(
 		IntervalId.b9,

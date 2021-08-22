@@ -5,20 +5,43 @@ export enum PodType {
 }
 
 export enum PresetTag {
-	Interval,
-	Chord,
-	Scale,
-	Pentatonic,
-	Heptatonic,
-	Diatonic,
-	Chromatic,
-	Major,
-	Minor,
-	Triad,
-	Seventh,
-	Extended,
-	Altered
+	Interval = 'interval',
+	Chord = 'chord',
+	Scale = 'scale',
+	Pentatonic = 'pentatonic',
+	Heptatonic = 'heptatonic',
+	Diatonic = 'diatonic',
+	Chromatic = 'chromatic',
+	Major = 'major',
+	Minor = 'minor',
+	Diminished = 'diminished',
+	Augmented = 'augmented',
+	Perfect = 'perfect',
+	Triad = 'triad',
+	Seventh = 'seventh',
+	Extended = 'extended',
+	Altered = 'altered'
 }
+
+interface IPresetType {
+	id: PresetTag,
+	name: string;
+}
+
+export const PRESET_TYPES: IPresetType[] = [
+	{
+		id: PresetTag.Interval,
+		name: 'Interval'
+	},
+	{
+		id: PresetTag.Chord,
+		name: 'Chord'
+	},
+	{
+		id: PresetTag.Scale,
+		name: 'Scale'
+	}
+]
 
 export type IPod = [number, number];
 
