@@ -44,7 +44,7 @@ const ImportPresetModal = () => {
     const setPresetType = x => {
         _setPresetType(x);
         setPresetSubtype('unselected');
-        setPreset(MASTER_PRESETS.find(y => y.tags.includes(x));
+        setPreset(MASTER_PRESETS.find(y => y.tags.includes(x)));
     }
 
     return (
