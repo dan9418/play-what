@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { PresetTag, PRESET_TYPES } from '../../../../../core/src/models/Model.constants';
 import MASTER_PRESETS from '../../../../../core/src/models/PodList/PodList.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
+import { intervalsState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/inputs/DropdownInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
 import InputRow from '../../shared/ui/InputRow';
+import DeltaTable from './DeltaTable';
 
 const StyledImportPresetModal = styled.div`
    
 `;
 
 const ImportPresetModal = () => {
+    // @ts-ignore
+    const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
+
     const modalContext = useModalContext();
 
     const [presetType, _setPresetType] = useState(PresetTag.Chord);
@@ -37,18 +43,24 @@ const ImportPresetModal = () => {
         presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
 
     return (
-        <Modal title="Edit Root" onSubmit={null} closeModal={modalContext.closeModal} >
+        <Modal title="Import Preset" onSubmit={() => setBeforeIntervals(preset.value)} closeModal={modalContext.closeModal} >
             <StyledImportPresetModal>
-                <ModalTitle title={`Fretboard`} />
+                <ModalTitle title={preset.name} />
                 <InputRow label="Type">
                     <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
                 </InputRow>
-                <InputRow label="Subtype">
+                <InputRow label="Filter">
                     <DropdownInput value={{ id: presetSubtype }} setValue={x => setPresetSubtype(x.id)} options={subtypeOptions} />
                 </InputRow>
                 <InputRow label="Preset">
                     <DropdownInput value={preset} setValue={setPreset} options={filteredPresetOptions} />
                 </InputRow>
+                <DeltaTable
+                    beforeRoot={undefined}
+                    afterRoot={undefined}
+                    beforeIntervals={beforeIntervals}
+                    afterIntervals={preset.value}
+                />
             </StyledImportPresetModal>
         </Modal>
     )

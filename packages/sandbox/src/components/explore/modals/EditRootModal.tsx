@@ -64,7 +64,6 @@ const EditRootModal = () => {
     // @ts-ignore
     const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
     // @ts-ignore
-    const [intervals] = useRecoilState(intervalsState);
     const [afterRoot, setAfterRoot] = useState(beforeRoot);
 
     const modalContext = useModalContext();
@@ -77,8 +76,6 @@ const EditRootModal = () => {
                 <DeltaTable
                     beforeRoot={beforeRoot}
                     afterRoot={afterRoot}
-                    beforeIntervals={intervals}
-                    afterIntervals={intervals}
                 />
             </StyledRootModal>
         </Modal>

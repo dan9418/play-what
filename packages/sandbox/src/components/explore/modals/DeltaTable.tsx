@@ -1,6 +1,8 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import { intervalsState, rootState, viewerState } from '../../../state/state';
 import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
@@ -52,8 +54,22 @@ const StyledDeltaTable = styled.div`
 }*/
 
 const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, afterIntervals, beforeViewerId, afterViewerId }) => {
-    const beforeNotes = PodUtils.addPodList(beforeRoot, beforeIntervals);
-    const afterNotes = PodUtils.addPodList(afterRoot, afterIntervals);
+    // @ts-ignore
+    const viewerId = useRecoilValue(viewerState);
+    // @ts-ignore
+    const intervals = useRecoilValue(intervalsState);
+    // @ts-ignore
+    const root = useRecoilValue(rootState);
+
+    const _beforeRoot = beforeRoot ? beforeRoot : root;
+    const _afterRoot = afterRoot ? afterRoot : root;
+    const _beforeIntervals = beforeIntervals ? beforeIntervals : intervals;
+    const _afterIntervals = afterIntervals ? afterIntervals : intervals;
+    const _beforeViewerId = beforeRoot ? beforeRoot : viewerId;
+    const _afterViewerId = beforeRoot ? beforeRoot : viewerId
+
+    const beforeNotes = PodUtils.addPodList(_beforeRoot, _beforeIntervals);
+    const afterNotes = PodUtils.addPodList(_afterRoot, _afterIntervals);
 
     return (
         <StyledDeltaTable>
@@ -67,12 +83,12 @@ const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, aft
                 <tbody>
                     <tr>
                         <td>
-                            <Viewer viewerId={beforeViewerId} notes={beforeNotes} hideLabel />
-                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeNotes} />
+                            <Viewer viewerId={_beforeViewerId} notes={beforeNotes} hideLabel />
+                            <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeNotes} />
                         </td>
                         <td>
-                            <Viewer viewerId={afterViewerId} notes={afterNotes} hideLabel />
-                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterNotes} />
+                            <Viewer viewerId={_afterViewerId} notes={afterNotes} hideLabel />
+                            <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterNotes} />
                         </td>
                     </tr>
                 </tbody>

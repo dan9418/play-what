@@ -20,10 +20,6 @@ const EditViewerModal = () => {
     // @ts-ignore
     const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerState);
     const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
-    // @ts-ignore
-    const intervals = useRecoilValue(intervalsState);
-    // @ts-ignore
-    const root = useRecoilValue(rootState);
 
     const modalContext = useModalContext();
 
@@ -41,10 +37,6 @@ const EditViewerModal = () => {
                     <SwitchInput value={false} setValue={null} />
                 </InputRow>
                 <DeltaTable
-                    beforeRoot={root}
-                    afterRoot={root}
-                    beforeIntervals={intervals}
-                    afterIntervals={intervals}
                     beforeViewerId={beforeViewerId}
                     afterViewerId={afterViewerId}
                 />

@@ -12,7 +12,6 @@ const EditIntervalsModal = () => {
     // @ts-ignore
     const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
     // @ts-ignore
-    const [root] = useRecoilState(rootState);
     const [afterIntervals, setAfterIntervals] = useState(beforeIntervals);
 
     const modalContext = useModalContext();
@@ -22,8 +21,6 @@ const EditIntervalsModal = () => {
             <ModalTitle title="preset name here" />
             <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
             <DeltaTable
-                beforeRoot={root}
-                afterRoot={root}
                 beforeIntervals={beforeIntervals}
                 afterIntervals={afterIntervals}
             />
