@@ -24,7 +24,7 @@ export enum NoteId {
 	Cb = 'Cb'
 }
 
-const formatPreset = (id: NoteId, name: string, value: IPod) => ({ id, name, value });
+const formatPreset = (id: NoteId, name: string, value: IPod, tags = []) => ({ id, name, value, tags });
 
 export const NOTE_PRESET_MAP = new Map<NoteId, IPreset<IPod>>([
 	[NoteId.C, formatPreset(NoteId.C, 'C', [0, 0])],

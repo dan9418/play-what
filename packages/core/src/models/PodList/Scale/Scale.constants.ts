@@ -1,6 +1,6 @@
-import { IntervalId } from './../../Pod/Interval/Interval.constants';
-import { IPod, IPreset } from './../../Model.constants';
 import { INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
+import { IPod, IPreset, PresetTag } from './../../Model.constants';
+import { IntervalId } from './../../Pod/Interval/Interval.constants';
 
 export enum ScaleId {
 	Ionian = 'Ionian',
@@ -23,10 +23,11 @@ export enum ScaleId {
 	Chromatic = 'Chromatic'
 }
 
-const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[]) => ({
+const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[], tags = []) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
+	tags: [PresetTag.Scale, ...tags]
 });
 
 export const SCALE_PRESET_MAP = new Map<ScaleId, IPreset<IPod[]>>([

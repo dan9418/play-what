@@ -9,7 +9,7 @@ export enum ViewerId {
     Piano = 'keyboard_piano_standard'
 }
 
-const formatPreset = (id: ViewerId, name: string, value: any) => ({ id, name, value });
+const formatPreset = (id: ViewerId, name: string, value: any) => ({ id, name, value, tags: [] });
 
 export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<any>>([
     [ViewerId.Guitar, formatPreset(ViewerId.Guitar, 'Guitar', {

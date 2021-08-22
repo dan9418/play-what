@@ -1,5 +1,5 @@
 import { INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
-import { IPod, IPreset } from './../../Model.constants';
+import { IPod, IPreset, PresetTag } from './../../Model.constants';
 import { IntervalId } from './../../Pod/Interval/Interval.constants';
 
 export enum ChordId {
@@ -22,10 +22,11 @@ export enum ChordId {
 	Sus4 = 'Sus4',
 }
 
-const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[]) => ({
+const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = []) => ({
 	id,
 	name,
-	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value)
+	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
+	tags: [PresetTag.Chord, ...tags]
 });
 
 

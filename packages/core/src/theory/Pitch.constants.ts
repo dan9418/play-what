@@ -10,11 +10,13 @@ export const PITCH_PRESET_MAP = new Map<PitchId, IPreset<number>>([
 	[PitchId.MiddleC, {
 		id: PitchId.MiddleC,
 		name: 'Middle C',
+		tags: [],
 		value: 0
 	}],
 	[PitchId.Midi, {
 		id: PitchId.Midi,
 		name: 'MIDI',
+		tags: [],
 		value: 60
 	}]
 ]);
