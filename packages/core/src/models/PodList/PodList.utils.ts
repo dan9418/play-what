@@ -73,9 +73,8 @@ const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
 
 const getName = (podList: IPod[], podType: PodType): string => {
 	const nameFn = podType === PodType.Interval ? IntervalUtils.getName : NoteUtils.getName;
-	const nameArr = podList.map(nameFn as any);
+	const nameArr = podList.map((pod) => nameFn(pod));
 	return nameArr.join(', ');
-
 };
 
 const sort = (podList: IPod[]) => {

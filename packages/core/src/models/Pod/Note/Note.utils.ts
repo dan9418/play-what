@@ -1,6 +1,7 @@
 import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
+import { IPod } from "../../Model.constants";
 import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
@@ -39,9 +40,7 @@ interface INoteNameOptions {
 	includeOctave?: boolean;
 }
 
-export const getName = (note: any, isList = false, options: INoteNameOptions = {}): string => {
-	if (isList) return note.map(getName).join(', ');
-
+export const getName = (note: IPod, options: INoteNameOptions = {}): string => {
 	const reducedValue = PodUtils.reduce(note);
 
 	const d = reducedValue[1];

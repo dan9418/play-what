@@ -18,10 +18,9 @@ interface IIntervalNameOptions {
 	useLongName?: boolean;
 }
 
-export const getName = (interval: IPod, isList = false, options: IIntervalNameOptions = {}): string => {
-	if (isList) return interval.map(getName as any).join(', ');
+export const getName = (interval: IPod, options: IIntervalNameOptions = {}): string => {
+	const reduced = PodUtils.reduce(interval);
 
-	const reduced = PodUtils.reduce(interval)
 	const [noteIndex, d] = reduced;
 	const degreeIntervals = CORE_INTERVALS[d];
 	if (!degreeIntervals) return '?';
