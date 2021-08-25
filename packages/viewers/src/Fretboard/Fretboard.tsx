@@ -1,10 +1,14 @@
 import * as React from "react";
 import * as api from './Fretboard.api';
 import "./Fretboard.css";
-import DEFAULT_FRETBOARD_PROPS from "./Fretboard.defaults";
+import DEFAULT_FRETBOARD_PROPS, { IFretboardProps, IFretProps } from "./Fretboard.defaults";
 import FretLabel from "./FretLabel";
 
-export const Fret = ({ tuning, stringIndex, fretIndex, labelProps, hideLabel }) => {
+
+export const Fret: React.FC<IFretProps> = props => {
+
+	const { tuning, stringIndex, fretIndex, hideLabel } = props;
+
 	const classes = ['fret'];
 	if (fretIndex === 0)
 		classes.push('open');
@@ -19,7 +23,7 @@ export const Fret = ({ tuning, stringIndex, fretIndex, labelProps, hideLabel }) 
 				{!hideLabel && isHighString && fretIndex > 0 && fretIndex}
 			</div>
 			<div className='fret-string' />
-			<FretLabel {...labelProps} noteIndex={noteIndex} hideLabel={hideLabel} />
+			<FretLabel noteIndex={noteIndex} hideLabel={hideLabel} {...props} />
 			<div className="fret-dots">
 				{!hideLabel && isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
 			</div>
@@ -27,8 +31,8 @@ export const Fret = ({ tuning, stringIndex, fretIndex, labelProps, hideLabel }) 
 	);
 };
 
-const getFrets = (props) => {
-	const { fretRange, tuning, labelProps, hideLabel } = props;
+const getFrets = (props: IFretboardProps) => {
+	const { fretRange, tuning } = props;
 	const [lo, hi] = fretRange;
 
 	const allFrets = [];
@@ -39,9 +43,8 @@ const getFrets = (props) => {
 					key={`s${s}-f${f}`}
 					stringIndex={s}
 					fretIndex={f}
-					labelProps={labelProps}
-					hideLabel={hideLabel}
 					tuning={tuning}
+					{...props}
 				/>
 			);
 		}
@@ -49,7 +52,7 @@ const getFrets = (props) => {
 	return allFrets;
 };
 
-const Fretboard = (userProps) => {
+const Fretboard: React.FC<IFretboardProps> = (userProps) => {
 	const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
 
 	const [lo, hi] = props.fretRange;

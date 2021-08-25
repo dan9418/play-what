@@ -10,13 +10,8 @@ const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
     const _details = details ? details : masterDetails;
     const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
 
-    const labelProps = {
-        notes: _details.notes.value
-    };
-
-
     return (
-        <_viewerDetails.component {..._viewerDetails.props} labelProps={labelProps} {...rest} />
+        <_viewerDetails.component {..._viewerDetails.props} details={_details} {...rest} />
     );
 };
 

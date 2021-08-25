@@ -1,4 +1,4 @@
-import { IPreset } from './../../core/src/models/Model.constants';
+import { ICompleteModelDetails, IPreset } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
 import Keyboard from './Keyboard/Keyboard';
@@ -35,6 +35,12 @@ export interface IViewerDetails extends IViewerState {
     props: any;
 }
 
+export interface IViewerProps {
+    details?: ICompleteModelDetails;
+    matchOctave: boolean;
+    hideLabel: boolean;
+}
+
 const formatPreset = (id: ViewerId, name: string, component: any, presets: IViewerPreset[]): IPreset<IViewer> => (
     {
         id,
@@ -56,7 +62,7 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         [
             {
                 id: 'guitar',
-                name: 'Guitar',
+                name: 'Guitar, Standard',
                 props: {
                     matchOctave: true,
                     fretRange: [0, 12],
@@ -65,7 +71,7 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
             },
             {
                 id: 'bass',
-                name: 'Bass',
+                name: 'Bass, Standard',
                 props: {
                     matchOctave: true,
                     fretRange: [0, 12],
