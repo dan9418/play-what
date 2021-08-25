@@ -5,6 +5,7 @@ import React from "react";
 import styled from 'styled-components';
 import viewerUtils from '../viewer.utils';
 import "./Keyboard.css";
+import { IKeyboardKeyProps } from './Keyboard.defaults';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
 
@@ -44,27 +45,17 @@ const getScaleStyles = (keyType, scale) => {
 const StyledKey = styled.div`
 	background-color: ${({ $color }) => $color ? $color : 'transparent'};
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
-	${({ $isDimmed }) => $isDimmed ? 'opacity: 0.4;' : ''};
 `;
 
 const StyledKeyLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
-interface IKeyLabelProps {
-	noteIndex: number;
-	root: IPod;
-	intervals: IPod[];
-	notes: IPod[];
-	scale: number;
-	range: number[];
-	matchOctave: boolean;
-	hoveredIndex: number | null;
-	setHoveredIndex: any;
-}
 
-const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, root, intervals, notes, hoveredIndex, setHoveredIndex }) => {
+const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, hideLabel }) => {
 
-	const podProps = viewerUtils.getPodProps(notes, noteIndex);
+	const notes = details ? details.notes.value : [];
+
+	const podProps = viewerUtils.getPodProps(notes as IPod[], noteIndex);
 
 	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 
@@ -80,14 +71,11 @@ const KeyboardKey: React.FC<IKeyLabelProps> = ({ noteIndex, scale, root, interva
 	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
 	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
 
-	const onMouseEnter = () => setHoveredIndex(noteIndex)
-	const onMouseLeave = () => setHoveredIndex(null);
-
 	return (
-		<StyledKey className={`${keyType}-key-container`} $isDimmed={keyType === KEY_TYPE.White && hoveredIndex !== null && hoveredIndex !== noteIndex}>
-			<div className={classes.join(' ')} style={keyStyles} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} >
+		<StyledKey className={`${keyType}-key-container`}>
+			<div className={classes.join(' ')} style={keyStyles} >
 				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={color}>
-					{label}
+					{!hideLabel && label}
 				</StyledKeyLabel>
 			</div>
 		</StyledKey>

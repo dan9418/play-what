@@ -15,7 +15,6 @@ const StyledFretLabel = styled.div`
 	border-radius: 100%;
 	background-color: ${({ $color }) => $color ? $color : 'transparent'};
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
-	${({ $isDimmed }) => $isDimmed ? 'opacity: 0.4;' : ''};
 	cursor: pointer;
 `;
 

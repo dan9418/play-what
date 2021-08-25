@@ -1,11 +1,11 @@
 // @ts-ignore
 import React, { useState, useEffect } from "react";
 import "./Keyboard.css";
-import DEFAULT_PROPS from "./Keyboard.defaults";
+import DEFAULT_PROPS, { IKeyboardProps } from "./Keyboard.defaults";
 import KeyboardKey from "./KeyboardKey";
 
-const getKeyboardKeys = (props, viewerWidth) => {
-	const { keyRange, labelProps } = props;
+const getKeyboardKeys = (props: IKeyboardProps, viewerWidth: number) => {
+	const { keyRange } = props;
 	const [lo, hi] = keyRange;
 	const keys = [];
 	// Safe approximation for scale
@@ -17,14 +17,14 @@ const getKeyboardKeys = (props, viewerWidth) => {
 				key={i}
 				noteIndex={i}
 				scale={viewerWidth / numWhiteKeys}
-				{...labelProps}
+				{...props}
 			/>
 		);
 	}
 	return keys;
 }
 
-const Keyboard = (userProps) => {
+const Keyboard: React.FC<IKeyboardProps> = (userProps) => {
 
 	const props = { ...DEFAULT_PROPS, ...userProps };
 

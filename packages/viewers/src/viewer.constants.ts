@@ -87,15 +87,23 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         [
             {
                 id: 'piano',
-                name: 'Piano',
+                name: 'Piano, Small',
                 props: {
                     matchOctave: true,
                     keyRange: [0, 12]
                 }
             },
             {
-                id: 'full_piano',
-                name: 'Full Piano',
+                id: 'piano_medium',
+                name: 'Piano, Medium',
+                props: {
+                    matchOctave: true,
+                    keyRange: [-12, 12]
+                }
+            },
+            {
+                id: 'piano_full',
+                name: 'Piano, Full',
                 props: {
                     matchOctave: true,
                     keyRange: [-44, 44]

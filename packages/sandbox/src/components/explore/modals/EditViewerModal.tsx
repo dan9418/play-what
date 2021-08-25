@@ -35,7 +35,7 @@ const EditViewerModal = () => {
 
     const onSubmit = () => {
         setBeforeViewerId(afterViewerId);
-        setBeforeViewerPresetId(selectedViewerConfig.value.presets[0].id)
+        setBeforeViewerPresetId(afterViewerPresetId)
     }
 
     const presetOptions = selectedViewerConfig.value.presets;
