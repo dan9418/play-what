@@ -22,7 +22,7 @@ const EditViewerModal = () => {
     const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
 
     const [beforeViewerPresetId, setBeforeViewerPresetId] = useRecoilState(viewerPresetIdState);
-    const [afterViewerPresetId, setAfterViewerPresetId] = useState(beforeViewerId);
+    const [afterViewerPresetId, setAfterViewerPresetId] = useState(beforeViewerPresetId);
 
     const modalContext = useModalContext();
 

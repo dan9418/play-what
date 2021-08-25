@@ -4,8 +4,8 @@ import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
 import Keyboard from './Keyboard/Keyboard';
 
 export enum ViewerId {
-    Fretboard = 'Fretboard',
-    Keyboard = 'Keyboard'
+    Fretboard = 'fretboard',
+    Keyboard = 'keyboard'
 }
 
 export interface IViewerPreset {

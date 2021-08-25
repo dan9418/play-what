@@ -85,7 +85,7 @@ const DeltaTable: React.FC<any> = ({
     const _beforeViewerId = beforeViewerId ? beforeViewerId : viewerId;
     const _afterViewerId = afterViewerId ? afterViewerId : viewerId;
 
-    const _beforeViewerPresetId = beforeViewerPresetId ? beforeViewerPresetId : viewerId;
+    const _beforeViewerPresetId = beforeViewerPresetId ? beforeViewerPresetId : viewerPresetId;
     const _afterViewerPresetId = afterViewerPresetId ? afterViewerPresetId : viewerPresetId
 
     // COMPUTED
