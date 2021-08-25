@@ -1,8 +1,9 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
-import { intervalsState, rootState, viewerState } from '../../../state/state';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import viewerUtils from '../../../../../viewers/src/viewer.utils';
+import { intervalsState, rootState, viewerIdState, viewerPresetIdState } from '../../../state/state';
 import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
@@ -53,23 +54,47 @@ const StyledDeltaTable = styled.div`
     return rows;
 }*/
 
-const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, afterIntervals, beforeViewerId, afterViewerId }) => {
+const DeltaTable: React.FC<any> = ({
+    beforeRoot,
+    afterRoot,
+    beforeIntervals,
+    afterIntervals,
+    beforeViewerId,
+    afterViewerId,
+    beforeViewerPresetId,
+    afterViewerPresetId
+}) => {
+
     // @ts-ignore
-    const viewerId = useRecoilValue(viewerState);
+    const root = useRecoilValue(rootState);
     // @ts-ignore
     const intervals = useRecoilValue(intervalsState);
     // @ts-ignore
-    const root = useRecoilValue(rootState);
+    const viewerId = useRecoilValue(viewerIdState);
+    // @ts-ignore
+    const viewerPresetId = useRecoilValue(viewerPresetIdState);
+
+    // RAW DATA
 
     const _beforeRoot = beforeRoot ? beforeRoot : root;
     const _afterRoot = afterRoot ? afterRoot : root;
+
     const _beforeIntervals = beforeIntervals ? beforeIntervals : intervals;
     const _afterIntervals = afterIntervals ? afterIntervals : intervals;
-    const _beforeViewerId = beforeViewerId ? beforeViewerId : viewerId;
-    const _afterViewerId = afterViewerId ? afterViewerId : viewerId
 
-    const beforeNotes = PodUtils.addPodList(_beforeRoot, _beforeIntervals);
-    const afterNotes = PodUtils.addPodList(_afterRoot, _afterIntervals);
+    const _beforeViewerId = beforeViewerId ? beforeViewerId : viewerId;
+    const _afterViewerId = afterViewerId ? afterViewerId : viewerId;
+
+    const _beforeViewerPresetId = beforeViewerPresetId ? beforeViewerPresetId : viewerId;
+    const _afterViewerPresetId = afterViewerPresetId ? afterViewerPresetId : viewerPresetId
+
+    // COMPUTED
+
+    const beforeDetails = PodListUtils.getDetails(_beforeRoot, _beforeIntervals);
+    const afterDetails = PodListUtils.getDetails(_afterRoot, _afterIntervals);
+
+    const beforeViewerDetails = viewerUtils.getDetails(_beforeViewerId, _beforeViewerPresetId);
+    const afterViewerDetails = viewerUtils.getDetails(_afterViewerId, _afterViewerPresetId);
 
     return (
         <StyledDeltaTable>
@@ -83,12 +108,12 @@ const DeltaTable: React.FC<any> = ({ beforeRoot, afterRoot, beforeIntervals, aft
                 <tbody>
                     <tr>
                         <td>
-                            <Viewer viewerId={_beforeViewerId} notes={beforeNotes} hideLabel />
-                            <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeNotes} />
+                            <Viewer details={beforeDetails} viewerDetails={beforeViewerDetails} hideLabel />
+                            <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeDetails.notes.value} />
                         </td>
                         <td>
-                            <Viewer viewerId={_afterViewerId} notes={afterNotes} hideLabel />
-                            <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterNotes} />
+                            <Viewer details={afterDetails} viewerDetails={afterViewerDetails} hideLabel />
+                            <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterDetails.notes.value} />
                         </td>
                     </tr>
                 </tbody>

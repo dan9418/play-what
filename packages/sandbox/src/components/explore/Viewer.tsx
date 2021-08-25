@@ -1,25 +1,22 @@
 import React from "react";
-import { useRecoilState } from "recoil";
-import { VIEWER_PRESET_MAP } from "../../../../viewers/src/viewer.constants";
-import { notesState, viewerState } from "../../state/state";
+import { useRecoilValue } from "recoil";
+import { detailsState, viewerDetailsState } from "../../state/state";
 
-const Viewer: React.FC<any> = ({ notes, viewerId, ...rest }) => {
+const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
 
-    // @ts-ignore
-    const [_notes] = useRecoilState(notesState);
-    // @ts-ignore
-    const [_viewerId] = useRecoilState(viewerState);
+    const masterDetails = useRecoilValue(detailsState);
+    const masterViewerDetails = useRecoilValue(viewerDetailsState);
+
+    const _details = details ? details : masterDetails;
+    const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
 
     const labelProps = {
-        notes: notes ? notes : _notes
+        notes: _details.notes.value
     };
 
-    if (!labelProps.notes.length) return <>No intervals set.</>;
-
-    const viewerConfig = VIEWER_PRESET_MAP.get(viewerId ? viewerId : _viewerId).value;
 
     return (
-        <viewerConfig.component {...viewerConfig.props} labelProps={labelProps} {...rest} />
+        <_viewerDetails.component {..._viewerDetails.props} labelProps={labelProps} {...rest} />
     );
 };
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { VIEWER_PRESETS } from '../../../../../viewers/src/viewer.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { intervalsState, rootState, viewerState } from '../../../state/state';
+import { viewerIdState, viewerPresetIdState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/inputs/DropdownInput';
 import SwitchInput from '../../shared/inputs/SwitchInput';
@@ -18,8 +18,11 @@ const StyledViewerModal = styled.div`
 const EditViewerModal = () => {
 
     // @ts-ignore
-    const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerState);
+    const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerIdState);
     const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
+
+    const [beforeViewerPresetId, setBeforeViewerPresetId] = useRecoilState(viewerPresetIdState);
+    const [afterViewerPresetId, setAfterViewerPresetId] = useState(beforeViewerId);
 
     const modalContext = useModalContext();
 
@@ -39,6 +42,8 @@ const EditViewerModal = () => {
                 <DeltaTable
                     beforeViewerId={beforeViewerId}
                     afterViewerId={afterViewerId}
+                    beforeViewerPresetId={beforeViewerPresetId}
+                    afterViewerPresetId={afterViewerPresetId}
                 />
             </StyledViewerModal>
         </Modal>
