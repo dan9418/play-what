@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { VIEWER_PRESETS } from '../../../../../viewers/src/viewer.constants';
+import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { viewerIdState, viewerPresetIdState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
@@ -26,15 +26,37 @@ const EditViewerModal = () => {
 
     const modalContext = useModalContext();
 
-    const setValue = v => setAfterViewerId(v.id);
-    const onSubmit = () => setBeforeViewerId(afterViewerId);
+    const selectedViewerConfig = VIEWER_PRESET_MAP.get(afterViewerId);
+
+    const setViewerId = (config) => {
+        setAfterViewerId(config.id);
+        setAfterViewerPresetId(config.value.presets[0].id)
+    }
+
+    const onSubmit = () => {
+        setBeforeViewerId(afterViewerId);
+        setBeforeViewerPresetId(selectedViewerConfig.value.presets[0].id)
+    }
+
+    const presetOptions = selectedViewerConfig.value.presets;
 
     return (
         <Modal title="Edit Root" onSubmit={onSubmit} closeModal={modalContext.closeModal} >
             <StyledViewerModal>
                 <ModalTitle title={`Fretboard`} />
+                <InputRow label="Viewer">
+                    <DropdownInput
+                        value={{ id: afterViewerId }}
+                        setValue={setViewerId}
+                        options={VIEWER_PRESETS}
+                    />
+                </InputRow>
                 <InputRow label="Preset">
-                    <DropdownInput value={{ id: afterViewerId }} setValue={setValue} options={VIEWER_PRESETS} />
+                    <DropdownInput
+                        value={{ id: afterViewerPresetId }}
+                        setValue={x => setAfterViewerPresetId(x.id)}
+                        options={presetOptions}
+                    />
                 </InputRow>
                 <InputRow label="Match Octave?">
                     <SwitchInput value={false} setValue={null} />
