@@ -1,7 +1,7 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
-import { intervalsDetailsState, rootDetailsState, viewerState } from '../../../state/state';
+import { detailsState, viewerState } from '../../../state/state';
 import EditIntervalsModal from '../modals/EditIntervalsModal';
 import EditRootModal from '../modals/EditRootModal';
 import EditViewerModal from '../modals/EditViewerModal';
@@ -10,20 +10,20 @@ import QuickLink from './QuickLink';
 export const IntervalsQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
-    const [intervalsDetails] = useRecoilState(intervalsDetailsState);
+    const details = useRecoilValue(detailsState);
 
     return (
-        <QuickLink name="Intervals" preview={intervalsDetails.name} modal={<EditIntervalsModal />} />
+        <QuickLink name="Intervals" preview={details.root.name} modal={<EditIntervalsModal />} />
     );
 };
 
 export const RootQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
-    const [rootDetails] = useRecoilState(rootDetailsState);
+    const details = useRecoilValue(detailsState);
 
     return (
-        <QuickLink name="Root" preview={rootDetails.name} modal={<EditRootModal />} />
+        <QuickLink name="Root" preview={details.intervals.preview} modal={<EditRootModal />} />
     );
 };
 

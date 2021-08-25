@@ -58,3 +58,16 @@ export interface IPreset<T> {
 	tags: PresetTag[],
 	value: T
 }
+
+export interface IModelDetails {
+	name: string;
+	preview: string;
+	value: IPod | IPod[];
+	formattedName?: string;
+}
+
+export interface ICompleteModelDetails {
+	root: IModelDetails;
+	intervals: IModelDetails;
+	notes: IModelDetails;
+}

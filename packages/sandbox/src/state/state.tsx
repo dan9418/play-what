@@ -1,17 +1,11 @@
 import { atom, selector } from 'recoil';
-import { IPod, PodType } from '../../../core/src/models/Model.constants';
+import { ICompleteModelDetails, IPod } from '../../../core/src/models/Model.constants';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
-import NoteUtils from '../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
 import { ViewerId } from '../../../viewers/src/viewer.constants';
 
-export interface IDetailsState<T> {
-    value: T,
-    name: string,
-    preview: string
-}
 
 export const rootState = atom<IPod | null>({
     key: 'rootState',
@@ -34,67 +28,16 @@ export const notesState = selector<IPod[]>({
         const root = get(rootState);
         const intervals = get(intervalsState);
 
-        if (!root) return [];
-
-        const notes = PodUtils.addPodList(root, intervals);
-
-        return notes;
+        return PodUtils.addPodList(root, intervals);
     }
 });
 
-export const rootDetailsState = selector<IDetailsState<IPod>>({
-    key: 'rootDetailsState',
+export const detailsState = selector<ICompleteModelDetails>({
+    key: 'detailsState',
     get: ({ get }) => {
         const root = get(rootState);
-
-        if (!root) return {
-            value: null,
-            name: '?',
-            preview: '?'
-        }
-
-        return {
-            value: root as IPod,
-            name: NoteUtils.getName(root),
-            preview: ''
-        }
-    }
-});
-
-export const intervalsDetailsState = selector<IDetailsState<IPod[]>>({
-    key: 'intervalsDetailsState',
-    get: ({ get }) => {
         const intervals = get(intervalsState);
 
-        const name = PodListUtils.getName(intervals, PodType.Interval);
-        const preset = PodListUtils.findPreset(intervals);
-        const preview = preset ? preset.name : name;
-
-        return {
-            value: intervals,
-            name,
-            preview
-        }
-    }
-});
-
-export const notesDetailsState = selector<IDetailsState<IPod[]>>({
-    key: 'notesDetailsState',
-    get: ({ get }) => {
-        const rootDetails = get(rootDetailsState);
-        const intervalsDetails = get(intervalsDetailsState);
-        const notes = get(notesState);
-
-        if (!rootDetails) return {
-            value: null,
-            name: '?',
-            preview: '?'
-        }
-
-        return {
-            value: notes,
-            name: `${rootDetails.name} ${intervalsDetails.name}`,
-            preview: PodListUtils.getName(notes, PodType.Note)
-        }
+        return PodListUtils.getDetails(root, intervals);
     }
 });

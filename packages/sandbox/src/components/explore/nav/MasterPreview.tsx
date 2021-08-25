@@ -1,7 +1,7 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { intervalsDetailsState, notesDetailsState, rootDetailsState } from '../../../state/state';
+import { detailsState } from '../../../state/state';
 
 const StyledMasterPreview = styled.div`
 	display: flex;
@@ -37,18 +37,14 @@ const StyledMasterPreview = styled.div`
 const MasterPreview: React.FC<any> = () => {
 
     // @ts-ignore
-    const [rootDetails] = useRecoilState(rootDetailsState);
-    // @ts-ignore
-    const [intervalsDetails] = useRecoilState(intervalsDetailsState);
-    // @ts-ignore
-    const [notesDetails] = useRecoilState(notesDetailsState);
+    const details = useRecoilValue(detailsState);
 
     return (
         <StyledMasterPreview>
-            <div className="root">{rootDetails.name}</div>
+            <div className="root">{details.root.name}</div>
             <div className="name-preview">
-                <div className="name">{intervalsDetails.preview}</div>
-                <div className="preview">{notesDetails.preview}</div>
+                <div className="name">{details.intervals.formattedName}</div>
+                <div className="preview">{details.notes.preview}</div>
             </div>
         </StyledMasterPreview>
     );

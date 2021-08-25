@@ -3,7 +3,7 @@ import TuningUtils from '../../tuning/Tuning.utils';
 import IntervalUtils from '../Pod/Interval/Interval.utils';
 import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { IPod, IPreset, PodType } from './../Model.constants';
+import { ICompleteModelDetails, IModelDetails, IPod, IPreset, PodType } from './../Model.constants';
 import MASTER_PRESETS from './PodList.constants';
 
 // Equality
@@ -94,6 +94,39 @@ const findPreset = (podList: IPod[]): IPreset<IPod[]> | undefined => {
 	return MASTER_PRESETS.find(p => areEqual(p.value, podList));
 }
 
+const getDetails = (root: IPod, intervals: IPod[]): ICompleteModelDetails => {
+
+	const notes = PodUtils.addPodList(root, intervals);
+
+	const rootName = NoteUtils.getName(root);
+	const intervalsName = getName(intervals, PodType.Interval);
+	const intervalsPreview = getName(intervals, PodType.Interval);
+	const notesPreview = getName(notes, PodType.Note);
+
+	const preset = MASTER_PRESETS.find(p => areEqual(p.value, intervals));
+	const presetName = preset ? preset.name : 'Unknown';
+
+	return {
+		root: {
+			name: rootName,
+			preview: rootName,
+			value: root
+		},
+		intervals: {
+			name: intervalsName,
+			preview: intervalsPreview,
+			value: intervals,
+			formattedName: presetName
+		},
+		notes: {
+			name: `${rootName} ${intervalsName}`,
+			preview: notesPreview,
+			value: notes,
+			formattedName: `${rootName} ${presetName}`
+		}
+	}
+}
+
 export default {
 	areEqual,
 	reduce,
@@ -102,5 +135,6 @@ export default {
 	containsSubset,
 	sort,
 	getName,
-	findPreset
+	findPreset,
+	getDetails
 };

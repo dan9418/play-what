@@ -87,7 +87,7 @@ const RootInput = ({ root, setRoot }) => {
                 <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
                 <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>x</RootButton>
             </InputRow>
-            <InputRow label="Degree">
+            <InputRow label="Octave">
                 <RootButton value={octave} setValue={setOctave} buttonValue={0}>0</RootButton>
                 <RootButton value={octave} setValue={setOctave} buttonValue={1}>1</RootButton>
                 <RootButton value={octave} setValue={setOctave} buttonValue={2}>2</RootButton>
