@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { IPod, PodType } from '../../../../../core/src/models/Model.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import viewerUtils from '../../../../../viewers/src/viewer.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { intervalsState, rootState } from '../../../state/state';
+import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import IntervalInput from '../../shared/inputs/IntervalInput';
 import RootInput from '../../shared/inputs/RootInput';
-import ModalTitle from '../../shared/ui/HighlightBox';
-import DeltaTable, { StyledDeltaTable } from './DeltaTable';
+import ModalTitle, { StyledHighlightBox } from '../../shared/ui/HighlightBox';
+import Viewer from '../Viewer';
+import PodTable from './PodTable';
 
 const StyledNotesModal = styled.div`
     display: grid;
@@ -19,6 +21,12 @@ const StyledNotesModal = styled.div`
 
     > :nth-child(5) {
         grid-column: 1 / span 2;
+
+        ${StyledHighlightBox} {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 16px;
+        }
     }
 
     .header-box {
@@ -87,19 +95,28 @@ const EditNotesModal: React.FC = () => {
     // @ts-ignore
     const [afterRoot, setAfterRoot] = useState(beforeRoot);
 
-    const modalContext = useModalContext();
-
     // @ts-ignore
     const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
     // @ts-ignore
     const [afterIntervals, setAfterIntervals] = useState(beforeIntervals);
 
+    // @ts-ignore
+    const viewerId = useRecoilValue(viewerIdState);
+    // @ts-ignore
+    const viewerProps = useRecoilValue(viewerPropsState);
+
+    const modalContext = useModalContext();
+
     const rootTitle = NoteUtils.getName(afterRoot)
     const intervalsTitle = PodListUtils.getName(afterIntervals, PodType.Interval);
-    const title = `${rootTitle} ${intervalsTitle}`;
     const preset = PodListUtils.findPreset(afterIntervals);
 
     const subtitle = preset ? preset.name : 'Unknown';
+
+    const beforeDetails = PodListUtils.getDetails(beforeRoot, beforeIntervals);
+    const afterDetails = PodListUtils.getDetails(afterRoot, afterIntervals);
+
+    const viewerDetails = viewerUtils.getDetails(viewerId, viewerProps);
 
     const onSubmit = () => {
         setBeforeRoot(afterRoot as IPod);
@@ -109,25 +126,37 @@ const EditNotesModal: React.FC = () => {
     return (
         <Modal title="Edit Notes" onSubmit={onSubmit} closeModal={modalContext.closeModal} >
             <StyledNotesModal>
+
                 <div className="header-box">
                     <h3>Root</h3>
                     <ModalTitle title={rootTitle} subtitle={subtitle} />
                 </div>
+
                 <div className="header-box">
                     <h3>Intervals</h3>
                     <ModalTitle title={intervalsTitle} subtitle={subtitle} />
                 </div>
+
                 <RootInput root={afterRoot} setRoot={setAfterRoot} />
+
                 <IntervalInput intervals={afterIntervals} setIntervals={setAfterIntervals} />
+
                 <div className="header-box">
-                    <h3>Preview</h3>
-                    <DeltaTable
-                        beforeRoot={beforeRoot}
-                        afterRoot={afterRoot}
-                        beforeIntervals={beforeIntervals}
-                        afterIntervals={afterIntervals}
-                    />
+                    <h3>Before</h3>
+                    <ModalTitle>
+                        <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeDetails.notes.value} />
+                        <Viewer details={beforeDetails} viewerDetails={viewerDetails} hideLabel />
+                    </ModalTitle>
                 </div>
+
+                <div className="header-box">
+                    <h3>After</h3>
+                    <ModalTitle >
+                        <PodTable root={afterRoot} intervals={afterIntervals} notes={afterDetails.notes.value} />
+                    </ModalTitle>
+                    <Viewer details={afterDetails} viewerDetails={viewerDetails} hideLabel />
+                </div>
+
             </StyledNotesModal>
         </Modal>
     )

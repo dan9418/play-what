@@ -89,20 +89,18 @@ const DeltaTable: React.FC<any> = ({
     const afterViewerDetails = viewerUtils.getDetails(_afterViewerId, _afterViewerProps);
 
     return (
-        <HighlightBox>
-            <StyledDeltaTable>
+        <>
+            <>
                 <div>
-                    <h4>Before</h4>
                     <Viewer details={beforeDetails} viewerDetails={beforeViewerDetails} hideLabel />
                     <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeDetails.notes.value} />
                 </div>
                 <div>
-                    <h4>After</h4>
                     <Viewer details={afterDetails} viewerDetails={afterViewerDetails} hideLabel />
                     <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterDetails.notes.value} />
                 </div>
-            </StyledDeltaTable>
-        </HighlightBox>
+            </>
+        </>
     )
 }
 
