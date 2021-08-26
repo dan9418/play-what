@@ -1,7 +1,6 @@
 import ColorUtils from "@pw/core/src/color/Color.utils";
 import * as React from "react";
 import styled from "styled-components";
-import { IPod } from "../../../core/src/models/Model.constants";
 import viewerUtils from "../viewer.utils";
 import { IFretLabelProps } from "./Fretboard.defaults";
 
@@ -21,9 +20,7 @@ const StyledFretLabel = styled.div`
 
 const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, hideLabel, matchOctave, details }) => {
 
-	const notes = details ? details.notes.value : [];
-
-	const podProps = viewerUtils.getPodProps(notes as IPod[], noteIndex);
+	const podProps = viewerUtils.getPodProps(details, noteIndex);
 
 	if (!podProps) return null;
 

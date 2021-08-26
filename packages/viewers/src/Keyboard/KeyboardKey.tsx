@@ -53,9 +53,7 @@ const StyledKeyLabel = styled.div`
 
 const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, hideLabel }) => {
 
-	const notes = details ? details.notes.value : [];
-
-	const podProps = viewerUtils.getPodProps(notes as IPod[], noteIndex);
+	const podProps = viewerUtils.getPodProps(details, noteIndex);
 
 	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
 

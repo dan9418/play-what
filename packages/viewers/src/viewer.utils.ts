@@ -1,5 +1,5 @@
 import ColorUtils from "../../core/src/color/Color.utils";
-import { IPod, PodType } from "../../core/src/models/Model.constants";
+import { ICompleteModelDetails, IPod, PodType } from "../../core/src/models/Model.constants";
 import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../core/src/models/Pod/Pod.utils";
@@ -13,11 +13,18 @@ interface IPodProps {
 }
 
 interface IPodPropsOptions {
-    matchOctave?: boolean;
     podType?: PodType
+    matchOctave?: boolean;
 }
 
-const getPodProps = (podList: IPod[], noteIndex: number, options: IPodPropsOptions = { podType: PodType.Interval }): IPodProps => {
+const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
+    podType: PodType.Interval,
+    matchOctave: false
+}
+
+const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, options: IPodPropsOptions = DEFAULT_POD_PROP_OPTIONS): IPodProps => {
+    const podList = modelDetails.notes.value as IPod[];
+
     const pod = PodListUtils.getPodAtPitch(podList, noteIndex, options.matchOctave);
     if (!pod) return null;
 
