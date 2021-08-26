@@ -1,41 +1,61 @@
 import ColorUtils from "../../core/src/color/Color.utils";
-import { ICompleteModelDetails, IPod, PodType } from "../../core/src/models/Model.constants";
+import { ICompleteModelDetails, IPod } from "../../core/src/models/Model.constants";
 import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../core/src/models/Pod/Pod.utils";
 import PodListUtils from "../../core/src/models/PodList/PodList.utils";
+import { DisplayType } from './../../core/src/models/Model.constants';
 import { IViewerDetails, ViewerId, VIEWER_PRESET_MAP } from "./viewer.constants";
 
 interface IPodProps {
-    color: string | null,
-    fgColor: string | null,
-    label: string | null
+    bgColor: string;
+    fgColor: string;
+    text: string;
 }
 
 interface IPodPropsOptions {
-    podType?: PodType
+    displayType?: DisplayType;
     matchOctave?: boolean;
 }
 
 const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
-    podType: PodType.Interval,
+    displayType: DisplayType.Degree,
     matchOctave: false
 }
 
-const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, options: IPodPropsOptions = DEFAULT_POD_PROP_OPTIONS): IPodProps => {
-    const podList = modelDetails.notes.value as IPod[];
+const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
+    const options = { ...DEFAULT_POD_PROP_OPTIONS, ...userOptions };
 
-    const pod = PodListUtils.getPodAtPitch(podList, noteIndex, options.matchOctave);
-    if (!pod) return null;
+    const notes = modelDetails.notes.value as IPod[];
+    const intervals = modelDetails.intervals.value as IPod[];
 
-    const reduced = PodUtils.reduce(pod);
+    // Find pod
+    const podIndex = PodListUtils.getIndexOfPodAtPitch(notes, noteIndex, options.matchOctave);
+    if (podIndex === null) return null;
 
-    const color = IntervalUtils.getPodColor(reduced);
-    const fgColor = ColorUtils.getFgColor(color);
+    // Isolate pod
+    const note = notes[podIndex];
+    const interval = intervals[podIndex];
 
-    // const label = options.podType === PodType.Interval ? IntervalUtils.getName(reduced) : NoteUtils.getName(reduced);
-    const label = NoteUtils.getName(reduced);
-    return { color, fgColor, label };
+    // Reduce pod
+    const reducedNote = PodUtils.reduce(note);
+    const reducedInterval = PodUtils.reduce(interval);
+
+    // Get colors and text
+    let bgColor = '';
+    let text = '';
+    if (options.displayType === DisplayType.Degree) {
+        text = IntervalUtils.getName(reducedInterval);
+        bgColor = IntervalUtils.getPodColor(reducedInterval);
+    }
+    else {
+        text = NoteUtils.getName(reducedNote);
+        bgColor = IntervalUtils.getPodColor(reducedNote);
+    }
+    const fgColor = ColorUtils.getFgColor(bgColor);
+
+    // Package data
+    return { bgColor, fgColor, text };
 }
 
 const getDetails = (viewerId: ViewerId, presetId: string): IViewerDetails => {

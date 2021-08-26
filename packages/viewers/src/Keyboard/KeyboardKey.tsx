@@ -55,7 +55,9 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 
 	const podProps = viewerUtils.getPodProps(details, noteIndex);
 
-	const { color, fgColor, label } = podProps || { color: null, fgColor: null, label: null };
+	if (!podProps) return null;
+
+	const { bgColor, fgColor, text } = podProps;
 
 	const keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
 
@@ -63,7 +65,7 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 	const classes = ['keyboard-key', `${keyType}-key`, keyType];
 
 	const colorStyles = {
-		backgroundColor: color
+		backgroundColor: bgColor
 	}
 
 	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
@@ -72,8 +74,8 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 	return (
 		<StyledKey className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} >
-				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={color}>
-					{!hideLabel && label}
+				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={bgColor}>
+					{!hideLabel && text}
 				</StyledKeyLabel>
 			</div>
 		</StyledKey>

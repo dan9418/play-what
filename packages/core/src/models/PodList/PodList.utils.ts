@@ -3,7 +3,7 @@ import TuningUtils from '../../tuning/Tuning.utils';
 import IntervalUtils from '../Pod/Interval/Interval.utils';
 import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { ICompleteModelDetails, IModelDetails, IPod, IPreset, PodType } from './../Model.constants';
+import { ICompleteModelDetails, IPod, IPreset, PodType } from './../Model.constants';
 import MASTER_PRESETS from './PodList.constants';
 
 // Equality
@@ -29,6 +29,11 @@ const reduce = (A: IPod[]): IPod[] => {
 const getPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): IPod | null => {
 	const pod = A.find(a => PodUtils.getPodAtPitch(a, p, matchOctave));
 	return pod ? pod : null;
+};
+
+const getIndexOfPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): number | null => {
+	const pod = A.findIndex(a => PodUtils.getPodAtPitch(a, p, matchOctave));
+	return pod !== -1 ? pod : null;
 };
 
 // Sound
@@ -131,6 +136,7 @@ export default {
 	areEqual,
 	reduce,
 	getPodAtPitch,
+	getIndexOfPodAtPitch,
 	playSound,
 	containsSubset,
 	sort,
