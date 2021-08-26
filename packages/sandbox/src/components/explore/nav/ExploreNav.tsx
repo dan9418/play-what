@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ActionBox from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
-import MasterPreview from './MasterPreview';
 import PresetButton, { StyledPresetButton } from './PresetButton';
-import { IntervalsQuickLink, NotesQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
+import { NotesQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
