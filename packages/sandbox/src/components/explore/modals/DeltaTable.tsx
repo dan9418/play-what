@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import viewerUtils from '../../../../../viewers/src/viewer.utils';
-import { intervalsState, rootState, viewerIdState, viewerPresetIdState } from '../../../state/state';
+import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
@@ -61,8 +61,8 @@ const DeltaTable: React.FC<any> = ({
     afterIntervals,
     beforeViewerId,
     afterViewerId,
-    beforeViewerPresetId,
-    afterViewerPresetId
+    beforeViewerProps,
+    afterViewerProps
 }) => {
 
     // @ts-ignore
@@ -72,7 +72,7 @@ const DeltaTable: React.FC<any> = ({
     // @ts-ignore
     const viewerId = useRecoilValue(viewerIdState);
     // @ts-ignore
-    const viewerPresetId = useRecoilValue(viewerPresetIdState);
+    const viewerProps = useRecoilValue(viewerPropsState);
 
     // RAW DATA
 
@@ -85,16 +85,16 @@ const DeltaTable: React.FC<any> = ({
     const _beforeViewerId = beforeViewerId ? beforeViewerId : viewerId;
     const _afterViewerId = afterViewerId ? afterViewerId : viewerId;
 
-    const _beforeViewerPresetId = beforeViewerPresetId ? beforeViewerPresetId : viewerPresetId;
-    const _afterViewerPresetId = afterViewerPresetId ? afterViewerPresetId : viewerPresetId
+    const _beforeViewerProps = beforeViewerProps ? beforeViewerProps : viewerProps;
+    const _afterViewerProps = afterViewerProps ? afterViewerProps : viewerProps
 
     // COMPUTED
 
     const beforeDetails = PodListUtils.getDetails(_beforeRoot, _beforeIntervals);
     const afterDetails = PodListUtils.getDetails(_afterRoot, _afterIntervals);
 
-    const beforeViewerDetails = viewerUtils.getDetails(_beforeViewerId, _beforeViewerPresetId);
-    const afterViewerDetails = viewerUtils.getDetails(_afterViewerId, _afterViewerPresetId);
+    const beforeViewerDetails = viewerUtils.getDetails(_beforeViewerId, _beforeViewerProps);
+    const afterViewerDetails = viewerUtils.getDetails(_afterViewerId, _afterViewerProps);
 
     return (
         <StyledDeltaTable>

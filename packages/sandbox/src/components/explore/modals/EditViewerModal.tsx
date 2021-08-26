@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
 import { useModalContext } from '../../../contexts/ModalContext';
-import { viewerIdState, viewerPresetIdState } from '../../../state/state';
+import { viewerIdState, viewerPropsState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/inputs/DropdownInput';
 import SwitchInput from '../../shared/inputs/SwitchInput';
@@ -15,14 +15,14 @@ const StyledViewerModal = styled.div`
    
 `;
 
-const EditViewerModal = () => {
+const EditViewerModal: React.FC<any> = () => {
 
     // @ts-ignore
     const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerIdState);
     const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
 
-    const [beforeViewerPresetId, setBeforeViewerPresetId] = useRecoilState(viewerPresetIdState);
-    const [afterViewerPresetId, setAfterViewerPresetId] = useState(beforeViewerPresetId);
+    const [beforeViewerProps, setBeforeViewerProps] = useRecoilState(viewerPropsState);
+    const [afterViewerProps, setAfterViewerProps] = useState(beforeViewerProps);
 
     const modalContext = useModalContext();
 
@@ -30,15 +30,18 @@ const EditViewerModal = () => {
 
     const setViewerId = (config) => {
         setAfterViewerId(config.id);
-        setAfterViewerPresetId(config.value.presets[0].id)
+        setAfterViewerProps(config.value.presets[0].id)
     }
 
     const onSubmit = () => {
         setBeforeViewerId(afterViewerId);
-        setBeforeViewerPresetId(afterViewerPresetId)
+        setBeforeViewerProps(afterViewerProps)
     }
 
-    const presetOptions = selectedViewerConfig.value.presets;
+    const presetOptions = [
+        { id: 'unselected', name: '---', props: {} },
+        ...selectedViewerConfig.value.presets
+    ];
 
     return (
         <Modal title="Edit Root" onSubmit={onSubmit} closeModal={modalContext.closeModal} >
@@ -53,8 +56,8 @@ const EditViewerModal = () => {
                 </InputRow>
                 <InputRow label="Preset">
                     <DropdownInput
-                        value={{ id: afterViewerPresetId }}
-                        setValue={x => setAfterViewerPresetId(x.id)}
+                        value={{ id: afterViewerProps }}
+                        setValue={x => setAfterViewerProps(x.props)}
                         options={presetOptions}
                     />
                 </InputRow>
@@ -64,8 +67,8 @@ const EditViewerModal = () => {
                 <DeltaTable
                     beforeViewerId={beforeViewerId}
                     afterViewerId={afterViewerId}
-                    beforeViewerPresetId={beforeViewerPresetId}
-                    afterViewerPresetId={afterViewerPresetId}
+                    beforeViewerProps={beforeViewerProps}
+                    afterViewerProps={afterViewerProps}
                 />
             </StyledViewerModal>
         </Modal>

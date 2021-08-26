@@ -4,7 +4,7 @@ import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
-import { DEFAULT_VIEWER_ID, DEFAULT_VIEWER_PRESET_ID, IViewerDetails, ViewerId } from '../../../viewers/src/viewer.constants';
+import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../viewers/src/viewer.constants';
 import viewerUtils from '../../../viewers/src/viewer.utils';
 
 /* ROOT + INTERVALS + NOTES */
@@ -46,17 +46,17 @@ export const viewerIdState = atom<ViewerId>({
     default: DEFAULT_VIEWER_ID
 });
 
-export const viewerPresetIdState = atom<string>({
-    key: 'viewerPresetIdState',
-    default: DEFAULT_VIEWER_PRESET_ID
+export const viewerPropsState = atom<IViewerProps>({
+    key: 'viewerPropsState',
+    default: {}
 });
 
 export const viewerDetailsState = selector<IViewerDetails>({
     key: 'viewerDetailsState',
     get: ({ get }) => {
         const viewerId = get(viewerIdState);
-        const presetId = get(viewerPresetIdState);
+        const viewerProps = get(viewerPropsState);
 
-        return viewerUtils.getDetails(viewerId, presetId);
+        return viewerUtils.getDetails(viewerId, viewerProps);
     }
 });

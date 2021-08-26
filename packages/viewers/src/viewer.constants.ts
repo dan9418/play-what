@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import { ICompleteModelDetails, IPreset, PodType } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
@@ -22,16 +23,12 @@ export interface IViewer {
     presets: IViewerPreset[]
 }
 
-export interface IViewerState {
-    viewerId: ViewerId;
-    presetId: string;
-}
 
-export interface IViewerDetails extends IViewerState {
-    component: any;
+export interface IViewerDetails {
+    viewerId: ViewerId;
+    component: ReactNode;
     viewerName: string;
-    presetName: string;
-    props: any;
+    props: IViewerProps;
 }
 
 export interface IViewerProps {

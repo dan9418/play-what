@@ -1,6 +1,5 @@
 import React from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
+import { useRecoilValue } from 'recoil';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import EditIntervalsModal from '../modals/EditIntervalsModal';
 import EditRootModal from '../modals/EditRootModal';
@@ -33,6 +32,6 @@ export const ViewerQuickLink: React.FC<any> = () => {
     const viewerDetails = useRecoilValue(viewerDetailsState);
 
     return (
-        <QuickLink name={viewerDetails.viewerName} preview={viewerDetails.presetName} modal={<EditViewerModal />} />
+        <QuickLink name="Viewer" preview={viewerDetails.viewerName} modal={<EditViewerModal />} />
     );
 };
