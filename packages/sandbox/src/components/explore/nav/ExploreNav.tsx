@@ -4,7 +4,7 @@ import ActionBox from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
 import MasterPreview from './MasterPreview';
 import PresetButton, { StyledPresetButton } from './PresetButton';
-import { IntervalsQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
+import { IntervalsQuickLink, NotesQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
@@ -30,11 +30,7 @@ const StyledExploreNav = styled.nav`
 const ExploreNav: React.FC<any> = ({ setExploreState }) => {
 	return (
 		<StyledExploreNav>
-			<MasterPreview />
-			<StyledSeparator />
-			<RootQuickLink />
-			<StyledSeparator />
-			<IntervalsQuickLink />
+			<NotesQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
 			<StyledSeparator />

@@ -4,18 +4,18 @@ import styled from 'styled-components';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import viewerUtils from '../../../../../viewers/src/viewer.utils';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
+import HighlightBox from '../../shared/ui/HighlightBox';
 import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
-const StyledDeltaTable = styled.div`
-    margin: 16px 0;
+export const StyledDeltaTable = styled.div`
     table {
         text-align: center;
         font-size: 120%;
         border-collapse: collapse;
         width: 100%;
         td, th {
-            padding: 4px;
+            padding: 4px 8px;
             width: 50%;
             max-width: 64px;
         }
@@ -98,26 +98,28 @@ const DeltaTable: React.FC<any> = ({
 
     return (
         <StyledDeltaTable>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Before</th>
-                        <th>After</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <Viewer details={beforeDetails} viewerDetails={beforeViewerDetails} hideLabel />
-                            <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeDetails.notes.value} />
-                        </td>
-                        <td>
-                            <Viewer details={afterDetails} viewerDetails={afterViewerDetails} hideLabel />
-                            <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterDetails.notes.value} />
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <HighlightBox>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Before</th>
+                            <th>After</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <Viewer details={beforeDetails} viewerDetails={beforeViewerDetails} hideLabel />
+                                <PodTable root={_beforeRoot} intervals={_beforeIntervals} notes={beforeDetails.notes.value} />
+                            </td>
+                            <td>
+                                <Viewer details={afterDetails} viewerDetails={afterViewerDetails} hideLabel />
+                                <PodTable root={_afterRoot} intervals={_afterIntervals} notes={afterDetails.notes.value} />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </HighlightBox>
         </StyledDeltaTable>
     )
 }

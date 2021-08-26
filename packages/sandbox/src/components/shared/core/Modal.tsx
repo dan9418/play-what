@@ -40,7 +40,7 @@ const StyledModal = styled.div`
 		right: 0;
 
 		width: 100%;
-		max-width: 512px;
+		max-width: 1024px;
 		
 		position: relative;
 

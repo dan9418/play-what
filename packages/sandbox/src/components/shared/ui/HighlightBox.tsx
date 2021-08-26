@@ -2,21 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const StyledHighlightBox = styled.div`
-
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    //align-items: center;
+    //justify-content: center;
 
     background-color: #efefef;
-    border-radius: 8px;
-    padding: 8px;
+    border-radius: 4px;
+    padding: 16px;
 
     .title {
-        text-align: center;
+        //text-align: center;
     }
     .subtitle {
-        text-align: center;
+        //text-align: center;
         margin-top: 4px;
         font-style: italic;
         color: #555;
