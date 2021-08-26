@@ -1,6 +1,5 @@
 import * as React from "react";
 import styled from "styled-components";
-import { DisplayType } from "../../../core/src/models/Model.constants";
 import viewerUtils from "../viewer.utils";
 import { IFretLabelProps } from "./Fretboard.defaults";
 
@@ -18,11 +17,12 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, hideLabel, matchOctave, details }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, hideLabel, podType, matchOctave, details }) => {
 
 	const podOptions = {
 		matchOctave,
-		displayType: DisplayType.Degree
+		podType,
+		hideLabel
 	};
 
 	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
@@ -33,7 +33,7 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, hideLabel, matchOctav
 
 	return (
 		<StyledFretLabel $bgColor={bgColor} $fgColor={fgColor}>
-			{!hideLabel && text}
+			{text}
 		</StyledFretLabel>
 	);
 };

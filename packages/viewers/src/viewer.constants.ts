@@ -1,4 +1,4 @@
-import { ICompleteModelDetails, IPreset } from './../../core/src/models/Model.constants';
+import { ICompleteModelDetails, IPreset, PodType } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
 import Keyboard from './Keyboard/Keyboard';
@@ -12,7 +12,6 @@ export interface IViewerPreset {
     id: string;
     name: string;
     props: {
-        matchOctave: boolean;
         [prop: string]: any;
     }
 }
@@ -37,8 +36,9 @@ export interface IViewerDetails extends IViewerState {
 
 export interface IViewerProps {
     details?: ICompleteModelDetails;
-    matchOctave: boolean;
-    hideLabel: boolean;
+    matchOctave?: boolean;
+    hideLabel?: boolean;
+    podType?: PodType;
 }
 
 const formatPreset = (id: ViewerId, name: string, component: any, presets: IViewerPreset[]): IPreset<IViewer> => (
@@ -63,18 +63,12 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
             {
                 id: 'guitar',
                 name: 'Guitar, Standard',
-                props: {
-                    matchOctave: true,
-                    fretRange: [0, 12],
-                    tuning: FRETBOARD_TUNING.standard.value
-                }
+                props: {}
             },
             {
                 id: 'bass',
                 name: 'Bass, Standard',
                 props: {
-                    matchOctave: true,
-                    fretRange: [0, 12],
                     tuning: FRETBOARD_TUNING.standard.value.slice(2)
                 }
             }
@@ -89,7 +83,6 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 id: 'piano',
                 name: 'Piano, Small',
                 props: {
-                    matchOctave: true,
                     keyRange: [0, 12]
                 }
             },
@@ -97,7 +90,6 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 id: 'piano_medium',
                 name: 'Piano, Medium',
                 props: {
-                    matchOctave: true,
                     keyRange: [-12, 12]
                 }
             },
@@ -105,7 +97,6 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 id: 'piano_full',
                 name: 'Piano, Full',
                 props: {
-                    matchOctave: true,
                     keyRange: [-44, 44]
                 }
             }

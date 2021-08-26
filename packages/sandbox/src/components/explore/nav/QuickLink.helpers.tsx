@@ -23,7 +23,7 @@ export const RootQuickLink: React.FC<any> = () => {
     const details = useRecoilValue(detailsState);
 
     return (
-        <QuickLink name="Root" preview={details.intervals.preview} modal={<EditRootModal />} />
+        <QuickLink name="Root" preview={details.root.preview} modal={<EditRootModal />} />
     );
 };
 

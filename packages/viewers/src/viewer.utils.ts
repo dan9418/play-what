@@ -1,10 +1,9 @@
 import ColorUtils from "../../core/src/color/Color.utils";
-import { ICompleteModelDetails, IPod } from "../../core/src/models/Model.constants";
+import { ICompleteModelDetails, IPod, PodType } from "../../core/src/models/Model.constants";
 import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../core/src/models/Pod/Pod.utils";
 import PodListUtils from "../../core/src/models/PodList/PodList.utils";
-import { DisplayType } from './../../core/src/models/Model.constants';
 import { IViewerDetails, ViewerId, VIEWER_PRESET_MAP } from "./viewer.constants";
 
 interface IPodProps {
@@ -14,13 +13,15 @@ interface IPodProps {
 }
 
 interface IPodPropsOptions {
-    displayType?: DisplayType;
+    podType?: PodType;
     matchOctave?: boolean;
+    hideLabel?: boolean;
 }
 
 const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
-    displayType: DisplayType.Degree,
-    matchOctave: false
+    podType: PodType.Interval,
+    matchOctave: false,
+    hideLabel: false
 }
 
 const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
@@ -41,15 +42,23 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const reducedNote = PodUtils.reduce(note);
     const reducedInterval = PodUtils.reduce(interval);
 
-    // Get colors and text
-    let bgColor = '';
+    // Get text
     let text = '';
-    if (options.displayType === DisplayType.Degree) {
-        text = IntervalUtils.getName(reducedInterval);
+    if (!options.hideLabel) {
+        if (options.podType === PodType.Interval) {
+            text = IntervalUtils.getName(reducedInterval);
+        }
+        else {
+            text = NoteUtils.getName(reducedNote);
+        }
+    }
+
+    // Get colors
+    let bgColor = '';
+    if (options.podType === PodType.Interval) {
         bgColor = IntervalUtils.getPodColor(reducedInterval);
     }
     else {
-        text = NoteUtils.getName(reducedNote);
         bgColor = IntervalUtils.getPodColor(reducedNote);
     }
     const fgColor = ColorUtils.getFgColor(bgColor);

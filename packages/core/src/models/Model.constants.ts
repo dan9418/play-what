@@ -4,7 +4,7 @@ export enum PodType {
 	Interval
 }
 
-export enum ModelPart {
+/*export enum ModelPart {
 	Root,
 	Intervals,
 	Notes
@@ -13,7 +13,7 @@ export enum ModelPart {
 export enum DisplayType {
 	Pitch,
 	Degree
-}
+}*/
 
 export enum PresetTag {
 	Interval = 'interval',

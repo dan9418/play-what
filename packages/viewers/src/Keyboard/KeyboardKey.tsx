@@ -1,6 +1,5 @@
 import ColorUtils from '@pw/core/src/color/Color.utils';
 import NumberUtils from '@pw/core/src/general/Number.utils';
-import { IPod } from '@pw/core/src/models/Model.constants';
 import React from "react";
 import styled from 'styled-components';
 import viewerUtils from '../viewer.utils';
@@ -51,9 +50,14 @@ const StyledKeyLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, hideLabel }) => {
+const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, hideLabel, podType, matchOctave }) => {
 
-	const podProps = viewerUtils.getPodProps(details, noteIndex);
+	const podOptions = {
+		matchOctave,
+		hideLabel,
+		podType
+	};
+	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
 
 	if (!podProps) return null;
 
@@ -75,7 +79,7 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 		<StyledKey className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} >
 				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={bgColor}>
-					{!hideLabel && text}
+					{text}
 				</StyledKeyLabel>
 			</div>
 		</StyledKey>
