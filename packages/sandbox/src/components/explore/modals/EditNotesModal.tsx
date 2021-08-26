@@ -124,6 +124,8 @@ const EditNotesModal: React.FC = () => {
                     <DeltaTable
                         beforeRoot={beforeRoot}
                         afterRoot={afterRoot}
+                        beforeIntervals={beforeIntervals}
+                        afterIntervals={afterIntervals}
                     />
                 </div>
             </StyledNotesModal>

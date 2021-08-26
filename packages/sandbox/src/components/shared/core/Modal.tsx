@@ -17,10 +17,6 @@ const StyledModal = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	${StyledHighlightBox} {
-		margin-bottom: 16px;
-	}
-
 	.header, .footer {
 		width: 100%;
 	}
