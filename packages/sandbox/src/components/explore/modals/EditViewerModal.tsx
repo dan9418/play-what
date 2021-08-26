@@ -56,7 +56,7 @@ const EditViewerModal: React.FC<any> = () => {
                 </InputRow>
                 <InputRow label="Preset">
                     <DropdownInput
-                        value={{ id: afterViewerProps }}
+                        value={null}
                         setValue={x => setAfterViewerProps(x.props)}
                         options={presetOptions}
                     />
