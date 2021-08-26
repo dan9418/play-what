@@ -19,16 +19,6 @@ const StyledNotesModal = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 16px;
 
-    > :nth-child(5) {
-        grid-column: 1 / span 2;
-
-        ${StyledHighlightBox} {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 16px;
-        }
-    }
-
     .header-box {
         h3 {
             margin-bottom: 4px;
@@ -145,8 +135,8 @@ const EditNotesModal: React.FC = () => {
                     <h3>Before</h3>
                     <ModalTitle>
                         <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeDetails.notes.value} />
-                        <Viewer details={beforeDetails} viewerDetails={viewerDetails} hideLabel />
                     </ModalTitle>
+                    <Viewer details={beforeDetails} viewerDetails={viewerDetails} hideLabel />
                 </div>
 
                 <div className="header-box">
