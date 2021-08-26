@@ -4,6 +4,14 @@ export enum PodType {
 	Interval
 }
 
+export enum InputId {
+	Numeric,
+	Dropdown,
+	Switch,
+	Range,
+	FretboardTuning
+}
+
 /*export enum ModelPart {
 	Root,
 	Intervals,

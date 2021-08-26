@@ -6,10 +6,10 @@ import { useModalContext } from '../../../contexts/ModalContext';
 import { viewerIdState, viewerPropsState } from '../../../state/state';
 import { Modal } from '../../shared/core/Modal';
 import DropdownInput from '../../shared/inputs/DropdownInput';
-import SwitchInput from '../../shared/inputs/SwitchInput';
 import ModalTitle from '../../shared/ui/HighlightBox';
 import InputRow from '../../shared/ui/InputRow';
 import DeltaTable from './DeltaTable';
+import ViewerInputManager from './ViewerInputManager';
 
 const StyledViewerModal = styled.div`
    
@@ -61,9 +61,7 @@ const EditViewerModal: React.FC<any> = () => {
                         options={presetOptions}
                     />
                 </InputRow>
-                <InputRow label="Match Octave?">
-                    <SwitchInput value={false} setValue={null} />
-                </InputRow>
+                <ViewerInputManager viewerConfig={selectedViewerConfig} viewerProps={afterViewerProps} setViewerProps={setAfterViewerProps} />
                 <DeltaTable
                     beforeViewerId={beforeViewerId}
                     afterViewerId={afterViewerId}

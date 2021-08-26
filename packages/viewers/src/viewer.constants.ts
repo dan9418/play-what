@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ICompleteModelDetails, IPreset, PodType } from './../../core/src/models/Model.constants';
+import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
 import Keyboard from './Keyboard/Keyboard';
@@ -17,12 +17,21 @@ export interface IViewerPreset {
     }
 }
 
+export interface IViewerInputConfig {
+    propId: string;
+    inputId: InputId;
+    propName: string;
+    inputProps?: {
+        [prop: string]: any
+    }
+}
+
 export interface IViewer {
     viewerId: ViewerId;
     component: any;
+    inputs: IViewerInputConfig[];
     presets: IViewerPreset[]
 }
-
 
 export interface IViewerDetails {
     viewerId: ViewerId;
@@ -38,7 +47,7 @@ export interface IViewerProps {
     podType?: PodType;
 }
 
-const formatPreset = (id: ViewerId, name: string, component: any, presets: IViewerPreset[]): IPreset<IViewer> => (
+const formatPreset = (id: ViewerId, name: string, component: any, inputs: IViewerInputConfig[], presets: IViewerPreset[]): IPreset<IViewer> => (
     {
         id,
         name,
@@ -46,6 +55,7 @@ const formatPreset = (id: ViewerId, name: string, component: any, presets: IView
         value: {
             viewerId: id,
             component,
+            inputs,
             presets
         }
     }
@@ -56,6 +66,22 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         ViewerId.Fretboard,
         'Fretboard',
         Fretboard,
+        [
+            {
+                propName: 'Match Octave',
+                propId: 'matchOctave',
+                inputId: InputId.Switch
+            },
+            {
+                propName: 'Hide Label',
+                propId: 'hideLabel',
+                inputId: InputId.Switch
+            }
+            /*{
+                propId: 'fretRange',
+                inputId: InputId.Range
+            }*/
+        ],
         [
             {
                 id: 'guitar',
@@ -75,6 +101,8 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         ViewerId.Keyboard,
         'Keyboard',
         Keyboard,
+        [
+        ],
         [
             {
                 id: 'piano',
