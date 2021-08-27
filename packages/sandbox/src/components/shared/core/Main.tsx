@@ -6,7 +6,7 @@ const StyledMain = styled.main`
 	padding: 96px 0px;
 	margin: auto;
 	width: 100%;
-	max-width: 1024px;
+	// max-width: 1024px;
 	min-height: 100%;
   position: relative;
 `;

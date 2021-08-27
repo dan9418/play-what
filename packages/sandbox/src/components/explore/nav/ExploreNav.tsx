@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import ButtonInput from '../../shared/inputs/ButtonInput';
 import ActionBox from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
+import MenuButton, { StyledMenuButton } from './MenuButton';
 import PresetButton, { StyledPresetButton } from './PresetButton';
-import { NotesQuickLink, ViewerQuickLink } from './QuickLink.helpers';
+import { IntervalsQuickLink, NotesQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
@@ -20,21 +22,24 @@ const StyledExploreNav = styled.nav`
 	align-items: center;
 	justify-content: flex-start;
 
-	${StyledPresetButton} {
+	${StyledMenuButton} {
 		position: absolute;
-		right: 16px;
+		right: 0;
 	}
 `;
 
-const ExploreNav: React.FC<any> = ({ setExploreState }) => {
+const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
 	return (
 		<StyledExploreNav>
-			<NotesQuickLink />
+			<RootQuickLink />
+			<StyledSeparator />
+			<IntervalsQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
 			<StyledSeparator />
 			<ActionBox />
-			<PresetButton />
+
+			<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 		</StyledExploreNav>
 	);
 };
