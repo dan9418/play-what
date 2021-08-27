@@ -17,17 +17,6 @@ export const ViewerQuickLink: React.FC<any> = () => {
     );
 };
 
-export const NotesQuickLink: React.FC<any> = () => {
-
-    // @ts-ignore
-    const details = useRecoilValue(detailsState);
-
-    return (
-        <QuickLink name="Notes" preview={details.notes.preview} modal={<EditNotesModal />} />
-    );
-};
-
-
 export const IntervalsQuickLink: React.FC<any> = () => {
 
     // @ts-ignore
