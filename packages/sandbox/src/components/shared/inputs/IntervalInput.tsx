@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
+import { PresetTag, PRESET_TYPES } from '../../../../../core/src/models/Model.constants';
 import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../../core/src/models/Pod/Interval/Interval.constants';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import MASTER_PRESETS from '../../../../../core/src/models/PodList/PodList.constants';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import { intervalsState } from '../../../state/state';
+import InputRow from '../ui/InputRow';
+import DropdownInput from './DropdownInput';
 
 const StyledIntervalInput = styled.div`
 
@@ -115,6 +121,37 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 }
 
 const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
+
+    const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
+
+    const [presetType, _setPresetType] = useState(PresetTag.Chord);
+    const presetTagSet = new Set();
+    const presetOptions = MASTER_PRESETS.filter(preset => {
+        if (preset.tags.includes(presetType)) {
+            preset.tags.forEach(t => presetTagSet.add(t))
+            return true;
+        }
+    });
+    const subtypeOptions = [
+        { id: 'unselected', name: '---' },
+        ...Array.from(presetTagSet).map((v) => ({ name: v, id: v })).slice(1)
+    ];
+
+    const [presetSubtype, setPresetSubtype] = useState('unselected');
+
+    const [preset, setPreset] = useState(presetOptions[0]);
+    const filteredPresetOptions = presetSubtype === 'unselected' ?
+        presetOptions :
+        presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
+
+    const setPresetType = x => {
+        _setPresetType(x);
+        setPresetSubtype('unselected');
+        setPreset(MASTER_PRESETS.find(y => y.tags.includes(x)));
+    }
+
+
+
     const inactiveCols = intervals.map(i => i[0]);
     return (
         <StyledIntervalInput $inactiveCols={inactiveCols}>
@@ -182,39 +219,15 @@ const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
                     </tr>
                 </tbody>
             </table>
-            {/*<table>
-                <thead>
-                    <tr>
-                        <th>12</th>
-                        <th>13</th>
-                        <th>14</th>
-                        <th>15</th>
-                        <th>16</th>
-                        <th>17</th>
-                        <th>18</th>
-                        <th>19</th>
-                        <th>20</th>
-                        <th>21</th>
-                        <th>22</th>
-                        <th>23</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.P8)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b9)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x9)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s9)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b11)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x11)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s11)} /></td>
-                        <td><div /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.b13)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.x13)} /></td>
-                        <td><IntervalButton  intervals={intervals} setIntervals={setIntervals} preset={INTERVAL_PRESET_MAP.get(IntervalId.s13)} /></td>
-                    </tr>
-                </tbody>
-            </table>*/}
+            <InputRow label="Type">
+                <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
+            </InputRow>
+            <InputRow label="Filter">
+                <DropdownInput value={{ id: presetSubtype }} setValue={x => setPresetSubtype(x.id)} options={subtypeOptions} />
+            </InputRow>
+            <InputRow label="Preset">
+                <DropdownInput value={preset} setValue={() => setBeforeIntervals(preset.value)} options={filteredPresetOptions} />
+            </InputRow>
         </StyledIntervalInput>
     );
 }

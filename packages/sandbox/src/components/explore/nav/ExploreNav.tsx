@@ -25,6 +25,7 @@ const StyledExploreNav = styled.nav`
 		position: absolute;
 		right: 0;
 		left: 16px;
+		max-width: 256px;
 	}
 
 	${StyledMenuButton} {
