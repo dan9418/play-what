@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonInput from '../../shared/inputs/ButtonInput';
-import ActionBox from './ActionBox';
 import { StyledSeparator } from './ExploreNav.shared';
+import MasterPreview, { StyledMasterPreview } from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
-import PresetButton, { StyledPresetButton } from './PresetButton';
-import { IntervalsQuickLink, NotesQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
+import { IntervalsQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
@@ -20,7 +18,14 @@ const StyledExploreNav = styled.nav`
 
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: flex-end;
+	padding-right: 64px;
+
+	${StyledMasterPreview} {
+		position: absolute;
+		right: 0;
+		left: 16px;
+	}
 
 	${StyledMenuButton} {
 		position: absolute;
@@ -33,13 +38,14 @@ const StyledExploreNav = styled.nav`
 const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
 	return (
 		<StyledExploreNav>
+			<MasterPreview />
+
+			<StyledSeparator />
 			<RootQuickLink />
 			<StyledSeparator />
 			<IntervalsQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
-			<StyledSeparator />
-			<ActionBox />
 
 			<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 		</StyledExploreNav>
