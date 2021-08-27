@@ -25,6 +25,8 @@ const StyledExploreNav = styled.nav`
 	${StyledMenuButton} {
 		position: absolute;
 		right: 0;
+		top: 0;
+		border-left: 1px solid ${({ theme }) => theme.border};
 	}
 `;
 

@@ -1,5 +1,6 @@
-import React, { CSSProperties } from 'react';
-import styled from 'styled-components';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import THEME from '../../../styles/theme';
 import Icon from '../../shared/ui/Icon';
 
 export const StyledMenuButton = styled.button`
@@ -13,9 +14,12 @@ export const StyledMenuButton = styled.button`
     height: 64px;
     width: 64px;
 
-    background-color: ${({ theme }) => theme.accent};
+    background-color: ${props => props.$isMenuOpen ? '#f5f5f5' : 'rgba(0,0,0,0.05)'};
     :hover {
-        background-color: ${({ theme }) => theme.active};
+        background-color: ${THEME.accent};
+        svg, svg * {
+            fill: white;
+        }
     }
 
     svg {
@@ -25,8 +29,16 @@ export const StyledMenuButton = styled.button`
 
 const MenuButton: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
     return (
-        <StyledMenuButton type="button" onClick={() => setIsMenuOpen(!isMenuOpen)} >
-            <Icon iconId="menu" color="white" size={32} rotate={isMenuOpen ? 90 : 0} />
+        <StyledMenuButton
+            type="button"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            $isMenuOpen={isMenuOpen}
+        >
+            <Icon
+                iconId={isMenuOpen ? "close" : "menu"}
+                color={isMenuOpen ? THEME.accent : THEME.primary}
+                size={24}
+            />
         </StyledMenuButton >
     );
 };
