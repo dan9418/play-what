@@ -8,10 +8,12 @@ const StyledPodTable = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
     .root {
-        text-align: center;
-        padding: 16px;
+        padding: 0 16px;
         font-size: 200%;
         font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .intervals {
         display: grid;

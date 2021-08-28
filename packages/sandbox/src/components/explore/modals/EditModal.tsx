@@ -12,10 +12,24 @@ import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
 const StyledEditModal = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
 
+    .fretboard {
+        margin: 0;
+    }
+
+    h3 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #555;
+        font-size: 140%;
+        margin-bottom: 8px;
+    }
 `;
 
-const EditModal: React.FC<any> = ({ modalTitle, InputComponent, ...rest }) => {
+const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponent, ...rest }) => {
 
     // @ts-ignore
     const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
@@ -45,7 +59,13 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, ...rest }) => {
         setBeforeViewerProps(afterViewerProps);
     };
 
-    const modalProps = {
+    const beforeModelDetails = PodListUtils.getDetails(rest.beforeRoot || beforeRoot, rest.beforeIntervals || beforeIntervals);
+    const afterModelDetails = PodListUtils.getDetails(rest.afterRoot || afterRoot, rest.afterIntervals || afterIntervals);
+
+    const beforeViewerDetails = viewerUtils.getDetails(rest.beforeViewerId || beforeViewerId, rest.beforeViewerProps || beforeViewerProps);
+    const afterViewerDetails = viewerUtils.getDetails(rest.afterViewerId || afterViewerId, rest.afterViewerProps || afterViewerProps);
+
+    const editProps = {
         beforeViewerId,
         setBeforeViewerId,
         afterViewerId,
@@ -62,29 +82,35 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, ...rest }) => {
         setBeforeIntervals,
         afterIntervals,
         setAfterIntervals,
+        beforeModelDetails,
+        afterModelDetails,
+        beforeViewerDetails,
+        afterViewerDetails,
         ...rest
     };
-
-    const beforeModelDetails = PodListUtils.getDetails(modalProps.beforeRoot, modalProps.beforeIntervals);
-    const afterModelDetails = PodListUtils.getDetails(modalProps.afterRoot, modalProps.afterIntervals);
-
-    const beforeViewerDetails = viewerUtils.getDetails(modalProps.beforeViewerId, modalProps.beforeViewerProps);
-    const afterViewerDetails = viewerUtils.getDetails(modalProps.afterViewerId, modalProps.afterViewerProps);
 
     return (
         <Modal title={modalTitle} onSubmit={onSubmit} closeModal={modalContext.closeModal} >
             <StyledEditModal>
-                <InputComponent {...modalProps} />
-                <h3>Before</h3>
+                <AnalysisComponent {...editProps} />
+                <InputComponent {...editProps} />
+
+                <div>
+                    <h3>Before</h3>
+                    <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} hideLabel />
+                </div>
+
+                <div>
+                    <h3>After</h3>
+                    <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
+                </div>
+
                 <ModalTitle>
                     <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
                 </ModalTitle>
-                <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} hideLabel />
-                <h3>After</h3>
                 <ModalTitle >
                     <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
                 </ModalTitle>
-                <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
             </StyledEditModal>
         </Modal>
     )
