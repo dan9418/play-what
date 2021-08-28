@@ -26,7 +26,7 @@ const StyledExplorePage = styled.div`
 		margin: auto;
 		display: flex;
 		align-items: center;
-		justify-content: flex-start;
+		justify-content: center;
 		flex-direction: column;
 	}
 
@@ -51,7 +51,6 @@ const ExplorePage: React.FC<any> = () => {
 			<ExploreNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 			<StyledExplorePage $isMenuOpen={isMenuOpen}>
 				<div className="stage">
-					<MasterPreview />
 					<Viewer />
 				</div>
 				<Menu />

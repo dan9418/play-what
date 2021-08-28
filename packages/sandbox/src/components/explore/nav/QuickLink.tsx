@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
 import Icon from "../../shared/ui/Icon";
 
-const StyledQuickLink = styled.button`
+export const StyledQuickLink = styled.button`
 	height: 100%;
 	padding: 0 16px;
 
