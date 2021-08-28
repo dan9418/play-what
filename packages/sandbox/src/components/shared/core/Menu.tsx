@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IClickableFolderItem, IFolder, IFolderItem, IFolderNode, NodeType } from '../../../../../core/src/library/Library.constants';
-import { intervalsState, rootState } from '../../../state/state';
+import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import IntervalInput from '../inputs/IntervalInput';
 import RootInput from '../inputs/RootInput';
+import ViewerInput from '../inputs/ViewerInput';
 import Icon from '../ui/Icon';
 
 export const StyledMenu = styled.div`
@@ -111,6 +112,10 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
     const [root, setRoot] = useRecoilState(rootState);
     // @ts-ignore
     const [intervals, setIntervals] = useRecoilState(intervalsState);
+    // @ts-ignore
+    const [viewerId, setViewerId] = useRecoilState(viewerIdState);
+    // @ts-ignore
+    const [viewerProps, setViewerProps] = useRecoilState(viewerPropsState);
 
     return (
         <StyledMenu className="menu">
@@ -119,6 +124,13 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
             </MenuSection>
             <MenuSection title="Intervals">
                 <IntervalInput intervals={intervals} setIntervals={setIntervals} />
+            </MenuSection>
+            <MenuSection title="Viewer">
+                <ViewerInput viewerId={viewerId} setViewerId={setViewerId} viewerProps={viewerProps} setViewerProps={setViewerProps} />
+            </MenuSection>
+            <MenuSection title="Sound">
+            </MenuSection>
+            <MenuSection title="Color">
             </MenuSection>
         </StyledMenu>
     );
