@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
 import { IClickableFolderItem, IFolder, IFolderItem, IFolderNode, NodeType } from '../../../../../core/src/library/Library.constants';
-import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
+import { detailsState, intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
+import Viewer from '../../explore/Viewer';
 import IntervalInput from '../inputs/IntervalInput';
 import RootInput from '../inputs/RootInput';
 import ViewerInput from '../inputs/ViewerInput';
+import HighlightBox, { StyledHighlightBox } from '../ui/HighlightBox';
 import Icon from '../ui/Icon';
 
 export const StyledMenu = styled.div`
@@ -59,6 +61,10 @@ export const StyledMenuSection = styled.div`
     }
     > .content {
         padding: 8px;
+
+        ${StyledHighlightBox} {
+            margin-bottom: 8px;
+        }
     }
 `;
 
@@ -74,7 +80,7 @@ const attachClickHandler = (node: IFolderNode, clickHandler: Function): IFolder 
         };
 };
 
-const MenuSection: React.FC<any> = ({ title, children }) => {
+const MenuSection: React.FC<any> = ({ title, preview, children }) => {
     const [isOpen, setIsOpen] = useState(true);
     return (
         <StyledMenuSection>
@@ -85,6 +91,9 @@ const MenuSection: React.FC<any> = ({ title, children }) => {
 
             {isOpen &&
                 <div className="content">
+                    <HighlightBox title={typeof preview === 'string' ? preview : undefined}>
+                        {typeof preview !== 'string' ? preview : undefined}
+                    </HighlightBox>
                     {children}
                 </div>
             }
@@ -95,7 +104,7 @@ const MenuSection: React.FC<any> = ({ title, children }) => {
 
 const Menu: React.FC<any> = ({ closeMenu }) => {
 
-    useEffect(() => {
+    /*useEffect(() => {
         document.addEventListener(
             "click",
             e => {
@@ -106,8 +115,10 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
             },
             false
         )
-    }, []);
+    }, []);*/
 
+    // @ts-ignore
+    const [details, setDetails] = useRecoilState(detailsState);
     // @ts-ignore
     const [root, setRoot] = useRecoilState(rootState);
     // @ts-ignore
@@ -119,13 +130,13 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
 
     return (
         <StyledMenu className="menu">
-            <MenuSection title="Root">
+            <MenuSection title="Root" preview={details.root.preview}>
                 <RootInput root={root} setRoot={setRoot} />
             </MenuSection>
-            <MenuSection title="Intervals">
+            <MenuSection title="Intervals" preview={details.intervals.preview}>
                 <IntervalInput intervals={intervals} setIntervals={setIntervals} />
             </MenuSection>
-            <MenuSection title="Viewer">
+            <MenuSection title="Viewer" preview={<Viewer />}>
                 <ViewerInput viewerId={viewerId} setViewerId={setViewerId} viewerProps={viewerProps} setViewerProps={setViewerProps} />
             </MenuSection>
             <MenuSection title="Sound">

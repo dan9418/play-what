@@ -18,15 +18,8 @@ const StyledExploreNav = styled.nav`
 
 	display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	padding-right: 64px;
-
-	${StyledMasterPreview} {
-		position: absolute;
-		right: 0;
-		left: 16px;
-		max-width: 256px;
-	}
 
 	${StyledMenuButton} {
 		position: absolute;
@@ -39,14 +32,12 @@ const StyledExploreNav = styled.nav`
 const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
 	return (
 		<StyledExploreNav>
-			<MasterPreview />
-
-			<StyledSeparator />
 			<RootQuickLink />
 			<StyledSeparator />
 			<IntervalsQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
+			<StyledSeparator />
 
 			<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 		</StyledExploreNav>
