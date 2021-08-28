@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { StyledSeparator } from './ExploreNav.shared';
 import MasterPreview, { StyledMasterPreview } from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
-import { IntervalsQuickLink, RootQuickLink, ViewerQuickLink } from './QuickLink.helpers';
+import { ColorQuickLink, IntervalsQuickLink, RootQuickLink, SoundQuickLink, ViewerQuickLink } from './QuickLink.helpers';
 
 const StyledExploreNav = styled.nav`
     position: fixed;
@@ -37,6 +37,10 @@ const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
 			<IntervalsQuickLink />
 			<StyledSeparator />
 			<ViewerQuickLink />
+			<StyledSeparator />
+			<SoundQuickLink />
+			<StyledSeparator />
+			<ColorQuickLink />
 			<StyledSeparator />
 
 			<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />

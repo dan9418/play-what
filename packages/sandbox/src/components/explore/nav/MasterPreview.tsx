@@ -1,56 +1,44 @@
-import React, { useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { IPod, PodType } from '../../../../../core/src/models/Model.constants';
-import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
-import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
-import viewerUtils from '../../../../../viewers/src/viewer.utils';
-import { useModalContext } from '../../../contexts/ModalContext';
-import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
+import { detailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 
 export const StyledMasterPreview = styled.h1`
-    color: ${THEME.primary};
+    
+    margin-bottom: 32px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid ${THEME.border};
+    text-align: left;
+    width: 100%;
+    max-width: 1024px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    .title {
+        color: ${THEME.primary};
+        //padding-bottom: 4px;
+    }
+
+    .subtitle {
+        color: ${THEME.accent};
+        font-size: 80%;
+        font-weight: normal;
+    }
 `;
 
 const MasterPreview: React.FC = () => {
 
     // @ts-ignore
-    const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
-    // @ts-ignore
-    const [afterRoot, setAfterRoot] = useState(beforeRoot);
-
-    // @ts-ignore
-    const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
-    // @ts-ignore
-    const [afterIntervals, setAfterIntervals] = useState(beforeIntervals);
-
-    // @ts-ignore
-    const viewerId = useRecoilValue(viewerIdState);
-    // @ts-ignore
-    const viewerProps = useRecoilValue(viewerPropsState);
-
-    const modalContext = useModalContext();
-
-    const rootTitle = NoteUtils.getName(afterRoot)
-    const intervalsTitle = PodListUtils.getName(afterIntervals, PodType.Interval);
-    const preset = PodListUtils.findPreset(afterIntervals);
-
-    const subtitle = preset ? preset.name : 'Unknown';
-
-    const beforeDetails = PodListUtils.getDetails(beforeRoot, beforeIntervals);
-    const afterDetails = PodListUtils.getDetails(afterRoot, afterIntervals);
-
-    const viewerDetails = viewerUtils.getDetails(viewerId, viewerProps);
-
-    const onSubmit = () => {
-        setBeforeRoot(afterRoot as IPod);
-        setBeforeIntervals(afterIntervals as IPod[]);
-    };
+    const [details, setDetails] = useRecoilState(detailsState);
 
     return (
         <StyledMasterPreview>
-            {`${rootTitle} ${subtitle || intervalsTitle}`}
+            <div className="title">{details.notes.formattedName}</div>
+            <div className="subtitle">{details.notes.preview}</div>
+
         </StyledMasterPreview>
     )
 }

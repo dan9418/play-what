@@ -13,7 +13,7 @@ import Icon from '../ui/Icon';
 
 export const StyledMenu = styled.div`
     background-color: ${THEME.card};
-    //width: 256px;
+    width: 100%;
     box-shadow: 0px 0px 16px #aaa;
     overflow-y: auto;
 `;

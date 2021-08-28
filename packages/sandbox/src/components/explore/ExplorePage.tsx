@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import Menu, { StyledMenu } from "../shared/core/Menu";
 import ExploreNav from './nav/ExploreNav';
+import MasterPreview from "./nav/MasterPreview";
 import Viewer from "./Viewer";
 
 const StyledExplorePage = styled.div`
@@ -20,21 +21,19 @@ const StyledExplorePage = styled.div`
 
 	.stage {
 		width: 100%;
-		padding: 0 16px;
+		height: 100%;
+		padding: 16px;
 		margin: auto;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
+		flex-direction: column;
 	}
 
 	${StyledMenu} {
-		* {
-			display: ${props => props.$isMenuOpen ? '' : 'none'};
-		}
 		${props => props.$isMenuOpen ? '' : 'opacity: 0;'};
-
-		width: ${props => props.$isMenuOpen ? '512' : '0'}px;
-		transition: width .5s;
+		width: ${props => props.$isMenuOpen ? '512px' : '0'};
+		//transition: width .5s;
 	}
 
 	.fretboard, .keyboard {
@@ -52,6 +51,7 @@ const ExplorePage: React.FC<any> = () => {
 			<ExploreNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 			<StyledExplorePage $isMenuOpen={isMenuOpen}>
 				<div className="stage">
+					<MasterPreview />
 					<Viewer />
 				</div>
 				<Menu />
