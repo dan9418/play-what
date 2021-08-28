@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { IClickableFolderItem, IFolder, IFolderItem, IFolderNode, NodeType } from '../../../../../core/src/library/Library.constants';
 import { detailsState, intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
+import { QuickLinksList } from '../../explore/nav/QuickLink.helpers';
 import Viewer from '../../explore/Viewer';
 import IntervalInput from '../inputs/IntervalInput';
 import RootInput from '../inputs/RootInput';
@@ -16,6 +17,10 @@ export const StyledMenu = styled.div`
     width: 100%;
     box-shadow: 0px 0px 16px #aaa;
     overflow-y: auto;
+
+    @media(min-width: 1024px) {
+        display: none;
+    }
 `;
 
 const StyledOverlay = styled.div`
@@ -130,7 +135,7 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
 
     return (
         <StyledMenu className="menu">
-            <MenuSection title="Root" preview={details.root.preview}>
+            {/*<MenuSection title="Root" preview={details.root.preview}>
                 <RootInput root={root} setRoot={setRoot} />
             </MenuSection>
             <MenuSection title="Intervals" preview={details.intervals.preview}>
@@ -142,7 +147,8 @@ const Menu: React.FC<any> = ({ closeMenu }) => {
             <MenuSection title="Sound">
             </MenuSection>
             <MenuSection title="Color">
-            </MenuSection>
+    </MenuSection>*/}
+            <QuickLinksList isVertical />
         </StyledMenu>
     );
 };

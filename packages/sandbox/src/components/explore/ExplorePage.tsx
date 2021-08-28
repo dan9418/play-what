@@ -12,9 +12,6 @@ const StyledExplorePage = styled.div`
 	left: 0;
 	right: 0;
 	bottom: 0;
-
-	display: grid;
-	grid-template-columns: ${props => props.$isMenuOpen ? '1fr auto;' : '1fr'};
 	
 	height: 100%;
 	width: 100%;
@@ -28,12 +25,6 @@ const StyledExplorePage = styled.div`
 		align-items: center;
 		justify-content: center;
 		flex-direction: column;
-	}
-
-	${StyledMenu} {
-		${props => props.$isMenuOpen ? '' : 'opacity: 0;'};
-		width: ${props => props.$isMenuOpen ? '512px' : '0'};
-		//transition: width .5s;
 	}
 
 	.fretboard, .keyboard {
@@ -50,10 +41,13 @@ const ExplorePage: React.FC<any> = () => {
 		<>
 			<ExploreNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 			<StyledExplorePage $isMenuOpen={isMenuOpen}>
-				<div className="stage">
-					<Viewer />
-				</div>
-				<Menu />
+				{isMenuOpen ?
+					<Menu />
+					:
+					<div className="stage">
+						<Viewer />
+					</div>
+				}
 			</StyledExplorePage>
 		</>
 	);

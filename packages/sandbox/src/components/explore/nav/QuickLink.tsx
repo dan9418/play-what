@@ -14,6 +14,7 @@ export const StyledQuickLink = styled.button`
 
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 
 	.name {
 		font-weight: bold;

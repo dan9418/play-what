@@ -25,6 +25,10 @@ const StyledExploreNav = styled.nav`
 		right: 0;
 		top: 0;
 		border-left: 1px solid ${({ theme }) => theme.border};
+
+		@media(min-width: 1024px) {
+            display: none;
+        }
 	}
 `;
 

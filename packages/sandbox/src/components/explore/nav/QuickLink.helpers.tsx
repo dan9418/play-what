@@ -13,7 +13,6 @@ const StyledQuickLinksList = styled.ul`
     height: 100%;
 
     li {
-        height: 100%;
         margin: 0;
         padding: 0;
 
@@ -25,6 +24,7 @@ const StyledQuickLinksList = styled.ul`
     &.x {
         flex-direction: row;
         li {
+            height: 100%;
             &:not(:last-child) {
                 border-right: 1px solid ${THEME.border};
             }
@@ -32,14 +32,26 @@ const StyledQuickLinksList = styled.ul`
                 border-left: 1px solid ${THEME.border};
             }
         }
-        ${StyledQuickLink} {
-            
+
+        display: none;
+        @media(min-width: 1024px) {
+            display: flex;
         }
     }
     &.y {
         flex-direction: column;
-        ${StyledQuickLink} {
-            width: 100%;
+        li {
+            height: 64px;
+            &:not(:last-child) {
+                border-bottom: 1px solid ${THEME.border};
+            }
+            /*&:first-child {
+                border-left: 1px solid ${THEME.border};
+            }*/
+            ${StyledQuickLink} {
+                width: 100%;
+                padding-right: 24px;
+            }
         }
     }
 `
