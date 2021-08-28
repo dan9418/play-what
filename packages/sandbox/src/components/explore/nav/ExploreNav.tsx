@@ -12,13 +12,25 @@ const StyledExploreNav = styled.nav`
     z-index: 2000;
     height: 64px;
 
+	display: flex;
+	justify-content: center;
+
+	& > div {
+		width: 100%;
+		max-width: 1024px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 100%;
+
+		padding: 0 16px;
+		@media(min-width: 1024px) {
+			padding: 0;
+        }
+	}
+	
 	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
 	border-bottom: 1px solid ${({ theme }) => theme.border};
-
-	display: flex;
-	align-items: center;
-	justify-content: flex-start;
-	padding-right: 64px;
 
 	${StyledMenuButton} {
 		position: absolute;
@@ -35,9 +47,11 @@ const StyledExploreNav = styled.nav`
 const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
 	return (
 		<StyledExploreNav>
-			<MasterPreview />
-			<QuickLinksList />
-			<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+			<div>
+				<MasterPreview />
+				<QuickLinksList />
+				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+			</div>
 		</StyledExploreNav>
 	);
 };

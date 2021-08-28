@@ -25,9 +25,10 @@ const StyledQuickLinksList = styled.ul`
         flex-direction: row;
         li {
             height: 100%;
-            &:not(:last-child) {
+            border-right: 1px solid ${THEME.border};
+            /*&:not(:last-child) {
                 border-right: 1px solid ${THEME.border};
-            }
+            }*/
             &:first-child {
                 border-left: 1px solid ${THEME.border};
             }

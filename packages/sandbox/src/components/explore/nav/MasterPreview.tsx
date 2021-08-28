@@ -7,7 +7,6 @@ import THEME from '../../../styles/theme';
 export const StyledMasterPreview = styled.h1`
     text-align: left;
     width: 100%;
-    padding: 0 64px 0 16px;
     white-space: nowrap;
 
     .title {
