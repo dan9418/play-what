@@ -29,7 +29,7 @@ const StyledEditModal = styled.div`
     }
 `;
 
-const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponent, ...rest }) => {
+const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponent, hideModels, ...rest }) => {
 
     // @ts-ignore
     const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
@@ -93,6 +93,7 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
         <Modal title={modalTitle} onSubmit={onSubmit} closeModal={modalContext.closeModal} >
             <StyledEditModal>
                 <AnalysisComponent {...editProps} />
+
                 <InputComponent {...editProps} />
 
                 <div>
@@ -105,12 +106,16 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
                     <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
                 </div>
 
-                <ModalTitle>
-                    <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
-                </ModalTitle>
-                <ModalTitle >
-                    <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
-                </ModalTitle>
+                {!hideModels &&
+                    <>
+                        <ModalTitle>
+                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
+                        </ModalTitle>
+                        <ModalTitle >
+                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
+                        </ModalTitle>
+                    </>
+                }
             </StyledEditModal>
         </Modal>
     )

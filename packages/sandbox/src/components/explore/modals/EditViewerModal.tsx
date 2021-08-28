@@ -1,46 +1,25 @@
-import React, { useState } from 'react';
-import { useRecoilState } from 'recoil';
-import styled from 'styled-components';
-import { useModalContext } from '../../../contexts/ModalContext';
-import { viewerIdState, viewerPropsState } from '../../../state/state';
-import { Modal } from '../../shared/core/Modal';
+import React from 'react';
 import ViewerInput from '../../shared/inputs/ViewerInput';
-import ModalTitle from '../../shared/ui/HighlightBox';
-import DeltaTable from './DeltaTable';
+import HighlightBox from '../../shared/ui/HighlightBox';
+import EditModal from './EditModal';
 
-const StyledViewerModal = styled.div`
-   
-`;
+const ViewerInputAdapter = ({ afterViewerId, setAfterViewerId, afterViewerProps, setAfterViewerProps }) =>
+    <ViewerInput viewerId={afterViewerId} setViewerId={setAfterViewerId} viewerProps={afterViewerProps} setViewerProps={setAfterViewerProps} />
+
+const ViewerAnalysisAdapter = ({ afterViewerDetails }) => {
+    return (
+        <HighlightBox title={afterViewerDetails.viewerName} />
+    );
+}
 
 const EditViewerModal: React.FC<any> = () => {
-
-    // @ts-ignore
-    const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerIdState);
-    const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
-
-    const [beforeViewerProps, setBeforeViewerProps] = useRecoilState(viewerPropsState);
-    const [afterViewerProps, setAfterViewerProps] = useState(beforeViewerProps);
-
-    const modalContext = useModalContext();
-
-    const onSubmit = () => {
-        setBeforeViewerId(afterViewerId);
-        setBeforeViewerProps(afterViewerProps)
-    }
-
     return (
-        <Modal title="Edit Root" onSubmit={onSubmit} closeModal={modalContext.closeModal} >
-            <StyledViewerModal>
-                <ModalTitle title={`Fretboard`} />
-                <ViewerInput viewerId={afterViewerId} setViewerId={setAfterViewerId} viewerProps={afterViewerProps} setViewerProps={setAfterViewerProps} />
-                <DeltaTable
-                    beforeViewerId={beforeViewerId}
-                    afterViewerId={afterViewerId}
-                    beforeViewerProps={beforeViewerProps}
-                    afterViewerProps={afterViewerProps}
-                />
-            </StyledViewerModal>
-        </Modal>
+        <EditModal
+            modalTitle="Edit Viewer"
+            InputComponent={ViewerInputAdapter}
+            AnalysisComponent={ViewerAnalysisAdapter}
+            hideModels
+        />
     )
 }
 

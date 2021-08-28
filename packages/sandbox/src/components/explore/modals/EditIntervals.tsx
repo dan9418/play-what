@@ -7,7 +7,7 @@ const IntervalsInputAdapter = ({ afterIntervals, setAfterIntervals }) => <Interv
 
 const IntervalsAnalysisAdapter = ({ afterModelDetails }) => {
     return (
-        <HighlightBox title={afterModelDetails.root.name} />
+        <HighlightBox title={afterModelDetails.intervals.preview} />
     );
 }
 
