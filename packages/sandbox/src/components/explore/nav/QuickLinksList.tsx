@@ -1,12 +1,12 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useRecoilValue } from 'recoil';
+import styled from 'styled-components';
 import { detailsState, viewerDetailsState } from '../../../state/state';
+import THEME from '../../../styles/theme';
 import EditIntervalsModal from '../modals/EditIntervals';
 import EditRootModal from '../modals/EditRootModal';
 import EditViewerModal from '../modals/EditViewerModal';
 import QuickLink, { StyledQuickLink } from './QuickLink';
-import THEME from '../../../styles/theme';
 
 const StyledQuickLinksList = styled.ul`
     display: flex;
@@ -43,9 +43,10 @@ const StyledQuickLinksList = styled.ul`
         flex-direction: column;
         li {
             height: 64px;
-            &:not(:last-child) {
+            border-bottom: 1px solid ${THEME.border};
+            /*&:not(:last-child) {
                 border-bottom: 1px solid ${THEME.border};
-            }
+            }*/
             /*&:first-child {
                 border-left: 1px solid ${THEME.border};
             }*/
@@ -73,12 +74,12 @@ export const QuickLinksList: React.FC<any> = ({ isVertical }) => {
             <li>
                 <QuickLink name="Viewer" preview={viewerDetails.viewerName} modal={<EditViewerModal />} />
             </li>
-            <li>
+            {/*<li>
                 <QuickLink name="Sound" preview="Sine, 40db" modal={null} />
             </li>
             <li>
                 <QuickLink name="Color" preview="By Degree" modal={null} />
-            </li>
+            </li>*/}
         </StyledQuickLinksList>
     );
 };

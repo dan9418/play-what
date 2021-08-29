@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import THEME from '../../../styles/theme';
 import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
-import { QuickLinksList } from './QuickLink.helpers';
+import { QuickLinksList } from './QuickLinksList';
 
 const StyledExploreNav = styled.nav`
     position: fixed;

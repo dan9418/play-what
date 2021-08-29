@@ -49,8 +49,10 @@ const StyledEditModal = styled.div`
             text-transform: uppercase;
             letter-spacing: 2px;
             color: #888;
+            border-bottom: 1px solid ${THEME.border};
             font-size: 140%;
             margin-bottom: 8px;
+            font-weight: 500;
         }
     }
 `;
@@ -121,8 +123,6 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
                 <AnalysisComponent {...editProps} />
 
                 <InputComponent {...editProps} />
-
-                <div className="divider" />
 
                 <div className="b-a">
                     <h3>Before</h3>

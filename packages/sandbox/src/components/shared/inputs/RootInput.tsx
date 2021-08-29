@@ -72,12 +72,14 @@ const RootInput = ({ root, setRoot }) => {
 
     return (
         <>
-            <div>
+            <div className="b-a">
+                <h3>Import Preset</h3>
                 <InputRow label="Preset">
                     <DropdownInput value={null} setValue={null} />
                 </InputRow>
             </div>
-            <StyledRootInput>
+            <StyledRootInput className="b-a">
+                <h3>Configure</h3>
                 <InputRow label="Spelling">
                     <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
                     <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
