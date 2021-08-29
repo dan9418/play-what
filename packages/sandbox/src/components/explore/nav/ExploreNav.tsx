@@ -69,11 +69,11 @@ const ExploreNav: React.FC<any> = () => {
 		<StyledExploreNav>
 			<div>
 				<MasterPreview />
-				<QuickLinksList />
+				<QuickLinksList setIsMenuOpen={setIsMenuOpen} />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 				{isMenuOpen &&
 					<div className="menu">
-						<QuickLinksList isVertical />
+						<QuickLinksList setIsMenuOpen={setIsMenuOpen} isVertical />
 					</div>
 				}
 			</div>

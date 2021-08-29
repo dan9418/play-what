@@ -8,7 +8,34 @@ import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import InputRow from '../ui/InputRow';
 import DropdownInput from './DropdownInput';
 
-const StyledIntervalInput = styled.div`
+const StyledIntervalTable = styled.table`
+    width: 100%;
+    table-layout: fixed;
+    text-align: center;
+    border-collapse: collapse;
+
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
+    ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
+        background-color: ${({ theme }) => theme.light};
+    }
+
+    tfoot {
+        border-top: 1px solid #aaa;
+        th {
+            padding: 4px;    
+            text-align: center;
+            font-weight: normal;
+            color: ${({ theme }) => theme.medium};
+            &.active {
+                background-color: ${({ theme }) => theme.light};
+                color: ${({ theme }) => theme.medium};
+            }
+        }
+    }
+
+    td, th {
+        padding: 4px;
+    }
 
     button {
         background-color: #efefef;
@@ -36,40 +63,12 @@ const StyledIntervalInput = styled.div`
             background-color: ${({ theme }) => theme.active};
         }
     }
+`;
 
-    .preset {
+const StyledIntervalPresetInput = styled.div`
+
         margin-top: 8px;
-    }
     
-    table {
-        width: 100%;
-        table-layout: fixed;
-        text-align: center;
-        border-collapse: collapse;
-
-        ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
-        ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
-            background-color: ${({ theme }) => theme.light};
-        }
-
-        tfoot {
-            border-top: 1px solid #aaa;
-            th {
-                padding: 4px;    
-                text-align: center;
-                font-weight: normal;
-                color: ${({ theme }) => theme.medium};
-                &.active {
-                    background-color: ${({ theme }) => theme.light};
-                    color: ${({ theme }) => theme.medium};
-                }
-            }
-        }
-
-        td, th {
-            padding: 4px;
-        }
-    }
 `;
 
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
@@ -114,8 +113,9 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 
 
 const IntervalTable: React.FC<any> = ({ setIntervals, intervals }) => {
+    const inactiveCols = intervals.map(i => i[0]);
     return (
-        <table>
+        <StyledIntervalTable $inactiveCols={inactiveCols}>
             <tfoot>
                 <tr>
                     <th>0</th>
@@ -178,7 +178,7 @@ const IntervalTable: React.FC<any> = ({ setIntervals, intervals }) => {
                     <td><div /></td>
                 </tr>
             </tbody>
-        </table>
+        </StyledIntervalTable>
     );
 }
 
@@ -211,7 +211,7 @@ const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
     }
 
     return (
-        <div className="preset">
+        <StyledIntervalPresetInput>
             <InputRow label="Type">
                 <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
             </InputRow>
@@ -221,17 +221,17 @@ const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
             <InputRow label="Preset">
                 <DropdownInput value={preset} setValue={() => setIntervals(preset.value)} options={filteredPresetOptions} />
             </InputRow>
-        </div>
+        </StyledIntervalPresetInput>
     );
 }
 
 const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
-    const inactiveCols = intervals.map(i => i[0]);
+
     return (
-        <StyledIntervalInput $inactiveCols={inactiveCols}>
-            <IntervalTable setIntervals={setIntervals} intervals={intervals} />
+        <>
             <IntervalPresetInput setIntervals={setIntervals} intervals={intervals} />
-        </StyledIntervalInput>
+            <IntervalTable setIntervals={setIntervals} intervals={intervals} />
+        </>
     );
 }
 

@@ -13,8 +13,14 @@ import PodTable from './PodTable';
 
 const StyledEditModal = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 16px;
+    @media(min-width: 1024px) {
+        grid-template-columns: 1fr 1fr;
+        & >:first-child {
+            grid-column: 1 / span 2;
+        }
+    }
 
     .fretboard {
         margin: 0;
