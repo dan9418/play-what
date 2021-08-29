@@ -6,7 +6,7 @@ import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
 
 const StyledModal = styled.div`
-	background: rgba(0, 0, 0, .2);
+	//background: ${THEME.card};
 	position: fixed;
 	top: 32px;
 	bottom: 0;
