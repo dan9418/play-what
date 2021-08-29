@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
@@ -44,7 +44,8 @@ const StyledExploreNav = styled.nav`
 	}
 `;
 
-const ExploreNav: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
+const ExploreNav: React.FC<any> = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	return (
 		<StyledExploreNav>
 			<div>

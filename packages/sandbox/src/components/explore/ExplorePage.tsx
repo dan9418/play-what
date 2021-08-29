@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-import Menu, { StyledMenu } from "../shared/core/Menu";
 import ExploreNav from './nav/ExploreNav';
-import MasterPreview from "./nav/MasterPreview";
 import Viewer from "./Viewer";
 
 const StyledExplorePage = styled.div`
@@ -35,19 +33,13 @@ const StyledExplorePage = styled.div`
 
 
 const ExplorePage: React.FC<any> = () => {
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-
 	return (
 		<>
-			<ExploreNav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+			<ExploreNav />
 			<StyledExplorePage $isMenuOpen={isMenuOpen}>
-				{isMenuOpen ?
-					<Menu />
-					:
-					<div className="stage">
-						<Viewer />
-					</div>
-				}
+				<div className="stage">
+					<Viewer />
+				</div>
 			</StyledExplorePage>
 		</>
 	);
