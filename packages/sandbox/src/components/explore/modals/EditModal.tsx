@@ -6,8 +6,9 @@ import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import viewerUtils from '../../../../../viewers/src/viewer.utils';
 import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
+import THEME from '../../../styles/theme';
 import { Modal } from '../../shared/core/Modal';
-import ModalTitle from '../../shared/ui/HighlightBox';
+import HighlightBox, { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import Viewer from '../Viewer';
 import PodTable from './PodTable';
 
@@ -26,12 +27,31 @@ const StyledEditModal = styled.div`
         margin: 0;
     }
 
-    h3 {
-        text-align: center;
-        text-transform: uppercase;
-        color: #555;
-        font-size: 140%;
-        margin-bottom: 8px;
+    .divider {
+
+        width: 100%;
+        border-bottom: 1px solid ${THEME.border};
+
+        @media(min-width: 1024px) {
+                grid-column: 1 / span 2;
+        }
+    }
+
+    .b-a {
+
+        ${StyledHighlightBox} {
+            padding: 8px;
+            margin-bottom: 8px;
+        }
+
+        h3 {
+            text-align: left;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+            font-size: 140%;
+            margin-bottom: 8px;
+        }
     }
 `;
 
@@ -102,26 +122,23 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
 
                 <InputComponent {...editProps} />
 
-                <div>
+                <div className="divider" />
+
+                <div className="b-a">
                     <h3>Before</h3>
+                    <HighlightBox>
+                        <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
+                    </HighlightBox>
                     <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} hideLabel />
                 </div>
 
-                <div>
+                <div className="b-a">
                     <h3>After</h3>
+                    <HighlightBox >
+                        <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
+                    </HighlightBox>
                     <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
                 </div>
-
-                {!hideModels &&
-                    <>
-                        <ModalTitle>
-                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
-                        </ModalTitle>
-                        <ModalTitle >
-                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
-                        </ModalTitle>
-                    </>
-                }
             </StyledEditModal>
         </Modal>
     )

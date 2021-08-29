@@ -20,8 +20,6 @@ const StyledPodTable = styled.div`
         grid-template-columns: repeat(${props => props.$cols}, 1fr);
 
         > div {
-            padding: 4px;
-
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,6 +29,7 @@ const StyledPodTable = styled.div`
                 font-size: 120%;
             }
             &.interval {
+                margin-top: 4px;
                 color: #555;
             }
         }
