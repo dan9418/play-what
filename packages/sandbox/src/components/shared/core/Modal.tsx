@@ -29,18 +29,14 @@ const StyledModal = styled.div`
 		justify-content: space-between;
 		flex-direction: column;
 
-		position: fixed;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		right: 0;
+		position: absolute;
+		top: 112px;
+		bottom: 16px;
 
 		width: 100%;
 		max-width: 1024px;
+		margin: auto;
 		
-		position: relative;
-
-		height: 80%;
 		@media(min-width: 512px) {
 			border-radius: 8px;
 		}

@@ -17,17 +17,6 @@ const StyledStage = styled.div`
 		box-shadow: 0px 0px 30px 30px rgba(0,0,0,0.08);
 		max-width: 1024px;
 	}
-
-    .footer {
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 64px;
-        
-        background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
-	    border-top: 1px solid ${({ theme }) => theme.border};
-    }
 `;
 
 
@@ -35,7 +24,6 @@ const Stage: React.FC<any> = () => {
     return (
         <StyledStage>
             <Viewer />
-            <div className="footer" />
         </StyledStage>
     );
 };
