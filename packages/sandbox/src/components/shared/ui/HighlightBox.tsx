@@ -4,8 +4,8 @@ import styled from 'styled-components';
 export const StyledHighlightBox = styled.div`
     display: flex;
     flex-direction: column;
-    //align-items: center;
-    //justify-content: center;
+    align-items: center;
+    justify-content: center;
 
     background-color: #efefef;
     border-radius: 4px;

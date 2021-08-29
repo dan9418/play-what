@@ -126,19 +126,24 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
 
                 <div className="b-a">
                     <h3>Before</h3>
-                    <HighlightBox>
-                        <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
-                    </HighlightBox>
+                    {!hideModels && (
+                        <HighlightBox>
+                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
+                        </HighlightBox>
+                    )}
                     <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} hideLabel />
                 </div>
 
                 <div className="b-a">
                     <h3>After</h3>
-                    <HighlightBox >
-                        <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
-                    </HighlightBox>
+                    {!hideModels && (
+                        <HighlightBox >
+                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
+                        </HighlightBox>
+                    )}
                     <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
                 </div>
+
             </StyledEditModal>
         </Modal>
     )
