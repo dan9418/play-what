@@ -13,6 +13,7 @@ export const StyledMenuButton = styled.button`
 
     height: 64px;
     width: 64px;
+    z-index: 1;
 
     background-color: ${props => props.$isMenuOpen ? '#f5f5f5' : 'rgba(0,0,0,0.05)'};
     :hover {

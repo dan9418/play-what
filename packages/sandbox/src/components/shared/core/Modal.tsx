@@ -1,24 +1,24 @@
 
 import React from "react";
 import styled from "styled-components";
+import THEME from "../../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
-import { StyledHighlightBox } from "../ui/HighlightBox";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
 	position: fixed;
-	top: 0;
+	top: 32px;
 	bottom: 0;
 	right: 0;
 	left: 0;
 	z-index: 10000;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 
 	.header, .footer {
-		width: 100%;
+		position: absolute;
+		left: 0;
+		right: 0;
+		height: 64px;
 	}
 
 	.container {
@@ -29,42 +29,31 @@ const StyledModal = styled.div`
 		justify-content: space-between;
 		flex-direction: column;
 
-		position: fixed;
+		position: absolute;
 		top: 0;
 		bottom: 0;
-		left: 0;
-		right: 0;
-
-		width: 100%;
+		margin: auto;
 		max-width: 1024px;
+
+		padding: 64px 0;
 		
-		position: relative;
-
-		height: 80%;
-		@media(min-width: 512px) {
-			border-radius: 8px;
-		}
-
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
 	}
 
 	.header {
+		top: 0;
+
 		border-bottom: 1px solid ${({ theme }) => theme.border};
-		background-color: ${({ theme }) => theme.medium};
-		color: white;
+		background-color: ${THEME.card};
 
-		padding-bottom: 8px;
-		
-		@media(min-width: 512px) {
-			border-radius: 8px 8px 0 0;
-		}
-
-		padding: 16px 16px 8px;
-
-		> button {
-			position: absolute;
-			right: 8px;
-			top: 8px;
-		}
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16px;
 	}
 
 	.body {
@@ -75,15 +64,18 @@ const StyledModal = styled.div`
 	}
 
 	.footer {
-		padding: 8px 16px 16px;
+		bottom: 0;
+		
 		border-top: 1px solid ${({ theme }) => theme.border};
 
 		display: flex;
 		align-items: center;
 		justify-content: flex-end;
 
+		padding: 0 16px;
+
 		button:not(:last-child) {
-			margin-right: 8px;
+			margin-right: 16px;
 		}
 	}
 `;
@@ -94,7 +86,7 @@ export const Modal: React.FC<any> = ({ title, children, closeModal, onSubmit }) 
 			<div className="container">
 				<div className="header">
 					<h2>{title}</h2>
-					<IconButton iconId="close" onClick={closeModal} color="white" />
+					<IconButton iconId="close" onClick={closeModal} color="#555" />
 				</div>
 				<div className="body">
 					{children}

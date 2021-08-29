@@ -36,7 +36,7 @@ const ExplorePage: React.FC<any> = () => {
 	return (
 		<>
 			<ExploreNav />
-			<StyledExplorePage $isMenuOpen={isMenuOpen}>
+			<StyledExplorePage>
 				<div className="stage">
 					<Viewer />
 				</div>

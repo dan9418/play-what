@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import THEME from '../../../styles/theme';
 import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
 import { QuickLinksList } from './QuickLink.helpers';
@@ -42,6 +43,24 @@ const StyledExploreNav = styled.nav`
             display: none;
         }
 	}
+
+	.menu {
+		position: fixed;
+		top: 96px;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		max-width: 512px;
+
+		background-color: ${THEME.card};
+		width: 100%;
+		box-shadow: 0px 0px 16px #aaa;
+		overflow-y: auto;
+
+		@media(min-width: 1024px) {
+			display: none;
+		}
+	}
 `;
 
 const ExploreNav: React.FC<any> = () => {
@@ -52,6 +71,11 @@ const ExploreNav: React.FC<any> = () => {
 				<MasterPreview />
 				<QuickLinksList />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+				{isMenuOpen &&
+					<div className="menu">
+						<QuickLinksList isVertical />
+					</div>
+				}
 			</div>
 		</StyledExploreNav>
 	);
