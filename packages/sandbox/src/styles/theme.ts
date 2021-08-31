@@ -7,6 +7,7 @@ const THEME = {
 	bg: '#ecefef',
 	card: '#f5f5f5',
 	light: '#bbb',
+	mediumLight: '#888',
 	medium: '#555',
 	dark: '#333'
 }

@@ -38,13 +38,13 @@
 // 		appearance: none;
 // 		font-weight: bold;
 // 		font-size: 90%;
-// 		color: ${({ theme }) => theme.primary};
+// 		color: ${({ theme }) => theme.medium};
 // 		background-color: transparent;
 // 		&.active {
 // 			color: ${({ theme }) => theme.accent};
 // 		}
 // 		&:hover {
-// 			color: ${({ theme }) => theme.active};
+// 			color: ${({ theme }) => theme.accent};
 // 		}
 // 	}
 
@@ -121,9 +121,9 @@
 // 			</StyledBreadcrumbList>
 // 			<StyledButtonWrapper>
 // 				{false && <IconButton onClick={null} iconId="speaker" />}
-// 				{prev && <IconButton onClick={prev} color={THEME.primary} iconId='prev' />}
-// 				{next && <IconButton onClick={next} color={THEME.primary} iconId='next' />}
-// 				{path.length > 0 && <IconButton onClick={pop} color={THEME.primary} iconId='up' />}
+// 				{prev && <IconButton onClick={prev} color={THEME.medium} iconId='prev' />}
+// 				{next && <IconButton onClick={next} color={THEME.medium} iconId='next' />}
+// 				{path.length > 0 && <IconButton onClick={pop} color={THEME.medium} iconId='up' />}
 // 			</StyledButtonWrapper>
 // 		</StyledWrapper>
 // 	);

@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     border-radius: 4px;
     padding: 8px 16px;
 	color: white;
-	background-color: ${({ $isActive, theme }) => $isActive ? theme.primary : theme.accent};
+	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.accent};
 
 	&:hover {
 		opacity: .9;

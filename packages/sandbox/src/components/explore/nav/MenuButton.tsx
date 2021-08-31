@@ -37,7 +37,7 @@ const MenuButton: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
             <Icon
                 iconId={isMenuOpen ? "close" : "menu"}
-                color={isMenuOpen ? THEME.accent : THEME.primary}
+                color={isMenuOpen ? THEME.accent : THEME.medium}
                 size={24}
             />
         </StyledMenuButton >

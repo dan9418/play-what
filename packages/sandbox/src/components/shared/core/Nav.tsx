@@ -58,7 +58,7 @@ const StyledNav = styled.nav`
 			white-space: nowrap;
 
 			&:hover {
-				color: ${({ theme }) => theme.active};
+				color: ${({ theme }) => theme.accent};
 			}
 		}
 		
@@ -86,7 +86,7 @@ const StyledNav = styled.nav`
 				font-weight: normal;
 
 				&:hover {
-					color: ${({ theme }) => theme.active};
+					color: ${({ theme }) => theme.accent};
 				}
 			}
 		}

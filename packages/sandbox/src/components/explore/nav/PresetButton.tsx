@@ -12,7 +12,7 @@ export const StyledPresetButton = styled.div`
 
         background-color: ${({ theme }) => theme.accent};
         :hover {
-            background-color: ${({ theme }) => theme.active};
+            background-color: ${({ theme }) => theme.accent};
         }
     
         border: none;

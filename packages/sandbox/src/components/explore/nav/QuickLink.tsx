@@ -19,7 +19,7 @@ export const StyledQuickLink = styled.button`
 	.name {
 		font-weight: bold;
 		margin-bottom: 2px;
-		color: ${({ theme }) => theme.primary};
+		color: ${({ theme }) => theme.medium};
 	}
 
 	.preview {
@@ -30,9 +30,9 @@ export const StyledQuickLink = styled.button`
 	svg {
 		margin-left: 16px;
 
-		fill: ${({ theme }) => theme.primary};
+		fill: ${({ theme }) => theme.medium};
 		* {
-			fill: ${({ theme }) => theme.primary};
+			fill: ${({ theme }) => theme.medium};
 		}
 	}
 

@@ -15,13 +15,8 @@ export const StyledMasterPreview = styled.h1`
     justify-content: center;
     align-items: flex-start;
 
-    @media(min-width: 1024px) {
-        border-left: 1px solid ${THEME.border};
-        padding-left: 16px;
-    }
-
     .title {
-        color: ${THEME.primary};
+        color: ${THEME.medium};
         //padding-bottom: 4px;
     }
 

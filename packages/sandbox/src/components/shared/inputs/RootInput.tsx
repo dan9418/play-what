@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { NOTE_PRESETS } from '../../../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
 import InputRow from '../ui/InputRow';
@@ -21,7 +22,7 @@ const StyledRootInput = styled.div`
             border-radius: 0 4px 4px 0;
         }
         &:active {
-            background-color: ${({ theme }) => theme.active};
+            background-color: ${({ theme }) => theme.accent};
             
         }
 
@@ -30,13 +31,13 @@ const StyledRootInput = styled.div`
 
         &:hover {
             cursor: pointer;
-            background-color: ${({ theme }) => theme.active};
+            background-color: ${({ theme }) => theme.accent};
             color: white;
         }
 
         &.active {
-            background-color: ${({ theme }) => theme.active};
-            border-color: ${({ theme }) => theme.active};
+            background-color: ${({ theme }) => theme.accent};
+            border-color: ${({ theme }) => theme.accent};
             color: white;
             font-weight: bold;
         }
@@ -51,6 +52,7 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 }
 
 const RootInput = ({ root, setRoot }) => {
+    const [selectedPreset, setSelectedPreset] = useState(null);
     const accidental = NoteUtils.getAccidentalOffset(root);
     const octave = PodUtils.getOctave(root);
     const degree = PodUtils.getDegree(root);
@@ -75,7 +77,7 @@ const RootInput = ({ root, setRoot }) => {
             <div className="b-a">
                 <h3>Import Preset</h3>
                 <InputRow label="Preset">
-                    <DropdownInput value={null} setValue={null} />
+                    <DropdownInput value={selectedPreset} setValue={setSelectedPreset} options={NOTE_PRESETS} />
                 </InputRow>
             </div>
             <StyledRootInput className="b-a">

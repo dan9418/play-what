@@ -1,53 +1,17 @@
 import { IPod, IPreset } from "../../Model.constants";
 
 export enum NoteId {
-	C = 'C',
-	Cs = 'Cs',
-	Db = 'Db',
-	D = 'D',
-	Ds = 'Ds',
-	Eb = 'Eb',
-	E = 'E',
-	Es = 'Es',
-	Fb = 'Fb',
-	F = 'F',
-	Fs = 'Fs',
-	Gb = 'Gb',
-	G = 'G',
-	Gs = 'Gs',
-	Ab = 'Ab',
-	A = 'A',
-	As = 'As',
-	Bb = 'Bb',
-	B = 'B',
-	Bs = 'Bs',
-	Cb = 'Cb'
+	MiddleC = 'MiddleC',
+	TuningRoot = 'TuningRoot',
+	MidiRoot = 'MidiRoot'
 }
 
 const formatPreset = (id: NoteId, name: string, value: IPod, tags = []) => ({ id, name, value, tags });
 
 export const NOTE_PRESET_MAP = new Map<NoteId, IPreset<IPod>>([
-	[NoteId.C, formatPreset(NoteId.C, 'C', [0, 0])],
-	[NoteId.Cs, formatPreset(NoteId.Cs, 'C#', [1, 0])],
-	[NoteId.Db, formatPreset(NoteId.Db, 'Db', [1, 1])],
-	[NoteId.D, formatPreset(NoteId.D, 'D', [2, 1])],
-	[NoteId.Ds, formatPreset(NoteId.Ds, 'D#', [3, 1])],
-	[NoteId.Eb, formatPreset(NoteId.Eb, 'Eb', [3, 2])],
-	[NoteId.E, formatPreset(NoteId.E, 'E', [4, 2])],
-	[NoteId.Es, formatPreset(NoteId.Es, 'E#', [5, 2])],
-	[NoteId.Fb, formatPreset(NoteId.Fb, 'Fb', [4, 3])],
-	[NoteId.F, formatPreset(NoteId.F, 'F', [5, 3])],
-	[NoteId.Fs, formatPreset(NoteId.Fs, 'F#', [6, 3])],
-	[NoteId.Gb, formatPreset(NoteId.Gb, 'Gb', [6, 4])],
-	[NoteId.G, formatPreset(NoteId.G, 'G', [7, 4])],
-	[NoteId.Gs, formatPreset(NoteId.Gs, 'G#', [8, 4])],
-	[NoteId.Ab, formatPreset(NoteId.Ab, 'Ab', [8, 5])],
-	[NoteId.A, formatPreset(NoteId.A, 'A', [9, 5])],
-	[NoteId.As, formatPreset(NoteId.As, 'A#', [10, 5])],
-	[NoteId.Bb, formatPreset(NoteId.Bb, 'Bb', [10, 6])],
-	[NoteId.B, formatPreset(NoteId.B, 'B', [11, 6])],
-	[NoteId.Bs, formatPreset(NoteId.Bs, 'B#', [0, 6])],
-	[NoteId.Cb, formatPreset(NoteId.Cb, 'Cb', [11, 0])]
+	[NoteId.MiddleC, formatPreset(NoteId.MiddleC, 'Middle C', [0, 0])],
+	[NoteId.MidiRoot, formatPreset(NoteId.MidiRoot, 'MIDI Root', [1, 0])],
+	[NoteId.TuningRoot, formatPreset(NoteId.TuningRoot, 'Tuning Root', [1, 1])]
 ]);
 
 export const NOTE_PRESETS = Array.from(NOTE_PRESET_MAP).map(([k, v]) => v);
