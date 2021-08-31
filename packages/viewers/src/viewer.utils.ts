@@ -75,7 +75,7 @@ const getDetails = (viewerId: ViewerId, viewerProps: IViewerProps): IViewerDetai
         viewerId,
         viewerName: viewerConfig.name,
         component: viewerConfig.value.component,
-        props: viewerProps
+        props: { ...viewerConfig.value.defaultProps, ...viewerProps }
     }
 }
 

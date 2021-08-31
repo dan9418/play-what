@@ -2,7 +2,9 @@ import { ReactNode } from 'react';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
+import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
 import Keyboard from './Keyboard/Keyboard';
+import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
 
 export enum ViewerId {
     Fretboard = 'fretboard',
@@ -26,9 +28,17 @@ export interface IViewerInputConfig {
     }
 }
 
+export interface IViewerProps {
+    details?: ICompleteModelDetails;
+    matchOctave?: boolean;
+    hideLabel?: boolean;
+    podType?: PodType;
+}
+
 export interface IViewer {
     viewerId: ViewerId;
     component: any;
+    defaultProps: IViewerProps;
     inputs: IViewerInputConfig[];
     presets: IViewerPreset[]
 }
@@ -40,14 +50,7 @@ export interface IViewerDetails {
     props: IViewerProps;
 }
 
-export interface IViewerProps {
-    details?: ICompleteModelDetails;
-    matchOctave?: boolean;
-    hideLabel?: boolean;
-    podType?: PodType;
-}
-
-const formatPreset = (id: ViewerId, name: string, component: any, inputs: IViewerInputConfig[], presets: IViewerPreset[]): IPreset<IViewer> => (
+const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets: IViewerPreset[]): IPreset<IViewer> => (
     {
         id,
         name,
@@ -55,6 +58,7 @@ const formatPreset = (id: ViewerId, name: string, component: any, inputs: IViewe
         value: {
             viewerId: id,
             component,
+            defaultProps,
             inputs,
             presets
         }
@@ -66,6 +70,7 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         ViewerId.Fretboard,
         'Fretboard',
         Fretboard,
+        DEFAULT_FRETBOARD_PROPS,
         [
             {
                 propName: 'Match Octave',
@@ -78,9 +83,9 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 inputId: InputId.Switch
             },
             {
-                propName: 'test',
-                propId: 'test',
-                inputId: InputId.Numeric
+                propName: 'Fret Range',
+                propId: 'fretRange',
+                inputId: InputId.Range
             }
             /*{
                 propId: 'fretRange',
@@ -106,6 +111,7 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         ViewerId.Keyboard,
         'Keyboard',
         Keyboard,
+        DEFAULT_KEYBOARD_PROPS,
         [
         ],
         [

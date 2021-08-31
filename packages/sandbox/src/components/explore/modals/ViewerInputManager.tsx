@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { InputId, IPreset } from '../../../../../core/src/models/Model.constants';
 import { IViewer } from '../../../../../viewers/src/viewer.constants';
 import NumericInput from '../../shared/inputs/NumericInput';
+import RangeInput from '../../shared/inputs/RangeInput';
 import SwitchInput from '../../shared/inputs/SwitchInput';
 import InputRow from '../../shared/ui/InputRow';
 
@@ -23,7 +24,7 @@ const getViewerComponent = (inputId: InputId): any => {
         case InputId.Numeric:
             return NumericInput;
         case InputId.Range:
-            return SwitchInput;
+            return RangeInput;
         default:
             return Fragment;
     }
@@ -45,6 +46,8 @@ const ViewerInputManager: React.FC<IViewerInputManagerProps> = ({ viewerConfig, 
                 [propId]: newValue
             });
         }
+
+        console.log(viewerProps);
 
         inputRows.push(
             <InputRow label={propName} key={propId}>
