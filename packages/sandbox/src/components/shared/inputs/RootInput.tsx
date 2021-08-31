@@ -23,7 +23,6 @@ const StyledRootInput = styled.div`
         }
         &:active {
             background-color: ${({ theme }) => theme.accent};
-            
         }
 
         width: 32px;
@@ -53,7 +52,7 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 
 const RootInput = ({ root, setRoot }) => {
     const [selectedPreset, setSelectedPreset] = useState(null);
-    const accidental = NoteUtils.getAccidentalOffset(root);
+    const accidental = NoteUtils.getAccidentalOffset(root, true);
     const octave = PodUtils.getOctave(root);
     const degree = PodUtils.getDegree(root);
 

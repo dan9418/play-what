@@ -1,3 +1,4 @@
+import NumberUtils from "../../../general/Number.utils";
 import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
@@ -5,10 +6,10 @@ import { IPod } from "../../Model.constants";
 import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
-const getAccidentalOffset = (pod) => {
+const getAccidentalOffset = (pod, reduce = false) => {
 	const [p, d] = pod;
 	const offset = p - ROOT_SCALE[d][0];
-	return offset;
+	return reduce ? NumberUtils.modulo(offset, 12) : offset;
 }
 
 const getAccidentalString = (offset, d) => {
@@ -30,8 +31,8 @@ const getPodColor = pod => {
 	return DEFAULT_PITCH_COLOR_SCHEME[p];
 }
 
-const createPod = (degree, accidental, octave) => {
-	const pitchClass = ROOT_SCALE[degree][0] + accidental;
+const createPod = (degree: number, accidental: number, octave: number): IPod => {
+	const pitchClass = NumberUtils.modulo(ROOT_SCALE[degree][0] + accidental, 12);
 	const pitch = (octave * 12) + pitchClass;
 	return [pitch, degree];
 }
@@ -40,15 +41,28 @@ interface INoteNameOptions {
 	includeOctave?: boolean;
 }
 
-export const getName = (note: IPod, options: INoteNameOptions = {}): string => {
+interface INoteNameParts {
+	spelling: string;
+	accidental: string;
+	octave: number;
+}
+
+export const getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
 	const reducedValue = PodUtils.reduce(note);
 
 	const d = reducedValue[1];
 	const offset = getAccidentalOffset(reducedValue);
 	const accidental = getAccidentalString(offset, d);
 	const spelling = DEGREE_PRESETS[d].name;
-	const octave = options.includeOctave ? PodUtils.getOctave(note, true) : '';
-	return `${spelling}${accidental}${octave}`;
+	const octave = PodUtils.getOctave(note, true);
+	return { spelling, accidental, octave };
+}
+
+export const getName = (note: IPod, options: INoteNameOptions = {}): string => {
+	const { spelling, accidental, octave } = getNameParts(note, options);
+
+	const o = options.includeOctave ? octave : '';
+	return `${spelling}${accidental}${o}`;
 }
 
 export default {
@@ -56,5 +70,6 @@ export default {
 	getAccidentalString,
 	getPodColor,
 	createPod,
-	getName
+	getName,
+	getNameParts
 }
