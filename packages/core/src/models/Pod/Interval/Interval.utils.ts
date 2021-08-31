@@ -1,4 +1,5 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
+import TuningUtils from "../../../tuning/Tuning.utils";
 import PodUtils from "../Pod.utils";
 import { IPod, IPreset } from './../../Model.constants';
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
@@ -49,8 +50,21 @@ export const getName = (interval: IPod, options: IIntervalNameOptions = {}): str
 	return `${qualityStr}${d + 1}`;
 }
 
+const getRatio = (interval: IPod, options: any = {}) => {
+
+	const [p] = interval;
+
+	const baseline = TuningUtils.getFrequency(0);
+	const compareTo = TuningUtils.getFrequency(p);
+
+	const ratio = compareTo / baseline;
+
+	return `1:${ratio.toFixed(2)}`;
+}
+
 export default {
 	getPodColor,
 	getIntervalOffset,
-	getName
+	getName,
+	getRatio
 }
