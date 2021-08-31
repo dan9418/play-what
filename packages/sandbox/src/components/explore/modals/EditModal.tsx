@@ -23,10 +23,6 @@ const StyledEditModal = styled.div`
         }
     }
 
-    .fretboard {
-        margin: 0;
-    }
-
     .divider {
 
         width: 100%;
@@ -131,7 +127,7 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
                             <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
                         </HighlightBox>
                     )}
-                    <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} hideLabel />
+                    <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} />
                 </div>
 
                 <div className="b-a">
@@ -141,7 +137,7 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
                             <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
                         </HighlightBox>
                     )}
-                    <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} hideLabel />
+                    <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} />
                 </div>
 
             </StyledEditModal>

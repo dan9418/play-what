@@ -73,7 +73,7 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 inputId: InputId.Switch
             },
             {
-                propName: 'Hide Label',
+                propName: 'Hide Labels',
                 propId: 'hideLabel',
                 inputId: InputId.Switch
             }
