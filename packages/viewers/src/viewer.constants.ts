@@ -76,6 +76,11 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 propName: 'Hide Labels',
                 propId: 'hideLabel',
                 inputId: InputId.Switch
+            },
+            {
+                propName: 'test',
+                propId: 'test',
+                inputId: InputId.Numeric
             }
             /*{
                 propId: 'fretRange',
