@@ -199,15 +199,29 @@ const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
 
     const [presetSubtype, setPresetSubtype] = useState('unselected');
 
-    const [preset, setPreset] = useState(presetOptions[0]);
+    const [preset, _setPreset] = useState(null);
     const filteredPresetOptions = presetSubtype === 'unselected' ?
         presetOptions :
         presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
+    const finalPresetOptions = [
+        { id: 'unselected', name: '---' },
+        ...filteredPresetOptions
+    ];
 
     const setPresetType = x => {
         _setPresetType(x);
         setPresetSubtype('unselected');
-        setPreset(MASTER_PRESETS.find(y => y.tags.includes(x)));
+        _setPreset(null);
+    }
+
+    const setPreset = (x) => {
+        if (x.id === 'unselected') {
+            setIntervals([]);
+        }
+        else {
+            setIntervals(x.value);
+        }
+        _setPreset(x);
     }
 
     return (
@@ -219,7 +233,7 @@ const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
                 <DropdownInput value={{ id: presetSubtype }} setValue={x => setPresetSubtype(x.id)} options={subtypeOptions} />
             </InputRow>
             <InputRow label="Preset">
-                <DropdownInput value={null} setValue={x => setIntervals(x.value)} options={filteredPresetOptions} />
+                <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
             </InputRow>
         </StyledIntervalPresetInput>
     );

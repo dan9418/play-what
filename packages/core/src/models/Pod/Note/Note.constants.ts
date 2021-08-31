@@ -10,8 +10,8 @@ const formatPreset = (id: NoteId, name: string, value: IPod, tags = []) => ({ id
 
 export const NOTE_PRESET_MAP = new Map<NoteId, IPreset<IPod>>([
 	[NoteId.MiddleC, formatPreset(NoteId.MiddleC, 'Middle C', [0, 0])],
-	[NoteId.MidiRoot, formatPreset(NoteId.MidiRoot, 'MIDI Root', [1, 0])],
-	[NoteId.TuningRoot, formatPreset(NoteId.TuningRoot, 'Tuning Root', [1, 1])]
+	[NoteId.MidiRoot, formatPreset(NoteId.MidiRoot, 'MIDI Root', [4 * -12, 0])],
+	[NoteId.TuningRoot, formatPreset(NoteId.TuningRoot, 'Tuning Root', [9, 5])]
 ]);
 
 export const NOTE_PRESETS = Array.from(NOTE_PRESET_MAP).map(([k, v]) => v);
