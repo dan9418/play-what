@@ -111,8 +111,13 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         ViewerId.Keyboard,
         'Keyboard',
         Keyboard,
-        DEFAULT_KEYBOARD_PROPS,
+        DEFAULT_KEYBOARD_PROPS as any,
         [
+            {
+                propName: 'Key Range',
+                propId: 'keyRange',
+                inputId: InputId.Range
+            }
         ],
         [
             {
