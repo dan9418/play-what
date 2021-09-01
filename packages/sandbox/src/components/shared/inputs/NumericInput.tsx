@@ -9,11 +9,11 @@ export const StyledNumbericInput = styled.input`
 	background-color: #ddd;
 `;
 
-const NumericInput = ({ value, setValue, ...props }) => {
+const NumericInput = ({ value, setValue, ...rest }) => {
 	const onChange = e => setValue(parseInt(e.target.value));
 
 	return (
-		<StyledNumbericInput type="number" value={value} onChange={onChange} {...props} />
+		<StyledNumbericInput type="number" value={value} onChange={onChange} {...rest} />
 	);
 }
 

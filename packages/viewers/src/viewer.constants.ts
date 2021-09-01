@@ -85,7 +85,11 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
             {
                 propName: 'Fret Range',
                 propId: 'fretRange',
-                inputId: InputId.Range
+                inputId: InputId.Range,
+                inputProps: {
+                    min: 0,
+                    max: 24
+                }
             }
             /*{
                 propId: 'fretRange',
