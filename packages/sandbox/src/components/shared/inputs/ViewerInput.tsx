@@ -19,11 +19,6 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
         _setViewerProps(config.value.presets[0].id)
     }
 
-    const presetOptions = [
-        { id: 'unselected', name: '---', props: {} },
-        ...selectedViewerConfig.value.presets
-    ];
-
     return (<>
         <div className="b-a">
             <h3>Import Preset</h3>
@@ -32,13 +27,6 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
                     value={{ id: viewerId }}
                     setValue={setViewerId}
                     options={VIEWER_PRESETS}
-                />
-            </InputRow>
-            <InputRow label="Preset">
-                <DropdownInput
-                    value={null}
-                    setValue={x => _setViewerProps(x.props)}
-                    options={presetOptions}
                 />
             </InputRow>
         </div>

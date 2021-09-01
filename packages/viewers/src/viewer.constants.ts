@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
-import { FRETBOARD_TUNING } from './Fretboard/Fretboard.api';
+import { FRETBOARD_TUNING_VALUES } from './Fretboard/Fretboard.api';
 import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
 import Keyboard from './Keyboard/Keyboard';
 import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
@@ -25,7 +25,8 @@ export interface IViewerInputConfig {
     propName: string;
     inputProps?: {
         [prop: string]: any
-    }
+    },
+    useValueProperty?: boolean;
 }
 
 export interface IViewerProps {
@@ -50,7 +51,7 @@ export interface IViewerDetails {
     props: IViewerProps;
 }
 
-const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets: IViewerPreset[]): IPreset<IViewer> => (
+const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets?: IViewerPreset[]): IPreset<IViewer> => (
     {
         id,
         name,
@@ -73,14 +74,13 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
         DEFAULT_FRETBOARD_PROPS,
         [
             {
-                propName: 'Match Octave',
-                propId: 'matchOctave',
-                inputId: InputId.Switch
-            },
-            {
-                propName: 'Hide Labels',
-                propId: 'hideLabel',
-                inputId: InputId.Switch
+                propName: 'Tuning',
+                propId: 'tuning',
+                inputId: InputId.Dropdown,
+                inputProps: {
+                    options: FRETBOARD_TUNING_VALUES
+                },
+                useValueProperty: true
             },
             {
                 propName: 'Fret Range',
@@ -90,24 +90,16 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                     min: 0,
                     max: 24
                 }
-            }
-            /*{
-                propId: 'fretRange',
-                inputId: InputId.Range
-            }*/
-        ],
-        [
-            {
-                id: 'guitar',
-                name: 'Guitar, Standard',
-                props: {}
             },
             {
-                id: 'bass',
-                name: 'Bass, Standard',
-                props: {
-                    tuning: FRETBOARD_TUNING.standard.value.slice(2)
-                }
+                propName: 'Match Octave',
+                propId: 'matchOctave',
+                inputId: InputId.Switch
+            },
+            {
+                propName: 'Hide Labels',
+                propId: 'hideLabel',
+                inputId: InputId.Switch
             }
         ]
     )],
@@ -122,29 +114,6 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 propId: 'keyRange',
                 inputId: InputId.Range
             }
-        ],
-        [
-            {
-                id: 'piano',
-                name: 'Piano, Small',
-                props: {
-                    keyRange: [0, 12]
-                }
-            },
-            {
-                id: 'piano_medium',
-                name: 'Piano, Medium',
-                props: {
-                    keyRange: [-12, 12]
-                }
-            },
-            {
-                id: 'piano_full',
-                name: 'Piano, Full',
-                props: {
-                    keyRange: [-44, 44]
-                }
-            }
         ]
     )]
 ]);
@@ -152,4 +121,3 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
 export const VIEWER_PRESETS = Array.from(VIEWER_PRESET_MAP).map(([k, v]) => v);
 
 export const DEFAULT_VIEWER_ID = ViewerId.Fretboard;
-export const DEFAULT_VIEWER_PRESET_ID = VIEWER_PRESET_MAP.get(DEFAULT_VIEWER_ID).value.presets[0].id;

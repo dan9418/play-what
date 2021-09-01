@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledSwitch = styled.button`
 	border: none;
@@ -29,7 +30,7 @@ const StyledSwitch = styled.button`
 `;
 
 
-interface ISwitchInputProps {
+interface ISwitchInputProps extends IInputProps {
 	value: boolean;
 	setValue: (boolean) => void;
 }

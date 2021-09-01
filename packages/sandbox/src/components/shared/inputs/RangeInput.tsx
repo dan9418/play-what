@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { IInputProps, IViewerProps } from "../../../../../core/src/models/Model.constants";
 import NumericInput, { StyledNumbericInput } from "./NumericInput";
 
 export const StyledRangeInput = styled.div`
@@ -14,7 +15,12 @@ export const StyledRangeInput = styled.div`
     }
 `;
 
-const RangeInput: React.FC<any> = ({ value, setValue, min, max, ...rest }) => {
+interface IRangeInputProps extends IInputProps {
+    min?: number;
+    max?: number;
+}
+
+const RangeInput: React.FC<IRangeInputProps> = ({ value, setValue, min, max, ...rest }) => {
     const [lo, hi] = value;
     const setLo = l => setValue([l, hi]);
     const setHi = h => setValue([lo, h]);

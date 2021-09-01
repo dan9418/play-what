@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { IInputProps, IViewerProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledDropdownInput = styled.select`
 	height: 24px;
@@ -21,7 +22,13 @@ const StyledDropdownInput = styled.select`
 	}
 `;
 
-const DropdownInput = props => {
+interface IDropdownInputProps extends IInputProps {
+	options: any[];
+	idProperty?: string;
+	displayProperty?: string;
+}
+
+const DropdownInput: React.FC<IDropdownInputProps> = props => {
 	const { value, setValue, options, idProperty, displayProperty } = props;
 
 	return (

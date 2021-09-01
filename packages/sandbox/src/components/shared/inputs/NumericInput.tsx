@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { IInputProps, IViewerProps } from "../../../../../core/src/models/Model.constants";
 
 export const StyledNumbericInput = styled.input`
 	max-width: 64px;
@@ -9,7 +10,12 @@ export const StyledNumbericInput = styled.input`
 	background-color: #ddd;
 `;
 
-const NumericInput = ({ value, setValue, ...rest }) => {
+interface INumericInputProps extends IInputProps {
+    min?: number;
+    max?: number;
+}
+
+const NumericInput: React.FC<INumericInputProps> = ({ value, setValue, ...rest }) => {
 	const onChange = e => setValue(parseInt(e.target.value));
 
 	return (

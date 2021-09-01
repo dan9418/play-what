@@ -8,8 +8,12 @@ export enum InputId {
 	Numeric,
 	Dropdown,
 	Switch,
-	Range,
-	FretboardTuning
+	Range
+}
+
+export interface IInputProps {
+	value: any;
+	setValue: Function
 }
 
 /*export enum ModelPart {
