@@ -21,7 +21,7 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
 
     return (<>
         <div className="b-a">
-            <h3>Import Preset</h3>
+            <h3>Select Viewer</h3>
             <InputRow label="Viewer">
                 <DropdownInput
                     value={{ id: viewerId }}
