@@ -10,17 +10,17 @@ const getAccidentalOffset = (pod, reduce = false) => {
 	const reducedValue = PodUtils.reduce(pod);
 	const [p, d] = pod;
 
-	let offset = p - ROOT_SCALE[d][0];
+	const offset = p - ROOT_SCALE[d][0];
 
 	// TODO
-	if (d === 0 && offset === 11) offset = offset - 12;
+	/*if (d === 0 && offset === 11) offset = offset - 12;
 	if (d === 0 && offset === 10) offset = offset - 12;
 	if (d === 0 && offset === 9) offset = offset - 12; // unchecked
 	if (d === 1 && offset === 9) offset = offset - 12;
 	if (d === 5 && offset === -9) offset = offset + 12;
 	if (d === 6 && offset === -11) offset = offset + 12;
 	if (d === 6 && offset === -10) offset = offset + 12;
-	if (d === 6 && offset === -9) offset = offset + 12;
+	if (d === 6 && offset === -9) offset = offset + 12;*/
 
 	//offset = offset * (octaves * 12);
 

@@ -9,6 +9,8 @@ import { DEGREE_PRESETS } from "../../../../core/src/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../../../core/src/theory/Diatonic.constants";
 import THEME from "../../styles/theme";
 
+const CORE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
+
 const StyledTestPage = styled.div`
 
     padding: 32px;
@@ -55,6 +57,11 @@ const StyledTestPage = styled.div`
             color: ${THEME.medium};
             font-size: 80%;
         }
+
+        .invalid {
+            color: red;
+            font-weight: bold;
+        }
     }
 `;
 
@@ -70,15 +77,21 @@ const getRoots = () => {
             const a = accidental.symbol;
             const offset = accidental.value;
 
+            const invalidSymbol = offset > 0 ? 'b' : offset < 0 ? '#' : null;
+
             const rootName = `${spelling}${a}`;
             const rootPod: IPod = [diatonicPitch + offset, d];
 
-            const intervals = INTERVAL_PRESETS.map(ivl => {
+            const intervals = CORE_INTERVALS.map(ivl => {
                 const ivlPod = PodUtils.addPod(rootPod, ivl.value);
                 const ivlName = NoteUtils.getName(ivlPod);
+
+                const isInvalid = ivlName.includes(invalidSymbol);
+
                 return {
                     name: ivlName,
-                    pod: ivlPod
+                    pod: ivlPod,
+                    isInvalid
                 }
             })
 
@@ -102,7 +115,7 @@ const TestPage: React.FC<any> = () => {
                         <tr>
                             <th colSpan={2}>Root</th>
                             {
-                                INTERVAL_PRESETS.map(ivl => {
+                                CORE_INTERVALS.map(ivl => {
                                     return <th colSpan={2} key={ivl.id}>{ivl.id}</th>
                                 })
                             }
@@ -118,7 +131,9 @@ const TestPage: React.FC<any> = () => {
                                         {
                                             r.intervals.map(ivl => {
                                                 return <>
-                                                    <td key={ivl.id + 'n'}>{ivl.name}</td>
+                                                    <td key={ivl.id + 'n'} className={ivl.isInvalid ? 'invalid' : ''}>
+                                                        {ivl.name}
+                                                    </td>
                                                     <td key={ivl.id + 'p'} className="pod">
                                                         {JSON.stringify(ivl.pod)}
                                                     </td>
