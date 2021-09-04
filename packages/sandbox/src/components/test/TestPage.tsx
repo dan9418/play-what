@@ -13,7 +13,7 @@ const CORE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
 
 const StyledTestPage = styled.div`
 
-    padding: 32px;
+    //padding: 32px;
 
     display: flex;
     align-items: center;
@@ -86,7 +86,8 @@ const getRoots = () => {
                 const ivlPod = PodUtils.addPod(rootPod, ivl.value);
                 const ivlName = NoteUtils.getName(ivlPod);
 
-                const isInvalid = ivlName.includes(invalidSymbol);
+                //const isInvalid = ivlName.includes(invalidSymbol);
+                const isInvalid = ivlName.length > 5;
 
                 return {
                     name: ivlName,

@@ -7,24 +7,27 @@ import PodUtils from "../Pod.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 const getAccidentalOffset = (pod, reduce = false) => {
-	const reducedValue = PodUtils.reduce(pod);
 	const [p, d] = pod;
 
-	const offset = p - ROOT_SCALE[d][0];
+	let offset = p - ROOT_SCALE[d][0];
 
-	// TODO
-	/*if (d === 0 && offset === 11) offset = offset - 12;
-	if (d === 0 && offset === 10) offset = offset - 12;
-	if (d === 0 && offset === 9) offset = offset - 12; // unchecked
-	if (d === 1 && offset === 9) offset = offset - 12;
-	if (d === 5 && offset === -9) offset = offset + 12;
-	if (d === 6 && offset === -11) offset = offset + 12;
-	if (d === 6 && offset === -10) offset = offset + 12;
-	if (d === 6 && offset === -9) offset = offset + 12;*/
+	// If offset spans more than half an octave, it's going the wrong way
+	// TODO need to formally confirm this
+	if (offset > 5) offset = offset - 12;
+	if (offset < -5) offset = offset + 12;
 
-	//offset = offset * (octaves * 12);
+	// Examples
+	// if (d === 0 && offset === 11) offset = offset - 12;
+	// if (d === 0 && offset === 10) offset = offset - 12;
+	// if (d === 0 && offset === 9) offset = offset - 12;
+	// if (d === 1 && offset === 9) offset = offset - 12;
+	// if (d === 1 && offset === 8) offset = offset - 12;
+	// if (d === 5 && offset === -9) offset = offset + 12;
+	// if (d === 6 && offset === -11) offset = offset + 12;
+	// if (d === 6 && offset === -10) offset = offset + 12;
+	// if (d === 6 && offset === -9) offset = offset + 12;
+	//console.log(`${p} - ${ROOT_SCALE[d][0]} = ${offset}, d = ${d}`);
 
-	console.log(`${p} - ${ROOT_SCALE[d][0]} = ${offset}, d = ${d}`);
 	return reduce ? NumberUtils.modulo(offset, 12) : offset;
 }
 
