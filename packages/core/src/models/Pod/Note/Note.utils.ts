@@ -15,9 +15,14 @@ const getAccidentalOffset = (pod, reduce = false) => {
 	// TODO
 	if (d === 0 && offset === 11) offset = offset - 12;
 	if (d === 0 && offset === 10) offset = offset - 12;
+	if (d === 0 && offset === 9) offset = offset - 12; // unchecked
+	if (d === 1 && offset === 9) offset = offset - 12;
+	if (d === 5 && offset === -9) offset = offset + 12;
 	if (d === 6 && offset === -11) offset = offset + 12;
 	if (d === 6 && offset === -10) offset = offset + 12;
-	if (d === 5 && offset === -9) offset = offset + 12;
+	if (d === 6 && offset === -9) offset = offset + 12;
+
+	//offset = offset * (octaves * 12);
 
 	console.log(`${p} - ${ROOT_SCALE[d][0]} = ${offset}, d = ${d}`);
 	return reduce ? NumberUtils.modulo(offset, 12) : offset;
