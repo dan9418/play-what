@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ExplorePage from '../../explore/ExplorePage';
+import TestPage from '../../test/TestPage';
 
 const StyledMain = styled.main`
 	padding: 96px 0px;
@@ -12,9 +13,19 @@ const StyledMain = styled.main`
 `;
 
 const Main: React.FC = () => {
+  const [page, setPage] = useState(<ExplorePage />);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const experiment = urlParams.get('experiment');
+    if (experiment === 'test') {
+      setPage(<TestPage />);
+    }
+  }, []);
+
   return (
     <StyledMain>
-      <ExplorePage />
+      {page}
     </StyledMain>
   );
 };
