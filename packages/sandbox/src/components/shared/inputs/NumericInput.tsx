@@ -1,18 +1,18 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps, IViewerProps } from "../../../../../core/src/models/Model.constants";
+import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 export const StyledNumbericInput = styled.input`
 	max-width: 64px;
     padding: 4px;
     border-radius: 4px;
     border: none;
-	background-color: #ddd;
+	background-color: ${({ theme }) => theme.surface.highlight};
 `;
 
 interface INumericInputProps extends IInputProps {
-    min?: number;
-    max?: number;
+	min?: number;
+	max?: number;
 }
 
 const NumericInput: React.FC<INumericInputProps> = ({ value, setValue, ...rest }) => {

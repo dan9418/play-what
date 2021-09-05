@@ -34,13 +34,14 @@ const StyledModal = styled.div`
 
 		position: absolute;
 
-		max-height: 80%;
+		height: 100%;
 		width: 100%;
 		max-width: 1024px;
 		margin: auto;
 		
 		@media(min-width: 512px) {
 			border-radius: 8px;
+			max-height: 80%;
 		}
 
 	}
@@ -102,8 +103,16 @@ const StyledModal = styled.div`
 		align-items: center;
 		justify-content: flex-end;
 
+		button {
+			padding: 8px 32px;
+		}
+
 		button:not(:last-child) {
 			margin-right: 8px;
+		}
+		button:first-child {
+			background-color: ${({ theme }) => theme.surface.highlight};
+			color: ${({ theme }) => theme.text.mediumDark};
 		}
 	}
 `;

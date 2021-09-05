@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
+import THEME from "../../../styles/theme";
 import Icon from "../../shared/ui/Icon";
 
 export const StyledQuickLink = styled.button`
@@ -16,24 +17,19 @@ export const StyledQuickLink = styled.button`
 	align-items: center;
 	justify-content: space-between;
 
+	.name-preview {
+		margin-right: 24px;
+	}
+
 	.name {
 		font-weight: bold;
 		margin-bottom: 2px;
-		color: ${({ theme }) => theme.medium};
+		color: ${({ theme }) => theme.text.dark};
 	}
 
 	.preview {
 		color: ${({ theme }) => theme.clickable};
 		font-size: 140%;
-	}
-
-	svg {
-		margin-left: 16px;
-
-		fill: ${({ theme }) => theme.medium};
-		* {
-			fill: ${({ theme }) => theme.medium};
-		}
 	}
 
 	background-color: transparent;
@@ -58,7 +54,7 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, children }
 				<div className="name">{name}</div>
 				<div className="preview">{preview}</div>
 			</div>
-			<Icon iconId="edit" />
+			<Icon iconId="edit" color={THEME.text.dark} />
 		</StyledQuickLink>
 	);
 };

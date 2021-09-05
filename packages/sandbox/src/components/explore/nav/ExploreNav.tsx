@@ -53,7 +53,7 @@ const StyledExploreNav = styled.nav`
 		width: 100%;
 		max-width: 512px;
 
-		background-color: ${THEME.temp};
+		background-color: ${THEME.surface.bg};
 		width: 100%;
 		box-shadow: 0px 0px 16px #aaa;
 		overflow-y: auto;

@@ -51,7 +51,7 @@ export const ACCIDENTAL: { [x: string]: IAccidental } = {
 	doubleSharp: {
 		id: 'doubleSharp',
 		name: 'Double Sharp',
-		symbol: 'x',
+		symbol: '##',
 		value: 2
 	}
 };

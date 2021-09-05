@@ -17,18 +17,19 @@ const StyledIntervalTable = styled.table`
 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
-        background-color: ${({ theme }) => theme.light};
+        background-color: ${({ theme }) => theme.surface.highlight};
     }
 
     tfoot {
-        border-top: 1px solid #aaa;
+        display: none;
+        //border-top: 1px solid ${({ theme }) => theme.border};
         th {
             padding: 4px;    
             text-align: center;
             font-weight: normal;
-            color: ${({ theme }) => theme.medium};
+            color: ${({ theme }) => theme.border};
             &.active {
-                background-color: ${({ theme }) => theme.light};
+                background-color: ${({ theme }) => theme.surface.highlight};
                 color: ${({ theme }) => theme.medium};
             }
         }
@@ -39,7 +40,6 @@ const StyledIntervalTable = styled.table`
     }
 
     button {
-        background-color: #efefef;
         color: ${({ theme }) => theme.medium};
         //border: 1px solid #aaa;
         border: none;
@@ -49,6 +49,7 @@ const StyledIntervalTable = styled.table`
         font-weight: bold;
         height: 100%;
         width: 100%;
+        background-color: transparent;
 
         :hover {
             background-color: ${({ theme }) => theme.clickable};
@@ -56,8 +57,8 @@ const StyledIntervalTable = styled.table`
         }
 
         &.inactive {
-            background-color: ${({ theme }) => theme.light};
-            color: ${({ theme }) => theme.medium};
+            //background-color: ${({ theme }) => theme.light};
+            //color: ${({ theme }) => theme.text.mediumDark};
         }
 
         &.active {

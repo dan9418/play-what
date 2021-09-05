@@ -21,7 +21,7 @@ export const StyledMasterPreview = styled.h1`
     }
 
     .subtitle {
-        color: ${THEME.text.caption};
+        color: ${THEME.text.medium};
         font-size: 80%;
         font-weight: normal;
     }

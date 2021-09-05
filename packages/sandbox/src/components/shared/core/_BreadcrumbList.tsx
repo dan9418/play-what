@@ -121,9 +121,9 @@
 // 			</StyledBreadcrumbList>
 // 			<StyledButtonWrapper>
 // 				{false && <IconButton onClick={null} iconId="speaker" />}
-// 				{prev && <IconButton onClick={prev} color={THEME.temp} iconId='prev' />}
-// 				{next && <IconButton onClick={next} color={THEME.temp} iconId='next' />}
-// 				{path.length > 0 && <IconButton onClick={pop} color={THEME.temp} iconId='up' />}
+// 				{prev && <IconButton onClick={prev}  iconId='prev' />}
+// 				{next && <IconButton onClick={next} iconId='next' />}
+// 				{path.length > 0 && <IconButton onClick={pop} iconId='up' />}
 // 			</StyledButtonWrapper>
 // 		</StyledWrapper>
 // 	);

@@ -9,18 +9,24 @@ import DropdownInput from './DropdownInput';
 const StyledRootInput = styled.div`
     button {
         appearance: none;
-        background-color: ${({ theme }) => theme.surface.highlight};;
+        background-color: transparent;
+        border: none;
+        //background-color: ${({ theme }) => theme.surface.highlight};;
         //color: ${({ theme }) => theme.text.medium};
         font-weight: bold;
 
-        border: 1px solid #aaa;
+        //border: 1px solid #aaa;
 
-        &:first-child {
+        border-radius: 4px;
+        padding: 8px;
+        margin: 0 2px;
+
+        /*&:first-child {
             border-radius: 4px 0 0 4px;
         }
         &:last-child {
             border-radius: 0 4px 4px 0;
-        }
+        }*/
         &:active {
             background-color: ${({ theme }) => theme.active};
         }
@@ -96,7 +102,7 @@ const RootInput = ({ root, setRoot }) => {
                     <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
                     <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
                     <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>x</RootButton>
+                    <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>##</RootButton>
                 </InputRow>
                 <InputRow label="Octave">
                     <RootButton value={octave} setValue={setOctave} buttonValue={0}>0</RootButton>
