@@ -5,9 +5,9 @@ const StyledSVG = styled.svg`
 	${({ $rotate }) => $rotate ? `transform: rotate(${$rotate}deg)` : ''};
 	${({ $color, theme }) => {
 		return `
-				fill: ${$color || theme.medium};
+				fill: ${$color || theme.text.medium};
 				& * {
-					fill: ${$color || theme.medium}
+					fill: ${$color || theme.text.medium}
 				}
 			`;
 	}}
@@ -15,9 +15,9 @@ const StyledSVG = styled.svg`
 		if ($hoverColor) {
 			return `
 				&:hover {
-					fill: ${$hoverColor || theme.accent};
+					fill: ${$hoverColor || theme.active};
 					& * {
-						fill: ${$hoverColor || theme.accent}
+						fill: ${$hoverColor || theme.active}
 					}
 				}
 			`;

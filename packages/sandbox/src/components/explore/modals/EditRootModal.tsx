@@ -23,7 +23,7 @@ const StyledRootAnalysis = styled(StyledHighlightBox)`
     }
     .freq {
         margin-top: 4px;
-        color: #555;
+        color: ${({ theme }) => theme.text.medium};
         font-style: italic;
     }
 `;

@@ -17,7 +17,7 @@ export const StyledMenuButton = styled.button`
 
     background-color: ${props => props.$isMenuOpen ? '#f5f5f5' : 'rgba(0,0,0,0.05)'};
     :hover {
-        background-color: ${THEME.accent};
+        background-color: ${THEME.clickable};
         svg, svg * {
             fill: white;
         }
@@ -37,7 +37,7 @@ const MenuButton: React.FC<any> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
             <Icon
                 iconId={isMenuOpen ? "close" : "menu"}
-                color={isMenuOpen ? THEME.accent : THEME.medium}
+                color={isMenuOpen ? THEME.clickable : THEME.temp}
                 size={24}
             />
         </StyledMenuButton >

@@ -54,7 +54,7 @@ const StyledTestPage = styled.div`
         }
 
         .pod {
-            color: ${THEME.medium};
+            color: ${THEME.temp};
             font-size: 80%;
         }
 

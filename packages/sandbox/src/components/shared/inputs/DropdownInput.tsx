@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps, IViewerProps } from "../../../../../core/src/models/Model.constants";
+import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledDropdownInput = styled.select`
 	height: 24px;
@@ -8,9 +8,8 @@ const StyledDropdownInput = styled.select`
     line-height: 40px;
     font-size: 16px;
     cursor: pointer;
-    border: 1px solid #aaa;
     border-radius: 4px;
-	background-color: #ddd;
+	background-color: ${({ theme }) => theme.surface.highlight};;
     border: none;
 
 	> option {

@@ -15,9 +15,9 @@ const StyledSwitch = styled.button`
 	cursor: pointer;
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.accent : '#ddd'};	
+	background-color: ${({ $active, theme }) => $active ? theme.clickable : '#ddd'};	
 	&:hover {
-		background-color: ${({ theme }) => theme.accent};	
+		background-color: ${({ theme }) => theme.clickable};	
 	}
 
 	& .ball {

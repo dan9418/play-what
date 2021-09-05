@@ -32,7 +32,7 @@ const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 
         .ratio {
             margin-top: 4px;
-            color: #555;
+            color: ${({ theme }) => theme.text.mediumDark};
         }
     }
 `;

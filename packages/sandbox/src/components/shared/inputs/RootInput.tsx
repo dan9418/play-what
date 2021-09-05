@@ -9,8 +9,8 @@ import DropdownInput from './DropdownInput';
 const StyledRootInput = styled.div`
     button {
         appearance: none;
-        background-color: efefef;
-        color: ${({ theme }) => theme.medium};;
+        background-color: ${({ theme }) => theme.surface.highlight};;
+        //color: ${({ theme }) => theme.text.medium};
         font-weight: bold;
 
         border: 1px solid #aaa;
@@ -22,7 +22,7 @@ const StyledRootInput = styled.div`
             border-radius: 0 4px 4px 0;
         }
         &:active {
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.active};
         }
 
         width: 32px;
@@ -30,13 +30,14 @@ const StyledRootInput = styled.div`
 
         &:hover {
             cursor: pointer;
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.clickable};
+            border-color: ${({ theme }) => theme.clickable};
             color: white;
         }
 
         &.active {
-            background-color: ${({ theme }) => theme.accent};
-            border-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.active};
+            border-color: ${({ theme }) => theme.active};
             color: white;
             font-weight: bold;
         }

@@ -7,7 +7,8 @@ export const StyledHighlightBox = styled.div`
     align-items: center;
     justify-content: center;
 
-    background-color: #efefef;
+    background: ${props => props.theme.surface.highlight};
+    //border: 1px solid ${props => props.theme.border};
     border-radius: 4px;
     padding: 16px;
 
@@ -18,7 +19,7 @@ export const StyledHighlightBox = styled.div`
         //text-align: center;
         margin-top: 4px;
         font-style: italic;
-        color: #555;
+        color: ${props => props.theme.text.mediumDark};
     }
 `;
 

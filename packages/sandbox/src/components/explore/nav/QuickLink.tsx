@@ -23,7 +23,7 @@ export const StyledQuickLink = styled.button`
 	}
 
 	.preview {
-		color: ${({ theme }) => theme.accent};
+		color: ${({ theme }) => theme.clickable};
 		font-size: 140%;
 	}
 

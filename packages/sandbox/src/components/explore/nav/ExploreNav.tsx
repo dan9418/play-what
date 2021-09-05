@@ -30,7 +30,8 @@ const StyledExploreNav = styled.nav`
         }
 	}
 	
-	background: linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%);	
+	// background: #F6F7EB;
+	background: ${({ theme }) => theme.surface.gradient};
 	border-bottom: 1px solid ${({ theme }) => theme.border};
 
 	${StyledMenuButton} {
@@ -52,7 +53,7 @@ const StyledExploreNav = styled.nav`
 		width: 100%;
 		max-width: 512px;
 
-		background-color: ${THEME.card};
+		background-color: ${THEME.temp};
 		width: 100%;
 		box-shadow: 0px 0px 16px #aaa;
 		overflow-y: auto;

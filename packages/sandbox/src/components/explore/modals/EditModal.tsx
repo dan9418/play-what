@@ -44,7 +44,7 @@ const StyledEditModal = styled.div`
             text-align: left;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #888;
+            color: ${({ theme }) => theme.text.medium};
             border-bottom: 1px solid ${THEME.border};
             font-size: 140%;
             margin-bottom: 8px;

@@ -2,11 +2,11 @@ import NumberUtils from "../../../general/Number.utils";
 import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
 import { ROOT_SCALE } from "../../../theory/Theory.constants";
-import { IPod } from "../../Model.constants";
 import PodUtils from "../Pod.utils";
+import { IPod } from './../../Model.constants';
 import { ACCIDENTAL } from "./Note.constants";
 
-const getAccidentalOffset = (pod, reduce = false) => {
+const getAccidentalOffset = (pod: IPod): number => {
 	const [p, d] = pod;
 
 	let offset = p - ROOT_SCALE[d][0];
@@ -28,10 +28,10 @@ const getAccidentalOffset = (pod, reduce = false) => {
 	// if (d === 6 && offset === -9) offset = offset + 12;
 	//console.log(`${p} - ${ROOT_SCALE[d][0]} = ${offset}, d = ${d}`);
 
-	return reduce ? NumberUtils.modulo(offset, 12) : offset;
+	return offset;
 }
 
-const getAccidentalString = (offset, d) => {
+const getAccidentalString = (offset: number): string => {
 	if (offset > 0) {
 		return ACCIDENTAL.sharp.symbol.repeat(offset);
 	}
@@ -41,7 +41,7 @@ const getAccidentalString = (offset, d) => {
 	return '';
 };
 
-const getPodColor = pod => {
+const getPodColor = (pod: IPod): string => {
 	if (!pod) return null;
 	const [p, d] = pod;
 	return DEFAULT_PITCH_COLOR_SCHEME[p];
@@ -68,7 +68,7 @@ export const getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteN
 
 	const d = reducedValue[1];
 	const offset = getAccidentalOffset(reducedValue);
-	const accidental = getAccidentalString(offset, d);
+	const accidental = getAccidentalString(offset);
 	const spelling = DEGREE_PRESETS[d].name;
 	const octave = PodUtils.getOctave(note, true);
 	return { spelling, accidental, octave };

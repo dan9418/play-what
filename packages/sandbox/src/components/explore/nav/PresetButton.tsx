@@ -10,9 +10,9 @@ export const StyledPresetButton = styled.div`
         height: 48px;
         margin: 0 8px;
 
-        background-color: ${({ theme }) => theme.accent};
+        background-color: ${({ theme }) => theme.clickable};
         :hover {
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.clickable};
         }
     
         border: none;

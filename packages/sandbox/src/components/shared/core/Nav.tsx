@@ -32,7 +32,7 @@ const StyledNav = styled.nav`
     z-index: 2000;
 
 	color: white;
-	background-color: ${({ theme }) => theme.primary};
+	background-color: ${({ theme }) => theme.surface.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 	
 	> div {
@@ -46,6 +46,7 @@ const StyledNav = styled.nav`
 
 		.logo {
 			color: white;
+
 			appearance: none;
 			background-color: transparent;
 			border: none;
@@ -53,13 +54,8 @@ const StyledNav = styled.nav`
 			text-transform: uppercase;
 			letter-spacing: 4px;
 			font-weight: 300;
-			cursor: pointer;
 			height: 100%;
 			white-space: nowrap;
-
-			&:hover {
-				color: ${({ theme }) => theme.accent};
-			}
 		}
 		
 		.link-list {
@@ -86,7 +82,7 @@ const StyledNav = styled.nav`
 				font-weight: normal;
 
 				&:hover {
-					color: ${({ theme }) => theme.accent};
+					color: ${({ theme }) => theme.text.light};
 				}
 			}
 		}

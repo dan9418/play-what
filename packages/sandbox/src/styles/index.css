@@ -6,10 +6,8 @@
 }
 
 #app {
-    background-color: #ecefef;
-    /*background: rgb(236, 239, 239);
-    background: radial-gradient(circle, rgba(236, 239, 239, 1) 0%, rgba(217, 218, 221, 1) 100%);*/
-    color: #333;
+    background-color: #ecefef; /* bg */
+    color: #2C3D4C;
     font-family: sans-serif;
     min-height: 100vh;
 }

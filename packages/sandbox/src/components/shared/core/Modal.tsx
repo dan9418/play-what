@@ -1,6 +1,7 @@
 
 import React from "react";
 import styled from "styled-components";
+import THEME from "../../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
 import { StyledHighlightBox } from "../ui/HighlightBox";
@@ -19,10 +20,12 @@ const StyledModal = styled.div`
 
 	.header, .footer {
 		width: 100%;
+		height: 64px;
+
+		position: absolute;
 	}
 
 	.container {
-		background: white;
 
 		display: flex;
 		align-items: center;
@@ -30,9 +33,8 @@ const StyledModal = styled.div`
 		flex-direction: column;
 
 		position: absolute;
-		top: 112px;
-		bottom: 16px;
 
+		max-height: 80%;
 		width: 100%;
 		max-width: 1024px;
 		margin: auto;
@@ -44,35 +46,57 @@ const StyledModal = styled.div`
 	}
 
 	.header {
-		border-bottom: 1px solid ${({ theme }) => theme.border};
-		background-color: ${({ theme }) => theme.medium};
+		//background: ${THEME.surface.gradient};
+		background: ${THEME.surface.nav};
 		color: white;
 
-		padding-bottom: 8px;
+		background-color: ${({ theme }) => theme.medium};
+		padding: 0 16px;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		top: 0;
 		
 		@media(min-width: 512px) {
 			border-radius: 8px 8px 0 0;
 		}
 
-		padding: 16px 16px 8px;
-
 		> button {
 			position: absolute;
-			right: 8px;
-			top: 8px;
+			right: 0;
+			top: 0;
+
+			height: 64px;
+			width: 64px;
+			border-radius: 0 8px 0 0;
 		}
 	}
 
 	.body {
+		margin: 64px 0;
 		padding: 16px;
 		overflow: auto;
 		height: 100%;
 		width: 100%;
+
+		background: ${THEME.surface.bg};
+		border-left: 1px solid ${({ theme }) => theme.border};
+		border-right: 1px solid ${({ theme }) => theme.border};
 	}
 
 	.footer {
+		background: ${THEME.surface.bg};
+
 		padding: 8px 16px 16px;
-		border-top: 1px solid ${({ theme }) => theme.border};
+		border: 1px solid ${({ theme }) => theme.border};
+
+		bottom: 0;
+
+		@media(min-width: 512px) {
+			border-radius: 0 0 8px 8px;
+		}
 
 		display: flex;
 		align-items: center;

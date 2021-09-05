@@ -41,10 +41,10 @@
 // 		color: ${({ theme }) => theme.medium};
 // 		background-color: transparent;
 // 		&.active {
-// 			color: ${({ theme }) => theme.accent};
+// 			color: ${({ theme }) => theme.clickable};
 // 		}
 // 		&:hover {
-// 			color: ${({ theme }) => theme.accent};
+// 			color: ${({ theme }) => theme.clickable};
 // 		}
 // 	}
 
@@ -55,7 +55,7 @@
 // 	flex-wrap: wrap;
 
 // 	list-style-type: none;
-// 	color: #555;
+// 	color: ${({ theme }) => theme.text.medium};
 // 	white-space: nowrap;
 
 // 	li {
@@ -121,9 +121,9 @@
 // 			</StyledBreadcrumbList>
 // 			<StyledButtonWrapper>
 // 				{false && <IconButton onClick={null} iconId="speaker" />}
-// 				{prev && <IconButton onClick={prev} color={THEME.medium} iconId='prev' />}
-// 				{next && <IconButton onClick={next} color={THEME.medium} iconId='next' />}
-// 				{path.length > 0 && <IconButton onClick={pop} color={THEME.medium} iconId='up' />}
+// 				{prev && <IconButton onClick={prev} color={THEME.temp} iconId='prev' />}
+// 				{next && <IconButton onClick={next} color={THEME.temp} iconId='next' />}
+// 				{path.length > 0 && <IconButton onClick={pop} color={THEME.temp} iconId='up' />}
 // 			</StyledButtonWrapper>
 // 		</StyledWrapper>
 // 	);

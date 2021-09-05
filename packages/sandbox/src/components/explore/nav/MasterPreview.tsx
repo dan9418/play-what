@@ -16,12 +16,12 @@ export const StyledMasterPreview = styled.h1`
     align-items: flex-start;
 
     .title {
-        color: ${THEME.medium};
+        color: ${THEME.text.dark};
         //padding-bottom: 4px;
     }
 
     .subtitle {
-        color: ${THEME.accent};
+        color: ${THEME.text.caption};
         font-size: 80%;
         font-weight: normal;
     }

@@ -13,6 +13,7 @@ const StyledIntervalTable = styled.table`
     table-layout: fixed;
     text-align: center;
     border-collapse: collapse;
+    color: ${({ theme }) => theme.text.mediumDark};
 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
@@ -34,22 +35,23 @@ const StyledIntervalTable = styled.table`
     }
 
     td, th {
-        padding: 4px;
+        padding: 2px;
     }
 
     button {
         background-color: #efefef;
         color: ${({ theme }) => theme.medium};
-        border: 1px solid #aaa;
+        //border: 1px solid #aaa;
+        border: none;
         border-radius: 4px;
-        padding: 4px;
+        padding: 8px;
         cursor: pointer;
         font-weight: bold;
         height: 100%;
         width: 100%;
 
         :hover {
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.clickable};
             color: white;
         }
 
@@ -60,7 +62,7 @@ const StyledIntervalTable = styled.table`
 
         &.active {
             color: white;
-            background-color: ${({ theme }) => theme.accent};
+            background-color: ${({ theme }) => theme.active};
         }
     }
 `;
