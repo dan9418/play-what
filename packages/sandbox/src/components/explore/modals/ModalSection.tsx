@@ -31,7 +31,7 @@ const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonA
     return (
         <StyledModalSection>
             <h3>{title}</h3>
-            <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>
+            {buttonAction && <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>}
         </StyledModalSection>
     );
 }

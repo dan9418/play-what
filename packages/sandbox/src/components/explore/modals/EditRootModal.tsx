@@ -8,6 +8,7 @@ import RootInputPreset from '../../shared/inputs/RootInputPreset';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
+import ViewerComparison from './ViewerComparison';
 
 const StyledRootAnalysis = styled(StyledHighlightBox)`
     .top {
@@ -58,8 +59,6 @@ const EditRootModal: React.FC = () => {
         buttonAction: () => setIsAdvanced(true)
     };
 
-    console.log(editProps);
-
     return (
         <Modal
             title="Edit Intervals"
@@ -72,6 +71,7 @@ const EditRootModal: React.FC = () => {
                 :
                 <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
             }
+            <ViewerComparison {...editProps} />
         </Modal >
     );
 }
