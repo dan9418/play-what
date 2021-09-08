@@ -4,7 +4,7 @@ import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../core/src/models/Pod/Pod.utils";
 import PodListUtils from "../../core/src/models/PodList/PodList.utils";
-import { IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./viewer.constants";
+import { IViewerDetails, IViewerProps, LabelBy, ViewerId, VIEWER_PRESET_MAP } from "./viewer.constants";
 
 interface IPodProps {
     bgColor: string;
@@ -15,13 +15,13 @@ interface IPodProps {
 interface IPodPropsOptions {
     podType?: PodType;
     matchOctave?: boolean;
-    hideLabel?: boolean;
+    labelBy?: LabelBy;
 }
 
 const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
     podType: PodType.Interval,
     matchOctave: false,
-    hideLabel: false
+    labelBy: LabelBy.Interval
 }
 
 const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
@@ -44,13 +44,11 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
 
     // Get text
     let text = '';
-    if (!options.hideLabel) {
-        if (options.podType === PodType.Interval) {
-            text = IntervalUtils.getName(reducedInterval);
-        }
-        else {
-            text = NoteUtils.getName(reducedNote);
-        }
+    if (options.labelBy === LabelBy.Interval) {
+        text = IntervalUtils.getName(reducedInterval);
+    }
+    else if (options.labelBy === LabelBy.Note) {
+        text = NoteUtils.getName(reducedNote);
     }
 
     // Get colors

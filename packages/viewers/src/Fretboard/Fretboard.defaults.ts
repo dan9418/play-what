@@ -1,3 +1,4 @@
+import { LabelBy } from './../viewer.constants';
 import { PodType } from '../../../core/src/models/Model.constants';
 import { IViewerProps } from '../viewer.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
@@ -5,6 +6,9 @@ import { FRETBOARD_TUNING } from './Fretboard.api';
 export interface IFretboardProps extends IViewerProps {
 	fretRange: [number, number];
 	tuning: number[];
+	labelBy: LabelBy;
+	showFretDots: boolean;
+	showFretNumbers: boolean;
 }
 
 export interface IFretProps extends IFretboardProps {
@@ -20,7 +24,9 @@ const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
 	fretRange: [0, 12],
 	tuning: FRETBOARD_TUNING.standard.value,
 	matchOctave: false,
-	hideLabel: false,
+	labelBy: LabelBy.Interval,
+	showFretDots: true,
+	showFretNumbers: true,
 	podType: PodType.Interval
 };
 

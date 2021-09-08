@@ -32,7 +32,6 @@ export interface IViewerInputConfig {
 export interface IViewerProps {
     details?: ICompleteModelDetails;
     matchOctave?: boolean;
-    hideLabel?: boolean;
     podType?: PodType;
 }
 
@@ -50,6 +49,27 @@ export interface IViewerDetails {
     viewerName: string;
     props: IViewerProps;
 }
+
+export enum LabelBy {
+    None = 'none',
+    Note = 'note',
+    Interval = 'interval'
+}
+
+export const LABEL_BY_OPTIONS = [
+    {
+        id: LabelBy.None,
+        name: 'None'
+    },
+    {
+        id: LabelBy.Note,
+        name: 'Note'
+    },
+    {
+        id: LabelBy.Interval,
+        name: 'Interval'
+    }
+]
 
 const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets?: IViewerPreset[]): IPreset<IViewer> => (
     {
@@ -97,8 +117,21 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 inputId: InputId.Switch
             },
             {
-                propName: 'Hide Labels',
-                propId: 'hideLabel',
+                propName: 'Label By',
+                propId: 'labelBy',
+                inputId: InputId.Dropdown,
+                inputProps: {
+                    options: LABEL_BY_OPTIONS
+                }
+            },
+            {
+                propName: 'Show Fret Numbers',
+                propId: 'showFretNumbers',
+                inputId: InputId.Switch
+            },
+            {
+                propName: 'Show Fret Dots',
+                propId: 'showFretDots',
                 inputId: InputId.Switch
             }
         ]

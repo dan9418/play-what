@@ -17,12 +17,12 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, hideLabel, podType, matchOctave, details }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, matchOctave, details }) => {
 
 	const podOptions = {
 		matchOctave,
 		podType,
-		hideLabel
+		labelBy
 	};
 
 	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);

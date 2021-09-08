@@ -2,6 +2,7 @@ import { IViewerProps } from "../viewer.constants";
 
 export interface IKeyboardProps extends IViewerProps {
 	keyRange: [number, number];
+	hideLabel?: boolean;
 }
 
 export interface IKeyboardKeyProps extends IKeyboardProps {
