@@ -11,7 +11,7 @@ import viewerUtils from '../../../viewers/src/viewer.utils';
 
 export const rootState = atom<IPod | null>({
     key: 'rootState',
-    default: NOTE_PRESET_MAP.get(NoteId.MiddleC).value
+    default: NOTE_PRESET_MAP.get(NoteId.C).value
 });
 
 export const intervalsState = atom<IPod[]>({

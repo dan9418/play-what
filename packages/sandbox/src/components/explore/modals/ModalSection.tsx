@@ -8,7 +8,8 @@ const StyledModalSection = styled.div`
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid ${THEME.border};
-    margin-bottom: 8px;
+    margin: 8px 0;
+    padding: 8px 0;
 
     h3 {
         text-align: left;

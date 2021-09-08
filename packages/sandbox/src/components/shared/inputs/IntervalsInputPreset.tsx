@@ -47,13 +47,13 @@ const IntervalsInputPreset: React.FC<any> = ({ setIntervals, intervals }) => {
 
     return (
         <>
-            <InputRow label="Type">
+            <InputRow label="Select Preset Type">
                 <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
             </InputRow>
-            <InputRow label="Filter">
+            <InputRow label="Subtype (optional)">
                 <DropdownInput value={{ id: presetSubtype }} setValue={x => setPresetSubtype(x.id)} options={subtypeOptions} />
             </InputRow>
-            <InputRow label="Preset">
+            <InputRow label="Select Preset">
                 <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
             </InputRow>
         </>
