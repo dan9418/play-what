@@ -57,7 +57,7 @@ const StyledQuickLinksList = styled.ul`
         }
     }
 `
-export const QuickLinksList: React.FC<any> = ({ isVertical }) => {
+export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
     // @ts-ignore
     const details = useRecoilValue(detailsState);
     // @ts-ignore
@@ -66,13 +66,13 @@ export const QuickLinksList: React.FC<any> = ({ isVertical }) => {
     return (
         <StyledQuickLinksList className={isVertical ? 'y' : 'x'}>
             <li>
-                <QuickLink name="Root" preview={details.root.preview} modal={<EditRootModal />} />
+                <QuickLink name="Root" preview={details.root.preview} modal={<EditRootModal />} closeMenu={closeMenu} />
             </li>
             <li>
-                <QuickLink name="Intervals" preview={details.intervals.preview} modal={<EditIntervalsModal />} />
+                <QuickLink name="Intervals" preview={details.intervals.preview} modal={<EditIntervalsModal />} closeMenu={closeMenu} />
             </li>
             <li>
-                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modal={<EditViewerModal />} />
+                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modal={<EditViewerModal />} closeMenu={closeMenu} />
             </li>
             {/*<li>
                 <QuickLink name="Sound" preview="Sine, 40db" modal={null} />

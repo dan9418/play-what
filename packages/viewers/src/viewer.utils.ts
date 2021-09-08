@@ -4,7 +4,7 @@ import IntervalUtils from "@pw/core/src/models/Pod/Interval/Interval.utils";
 import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
 import PodUtils from "@pw/core/src/models/Pod/Pod.utils";
 import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
-import { IViewerDetails, IViewerProps, LabelBy, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
+import { IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
 
 interface IPodProps {
     bgColor: string;
@@ -15,13 +15,13 @@ interface IPodProps {
 interface IPodPropsOptions {
     podType?: PodType;
     matchOctave?: boolean;
-    labelBy?: LabelBy;
+    labelBy?: string;
 }
 
 const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
     podType: PodType.Interval,
     matchOctave: false,
-    labelBy: LabelBy.Interval
+    labelBy: 'interval'
 }
 
 const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
@@ -44,10 +44,10 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
 
     // Get text
     let text = '';
-    if (options.labelBy === LabelBy.Interval) {
+    if (options.labelBy === 'interval') {
         text = IntervalUtils.getName(reducedInterval);
     }
-    else if (options.labelBy === LabelBy.Note) {
+    else if (options.labelBy === 'note') {
         text = NoteUtils.getName(reducedNote);
     }
 

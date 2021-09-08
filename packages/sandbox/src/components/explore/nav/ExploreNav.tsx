@@ -66,15 +66,16 @@ const StyledExploreNav = styled.nav`
 
 const ExploreNav: React.FC<any> = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const closeMenu = () => setIsMenuOpen(false);
 	return (
 		<StyledExploreNav>
 			<div>
 				<MasterPreview />
-				<QuickLinksList setIsMenuOpen={setIsMenuOpen} />
+				<QuickLinksList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 				{isMenuOpen &&
 					<div className="menu">
-						<QuickLinksList setIsMenuOpen={setIsMenuOpen} isVertical />
+						<QuickLinksList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} isVertical />
 					</div>
 				}
 			</div>

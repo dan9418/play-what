@@ -20,6 +20,7 @@ const EditViewerModal: React.FC<any> = () => {
     return (
         <Modal
             title="Edit Viewer"
+            {...editProps}
         >
             <ViewerAnalysisAdapter {...editProps} />
             <ViewerInputAdapter {...editProps} />

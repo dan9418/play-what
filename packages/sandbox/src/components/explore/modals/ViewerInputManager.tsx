@@ -50,7 +50,7 @@ const ViewerInputManager: React.FC<IViewerInputManagerProps> = ({ viewerConfig, 
             });
         }
 
-        console.log(viewerProps);
+        console.log('viewerProps', viewerProps);
 
         inputRows.push(
             <InputRow label={propName} key={propId}>

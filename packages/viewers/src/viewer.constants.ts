@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from '@pw/core/src/models/Model.constants';
+import { ReactNode } from 'react';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './Fretboard/Fretboard.api';
 import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
@@ -58,18 +58,21 @@ export enum LabelBy {
 
 export const LABEL_BY_OPTIONS = [
     {
-        id: LabelBy.None,
-        name: 'None'
+        id: LabelBy.Interval,
+        value: LabelBy.Interval,
+        name: 'Interval'
     },
     {
         id: LabelBy.Note,
+        value: LabelBy.Note,
         name: 'Note'
     },
     {
-        id: LabelBy.Interval,
-        name: 'Interval'
+        id: LabelBy.None,
+        value: LabelBy.None,
+        name: 'None'
     }
-]
+];
 
 const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets?: IViewerPreset[]): IPreset<IViewer> => (
     {
@@ -122,7 +125,8 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
                 inputId: InputId.Dropdown,
                 inputProps: {
                     options: LABEL_BY_OPTIONS
-                }
+                },
+                useValueProperty: true
             },
             {
                 propName: 'Show Fret Numbers',
