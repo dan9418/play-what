@@ -7,6 +7,7 @@ import IntervalsInputTable from '../../shared/inputs/IntervalsInputTable';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
+import ViewerComparison from './ViewerComparison';
 
 const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 
@@ -85,6 +86,7 @@ const EditIntervalsModal: React.FC = () => {
                 :
                 <IntervalsInputPreset intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
             }
+             <ViewerComparison {...editProps} />
         </Modal >
     )
 }
