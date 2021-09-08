@@ -1,4 +1,4 @@
-const COLOR = {
+export const COLOR = {
 	darkBlue: '#3C4953',
 	lightBlue: '#2589BD',
 	green: '#72B01D',
@@ -20,7 +20,7 @@ const THEME = {
 	primary: COLOR.darkBlue,
 	clickable: COLOR.green,
 	active: COLOR.orange,
-	border: '#ccc',
+	border: '#bbb',//COLOR.mediumLight,
 	status: {
 		postive: COLOR.green,
 		negative: COLOR.red,

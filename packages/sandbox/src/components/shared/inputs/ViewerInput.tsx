@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
+import ModalSection from '../../explore/modals/ModalSection';
 import ViewerInputManager from '../../explore/modals/ViewerInputManager';
 import InputRow from '../ui/InputRow';
 import DropdownInput from './DropdownInput';
@@ -19,9 +20,9 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
         _setViewerProps(config.value.presets[0].id)
     }
 
-    return (<>
-        <div className="b-a">
-            <h3>Select Viewer</h3>
+    return (
+        <>
+            <ModalSection title="Select Viewer" />
             <InputRow label="Viewer">
                 <DropdownInput
                     value={{ id: viewerId }}
@@ -29,12 +30,9 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
                     options={VIEWER_PRESETS}
                 />
             </InputRow>
-        </div>
-        <div className="b-a">
-            <h3>Configure</h3>
+            <ModalSection title="Configure" />
             <ViewerInputManager viewerConfig={selectedViewerConfig} viewerProps={viewerProps} setViewerProps={_setViewerProps} />
-        </div>
-    </>
+        </>
     );
 }
 

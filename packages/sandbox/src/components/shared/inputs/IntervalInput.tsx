@@ -5,7 +5,9 @@ import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../../core/src/models/
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
 import MASTER_PRESETS from '../../../../../core/src/models/PodList/PodList.constants';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import THEME, { COLOR } from '../../../styles/theme';
 import InputRow from '../ui/InputRow';
+import ButtonInput from './ButtonInput';
 import DropdownInput from './DropdownInput';
 
 const StyledIntervalTable = styled.table`
@@ -36,7 +38,7 @@ const StyledIntervalTable = styled.table`
     }
 
     td, th {
-        padding: 2px;
+        padding: 8px;
     }
 
     button {
@@ -50,6 +52,7 @@ const StyledIntervalTable = styled.table`
         height: 100%;
         width: 100%;
         background-color: transparent;
+        box-sizing: border-box;
 
         :hover {
             background-color: ${({ theme }) => theme.clickable};
@@ -69,9 +72,7 @@ const StyledIntervalTable = styled.table`
 `;
 
 const StyledIntervalPresetInput = styled.div`
-
-        margin-top: 8px;
-    
+    width: 100%;
 `;
 
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
@@ -242,19 +243,52 @@ const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
     );
 }
 
+const StyledIntervalInput = styled.div`
+
+    .preset-box {
+        margin-top: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        &.active {
+            border: 2px solid ${props => props.theme.text.medium};
+            // background-color: ${COLOR.mediumLight};
+            border-radius: 8px;
+            padding: 16px;
+        }
+    }
+
+    .button-bar {
+        display: flex;
+        justify-content: flex-end;
+
+        > button:first-child {
+			background-color: ${({ theme }) => theme.surface.highlight};
+			color: ${({ theme }) => theme.text.mediumDark};
+		}
+    }
+`
+
 const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
+    const [isImporting, setIsImporting] = useState(false);
 
     return (
-        <>
-            <div className="b-a">
-                <h3>Import Preset</h3>
-                <IntervalPresetInput setIntervals={setIntervals} intervals={intervals} />
+        <StyledIntervalInput>
+            <IntervalTable setIntervals={setIntervals} intervals={intervals} />
+            <div className={`preset-box ${isImporting ? 'active' : ''}`}>
+                {!isImporting && <ButtonInput onClick={() => setIsImporting(true)}>Import Preset</ButtonInput>}
+                {isImporting &&
+                    <>
+                        <IntervalPresetInput setIntervals={setIntervals} intervals={intervals} />
+                        <div className="button-bar">
+                            <ButtonInput onClick={() => setIsImporting(false)}>Cancel</ButtonInput>
+                            <ButtonInput onClick={() => setIsImporting(false)}>Done</ButtonInput>
+                        </div>
+                    </>
+                }
             </div>
-            <div className="b-a">
-                <h3>Configure</h3>
-                <IntervalTable setIntervals={setIntervals} intervals={intervals} />
-            </div>
-        </>
+        </StyledIntervalInput >
     );
 }
 

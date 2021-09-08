@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import IntervalUtils from '../../../../../core/src/models/Pod/Interval/Interval.utils';
+import IntervalUtils from '@pw/core/src/models/Pod/Interval/Interval.utils';
 import IntervalInput from '../../shared/inputs/IntervalInput';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import EditModal from './EditModal';

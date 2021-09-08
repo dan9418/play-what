@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
-import EditIntervalsModal from '../modals/EditIntervals';
+import EditIntervalsModal from '../modals/EditIntervalsModal';
 import EditRootModal from '../modals/EditRootModal';
 import EditViewerModal from '../modals/EditViewerModal';
 import QuickLink, { StyledQuickLink } from './QuickLink';

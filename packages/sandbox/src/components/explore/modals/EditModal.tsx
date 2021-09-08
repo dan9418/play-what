@@ -8,23 +8,16 @@ import { useModalContext } from '../../../contexts/ModalContext';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import { Modal } from '../../shared/core/Modal';
-import HighlightBox, { StyledHighlightBox } from '../../shared/ui/HighlightBox';
+import HighlightBox from '../../shared/ui/HighlightBox';
 import Viewer from '../Viewer';
+import ModalSection from './ModalSection';
 import PodTable from './PodTable';
 
 const StyledEditModal = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: 16px;
-    @media(min-width: 1024px) {
-        grid-template-columns: 1fr 1fr;
-        & >:first-child {
-            grid-column: 1 / span 2;
-        }
-    }
+    display: flex;
+    flex-direction: column;
 
     .divider {
-
         width: 100%;
         border-bottom: 1px solid ${THEME.border};
 
@@ -33,23 +26,10 @@ const StyledEditModal = styled.div`
         }
     }
 
-    .b-a {
-
-        ${StyledHighlightBox} {
-            padding: 8px;
-            margin-bottom: 8px;
-        }
-
-        h3 {
-            text-align: left;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: ${({ theme }) => theme.text.medium};
-            border-bottom: 1px solid ${THEME.border};
-            font-size: 140%;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
+    .comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
     }
 `;
 
@@ -120,26 +100,28 @@ const EditModal: React.FC<any> = ({ modalTitle, InputComponent, AnalysisComponen
 
                 <InputComponent {...editProps} />
 
-                <div className="b-a">
-                    <h3>Before</h3>
-                    {!hideModels && (
-                        <HighlightBox>
-                            <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
-                        </HighlightBox>
-                    )}
-                    <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} />
-                </div>
+                <div className="comparison">
+                    <div>
+                        <h3>Before</h3>
+                        <ModalSection title="Before" />
+                        {!hideModels && (
+                            <HighlightBox>
+                                <PodTable root={beforeRoot} intervals={beforeIntervals} notes={beforeModelDetails.notes.value} />
+                            </HighlightBox>
+                        )}
+                        <Viewer details={beforeModelDetails} viewerDetails={beforeViewerDetails} />
+                    </div>
 
-                <div className="b-a">
-                    <h3>After</h3>
-                    {!hideModels && (
-                        <HighlightBox >
-                            <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
-                        </HighlightBox>
-                    )}
-                    <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} />
+                    <div>
+                        <ModalSection title="After" />
+                        {!hideModels && (
+                            <HighlightBox >
+                                <PodTable root={afterRoot} intervals={afterIntervals} notes={afterModelDetails.notes.value} />
+                            </HighlightBox>
+                        )}
+                        <Viewer details={afterModelDetails} viewerDetails={afterViewerDetails} />
+                    </div>
                 </div>
-
             </StyledEditModal>
         </Modal>
     )

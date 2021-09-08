@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NOTE_PRESETS } from '../../../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
+import ModalSection from '../../explore/modals/ModalSection';
 import InputRow from '../ui/InputRow';
 import DropdownInput from './DropdownInput';
 
@@ -59,7 +60,7 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 
 const RootInput = ({ root, setRoot }) => {
     const [selectedPreset, setSelectedPreset] = useState(null);
-    const accidental = NoteUtils.getAccidentalOffset(root, true);
+    const accidental = NoteUtils.getAccidentalOffset(root);
     const octave = PodUtils.getOctave(root);
     const degree = PodUtils.getDegree(root);
 
@@ -80,44 +81,41 @@ const RootInput = ({ root, setRoot }) => {
 
     return (
         <>
-            <div className="b-a">
-                <h3>Import Preset</h3>
-                <InputRow label="Preset">
-                    <DropdownInput value={selectedPreset} setValue={setSelectedPreset} options={NOTE_PRESETS} />
-                </InputRow>
-            </div>
-            <StyledRootInput className="b-a">
-                <h3>Configure</h3>
-                <InputRow label="Spelling">
-                    <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
-                </InputRow>
-                <InputRow label="Accidental">
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={-2}>bb</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>##</RootButton>
-                </InputRow>
-                <InputRow label="Octave">
-                    <RootButton value={octave} setValue={setOctave} buttonValue={0}>0</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={1}>1</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={2}>2</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={3}>3</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={4}>4</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={5}>5</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={6}>6</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={7}>7</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={8}>8</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={9}>9</RootButton>
-                    <RootButton value={octave} setValue={setOctave} buttonValue={10}>10</RootButton>
-                </InputRow>
-            </StyledRootInput>
+            <ModalSection title="Import Preset" />
+            <InputRow label="Preset">
+                <DropdownInput value={selectedPreset} setValue={setSelectedPreset} options={NOTE_PRESETS} />
+            </InputRow>
+
+            <ModalSection title="Configure" />
+            <InputRow label="Spelling">
+                <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
+                <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
+            </InputRow>
+            <InputRow label="Accidental">
+                <RootButton value={accidental} setValue={setAccidental} buttonValue={-2}>bb</RootButton>
+                <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
+                <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
+                <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
+                <RootButton value={accidental} setValue={setAccidental} buttonValue={2}>##</RootButton>
+            </InputRow>
+            <InputRow label="Octave">
+                <RootButton value={octave} setValue={setOctave} buttonValue={0}>0</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={1}>1</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={2}>2</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={3}>3</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={4}>4</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={5}>5</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={6}>6</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={7}>7</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={8}>8</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={9}>9</RootButton>
+                <RootButton value={octave} setValue={setOctave} buttonValue={10}>10</RootButton>
+            </InputRow>
         </>
     );
 }
