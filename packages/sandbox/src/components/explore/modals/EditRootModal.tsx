@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
 import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../shared/inputs/RootInput';
+import RootInputPreset from '../../shared/inputs/RootInputPreset';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
-import EditModal from './useEditProps';
-
-const RootInputAdapter = ({ afterRoot, setAfterRoot }) => <RootInput root={afterRoot} setRoot={setAfterRoot} />
+import ModalSection from './ModalSection';
+import useEditProps from './useEditProps';
 
 const StyledRootAnalysis = styled(StyledHighlightBox)`
     .top {
@@ -46,14 +46,31 @@ const RootAnalysisAdapter = ({ afterModelDetails }) => {
 }
 
 const EditRootModal: React.FC = () => {
+    const editProps = useEditProps();
+
+    const [isAdvanced, setIsAdvanced] = useState(false);
+
+    const buttonProps = isAdvanced ? {
+        buttonText: 'Cancel',
+        buttonAction: () => setIsAdvanced(false)
+    } : {
+        buttonText: 'Advanced',
+        buttonAction: () => setIsAdvanced(true)
+    };
+
     return (
         <Modal
-            title="Edit Root"
+            title="Edit Intervals"
+            onClose={editProps.onCancel}
         >
-            {/*<RootInputAdapter />
-            <RootAnalysisAdapter />*/}
-        </Modal>
-    )
+            <RootAnalysisAdapter {...editProps} />
+            <ModalSection title="Import Preset" {...buttonProps} />
+            {isAdvanced ?
+                <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
+                :
+                <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
+            }
+        </Modal >
 }
 
 export default EditRootModal;

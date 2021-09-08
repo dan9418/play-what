@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { NOTE_PRESETS } from '../../../../../core/src/models/Pod/Note/Note.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
-import ModalSection from '../../explore/modals/ModalSection';
 import InputRow from '../ui/InputRow';
-import DropdownInput from './DropdownInput';
 
 const StyledRootInput = styled.div`
     button {
@@ -59,7 +56,6 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 }
 
 const RootInput = ({ root, setRoot }) => {
-    const [selectedPreset, setSelectedPreset] = useState(null);
     const accidental = NoteUtils.getAccidentalOffset(root);
     const octave = PodUtils.getOctave(root);
     const degree = PodUtils.getDegree(root);
@@ -80,13 +76,7 @@ const RootInput = ({ root, setRoot }) => {
     }
 
     return (
-        <>
-            <ModalSection title="Import Preset" />
-            <InputRow label="Preset">
-                <DropdownInput value={selectedPreset} setValue={setSelectedPreset} options={NOTE_PRESETS} />
-            </InputRow>
-
-            <ModalSection title="Configure" />
+        <StyledRootInput>
             <InputRow label="Spelling">
                 <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
                 <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
@@ -116,7 +106,7 @@ const RootInput = ({ root, setRoot }) => {
                 <RootButton value={octave} setValue={setOctave} buttonValue={9}>9</RootButton>
                 <RootButton value={octave} setValue={setOctave} buttonValue={10}>10</RootButton>
             </InputRow>
-        </>
+        </StyledRootInput>
     );
 }
 
