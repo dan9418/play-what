@@ -1,6 +1,6 @@
-import { LabelBy } from './../viewer.constants';
+import { LabelBy } from '../Viewer.constants';
 import { PodType } from '../../../core/src/models/Model.constants';
-import { IViewerProps } from '../viewer.constants';
+import { IViewerProps } from '../Viewer.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 export interface IFretboardProps extends IViewerProps {

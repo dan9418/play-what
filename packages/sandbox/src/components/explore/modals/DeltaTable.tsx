@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
-import viewerUtils from '../../../../../viewers/src/viewer.utils';
+import viewerUtils from '../../../../../viewers/src/Viewer.utils';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import HighlightBox from '../../shared/ui/HighlightBox';
 import Viewer from '../Viewer';

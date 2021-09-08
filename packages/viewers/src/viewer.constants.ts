@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../core/src/models/Model.constants';
+import { ICompleteModelDetails, InputId, IPreset, PodType } from '@pw/core/src/models/Model.constants';
 import Fretboard from './Fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './Fretboard/Fretboard.api';
 import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';

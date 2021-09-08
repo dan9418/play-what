@@ -2,7 +2,7 @@ import ColorUtils from '@pw/core/src/color/Color.utils';
 import NumberUtils from '@pw/core/src/general/Number.utils';
 import React from "react";
 import styled from 'styled-components';
-import viewerUtils from '../viewer.utils';
+import viewerUtils from '../Viewer.utils';
 import "./Keyboard.css";
 import { IKeyboardKeyProps } from './Keyboard.defaults';
 

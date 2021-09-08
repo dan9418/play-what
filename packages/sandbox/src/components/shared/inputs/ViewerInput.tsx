@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../../../viewers/src/viewer.constants';
+import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../../../viewers/src/Viewer.constants';
 import ModalSection from '../../explore/modals/ModalSection';
 import ViewerInputManager from '../../explore/modals/ViewerInputManager';
 import InputRow from '../ui/InputRow';

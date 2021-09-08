@@ -1,4 +1,4 @@
-import { IViewerProps } from "../viewer.constants";
+import { IViewerProps } from "../Viewer.constants";
 
 export interface IKeyboardProps extends IViewerProps {
 	keyRange: [number, number];
