@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
+import { IntervalId, INTERVAL_PRESET_MAP } from '@pw/core/src/models/Pod/Interval/Interval.constants';
+import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
+import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
+import React from 'react';
 import styled from 'styled-components';
-import { PresetTag, PRESET_TYPES } from '../../../../../core/src/models/Model.constants';
-import { IntervalId, INTERVAL_PRESET_MAP } from '../../../../../core/src/models/Pod/Interval/Interval.constants';
-import PodUtils from '../../../../../core/src/models/Pod/Pod.utils';
-import MASTER_PRESETS from '../../../../../core/src/models/PodList/PodList.constants';
-import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
-import THEME, { COLOR } from '../../../styles/theme';
-import InputRow from '../ui/InputRow';
-import ButtonInput from './ButtonInput';
-import DropdownInput from './DropdownInput';
 
 const StyledIntervalTable = styled.table`
     width: 100%;
@@ -71,10 +65,6 @@ const StyledIntervalTable = styled.table`
     }
 `;
 
-const StyledIntervalPresetInput = styled.div`
-    width: 100%;
-`;
-
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 
     const intervalIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, preset.value));
@@ -116,7 +106,7 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 }
 
 
-const IntervalTable: React.FC<any> = ({ setIntervals, intervals }) => {
+const IntervalsInputTable: React.FC<any> = ({ setIntervals, intervals }) => {
     const inactiveCols = intervals.map(i => i[0]);
     return (
         <StyledIntervalTable $inactiveCols={inactiveCols}>
@@ -186,110 +176,4 @@ const IntervalTable: React.FC<any> = ({ setIntervals, intervals }) => {
     );
 }
 
-
-const IntervalPresetInput: React.FC<any> = ({ setIntervals, intervals }) => {
-    const [presetType, _setPresetType] = useState(PresetTag.Chord);
-    const presetTagSet = new Set();
-    const presetOptions = MASTER_PRESETS.filter(preset => {
-        if (preset.tags.includes(presetType)) {
-            preset.tags.forEach(t => presetTagSet.add(t))
-            return true;
-        }
-    });
-    const subtypeOptions = [
-        { id: 'unselected', name: '---' },
-        ...Array.from(presetTagSet).map((v) => ({ name: v, id: v })).slice(1)
-    ];
-
-    const [presetSubtype, setPresetSubtype] = useState('unselected');
-
-    const [preset, _setPreset] = useState(null);
-    const filteredPresetOptions = presetSubtype === 'unselected' ?
-        presetOptions :
-        presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
-    const finalPresetOptions = [
-        { id: 'unselected', name: '---' },
-        ...filteredPresetOptions
-    ];
-
-    const setPresetType = x => {
-        _setPresetType(x);
-        setPresetSubtype('unselected');
-        _setPreset(null);
-    }
-
-    const setPreset = (x) => {
-        if (x.id === 'unselected') {
-            setIntervals([]);
-        }
-        else {
-            setIntervals(x.value);
-        }
-        _setPreset(x);
-    }
-
-    return (
-        <StyledIntervalPresetInput>
-            <InputRow label="Type">
-                <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
-            </InputRow>
-            <InputRow label="Filter">
-                <DropdownInput value={{ id: presetSubtype }} setValue={x => setPresetSubtype(x.id)} options={subtypeOptions} />
-            </InputRow>
-            <InputRow label="Preset">
-                <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
-            </InputRow>
-        </StyledIntervalPresetInput>
-    );
-}
-
-const StyledIntervalInput = styled.div`
-
-    .preset-box {
-        margin-top: 16px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-
-        &.active {
-            border: 2px solid ${props => props.theme.text.medium};
-            // background-color: ${COLOR.mediumLight};
-            border-radius: 8px;
-            padding: 16px;
-        }
-    }
-
-    .button-bar {
-        display: flex;
-        justify-content: flex-end;
-
-        > button:first-child {
-			background-color: ${({ theme }) => theme.surface.highlight};
-			color: ${({ theme }) => theme.text.mediumDark};
-		}
-    }
-`
-
-const IntervalInput: React.FC<any> = ({ setIntervals, intervals }) => {
-    const [isImporting, setIsImporting] = useState(false);
-
-    return (
-        <StyledIntervalInput>
-            <IntervalTable setIntervals={setIntervals} intervals={intervals} />
-            <div className={`preset-box ${isImporting ? 'active' : ''}`}>
-                {!isImporting && <ButtonInput onClick={() => setIsImporting(true)}>Import Preset</ButtonInput>}
-                {isImporting &&
-                    <>
-                        <IntervalPresetInput setIntervals={setIntervals} intervals={intervals} />
-                        <div className="button-bar">
-                            <ButtonInput onClick={() => setIsImporting(false)}>Cancel</ButtonInput>
-                            <ButtonInput onClick={() => setIsImporting(false)}>Done</ButtonInput>
-                        </div>
-                    </>
-                }
-            </div>
-        </StyledIntervalInput >
-    );
-}
-
-export default IntervalInput;
+export default IntervalsInputTable;

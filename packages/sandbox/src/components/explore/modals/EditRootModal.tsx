@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
+import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../shared/inputs/RootInput';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
-import EditModal from './EditModal';
+import EditModal from './useEditProps';
 
 const RootInputAdapter = ({ afterRoot, setAfterRoot }) => <RootInput root={afterRoot} setRoot={setAfterRoot} />
 
@@ -46,11 +47,12 @@ const RootAnalysisAdapter = ({ afterModelDetails }) => {
 
 const EditRootModal: React.FC = () => {
     return (
-        <EditModal
-            modalTitle="Edit Root"
-            InputComponent={RootInputAdapter}
-            AnalysisComponent={RootAnalysisAdapter}
-        />
+        <Modal
+            title="Edit Root"
+        >
+            {/*<RootInputAdapter />
+            <RootAnalysisAdapter />*/}
+        </Modal>
     )
 }
 
