@@ -76,7 +76,7 @@ const EditIntervalsModal: React.FC = () => {
     return (
         <Modal
             title="Edit Intervals"
-            onClose={editProps.onCancel}
+            {...editProps}
         >
             <IntervalsAnalysisAdapter {...editProps} />
             <ModalSection title="Import Preset" {...buttonProps} />

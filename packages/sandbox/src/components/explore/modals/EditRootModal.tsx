@@ -58,10 +58,12 @@ const EditRootModal: React.FC = () => {
         buttonAction: () => setIsAdvanced(true)
     };
 
+    console.log(editProps);
+
     return (
         <Modal
             title="Edit Intervals"
-            onClose={editProps.onCancel}
+            {...editProps}
         >
             <RootAnalysisAdapter {...editProps} />
             <ModalSection title="Import Preset" {...buttonProps} />
@@ -71,6 +73,7 @@ const EditRootModal: React.FC = () => {
                 <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
             }
         </Modal >
+    );
 }
 
 export default EditRootModal;

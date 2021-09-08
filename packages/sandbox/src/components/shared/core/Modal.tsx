@@ -117,20 +117,21 @@ const StyledModal = styled.div`
 	}
 `;
 
-export const Modal: React.FC<any> = ({ title, children, closeModal, onSubmit }) => {
+export const Modal: React.FC<any> = ({ title, children, onCancel, onApply, onDone }) => {
 	return (
 		<StyledModal>
 			<div className="container">
 				<div className="header">
 					<h2>{title}</h2>
-					<IconButton iconId="close" onClick={closeModal} color="white" />
+					<IconButton iconId="close" onClick={onCancel} color="white" />
 				</div>
 				<div className="body">
 					{children}
 				</div>
 				<div className="footer">
-					<ButtonInput onClick={closeModal}>Cancel</ButtonInput>
-					<ButtonInput onClick={onSubmit}>Apply</ButtonInput>
+					<ButtonInput onClick={onCancel}>Cancel</ButtonInput>
+					<ButtonInput onClick={onApply}>Apply</ButtonInput>
+					<ButtonInput onClick={onDone}>Done</ButtonInput>
 				</div>
 			</div>
 		</StyledModal>
