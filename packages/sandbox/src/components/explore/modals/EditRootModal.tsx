@@ -61,7 +61,7 @@ const EditRootModal: React.FC = () => {
 
     return (
         <Modal
-            title="Edit Intervals"
+            title="Edit"
             {...editProps}
         >
             <RootAnalysisAdapter {...editProps} />

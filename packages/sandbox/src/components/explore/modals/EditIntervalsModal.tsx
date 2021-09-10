@@ -76,7 +76,7 @@ const EditIntervalsModal: React.FC = () => {
 
     return (
         <Modal
-            title="Edit Intervals"
+            title="Edit"
             {...editProps}
         >
             <IntervalsAnalysisAdapter {...editProps} />

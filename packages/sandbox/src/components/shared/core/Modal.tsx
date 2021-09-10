@@ -4,7 +4,6 @@ import styled from "styled-components";
 import THEME from "../../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
-import { StyledHighlightBox } from "../ui/HighlightBox";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -76,8 +75,37 @@ const StyledModal = styled.div`
 	}
 
 	.body {
+
+		.selector {
+			display: flex;
+			align-items: center;
+			justify-content: space-evenly;
+			padding-bottom: 8px;
+
+			button {
+				font-weight: bold;
+				font-size: 120%;
+				color: ${THEME.primary};
+				background-color: transparent;
+
+				&:hover {
+					background-color: rgba(0,0,0,0.1)
+				}
+			}
+
+			button.active {
+				color: white;
+				background-color: ${THEME.active};
+
+				&:hover {
+					background-color: white;
+					color: ${THEME.active};
+				}
+			}
+		}
+
 		margin: 64px 0;
-		padding: 16px;
+		padding: 8px 16px 16px;
 		overflow: auto;
 		height: 100%;
 		width: 100%;
@@ -126,6 +154,11 @@ export const Modal: React.FC<any> = ({ title, children, onCancel, onApply, onDon
 					<IconButton iconId="close" onClick={onCancel} color="white" />
 				</div>
 				<div className="body">
+					<div className="selector">
+						<ButtonInput onClick={null}>Root</ButtonInput>
+						<ButtonInput onClick={null} className="active">Intervals</ButtonInput>
+						<ButtonInput onClick={null}>Viewer</ButtonInput>
+					</div>
 					{children}
 				</div>
 				<div className="footer">
