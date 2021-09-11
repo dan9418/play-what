@@ -5,13 +5,10 @@ import NumericInput, { StyledNumbericInput } from "./NumericInput";
 
 export const StyledRangeInput = styled.div`
 	display: flex;
+    align-items: center;
 
     span {
         margin: 0 4px;
-    }
-
-    ${StyledNumbericInput} {
-        margin-left: 4px;
     }
 `;
 

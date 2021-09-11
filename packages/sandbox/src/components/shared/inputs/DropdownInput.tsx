@@ -3,22 +3,16 @@ import styled from 'styled-components';
 import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledDropdownInput = styled.select`
-	height: 24px;
+	height: 40px;
+	font-size: 16px;
     min-width: 128px;
-    line-height: 40px;
-    font-size: 16px;
+
+	padding: 0 8px;
+
     cursor: pointer;
     border-radius: 4px;
 	background-color: ${({ theme }) => theme.surface.highlight};;
     border: none;
-
-	> option {
-		outline: none;
-		border: none;
-		border-radius: 4px;
-		padding: 0 8px;
-		cursor: pointer;
-	}
 `;
 
 interface IDropdownInputProps extends IInputProps {

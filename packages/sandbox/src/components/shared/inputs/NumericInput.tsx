@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 export const StyledNumbericInput = styled.input`
+	height: 40px;
+	font-size: 16px;
 	max-width: 64px;
-    padding: 4px;
+    padding: 0 8px;
     border-radius: 4px;
     border: none;
 	background-color: ${({ theme }) => theme.surface.highlight};

@@ -4,26 +4,26 @@ import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledSwitch = styled.button`
 	border: none;
+	padding: 4px;
 
 	-ms-user-select: none;
     user-select: none;
-    height: 24px;
-    width: 48px;
-    border-radius: 24px;
+    height: 40px;
+    width: 80px;
+    border-radius: 40px;
 	display: inline-flex;
     align-items: center;
 	cursor: pointer;
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.active : theme.surface.highlight};	
+	background-color: ${({ $active, theme }) => $active ? theme.clickable : theme.surface.highlight};	
 	&:hover {
-		background-color: ${({ theme }) => theme.clickable};	
+		background-color: ${({ theme }) => theme.active};	
 	}
 
 	& .ball {
-		height: 16px;
-		width: 16px;
-		margin: 4px;
+		height: 32px;
+		width: 32px;
 		border-radius: 100%;
 		background-color: #fff;
 	}
