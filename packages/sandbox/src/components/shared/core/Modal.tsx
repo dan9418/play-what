@@ -34,15 +34,17 @@ const StyledModal = styled.div`
 		flex-direction: column;
 
 		position: absolute;
-
-		height: 100%;
+		top: 0;
+		bottom: 0;
+		
 		width: 100%;
 		max-width: 1024px;
 		margin: auto;
 		
 		@media(min-width: 512px) {
 			border-radius: 8px;
-			max-height: 80%;
+			top: 104px;
+			bottom: 8px;
 		}
 
 	}
