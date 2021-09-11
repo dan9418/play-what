@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Viewer from '../Viewer';
+import { StyledPodTable } from './PodTable';
 
 const StyledViewerComparison = styled.div`
     display: grid;
@@ -12,7 +13,7 @@ const StyledViewerComparison = styled.div`
     position: sticky;
     top: 0;
 
-    border-bottom: 1px solid ${({ theme }) => theme.border};
+    //border-bottom: 1px solid ${({ theme }) => theme.border};
 
     background-color: ${({ theme }) => theme.surface.bg};
 
@@ -26,16 +27,22 @@ const StyledViewerComparison = styled.div`
         max-height: 256px;
         margin: 32px auto;
     }
+
+    ${StyledPodTable} {
+        width: 100%;
+        max-width: 512px;
+        //padding: 64px;
+    }
 `;
 
-const ViewerComparison: React.FC<any> = ({ hideModels, ...editProps }) => {
+const ViewerComparison: React.FC<any> = ({ hideModels, always, ...editProps }) => {
 
     const isEditing = editProps.beforeModelDetails.notes.preview !== editProps.afterModelDetails.notes.preview;
 
     return (
-        <StyledViewerComparison $isEditing={isEditing}>
+        <StyledViewerComparison $isEditing={(isEditing || always)}>
             <Viewer details={editProps.beforeModelDetails} viewerDetails={editProps.beforeViewerDetails} />
-            {isEditing && <Viewer details={editProps.afterModelDetails} viewerDetails={editProps.afterViewerDetails} />}
+            {(isEditing || always) && <Viewer details={editProps.afterModelDetails} viewerDetails={editProps.afterViewerDetails} />}
         </StyledViewerComparison>
     )
 }

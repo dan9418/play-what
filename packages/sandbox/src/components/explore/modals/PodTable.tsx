@@ -4,7 +4,7 @@ import { PodType } from '../../../../../core/src/models/Model.constants';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 
-const StyledPodTable = styled.div`
+export const StyledPodTable = styled.div`
     display: grid;
     grid-template-columns: 1fr 4fr;
     .root {

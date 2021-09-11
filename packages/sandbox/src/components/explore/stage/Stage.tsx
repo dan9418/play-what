@@ -10,7 +10,7 @@ const StyledStage = styled.div`
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: column;
 	
 	.fretboard, .keyboard {

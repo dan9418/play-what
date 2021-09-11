@@ -6,10 +6,20 @@ import ButtonInput from '../../shared/inputs/ButtonInput';
 const StyledModalSection = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    // justify-content: space-between;
     border-bottom: 1px solid ${THEME.border};
-    margin: 8px 0;
+    margin: 16px 0 8px;
     padding: 8px 0;
+
+    button {
+        background: transparent;
+        &:hover {
+            background: rgba(0,0,0,0.05);
+        }
+        color: ${({ theme }) => theme.clickable};
+        padding: 4px 8px;
+        margin-left: 8px;
+    }
 
     h3 {
         text-align: left;

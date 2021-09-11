@@ -43,7 +43,7 @@ const StyledModal = styled.div`
 		
 		@media(min-width: 512px) {
 			border-radius: 8px;
-			top: 104px;
+			top: 40px;
 			bottom: 8px;
 			width: 98%;
 		}
@@ -61,6 +61,9 @@ const StyledModal = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		text-transform: uppercase;
+		letter-spacing: 2px;
 
 		top: 0;
 		
@@ -82,7 +85,7 @@ const StyledModal = styled.div`
 	.body {
 
 		margin: 64px 0;
-		padding: 0 16px 256px;
+		padding: 0 16px 32px;
 		overflow: auto;
 		height: 100%;
 		width: 100%;

@@ -67,7 +67,7 @@ const EditIntervalsModal: React.FC = () => {
     const [isAdvanced, setIsAdvanced] = useState(false);
 
     const buttonProps = isAdvanced ? {
-        buttonText: 'Cancel',
+        buttonText: 'Basic',
         buttonAction: () => setIsAdvanced(false)
     } : {
         buttonText: 'Advanced',

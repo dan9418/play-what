@@ -52,7 +52,7 @@ const EditRootModal: React.FC = () => {
     const [isAdvanced, setIsAdvanced] = useState(false);
 
     const buttonProps = isAdvanced ? {
-        buttonText: 'Cancel',
+        buttonText: 'Basic',
         buttonAction: () => setIsAdvanced(false)
     } : {
         buttonText: 'Advanced',
@@ -66,7 +66,7 @@ const EditRootModal: React.FC = () => {
         >
             <RootAnalysisAdapter {...editProps} />
             <ViewerComparison {...editProps} />
-            <ModalSection title="Import Preset" {...buttonProps} />
+            <ModalSection title="Edit Root" {...buttonProps} />
             {isAdvanced ?
                 <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
                 :

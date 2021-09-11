@@ -23,7 +23,7 @@ const EditViewerModal: React.FC<any> = () => {
             {...editProps}
         >
             <ViewerAnalysisAdapter {...editProps} />
-            <ViewerComparison {...editProps} />
+            <ViewerComparison {...editProps} always />
             <ViewerInputAdapter {...editProps} />
         </Modal>
     )
