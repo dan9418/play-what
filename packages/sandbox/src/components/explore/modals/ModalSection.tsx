@@ -42,10 +42,16 @@ const StyledModalSection = styled.div`
 const StyledHelp = styled.pre`
     background: ${THEME.status.info};
     color: white;
-    padding: 8px;
+    padding: 8px 16px;
+    margin-bottom: 8px;
     border-radius: 8px;
     font-family: sans-serif;
     font-size: 90%;
+    line-height: 24px;
+
+    //display: flex;
+    //align-items: center;
+    //justify-content: flex-start;
 `;
 
 interface IModalSectionProps {
@@ -58,7 +64,7 @@ interface IModalSectionProps {
 const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonAction, helpText, children }) => {
 
     const [isOpen, setIsOpen] = useState(true);
-    const [isHelp, setIsHelp] = useState(true);
+    const [isHelp, setIsHelp] = useState(false);
 
     console.log(isOpen);
 
@@ -68,7 +74,7 @@ const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonA
                 <h3>{title}</h3>
                 {isOpen && buttonAction && <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>}
                 <div className="actions">
-                    {isOpen && <IconButton iconId="help" onClick={() => setIsHelp(!isHelp)} color={THEME.status.info} />}
+                    {isOpen && <IconButton iconId="help" onClick={() => setIsHelp(!isHelp)} color={isHelp ? THEME.active : THEME.status.info} />}
                     <IconButton iconId="down" onClick={() => setIsOpen(!isOpen)} iconProps={{ rotate: isOpen ? 0 : 270 }} />
                 </div>
             </StyledModalSection>

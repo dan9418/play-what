@@ -8,15 +8,11 @@ interface INavLink {
 
 const NAV_LINKS: INavLink[] = [
 	{
-		text: 'Home',
-		href: '/'
-	},
-	{
 		text: 'Docs',
 		href: 'https://github.com/dan9418/play-what/blob/master/README.md'
 	},
 	{
-		text: 'Code',
+		text: 'GitHub',
 		href: 'https://github.com/dan9418/play-what/'
 	}
 ];
@@ -82,7 +78,7 @@ const StyledNav = styled.nav`
 				font-weight: normal;
 
 				&:hover {
-					color: ${({ theme }) => theme.text.light};
+					color: ${({ theme }) => theme.clickable};
 				}
 			}
 		}

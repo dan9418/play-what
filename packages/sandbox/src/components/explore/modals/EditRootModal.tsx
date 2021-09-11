@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
+import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../utils/help';
 import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../shared/inputs/RootInput';
 import RootInputPreset from '../../shared/inputs/RootInputPreset';
@@ -66,14 +67,14 @@ const EditRootModal: React.FC = () => {
         >
             <RootAnalysisAdapter {...editProps} />
 
-            <ModalSection title="Edit Root" {...buttonProps}>
+            <ModalSection title="Edit Root" {...buttonProps} helpText={HELP_ROOT_EDIT}>
                 {isAdvanced ?
                     <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
                     :
                     <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
                 }
             </ModalSection>
-            <ModalSection title="Preview" helpText="Choose a root, or 'key center'">
+            <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />
             </ModalSection>
         </Modal >

@@ -1,4 +1,5 @@
 import React from 'react';
+import { HELP_PREVIEW } from '../../../utils/help';
 import { Modal } from '../../shared/core/Modal';
 import ViewerInput from '../../shared/inputs/ViewerInput';
 import HighlightBox from '../../shared/ui/HighlightBox';
@@ -27,7 +28,7 @@ const EditViewerModal: React.FC<any> = () => {
             <ViewerAnalysisAdapter {...editProps} />
 
             <ViewerInputAdapter {...editProps} />
-            <ModalSection title="Preview">
+            <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} always />
             </ModalSection>
         </Modal>
