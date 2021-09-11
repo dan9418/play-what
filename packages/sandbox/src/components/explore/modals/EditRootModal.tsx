@@ -65,13 +65,17 @@ const EditRootModal: React.FC = () => {
             {...editProps}
         >
             <RootAnalysisAdapter {...editProps} />
-            <ViewerComparison {...editProps} />
-            <ModalSection title="Edit Root" {...buttonProps} />
-            {isAdvanced ?
-                <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
-                :
-                <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
-            }
+
+            <ModalSection title="Edit Root" {...buttonProps}>
+                {isAdvanced ?
+                    <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
+                    :
+                    <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
+                }
+            </ModalSection>
+            <ModalSection title="Preview">
+                <ViewerComparison {...editProps} />
+            </ModalSection>
         </Modal >
     );
 }

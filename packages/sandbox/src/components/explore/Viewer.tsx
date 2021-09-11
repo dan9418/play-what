@@ -23,10 +23,7 @@ const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
     const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
 
     return (
-        <StyledViewer>
-            <PodTable root={masterDetails.root.value} intervals={masterDetails.intervals.value} notes={masterDetails.notes.value} />
             <_viewerDetails.component {..._viewerDetails.props} details={_details} {...rest} />
-        </StyledViewer>
     );
 };
 

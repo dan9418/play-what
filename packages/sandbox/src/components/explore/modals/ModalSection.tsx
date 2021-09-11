@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
 import ButtonInput from '../../shared/inputs/ButtonInput';
+import IconButton from '../../shared/inputs/IconButton';
 
 const StyledModalSection = styled.div`
     display: flex;
@@ -19,6 +20,11 @@ const StyledModalSection = styled.div`
         color: ${({ theme }) => theme.clickable};
         padding: 4px 8px;
         margin-left: 8px;
+
+        &:last-child {
+            padding: 8px;
+            margin-left: auto;
+        }
     }
 
     h3 {
@@ -37,12 +43,22 @@ interface IModalSectionProps {
     buttonAction?: Function;
 }
 
-const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonAction }) => {
+const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonAction, children }) => {
+
+    const [isOpen, setIsOpen] = useState(true);
+
+    console.log(isOpen);
+
     return (
-        <StyledModalSection>
-            <h3>{title}</h3>
-            {buttonAction && <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>}
-        </StyledModalSection>
+        <>
+            <StyledModalSection>
+                <h3>{title}</h3>
+                {isOpen && buttonAction && <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>}
+                <IconButton iconId="down" onClick={() => setIsOpen(!isOpen)} iconProps={{ rotate: isOpen ? 0 : 270 }} />
+
+            </StyledModalSection>
+            {isOpen && children}
+        </>
     );
 }
 

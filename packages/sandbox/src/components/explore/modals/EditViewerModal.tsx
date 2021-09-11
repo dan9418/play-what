@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal } from '../../shared/core/Modal';
 import ViewerInput from '../../shared/inputs/ViewerInput';
 import HighlightBox from '../../shared/ui/HighlightBox';
+import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
 import ViewerComparison from './ViewerComparison';
 
@@ -22,9 +23,13 @@ const EditViewerModal: React.FC<any> = () => {
             title="Edit"
             {...editProps}
         >
+
             <ViewerAnalysisAdapter {...editProps} />
-            <ViewerComparison {...editProps} always />
+
             <ViewerInputAdapter {...editProps} />
+            <ModalSection title="Preview">
+                <ViewerComparison {...editProps} always />
+            </ModalSection>
         </Modal>
     )
 }

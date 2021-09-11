@@ -22,16 +22,18 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
 
     return (
         <>
-            <ModalSection title="Select Viewer" />
-            <InputRow label="Viewer">
-                <DropdownInput
-                    value={{ id: viewerId }}
-                    setValue={setViewerId}
-                    options={VIEWER_PRESETS}
-                />
-            </InputRow>
-            <ModalSection title="Configure" />
-            <ViewerInputManager viewerConfig={selectedViewerConfig} viewerProps={viewerProps} setViewerProps={_setViewerProps} />
+            <ModalSection title="Change Viewer" >
+                <InputRow label="Viewer">
+                    <DropdownInput
+                        value={{ id: viewerId }}
+                        setValue={setViewerId}
+                        options={VIEWER_PRESETS}
+                    />
+                </InputRow>
+            </ModalSection>
+            <ModalSection title={`Configure ${selectedViewerConfig.name}`} >
+                <ViewerInputManager viewerConfig={selectedViewerConfig} viewerProps={viewerProps} setViewerProps={_setViewerProps} />
+            </ModalSection>
         </>
     );
 }
