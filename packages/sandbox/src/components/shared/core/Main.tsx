@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ChartsPage from '../../charts/ChartsPage';
 import ExplorePage from '../../explore/ExplorePage';
 import TestPage from '../../test/TestPage';
 
@@ -32,6 +33,9 @@ const Main: React.FC = () => {
     const experiment = urlParams.get('experiment');
     if (experiment === 'test') {
       setPage(<TestPage />);
+    }
+    else if (experiment === 'charts') {
+      setPage(<ChartsPage />);
     }
     else {
       setPage(<ExplorePage />);

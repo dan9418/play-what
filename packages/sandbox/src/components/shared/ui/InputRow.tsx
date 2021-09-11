@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledInputRow = styled.div`
+export const StyledInputRow = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
