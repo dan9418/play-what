@@ -3,11 +3,11 @@ import { IViewerProps } from '../Viewer.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 export interface IFretboardProps extends IViewerProps {
-	fretRange: [number, number];
-	tuning: number[];
-	labelBy: string;
-	showFretDots: boolean;
-	showFretNumbers: boolean;
+	fretRange?: [number, number];
+	tuning?: number[];
+	labelBy?: string;
+	showFretDots?: boolean;
+	showFretNumbers?: boolean;
 }
 
 export interface IFretProps extends IFretboardProps {
