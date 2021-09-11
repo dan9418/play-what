@@ -51,13 +51,15 @@ const StyledExploreNav = styled.nav`
 		right: 0;
 		bottom: 0;
 		width: 100%;
-		max-width: 512px;
 
 		background-color: ${THEME.surface.bg};
 		width: 100%;
 		box-shadow: 0px 0px 16px #aaa;
 		overflow-y: auto;
 
+		@media(min-width: 512px) {
+			max-width: 384px;
+		}
 		@media(min-width: 1024px) {
 			display: none;
 		}

@@ -20,11 +20,6 @@ const StyledModalSection = styled.div`
         color: ${({ theme }) => theme.clickable};
         padding: 4px 8px;
         margin-left: 8px;
-
-        &:last-child {
-            padding: 8px;
-            margin-left: auto;
-        }
     }
 
     h3 {
@@ -35,17 +30,35 @@ const StyledModalSection = styled.div`
         font-size: 140%;
         font-weight: 500;
     }
+
+    .actions {
+        margin-left: auto;
+        button {
+            padding: 8px;
+        }
+    }
+`;
+
+const StyledHelp = styled.pre`
+    background: ${THEME.status.info};
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+    font-family: sans-serif;
+    font-size: 90%;
 `;
 
 interface IModalSectionProps {
     title: string;
     buttonText?: string;
     buttonAction?: Function;
+    helpText?: string;
 }
 
-const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonAction, children }) => {
+const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonAction, helpText, children }) => {
 
     const [isOpen, setIsOpen] = useState(true);
+    const [isHelp, setIsHelp] = useState(true);
 
     console.log(isOpen);
 
@@ -54,9 +67,12 @@ const ModalSection: React.FC<IModalSectionProps> = ({ title, buttonText, buttonA
             <StyledModalSection>
                 <h3>{title}</h3>
                 {isOpen && buttonAction && <ButtonInput onClick={buttonAction}>{buttonText}</ButtonInput>}
-                <IconButton iconId="down" onClick={() => setIsOpen(!isOpen)} iconProps={{ rotate: isOpen ? 0 : 270 }} />
-
+                <div className="actions">
+                    {isOpen && <IconButton iconId="help" onClick={() => setIsHelp(!isHelp)} color={THEME.status.info} />}
+                    <IconButton iconId="down" onClick={() => setIsOpen(!isOpen)} iconProps={{ rotate: isOpen ? 0 : 270 }} />
+                </div>
             </StyledModalSection>
+            {isHelp && helpText && <StyledHelp>{helpText}</StyledHelp>}
             {isOpen && children}
         </>
     );

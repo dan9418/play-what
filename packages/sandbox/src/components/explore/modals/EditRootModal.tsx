@@ -73,7 +73,7 @@ const EditRootModal: React.FC = () => {
                     <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
                 }
             </ModalSection>
-            <ModalSection title="Preview">
+            <ModalSection title="Preview" helpText="Choose a root, or 'key center'">
                 <ViewerComparison {...editProps} />
             </ModalSection>
         </Modal >
