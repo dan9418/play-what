@@ -46,14 +46,14 @@
 
 .fret-number {
 	position: absolute;
-	bottom: 105%;
+	bottom: 100%;
 }
 
 /* Fret Dots */
 
 .fret-dots {
 	position: absolute;
-	top: 100%;
+	top: 95%;
 	font-size: 16px;
 	white-space: nowrap;
 }

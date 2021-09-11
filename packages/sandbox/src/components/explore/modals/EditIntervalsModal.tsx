@@ -80,13 +80,13 @@ const EditIntervalsModal: React.FC = () => {
             {...editProps}
         >
             <IntervalsAnalysisAdapter {...editProps} />
+            <ViewerComparison {...editProps} />
             <ModalSection title="Import Preset" {...buttonProps} />
             {isAdvanced ?
                 <IntervalsInputTable intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
                 :
                 <IntervalsInputPreset intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
             }
-             <ViewerComparison {...editProps} />
         </Modal >
     )
 }

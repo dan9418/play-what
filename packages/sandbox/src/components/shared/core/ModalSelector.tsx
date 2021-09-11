@@ -9,7 +9,7 @@ const StyledModalSelector = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
-	padding-bottom: 8px;
+	padding: 8px;
 	gap: 8px;
 
 	button {

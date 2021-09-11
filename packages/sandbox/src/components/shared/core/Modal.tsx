@@ -82,7 +82,7 @@ const StyledModal = styled.div`
 	.body {
 
 		margin: 64px 0;
-		padding: 8px 16px 16px;
+		padding: 0 16px 256px;
 		overflow: auto;
 		height: 100%;
 		width: 100%;
