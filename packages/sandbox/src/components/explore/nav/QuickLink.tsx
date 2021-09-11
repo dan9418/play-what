@@ -41,17 +41,17 @@ export const StyledQuickLink = styled.button`
 interface IQuickLinkProps {
 	name: string;
 	preview?: string;
-	modal: any;
+	modalId: any;
 	closeMenu: Function;
 }
 
-const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modal, closeMenu }) => {
+const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modalId, closeMenu }) => {
 
 	const modalContext = useModalContext();
 
 	return (
 		<StyledQuickLink className="quick-link" type="button" onClick={() => {
-			modalContext.setModal(modal);
+			modalContext.setModalId(modalId);
 			closeMenu();
 		}}>
 			<div className="name-preview">

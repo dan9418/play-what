@@ -38,7 +38,7 @@ const useEditProps = ({
 
     const modalContext = useModalContext();
 
-    const onCancel = () => modalContext.setModal(null);
+    const onCancel = () => modalContext.setModalId(null);
 
     const onApply = () => {
         setBeforeRoot(afterRoot as IPod);

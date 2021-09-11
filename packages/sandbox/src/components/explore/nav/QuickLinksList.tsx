@@ -1,11 +1,9 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import { ModalId } from '../../../contexts/ModalContext';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
-import EditIntervalsModal from '../modals/EditIntervalsModal';
-import EditRootModal from '../modals/EditRootModal';
-import EditViewerModal from '../modals/EditViewerModal';
 import QuickLink, { StyledQuickLink } from './QuickLink';
 
 const StyledQuickLinksList = styled.ul`
@@ -66,19 +64,19 @@ export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
     return (
         <StyledQuickLinksList className={isVertical ? 'y' : 'x'}>
             <li>
-                <QuickLink name="Root" preview={details.root.preview} modal={<EditRootModal />} closeMenu={closeMenu} />
+                <QuickLink name="Root" preview={details.root.preview} modalId={ModalId.Root} closeMenu={closeMenu} />
             </li>
             <li>
-                <QuickLink name="Intervals" preview={details.intervals.preview} modal={<EditIntervalsModal />} closeMenu={closeMenu} />
+                <QuickLink name="Intervals" preview={details.intervals.preview} modalId={ModalId.Intervals} closeMenu={closeMenu} />
             </li>
             <li>
-                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modal={<EditViewerModal />} closeMenu={closeMenu} />
+                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modalId={ModalId.Viewer} closeMenu={closeMenu} />
             </li>
             {/*<li>
-                <QuickLink name="Sound" preview="Sine, 40db" modal={null} />
+                <QuickLink name="Sound" preview="Sine, 40db" modalId={null} />
             </li>
             <li>
-                <QuickLink name="Color" preview="By Degree" modal={null} />
+                <QuickLink name="Color" preview="By Degree" modalId={null} />
             </li>*/}
         </StyledQuickLinksList>
     );

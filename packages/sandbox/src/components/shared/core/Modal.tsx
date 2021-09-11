@@ -1,9 +1,11 @@
 
 import React from "react";
 import styled from "styled-components";
+import { useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import IconButton from "../inputs/IconButton";
+import { ModalSelector } from "./ModalSelector";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -76,34 +78,6 @@ const StyledModal = styled.div`
 
 	.body {
 
-		.selector {
-			display: flex;
-			align-items: center;
-			justify-content: space-evenly;
-			padding-bottom: 8px;
-
-			button {
-				font-weight: bold;
-				font-size: 120%;
-				color: ${THEME.primary};
-				background-color: transparent;
-
-				&:hover {
-					background-color: rgba(0,0,0,0.1)
-				}
-			}
-
-			button.active {
-				color: white;
-				background-color: ${THEME.active};
-
-				&:hover {
-					background-color: white;
-					color: ${THEME.active};
-				}
-			}
-		}
-
 		margin: 64px 0;
 		padding: 8px 16px 16px;
 		overflow: auto;
@@ -145,24 +119,23 @@ const StyledModal = styled.div`
 	}
 `;
 
-export const Modal: React.FC<any> = ({ title, children, onCancel, onApply, onDone }) => {
+export const Modal: React.FC<any> = ({ title, children, onApply, onDone }) => {
+
+	const modalContext = useModalContext();
+
 	return (
 		<StyledModal>
 			<div className="container">
 				<div className="header">
 					<h2>{title}</h2>
-					<IconButton iconId="close" onClick={onCancel} color="white" />
+					<IconButton iconId="close" onClick={modalContext.closeModal} color="white" />
 				</div>
 				<div className="body">
-					<div className="selector">
-						<ButtonInput onClick={null}>Root</ButtonInput>
-						<ButtonInput onClick={null} className="active">Intervals</ButtonInput>
-						<ButtonInput onClick={null}>Viewer</ButtonInput>
-					</div>
+					<ModalSelector />
 					{children}
 				</div>
 				<div className="footer">
-					<ButtonInput onClick={onCancel}>Cancel</ButtonInput>
+					<ButtonInput onClick={modalContext.closeModal}>Cancel</ButtonInput>
 					<ButtonInput onClick={onApply}>Apply</ButtonInput>
 					<ButtonInput onClick={onDone}>Done</ButtonInput>
 				</div>
