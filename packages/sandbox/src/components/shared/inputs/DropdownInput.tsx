@@ -3,15 +3,23 @@ import styled from 'styled-components';
 import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 const StyledDropdownInput = styled.select`
-	height: 40px;
-	font-size: 16px;
+	font-size: 110%;
     min-width: 128px;
 
-	padding: 0 8px;
+	padding: 4px 8px;
 
     cursor: pointer;
     border-radius: 4px;
-	background-color: ${({ theme }) => theme.surface.highlight};;
+	background-color: ${({ theme }) => theme.surface.highlight};
+	&:hover:not(:focus) {
+		background-color: ${({ theme }) => theme.clickable};
+		color: white;
+	}
+
+	option {
+		cursor: pointer;
+	}
+	
     border: none;
 `;
 

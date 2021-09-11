@@ -6,6 +6,7 @@ export const StyledHighlightBox = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 128px;
 
     background: ${props => props.theme.surface.highlight};
     //border: 1px solid ${props => props.theme.border};

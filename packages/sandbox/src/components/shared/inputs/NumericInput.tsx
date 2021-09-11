@@ -3,13 +3,17 @@ import styled from 'styled-components';
 import { IInputProps } from "../../../../../core/src/models/Model.constants";
 
 export const StyledNumbericInput = styled.input`
-	height: 40px;
-	font-size: 16px;
-	max-width: 64px;
-    padding: 0 8px;
+	max-width: 128px;
+    padding: 4px 8px;
+	font-size: 110%;
     border-radius: 4px;
     border: none;
 	background-color: ${({ theme }) => theme.surface.highlight};
+	cursor: pointer;
+	&:hover:not(:focus) {
+		background-color: ${({ theme }) => theme.clickable};
+		color: white;
+	}
 `;
 
 interface INumericInputProps extends IInputProps {

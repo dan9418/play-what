@@ -8,22 +8,22 @@ const StyledSwitch = styled.button`
 
 	-ms-user-select: none;
     user-select: none;
-    height: 40px;
+    height: 32px;
     width: 80px;
-    border-radius: 40px;
+    border-radius: 32px;
 	display: inline-flex;
     align-items: center;
 	cursor: pointer;
 	
 	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.clickable : theme.surface.highlight};	
+	background-color: ${({ $active, theme }) => $active ? theme.active : theme.surface.highlight};	
 	&:hover {
-		background-color: ${({ theme }) => theme.active};	
+		background-color: ${({ theme }) => theme.clickable};	
 	}
 
 	& .ball {
-		height: 32px;
-		width: 32px;
+		height: 24px;
+		width: 24px;
 		border-radius: 100%;
 		background-color: #fff;
 	}

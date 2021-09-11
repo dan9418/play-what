@@ -5,6 +5,7 @@ const StyledButton = styled.button`
 	cursor: pointer;
     border: none;
     border-radius: 4px;
+	font-size: 110%;
     padding: 8px 16px;
 	color: white;
 	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.clickable};

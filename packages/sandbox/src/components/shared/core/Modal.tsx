@@ -45,6 +45,7 @@ const StyledModal = styled.div`
 			border-radius: 8px;
 			top: 104px;
 			bottom: 8px;
+			width: 98%;
 		}
 
 	}

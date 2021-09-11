@@ -20,7 +20,8 @@ const StyledModalSelector = styled.div`
 		width: 100%;
 
 		&:hover {
-			background-color: rgba(0,0,0,0.1)
+			background-color: ${THEME.clickable};
+			color: white;
 		}
 	}
 
@@ -29,8 +30,7 @@ const StyledModalSelector = styled.div`
 		background-color: ${THEME.active};
 
 		&:hover {
-			background-color: white;
-			color: ${THEME.active};
+			background-color: ${THEME.clickable};
 		}
 	}
 `;
