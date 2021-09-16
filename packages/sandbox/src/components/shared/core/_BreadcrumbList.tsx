@@ -1,11 +1,3 @@
-// import Icon from "@pw/sandbox/src/components/shared/ui/Icon";
-// import IconButton from "@pw/sandbox/src/components/shared/ui/inputs/buttons/IconButton";
-// import OverflowMenu from "@pw/sandbox/src/components/shared/ui/OverflowMenu";
-// import { useIsMobile } from "@pw/sandbox/src/hooks/useWindowSize";
-// import THEME from "@pw/sandbox/src/styles/theme";
-// import React from "react";
-// import styled from 'styled-components';
-
 // const StyledWrapper = styled.div`
 // 	position: sticky;
 //     top: 32px;

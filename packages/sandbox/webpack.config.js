@@ -41,7 +41,7 @@ module.exports = {
 	output: {
 		path: `${__dirname}/build/`,
 		publicPath: '/',
-		filename: 'sandbox.js'
+		filename: 'app.js'
 	},
 	devServer: {
 		contentBase: `${__dirname}/build/`,

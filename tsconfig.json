@@ -16,11 +16,14 @@
       "@pw/core": [
         "@pw/core"
       ],
+      "@pw/ui": [
+        "@pw/ui"
+      ],
       "@pw/viewers": [
         "@pw/viewers"
       ],
-      "@pw/sandbox": [
-        "@pw/sandbox"
+      "@pw/app": [
+        "@pw/app"
       ],
     },*/
     // "incremental": true,                         /* Enable incremental compilation */
