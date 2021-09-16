@@ -1,9 +1,8 @@
 import * as React from "react";
 import * as api from './Fretboard.api';
-import "./Fretboard.css";
 import DEFAULT_FRETBOARD_PROPS, { IFretboardProps, IFretProps } from "./Fretboard.defaults";
+import StyledFretboard from "./Fretboard.styles";
 import FretLabel from "./FretLabel";
-
 
 export const Fret: React.FC<IFretProps> = props => {
 
@@ -66,9 +65,9 @@ const Fretboard: React.FC<IFretboardProps> = (userProps) => {
 	};
 
 	return (
-		<div className='fretboard' style={fretboardStyles}>
+		<StyledFretboard className='fretboard' style={fretboardStyles}>
 			{getFrets(props)}
-		</div>
+		</StyledFretboard>
 	);
 };
 

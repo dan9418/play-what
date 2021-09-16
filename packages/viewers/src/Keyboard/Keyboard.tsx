@@ -1,7 +1,6 @@
-// @ts-ignore
 import React, { useState, useEffect } from "react";
-import "./Keyboard.css";
 import DEFAULT_PROPS, { IKeyboardProps } from "./Keyboard.defaults";
+import StyledKeyboard from "./Keyboard.styles";
 import KeyboardKey from "./KeyboardKey";
 
 const getKeyboardKeys = (props: IKeyboardProps, viewerWidth: number) => {
@@ -41,9 +40,9 @@ const Keyboard: React.FC<IKeyboardProps> = (userProps) => {
 	}, [])
 
 	return (
-		<div className='keyboard' id='keyboard'>
+		<StyledKeyboard className='keyboard' id='keyboard'>
 			{getKeyboardKeys(props, dims[0])}
-		</div>
+		</StyledKeyboard>
 	);
 }
 

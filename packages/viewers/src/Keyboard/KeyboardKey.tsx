@@ -3,7 +3,6 @@ import NumberUtils from '@pw/core/src/general/Number.utils';
 import React from "react";
 import styled from 'styled-components';
 import viewerUtils from '../Viewer.utils';
-import "./Keyboard.css";
 import { IKeyboardKeyProps } from './Keyboard.defaults';
 
 const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
