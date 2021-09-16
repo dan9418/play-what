@@ -1,7 +1,7 @@
 import React from 'react';
 import { HELP_PREVIEW } from '../../../utils/help';
 import { Modal } from '../../shared/core/Modal';
-import ViewerInput from '../../../../../viewers/src/inputs/ViewerInput';
+import ViewerInput from '../../../../../ui/src/inputs/ViewerInput';
 import HighlightBox from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';

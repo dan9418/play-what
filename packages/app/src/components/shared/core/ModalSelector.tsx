@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { ModalId, useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
-import ButtonInput from "../../../../../viewers/src/inputs/ButtonInput";
+import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 
 const StyledModalSelector = styled.div`
 	display: flex;

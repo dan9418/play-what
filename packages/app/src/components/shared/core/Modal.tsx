@@ -3,8 +3,8 @@ import React from "react";
 import styled from "styled-components";
 import { useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
-import ButtonInput from "../../../../../viewers/src/inputs/ButtonInput";
-import IconButton from "../../../../../viewers/src/inputs/IconButton";
+import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
+import IconButton from "../../../../../ui/src/inputs/IconButton";
 import { ModalSelector } from "./ModalSelector";
 
 const StyledModal = styled.div`
