@@ -41,7 +41,7 @@ module.exports = {
 	output: {
 		path: `${__dirname}/build/`,
 		publicPath: '/',
-		filename: 'app.js'
+		filename: 'play-what-app.js'
 	},
 	devServer: {
 		contentBase: `${__dirname}/build/`,

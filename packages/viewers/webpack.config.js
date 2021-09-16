@@ -4,7 +4,7 @@ var config = {
 	entry: ['./src/index.js'],
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: 'play-what-react.js',
+		filename: 'play-what-viewers.js',
 		libraryTarget: "commonjs2"
 	},
 	resolve: {
