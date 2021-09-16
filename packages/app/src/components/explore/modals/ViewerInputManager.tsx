@@ -2,10 +2,10 @@ import React, { Fragment, ReactNode } from 'react';
 import styled from 'styled-components';
 import { InputId, IPreset } from '../../../../../core/src/models/Model.constants';
 import { IViewer } from '../../../../../viewers/src/Viewer.constants';
-import DropdownInput from '../../shared/inputs/DropdownInput';
-import NumericInput from '../../shared/inputs/NumericInput';
-import RangeInput from '../../shared/inputs/RangeInput';
-import SwitchInput from '../../shared/inputs/SwitchInput';
+import DropdownInput from '../../../../../viewers/src/inputs/DropdownInput';
+import NumericInput from '../../../../../viewers/src/inputs/NumericInput';
+import RangeInput from '../../../../../viewers/src/inputs/RangeInput';
+import SwitchInput from '../../../../../viewers/src/inputs/SwitchInput';
 import InputRow from '../../shared/ui/InputRow';
 
 const StyledViewerInputManager = styled.div`

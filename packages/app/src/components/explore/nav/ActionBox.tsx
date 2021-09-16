@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 import styled from 'styled-components';
-import IconButton from '../../shared/inputs/IconButton';
+import IconButton from '../../../../../viewers/src/inputs/IconButton';
 
 export const StyledActionBox = styled.div`
     display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "../../../../../core/src/models/Model.constants";
+import { IInputProps } from "../../../core/src/models/Model.constants";
 
 export const StyledNumbericInput = styled.input`
 	max-width: 128px;

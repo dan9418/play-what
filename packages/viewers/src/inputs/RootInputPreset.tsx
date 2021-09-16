@@ -1,7 +1,7 @@
 import { NOTE_PRESETS } from '@pw/core/src/models/Pod/Note/Note.constants';
 import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
 import React from 'react';
-import InputRow from '../ui/InputRow';
+import InputRow from '../../../app/src/components/shared/ui/InputRow';
 import DropdownInput from './DropdownInput';
 
 const RootInputPreset = ({ root, setRoot }) => {

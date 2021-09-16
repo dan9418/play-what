@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
 import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
-import DropdownInput from "../shared/inputs/DropdownInput";
+import DropdownInput from "../../../../viewers/src/inputs/DropdownInput";
 import InputRow from "../shared/ui/InputRow";
 
 const FRETBOARD_PROPS = {

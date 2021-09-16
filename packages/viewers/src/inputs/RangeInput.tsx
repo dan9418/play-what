@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "../../../../../core/src/models/Model.constants";
+import { IInputProps } from "../../../core/src/models/Model.constants";
 import NumericInput, { StyledNumbericInput } from "./NumericInput";
 
 export const StyledRangeInput = styled.div`
