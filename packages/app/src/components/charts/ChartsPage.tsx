@@ -12,7 +12,7 @@ import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import InputRow from "../shared/ui/InputRow";
 
 const FRETBOARD_PROPS = {
-    fretRange: [0, 12],
+    fretRange: [0, 12] as [number, number],
     tuning: FRETBOARD_TUNING.standard.value,
     matchOctave: false,
     labelBy: 'none',
