@@ -3,9 +3,7 @@ import NumberUtils from '@pw/core/src/general/Number.utils';
 import React from "react";
 import styled from 'styled-components';
 import viewerUtils from '../Viewer.utils';
-import { IKeyboardKeyProps } from './Keyboard.defaults';
-
-const BLACK_KEY_INDICES = [0, 2, 4, 5, 7, 9, 11];
+import { IKeyboardKeyProps, KeyType } from './Keyboard.defaults';
 
 // Key dimensions relative to white key width
 const KEY__DIMS = {
@@ -14,19 +12,14 @@ const KEY__DIMS = {
 	WhW_BlH: 2.9688 // White key width to black hey height
 }
 
-export const KEY_TYPE = {
-	Black: 'black',
-	White: 'white'
-}
-
 const getScaleStyles = (keyType, scale) => {
 	switch (keyType) {
-		case KEY_TYPE.White:
+		case KeyType.White:
 			return {
 				width: scale + 'px',
 				height: KEY__DIMS.WhW_WhH * scale + 'px'
 			};
-		case KEY_TYPE.Black:
+		case KeyType.Black:
 			return {
 				width: KEY__DIMS.WhW_BlW * scale + 'px',
 				height: KEY__DIMS.WhW_BlH * scale + 'px',
@@ -49,7 +42,7 @@ const StyledKeyLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, hideLabel, podType, matchOctave }) => {
+const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ keyType, noteIndex, scale, details, hideLabel, podType, matchOctave }) => {
 
 	const podOptions = {
 		matchOctave,
@@ -58,8 +51,6 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 	};
 	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
 
-	const keyType = BLACK_KEY_INDICES.includes(NumberUtils.modulo(noteIndex, 12)) ? KEY_TYPE.White : KEY_TYPE.Black;
-
 	const scaleStyles = getScaleStyles(keyType, scale);
 	const classes = ['keyboard-key', `${keyType}-key`, keyType];
 
@@ -67,8 +58,8 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ noteIndex, scale, details, h
 		backgroundColor: podProps ? podProps.bgColor : ''
 	}
 
-	const keyStyles = keyType === KEY_TYPE.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
-	const labelStyles = keyType === KEY_TYPE.White ? colorStyles : {};
+	const keyStyles = keyType === KeyType.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
+	const labelStyles = keyType === KeyType.White ? colorStyles : {};
 
 	return (
 		<StyledKey className={`${keyType}-key-container`}>
