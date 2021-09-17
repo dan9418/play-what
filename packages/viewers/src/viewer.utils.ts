@@ -10,6 +10,8 @@ interface IPodProps {
     bgColor: string;
     fgColor: string;
     text: string;
+    note: IPod,
+    interval: IPod
 }
 
 interface IPodPropsOptions {
@@ -62,7 +64,7 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const fgColor = ColorUtils.getFgColor(bgColor);
 
     // Package data
-    return { bgColor, fgColor, text };
+    return { bgColor, fgColor, text, note, interval };
 }
 
 const getDetails = (viewerId: ViewerId, viewerProps: IViewerProps): IViewerDetails => {

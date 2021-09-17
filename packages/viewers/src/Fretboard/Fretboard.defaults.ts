@@ -8,6 +8,7 @@ export interface IFretboardProps extends IViewerProps {
 	labelBy?: string;
 	showFretDots?: boolean;
 	showFretNumbers?: boolean;
+	voicing?: any;
 }
 
 export interface IFretProps extends IFretboardProps {

@@ -22,13 +22,32 @@ export enum ChordId {
 	Sus4 = 'Sus4',
 }
 
-const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = []) => ({
+interface IVoicing {
+	id: string;
+	name: string;
+	value: number[];
+}
+
+const formatVoicing = (id: string, name: string, value: number[]) => ({
+	id,
+	name,
+	value
+});
+
+const VOICING = {
+	bar7_E: formatVoicing('bar_E', 'Bar (E)', [1, 5, 3, 7, 5, 1]),
+	bar7_A: formatVoicing('bar7_A', 'Bar 7 (A)', [5, 3, 7, 5, 1, null]),
+	bar_E: formatVoicing('bar_E', 'Bar (E)', [1, 5, 3, 1, 5, 1]),
+	bar_A: formatVoicing('bar7_A', 'Bar 7 (A)', [5, 3, 1, 5, 1, null])
+}
+
+const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], voicings = []) => ({
 	id,
 	name,
 	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
-	tags: [PresetTag.Chord, ...tags]
+	tags: [PresetTag.Chord, ...tags],
+	voicings
 });
-
 
 export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 	[ChordId.MajTri, formatPreset(
@@ -47,7 +66,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 		ChordId.Maj7,
 		'Major 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
-		[PresetTag.Major, PresetTag.Seventh]
+		[PresetTag.Major, PresetTag.Seventh],
+		[VOICING.bar7_E, VOICING.bar7_A, VOICING.bar_E, VOICING.bar_A]
 	)],
 	[ChordId.MinTri, formatPreset(
 		ChordId.MinTri,

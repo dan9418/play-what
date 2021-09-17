@@ -24,7 +24,7 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, matchOctave, details }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, matchOctave, details, voicing, stringIndex }) => {
 
 	const podOptions = {
 		matchOctave,
@@ -36,7 +36,15 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, mat
 
 	if (!podProps) return null;
 
-	const { bgColor, fgColor, text } = podProps;
+	let { bgColor, fgColor, text, interval } = podProps;
+
+	const hasVoicing = voicing && voicing.value && voicing.value.length;
+
+	if(hasVoicing) console.log(stringIndex, voicing.value[stringIndex],  interval[1])
+
+	const isNoteInVoicing = hasVoicing && interval[1] + 1 === voicing.value[stringIndex];
+	//console.log(hasVoicing, isNoteInVoicing, voicing.value[stringIndex], interval[1] + 1)
+	if(!isNoteInVoicing) bgColor = `${bgColor}33`;
 
 	const f = TuningUtils.getFrequency(noteIndex);
 

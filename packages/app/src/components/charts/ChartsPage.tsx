@@ -3,12 +3,12 @@ import { PodType } from "@pw/core/src/models/Model.constants";
 import { NOTE_PRESET_MAP } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_PRESET_MAP } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
+import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import React, { ReactNode, useState } from "react";
 import styled from 'styled-components';
 import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
 import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
-import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import InputRow from "../shared/ui/InputRow";
 
 const FRETBOARD_PROPS = {
@@ -61,12 +61,13 @@ const StyledSection = styled.div`
     @media(min-width: 1024px) {
         grid-template-columns: repeat(${props => Math.min(4, props.$length)}, 1fr);
     }
-    .chord {
-        h3 {
-            text-align: center;
-            font-weight: normal;
-        }
-        width: 100%;
+
+    .rest {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 200%;
     }
 `;
 
@@ -80,6 +81,35 @@ const getOptions = () => {
     })
 }
 
+const StyledChord = styled.div`
+     h3 {
+        text-align: center;
+        font-weight: normal;
+        margin-top: 16px;
+    }
+    width: 100%;
+`;
+
+const Chord: React.FC<any> = ({ chord }) => {
+    const [noteId, chordId, t] = chord;
+    const root = NOTE_PRESET_MAP.get(noteId);
+    const intervals = CHORD_PRESET_MAP.get(chordId);
+
+    const voicingOptions = intervals.voicings;
+
+    const [voicing, setVoicing] = useState(intervals.voicings[0]);
+
+    const details = PodListUtils.getDetails(root.value, intervals.value);
+
+    return (
+        <StyledChord>
+            <h3>{`${root.name} ${intervals.name}`}</h3>
+            <Fretboard details={details} {...FRETBOARD_PROPS} voicing={voicing} />
+            {voicingOptions.length > 0 && <DropdownInput value={voicing} setValue={setVoicing} options={voicingOptions} />}
+        </StyledChord>
+    );
+};
+
 const getChart = (config: IChartConfig): ReactNode => {
     const sectionItems = [];
     for (let s = 0; s < config.sections.length; s++) {
@@ -87,18 +117,14 @@ const getChart = (config: IChartConfig): ReactNode => {
         const chordItems = [];
         for (let c = 0; c < section.chords.length; c++) {
             const chord = section.chords[c];
-            const [noteId, chordId, t] = chord;
-            const root = NOTE_PRESET_MAP.get(noteId);
-            const intervals = CHORD_PRESET_MAP.get(chordId);
+            const [a, b, t] = chord;
 
-            const details = PodListUtils.getDetails(root.value, intervals.value);
-
-            const chords = new Array(t / 2).fill(
-                <div className="chord">
-                    <h3>{`${root.name} ${intervals.name}`}</h3>
-                    <Fretboard details={details} {...FRETBOARD_PROPS} />
-                </div>
-            );
+            const chords = [
+                <Chord chord={chord} key="1" />,
+                ...(new Array((t / 2) - 1).fill(
+                    <div className="rest" >/</div>
+                ))
+            ];
 
             chordItems.push(
                 ...chords

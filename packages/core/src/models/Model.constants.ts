@@ -79,7 +79,8 @@ export interface IPreset<T> {
 	id: string;
 	name: string;
 	tags: PresetTag[],
-	value: T
+	value: T,
+	voicings?: any[]
 }
 
 export interface IModelDetails {

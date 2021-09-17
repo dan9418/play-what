@@ -22,7 +22,7 @@ export const Fret: React.FC<IFretProps> = props => {
 				{showFretNumbers && isHighString && fretIndex > 0 && fretIndex}
 			</div>
 			<div className='fret-string' />
-			<FretLabel noteIndex={noteIndex} {...props} />
+			<FretLabel noteIndex={noteIndex} stringIndex={stringIndex} {...props} />
 			<div className="fret-dots">
 				{showFretDots && isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
 			</div>
