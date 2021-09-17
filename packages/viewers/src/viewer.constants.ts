@@ -157,4 +157,4 @@ export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
 
 export const VIEWER_PRESETS = Array.from(VIEWER_PRESET_MAP).map(([k, v]) => v);
 
-export const DEFAULT_VIEWER_ID = ViewerId.Keyboard;
+export const DEFAULT_VIEWER_ID = ViewerId.Fretboard;
