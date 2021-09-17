@@ -35,11 +35,20 @@ const formatVoicing = (id: string, name: string, value: number[]) => ({
 });
 
 const VOICING = {
-	bar7_E: formatVoicing('bar_E', 'Bar (E)', [1, 5, 3, 7, 5, 1]),
-	bar7_A: formatVoicing('bar7_A', 'Bar 7 (A)', [5, 3, 7, 5, 1, null]),
-	bar_E: formatVoicing('bar_E', 'Bar (E)', [1, 5, 3, 1, 5, 1]),
-	bar_A: formatVoicing('bar7_A', 'Bar 7 (A)', [5, 3, 1, 5, 1, null])
+	v7_E: formatVoicing('v_E', 'Barre (E root)', [1, 5, 3, 7, 5, 1]),
+	v7_A: formatVoicing('v7_A', 'Barre (A root)', [5, 3, 7, 5, 1, null]),
+	v7_E_b9: formatVoicing('v_E', 'Barre (E root)', [1, 5, 2, 7, 5, 1]),
+	v7_A_b9: formatVoicing('v7_A', 'Barre (A root)', [5, 2, 7, 5, 1, null]),
+	v6_E: formatVoicing('v_E', 'Barre (E root)', [1, 5, 3, 6, 5, 1]),
+	v6_A: formatVoicing('v7_A', 'Barre (A root)', [5, 3, 6, 5, 1, null]),
+	v_E: formatVoicing('v_E', 'Barre (E root)', [1, 5, 3, 1, 5, 1]),
+	v_A: formatVoicing('v7_A', 'Barre (A root)', [5, 3, 1, 5, 1, null])
 }
+
+const VOICING_TRIADS = [VOICING.v_A, VOICING.v_E];
+const VOICING_SEVENTHS = [VOICING.v7_A, VOICING.v7_E];
+const VOICING_SEVENTHS_b9 = [VOICING.v7_A_b9, VOICING.v7_E_b9];
+const VOICING_SIXTHS = [VOICING.v6_A, VOICING.v6_E];
 
 const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], voicings = []) => ({
 	id,
@@ -54,92 +63,106 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 		ChordId.MajTri,
 		'Major Triad',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5],
-		[PresetTag.Major, PresetTag.Triad]
+		[PresetTag.Major, PresetTag.Triad],
+		VOICING_TRIADS
 	)],
 	[ChordId.Maj6, formatPreset(
 		ChordId.Maj6,
 		'Major 6th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M6],
-		[PresetTag.Major, PresetTag.Sixth]
+		[PresetTag.Major, PresetTag.Sixth],
+		VOICING_SIXTHS
 	)],
 	[ChordId.Maj7, formatPreset(
 		ChordId.Maj7,
 		'Major 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
 		[PresetTag.Major, PresetTag.Seventh],
-		[VOICING.bar7_E, VOICING.bar7_A, VOICING.bar_E, VOICING.bar_A]
+		VOICING_SEVENTHS
 	)],
 	[ChordId.MinTri, formatPreset(
 		ChordId.MinTri,
 		'Minor Triad',
 		[IntervalId.P1, IntervalId.m3, IntervalId.P5],
-		[PresetTag.Minor, PresetTag.Triad]
+		[PresetTag.Minor, PresetTag.Triad],
+		VOICING_TRIADS
 	)],
 	[ChordId.Min6, formatPreset(
 		ChordId.Min6,
 		'Minor 6th',
 		[IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M6],
-		[PresetTag.Minor, PresetTag.Sixth]
+		[PresetTag.Minor, PresetTag.Sixth],
+		VOICING_SIXTHS
 	)],
 	[ChordId.Min7, formatPreset(
 		ChordId.Min7,
 		'Minor 7th',
 		[IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.m7],
-		[PresetTag.Minor, PresetTag.Seventh]
+		[PresetTag.Minor, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.MinMaj7, formatPreset(
 		ChordId.MinMaj7,
 		'Minor-Major 7th',
 		[IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M7],
-		[PresetTag.Minor, PresetTag.Seventh]
+		[PresetTag.Minor, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.Dom7, formatPreset(
 		ChordId.Dom7,
 		'Dominant 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7],
-		[PresetTag.Dominant, PresetTag.Seventh]
+		[PresetTag.Dominant, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.Dom7b9, formatPreset(
 		ChordId.Dom7b9,
 		'Dominant 7th (b9)',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7, IntervalId.m2],
-		[PresetTag.Dominant, PresetTag.Extended]
+		[PresetTag.Dominant, PresetTag.Extended],
+		VOICING_SEVENTHS_b9
 	)],
 	[ChordId.AugTri, formatPreset(
 		ChordId.AugTri,
 		'Augmented Triad',
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5],
-		[PresetTag.Augmented, PresetTag.Triad]
+		[PresetTag.Augmented, PresetTag.Triad],
+		VOICING_TRIADS
 	)],
 	[ChordId.Aug7, formatPreset(
 		ChordId.Aug7,
 		'Augmented 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.m7],
-		[PresetTag.Augmented, PresetTag.Seventh]
+		[PresetTag.Augmented, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.AugM7, formatPreset(
 		ChordId.AugM7,
 		'Augmented Major 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.M7],
-		[PresetTag.Augmented, PresetTag.Seventh]
+		[PresetTag.Augmented, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.DimTri, formatPreset(
 		ChordId.DimTri,
 		'Diminished Triad',
 		[IntervalId.P1, IntervalId.m3, IntervalId.d5],
-		[PresetTag.Diminished, PresetTag.Triad]
+		[PresetTag.Diminished, PresetTag.Triad],
+		VOICING_TRIADS
 	)],
 	[ChordId.Dim7, formatPreset(
 		ChordId.Dim7,
 		'Diminished 7th',
 		[IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.d7],
-		[PresetTag.Diminished, PresetTag.Seventh]
+		[PresetTag.Diminished, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.HalfDim7, formatPreset(
 		ChordId.HalfDim7,
 		'Half-Diminished 7th',
 		[IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.m7],
-		[PresetTag.Diminished, PresetTag.Seventh]
+		[PresetTag.Diminished, PresetTag.Seventh],
+		VOICING_SEVENTHS
 	)],
 	[ChordId.Sus2, formatPreset(
 		ChordId.Sus2,

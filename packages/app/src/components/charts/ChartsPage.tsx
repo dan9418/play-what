@@ -68,6 +68,9 @@ const StyledSection = styled.div`
         justify-content: center;
         font-weight: bold;
         font-size: 200%;
+
+        background: white;
+        border-radius: 8px;
     }
 `;
 
@@ -82,12 +85,19 @@ const getOptions = () => {
 }
 
 const StyledChord = styled.div`
+    //border: 1px solid black;
+    background: white;
+    border-radius: 8px;
      h3 {
-        text-align: center;
         font-weight: normal;
         margin-top: 16px;
     }
     width: 100%;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 const Chord: React.FC<any> = ({ chord }) => {
