@@ -1,9 +1,13 @@
+import IntervalsInputBasic from '@pw/ui/src/inputs/IntervalsInputBasic';
+import RootInputBasic from '@pw/ui/src/inputs/RootInputBasic';
+import ViewerInputBasic from '@pw/ui/src/inputs/ViewerInputBasic';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { ModalId } from '../../../contexts/ModalContext';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
+import useEditProps from '../modals/useEditProps';
 import QuickLink, { StyledQuickLink } from './QuickLink';
 
 const StyledQuickLinksList = styled.ul`
@@ -61,16 +65,24 @@ export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
     // @ts-ignore
     const viewerDetails = useRecoilValue(viewerDetailsState);
 
+    const editProps = useEditProps();
+
     return (
         <StyledQuickLinksList className={isVertical ? 'y' : 'x'}>
             <li>
-                <QuickLink name="Root" preview={details.root.preview} modalId={ModalId.Root} closeMenu={closeMenu} />
+                <QuickLink name="Root" preview={details.root.preview} modalId={ModalId.Root} closeMenu={closeMenu} >
+                    <RootInputBasic {...editProps} />
+                </QuickLink>
             </li>
             <li>
-                <QuickLink name="Intervals" preview={details.intervals.preview} modalId={ModalId.Intervals} closeMenu={closeMenu} />
+                <QuickLink name="Intervals" preview={details.intervals.preview} modalId={ModalId.Intervals} closeMenu={closeMenu} >
+                    <IntervalsInputBasic {...editProps} />
+                </QuickLink>
             </li>
             <li>
-                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modalId={ModalId.Viewer} closeMenu={closeMenu} />
+                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modalId={ModalId.Viewer} closeMenu={closeMenu} >
+                    <ViewerInputBasic {...editProps} />
+                </QuickLink>
             </li>
             {/*<li>
                 <QuickLink name="Sound" preview="Sine, 40db" modalId={null} />

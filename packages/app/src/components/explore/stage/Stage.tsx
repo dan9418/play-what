@@ -1,7 +1,5 @@
-import QuickInput from "@pw/ui/src/inputs/QuickInput";
 import React from "react";
 import styled from 'styled-components';
-import useEditProps from "../modals/useEditProps";
 import Viewer from "../Viewer";
 
 const StyledStage = styled.div`
@@ -23,10 +21,8 @@ const StyledStage = styled.div`
 
 
 const Stage: React.FC<any> = () => {
-    const editProps = useEditProps();
     return (
         <StyledStage>
-            <QuickInput {...editProps} />
             <Viewer />
         </StyledStage>
     );

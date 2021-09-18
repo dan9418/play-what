@@ -6,7 +6,7 @@ import Stage from "./stage/Stage";
 const StyledExplorePage = styled.div`
 
 	position: fixed;
-	top: 96px;
+	top: 160px;
 	left: 0;
 	right: 0;
 	bottom: 0;

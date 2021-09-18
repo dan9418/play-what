@@ -1,3 +1,4 @@
+import IconButton from "@pw/ui/src/inputs/IconButton";
 import React from "react";
 import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
@@ -9,7 +10,7 @@ export const StyledQuickLink = styled.button`
 	padding: 0 16px;
 
 	white-space: nowrap;
-	cursor: pointer;
+	//cursor: pointer;
 	border: none;
 	text-align: left;
 
@@ -33,9 +34,9 @@ export const StyledQuickLink = styled.button`
 	}
 
 	background-color: transparent;
-	&:hover {
+	/*&:hover {
 		background-color: rgba(255, 255, 255, 0.25);
-	}
+	}*/
 `;
 
 interface IQuickLinkProps {
@@ -45,20 +46,20 @@ interface IQuickLinkProps {
 	closeMenu: Function;
 }
 
-const QuickLink: React.FC<IQuickLinkProps> = ({ name, preview, modalId, closeMenu }) => {
+const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, modalId, closeMenu }) => {
 
 	const modalContext = useModalContext();
 
 	return (
-		<StyledQuickLink className="quick-link" type="button" onClick={() => {
-			modalContext.setModalId(modalId);
-			closeMenu();
-		}}>
+		<StyledQuickLink className="quick-link" type="button">
 			<div className="name-preview">
 				<div className="name">{name}</div>
-				<div className="preview">{preview}</div>
+				<div className="content">{children}</div>
 			</div>
-			<Icon iconId="edit" color={THEME.text.dark} />
+			<IconButton iconId="edit" color={THEME.text.dark} onClick={() => {
+				modalContext.setModalId(modalId);
+				closeMenu();
+			}} />
 		</StyledQuickLink>
 	);
 };
