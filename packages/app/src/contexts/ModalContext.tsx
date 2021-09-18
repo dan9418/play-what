@@ -1,6 +1,6 @@
 
 import React from "react";
-import EditRootModal from "../components/explore/modals/EditRootModal";
+import EditModal from "../components/explore/modals/EditModal";
 
 interface IModelContext {
 	isOpen: boolean,
@@ -25,7 +25,7 @@ export const ModalContextProvider: React.FC = ({ children }) => {
 	return (
 		<ModalContext.Provider value={modalContext}>
 			{children}
-			{isOpen && <EditRootModal />}
+			{isOpen && <EditModal />}
 		</ModalContext.Provider>
 	);
 };

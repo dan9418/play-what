@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
-import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../utils/help';
-import { Modal } from '../../shared/core/Modal';
 import RootInput from '../../../../../ui/src/inputs/RootInput';
 import RootInputPreset from '../../../../../ui/src/inputs/RootInputPreset';
+import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
@@ -61,10 +60,7 @@ const EditRootModal: React.FC = () => {
     };
 
     return (
-        <Modal
-            title="Edit"
-            {...editProps}
-        >
+        <>
             <RootAnalysisAdapter {...editProps} />
 
             <ModalSection title="Edit Root" {...buttonProps} helpText={HELP_ROOT_EDIT}>
@@ -77,7 +73,7 @@ const EditRootModal: React.FC = () => {
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />
             </ModalSection>
-        </Modal >
+        </ >
     );
 }
 

@@ -1,11 +1,10 @@
 
+import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React from "react";
 import styled from "styled-components";
+import IconButton from "../../../../../ui/src/inputs/IconButton";
 import { useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
-import IconButton from "../../../../../ui/src/inputs/IconButton";
-import { ModalSelector } from "./ModalSelector";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -137,7 +136,6 @@ export const Modal: React.FC<any> = ({ title, children, onApply, onDone }) => {
 					<IconButton iconId="close" onClick={modalContext.closeModal} color="white" />
 				</div>
 				<div className="body">
-					<ModalSelector />
 					{children}
 				</div>
 				<div className="footer">

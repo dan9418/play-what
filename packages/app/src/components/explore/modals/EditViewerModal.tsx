@@ -1,7 +1,6 @@
 import React from 'react';
-import { HELP_PREVIEW } from '../../../utils/help';
-import { Modal } from '../../shared/core/Modal';
 import ViewerInput from '../../../../../ui/src/inputs/ViewerInput';
+import { HELP_PREVIEW } from '../../../utils/help';
 import HighlightBox from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
@@ -20,18 +19,14 @@ const EditViewerModal: React.FC<any> = () => {
     const editProps = useEditProps();
 
     return (
-        <Modal
-            title="Edit"
-            {...editProps}
-        >
-
+        <>
             <ViewerAnalysisAdapter {...editProps} />
 
             <ViewerInputAdapter {...editProps} />
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} always />
             </ModalSection>
-        </Modal>
+        </>
     )
 }
 

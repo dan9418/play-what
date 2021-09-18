@@ -1,10 +1,9 @@
 import IntervalUtils from '@pw/core/src/models/Pod/Interval/Interval.utils';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../utils/help';
-import { Modal } from '../../shared/core/Modal';
 import IntervalsInputPreset from '../../../../../ui/src/inputs/IntervalsInputPreset';
 import IntervalsInputTable from '../../../../../ui/src/inputs/IntervalsInputTable';
+import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
 import useEditProps from './useEditProps';
@@ -76,10 +75,7 @@ const EditIntervalsModal: React.FC = () => {
     };
 
     return (
-        <Modal
-            title="Edit"
-            {...editProps}
-        >
+        <>
             <IntervalsAnalysisAdapter {...editProps} />
 
             <ModalSection title="Edit Intervals" {...buttonProps} helpText={HELP_INTERVALS_EDIT}>
@@ -92,7 +88,7 @@ const EditIntervalsModal: React.FC = () => {
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />
             </ModalSection>
-        </Modal >
+        </ >
     )
 }
 
