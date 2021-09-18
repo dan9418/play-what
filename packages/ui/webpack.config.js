@@ -1,9 +1,9 @@
 var path = require('path');
 var config = {
   mode: 'development',
-  entry: ['./src/index.js'],
+  entry: ['../../build/core/src/index.js'],
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, '../../build/scripts/'),
     filename: 'play-what-ui.js',
     libraryTarget: "commonjs2"
   }

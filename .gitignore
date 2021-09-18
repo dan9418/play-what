@@ -11,3 +11,5 @@ packages/viewers/src/**/*.js
 
 packages/app/src/**/*.jsx
 packages/app/src/**/*.js
+
+build
