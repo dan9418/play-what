@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Modal } from '../../shared/core/Modal';
 import { ModalSelector, TabId } from './ModalSelector';
 import IntervalsInputAdvanced from '@pw/ui/src/inputs/IntervalsInputAdvanced';
 import RootInputAdvanced from '@pw/ui/src/inputs/RootInputAdvanced';
 import ViewerInputAdvanced from '@pw/ui/src/inputs/ViewerInputAdvanced';
 import useEditProps from '../../../hooks/useEditProps';
+import { Modal } from '../../shared/modal/Modal';
 
 const MODAL_MAP = {
     [TabId.Root]: RootInputAdvanced,

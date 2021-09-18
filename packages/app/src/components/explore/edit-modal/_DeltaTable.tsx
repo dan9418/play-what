@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import viewerUtils from '../../../../../viewers/src/Viewer.utils';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
-import Viewer from '../Viewer';
+import Viewer from '../viewer/Viewer';
 import PodTable from './_PodTable';
 
 export const StyledDeltaTable = styled.div`

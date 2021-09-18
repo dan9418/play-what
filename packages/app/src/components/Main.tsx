@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ChartsPage from '../../charts/ChartsPage';
-import ExplorePage from '../../explore/ExplorePage';
-import TestPage from '../../test/TestPage';
+import ChartsPage from './charts/ChartsPage';
+import ExplorePage from './explore/ExplorePage';
+import TestPage from './test/TestPage';
+
 
 const StyledMain = styled.main`
 	margin: auto;

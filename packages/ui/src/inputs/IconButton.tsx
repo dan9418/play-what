@@ -1,7 +1,8 @@
 import React from "react";
 import { css } from 'styled-components';
-import Icon from "../ui/Icon";
+import Icon from "../Icon";
 import ButtonInput from "./ButtonInput";
+
 
 const styles = css`
     padding: 12px;

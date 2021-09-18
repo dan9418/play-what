@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../core/src/models/Pod/Note/Note.utils';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
-import InputRow from '../ui/InputRow';
+import InputRow from '../InputRow';
+
 
 const StyledRootInput = styled.div`
     button {

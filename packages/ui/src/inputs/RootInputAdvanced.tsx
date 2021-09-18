@@ -6,8 +6,8 @@ import styled from 'styled-components';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
-import { StyledHighlightBox } from '../ui/HighlightBox';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../app/src/utils/help';
+import { StyledHighlightBox } from '../HighlightBox';
 
 const StyledRootAnalysis = styled(StyledHighlightBox)`
     .top {

@@ -2,7 +2,7 @@ import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
-import Viewer from '../Viewer';
+import Viewer from '../viewer/Viewer';
 
 const StyledViewerComparison = styled.div`
     display: grid;

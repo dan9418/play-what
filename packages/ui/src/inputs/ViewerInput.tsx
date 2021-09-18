@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../viewers/src/Viewer.constants';
-import { HELP_VIEWER_CONFIGURE, HELP_VIEWER_EDIT } from '../../../app/src/utils/help';
-import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import ViewerInputManager from '../../../app/src/components/explore/edit-modal/ViewerInputManager';
-import InputRow from '../ui/InputRow';
+import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
+import { HELP_VIEWER_CONFIGURE, HELP_VIEWER_EDIT } from '../../../app/src/utils/help';
+import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../viewers/src/Viewer.constants';
+import InputRow from '../InputRow';
 import DropdownInput from './DropdownInput';
 
 const StyledViewerInput = styled.div`

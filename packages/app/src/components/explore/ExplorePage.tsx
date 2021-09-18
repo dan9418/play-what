@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Menu from './menu/Menu';
-import Viewer from "./Viewer";
+import Viewer from "./viewer/Viewer";
 
 const StyledExplorePage = styled.div`
 

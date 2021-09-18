@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { detailsState, viewerDetailsState } from "../../state/state";
+import { detailsState, viewerDetailsState } from "../../../state/state";
 
 const StyledViewer = styled.div`
     width: 100%;

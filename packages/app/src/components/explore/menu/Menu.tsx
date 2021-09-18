@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import THEME from '../../../styles/theme';
 import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
-import { Menu } from './Menu';
+import { MenuList } from './MenuList';
 
 const StyledMenu = styled.nav`
     position: fixed;
@@ -76,11 +76,11 @@ const Menu: React.FC<any> = () => {
 		<StyledMenu>
 			<div>
 				<MasterPreview />
-				<Menu setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
+				<MenuList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 				{isMenuOpen &&
 					<div className="menu">
-						<Menu setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} isVertical />
+						<MenuList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} isVertical />
 					</div>
 				}
 			</div>

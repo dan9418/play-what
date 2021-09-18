@@ -6,7 +6,7 @@ import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import NumericInput from '@pw/ui/src/inputs/NumericInput';
 import RangeInput from '@pw/ui/src/inputs/RangeInput';
 import SwitchInput from '@pw/ui/src/inputs/SwitchInput';
-import InputRow from '@pw/ui/src/ui/InputRow';
+import InputRow from '@pw/ui/src/InputRow';
 
 const StyledViewerInputManager = styled.div`
    

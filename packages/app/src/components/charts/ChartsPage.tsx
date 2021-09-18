@@ -3,13 +3,13 @@ import { PodType } from "@pw/core/src/models/Model.constants";
 import { NOTE_PRESET_MAP } from "@pw/core/src/models/Pod/Note/Note.constants";
 import { CHORD_PRESET_MAP } from "@pw/core/src/models/PodList/Chord/Chord.constants";
 import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
+import InputRow from "@pw/ui/src/InputRow";
 import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import React, { ReactNode, useState } from "react";
 import styled from 'styled-components';
 import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
 import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
-import InputRow from "@pw/ui/src/ui/InputRow";
 
 const FRETBOARD_PROPS = {
     fretRange: [0, 12] as [number, number],
