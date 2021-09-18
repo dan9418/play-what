@@ -1,3 +1,5 @@
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 const path = require('path');
 const env = process.env.NODE_ENV;
 
@@ -6,10 +8,7 @@ const isDevelopment = env !== 'production';
 module.exports = {
 	mode: isDevelopment ? 'development' : 'production',
 	entry: isDevelopment ?
-		[
-			'webpack-dev-server/client?http://localhost:9000',
-			'../../build-ts/app/src/index.js'
-		] :
+		['../../build-ts/app/src/index.js'] :
 		['../../build-ts/app/src/index.js'],
 	module: {
 		rules: [
@@ -20,7 +19,10 @@ module.exports = {
 				options: {
 					presets: [
 						"@babel/preset-env",
-						"@babel/preset-react"
+						"@babel/preset-react",
+					],
+					plugins: [
+						"react-refresh/babel"
 					]
 				}
 			},
@@ -30,6 +32,7 @@ module.exports = {
 			}
 		]
 	},
+	plugins: [new ReactRefreshWebpackPlugin()],
 	resolve: {
 		extensions: ['*', '.jsx', '.js'],
 		alias: {
