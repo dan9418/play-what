@@ -9,13 +9,12 @@ export const StyledMasterPreview = styled.div`
     width: 100%;
     height: 100%; 
     white-space: nowrap; 
-    background: green;
 
     display: flex;
     flex-direction: row;
     
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 
     @media(min-width: 1024px) {
         flex-direction: column;
@@ -26,16 +25,28 @@ export const StyledMasterPreview = styled.div`
     .title {
         color: ${THEME.text.dark};
         padding-right: 16px;
+        font-size: 150%;
 
         @media(min-width: 1024px) {
-            font-size: 120%;
+            font-size: 150%;
         }
     }
 
     .subtitle {
         color: ${THEME.text.medium};
-        font-size: 80%;
-        font-weight: bolder;
+
+        .note {
+            font-weight: bold;
+            font-size: 120%;
+        }
+
+        .interval {
+            
+        }
+
+        div {
+            text-align: center;
+        }
 
         display: grid;
         grid-template-columns: repeat(${props => props.$n}, 1fr);
@@ -58,8 +69,8 @@ const MasterPreview: React.FC = () => {
         <StyledMasterPreview $n={noteNames.length}>
             <h1 className="title">{details.notes.formattedName}</h1>
             <div className="subtitle">
-                {noteNames.map(n => <div key={n}>{n}</div>)}
-                {intervalNames.map(n => <div key={n}>{n}</div>)}
+                {noteNames.map(n => <div className="note" key={n}>{n}</div>)}
+                {intervalNames.map(n => <div className="interval" key={n}>{n}</div>)}
             </div>
         </StyledMasterPreview>
     )

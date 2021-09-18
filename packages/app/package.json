@@ -4,7 +4,8 @@
   "description": "Play What frontend application",
   "main": "",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack serve --mode development --hot --config webpack.config.js",
+    "start": "cross-env NODE_ENV=development webpack --watch --mode development --hot --config webpack.config.js",
+    "serve": "webpack-dev-server --hot",
     "start-debug": "cross-env DEBUG='express:*' cross-env NODE_ENV=development webpack serve --hot --config webpack.config.js",
     "build": "cross-env NODE_ENV=development webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
