@@ -1,9 +1,9 @@
 var path = require('path');
 var config = {
 	mode: 'development',
-	entry: ['../../build/viewers/src/index.js'],
+	entry: ['../../build-ts/viewers/src/index.js'],
 	output: {
-		path: path.resolve(__dirname, '../../build/scripts/'),
+		path: path.resolve(__dirname, '../../build'),
 		filename: 'play-what-viewers.js',
 		libraryTarget: "commonjs2"
 	},

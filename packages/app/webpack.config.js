@@ -4,12 +4,12 @@ const env = process.env.NODE_ENV;
 module.exports = {
 	mode: 'development',
 	entry: env === 'production' ?
-		['../../build/app/src/index.js'] :
+		['../../build-ts/app/src/index.js'] :
 		[
 			'react-hot-loader/patch',
 			'webpack-dev-server/client?http://localhost:9000',
 			'webpack/hot/only-dev-server',
-			'../../build/app/src/index.js'
+			'../../build-ts/app/src/index.js'
 		],
 	module: {
 		rules: [
@@ -39,7 +39,7 @@ module.exports = {
 		}
 	},
 	output: {
-		path: `${__dirname}/../../build/scripts`,
+		path: `${__dirname}/../../build`,
 		publicPath: '/',
 		filename: 'play-what-app.js'
 	},
