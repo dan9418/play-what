@@ -9,7 +9,6 @@ import Main from './Main';
 import ErrorBoundary from "./shared/ErrorBoundary";
 import Nav from './shared/Nav';
 
-
 const App = () => {
 	return (
 		<RecoilRoot>

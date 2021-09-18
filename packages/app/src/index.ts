@@ -1,7 +1,6 @@
-import 'react-hot-loader'
 import React from "react";
-import ReactDOM from 'react-dom'
-import './styles/index.css';
+import ReactDOM from 'react-dom';
+import 'react-hot-loader';
 import App from './components/App';
 
 const appContainer = document.querySelector('#app')
@@ -9,8 +8,8 @@ const appContainer = document.querySelector('#app')
 if (module.hot) {
 	/* @ts-ignore */
 	module.hot.accept();
-	if (appContainer) ReactDOM.render(<App />, appContainer);
+	if (appContainer) ReactDOM.render(React.createElement(App), appContainer);
 }
 else if (appContainer) {
-	ReactDOM.render(<App />, appContainer);
+	ReactDOM.render(React.createElement(App), appContainer);
 }

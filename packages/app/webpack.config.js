@@ -4,12 +4,12 @@ const env = process.env.NODE_ENV;
 module.exports = {
 	mode: 'development',
 	entry: env === 'production' ?
-		['../../build/core/src/index.js'] :
+		['../../build/app/src/index.js'] :
 		[
 			'react-hot-loader/patch',
 			'webpack-dev-server/client?http://localhost:9000',
 			'webpack/hot/only-dev-server',
-			'../../build/core/src/index.js'
+			'../../build/app/src/index.js'
 		],
 	module: {
 		rules: [
@@ -44,7 +44,7 @@ module.exports = {
 		filename: 'play-what-app.js'
 	},
 	devServer: {
-		contentBase: `${__dirname}/../../`,
+		contentBase: `${__dirname}/../../build/scripts/`,
 		port: 9000,
 		hot: true
 	}
