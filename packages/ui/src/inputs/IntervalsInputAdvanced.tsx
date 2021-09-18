@@ -2,11 +2,11 @@ import IntervalUtils from '@pw/core/src/models/Pod/Interval/Interval.utils';
 import React from 'react';
 import styled from 'styled-components';
 import IntervalsInputTable from '@pw/ui/src/inputs/IntervalsInputTable';
-import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../utils/help';
-import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
-import ModalSection from './ModalSection';
-import useEditProps from './useEditProps';
-import ViewerComparison from './ViewerComparison';
+import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../app/src/utils/help';
+import { StyledHighlightBox } from '../../../app/src/components/shared/ui/HighlightBox';
+import ModalSection from '../../../app/src/components/explore/modals/ModalSection';
+import useEditProps from '../../../app/src/components/explore/modals/useEditProps';
+import ViewerComparison from '../../../app/src/components/explore/modals/ViewerComparison';
 
 const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 
