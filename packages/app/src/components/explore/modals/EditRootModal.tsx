@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
 import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
 import RootInput from '../../../../../ui/src/inputs/RootInput';
-import RootInputPreset from '../../../../../ui/src/inputs/RootInputPreset';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
@@ -49,31 +48,16 @@ const RootAnalysisAdapter = ({ afterModelDetails }) => {
 const EditRootModal: React.FC = () => {
     const editProps = useEditProps();
 
-    const [isAdvanced, setIsAdvanced] = useState(false);
-
-    const buttonProps = isAdvanced ? {
-        buttonText: 'Basic',
-        buttonAction: () => setIsAdvanced(false)
-    } : {
-        buttonText: 'Advanced',
-        buttonAction: () => setIsAdvanced(true)
-    };
-
     return (
         <>
             <RootAnalysisAdapter {...editProps} />
-
-            <ModalSection title="Edit Root" {...buttonProps} helpText={HELP_ROOT_EDIT}>
-                {isAdvanced ?
-                    <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
-                    :
-                    <RootInputPreset root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
-                }
+            <ModalSection title="Edit Root" helpText={HELP_ROOT_EDIT}>
+                <RootInput root={editProps.afterRoot} setRoot={editProps.setAfterRoot} />
             </ModalSection>
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />
             </ModalSection>
-        </ >
+        </>
     );
 }
 

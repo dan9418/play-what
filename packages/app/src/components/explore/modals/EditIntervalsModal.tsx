@@ -1,7 +1,6 @@
 import IntervalUtils from '@pw/core/src/models/Pod/Interval/Interval.utils';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import IntervalsInputPreset from '../../../../../ui/src/inputs/IntervalsInputPreset';
 import IntervalsInputTable from '../../../../../ui/src/inputs/IntervalsInputTable';
 import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
@@ -64,31 +63,17 @@ const IntervalsAnalysisAdapter = ({ afterModelDetails }) => {
 const EditIntervalsModal: React.FC = () => {
     const editProps = useEditProps();
 
-    const [isAdvanced, setIsAdvanced] = useState(false);
-
-    const buttonProps = isAdvanced ? {
-        buttonText: 'Basic',
-        buttonAction: () => setIsAdvanced(false)
-    } : {
-        buttonText: 'Advanced',
-        buttonAction: () => setIsAdvanced(true)
-    };
-
     return (
         <>
             <IntervalsAnalysisAdapter {...editProps} />
 
-            <ModalSection title="Edit Intervals" {...buttonProps} helpText={HELP_INTERVALS_EDIT}>
-                {isAdvanced ?
-                    <IntervalsInputTable intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
-                    :
-                    <IntervalsInputPreset intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
-                }
+            <ModalSection title="Edit Intervals" helpText={HELP_INTERVALS_EDIT}>
+                <IntervalsInputTable intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
             </ModalSection>
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />
             </ModalSection>
-        </ >
+        </>
     )
 }
 

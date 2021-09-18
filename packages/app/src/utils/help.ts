@@ -4,15 +4,11 @@ If you make a change, you can preview the before/after states.`
 );
 
 export const HELP_ROOT_EDIT = (
-    `Choose a root, or 'key center' from the provided list.
-Or, click 'Advanced' to individually configure the degree, accidental, and octave`
+    `Spelling is the letter name used to identify a note. Accidental moves the pitch up or down by one semitone. Octave determines pitch.`
 );
 
 export const HELP_INTERVALS_EDIT = (
-    `Choose a musical concept from the provided list. Options are divided by 'category'.
-You can optionally select a 'subcategory' to filter the results.
-
-Or, click 'Advanced' to select individual intervals`
+    `Toggle individual intervals. Each column represent a semitone in a single octave. You may select one interval per column.`
 );
 
 export const HELP_VIEWER_EDIT = (

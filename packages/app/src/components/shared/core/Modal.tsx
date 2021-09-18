@@ -75,6 +75,8 @@ const StyledModal = styled.div`
 			right: 0;
 			top: 0;
 
+			background: ${THEME.text.dark};
+
 			height: 64px;
 			width: 64px;
 			border-radius: 0 8px 0 0;
