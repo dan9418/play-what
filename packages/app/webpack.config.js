@@ -1,14 +1,16 @@
 const path = require('path');
 const env = process.env.NODE_ENV;
 
+const isDevelopment = env !== 'production';
+
 module.exports = {
-	mode: 'development',
-	entry: env === 'production' ?
-		['../../build-ts/app/src/index.js'] :
+	mode: isDevelopment ? 'development' : 'production',
+	entry: isDevelopment ?
 		[
 			'webpack-dev-server/client?http://localhost:9000',
 			'../../build-ts/app/src/index.js'
-		],
+		] :
+		['../../build-ts/app/src/index.js'],
 	module: {
 		rules: [
 			{
@@ -36,11 +38,13 @@ module.exports = {
 	},
 	output: {
 		path: `${__dirname}/../../build`,
-		publicPath: '/',
 		filename: 'play-what-app.js'
 	},
 	devServer: {
-		contentBase: `${__dirname}/../../`,
+		static: {
+			directory: path.join(__dirname, '/../../'),
+			watch: true
+		},
 		port: 9000,
 		hot: true
 	}

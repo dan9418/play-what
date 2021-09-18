@@ -35,7 +35,7 @@ export const StyledMasterPreview = styled.div`
     .subtitle {
         color: ${THEME.text.medium};
         font-size: 80%;
-        font-weight: normal;
+        font-weight: bolder;
 
         display: grid;
         grid-template-columns: repeat(${props => props.$n}, 1fr);
