@@ -1,6 +1,5 @@
 
 import React from "react";
-import { hot } from 'react-hot-loader/root';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { ModalContextProvider } from "../contexts/ModalContext";
@@ -25,4 +24,4 @@ const App = () => {
 	);
 };
 
-export default hot(App);
+export default App;

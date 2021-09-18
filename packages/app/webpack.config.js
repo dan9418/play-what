@@ -6,9 +6,7 @@ module.exports = {
 	entry: env === 'production' ?
 		['../../build-ts/app/src/index.js'] :
 		[
-			'react-hot-loader/patch',
 			'webpack-dev-server/client?http://localhost:9000',
-			'webpack/hot/only-dev-server',
 			'../../build-ts/app/src/index.js'
 		],
 	module: {
@@ -33,9 +31,7 @@ module.exports = {
 	resolve: {
 		extensions: ['*', '.jsx', '.js'],
 		alias: {
-			'react-hot-loader': path.resolve(path.join(__dirname, '../../node_modules/react-hot-loader')),
 			'react': path.resolve(path.join(__dirname, '../../node_modules/react')),
-			'react-dom': path.resolve(path.join(__dirname, '../../node_modules/@hot-loader/react-dom'))
 		}
 	},
 	output: {
