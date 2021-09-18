@@ -39,12 +39,12 @@ module.exports = {
 		}
 	},
 	output: {
-		path: `${__dirname}/../../build/scripts/`,
+		path: `${__dirname}/../../`,
 		publicPath: '/',
 		filename: 'play-what-app.js'
 	},
 	devServer: {
-		contentBase: `${__dirname}/../../build/scripts/`,
+		contentBase: `${__dirname}/../../`,
 		port: 9000,
 		hot: true
 	}
