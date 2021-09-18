@@ -1,6 +1,6 @@
-import Icon from '@pw/ui/src/Icon';
 import React from 'react';
 import styled from 'styled-components';
+import Icon from '../../../../../ui/src/Icon';
 import THEME from '../../../styles/theme';
 
 export const StyledMenuButton = styled.button`

@@ -1,10 +1,10 @@
-import ViewerInput from '@pw/ui/src/inputs/ViewerInput';
 import React from 'react';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
 import { HELP_PREVIEW } from '../../../app/src/utils/help';
 import HighlightBox from '../HighlightBox';
+import ViewerInput from './ViewerInput';
 
 const ViewerInputAdapter = ({ afterViewerId, setAfterViewerId, afterViewerDetails, setAfterViewerProps }) =>
     <ViewerInput viewerId={afterViewerId} setViewerId={setAfterViewerId} viewerProps={afterViewerDetails.props} setViewerProps={setAfterViewerProps} />

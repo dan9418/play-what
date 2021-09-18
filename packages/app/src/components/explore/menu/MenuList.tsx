@@ -1,12 +1,13 @@
-import IntervalsInputBasic from '@pw/ui/src/inputs/IntervalsInputBasic';
-import RootInputBasic from '@pw/ui/src/inputs/RootInputBasic';
-import ViewerInputBasic from '@pw/ui/src/inputs/ViewerInputBasic';
+
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import IntervalsInputBasic from '../../../../../ui/src/inputs/IntervalsInputBasic';
+import RootInputBasic from '../../../../../ui/src/inputs/RootInputBasic';
+import ViewerInputBasic from '../../../../../ui/src/inputs/ViewerInputBasic';
+import useEditProps from '../../../hooks/useEditProps';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
-import useEditProps from '../../../hooks/useEditProps';
 import MenuItem, { StyledMenuItem } from './MenuItem';
 
 const StyledMenuList = styled.ul`

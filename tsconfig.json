@@ -12,21 +12,21 @@
     "skipLibCheck": true, /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true, /* Disallow inconsistently-cased references to the same file. */
     "outDir": "./build",                              /* Redirect output structure to the directory. */
-    /*"baseUrl": "./packages",
-    "paths": {
-      "@pw/core": [
-        "@pw/core"
-      ],
-      "@pw/ui": [
-        "@pw/ui"
-      ],
-      "@pw/viewers": [
-        "@pw/viewers"
-      ],
-      "@pw/app": [
-        "@pw/app"
-      ],
-    },*/
+    // "baseUrl": "./build",
+    // "paths": {
+    //   "@pw/core": [
+    //     "core"
+    //   ],
+    //   "@pw/ui": [
+    //     "ui"
+    //   ],
+    //   "@pw/viewers": [
+    //     "viewers"
+    //   ],
+    //   "@pw/app": [
+    //     "app"
+    //   ],
+    // },
     // "incremental": true,                         /* Enable incremental compilation */
     // "lib": [],                                   /* Specify library files to be included in the compilation. */
     // "declaration": true,                         /* Generates corresponding '.d.ts' file. */

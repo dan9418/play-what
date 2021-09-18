@@ -1,7 +1,7 @@
-import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
 import viewerUtils from '../../../../../viewers/src/Viewer.utils';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../../../state/state';
 import Viewer from '../viewer/Viewer';

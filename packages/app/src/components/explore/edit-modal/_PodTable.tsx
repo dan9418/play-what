@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PodType } from '@pw/core/src/models/Model.constants';
-import NoteUtils from '@pw/core/src/models/Pod/Note/Note.utils';
-import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
+import { PodType } from '../../../../../core/src/models/Model.constants';
+import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
+import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+
 
 export const StyledPodTable = styled.div`
     display: grid;
@@ -45,8 +46,8 @@ const PodTable: React.FC<any> = ({ root, intervals, notes }) => {
         <StyledPodTable $cols={intervals.length}>
             <div className="root">{rootName}</div>
             <div className="intervals">
-                {noteNames.map(n => <div className="note">{n}</div>)}
-                {intervalNames.map(ivl => <div className="interval">{ivl}</div>)}
+                {noteNames.map(n => <div key={n} className="note">{n}</div>)}
+                {intervalNames.map(ivl => <div key={ivl} className="interval">{ivl}</div>)}
             </div>
         </StyledPodTable>
     );

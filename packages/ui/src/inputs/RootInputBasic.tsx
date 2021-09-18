@@ -1,7 +1,8 @@
-import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
-import PodUtils from "@pw/core/src/models/Pod/Pod.utils";
+
 import React from "react";
 import styled from 'styled-components';
+import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
+import PodUtils from "../../../core/src/models/Pod/Pod.utils";
 import NumericInput from "./NumericInput";
 
 const StyledRootInputBasic = styled.div`

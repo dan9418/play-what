@@ -1,7 +1,7 @@
 
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React from "react";
 import styled from "styled-components";
+import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
 import THEME from "../../../styles/theme";
 
 const StyledModalSelector = styled.div`

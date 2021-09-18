@@ -1,9 +1,9 @@
-import ColorUtils from "@pw/core/src/color/Color.utils";
-import { ICompleteModelDetails, IPod, PodType } from "@pw/core/src/models/Model.constants";
-import IntervalUtils from "@pw/core/src/models/Pod/Interval/Interval.utils";
-import NoteUtils from "@pw/core/src/models/Pod/Note/Note.utils";
-import PodUtils from "@pw/core/src/models/Pod/Pod.utils";
-import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
+import ColorUtils from "../../core/src/color/Color.utils";
+import { ICompleteModelDetails, IPod, PodType } from "../../core/src/models/Model.constants";
+import IntervalUtils from "../../core/src/models/Pod/Interval/Interval.utils";
+import NoteUtils from "../../core/src/models/Pod/Note/Note.utils";
+import PodUtils from "../../core/src/models/Pod/Pod.utils";
+import PodListUtils from "../../core/src/models/PodList/PodList.utils";
 import { IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
 
 interface IPodProps {

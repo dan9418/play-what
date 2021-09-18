@@ -1,6 +1,6 @@
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React from "react";
 import styled from 'styled-components';
+import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
 import { useModalContext } from "../../../contexts/ModalContext";
 
 export const StyledMenuItem = styled.div`

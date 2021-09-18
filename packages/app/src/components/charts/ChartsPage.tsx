@@ -1,15 +1,16 @@
-import { CHARTS, IChartConfig } from "@pw/core/src/models/Chart/Chart.constants";
-import { PodType } from "@pw/core/src/models/Model.constants";
-import { NOTE_PRESET_MAP } from "@pw/core/src/models/Pod/Note/Note.constants";
-import { CHORD_PRESET_MAP } from "@pw/core/src/models/PodList/Chord/Chord.constants";
-import PodListUtils from "@pw/core/src/models/PodList/PodList.utils";
-import InputRow from "@pw/ui/src/InputRow";
-import DropdownInput from "@pw/ui/src/inputs/DropdownInput";
 import React, { ReactNode, useState } from "react";
 import styled from 'styled-components';
+import { CHARTS, IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
+import { PodType } from "../../../../core/src/models/Model.constants";
+import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
+import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
+import PodListUtils from "../../../../core/src/models/PodList/PodList.utils";
+import InputRow from "../../../../ui/src/InputRow";
+import DropdownInput from "../../../../ui/src/inputs/DropdownInput";
 import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
 import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
+
 
 const FRETBOARD_PROPS = {
     fretRange: [0, 12] as [number, number],

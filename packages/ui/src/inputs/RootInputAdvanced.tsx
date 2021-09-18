@@ -1,6 +1,4 @@
-import NoteUtils from '@pw/core/src/models/Pod/Note/Note.utils';
-import TuningUtils from '@pw/core/src/tuning/Tuning.utils';
-import RootInput from '@pw/ui/src/inputs/RootInput';
+
 import React from 'react';
 import styled from 'styled-components';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
@@ -8,6 +6,9 @@ import useEditProps from '../../../app/src/hooks/useEditProps';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../app/src/utils/help';
 import { StyledHighlightBox } from '../HighlightBox';
+import RootInput from './RootInput';
+import NoteUtils from '../../../core/src/models/Pod/Note/Note.utils';
+import TuningUtils from '../../../core/src/tuning/Tuning.utils';
 
 const StyledRootAnalysis = styled(StyledHighlightBox)`
     .top {

@@ -1,8 +1,9 @@
-import { IntervalId, INTERVAL_PRESET_MAP } from '@pw/core/src/models/Pod/Interval/Interval.constants';
-import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
-import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
+
 import React from 'react';
 import styled from 'styled-components';
+import { IntervalId, INTERVAL_PRESET_MAP } from '../../../core/src/models/Pod/Interval/Interval.constants';
+import PodUtils from '../../../core/src/models/Pod/Pod.utils';
+import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
 
 const StyledIntervalTable = styled.table`
     width: 100%;

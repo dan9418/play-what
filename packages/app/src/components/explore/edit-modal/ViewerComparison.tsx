@@ -1,6 +1,6 @@
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import ButtonInput from '../../../../../ui/src/inputs/ButtonInput';
 import THEME from '../../../styles/theme';
 import Viewer from '../viewer/Viewer';
 

@@ -1,7 +1,8 @@
-import { PresetTag, PRESET_TYPES } from "@pw/core/src/models/Model.constants";
-import MASTER_PRESETS from "@pw/core/src/models/PodList/PodList.constants";
+
 import React, { useState } from "react";
 import styled from 'styled-components';
+import { PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
+import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
 import DropdownInput from "./DropdownInput";
 
 const StyledIntervalsInputBasic = styled.div`

@@ -1,10 +1,11 @@
-import { IPod } from '@pw/core/src/models/Model.constants';
-import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
+import { IPod } from './../../../core/src/models/Model.constants';
+
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import viewerUtils from '../../../viewers/src/Viewer.utils';
 import { useModalContext } from '../contexts/ModalContext';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../state/state';
+import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
 
 const useEditProps = ({
     _beforeRoot,

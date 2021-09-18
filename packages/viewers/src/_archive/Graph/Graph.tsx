@@ -1,8 +1,7 @@
-// @ts-ignore
-import { MAX_POD } from '@pw/core/src/models/helpers/Pod.constants';
-// @ts-ignore
-import PodUtils from '@pw/core/src/Pod.utils';
+
 import React from "react";
+import { MAX_POD } from "../../../../core/src/models/Pod/Pod.constants";
+import PodUtils from "../../../../core/src/models/Pod/Pod.utils";
 import './Graph.css';
 import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 
@@ -32,7 +31,7 @@ const getCells = (origin, pods) => {
 				cells.push(<Label key={'d' + d} axis='x'>{d}</Label>)
 			}
 			else {
-				const point = [p, d];
+				const point: any = [p, d];
 				const isOrigin = PodUtils.areEqual(origin, point);
 				const isResultant = pods.findIndex(v => PodUtils.areEqual(v, point)) >= 0;
 				cells.push(<Cell key={d + '-' + p} color={isOrigin ? 'red' : isResultant ? 'blue' : null} />)
