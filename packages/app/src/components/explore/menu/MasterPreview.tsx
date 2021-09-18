@@ -4,20 +4,22 @@ import styled from 'styled-components';
 import { detailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 
-export const StyledMasterPreview = styled.h1`
-    text-align: left;
+export const StyledMasterPreview = styled.div`
+
     width: 100%;
-    height: 100%;
-    white-space: nowrap;
+    height: 100%; 
+    white-space: nowrap; 
+    background: red;
 
     display: flex;
     flex-direction: row;
     
     align-items: center;
+    justify-content: center;
 
     @media(min-width: 1024px) {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         justify-content: center;
     }
 
@@ -54,7 +56,7 @@ const MasterPreview: React.FC = () => {
 
     return (
         <StyledMasterPreview $n={noteNames.length}>
-            <div className="title">{details.notes.formattedName}</div>
+            <h1 className="title">{details.notes.formattedName}</h1>
             <div className="subtitle">
                 {noteNames.map(n => <div key={n}>{n}</div>)}
                 {intervalNames.map(n => <div key={n}>{n}</div>)}
