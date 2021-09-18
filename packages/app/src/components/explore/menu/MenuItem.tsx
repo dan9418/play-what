@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useModalContext } from "../../../contexts/ModalContext";
 
-export const StyledQuickLink = styled.div`
+export const StyledMenuItem = styled.div`
 	height: 100%;
 	padding: 0 16px;
 
@@ -49,18 +49,18 @@ export const StyledQuickLink = styled.div`
 	}*/
 `;
 
-interface IQuickLinkProps {
+interface IMenuItemProps {
 	name: string;
 	preview?: string;
 	closeMenu: Function;
 }
 
-const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, closeMenu }) => {
+const MenuItem: React.FC<IMenuItemProps> = ({ name, children, closeMenu }) => {
 
 	const modalContext = useModalContext();
 
 	return (
-		<StyledQuickLink className="quick-link" type="button">
+		<StyledMenuItem className="quick-link" type="button">
 			<div className="name-advanced">
 				<div className="name">{name}</div>
 				<ButtonInput onClick={() => {
@@ -71,8 +71,8 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, closeMenu }) => 
 				</ButtonInput>
 			</div>
 			<div className="content">{children}</div>
-		</StyledQuickLink>
+		</StyledMenuItem>
 	);
 };
 
-export default QuickLink;
+export default MenuItem;

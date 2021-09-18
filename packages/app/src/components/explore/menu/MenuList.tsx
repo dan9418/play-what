@@ -7,9 +7,9 @@ import styled from 'styled-components';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import useEditProps from '../../../hooks/useEditProps';
-import QuickLink, { StyledQuickLink } from './QuickLink';
+import MenuItem, { StyledMenuItem } from './MenuItem';
 
-const StyledQuickLinksList = styled.ul`
+const StyledMenuList = styled.ul`
     display: flex;
     height: 100%;
 
@@ -17,7 +17,7 @@ const StyledQuickLinksList = styled.ul`
         margin: 0;
         padding: 0;
 
-        ${StyledQuickLink} {
+        ${StyledMenuItem} {
             height: 100%;
         }
     }
@@ -51,14 +51,14 @@ const StyledQuickLinksList = styled.ul`
             /*&:first-child {
                 border-left: 1px solid ${THEME.border};
             }*/
-            ${StyledQuickLink} {
+            ${StyledMenuItem} {
                 width: 100%;
                 padding-right: 24px;
             }
         }
     }
 `
-export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
+export const MenuList: React.FC<any> = ({ isVertical, closeMenu }) => {
     // @ts-ignore
     const details = useRecoilValue(detailsState);
     // @ts-ignore
@@ -67,22 +67,22 @@ export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
     const editProps = useEditProps();
 
     return (
-        <StyledQuickLinksList className={isVertical ? 'y' : 'x'}>
+        <StyledMenuList className={isVertical ? 'y' : 'x'}>
             <li>
-                <QuickLink name="Root" preview={details.root.preview} closeMenu={closeMenu} >
+                <MenuItem name="Root" preview={details.root.preview} closeMenu={closeMenu} >
                     <RootInputBasic {...editProps} />
-                </QuickLink>
+                </MenuItem>
             </li>
             <li>
-                <QuickLink name="Intervals" preview={details.intervals.preview} closeMenu={closeMenu} >
+                <MenuItem name="Intervals" preview={details.intervals.preview} closeMenu={closeMenu} >
                     <IntervalsInputBasic {...editProps} />
-                </QuickLink>
+                </MenuItem>
             </li>
             <li>
-                <QuickLink name="Viewer" preview={viewerDetails.viewerName} closeMenu={closeMenu} >
+                <MenuItem name="Viewer" preview={viewerDetails.viewerName} closeMenu={closeMenu} >
                     <ViewerInputBasic {...editProps} />
-                </QuickLink>
+                </MenuItem>
             </li>
-        </StyledQuickLinksList>
+        </StyledMenuList>
     );
 };

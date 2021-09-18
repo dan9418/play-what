@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import ExploreNav from './nav/ExploreNav';
+import Menu from './menu/Menu';
 import Viewer from "./Viewer";
 
 const StyledExplorePage = styled.div`
@@ -35,7 +35,7 @@ const StyledExplorePage = styled.div`
 const ExplorePage: React.FC<any> = () => {
 	return (
 		<>
-			<ExploreNav />
+			<Menu />
 			<StyledExplorePage>
 				<div className="stage">
 					<Viewer />

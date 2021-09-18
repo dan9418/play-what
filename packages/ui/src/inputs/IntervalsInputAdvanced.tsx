@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import IntervalsInputTable from '@pw/ui/src/inputs/IntervalsInputTable';
 import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../app/src/utils/help';
 import { StyledHighlightBox } from '../ui/HighlightBox';
-import ModalSection from '../../../app/src/components/explore/edit-modal/ModalSection';
+import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 

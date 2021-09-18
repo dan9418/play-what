@@ -3,7 +3,7 @@ import TuningUtils from '@pw/core/src/tuning/Tuning.utils';
 import RootInput from '@pw/ui/src/inputs/RootInput';
 import React from 'react';
 import styled from 'styled-components';
-import ModalSection from '../../../app/src/components/explore/edit-modal/ModalSection';
+import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 import { StyledHighlightBox } from '../ui/HighlightBox';

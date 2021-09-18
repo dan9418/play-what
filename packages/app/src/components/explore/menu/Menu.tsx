@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import THEME from '../../../styles/theme';
 import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
-import { QuickLinksList } from './QuickLinksList';
+import { Menu } from './Menu';
 
-const StyledExploreNav = styled.nav`
+const StyledMenu = styled.nav`
     position: fixed;
     top: 32px;
     left: 0;
@@ -69,23 +69,23 @@ const StyledExploreNav = styled.nav`
 	}
 `;
 
-const ExploreNav: React.FC<any> = () => {
+const Menu: React.FC<any> = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const closeMenu = () => setIsMenuOpen(false);
 	return (
-		<StyledExploreNav>
+		<StyledMenu>
 			<div>
 				<MasterPreview />
-				<QuickLinksList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
+				<Menu setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 				{isMenuOpen &&
 					<div className="menu">
-						<QuickLinksList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} isVertical />
+						<Menu setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} isVertical />
 					</div>
 				}
 			</div>
-		</StyledExploreNav>
+		</StyledMenu>
 	);
 };
 
-export default ExploreNav;
+export default Menu;

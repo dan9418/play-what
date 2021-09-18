@@ -7,7 +7,7 @@ import { ModalContextProvider } from '../../../contexts/ModalContext';
 import THEME from '../../../styles/theme';
 import ErrorBoundary from '../utils/ErrorBoundary';
 import Main from './Main';
-import Nav from './Nav';
+import Nav from './shared/Nav';
 
 const App = () => {
 	return (

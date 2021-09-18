@@ -1,6 +1,6 @@
 import ViewerInput from '@pw/ui/src/inputs/ViewerInput';
 import React from 'react';
-import ModalSection from '../../../app/src/components/explore/edit-modal/ModalSection';
+import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
 import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 import HighlightBox from '../ui/HighlightBox';
