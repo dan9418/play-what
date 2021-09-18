@@ -39,7 +39,7 @@ module.exports = {
 		}
 	},
 	output: {
-		path: `${__dirname}/../../`,
+		path: `${__dirname}/../../build/scripts`,
 		publicPath: '/',
 		filename: 'play-what-app.js'
 	},
