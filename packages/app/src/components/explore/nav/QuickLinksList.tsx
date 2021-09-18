@@ -44,7 +44,7 @@ const StyledQuickLinksList = styled.ul`
     &.y {
         flex-direction: column;
         li {
-            height: 64px;
+            height: 128px;
             border-bottom: 1px solid ${THEME.border};
             /*&:not(:last-child) {
                 border-bottom: 1px solid ${THEME.border};

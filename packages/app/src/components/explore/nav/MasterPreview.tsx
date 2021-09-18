@@ -11,19 +11,36 @@ export const StyledMasterPreview = styled.h1`
     white-space: nowrap;
 
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+    flex-direction: row;
+    
+    align-items: center;
+
+    @media(min-width: 1024px) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+    }
 
     .title {
         color: ${THEME.text.dark};
-        //padding-bottom: 4px;
+        padding-right: 16px;
+
+        @media(min-width: 1024px) {
+            font-size: 120%;
+        }
     }
 
     .subtitle {
         color: ${THEME.text.medium};
         font-size: 80%;
         font-weight: normal;
+
+        display: grid;
+        grid-template-columns: repeat(${props => props.$n}, 1fr);
+
+        div {
+            margin-right: 8px;
+        }
     }
 `;
 
@@ -32,11 +49,16 @@ const MasterPreview: React.FC = () => {
     // @ts-ignore
     const [details, setDetails] = useRecoilState(detailsState);
 
+    const noteNames = details.notes.preview.split(',');
+    const intervalNames = details.intervals.preview.split(',');
+
     return (
-        <StyledMasterPreview>
+        <StyledMasterPreview $n={noteNames.length}>
             <div className="title">{details.notes.formattedName}</div>
-            <div className="subtitle">{details.notes.preview}</div>
-            <div className="subtitle">{details.intervals.preview}</div>
+            <div className="subtitle">
+                {noteNames.map(n => <div key={n}>{n}</div>)}
+                {intervalNames.map(n => <div key={n}>{n}</div>)}
+            </div>
         </StyledMasterPreview>
     )
 }

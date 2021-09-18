@@ -11,7 +11,10 @@ const StyledExploreNav = styled.nav`
     left: 0;
     right: 0;
     z-index: 2000;
-    height: 128px;
+    height: 64px;
+	@media(min-width: 1024px) {
+		height: 128px;
+	}
 
 	display: flex;
 	justify-content: center;
