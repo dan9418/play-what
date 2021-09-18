@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PodType } from '../../../../../core/src/models/Model.constants';
-import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
-import PodListUtils from '../../../../../core/src/models/PodList/PodList.utils';
+import { PodType } from '@pw/core/src/models/Model.constants';
+import NoteUtils from '@pw/core/src/models/Pod/Note/Note.utils';
+import PodListUtils from '@pw/core/src/models/PodList/PodList.utils';
 
 export const StyledPodTable = styled.div`
     display: grid;

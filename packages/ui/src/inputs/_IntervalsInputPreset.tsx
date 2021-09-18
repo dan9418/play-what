@@ -1,7 +1,7 @@
 import { PresetTag, PRESET_TYPES } from '@pw/core/src/models/Model.constants';
 import MASTER_PRESETS from '@pw/core/src/models/PodList/PodList.constants';
 import React, { useState } from 'react';
-import InputRow from '../../../app/src/components/shared/ui/InputRow';
+import InputRow from '../ui/InputRow';
 import DropdownInput from './DropdownInput';
 
 const IntervalsInputPreset: React.FC<any> = ({ setIntervals, intervals }) => {

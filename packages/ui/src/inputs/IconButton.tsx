@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from 'styled-components';
-import Icon from "../../../app/src/components/shared/ui/Icon";
+import Icon from "../ui/Icon";
 import ButtonInput from "./ButtonInput";
 
 const styles = css`

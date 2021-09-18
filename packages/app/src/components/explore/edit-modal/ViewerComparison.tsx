@@ -1,9 +1,8 @@
+import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import Viewer from '../Viewer';
-import { StyledPodTable } from './PodTable';
 
 const StyledViewerComparison = styled.div`
     display: grid;
@@ -28,12 +27,6 @@ const StyledViewerComparison = styled.div`
         max-width: 512px;
         max-height: 256px;
         margin: 32px auto;
-    }
-
-    ${StyledPodTable} {
-        width: 100%;
-        max-width: 512px;
-        //padding: 64px;
     }
 
     .selector {

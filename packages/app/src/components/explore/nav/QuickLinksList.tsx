@@ -6,7 +6,7 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
-import useEditProps from '../modals/useEditProps';
+import useEditProps from '../../../hooks/useEditProps';
 import QuickLink, { StyledQuickLink } from './QuickLink';
 
 const StyledQuickLinksList = styled.ul`

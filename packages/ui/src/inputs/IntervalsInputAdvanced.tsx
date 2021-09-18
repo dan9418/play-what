@@ -3,10 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import IntervalsInputTable from '@pw/ui/src/inputs/IntervalsInputTable';
 import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../app/src/utils/help';
-import { StyledHighlightBox } from '../../../app/src/components/shared/ui/HighlightBox';
-import ModalSection from '../../../app/src/components/explore/modals/ModalSection';
-import useEditProps from '../../../app/src/components/explore/modals/useEditProps';
-import ViewerComparison from '../../../app/src/components/explore/modals/ViewerComparison';
+import { StyledHighlightBox } from '../ui/HighlightBox';
+import ModalSection from '../../../app/src/components/explore/edit-modal/ModalSection';
+import useEditProps from '../../../app/src/hooks/useEditProps';
+import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
 
 const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 

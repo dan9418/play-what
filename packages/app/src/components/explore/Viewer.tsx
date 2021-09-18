@@ -1,8 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
+import styled from 'styled-components';
 import { detailsState, viewerDetailsState } from "../../state/state";
-import PodTable, { StyledPodTable } from "./modals/PodTable";
-import styled from 'styled-components'
 
 const StyledViewer = styled.div`
     width: 100%;
@@ -23,7 +22,7 @@ const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
     const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
 
     return (
-            <_viewerDetails.component {..._viewerDetails.props} details={_details} {...rest} />
+        <_viewerDetails.component {..._viewerDetails.props} details={_details} {...rest} />
     );
 };
 

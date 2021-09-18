@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
 import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
-import InputRow from "../shared/ui/InputRow";
+import InputRow from "@pw/ui/src/ui/InputRow";
 
 const FRETBOARD_PROPS = {
     fretRange: [0, 12] as [number, number],

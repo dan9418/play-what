@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
 import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
-import IconButton from '../../../../../ui/src/inputs/IconButton';
+import IconButton from '@pw/ui/src/inputs/IconButton';
 
 const StyledModalSection = styled.div`
     display: flex;

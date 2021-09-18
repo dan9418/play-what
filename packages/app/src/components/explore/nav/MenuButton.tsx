@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
-import Icon from '../../shared/ui/Icon';
+import Icon from '@pw/ui/src/ui/Icon';
 
 export const StyledMenuButton = styled.button`
     display: flex;

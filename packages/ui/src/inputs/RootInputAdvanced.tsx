@@ -3,10 +3,10 @@ import TuningUtils from '@pw/core/src/tuning/Tuning.utils';
 import RootInput from '@pw/ui/src/inputs/RootInput';
 import React from 'react';
 import styled from 'styled-components';
-import ModalSection from '../../../app/src/components/explore/modals/ModalSection';
-import useEditProps from '../../../app/src/components/explore/modals/useEditProps';
-import ViewerComparison from '../../../app/src/components/explore/modals/ViewerComparison';
-import { StyledHighlightBox } from '../../../app/src/components/shared/ui/HighlightBox';
+import ModalSection from '../../../app/src/components/explore/edit-modal/ModalSection';
+import useEditProps from '../../../app/src/hooks/useEditProps';
+import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
+import { StyledHighlightBox } from '../ui/HighlightBox';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../app/src/utils/help';
 
 const StyledRootAnalysis = styled(StyledHighlightBox)`
