@@ -1,9 +1,8 @@
 
+import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 import React from "react";
 import styled from "styled-components";
-import { ModalId, useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
-import ButtonInput from "@pw/ui/src/inputs/ButtonInput";
 
 const StyledModalSelector = styled.div`
 	display: flex;
@@ -35,27 +34,31 @@ const StyledModalSelector = styled.div`
 	}
 `;
 
-export const ModalSelector: React.FC<any> = () => {
+export enum TabId {
+	Root = 1,
+	Intervals = 2,
+	Viewer = 3
+}
 
-	const modalContext = useModalContext();
+export const ModalSelector: React.FC<any> = ({ tabId, setTabId }) => {
 
 	return (
 		<StyledModalSelector>
 			<ButtonInput
-				onClick={() => modalContext.setModalId(ModalId.Root)}
-				className={modalContext.modalId === ModalId.Root ? "active" : ''}
+				onClick={() => setTabId(TabId.Root)}
+				className={tabId === TabId.Root ? "active" : ''}
 			>
 				Root
 			</ButtonInput>
 			<ButtonInput
-				onClick={() => modalContext.setModalId(ModalId.Intervals)}
-				className={modalContext.modalId === ModalId.Intervals ? "active" : ''}
+				onClick={() => setTabId(TabId.Intervals)}
+				className={tabId === TabId.Intervals ? "active" : ''}
 			>
 				Intervals
 			</ButtonInput>
 			<ButtonInput
-				onClick={() => modalContext.setModalId(ModalId.Viewer)}
-				className={modalContext.modalId === ModalId.Viewer ? "active" : ''}
+				onClick={() => setTabId(TabId.Viewer)}
+				className={tabId === TabId.Viewer ? "active" : ''}
 			>
 				Viewer
 			</ButtonInput>

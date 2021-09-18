@@ -52,11 +52,10 @@ export const StyledQuickLink = styled.div`
 interface IQuickLinkProps {
 	name: string;
 	preview?: string;
-	modalId: any;
 	closeMenu: Function;
 }
 
-const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, modalId, closeMenu }) => {
+const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, closeMenu }) => {
 
 	const modalContext = useModalContext();
 
@@ -65,17 +64,13 @@ const QuickLink: React.FC<IQuickLinkProps> = ({ name, children, modalId, closeMe
 			<div className="name-advanced">
 				<div className="name">{name}</div>
 				<ButtonInput onClick={() => {
-					modalContext.setModalId(modalId);
+					modalContext.openModal();
 					closeMenu();
 				}}>
 					Advanced
 				</ButtonInput>
 			</div>
 			<div className="content">{children}</div>
-			{/*<IconButton iconId="edit" color={THEME.text.dark} onClick={() => {
-				modalContext.setModalId(modalId);
-				closeMenu();
-			}} />*/}
 		</StyledQuickLink>
 	);
 };

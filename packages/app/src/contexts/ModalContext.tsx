@@ -1,51 +1,31 @@
 
-import React, { ReactNode } from "react";
-import EditIntervalsModal from "../components/explore/modals/EditIntervalsModal";
+import React from "react";
 import EditRootModal from "../components/explore/modals/EditRootModal";
-import EditViewerModal from "../components/explore/modals/EditViewerModal";
-
-export enum ModalId {
-	None = 0,
-	Root = 1,
-	Intervals = 2,
-	Viewer = 3
-}
-
-const MODAL_MAP = new Map<ModalId, ReactNode>([
-	// eslint-disable-next-line
-	[ModalId.Root, <EditRootModal />],
-	// eslint-disable-next-line
-	[ModalId.Intervals, <EditIntervalsModal />],
-	// eslint-disable-next-line
-	[ModalId.Viewer, <EditViewerModal />]
-]);
 
 interface IModelContext {
-	modalId: ModalId,
-	setModalId: (modalId: ModalId) => void,
+	isOpen: boolean,
+	openModal: () => void
 	closeModal: () => void
 }
 
 const ModalContext = React.createContext<IModelContext>(null);
 
-
 export const ModalContextProvider: React.FC = ({ children }) => {
-	const [modalId, setModalId] = React.useState(ModalId.None);
+	const [isOpen, setIsOpen] = React.useState(false);
 
-	const closeModal = () => setModalId(ModalId.None);
+	const openModal = () => setIsOpen(true);
+	const closeModal = () => setIsOpen(false);
 
 	const modalContext = {
-		modalId,
-		setModalId,
+		isOpen,
+		openModal,
 		closeModal
 	};
-
-	const modal = MODAL_MAP.get(modalId) ?? null;
 
 	return (
 		<ModalContext.Provider value={modalContext}>
 			{children}
-			{modal}
+			{isOpen && <EditRootModal />}
 		</ModalContext.Provider>
 	);
 };

@@ -4,7 +4,6 @@ import ViewerInputBasic from '@pw/ui/src/inputs/ViewerInputBasic';
 import React from 'react';
 import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
-import { ModalId } from '../../../contexts/ModalContext';
 import { detailsState, viewerDetailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import useEditProps from '../modals/useEditProps';
@@ -70,26 +69,20 @@ export const QuickLinksList: React.FC<any> = ({ isVertical, closeMenu }) => {
     return (
         <StyledQuickLinksList className={isVertical ? 'y' : 'x'}>
             <li>
-                <QuickLink name="Root" preview={details.root.preview} modalId={ModalId.Root} closeMenu={closeMenu} >
+                <QuickLink name="Root" preview={details.root.preview} closeMenu={closeMenu} >
                     <RootInputBasic {...editProps} />
                 </QuickLink>
             </li>
             <li>
-                <QuickLink name="Intervals" preview={details.intervals.preview} modalId={ModalId.Intervals} closeMenu={closeMenu} >
+                <QuickLink name="Intervals" preview={details.intervals.preview} closeMenu={closeMenu} >
                     <IntervalsInputBasic {...editProps} />
                 </QuickLink>
             </li>
             <li>
-                <QuickLink name="Viewer" preview={viewerDetails.viewerName} modalId={ModalId.Viewer} closeMenu={closeMenu} >
+                <QuickLink name="Viewer" preview={viewerDetails.viewerName} closeMenu={closeMenu} >
                     <ViewerInputBasic {...editProps} />
                 </QuickLink>
             </li>
-            {/*<li>
-                <QuickLink name="Sound" preview="Sine, 40db" modalId={null} />
-            </li>
-            <li>
-                <QuickLink name="Color" preview="By Degree" modalId={null} />
-            </li>*/}
         </StyledQuickLinksList>
     );
 };
