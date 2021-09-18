@@ -7,8 +7,8 @@ import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chor
 import PodListUtils from "../../../../core/src/models/PodList/PodList.utils";
 import InputRow from "../../../../ui/src/InputRow";
 import DropdownInput from "../../../../ui/src/inputs/DropdownInput";
-import Fretboard from "../../../../viewers/src/Fretboard/Fretboard";
-import { FRETBOARD_TUNING } from "../../../../viewers/src/Fretboard/Fretboard.api";
+import Fretboard from "../../../../ui/src/viewers/fretboard/Fretboard";
+import { FRETBOARD_TUNING } from "../../../../ui/src/viewers/fretboard/Fretboard.api";
 import THEME from "../../styles/theme";
 
 

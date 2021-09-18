@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from "../../../viewers/src/Viewer.constants";
+import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from "../../../ui/src/viewers/Viewer.constants";
 import DropdownInput from "./DropdownInput";
 
 const StyledViewerInputBasic = styled.div`

@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
-import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../core/src/models/Model.constants';
-import Fretboard from './Fretboard/Fretboard';
-import { FRETBOARD_TUNING_VALUES } from './Fretboard/Fretboard.api';
-import DEFAULT_FRETBOARD_PROPS from './Fretboard/Fretboard.defaults';
-import Keyboard from './Keyboard/Keyboard';
-import DEFAULT_KEYBOARD_PROPS from './Keyboard/Keyboard.defaults';
+import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../../core/src/models/Model.constants';
+import Fretboard from './fretboard/Fretboard';
+import { FRETBOARD_TUNING_VALUES } from './fretboard/Fretboard.api';
+import DEFAULT_FRETBOARD_PROPS from './fretboard/Fretboard.defaults';
+import Keyboard from './keyboard/Keyboard';
+import DEFAULT_KEYBOARD_PROPS from './keyboard/Keyboard.defaults';
 
 export enum ViewerId {
     Fretboard = 'fretboard',

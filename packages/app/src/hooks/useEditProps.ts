@@ -2,7 +2,7 @@ import { IPod } from './../../../core/src/models/Model.constants';
 
 import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import viewerUtils from '../../../viewers/src/Viewer.utils';
+import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 import { useModalContext } from '../contexts/ModalContext';
 import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../state/state';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';

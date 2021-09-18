@@ -4,8 +4,8 @@ import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
 import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
-import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../viewers/src/Viewer.constants';
-import viewerUtils from '../../../viewers/src/Viewer.utils';
+import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../ui/src/viewers/Viewer.constants';
+import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 
 /* ROOT + INTERVALS + NOTES */
 

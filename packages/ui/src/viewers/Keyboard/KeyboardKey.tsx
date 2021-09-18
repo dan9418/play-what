@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import ColorUtils from "../../../core/src/color/Color.utils";
+import ColorUtils from "../../../../core/src/color/Color.utils";
 import viewerUtils from '../Viewer.utils';
 import { IKeyboardKeyProps, KeyType } from './Keyboard.defaults';
 

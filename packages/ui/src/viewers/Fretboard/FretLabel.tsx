@@ -1,9 +1,9 @@
 
 import * as React from "react";
 import styled from "styled-components";
-import ToneUtils from "../../../core/src/tone/Tone.utils";
-import TuningUtils from "../../../core/src/tuning/Tuning.utils";
-import viewerUtils from "../Viewer.utils";
+import ToneUtils from "../../../../core/src/tone/Tone.utils";
+import TuningUtils from "../../../../core/src/tuning/Tuning.utils";
+import viewerUtils from "../../../../ui/src/viewers/Viewer.utils";
 import { IFretLabelProps } from "./Fretboard.defaults";
 
 const StyledFretLabel = styled.div`

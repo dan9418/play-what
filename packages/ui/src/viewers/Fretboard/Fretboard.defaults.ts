@@ -1,4 +1,4 @@
-import { PodType } from '../../../core/src/models/Model.constants';
+import { PodType } from '../../../../core/src/models/Model.constants';
 import { IViewerProps } from '../Viewer.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 

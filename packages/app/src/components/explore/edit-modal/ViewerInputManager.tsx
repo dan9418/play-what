@@ -1,7 +1,7 @@
 import React, { Fragment, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { IViewer } from '../../../../../viewers/src/Viewer.constants';
+import { IViewer } from '../../../../../ui/src/viewers/Viewer.constants';
 
 import DropdownInput from '../../../../../ui/src/inputs/DropdownInput';
 import { InputId, IPreset } from '../../../../../core/src/models/Model.constants';

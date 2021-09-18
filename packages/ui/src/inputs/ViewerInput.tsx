@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ViewerInputManager from '../../../app/src/components/explore/edit-modal/ViewerInputManager';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import { HELP_VIEWER_CONFIGURE, HELP_VIEWER_EDIT } from '../../../app/src/utils/help';
-import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../viewers/src/Viewer.constants';
+import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../ui/src/viewers/Viewer.constants';
 import InputRow from '../InputRow';
 import DropdownInput from './DropdownInput';
 
