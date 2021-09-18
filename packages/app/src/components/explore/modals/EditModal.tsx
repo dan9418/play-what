@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Modal } from '../../shared/core/Modal';
 import { ModalSelector, TabId } from '../../shared/core/ModalSelector';
-import EditIntervalsModal from './EditIntervalsModal';
-import EditRootModal from './EditRootModal';
-import EditViewerModal from './EditViewerModal';
+import IntervalsInputAdvanced from './IntervalsInputAdvanced';
+import RootInputAdvanced from './RootInputAdvanced';
+import ViewerInputAdvanced from './ViewerInputAdvanced';
 import useEditProps from './useEditProps';
 
 const MODAL_MAP = {
-    [TabId.Root]: EditRootModal,
-    [TabId.Intervals]: EditIntervalsModal,
-    [TabId.Viewer]: EditViewerModal
+    [TabId.Root]: RootInputAdvanced,
+    [TabId.Intervals]: IntervalsInputAdvanced,
+    [TabId.Viewer]: ViewerInputAdvanced
 }
 
 const EditModal: React.FC = () => {

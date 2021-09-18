@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewerInput from '../../../../../ui/src/inputs/ViewerInput';
+import ViewerInput from '@pw/ui/src/inputs/ViewerInput';
 import { HELP_PREVIEW } from '../../../utils/help';
 import HighlightBox from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
@@ -15,7 +15,7 @@ const ViewerAnalysisAdapter = ({ afterViewerDetails }) => {
     );
 }
 
-const EditViewerModal: React.FC<any> = () => {
+const ViewerInputAdvanced: React.FC<any> = () => {
     const editProps = useEditProps();
 
     return (
@@ -31,4 +31,4 @@ const EditViewerModal: React.FC<any> = () => {
 }
 
 
-export default EditViewerModal
+export default ViewerInputAdvanced

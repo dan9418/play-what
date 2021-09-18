@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import NoteUtils from '../../../../../core/src/models/Pod/Note/Note.utils';
-import TuningUtils from '../../../../../core/src/tuning/Tuning.utils';
-import RootInput from '../../../../../ui/src/inputs/RootInput';
+import NoteUtils from '@pw/core/src/models/Pod/Note/Note.utils';
+import TuningUtils from '@pw/core/src/tuning/Tuning.utils';
+import RootInput from '@pw/ui/src/inputs/RootInput';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
@@ -45,7 +45,7 @@ const RootAnalysisAdapter = ({ afterModelDetails }) => {
     );
 }
 
-const EditRootModal: React.FC = () => {
+const RootInputAdvanced: React.FC = () => {
     const editProps = useEditProps();
 
     return (
@@ -61,4 +61,4 @@ const EditRootModal: React.FC = () => {
     );
 }
 
-export default EditRootModal;
+export default RootInputAdvanced;

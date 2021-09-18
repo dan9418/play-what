@@ -1,7 +1,7 @@
 import IntervalUtils from '@pw/core/src/models/Pod/Interval/Interval.utils';
 import React from 'react';
 import styled from 'styled-components';
-import IntervalsInputTable from '../../../../../ui/src/inputs/IntervalsInputTable';
+import IntervalsInputTable from '@pw/ui/src/inputs/IntervalsInputTable';
 import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../utils/help';
 import { StyledHighlightBox } from '../../shared/ui/HighlightBox';
 import ModalSection from './ModalSection';
@@ -60,7 +60,7 @@ const IntervalsAnalysisAdapter = ({ afterModelDetails }) => {
 }
 
 
-const EditIntervalsModal: React.FC = () => {
+const IntervalsInputAdvanced: React.FC = () => {
     const editProps = useEditProps();
 
     return (
@@ -77,4 +77,4 @@ const EditIntervalsModal: React.FC = () => {
     )
 }
 
-export default EditIntervalsModal;
+export default IntervalsInputAdvanced;
