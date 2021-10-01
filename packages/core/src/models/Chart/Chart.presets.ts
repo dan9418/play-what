@@ -1,6 +1,17 @@
+import { CHORD_PRESETS } from './../PodList/Chord/Chord.constants';
 import { NoteId } from "../Pod/Note/Note.constants";
 import { ChordId } from "../PodList/Chord/Chord.constants";
 import { IChartConfig } from "./Chart.constants";
+
+export const ALL_CHORDS_CONFIG: IChartConfig = {
+    name: 'All Chords',
+    sections: [
+        {
+            name: 'A',
+            chords: CHORD_PRESETS.map(chord => ([NoteId.C, chord.id as ChordId, 4]))
+        }
+    ]
+}
 
 export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
     name: 'Autumn Leaves',

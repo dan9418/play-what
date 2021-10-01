@@ -45,18 +45,53 @@ const VOICING = {
 	v_A: formatVoicing('v7_A', 'Barre (A root)', [5, 3, 1, 5, 1, null])
 }
 
+
+const CAGED_TRIAD_VOICINGS = [
+	formatVoicing('C', 'C Shape', [3, 1, 5, 3, 1, null]),
+	formatVoicing('A', 'A Shape', [5, 3, 1, 5, 1, null]),
+	formatVoicing('G', 'G Shape', [1, 5, 1, 5, 3, 1]),
+	formatVoicing('E', 'E Shape', [1, 5, 3, 1, 5, 1]),
+	formatVoicing('D', 'D Shape', [3, 1, 5, 1, null, null])
+];
+
+const CAGED_SIXTH_VOICINGS = [
+	formatVoicing('C', 'C Shape', [3, 6, 5, 3, 1, null]),
+	formatVoicing('A', 'A Shape', [5, 3, 6, 5, 1, null]),
+	formatVoicing('G', 'G Shape', [6, 5, 1, 5, 3, 1]),
+	formatVoicing('E', 'E Shape', [1, 5, 3, 6, 5, 1]),
+	formatVoicing('D', 'D Shape', [3, 6, 5, 1, null, null])
+];
+
+const CAGED_SEVENTH_VOICINGS = [
+	formatVoicing('C', 'C Shape', [3, 7, 5, 3, 1, null]),
+	formatVoicing('A', 'A Shape', [5, 3, 7, 5, 1, null]),
+	formatVoicing('G', 'G Shape', [7, 5, 1, 5, 3, 1]),
+	formatVoicing('E', 'E Shape', [1, 5, 3, 7, 5, 1]),
+	formatVoicing('D', 'D Shape', [3, 7, 5, 1, null, null])
+];
+
 const VOICING_TRIADS = [VOICING.v_A, VOICING.v_E];
 const VOICING_SEVENTHS = [VOICING.v7_A, VOICING.v7_E];
 const VOICING_SEVENTHS_b9 = [VOICING.v7_A_b9, VOICING.v7_E_b9];
 const VOICING_SIXTHS = [VOICING.v6_A, VOICING.v6_E];
 
-const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], voicings = []) => ({
-	id,
-	name,
-	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
-	tags: [PresetTag.Chord, ...tags],
-	voicings
-});
+const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], _ = []) => {
+	let voicings = CAGED_TRIAD_VOICINGS;
+	if (tags.includes(PresetTag.Sixth)) {
+		voicings = CAGED_SIXTH_VOICINGS
+	}
+	if (tags.includes(PresetTag.Seventh)) {
+		voicings = CAGED_SEVENTH_VOICINGS
+	}
+
+	return {
+		id,
+		name,
+		value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
+		tags: [PresetTag.Chord, ...tags],
+		voicings
+	}
+};
 
 export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 	[ChordId.MajTri, formatPreset(

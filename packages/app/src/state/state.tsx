@@ -16,7 +16,7 @@ export const rootState = atom<IPod | null>({
 
 export const intervalsState = atom<IPod[]>({
     key: 'intervalsState',
-    default: CHORD_PRESET_MAP.get(ChordId.Maj7).value
+    default: CHORD_PRESET_MAP.get(ChordId.Dom7b9).value
 });
 
 export const notesState = selector<IPod[]>({

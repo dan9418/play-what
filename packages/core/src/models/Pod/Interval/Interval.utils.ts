@@ -62,9 +62,23 @@ const getRatio = (interval: IPod, options: any = {}) => {
 	return `1:${ratio.toFixed(2)}`;
 }
 
+const isExtendedInterval = (interval) => {
+	const [p, d] = interval;
+	console.log(d);
+	const isExtendedDegree = d === 1 || d === 3 || d === 5;
+	return isExtendedDegree;
+
+	if (!isExtendedDegree) return false;
+
+	const isExtendedPitch = p > 11 && p < 24;
+
+	return isExtendedPitch;
+}
+
 export default {
 	getPodColor,
 	getIntervalOffset,
 	getName,
-	getRatio
+	getRatio,
+	isExtendedInterval
 }
