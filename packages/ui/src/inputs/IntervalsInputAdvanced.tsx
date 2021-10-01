@@ -8,6 +8,7 @@ import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../app/src/utils/help';
 import IntervalUtils from '../../../core/src/models/Pod/Interval/Interval.utils';
 import { StyledHighlightBox } from '../HighlightBox';
 import IntervalsInputTable from './IntervalsInputTable';
+import IntervalExtensionsInput from './IntervalExtensionsInput';
 
 const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 
@@ -70,6 +71,9 @@ const IntervalsInputAdvanced: React.FC = () => {
 
             <ModalSection title="Edit Intervals" helpText={HELP_INTERVALS_EDIT}>
                 <IntervalsInputTable intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
+            </ModalSection>
+            <ModalSection title="Extensions" helpText={HELP_INTERVALS_EDIT}>
+                <IntervalExtensionsInput intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
             </ModalSection>
             <ModalSection title="Preview" helpText={HELP_PREVIEW}>
                 <ViewerComparison {...editProps} />

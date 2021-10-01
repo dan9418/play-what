@@ -79,15 +79,8 @@ const getRatio = (interval: IPod, options: any = {}) => {
 
 const isExtendedInterval = (interval) => {
 	const [p, d] = interval;
-	console.log(d);
-	const isExtendedDegree = d === 1 || d === 3 || d === 5;
+	const isExtendedDegree = d > 7;
 	return isExtendedDegree;
-
-	if (!isExtendedDegree) return false;
-
-	const isExtendedPitch = p > 11 && p < 24;
-
-	return isExtendedPitch;
 }
 
 export default {

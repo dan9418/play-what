@@ -40,6 +40,8 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const note = notes[podIndex];
     const interval = intervals[podIndex];
 
+    const isExtended = IntervalUtils.isExtendedInterval(interval);
+
     // Reduce pod
     const reducedNote = PodUtils.reduce(note);
     const reducedInterval = PodUtils.reduce(interval);
@@ -61,11 +63,11 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     else {
         bgColor = IntervalUtils.getPodColor(reducedNote);
     }
-    const fgColor = ColorUtils.getFgColor(bgColor);
-    /*if (isExtended) {
+    let fgColor = ColorUtils.getFgColor(bgColor);
+    if (isExtended) {
         fgColor = bgColor;
         bgColor = ColorUtils.getFgColor(fgColor);
-    }*/
+    }
 
     // Package data
     return { bgColor, fgColor, text, note, interval };
