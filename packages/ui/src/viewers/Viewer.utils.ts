@@ -40,10 +40,6 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const note = notes[podIndex];
     const interval = intervals[podIndex];
 
-    const extendedInterval = [noteIndex, interval[1]];
-    const isExtended = IntervalUtils.isExtendedInterval(extendedInterval);
-    console.log(isExtended);
-
     // Reduce pod
     const reducedNote = PodUtils.reduce(note);
     const reducedInterval = PodUtils.reduce(interval);
@@ -51,7 +47,7 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     // Get text
     let text = '';
     if (options.labelBy === 'interval') {
-        text = IntervalUtils.getName(reducedInterval, isExtended);
+        text = IntervalUtils.getName(reducedInterval);
     }
     else if (options.labelBy === 'note') {
         text = NoteUtils.getName(reducedNote);
@@ -65,11 +61,11 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     else {
         bgColor = IntervalUtils.getPodColor(reducedNote);
     }
-    let fgColor = ColorUtils.getFgColor(bgColor);
-    if (isExtended) {
+    const fgColor = ColorUtils.getFgColor(bgColor);
+    /*if (isExtended) {
         fgColor = bgColor;
         bgColor = ColorUtils.getFgColor(fgColor);
-    }
+    }*/
 
     // Package data
     return { bgColor, fgColor, text, note, interval };

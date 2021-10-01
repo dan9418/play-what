@@ -47,7 +47,22 @@ export const getName = (interval: IPod, options: IIntervalNameOptions = {}): str
 	const count = Math.abs(offset);
 	const qualityStr = quality.symbol.repeat(count);
 
-	return `${qualityStr}${d + 1}`;
+	const value = `${qualityStr}${d + 1}`;
+
+	/*if (isExtended) {
+		console.log('x', value);
+		if (value === 'm2') value = 'b9'
+		else if (value === 'M2') value = '9'
+		else if (value === 'm3') value = '#9'
+		else if (value === 'M3') value = 'b11'
+		else if (value === 'P4') value = '11'
+		else if (value === 'A4' || value === 'd5') value = '#11'
+		else if (value === 'm6') value = 'b13'
+		else if (value === 'M6') value = '13'
+		else if (value === 'm7') value = '#13'
+	}*/
+
+	return value;
 }
 
 const getRatio = (interval: IPod, options: any = {}) => {

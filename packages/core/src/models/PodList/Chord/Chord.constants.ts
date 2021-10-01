@@ -153,7 +153,7 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 	[ChordId.Dom7b9, formatPreset(
 		ChordId.Dom7b9,
 		'Dominant 7th (b9)',
-		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7, IntervalId.m2],
+		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7, IntervalId.b9],
 		[PresetTag.Dominant, PresetTag.Extended],
 		VOICING_SEVENTHS_b9
 	)],
