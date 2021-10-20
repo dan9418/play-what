@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import Menu from './menu/Menu';
 import Viewer from "./viewer/Viewer";
+import ViewerController from "./viewer/ViewerController";
 
 const StyledExplorePage = styled.div`
 
@@ -14,18 +15,23 @@ const StyledExplorePage = styled.div`
 	height: 100%;
 	width: 100%;
 
-	.stage {
+	.viewer-list {
         width: 100%;
+		max-width: 1536px;
         height: 100%;
         padding: 16px;
         margin: auto;
+
         display: flex;
-        align-items: center;
-        justify-content: space-evenly;
         flex-direction: column;
+        align-items: center;
+
+		li {
+			width: 100%;
+		}
         
         .fretboard, .keyboard {
-            box-shadow: 0px 0px 30px 30px rgba(0,0,0,0.08);
+            //box-shadow: 0px 0px 30px 30px rgba(0,0,0,0.08);
             max-width: 1024px;
         }
     }
@@ -33,13 +39,14 @@ const StyledExplorePage = styled.div`
 
 
 const ExplorePage: React.FC<any> = () => {
+
 	return (
 		<>
-			<Menu />
 			<StyledExplorePage>
-				<div className="stage">
-					<Viewer />
-				</div>
+				<ul className="viewer-list">
+					<li><ViewerController /></li>
+					<li><ViewerController /></li>
+				</ul>
 			</StyledExplorePage>
 		</>
 	);

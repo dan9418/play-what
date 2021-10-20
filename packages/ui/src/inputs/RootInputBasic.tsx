@@ -4,20 +4,29 @@ import styled from 'styled-components';
 import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/src/models/Pod/Pod.utils";
 import NumericInput from "./NumericInput";
+import SwitchInput from "./SwitchInput";
 
 const StyledRootInputBasic = styled.div`
 
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    gap: 8px;
+    label {
+        text-transform: uppercase;
+        font-size: 80%;
+        font-weight: bold;
+        letter-spacing: 1px;
+        color: #555;
+        margin-bottom: 4px;
+    }
 
-    .bottom {
+    .spelling, .accidental, .octave {
+        margin-bottom: 8px;
+    }
+
+    .spelling-accidental {
         display: flex;
-        align-items: center;
         justify-content: space-between;
     }
 
-    button {
+    .spelling button, .accidental button {
         appearance: none;
         background-color: ${({ theme }) => theme.surface.highlight};
         border: none;
@@ -57,6 +66,12 @@ const StyledRootInputBasic = styled.div`
             font-weight: bold;
         }
     }
+
+    .octave {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 `;
 
 const RootButton = ({ children, value, setValue, buttonValue }) => {
@@ -91,24 +106,32 @@ const RootInputBasic: React.FC<any> = editProps => {
 
     return (
         <StyledRootInputBasic>
-            <div className="top">
-                <div className="spelling">
-                    <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
-                    <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
+            <div className="spelling-accidental">
+                <div className="spelling-container">
+                    <label>Spelling</label>
+                    <div className="spelling">
+                        <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
+                        <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
+                    </div>
+                </div>
+                <div className="accidental-container">
+                    <label>Accidental</label>
+                    <div className="accidental">
+                        <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
+                        <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
+                        <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
+                    </div>
                 </div>
             </div>
-            <div className="bottom">
-                <div className="accidental">
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
-                    <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
-                </div>
-                <div className="accidental">
+            <div className="octave-container">
+                <label>Octave</label>
+                <div className="octave">
+                    <SwitchInput value={false} setValue={null} />
                     <NumericInput value={octave} setValue={setOctave} />
                 </div>
             </div>

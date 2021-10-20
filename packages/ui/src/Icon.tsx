@@ -370,6 +370,7 @@ const ICON = {
 	minus: Minus,
 	menu: Menu,
 	more: More,
+	maximize: Maximize,
 	// Social
 	github: GitHub,
 	help: Help
