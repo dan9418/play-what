@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
+import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
 import IconButton from "../../../../../ui/src/inputs/IconButton";
 import IntervalsInputBasic from "../../../../../ui/src/inputs/IntervalsInputBasic";
 import RootInputBasic from "../../../../../ui/src/inputs/RootInputBasic";
+import ViewerInputBasic from "../../../../../ui/src/inputs/ViewerInputBasic";
 import useEditProps from "../../../hooks/useEditProps";
 import { detailsState, viewerDetailsState } from "../../../state/state";
 import Viewer from "./Viewer";
@@ -17,10 +19,10 @@ const StyledViewerController = styled.div`
 
     .header {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
 
-        margin-bottom: 8px;
+        margin-bottom: 16px;
         .button-container {
             button {
                 background-color: transparent;
@@ -30,16 +32,31 @@ const StyledViewerController = styled.div`
 
     .grid {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 3fr 2fr;
         gap: 16px;
     }
 
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
+
+    .advanced {
+        width: 100%;
+        margin-top: auto;
+    }
+
+    .controls {
+        padding: 8px;
+        border-radius: 8px;
+        background-color: ${({ theme }) => theme.surface.highlight};
+        margin-top: 8px;
+    }
+
 `;
 
 const ViewerController: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
+
+    const [editMode, setEditMode] = useState('notes');
 
     const masterDetails = useRecoilValue(detailsState);
     const masterViewerDetails = useRecoilValue(viewerDetailsState);
@@ -64,10 +81,21 @@ const ViewerController: React.FC<any> = ({ details, viewerDetails, ...rest }) =>
                 </div>
             </div>
             <div className="grid">
-                <Viewer />
+                <div>
+                    <Viewer />
+                </div>
                 <div className="controls">
-                    <RootInputBasic {...editProps} />
-                    <IntervalsInputBasic {...editProps} />
+                    {editMode === 'notes' ?
+                        <>
+                            <RootInputBasic {...editProps} />
+                            <IntervalsInputBasic {...editProps} />
+                            <ButtonInput className="advanced">Advanced</ButtonInput>
+                        </>
+                        :
+                        <>
+                            <ViewerInputBasic {...editProps} />
+                        </>
+                    }
                 </div>
             </div>
         </StyledViewerController>

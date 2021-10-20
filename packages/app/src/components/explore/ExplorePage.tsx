@@ -17,7 +17,7 @@ const StyledExplorePage = styled.div`
 
 	.viewer-list {
         width: 100%;
-		max-width: 1536px;
+		max-width: 1024px;
         height: 100%;
         padding: 16px;
         margin: auto;

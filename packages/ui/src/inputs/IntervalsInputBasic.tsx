@@ -6,6 +6,9 @@ import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
 import DropdownInput from "./DropdownInput";
 
 const StyledIntervalsInputBasic = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
 
     label {
         text-transform: uppercase;
@@ -60,10 +63,14 @@ const IntervalsInputBasic: React.FC<any> = editProps => {
 
     return (
         <StyledIntervalsInputBasic>
-            <label>Type</label>
-            <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
-            <label>Preset</label>
-            <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
+            <div>
+                <label>Type</label>
+                <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
+            </div>
+            <div>
+                <label>Preset</label>
+                <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
+            </div>
         </StyledIntervalsInputBasic>
     );
 };
