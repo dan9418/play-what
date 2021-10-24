@@ -30,10 +30,6 @@ const StyledViewerController = styled.div`
         }
     }
 
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-
     .advanced {
         width: 100%;
         margin-top: auto;

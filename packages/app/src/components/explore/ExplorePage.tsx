@@ -25,9 +25,12 @@ const StyledExplorePage = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
+		overflow: auto;
 
 		li {
 			width: 100%;
+			margin: 16px 0;
+			border: 1px solid #ccc;
 		}
         
         .fretboard, .keyboard {
