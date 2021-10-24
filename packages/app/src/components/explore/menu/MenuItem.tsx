@@ -1,10 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
-import { useModalContext } from "../../../contexts/ModalContext";
 
 export const StyledMenuItem = styled.div`
 	height: 100%;
+	width: 100%;
 	padding: 0 16px;
 
 	display: flex;
@@ -56,19 +55,10 @@ interface IMenuItemProps {
 }
 
 const MenuItem: React.FC<IMenuItemProps> = ({ name, children, closeMenu }) => {
-
-	const modalContext = useModalContext();
-
 	return (
 		<StyledMenuItem className="quick-link" type="button">
 			<div className="name-advanced">
 				<div className="name">{name}</div>
-				<ButtonInput onClick={() => {
-					modalContext.openModal();
-					closeMenu();
-				}}>
-					Advanced
-				</ButtonInput>
 			</div>
 			<div className="content">{children}</div>
 		</StyledMenuItem>

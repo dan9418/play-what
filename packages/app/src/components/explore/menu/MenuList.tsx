@@ -27,6 +27,7 @@ const StyledMenuList = styled.ul`
         flex-direction: row;
         li {
             height: 100%;
+            width: 50%;
             border-right: 1px solid ${THEME.border};
             /*&:not(:last-child) {
                 border-right: 1px solid ${THEME.border};

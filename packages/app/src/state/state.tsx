@@ -9,14 +9,48 @@ import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 
 /* ROOT + INTERVALS + NOTES */
 
-export const rootState = atom<IPod | null>({
-    key: 'rootState',
-    default: NOTE_PRESET_MAP.get(NoteId.C).value
+interface IDataItem {
+    root: IPod,
+    intervals: IPod[]
+}
+
+export const dataListState = atom<IDataItem[]>({
+    key: 'dataListState',
+    default: [
+        {
+            root: NOTE_PRESET_MAP.get(NoteId.C).value,
+            intervals: CHORD_PRESET_MAP.get(ChordId.Dom7).value
+        },
+        {
+            root: NOTE_PRESET_MAP.get(NoteId.D).value,
+            intervals: CHORD_PRESET_MAP.get(ChordId.Dom7).value
+        }
+    ]
 });
 
-export const intervalsState = atom<IPod[]>({
+export const dataIndexState = atom<number>({
+    key: 'dataIndexState',
+    default: 0
+});
+
+export const rootState = selector<IPod | null>({
+    key: 'rootState',
+    get: ({ get }) => {
+        const dataList = get(dataListState);
+        const dataIndex = get(dataIndexState);
+
+        return dataList[dataIndex].root;
+    }
+});
+
+export const intervalsState = selector<IPod[]>({
     key: 'intervalsState',
-    default: CHORD_PRESET_MAP.get(ChordId.Dom7b9).value
+    get: ({ get }) => {
+        const dataList = get(dataListState);
+        const dataIndex = get(dataIndexState);
+
+        return dataList[dataIndex].intervals;
+    }
 });
 
 export const notesState = selector<IPod[]>({
