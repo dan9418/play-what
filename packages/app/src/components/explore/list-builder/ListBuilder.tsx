@@ -14,13 +14,15 @@ const StyledListBuilder = styled.ul`
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     overflow: auto;
 
     li {
         width: 100%;
-        margin: 16px 0;
+        max-width: 512px;
+        margin: 8px 0;
         border: 1px solid #ccc;
+        border-radius: 8px;
 
         &.active {
             border: 2px solid ${props => props.theme.active};

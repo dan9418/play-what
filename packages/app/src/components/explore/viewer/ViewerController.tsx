@@ -11,6 +11,7 @@ const StyledViewerController = styled.div`
     padding: 16px;
 
     background: ${({ theme }) => theme.surface.gradient};
+    border-radius: 8px;
 
     .header {
         display: flex;
@@ -71,7 +72,7 @@ const ViewerController: React.FC<any> = ({ details, viewerDetails, listIndex, ..
                 </div>
             </div>
             <div className="viewer-container">
-                <Viewer />
+                <Viewer details={_details} />
             </div>
         </StyledViewerController>
     );
