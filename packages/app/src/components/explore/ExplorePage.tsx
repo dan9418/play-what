@@ -42,6 +42,7 @@ const ExplorePage: React.FC<any> = () => {
 
 	return (
 		<>
+			<Menu />
 			<StyledExplorePage>
 				<ul className="viewer-list">
 					<li><ViewerController /></li>

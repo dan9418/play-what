@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import THEME from '../../../styles/theme';
-import MasterPreview from './MasterPreview';
 import MenuButton, { StyledMenuButton } from './MenuButton';
 import { MenuList } from './MenuList';
 
@@ -75,7 +74,6 @@ const Menu: React.FC<any> = () => {
 	return (
 		<StyledMenu>
 			<div>
-				<MasterPreview />
 				<MenuList setIsMenuOpen={setIsMenuOpen} closeMenu={closeMenu} />
 				<MenuButton isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
 				{isMenuOpen &&

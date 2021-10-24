@@ -30,12 +30,6 @@ const StyledViewerController = styled.div`
         }
     }
 
-    .grid {
-        display: grid;
-        grid-template-columns: 3fr 2fr;
-        gap: 16px;
-    }
-
     border-top: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-left: 1px solid #ccc;
@@ -45,18 +39,9 @@ const StyledViewerController = styled.div`
         margin-top: auto;
     }
 
-    .controls {
-        padding: 8px;
-        border-radius: 8px;
-        background-color: ${({ theme }) => theme.surface.highlight};
-        margin-top: 8px;
-    }
-
 `;
 
 const ViewerController: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
-
-    const [editMode, setEditMode] = useState('notes');
 
     const masterDetails = useRecoilValue(detailsState);
     const masterViewerDetails = useRecoilValue(viewerDetailsState);
@@ -80,23 +65,8 @@ const ViewerController: React.FC<any> = ({ details, viewerDetails, ...rest }) =>
                     <IconButton iconId="delete" />
                 </div>
             </div>
-            <div className="grid">
-                <div>
-                    <Viewer />
-                </div>
-                <div className="controls">
-                    {editMode === 'notes' ?
-                        <>
-                            <RootInputBasic {...editProps} />
-                            <IntervalsInputBasic {...editProps} />
-                            <ButtonInput className="advanced">Advanced</ButtonInput>
-                        </>
-                        :
-                        <>
-                            <ViewerInputBasic {...editProps} />
-                        </>
-                    }
-                </div>
+            <div className="viewer-container">
+                <Viewer />
             </div>
         </StyledViewerController>
     );

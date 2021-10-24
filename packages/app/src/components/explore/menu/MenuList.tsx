@@ -79,11 +79,6 @@ export const MenuList: React.FC<any> = ({ isVertical, closeMenu }) => {
                     <IntervalsInputBasic {...editProps} />
                 </MenuItem>
             </li>
-            <li>
-                <MenuItem name="Viewer" preview={viewerDetails.viewerName} closeMenu={closeMenu} >
-                    <ViewerInputBasic {...editProps} />
-                </MenuItem>
-            </li>
         </StyledMenuList>
     );
 };
