@@ -6,7 +6,7 @@ import { MenuList } from './MenuList';
 
 const StyledMenu = styled.nav`
     position: fixed;
-    top: 32px;
+    top: 80px;
     left: 0;
     right: 0;
     z-index: 2000;
@@ -69,6 +69,7 @@ const StyledMenu = styled.nav`
 `;
 
 const Menu: React.FC<any> = () => {
+	return null;
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const closeMenu = () => setIsMenuOpen(false);
 	return (

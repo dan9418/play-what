@@ -19,7 +19,6 @@ const StyledListBuilder = styled.ul`
 
     li {
         width: 100%;
-        max-width: 512px;
         margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 8px;

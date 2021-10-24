@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
-import ViewerComparison from '../../../app/src/components/explore/edit-modal/ViewerComparison';
+import ViewerComparison from '../../../app/src/components/explore/edit-panel/ViewerComparison';
 import { HELP_PREVIEW, HELP_ROOT_EDIT } from '../../../app/src/utils/help';
 import { StyledHighlightBox } from '../HighlightBox';
 import RootInput from './RootInput';
