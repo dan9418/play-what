@@ -15,7 +15,7 @@ const StyledListBuilder = styled.ul`
     align-items: flex-start;
     overflow: auto;
 
-    li {
+    > li {
         margin-top: 16px;
         width: 100%;
         border: 1px solid #ccc;

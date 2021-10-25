@@ -3,19 +3,10 @@ import styled from 'styled-components';
 import { MenuList } from "../menu/MenuList";
 
 const StyledEditPanel = styled.div`
-    margin: 16px 0;
-
-    background: #eee;//${({ theme }) => theme.surface.highlight};
-    border-radius: 8px;
-    border: 1px solid #ccc;
-
+  
+    border-bottom: 1px solid #ccc;
     width: 100%;
 
-    .header {
-        padding: 16px;
-        border-bottom: 1px solid #ccc;
-        border-radius: 8px 8px 0 0;
-    }
     & > .content {
         padding: 0 16px;
     }
@@ -28,7 +19,7 @@ const StyledEditPanel = styled.div`
         border-bottom: 1px solid #ccc;
 
         background: ${({ theme }) => theme.surface.gradient};
-        .item {
+        .itm {
             padding: 4px 8px;
             cursor: pointer;
         }
@@ -40,18 +31,14 @@ const EditPanel: React.FC<any> = () => {
 
     return (
         <StyledEditPanel>
-
-            <div className="header">
-                <h2>Edit</h2>
-            </div>
             <div className="tabs">
-                <div className="item">
+                <div className="itm">
                     <b>Notes</b>
                 </div>
-                <div className="item">
+                <div className="itm">
                     Viewer
                 </div>
-                <div className="item">
+                <div className="itm">
                     Sound
                 </div>
             </div>

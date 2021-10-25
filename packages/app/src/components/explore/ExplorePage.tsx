@@ -22,10 +22,8 @@ const StyledExplorePage = styled.div`
 
 	> div {
 		width: 100%;
-		max-width: 1024px;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 16px;
+		//max-width: 1024px;
+		max-width: 512px;
 	}
 `;
 
@@ -39,9 +37,6 @@ const ExplorePage: React.FC<any> = () => {
 			<StyledExplorePage>
 				<div>
 					<ListBuilder />
-					<div>
-						<EditPanel />
-					</div>
 				</div>
 			</StyledExplorePage>
 		</>

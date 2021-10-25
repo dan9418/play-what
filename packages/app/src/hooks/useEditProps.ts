@@ -1,16 +1,15 @@
 import { useRecoilState } from 'recoil';
-import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
-import { useModalContext } from '../contexts/ModalContext';
-import { dataIndexState, dataListState, viewerIdState, viewerPropsState } from '../state/state';
-import { IPod } from './../../../core/src/models/Model.constants';
+import { dataIndexState, dataListState } from '../state/state';
 import { getListHelpers } from './../utils/getListHelpers';
 
-const useEditSelectedProps = () => {
+const useEditNotesProps = () => {
 
     // @ts-ignore
     const [dataList, setDataList] = useRecoilState(dataListState);
     // @ts-ignore
     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+
+    if (dataIndex === undefined) return;
 
     const dataItem = dataList[dataIndex];
     const root = dataItem.root;
@@ -21,55 +20,53 @@ const useEditSelectedProps = () => {
     const setRoot = x => listHelpers.setData({ ...dataItem, root: x })
     const setIntervals = x => listHelpers.setData({ ...dataItem, intervals: x })
 
-    const editSelectedProps = {
+    return {
         root,
         setRoot,
         intervals,
         setIntervals
     };
-
-    return editSelectedProps;
 }
 
-const useEditProps = () => {
-
-    const { root, setRoot, intervals, setIntervals } = useEditSelectedProps();
+const useEditViewerProps = () => {
 
     // @ts-ignore
-    const [viewerId, setViewerId] = useRecoilState(viewerIdState);
+    const [dataList, setDataList] = useRecoilState(dataListState);
     // @ts-ignore
-    const [viewerProps, setViewerProps] = useRecoilState(viewerPropsState);
+    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
 
-    const modalContext = useModalContext();
-    const onCancel = () => modalContext.closeModal();
+    if (dataIndex === undefined) return;
 
-    const onApply = () => {
-        setRoot(root as IPod);
-        setIntervals(intervals as IPod[]);
-        setViewerId(viewerId);
-        setViewerProps(viewerProps);
-    };
+    const dataItem = dataList[dataIndex];
+    const viewerId = dataItem.viewerId;
+    const viewerProps = dataItem.viewerProps;
 
-    const onDone = () => {
-        onApply();
-        onCancel();
-    };
+    const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
 
-    const modelDetails = PodListUtils.getDetails(root, intervals);
+    const setViewerId = x => listHelpers.setData({ ...dataItem, viewerId: x })
+    const setViewerProps = x => listHelpers.setData({ ...dataItem, viewerProps: x })
 
-    const editProps = {
+    return {
         viewerId,
         setViewerId,
         viewerProps,
-        setViewerProps,
-        root,
-        setRoot,
-        intervals,
-        setIntervals,
-        modelDetails,
-        onCancel,
-        onApply,
-        onDone
+        setViewerProps
+    };
+}
+
+
+const useEditProps = () => {
+    // @ts-ignore
+    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+    if (dataIndex === undefined) return;
+
+    const editNotesProps = useEditNotesProps();
+    const editViewerProps = useEditViewerProps();
+
+
+    const editProps = {
+        ...editViewerProps,
+        ...editNotesProps
     };
 
     return editProps;

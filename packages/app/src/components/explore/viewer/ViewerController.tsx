@@ -5,6 +5,7 @@ import PodListUtils from "../../../../../core/src/models/PodList/PodList.utils";
 import IconButton from "../../../../../ui/src/inputs/IconButton";
 import ViewerUtils from "../../../../../ui/src/viewers/Viewer.utils";
 import { dataIndexState, dataListState, detailsState } from "../../../state/state";
+import EditPanel from "../edit-panel/EditPanel";
 import Viewer from "./Viewer";
 
 const StyledViewerController = styled.div`
@@ -55,12 +56,14 @@ const ViewerController: React.FC<any> = ({ listIndex, ...rest }) => {
     const details = PodListUtils.getDetails(dataItem.root, dataItem.intervals);
     const viewerDetails = ViewerUtils.getDetails(dataItem.viewerId, dataItem.viewerProps);
 
+    const isActive = dataIndex === listIndex;
+
     return (
-        <StyledViewerController $isActive={dataIndex === listIndex}>
+        <StyledViewerController $isActive={isActive}>
             <div className="header">
                 <button
                     type="button"
-                    onClick={() => setDataIndex(listIndex)}
+                    onClick={() => setDataIndex(dataIndex === listIndex ? undefined : listIndex)}
                     className="header-btn"
                 >
                     {details.notes.formattedName}
@@ -69,6 +72,9 @@ const ViewerController: React.FC<any> = ({ listIndex, ...rest }) => {
                     <IconButton iconId="edit" />
                 </div>
             </div>
+            {isActive &&
+                <EditPanel />
+            }
             <div className="viewer-container">
                 <Viewer details={details} viewerDetails={viewerDetails} />
             </div>

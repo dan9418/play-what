@@ -58,7 +58,7 @@ export const dataListState = atom<IDataItem[]>({
 
 export const dataIndexState = atom<number>({
     key: 'dataIndexState',
-    default: 0
+    default: undefined
 });
 
 export const rootState = selector<IPod | null>({
@@ -66,6 +66,8 @@ export const rootState = selector<IPod | null>({
     get: ({ get }) => {
         const dataList = get(dataListState);
         const dataIndex = get(dataIndexState);
+
+        if (dataIndex === undefined) return;
 
         return dataList[dataIndex].root;
     }
@@ -76,6 +78,8 @@ export const intervalsState = selector<IPod[]>({
     get: ({ get }) => {
         const dataList = get(dataListState);
         const dataIndex = get(dataIndexState);
+
+        if (dataIndex === undefined) return;
 
         return dataList[dataIndex].intervals;
     }
@@ -109,6 +113,8 @@ export const viewerIdState = selector<ViewerId>({
         const dataList = get(dataListState);
         const dataIndex = get(dataIndexState);
 
+        if (dataIndex === undefined) return;
+
         return dataList[dataIndex].viewerId || DEFAULT_VIEWER_ID;
     }
 });
@@ -118,6 +124,8 @@ export const viewerPropsState = selector<IViewerProps>({
     get: ({ get }) => {
         const dataList = get(dataListState);
         const dataIndex = get(dataIndexState);
+
+        if (dataIndex === undefined) return;
 
         return dataList[dataIndex].viewerProps || {};
     }
