@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import IntervalsInputBasic from "../../../../../ui/src/inputs/IntervalsInputBasic";
 import RootInputBasic from "../../../../../ui/src/inputs/RootInputBasic";
 import TabList from "../../shared/tab-list/TabList";
-import { MenuList } from "../menu/MenuList";
+import { MenuList } from "../../shared/menu-list/MenuList";
 
 const StyledEditPanel = styled.div`
     border-bottom: 1px solid #bbb;
