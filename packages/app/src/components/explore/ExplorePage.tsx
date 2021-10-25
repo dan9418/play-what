@@ -1,10 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import Nav from "./nav/Nav";
+import EditPanel from "./edit-panel/EditPanel";
 import ListBuilder from "./list-builder/ListBuilder";
 import Menu from './menu/Menu';
-import { MenuList } from "./menu/MenuList";
-import EditPanel from "./edit-panel/EditPanel";
+import Nav from "./nav/Nav";
 
 const StyledExplorePage = styled.div`
 
@@ -13,25 +12,18 @@ const StyledExplorePage = styled.div`
 	bottom: 0;
 	left: 0;
 	right: 0;
-	
-	height: 100%;
+
 	width: 100%;
 
 	display: flex;
 	justify-content: center;
 
 	> div {
+		width: 100%;
+		max-width: 1024px;
 		display: grid;
-		grid-template-columns: 512px 512px;
+		grid-template-columns: 1fr 1fr;
 		gap: 16px;
-
-		.test {
-			margin: 16px 0;
-			padding: 16px;
-			background: ${({ theme }) => theme.surface.highlight};
-    		border-radius: 8px;
-			border: 1px solid #ccc;
-		}
 	}
 `;
 
@@ -45,7 +37,9 @@ const ExplorePage: React.FC<any> = () => {
 			<StyledExplorePage>
 				<div>
 					<ListBuilder />
-					<EditPanel />
+					<div>
+						<EditPanel />
+					</div>
 				</div>
 			</StyledExplorePage>
 		</>

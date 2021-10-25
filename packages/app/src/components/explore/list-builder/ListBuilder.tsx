@@ -7,10 +7,8 @@ import ViewerController from "../viewer/ViewerController";
 
 const StyledListBuilder = styled.ul`
     width: 100%;
+    margin-bottom: auto;
     max-width: 1024px;
-    height: 100%;
-    padding: 16px;
-    margin: auto;
 
     display: flex;
     flex-direction: column;
@@ -18,8 +16,8 @@ const StyledListBuilder = styled.ul`
     overflow: auto;
 
     li {
+        margin-top: 16px;
         width: 100%;
-        margin: 8px 0;
         border: 1px solid #ccc;
         border-radius: 8px;
 

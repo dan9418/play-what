@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const StyledMenuItem = styled.div`
 	height: 100%;
 	width: 100%;
-	padding: 0 16px;
 
 	display: flex;
 	flex-direction: column;
@@ -17,7 +16,7 @@ export const StyledMenuItem = styled.div`
 		align-items: center;
 		justify-content: space-between;
 		width: 100%;
-		padding: 8px 0;
+		padding: 0 0 8px 0;
 		button {
 			background: transparent;
 			&:hover {
@@ -56,7 +55,7 @@ interface IMenuItemProps {
 
 const MenuItem: React.FC<IMenuItemProps> = ({ name, children, closeMenu }) => {
 	return (
-		<StyledMenuItem className="quick-link" type="button">
+		<StyledMenuItem type="button">
 			<div className="name-advanced">
 				<div className="name">{name}</div>
 			</div>

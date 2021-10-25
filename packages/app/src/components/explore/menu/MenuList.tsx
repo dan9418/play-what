@@ -12,7 +12,6 @@ import MenuItem, { StyledMenuItem } from './MenuItem';
 
 const StyledMenuList = styled.ul`
     display: flex;
-    height: 100%;
 
     li {
         margin: 0;
@@ -45,8 +44,8 @@ const StyledMenuList = styled.ul`
     &.y {
         flex-direction: column;
         li {
-            height: 128px;
-            border-bottom: 1px solid ${THEME.border};
+            padding: 16px 0;
+            
             /*&:not(:last-child) {
                 border-bottom: 1px solid ${THEME.border};
             }*/
@@ -56,6 +55,10 @@ const StyledMenuList = styled.ul`
             ${StyledMenuItem} {
                 width: 100%;
                 padding-right: 24px;
+            }
+
+            &:not(:last-child) {
+                border-bottom: 1px solid ${THEME.border};
             }
         }
     }

@@ -37,12 +37,6 @@ const StyledViewerController = styled.div`
             text-align: left;
         }
     }
-
-    .advanced {
-        width: 100%;
-        margin-top: auto;
-    }
-
 `;
 
 const ViewerController: React.FC<any> = ({ details, viewerDetails, listIndex, ...rest }) => {
