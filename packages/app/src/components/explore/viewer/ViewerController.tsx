@@ -29,7 +29,7 @@ const StyledViewerController = styled.div`
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #bbb;
         padding: 16px;
 
         border-radius: 8px 8px 0 0;

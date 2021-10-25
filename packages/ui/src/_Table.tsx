@@ -18,7 +18,7 @@ const StyledTable = styled.table`
 
 	& thead tr {
 		background-color: #eee;
-		border: 1px solid #ccc;
+		border: 1px solid #bbb;
 	}
 
 	& tbody tr:not(:last-child) {

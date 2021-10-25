@@ -18,7 +18,7 @@ const StyledListBuilder = styled.ul`
     > li {
         margin-top: 16px;
         width: 100%;
-        border: 1px solid #ccc;
+        border: 1px solid #bbb;
         border-radius: 8px;
 
         &.active {
