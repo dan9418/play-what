@@ -24,20 +24,29 @@ const EditPanel: React.FC<any> = () => {
         <StyledEditPanel>
             <TabList options={[
                 {
-                    text: 'Position'
+                    text: 'Summary'
                 },
                 {
                     text: 'Notes',
                     isActive: true
                 },
                 {
-                    text: 'Viewer'
+                    text: 'Voicing'
+                },
+                {
+                    text: 'Fretboard'
+                },
+                {
+                    text: 'Labels'
                 },
                 {
                     text: 'Sound'
                 },
                 {
-                    text: 'Color'
+                    text: 'Transform'
+                },
+                {
+                    text: 'Related'
                 }
             ]} />
             <div className="content">

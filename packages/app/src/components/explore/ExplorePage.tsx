@@ -20,8 +20,8 @@ const StyledExplorePage = styled.div`
 
 	> div {
 		width: 100%;
-		//max-width: 1024px;
-		max-width: 512px;
+		max-width: 1024px;
+		//max-width: 512px;
 	}
 `;
 

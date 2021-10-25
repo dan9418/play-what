@@ -70,7 +70,7 @@ const RootInputBasic: React.FC<any> = editProps => {
                             value: 5
                         },
                         {
-                            text: 'b',
+                            text: 'B',
                             value: 6
                         }
                     ]}

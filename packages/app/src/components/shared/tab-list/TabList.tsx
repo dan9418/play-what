@@ -16,7 +16,8 @@ const StyledTabList = styled.ul`
 
 		&.active {
 			font-weight: bold;
-			background: ${({ theme }) => theme.surface.highlight};
+			background: ${({ theme }) => theme.surface.nav}11;
+			border-bottom: 2px solid ${({ theme }) => theme.active};
 		}
 
 		&:hover {
@@ -33,7 +34,7 @@ const TabList: React.FC<any> = ({ options }) => {
 		<StyledTabList>
 			{options.map(option => (
 				<li key={option.text}>
-					<button type="button" className={option.isActive ? 'active' : ''}>
+					<button type="button" className={option.isActive ? 'active' : ''} onClick={option.onClick}>
 						{option.text}
 					</button>
 				</li>
