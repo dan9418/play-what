@@ -5,7 +5,7 @@ import { MenuList } from "../menu/MenuList";
 const StyledEditPanel = styled.div`
     margin: 16px 0;
 
-    background: ${({ theme }) => theme.surface.highlight};
+    background: #eee;//${({ theme }) => theme.surface.highlight};
     border-radius: 8px;
     border: 1px solid #ccc;
 
@@ -13,13 +13,11 @@ const StyledEditPanel = styled.div`
 
     .header {
         padding: 16px;
-        background: ${({ theme }) => theme.surface.gradient};
         border-bottom: 1px solid #ccc;
         border-radius: 8px 8px 0 0;
     }
     & > .content {
         padding: 0 16px;
-        background: ${({ theme }) => theme.surface.gradient};
     }
     .tabs {
         display: flex;
@@ -29,7 +27,7 @@ const StyledEditPanel = styled.div`
         padding: 0 16px;
         border-bottom: 1px solid #ccc;
 
-        background: ${({ theme }) => theme.surface.highlight};
+        background: ${({ theme }) => theme.surface.gradient};
         .item {
             padding: 4px 8px;
             cursor: pointer;

@@ -8,17 +8,18 @@ import Viewer from "./Viewer";
 const StyledViewerController = styled.div`
     width: 100%;
     height: 100%;
-    padding: 16px;
+   
 
-    background: ${({ theme }) => theme.surface.gradient};
+    background: #eee;//${({ theme }) => theme.surface.highlight};
     border-radius: 8px;
 
     .header {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
+        border-bottom: 1px solid #ccc;
 
-        margin-bottom: 16px;
+        padding: 16px;
         .button-container {
             display: flex;
             button {
@@ -35,7 +36,11 @@ const StyledViewerController = styled.div`
             cursor: pointer;
             width: 100%;
             text-align: left;
+            padding: 0;
         }
+    }
+    .viewer-container {
+        padding: 16px;
     }
 `;
 
@@ -59,10 +64,7 @@ const ViewerController: React.FC<any> = ({ details, viewerDetails, listIndex, ..
                     {_details.notes.formattedName}
                 </button>
                 <div className="button-container">
-                    <IconButton iconId="up" />
-                    <IconButton iconId="down" />
-                    <IconButton iconId="maximize" />
-                    <IconButton iconId="delete" />
+                    <IconButton iconId="edit" />
                 </div>
             </div>
             <div className="viewer-container">
