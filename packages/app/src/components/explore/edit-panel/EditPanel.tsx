@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import TabList from "../../shared/tab-list/TabList";
 import { MenuList } from "../menu/MenuList";
 
 const StyledEditPanel = styled.div`
@@ -10,19 +11,9 @@ const StyledEditPanel = styled.div`
     & > .content {
         padding: 0 16px;
     }
-    .tabs {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        height: 48px;
-        padding: 0 16px;
+    & > ul {
         border-bottom: 1px solid #ccc;
-
         background: ${({ theme }) => theme.surface.gradient};
-        .itm {
-            padding: 4px 8px;
-            cursor: pointer;
-        }
     }
 `;
 
@@ -31,17 +22,24 @@ const EditPanel: React.FC<any> = () => {
 
     return (
         <StyledEditPanel>
-            <div className="tabs">
-                <div className="itm">
-                    <b>Notes</b>
-                </div>
-                <div className="itm">
-                    Viewer
-                </div>
-                <div className="itm">
-                    Sound
-                </div>
-            </div>
+            <TabList options={[
+                {
+                    text: 'Position'
+                },
+                {
+                    text: 'Notes',
+                    isActive: true
+                },
+                {
+                    text: 'Viewer'
+                },
+                {
+                    text: 'Sound'
+                },
+                {
+                    text: 'Color'
+                }
+            ]} />
             <div className="content">
                 <MenuList isVertical />
             </div>

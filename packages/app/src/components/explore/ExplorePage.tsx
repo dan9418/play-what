@@ -1,9 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import EditPanel from "./edit-panel/EditPanel";
 import ListBuilder from "./list-builder/ListBuilder";
-import Menu from './menu/Menu';
-import Nav from "./nav/Nav";
+import TabList from "../shared/tab-list/TabList";
 
 const StyledExplorePage = styled.div`
 
@@ -27,13 +25,51 @@ const StyledExplorePage = styled.div`
 	}
 `;
 
+const StyledTabWrapper = styled.div`
+    height: 48px;
+    position: fixed;
+    top: 32px;
+    left: 0;
+    right: 0;
+    z-index: 2001;
+	background: ${({ theme }) => theme.surface.gradient};
+	border-bottom: 1px solid ${({ theme }) => theme.border};
+
+	> ul {
+		height: 100%;
+		width: 100%;
+		max-width: 1024px;
+		margin: auto;
+
+		display: flex;
+		align-items: center;
+	}
+`
 
 const ExplorePage: React.FC<any> = () => {
 
 	return (
 		<>
-			<Nav />
-			<Menu />
+			<StyledTabWrapper>
+				<TabList options={[
+					{
+						text: 'Home'
+					},
+					{
+						text: 'List',
+						isActive: true
+					},
+					{
+						text: 'Flash Cards'
+					},
+					{
+						text: 'Charts'
+					},
+					{
+						text: 'Cheat Sheets'
+					}
+				]} />
+			</StyledTabWrapper>
 			<StyledExplorePage>
 				<div>
 					<ListBuilder />
