@@ -23,26 +23,35 @@ export const dataListState = atom<IDataItem[]>({
             root: NOTE_PRESET_MAP.get(NoteId.C).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
             viewerProps: {
-                voicing: { value: [1] }
+                voicing: { value: [[7, 1, 2], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [7, 1, 2]] }
             }
         },
         {
-            root: NOTE_PRESET_MAP.get(NoteId.C).value,
-            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
+            root: NOTE_PRESET_MAP.get(NoteId.D).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Dorian).value,
             viewerProps: {
-                voicing: { value: [7] }
+                voicing: { value: [[1, 2, 3], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]] }
             }
         },
         {
-            root: NOTE_PRESET_MAP.get(NoteId.C).value,
-            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
+            root: NOTE_PRESET_MAP.get(NoteId.E).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Phrygian).value,
+            viewerProps: {
+                voicing: { value: [[1, 2, 3], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]] }
+            }
         }, {
-            root: NOTE_PRESET_MAP.get(NoteId.C).value,
-            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
+            root: NOTE_PRESET_MAP.get(NoteId.G).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Mixolydian).value,
+            viewerProps: {
+                voicing: { value: [[1, 2], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]] }
+            }
         },
         {
-            root: NOTE_PRESET_MAP.get(NoteId.C).value,
-            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
+            root: NOTE_PRESET_MAP.get(NoteId.A).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Aeolian).value,
+            viewerProps: {
+                voicing: { value: [[1, 2, 3], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]] }
+            }
         }
     ]
 });
