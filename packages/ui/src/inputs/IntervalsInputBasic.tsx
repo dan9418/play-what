@@ -18,7 +18,7 @@ const StyledIntervalsInputBasic = styled.div`
 
 const IntervalsInputBasic: React.FC<any> = editProps => {
 
-    const { beforeIntervals, setBeforeIntervals } = editProps;
+    const { intervals, setIntervals } = editProps;
 
     const [presetType, _setPresetType] = useState(PresetTag.Chord);
 
@@ -43,10 +43,10 @@ const IntervalsInputBasic: React.FC<any> = editProps => {
 
     const setPreset = (x) => {
         if (x.id === 'unselected') {
-            setBeforeIntervals([]);
+            setIntervals([]);
         }
         else {
-            setBeforeIntervals(x.value);
+            setIntervals(x.value);
         }
         _setPreset(x);
     }

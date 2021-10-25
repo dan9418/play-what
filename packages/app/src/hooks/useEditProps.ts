@@ -1,51 +1,53 @@
-import { IPod } from './../../../core/src/models/Model.constants';
-
-import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
-import { useModalContext } from '../contexts/ModalContext';
-import { intervalsState, rootState, viewerIdState, viewerPropsState } from '../state/state';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
+import { useModalContext } from '../contexts/ModalContext';
+import { dataIndexState, dataListState, viewerIdState, viewerPropsState } from '../state/state';
+import { IPod } from './../../../core/src/models/Model.constants';
+import { getListHelpers } from './../utils/getListHelpers';
 
-const useEditProps = ({
-    _beforeRoot,
-    _beforeIntervals,
-    _afterRoot,
-    _afterIntervals,
-    _beforeViewerId,
-    _beforeViewerProps,
-    _afterViewerId,
-    _afterViewerProps
-} = {} as any) => {
+const useEditSelectedProps = () => {
 
     // @ts-ignore
-    const [beforeRoot, setBeforeRoot] = useRecoilState(rootState);
+    const [dataList, setDataList] = useRecoilState(dataListState);
     // @ts-ignore
-    const [afterRoot, setAfterRoot] = useState(beforeRoot);
+    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+
+    const dataItem = dataList[dataIndex];
+    const root = dataItem.root;
+    const intervals = dataItem.intervals;
+
+    const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
+
+    const setRoot = x => listHelpers.setData({ root: x, intervals })
+    const setIntervals = x => listHelpers.setData({ root, intervals: x })
+
+    const editSelectedProps = {
+        root,
+        setRoot,
+        intervals,
+        setIntervals
+    };
+
+    return editSelectedProps;
+}
+
+const useEditProps = () => {
+
+    const { root, setRoot, intervals, setIntervals } = useEditSelectedProps();
 
     // @ts-ignore
-    const [beforeIntervals, setBeforeIntervals] = useRecoilState(intervalsState);
+    const [viewerId, setViewerId] = useRecoilState(viewerIdState);
     // @ts-ignore
-    const [afterIntervals, setAfterIntervals] = useState(beforeIntervals);
-
-    // @ts-ignore
-    const [beforeViewerId, setBeforeViewerId] = useRecoilState(viewerIdState);
-    // @ts-ignore
-    const [afterViewerId, setAfterViewerId] = useState(beforeViewerId);
-    // @ts-ignore
-    const [beforeViewerProps, setBeforeViewerProps] = useRecoilState(viewerPropsState);
-    // @ts-ignore
-    const [afterViewerProps, setAfterViewerProps] = useState(beforeViewerProps);
+    const [viewerProps, setViewerProps] = useRecoilState(viewerPropsState);
 
     const modalContext = useModalContext();
-
     const onCancel = () => modalContext.closeModal();
 
     const onApply = () => {
-        setBeforeRoot(afterRoot as IPod);
-        setBeforeIntervals(afterIntervals as IPod[]);
-        setBeforeViewerId(afterViewerId);
-        setBeforeViewerProps(afterViewerProps);
+        setRoot(root as IPod);
+        setIntervals(intervals as IPod[]);
+        setViewerId(viewerId);
+        setViewerProps(viewerProps);
     };
 
     const onDone = () => {
@@ -53,33 +55,18 @@ const useEditProps = ({
         onCancel();
     };
 
-    const beforeModelDetails = PodListUtils.getDetails(_beforeRoot || beforeRoot, _beforeIntervals || beforeIntervals);
-    const afterModelDetails = PodListUtils.getDetails(_afterRoot || afterRoot, _afterIntervals || afterIntervals);
-
-    const beforeViewerDetails = viewerUtils.getDetails(_beforeViewerId || beforeViewerId, _beforeViewerProps || beforeViewerProps);
-    const afterViewerDetails = viewerUtils.getDetails(_afterViewerId || afterViewerId, _afterViewerProps || afterViewerProps);
+    const modelDetails = PodListUtils.getDetails(root, intervals);
 
     const editProps = {
-        beforeViewerId,
-        setBeforeViewerId,
-        afterViewerId,
-        setAfterViewerId,
-        beforeViewerProps,
-        setBeforeViewerProps,
-        afterViewerProps,
-        setAfterViewerProps,
-        beforeRoot,
-        setBeforeRoot,
-        afterRoot,
-        setAfterRoot,
-        beforeIntervals,
-        setBeforeIntervals,
-        afterIntervals,
-        setAfterIntervals,
-        beforeModelDetails,
-        afterModelDetails,
-        beforeViewerDetails,
-        afterViewerDetails,
+        viewerId,
+        setViewerId,
+        viewerProps,
+        setViewerProps,
+        root,
+        setRoot,
+        intervals,
+        setIntervals,
+        modelDetails,
         onCancel,
         onApply,
         onDone

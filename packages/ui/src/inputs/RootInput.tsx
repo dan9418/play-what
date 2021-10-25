@@ -62,18 +62,18 @@ const RootInput = ({ root, setRoot }) => {
     const degree = PodUtils.getDegree(root);
 
     const setAccidental = a => {
-        const afterRoot = NoteUtils.createPod(degree, a, octave);
-        setRoot(afterRoot);
+        const root = NoteUtils.createPod(degree, a, octave);
+        setRoot(root);
     }
 
     const setOctave = o => {
-        const afterRoot = NoteUtils.createPod(degree, accidental, o);
-        setRoot(afterRoot);
+        const root = NoteUtils.createPod(degree, accidental, o);
+        setRoot(root);
     }
 
     const setDegree = d => {
-        const afterRoot = NoteUtils.createPod(d, accidental, octave);
-        setRoot(afterRoot);
+        const root = NoteUtils.createPod(d, accidental, octave);
+        setRoot(root);
     }
 
     return (

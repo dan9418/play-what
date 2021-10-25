@@ -4,9 +4,8 @@ import { useRecoilValue } from 'recoil';
 import styled from 'styled-components';
 import IntervalsInputBasic from '../../../../../ui/src/inputs/IntervalsInputBasic';
 import RootInputBasic from '../../../../../ui/src/inputs/RootInputBasic';
-import ViewerInputBasic from '../../../../../ui/src/inputs/ViewerInputBasic';
 import useEditProps from '../../../hooks/useEditProps';
-import { detailsState, viewerDetailsState } from '../../../state/state';
+import { detailsState } from '../../../state/state';
 import THEME from '../../../styles/theme';
 import MenuItem, { StyledMenuItem } from './MenuItem';
 
@@ -66,8 +65,6 @@ const StyledMenuList = styled.ul`
 export const MenuList: React.FC<any> = ({ isVertical, closeMenu }) => {
     // @ts-ignore
     const details = useRecoilValue(detailsState);
-    // @ts-ignore
-    const viewerDetails = useRecoilValue(viewerDetailsState);
 
     const editProps = useEditProps();
 

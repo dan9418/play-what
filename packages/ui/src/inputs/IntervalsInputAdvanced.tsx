@@ -1,14 +1,13 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import ViewerComparison from '../../../app/src/components/explore/edit-panel/ViewerComparison';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import useEditProps from '../../../app/src/hooks/useEditProps';
-import { HELP_INTERVALS_EDIT, HELP_PREVIEW } from '../../../app/src/utils/help';
+import { HELP_INTERVALS_EDIT } from '../../../app/src/utils/help';
 import IntervalUtils from '../../../core/src/models/Pod/Interval/Interval.utils';
 import { StyledHighlightBox } from '../HighlightBox';
-import IntervalsInputTable from './IntervalsInputTable';
 import IntervalExtensionsInput from './IntervalExtensionsInput';
+import IntervalsInputTable from './IntervalsInputTable';
 
 const StyledIntervalAnalysis = styled(StyledHighlightBox)`
 
@@ -40,8 +39,8 @@ const StyledIntervalAnalysis = styled(StyledHighlightBox)`
     }
 `;
 
-const IntervalsAnalysisAdapter = ({ afterModelDetails }) => {
-    const intervals = afterModelDetails.intervals.value;
+const IntervalsAnalysisAdapter = ({ modelDetails }) => {
+    const intervals = modelDetails.intervals.value;
     return (
         <StyledIntervalAnalysis>
             <ul>
@@ -70,13 +69,10 @@ const IntervalsInputAdvanced: React.FC = () => {
             <IntervalsAnalysisAdapter {...editProps} />
 
             <ModalSection title="Edit Intervals" helpText={HELP_INTERVALS_EDIT}>
-                <IntervalsInputTable intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
+                <IntervalsInputTable intervals={editProps.intervals} setIntervals={editProps.setIntervals} />
             </ModalSection>
             <ModalSection title="Extensions" helpText={HELP_INTERVALS_EDIT}>
-                <IntervalExtensionsInput intervals={editProps.afterIntervals} setIntervals={editProps.setAfterIntervals} />
-            </ModalSection>
-            <ModalSection title="Preview" helpText={HELP_PREVIEW}>
-                <ViewerComparison {...editProps} />
+                <IntervalExtensionsInput intervals={editProps.intervals} setIntervals={editProps.setIntervals} />
             </ModalSection>
         </>
     )

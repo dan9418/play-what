@@ -77,25 +77,25 @@ const RootButton = ({ children, value, setValue, buttonValue }) => {
 
 const RootInputBasic: React.FC<any> = editProps => {
 
-    const { beforeRoot, setBeforeRoot } = editProps;
+    const { root, setRoot } = editProps;
 
-    const accidental = NoteUtils.getAccidentalOffset(beforeRoot);
-    const octave = PodUtils.getOctave(beforeRoot);
-    const degree = PodUtils.getDegree(beforeRoot);
+    const accidental = NoteUtils.getAccidentalOffset(root);
+    const octave = PodUtils.getOctave(root);
+    const degree = PodUtils.getDegree(root);
 
     const setAccidental = a => {
-        const afterRoot = NoteUtils.createPod(degree, a, octave);
-        setBeforeRoot(afterRoot);
+        const root = NoteUtils.createPod(degree, a, octave);
+        setRoot(root);
     }
 
     const setOctave = o => {
-        const afterRoot = NoteUtils.createPod(degree, accidental, o);
-        setBeforeRoot(afterRoot);
+        const root = NoteUtils.createPod(degree, accidental, o);
+        setRoot(root);
     }
 
     const setDegree = d => {
-        const afterRoot = NoteUtils.createPod(d, accidental, octave);
-        setBeforeRoot(afterRoot);
+        const root = NoteUtils.createPod(d, accidental, octave);
+        setRoot(root);
     }
 
     return (

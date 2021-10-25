@@ -24,6 +24,7 @@ const StyledViewerController = styled.div`
             display: flex;
             button {
                 background-color: transparent;
+                padding: 0;
             }
         }
         .header-btn {
@@ -31,12 +32,11 @@ const StyledViewerController = styled.div`
             border: none;
             background-color: transparent;
             font-weight: bold;
-            font-size: 140%;
+            font-size: 1.5em;
             color: ${({ theme }) => theme.text.primary};
             cursor: pointer;
             width: 100%;
             text-align: left;
-            padding: 0;
         }
     }
     .viewer-container {
@@ -44,11 +44,9 @@ const StyledViewerController = styled.div`
     }
 `;
 
-const ViewerController: React.FC<any> = ({ details, viewerDetails, listIndex, ...rest }) => {
+const ViewerController: React.FC<any> = ({ details, listIndex, ...rest }) => {
 
     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
-
-
     const masterDetails = useRecoilValue(detailsState);
 
     const _details = details ? details : masterDetails;

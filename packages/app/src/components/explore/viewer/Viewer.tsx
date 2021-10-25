@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { detailsState, viewerDetailsState } from "../../../state/state";
+import { viewerDetailsState } from "../../../state/state";
 
 const StyledViewer = styled.div`
     width: 100%;
@@ -15,14 +15,11 @@ const StyledViewer = styled.div`
 
 const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
 
-    const masterDetails = useRecoilValue(detailsState);
     const masterViewerDetails = useRecoilValue(viewerDetailsState);
-
-    const _details = details ? details : masterDetails;
     const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
 
     return (
-        <_viewerDetails.component {..._viewerDetails.props} details={_details} {...rest} />
+        <_viewerDetails.component {..._viewerDetails.props} details={details} {...rest} />
     );
 };
 
