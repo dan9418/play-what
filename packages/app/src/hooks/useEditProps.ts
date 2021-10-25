@@ -18,8 +18,8 @@ const useEditSelectedProps = () => {
 
     const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
 
-    const setRoot = x => listHelpers.setData({ root: x, intervals })
-    const setIntervals = x => listHelpers.setData({ root, intervals: x })
+    const setRoot = x => listHelpers.setData({ ...dataItem, root: x })
+    const setIntervals = x => listHelpers.setData({ ...dataItem, intervals: x })
 
     const editSelectedProps = {
         root,

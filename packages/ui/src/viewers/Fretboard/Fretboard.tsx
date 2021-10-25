@@ -64,6 +64,8 @@ const Fretboard: React.FC<IFretboardProps> = (userProps) => {
 		gridTemplateRows
 	};
 
+	console.log('dpb', userProps);
+
 	return (
 		<StyledFretboard className='fretboard' style={fretboardStyles}>
 			{getFrets(props)}

@@ -4,7 +4,7 @@ import IntervalUtils from "../../../core/src/models/Pod/Interval/Interval.utils"
 import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/src/models/Pod/Pod.utils";
 import PodListUtils from "../../../core/src/models/PodList/PodList.utils";
-import { IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
+import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
 
 interface IPodProps {
     bgColor: string;
@@ -73,7 +73,7 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     return { bgColor, fgColor, text, note, interval };
 }
 
-const getDetails = (viewerId: ViewerId, viewerProps: IViewerProps): IViewerDetails => {
+const getDetails = (viewerId: ViewerId = DEFAULT_VIEWER_ID, viewerProps: IViewerProps = {}): IViewerDetails => {
     const viewerConfig = VIEWER_PRESET_MAP.get(viewerId);
     //const presetConfig = viewerConfig.value.presets.find(p => p.id === presetId);
 

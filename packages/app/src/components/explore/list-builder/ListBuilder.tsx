@@ -43,7 +43,6 @@ const ListBuilder: React.FC<any> = () => {
                 <li key={i} className={dataIndex === i ? 'active' : ''}>
                     <ViewerController
                         listIndex={i}
-                        details={PodListUtils.getDetails(data.root, data.intervals)}
                     />
                 </li>
             ))}

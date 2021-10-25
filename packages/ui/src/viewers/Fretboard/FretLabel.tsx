@@ -41,11 +41,13 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, mat
 
 	const hasVoicing = voicing && voicing.value && voicing.value.length;
 
-	if(hasVoicing) console.log(stringIndex, voicing.value[stringIndex],  interval[1])
+	const voicingForString = hasVoicing && voicing.value[stringIndex];
 
-	const isNoteInVoicing = hasVoicing && interval[1] + 1 === voicing.value[stringIndex];
-	//console.log(hasVoicing, isNoteInVoicing, voicing.value[stringIndex], interval[1] + 1)
-	if(hasVoicing && !isNoteInVoicing) bgColor = `${bgColor}33`;
+	const isNoteInVoicing = hasVoicing && Array.isArray(voicingForString) ?
+		voicingForString.some(x => interval[1] + 1 === x) :
+		interval[1] + 1 === voicingForString;
+
+	if (hasVoicing && !isNoteInVoicing) bgColor = `${bgColor}33`;
 
 	const f = TuningUtils.getFrequency(noteIndex);
 

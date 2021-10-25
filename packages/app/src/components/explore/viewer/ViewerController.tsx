@@ -1,8 +1,10 @@
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
+import PodListUtils from "../../../../../core/src/models/PodList/PodList.utils";
 import IconButton from "../../../../../ui/src/inputs/IconButton";
-import { dataIndexState, detailsState } from "../../../state/state";
+import ViewerUtils from "../../../../../ui/src/viewers/Viewer.utils";
+import { dataIndexState, dataListState, detailsState } from "../../../state/state";
 import Viewer from "./Viewer";
 
 const StyledViewerController = styled.div`
@@ -44,12 +46,14 @@ const StyledViewerController = styled.div`
     }
 `;
 
-const ViewerController: React.FC<any> = ({ details, listIndex, ...rest }) => {
+const ViewerController: React.FC<any> = ({ listIndex, ...rest }) => {
 
+    const [dataList, setDataList] = useRecoilState(dataListState);
     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
-    const masterDetails = useRecoilValue(detailsState);
+    const dataItem = dataList[listIndex];
 
-    const _details = details ? details : masterDetails;
+    const details = PodListUtils.getDetails(dataItem.root, dataItem.intervals);
+    const viewerDetails = ViewerUtils.getDetails(dataItem.viewerId, dataItem.viewerProps);
 
     return (
         <StyledViewerController $isActive={dataIndex === listIndex}>
@@ -59,14 +63,14 @@ const ViewerController: React.FC<any> = ({ details, listIndex, ...rest }) => {
                     onClick={() => setDataIndex(listIndex)}
                     className="header-btn"
                 >
-                    {_details.notes.formattedName}
+                    {details.notes.formattedName}
                 </button>
                 <div className="button-container">
                     <IconButton iconId="edit" />
                 </div>
             </div>
             <div className="viewer-container">
-                <Viewer details={_details} />
+                <Viewer details={details} viewerDetails={viewerDetails} />
             </div>
         </StyledViewerController>
     );

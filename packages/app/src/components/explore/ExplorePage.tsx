@@ -18,6 +18,8 @@ const StyledExplorePage = styled.div`
 	display: flex;
 	justify-content: center;
 
+	overflow: auto;
+
 	> div {
 		width: 100%;
 		max-width: 1024px;

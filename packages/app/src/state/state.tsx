@@ -2,8 +2,8 @@ import { atom, selector } from 'recoil';
 import { ICompleteModelDetails, IPod } from '../../../core/src/models/Model.constants';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
-import { ChordId, CHORD_PRESET_MAP } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
+import { ScaleId, SCALE_PRESET_MAP } from '../../../core/src/models/PodList/Scale/Scale.constants';
 import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../ui/src/viewers/Viewer.constants';
 import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 
@@ -11,7 +11,9 @@ import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 
 interface IDataItem {
     root: IPod,
-    intervals: IPod[]
+    intervals: IPod[],
+    viewerId?: ViewerId,
+    viewerProps?: IViewerProps | any
 }
 
 export const dataListState = atom<IDataItem[]>({
@@ -19,11 +21,28 @@ export const dataListState = atom<IDataItem[]>({
     default: [
         {
             root: NOTE_PRESET_MAP.get(NoteId.C).value,
-            intervals: CHORD_PRESET_MAP.get(ChordId.Dom7).value
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
+            viewerProps: {
+                voicing: { value: [1] }
+            }
         },
         {
-            root: NOTE_PRESET_MAP.get(NoteId.D).value,
-            intervals: CHORD_PRESET_MAP.get(ChordId.Dom7).value
+            root: NOTE_PRESET_MAP.get(NoteId.C).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
+            viewerProps: {
+                voicing: { value: [7] }
+            }
+        },
+        {
+            root: NOTE_PRESET_MAP.get(NoteId.C).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
+        }, {
+            root: NOTE_PRESET_MAP.get(NoteId.C).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
+        },
+        {
+            root: NOTE_PRESET_MAP.get(NoteId.C).value,
+            intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value
         }
     ]
 });
@@ -75,14 +94,24 @@ export const detailsState = selector<ICompleteModelDetails>({
 
 /* VIEWER */
 
-export const viewerIdState = atom<ViewerId>({
+export const viewerIdState = selector<ViewerId>({
     key: 'viewerIdState',
-    default: DEFAULT_VIEWER_ID
+    get: ({ get }) => {
+        const dataList = get(dataListState);
+        const dataIndex = get(dataIndexState);
+
+        return dataList[dataIndex].viewerId || DEFAULT_VIEWER_ID;
+    }
 });
 
-export const viewerPropsState = atom<IViewerProps>({
+export const viewerPropsState = selector<IViewerProps>({
     key: 'viewerPropsState',
-    default: {}
+    get: ({ get }) => {
+        const dataList = get(dataListState);
+        const dataIndex = get(dataIndexState);
+
+        return dataList[dataIndex].viewerProps || {};
+    }
 });
 
 export const viewerDetailsState = selector<IViewerDetails>({
