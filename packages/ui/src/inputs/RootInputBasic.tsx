@@ -1,8 +1,10 @@
 
 import React from "react";
 import styled from 'styled-components';
+import LabelledInput from "../../../app/src/components/shared/labelled-input/LabelledInput";
 import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/src/models/Pod/Pod.utils";
+import ButtonInputRow from "./ButtonInputRow";
 import NumericInput from "./NumericInput";
 import SwitchInput from "./SwitchInput";
 
@@ -11,20 +13,6 @@ const StyledRootInputBasic = styled.div`
     display: grid;
     grid-template-columns: auto auto;
     gap: 8px;
-
-    label {
-        text-transform: uppercase;
-        font-size: 80%;
-        font-weight: bold;
-        letter-spacing: 1px;
-        color: #555;
-        margin-bottom: 4px;
-        display: none;
-    }
-
-    .spelling, .accidental, .octave {
-        
-    }
 
     .spelling button, .accidental button {
         appearance: none;
@@ -100,22 +88,62 @@ const RootInputBasic: React.FC<any> = editProps => {
 
     return (
         <StyledRootInputBasic>
-
-            <div className="spelling">
-                <RootButton value={degree} setValue={setDegree} buttonValue={0}>C</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={1}>D</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={2}>E</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={3}>F</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={4}>G</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={5}>A</RootButton>
-                <RootButton value={degree} setValue={setDegree} buttonValue={6}>B</RootButton>
-            </div>
-
-            <div className="accidental">
-                <RootButton value={accidental} setValue={setAccidental} buttonValue={-1}>b</RootButton>
-                <RootButton value={accidental} setValue={setAccidental} buttonValue={0}>N</RootButton>
-                <RootButton value={accidental} setValue={setAccidental} buttonValue={1}>#</RootButton>
-            </div>
+            <LabelledInput text="Root">
+                <ButtonInputRow
+                    value={root}
+                    setValue={setRoot}
+                    options={[
+                        {
+                            text: 'C',
+                            value: 0
+                        },
+                        {
+                            text: 'D',
+                            value: 1
+                        },
+                        {
+                            text: 'E',
+                            value: 2
+                        },
+                        {
+                            text: 'F',
+                            value: 3
+                        },
+                        {
+                            text: 'G',
+                            value: 4
+                        },
+                        {
+                            text: 'A',
+                            value: 5
+                        },
+                        {
+                            text: 'b',
+                            value: 6
+                        }
+                    ]}
+                />
+            </LabelledInput >
+            <LabelledInput text="Accidental">
+                <ButtonInputRow
+                    value={accidental}
+                    setValue={setAccidental}
+                    options={[
+                        {
+                            text: 'b',
+                            value: -1
+                        },
+                        {
+                            text: 'N',
+                            value: 0
+                        },
+                        {
+                            text: '#',
+                            value: 1
+                        }
+                    ]}
+                />
+            </LabelledInput >
 
             <div className="match-octave">
                 <SwitchInput value={false} setValue={null} />
@@ -125,7 +153,7 @@ const RootInputBasic: React.FC<any> = editProps => {
                 <NumericInput value={octave} setValue={setOctave} />
             </div>
 
-        </StyledRootInputBasic>
+        </StyledRootInputBasic >
     );
 };
 
