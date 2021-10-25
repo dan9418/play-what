@@ -13,9 +13,9 @@ const StyledMenuList = styled.ul`
         padding: 16px 0;
 
         .name {
-            padding: 4px 0;
+            margin-bottom: 8px;
             font-weight: bold;
-            font-size: 120%;
+            font-size: 1.25em;
             color: ${({ theme }) => theme.text.dark};
         }
 

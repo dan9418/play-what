@@ -9,59 +9,10 @@ import NumericInput from "./NumericInput";
 import SwitchInput from "./SwitchInput";
 
 const StyledRootInputBasic = styled.div`
-
     display: grid;
     grid-template-columns: auto auto;
     gap: 8px;
-
-    .spelling button, .accidental button {
-        appearance: none;
-        background-color: ${({ theme }) => theme.surface.highlight};
-        border: none;
-        //background-color: ${({ theme }) => theme.surface.highlight};;
-        //color: ${({ theme }) => theme.text.medium};
-        font-weight: bold;
-
-        border: 1px solid #aaa;
-
-        //border-radius: 4px;
-        padding: 8px;
-
-        &:first-child {
-            border-radius: 4px 0 0 4px;
-        }
-        &:last-child {
-            border-radius: 0 4px 4px 0;
-        }
-        &:active {
-            background-color: ${({ theme }) => theme.active};
-        }
-
-        width: 32px;
-        height: 32px;
-
-        &:hover {
-            cursor: pointer;
-            background-color: ${({ theme }) => theme.clickable};
-            border-color: ${({ theme }) => theme.clickable};
-            color: white;
-        }
-
-        &.active {
-            background-color: ${({ theme }) => theme.active};
-            border-color: ${({ theme }) => theme.active};
-            color: white;
-            font-weight: bold;
-        }
-    }
 `;
-
-const RootButton = ({ children, value, setValue, buttonValue }) => {
-    const className = value === buttonValue ? 'active' : undefined;
-    return (
-        <button type="button" onClick={() => setValue(buttonValue)} className={className}>{children}</button>
-    );
-}
 
 const RootInputBasic: React.FC<any> = editProps => {
 
@@ -88,10 +39,11 @@ const RootInputBasic: React.FC<any> = editProps => {
 
     return (
         <StyledRootInputBasic>
-            <LabelledInput text="Root">
+
+            <LabelledInput text="Spelling">
                 <ButtonInputRow
-                    value={root}
-                    setValue={setRoot}
+                    value={degree}
+                    setValue={setDegree}
                     options={[
                         {
                             text: 'C',
@@ -123,7 +75,8 @@ const RootInputBasic: React.FC<any> = editProps => {
                         }
                     ]}
                 />
-            </LabelledInput >
+            </LabelledInput>
+
             <LabelledInput text="Accidental">
                 <ButtonInputRow
                     value={accidental}
@@ -143,15 +96,17 @@ const RootInputBasic: React.FC<any> = editProps => {
                         }
                     ]}
                 />
-            </LabelledInput >
+            </LabelledInput>
 
-            <div className="match-octave">
-                <SwitchInput value={false} setValue={null} />
-            </div>
+            {false && <>
+                <LabelledInput text="Match Octave">
+                    <SwitchInput value={false} setValue={null} />
+                </LabelledInput>
 
-            <div className="octave">
-                <NumericInput value={octave} setValue={setOctave} />
-            </div>
+                <LabelledInput text="Octave">
+                    <NumericInput value={octave} setValue={setOctave} />
+                </LabelledInput>
+            </>}
 
         </StyledRootInputBasic >
     );

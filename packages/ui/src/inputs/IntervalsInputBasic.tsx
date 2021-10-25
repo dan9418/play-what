@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import styled from 'styled-components';
+import LabelledInput from "../../../app/src/components/shared/labelled-input/LabelledInput";
 import { PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
 import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
 import DropdownInput from "./DropdownInput";
@@ -53,12 +54,12 @@ const IntervalsInputBasic: React.FC<any> = editProps => {
 
     return (
         <StyledIntervalsInputBasic>
-            <div>
+            <LabelledInput text="Type">
                 <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
-            </div>
-            <div>
+            </LabelledInput>
+            <LabelledInput text="Preset">
                 <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
-            </div>
+            </LabelledInput>
         </StyledIntervalsInputBasic>
     );
 };
