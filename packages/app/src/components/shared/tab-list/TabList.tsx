@@ -6,6 +6,8 @@ const StyledTabList = styled.ul`
 	display: flex;
 	align-items: center;
 
+	overflow: hidden;
+
 	button {
 		appearance: none;
 		border: none;
