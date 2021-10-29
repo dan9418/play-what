@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import IntervalsInputBasic from "../../../../../ui/src/inputs/IntervalsInputBasic";
 import RootInputBasic from "../../../../../ui/src/inputs/RootInputBasic";
@@ -18,37 +18,45 @@ const StyledEditPanel = styled.div`
     }
 `;
 
+const EDIT_TABS = [
+    {
+        text: 'Summary'
+    },
+    {
+        text: 'Notes'
+    },
+    {
+        text: 'Voicing'
+    },
+    {
+        text: 'Fretboard'
+    },
+    {
+        text: 'Labels'
+    },
+    {
+        text: 'Sound'
+    },
+    {
+        text: 'Transform'
+    },
+    {
+        text: 'Related'
+    }
+]
+
 
 const EditPanel: React.FC<any> = () => {
+    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+
+
     return (
         <StyledEditPanel>
-            <TabList options={[
-                {
-                    text: 'Summary'
-                },
-                {
-                    text: 'Notes',
-                    isActive: true
-                },
-                {
-                    text: 'Voicing'
-                },
-                {
-                    text: 'Fretboard'
-                },
-                {
-                    text: 'Labels'
-                },
-                {
-                    text: 'Sound'
-                },
-                {
-                    text: 'Transform'
-                },
-                {
-                    text: 'Related'
-                }
-            ]} />
+            <TabList options={EDIT_TABS.map((tab, i) => ({
+                ...tab,
+                isActive: i === selectedTabIndex,
+                onClick: () => setSelectedTabIndex(i)
+            }))} />
             <div className="content">
                 <MenuList menuItems={[
                     {
@@ -61,7 +69,6 @@ const EditPanel: React.FC<any> = () => {
                     }
                 ]} />
             </div>
-            <TabList options={[]} />
         </StyledEditPanel>
     );
 };
