@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { INTERVALS_INPUTS } from "../../../../../ui/src/inputs/IntervalsInput";
-import { ROOT_INPUTS } from "../../../../../ui/src/inputs/RootInputs";
 import { FRETBOARD_INPUTS, LABEL_INPUTS, VOICING_INPUTS } from "../../../../../ui/src/viewers/Viewer.constants";
 import useEditProps from "../../../hooks/useEditProps";
 import LabelledInput from "../../shared/labelled-input/LabelledInput";
 import TabList from "../../shared/tab-list/TabList";
-import { getInputComponent } from "./InputManagers";
+import { getInputComponent, ROOT_INPUTS } from "./InputManagers";
 
 const StyledEditPanel = styled.div`
     border-bottom: 1px solid #bbb;
