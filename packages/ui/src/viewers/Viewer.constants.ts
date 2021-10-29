@@ -1,4 +1,6 @@
 import { ReactNode } from 'react';
+import { ViewerPropsInputManager } from '../../../app/src/components/explore/edit-panel/InputManagers';
+import { VOICINGS } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../../core/src/models/Model.constants';
 import Fretboard from './fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './fretboard/Fretboard.api';
@@ -85,9 +87,19 @@ const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: 
 
 export const VOICING_INPUTS = [
     {
+        propName: 'Voicing',
+        propId: 'voicing',
+        inputId: InputId.Dropdown,
+        inputProps: {
+            options: VOICINGS
+        },
+        inputManager: ViewerPropsInputManager
+    },
+    {
         propName: 'Match Octave',
         propId: 'matchOctave',
-        inputId: InputId.Switch
+        inputId: InputId.Switch,
+        inputManager: ViewerPropsInputManager
     }
 ];
 
@@ -99,7 +111,8 @@ export const FRETBOARD_INPUTS = [
         inputProps: {
             options: FRETBOARD_TUNING_VALUES
         },
-        useValueProperty: true
+        useValueProperty: true,
+        inputManager: ViewerPropsInputManager
     },
     {
         propName: 'Fret Range',
@@ -108,17 +121,20 @@ export const FRETBOARD_INPUTS = [
         inputProps: {
             min: 0,
             max: 24
-        }
+        },
+        inputManager: ViewerPropsInputManager
     },
     {
         propName: 'Show Fret Numbers',
         propId: 'showFretNumbers',
-        inputId: InputId.Switch
+        inputId: InputId.Switch,
+        inputManager: ViewerPropsInputManager
     },
     {
         propName: 'Show Fret Dots',
         propId: 'showFretDots',
-        inputId: InputId.Switch
+        inputId: InputId.Switch,
+        inputManager: ViewerPropsInputManager
     }
 ];
 
@@ -130,7 +146,8 @@ export const LABEL_INPUTS = [
         inputProps: {
             options: LABEL_BY_OPTIONS
         },
-        useValueProperty: true
+        useValueProperty: true,
+        inputManager: ViewerPropsInputManager
     }
 ];
 

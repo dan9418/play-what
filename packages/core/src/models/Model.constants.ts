@@ -8,7 +8,10 @@ export enum InputId {
 	Numeric,
 	Dropdown,
 	Switch,
-	Range
+	Range,
+	ButtonRow,
+	Degree,
+	Accidental
 }
 
 export interface IInputProps {
