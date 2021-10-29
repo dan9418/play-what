@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import FretboardInput from "../../../../../ui/src/inputs/FretboardInput";
 import IntervalsInputBasic from "../../../../../ui/src/inputs/IntervalsInputBasic";
 import RootInputBasic from "../../../../../ui/src/inputs/RootInputBasic";
 import VoicingInput from "../../../../../ui/src/inputs/VoicingInput";
@@ -44,13 +45,13 @@ const EDIT_TABS = [
     },
     {
         text: 'Fretboard',
-        menuItems: []
+        menuItems: FretboardInput
     },
     {
         text: 'Labels',
         menuItems: []
-    },
-    {
+    }
+    /*{
         text: 'Sound',
         menuItems: []
     },
@@ -61,7 +62,7 @@ const EDIT_TABS = [
     {
         text: 'Related',
         menuItems: []
-    }
+    }*/
 ];
 
 const EditPanel: React.FC<any> = () => {
