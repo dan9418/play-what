@@ -20,54 +20,64 @@ const StyledEditPanel = styled.div`
 
 const EDIT_TABS = [
     {
-        text: 'Summary'
+        text: 'Summary',
+        menuItems: []
     },
     {
-        text: 'Notes'
+        text: 'Notes',
+        menuItems: [
+            {
+                text: 'Root',
+                component: RootInputBasic
+            },
+            {
+                text: 'Intervals',
+                component: IntervalsInputBasic
+            }
+        ]
     },
     {
-        text: 'Voicing'
+        text: 'Voicing',
+        menuItems: []
     },
     {
-        text: 'Fretboard'
+        text: 'Fretboard',
+        menuItems: []
     },
     {
-        text: 'Labels'
+        text: 'Labels',
+        menuItems: []
     },
     {
-        text: 'Sound'
+        text: 'Sound',
+        menuItems: []
     },
     {
-        text: 'Transform'
+        text: 'Transform',
+        menuItems: []
     },
     {
-        text: 'Related'
+        text: 'Related',
+        menuItems: []
     }
-]
-
+];
 
 const EditPanel: React.FC<any> = () => {
-    const [selectedTabIndex, setSelectedTabIndex] = useState(0);
+    const [selectedTabIndex, setSelectedTabIndex] = useState(1);
+    const selectedTab = EDIT_TABS[selectedTabIndex];
+    const menuItems = selectedTab.menuItems;
 
+    const tabs = EDIT_TABS.map((tab, i) => ({
+        text: tab.text,
+        isActive: i === selectedTabIndex,
+        onClick: () => setSelectedTabIndex(i)
+    }))
 
     return (
         <StyledEditPanel>
-            <TabList options={EDIT_TABS.map((tab, i) => ({
-                ...tab,
-                isActive: i === selectedTabIndex,
-                onClick: () => setSelectedTabIndex(i)
-            }))} />
+            <TabList options={tabs} />
             <div className="content">
-                <MenuList menuItems={[
-                    {
-                        text: 'Root',
-                        component: RootInputBasic
-                    },
-                    {
-                        text: 'Intervals',
-                        component: IntervalsInputBasic
-                    }
-                ]} />
+                <MenuList menuItems={menuItems} />
             </div>
         </StyledEditPanel>
     );
