@@ -2,6 +2,7 @@ import { atom, selector } from 'recoil';
 import { ICompleteModelDetails, IPod } from '../../../core/src/models/Model.constants';
 import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
+import { VOICING } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
 import { ScaleId, SCALE_PRESET_MAP } from '../../../core/src/models/PodList/Scale/Scale.constants';
 import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../ui/src/viewers/Viewer.constants';
@@ -23,34 +24,34 @@ export const dataListState = atom<IDataItem[]>({
             root: NOTE_PRESET_MAP.get(NoteId.F).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
             viewerProps: {
-                voicing: { value: [[7, 1, 2], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [7, 1, 2]] }
+                voicing: VOICING.CAGED_SCALE_IONIAN
             }
         },
         {
             root: NOTE_PRESET_MAP.get(NoteId.G).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Dorian).value,
             viewerProps: {
-                voicing: { value: [[1, 2, 3], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]] }
+                voicing: VOICING.CAGED_SCALE_DORIAN
             }
         },
         {
             root: NOTE_PRESET_MAP.get(NoteId.A).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Phrygian).value,
             viewerProps: {
-                voicing: { value: [[1, 2, 3], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]] }
+                voicing: VOICING.CAGED_SCALE_PHRYGIAN
             }
         }, {
             root: NOTE_PRESET_MAP.get(NoteId.C).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Mixolydian).value,
             viewerProps: {
-                voicing: { value: [[1, 2], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]] }
+                voicing: VOICING.CAGED_SCALE_MIXOLYDIAN
             }
         },
         {
             root: NOTE_PRESET_MAP.get(NoteId.D).value,
             intervals: SCALE_PRESET_MAP.get(ScaleId.Aeolian).value,
             viewerProps: {
-                voicing: { value: [[1, 2, 3], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]] }
+                voicing: VOICING.CAGED_SCALE_AEOLIAN
             }
         }
     ]

@@ -12,6 +12,7 @@ const StyledTabList = styled.ul`
 		background: transparent;
 		padding: 0 16px;
 		height: 100%;
+		min-width: 48px;
 		cursor: pointer;
 
 		&.active {

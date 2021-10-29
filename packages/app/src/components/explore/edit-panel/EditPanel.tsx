@@ -61,6 +61,7 @@ const EditPanel: React.FC<any> = () => {
                     }
                 ]} />
             </div>
+            <TabList options={[]} />
         </StyledEditPanel>
     );
 };
