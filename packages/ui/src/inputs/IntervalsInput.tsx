@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { intervalsMapper } from "../../../app/src/components/explore/edit-panel/InputManagers";
+import { IntervalsInputManager, intervalsMapper } from "../../../app/src/components/explore/edit-panel/InputManagers";
 import LabelledInput from "../../../app/src/components/shared/labelled-input/LabelledInput";
 import { InputId, PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
 import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";

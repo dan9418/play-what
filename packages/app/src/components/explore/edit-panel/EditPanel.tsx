@@ -13,6 +13,12 @@ const StyledEditPanel = styled.div`
 
     & > .content {
         padding: 16px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        overflow: hidden;
     }
     & > ul {
         border-bottom: 1px solid #bbb;

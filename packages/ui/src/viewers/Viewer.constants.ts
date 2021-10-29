@@ -125,13 +125,13 @@ export const FRETBOARD_INPUTS = [
         inputMapper: viewerPropsMapper
     },
     {
-        propName: 'Show Fret Numbers',
+        propName: 'Fret Numbers',
         propId: 'showFretNumbers',
         inputId: InputId.Switch,
         inputMapper: viewerPropsMapper
     },
     {
-        propName: 'Show Fret Dots',
+        propName: 'Fret Dots',
         propId: 'showFretDots',
         inputId: InputId.Switch,
         inputMapper: viewerPropsMapper

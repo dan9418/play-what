@@ -12,14 +12,21 @@ const StyledLabelledInput = styled.div`
         margin-bottom: 4px;
         display: block;
     }
+    & > div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
 `;
 
 const LabelledInput: React.FC<any> = ({ text, children }) => {
 
     return (
         <StyledLabelledInput className={text.toLowerCase().replace(' ', '-')}>
-            <label>{text}</label>
-            {children}
+            {text && <label>{text}</label>}
+            <div>
+                {children}
+            </div>
         </StyledLabelledInput>
     );
 };
