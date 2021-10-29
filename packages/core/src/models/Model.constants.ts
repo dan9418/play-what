@@ -11,7 +11,8 @@ export enum InputId {
 	Range,
 	ButtonRow,
 	Degree,
-	Accidental
+	Accidental,
+	Intervals
 }
 
 export interface IInputProps {

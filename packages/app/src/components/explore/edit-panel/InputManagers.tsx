@@ -1,18 +1,15 @@
-import React, { Fragment, ReactNode } from 'react';
+import { Fragment } from 'react';
 import { InputId } from '../../../../../core/src/models/Model.constants';
 import DropdownInput from '../../../../../ui/src/inputs/DropdownInput';
+import { IntervalsInput } from '../../../../../ui/src/inputs/IntervalsInput';
 import NumericInput from '../../../../../ui/src/inputs/NumericInput';
 import RangeInput from '../../../../../ui/src/inputs/RangeInput';
+import { AccidentalInput, DegreeInput } from '../../../../../ui/src/inputs/RootInputs';
 import SwitchInput from '../../../../../ui/src/inputs/SwitchInput';
 import { IViewerInputConfig } from '../../../../../ui/src/viewers/Viewer.constants';
-import useEditProps from '../../../hooks/useEditProps';
-import LabelledInput from '../../shared/labelled-input/LabelledInput';
 
-interface IInputManagerProps {
-    input: IViewerInputConfig;
-}
 
-const getInputComponent = (inputId: InputId): any => {
+export const getInputComponent = (inputId: InputId): any => {
     switch (inputId) {
         case InputId.Switch:
             return SwitchInput;
@@ -22,18 +19,22 @@ const getInputComponent = (inputId: InputId): any => {
             return RangeInput;
         case InputId.Dropdown:
             return DropdownInput;
+        case InputId.Degree:
+            return DegreeInput;
+        case InputId.Accidental:
+            return AccidentalInput;
+        case InputId.Intervals:
+            return IntervalsInput;
         default:
             return Fragment;
     }
 }
 
-export const ViewerPropsInputManager: React.FC<IInputManagerProps> = ({ input }) => {
-    const { viewerProps, setViewerProps } = useEditProps();
+export const viewerPropsMapper = (editProps: any, input: IViewerInputConfig): any => {
+    const { viewerProps, setViewerProps } = editProps;
+    const { propId, inputProps, useValueProperty } = input;
 
-    const { inputId, propId, propName, inputProps, useValueProperty } = input;
-    const Component = getInputComponent(inputId);
-
-    if (!Component) return null;
+    const value = viewerProps[propId];
 
     const setValue = newValue => {
         setViewerProps({
@@ -42,33 +43,32 @@ export const ViewerPropsInputManager: React.FC<IInputManagerProps> = ({ input })
         });
     }
 
-    return (
-        <LabelledInput text={propName}>
-            <Component
-                value={viewerProps[propId]}
-                setValue={setValue}
-                {...inputProps}
-            />
-        </LabelledInput>
-    );
+    return {
+        value,
+        setValue,
+        ...(inputProps || {})
+    }
+}
+
+export const rootMapper = (editProps: any, input: IViewerInputConfig): any => {
+    const { root, setRoot } = editProps;
+    const { inputProps } = input;
+
+    return {
+        value: root,
+        setValue: setRoot,
+        ...(inputProps || {})
+    }
 }
 
 
-export const RootInputManager: React.FC<IInputManagerProps> = ({ input }) => {
-    const { root, setRoot } = useEditProps();
+export const intervalsMapper = (editProps: any, input: IViewerInputConfig): any => {
+    const { intervals, setIntervals } = editProps;
+    const { inputProps } = input;
 
-    const { inputId, propName, inputProps } = input;
-    const Component = getInputComponent(inputId);
-
-    if (!Component) return null;
-
-    return (
-        <LabelledInput text={propName}>
-            <Component
-                value={root}
-                setValue={setRoot}
-                {...inputProps}
-            />
-        </LabelledInput>
-    );
+    return {
+        value: intervals,
+        setValue: setIntervals,
+        ...(inputProps || {})
+    }
 }

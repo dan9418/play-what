@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { ViewerPropsInputManager } from '../../../app/src/components/explore/edit-panel/InputManagers';
 import { VOICINGS } from '../../../core/src/models/PodList/Chord/Chord.constants';
+import { viewerPropsMapper } from './../../../app/src/components/explore/edit-panel/InputManagers';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../../core/src/models/Model.constants';
 import Fretboard from './fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './fretboard/Fretboard.api';
@@ -20,9 +20,9 @@ export interface IViewerPreset {
 }
 
 export interface IViewerInputConfig {
-    propId: string;
-    inputId: InputId;
-    propName: string;
+    propId?: string;
+    inputId?: InputId;
+    propName?: string;
     inputProps?: {
         [prop: string]: any
     },
@@ -93,13 +93,13 @@ export const VOICING_INPUTS = [
         inputProps: {
             options: VOICINGS
         },
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     },
     {
         propName: 'Match Octave',
         propId: 'matchOctave',
         inputId: InputId.Switch,
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     }
 ];
 
@@ -112,7 +112,7 @@ export const FRETBOARD_INPUTS = [
             options: FRETBOARD_TUNING_VALUES
         },
         useValueProperty: true,
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     },
     {
         propName: 'Fret Range',
@@ -122,19 +122,19 @@ export const FRETBOARD_INPUTS = [
             min: 0,
             max: 24
         },
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     },
     {
         propName: 'Show Fret Numbers',
         propId: 'showFretNumbers',
         inputId: InputId.Switch,
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     },
     {
         propName: 'Show Fret Dots',
         propId: 'showFretDots',
         inputId: InputId.Switch,
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     }
 ];
 
@@ -147,7 +147,7 @@ export const LABEL_INPUTS = [
             options: LABEL_BY_OPTIONS
         },
         useValueProperty: true,
-        inputManager: ViewerPropsInputManager
+        inputMapper: viewerPropsMapper
     }
 ];
 

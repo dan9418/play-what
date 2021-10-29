@@ -1,28 +1,17 @@
 
 import React, { useState } from "react";
-import styled from 'styled-components';
+import { intervalsMapper } from "../../../app/src/components/explore/edit-panel/InputManagers";
 import LabelledInput from "../../../app/src/components/shared/labelled-input/LabelledInput";
-import { PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
+import { InputId, PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
 import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
 import DropdownInput from "./DropdownInput";
 
-const StyledIntervalsInputBasic = styled.div`
-    display: grid;
-    grid-template-columns: auto;
-    @media(min-width: 512px) {
-        grid-template-columns: auto auto;
-    }
-    gap: 8px;
+interface IInputProps {
+    setValue: any;
+    value: any;
+}
 
-    select {
-        width: 100%;
-        margin-bottom: 8px;
-    }
-`;
-
-const IntervalsInputBasic: React.FC<any> = editProps => {
-
-    const { intervals, setIntervals } = editProps;
+export const IntervalsInput: React.FC<IInputProps> = ({ value, setValue }) => {
 
     const [presetType, _setPresetType] = useState(PresetTag.Chord);
 
@@ -47,24 +36,33 @@ const IntervalsInputBasic: React.FC<any> = editProps => {
 
     const setPreset = (x) => {
         if (x.id === 'unselected') {
-            setIntervals([]);
+            setValue([]);
         }
         else {
-            setIntervals(x.value);
+            setValue(x.value);
         }
         _setPreset(x);
     }
 
+    const selectedPresetType = { id: presetType };
+
     return (
-        <StyledIntervalsInputBasic>
+        <>
             <LabelledInput text="Type">
-                <DropdownInput value={{ id: presetType }} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
+                <DropdownInput value={selectedPresetType} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
             </LabelledInput>
             <LabelledInput text="Preset">
                 <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
             </LabelledInput>
-        </StyledIntervalsInputBasic>
+        </>
     );
 };
 
-export default IntervalsInputBasic;
+
+export const INTERVALS_INPUTS = [
+    {
+        propName: '',
+        inputMapper: intervalsMapper,
+        inputId: InputId.Intervals
+    }
+];

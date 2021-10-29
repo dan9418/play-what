@@ -4,7 +4,7 @@ import IntervalUtils from "../../../core/src/models/Pod/Interval/Interval.utils"
 import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/src/models/Pod/Pod.utils";
 import PodListUtils from "../../../core/src/models/PodList/PodList.utils";
-import { DEFAULT_VIEWER_ID, FRETBOARD_CONFIG, IViewerDetails, IViewerProps, ViewerId, VIEWER_PRESET_MAP } from "./Viewer.constants";
+import { DEFAULT_VIEWER_ID, FRETBOARD_CONFIG, IViewerDetails, IViewerProps, ViewerId } from "./Viewer.constants";
 
 interface IPodProps {
     bgColor: string;

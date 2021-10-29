@@ -1,6 +1,6 @@
 
 import React from "react";
-import { RootInputManager } from "../../../app/src/components/explore/edit-panel/InputManagers";
+import { rootMapper } from "../../../app/src/components/explore/edit-panel/InputManagers";
 import { InputId } from "../../../core/src/models/Model.constants";
 import NoteUtils from "../../../core/src/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/src/models/Pod/Pod.utils";
@@ -95,12 +95,12 @@ export const AccidentalInput: React.FC<IInputProps> = ({ value, setValue }) => {
 export const ROOT_INPUTS = [
     {
         propName: 'Degree',
-        inputManager: RootInputManager,
+        inputMapper: rootMapper,
         inputId: InputId.Degree
     },
     {
         propName: 'Accidental',
-        inputManager: RootInputManager,
+        inputMapper: rootMapper,
         inputId: InputId.Accidental
     }
 ];
