@@ -8,7 +8,10 @@ import DropdownInput from "./DropdownInput";
 
 const StyledIntervalsInputBasic = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto;
+    @media(min-width: 512px) {
+        grid-template-columns: auto auto;
+    }
     gap: 8px;
 
     select {

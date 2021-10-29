@@ -19,7 +19,7 @@ const StyledMenuList = styled.ul`
             color: ${({ theme }) => theme.text.dark};
         }
 
-        &:not(:last-child) {
+        &>:not(:last-child) {
             border-bottom: 1px solid ${THEME.border};
         }
     }

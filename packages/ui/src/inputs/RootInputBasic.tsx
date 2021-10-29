@@ -10,7 +10,10 @@ import SwitchInput from "./SwitchInput";
 
 const StyledRootInputBasic = styled.div`
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
+    @media(min-width: 512px) {
+        grid-template-columns: auto auto;
+    }
     gap: 8px;
 `;
 
