@@ -9,11 +9,8 @@ import NumericInput from "./NumericInput";
 import SwitchInput from "./SwitchInput";
 
 const StyledRootInputBasic = styled.div`
-    display: grid;
-    grid-template-columns: auto;
-    @media(min-width: 512px) {
-        grid-template-columns: auto auto;
-    }
+    display: flex;
+    flex-wrap: wrap;
     gap: 8px;
 `;
 

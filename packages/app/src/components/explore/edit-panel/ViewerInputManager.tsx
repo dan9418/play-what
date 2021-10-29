@@ -1,21 +1,21 @@
 import React, { Fragment, ReactNode } from 'react';
 import styled from 'styled-components';
-
-import { IViewer } from '../../../../../ui/src/viewers/Viewer.constants';
-
+import { InputId } from '../../../../../core/src/models/Model.constants';
 import DropdownInput from '../../../../../ui/src/inputs/DropdownInput';
-import { InputId, IPreset } from '../../../../../core/src/models/Model.constants';
-import SwitchInput from '../../../../../ui/src/inputs/SwitchInput';
 import NumericInput from '../../../../../ui/src/inputs/NumericInput';
-import InputRow from '../../../../../ui/src/InputRow';
 import RangeInput from '../../../../../ui/src/inputs/RangeInput';
+import SwitchInput from '../../../../../ui/src/inputs/SwitchInput';
+import { IViewerInputConfig } from '../../../../../ui/src/viewers/Viewer.constants';
+import LabelledInput from '../../shared/labelled-input/LabelledInput';
+
+
 
 const StyledViewerInputManager = styled.div`
    
 `;
 
 interface IViewerInputManagerProps {
-    viewerConfig: IPreset<IViewer>;
+    inputs: IViewerInputConfig[];
     viewerProps: any;
     setViewerProps: Function;
 }
@@ -35,9 +35,7 @@ const getViewerComponent = (inputId: InputId): any => {
     }
 }
 
-const ViewerInputManager: React.FC<IViewerInputManagerProps> = ({ viewerConfig, viewerProps, setViewerProps }) => {
-
-    const inputs = viewerConfig.value.inputs;
+const ViewerInputManager: React.FC<IViewerInputManagerProps> = ({ inputs, viewerProps, setViewerProps }) => {
 
     const inputRows: ReactNode[] = [];
     for (let i = 0; i < inputs.length; i++) {
@@ -55,13 +53,13 @@ const ViewerInputManager: React.FC<IViewerInputManagerProps> = ({ viewerConfig, 
         }
 
         inputRows.push(
-            <InputRow label={propName} key={propId}>
+            <LabelledInput text={propName}>
                 <Component
                     value={viewerProps[propId]}
                     setValue={setValue}
                     {...inputProps}
                 />
-            </InputRow>
+            </LabelledInput>
         )
     }
 

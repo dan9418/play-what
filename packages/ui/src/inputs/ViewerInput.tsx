@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import ViewerInputManager from '../../../app/src/components/explore/edit-panel/ViewerInputManager';
 import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 import { HELP_VIEWER_CONFIGURE, HELP_VIEWER_EDIT } from '../../../app/src/utils/help';
-import { VIEWER_PRESETS, VIEWER_PRESET_MAP } from '../../../ui/src/viewers/Viewer.constants';
 import InputRow from '../InputRow';
 import DropdownInput from './DropdownInput';
 
@@ -28,12 +27,12 @@ const ViewerInput: React.FC<any> = ({ viewerId, setViewerId: _setViewerId, viewe
                     <DropdownInput
                         value={{ id: viewerId }}
                         setValue={setViewerId}
-                        options={VIEWER_PRESETS}
+                        options={[]}
                     />
                 </InputRow>
             </ModalSection>
             <ModalSection title={`Configure ${selectedViewerConfig.name}`} helpText={HELP_VIEWER_CONFIGURE}>
-                <ViewerInputManager viewerConfig={selectedViewerConfig} viewerProps={viewerProps} setViewerProps={_setViewerProps} />
+                <ViewerInputManager inputs={[]} viewerProps={viewerProps} setViewerProps={_setViewerProps} />
             </ModalSection>
         </>
     );

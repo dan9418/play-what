@@ -3,8 +3,6 @@ import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../../cor
 import Fretboard from './fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './fretboard/Fretboard.api';
 import DEFAULT_FRETBOARD_PROPS from './fretboard/Fretboard.defaults';
-import Keyboard from './keyboard/Keyboard';
-import DEFAULT_KEYBOARD_PROPS from './keyboard/Keyboard.defaults';
 
 export enum ViewerId {
     Fretboard = 'fretboard',
@@ -39,8 +37,6 @@ export interface IViewer {
     viewerId: ViewerId;
     component: any;
     defaultProps: IViewerProps;
-    inputs: IViewerInputConfig[];
-    presets: IViewerPreset[]
 }
 
 export interface IViewerDetails {
@@ -74,7 +70,7 @@ export const LABEL_BY_OPTIONS = [
     }
 ];
 
-const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps, inputs: IViewerInputConfig[], presets?: IViewerPreset[]): IPreset<IViewer> => (
+const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: IViewerProps): IPreset<IViewer> => (
     {
         id,
         name,
@@ -82,79 +78,67 @@ const formatPreset = (id: ViewerId, name: string, component: any, defaultProps: 
         value: {
             viewerId: id,
             component,
-            defaultProps,
-            inputs,
-            presets
+            defaultProps
         }
     }
 );
 
-export const VIEWER_PRESET_MAP = new Map<ViewerId, IPreset<IViewer>>([
-    [ViewerId.Fretboard, formatPreset(
-        ViewerId.Fretboard,
-        'Fretboard',
-        Fretboard,
-        DEFAULT_FRETBOARD_PROPS,
-        [
-            {
-                propName: 'Tuning',
-                propId: 'tuning',
-                inputId: InputId.Dropdown,
-                inputProps: {
-                    options: FRETBOARD_TUNING_VALUES
-                },
-                useValueProperty: true
-            },
-            {
-                propName: 'Fret Range',
-                propId: 'fretRange',
-                inputId: InputId.Range,
-                inputProps: {
-                    min: 0,
-                    max: 24
-                }
-            },
-            {
-                propName: 'Match Octave',
-                propId: 'matchOctave',
-                inputId: InputId.Switch
-            },
-            {
-                propName: 'Label By',
-                propId: 'labelBy',
-                inputId: InputId.Dropdown,
-                inputProps: {
-                    options: LABEL_BY_OPTIONS
-                },
-                useValueProperty: true
-            },
-            {
-                propName: 'Show Fret Numbers',
-                propId: 'showFretNumbers',
-                inputId: InputId.Switch
-            },
-            {
-                propName: 'Show Fret Dots',
-                propId: 'showFretDots',
-                inputId: InputId.Switch
-            }
-        ]
-    )],
-    [ViewerId.Keyboard, formatPreset(
-        ViewerId.Keyboard,
-        'Keyboard',
-        Keyboard,
-        DEFAULT_KEYBOARD_PROPS as any,
-        [
-            {
-                propName: 'Key Range',
-                propId: 'keyRange',
-                inputId: InputId.Range
-            }
-        ]
-    )]
-]);
+export const VOICING_INPUTS = [
+    {
+        propName: 'Match Octave',
+        propId: 'matchOctave',
+        inputId: InputId.Switch
+    }
+];
 
-export const VIEWER_PRESETS = Array.from(VIEWER_PRESET_MAP).map(([k, v]) => v);
+export const FRETBOARD_INPUTS = [
+    {
+        propName: 'Tuning',
+        propId: 'tuning',
+        inputId: InputId.Dropdown,
+        inputProps: {
+            options: FRETBOARD_TUNING_VALUES
+        },
+        useValueProperty: true
+    },
+    {
+        propName: 'Fret Range',
+        propId: 'fretRange',
+        inputId: InputId.Range,
+        inputProps: {
+            min: 0,
+            max: 24
+        }
+    },
+    {
+        propName: 'Show Fret Numbers',
+        propId: 'showFretNumbers',
+        inputId: InputId.Switch
+    },
+    {
+        propName: 'Show Fret Dots',
+        propId: 'showFretDots',
+        inputId: InputId.Switch
+    }
+];
+
+export const LABEL_INPUTS = [
+    {
+        propName: 'Label By',
+        propId: 'labelBy',
+        inputId: InputId.Dropdown,
+        inputProps: {
+            options: LABEL_BY_OPTIONS
+        },
+        useValueProperty: true
+    }
+];
+
+export const FRETBOARD_CONFIG = formatPreset(
+    ViewerId.Fretboard,
+    'Fretboard',
+    Fretboard,
+    DEFAULT_FRETBOARD_PROPS
+)
 
 export const DEFAULT_VIEWER_ID = ViewerId.Fretboard;
