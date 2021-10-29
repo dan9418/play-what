@@ -34,7 +34,7 @@ const formatVoicing = (id: string, name: string, value: (number | number[])[]): 
 	value
 });
 
-const VOICINGS = [
+export const VOICINGS = [
 	formatVoicing('NONE', 'None', []),
 	formatVoicing('CAGED_C_CHORD_TRIAD', 'C Shape Triad', [3, 1, 5, 3, 1, null]),
 	formatVoicing('CAGED_A_CHORD_TRIAD', 'A Shape Triad', [5, 3, 1, 5, 1, null]),

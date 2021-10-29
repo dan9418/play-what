@@ -2,15 +2,17 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import IntervalsInputBasic from "../../../../../ui/src/inputs/IntervalsInputBasic";
 import RootInputBasic from "../../../../../ui/src/inputs/RootInputBasic";
-import TabList from "../../shared/tab-list/TabList";
+import VoicingInput from "../../../../../ui/src/inputs/VoicingInput";
+import useEditProps from "../../../hooks/useEditProps";
 import { MenuList } from "../../shared/menu-list/MenuList";
+import TabList from "../../shared/tab-list/TabList";
 
 const StyledEditPanel = styled.div`
     border-bottom: 1px solid #bbb;
     width: 100%;
 
     & > .content {
-        padding: 0 16px;
+        padding: 16px;
     }
     & > ul {
         border-bottom: 1px solid #bbb;
@@ -38,7 +40,7 @@ const EDIT_TABS = [
     },
     {
         text: 'Voicing',
-        menuItems: []
+        menuItems: VoicingInput
     },
     {
         text: 'Fretboard',
@@ -65,7 +67,7 @@ const EDIT_TABS = [
 const EditPanel: React.FC<any> = () => {
     const [selectedTabIndex, setSelectedTabIndex] = useState(1);
     const selectedTab = EDIT_TABS[selectedTabIndex];
-    const menuItems = selectedTab.menuItems;
+    const editProps = useEditProps();
 
     const tabs = EDIT_TABS.map((tab, i) => ({
         text: tab.text,
@@ -77,7 +79,11 @@ const EditPanel: React.FC<any> = () => {
         <StyledEditPanel>
             <TabList options={tabs} />
             <div className="content">
-                <MenuList menuItems={menuItems} />
+                {Array.isArray(selectedTab.menuItems) ?
+                    <MenuList menuItems={selectedTab.menuItems} sharedProps={editProps} />
+                    :
+                    <selectedTab.menuItems {...editProps} />
+                }
             </div>
         </StyledEditPanel>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledTabList = styled.ul`
+export const StyledTabList = styled.ul`
 	height: 48px;
 	display: flex;
 	align-items: center;

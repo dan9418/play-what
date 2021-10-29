@@ -1,7 +1,7 @@
 
 import React from "react";
 import styled from 'styled-components';
-import TabList from "../../../app/src/components/shared/tab-list/TabList";
+import TabList, { StyledTabList } from "../../../app/src/components/shared/tab-list/TabList";
 
 
 const StyledButtonInputRow = styled.div`
@@ -10,12 +10,21 @@ const StyledButtonInputRow = styled.div`
     display: inline-block;
     border-radius: 4px;
 
-    li  {
-        &:first-child button {
-            border-radius: 4px 0 0 4px;
+    ${StyledTabList} {
+        height: unset;
+
+        button {
+            height: unset;
+            padding: 8px;
         }
-        &:last-child button {
-            border-radius: 0 4px 4px 0;
+
+        li  {
+            &:first-child button {
+                border-radius: 4px 0 0 4px;
+            }
+            &:last-child button {
+                border-radius: 0 4px 4px 0;
+            }
         }
     }
 `;
