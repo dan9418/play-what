@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledSiteFooter = styled.div`
-    height: 126px;
-	padding: 16px;
+    height: 64px;
+	padding: 0 16px;
 
     position: fixed;
     bottom: 0;

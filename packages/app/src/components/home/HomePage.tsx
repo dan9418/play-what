@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import ButtonInput from "../../../../ui/src/inputs/ButtonInput";
 import { IPageProps, PageId, useRouteContext } from '../../contexts/RouteContext';
+import THEME from "../../styles/theme";
 
 const StyledHomePage = styled.div`
 	width: 100%;
@@ -37,25 +38,28 @@ const StyledHomePage = styled.div`
 		text-align: center;
 		line-height: 150%;
 	}
-`;
 
+	.button-container {
+		button {
+			width: 100%;
+			max-width: 256px;
+			border: 1px solid transparent;
+		}
+		&.primary {
+			button {
+				font-weight: bold;
+			}
+		}
+		&.secondary {
+			button {
+				background: transparent;
+				color: ${THEME.clickable};
 
-const StyledButtonContainer = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	width: 100%;
-	@media(min-width: 512px) {
-		flex-direction: row;
-	}
-
-	> button {
-		font-weight: bold;
-		width: 100%;
-		max-width: 256px;
-		border: 1px solid transparent;
-		margin: 8px;
+				&:hover {
+					background: rgba(0,0,0,0.05)
+				}
+			}
+		}
 	}
 `;
 
@@ -65,15 +69,16 @@ const HomePage: React.FC<IPageProps> = () => {
 		<StyledHomePage>
 			<h1>Play <em><b>What?</b></em></h1>
 			<p>
-				<b>Play What</b> is a toolkit for modeling and analyzing musical concepts.
-				The app is currently unstable but is slated for a full release this summer.
+				<b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
+				It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.
+				<em>The app is currently unstable and is under active development.</em>
 			</p>
-			<StyledButtonContainer>
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore)}>Try it out!</ButtonInput>
-			</StyledButtonContainer>
-			<p>
-				<a href="https://github.com/dan9418/play-what/blob/master/README.md" target="_blank" rel="noreferrer">Documentation</a>
-			</p>
+			<div className="button-container primary">
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore)}>Browse Examples</ButtonInput>
+			</div>
+			<div className="button-container secondary">
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Docs)}>Documentation</ButtonInput>
+			</div>
 		</StyledHomePage>
 	)
 };
