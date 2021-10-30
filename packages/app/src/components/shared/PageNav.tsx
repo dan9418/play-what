@@ -30,13 +30,19 @@ const PageNav: React.FC = () => {
 		<StyledPageNav>
 			<TabList options={
 				routeContext ?
-					PAGE_CONFIGS.map(config => (
-						{
-							text: config.name,
-							isActive: config.pageId === routeContext.pageId,
-							onClick: () => routeContext.setPage(config.pageId)
+					PAGE_CONFIGS.map(config => {
+						if (config.isAdmin && routeContext && routeContext.params && !routeContext.params.get('admin')) {
+							console.log('dpb', routeContext.params.get('admin'))
+							return;
 						}
-					))
+						return (
+							{
+								text: config.name,
+								isActive: config.pageId === routeContext.pageId,
+								onClick: () => routeContext.setPage(config.pageId)
+							}
+						);
+					})
 					: []
 			} />
 		</StyledPageNav>

@@ -36,11 +36,13 @@ const TabList: React.FC<any> = ({ options }) => {
 	return (
 		<StyledTabList>
 			{options.map(option => (
-				<li key={option.text}>
-					<button type="button" className={option.isActive ? 'active' : ''} onClick={option.onClick}>
-						{option.text}
-					</button>
-				</li>
+				option ?
+					<li key={option.text}>
+						<button type="button" className={option.isActive ? 'active' : ''} onClick={option.onClick}>
+							{option.text}
+						</button>
+					</li>
+					: null
 			))}
 		</StyledTabList >
 	);

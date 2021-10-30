@@ -4,6 +4,7 @@ import BrowsePage from "../components/browse/BrowsePage";
 import DocsPage from "../components/docs/DocsPage";
 import ExplorePage from '../components/explore/ExplorePage';
 import HomePage from '../components/home/HomePage';
+import TestPage from "../components/test/TestPage";
 
 export interface IPageProps {
     params: URLSearchParams
@@ -13,6 +14,7 @@ interface IPageConfig {
     pageId: PageId;
     name: string;
     component: any;
+    isAdmin?: boolean;
 }
 
 interface IRouteContext extends IPageConfig {
@@ -28,7 +30,8 @@ export enum PageId {
     Home = 'home',
     Browse = 'browse',
     Explore = 'explore',
-    Docs = 'docs'
+    Docs = 'docs',
+    Test = 'test'
 }
 
 const PAGE_MAP = new Map<PageId, IPageConfig>([
@@ -51,6 +54,12 @@ const PAGE_MAP = new Map<PageId, IPageConfig>([
         pageId: PageId.Docs,
         name: 'Docs',
         component: DocsPage
+    }],
+    [PageId.Test, {
+        pageId: PageId.Test,
+        name: 'Test',
+        component: TestPage,
+        isAdmin: true
     }]
 ]);
 
