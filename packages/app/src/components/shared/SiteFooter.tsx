@@ -14,6 +14,16 @@ const StyledSiteFooter = styled.div`
 	color: white;
 	background-color: ${({ theme }) => theme.surface.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	
+	& > div {
+		padding: 8px;
+	}
+
 `;
 
 const SiteFooter: React.FC = () => {

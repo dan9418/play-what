@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RouteContextConsumer, RouteContextProvider } from '../contexts/_RouteContext';
+import { RouteContextConsumer } from '../contexts/_RouteContext';
 
 const StyledMain = styled.main`
 	margin: auto;
@@ -8,17 +8,18 @@ const StyledMain = styled.main`
 	// max-width: 1024px;
 	min-height: 100%;
   position: relative;
+
+  padding: 80px 0 128px;
+  overflow: auto;
 `;
 
 const Main: React.FC = () => {
   return (
     <StyledMain>
-      <RouteContextProvider>
-        <RouteContextConsumer>{value => value && value.pageId ?
-          <value.component params={value.params} />
-          : 'Loading...'
-        }</RouteContextConsumer>
-      </RouteContextProvider>
+      <RouteContextConsumer>{value => value && value.pageId ?
+        <value.component params={value.params} />
+        : 'Loading...'
+      }</RouteContextConsumer>
     </StyledMain>
   );
 };

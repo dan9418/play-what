@@ -42,6 +42,8 @@ const PAGE_MAP = new Map<PageId, IPageConfig>([
     }]
 ]);
 
+export const PAGE_CONFIGS = Array.from(PAGE_MAP).map(([k, v]) => v)
+
 export const DEFAULT_PAGE_ID = PageId.Home;
 
 export const RouteContextProvider: React.FC = ({ children }) => {

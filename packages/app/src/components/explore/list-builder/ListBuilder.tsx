@@ -13,7 +13,6 @@ const StyledListBuilder = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    overflow: auto;
 
     > li {
         margin-top: 16px;

@@ -3,6 +3,7 @@ import React from "react";
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import { ModalContextProvider } from "../contexts/ModalContext";
+import { RouteContextProvider } from "../contexts/_RouteContext";
 import THEME from "../styles/theme";
 import Main from './Main';
 import ErrorBoundary from "./shared/ErrorBoundary";
@@ -18,8 +19,10 @@ const App = () => {
 				<ErrorBoundary>
 					<ModalContextProvider>
 						<SiteHeader />
-						<PageNav />
-						<Main />
+						<RouteContextProvider>
+							<PageNav />
+							<Main />
+						</RouteContextProvider>
 						<SiteFooter />
 					</ModalContextProvider>
 				</ErrorBoundary>
