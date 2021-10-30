@@ -1,26 +1,13 @@
-import React, { ReactNode, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { CHARTS, IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
-import { PodType } from "../../../../core/src/models/Model.constants";
 import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
 import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
-import PodListUtils from "../../../../core/src/models/PodList/PodList.utils";
 import InputRow from "../../../../ui/src/InputRow";
 import DropdownInput from "../../../../ui/src/inputs/DropdownInput";
-import Fretboard from "../../../../ui/src/viewers/fretboard/Fretboard";
-import { FRETBOARD_TUNING } from "../../../../ui/src/viewers/fretboard/Fretboard.api";
-import THEME from "../../styles/theme";
-
-
-const FRETBOARD_PROPS = {
-    fretRange: [0, 12] as [number, number],
-    tuning: FRETBOARD_TUNING.standard.value,
-    matchOctave: false,
-    labelBy: 'none',
-    showFretDots: false,
-    showFretNumbers: false,
-    podType: PodType.Interval
-}
+import { dataListState, IDataItem } from "../../state/state";
+import ListBuilder from "../create/list-builder/ListBuilder";
 
 const StyledBrowsePage = styled.div`
     h1 {
@@ -28,12 +15,6 @@ const StyledBrowsePage = styled.div`
         padding: 16px 0;
         width: 100%;
         text-align: center;
-    }
-
-    h2 {
-        padding: 8px 0;
-        margin-bottom: 16px;
-        border-bottom: 1px solid ${THEME.border};
     }
 
     padding: 64px 16px 32px;
@@ -44,35 +25,6 @@ const StyledBrowsePage = styled.div`
     width: 100%;
     max-width: 1024px;
     margin: auto;
-
-    .chart {
-        width: 100%;
-        padding: 16px 8px;
-    }
-`;
-
-const StyledSection = styled.div`
-    width: 100%;
-    display: grid;
-    gap: 8px;
-    grid-template-columns: 1fr;
-    @media(min-width: 512px) {
-        grid-template-columns: repeat(${props => Math.min(2, props.$length)}, 1fr);
-    }
-    @media(min-width: 1024px) {
-        grid-template-columns: repeat(${props => Math.min(4, props.$length)}, 1fr);
-    }
-
-    .rest {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        font-size: 200%;
-
-        background: white;
-        border-radius: 8px;
-    }
 `;
 
 const getOptions = () => {
@@ -85,97 +37,49 @@ const getOptions = () => {
     })
 }
 
-const StyledChord = styled.div`
-    //border: 1px solid black;
-    background: white;
-    border-radius: 8px;
-     h3 {
-        font-weight: normal;
-        margin-top: 16px;
-    }
-    width: 100%;
-    padding: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-`;
+const getChartListData = (config: IChartConfig): IDataItem[] => {
+    const items = [];
 
-const Chord: React.FC<any> = ({ chord }) => {
-    const [noteId, chordId, t] = chord;
-    const root = NOTE_PRESET_MAP.get(noteId);
-    const intervals = CHORD_PRESET_MAP.get(chordId);
-
-    const voicingOptions = intervals.voicings;
-
-    const [voicing, setVoicing] = useState(intervals.voicings[0]);
-
-    const details = PodListUtils.getDetails(root.value, intervals.value);
-
-    return (
-        <StyledChord>
-            <h3>{`${root.name} ${intervals.name}`}</h3>
-            <Fretboard details={details} {...FRETBOARD_PROPS} voicing={voicing} />
-            {voicingOptions.length > 0 && <DropdownInput value={voicing} setValue={setVoicing} options={voicingOptions} />}
-        </StyledChord>
-    );
-};
-
-const getChart = (config: IChartConfig): ReactNode => {
-    const sectionItems = [];
     for (let s = 0; s < config.sections.length; s++) {
         const section = config.sections[s];
-        const chordItems = [];
+
         for (let c = 0; c < section.chords.length; c++) {
             const chord = section.chords[c];
-            const [a, b, t] = chord;
+            const [noteId, chordId, t] = chord;
 
-            const chords = [
-                <Chord chord={chord} key="1" />,
-                ...(new Array((t / 2) - 1).fill(
-                    <div className="rest" >/</div>
-                ))
-            ];
+            const root = NOTE_PRESET_MAP.get(noteId).value || [0, 0];
+            const intervals = CHORD_PRESET_MAP.get(chordId).value || [];
 
-            chordItems.push(
-                ...chords
-            );
+            items.push({
+                root,
+                intervals
+            });
+            //...(new Array((t / 2) - 1).fill(<div className="rest" >/</div>))
         }
-        sectionItems.push(
-            <>
-                <h2>{`Section ${section.name}`}</h2>
-                <StyledSection $length={chordItems.length} className="section">
-                    {chordItems}
-                </StyledSection>
-            </>
-        );
     }
 
-    return (
-        <div className="chart">
-            {sectionItems}
-        </div>
-    );
+    return items;
 }
 
 const BrowsePage: React.FC<any> = () => {
 
     const options = getOptions();
     const [chartIndex, setChartIndex] = useState(0);
-    const chart = Object.values(CHARTS)[chartIndex];
+    const [dataList, setDataList] = useRecoilState(dataListState);
 
-    const chartComponent = getChart(chart);
+    useEffect(() => {
+        const chartConfig = Object.values(CHARTS)[chartIndex];
+        const chartDataList = getChartListData(chartConfig);
+        setDataList(chartDataList);
+    }, [chartIndex])
 
     return (
         <StyledBrowsePage>
-            <h1>{chart.name}</h1>
+            <h1>{options[chartIndex].name}</h1>
             <InputRow label="Select Chart: ">
                 <DropdownInput options={options} value={options[chartIndex]} setValue={(v, i) => setChartIndex(i)} />
             </InputRow>
-
-
-            {chartComponent}
-
+            <ListBuilder listIndex={0} />
         </StyledBrowsePage>
     );
 };

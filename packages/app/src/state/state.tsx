@@ -11,7 +11,7 @@ import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
 
 /* ROOT + INTERVALS + NOTES */
 
-interface IDataItem {
+export interface IDataItem {
     root: IPod,
     intervals: IPod[],
     viewerId?: ViewerId,
