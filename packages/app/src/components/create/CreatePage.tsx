@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
+import { IPageProps } from "../../contexts/RouteContext";
+import { dataListState } from "../../state/state";
+import { DEFAULT_DATA_LIST } from "./CreatePage.defaults";
 import ListBuilder from "./list-builder/ListBuilder";
 
 const StyledCreatePage = styled.div`
@@ -24,7 +28,11 @@ const StyledCreatePage = styled.div`
 	}
 `;
 
-const CreatePage: React.FC<any> = () => {
+const CreatePage: React.FC<IPageProps> = () => {
+	const [dataList, setDataList] = useRecoilState(dataListState);
+	useEffect(() => {
+		setDataList(DEFAULT_DATA_LIST);
+	}, [])
 	return (
 		<StyledCreatePage>
 			<div>

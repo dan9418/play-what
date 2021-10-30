@@ -1,5 +1,5 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import PodListUtils from "../../../../../core/src/models/PodList/PodList.utils";
 import { dataIndexState, dataListState } from "../../../state/state";
@@ -33,8 +33,8 @@ const StyledListBuilder = styled.ul`
 
 
 const ListBuilder: React.FC<any> = () => {
-    const [dataList, setDataList] = useRecoilState(dataListState);
-    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+    const dataList = useRecoilValue(dataListState);
+    const dataIndex = useRecoilValue(dataIndexState);
 
     return (
         <StyledListBuilder>
