@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PAGE_CONFIGS, useRouteContext } from '../../contexts/_RouteContext';
+import { PAGE_CONFIGS, useRouteContext } from '../../contexts/RouteContext';
 import TabList from './tab-list/TabList';
 
 const StyledPageNav = styled.nav`

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { RouteContextConsumer } from '../contexts/_RouteContext';
+import { RouteContextConsumer } from '../contexts/RouteContext';
 
 const StyledMain = styled.main`
 	margin: auto;

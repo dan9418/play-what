@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import ButtonInput from "../../../../ui/src/inputs/ButtonInput";
-import { IPageProps, PageId, useRouteContext } from '../../contexts/_RouteContext';
+import { IPageProps, PageId, useRouteContext } from '../../contexts/RouteContext';
 
 const StyledHomePage = styled.div`
 	width: 100%;
