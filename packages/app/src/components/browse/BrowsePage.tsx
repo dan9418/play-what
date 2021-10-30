@@ -11,13 +11,11 @@ import ListBuilder from "../create/list-builder/ListBuilder";
 
 const StyledBrowsePage = styled.div`
     h1 {
-        margin-top: 16px;
         padding: 16px 0;
         width: 100%;
         text-align: center;
     }
 
-    padding: 64px 16px 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,7 +77,7 @@ const BrowsePage: React.FC<any> = () => {
             <InputRow label="Select Chart: ">
                 <DropdownInput options={options} value={options[chartIndex]} setValue={(v, i) => setChartIndex(i)} />
             </InputRow>
-            <ListBuilder listIndex={0} />
+            <ListBuilder />
         </StyledBrowsePage>
     );
 };
