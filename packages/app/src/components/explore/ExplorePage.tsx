@@ -56,17 +56,14 @@ const ExplorePage: React.FC<any> = () => {
 						text: 'Home'
 					},
 					{
-						text: 'List',
+						text: 'Browse'
+					},
+					{
+						text: 'Create',
 						isActive: true
 					},
 					{
-						text: 'Flash Cards'
-					},
-					{
-						text: 'Charts'
-					},
-					{
-						text: 'Cheat Sheets'
+						text: 'Docs'
 					}
 				]} />
 			</StyledTabWrapper>

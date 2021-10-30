@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ChartsPage from './charts/ChartsPage';
-import ExplorePage from './explore/ExplorePage';
-import TestPage from './test/TestPage';
-
+import { RouteContextConsumer, RouteContextProvider } from '../contexts/_RouteContext';
 
 const StyledMain = styled.main`
 	margin: auto;
@@ -13,42 +10,15 @@ const StyledMain = styled.main`
   position: relative;
 `;
 
-const StyledLoadingSpinner = styled.div`
-	display: flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 100%;
-  width: 100%;
-  
-  font-size: 300%;
-
-  padding: 32px;
-`;
-
 const Main: React.FC = () => {
-  const [page, setPage] = useState(null);
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const experiment = urlParams.get('experiment');
-    if (experiment === 'test') {
-      setPage(<TestPage />);
-    }
-    else if (experiment === 'charts') {
-      setPage(<ChartsPage />);
-    }
-    else {
-      setPage(<ExplorePage />);
-    }
-  }, []);
-
   return (
     <StyledMain>
-      {page}
-      {page === null && (
-        <StyledLoadingSpinner>Loading...</StyledLoadingSpinner>
-      )}
+      <RouteContextProvider>
+        <RouteContextConsumer>{value => value && value.pageId ?
+          <value.component params={value.params} />
+          : 'Loading...'
+        }</RouteContextConsumer>
+      </RouteContextProvider>
     </StyledMain>
   );
 };
