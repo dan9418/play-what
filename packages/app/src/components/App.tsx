@@ -6,7 +6,9 @@ import { ModalContextProvider } from "../contexts/ModalContext";
 import THEME from "../styles/theme";
 import Main from './Main';
 import ErrorBoundary from "./shared/ErrorBoundary";
-import Nav from './shared/Nav';
+import PageNav from "./shared/PageNav";
+import SiteFooter from "./shared/SiteFooter";
+import SiteHeader from './shared/SiteHeader';
 
 const App = () => {
 	return (
@@ -15,8 +17,10 @@ const App = () => {
 				{/* @ts-ignore */}
 				<ErrorBoundary>
 					<ModalContextProvider>
-						<Nav />
+						<SiteHeader />
+						<PageNav />
 						<Main />
+						<SiteFooter />
 					</ModalContextProvider>
 				</ErrorBoundary>
 			</ThemeProvider>
