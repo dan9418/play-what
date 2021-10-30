@@ -1,5 +1,7 @@
 
 import React, { useEffect } from "react";
+import BrowsePage from "../components/browse/BrowsePage";
+import DocsPage from "../components/docs/DocsPage";
 import ExplorePage from '../components/explore/ExplorePage';
 import HomePage from '../components/home/HomePage';
 
@@ -35,10 +37,20 @@ const PAGE_MAP = new Map<PageId, IPageConfig>([
         name: 'Home',
         component: HomePage
     }],
+    [PageId.Browse, {
+        pageId: PageId.Browse,
+        name: 'Browse',
+        component: BrowsePage
+    }],
     [PageId.Explore, {
         pageId: PageId.Explore,
         name: 'Explore',
         component: ExplorePage
+    }],
+    [PageId.Docs, {
+        pageId: PageId.Docs,
+        name: 'Docs',
+        component: DocsPage
     }]
 ]);
 
