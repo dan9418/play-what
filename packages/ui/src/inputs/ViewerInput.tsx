@@ -1,6 +1,6 @@
 // import React from 'react';
 // import styled from 'styled-components';
-// import ViewerInputManager from '../../../app/src/components/explore/edit-panel/InputManagers';
+// import ViewerInputManager from '../../../app/src/components/create/edit-panel/InputManagers';
 // import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 // import { HELP_VIEWER_CONFIGURE, HELP_VIEWER_EDIT } from '../../../app/src/utils/help';
 // import InputRow from '../InputRow';

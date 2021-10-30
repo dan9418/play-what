@@ -1,6 +1,6 @@
 
 import React from "react";
-import EditModal from "../components/explore/edit-panel/EditPanel";
+import EditModal from "../components/create/edit-panel/EditPanel";
 
 interface IModelContext {
 	isOpen: boolean,

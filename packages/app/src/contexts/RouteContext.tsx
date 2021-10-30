@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import BrowsePage from "../components/browse/BrowsePage";
 import DocsPage from "../components/docs/DocsPage";
-import ExplorePage from '../components/explore/ExplorePage';
+import CreatePage from '../components/create/CreatePage';
 import HomePage from '../components/home/HomePage';
 import TestPage from "../components/test/TestPage";
 
@@ -29,7 +29,7 @@ export const useRouteContext = (): IRouteContext => React.useContext(RouteContex
 export enum PageId {
     Home = 'home',
     Browse = 'browse',
-    Explore = 'explore',
+    Create = 'create',
     Docs = 'docs',
     Test = 'test'
 }
@@ -45,10 +45,10 @@ const PAGE_MAP = new Map<PageId, IPageConfig>([
         name: 'Browse',
         component: BrowsePage
     }],
-    [PageId.Explore, {
-        pageId: PageId.Explore,
-        name: 'Explore',
-        component: ExplorePage
+    [PageId.Create, {
+        pageId: PageId.Create,
+        name: 'Create',
+        component: CreatePage
     }],
     [PageId.Docs, {
         pageId: PageId.Docs,

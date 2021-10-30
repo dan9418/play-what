@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import ListBuilder from "./list-builder/ListBuilder";
 
-const StyledExplorePage = styled.div`
+const StyledCreatePage = styled.div`
 
 	position: fixed;
 	top: 80px;
@@ -24,14 +24,14 @@ const StyledExplorePage = styled.div`
 	}
 `;
 
-const ExplorePage: React.FC<any> = () => {
+const CreatePage: React.FC<any> = () => {
 	return (
-		<StyledExplorePage>
+		<StyledCreatePage>
 			<div>
 				<ListBuilder />
 			</div>
-		</StyledExplorePage>
+		</StyledCreatePage>
 	);
 };
 
-export default ExplorePage;
+export default CreatePage;

@@ -74,7 +74,7 @@ const HomePage: React.FC<IPageProps> = () => {
 				<em>The app is currently unstable and is under active development.</em>
 			</p>
 			<div className="button-container primary">
-				<ButtonInput onClick={() => routeContext.setPage(PageId.Explore)}>Browse Examples</ButtonInput>
+				<ButtonInput onClick={() => routeContext.setPage(PageId.Create)}>Browse Examples</ButtonInput>
 			</div>
 			<div className="button-container secondary">
 				<ButtonInput onClick={() => routeContext.setPage(PageId.Docs)}>Documentation</ButtonInput>
