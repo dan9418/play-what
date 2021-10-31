@@ -8,23 +8,16 @@ import PodUtils from "../../../../core/src/models/Pod/Pod.utils";
 import { DEGREE_PRESETS } from "../../../../core/src/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../../../core/src/theory/Diatonic.constants";
 import THEME from "../../styles/theme";
+import { StyledPageBody } from "../shared/PageBody";
 
 const CORE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
 
-const StyledTestPage = styled.div`
-
-    //padding: 32px;
+const StyledTestPage = styled(StyledPageBody)`
+    max-width: unset;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: fixed;
-    top: 32px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    
 
     .container {
         height: 100%;
