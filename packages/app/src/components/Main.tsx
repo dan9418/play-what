@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { RouteContextConsumer } from '../contexts/RouteContext';
+import { RouteContextConsumer, useRouteContext } from '../contexts/RouteContext';
+import { dataListState } from '../state/state';
 
 const StyledMain = styled.main`
 	margin: auto;
@@ -14,6 +16,14 @@ const StyledMain = styled.main`
 `;
 
 const Main: React.FC = () => {
+  const [dataList, setDataList] = useRecoilState(dataListState);
+  const routeContext = useRouteContext();
+  const routeId = routeContext && routeContext.pageId;
+
+  useEffect(() => {
+    setDataList([]);
+  }, [routeId]);
+
   return (
     <StyledMain>
       <RouteContextConsumer>{value => value && value.pageId ?
