@@ -1,60 +1,43 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { intervalsMapper } from "../../../app/src/components/create/edit-panel/InputManagers";
-import LabelledInput from "../../../app/src/components/shared/labelled-input/LabelledInput";
-import { InputId, PresetTag, PRESET_TYPES } from "../../../core/src/models/Model.constants";
+import { InputId, PRESET_TYPES } from "../../../core/src/models/Model.constants";
 import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
-import DropdownInput from "./DropdownInput";
+import TieredDropdownInput from "./TieredDropdownInput";
 
 interface IInputProps {
     setValue: any;
     value: any;
 }
 
+export const PRESET_TIER = {
+    id: 'cat',
+    name: 'Category',
+    options: PRESET_TYPES,
+    getNextTier: (cat, catIndex, currentTier, parentTiers) => {
+        const options = MASTER_PRESETS.filter(preset => preset.tags.includes(cat.id));
+        return {
+            id: cat.id,
+            name: cat.name,
+            options
+        };
+    }
+};
+
 export const IntervalsInput: React.FC<IInputProps> = ({ value, setValue }) => {
 
-    const [presetType, _setPresetType] = useState(PresetTag.Chord);
-
-    const presetOptions = MASTER_PRESETS.filter(preset => preset.tags.includes(presetType));
-
-    const [presetSubtype, setPresetSubtype] = useState('unselected');
-
-    const [preset, _setPreset] = useState(null);
-    const filteredPresetOptions = presetSubtype === 'unselected' ?
-        presetOptions :
-        presetOptions.filter(preset => preset.tags.includes(presetSubtype as any));
-    const finalPresetOptions = [
-        { id: 'unselected', name: '---' },
-        ...filteredPresetOptions
-    ];
-
-    const setPresetType = x => {
-        _setPresetType(x);
-        setPresetSubtype('unselected');
-        _setPreset(null);
-    }
-
-    const setPreset = (x) => {
-        if (x.id === 'unselected') {
-            setValue([]);
-        }
-        else {
-            setValue(x.value);
-        }
-        _setPreset(x);
-    }
-
-    const selectedPresetType = { id: presetType };
-
     return (
-        <>
-            <LabelledInput text="Type">
-                <DropdownInput value={selectedPresetType} setValue={x => setPresetType(x.id)} options={PRESET_TYPES} />
-            </LabelledInput>
-            <LabelledInput text="Preset">
-                <DropdownInput value={preset} setValue={setPreset} options={finalPresetOptions} />
-            </LabelledInput>
-        </>
+        <TieredDropdownInput
+            onChange={(v, i, cur, par) => {
+                console.log(v, i, cur, par);
+                let intervals = [];
+                if (cur.id !== 'cat') {
+                    intervals = v.value;
+                }
+                setValue(intervals);
+            }}
+            currentTier={PRESET_TIER}
+        />
     );
 };
 
