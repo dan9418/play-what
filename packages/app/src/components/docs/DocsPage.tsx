@@ -1,11 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 import { IPageProps, useRouteContext } from '../../contexts/RouteContext';
+import { StyledPageBody } from "../shared/PageBody";
+import PageTitle from "../shared/PageTitle";
 
-const StyledDocsPage = styled.div`
-	width: 100%;
-	max-width: 1024px;
-	margin: auto;
+const StyledDocsPage = styled(StyledPageBody)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -20,6 +19,7 @@ const DocsPage: React.FC<IPageProps> = () => {
     const routeContext = useRouteContext();
     return (
         <StyledDocsPage>
+            <PageTitle title="Documentation" />
             <p>
                 <em>Coming soon!</em>
             </p>

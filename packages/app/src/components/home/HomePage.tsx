@@ -3,33 +3,13 @@ import styled from 'styled-components';
 import ButtonInput from "../../../../ui/src/inputs/ButtonInput";
 import { IPageProps, PageId, useRouteContext } from '../../contexts/RouteContext';
 import THEME from "../../styles/theme";
+import { StyledPageBody } from "../shared/PageBody";
+import PageControls from "../shared/PageTitle";
 
-const StyledHomePage = styled.div`
-	width: 100%;
-	max-width: 1024px;
-	margin: auto;
+const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: flex-start;
-	padding: 0 16px;
-
-	> * {
-		margin-top: 32px;
-	}
-
-	> h1 {
-		width: 100%;
-		text-align: center;
-		font-size: 300%;
-		color: #222;
-		padding-bottom: 16px;
-		border-bottom: 1px solid ${({ theme }) => theme.border};
-
-		b {
-			font-weight: 800;
-		}
-	}
 
 	> p {
 		max-width: 768px;
@@ -37,6 +17,7 @@ const StyledHomePage = styled.div`
 		color: #333;
 		text-align: center;
 		line-height: 150%;
+		margin-top: 32px;
 	}
 
 	.button-container {
@@ -44,6 +25,7 @@ const StyledHomePage = styled.div`
 			width: 100%;
 			max-width: 256px;
 			border: 1px solid transparent;
+			margin-top: 32px;
 		}
 		&.primary {
 			button {
@@ -67,7 +49,7 @@ const HomePage: React.FC<IPageProps> = () => {
 	const routeContext = useRouteContext();
 	return (
 		<StyledHomePage>
-			<h1>Play <em><b>What?</b></em></h1>
+			<PageControls title="Play What?" />
 			<p>
 				<b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
 				It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.

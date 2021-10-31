@@ -3,13 +3,8 @@ import styled from 'styled-components';
 
 const StyledSiteFooter = styled.div`
     height: 64px;
+	width: 100%;
 	padding: 0 16px;
-
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 2000;
 
 	color: white;
 	background-color: ${({ theme }) => theme.surface.nav};
@@ -28,7 +23,7 @@ const StyledSiteFooter = styled.div`
 
 const SiteFooter: React.FC = () => {
 	return (
-		<StyledSiteFooter>
+		<StyledSiteFooter className="footer">
 			<div>
 				GitHub
 			</div>

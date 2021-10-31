@@ -8,19 +8,16 @@ import { IPageProps } from "../../contexts/RouteContext";
 import { dataListState } from "../../state/state";
 import Icon from "../../../../ui/src/Icon";
 import ListBuilder from "./list-builder/ListBuilder";
+import PageControls from "../shared/PageTitle";
+import { StyledPageBody } from "../shared/PageBody";
 
-const StyledCreatePage = styled.div`
-	width: 100%;
-
-	display: flex;
-	justify-content: center;
-
-	overflow: auto;
-
-	> div {
+const StyledCreatePage = styled(StyledPageBody)`
+	> .list-container {
 		width: 100%;
 		max-width: 1024px;
-		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 
 		> button {
 			margin: 32px auto;
@@ -55,7 +52,8 @@ const CreatePage: React.FC<IPageProps> = () => {
 
 	return (
 		<StyledCreatePage>
-			<div>
+			<PageControls title="Start From Scratch" subtitle="Start by inserting a viewer" />
+			<div className="list-container">
 				<ListBuilder />
 				<ButtonInput onClick={insertViewer} ><Icon iconId="plus" /><span>INSERT VIEWER</span></ButtonInput>
 			</div>

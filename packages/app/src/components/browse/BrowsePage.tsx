@@ -8,16 +8,15 @@ import TieredDropdownInput from "../../../../ui/src/inputs/TieredDropdownInput";
 import { dataListState, IDataItem } from "../../state/state";
 import { PRACTICE_CAGED } from "../create/CreatePage.defaults";
 import ListBuilder from "../create/list-builder/ListBuilder";
+import { StyledPageBody } from "../shared/PageBody";
+import PageControls from "../shared/PageTitle";
 import { DEFAULT_BROWSE_TIERS } from "./BrowsePage.defaults";
 
-const StyledBrowsePage = styled.div`
+const StyledBrowsePage = styled(StyledPageBody)`
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
 
     .dropdown-container {
         padding: 16px;
@@ -58,27 +57,29 @@ const BrowsePage: React.FC<any> = () => {
 
     return (
         <StyledBrowsePage>
-            <div className="dropdown-container">
-                <TieredDropdownInput
-                    currentTier={DEFAULT_BROWSE_TIERS}
-                    onChange={(v, i, cur, par) => {
-                        let newDataList = [];
-                        console.log('dpb onChange', v, i, cur, par)
-                        if (cur.id === 'cat') {
-                            if (v.id === 'charts') {
-                                newDataList = [];
+            <PageControls title="Browse Ideas" subtitle="Select a category to get started..." />
+                <div className="dropdown-container">
+                    <TieredDropdownInput
+                        currentTier={DEFAULT_BROWSE_TIERS}
+                        onChange={(v, i, cur, par) => {
+                            let newDataList = [];
+                            console.log('dpb onChange', v, i, cur, par)
+                            if (cur.id === 'cat') {
+                                if (v.id === 'charts') {
+                                    newDataList = [];
+                                }
+                                else if (v.id === 'practice') {
+                                    newDataList = PRACTICE_CAGED;
+                                }
                             }
-                            else if (v.id === 'practice') {
-                                newDataList = PRACTICE_CAGED;
+                            if (cur.id === 'charts') {
+                                newDataList = getChartListData(v.value);
                             }
-                        }
-                        if (cur.id === 'charts') {
-                            newDataList = getChartListData(v.value);
-                        }
-                        setDataList(newDataList);
-                    }}
-                />
-            </div>
+                            setDataList(newDataList);
+                        }}
+                    />
+                </div>
+
             <ListBuilder />
         </StyledBrowsePage>
     );

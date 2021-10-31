@@ -7,11 +7,10 @@ import { dataListState } from '../state/state';
 const StyledMain = styled.main`
 	margin: auto;
 	width: 100%;
-	// max-width: 1024px;
-	min-height: 100%;
+
   position: relative;
 
-  padding: 80px 0 128px;
+  padding: 80px 0 0;
   overflow: auto;
 `;
 
