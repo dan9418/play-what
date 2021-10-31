@@ -6,6 +6,7 @@ import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.const
 import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
 import TieredDropdownInput from "../../../../ui/src/inputs/TieredDropdownInput";
 import { dataListState, IDataItem } from "../../state/state";
+import { PRACTICE_CAGED } from "../create/CreatePage.defaults";
 import ListBuilder from "../create/list-builder/ListBuilder";
 import { DEFAULT_BROWSE_TIERS } from "./BrowsePage.defaults";
 
@@ -64,6 +65,9 @@ const BrowsePage: React.FC<any> = () => {
                         console.log(cur)
                         if (cur.id === 'charts') {
                             newDataList = getChartListData(v.value);
+                        }
+                        else if (cur.id === 'practice') {
+                            newDataList = PRACTICE_CAGED;
                         }
                         setDataList(newDataList);
                     }}

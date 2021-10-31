@@ -22,8 +22,7 @@ const TieredDropdownInput: React.FC<ITieredInputProps> = ({ currentTier, onChang
 
     const { id, name, options, getNextTier } = currentTier;
 
-
-    const isLeaf = !options || !getNextTier;
+    const isLeaf = !options || !getNextTier || !getNextTier(value);
 
     return <>
         <LabelledInput key={id} text={name}>

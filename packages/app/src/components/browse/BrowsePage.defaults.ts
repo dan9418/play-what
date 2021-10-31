@@ -24,8 +24,9 @@ export const DEFAULT_BROWSE_TIERS = {
         }
     ],
     getNextTier: (cat, catIndex, currentTier, parentTiers) => {
+        if (cat.id === 'practice') return;
 
-        const options = cat.id === 'charts' ? getChartOptions() : null
+        const options = cat.id === 'charts' ? getChartOptions() : undefined
         return {
             id: cat.id,
             name: cat.name,

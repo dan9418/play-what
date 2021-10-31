@@ -3,7 +3,7 @@ import { VOICING } from "../../../../core/src/models/PodList/Chord/Chord.constan
 import { ScaleId, SCALE_PRESET_MAP } from "../../../../core/src/models/PodList/Scale/Scale.constants";
 import DEFAULT_FRETBOARD_PROPS from "../../../../ui/src/viewers/fretboard/Fretboard.defaults";
 
-export const DEFAULT_DATA_LIST = [
+export const PRACTICE_CAGED = [
     {
         root: NOTE_PRESET_MAP.get(NoteId.F).value,
         intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
