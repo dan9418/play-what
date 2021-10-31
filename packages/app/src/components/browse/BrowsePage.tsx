@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { CHARTS, IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
+import { IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
 import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
 import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
-import InputRow from "../../../../ui/src/InputRow";
-import DropdownInput from "../../../../ui/src/inputs/DropdownInput";
+import TieredDropdownInput from "../../../../ui/src/inputs/TieredDropdownInput";
 import { dataListState, IDataItem } from "../../state/state";
 import ListBuilder from "../create/list-builder/ListBuilder";
+import { DEFAULT_BROWSE_TIERS } from "./BrowsePage.defaults";
 
 const StyledBrowsePage = styled.div`
-    h1 {
-        padding: 16px 0;
-        width: 100%;
-        text-align: center;
-    }
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,17 +17,14 @@ const StyledBrowsePage = styled.div`
     width: 100%;
     max-width: 1024px;
     margin: auto;
-`;
 
-const getOptions = () => {
-    return Object.values(CHARTS).map(chart => {
-        return {
-            id: chart.name,
-            name: chart.name,
-            value: chart
-        }
-    })
-}
+    .dropdown-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+`;
 
 const getChartListData = (config: IChartConfig): IDataItem[] => {
     const items = [];
@@ -61,22 +52,23 @@ const getChartListData = (config: IChartConfig): IDataItem[] => {
 
 const BrowsePage: React.FC<any> = () => {
 
-    const options = getOptions();
-    const [chartIndex, setChartIndex] = useState(0);
     const [dataList, setDataList] = useRecoilState(dataListState);
-
-    useEffect(() => {
-        const chartConfig = Object.values(CHARTS)[chartIndex];
-        const chartDataList = getChartListData(chartConfig);
-        setDataList(chartDataList);
-    }, [chartIndex])
 
     return (
         <StyledBrowsePage>
-            <h1>{options[chartIndex].name}</h1>
-            <InputRow label="Select Chart: ">
-                <DropdownInput options={options} value={options[chartIndex]} setValue={(v, i) => setChartIndex(i)} />
-            </InputRow>
+            <div className="dropdown-container">
+                <TieredDropdownInput
+                    currentTier={DEFAULT_BROWSE_TIERS}
+                    onChange={(v, i, cur, par) => {
+                        let newDataList = [];
+                        console.log(cur)
+                        if (cur.id === 'charts') {
+                            newDataList = getChartListData(v.value);
+                        }
+                        setDataList(newDataList);
+                    }}
+                />
+            </div>
             <ListBuilder />
         </StyledBrowsePage>
     );
