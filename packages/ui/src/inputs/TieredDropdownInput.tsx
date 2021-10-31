@@ -30,7 +30,7 @@ const TieredDropdownInput: React.FC<ITieredInputProps> = ({ currentTier, onChang
                 value={value}
                 setValue={(v, i) => {
                     setValue(v);
-                    isLeaf && onChange(v, i, currentTier, parentTiers)
+                    onChange(v, i, currentTier, parentTiers)
                 }}
                 options={options}
             />

@@ -20,6 +20,7 @@ const StyledBrowsePage = styled.div`
     margin: auto;
 
     .dropdown-container {
+        padding: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -62,12 +63,17 @@ const BrowsePage: React.FC<any> = () => {
                     currentTier={DEFAULT_BROWSE_TIERS}
                     onChange={(v, i, cur, par) => {
                         let newDataList = [];
-                        console.log(cur)
+                        console.log('dpb onChange', v, i, cur, par)
+                        if (cur.id === 'cat') {
+                            if (v.id === 'charts') {
+                                newDataList = [];
+                            }
+                            else if (v.id === 'practice') {
+                                newDataList = PRACTICE_CAGED;
+                            }
+                        }
                         if (cur.id === 'charts') {
                             newDataList = getChartListData(v.value);
-                        }
-                        else if (cur.id === 'practice') {
-                            newDataList = PRACTICE_CAGED;
                         }
                         setDataList(newDataList);
                     }}
