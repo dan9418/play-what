@@ -13,30 +13,30 @@ const StyledViewerController = styled.div`
     width: 100%;
     height: 100%;
    
-    background: #f3f3f3;
+    background: #fafafa;
     border-radius: 8px;
 
     .header-btn {
         appearance: none;
         border: none;
-        background-color: transparent;
         font-weight: bold;
         font-size: 1.5em;
-        color: ${({ theme }) => theme.text.primary};
         cursor: pointer;
         width: 100%;
-
+        
         display: flex;
         align-items: center;
         justify-content: space-between;
-        border-bottom: 1px solid #bbb;
         padding: 16px;
-
+        
         border-radius: 8px 8px 0 0;
-
-        background: #eee;
+        
+        background: ${({ theme, $isActive }) => $isActive ? theme.surface.highlight : theme.surface.gradient};
+        border-color: ${({ theme, $isActive }) => $isActive ? theme.active : '#bbb'};
+        border-bottom: ${({ theme, $isActive }) => $isActive ? `2px solid ${theme.active}` : `1px solid ${theme.border}`};
         &:hover {
-            background:${({ theme }) => theme.surface.gradient};
+            background:${({ theme }) => theme.clickable};
+            color: white;
         }
     }
     

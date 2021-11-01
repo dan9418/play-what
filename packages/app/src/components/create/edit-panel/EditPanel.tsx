@@ -19,6 +19,7 @@ const StyledEditPanel = styled.div`
         flex-wrap: wrap;
         gap: 8px;
         overflow: hidden;
+        background: #f0f0f0;
     }
     & > ul {
         border-bottom: 1px solid #bbb;
