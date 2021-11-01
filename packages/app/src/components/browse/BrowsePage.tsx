@@ -77,12 +77,10 @@ const BrowsePage: React.FC<any> = () => {
                                 newDataList = getChartListData(v.value);
                             }
                         }
-
                         setDataList(newDataList);
                     }}
                 />
             </div>
-
             <ListBuilder />
         </StyledBrowsePage>
     );

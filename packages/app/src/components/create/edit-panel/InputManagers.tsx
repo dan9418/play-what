@@ -8,6 +8,7 @@ import { IntervalsInput } from '../../../../../ui/src/inputs/IntervalsInput';
 import NumericInput from '../../../../../ui/src/inputs/NumericInput';
 import RangeInput from '../../../../../ui/src/inputs/RangeInput';
 import SwitchInput from '../../../../../ui/src/inputs/SwitchInput';
+import DEFAULT_FRETBOARD_PROPS from "../../../../../ui/src/viewers/fretboard/Fretboard.defaults";
 import { IViewerInputConfig } from '../../../../../ui/src/viewers/Viewer.constants';
 
 interface IInputProps {
@@ -37,8 +38,9 @@ export const getInputComponent = (inputId: InputId): any => {
 }
 
 export const viewerPropsMapper = (editProps: any, input: IViewerInputConfig): any => {
-    const { viewerProps, setViewerProps } = editProps;
+    const { viewerProps: _viewerProps, setViewerProps } = editProps;
     const { propId, inputProps, useValueProperty } = input;
+    const viewerProps = { ...DEFAULT_FRETBOARD_PROPS, ..._viewerProps };
 
     const value = viewerProps[propId];
 

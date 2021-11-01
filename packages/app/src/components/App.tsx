@@ -10,12 +10,11 @@ import ErrorBoundary from "./shared/ErrorBoundary";
 import PageNav from "./shared/PageNav";
 import SiteHeader from './shared/SiteHeader';
 
-const App = () => {
+const App: React.FC = () => {
 	return (
-		<RecoilRoot>
-			<ThemeProvider theme={THEME}>
-				{/* @ts-ignore */}
-				<ErrorBoundary>
+		<ErrorBoundary>
+			<RecoilRoot>
+				<ThemeProvider theme={THEME}>
 					<ModalContextProvider>
 						<SiteHeader />
 						<RouteContextProvider>
@@ -23,9 +22,9 @@ const App = () => {
 							<Main />
 						</RouteContextProvider>
 					</ModalContextProvider>
-				</ErrorBoundary>
-			</ThemeProvider>
-		</RecoilRoot>
+				</ThemeProvider>
+			</RecoilRoot>
+		</ErrorBoundary>
 	);
 };
 

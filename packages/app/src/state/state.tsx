@@ -18,6 +18,11 @@ export interface IDataItem {
     viewerProps?: IViewerProps | any
 }
 
+export const isLoadingState = atom<boolean>({
+    key: 'isLoadingState',
+    default: false
+});
+
 export const dataListState = atom<IDataItem[]>({
     key: 'dataListState',
     default: []
