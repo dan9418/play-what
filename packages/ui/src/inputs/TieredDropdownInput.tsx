@@ -16,13 +16,18 @@ interface ITieredInputProps {
     parentTiers?: IOptionTier[];
 }
 
-const TieredDropdownInput: React.FC<ITieredInputProps> = ({ currentTier, onChange, parentTiers = [] }) => {
+export const UNSELECTED_KEY = 'UNSELECTED';
+const UNSELECTED_OPTION = { id: UNSELECTED_KEY, name: '---' };
 
-    const [value, setValue] = useState(currentTier.options && currentTier.options[0]);
+const TieredDropdownInput: React.FC<ITieredInputProps> = ({ currentTier, onChange, parentTiers = [] }) => {
 
     const { id, name, options, getNextTier } = currentTier;
 
-    const isLeaf = !options || !getNextTier || !getNextTier(value);
+    const finalOptions = options && [UNSELECTED_OPTION, ...options];
+
+    const [value, setValue] = useState(UNSELECTED_OPTION);
+
+    const isLeaf = !options || !getNextTier || value.id === UNSELECTED_KEY || !getNextTier(value);
 
     return <>
         <LabelledInput key={id} text={name}>
@@ -32,7 +37,7 @@ const TieredDropdownInput: React.FC<ITieredInputProps> = ({ currentTier, onChang
                     setValue(v);
                     onChange(v, i, currentTier, parentTiers)
                 }}
-                options={options}
+                options={finalOptions}
             />
         </LabelledInput>
         {!isLeaf && (

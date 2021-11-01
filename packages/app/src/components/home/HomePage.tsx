@@ -53,6 +53,8 @@ const HomePage: React.FC<IPageProps> = () => {
 			<p>
 				<b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
 				It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.
+			</p>
+			<p>
 				<em>The app is currently unstable and is under active development.</em>
 			</p>
 			<div className="button-container primary">

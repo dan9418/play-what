@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
 import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
 import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
-import TieredDropdownInput from "../../../../ui/src/inputs/TieredDropdownInput";
+import TieredDropdownInput, { UNSELECTED_KEY } from "../../../../ui/src/inputs/TieredDropdownInput";
 import { dataListState, IDataItem } from "../../state/state";
 import { PRACTICE_CAGED } from "../create/CreatePage.defaults";
 import ListBuilder from "../create/list-builder/ListBuilder";
@@ -58,12 +58,13 @@ const BrowsePage: React.FC<any> = () => {
     return (
         <StyledBrowsePage>
             <PageControls title="Browse Ideas" subtitle="Select a category to get started..." />
-                <div className="dropdown-container">
-                    <TieredDropdownInput
-                        currentTier={DEFAULT_BROWSE_TIERS}
-                        onChange={(v, i, cur, par) => {
-                            let newDataList = [];
-                            console.log('dpb onChange', v, i, cur, par)
+            <div className="dropdown-container">
+                <TieredDropdownInput
+                    currentTier={DEFAULT_BROWSE_TIERS}
+                    onChange={(v, i, cur, par) => {
+                        let newDataList = [];
+                        console.log('dpb onChange', v, i, cur, par)
+                        if (v.id !== UNSELECTED_KEY) {
                             if (cur.id === 'cat') {
                                 if (v.id === 'charts') {
                                     newDataList = [];
@@ -75,10 +76,12 @@ const BrowsePage: React.FC<any> = () => {
                             if (cur.id === 'charts') {
                                 newDataList = getChartListData(v.value);
                             }
-                            setDataList(newDataList);
-                        }}
-                    />
-                </div>
+                        }
+
+                        setDataList(newDataList);
+                    }}
+                />
+            </div>
 
             <ListBuilder />
         </StyledBrowsePage>

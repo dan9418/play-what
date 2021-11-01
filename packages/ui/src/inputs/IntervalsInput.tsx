@@ -3,7 +3,7 @@ import React from "react";
 import { intervalsMapper } from "../../../app/src/components/create/edit-panel/InputManagers";
 import { InputId, PRESET_TYPES } from "../../../core/src/models/Model.constants";
 import MASTER_PRESETS from "../../../core/src/models/PodList/PodList.constants";
-import TieredDropdownInput from "./TieredDropdownInput";
+import TieredDropdownInput, { UNSELECTED_KEY } from "./TieredDropdownInput";
 
 interface IInputProps {
     setValue: any;
@@ -31,8 +31,10 @@ export const IntervalsInput: React.FC<IInputProps> = ({ value, setValue }) => {
             onChange={(v, i, cur, par) => {
                 console.log(v, i, cur, par);
                 let intervals = [];
-                if (cur.id !== 'cat') {
-                    intervals = v.value;
+                if (v.id !== UNSELECTED_KEY) {
+                    if (cur.id !== 'cat') {
+                        intervals = v.value;
+                    }
                 }
                 setValue(intervals);
             }}
