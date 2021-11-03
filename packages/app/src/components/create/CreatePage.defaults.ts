@@ -6,41 +6,58 @@ import DEFAULT_FRETBOARD_PROPS from "../../../../ui/src/viewers/fretboard/Fretbo
 export const PRACTICE_CAGED = [
     {
         root: NOTE_PRESET_MAP.get(NoteId.F).value,
+        intervals: SCALE_PRESET_MAP.get(ScaleId.Locrian).value,
+        viewerProps: {
+            ...DEFAULT_FRETBOARD_PROPS,
+            voicing: VOICING.CAGED_E_SCALE
+        }
+    },
+    {
+        root: NOTE_PRESET_MAP.get(NoteId.Fs).value,
         intervals: SCALE_PRESET_MAP.get(ScaleId.Ionian).value,
         viewerProps: {
             ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_SCALE_IONIAN
+            voicing: VOICING.CAGED_E_SCALE_2
         }
     },
     {
-        root: NOTE_PRESET_MAP.get(NoteId.G).value,
+        root: NOTE_PRESET_MAP.get(NoteId.Gs).value,
         intervals: SCALE_PRESET_MAP.get(ScaleId.Dorian).value,
         viewerProps: {
             ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_SCALE_DORIAN
+            voicing: VOICING.CAGED_D_SCALE
         }
     },
     {
-        root: NOTE_PRESET_MAP.get(NoteId.A).value,
+        root: NOTE_PRESET_MAP.get(NoteId.As).value,
         intervals: SCALE_PRESET_MAP.get(ScaleId.Phrygian).value,
         viewerProps: {
             ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_SCALE_PHRYGIAN
-        }
-    }, {
-        root: NOTE_PRESET_MAP.get(NoteId.C).value,
-        intervals: SCALE_PRESET_MAP.get(ScaleId.Mixolydian).value,
-        viewerProps: {
-            ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_SCALE_MIXOLYDIAN
+            voicing: VOICING.CAGED_C_SCALE
         }
     },
     {
-        root: NOTE_PRESET_MAP.get(NoteId.D).value,
+        root: NOTE_PRESET_MAP.get(NoteId.B).value,
+        intervals: SCALE_PRESET_MAP.get(ScaleId.Lydian).value,
+        viewerProps: {
+            ...DEFAULT_FRETBOARD_PROPS,
+            voicing: VOICING.CAGED_C_SCALE
+        }
+    },
+    {
+        root: NOTE_PRESET_MAP.get(NoteId.Cs).value,
+        intervals: SCALE_PRESET_MAP.get(ScaleId.Mixolydian).value,
+        viewerProps: {
+            ...DEFAULT_FRETBOARD_PROPS,
+            voicing: VOICING.CAGED_A_SCALE
+        }
+    },
+    {
+        root: NOTE_PRESET_MAP.get(NoteId.Ds).value,
         intervals: SCALE_PRESET_MAP.get(ScaleId.Aeolian).value,
         viewerProps: {
             ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_SCALE_AEOLIAN
+            voicing: VOICING.CAGED_G_SCALE
         }
     }
 ]
