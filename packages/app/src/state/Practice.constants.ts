@@ -1,7 +1,7 @@
-import { NoteId, NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
-import { ScaleId, SCALE_PRESET_MAP } from "../../../../core/src/models/PodList/Scale/Scale.constants";
-import { VoicingId, VOICING_PRESET_MAP } from "../../../../core/src/theory/Voicing.constants";
-import DEFAULT_FRETBOARD_PROPS from "../../../../ui/src/viewers/fretboard/Fretboard.defaults";
+import { NoteId, NOTE_PRESET_MAP } from "../../../core/src/models/Pod/Note/Note.constants";
+import { ScaleId, SCALE_PRESET_MAP } from "../../../core/src/models/PodList/Scale/Scale.constants";
+import { VoicingId, VOICING_PRESET_MAP } from "../../../core/src/theory/Voicing.constants";
+import DEFAULT_FRETBOARD_PROPS from "../../../ui/src/viewers/fretboard/Fretboard.defaults";
 
 export const PRACTICE_CAGED = [
     {

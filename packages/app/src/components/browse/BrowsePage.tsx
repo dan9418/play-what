@@ -1,12 +1,8 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
-import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
-import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
 import TieredDropdownInput, { UNSELECTED_KEY } from "../../../../ui/src/inputs/TieredDropdownInput";
-import { dataListState, IDataItem } from "../../state/state";
-import { PRACTICE_CAGED } from "../create/CreatePage.defaults";
+import { dataListState } from "../../state/state";
 import ListBuilder from "../create/list-builder/ListBuilder";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
@@ -27,30 +23,6 @@ const StyledBrowsePage = styled(StyledPageBody)`
     }
 `;
 
-const getChartListData = (config: IChartConfig): IDataItem[] => {
-    const items = [];
-
-    for (let s = 0; s < config.sections.length; s++) {
-        const section = config.sections[s];
-
-        for (let c = 0; c < section.chords.length; c++) {
-            const chord = section.chords[c];
-            const [noteId, chordId, t] = chord;
-
-            const root = NOTE_PRESET_MAP.get(noteId).value || [0, 0];
-            const intervals = CHORD_PRESET_MAP.get(chordId).value || [];
-
-            items.push({
-                root,
-                intervals
-            });
-            //...(new Array((t / 2) - 1).fill(<div className="rest" >/</div>))
-        }
-    }
-
-    return items;
-}
-
 const BrowsePage: React.FC<any> = () => {
 
     const [dataList, setDataList] = useRecoilState(dataListState);
@@ -62,20 +34,10 @@ const BrowsePage: React.FC<any> = () => {
                 <TieredDropdownInput
                     currentTier={DEFAULT_BROWSE_TIERS}
                     onChange={(v, i, cur, par) => {
-                        let newDataList = [];
                         console.log('dpb onChange', v, i, cur, par)
-                        if (v.id !== UNSELECTED_KEY) {
-                            if (cur.id === 'cat') {
-                                if (v.id === 'charts') {
-                                    newDataList = [];
-                                }
-                                else if (v.id === 'practice') {
-                                    newDataList = PRACTICE_CAGED;
-                                }
-                            }
-                            if (cur.id === 'charts') {
-                                newDataList = getChartListData(v.value);
-                            }
+                        let newDataList = [];
+                        if (cur.id !== 'cat') {
+                            newDataList = v.value;
                         }
                         setDataList(newDataList);
                     }}
