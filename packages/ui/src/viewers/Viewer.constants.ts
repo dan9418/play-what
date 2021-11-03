@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { VOICINGS } from '../../../core/src/models/PodList/Chord/Chord.constants';
+import { VOICING_PRESETS } from '../../../core/src/theory/Voicing.constants';
 import { viewerPropsMapper } from './../../../app/src/components/create/edit-panel/InputManagers';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from './../../../core/src/models/Model.constants';
 import Fretboard from './fretboard/Fretboard';
@@ -91,7 +91,7 @@ export const VOICING_INPUTS = [
         propId: 'voicing',
         inputId: InputId.Dropdown,
         inputProps: {
-            options: VOICINGS
+            options: VOICING_PRESETS
         },
         inputMapper: viewerPropsMapper
     },

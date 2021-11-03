@@ -22,46 +22,6 @@ export enum ChordId {
 	Sus4 = 'Sus4',
 }
 
-interface IVoicing {
-	id: string;
-	name: string;
-	value: (number | number[])[]
-}
-
-const formatVoicing = (id: string, name: string, value: (number | number[])[]): IVoicing => ({
-	id,
-	name,
-	value
-});
-
-export const VOICINGS = [
-	formatVoicing('NONE', 'None', []),
-	formatVoicing('CAGED_C_CHORD_TRIAD', 'C Shape Triad', [3, 1, 5, 3, 1, null]),
-	formatVoicing('CAGED_A_CHORD_TRIAD', 'A Shape Triad', [5, 3, 1, 5, 1, null]),
-	formatVoicing('CAGED_G_CHORD_TRIAD', 'G Shape Triad', [1, 5, 1, 5, 3, 1]),
-	formatVoicing('CAGED_E_CHORD_TRIAD', 'E Shape Triad', [1, 5, 3, 1, 5, 1]),
-	formatVoicing('CAGED_D_CHORD_TRIAD', 'D Shape Triad', [3, 1, 5, 1, null, null]),
-	formatVoicing('CAGED_C_CHORD_SIXTH', 'C Shape 6th Chord', [3, 6, 5, 3, 1, null]),
-	formatVoicing('CAGED_A_CHORD_SIXTH', 'A Shape 6th Chord', [5, 3, 6, 5, 1, null]),
-	formatVoicing('CAGED_G_CHORD_SIXTH', 'G Shape 6th Chord', [6, 5, 1, 5, 3, 1]),
-	formatVoicing('CAGED_E_CHORD_SIXTH', 'E Shape 6th Chord', [1, 5, 3, 6, 5, 1]),
-	formatVoicing('CAGED_D_CHORD_SIXTH', 'D Shape 6th Chord', [3, 6, 5, 1, null, null]),
-	formatVoicing('CAGED_C_CHORD_SEVENTH', 'C Shape Seventh', [3, 7, 5, 3, 1, null]),
-	formatVoicing('CAGED_A_CHORD_SEVENTH', 'A Shape 7th Chord', [5, 3, 7, 5, 1, null]),
-	formatVoicing('CAGED_G_CHORD_SEVENTH', 'G Shape 7th Chord', [7, 5, 1, 5, 3, 1]),
-	formatVoicing('CAGED_E_CHORD_SEVENTH', 'E Shape 7th Chord', [1, 5, 3, 7, 5, 1]),
-	formatVoicing('CAGED_D_CHORD_SEVENTH', 'D Shape 7th Chord', [3, 7, 5, 1, null, null]),
-	formatVoicing('CAGED_E_SCALE', 'E Shape Scale (Locrian)', [[1], [6, 7], [3, 4, 5], [7, 1, 2], [4, 5, 6], [1, 2, 3]]),
-	formatVoicing('CAGED_E_SCALE_2', 'E Shape Scale (Ionian)', [[7, 1], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]),
-	formatVoicing('CAGED_D_SCALE', 'D Shape Scale (Dorian)', [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]]),
-	formatVoicing('CAGED_C_SCALE', 'C Shape Scale (Phrygian)', [[1], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]]),
-	formatVoicing('CAGED_C_SCALE_2', 'C Shape Scale (Lydian)', [[7, 1], [4, 5, 6], [2, 3], [6, 7, 1], [3, 4, 5], [1, 2]]),
-	formatVoicing('CAGED_A_SCALE', 'A Shape Scale (Mixolydian)', [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]),
-	formatVoicing('CAGED_G_SCALE', 'G Shape Scale (Aeolian)', [[1], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]])
-];
-
-export const VOICING: { [x: string]: IVoicing } = VOICINGS.reduce((prev, cur) => ({ ...prev, [cur.id]: cur }), {});
-
 const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], _ = []) => {
 	return {
 		id,

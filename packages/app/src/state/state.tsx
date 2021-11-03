@@ -1,10 +1,7 @@
 import { atom, selector } from 'recoil';
 import { ICompleteModelDetails, IPod } from '../../../core/src/models/Model.constants';
-import { NoteId, NOTE_PRESET_MAP } from '../../../core/src/models/Pod/Note/Note.constants';
 import PodUtils from '../../../core/src/models/Pod/Pod.utils';
-import { VOICING } from '../../../core/src/models/PodList/Chord/Chord.constants';
 import PodListUtils from '../../../core/src/models/PodList/PodList.utils';
-import { ScaleId, SCALE_PRESET_MAP } from '../../../core/src/models/PodList/Scale/Scale.constants';
 import DEFAULT_FRETBOARD_PROPS from '../../../ui/src/viewers/fretboard/Fretboard.defaults';
 import { DEFAULT_VIEWER_ID, IViewerDetails, IViewerProps, ViewerId } from '../../../ui/src/viewers/Viewer.constants';
 import viewerUtils from '../../../ui/src/viewers/Viewer.utils';
