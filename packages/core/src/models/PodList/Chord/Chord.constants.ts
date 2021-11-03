@@ -55,6 +55,7 @@ export const VOICINGS = [
 	formatVoicing('CAGED_E_SCALE_2', 'E Shape Scale (Ionian)', [[7, 1], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]),
 	formatVoicing('CAGED_D_SCALE', 'D Shape Scale (Dorian)', [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]]),
 	formatVoicing('CAGED_C_SCALE', 'C Shape Scale (Phrygian)', [[1], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]]),
+	formatVoicing('CAGED_C_SCALE_2', 'C Shape Scale (Lydian)', [[7, 1], [4, 5, 6], [2, 3], [6, 7, 1], [3, 4, 5], [1, 2]]),
 	formatVoicing('CAGED_A_SCALE', 'A Shape Scale (Mixolydian)', [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]),
 	formatVoicing('CAGED_G_SCALE', 'G Shape Scale (Aeolian)', [[1], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]])
 ];

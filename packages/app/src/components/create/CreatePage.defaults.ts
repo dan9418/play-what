@@ -41,7 +41,7 @@ export const PRACTICE_CAGED = [
         intervals: SCALE_PRESET_MAP.get(ScaleId.Lydian).value,
         viewerProps: {
             ...DEFAULT_FRETBOARD_PROPS,
-            voicing: VOICING.CAGED_C_SCALE
+            voicing: VOICING.CAGED_C_SCALE_2
         }
     },
     {
