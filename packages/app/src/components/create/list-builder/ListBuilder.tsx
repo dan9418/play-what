@@ -10,7 +10,11 @@ const StyledListBuilder = styled.ul`
     max-width: 1024px;
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    grid-template-columns: 1fr;
+    @media(min-width: 512px) {
+        grid-template-columns: 1fr 1fr;
+    }
 
     > li {
         margin-top: 16px;
