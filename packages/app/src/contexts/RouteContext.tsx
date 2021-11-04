@@ -1,8 +1,8 @@
 
 import React, { useEffect } from "react";
 import BrowsePage from "../components/browse/BrowsePage";
-import DocsPage from "../components/docs/DocsPage";
 import CreatePage from '../components/create/CreatePage';
+import DocsPage from "../components/docs/DocsPage";
 import HomePage from '../components/home/HomePage';
 import TestPage from "../components/test/TestPage";
 
@@ -74,9 +74,20 @@ export const RouteContextProvider: React.FC = ({ children }) => {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const paramPageId = urlParams.get('pageId') as PageId || DEFAULT_PAGE_ID;
+
         setParams(urlParams);
         setPageId(paramPageId);
     }, []);
+
+    useEffect(() => {
+        if (!pageId) return;
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramPageId = urlParams.get('pageId') as PageId;
+        if (paramPageId === pageId) return;
+
+        urlParams.set("pageId", pageId);
+        window.location.search = urlParams.toString();
+    }, [pageId]);
 
     const setPage = (pageId: PageId, params: URLSearchParams) => {
         setPageId(pageId);

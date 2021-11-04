@@ -58,7 +58,7 @@ const StyledListBuilder = styled.ul`
 `;
 
 
-const ListBuilder: React.FC<any> = () => {
+const ListBuilder: React.FC<any> = ({ isInsertAllowed = false }) => {
     const dataIndex = useRecoilValue(dataIndexState);
     const [dataList, setDataList] = useRecoilState(dataListState);
 
@@ -77,12 +77,14 @@ const ListBuilder: React.FC<any> = () => {
                             />
                         </li>
                     ))}
-                    <li className="insert">
-                        <ButtonInput onClick={() => setIsInsertingViewer(true)} >
-                            <Icon iconId="plus" />
-                            <span>INSERT VIEWER</span>
-                        </ButtonInput>
-                    </li>
+                    {isInsertAllowed &&
+                        <li className="insert">
+                            <ButtonInput onClick={() => setIsInsertingViewer(true)} >
+                                <Icon iconId="plus" />
+                                <span>INSERT VIEWER</span>
+                            </ButtonInput>
+                        </li>
+                    }
                 </>
             }
         </StyledListBuilder>

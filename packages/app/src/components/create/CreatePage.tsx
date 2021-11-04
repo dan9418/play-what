@@ -13,7 +13,7 @@ const CreatePage: React.FC<IPageProps> = () => {
 	return (
 		<StyledCreatePage>
 			<PageControls title="Create Something!" subtitle="Start by inserting a viewer" />
-			<ListBuilder />
+			<ListBuilder isInsertAllowed />
 		</StyledCreatePage>
 	);
 };
