@@ -10,6 +10,7 @@ import RangeInput from '../../../../../ui/src/inputs/RangeInput';
 import SwitchInput from '../../../../../ui/src/inputs/SwitchInput';
 import DEFAULT_FRETBOARD_PROPS from "../../../../../ui/src/viewers/fretboard/Fretboard.defaults";
 import { IViewerInputConfig } from '../../../../../ui/src/viewers/Viewer.constants';
+import LabelledInput from "../../shared/labelled-input/LabelledInput";
 
 interface IInputProps {
     setValue: any;
@@ -176,3 +177,16 @@ export const ROOT_INPUTS = [
         inputId: InputId.Accidental
     }
 ];
+
+
+export const getInputComponents = (inputs, editProps) => {
+    return inputs.map((input, i) => {
+        const InputComponent = getInputComponent(input.inputId);
+        const inputProps = input.inputMapper(editProps, input);
+        return (
+            <LabelledInput key={i} text={input.propName}>
+                <InputComponent {...inputProps} />
+            </LabelledInput>
+        );
+    })
+}

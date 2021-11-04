@@ -1,8 +1,11 @@
-import React from "react";
-import { useRecoilValue } from "recoil";
+import React, { useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from 'styled-components';
+import Icon from "../../../../../ui/src/Icon";
+import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
 import { dataIndexState, dataListState } from "../../../state/state";
 import ViewerController from "../viewer/ViewerController";
+import NewViewerCard from "./NewViewerCard";
 
 const StyledListBuilder = styled.ul`
     width: 100%;
@@ -19,11 +22,32 @@ const StyledListBuilder = styled.ul`
     > li {
         margin-top: 16px;
         width: 100%;
-        border: 1px solid #bbb;
-        border-radius: 8px;
+        &.insert {
+            > button {
+                margin: 32px auto;
+                width: 80%;
 
-        &.active {
-            border: 2px solid ${props => props.theme.active};
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    fill: white;
+                    margin-right: 8px;
+
+                    * {
+                        fill: white;
+                    }
+                }
+            }
+        }
+        &:not(.insert) {
+            border: 1px solid #bbb;
+            border-radius: 8px;
+
+            &.active {
+                border: 2px solid ${props => props.theme.active};
+            }
         }
     }
     
@@ -35,18 +59,32 @@ const StyledListBuilder = styled.ul`
 
 
 const ListBuilder: React.FC<any> = () => {
-    const dataList = useRecoilValue(dataListState);
     const dataIndex = useRecoilValue(dataIndexState);
+    const [dataList, setDataList] = useRecoilState(dataListState);
+
+    const [isInsertingViewer, setIsInsertingViewer] = useState(false);
 
     return (
         <StyledListBuilder $length={dataList.length}>
-            {dataList.map((data, i) => (
-                <li key={i} className={dataIndex === i ? 'active' : ''}>
-                    <ViewerController
-                        listIndex={i}
-                    />
-                </li>
-            ))}
+            {isInsertingViewer ?
+                <NewViewerCard onDone={() => setIsInsertingViewer(false)} />
+                :
+                <>
+                    {dataList.map((data, i) => (
+                        <li key={i} className={dataIndex === i ? 'active' : ''}>
+                            <ViewerController
+                                listIndex={i}
+                            />
+                        </li>
+                    ))}
+                    <li className="insert">
+                        <ButtonInput onClick={() => setIsInsertingViewer(true)} >
+                            <Icon iconId="plus" />
+                            <span>INSERT VIEWER</span>
+                        </ButtonInput>
+                    </li>
+                </>
+            }
         </StyledListBuilder>
     );
 };

@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import { INTERVALS_INPUTS } from "../../../../../ui/src/inputs/IntervalsInput";
 import { FRETBOARD_INPUTS, LABEL_INPUTS, VOICING_INPUTS } from "../../../../../ui/src/viewers/Viewer.constants";
 import useEditProps from "../../../hooks/useEditProps";
-import LabelledInput from "../../shared/labelled-input/LabelledInput";
 import TabList from "../../shared/tab-list/TabList";
-import { getInputComponent, ROOT_INPUTS } from "./InputManagers";
+import { getInputComponents, ROOT_INPUTS } from "./InputManagers";
 
 const StyledEditPanel = styled.div`
     border-bottom: 1px solid #bbb;
@@ -68,15 +67,7 @@ const EditPanel: React.FC<any> = () => {
         <StyledEditPanel>
             <TabList options={tabs} />
             <div className="content">
-                {selectedTab.inputs.map((input, i) => {
-                    const InputComponent = getInputComponent(input.inputId);
-                    const inputProps = input.inputMapper(editProps, input);
-                    return (
-                        <LabelledInput key={i} text={input.propName}>
-                            <InputComponent {...inputProps} />
-                        </LabelledInput>
-                    );
-                })}
+                {getInputComponents(selectedTab.inputs, editProps)}
             </div>
         </StyledEditPanel>
     );
