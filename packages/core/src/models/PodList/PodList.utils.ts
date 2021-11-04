@@ -121,13 +121,13 @@ const getDetails = (root: IPod, intervals: IPod[]): ICompleteModelDetails => {
 			name: intervalsName,
 			preview: intervalsPreview,
 			value: intervals,
-			formattedName: presetName
+			formattedName: intervals.length ? presetName : 'None'
 		},
 		notes: {
 			name: `${rootName} ${intervalsName}`,
 			preview: notesPreview,
 			value: notes,
-			formattedName: `${rootName} ${presetName}`
+			formattedName: intervals.length ? `${rootName} ${presetName}` : 'None'
 		}
 	}
 }

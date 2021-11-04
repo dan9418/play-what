@@ -13,7 +13,7 @@ const StyledListBuilder = styled.ul`
     gap: 16px;
     grid-template-columns: 1fr;
     @media(min-width: 512px) {
-        grid-template-columns: 1fr 1fr;
+        ${props => props.$length > 1 ? 'grid-template-columns: 1fr 1fr;' : ''}
     }
 
     > li {
@@ -39,7 +39,7 @@ const ListBuilder: React.FC<any> = () => {
     const dataIndex = useRecoilValue(dataIndexState);
 
     return (
-        <StyledListBuilder>
+        <StyledListBuilder $length={dataList.length}>
             {dataList.map((data, i) => (
                 <li key={i} className={dataIndex === i ? 'active' : ''}>
                     <ViewerController

@@ -37,22 +37,24 @@ const BrowsePage: React.FC<any> = () => {
                     onChange={(v, i, cur, par) => {
                         console.log('dpb onChange', v, i, cur, par)
                         let newDataList = [];
-                        if (cur.id === 'practice' || cur.id === 'charts') {
-                            newDataList = v.value;
-                        }
-                        else if (cur.id === 'intervals') {
-                            newDataList = [{
-                                root: [0, 0],
-                                intervals: [v.value],
-                                viewerProps: DEFAULT_FRETBOARD_PROPS
-                            }]
-                        }
-                        else if (cur.id !== 'cat') {
-                            newDataList = [{
-                                root: [0, 0],
-                                intervals: v.value,
-                                viewerProps: DEFAULT_FRETBOARD_PROPS
-                            }]
+                        if (v.id !== UNSELECTED_KEY) {
+                            if (cur.id === 'practice' || cur.id === 'charts') {
+                                newDataList = v.value;
+                            }
+                            else if (cur.id === 'intervals') {
+                                newDataList = [{
+                                    root: [0, 0],
+                                    intervals: [v.value],
+                                    viewerProps: DEFAULT_FRETBOARD_PROPS
+                                }]
+                            }
+                            else if (cur.id !== 'cat') {
+                                newDataList = [{
+                                    root: [0, 0],
+                                    intervals: v.value,
+                                    viewerProps: DEFAULT_FRETBOARD_PROPS
+                                }]
+                            }
                         }
                         setDataList(newDataList);
                     }}
