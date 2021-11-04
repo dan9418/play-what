@@ -3,9 +3,10 @@ import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { NoteId, NOTE_PRESET_MAP } from "../../../../../core/src/models/Pod/Note/Note.constants";
 import ButtonInput from "../../../../../ui/src/inputs/ButtonInput";
+import { IntervalsInput } from "../../../../../ui/src/inputs/IntervalsInput";
 import DEFAULT_FRETBOARD_PROPS from "../../../../../ui/src/viewers/fretboard/Fretboard.defaults";
 import { dataListState } from "../../../state/state";
-import { ROOT_INPUTS } from "../edit-panel/InputManagers";
+import { AccidentalInput, DegreeInput, getInputComponents, ROOT_INPUTS } from "../edit-panel/InputManagers";
 
 const StyledNewViewerCard = styled.div`
     width: 100%;
@@ -22,6 +23,16 @@ const StyledNewViewerCard = styled.div`
 
     background: #fafafa;
     border-radius: 8px;
+
+    .content {
+        padding: 16px 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
 
     .footer {
         display: flex;
@@ -62,14 +73,15 @@ const NewViewerCard: React.FC<any> = ({ onDone }) => {
         <StyledNewViewerCard >
             <h2>{step === 0 ? 'Select Root' : 'Select Intervals'}</h2>
             {step === 0 &&
-                <>
-                    <ROOT_INPUTS
-                </>
+                <div className="content">
+                    <DegreeInput value={root} setValue={setRoot} />
+                    <AccidentalInput value={root} setValue={setRoot} />
+                </div>
             }
-            {step === 0 &&
-                <>
-
-                </>
+            {step === 1 &&
+                <div className="content">
+                    <IntervalsInput value={intervals} setValue={setIntervals} />
+                </div>
             }
             <div className="footer">
                 {step === 0 &&
