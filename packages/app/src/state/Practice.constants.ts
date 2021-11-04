@@ -60,4 +60,12 @@ export const PRACTICE_CAGED = [
             voicing: VOICING_PRESET_MAP.get(VoicingId.Scale_DoubleOctave_GShape_1)
         }
     }
-]
+];
+
+export const PRACTICE_PRESETS = [
+    {
+        id: 'CAGED',
+        name: 'CAGED',
+        value: PRACTICE_CAGED
+    }
+];

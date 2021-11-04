@@ -1,7 +1,6 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import PodListUtils from "../../../../../core/src/models/PodList/PodList.utils";
 import { dataIndexState, dataListState } from "../../../state/state";
 import ViewerController from "../viewer/ViewerController";
 
@@ -10,9 +9,8 @@ const StyledListBuilder = styled.ul`
     margin-bottom: auto;
     max-width: 1024px;
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
     > li {
         margin-top: 16px;

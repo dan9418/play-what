@@ -1,57 +1,25 @@
-import { CHARTS, IChartConfig } from "../../../../core/src/models/Chart/Chart.constants";
-import { NOTE_PRESET_MAP } from "../../../../core/src/models/Pod/Note/Note.constants";
-import { CHORD_PRESET_MAP } from "../../../../core/src/models/PodList/Chord/Chord.constants";
-import { IDataItem } from "../../state/state";
-import { PRACTICE_CAGED } from "../../state/Practice.constants";
-
-const getChartListData = (config: IChartConfig): IDataItem[] => {
-    const items = [];
-
-    for (let s = 0; s < config.sections.length; s++) {
-        const section = config.sections[s];
-
-        for (let c = 0; c < section.chords.length; c++) {
-            const chord = section.chords[c];
-            const [noteId, chordId, t] = chord;
-
-            const root = NOTE_PRESET_MAP.get(noteId).value || [0, 0];
-            const intervals = CHORD_PRESET_MAP.get(chordId).value || [];
-
-            items.push({
-                root,
-                intervals
-            });
-            //...(new Array((t / 2) - 1).fill(<div className="rest" >/</div>))
-        }
-    }
-
-    return items;
-}
-
-export const getChartOptions = () => {
-    return Object.values(CHARTS).map(chart => {
-        return {
-            id: chart.name,
-            name: chart.name,
-            value: getChartListData(chart)
-        }
-    })
-}
-
-export const getPracticeOptions = () => {
-    return [
-        {
-            id: 'CAGED',
-            name: 'CAGED',
-            value: PRACTICE_CAGED
-        }
-    ];
-}
+import { CHART_LIST_PRESETS } from "../../../../core/src/models/Chart/Chart.constants";
+import { SCALE_PRESETS } from '../../../../core/src/models/PodList/Scale/Scale.constants';
+import { PRACTICE_PRESETS } from "../../state/Practice.constants";
+import { INTERVAL_PRESETS } from './../../../../core/src/models/Pod/Interval/Interval.constants';
+import { CHORD_PRESETS } from './../../../../core/src/models/PodList/Chord/Chord.constants';
 
 export const DEFAULT_BROWSE_TIERS = {
     id: 'cat',
     name: 'Category',
     options: [
+        {
+            id: 'chords',
+            name: 'Chords'
+        },
+        {
+            id: 'scales',
+            name: 'Scales'
+        },
+        {
+            id: 'intervals',
+            name: 'Intervals'
+        },
         {
             id: 'charts',
             name: 'Charts'
@@ -63,8 +31,11 @@ export const DEFAULT_BROWSE_TIERS = {
     ],
     getNextTier: (cat, catIndex, currentTier, parentTiers) => {
         let options = [];
-        if (cat.id === 'charts') options = getChartOptions();
-        if (cat.id === 'practice') options = getPracticeOptions();
+        if (cat.id === 'chords') options = CHORD_PRESETS;
+        if (cat.id === 'scales') options = SCALE_PRESETS
+        if (cat.id === 'intervals') options = INTERVAL_PRESETS;
+        if (cat.id === 'charts') options = CHART_LIST_PRESETS;
+        if (cat.id === 'practice') options = PRACTICE_PRESETS;
 
         return {
             id: cat.id,

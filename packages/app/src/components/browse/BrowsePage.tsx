@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import TieredDropdownInput, { UNSELECTED_KEY } from "../../../../ui/src/inputs/TieredDropdownInput";
+import DEFAULT_FRETBOARD_PROPS from "../../../../ui/src/viewers/fretboard/Fretboard.defaults";
 import { dataListState } from "../../state/state";
 import ListBuilder from "../create/list-builder/ListBuilder";
 import { StyledPageBody } from "../shared/PageBody";
@@ -36,8 +37,22 @@ const BrowsePage: React.FC<any> = () => {
                     onChange={(v, i, cur, par) => {
                         console.log('dpb onChange', v, i, cur, par)
                         let newDataList = [];
-                        if (cur.id !== 'cat') {
+                        if (cur.id === 'practice' || cur.id === 'charts') {
                             newDataList = v.value;
+                        }
+                        else if (cur.id === 'intervals') {
+                            newDataList = [{
+                                root: [0, 0],
+                                intervals: [v.value],
+                                viewerProps: DEFAULT_FRETBOARD_PROPS
+                            }]
+                        }
+                        else if (cur.id !== 'cat') {
+                            newDataList = [{
+                                root: [0, 0],
+                                intervals: v.value,
+                                viewerProps: DEFAULT_FRETBOARD_PROPS
+                            }]
                         }
                         setDataList(newDataList);
                     }}
