@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import { IPageProps, useRouteContext } from '../../contexts/RouteContext';
 import { StyledPageBody } from "../shared/PageBody";
 import PageTitle from "../shared/PageTitle";
 
@@ -15,8 +14,7 @@ const StyledDocsPage = styled(StyledPageBody)`
     }
 `;
 
-const DocsPage: React.FC<IPageProps> = () => {
-    const routeContext = useRouteContext();
+const DocsPage: React.FC<any> = () => {
     return (
         <StyledDocsPage>
             <PageTitle title="Documentation" />

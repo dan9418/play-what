@@ -6,7 +6,6 @@ import ErrorBoundary from "./src/app/components/shared/ErrorBoundary";
 import PageNav from "./src/app/components/shared/PageNav";
 import SiteHeader from "./src/app/components/shared/SiteHeader";
 import { ModalContextProvider } from "./src/app/contexts/ModalContext";
-import { RouteContextProvider } from "./src/app/contexts/RouteContext";
 import THEME from "./src/app/styles/theme";
 
 export const wrapRootElement = ({ element }) => {
@@ -15,9 +14,7 @@ export const wrapRootElement = ({ element }) => {
             <RecoilRoot>
                 <ThemeProvider theme={THEME}>
                     <ModalContextProvider>
-                        <RouteContextProvider>
-                            {element}
-                        </RouteContextProvider>
+                        {element}
                     </ModalContextProvider>
                 </ThemeProvider>
             </RecoilRoot>
