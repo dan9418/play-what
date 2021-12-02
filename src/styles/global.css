@@ -5,7 +5,7 @@
   list-style-type: none;
 }
 
-#app {
+body {
   background-color: #ecefef; /* bg */
   color: #2C3D4C;
   font-family: sans-serif;

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PAGE_CONFIGS, useRouteContext } from '../../contexts/RouteContext';
 import TabList from './tab-list/TabList';
 
 const StyledPageNav = styled.nav`
@@ -25,26 +24,9 @@ const StyledPageNav = styled.nav`
 `
 
 const PageNav: React.FC = () => {
-	const routeContext = useRouteContext();
 	return (
 		<StyledPageNav>
-			<TabList options={
-				routeContext ?
-					PAGE_CONFIGS.map(config => {
-						if (config.isAdmin && routeContext && routeContext.params && !routeContext.params.get('admin')) {
-							console.log('dpb', routeContext.params.get('admin'))
-							return;
-						}
-						return (
-							{
-								text: config.name,
-								isActive: config.pageId === routeContext.pageId,
-								onClick: () => routeContext.setPage(config.pageId)
-							}
-						);
-					})
-					: []
-			} />
+			<TabList options={[]} />
 		</StyledPageNav>
 	);
 };
