@@ -1,10 +1,12 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from 'styled-components';
+import Main from "./src/app/components/Main";
+import ErrorBoundary from "./src/app/components/shared/ErrorBoundary";
+import PageNav from "./src/app/components/shared/PageNav";
 import { ModalContextProvider } from "./src/app/contexts/ModalContext";
 import { RouteContextProvider } from "./src/app/contexts/RouteContext";
 import THEME from "./src/app/styles/theme";
-import ErrorBoundary from "./src/app/components/shared/ErrorBoundary";
 
 export const wrapRootElement = ({ element }) => {
     return (
@@ -19,6 +21,16 @@ export const wrapRootElement = ({ element }) => {
                 </ThemeProvider>
             </RecoilRoot>
         </ErrorBoundary>
+    )
+}
 
+
+export const wrapPageElement = ({ element }) => {
+    return (
+        <>
+            <PageNav />
+            <Main />
+            {element}
+        </>
     )
 }
