@@ -1,5 +1,0 @@
-**/*.js
-**/*.jsx
-node_modules
-build
-build-ts
