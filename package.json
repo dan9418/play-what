@@ -1,40 +1,28 @@
 {
   "name": "play-what",
+  "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "description": "play-what",
+  "author": "Dan Bednarczyk",
   "scripts": {
-    "start": "yarn workspace @pw/app start",
-    "serve": "yarn workspace @pw/app serve",
-    "start-debug": "yarn workspace @pw/app start-debug",
-    "lint": "eslint --fix",
-    "build": "lerna run build"
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
-    "@babel/preset-env": "^7.13.15",
-    "@types/node": "^16.9.1",
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
-    "babel": "^6.23.0",
-    "babel-loader": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.2.0",
-    "eslint": "^7.24.0",
-    "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "lerna": "^4.0.0",
-    "prettier": "^2.2.1",
-    "style-loader": "^3.2.1",
-    "typescript": "^4.2.4",
-    "webpack": "^5.31.2",
-    "webpack-cli": "4.8"
+    "cross-env": "^7.0.3"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "color": "^4.0.2",
+    "gatsby": "^4.2.0",
+    "gatsby-plugin-image": "^2.2.0",
+    "gatsby-plugin-sass": "^5.2.0",
+    "gatsby-plugin-sharp": "^4.2.0",
+    "gatsby-source-filesystem": "^4.2.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "tone": "^14.7.77"
   }
 }
