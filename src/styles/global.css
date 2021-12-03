@@ -19,6 +19,10 @@ html, body {
   width: 100%;
 }
 
+a {
+  color: #72B01D;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
