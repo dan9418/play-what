@@ -1,0 +1,458 @@
+[
+    {
+        "id": "MajTri",
+        "name": "Major Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "major",
+            "triad"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Maj6",
+        "name": "Major 6th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ]
+        ],
+        "tags": [
+            "chord",
+            "major",
+            "sixth"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Maj7",
+        "name": "Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "major",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "MinTri",
+        "name": "Minor Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "minor",
+            "triad"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Min6",
+        "name": "Minor 6th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ]
+        ],
+        "tags": [
+            "chord",
+            "minor",
+            "sixth"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Min7",
+        "name": "Minor 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "minor",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "MinMaj7",
+        "name": "Minor-Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "minor",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Dom7",
+        "name": "Dominant 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "dominant",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Dom7b9",
+        "name": "Dominant 7th (b9)",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ],
+            [
+                13,
+                8
+            ]
+        ],
+        "tags": [
+            "chord",
+            "dominant",
+            "extended"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "AugTri",
+        "name": "Augmented Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "augmented",
+            "triad"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Aug7",
+        "name": "Augmented 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "augmented",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "AugM7",
+        "name": "Augmented Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "augmented",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "DimTri",
+        "name": "Diminished Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "diminished",
+            "triad"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Dim7",
+        "name": "Diminished 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                9,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "diminished",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "HalfDim7",
+        "name": "Half-Diminished 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "chord",
+            "diminished",
+            "seventh"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Sus2",
+        "name": "Suspended 2nd",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "suspended",
+            "triad"
+        ],
+        "voicings": []
+    },
+    {
+        "id": "Sus4",
+        "name": "Suspended 4th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "chord",
+            "suspended",
+            "triad"
+        ],
+        "voicings": []
+    }
+]

@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---cache-dev-404-page-js",
     "path": "/dev-404-page/",
-    "result": {"data":{"allSiteFunction":{"nodes":[]},"allSitePage":{"nodes":[{"path":"/404.html"},{"path":"/404/"},{"path":"/"}]}},"pageContext":{}},
+    "result": {"data":{"allSiteFunction":{"nodes":[]},"allSitePage":{"nodes":[{"path":"/404/"},{"path":"/404.html"},{"path":"/create/"},{"path":"/docs/"},{"path":"/"},{"path":"/test/"},{"path":"/browse/"},{"path":"/browse/scales/"},{"path":"/browse/chords/"},{"path":"/browse/chords/maj-tri/"},{"path":"/browse/chords/maj6/"},{"path":"/browse/chords/maj7/"},{"path":"/browse/chords/min-tri/"},{"path":"/browse/chords/min6/"},{"path":"/browse/chords/min7/"},{"path":"/browse/chords/min-maj7/"},{"path":"/browse/chords/dom7/"},{"path":"/browse/chords/dom7b9/"},{"path":"/browse/chords/aug-tri/"},{"path":"/browse/chords/aug7/"},{"path":"/browse/chords/aug-m7/"},{"path":"/browse/chords/dim-tri/"},{"path":"/browse/chords/dim7/"},{"path":"/browse/chords/half-dim7/"},{"path":"/browse/chords/sus2/"},{"path":"/browse/chords/sus4/"}]}},"pageContext":{}},
     "staticQueryHashes": []}
