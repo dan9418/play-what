@@ -46,24 +46,24 @@ const StyledHomePage = styled(StyledPageBody)`
 `;
 
 const IndexPage: React.FC<any> = () => {
-    return (
-        <StyledHomePage>
-            <PageControls title="Play What?" />
-            <p>
-                <b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
-                It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.
-            </p>
-            <p>
-                <em>The app is currently unstable and is under active development.</em>
-            </p>
-            <div className="button-container primary">
-                <Link to="/browse"><ButtonInput onClick={null}>Browse Examples</ButtonInput></Link>
-            </div>
-            <div className="button-container secondary">
-                <ButtonInput onClick={null}>Documentation</ButtonInput>
-            </div>
-        </StyledHomePage>
-    );
+	return (
+		<StyledHomePage>
+			<PageControls title="Play What?" />
+			<p>
+				<b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
+				It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.
+			</p>
+			<p>
+				<em>The app is currently unstable and is under active development.</em>
+			</p>
+			<div className="button-container primary">
+				<Link to="/browse"><ButtonInput onClick={null}>Browse Examples</ButtonInput></Link>
+			</div>
+			<div className="button-container secondary">
+				<Link to="/docs"><ButtonInput onClick={null}>Documentation</ButtonInput></Link>
+			</div>
+		</StyledHomePage>
+	);
 };
 
 export default IndexPage;
