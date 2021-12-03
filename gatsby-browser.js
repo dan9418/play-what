@@ -22,7 +22,8 @@ export const wrapRootElement = ({ element }) => {
 }
 
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
+    console.log('ddddpb', props);
     return (
         <>
             <SiteHeader />
