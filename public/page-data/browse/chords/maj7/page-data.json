@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-browse-chords-chord-id-tsx",
     "path": "/browse/chords/maj7/",
-    "result": {"pageContext":{"id":"Maj7","__params":{"id":"maj7"}}},
+    "result": {"errors":[{"message":"Variable \"$id\" got invalid value \"Maj7\"; Expected type \"StringQueryOperatorInput\" to be an object.","locations":[{"line":1,"column":13}]}],"pageContext":{"id":"Maj7","__params":{"id":"maj7"}}},
     "staticQueryHashes": []}

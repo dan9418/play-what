@@ -1,4 +1,4 @@
-import { graphql, Link, useStaticQuery } from "gatsby";
+import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { PodType } from "../../../core/models/Model.constants";
@@ -39,25 +39,11 @@ const StyledChordsPage = styled(StyledPageBody)`
 `;
 
 
-const ChordsPage: React.FC<any> = props => {
-
-    console.log(props);
-
-    const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                    title
-                }
-            }
-        }
-    `)
+const ChordsPage: React.FC<any> = () => {
 
     return (
         <StyledChordsPage>
             <PageControls title="Chords" subtitle="A chord is a group of notes played simultaneously" />
-            {console.log(JSON.stringify(CHORD_PRESETS))}
-            {JSON.stringify(data)}
             <table>
                 <thead>
                     <tr>
