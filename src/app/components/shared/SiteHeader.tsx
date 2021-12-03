@@ -1,6 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import Icon from '../../../ui/Icon';
+import THEME from '../../styles/theme';
 
 const StyledSiteHeader = styled.div`
     height: 64px;
@@ -12,43 +14,102 @@ const StyledSiteHeader = styled.div`
     right: 0;
     z-index: 2000;
 
-	color: white;
 	background-color: ${({ theme }) => theme.surface.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
-	
-	> div {
-		height: 100%;
+
+	.width-cap {
+		display: flex;
+		justify-content: space-between;
 		width: 100%;
-		//max-width: 1024px;
+		max-width: 1024px;
 		margin: auto;
+	}
+	
+	a {
+		color: white;
+		text-decoration: none;
+		white-space: nowrap;
+		height: 64px;
+		line-height: 64px;
+
+		//display: flex;
+		//align-items: center;
+
+		padding: 0 8px;
+
+		&:hover {
+			background-color: rgba(255,255,255,0.1);
+		}
+
+		&.active {
+			border-bottom: 2px solid ${THEME.active};
+		}
+	}
+
+	.logo {
+		font-size: 110%;
+		text-transform: uppercase;
+		letter-spacing: 4px;
+		font-weight: 300;
+	}
+
+	.links-container {
+		display: flex;
+
+		.separator {
+			height: 48px;
+			width: 1px;
+			background-color: rgba(255,255,255,0.5);
+			margin: 8px;
+		}
+	}
+
+	.nav-links {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+	}
 
-		.logo {
-			color: white;
-			display: block;
+	.icon-links {
+		display: flex;
+		align-items: center;
 
-			text-decoration: none;
-			background-color: transparent;
-			font-size: 110%;
-			text-transform: uppercase;
-			letter-spacing: 4px;
-			font-weight: 300;
-			height: 100%;
-			white-space: nowrap;
-			line-height: 64px;
+		a {
+			display: flex;
+			align-items: center;
+		}
+
+		svg {
+			height: 32px;
+			width: 32px;
+			fill: white;
+			* {
+				fill: white;
+			}
 		}
 	}
 `;
 
+const getLinkProps = id => ({ to: `/${id}`, className: window.location.pathname.includes(id) ? 'active' : undefined })
+
 const SiteHeader: React.FC = () => {
 	return (
 		<StyledSiteHeader>
-			<div>
+			<div className="width-cap">
 				<Link to="/" className="logo">
 					Play <em><b>What?</b></em>
 				</Link>
+				<div className="links-container">
+					<div className="nav-links">
+						<Link {...getLinkProps('browse')}>Browse</Link>
+						<Link {...getLinkProps('create')}>Create</Link>
+						<Link {...getLinkProps('docs')}>Docs</Link>
+						<Link {...getLinkProps('test')}>Test</Link>
+					</div>
+					<div className="separator" />
+					<div className="icon-links">
+						<a href=""><Icon iconId="github" /></a>
+					</div>
+				</div>
 			</div>
 		</StyledSiteHeader>
 	);
