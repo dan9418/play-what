@@ -56,7 +56,7 @@ const ChordsPage: React.FC<any> = () => {
                     {
                         CHORD_PRESETS.map(preset => (
                             <tr>
-                                <td><Link to="/">{preset.name}</Link></td>
+                                <td><Link to={`/browse/chords/${preset.id.toLowerCase()}`}>{preset.name}</Link></td>
                                 <td>{preset.id}</td>
                                 <td>{PodListUtils.getName(preset.value, PodType.Interval)}</td>
                             </tr>

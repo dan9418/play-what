@@ -1,5 +1,5 @@
 {
     "componentChunkName": "component---src-pages-browse-chords-chord-id-tsx",
-    "path": "/browse/chords/maj7/",
-    "result": {"pageContext":{"id":"maj7","__params":{"id":"maj7"}}},
+    "path": "/browse/chords/min7/",
+    "result": {"pageContext":{"id":"min7","__params":{"id":"min7"}}},
     "staticQueryHashes": []}
