@@ -10,17 +10,10 @@ const StyledDropdownInput = styled.select`
 
     cursor: pointer;
     border-radius: 4px;
-	background-color: ${({ theme }) => theme.surface.highlight};
-	&:hover:not(:focus) {
-		background-color: ${({ theme }) => theme.clickable};
-		color: white;
-	}
 
 	option {
 		cursor: pointer;
 	}
-	
-    border: none;
 `;
 
 interface IDropdownInputProps extends IInputProps {

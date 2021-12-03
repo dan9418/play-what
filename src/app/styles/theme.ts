@@ -7,11 +7,15 @@ export const COLOR = {
 	ivory: '#F6F7EB',
 	// Neutral
 	white: '#FFF',
-	light: '#ECEFEF',
-	mediumLight: '#DEE3E3',
-	medium: '#949E9E',
-	mediumDark: '#4A5959',
-	dark: '#2C3D4C',
+	light1: '#F3F4F8',
+	light2: '#D2D4DA',
+	light3: '#B3B5BD',
+	medium1: '#9496A1',
+	medium2: '#777986',
+	medium3: '#5B5D6B',
+	dark1: '#404252',
+	dark2: '#282A3A',
+	dark3: '#101223',
 	black: '#000'
 }
 
@@ -28,17 +32,17 @@ const THEME = {
 		info: COLOR.lightBlue
 	},
 	surface: {
-		bg: COLOR.light,
-		highlight: COLOR.mediumLight,
-		nav: COLOR.dark,
+		bg: COLOR.light1,
+		highlight: COLOR.light3,
+		nav: COLOR.darkBlue,
 		gradient: 'linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%)'
 	},
 	text: {
-		dark: COLOR.dark,
-		mediumDark: COLOR.mediumDark,
-		medium: COLOR.medium,
-		mediumLight: COLOR.mediumLight,
-		light: COLOR.medium
+		dark: COLOR.dark3,
+		mediumDark: COLOR.dark1,
+		medium: COLOR.medium3,
+		mediumLight: COLOR.medium1,
+		light: COLOR.light3
 	}
 }
 

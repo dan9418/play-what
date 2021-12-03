@@ -1,13 +1,10 @@
+import { Link } from "gatsby";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import TieredDropdownInput, { UNSELECTED_KEY } from "../../../ui/inputs/TieredDropdownInput";
-import DEFAULT_FRETBOARD_PROPS from "../../../ui/viewers/fretboard/Fretboard.defaults";
-import { dataListState } from "../../state/state";
+import THEME from "../../styles/theme";
 import ListBuilder from "../create/list-builder/ListBuilder";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
-import { DEFAULT_BROWSE_TIERS } from "./BrowsePage.defaults";
 
 const StyledBrowsePage = styled(StyledPageBody)`
     display: flex;
@@ -15,51 +12,44 @@ const StyledBrowsePage = styled(StyledPageBody)`
     justify-content: center;
     flex-direction: column;
 
-    .dropdown-container {
+    .tile-container {
         padding: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
+        gap: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+
+        a {
+            width: 100%;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-decoration: none;
+            background-color: ${THEME.clickable};
+            color: white;
+            border-radius: 8px;
+            font-size: 200%;
+
+            &:hover {
+                background-color: ${THEME.active};
+            }
+        }
     }
 `;
 
 
 const BrowsePage: React.FC<any> = () => {
 
-    const [dataList, setDataList] = useRecoilState(dataListState);
-
     return (
         <StyledBrowsePage>
             <PageControls title="Browse Ideas" subtitle="Select a category to get started..." />
-            <div className="dropdown-container">
-                <TieredDropdownInput
-                    currentTier={DEFAULT_BROWSE_TIERS}
-                    onChange={(v, i, cur, par) => {
-                        console.log('dpb onChange', v, i, cur, par)
-                        let newDataList = [];
-                        if (v.id !== UNSELECTED_KEY) {
-                            if (cur.id === 'practice' || cur.id === 'charts') {
-                                newDataList = v.value;
-                            }
-                            else if (cur.id === 'intervals') {
-                                newDataList = [{
-                                    root: [0, 0],
-                                    intervals: [v.value],
-                                    viewerProps: DEFAULT_FRETBOARD_PROPS
-                                }]
-                            }
-                            else if (cur.id !== 'cat') {
-                                newDataList = [{
-                                    root: [0, 0],
-                                    intervals: v.value,
-                                    viewerProps: DEFAULT_FRETBOARD_PROPS
-                                }]
-                            }
-                        }
-                        setDataList(newDataList);
-                    }}
-                />
+            <div className="tile-container">
+                <Link to="/browse/chords">Chords</Link>
+                <Link to="/browse/scales">Scales</Link>
+                <Link to="/browse/intervals">Intervals</Link>
+                <Link to="/browse/songs">Songs</Link>
             </div>
             <ListBuilder />
         </StyledBrowsePage>
