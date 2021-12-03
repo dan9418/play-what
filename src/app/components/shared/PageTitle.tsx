@@ -14,14 +14,14 @@ const StyledPageTitle = styled.div`
         > h1 {
             width: 100%;
             font-size: 300%;
-            text-align: center;
+            text-align: left;
             color: #333;
         }
 
         > h2 {
             margin-top: 8px;
             width: 100%;
-            text-align: center;
+            text-align: left;
             color: #555;
             font-size: 100%;
         }
