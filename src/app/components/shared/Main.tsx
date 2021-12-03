@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import { dataIndexState, dataListState } from '../state/state';
+import { dataIndexState, dataListState } from '../../state/state';
 
 const StyledMain = styled.main`
 	margin: auto;

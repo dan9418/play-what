@@ -1,8 +1,9 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
 const StyledSiteHeader = styled.div`
-    height: 32px;
+    height: 64px;
 	padding: 0 16px;
 
     position: fixed;
@@ -18,7 +19,7 @@ const StyledSiteHeader = styled.div`
 	> div {
 		height: 100%;
 		width: 100%;
-		max-width: 1024px;
+		//max-width: 1024px;
 		margin: auto;
 		display: flex;
 		align-items: center;
@@ -26,16 +27,17 @@ const StyledSiteHeader = styled.div`
 
 		.logo {
 			color: white;
+			display: block;
 
-			appearance: none;
+			text-decoration: none;
 			background-color: transparent;
-			border: none;
-			font-size: 90%;
+			font-size: 110%;
 			text-transform: uppercase;
 			letter-spacing: 4px;
 			font-weight: 300;
 			height: 100%;
 			white-space: nowrap;
+			line-height: 64px;
 		}
 	}
 `;
@@ -44,9 +46,9 @@ const SiteHeader: React.FC = () => {
 	return (
 		<StyledSiteHeader>
 			<div>
-				<button type="button" className="logo">
+				<Link to="/" className="logo">
 					Play <em><b>What?</b></em>
-				</button>
+				</Link>
 			</div>
 		</StyledSiteHeader>
 	);

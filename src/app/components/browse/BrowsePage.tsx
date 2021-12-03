@@ -24,6 +24,7 @@ const StyledBrowsePage = styled(StyledPageBody)`
     }
 `;
 
+
 const BrowsePage: React.FC<any> = () => {
 
     const [dataList, setDataList] = useRecoilState(dataListState);

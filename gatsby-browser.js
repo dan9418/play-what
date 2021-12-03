@@ -1,9 +1,8 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from 'styled-components';
-import Main from "./src/app/components/Main";
+import Main from "./src/app/components/shared/Main";
 import ErrorBoundary from "./src/app/components/shared/ErrorBoundary";
-import PageNav from "./src/app/components/shared/PageNav";
 import SiteHeader from "./src/app/components/shared/SiteHeader";
 import { ModalContextProvider } from "./src/app/contexts/ModalContext";
 import THEME from "./src/app/styles/theme";
@@ -27,7 +26,6 @@ export const wrapPageElement = ({ element }) => {
     return (
         <>
             <SiteHeader />
-            <PageNav />
             <Main>
                 {element}
             </Main>
