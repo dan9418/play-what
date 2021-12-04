@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import { IntervalTag } from "../../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
@@ -9,8 +10,17 @@ const IntervalsPage: React.FC<any> = props => {
             title="Intervals"
             subtitle="An interval is the distance between two notes"
             tag={IntervalTag}
-            presets={INTERVAL_PRESETS}
-            prefix={`/browse/intervals/`}
+            headers={[
+                'Name',
+                'Id'
+            ]}
+            rows={INTERVAL_PRESETS}
+            getCols={preset => {
+                return [
+                    <Link to={`/browse/intervals/${preset.id.toLowerCase()}`}>{preset.name}</Link>,
+                    preset.id
+                ]
+            }}
             {...props}
         />
     );
