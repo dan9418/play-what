@@ -9,8 +9,8 @@ const Page = props => {
     const chord = CHORD_PRESETS.find(c => c.id.toLowerCase() === props.params.id)
 
     return <>
-        <h1>{chord.name}</h1>
         <BreadcrumbList path={props.path} />
+        <h1>{chord.name}</h1>
     </>;
 }
 

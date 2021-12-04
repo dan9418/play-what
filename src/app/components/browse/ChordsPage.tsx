@@ -6,6 +6,7 @@ import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constant
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import THEME, { COLOR } from "../../styles/theme";
 import ListBuilder from "../create/list-builder/ListBuilder";
+import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
 
@@ -39,10 +40,11 @@ const StyledChordsPage = styled(StyledPageBody)`
 `;
 
 
-const ChordsPage: React.FC<any> = () => {
-
+const ChordsPage: React.FC<any> = props => {
+    console.log('dpb props', props);
     return (
         <StyledChordsPage>
+            <BreadcrumbList path={props.path} />
             <PageControls title="Chords" subtitle="A chord is a group of notes played simultaneously" />
             <table>
                 <thead>
