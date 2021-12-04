@@ -3,7 +3,9 @@ const chords = require("./src/data/chords.json")
 module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const { createNode } = actions
 
-  return chords.map(chord => createNode({
+  const intervals = [];
+
+  const chords = chords.map(chord => createNode({
     ...chord,
     //id: createNodeId(chord.id),
     id: chord.id.toLowerCase(),
@@ -12,4 +14,9 @@ module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) =>
       contentDigest: createContentDigest(chord)
     }
   }));
+
+  const scales = [];
+
+  return [...intervals, ...chords, ...scales];
+
 }
