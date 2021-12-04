@@ -3,3 +3,4 @@ node_modules/
 build-ts
 build/main*
 .cache
+public
