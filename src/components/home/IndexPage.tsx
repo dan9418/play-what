@@ -1,10 +1,10 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import ButtonInput from "../../../ui/inputs/ButtonInput";
 import THEME from "../../styles/theme";
-import { StyledPageBody } from "../shared/PageBody";
-import PageControls from "../shared/PageTitle";
+import ButtonInput from "../_shared/inputs/ButtonInput";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageControls from "../_shared/layout/PageTitle";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;

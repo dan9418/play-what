@@ -1,3 +1,3 @@
-import ChordsPage from "../../../app/components/browse/ChordsPage";
+import ChordsPage from "../../../components/browse/ChordsPage";
 
 export default ChordsPage;

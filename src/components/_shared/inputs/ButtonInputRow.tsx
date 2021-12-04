@@ -1,8 +1,7 @@
 
 import React from "react";
 import styled from 'styled-components';
-import TabList, { StyledTabList } from "../../app/components/shared/tab-list/TabList";
-
+import TabList, { StyledTabList } from "../tab-list/TabList";
 
 const StyledButtonInputRow = styled.div`
     border: 1px solid #bbb;

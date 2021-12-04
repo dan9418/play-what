@@ -1,9 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { INTERVAL_PRESETS } from "../../../../core/models/Pod/Interval/Interval.constants";
-import PodUtils from "../../../../core/models/Pod/Pod.utils";
-import Card from "../../shared/Card";
+import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
+import PodUtils from "../../../core/models/Pod/Pod.utils";
+import Card from "../../_shared/ui/Card";
 
 const StyledChordDetails = styled.div`
     ul {

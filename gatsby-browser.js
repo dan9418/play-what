@@ -1,11 +1,11 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from 'styled-components';
-import Main from "./src/app/components/shared/Main";
-import ErrorBoundary from "./src/app/components/shared/ErrorBoundary";
-import SiteHeader from "./src/app/components/shared/SiteHeader";
 import { ModalContextProvider } from "./src/app/contexts/ModalContext";
 import THEME from "./src/app/styles/theme";
+import Main from "./src/components/_shared/layout/Main";
+import SiteHeader from "./src/components/_shared/layout/SiteHeader";
+import ErrorBoundary from "./src/components/_shared/utils/ErrorBoundary";
 
 export const wrapRootElement = ({ element }) => {
     return (

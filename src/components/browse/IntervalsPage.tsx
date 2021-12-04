@@ -1,13 +1,13 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { IntervalTag } from "../../../core/models/Model.constants";
-import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
+import { IntervalTag } from "../../core/models/Model.constants";
+import { INTERVAL_PRESETS } from "../../core/models/Pod/Interval/Interval.constants";
 import THEME, { COLOR } from "../../styles/theme";
-import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
-import FilterList from "../shared/FilterList";
-import { StyledPageBody } from "../shared/PageBody";
-import PageControls from "../shared/PageTitle";
+import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
+import FilterList from "../_shared/FilterList";
+import { StyledPageBody } from "../_shared/PageBody";
+import PageControls from "../_shared/PageTitle";
 
 const StyledChordsPage = styled(StyledPageBody)`
     table {

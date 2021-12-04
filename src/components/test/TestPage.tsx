@@ -8,7 +8,7 @@ import PodUtils from "../../core/models/Pod/Pod.utils";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import THEME from "../../styles/theme";
-import { StyledPageBody } from "../shared/PageBody";
+import { StyledPageBody } from "../_shared/layout/PageBody";
 
 const CORE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
 

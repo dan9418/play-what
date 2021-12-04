@@ -1,3 +1,3 @@
-import BrowsePage from "../../app/components/browse/BrowsePage";
+import BrowsePage from "../../components/browse/BrowsePage";
 
 export default BrowsePage;

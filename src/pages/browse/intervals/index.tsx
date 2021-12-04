@@ -1,3 +1,3 @@
-import IntervalsPage from "../../../app/components/browse/IntervalsPage";
+import IntervalsPage from "../../../components/browse/IntervalsPage";
 
 export default IntervalsPage;

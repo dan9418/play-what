@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { StyledPageBody } from "../shared/PageBody";
-import PageTitle from "../shared/PageTitle";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledDocsPage = styled(StyledPageBody)`
 	display: flex;

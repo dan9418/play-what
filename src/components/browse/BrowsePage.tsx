@@ -2,8 +2,8 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import THEME from "../../styles/theme";
-import { StyledPageBody } from "../shared/PageBody";
-import PageControls from "../shared/PageTitle";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageControls from "../_shared/layout/PageTitle";
 
 const StyledBrowsePage = styled(StyledPageBody)`
     display: flex;

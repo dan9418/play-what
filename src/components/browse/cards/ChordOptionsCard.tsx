@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Card from "../../shared/Card";
+import Card from "../../_shared/ui/Card";
 const StyledChordDetails = styled.div`
 
 `;
