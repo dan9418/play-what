@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { IPreset, PodType } from "../../../core/models/Model.constants";
+import { ChordTag, PodType } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import THEME, { COLOR } from "../../../styles/theme";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
@@ -9,7 +10,7 @@ import FilterList from "../../_shared/inputs/FilterList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageControls from "../../_shared/layout/PageTitle";
 
-const StyledSearchPage = styled(StyledPageBody)`
+const StyledChordsPage = styled(StyledPageBody)`
     table {
         width: 100%;
         border-collapse: collapse;
@@ -38,22 +39,15 @@ const StyledSearchPage = styled(StyledPageBody)`
     }
 `;
 
-interface ISearchPageProps {
-    path?: string;
-    tag: any;
-    title: string;
-    subtitle: string;
-    presets: IPreset<any>[];
-    prefix: string;
-}
 
-const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, presets, prefix }) => {
+const ChordsPage: React.FC<any> = props => {
+    console.log('dpb props', props);
     return (
-        <StyledSearchPage>
-            <BreadcrumbList path={path} />
-            <PageControls title={title} subtitle={subtitle} />
+        <StyledChordsPage>
+            <BreadcrumbList path={props.path} />
+            <PageControls title="Chords" subtitle="A chord is a group of notes played simultaneously" />
 
-            <FilterList tag={tag} />
+            <FilterList tag={ChordTag} />
             <table>
                 <thead>
                     <tr>
@@ -64,9 +58,9 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, pr
                 </thead>
                 <tbody>
                     {
-                        presets.map(preset => (
+                        CHORD_PRESETS.map(preset => (
                             <tr>
-                                <td><Link to={`${prefix}${preset.id.toLowerCase()}`}>{preset.name}</Link></td>
+                                <td><Link to={`/browse/chords/${preset.id.toLowerCase()}`}>{preset.name}</Link></td>
                                 <td>{preset.id}</td>
                                 <td>{PodListUtils.getName(preset.value, PodType.Interval)}</td>
                             </tr>
@@ -74,8 +68,8 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, pr
                     }
                 </tbody>
             </table>
-        </StyledSearchPage>
+        </StyledChordsPage>
     );
 };
 
-export default SearchPage;
+export default ChordsPage;
