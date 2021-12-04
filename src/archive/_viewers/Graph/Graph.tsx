@@ -1,7 +1,7 @@
 
 import React from "react";
-import { MAX_POD } from "../../../../core/models/Pod/Pod.constants";
-import PodUtils from "../../../../core/models/Pod/Pod.utils";
+import { MAX_POD } from "../../../core/models/Pod/Pod.constants";
+import PodUtils from "../../../core/models/Pod/Pod.utils";
 import './Graph.css';
 import DEFAULT_GRAPH_PROPS from './Graph.defaults';
 

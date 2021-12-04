@@ -1,3 +1,3 @@
-import TestPage from "../app/components/test/TestPage";
+import TestPage from "../components/test/TestPage";
 
 export default TestPage;

@@ -1,9 +1,9 @@
-import ColorUtils from "../../core/color/Color.utils";
-import { ICompleteModelDetails, IPod, PodType } from "../../core/models/Model.constants";
-import IntervalUtils from "../../core/models/Pod/Interval/Interval.utils";
-import NoteUtils from "../../core/models/Pod/Note/Note.utils";
-import PodUtils from "../../core/models/Pod/Pod.utils";
-import PodListUtils from "../../core/models/PodList/PodList.utils";
+import ColorUtils from "../../../core/color/Color.utils";
+import { ICompleteModelDetails, IPod, PodType } from "../../../core/models/Model.constants";
+import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
+import NoteUtils from "../../../core/models/Pod/Note/Note.utils";
+import PodUtils from "../../../core/models/Pod/Pod.utils";
+import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { DEFAULT_VIEWER_ID, FRETBOARD_CONFIG, IViewerDetails, IViewerProps, ViewerId } from "./Viewer.constants";
 
 interface IPodProps {
