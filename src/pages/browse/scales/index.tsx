@@ -1,3 +1,3 @@
-import ScalesPage from "../../../components/browse/ScalesPage";
+import ScalesPage from "../../../components/browse/scales/ScalesPage";
 
 export default ScalesPage;

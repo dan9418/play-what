@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { PodType } from "../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../core/models/PodList/Chord/Chord.constants";
-import PodListUtils from "../../core/models/PodList/PodList.utils";
-import { intervalsState } from "../../state/state";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
-import ChordDetailsCard from "./cards/ChordDetailsCard";
-import ChordOptionsCard from "./cards/ChordOptionsCard";
-import ChordRelatedCard from "./cards/ChordRelatedCard";
-import SoundCard from "./cards/SoundCard";
-import ViewerCard from "./cards/ViewerCard";
+import { PodType } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
+import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import { intervalsState } from "../../../state/state";
+import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
+import { StyledPageBody } from "../../_shared/layout/PageBody";
+import PageControls from "../../_shared/layout/PageTitle";
+import ChordDetailsCard from "../cards/ChordDetailsCard";
+import ChordOptionsCard from "../cards/ChordOptionsCard";
+import ChordRelatedCard from "../cards/ChordRelatedCard";
+import SoundCard from "../cards/SoundCard";
+import ViewerCard from "../cards/ViewerCard";
 
 const StyledChordPage = styled(StyledPageBody)`
     .grid {

@@ -1,14 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { ChordTag, PodType } from "../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../core/models/PodList/Chord/Chord.constants";
-import PodListUtils from "../../core/models/PodList/PodList.utils";
-import THEME, { COLOR } from "../../styles/theme";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
-import FilterList from "../_shared/inputs/FilterList";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
+import { ChordTag, PodType } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
+import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import THEME, { COLOR } from "../../../styles/theme";
+import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
+import FilterList from "../../_shared/inputs/FilterList";
+import { StyledPageBody } from "../../_shared/layout/PageBody";
+import PageControls from "../../_shared/layout/PageTitle";
 
 const StyledChordsPage = styled(StyledPageBody)`
     table {

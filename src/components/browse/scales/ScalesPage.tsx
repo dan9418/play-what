@@ -1,13 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { IntervalTag } from "../../core/models/Model.constants";
-import { INTERVAL_PRESETS } from "../../core/models/Pod/Interval/Interval.constants";
-import THEME, { COLOR } from "../../styles/theme";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
-import FilterList from "../_shared/inputs/FilterList";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
+import { PodType, ScaleTag } from "../../../core/models/Model.constants";
+import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
+import THEME, { COLOR } from "../../../styles/theme";
+import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
+import FilterList from "../../_shared/inputs/FilterList";
+import { StyledPageBody } from "../../_shared/layout/PageBody";
+import PageControls from "../../_shared/layout/PageTitle";
 
 const StyledChordsPage = styled(StyledPageBody)`
     table {
@@ -39,27 +40,29 @@ const StyledChordsPage = styled(StyledPageBody)`
 `;
 
 
-const IntervalsPage: React.FC<any> = props => {
+const ScalesPage: React.FC<any> = props => {
     console.log('dpb props', props);
     return (
         <StyledChordsPage>
             <BreadcrumbList path={props.path} />
-            <PageControls title="Intervals" subtitle="An interval is the distance between two notes" />
+            <PageControls title="Scales" subtitle="A scale is a group of notes played sequentially" />
 
-            <FilterList tag={IntervalTag} />
+            <FilterList tag={ScaleTag} />
             <table>
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Id</th>
+                        <th>Intervals</th>
                     </tr>
                 </thead>
                 <tbody>
                     {
-                        INTERVAL_PRESETS.map(preset => (
+                        SCALE_PRESETS.map(preset => (
                             <tr>
-                                <td><Link to={`/browse/intervals/${preset.id.toLowerCase()}`}>{preset.name}</Link></td>
+                                <td><Link to={`/browse/scales/${preset.id.toLowerCase()}`}>{preset.name}</Link></td>
                                 <td>{preset.id}</td>
+                                <td>{PodListUtils.getName(preset.value, PodType.Interval)}</td>
                             </tr>
                         ))
                     }
@@ -69,4 +72,4 @@ const IntervalsPage: React.FC<any> = props => {
     );
 };
 
-export default IntervalsPage;
+export default ScalesPage;

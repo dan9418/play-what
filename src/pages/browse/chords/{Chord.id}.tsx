@@ -1,3 +1,3 @@
-import ChordPage from "../../../components/browse/ChordPage";
+import ChordPage from "../../../components/browse/chords/ChordPage";
 
 export default ChordPage;

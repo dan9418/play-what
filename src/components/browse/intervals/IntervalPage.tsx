@@ -1,11 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
-import { INTERVAL_PRESETS } from "../../core/models/Pod/Interval/Interval.constants";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
-import SoundCard from "./cards/SoundCard";
-import ViewerCard from "./cards/ViewerCard";
+import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
+import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
+import { StyledPageBody } from "../../_shared/layout/PageBody";
+import PageControls from "../../_shared/layout/PageTitle";
+import SoundCard from "../cards/SoundCard";
+import ViewerCard from "../cards/ViewerCard";
 
 const StyledIntervalPage = styled(StyledPageBody)`
     .grid {
