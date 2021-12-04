@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import Viewer from "../../_shared/fretboard/Viewer";
-import Card from "../../_shared/ui/Card";
+import Viewer from "../../../_shared/fretboard/Viewer";
+import Card from "../../../_shared/ui/Card";
 
 const StyledViewerCard = styled.div`
 

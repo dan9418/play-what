@@ -8,11 +8,11 @@ import { intervalsState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageControls from "../../_shared/layout/PageTitle";
-import ChordDetailsCard from "../cards/ChordDetailsCard";
-import ChordOptionsCard from "../cards/ChordOptionsCard";
-import ChordRelatedCard from "../cards/ChordRelatedCard";
-import SoundCard from "../cards/SoundCard";
-import ViewerCard from "../cards/ViewerCard";
+import ChordDetailsCard from "../_shared/cards/IntervalsCard";
+import SoundCard from "../_shared/cards/SoundCard";
+import ViewerCard from "../_shared/cards/ViewerCard";
+import ChordOptionsCard from "./cards/ChordOptionsCard";
+import ChordRelatedCard from "./cards/ChordRelatedCard";
 
 const StyledChordPage = styled(StyledPageBody)`
     .grid {

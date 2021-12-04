@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Card from "../../_shared/ui/Card";
+import Card from "../../../_shared/ui/Card";
 
 const StyledSoundCard = styled.div`
 
