@@ -44,10 +44,9 @@ const ChordPage: React.FC<any> = props => {
 
     const chord = CHORD_PRESETS.find(c => c.id.toLowerCase() === props.params.id);
 
-    useEffect(
-        () => {
-            setIntervals(chord.value);
-        }, []);
+    useEffect(() => {
+        setIntervals(chord.value);
+    }, []);
 
     return (
         <StyledChordPage>
@@ -55,7 +54,7 @@ const ChordPage: React.FC<any> = props => {
             <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
             <div className="grid">
                 <ChordDetailsCard chord={chord} />
-                <ViewerCard pods={chord.value} />
+                <ViewerCard />
                 <ChordOptionsCard chord={chord} />
                 <SoundCard chord={chord} />
                 <ChordRelatedCard chord={chord} />

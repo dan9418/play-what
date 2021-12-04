@@ -7,10 +7,9 @@ const StyledViewerCard = styled.div`
 
 `;
 
-const ViewerCard: React.FC<any> = ({ pods }) => {
-
+const ViewerCard: React.FC<any> = () => {
     return (
-        <Card title="Viewer">
+        <Card title="Preview">
             <StyledViewerCard>
                 <Viewer />
             </StyledViewerCard>
