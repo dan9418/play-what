@@ -1,7 +1,6 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { viewerDetailsState } from "../../../state/state";
+import Fretboard from "../../../../ui/viewers/fretboard/Fretboard";
 
 const StyledViewer = styled.div`
     width: 100%;
@@ -13,13 +12,12 @@ const StyledViewer = styled.div`
     justify-content: space-evenly;
 `;
 
-const Viewer: React.FC<any> = ({ details, viewerDetails, ...rest }) => {
+const Viewer: React.FC<any> = props => {
 
-    const masterViewerDetails = useRecoilValue(viewerDetailsState);
-    const _viewerDetails = viewerDetails ? viewerDetails : masterViewerDetails;
+    return null;
 
     return (
-        <_viewerDetails.component {..._viewerDetails.props} details={details} {...rest} />
+        <Fretboard {...props} />
     );
 };
 

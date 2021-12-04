@@ -66,7 +66,6 @@ const IntervalsPage: React.FC<any> = props => {
                     }
                 </tbody>
             </table>
-            <ListBuilder />
         </StyledChordsPage>
     );
 };

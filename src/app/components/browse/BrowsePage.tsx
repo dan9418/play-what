@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import THEME from "../../styles/theme";
-import ListBuilder from "../create/list-builder/ListBuilder";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
 
@@ -51,7 +50,6 @@ const BrowsePage: React.FC<any> = () => {
                 <Link to="/browse/intervals">Intervals</Link>
                 <Link to="/browse/songs">Songs</Link>
             </div>
-            <ListBuilder />
         </StyledBrowsePage>
     );
 };

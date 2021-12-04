@@ -1,75 +1,75 @@
-import { useRecoilState } from 'recoil';
-import { dataIndexState, dataListState } from '../state/state';
-import { getListHelpers } from '../utils/getListHelpers';
+// import { useRecoilState } from 'recoil';
+// import { dataIndexState, dataListState } from '../state/state';
+// import { getListHelpers } from '../utils/getListHelpers';
 
-const useEditNotesProps = () => {
+// const useEditNotesProps = () => {
 
-    // @ts-ignore
-    const [dataList, setDataList] = useRecoilState(dataListState);
-    // @ts-ignore
-    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+//     // @ts-ignore
+//     const [dataList, setDataList] = useRecoilState(dataListState);
+//     // @ts-ignore
+//     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
 
-    if (dataIndex === undefined) return;
+//     if (dataIndex === undefined) return;
 
-    const dataItem = dataList[dataIndex];
-    const root = dataItem.root;
-    const intervals = dataItem.intervals;
+//     const dataItem = dataList[dataIndex];
+//     const root = dataItem.root;
+//     const intervals = dataItem.intervals;
 
-    const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
+//     const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
 
-    const setRoot = x => listHelpers.setData({ ...dataItem, root: x })
-    const setIntervals = x => listHelpers.setData({ ...dataItem, intervals: x })
+//     const setRoot = x => listHelpers.setData({ ...dataItem, root: x })
+//     const setIntervals = x => listHelpers.setData({ ...dataItem, intervals: x })
 
-    return {
-        root,
-        setRoot,
-        intervals,
-        setIntervals
-    };
-}
+//     return {
+//         root,
+//         setRoot,
+//         intervals,
+//         setIntervals
+//     };
+// }
 
-const useEditViewerProps = () => {
+// const useEditViewerProps = () => {
 
-    // @ts-ignore
-    const [dataList, setDataList] = useRecoilState(dataListState);
-    // @ts-ignore
-    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+//     // @ts-ignore
+//     const [dataList, setDataList] = useRecoilState(dataListState);
+//     // @ts-ignore
+//     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
 
-    if (dataIndex === undefined) return;
+//     if (dataIndex === undefined) return;
 
-    const dataItem = dataList[dataIndex];
-    const viewerId = dataItem.viewerId;
-    const viewerProps = dataItem.viewerProps;
+//     const dataItem = dataList[dataIndex];
+//     const viewerId = dataItem.viewerId;
+//     const viewerProps = dataItem.viewerProps;
 
-    const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
+//     const listHelpers = getListHelpers(dataList, setDataList, dataIndex);
 
-    const setViewerId = x => listHelpers.setData({ ...dataItem, viewerId: x })
-    const setViewerProps = x => listHelpers.setData({ ...dataItem, viewerProps: x })
+//     const setViewerId = x => listHelpers.setData({ ...dataItem, viewerId: x })
+//     const setViewerProps = x => listHelpers.setData({ ...dataItem, viewerProps: x })
 
-    return {
-        viewerId,
-        setViewerId,
-        viewerProps,
-        setViewerProps
-    };
-}
+//     return {
+//         viewerId,
+//         setViewerId,
+//         viewerProps,
+//         setViewerProps
+//     };
+// }
 
 
-const useEditProps = () => {
-    // @ts-ignore
-    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+// const useEditProps = () => {
+//     // @ts-ignore
+//     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
 
-    const editNotesProps = useEditNotesProps();
-    const editViewerProps = useEditViewerProps();
+//     const editNotesProps = useEditNotesProps();
+//     const editViewerProps = useEditViewerProps();
 
-    if (dataIndex === undefined) return;
+//     if (dataIndex === undefined) return;
 
-    const editProps = {
-        ...editViewerProps,
-        ...editNotesProps
-    };
+//     const editProps = {
+//         ...editViewerProps,
+//         ...editNotesProps
+//     };
 
-    return editProps;
-}
+//     return editProps;
+// }
 
-export default useEditProps;
+// export default useEditProps;

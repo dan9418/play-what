@@ -1,15 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { PodType, ChordTag } from "../../../core/models/Model.constants";
+import { ChordTag, PodType } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import THEME, { COLOR } from "../../styles/theme";
-import ListBuilder from "../create/list-builder/ListBuilder";
 import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
+import FilterList from "../shared/FilterList";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
-import FilterList from "../shared/FilterList";
 
 const StyledChordsPage = styled(StyledPageBody)`
     table {
@@ -47,7 +46,7 @@ const ChordsPage: React.FC<any> = props => {
         <StyledChordsPage>
             <BreadcrumbList path={props.path} />
             <PageControls title="Chords" subtitle="A chord is a group of notes played simultaneously" />
-            
+
             <FilterList tag={ChordTag} />
             <table>
                 <thead>
@@ -69,7 +68,6 @@ const ChordsPage: React.FC<any> = props => {
                     }
                 </tbody>
             </table>
-            <ListBuilder />
         </StyledChordsPage>
     );
 };

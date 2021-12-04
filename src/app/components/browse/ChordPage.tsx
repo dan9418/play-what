@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { IPod, PodType } from "../../../core/models/Model.constants";
+import { PodType } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import { intervalsState } from "../../state/state";
 import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
 import ChordDetailsCard from "./cards/ChordDetailsCard";
-import ChordRelatedCard from "./cards/ChordRelatedCard";
 import ChordOptionsCard from "./cards/ChordOptionsCard";
+import ChordRelatedCard from "./cards/ChordRelatedCard";
 import SoundCard from "./cards/SoundCard";
 import ViewerCard from "./cards/ViewerCard";
-import { useRecoilState } from "recoil";
-import { dataIndexState, dataListState } from "../../state/state";
 
 const StyledChordPage = styled(StyledPageBody)`
     .grid {
@@ -40,23 +40,14 @@ const StyledChordPage = styled(StyledPageBody)`
 const ChordPage: React.FC<any> = props => {
     console.log('dpb props', props);
 
-    const [dataList, setDataList] = useRecoilState(dataListState);
-    const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
+    const [intervals, setIntervals] = useRecoilState(intervalsState);
 
     const chord = CHORD_PRESETS.find(c => c.id.toLowerCase() === props.params.id);
 
     useEffect(
         () => {
-
-            console.log("dpb test", chord.value);
-            setDataIndex(0);
-            setDataList([{
-                root: [0, 0] as any,
-                intervals: chord.value,
-            }]);
+            setIntervals(chord.value);
         }, []);
-
-    console.log('dpb test', dataIndex);
 
     return (
         <StyledChordPage>

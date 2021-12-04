@@ -5,7 +5,6 @@ import { PodType, ScaleTag } from "../../../core/models/Model.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
 import THEME, { COLOR } from "../../styles/theme";
-import ListBuilder from "../create/list-builder/ListBuilder";
 import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
 import FilterList from "../shared/FilterList";
 import { StyledPageBody } from "../shared/PageBody";
@@ -69,7 +68,6 @@ const ScalesPage: React.FC<any> = props => {
                     }
                 </tbody>
             </table>
-            <ListBuilder />
         </StyledChordsPage>
     );
 };
