@@ -120,6 +120,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IPreset<IPod[]>>([
 
 export const SCALE_PRESETS = Array.from(SCALE_PRESET_MAP).map(([k, v]) => v);
 
+console.log('SCALE_PRESETS', JSON.stringify(SCALE_PRESETS));
+
 export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',
 	intervalDisplayName: 'interval'
