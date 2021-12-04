@@ -14,6 +14,8 @@ const StyledFilterList = styled.ul`
         background-color: transparent;
         border: 1px solid green;
         color: green;
+        padding: 4px 8px;
+        font-size: 80%;
    }
 `;
 
