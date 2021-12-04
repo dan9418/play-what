@@ -20,21 +20,7 @@ export interface IInputProps {
 	setValue: Function
 }
 
-/*export enum ModelPart {
-	Root,
-	Intervals,
-	Notes
-}
-
-export enum DisplayType {
-	Pitch,
-	Degree
-}*/
-
-export enum PresetTag {
-	Interval = 'interval',
-	Chord = 'chord',
-	Scale = 'scale',
+export enum ScaleTag {
 	Pentatonic = 'pentatonic',
 	Hexatonic = 'hexatonic',
 	Heptatonic = 'heptatonic',
@@ -45,44 +31,46 @@ export enum PresetTag {
 	Bebop = 'bebop',
 	Major = 'major',
 	Minor = 'minor',
+}
+
+export enum ChordTag {
+	Major = 'major',
+	Minor = 'minor',
 	Diminished = 'diminished',
 	Augmented = 'augmented',
-	Perfect = 'perfect',
 	Triad = 'triad',
 	Sixth = 'sixth',
 	Seventh = 'seventh',
 	Suspended = 'suspended',
 	Dominant = 'dominant',
 	Extended = 'extended',
-	Altered = 'altered'
+	Altered = 'altered',
+	Diatonic = 'diatonic'
 }
 
-interface IPresetType {
-	id: PresetTag,
-	name: string;
+export enum IntervalTag {
+	Major = 'major',
+	Minor = 'minor',
+	Diminished = 'diminished',
+	Augmented = 'augmented',
+	Perfect = 'perfect',
+	Second = 'second',
+	Third = 'third',
+	Fourth = 'fourth',
+	Fifth = 'fifth',
+	Sixth = 'sixth',
+	Seventh = 'seventh',
+	Extended = 'extended',
 }
 
-export const PRESET_TYPES: IPresetType[] = [
-	{
-		id: PresetTag.Interval,
-		name: 'Interval'
-	},
-	{
-		id: PresetTag.Chord,
-		name: 'Chord'
-	},
-	{
-		id: PresetTag.Scale,
-		name: 'Scale'
-	}
-]
+export type Tag = IntervalTag | ScaleTag | ChordTag;
 
 export type IPod = [number, number];
 
 export interface IPreset<T> {
 	id: string;
 	name: string;
-	tags: PresetTag[],
+	tags: Tag[],
 	value: T,
 	voicings?: any[]
 }

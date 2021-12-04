@@ -12,6 +12,7 @@
     "clean": "gatsby clean"
   },
   "devDependencies": {
+    "@types/react": "^17.0.37",
     "cross-env": "^7.0.3"
   },
   "dependencies": {

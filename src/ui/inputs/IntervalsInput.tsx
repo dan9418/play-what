@@ -1,7 +1,7 @@
 
 import React from "react";
 import { intervalsMapper } from "../../app/components/create/edit-panel/InputManagers";
-import { InputId, PRESET_TYPES } from "../../core/models/Model.constants";
+import { InputId } from "../../core/models/Model.constants";
 import MASTER_PRESETS from "../../core/models/PodList/PodList.constants";
 import TieredDropdownInput, { UNSELECTED_KEY } from "./TieredDropdownInput";
 
@@ -13,7 +13,7 @@ interface IInputProps {
 export const PRESET_TIER = {
     id: 'cat',
     name: 'Category',
-    options: PRESET_TYPES,
+    options: [],
     getNextTier: (cat, catIndex, currentTier, parentTiers) => {
         const options = MASTER_PRESETS.filter(preset => preset.tags.includes(cat.id));
         return {
