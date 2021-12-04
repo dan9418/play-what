@@ -2,7 +2,6 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonInput from "../../../../ui/inputs/ButtonInput";
-import IconButton from "../../../../ui/inputs/IconButton";
 import { useModalContext } from "../../../contexts/ModalContext";
 import THEME from "../../../styles/theme";
 
@@ -135,7 +134,7 @@ export const Modal: React.FC<any> = ({ title, children, onApply, onDone }) => {
 			<div className="container">
 				<div className="header">
 					<h2>{title}</h2>
-					<IconButton iconId="close" onClick={modalContext.closeModal} color="white" />
+					<button /*iconId="close"*/ onClick={modalContext.closeModal} color="white" />
 				</div>
 				<div className="body">
 					{children}

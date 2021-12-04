@@ -5,9 +5,9 @@ import { IntervalTag } from "../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../core/models/Pod/Interval/Interval.constants";
 import THEME, { COLOR } from "../../styles/theme";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
-import FilterList from "../_shared/FilterList";
-import { StyledPageBody } from "../_shared/PageBody";
-import PageControls from "../_shared/PageTitle";
+import FilterList from "../_shared/inputs/FilterList";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageControls from "../_shared/layout/PageTitle";
 
 const StyledChordsPage = styled(StyledPageBody)`
     table {

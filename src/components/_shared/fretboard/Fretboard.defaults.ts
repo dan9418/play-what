@@ -1,6 +1,6 @@
 import { PodType } from '../../../core/models/Model.constants';
-import { IViewerProps } from '../Viewer.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
+import { IViewerProps } from './Viewer.constants';
 
 export interface IFretboardProps extends IViewerProps {
 	fretRange?: [number, number];

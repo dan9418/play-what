@@ -3,8 +3,8 @@ import * as React from "react";
 import styled from "styled-components";
 import ToneUtils from "../../../core/tone/Tone.utils";
 import TuningUtils from "../../../core/tuning/Tuning.utils";
-import viewerUtils from "../Viewer.utils";
 import { IFretLabelProps } from "./Fretboard.defaults";
+import viewerUtils from "./Viewer.utils";
 
 const StyledFretLabel = styled.div`
 	position: absolute;

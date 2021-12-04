@@ -1,8 +1,8 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import Icon from '../../../ui/Icon';
-import THEME from '../../styles/theme';
+import THEME from '../../../styles/theme';
+import Icon from '../ui/Icon';
 
 const StyledSiteHeader = styled.div`
     height: 64px;

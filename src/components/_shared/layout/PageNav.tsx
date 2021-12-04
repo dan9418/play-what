@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import TabList from './tab-list/TabList';
+import TabList from '../tab-list/TabList';
 
 const StyledPageNav = styled.nav`
     height: 48px;

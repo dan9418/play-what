@@ -4,7 +4,6 @@ import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../../core/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/models/Pod/Pod.utils";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
-import { DEFAULT_VIEWER_ID, FRETBOARD_CONFIG, IViewerDetails, IViewerProps, ViewerId } from "./Viewer.constants";
 
 interface IPodProps {
     bgColor: string;
@@ -73,19 +72,6 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     return { bgColor, fgColor, text, note, interval };
 }
 
-const getDetails = (viewerId: ViewerId = DEFAULT_VIEWER_ID, viewerProps: IViewerProps = {}): IViewerDetails => {
-    const viewerConfig = FRETBOARD_CONFIG;
-    //const presetConfig = viewerConfig.value.presets.find(p => p.id === presetId);
-
-    return {
-        viewerId,
-        viewerName: viewerConfig.name,
-        component: viewerConfig.value.component,
-        props: { ...viewerConfig.value.defaultProps, ...viewerProps }
-    }
-}
-
 export default {
-    getPodProps,
-    getDetails
+    getPodProps
 }

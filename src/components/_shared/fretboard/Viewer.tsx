@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Fretboard from "../../../ui/viewers/fretboard/Fretboard";
+import Fretboard from "./Fretboard";
 
 const StyledViewer = styled.div`
     width: 100%;

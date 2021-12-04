@@ -1,6 +1,6 @@
-const INTERVAL_JSON = require("./src/data/intervals.json")
-const CHORD_JSON = require("./src/data/chords.json")
-const SCALE_JSON = require("./src/data/scales.json")
+const INTERVAL_JSON = require("./static/intervals.json")
+const CHORD_JSON = require("./static/chords.json")
+const SCALE_JSON = require("./static/scales.json")
 
 module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
   const { createNode } = actions

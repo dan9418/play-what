@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import ButtonInput from "../../../ui/inputs/ButtonInput";
+import ButtonInput from "../inputs/ButtonInput";
 interface IErrorBoundaryState {
 	hasError: boolean;
 }
