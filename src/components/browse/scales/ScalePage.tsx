@@ -5,7 +5,7 @@ import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageControls from "../../_shared/layout/PageTitle";
+import PageTitle from "../../_shared/layout/PageTitle";
 
 
 const StyledScalePage = styled(StyledPageBody)`
@@ -38,7 +38,7 @@ const ScalePage: React.FC<any> = props => {
     return (
         <StyledScalePage>
             <BreadcrumbList path={props.path} />
-            <PageControls title={scale.name} subtitle={PodListUtils.getName(scale.value, PodType.Interval)} />
+            <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, PodType.Interval)} />
             <div className="grid">
 
             </div>

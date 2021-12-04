@@ -7,6 +7,7 @@ const StyledBreadcrumbList = styled.ul`
     align-items: center;
     //justify-content: center;
     gap: 8px;
+    padding: 16px 0;
 `
 
 const BreadcrumbList = ({ path }) => {

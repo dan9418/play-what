@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import THEME from "../../styles/theme";
 import ButtonInput from "../_shared/inputs/ButtonInput";
 import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
+import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -48,7 +48,7 @@ const StyledHomePage = styled(StyledPageBody)`
 const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
-			<PageControls title="Play What?" />
+			<PageTitle title="Play What?" />
 			<p>
 				<b>Play What</b> is a toolkit for visualizing musical concepts on the guitar.
 				It has tools for creating flash cards, chord charts, cheat sheets, and other practice materials.

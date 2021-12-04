@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageControls from "../../_shared/layout/PageTitle";
+import PageTitle from "../../_shared/layout/PageTitle";
 
 const StyledIntervalPage = styled(StyledPageBody)`
     .grid {
@@ -35,7 +35,7 @@ const IntervalPage: React.FC<any> = props => {
     return (
         <StyledIntervalPage>
             <BreadcrumbList path={props.path} />
-            <PageControls title={interval.name} subtitle={JSON.stringify(interval.value)} />
+            <PageTitle title={interval.name} subtitle={JSON.stringify(interval.value)} />
             <div className="grid">
 
             </div>

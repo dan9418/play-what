@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import FilterList from "../../_shared/inputs/FilterList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageControls from "../../_shared/layout/PageTitle";
+import PageTitle from "../../_shared/layout/PageTitle";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
 
 const StyledSearchPage = styled(StyledPageBody)`
@@ -21,7 +21,7 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
     return (
         <StyledSearchPage>
             <BreadcrumbList path={path} />
-            <PageControls title={title} subtitle={subtitle} />
+            <PageTitle title={title} subtitle={subtitle} />
 
             <FilterList tag={tag} />
             <SearchTable headers={headers} rows={rows} getCols={getCols} />

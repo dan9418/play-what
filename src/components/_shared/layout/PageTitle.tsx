@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledPageTitle = styled.div`
     width: 100%;
-    padding-top: 16px;
 
     .header {
         border-bottom: 1px solid ${({ theme }) => theme.border};    

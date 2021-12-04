@@ -7,7 +7,7 @@ import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { intervalsState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageControls from "../../_shared/layout/PageTitle";
+import PageTitle from "../../_shared/layout/PageTitle";
 import ChordDetailsCard from "../_shared/cards/IntervalsCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import ViewerCard from "../_shared/cards/ViewerCard";
@@ -52,7 +52,7 @@ const ChordPage: React.FC<any> = props => {
     return (
         <StyledChordPage>
             <BreadcrumbList path={props.path} />
-            <PageControls title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
+            <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
             <div className="grid">
                 <ChordDetailsCard chord={chord} />
                 <ViewerCard pods={chord.value} />

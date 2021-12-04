@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import THEME from "../../styles/theme";
 import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageControls from "../_shared/layout/PageTitle";
+import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledBrowsePage = styled(StyledPageBody)`
     display: flex;
@@ -43,7 +43,7 @@ const BrowsePage: React.FC<any> = () => {
 
     return (
         <StyledBrowsePage>
-            <PageControls title="Browse Ideas" subtitle="Select a category to get started..." />
+            <PageTitle title="Browse Ideas" subtitle="Select a category to get started..." />
             <div className="tile-container">
                 <Link to="/browse/chords">Chords</Link>
                 <Link to="/browse/scales">Scales</Link>
