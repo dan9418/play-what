@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import React from 'react';
 import styled from 'styled-components';
-import { dataIndexState, dataListState } from '../../state/state';
 
 const StyledMain = styled.main`
 	margin: auto;
@@ -14,14 +12,6 @@ const StyledMain = styled.main`
 `;
 
 const Main: React.FC = ({ children }) => {
-  const [dataList, setDataList] = useRecoilState(dataListState);
-  const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
-
-  useEffect(() => {
-    setDataList([]);
-    setDataIndex(undefined);
-  }, []);
-
   return (
     <StyledMain>
       {children}

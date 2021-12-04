@@ -227,8 +227,6 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 
 export const INTERVAL_PRESETS = Array.from(INTERVAL_PRESET_MAP).map(([k, v]) => v);
 
-console.log('INTERVAL_PRESETS', JSON.stringify(INTERVAL_PRESETS));
-
 export const CORE_INTERVALS = [
 	[INTERVAL_PRESET_MAP.get(IntervalId.P1)],
 	[INTERVAL_PRESET_MAP.get(IntervalId.m2), INTERVAL_PRESET_MAP.get(IntervalId.M2)],

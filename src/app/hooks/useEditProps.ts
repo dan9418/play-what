@@ -58,11 +58,11 @@ const useEditViewerProps = () => {
 const useEditProps = () => {
     // @ts-ignore
     const [dataIndex, setDataIndex] = useRecoilState(dataIndexState);
-    if (dataIndex === undefined) return;
 
     const editNotesProps = useEditNotesProps();
     const editViewerProps = useEditViewerProps();
 
+    if (dataIndex === undefined) return;
 
     const editProps = {
         ...editViewerProps,

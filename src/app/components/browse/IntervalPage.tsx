@@ -4,6 +4,9 @@ import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.con
 import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../shared/PageBody";
 import PageControls from "../shared/PageTitle";
+import ChordDetailsCard from "./cards/ChordDetailsCard";
+import SoundCard from "./cards/SoundCard";
+import ViewerCard from "./cards/ViewerCard";
 
 const StyledIntervalPage = styled(StyledPageBody)`
     .grid {
@@ -37,7 +40,8 @@ const IntervalPage: React.FC<any> = props => {
             <BreadcrumbList path={props.path} />
             <PageControls title={interval.name} subtitle={JSON.stringify(interval.value)} />
             <div className="grid">
-
+                <ViewerCard pods={[interval.value]} />
+                <SoundCard chord={interval} />
             </div>
         </StyledIntervalPage >
     );
