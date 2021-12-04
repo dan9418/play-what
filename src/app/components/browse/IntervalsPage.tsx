@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { IntervalTag } from "../../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
 import THEME, { COLOR } from "../../styles/theme";
-import ListBuilder from "../create/list-builder/ListBuilder";
 import BreadcrumbList from "../shared/breadcrumb-list/BreadcrumbList";
 import FilterList from "../shared/FilterList";
 import { StyledPageBody } from "../shared/PageBody";

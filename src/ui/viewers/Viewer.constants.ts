@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { VOICING_PRESETS } from '../../core/theory/Voicing.constants';
-import { viewerPropsMapper } from '../../app/components/create/edit-panel/InputManagers';
 import { ICompleteModelDetails, InputId, IPreset, PodType } from '../../core/models/Model.constants';
 import Fretboard from './fretboard/Fretboard';
 import { FRETBOARD_TUNING_VALUES } from './fretboard/Fretboard.api';
@@ -93,13 +92,13 @@ export const VOICING_INPUTS = [
         inputProps: {
             options: VOICING_PRESETS
         },
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     },
     {
         propName: 'Match Octave',
         propId: 'matchOctave',
         inputId: InputId.Switch,
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     }
 ];
 
@@ -112,7 +111,7 @@ export const FRETBOARD_INPUTS = [
             options: FRETBOARD_TUNING_VALUES
         },
         useValueProperty: true,
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     },
     {
         propName: 'Fret Range',
@@ -122,19 +121,19 @@ export const FRETBOARD_INPUTS = [
             min: 0,
             max: 24
         },
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     },
     {
         propName: 'Fret Numbers',
         propId: 'showFretNumbers',
         inputId: InputId.Switch,
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     },
     {
         propName: 'Fret Dots',
         propId: 'showFretDots',
         inputId: InputId.Switch,
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     }
 ];
 
@@ -147,7 +146,7 @@ export const LABEL_INPUTS = [
             options: LABEL_BY_OPTIONS
         },
         useValueProperty: true,
-        inputMapper: viewerPropsMapper
+        inputMapper: null
     }
 ];
 

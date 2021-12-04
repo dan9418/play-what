@@ -1,6 +1,5 @@
 
 import React from "react";
-import { intervalsMapper } from "../../app/components/create/edit-panel/InputManagers";
 import { InputId } from "../../core/models/Model.constants";
 import MASTER_PRESETS from "../../core/models/PodList/PodList.constants";
 import TieredDropdownInput, { UNSELECTED_KEY } from "./TieredDropdownInput";
@@ -47,7 +46,7 @@ export const IntervalsInput: React.FC<IInputProps> = ({ value, setValue }) => {
 export const INTERVALS_INPUTS = [
     {
         propName: '',
-        inputMapper: intervalsMapper,
+        inputMapper: null,
         inputId: InputId.Intervals
     }
 ];

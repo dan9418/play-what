@@ -1,12 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
-import Viewer from "../../create/viewer/Viewer";
 import Card from "../../shared/Card";
+import Viewer from "../../shared/Viewer";
 
 const StyledViewerCard = styled.div`
 
 `;
-
 
 const ViewerCard: React.FC<any> = ({ pods }) => {
 

@@ -1,6 +1,5 @@
 
 import React from "react";
-import EditModal from "../components/create/edit-panel/EditPanel";
 
 interface IModelContext {
 	isOpen: boolean,
@@ -25,7 +24,7 @@ export const ModalContextProvider: React.FC = ({ children }) => {
 	return (
 		<ModalContext.Provider value={modalContext}>
 			{children}
-			{isOpen && <EditModal />}
+			{isOpen && <div>modal</div>}
 		</ModalContext.Provider>
 	);
 };

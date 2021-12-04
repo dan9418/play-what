@@ -101,7 +101,6 @@ const SiteHeader: React.FC = () => {
 				<div className="links-container">
 					<div className="nav-links">
 						<Link {...getLinkProps('browse')}>Browse</Link>
-						<Link {...getLinkProps('create')}>Create</Link>
 						<Link {...getLinkProps('docs')}>Docs</Link>
 						<Link {...getLinkProps('test')}>Test</Link>
 					</div>
