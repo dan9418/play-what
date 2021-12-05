@@ -341,7 +341,7 @@ export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
             name: 'A',
             chords: [
                 [NoteId.F, ChordId.Maj7, 4],
-                [NoteId.Fs, ChordId.DimTri, 4],
+                [NoteId.Fs, ChordId.DimTriad, 4],
                 [NoteId.G, ChordId.Min7, 4],
                 [NoteId.C, ChordId.Dom7, 4],
                 [NoteId.A, ChordId.Min7, 4],
@@ -371,7 +371,7 @@ export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
             name: 'A\'',
             chords: [
                 [NoteId.F, ChordId.Maj7, 4],
-                [NoteId.Fs, ChordId.DimTri, 4],
+                [NoteId.Fs, ChordId.DimTriad, 4],
                 [NoteId.G, ChordId.Min7, 4],
                 [NoteId.C, ChordId.Dom7, 4],
                 [NoteId.A, ChordId.Min7, 4],
@@ -384,7 +384,7 @@ export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
             name: 'A\'\'',
             chords: [
                 [NoteId.F, ChordId.Maj7, 4],
-                [NoteId.Fs, ChordId.DimTri, 4],
+                [NoteId.Fs, ChordId.DimTriad, 4],
                 [NoteId.G, ChordId.Min7, 4],
                 [NoteId.C, ChordId.Dom7, 4],
                 [NoteId.A, ChordId.Min7, 4],
@@ -448,7 +448,7 @@ export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
                 [NoteId.Db, ChordId.Maj7, 4],
                 [NoteId.G, ChordId.Maj7, 4],
                 [NoteId.C, ChordId.Min7, 4],
-                [NoteId.B, ChordId.DimTri, 4],
+                [NoteId.B, ChordId.DimTriad, 4],
                 [NoteId.Bb, ChordId.Min7, 4],
                 [NoteId.Eb, ChordId.Dom7, 4],
                 [NoteId.Ab, ChordId.Maj7, 8]
@@ -523,7 +523,7 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
                 [NoteId.G, ChordId.Maj7, 8],
                 [NoteId.Bb, ChordId.Min7, 4],
                 [NoteId.Eb, ChordId.Dom7, 4],
-                [NoteId.G, ChordId.MajTri, 8],
+                [NoteId.G, ChordId.MajTriad, 8],
                 [NoteId.B, ChordId.Min7, 4],
                 [NoteId.E, ChordId.Dom7b9, 4]
             ]
@@ -545,7 +545,7 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
                 [NoteId.G, ChordId.Maj7, 8],
                 [NoteId.Bb, ChordId.Min7, 4],
                 [NoteId.Eb, ChordId.Dom7, 4],
-                [NoteId.G, ChordId.MajTri, 8],
+                [NoteId.G, ChordId.MajTriad, 8],
                 [NoteId.B, ChordId.Min7, 4],
                 [NoteId.E, ChordId.Dom7b9, 4]
             ]
@@ -644,7 +644,7 @@ export const ALONE_AGAIN_CONFIG: IChartConfig = {
                 [NoteId.E, ChordId.Dom7, 2],
                 [NoteId.C, ChordId.Min7, 4],
                 [NoteId.G, ChordId.Maj7, 2],
-                [NoteId.G, ChordId.AugTri, 2],
+                [NoteId.G, ChordId.AugTriad, 2],
                 [NoteId.G, ChordId.Maj6, 2],
                 [NoteId.Fs, ChordId.Dom7, 2],
                 [NoteId.B, ChordId.Min7, 4],

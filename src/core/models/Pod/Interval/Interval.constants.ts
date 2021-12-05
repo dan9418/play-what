@@ -1,37 +1,37 @@
 import { IntervalTag, IPod, IPreset } from "../../Model.constants";
 
 export enum IntervalId {
-	P1 = 'P1',
-	m2 = 'm2',
-	M2 = 'M2',
-	A2 = 'A2',
-	d3 = 'd3',
-	m3 = 'm3',
-	M3 = 'M3',
-	A3 = 'A3',
-	d4 = 'd4',
-	P4 = 'P4',
-	A4 = 'A4',
-	d5 = 'd5',
-	P5 = 'P5',
-	A5 = 'A5',
-	d6 = 'd6',
-	m6 = 'm6',
-	M6 = 'M6',
-	A6 = 'A6',
-	d7 = 'd7',
-	m7 = 'm7',
-	M7 = 'M7',
-	P8 = 'P8',
-	b9 = 'b9',
+	P1 = 'unison',
+	m2 = 'minor-second',
+	M2 = 'major-second',
+	A2 = 'augmented-second',
+	d3 = 'diminished-third',
+	m3 = 'minor-third',
+	M3 = 'major-third',
+	A3 = 'augmented-third',
+	d4 = 'diminished-fourth',
+	P4 = 'perfect-fourth',
+	A4 = 'augmented-fourth',
+	d5 = 'diminished-fifth',
+	P5 = 'perfect-fifth',
+	A5 = 'augmented-fifth',
+	d6 = 'diminished-sixth',
+	m6 = 'minor-sixth',
+	M6 = 'major-sixth',
+	A6 = 'augmented-sixth',
+	d7 = 'diminished-seventh',
+	m7 = 'minor-seventh',
+	M7 = 'major-seventh',
+	P8 = 'octave',
+	b9 = 'flat-9',
 	x9 = '9',
-	s9 = '#9',
-	b11 = 'b11',
+	s9 = 'sharp-9',
+	b11 = 'flat-11',
 	x11 = '11',
-	s11 = '#11',
-	b13 = 'b13',
+	s11 = 'sharp-11',
+	b13 = 'flat-13',
 	x13 = '13',
-	s13 = '#13',
+	s13 = 'sharp-13',
 }
 
 const formatPreset = (id: IntervalId, name: string, value: IPod, tags = []) => ({ id, name, value, tags });
@@ -226,6 +226,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IPreset<IPod>>([
 ]);
 
 export const INTERVAL_PRESETS = Array.from(INTERVAL_PRESET_MAP).map(([k, v]) => v);
+
+console.log('pw-gen intervals', JSON.stringify(INTERVAL_PRESETS));
 
 export const CORE_INTERVALS = [
 	[INTERVAL_PRESET_MAP.get(IntervalId.P1)],

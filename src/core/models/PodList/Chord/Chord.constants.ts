@@ -3,23 +3,23 @@ import { IPod, IPreset, ChordTag } from '../../Model.constants';
 import { IntervalId } from '../../Pod/Interval/Interval.constants';
 
 export enum ChordId {
-	MajTri = 'MajTri',
-	Maj6 = 'Maj6',
-	Maj7 = 'Maj7',
-	MinTri = 'MinTri',
-	Min6 = 'Min6',
-	Min7 = 'Min7',
-	MinMaj7 = 'MinMaj7',
-	Dom7 = 'Dom7',
-	Dom7b9 = 'Dom7b9',
-	AugTri = 'AugTri',
-	Aug7 = 'Aug7',
-	AugM7 = 'AugM7',
-	DimTri = 'DimTri',
-	Dim7 = 'Dim7',
-	HalfDim7 = 'HalfDim7',
-	Sus2 = 'Sus2',
-	Sus4 = 'Sus4',
+	MajTriad = 'maj-triad',
+	Maj6 = 'maj-6',
+	Maj7 = 'maj-7',
+	MinTriad = 'min-triad',
+	Min6 = 'min-6',
+	Min7 = 'min-7',
+	MinMaj7 = 'min-maj-7',
+	Dom7 = 'dom-7',
+	Dom7b9 = 'dom-7-b9',
+	AugTriad = 'aug-triad',
+	Aug7 = 'aug-7',
+	AugMaj7 = 'aug-maj-7',
+	DimTriad = 'dim-triad',
+	Dim7 = 'dim-7',
+	HalfDim7 = 'half-dim-7',
+	Sus2 = 'sus-2',
+	Sus4 = 'sus-4',
 }
 
 const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], _ = []) => {
@@ -33,8 +33,8 @@ const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags
 };
 
 export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
-	[ChordId.MajTri, formatPreset(
-		ChordId.MajTri,
+	[ChordId.MajTriad, formatPreset(
+		ChordId.MajTriad,
 		'Major Triad',
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5],
 		[ChordTag.Major, ChordTag.Triad]
@@ -51,8 +51,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
 		[ChordTag.Major, ChordTag.Seventh]
 	)],
-	[ChordId.MinTri, formatPreset(
-		ChordId.MinTri,
+	[ChordId.MinTriad, formatPreset(
+		ChordId.MinTriad,
 		'Minor Triad',
 		[IntervalId.P1, IntervalId.m3, IntervalId.P5],
 		[ChordTag.Minor, ChordTag.Triad]
@@ -87,8 +87,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 		[IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7, IntervalId.b9],
 		[ChordTag.Dominant, ChordTag.Extended]
 	)],
-	[ChordId.AugTri, formatPreset(
-		ChordId.AugTri,
+	[ChordId.AugTriad, formatPreset(
+		ChordId.AugTriad,
 		'Augmented Triad',
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5],
 		[ChordTag.Augmented, ChordTag.Triad]
@@ -99,14 +99,14 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.m7],
 		[ChordTag.Augmented, ChordTag.Seventh]
 	)],
-	[ChordId.AugM7, formatPreset(
-		ChordId.AugM7,
+	[ChordId.AugMaj7, formatPreset(
+		ChordId.AugMaj7,
 		'Augmented Major 7th',
 		[IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.M7],
 		[ChordTag.Augmented, ChordTag.Seventh]
 	)],
-	[ChordId.DimTri, formatPreset(
-		ChordId.DimTri,
+	[ChordId.DimTriad, formatPreset(
+		ChordId.DimTriad,
 		'Diminished Triad',
 		[IntervalId.P1, IntervalId.m3, IntervalId.d5],
 		[ChordTag.Diminished, ChordTag.Triad]
@@ -138,6 +138,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
 ]);
 
 export const CHORD_PRESETS = Array.from(CHORD_PRESET_MAP).map(([k, v]) => v);
+
+console.log('pw-gen chords', JSON.stringify(CHORD_PRESETS));
 
 export const DEFAULT_CHORD_OPTIONS = {
 	displayName: 'chord',

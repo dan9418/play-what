@@ -1,6 +1,6 @@
 [
     {
-        "id": "Ionian",
+        "id": "ionian",
         "name": "Ionian",
         "value": [
             [
@@ -39,7 +39,7 @@
         ]
     },
     {
-        "id": "Dorian",
+        "id": "dorian",
         "name": "Dorian",
         "value": [
             [
@@ -78,7 +78,7 @@
         ]
     },
     {
-        "id": "Phrygian",
+        "id": "phrygian",
         "name": "Phrygian",
         "value": [
             [
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "id": "Lydian",
+        "id": "lydian",
         "name": "Lydian",
         "value": [
             [
@@ -156,7 +156,7 @@
         ]
     },
     {
-        "id": "Mixolydian",
+        "id": "mixolydian",
         "name": "Mixolydian",
         "value": [
             [
@@ -196,7 +196,7 @@
         ]
     },
     {
-        "id": "Aeolian",
+        "id": "aeolian",
         "name": "Aeolian",
         "value": [
             [
@@ -235,7 +235,7 @@
         ]
     },
     {
-        "id": "Locrian",
+        "id": "locrian",
         "name": "Locrian",
         "value": [
             [
@@ -274,7 +274,7 @@
         ]
     },
     {
-        "id": "NaturalMinor",
+        "id": "natural-minor",
         "name": "Natural Minor",
         "value": [
             [
@@ -313,7 +313,7 @@
         ]
     },
     {
-        "id": "HarmonicMinor",
+        "id": "harmonic-minor",
         "name": "Harmonic Minor",
         "value": [
             [
@@ -351,7 +351,7 @@
         ]
     },
     {
-        "id": "MelodicMinor",
+        "id": "melodic-minor",
         "name": "Melodic Minor",
         "value": [
             [
@@ -389,7 +389,7 @@
         ]
     },
     {
-        "id": "MajorPentatonic",
+        "id": "major-pentatonic",
         "name": "Major Pentatonic",
         "value": [
             [
@@ -419,7 +419,7 @@
         ]
     },
     {
-        "id": "MinorPentatonic",
+        "id": "minor-pentatonic",
         "name": "Minor Pentatonic",
         "value": [
             [
@@ -449,7 +449,7 @@
         ]
     },
     {
-        "id": "MajorBlues",
+        "id": "major-blues",
         "name": "Major Blues",
         "value": [
             [
@@ -484,7 +484,7 @@
         ]
     },
     {
-        "id": "MinorBlues",
+        "id": "minor-blues",
         "name": "Minor Blues",
         "value": [
             [
@@ -519,7 +519,7 @@
         ]
     },
     {
-        "id": "DomBebop",
+        "id": "dominant-bebop",
         "name": "Dominant Bebob",
         "value": [
             [
@@ -563,7 +563,7 @@
         ]
     },
     {
-        "id": "MajBebop",
+        "id": "major-bebop",
         "name": "Major Bebob",
         "value": [
             [
@@ -606,7 +606,7 @@
         ]
     },
     {
-        "id": "PhrygianDom",
+        "id": "phrygian-dominant",
         "name": "Phrygian Dominant",
         "value": [
             [

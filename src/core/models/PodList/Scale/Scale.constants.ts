@@ -3,24 +3,24 @@ import { IPod, IPreset, ScaleTag } from '../../Model.constants';
 import { IntervalId } from '../../Pod/Interval/Interval.constants';
 
 export enum ScaleId {
-	Ionian = 'Ionian',
-	Dorian = 'Dorian',
-	Phrygian = 'Phrygian',
-	PhrygianDom = 'PhrygianDom',
-	Lydian = 'Lydian',
-	Mixolydian = 'Mixolydian',
-	DomBebop = 'DomBebop',
-	MajBebop = 'MajBebop',
-	Aeolian = 'Aeolian',
-	Locrian = 'Locrian',
-	NaturalMinor = 'NaturalMinor',
-	HarmonicMinor = 'HarmonicMinor',
-	MelodicMinor = 'MelodicMinor',
-	MajorPentatonic = 'MajorPentatonic',
-	MinorPentatonic = 'MinorPentatonic',
-	MajorBlues = 'MajorBlues',
-	MinorBlues = 'MinorBlues',
-	Chromatic = 'Chromatic'
+	Ionian = 'ionian',
+	Dorian = 'dorian',
+	Phrygian = 'phrygian',
+	PhrygianDominant = 'phrygian-dominant',
+	Lydian = 'lydian',
+	Mixolydian = 'mixolydian',
+	DominantBebop = 'dominant-bebop',
+	MajorBebop = 'major-bebop',
+	Aeolian = 'aeolian',
+	Locrian = 'locrian',
+	NaturalMinor = 'natural-minor',
+	HarmonicMinor = 'harmonic-minor',
+	MelodicMinor = 'melodic-minor',
+	MajorPentatonic = 'major-pentatonic',
+	MinorPentatonic = 'minor-pentatonic',
+	MajorBlues = 'major-blues',
+	MinorBlues = 'minor-blues',
+	Chromatic = 'chromatic'
 }
 
 const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[], tags = []) => ({
@@ -101,24 +101,26 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IPreset<IPod[]>>([
 		[IntervalId.P1, IntervalId.m3, IntervalId.P4, IntervalId.d5, IntervalId.P5, IntervalId.m7],
 		[ScaleTag.Hexatonic, ScaleTag.Blues, ScaleTag.Minor]
 	)],
-	[ScaleId.DomBebop, formatPreset(
-		ScaleId.DomBebop, 'Dominant Bebob',
+	[ScaleId.DominantBebop, formatPreset(
+		ScaleId.DominantBebop, 'Dominant Bebob',
 		[IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.m7, IntervalId.M7],
 		[ScaleTag.Octatonic, ScaleTag.Bebop, ScaleTag.Major, ScaleTag.Dominant]
 	)],
-	[ScaleId.MajBebop, formatPreset(
-		ScaleId.MajBebop, 'Major Bebob',
+	[ScaleId.MajorBebop, formatPreset(
+		ScaleId.MajorBebop, 'Major Bebob',
 		[IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.M6, IntervalId.M7],
 		[ScaleTag.Octatonic, ScaleTag.Bebop, ScaleTag.Major]
 	)],
-	[ScaleId.PhrygianDom, formatPreset(
-		ScaleId.PhrygianDom, 'Phrygian Dominant',
+	[ScaleId.PhrygianDominant, formatPreset(
+		ScaleId.PhrygianDominant, 'Phrygian Dominant',
 		[IntervalId.P1, IntervalId.m2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7],
 		[ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
 	)]
 ]);
 
 export const SCALE_PRESETS = Array.from(SCALE_PRESET_MAP).map(([k, v]) => v);
+
+console.log('pw-gen scales', JSON.stringify(SCALE_PRESETS));
 
 export const DEFAULT_SCALE_OPTIONS = {
 	displayName: 'scale',

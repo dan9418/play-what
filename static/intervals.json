@@ -1,6 +1,6 @@
 [
     {
-        "id": "P1",
+        "id": "unison",
         "name": "Perfect Unison",
         "value": [
             0,
@@ -11,7 +11,7 @@
         ]
     },
     {
-        "id": "m2",
+        "id": "minor-second",
         "name": "Minor 2nd",
         "value": [
             1,
@@ -22,7 +22,7 @@
         ]
     },
     {
-        "id": "M2",
+        "id": "major-second",
         "name": "Major 2nd",
         "value": [
             2,
@@ -33,7 +33,7 @@
         ]
     },
     {
-        "id": "A2",
+        "id": "augmented-second",
         "name": "Augmented 2nd",
         "value": [
             3,
@@ -44,7 +44,7 @@
         ]
     },
     {
-        "id": "d3",
+        "id": "diminished-third",
         "name": "Diminished 3rd",
         "value": [
             2,
@@ -55,7 +55,7 @@
         ]
     },
     {
-        "id": "m3",
+        "id": "minor-third",
         "name": "Minor 3rd",
         "value": [
             3,
@@ -66,7 +66,7 @@
         ]
     },
     {
-        "id": "M3",
+        "id": "major-third",
         "name": "Major 3rd",
         "value": [
             4,
@@ -77,7 +77,7 @@
         ]
     },
     {
-        "id": "A3",
+        "id": "augmented-third",
         "name": "Augmented 3rd",
         "value": [
             5,
@@ -88,7 +88,7 @@
         ]
     },
     {
-        "id": "d4",
+        "id": "diminished-fourth",
         "name": "Diminished 4th",
         "value": [
             4,
@@ -99,7 +99,7 @@
         ]
     },
     {
-        "id": "P4",
+        "id": "perfect-fourth",
         "name": "Perfect 4th",
         "value": [
             5,
@@ -110,7 +110,7 @@
         ]
     },
     {
-        "id": "A4",
+        "id": "augmented-fourth",
         "name": "Augmented 4th",
         "value": [
             6,
@@ -121,7 +121,7 @@
         ]
     },
     {
-        "id": "d5",
+        "id": "diminished-fifth",
         "name": "Diminished 5th",
         "value": [
             6,
@@ -132,7 +132,7 @@
         ]
     },
     {
-        "id": "P5",
+        "id": "perfect-fifth",
         "name": "Perfect 5th",
         "value": [
             7,
@@ -143,7 +143,7 @@
         ]
     },
     {
-        "id": "A5",
+        "id": "augmented-fifth",
         "name": "Augmented 5th",
         "value": [
             8,
@@ -154,7 +154,7 @@
         ]
     },
     {
-        "id": "d6",
+        "id": "diminished-sixth",
         "name": "Diminished 6th",
         "value": [
             7,
@@ -165,7 +165,7 @@
         ]
     },
     {
-        "id": "m6",
+        "id": "minor-sixth",
         "name": "Minor 6th",
         "value": [
             8,
@@ -176,7 +176,7 @@
         ]
     },
     {
-        "id": "M6",
+        "id": "major-sixth",
         "name": "Major 6th",
         "value": [
             9,
@@ -187,7 +187,7 @@
         ]
     },
     {
-        "id": "A6",
+        "id": "augmented-sixth",
         "name": "Augmented 6th",
         "value": [
             10,
@@ -198,7 +198,7 @@
         ]
     },
     {
-        "id": "d7",
+        "id": "diminished-seventh",
         "name": "Diminished 7th",
         "value": [
             9,
@@ -209,7 +209,7 @@
         ]
     },
     {
-        "id": "m7",
+        "id": "minor-seventh",
         "name": "Minor 7th",
         "value": [
             10,
@@ -220,7 +220,7 @@
         ]
     },
     {
-        "id": "M7",
+        "id": "major-seventh",
         "name": "Major 7th",
         "value": [
             11,
@@ -231,7 +231,7 @@
         ]
     },
     {
-        "id": "P8",
+        "id": "octave",
         "name": "Octave",
         "value": [
             12,
@@ -242,7 +242,7 @@
         ]
     },
     {
-        "id": "b9",
+        "id": "flat-9",
         "name": "Flat Ninth",
         "value": [
             13,
@@ -264,7 +264,7 @@
         ]
     },
     {
-        "id": "#9",
+        "id": "sharp-9",
         "name": "Sharp Ninth",
         "value": [
             15,
@@ -275,7 +275,7 @@
         ]
     },
     {
-        "id": "b11",
+        "id": "flat-11",
         "name": "Flat Eleventh",
         "value": [
             16,
@@ -297,7 +297,7 @@
         ]
     },
     {
-        "id": "#11",
+        "id": "sharp-11",
         "name": "Sharp Eleventh",
         "value": [
             18,
@@ -308,7 +308,7 @@
         ]
     },
     {
-        "id": "b13",
+        "id": "flat-13",
         "name": "Flat Thirteenth",
         "value": [
             20,
@@ -330,7 +330,7 @@
         ]
     },
     {
-        "id": "#13",
+        "id": "sharp-13",
         "name": "Sharp Thirteenth",
         "value": [
             22,
