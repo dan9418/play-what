@@ -6,6 +6,7 @@ import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constant
 import SearchPage from "../_shared/SearchPage";
 
 const ScalesPage: React.FC<any> = props => {
+
     return (
         <SearchPage
             title="Scales"
