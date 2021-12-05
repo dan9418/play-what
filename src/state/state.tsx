@@ -27,7 +27,7 @@ export const historyState = atom<IHistoryEntry[]>({
     }]
 });
 
-export const useHistory = (id: string, name: string, path: string) => {
+export const useHistory = (id: string, name: string, path: string): [any, any] => {
     const [history, setHistory] = useRecoilState(historyState);
     useEffect(() => {
         setHistory([
@@ -40,7 +40,10 @@ export const useHistory = (id: string, name: string, path: string) => {
         ]);
     }, []);
     console.log('dpb history', history);
-    return history;
+
+    const popAt = i => setHistory([...history.slice(0, i || 1)]);
+
+    return [history, popAt];
 }
 
 export const useIntervalsPreset = (presets, id, isList = false) => {

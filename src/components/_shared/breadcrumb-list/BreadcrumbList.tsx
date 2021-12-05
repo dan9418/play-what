@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from 'react';
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { historyState } from "../../../state/state";
+import { historyState, useHistory } from "../../../state/state";
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
@@ -16,15 +16,15 @@ const StyledBreadcrumbList = styled.ul`
     }
 `
 
-const BreadcrumbList = () => {
+const BreadcrumbList = ({ id, name, path }) => {
 
-    const [history, setHistory] = useRecoilState(historyState);
+    const [history, popAt] = useHistory(id, name, path);
 
     const links = history.map((entry, i) => {
         return (
             <li key={entry.id}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
-                <Link to={entry.path}>{entry.name}</Link>
+                <Link to={entry.path} onClick={() => popAt(i)}>{entry.name}</Link>
             </li>
         );
     });

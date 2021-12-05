@@ -20,9 +20,8 @@ interface ISearchPageProps extends ISearchTableProps {
 const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, rows, headers, getCols }) => {
     return (
         <StyledSearchPage>
-            <BreadcrumbList path={path} />
+            <BreadcrumbList id={title.toLowerCase()} name={title} path={path} />
             <PageTitle title={title} subtitle={subtitle} />
-
             <FilterList tag={tag} />
             <SearchTable headers={headers} rows={rows} getCols={getCols} />
         </StyledSearchPage>

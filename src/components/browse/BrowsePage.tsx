@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import THEME from "../../styles/theme";
+import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 
@@ -39,10 +40,11 @@ const StyledBrowsePage = styled(StyledPageBody)`
 `;
 
 
-const BrowsePage: React.FC<any> = () => {
+const BrowsePage: React.FC<any> = props => {
 
     return (
         <StyledBrowsePage>
+            <BreadcrumbList id="browse" name="Browse" path={props.path} />
             <PageTitle title="Browse Ideas" subtitle="Select a category to get started..." />
             <div className="tile-container">
                 <Link to="/browse/chords">Chords</Link>

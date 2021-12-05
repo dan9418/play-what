@@ -24,11 +24,9 @@ const ChordPage: React.FC<any> = props => {
 
     const chord = useIntervalsPreset(CHORD_PRESETS, props.params.id, true);
 
-    const history = useHistory(chord.id, chord.name, props.path);
-
     return (
         <StyledChordPage>
-            <BreadcrumbList />
+            <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
             <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
             <StyledDoublePane>
                 <StyledPane>

@@ -22,11 +22,9 @@ const ScalePage: React.FC<any> = props => {
 
     const scale = useIntervalsPreset(SCALE_PRESETS, props.params.id, true);
 
-    const history = useHistory(scale.id, scale.name, props.path);
-
     return (
         <StyledScalePage>
-            <BreadcrumbList />
+            <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
             <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, PodType.Interval)} />
             <StyledDoublePane>
                 <IntervalsCard />
