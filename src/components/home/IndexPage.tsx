@@ -11,6 +11,11 @@ const StyledHomePage = styled(StyledPageBody)`
 	flex-direction: column;
 	align-items: center;
 
+	h1 {
+		text-align: center !important;
+		width: 100%;
+	}
+
 	> p {
 		max-width: 768px;
 		font-size: 120%;

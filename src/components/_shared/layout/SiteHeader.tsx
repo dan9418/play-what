@@ -21,7 +21,7 @@ const StyledSiteHeader = styled.div`
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		max-width: 1024px;
+		max-width: 1920px;
 		margin: auto;
 	}
 	

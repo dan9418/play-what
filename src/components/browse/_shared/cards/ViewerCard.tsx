@@ -4,7 +4,7 @@ import Viewer from "../../../_shared/fretboard/Viewer";
 import Card from "../../../_shared/ui/Card";
 
 const StyledViewerCard = styled.div`
-
+    padding: 0 16px;
 `;
 
 const ViewerCard: React.FC<any> = () => {

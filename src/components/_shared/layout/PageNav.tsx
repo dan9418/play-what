@@ -15,7 +15,7 @@ const StyledPageNav = styled.nav`
 	> ul {
 		height: 100%;
 		width: 100%;
-		max-width: 1024px;
+		max-width: 1920px;
 		margin: auto;
 
 		display: flex;
