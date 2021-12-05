@@ -17,7 +17,7 @@ const IntervalsPage: React.FC<any> = props => {
             rows={INTERVAL_PRESETS}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/intervals/${preset.id.toLowerCase()}`}>{preset.name}</Link>,
+                    <Link to={`/browse/intervals/${preset.id}`}>{preset.name}</Link>,
                     preset.id
                 ]
             }}

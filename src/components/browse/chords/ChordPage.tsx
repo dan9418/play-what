@@ -42,7 +42,7 @@ const ChordPage: React.FC<any> = props => {
 
     const [intervals, setIntervals] = useRecoilState(intervalsState);
 
-    const chord = CHORD_PRESETS.find(c => c.id.toLowerCase() === props.params.id);
+    const chord = CHORD_PRESETS.find(c => c.id === props.params.id);
 
     useEffect(() => {
         setIntervals(chord.value);

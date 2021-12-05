@@ -31,7 +31,7 @@ const StyledIntervalPage = styled(StyledPageBody)`
 const IntervalPage: React.FC<any> = props => {
     console.log('dpb props', props);
 
-    const interval = INTERVAL_PRESETS.find(c => c.id.toLowerCase() === props.params.id)
+    const interval = INTERVAL_PRESETS.find(c => c.id === props.params.id)
     return (
         <StyledIntervalPage>
             <BreadcrumbList path={props.path} />

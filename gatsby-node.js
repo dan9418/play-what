@@ -7,7 +7,7 @@ module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) =>
 
   const intervals = INTERVAL_JSON.map(ivl => createNode({
     ...ivl,
-    id: ivl.id.toLowerCase(),
+    id: ivl.id.,
     internal: {
       type: `Interval`,
       contentDigest: createContentDigest(ivl)
@@ -16,7 +16,7 @@ module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) =>
 
   const chords = CHORD_JSON.map(chord => createNode({
     ...chord,
-    id: chord.id.toLowerCase(),
+    id: chord.id.,
     internal: {
       type: `Chord`,
       contentDigest: createContentDigest(chord)
@@ -25,7 +25,7 @@ module.exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) =>
 
   const scales = SCALE_JSON.map(scale => createNode({
     ...scale,
-    id: scale.id.toLowerCase(),
+    id: scale.id.,
     internal: {
       type: `Scale`,
       contentDigest: createContentDigest(scale)

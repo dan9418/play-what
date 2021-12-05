@@ -19,7 +19,7 @@ const ScalesPage: React.FC<any> = props => {
             rows={SCALE_PRESETS}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/scales/${preset.id.toLowerCase()}`}>{preset.name}</Link>,
+                    <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
                     PodListUtils.getName(preset.value, PodType.Interval)
                 ]

@@ -19,7 +19,7 @@ const ChordsPage: React.FC<any> = props => {
             rows={CHORD_PRESETS}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/chords/${preset.id.toLowerCase()}`}>{preset.name}</Link>,
+                    <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
                     PodListUtils.getName(preset.value, PodType.Interval)
                 ]

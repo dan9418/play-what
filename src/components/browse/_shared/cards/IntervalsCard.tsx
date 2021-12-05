@@ -24,7 +24,7 @@ const IntervalsCard: React.FC<any> = ({ chord }) => {
                 <ul>
                     {intervals.map(ivl => (
                         <li>
-                            <Link to={`/browse/intervals/${ivl.id.toLowerCase()}`}>{ivl.id}</Link>
+                            <Link to={`/browse/intervals/${ivl.id}`}>{ivl.id}</Link>
                         </li>
                     ))}
                 </ul>

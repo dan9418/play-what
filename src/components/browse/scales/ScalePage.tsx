@@ -34,7 +34,7 @@ const StyledScalePage = styled(StyledPageBody)`
 const ScalePage: React.FC<any> = props => {
     console.log('dpb props', props);
 
-    const scale = SCALE_PRESETS.find(c => c.id.toLowerCase() === props.params.id)
+    const scale = SCALE_PRESETS.find(c => c.id === props.params.id)
     return (
         <StyledScalePage>
             <BreadcrumbList path={props.path} />
