@@ -48,9 +48,8 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
 
 export const useIntervalsPreset = (presets, id, isList = false) => {
     const setIntervals = useSetRecoilState(intervalsState);
-    //setIntervals([]);
+    setIntervals([]);
     const preset = presets.find(p => p.id === id) || { value: [] };
-    console.log('xxx', preset.value);
     setIntervals(isList ? preset.value : [preset.value]);
     return preset;
 }

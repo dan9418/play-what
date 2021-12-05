@@ -19,8 +19,6 @@ const Viewer: React.FC<any> = props => {
 
     const [intervals, setIntervals] = useRecoilState(intervalsState);
 
-    console.log('xxx i', intervals);
-
     if (!intervals || !intervals.length) return null;
 
     const details = PodListUtils.getDetails([0, 0], intervals);

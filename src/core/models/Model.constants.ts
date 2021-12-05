@@ -5,10 +5,10 @@ export enum PodType {
 }
 
 export enum ModelId {
-	Note,
-	Interval,
-	Chord,
-	Scale,
+	Note = 'notes',
+	Interval = 'intervals',
+	Chord = 'chords',
+	Scale = 'scales',
 }
 
 export enum InputId {
@@ -81,6 +81,7 @@ export interface IPreset<T> {
 	tags: Tag[],
 	value: T,
 	voicings?: any[]
+	type?: ModelId
 }
 
 export interface IModelDetails {

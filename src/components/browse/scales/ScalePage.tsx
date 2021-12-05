@@ -9,6 +9,7 @@ import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import IntervalsCard from "../_shared/cards/IntervalsCard";
+import RelatedCard from "../_shared/cards/RelatedCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import ViewerCard from "../_shared/cards/ViewerCard";
 
@@ -34,6 +35,7 @@ const ScalePage: React.FC<any> = props => {
                 </StyledPane>
                 <StyledPane>
                     <ViewerCard />
+                    <RelatedCard />
                 </StyledPane>
             </StyledDoublePane>
         </StyledScalePage >
