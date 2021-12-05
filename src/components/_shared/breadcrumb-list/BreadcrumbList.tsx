@@ -1,6 +1,9 @@
 import { Link } from "gatsby";
 import React from 'react';
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
+import { historyState } from "../../../state/state";
+import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
     display: flex;
@@ -8,18 +11,24 @@ const StyledBreadcrumbList = styled.ul`
     //justify-content: center;
     gap: 8px;
     padding: 16px 0;
+    svg {
+        margin-right: 8px;
+    }
 `
 
-const BreadcrumbList = ({ path }) => {
-    let pieces = path.split('/');
-    pieces = pieces.slice(0, pieces.length - 1);
-    const paths = [];
-    pieces.reduce((prev, cur, i, arr) => {
-        const val = prev ? `${prev}/${cur}` : cur;
-        paths.push(<li><Link to={`/${val}`}>{cur}</Link></li>);
-        return val;
-    }, '');
-    return <StyledBreadcrumbList>{paths}</StyledBreadcrumbList>;
+const BreadcrumbList = () => {
+
+    const [history, setHistory] = useRecoilState(historyState);
+
+    const links = history.map((entry, i) => {
+        return (
+            <li key={entry.id}>
+                {i > 0 && <Icon iconId="next" size={10} color="grey" />}
+                <Link to={entry.path}>{entry.name}</Link>
+            </li>
+        );
+    });
+    return <StyledBreadcrumbList>{links}</StyledBreadcrumbList>;
 }
 
 export default BreadcrumbList;

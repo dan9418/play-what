@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PodType } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
-import { useIntervalsPreset } from "../../../state/state";
+import { useHistory, useIntervalsPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -24,9 +24,11 @@ const ChordPage: React.FC<any> = props => {
 
     const chord = useIntervalsPreset(CHORD_PRESETS, props.params.id, true);
 
+    const history = useHistory(chord.id, chord.name, props.path);
+
     return (
         <StyledChordPage>
-            <BreadcrumbList path={props.path} />
+            <BreadcrumbList />
             <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
             <StyledDoublePane>
                 <StyledPane>

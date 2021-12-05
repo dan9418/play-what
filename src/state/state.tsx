@@ -1,4 +1,5 @@
-import { atom, useSetRecoilState } from 'recoil';
+import { useEffect } from 'react';
+import { atom, useRecoilState, useSetRecoilState } from 'recoil';
 import { IPod } from '../core/models/Model.constants';
 
 export const rootState = atom<IPod | undefined>({
@@ -10,6 +11,37 @@ export const intervalsState = atom<IPod[]>({
     key: 'intervalsState',
     default: []
 });
+
+interface IHistoryEntry {
+    id: string;
+    name: string;
+    path: string;
+}
+
+export const historyState = atom<IHistoryEntry[]>({
+    key: 'historyState',
+    default: [{
+        id: 'index',
+        name: 'Home',
+        path: '/'
+    }]
+});
+
+export const useHistory = (id: string, name: string, path: string) => {
+    const [history, setHistory] = useRecoilState(historyState);
+    useEffect(() => {
+        setHistory([
+            ...history,
+            {
+                id,
+                name,
+                path
+            }
+        ]);
+    }, []);
+    console.log('dpb history', history);
+    return history;
+}
 
 export const useIntervalsPreset = (presets, id, isList = false) => {
     const setIntervals = useSetRecoilState(intervalsState);

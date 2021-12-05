@@ -56,7 +56,7 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, mat
 
 	return (
 		<StyledFretLabel $bgColor={bgColor} $fgColor={fgColor} onClick={() => ToneUtils.playSound(f)}>
-			{text}
+			{null}
 		</StyledFretLabel>
 	);
 };

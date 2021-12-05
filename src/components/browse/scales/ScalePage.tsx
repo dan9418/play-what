@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { PodType } from "../../../core/models/Model.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
-import { useIntervalsPreset } from "../../../state/state";
+import { useHistory, useIntervalsPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -22,9 +22,11 @@ const ScalePage: React.FC<any> = props => {
 
     const scale = useIntervalsPreset(SCALE_PRESETS, props.params.id, true);
 
+    const history = useHistory(scale.id, scale.name, props.path);
+
     return (
         <StyledScalePage>
-            <BreadcrumbList path={props.path} />
+            <BreadcrumbList />
             <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, PodType.Interval)} />
             <StyledDoublePane>
                 <IntervalsCard />
