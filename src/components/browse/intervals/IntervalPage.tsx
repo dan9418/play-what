@@ -1,12 +1,14 @@
 import React from "react";
 import styled from 'styled-components';
 import { INTERVAL_PRESETS } from "../../../core/models/Pod/Interval/Interval.constants";
+import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
 import { useIntervalsPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
-import { StyledDoublePane } from "../../_shared/layout/Pane";
+import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import IntervalsCard from "../_shared/cards/IntervalsCard";
+import SoundCard from "../_shared/cards/SoundCard";
 import ViewerCard from "../_shared/cards/ViewerCard";
 
 const StyledIntervalPage = styled(StyledPageBody)`
@@ -21,11 +23,16 @@ const IntervalPage: React.FC<any> = props => {
 
     return (
         <StyledIntervalPage>
-            <BreadcrumbList id={interval.id} name={interval.name} path={props.path} />
+            <BreadcrumbList id={interval.id} name={IntervalUtils.getName(interval.value)} path={props.path} />
             <PageTitle title={interval.name} subtitle={JSON.stringify(interval.value)} />
             <StyledDoublePane>
-                <IntervalsCard />
-                <ViewerCard />
+                <StyledPane>
+                    <IntervalsCard />
+                    <SoundCard />
+                </StyledPane>
+                <StyledPane>
+                    <ViewerCard />
+                </StyledPane>
             </StyledDoublePane>
         </StyledIntervalPage >
     );
