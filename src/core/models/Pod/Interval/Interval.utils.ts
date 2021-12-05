@@ -1,7 +1,7 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../theory/Degree.constants";
 import TuningUtils from "../../../tuning/Tuning.utils";
-import PodUtils from "../Pod.utils";
 import { IPod, IPreset } from '../../Model.constants';
+import PodUtils from "../Pod.utils";
 import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getIntervalOffset = (pod: IPod, coreIvl: IPreset<IPod>) => {
@@ -30,22 +30,31 @@ export const getName = (interval: IPod, options: IIntervalNameOptions = {}): str
 	const loIvl = pIvl;
 	const hiIvl = degreeIntervals[degreeIntervals.length - 1];
 
-	// determine core interval
+	// determine core interval and quality
 	let ivl = null;
-	if (!degreeIntervals.length) ivl === pIvl; // perfect
-	else if (noteIndex <= loIvl.value[0]) ivl = loIvl; // minor
-	else if (noteIndex >= hiIvl.value[0]) ivl = hiIvl; // major
+	let quality = null;
+	if (degreeIntervals.length === 1) {
+		ivl = pIvl; // perfect
+		quality = INTERVAL_QUALITY.perfect;
+	}
+	else if (noteIndex <= loIvl.value[0]) {
+		ivl = loIvl; // minor
+		quality = INTERVAL_QUALITY.min;
+	}
+	else if (noteIndex >= hiIvl.value[0]) {
+		ivl = hiIvl; // major
+		quality = INTERVAL_QUALITY.maj;
+	}
 
 	const offset = getIntervalOffset(reduced, ivl);
+	let qualityStr = quality.symbol
 
-	// determine quality
-	let quality = null;
-	if (!offset) return ivl.id; // unaltered
+	if (!offset) return `${qualityStr}${d + 1}`;
 	if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
 	if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
 
 	const count = Math.abs(offset);
-	const qualityStr = quality.symbol.repeat(count);
+	qualityStr = qualityStr.repeat(count);
 
 	const value = `${qualityStr}${d + 1}`;
 

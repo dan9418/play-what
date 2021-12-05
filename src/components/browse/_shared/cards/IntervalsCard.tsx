@@ -3,6 +3,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { INTERVAL_PRESETS } from "../../../../core/models/Pod/Interval/Interval.constants";
+import IntervalUtils from "../../../../core/models/Pod/Interval/Interval.utils";
 import PodUtils from "../../../../core/models/Pod/Pod.utils";
 import { intervalsState } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
@@ -33,7 +34,7 @@ const IntervalsCard: React.FC<any> = () => {
                         const preset = INTERVAL_PRESETS.find(p => PodUtils.areEqual(p.value, ivl));
                         return (
                             <li>
-                                <Link to={`/browse/intervals/${preset.id}`}>{preset.name}</Link>
+                                <Link to={`/browse/intervals/${preset.id}`}>{IntervalUtils.getName(ivl)}</Link>
                             </li>
                         );
                     })}

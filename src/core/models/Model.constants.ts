@@ -4,6 +4,13 @@ export enum PodType {
 	Interval
 }
 
+export enum ModelId {
+	Note,
+	Interval,
+	Chord,
+	Scale,
+}
+
 export enum InputId {
 	Numeric,
 	Dropdown,

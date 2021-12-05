@@ -6,6 +6,7 @@ import { historyState, useHistory } from "../../../state/state";
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
+    font-size: 110%;
     display: flex;
     align-items: center;
     //justify-content: center;
