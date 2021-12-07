@@ -1,9 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 import { ModelId } from "../../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
-import { useIntervalsPreset } from "../../../state/state";
+import { useChordPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -19,7 +18,7 @@ const StyledChordPage = styled(StyledPageBody)`
 
 
 const ChordPage: React.FC<any> = props => {
-    const chord = useIntervalsPreset(CHORD_PRESETS, props.params.id, true);
+    const chord = useChordPreset(props.params.id);
 
     return (
         <StyledChordPage>

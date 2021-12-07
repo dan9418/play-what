@@ -2,8 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { ModelId } from "../../../core/models/Model.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
-import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
-import { useIntervalsPreset } from "../../../state/state";
+import { useScalePreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -20,7 +19,7 @@ const StyledScalePage = styled(StyledPageBody)`
 
 
 const ScalePage: React.FC<any> = props => {
-    const scale = useIntervalsPreset(SCALE_PRESETS, props.params.id, true);
+    const scale = useScalePreset(props.params.id);
 
     return (
         <StyledScalePage>

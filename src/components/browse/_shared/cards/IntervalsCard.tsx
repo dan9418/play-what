@@ -29,6 +29,7 @@ const IntervalsCard: React.FC<any> = () => {
                 <ul>
                     {intervals.map(ivl => {
                         const preset = INTERVAL_PRESETS.find(p => PodUtils.areEqual(p.value, ivl));
+                        if (!preset) return null;
                         return (
                             <li key={preset.id}>
                                 <Link to={`/browse/intervals/${preset.id}`}>{IntervalUtils.getName(ivl)}</Link>

@@ -22,7 +22,7 @@ const Viewer: React.FC<any> = props => {
 
     if (!intervals || !intervals.length) return null;
 
-    const details = PodListUtils.getDetails(root || [0, 0], intervals);
+    const details = PodListUtils.getDetails(root ? root.value : [0, 0], intervals);
 
     return (
         <Fretboard {...props} details={details} />
