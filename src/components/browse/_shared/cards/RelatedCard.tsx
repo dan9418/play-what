@@ -27,8 +27,12 @@ const StyledRelated = styled.div`
 const RelatedCard: React.FC<any> = () => {
     const intervals = useRecoilValue(intervalsState);
 
-    const subsets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(intervals, preset.value));
-    const supersets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(preset.value, intervals));
+    console.log('dpb xxx', intervals);
+
+    if (!intervals) return null;
+
+    const subsets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(intervals.value, preset.value));
+    const supersets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(preset.value, intervals.value));
 
     return (
         <Card title="Related">

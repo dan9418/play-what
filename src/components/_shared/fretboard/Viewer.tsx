@@ -20,9 +20,9 @@ const Viewer: React.FC<any> = props => {
     const [intervals, setIntervals] = useRecoilState(intervalsState);
     const [root, setRoot] = useRecoilState(rootState);
 
-    if (!intervals || !intervals.length) return null;
+    if (!intervals || !root) return null;
 
-    const details = PodListUtils.getDetails(root ? root.value : [0, 0], intervals);
+    const details = PodListUtils.getDetails(root.value, intervals.value);
 
     return (
         <Fretboard {...props} details={details} />

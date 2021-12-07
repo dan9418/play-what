@@ -21,13 +21,13 @@ const IntervalsCard: React.FC<any> = () => {
 
     const [intervals, setIntervals] = useRecoilState(intervalsState);
 
-    if (!intervals || !intervals.length) return null;
+    if (!intervals) return null;
 
     return (
         <Card title="Intervals">
             <StyledIntervals>
                 <ul>
-                    {intervals.map(ivl => {
+                    {intervals.value.map(ivl => {
                         const preset = INTERVAL_PRESETS.find(p => PodUtils.areEqual(p.value, ivl));
                         if (!preset) return null;
                         return (

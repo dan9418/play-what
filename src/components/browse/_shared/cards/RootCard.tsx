@@ -19,7 +19,7 @@ const RootCard: React.FC<any> = () => {
 
     const pageProps = usePageProps();
 
-    useRootParam()
+    useRootParam();
 
     return (
         <Card title="Root">
@@ -28,7 +28,7 @@ const RootCard: React.FC<any> = () => {
                     {NOTE_PRESETS.map(note => {
                         return (
                             <li key={note.id}>
-                                <Link to={`${pageProps.path}?root=${note.id}`}>{note.name}</Link>
+                                <Link to={`${pageProps.path}?root=${note.id.toLowerCase()}`}>{note.name}</Link>
                             </li>
                         );
                     })}

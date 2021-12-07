@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState, useSetRecoilState } from 'recoil';
 import { StringParam, useQueryParam } from 'use-query-params';
-import { IPod } from '../core/models/Model.constants';
 import { INTERVAL_PRESETS } from '../core/models/Pod/Interval/Interval.constants';
 import { NOTE_PRESETS } from '../core/models/Pod/Note/Note.constants';
 import { CHORD_PRESETS } from '../core/models/PodList/Chord/Chord.constants';
@@ -13,9 +12,9 @@ export const rootState = atom<any>({
     default: undefined
 });
 
-export const intervalsState = atom<IPod[]>({
+export const intervalsState = atom<any>({
     key: 'intervalsState',
-    default: []
+    default: undefined
 });
 
 interface IHistoryEntry {
@@ -54,9 +53,11 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
 
 const useIntervalsPreset = (presets, id, isList = false) => {
     const setIntervals = useSetRecoilState(intervalsState);
-    setIntervals([]);
-    const preset = presets.find(p => p.id === id) || { value: [] };
-    setIntervals(isList ? preset.value : [preset.value]);
+    const preset = presets.find(p => p.id === id);
+
+    if (!preset) throw new Error('invalid preset');
+
+    setIntervals(preset);
     return preset;
 }
 

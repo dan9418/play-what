@@ -18,11 +18,13 @@ const StyledSoundCard = styled.div`
 
 
 const SoundCard: React.FC<any> = () => {
-    const intervals = useRecoilValue(intervalsState)
+    const intervals = useRecoilValue(intervalsState);
+    if (!intervals) return null;
+
     return (
         <Card title="Sound">
             <StyledSoundCard>
-                <ButtonInput onClick={() => PodListUtils.playSound(intervals)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
+                <ButtonInput onClick={() => PodListUtils.playSound(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
             </StyledSoundCard>
         </Card>
     );
