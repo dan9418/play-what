@@ -6,6 +6,16 @@ export enum ModelId {
 	Scale = 'scales',
 }
 
+export interface IModelConfig {
+	id: string;
+	modelId: ModelId;
+	name: string;
+	value: number[] | number[][],
+	tags: Tag[],
+	voicings?: any[]
+	type?: ModelId
+}
+
 export enum InputId {
 	Numeric,
 	Dropdown,
@@ -69,15 +79,6 @@ export enum IntervalTag {
 export type Tag = IntervalTag | ScaleTag | ChordTag;
 
 export type IPod = [number, number];
-
-export interface IPreset<T> {
-	id: string;
-	name: string;
-	tags: Tag[],
-	value: T,
-	voicings?: any[]
-	type?: ModelId
-}
 
 export interface IModelDetails {
 	name: string;

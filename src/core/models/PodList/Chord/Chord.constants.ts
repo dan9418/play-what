@@ -1,6 +1,5 @@
-import { INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
-import { IPod, IPreset, ChordTag } from '../../Model.constants';
-import { IntervalId } from '../../Pod/Interval/Interval.constants';
+import { ChordTag, IModelConfig, ModelId } from '../../Model.constants';
+import { IntervalId, INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
 
 export enum ChordId {
 	MajTriad = 'maj-triad',
@@ -22,17 +21,18 @@ export enum ChordId {
 	Sus4 = 'sus-4',
 }
 
-const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], _ = []) => {
+const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags = [], _ = []): IModelConfig => {
 	return {
 		id,
 		name,
-		value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value),
+		value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value) as any,
 		tags,
-		voicings: []
+		voicings: [],
+		modelId: ModelId.Note
 	}
 };
 
-export const CHORD_PRESET_MAP = new Map<ChordId, IPreset<IPod[]>>([
+export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
 	[ChordId.MajTriad, formatPreset(
 		ChordId.MajTriad,
 		'Major Triad',

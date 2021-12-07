@@ -1,18 +1,19 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState, useSetRecoilState } from 'recoil';
 import { StringParam, useQueryParam } from 'use-query-params';
+import { IModelConfig } from '../core/models/Model.constants';
 import { INTERVAL_PRESETS } from '../core/models/Pod/Interval/Interval.constants';
 import { NOTE_PRESETS } from '../core/models/Pod/Note/Note.constants';
 import { CHORD_PRESETS } from '../core/models/PodList/Chord/Chord.constants';
 import { SCALE_PRESETS } from '../core/models/PodList/Scale/Scale.constants';
 
 
-export const rootState = atom<any>({
+export const rootState = atom<IModelConfig>({
     key: 'rootState',
     default: undefined
 });
 
-export const intervalsState = atom<any>({
+export const intervalsState = atom<IModelConfig>({
     key: 'intervalsState',
     default: undefined
 });

@@ -1,4 +1,5 @@
-import { IPod, IPreset } from "../../Model.constants";
+import { IPod } from "../../Model.constants";
+import { IModelConfig, ModelId } from './../../Model.constants';
 
 export enum NoteId {
 	C = 'C',
@@ -24,9 +25,10 @@ export enum NoteId {
 	Cb = 'Cb'
 }
 
-const formatPreset = (id: NoteId, name: string, value: IPod, tags = []) => ({ id, name, value, tags });
+const formatPreset = (id: NoteId, name: string, value: IPod, tags = []): IModelConfig =>
+	({ id, name, value, tags, modelId: ModelId.Note });
 
-export const NOTE_PRESET_MAP = new Map<NoteId, IPreset<IPod>>([
+export const NOTE_PRESET_MAP = new Map<NoteId, IModelConfig>([
 	[NoteId.C, formatPreset(NoteId.C, 'C', [0, 0])],
 	[NoteId.Cs, formatPreset(NoteId.Cs, 'C#', [1, 0])],
 	[NoteId.Db, formatPreset(NoteId.Db, 'Db', [1, 1])],

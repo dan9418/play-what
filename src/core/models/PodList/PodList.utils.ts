@@ -3,7 +3,7 @@ import TuningUtils from '../../tuning/Tuning.utils';
 import IntervalUtils from '../Pod/Interval/Interval.utils';
 import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { ICompleteModelDetails, IPod, IPreset, ModelId } from '../Model.constants';
+import { ICompleteModelDetails, IPod, IModelConfig, ModelId } from '../Model.constants';
 import MASTER_PRESETS from './PodList.constants';
 
 // Equality
@@ -95,7 +95,7 @@ const sort = (podList: IPod[]) => {
 	});
 }
 
-const findPreset = (podList: IPod[]): IPreset<IPod[]> | undefined => {
+const findPreset = (podList: IPod[]): IModelConfig | undefined => {
 	return MASTER_PRESETS.find(p => areEqual(p.value, podList));
 }
 

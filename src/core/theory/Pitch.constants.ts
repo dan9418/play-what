@@ -1,4 +1,4 @@
-import { IPreset } from '../models/Model.constants';
+import { IModelConfig } from '../models/Model.constants';
 export const MAX_PITCH = 12;
 
 export enum PitchId {
@@ -6,7 +6,7 @@ export enum PitchId {
 	Midi = 'Midi'
 }
 
-export const PITCH_PRESET_MAP = new Map<PitchId, IPreset<number>>([
+export const PITCH_PRESET_MAP = new Map<PitchId, IModelConfig<number>>([
 	[PitchId.MiddleC, {
 		id: PitchId.MiddleC,
 		name: 'Middle C',
