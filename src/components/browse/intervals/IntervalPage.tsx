@@ -18,8 +18,6 @@ const StyledIntervalPage = styled(StyledPageBody)`
 
 
 const IntervalPage: React.FC<any> = props => {
-    console.log('dpb props', props);
-
     const interval = useIntervalsPreset(INTERVAL_PRESETS, props.params.id);
 
     return (

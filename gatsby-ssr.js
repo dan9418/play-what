@@ -20,7 +20,6 @@ export const wrapRootElement = ({ element }) => {
 
 
 export const wrapPageElement = ({ element, props }) => {
-    console.log('dpb props', props);
     return (
         <>
             <SiteHeader />

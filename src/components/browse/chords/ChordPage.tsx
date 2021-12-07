@@ -19,8 +19,6 @@ const StyledChordPage = styled(StyledPageBody)`
 
 
 const ChordPage: React.FC<any> = props => {
-    console.log('dpb props', props);
-
     const chord = useIntervalsPreset(CHORD_PRESETS, props.params.id, true);
 
     return (
