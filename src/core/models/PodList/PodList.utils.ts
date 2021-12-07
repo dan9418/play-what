@@ -3,7 +3,7 @@ import TuningUtils from '../../tuning/Tuning.utils';
 import IntervalUtils from '../Pod/Interval/Interval.utils';
 import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { ICompleteModelDetails, IPod, IPreset, PodType } from '../Model.constants';
+import { ICompleteModelDetails, IPod, IPreset, ModelId } from '../Model.constants';
 import MASTER_PRESETS from './PodList.constants';
 
 // Equality
@@ -77,8 +77,8 @@ const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
 	}
 };*/
 
-const getName = (podList: IPod[], podType: PodType): string => {
-	const nameFn = podType === PodType.Interval ? IntervalUtils.getName : NoteUtils.getName;
+const getName = (podList: IPod[], modelId: ModelId): string => {
+	const nameFn = modelId === ModelId.Interval ? IntervalUtils.getName : NoteUtils.getName;
 	const nameArr = podList.map((pod) => nameFn(pod));
 	return nameArr.join(', ');
 };
@@ -104,9 +104,9 @@ const getDetails = (root: IPod, intervals: IPod[]): ICompleteModelDetails => {
 	const notes = PodUtils.addPodList(root, intervals);
 
 	const rootName = NoteUtils.getName(root);
-	const intervalsName = getName(intervals, PodType.Interval);
-	const intervalsPreview = getName(intervals, PodType.Interval);
-	const notesPreview = getName(notes, PodType.Note);
+	const intervalsName = getName(intervals, ModelId.Interval);
+	const intervalsPreview = getName(intervals, ModelId.Interval);
+	const notesPreview = getName(notes, ModelId.Note);
 
 	const preset = MASTER_PRESETS.find(p => areEqual(p.value, intervals));
 	const presetName = preset ? preset.name : 'Unknown';

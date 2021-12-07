@@ -4,7 +4,7 @@ const DEFAULT_GRAPH_PROPS = {
 	xLabel: 'd',
 	yLabel: 'p',
 	pods: [],
-	podType: 'note'
+	modelId: 'note'
 }
 
 export default DEFAULT_GRAPH_PROPS;

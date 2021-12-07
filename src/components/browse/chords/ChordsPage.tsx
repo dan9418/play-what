@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
-import { ChordTag, PodType } from "../../../core/models/Model.constants";
+import { ChordTag, ModelId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import SearchPage from "../_shared/SearchPage";
@@ -21,7 +21,7 @@ const ChordsPage: React.FC<any> = props => {
                 return [
                     <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    PodListUtils.getName(preset.value, PodType.Interval)
+                    PodListUtils.getName(preset.value, ModelId.Interval)
                 ]
             }}
             {...props}

@@ -1,4 +1,4 @@
-import { PodType } from '../../../core/models/Model.constants';
+import { ModelId } from '../../../core/models/Model.constants';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 export interface IFretboardProps {
@@ -26,7 +26,7 @@ const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
 	labelBy: 'interval',
 	showFretDots: true,
 	showFretNumbers: true,
-	podType: PodType.Interval
+	modelId: ModelId.Interval
 };
 
 export default DEFAULT_FRETBOARD_PROPS;

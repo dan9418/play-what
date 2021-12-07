@@ -25,11 +25,11 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, podType, matchOctave, details, voicing, stringIndex }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, modelId, matchOctave, details, voicing, stringIndex }) => {
 
 	const podOptions = {
 		matchOctave,
-		podType,
+		modelId,
 		labelBy
 	};
 

@@ -1,5 +1,5 @@
 import ColorUtils from "../../../core/color/Color.utils";
-import { ICompleteModelDetails, IPod, PodType } from "../../../core/models/Model.constants";
+import { ICompleteModelDetails, IPod, ModelId } from "../../../core/models/Model.constants";
 import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
 import NoteUtils from "../../../core/models/Pod/Note/Note.utils";
 import PodUtils from "../../../core/models/Pod/Pod.utils";
@@ -14,13 +14,13 @@ interface IPodProps {
 }
 
 interface IPodPropsOptions {
-    podType?: PodType;
+    modelId?: ModelId;
     matchOctave?: boolean;
     labelBy?: string;
 }
 
 const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
-    podType: PodType.Interval,
+    modelId: ModelId.Interval,
     matchOctave: false,
     labelBy: 'interval'
 }
@@ -56,7 +56,7 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
 
     // Get colors
     let bgColor = '';
-    if (options.podType === PodType.Interval) {
+    if (options.modelId === ModelId.Interval) {
         bgColor = IntervalUtils.getPodColor(reducedInterval);
     }
     else {

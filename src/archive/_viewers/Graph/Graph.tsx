@@ -43,7 +43,7 @@ const getCells = (origin, pods) => {
 
 const Graph = userProps => {
 	const props = { ...DEFAULT_GRAPH_PROPS, ...userProps };
-	const { origin, title, xLabel, yLabel, pods, podType } = props;
+	const { origin, title, xLabel, yLabel, pods, modelId } = props;
 	return (
 		<div className="graph-container">
 			<div className="graph-title">{title}</div>

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { PodType } from "../../../core/models/Model.constants";
+import { ModelId } from "../../../core/models/Model.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
 import { useHistory, useIntervalsPreset } from "../../../state/state";
@@ -27,7 +27,7 @@ const ScalePage: React.FC<any> = props => {
     return (
         <StyledScalePage>
             <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
-            <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, PodType.Interval)} />
+            <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, ModelId.Interval)} />
             <StyledDoublePane>
                 <StyledPane>
                     <IntervalsCard />

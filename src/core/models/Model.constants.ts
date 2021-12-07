@@ -1,9 +1,4 @@
 
-export enum PodType {
-	Note,
-	Interval
-}
-
 export enum ModelId {
 	Note = 'notes',
 	Interval = 'intervals',

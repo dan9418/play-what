@@ -41,12 +41,12 @@ const StyledKeyLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ keyType, noteIndex, scale, details, hideLabel, podType, matchOctave }) => {
+const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ keyType, noteIndex, scale, details, hideLabel, modelId, matchOctave }) => {
 
 	const podOptions = {
 		matchOctave,
 		hideLabel,
-		podType
+		modelId
 	};
 	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
 

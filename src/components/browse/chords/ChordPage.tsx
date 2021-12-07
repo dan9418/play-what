@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { PodType } from "../../../core/models/Model.constants";
+import { ModelId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/PodList/Chord/Chord.constants";
 import PodListUtils from "../../../core/models/PodList/PodList.utils";
 import { useIntervalsPreset } from "../../../state/state";
@@ -26,7 +26,7 @@ const ChordPage: React.FC<any> = props => {
     return (
         <StyledChordPage>
             <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
-            <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, PodType.Interval)} />
+            <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, ModelId.Interval)} />
             <StyledDoublePane>
                 <StyledPane>
                     <IntervalsCard />
