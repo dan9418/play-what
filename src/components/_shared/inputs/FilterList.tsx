@@ -7,8 +7,8 @@ const StyledFilterList = styled.ul`
    flex-wrap: wrap;
    align-items: center;
    justify-content: center;
-   gap: 16px;
-   padding: 16px;
+   gap: 8px;
+   padding: 16px 0;
 
    button {
         background-color: transparent;

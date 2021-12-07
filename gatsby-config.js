@@ -9,7 +9,8 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/static`,
-      },
+      }
     },
-  ],
+    "gatsby-plugin-use-query-params"
+  ]
 }
