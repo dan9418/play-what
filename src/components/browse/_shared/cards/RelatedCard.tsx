@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { ALL_MODELS } from "../../../../core/models/AllModels";
+import { MASTER_PRESETS } from "../../../../core/models/PodList/PodList.constants";
 import PodListUtils from "../../../../core/models/PodList/PodList.utils";
 import { intervalsState } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
@@ -27,12 +27,10 @@ const StyledRelated = styled.div`
 const RelatedCard: React.FC<any> = () => {
     const intervals = useRecoilValue(intervalsState);
 
-    console.log('dpb xxx', intervals);
-
     if (!intervals) return null;
 
-    const subsets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(intervals.value, preset.value));
-    const supersets = ALL_MODELS.filter(preset => PodListUtils.containsSubset(preset.value, intervals.value));
+    const subsets = MASTER_PRESETS.filter(preset => PodListUtils.containsSubset(intervals.value, preset.value));
+    const supersets = MASTER_PRESETS.filter(preset => PodListUtils.containsSubset(preset.value, intervals.value));
 
     return (
         <Card title="Related">

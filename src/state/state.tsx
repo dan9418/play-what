@@ -45,7 +45,7 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
             }
         ]);
     }, []);
-    console.log('dpb history', history);
+    console.log('pw-history', history);
 
     const popAt = i => setHistory([...history.slice(0, i || 1)]);
 
@@ -59,6 +59,9 @@ const useIntervalsPreset = (presets, id, isList = false) => {
     if (!preset) throw new Error('invalid preset');
 
     setIntervals(preset);
+
+    console.log('pw-preset', preset);
+
     return preset;
 }
 

@@ -5,7 +5,7 @@ import React from "react";
 const PagePropsContext = React.createContext<PageProps>(null);
 
 export const PagePropsContextProvider: React.FC<{ value: any }> = ({ children, value }) => {
-    console.log('dpb page-props', value);
+    console.log('pw-page-props', value);
     return (
         <PagePropsContext.Provider value={value}>
             {children}

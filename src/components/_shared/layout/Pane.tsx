@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const StyledDoublePane = styled.div`
-	padding: 16px;
+	padding: 16px 0;
 
 	display: grid;
 	gap: 16px;

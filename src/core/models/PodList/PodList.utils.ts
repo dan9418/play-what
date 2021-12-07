@@ -1,10 +1,10 @@
 import ToneUtils from '../../tone/Tone.utils';
 import TuningUtils from '../../tuning/Tuning.utils';
+import { ICompleteModelDetails, IModelConfig, IPod, ModelId } from '../Model.constants';
 import IntervalUtils from '../Pod/Interval/Interval.utils';
 import NoteUtils from '../Pod/Note/Note.utils';
 import PodUtils from '../Pod/Pod.utils';
-import { ICompleteModelDetails, IPod, IModelConfig, ModelId } from '../Model.constants';
-import MASTER_PRESETS from './PodList.constants';
+import { MASTER_PRESETS } from './PodList.constants';
 
 // Equality
 

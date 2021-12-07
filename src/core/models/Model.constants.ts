@@ -10,7 +10,7 @@ export interface IModelConfig {
 	id: string;
 	modelId: ModelId;
 	name: string;
-	value: number[] | number[][],
+	value: any,
 	tags: Tag[],
 	voicings?: any[]
 	type?: ModelId
