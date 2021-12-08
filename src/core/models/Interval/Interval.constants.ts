@@ -34,6 +34,8 @@ export enum IntervalId {
 	s13 = 'sharp-13',
 }
 
+console.log('dpb', IntervalId)
+
 const formatPreset = (id: IntervalId, name: string, value: IPod, tags = []): IModelConfig =>
 	({ id, name, value, tags, modelId: ModelId.Note });
 

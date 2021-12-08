@@ -2,7 +2,8 @@ import NumberUtils from '../general/Number.utils';
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
 import IntervalUtils from './Interval/Interval.utils';
-import { ICompleteModelDetails, IModelConfig, IPod, MASTER_PRESETS, MAX_POD, ModelId } from './Model.constants';
+import { ICompleteModelDetails, IModelConfig, IPod, MAX_POD, ModelId } from './Model.constants';
+import { MASTER_PRESETS } from './Model.presets';
 import NoteUtils from './Note/Note.utils';
 
 // Equality
@@ -201,7 +202,6 @@ const getDetails = (root: IPod, intervals: IPod[]): ICompleteModelDetails => {
         }
     }
 }
-
 
 export default {
     addPod,
