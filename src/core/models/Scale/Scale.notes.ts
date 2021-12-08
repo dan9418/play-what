@@ -1,9 +1,9 @@
 // import { INTERVAL_PRESET_MAP } from '../pod/Interval';
 // import index from '../index/PodIndex';
 // import chord from './Chord';
-// import PodList from './PodList';
+// import Model from './Model';
 
-// class Scale extends PodList {
+// class Scale extends Model {
 // 	static getMode({ A, d }) {
 // 		return chord.getInversion({ A, n: d });
 // 		/*let mode = [...A];
@@ -46,7 +46,7 @@
 // 	};
 
 // 	static transpose({ A, b }) {
-// 		return PodList.addPod({ A, b });
+// 		return Model.addPod({ A, b });
 // 	}
 
 // 	getName() {
@@ -70,7 +70,7 @@
 // }
 
 // export const getScaleName = (scale: IPod[], options: IScaleNameOptions = {}): string => {
-// 	const preset = SCALE_PRESETS.find(v => PodListUtils.areEqual(scale, v.value));
+// 	const preset = SCALE_PRESETS.find(v => ModelUtils.areEqual(scale, v.value));
 // 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
 // 	return presetName;
 // };

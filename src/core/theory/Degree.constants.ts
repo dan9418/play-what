@@ -1,4 +1,4 @@
-import { IModelConfig } from "../models/Model.constants";
+import { IModelConfig } from "../models.constants";
 
 export const MAX_DEGREE = 7
 

@@ -1,7 +1,7 @@
 
 // import React, { useState } from 'react';
 // import { PresetTag, PRESET_TYPES } from '../../core/models/Model.constants';
-// import MASTER_PRESETS from '../../core/models/PodList/PodList.constants';
+// import MASTER_PRESETS from '../../core/models/Model.constants';
 // import InputRow from '../InputRow';
 // import DropdownInput from './DropdownInput';
 

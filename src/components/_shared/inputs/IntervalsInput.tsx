@@ -1,7 +1,7 @@
 
 import React from "react";
 import { InputId } from "../../core/models/Model.constants";
-import { MASTER_PRESETS } from "../../core/models/PodList/PodList.constants";
+import { MASTER_PRESETS } from "../../core/models/Model.constants";
 import TieredDropdownInput, { UNSELECTED_KEY } from "./TieredDropdownInput";
 
 interface IInputProps {

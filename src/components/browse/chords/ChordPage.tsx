@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { ModelId } from "../../../core/models/Model.constants";
-import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import ModelUtils from "../../../core/models/Model.utils";
 import { useChordPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
@@ -25,7 +25,7 @@ const ChordPage: React.FC<any> = props => {
     return (
         <StyledChordPage>
             <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
-            <PageTitle title={chord.name} subtitle={PodListUtils.getName(chord.value, ModelId.Interval)} />
+            <PageTitle title={chord.name} subtitle={ModelUtils.getName(chord.value, ModelId.Interval)} />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard />

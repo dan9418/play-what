@@ -1,9 +1,8 @@
 import ColorUtils from "../../../core/color/Color.utils";
+import IntervalUtils from "../../../core/models/Interval/Interval.utils";
 import { ICompleteModelDetails, IPod, ModelId } from "../../../core/models/Model.constants";
-import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
-import NoteUtils from "../../../core/models/Pod/Note/Note.utils";
-import PodUtils from "../../../core/models/Pod/Pod.utils";
-import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import ModelUtils from "../../../core/models/Model.utils";
+import NoteUtils from "../../../core/models/Note/Note.utils";
 
 interface IPodProps {
     bgColor: string;
@@ -32,7 +31,7 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const intervals = modelDetails.intervals.value as IPod[];
 
     // Find pod
-    const podIndex = PodListUtils.getIndexOfPodAtPitch(notes, noteIndex, options.matchOctave);
+    const podIndex = ModelUtils.getIndexOfPodAtPitch(notes, noteIndex, options.matchOctave);
     if (podIndex === null) return null;
 
     // Isolate pod
@@ -42,8 +41,8 @@ const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, use
     const isExtended = IntervalUtils.isExtendedInterval(interval);
 
     // Reduce pod
-    const reducedNote = PodUtils.reduce(note);
-    const reducedInterval = PodUtils.reduce(interval);
+    const reducedNote = ModelUtils.reduce(note);
+    const reducedInterval = ModelUtils.reduce(interval);
 
     // Get text
     let text = '';

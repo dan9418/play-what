@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { ModelId } from "../../../core/models/Model.constants";
-import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import ModelUtils from "../../../core/models/Model.utils";
 import { useScalePreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
@@ -24,7 +24,7 @@ const ScalePage: React.FC<any> = props => {
     return (
         <StyledScalePage>
             <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
-            <PageTitle title={scale.name} subtitle={PodListUtils.getName(scale.value, ModelId.Interval)} />
+            <PageTitle title={scale.name} subtitle={ModelUtils.getName(scale.value, ModelId.Interval)} />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard />

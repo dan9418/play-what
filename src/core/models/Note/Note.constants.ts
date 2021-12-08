@@ -1,5 +1,5 @@
-import { IPod } from "../../Model.constants";
-import { IModelConfig, ModelId } from './../../Model.constants';
+import { IPod } from "../Model.constants";
+import { IModelConfig, ModelId } from './../Model.constants';
 
 export enum NoteId {
 	C = 'C',

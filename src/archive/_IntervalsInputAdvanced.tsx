@@ -4,7 +4,7 @@
 // import ModalSection from '../../../app/src/components/shared/modal/ModalSection';
 // import useEditProps from '../../../app/src/hooks/useEditProps';
 // import { HELP_INTERVALS_EDIT } from '../../../app/src/utils/help';
-// import IntervalUtils from '../../../core/src/models/Pod/Interval/Interval.utils';
+// import IntervalUtils from '../../../core/src/models/Interval/Interval.utils';
 // import { StyledHighlightBox } from '../HighlightBox';
 // import IntervalExtensionsInput from './IntervalExtensionsInput';
 // import IntervalsInputTable from './IntervalsInputTable';

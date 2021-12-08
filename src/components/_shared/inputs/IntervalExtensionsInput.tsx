@@ -1,9 +1,9 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { IntervalId, INTERVAL_PRESET_MAP } from '../../core/models/Pod/Interval/Interval.constants';
-import PodUtils from '../../core/models/Pod/Pod.utils';
-import PodListUtils from '../../core/models/PodList/PodList.utils';
+import { IntervalId, INTERVAL_PRESET_MAP } from '../../core/models/Interval/Interval.constants';
+import ModelUtils from '../../core/models/Model.utils';
+import ModelUtils from '../../core/models/Model.utils';
 
 const StyledIntervalTable = styled.table`
     width: 100%;
@@ -68,7 +68,7 @@ const StyledIntervalTable = styled.table`
 
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 
-    const intervalIndex = intervals.findIndex(ivl => PodUtils.areEqual(ivl, preset.value));
+    const intervalIndex = intervals.findIndex(ivl => ModelUtils.areEqual(ivl, preset.value));
     const intervalIsActive = intervalIndex !== -1;
     const indexOfIvlWithSamePitch = intervals.findIndex(ivl => ivl[0] === preset.value[0]);
     const pitchClassIsTaken = indexOfIvlWithSamePitch !== -1;
@@ -97,7 +97,7 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
         // Add new interval
         else {
             const newIvls = [...intervals, preset.value];
-            setIntervals(PodListUtils.sort(newIvls));
+            setIntervals(ModelUtils.sort(newIvls));
         }
     }
 

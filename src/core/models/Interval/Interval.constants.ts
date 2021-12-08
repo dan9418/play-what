@@ -1,4 +1,4 @@
-import { IModelConfig, IntervalTag, IPod, ModelId } from "../../Model.constants";
+import { IModelConfig, IntervalTag, IPod, ModelId } from "../Model.constants";
 
 export enum IntervalId {
 	P1 = 'unison',

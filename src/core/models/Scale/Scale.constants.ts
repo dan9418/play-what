@@ -1,5 +1,5 @@
-import { IModelConfig, ModelId, ScaleTag } from '../../Model.constants';
-import { IntervalId, INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
+import { IntervalId, INTERVAL_PRESET_MAP } from "../Interval/Interval.constants";
+import { IModelConfig, ModelId, ScaleTag } from '../Model.constants';
 
 export enum ScaleId {
 	Ionian = 'ionian',

@@ -1,5 +1,5 @@
-// import { IPod } from '@pw/core/src/models/Model.constants';
-// import PodUtils from '@pw/core/src/models/Pod/Pod.utils';
+// import { IPod } from '@pw/core/src/models.constants';
+// import ModelUtils from '@pw/core/src/Model.utils';
 // import React from "react";
 // import styled from 'styled-components';
 // import viewerUtils from '../viewer.utils';
@@ -88,7 +88,7 @@
 // 		let fgColor = '#333';
 
 // 		const indexPod: IPod = [i, 0];
-// 		const pitchClass = PodUtils.getPitchClass(indexPod);
+// 		const pitchClass = ModelUtils.getPitchClass(indexPod);
 
 // 		let name = null;
 // 		if (hasDegree) {
@@ -101,7 +101,7 @@
 // 		const isMiddleC = i === 0;
 // 		const isOctave = pitchClass === 9;
 
-// 		const octave = isOctave ? PodUtils.getOctave(indexPod, true) : null;
+// 		const octave = isOctave ? ModelUtils.getOctave(indexPod, true) : null;
 
 // 		list.push(
 // 			<StyledDot

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import IntervalUtils from "../../../core/models/Pod/Interval/Interval.utils";
+import IntervalUtils from "../../../core/models/Interval/Interval.utils";
 import { useIntervalPreset } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";

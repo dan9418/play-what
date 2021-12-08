@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import { ModelId, ScaleTag } from "../../../core/models/Model.constants";
-import PodListUtils from "../../../core/models/PodList/PodList.utils";
-import { SCALE_PRESETS } from "../../../core/models/PodList/Scale/Scale.constants";
+import ModelUtils from "../../../core/models/Model.utils";
+import { SCALE_PRESETS } from "../../../core/models/Scale/Scale.constants";
 import SearchPage from "../_shared/SearchPage";
 
 const ScalesPage: React.FC<any> = props => {
@@ -22,7 +22,7 @@ const ScalesPage: React.FC<any> = props => {
                 return [
                     <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    PodListUtils.getName(preset.value, ModelId.Interval)
+                    ModelUtils.getName(preset.value, ModelId.Interval)
                 ]
             }}
             {...props}

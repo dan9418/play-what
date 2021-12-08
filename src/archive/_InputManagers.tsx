@@ -1,7 +1,7 @@
 // import React, { Fragment } from "react";
 // import { InputId } from '../../../../core/models/Model.constants';
-// import NoteUtils from "../../../../core/models/Pod/Note/Note.utils";
-// import PodUtils from "../../../../core/models/Pod/Pod.utils";
+// import NoteUtils from "../../../../core/models/Note/Note.utils";
+// import ModelUtils from "../../../../core/models/Model.utils";
 // import ButtonInputRow from "../../../../ui/inputs/ButtonInputRow";
 // import DropdownInput from '../../../../ui/inputs/DropdownInput';
 // import { IntervalsInput } from '../../../../ui/inputs/IntervalsInput';
@@ -85,9 +85,9 @@
 
 
 // export const DegreeInput: React.FC<IInputProps> = ({ value, setValue }) => {
-//     const degree = PodUtils.getDegree(value);
+//     const degree = ModelUtils.getDegree(value);
 //     const accidental = NoteUtils.getAccidentalOffset(value);
-//     const octave = PodUtils.getOctave(value);
+//     const octave = ModelUtils.getOctave(value);
 
 //     const setDegree = d => {
 //         const root = NoteUtils.createPod(d, accidental, octave);
@@ -133,9 +133,9 @@
 // };
 
 // export const AccidentalInput: React.FC<IInputProps> = ({ value, setValue }) => {
-//     const degree = PodUtils.getDegree(value);
+//     const degree = ModelUtils.getDegree(value);
 //     const accidental = NoteUtils.getAccidentalOffset(value);
-//     const octave = PodUtils.getOctave(value);
+//     const octave = ModelUtils.getOctave(value);
 
 //     const setAccidental = a => {
 //         const root = NoteUtils.createPod(degree, a, octave);

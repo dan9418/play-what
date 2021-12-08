@@ -1,5 +1,5 @@
-import { ChordTag, IModelConfig, ModelId } from '../../Model.constants';
-import { IntervalId, INTERVAL_PRESET_MAP } from "../../Pod/Interval/Interval.constants";
+import { ChordTag, IModelConfig, ModelId } from '../Model.constants';
+import { IntervalId, INTERVAL_PRESET_MAP } from "../Interval/Interval.constants";
 
 export enum ChordId {
 	MajTriad = 'maj-triad',

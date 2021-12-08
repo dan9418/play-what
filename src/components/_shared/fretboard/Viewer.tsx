@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import PodListUtils from "../../../core/models/PodList/PodList.utils";
+import ModelUtils from "../../../core/models/Model.utils";
 import { intervalsState, rootState } from "../../../state/state";
 import Fretboard from "./Fretboard";
 
@@ -20,7 +20,7 @@ const Viewer: React.FC<any> = props => {
     const [intervals, setIntervals] = useRecoilState(intervalsState);
     const [root, setRoot] = useRecoilState(rootState);
 
-    const details = PodListUtils.getDetails(root ? root.value as any : [0, 0], (root && intervals) ? intervals.value as any : []);
+    const details = ModelUtils.getDetails(root ? root.value as any : [0, 0], (root && intervals) ? intervals.value as any : []);
 
     return (
         <Fretboard {...props} details={details} />

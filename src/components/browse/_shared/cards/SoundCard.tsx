@@ -1,7 +1,7 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import PodListUtils from "../../../../core/models/PodList/PodList.utils";
+import ModelUtils from "../../../../core/models/Model.utils";
 import { intervalsState } from "../../../../state/state";
 import ButtonInput from "../../../_shared/inputs/ButtonInput";
 import Card from "../../../_shared/ui/Card";
@@ -24,7 +24,7 @@ const SoundCard: React.FC<any> = () => {
     return (
         <Card title="Sound">
             <StyledSoundCard>
-                <ButtonInput onClick={() => PodListUtils.playSound(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
+                <ButtonInput onClick={() => ModelUtils.playSound(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
             </StyledSoundCard>
         </Card>
     );

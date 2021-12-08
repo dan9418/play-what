@@ -1,9 +1,9 @@
-import NumberUtils from "../../../general/Number.utils";
-import { DEGREE_PRESETS } from "../../../theory/Degree.constants";
-import { DEFAULT_PITCH_COLOR_SCHEME } from "../../../theory/Pitch.constants";
-import { ROOT_SCALE } from "../../../theory/Theory.constants";
-import PodUtils from "../Pod.utils";
-import { IPod } from '../../Model.constants';
+import NumberUtils from "../../general/Number.utils";
+import { DEGREE_PRESETS } from "../../theory/Degree.constants";
+import { DEFAULT_PITCH_COLOR_SCHEME } from "../../theory/Pitch.constants";
+import { ROOT_SCALE } from "../../theory/Theory.constants";
+import { IPod } from '../Model.constants';
+import ModelUtils from "../Model.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 const getAccidentalOffset = (pod: IPod): number => {
@@ -64,13 +64,13 @@ interface INoteNameParts {
 }
 
 export const getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
-	const reducedValue = PodUtils.reduce(note);
+	const reducedValue = ModelUtils.reduce(note);
 
 	const d = reducedValue[1];
 	const offset = getAccidentalOffset(reducedValue);
 	const accidental = getAccidentalString(offset);
 	const spelling = DEGREE_PRESETS[d].name;
-	const octave = PodUtils.getOctave(note, true);
+	const octave = ModelUtils.getOctave(note, true);
 	return { spelling, accidental, octave };
 }
 

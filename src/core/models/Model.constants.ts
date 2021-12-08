@@ -1,3 +1,8 @@
+import { MAX_DEGREE, ROOT_DEGREE } from "../theory/Degree.constants";
+import { MAX_PITCH, ROOT_PITCH } from "../theory/Pitch.constants";
+import { CHORD_PRESETS } from "./Chord/Chord.constants";
+import { INTERVAL_PRESETS } from "./Interval/Interval.constants";
+import { SCALE_PRESETS } from "./Scale/Scale.constants";
 
 export enum ModelId {
 	Note = 'notes',
@@ -92,3 +97,16 @@ export interface ICompleteModelDetails {
 	intervals: IModelDetails;
 	notes: IModelDetails;
 }
+
+const podToPodList = (podPresets: IModelConfig[]): IModelConfig[] =>
+	podPresets.map(preset => ({ ...preset, value: [preset.value] as any }))
+
+export const MASTER_PRESETS: IModelConfig[] = [
+	...podToPodList(INTERVAL_PRESETS),
+	...CHORD_PRESETS,
+	...SCALE_PRESETS
+];
+
+export const MAX_POD: IPod = [MAX_PITCH, MAX_DEGREE];
+
+export const DEFAULT_POD: IPod = [ROOT_PITCH, ROOT_DEGREE];
