@@ -24,7 +24,7 @@ const SoundCard: React.FC<any> = () => {
     return (
         <Card title="Sound">
             <StyledSoundCard>
-                <ButtonInput onClick={() => ModelUtils.playSound(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
+                <ButtonInput onClick={() => ModelUtils.playSoundList(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
             </StyledSoundCard>
         </Card>
     );

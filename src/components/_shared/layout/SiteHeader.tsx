@@ -89,7 +89,7 @@ const StyledSiteHeader = styled.div`
 	}
 `;
 
-const getLinkProps = id => ({ to: `/${id}`, className: window && window.location.pathname.includes(id) ? 'active' : undefined })
+const getLinkProps = id => ({ to: `/${id}`, className: typeof window !== 'undefined' && window.location.pathname.includes(id) ? 'active' : undefined })
 
 const SiteHeader: React.FC = () => {
 	return (
