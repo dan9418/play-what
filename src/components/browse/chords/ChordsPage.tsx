@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
-import { ChordTag, ModelId } from "../../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../../core/models/Chord.constants";
-import ModelUtils from "../../../core/models/Model.utils";
+import { ChordTag, ModelId } from "@pw-core/models/Model.constants";
+import { CHORD_PRESETS } from "@pw-core/models/Chord.constants";
+import ModelUtils from "@pw-core/models/Model.utils";
 import SearchPage from "../_shared/SearchPage";
 
 const ChordsPage: React.FC<any> = props => {

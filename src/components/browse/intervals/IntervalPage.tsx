@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import IntervalSpan from "../../../core/models/Interval";
+import IntervalSpan from "@pw-core/models/Interval";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";

@@ -18,6 +18,7 @@
   "dependencies": {
     "color": "^4.0.2",
     "gatsby": "^4.2.0",
+    "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^2.2.0",
     "gatsby-plugin-sass": "^5.2.0",
     "gatsby-plugin-sharp": "^4.2.0",

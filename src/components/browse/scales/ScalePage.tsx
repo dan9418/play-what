@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Scale from "../../../core/models/Scale";
+import Scale from "@pw-core/models/Scale";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";

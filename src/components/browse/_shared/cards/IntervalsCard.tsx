@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import IntervalSpan from "../../../../core/models/Interval";
+import IntervalSpan from "@pw-core/models/Interval";
 import Card from "../../../_shared/ui/Card";
 
 const StyledIntervals = styled.div`

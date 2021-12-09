@@ -1,7 +1,7 @@
 
 // import React from "react";
-// import { MASTER_PRESETS } from "../../../core/models/Model.presets";
-// import { InputId } from "../../../core/models/Model.constants";
+// import { MASTER_PRESETS } from "@pw-core/models/Model.presets";
+// import { InputId } from "@pw-core/models/Model.constants";
 // import TieredDropdownInput, { UNSELECTED_KEY } from "./TieredDropdownInput";
 
 // interface IInputProps {

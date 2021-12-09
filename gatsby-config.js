@@ -1,9 +1,20 @@
+const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Your Site Name`,
+    title: `Play What`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@pw-core": path.resolve(__dirname, 'src/core'),
+          "@components": path.resolve(__dirname, 'src/core')
+        },
+        extensions: []
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

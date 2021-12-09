@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Chord from "../../../core/models/Chord";
+import Chord from "@pw-core/models/Chord";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";

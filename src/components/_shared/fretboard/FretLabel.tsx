@@ -1,8 +1,8 @@
 
 import * as React from "react";
 import styled from "styled-components";
-import ToneUtils from "../../../core/tone/Tone.utils";
-import TuningUtils from "../../../core/tuning/Tuning.utils";
+import ToneUtils from "@pw-core/tone/Tone.utils";
+import TuningUtils from "@pw-core/tuning/Tuning.utils";
 import { IFretLabelProps } from "./Fretboard.defaults";
 import viewerUtils from "./Viewer.utils";
 

@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { MASTER_PRESETS } from "../../../../core/models/Model.presets";
-import ModelUtils from "../../../../core/models/Model.utils";
+import { MASTER_PRESETS } from "@pw-core/models/Model.presets";
+import ModelUtils from "@pw-core/models/Model.utils";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
