@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState } from 'recoil';
+import { NOTE_PRESETS } from '../core/models/Note.constants';
+import { useQueryParam, StringParam } from "use-query-params"
 
 interface IHistoryEntry {
     id: string;
@@ -35,14 +37,15 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
     return [history, popAt];
 }
 
-/*export const useRootParam = () => {
-    const [root, setRoot] = useRecoilState(rootState);
+export const useRootParam = (getPreset = false) => {
+
     const [rootParam, setRootParam] = useQueryParam("root", StringParam);
 
-    useEffect(() => {
-        if (!rootParam) return;
-        const note = NOTE_PRESETS.find(p => p.id.toLowerCase() === rootParam.toLowerCase());
-        if (!note) throw new Error('Invalid root param');
-        setRoot(note);
-    }, [rootParam]);
-}*/
+    if (getPreset) {
+        return [];
+        //return NOTE_PRESETS.find(p => p.id.toLowerCase() === rootParam.toLowerCase());
+    }
+    else {
+        return [rootParam, setRootParam]
+    }
+}

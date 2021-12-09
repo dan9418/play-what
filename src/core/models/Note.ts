@@ -8,7 +8,9 @@ export default class Note {
 
     constructor(id: NoteId) {
         const preset = NOTE_PRESET_MAP.get(id);
-        if (!preset) throw new Error('Unknown interval id');
+        console.log('dpb preset', id);
+        if (!preset) throw new Error(`Unknown note id: ${id}`);
+
 
         this.preset = preset;
     }
@@ -22,7 +24,8 @@ export default class Note {
     }
 
     static fromValue = (value: IPod) => {
-        const preset = NOTE_PRESETS.find(p => ModelUtils.areEqual(p.value, value));
+        console.log('dpb xxx', value);
+        const preset = NOTE_PRESETS.find(p => ModelUtils.areEqual(p.value, ModelUtils.reduce(value)));
         if (!preset) throw new Error('Unknown note value');
         return new Note(preset.id as NoteId);
     }

@@ -2,10 +2,12 @@ import { ChordId, CHORD_PRESETS, CHORD_PRESET_MAP } from './Chord.constants';
 import { IPod, ModelId } from './Model.constants';
 import { MASTER_PRESETS } from './Model.presets';
 import ModelUtils from './Model.utils';
+import Note from './Note';
 
 export default class Chord {
 
     preset: any;
+    rootPreset: any;
 
     constructor(id: ChordId) {
         const preset = CHORD_PRESET_MAP.get(id);
@@ -32,6 +34,19 @@ export default class Chord {
 
     getSupersets = () => {
         return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(preset.value, this.preset.value));
+    }
+
+    applyRoot = (root) => {
+        this.rootPreset = new Note(root).preset;
+        return this;
+    }
+
+    getNoteListPods = () => {
+        return ModelUtils.addPodList(this.rootPreset.value, this.preset.value);
+    }
+
+    getNoteListClasses = () => {
+        return this.getNoteListPods().map(pod => Note.fromValue(pod));
     }
 
     static fromValue = (value: IPod[]) => {

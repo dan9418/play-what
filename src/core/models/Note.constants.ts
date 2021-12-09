@@ -2,27 +2,27 @@ import { IPod } from "./Model.constants";
 import { IModelConfig, ModelId } from './Model.constants';
 
 export enum NoteId {
-	C = 'C',
-	Cs = 'Cs',
-	Db = 'Db',
-	D = 'D',
-	Ds = 'Ds',
-	Eb = 'Eb',
-	E = 'E',
-	Es = 'Es',
-	Fb = 'Fb',
-	F = 'F',
-	Fs = 'Fs',
-	Gb = 'Gb',
-	G = 'G',
-	Gs = 'Gs',
-	Ab = 'Ab',
-	A = 'A',
-	As = 'As',
-	Bb = 'Bb',
-	B = 'B',
-	Bs = 'Bs',
-	Cb = 'Cb'
+	C = 'c',
+	Cs = 'c-sharp',
+	Db = 'd-flat',
+	D = 'd',
+	Ds = 'd-sharp',
+	Eb = 'e-flat',
+	E = 'e',
+	Es = 'e-sharp',
+	Fb = 'f-flat',
+	F = 'f',
+	Fs = 'f-sharp',
+	Gb = 'g-flat',
+	G = 'g',
+	Gs = 'g-sharp',
+	Ab = 'a-flat',
+	A = 'a',
+	As = 'a-sharp',
+	Bb = 'b-flat',
+	B = 'b',
+	Bs = 'b-sharp',
+	Cb = 'c-flat'
 }
 
 const formatPreset = (id: NoteId, name: string, value: IPod, tags = []): IModelConfig =>
@@ -53,6 +53,8 @@ export const NOTE_PRESET_MAP = new Map<NoteId, IModelConfig>([
 ]);
 
 export const NOTE_PRESETS = Array.from(NOTE_PRESET_MAP).map(([k, v]) => v);
+
+console.log('dpb preset', NOTE_PRESETS);
 
 interface IAccidental {
 	id: string;
