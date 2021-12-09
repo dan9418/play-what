@@ -31,7 +31,7 @@ const formatPreset = (id: ChordId, name: string, intervalIds: IntervalId[], tags
 		value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value) as any,
 		tags,
 		voicings: [],
-		modelId: ModelId.Note
+		modelId: ModelId.Chord
 	}
 };
 

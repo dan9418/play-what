@@ -1,10 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { NOTE_PRESETS } from "../../../../core/models/Note.constants";
 import ModelUtils from "../../../../core/models/Model.utils";
-import { intervalsState, rootState } from "../../../../state/state";
+import { NOTE_PRESETS } from "../../../../core/models/Note.constants";
 import Card from "../../../_shared/ui/Card";
 
 const StyledNotes = styled.div`
@@ -18,12 +16,9 @@ const StyledNotes = styled.div`
 
 const NotesCard: React.FC<any> = () => {
 
-    const [root, setRoot] = useRecoilState(rootState);
-    const [intervals, setIntervals] = useRecoilState(intervalsState);
+    return null;
 
-    if (!intervals || !root) return null;
-
-    const notes = ModelUtils.addPodList(root.value, intervals.value);
+    const notes = null;
 
     return (
         <Card title="Notes">

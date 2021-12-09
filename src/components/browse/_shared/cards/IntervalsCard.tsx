@@ -1,11 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { INTERVAL_PRESETS } from "../../../../core/models/Interval.constants";
-import IntervalUtils from "../../../../core/models/Interval.utils";
-import ModelUtils from "../../../../core/models/Model.utils";
-import { intervalsState } from "../../../../state/state";
+import IntervalSpan from "../../../../core/models/Interval";
 import Card from "../../../_shared/ui/Card";
 
 const StyledIntervals = styled.div`
@@ -17,22 +13,19 @@ const StyledIntervals = styled.div`
 `;
 
 
-const IntervalsCard: React.FC<any> = () => {
+const IntervalsCard: React.FC<any> = ({ model }) => {
 
-    const [intervals, setIntervals] = useRecoilState(intervalsState);
-
-    if (!intervals) return null;
+    const intervals = model.getIntervalListPods();
 
     return (
         <Card title="Intervals">
             <StyledIntervals>
                 <ul>
-                    {intervals.value.map(ivl => {
-                        const preset = INTERVAL_PRESETS.find(p => ModelUtils.areEqual(p.value, ivl));
-                        if (!preset) return null;
+                    {intervals.map(ivl => {
+                        const interval = IntervalSpan.fromValue(ivl);
                         return (
-                            <li key={preset.id}>
-                                <Link to={`/browse/intervals/${preset.id}`}>{IntervalUtils.getName(ivl)}</Link>
+                            <li key={interval.preset.id}>
+                                <Link to={`/browse/intervals/${interval.preset.id}`}>{interval.getName()}</Link>
                             </li>
                         );
                     })}

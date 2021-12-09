@@ -1,8 +1,8 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
+import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 import { IModelConfig, IPod } from './Model.constants';
 import ModelUtils from "./Model.utils";
-import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
 
 const getIntervalOffset = (pod: IPod, coreIvl: IModelConfig) => {
 	return coreIvl.value[0] - pod[0];
@@ -14,12 +14,7 @@ const getPodColor = (pod: IPod) => {
 	return DEFAULT_DEGREE_COLOR_SCHEME[d];
 }
 
-
-interface IIntervalNameOptions {
-	useLongName?: boolean;
-}
-
-export const getName = (interval: IPod, options: IIntervalNameOptions = {}): string => {
+export const getName = (interval: IPod): string => {
 	const reduced = ModelUtils.reduce(interval);
 
 	const [noteIndex, d] = reduced;

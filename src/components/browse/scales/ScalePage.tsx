@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { ModelId } from "../../../core/models/Model.constants";
-import ModelUtils from "../../../core/models/Model.utils";
-import { useScalePreset } from "../../../state/state";
+import Scale from "../../../core/models/Scale";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -19,21 +17,21 @@ const StyledScalePage = styled(StyledPageBody)`
 
 
 const ScalePage: React.FC<any> = props => {
-    const scale = useScalePreset(props.params.id);
+    const scale = new Scale(props.params.id);
 
     return (
         <StyledScalePage>
-            <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
-            <PageTitle title={scale.name} subtitle={ModelUtils.getName(scale.value, ModelId.Interval)} />
+            <BreadcrumbList id={scale.preset.id} name={scale.preset.name} path={props.path} />
+            <PageTitle title={scale.preset.name} subtitle={scale.getIntervalListString()} />
             <StyledDoublePane>
                 <StyledPane>
-                    <RootCard />
-                    <IntervalsCard />
-                    <SoundCard />
+                    <RootCard model={scale} />
+                    <IntervalsCard model={scale} />
+                    <SoundCard model={scale} />
                 </StyledPane>
                 <StyledPane>
-                    <ViewerCard />
-                    <RelatedCard />
+                    <ViewerCard model={scale} />
+                    <RelatedCard model={scale} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledScalePage >

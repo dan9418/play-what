@@ -37,7 +37,7 @@ export enum IntervalId {
 console.log('dpb', IntervalId)
 
 const formatPreset = (id: IntervalId, name: string, value: IPod, tags = []): IModelConfig =>
-	({ id, name, value, tags, modelId: ModelId.Note });
+	({ id, name, value, tags, modelId: ModelId.Interval });
 
 export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
 	[IntervalId.P1, formatPreset(

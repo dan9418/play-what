@@ -1,7 +1,5 @@
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { intervalsState, rootState } from "../../../state/state";
 import Fretboard from "./Fretboard";
 
 const StyledViewer = styled.div`
@@ -15,9 +13,6 @@ const StyledViewer = styled.div`
 `;
 
 const Viewer: React.FC<any> = props => {
-
-    const [intervals, setIntervals] = useRecoilState(intervalsState);
-    const [root, setRoot] = useRecoilState(rootState);
 
     return null;
 

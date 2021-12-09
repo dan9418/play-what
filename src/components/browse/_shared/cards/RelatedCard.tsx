@@ -1,10 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
-import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
 import { MASTER_PRESETS } from "../../../../core/models/Model.presets";
 import ModelUtils from "../../../../core/models/Model.utils";
-import { intervalsState } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
@@ -24,13 +22,10 @@ const StyledRelated = styled.div`
 `;
 
 
-const RelatedCard: React.FC<any> = () => {
-    const intervals = useRecoilValue(intervalsState);
+const RelatedCard: React.FC<any> = ({ model }) => {
 
-    if (!intervals) return null;
-
-    const subsets = MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(intervals.value, preset.value));
-    const supersets = MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(preset.value, intervals.value));
+    const subsets = model.getSubsets();
+    const supersets = model.getSupersets();
 
     return (
         <Card title="Related">
@@ -38,13 +33,13 @@ const RelatedCard: React.FC<any> = () => {
                 <h3>Subsets</h3>
                 <ul>
                     {subsets.map(s => (
-                        <li key={s.id}><Link to={`/browse/${s.type}/${s.id}`}>{s.name}</Link></li>
+                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
                     ))}
                 </ul>
                 <h3>Supersets</h3>
                 <ul>
                     {supersets.map(s => (
-                        <li key={s.id}><Link to={`/browse/${s.type}/${s.id}`}>{s.name}</Link></li>
+                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
                     ))}
                 </ul>
             </StyledRelated>

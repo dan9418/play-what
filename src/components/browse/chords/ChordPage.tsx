@@ -1,8 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { ModelId } from "../../../core/models/Model.constants";
-import ModelUtils from "../../../core/models/Model.utils";
-import { useChordPreset } from "../../../state/state";
+import Chord from "../../../core/models/Chord";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -18,24 +16,23 @@ const StyledChordPage = styled(StyledPageBody)`
 
 `;
 
-
 const ChordPage: React.FC<any> = props => {
-    const chord = useChordPreset(props.params.id);
+    const chord = new Chord(props.params.id);
 
     return (
         <StyledChordPage>
-            <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
-            <PageTitle title={chord.name} subtitle={ModelUtils.getName(chord.value, ModelId.Interval)} />
+            <BreadcrumbList id={chord.preset.id} name={chord.preset.name} path={props.path} />
+            <PageTitle title={chord.preset.name} subtitle={chord.getIntervalListString()} />
             <StyledDoublePane>
                 <StyledPane>
-                    <RootCard />
-                    <IntervalsCard />
-                    <NotesCard />
-                    <SoundCard />
+                    <RootCard model={chord} />
+                    <IntervalsCard model={chord} />
+                    <NotesCard model={chord} />
+                    <SoundCard model={chord} />
                 </StyledPane>
                 <StyledPane>
-                    <ViewerCard />
-                    <RelatedCard />
+                    <ViewerCard model={chord} />
+                    <RelatedCard model={chord} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledChordPage >

@@ -27,7 +27,7 @@ const formatPreset = (id: ScaleId, name: string, intervalIds: IntervalId[], tags
 	name,
 	value: intervalIds.map(id => INTERVAL_PRESET_MAP.get(id).value) as any,
 	tags,
-	modelId: ModelId.Note
+	modelId: ModelId.Scale
 });
 
 export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
