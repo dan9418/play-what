@@ -1,6 +1,6 @@
 import ColorUtils from "../../../core/color/Color.utils";
 import IntervalUtils from "../../../core/models/Interval/Interval.utils";
-import { ICompleteModelDetails, IPod, ModelId } from "../../../core/models/Model.constants";
+import { IPod, ModelId } from "../../../core/models/Model.constants";
 import ModelUtils from "../../../core/models/Model.utils";
 import NoteUtils from "../../../core/models/Note/Note.utils";
 
@@ -24,7 +24,7 @@ const DEFAULT_POD_PROP_OPTIONS: IPodPropsOptions = {
     labelBy: 'interval'
 }
 
-const getPodProps = (modelDetails: ICompleteModelDetails, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
+const getPodProps = (modelDetails: any, noteIndex: number, userOptions?: IPodPropsOptions): IPodProps | null => {
     const options = { ...DEFAULT_POD_PROP_OPTIONS, ...userOptions };
 
     const notes = modelDetails.notes.value as IPod[];

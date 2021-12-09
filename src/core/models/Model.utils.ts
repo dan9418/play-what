@@ -2,7 +2,7 @@ import NumberUtils from '../general/Number.utils';
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
 import IntervalUtils from './Interval/Interval.utils';
-import { ICompleteModelDetails, IModelConfig, IPod, MAX_POD, ModelId } from './Model.constants';
+import { IModelConfig, IPod, MAX_POD, ModelId } from './Model.constants';
 import { MASTER_PRESETS } from './Model.presets';
 import NoteUtils from './Note/Note.utils';
 
@@ -72,10 +72,6 @@ const getDegree = (pod: IPod): number => {
     return NumberUtils.modulo(pod[1], MAX_POD[1]);
 }
 
-const getX = (pod: IPod): number => {
-    return Math.floor(pod[1] / 7);
-}
-
 // Search
 
 const isPodAtPitch = (pod: IPod, p: number, matchOctave = false): IPod | null => {
@@ -124,30 +120,6 @@ const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
     return true;
 };
 
-/*const getName = (podList: IPod[]): string => {
-    if (podList.length === 0) {
-        return "No Selection";
-    }
-    else if (podList.length === 1) {
-        const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, podList[0]));
-        return ivlPreset.name;
-    }
-    else if (podList.length === 2 && PodUtils.areEqual(podList[0], INTERVAL_PRESET_MAP.get(IntervalId.P1).value)) {
-        const ivlPreset = INTERVAL_PRESETS.find(ivl => PodUtils.areEqual(ivl.value, podList[1]));
-        return ivlPreset.name;
-    }
-    else if (podList.length === 2) {
-        return 'Unknown Interval Pair';
-    }
-    else if (podList.length >= 3 && podList.length < 5) {
-        let qualifier;
-        return 'chord';
-    }
-    else {
-        return 'scale';
-    }
-};*/
-
 const getName = (podList: IPod[], modelId: ModelId): string => {
     const nameFn = modelId === ModelId.Interval ? IntervalUtils.getName : NoteUtils.getName;
     const nameArr = podList.map((pod) => nameFn(pod));
@@ -170,58 +142,29 @@ const findPreset = (podList: IPod[]): IModelConfig | undefined => {
     return MASTER_PRESETS.find(p => areEqualList(p.value, podList));
 }
 
-const getDetails = (root: IPod, intervals: IPod[]): ICompleteModelDetails => {
-
-    const notes = addPodList(root, intervals);
-
-    const rootName = NoteUtils.getName(root);
-    const intervalsName = getName(intervals, ModelId.Interval);
-    const intervalsPreview = getName(intervals, ModelId.Interval);
-    const notesPreview = getName(notes, ModelId.Note);
-
-    const preset = MASTER_PRESETS.find(p => areEqualList(p.value, intervals));
-    const presetName = preset ? preset.name : 'Unknown';
-
-    return {
-        root: {
-            name: rootName,
-            preview: rootName,
-            value: root
-        },
-        intervals: {
-            name: intervalsName,
-            preview: intervalsPreview,
-            value: intervals,
-            formattedName: intervals.length ? presetName : 'None'
-        },
-        notes: {
-            name: `${rootName} ${intervalsName}`,
-            preview: notesPreview,
-            value: notes,
-            formattedName: intervals.length ? `${rootName} ${presetName}` : 'None'
-        }
-    }
-}
-
 export default {
-    addPod,
-    subtractPod,
-    addPodList,
-    getPitchClass,
-    getOctave,
-    getDegree,
-    getX,
-    playSound,
-    playSoundList,
     areEqual,
     areEqualList,
     reduce,
     reduceList,
+    
+    addPod,
+    subtractPod,
+    addPodList,
+
+    getPitchClass,
+    getOctave,
+    getDegree,
+
+    playSound,
+    playSoundList,  
+
     getPodAtPitch,
     getIndexOfPodAtPitch,
+
     containsSubset,
     sort,
+
     getName,
-    findPreset,
-    getDetails
+    findPreset
 };

@@ -82,19 +82,6 @@ export type Tag = IntervalTag | ScaleTag | ChordTag;
 
 export type IPod = [number, number];
 
-export interface IModelDetails {
-	name: string;
-	preview: string;
-	value: IPod | IPod[];
-	formattedName?: string;
-}
-
-export interface ICompleteModelDetails {
-	root: IModelDetails;
-	intervals: IModelDetails;
-	notes: IModelDetails;
-}
-
 export const MAX_POD: IPod = [MAX_PITCH, MAX_DEGREE];
 
 export const DEFAULT_POD: IPod = [ROOT_PITCH, ROOT_DEGREE];
