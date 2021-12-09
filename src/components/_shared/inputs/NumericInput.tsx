@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "../../core/models/Model.constants";
 import ButtonInput from "./ButtonInput";
+import { IInputProps } from "./Input.constants";
 
 export const StyledNumbericInput = styled.div`
 	display: flex;

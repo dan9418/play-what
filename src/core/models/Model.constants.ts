@@ -18,22 +18,6 @@ export interface IModelConfig {
 	type?: ModelId
 }
 
-export enum InputId {
-	Numeric,
-	Dropdown,
-	Switch,
-	Range,
-	ButtonRow,
-	Degree,
-	Accidental,
-	Intervals
-}
-
-export interface IInputProps {
-	value: any;
-	setValue: Function
-}
-
 export enum ScaleTag {
 	Pentatonic = 'pentatonic',
 	Hexatonic = 'hexatonic',

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "../../core/models/Model.constants";
+import { IInputProps } from "./Input.constants";
 
 const StyledSwitch = styled.button`
 	border: none;
