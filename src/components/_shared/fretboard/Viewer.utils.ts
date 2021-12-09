@@ -1,8 +1,8 @@
 import ColorUtils from "../../../core/color/Color.utils";
-import IntervalUtils from "../../../core/models/Interval/Interval.utils";
+import IntervalUtils from "../../../core/models/Interval.utils";
 import { IPod, ModelId } from "../../../core/models/Model.constants";
 import ModelUtils from "../../../core/models/Model.utils";
-import NoteUtils from "../../../core/models/Note/Note.utils";
+import NoteUtils from "../../../core/models/Note.utils";
 
 interface IPodProps {
     bgColor: string;

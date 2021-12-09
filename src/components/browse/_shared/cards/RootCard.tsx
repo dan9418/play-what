@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { NOTE_PRESETS } from "../../../../core/models/Note/Note.constants";
+import { NOTE_PRESETS } from "../../../../core/models/Note.constants";
 import { useRootParam } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
 

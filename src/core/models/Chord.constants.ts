@@ -1,5 +1,5 @@
-import { ChordTag, IModelConfig, ModelId } from '../Model.constants';
-import { IntervalId, INTERVAL_PRESET_MAP } from "../Interval/Interval.constants";
+import { ChordTag, IModelConfig, ModelId } from './Model.constants';
+import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.constants";
 
 
 console.log('dpb', INTERVAL_PRESET_MAP, IntervalId)

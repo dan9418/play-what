@@ -1,7 +1,7 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { IntervalId, INTERVAL_PRESET_MAP } from '../../../core/models/Interval/Interval.constants';
+import { IntervalId, INTERVAL_PRESET_MAP } from '../../../core/models/Interval.constants';
 import ModelUtils from '../../../core/models/Model.utils';
 
 const StyledIntervalTable = styled.table`

@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { NOTE_PRESETS } from "../../../../core/models/Note/Note.constants";
+import { NOTE_PRESETS } from "../../../../core/models/Note.constants";
 import ModelUtils from "../../../../core/models/Model.utils";
 import { intervalsState, rootState } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";

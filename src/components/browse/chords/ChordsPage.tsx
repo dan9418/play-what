@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import { ChordTag, ModelId } from "../../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../../core/models/Chord/Chord.constants";
+import { CHORD_PRESETS } from "../../../core/models/Chord.constants";
 import ModelUtils from "../../../core/models/Model.utils";
 import SearchPage from "../_shared/SearchPage";
 

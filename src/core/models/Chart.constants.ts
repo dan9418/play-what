@@ -1,6 +1,6 @@
 import { IDataItem } from "../../../state/state";
-import { ChordId, CHORD_PRESET_MAP } from "../Chord/Chord.constants";
-import { NoteId, NOTE_PRESET_MAP } from "../Note/Note.constants";
+import { ChordId, CHORD_PRESET_MAP } from "../Chord.constants";
+import { NoteId, NOTE_PRESET_MAP } from "../Note.constants";
 import * as CHARTS from './Chart.presets';
 
 export type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];

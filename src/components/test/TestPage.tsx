@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
-import { INTERVAL_PRESETS } from "../../core/models/Interval/Interval.constants";
+import { INTERVAL_PRESETS } from "../../core/models/Interval.constants";
 import { IPod } from "../../core/models/Model.constants";
 import ModelUtils from "../../core/models/Model.utils";
-import { ACCIDENTAL_VALUES } from "../../core/models/Note/Note.constants";
-import NoteUtils from "../../core/models/Note/Note.utils";
+import { ACCIDENTAL_VALUES } from "../../core/models/Note.constants";
+import NoteUtils from "../../core/models/Note.utils";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import THEME from "../../styles/theme";

@@ -1,5 +1,5 @@
-import { ChordId, CHORD_PRESETS } from '../Chord/Chord.constants';
-import { NoteId } from "../Note/Note.constants";
+import { ChordId, CHORD_PRESETS } from '../Chord.constants';
+import { NoteId } from "../Note.constants";
 import { IChartConfig } from "./Chart.constants";
 
 export const ALL_CHORDS_CONFIG: IChartConfig = {

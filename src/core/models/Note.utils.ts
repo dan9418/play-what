@@ -1,9 +1,9 @@
-import NumberUtils from "../../general/Number.utils";
-import { DEGREE_PRESETS } from "../../theory/Degree.constants";
-import { DEFAULT_PITCH_COLOR_SCHEME } from "../../theory/Pitch.constants";
-import { ROOT_SCALE } from "../../theory/Theory.constants";
-import { IPod } from '../Model.constants';
-import ModelUtils from "../Model.utils";
+import NumberUtils from "../general/Number.utils";
+import { DEGREE_PRESETS } from "../theory/Degree.constants";
+import { DEFAULT_PITCH_COLOR_SCHEME } from "../theory/Pitch.constants";
+import { ROOT_SCALE } from "../theory/Theory.constants";
+import { IPod } from './Model.constants';
+import ModelUtils from "./Model.utils";
 import { ACCIDENTAL } from "./Note.constants";
 
 const getAccidentalOffset = (pod: IPod): number => {
