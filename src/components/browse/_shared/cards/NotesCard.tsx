@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { useRootParam } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
 
 const StyledNotes = styled.div`
@@ -15,13 +14,11 @@ const StyledNotes = styled.div`
 
 const NotesCard: React.FC<any> = ({ model }) => {
 
-    const [rootParam, setRootParam] = useRootParam();
-
-    if (!rootParam) return null;
+    if (!model.rootPreset) return null;
 
     console.log('dpb model', model);
 
-    const notes = model.applyRoot(rootParam).getNoteListClasses();
+    const notes = model.getNoteListClasses();
 
     return (
         <Card title="Notes">

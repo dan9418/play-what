@@ -9,11 +9,14 @@ export default class Chord {
     preset: any;
     rootPreset: any;
 
-    constructor(id: ChordId) {
+    constructor(id: ChordId, options = undefined) {
         const preset = CHORD_PRESET_MAP.get(id);
         if (!preset) throw new Error('Unknown chord id');
-
         this.preset = preset;
+
+        if (options && options.root) {
+            this.applyRoot(options.root);
+        }
     }
 
     getName = () => {

@@ -11,13 +11,16 @@ import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import ViewerCard from "../_shared/cards/ViewerCard";
+import { useRootParam } from "../../../state/state";
 
 const StyledChordPage = styled(StyledPageBody)`
 
 `;
 
 const ChordPage: React.FC<any> = props => {
-    const chord = new Chord(props.params.id);
+    const [rootParam, setRootParam] = useRootParam();
+
+    const chord = new Chord(props.params.id, { root: rootParam });
 
     return (
         <StyledChordPage>
