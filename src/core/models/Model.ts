@@ -21,11 +21,13 @@ export default class Model implements IModelConfig {
     }
 
     getSubsets(isList = false) {
-        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(isList ? this.value : [this.value], preset.value));
+        const compareValue = isList ? this.value : [this.value];
+        return MASTER_PRESETS.filter(preset => compareValue.length !== preset.value.length && ModelUtils.containsSubset(compareValue, preset.value));
     }
 
     getSupersets(isList = false) {
-        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(preset.value, isList ? this.value : [this.value]));
+        const compareValue = isList ? this.value : [this.value];
+        return MASTER_PRESETS.filter(preset => compareValue.length !== preset.value.length && ModelUtils.containsSubset(preset.value, compareValue));
     }
 
     static fromValue = (presetArray, subclass, value: any, isList = false) => {
