@@ -110,13 +110,11 @@ export enum ChordId {
 export type PresetId = NoteId | IntervalId | ChordId | ScaleId;
 
 export interface IModelConfig {
-	id: string;
 	modelId: ModelId;
+	id: string;
 	name: string;
 	value: any,
-	tags: Tag[],
-	voicings?: any[]
-	type?: ModelId
+	tags: Tag[]
 }
 
 export enum ScaleTag {

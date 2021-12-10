@@ -1,4 +1,5 @@
-import { ModelId, ScaleTag, SCALE_PRESETS } from "@pw-core/models/Model.presets";
+import { ModelId, ScaleTag } from "@pw-core/models/Model.constants";
+import { SCALE_PRESETS } from "@pw-core/models/Model.presets";
 import ModelUtils from "@pw-core/models/Model.utils";
 import { Link } from "gatsby";
 import React from "react";
