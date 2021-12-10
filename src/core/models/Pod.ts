@@ -11,7 +11,7 @@ export default class Pod extends Model {
         super(presetMap, presetId);
     }
 
-    getIntervalListPods = () => {
+    getIntervalListPods() {
         return [this.value];
     }
 

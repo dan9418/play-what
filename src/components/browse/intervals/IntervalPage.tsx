@@ -20,8 +20,8 @@ const IntervalPage: React.FC<any> = props => {
 
     return (
         <StyledIntervalPage>
-            <BreadcrumbList id={interval.preset.id} name={interval.getName()} path={props.path} />
-            <PageTitle title={interval.preset.name} subtitle={JSON.stringify(interval.preset.value)} />
+            <BreadcrumbList id={interval.id} name={interval.getName()} path={props.path} />
+            <PageTitle title={interval.name} subtitle={JSON.stringify(interval.value)} />
             <StyledDoublePane>
                 <StyledPane>
                     <IntervalsCard model={interval} />

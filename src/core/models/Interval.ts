@@ -1,7 +1,7 @@
 import IntervalUtils from "./Interval.utils";
+import Model from "./Model";
 import { IntervalId, IPod } from './Model.constants';
-import { INTERVAL_PRESETS, INTERVAL_PRESET_MAP, MASTER_PRESETS } from './Model.presets';
-import ModelUtils from './Model.utils';
+import { INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './Model.presets';
 import Pod from "./Pod";
 
 export default class IntervalSpan extends Pod {
@@ -16,14 +16,6 @@ export default class IntervalSpan extends Pod {
         return IntervalUtils.getName(this.value);
     }
 
-    getSubsets = () => {
-        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset([this.value], preset.value));
-    }
-
-    getSupersets = () => {
-        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(preset.value, [this.value]));
-    }
-
-    static fromValue = (value: IPod) => Pod.fromValue(INTERVAL_PRESETS, IntervalSpan, value);
+    static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value);
 
 }

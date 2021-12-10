@@ -1,4 +1,6 @@
 import { IModelConfig, ModelId, PresetId, Tag } from './Model.constants';
+import { MASTER_PRESETS } from './Model.presets';
+import ModelUtils from './Model.utils';
 
 export default class Model implements IModelConfig {
     modelId: ModelId;
@@ -16,5 +18,24 @@ export default class Model implements IModelConfig {
         this.name = preset.name;
         this.tags = preset.tags;
         this.value = preset.value;
+    }
+
+    getSubsets(isList = false) {
+        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(isList ? this.value : [this.value], preset.value));
+    }
+
+    getSupersets(isList = false) {
+        return MASTER_PRESETS.filter(preset => ModelUtils.containsSubset(preset.value, isList ? this.value : [this.value]));
+    }
+
+    static fromValue = (presetArray, subclass, value: any, isList = false) => {
+        const compareValue = isList ? ModelUtils.reduceList(value) : ModelUtils.reduce(value);
+        const compareFn = isList ? ModelUtils.areEqualList : ModelUtils.areEqual;
+        const preset = presetArray.find(p => compareFn(p.value, compareValue as any));
+        if (!preset) {
+            console.error(presetArray[0].modelId, value, isList, presetArray);
+            throw new Error('Unknown model value');
+        }
+        return new subclass(preset.id);
     }
 }

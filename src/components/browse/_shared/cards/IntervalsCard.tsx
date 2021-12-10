@@ -24,8 +24,8 @@ const IntervalsCard: React.FC<any> = ({ model }) => {
                     {intervals.map(ivl => {
                         const interval = IntervalSpan.fromValue(ivl);
                         return (
-                            <li key={interval.preset.id}>
-                                <Link to={`/browse/intervals/${interval.preset.id}`}>{interval.getName()}</Link>
+                            <li key={interval.id}>
+                                <Link to={`/browse/intervals/${interval.id}`}>{interval.getName()}</Link>
                             </li>
                         );
                     })}

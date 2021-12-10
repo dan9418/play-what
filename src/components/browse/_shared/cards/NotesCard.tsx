@@ -26,8 +26,8 @@ const NotesCard: React.FC<any> = ({ model }) => {
                 <ul>
                     {notes.map(note => {
                         return (
-                            <li key={note.preset.id}>
-                                <Link to={`/browse/notes/${note.preset.id}`}>{note.preset.name}</Link>
+                            <li key={note.id}>
+                                <Link to={`/browse/notes/${note.id}`}>{note.name}</Link>
                             </li>
                         );
                     })}

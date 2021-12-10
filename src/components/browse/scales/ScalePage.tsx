@@ -21,8 +21,8 @@ const ScalePage: React.FC<any> = props => {
 
     return (
         <StyledScalePage>
-            <BreadcrumbList id={scale.preset.id} name={scale.preset.name} path={props.path} />
-            <PageTitle title={scale.preset.name} subtitle={scale.getIntervalListString()} />
+            <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
+            <PageTitle title={scale.name} subtitle={scale.getIntervalListString()} />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={scale} />

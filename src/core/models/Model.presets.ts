@@ -26,7 +26,7 @@ const formatChordPreset = (id: PresetId, name: string, value: IntervalId[], tags
 
 
 const formatScalePreset = (id: PresetId, name: string, value: IntervalId[], tags = []): IModelConfig =>
-    formatPreset(ModelId.Note, id, name, value, tags, true);
+    formatPreset(ModelId.Scale, id, name, value, tags, true);
 
 
 const podToPodList = (podPresets: IModelConfig[]): IModelConfig[] =>
