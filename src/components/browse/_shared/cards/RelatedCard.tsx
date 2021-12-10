@@ -47,7 +47,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                             {intervals.map(ivl => {
                                 return (
                                     <li key={ivl.id}>
-                                        <Link to={`/browse/notes/${ivl.id}`}>{ivl.name}</Link>
+                                        <Link to={`/browse/intervals/${ivl.id}`}>{ivl.name}</Link>
                                     </li>
                                 );
                             })}

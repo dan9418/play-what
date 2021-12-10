@@ -1,17 +1,16 @@
+import Chord from "@pw-core/models/Chord";
 import React from "react";
 import styled from 'styled-components';
-import Chord from "@pw-core/models/Chord";
+import { useRootParam } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
-import IntervalsCard from "../_shared/cards/IntervalsCard";
-import NotesCard from "../_shared/cards/NotesCard";
+import InversionsCard from "../_shared/cards/InversionsCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import ViewerCard from "../_shared/cards/ViewerCard";
-import { useRootParam } from "../../../state/state";
 
 const StyledChordPage = styled(StyledPageBody)`
 
@@ -25,17 +24,16 @@ const ChordPage: React.FC<any> = props => {
     return (
         <StyledChordPage>
             <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
-            <PageTitle title={chord.name} subtitle={chord.getIntervalListString()} />
+            <PageTitle title={chord.name} subtitle="Chord" />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={chord} />
-                    <IntervalsCard model={chord} />
-                    <NotesCard model={chord} />
-                    <SoundCard model={chord} />
+                    <InversionsCard model={chord} />
+                    <RelatedCard model={chord} />
                 </StyledPane>
                 <StyledPane>
                     <ViewerCard model={chord} />
-                    <RelatedCard model={chord} />
+                    <SoundCard model={chord} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledChordPage >

@@ -20,14 +20,14 @@ const IntervalPage: React.FC<any> = props => {
     return (
         <StyledIntervalPage>
             <BreadcrumbList id={interval.id} name={interval.getName()} path={props.path} />
-            <PageTitle title={interval.name} subtitle={JSON.stringify(interval.value)} />
+            <PageTitle title={interval.name} subtitle="Interval" />
             <StyledDoublePane>
                 <StyledPane>
                     <RelatedCard model={interval} />
-                    <SoundCard model={interval} />
                 </StyledPane>
                 <StyledPane>
                     <ViewerCard model={interval} />
+                    <SoundCard model={interval} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledIntervalPage >
