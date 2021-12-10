@@ -5,7 +5,6 @@ import { ROOT_SCALE } from '../theory/Theory.constants';
 import Model from './Model';
 import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
-import ModelUtils from './Model.utils';
 import Pod from './Pod';
 
 interface INoteNameOptions {
@@ -84,13 +83,13 @@ export default class Note extends Pod {
     }
 
     static getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
-        const reducedValue = ModelUtils.reduce(note);
+        const reducedValue = Model.reduce(note);
 
         const d = reducedValue[1];
         const offset = this.getAccidentalOffset(reducedValue);
         const accidental = this.getAccidentalString(offset);
         const spelling = DEGREE_PRESETS[d].name;
-        const octave = ModelUtils.getOctave(note, true);
+        const octave = Model.getOctave(note, true);
         return { spelling, accidental, octave };
     }
 

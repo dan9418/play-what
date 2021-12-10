@@ -1,7 +1,7 @@
 // import ColorUtils from "@pw-core/color/Color.utils";
 // import IntervalUtils from "@pw-core/models/Interval.utils";
 // import { IPod, ModelId } from "@pw-core/models/Model.constants";
-// import ModelUtils from "@pw-core/models/Model.utils";
+// import Model from "@pw-core/models/Model.utils";
 // import NoteUtils from "@pw-core/models/Note.utils";
 
 // interface IPodProps {
@@ -31,7 +31,7 @@
 //     const intervals = modelDetails.intervals.value as IPod[];
 
 //     // Find pod
-//     const podIndex = ModelUtils.getIndexOfPodAtPitch(notes, noteIndex, options.matchOctave);
+//     const podIndex = Model.getIndexOfPodAtPitch(notes, noteIndex, options.matchOctave);
 //     if (podIndex === null) return null;
 
 //     // Isolate pod
@@ -41,8 +41,8 @@
 //     const isExtended = IntervalUtils.isExtendedInterval(interval);
 
 //     // Reduce pod
-//     const reducedNote = ModelUtils.reduce(note);
-//     const reducedInterval = ModelUtils.reduce(interval);
+//     const reducedNote = Model.reduce(note);
+//     const reducedInterval = Model.reduce(interval);
 
 //     // Get text
 //     let text = '';

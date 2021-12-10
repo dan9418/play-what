@@ -1,6 +1,5 @@
 import Model from './Model';
 import { IntervalId, IPod, NoteId } from './Model.constants';
-import ModelUtils from './Model.utils';
 
 export default class Pod extends Model {
 
@@ -16,7 +15,7 @@ export default class Pod extends Model {
     }
 
     static fromValue = (presetArray, subclass, value: IPod) => {
-        const preset = presetArray.find(p => ModelUtils.areEqual(p.value, ModelUtils.reduce(value)));
+        const preset = presetArray.find(p => Model.areEqual(p.value, Model.reduce(value)));
         if (!preset) throw new Error('Unknown pod value');
         return new subclass(preset.id);
     }

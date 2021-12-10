@@ -70,7 +70,7 @@
 // }
 
 // export const getScaleName = (scale: IPod[], options: IScaleNameOptions = {}): string => {
-// 	const preset = SCALE_PRESETS.find(v => ModelUtils.areEqual(scale, v.value));
+// 	const preset = SCALE_PRESETS.find(v => Model.areEqual(scale, v.value));
 // 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
 // 	return presetName;
 // };

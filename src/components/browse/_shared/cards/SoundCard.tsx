@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import ModelUtils from "@pw-core/models/Model.utils";
+import Model from "@pw-core/models/Model";
 import ButtonInput from "../../../_shared/inputs/ButtonInput";
 import Card from "../../../_shared/ui/Card";
 import Icon from "../../../_shared/ui/Icon";
@@ -23,7 +23,7 @@ const SoundCard: React.FC<any> = () => {
     return (
         <Card title="Sound">
             <StyledSoundCard>
-                <ButtonInput onClick={() => ModelUtils.playSoundList(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
+                <ButtonInput onClick={() => Model.playSoundList(intervals.value)}><Icon iconId="speaker" size={32} color="white" /></ButtonInput >
             </StyledSoundCard>
         </Card>
     );

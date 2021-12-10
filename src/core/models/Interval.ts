@@ -3,7 +3,6 @@ import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
 import { IModelConfig, IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
 import { CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './Model.presets';
-import ModelUtils from "./Model.utils";
 import Pod from "./Pod";
 
 export default class IntervalSpan extends Pod {
@@ -31,7 +30,7 @@ export default class IntervalSpan extends Pod {
     }
 
     static getName = (interval: IPod): string => {
-        const reduced = ModelUtils.reduce(interval);
+        const reduced = Model.reduce(interval);
 
         const [noteIndex, d] = reduced;
         const degreeIntervals = CORE_INTERVALS[d];

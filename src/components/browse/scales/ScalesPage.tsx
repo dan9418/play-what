@@ -1,6 +1,6 @@
 import { ModelId, ScaleTag } from "@pw-core/models/Model.constants";
 import { SCALE_PRESETS } from "@pw-core/models/Model.presets";
-import ModelUtils from "@pw-core/models/Model.utils";
+import Scale from "@pw-core/models/Scale";
 import { Link } from "gatsby";
 import React from "react";
 import SearchPage from "../_shared/SearchPage";
@@ -22,7 +22,7 @@ const ScalesPage: React.FC<any> = props => {
                 return [
                     <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    ModelUtils.getName(preset.value, ModelId.Interval)
+                    Scale.getName(preset.value, ModelId.Interval)
                 ]
             }}
             {...props}

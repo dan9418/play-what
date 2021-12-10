@@ -1,6 +1,6 @@
+import Chord from "@pw-core/models/Chord";
 import { ChordTag, ModelId } from "@pw-core/models/Model.constants";
 import { CHORD_PRESETS } from "@pw-core/models/Model.presets";
-import ModelUtils from "@pw-core/models/Model.utils";
 import { Link } from "gatsby";
 import React from "react";
 import SearchPage from "../_shared/SearchPage";
@@ -21,7 +21,7 @@ const ChordsPage: React.FC<any> = props => {
                 return [
                     <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    ModelUtils.getName(preset.value, ModelId.Interval)
+                    Chord.getName(preset.value, ModelId.Interval)
                 ]
             }}
             {...props}

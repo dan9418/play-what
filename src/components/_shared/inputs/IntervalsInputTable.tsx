@@ -2,7 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IntervalId, INTERVAL_PRESET_MAP } from '../../../core/models/Interval.constants';
-import ModelUtils from '../../../core/models/Model.utils';
+import Model from '../../../core/models/Model.utils';
 
 const StyledIntervalTable = styled.table`
     width: 100%;
@@ -67,7 +67,7 @@ const StyledIntervalTable = styled.table`
 
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
 
-    const intervalIndex = intervals.findIndex(ivl => ModelUtils.areEqual(ivl, preset.value));
+    const intervalIndex = intervals.findIndex(ivl => Model.areEqual(ivl, preset.value));
     const intervalIsActive = intervalIndex !== -1;
     const indexOfIvlWithSamePitch = intervals.findIndex(ivl => ivl[0] === preset.value[0]);
     const pitchClassIsTaken = indexOfIvlWithSamePitch !== -1;
@@ -96,7 +96,7 @@ const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
         // Add new interval
         else {
             const newIvls = [...intervals, preset.value];
-            setIntervals(ModelUtils.sort(newIvls));
+            setIntervals(Model.sort(newIvls));
         }
     }
 

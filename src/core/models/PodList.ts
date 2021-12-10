@@ -1,6 +1,6 @@
+import IntervalSpan from '@pw-core/models/Interval';
 import Model from './Model';
-import { ChordId, IPod, ModelId, ScaleId } from './Model.constants';
-import ModelUtils from './Model.utils';
+import { ChordId, IPod, ScaleId } from './Model.constants';
 import Note from './Note';
 
 export default class Pod extends Model {
@@ -35,11 +35,16 @@ export default class Pod extends Model {
     }
 
     getIntervalListString() {
-        return ModelUtils.getName(this.value, ModelId.Interval);
+        const nameArr = this.value.map((pod) => IntervalSpan.getName(pod));
+        return nameArr.join(', ');
+    }
+
+    getNoteListString() {
+        const nameArr = this.value.map((pod) => Note.getName(pod));
+        return nameArr.join(', ');
     }
 
     getSubsets() { return super.getSubsets(true); }
 
     getSupersets() { return super.getSupersets(true); }
-
 }
