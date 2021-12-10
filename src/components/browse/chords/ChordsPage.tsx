@@ -1,8 +1,8 @@
-import Chord from "@pw-core/models/Chord";
-import { ChordTag, ModelId } from "@pw-core/models/Model.constants";
+import { ChordTag } from "@pw-core/models/Model.constants";
 import { CHORD_PRESETS } from "@pw-core/models/Model.presets";
 import { Link } from "gatsby";
 import React from "react";
+import Chord from "../../../core/models/Chord";
 import SearchPage from "../_shared/SearchPage";
 
 const ChordsPage: React.FC<any> = props => {
@@ -16,12 +16,12 @@ const ChordsPage: React.FC<any> = props => {
                 'Id',
                 'Intervals'
             ]}
-            rows={CHORD_PRESETS}
+            rows={CHORD_PRESETS.map(p => new Chord(p.id))}
             getCols={preset => {
                 return [
                     <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    Chord.getName(preset.value, ModelId.Interval)
+                    preset.getIntervalListString()
                 ]
             }}
             {...props}

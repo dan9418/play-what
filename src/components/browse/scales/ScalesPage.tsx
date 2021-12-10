@@ -1,4 +1,4 @@
-import { ModelId, ScaleTag } from "@pw-core/models/Model.constants";
+import { ScaleTag } from "@pw-core/models/Model.constants";
 import { SCALE_PRESETS } from "@pw-core/models/Model.presets";
 import Scale from "@pw-core/models/Scale";
 import { Link } from "gatsby";
@@ -17,12 +17,12 @@ const ScalesPage: React.FC<any> = props => {
                 'Id',
                 'Intervals'
             ]}
-            rows={SCALE_PRESETS}
+            rows={SCALE_PRESETS.map(p => new Scale(p.id))}
             getCols={preset => {
                 return [
                     <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.id,
-                    Scale.getName(preset.value, ModelId.Interval)
+                    preset.getIntervalListString()
                 ]
             }}
             {...props}
