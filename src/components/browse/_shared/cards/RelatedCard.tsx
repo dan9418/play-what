@@ -24,13 +24,13 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     const subsets = model.getSubsets();
     const supersets = model.getSupersets();
-    const intervals = model.getIntervalListClasses();
-    const notes = model.getNoteListClasses();
+    const intervals = model.getIntervalListClasses && model.getIntervalListClasses();
+    const notes = model.getNoteListClasses && model.getNoteListClasses();
 
     return (
         <Card title="Related">
             <StyledRelated>
-                {notes.length > 0 &&
+                {notes && notes.length > 0 &&
                     <>
                         <h3>Notes</h3>
                         <ul>
@@ -40,7 +40,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                         </ul>
                     </>
                 }
-                {intervals.length > 0 &&
+                {intervals && intervals.length > 0 &&
                     <>
                         <h3>Intervals</h3>
                         <ul>

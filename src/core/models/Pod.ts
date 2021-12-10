@@ -14,6 +14,10 @@ export default class Pod extends Model {
         return [this.value];
     }
 
+    getPreview() {
+        return this.name;
+    }
+
     static fromValue = (presetArray, subclass, value: IPod) => {
         const preset = presetArray.find(p => Model.areEqual(p.value, Model.reduce(value)));
         if (!preset) throw new Error('Unknown pod value');

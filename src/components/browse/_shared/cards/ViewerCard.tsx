@@ -7,11 +7,11 @@ const StyledViewerCard = styled.div`
     padding: 0 16px;
 `;
 
-const ViewerCard: React.FC<any> = () => {
+const ViewerCard: React.FC<any> = ({ model }) => {
     return (
-        <Card title="Preview">
+        <Card title="Details">
             <StyledViewerCard>
-                <Viewer />
+                <Viewer model={model} />
             </StyledViewerCard>
         </Card>
     );

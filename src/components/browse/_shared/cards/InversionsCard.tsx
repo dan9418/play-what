@@ -14,8 +14,6 @@ const StyledInversions = styled.div`
 
 const InversionsCard: React.FC<any> = ({ model }) => {
 
-    if (!model.rootPreset) return null;
-
     const inversions = [
         {
             id: '1',

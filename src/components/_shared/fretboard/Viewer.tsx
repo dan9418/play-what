@@ -12,9 +12,9 @@ const StyledViewer = styled.div`
     justify-content: space-evenly;
 `;
 
-const Viewer: React.FC<any> = props => {
+const Viewer: React.FC<any> = ({ model }) => {
 
-    return null;
+    return model.getPreview();
 
     return (
         <Fretboard {...props} details={null} />

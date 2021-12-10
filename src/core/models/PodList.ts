@@ -55,4 +55,9 @@ export default class Pod extends Model {
     getSubsets() { return super.getSubsets(true); }
 
     getSupersets() { return super.getSupersets(true); }
+
+    getPreview() {
+        return this.getIntervalListString();
+    }
+
 }
