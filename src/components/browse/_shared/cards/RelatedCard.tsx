@@ -24,10 +24,36 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     const subsets = model.getSubsets();
     const supersets = model.getSupersets();
+    const intervals = model.getIntervalListClasses();
+    const notes = model.getNoteListClasses();
 
     return (
         <Card title="Related">
             <StyledRelated>
+                {notes.length > 0 &&
+                    <>
+                        <h3>Notes</h3>
+                        <ul>
+                            {notes.map(s => (
+                                <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
+                            ))}
+                        </ul>
+                    </>
+                }
+                {intervals.length > 0 &&
+                    <>
+                        <h3>Intervals</h3>
+                        <ul>
+                            {intervals.map(ivl => {
+                                return (
+                                    <li key={ivl.id}>
+                                        <Link to={`/browse/notes/${ivl.id}`}>{ivl.name}</Link>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </>
+                }
                 {subsets.length > 0 &&
                     <>
                         <h3>Subsets</h3>

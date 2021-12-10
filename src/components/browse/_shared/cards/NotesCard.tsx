@@ -16,8 +16,6 @@ const NotesCard: React.FC<any> = ({ model }) => {
 
     if (!model.rootPreset) return null;
 
-    console.log('dpb model', model);
-
     const notes = model.getNoteListClasses();
 
     return (

@@ -34,6 +34,10 @@ export default class Pod extends Model {
         return this.value;
     }
 
+    getIntervalListClasses() {
+        return this.value.map((pod) => IntervalSpan.fromValue(pod));
+    }
+
     getIntervalListString() {
         const nameArr = this.value.map((pod) => IntervalSpan.getName(pod));
         return nameArr.join(', ');
@@ -42,6 +46,10 @@ export default class Pod extends Model {
     getNoteListString() {
         const nameArr = this.value.map((pod) => Note.getName(pod));
         return nameArr.join(', ');
+    }
+
+    getNoteListClasses() {
+        return this.value.map((pod) => Note.fromValue(pod));
     }
 
     getSubsets() { return super.getSubsets(true); }
