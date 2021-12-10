@@ -1,8 +1,7 @@
+import { ModelId, ScaleTag, SCALE_PRESETS } from "@pw-core/models/Model.presets";
+import ModelUtils from "@pw-core/models/Model.utils";
 import { Link } from "gatsby";
 import React from "react";
-import { ModelId, ScaleTag } from "@pw-core/models/Model.constants";
-import ModelUtils from "@pw-core/models/Model.utils";
-import { SCALE_PRESETS } from "@pw-core/models/Scale.constants";
 import SearchPage from "../_shared/SearchPage";
 
 const ScalesPage: React.FC<any> = props => {

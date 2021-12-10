@@ -1,16 +1,15 @@
 import React from "react";
 import styled from 'styled-components';
-import { INTERVAL_PRESETS } from "../../core/models/Interval.constants";
-import { IPod } from "../../core/models/Model.constants";
+import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
+import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
 import ModelUtils from "../../core/models/Model.utils";
-import { ACCIDENTAL_VALUES } from "../../core/models/Note.constants";
 import NoteUtils from "../../core/models/Note.utils";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import THEME from "../../styles/theme";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 
-const CORE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
+const FIRST_OCTAVE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
 
 const StyledTestPage = styled(StyledPageBody)`
     max-width: unset;
@@ -75,7 +74,7 @@ const getRoots = () => {
             const rootName = `${spelling}${a}`;
             const rootPod: IPod = [diatonicPitch + offset, d];
 
-            const intervals = CORE_INTERVALS.map(ivl => {
+            const intervals = FIRST_OCTAVE_INTERVALS.map(ivl => {
                 const ivlPod = ModelUtils.addPod(rootPod, ivl.value);
                 const ivlName = NoteUtils.getName(ivlPod);
 
@@ -109,7 +108,7 @@ const TestPage: React.FC<any> = () => {
                         <tr>
                             <th colSpan={2}>Root</th>
                             {
-                                CORE_INTERVALS.map(ivl => {
+                                FIRST_OCTAVE_INTERVALS.map(ivl => {
                                     return <th colSpan={2} key={ivl.id}>{ivl.id}</th>
                                 })
                             }

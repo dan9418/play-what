@@ -1,7 +1,7 @@
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
-import { CORE_INTERVALS, INTERVAL_QUALITY } from "./Interval.constants";
-import { IModelConfig, IPod } from './Model.constants';
+import { IModelConfig, INTERVAL_QUALITY, IPod } from './Model.constants';
+import { CORE_INTERVALS } from "./Model.presets";
 import ModelUtils from "./Model.utils";
 
 const getIntervalOffset = (pod: IPod, coreIvl: IModelConfig) => {

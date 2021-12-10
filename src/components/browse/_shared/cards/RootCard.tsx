@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { NOTE_PRESETS } from "@pw-core/models/Note.constants";
+import { NOTE_PRESETS } from "@pw-core/models/Model.presets";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRoot = styled.div`

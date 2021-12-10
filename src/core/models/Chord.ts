@@ -1,6 +1,5 @@
-import { ChordId, CHORD_PRESETS, CHORD_PRESET_MAP } from './Chord.constants';
-import { IPod, ModelId } from './Model.constants';
-import { MASTER_PRESETS } from './Model.presets';
+import { ChordId, IPod, ModelId } from './Model.constants';
+import { CHORD_PRESETS, CHORD_PRESET_MAP, MASTER_PRESETS } from './Model.presets';
 import ModelUtils from './Model.utils';
 import Note from './Note';
 

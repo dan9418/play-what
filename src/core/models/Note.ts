@@ -1,6 +1,6 @@
-import { IPod } from './Model.constants';
+import { IPod, NoteId } from './Model.constants';
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import ModelUtils from './Model.utils';
-import { NoteId, NOTE_PRESETS, NOTE_PRESET_MAP } from './Note.constants';
 
 export default class Note {
 
@@ -24,7 +24,6 @@ export default class Note {
     }
 
     static fromValue = (value: IPod) => {
-        console.log('dpb xxx', value);
         const preset = NOTE_PRESETS.find(p => ModelUtils.areEqual(p.value, ModelUtils.reduce(value)));
         if (!preset) throw new Error('Unknown note value');
         return new Note(preset.id as NoteId);

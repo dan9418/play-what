@@ -1,8 +1,7 @@
-import { IPod, ModelId } from './Model.constants';
-import { MASTER_PRESETS } from './Model.presets';
+import { IPod, ModelId, ScaleId } from './Model.constants';
+import { MASTER_PRESETS, SCALE_PRESETS, SCALE_PRESET_MAP } from './Model.presets';
 import ModelUtils from './Model.utils';
 import Note from './Note';
-import { ScaleId, SCALE_PRESETS, SCALE_PRESET_MAP } from './Scale.constants';
 
 export default class Scale {
 

@@ -1,7 +1,6 @@
-import { IntervalId, INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './Interval.constants';
 import IntervalUtils from "./Interval.utils";
-import { IPod } from './Model.constants';
-import { MASTER_PRESETS } from './Model.presets';
+import { IntervalId, IPod } from './Model.constants';
+import { INTERVAL_PRESETS, INTERVAL_PRESET_MAP, MASTER_PRESETS } from './Model.presets';
 import ModelUtils from './Model.utils';
 
 export default class IntervalSpan {
