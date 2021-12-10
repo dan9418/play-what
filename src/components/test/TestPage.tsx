@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
 import ModelUtils from "../../core/models/Model.utils";
-import NoteUtils from "../../core/models/Note.utils";
+import Note from "../../core/models/Note";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import THEME from "../../styles/theme";
@@ -76,7 +76,7 @@ const getRoots = () => {
 
             const intervals = FIRST_OCTAVE_INTERVALS.map(ivl => {
                 const ivlPod = ModelUtils.addPod(rootPod, ivl.value);
-                const ivlName = NoteUtils.getName(ivlPod);
+                const ivlName = Note.getName(ivlPod);
 
                 //const isInvalid = ivlName.includes(invalidSymbol);
                 const isInvalid = ivlName.length > 5;

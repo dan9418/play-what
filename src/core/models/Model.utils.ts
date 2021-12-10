@@ -1,10 +1,10 @@
 import NumberUtils from '../general/Number.utils';
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
-import IntervalUtils from './Interval.utils';
+import Interval from './Interval';
 import { IModelConfig, IPod, MAX_POD, ModelId } from './Model.constants';
 import { MASTER_PRESETS } from './Model.presets';
-import NoteUtils from './Note.utils';
+import Note from './Note';
 
 // Equality
 
@@ -121,7 +121,7 @@ const containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
 };
 
 const getName = (podList: IPod[], modelId: ModelId): string => {
-    const nameFn = modelId === ModelId.Interval ? IntervalUtils.getName : NoteUtils.getName;
+    const nameFn = modelId === ModelId.Interval ? Interval.getName : Note.getName;
     const nameArr = podList.map((pod) => nameFn(pod));
     return nameArr.join(', ');
 };
@@ -147,7 +147,7 @@ export default {
     areEqualList,
     reduce,
     reduceList,
-    
+
     addPod,
     subtractPod,
     addPodList,
@@ -157,7 +157,7 @@ export default {
     getDegree,
 
     playSound,
-    playSoundList,  
+    playSoundList,
 
     getPodAtPitch,
     getIndexOfPodAtPitch,
