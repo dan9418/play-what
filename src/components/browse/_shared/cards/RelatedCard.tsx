@@ -8,14 +8,14 @@ const StyledRelated = styled.div`
     gap: 16px;
     grid-template-columns: 1fr;
     @media(min-width: 512px) {
-		grid-template-columns: 1fr 1fr;
-        & > :first-child {
+		grid-template-columns: auto auto;
+        & > :first-child:not(:only-child) {
+            padding-right: 16px;
             border-right: 1px solid #ccc;
         }
 	}
 
     h2 {
-        text-align: center;
         text-transform: uppercase;
         font-size: 90%;
         color: #555;

@@ -5,9 +5,10 @@ import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
+import Card from "../../_shared/ui/Card";
+import DetailsCard from "../_shared/cards/DetailsCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import SoundCard from "../_shared/cards/SoundCard";
-import DetailsCard from "../_shared/cards/DetailsCard";
 
 const StyledIntervalPage = styled(StyledPageBody)`
     
@@ -23,10 +24,11 @@ const IntervalPage: React.FC<any> = props => {
             <PageTitle title={interval.name} subtitle="Interval" />
             <StyledDoublePane>
                 <StyledPane>
-                    <RelatedCard model={interval} />
+                    <Card title="Ratio" />
                 </StyledPane>
                 <StyledPane>
                     <DetailsCard model={interval} />
+                    <RelatedCard model={interval} />
                     <SoundCard model={interval} />
                 </StyledPane>
             </StyledDoublePane>

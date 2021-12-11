@@ -2,7 +2,7 @@ import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
 import { IModelConfig, IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
-import { CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP } from './Model.presets';
+import { CHORD_PRESETS, CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP, SCALE_PRESETS } from './Model.presets';
 import Pod from "./Pod";
 
 export default class IntervalSpan extends Pod {
@@ -19,6 +19,38 @@ export default class IntervalSpan extends Pod {
 
     getRatio = () => {
         return '1:1';
+    }
+
+    getSupersets() {
+        const result = [];
+
+        const intervalPods = [this.pod];
+
+        const chords = CHORD_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(preset.value, intervalPods)
+        );
+
+        if (chords.length) {
+            result.push({
+                modelName: 'Chords',
+                values: chords
+            });
+        }
+
+        const scales = SCALE_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(preset.value, intervalPods)
+        );
+
+        if (scales.length) {
+            result.push({
+                modelName: 'Scales',
+                values: scales
+            });
+        }
+
+        return result;
     }
 
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value);
