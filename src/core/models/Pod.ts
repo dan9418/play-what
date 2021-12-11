@@ -1,5 +1,6 @@
+import NumberUtils from '../general/Number.utils';
 import Model from './Model';
-import { IntervalId, IPod, NoteId } from './Model.constants';
+import { IntervalId, IPod, MAX_POD, NoteId } from './Model.constants';
 
 export default class Pod extends Model {
 
@@ -48,9 +49,20 @@ export default class Pod extends Model {
         return subclass ? subclass.fromValue(result) : result;
     }
 
-    addPodList(B: Pod[], subclass = undefined): Pod[] {
+    addIntervals(B: Pod[], subclass = undefined): Pod[] {
         const a = this;
         const result = B.map((b) => a.addPod(b, subclass));
         return result;
     };
+
+    static reducePods = (a: IPod, max = MAX_POD): IPod => {
+        const p = NumberUtils.modulo(a[0], max[0]);
+        const d = NumberUtils.modulo(a[1], max[1]);
+        return [p, d];
+    }
+
+    static arePodsEqual = (a: IPod, b: IPod): boolean => {
+        if (!a || !b || a.length !== 2 || b.length !== 2) return false;
+        return a[0] === b[0] && a[1] === b[1];
+    }
 }

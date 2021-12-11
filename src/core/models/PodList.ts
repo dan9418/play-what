@@ -2,6 +2,7 @@ import IntervalSpan from '@pw-core/models/Interval';
 import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import Note from './Note';
+import Pod from './Pod';
 
 export default class PodList extends Model {
 
@@ -55,7 +56,7 @@ export default class PodList extends Model {
     getNoteListClasses() {
         if (!this.root) return;
 
-        return this.root.addPodList(this.intervals, Note);
+        return this.root.addIntervals(this.intervals, Note);
     }
 
     getNoteListPods(): IPod[] {
@@ -81,5 +82,17 @@ export default class PodList extends Model {
         return this.getIntervalListString();
     }
 
+    static reducePods = (A: IPod[]): IPod[] => {
+        return A.map((a) => Pod.reduce(a));
+    }
 
+    static arePodsEqual = (A: IPod[], B: IPod[]): boolean => {
+        if (!A || !B || A.length !== B.length) return false;
+        for (let i = 0; i < A.length; i++) {
+            const a = A[i];
+            const b = B[i];
+            if (!Pod.arePodsEqual(a, b)) return false;
+        }
+        return true;
+    }
 }

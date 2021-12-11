@@ -10,44 +10,13 @@ export default class Model implements IModelConfig {
     name: string;
     tags: Tag[];
 
-    static fromValue = (presetArray, subclass, value: any, isList = false) => {
-        const compareValue = isList ? Model.reduceList(value) : Model.reduce(value);
-        const compareFn = isList ? Model.areEqualList : Model.areEqual;
-        const preset = presetArray.find(p => compareFn(p.value, compareValue as any));
+    static fromValue = (presetArray, subclass, value: any) => {
+        const preset = presetArray.find(p => subclass.arePodsEqual(p.value, subclass.reducePods(value)));
         if (!preset) {
-            console.error(presetArray[0].modelId, value, isList, presetArray);
+            console.error(presetArray[0].modelId, value, presetArray);
             throw new Error('Unknown model value');
         }
         return new subclass(preset.id);
-    }
-
-    // Equality
-
-    static areEqual = (a: IPod, b: IPod): boolean => {
-        if (!a || !b || a.length !== 2 || b.length !== 2) return false;
-        return a[0] === b[0] && a[1] === b[1];
-    }
-
-    static areEqualList = (A: IPod[], B: IPod[]): boolean => {
-        if (!A || !B || A.length !== B.length) return false;
-        for (let i = 0; i < A.length; i++) {
-            const a = A[i];
-            const b = B[i];
-            if (!this.areEqual(a, b)) return false;
-        }
-        return true;
-    }
-
-    // Reduction
-
-    static reduce = (a: IPod, max = MAX_POD): IPod => {
-        const p = NumberUtils.modulo(a[0], max[0]);
-        const d = NumberUtils.modulo(a[1], max[1]);
-        return [p, d];
-    }
-
-    static reduceList = (A: IPod[]): IPod[] => {
-        return A.map((a) => this.reduce(a));
     }
 
     // Property Derivation
