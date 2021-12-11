@@ -1,35 +1,88 @@
+import { NoteId } from "@pw-core/models/Model.constants";
+import Note from "@pw-core/models/Note";
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { StringParam, useQueryParam } from "use-query-params";
 import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { NOTE_PRESETS } from "@pw-core/models/Model.presets";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRoot = styled.div`
-   ul {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px;
+   table {
+        border-collapse: collapse;
+        width: 100%;
+
+        a {
+            text-decoration: none;
+            font-size: 90%;
+            padding: 4px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+
+            &.active {
+                background-color: ${props => props.theme.active};
+                color: white;
+            }
+
+            :hover {
+                background: rgba(0,0,0,0.1);
+            }
+        }
+        .primary a {
+            font-weight: bold;
+            font-size: 110%;
+            padding: 8px;
+        }
     }
 `;
 
-const RootCard: React.FC<any> = () => {
-
+const NoteLink: React.FC<any> = ({ noteId }) => {
     const pageProps = usePageProps();
+    const [rootParam, setRootParam] = useQueryParam("root", StringParam);
 
+    const note = new Note(noteId);
+    return <Link to={`${pageProps.path}?root=${note.id}`} className={note.id === rootParam ? 'active' : ''
+    }> {note.name}</Link >
+};
+
+const RootCard: React.FC<any> = () => {
     return (
         <Card title="Root">
             <StyledRoot>
-                <ul>
-                    {NOTE_PRESETS.map(note => {
-                        return (
-                            <li key={note.id}>
-                                <Link to={`${pageProps.path}?root=${note.id.toLowerCase()}`}>{note.name}</Link>
-                            </li>
-                        );
-                    })}
-                </ul>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><NoteLink noteId={NoteId.Cs} /></td>
+                            <td><NoteLink noteId={NoteId.Ds} /></td>
+                            <td><NoteLink noteId={NoteId.Es} /></td>
+                            <td><NoteLink noteId={NoteId.Fs} /></td>
+                            <td><NoteLink noteId={NoteId.Gs} /></td>
+                            <td><NoteLink noteId={NoteId.As} /></td>
+                            <td><NoteLink noteId={NoteId.Bs} /></td>
+                        </tr>
+                        <tr className="primary">
+                            <td><NoteLink noteId={NoteId.C} /></td>
+                            <td><NoteLink noteId={NoteId.D} /></td>
+                            <td><NoteLink noteId={NoteId.E} /></td>
+                            <td><NoteLink noteId={NoteId.F} /></td>
+                            <td><NoteLink noteId={NoteId.G} /></td>
+                            <td><NoteLink noteId={NoteId.A} /></td>
+                            <td><NoteLink noteId={NoteId.B} /></td>
+                        </tr>
+                        <tr>
+                            <td><NoteLink noteId={NoteId.Cb} /></td>
+                            <td><NoteLink noteId={NoteId.Db} /></td>
+                            <td><NoteLink noteId={NoteId.Eb} /></td>
+                            <td><NoteLink noteId={NoteId.Fb} /></td>
+                            <td><NoteLink noteId={NoteId.Gb} /></td>
+                            <td><NoteLink noteId={NoteId.Ab} /></td>
+                            <td><NoteLink noteId={NoteId.Bb} /></td>
+                        </tr>
+                    </tbody>
+                </table>
             </StyledRoot>
         </Card>
     );

@@ -5,6 +5,7 @@ import Card from "../../../_shared/ui/Card";
 const StyledDetailsCard = styled.div`
     table {
         border-collapse: collapse;
+        width: 100%;
     
         th {
             text-align: right;
