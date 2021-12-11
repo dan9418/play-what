@@ -9,5 +9,5 @@ export default class Chord extends PodList {
         super(CHORD_PRESET_MAP, id, options);
     }
 
-    static fromValue = (value: IPod[]) => Model.fromValue(CHORD_PRESETS, Chord, value, true);
+    static fromValue = (value: IPod[]) => Model.fromValue(CHORD_PRESETS, Chord, value);
 }

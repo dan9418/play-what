@@ -19,18 +19,12 @@ export default class Pod extends Model {
         this.pod = preset.value;
     }
 
-    getIntervalListPods() {
+    /*getIntervalListPods() {
         return [this.pod];
-    }
+    }*/
 
     getPreview() {
         return this.name;
-    }
-
-    static fromValue = (presetArray, subclass, value: IPod) => {
-        const preset = presetArray.find(p => Model.areEqual(p.value, Model.reduce(value)));
-        if (!preset) throw new Error('Unknown pod value');
-        return new subclass(preset.id);
     }
 
     addPod(b: Pod, subclass = undefined): Pod {
@@ -41,13 +35,13 @@ export default class Pod extends Model {
         return subclass ? subclass.fromValue(result) : result;
     }
 
-    subtractPod(b: Pod, subclass = undefined): Pod {
+    /*subtractPod(b: Pod, subclass = undefined): Pod {
         const a = this;
         const p = a.pod[0] - b.pod[0];
         const d = a.pod[1] - b.pod[1];
         const result: IPod = [p, d];
         return subclass ? subclass.fromValue(result) : result;
-    }
+    }*/
 
     addIntervals(B: Pod[], subclass = undefined): Pod[] {
         const a = this;
@@ -65,4 +59,17 @@ export default class Pod extends Model {
         if (!a || !b || a.length !== 2 || b.length !== 2) return false;
         return a[0] === b[0] && a[1] === b[1];
     }
+
+    /*static getPitchClass = (pod: IPod): number => {
+        return NumberUtils.modulo(pod[0], MAX_POD[0]);
+    }*/
+
+    static getOctave = (pod: IPod, midi = false): number => {
+        const raw = Math.floor(pod[0] / 12);
+        return midi ? raw + 4 : raw;
+    }
+
+    /*static getDegree = (pod: IPod): number => {
+        return NumberUtils.modulo(pod[1], MAX_POD[1]);
+    }*/
 }

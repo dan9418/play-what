@@ -2,7 +2,6 @@ import NumberUtils from '../general/Number.utils';
 import ToneUtils from '../tone/Tone.utils';
 import TuningUtils from '../tuning/Tuning.utils';
 import { IModelConfig, IPod, MAX_POD, ModelId, PresetId, Tag } from './Model.constants';
-import { MASTER_PRESETS } from './Model.presets';
 
 export default class Model implements IModelConfig {
     modelId: ModelId;
@@ -17,21 +16,6 @@ export default class Model implements IModelConfig {
             throw new Error('Unknown model value');
         }
         return new subclass(preset.id);
-    }
-
-    // Property Derivation
-
-    static getPitchClass = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[0], MAX_POD[0]);
-    }
-
-    static getOctave = (pod: IPod, midi = false): number => {
-        const raw = Math.floor(pod[0] / 12);
-        return midi ? raw + 4 : raw;
-    }
-
-    static getDegree = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[1], MAX_POD[1]);
     }
 
     // Search
@@ -92,9 +76,5 @@ export default class Model implements IModelConfig {
                 else return 0;
             }
         });
-    }
-
-    static findPreset = (podList: IPod[]): IModelConfig | undefined => {
-        return MASTER_PRESETS.find(p => this.areEqualList(p.value, podList));
     }
 }

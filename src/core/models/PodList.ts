@@ -44,9 +44,9 @@ export default class PodList extends Model {
         return this.intervals;
     }
 
-    getIntervalListPods(): IPod[] {
+    /*getIntervalListPods(): IPod[] {
         return this.getIntervalListClasses().map(ivl => ivl.pod);
-    }
+    }*/
 
     getIntervalListString(): string {
         const nameArr = this.getIntervalListClasses().map(ivl => ivl.getName());
@@ -59,14 +59,14 @@ export default class PodList extends Model {
         return this.root.addIntervals(this.intervals, Note);
     }
 
-    getNoteListPods(): IPod[] {
+    /*getNoteListPods(): IPod[] {
         return this.getNoteListClasses().map(ivl => ivl.pod);
-    }
+    }*/
 
-    getNoteListString(): string {
+    /*getNoteListString(): string {
         const nameArr = this.getNoteListClasses().map(note => note.name);
         return nameArr.join(', ');
-    }
+    }*/
 
     getSubsets() {
         return [];
@@ -83,7 +83,7 @@ export default class PodList extends Model {
     }
 
     static reducePods = (A: IPod[]): IPod[] => {
-        return A.map((a) => Pod.reduce(a));
+        return A.map((a) => Pod.reducePods(a));
     }
 
     static arePodsEqual = (A: IPod[], B: IPod[]): boolean => {

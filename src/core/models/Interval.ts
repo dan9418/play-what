@@ -30,7 +30,7 @@ export default class IntervalSpan extends Pod {
     }
 
     static getName = (interval: IPod): string => {
-        const reduced = Model.reduce(interval);
+        const reduced = Pod.reducePods(interval);
 
         const [noteIndex, d] = reduced;
         const degreeIntervals = CORE_INTERVALS[d];

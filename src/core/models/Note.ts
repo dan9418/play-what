@@ -75,13 +75,13 @@ export default class Note extends Pod {
     }
 
     static getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
-        const reducedValue = Model.reduce(note);
+        const reducedValue = Note.reducePods(note);
 
         const d = reducedValue[1];
         const offset = this.getAccidentalOffset(reducedValue);
         const accidental = this.getAccidentalString(offset);
         const spelling = DEGREE_PRESETS[d].name;
-        const octave = Model.getOctave(note, true);
+        const octave = Pod.getOctave(note, true);
         return { spelling, accidental, octave };
     }
 

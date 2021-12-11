@@ -9,5 +9,5 @@ export default class Scale extends PodList {
         super(SCALE_PRESET_MAP, id, options);
     }
 
-    static fromValue = (value: IPod[]) => Model.fromValue(SCALE_PRESETS, Scale, value, true);
+    static fromValue = (value: IPod[]) => Model.fromValue(SCALE_PRESETS, Scale, value);
 }
