@@ -25,14 +25,6 @@ export default class Note extends Pod {
         super(NOTE_PRESET_MAP, id);
     }
 
-    getSubsets = () => {
-        return [];
-    }
-
-    getSupersets = () => {
-        return [];
-    }
-
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value);
 
     static getAccidentalOffset = (pod: IPod): number => {

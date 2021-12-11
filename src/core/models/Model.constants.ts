@@ -113,7 +113,6 @@ export interface IModelConfig {
 	modelId: ModelId;
 	id: string;
 	name: string;
-	value: any,
 	tags: Tag[]
 }
 

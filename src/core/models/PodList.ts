@@ -1,68 +1,85 @@
 import IntervalSpan from '@pw-core/models/Interval';
 import Model from './Model';
-import { ChordId, IPod, ScaleId } from './Model.constants';
+import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import Note from './Note';
-import Pod from './Pod';
 
 export default class PodList extends Model {
 
     id: ChordId | ScaleId;
-    value: IPod[];
-    rootPreset: Note;
+    intervals: IntervalSpan[];
+    root: Note;
 
     constructor(presetMap, presetId: ChordId | ScaleId, options) {
-        super(presetMap, presetId);
+        super();
+
+        const preset = presetMap.get(presetId);
+        if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
+
+        this.modelId = preset.modelId;
+        this.id = preset.id;
+        this.name = preset.name;
+        this.tags = preset.tags;
+        this.intervals = preset.value.map(pod => IntervalSpan.fromValue(pod));
 
         if (options && options.root) {
             this.applyRoot(options.root);
         }
     }
 
-    applyRoot(root) {
+    applyRoot(noteId: NoteId) {
         let note;
         try {
-            note = new Note(root);;
+            note = new Note(noteId);
         }
         catch (e) {
             console.error(e);
             throw new Error('Unable to apply root');
         }
-        this.rootPreset = note;
+        this.root = note;
         return this;
     }
 
-    getIntervalListPods() {
-        return this.value;
+    getIntervalListClasses(): IntervalSpan {
+        return this.intervals;
     }
 
-    getIntervalListClasses() {
-        return this.value.map((pod) => IntervalSpan.fromValue(pod));
+    getIntervalListPods(): IPod[] {
+        return this.getIntervalListClasses().map(ivl => ivl.pod);
     }
 
-    getIntervalListString() {
-        const nameArr = this.value.map((pod) => IntervalSpan.getName(pod));
-        return nameArr.join(', ');
-    }
-
-    getNoteListString() {
-        const nameArr = this.value.map((pod) => Note.getName(pod));
+    getIntervalListString(): string {
+        const nameArr = this.getIntervalListClasses().map(ivl => ivl.getName());
         return nameArr.join(', ');
     }
 
     getNoteListClasses() {
-        if (!this.rootPreset) return;
+        if (!this.root) return;
 
-        return Pod.addPodList(this.rootPreset.value, this.value, Note);
+        return this.root.addPodList(this.intervals, Note);
     }
 
-    getSubsets() { return super.getSubsets(true); }
+    getNoteListPods(): IPod[] {
+        return this.getNoteListClasses().map(ivl => ivl.pod);
+    }
 
-    getSupersets() { return super.getSupersets(true); }
+    getNoteListString(): string {
+        const nameArr = this.getNoteListClasses().map(note => note.name);
+        return nameArr.join(', ');
+    }
+
+    getSubsets() {
+        return [];
+        //return MASTER_PRESETS.filter(preset => this.intervals.length !== preset.value.length && Model.containsSubset(compareValue, preset.value));
+    }
+
+    getSupersets() {
+        return [];
+        //return MASTER_PRESETS.filter(preset => this.intervals.length !== preset.value.length && Model.containsSubset(preset.value, compareValue));
+    }
 
     getPreview() {
         return this.getIntervalListString();
     }
-
 
 
 }

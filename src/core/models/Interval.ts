@@ -14,7 +14,7 @@ export default class IntervalSpan extends Pod {
     }
 
     getName = () => {
-        return IntervalSpan.getName(this.value);
+        return IntervalSpan.getName(this.pod);
     }
 
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value);

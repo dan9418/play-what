@@ -4,14 +4,22 @@ import { IntervalId, IPod, NoteId } from './Model.constants';
 export default class Pod extends Model {
 
     id: NoteId | IntervalId;
-    value: IPod;
+    pod: IPod;
 
     constructor(presetMap, presetId: NoteId | IntervalId) {
-        super(presetMap, presetId);
+        super();
+        const preset = presetMap.get(presetId);
+        if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
+
+        this.modelId = preset.modelId;
+        this.id = preset.id;
+        this.name = preset.name;
+        this.tags = preset.tags;
+        this.pod = preset.value;
     }
 
     getIntervalListPods() {
-        return [this.value];
+        return [this.pod];
     }
 
     getPreview() {
@@ -24,24 +32,25 @@ export default class Pod extends Model {
         return new subclass(preset.id);
     }
 
-    static addPod = (a: IPod, b: IPod, reduceResult = false, modelClass = undefined): IPod => {
-        const p = a[0] + b[0];
-        const d = a[1] + b[1];
+    addPod(b: Pod, subclass = undefined): Pod {
+        const a = this;
+        const p = a.pod[0] + b.pod[0];
+        const d = a.pod[1] + b.pod[1];
         const result: IPod = [p, d];
-        const resultPod = reduceResult ? this.reduce(result) : result;
-        return modelClass ? new modelClass.fromValue(resultPod) : resultPod;
+        return subclass ? subclass.fromValue(result) : result;
     }
 
-    static subtractPod = (a: IPod, b: IPod, reduceResult = false, modelClass = undefined): IPod => {
-        const p = a[0] - b[0];
-        const d = a[1] - b[1];
+    subtractPod(b: Pod, subclass = undefined): Pod {
+        const a = this;
+        const p = a.pod[0] - b.pod[0];
+        const d = a.pod[1] - b.pod[1];
         const result: IPod = [p, d];
-        const resultPod = reduceResult ? this.reduce(result) : result;
-        return modelClass ? new modelClass.fromValue(resultPod) : resultPod;
+        return subclass ? subclass.fromValue(result) : result;
     }
 
-    static addPodList = (a: IPod, B: IPod[], modelClass = undefined): IPod[] => {
-        const newValue = B.map((b) => Pod.addPod(a, b, undefined, modelClass));
-        return newValue;
+    addPodList(B: Pod[], subclass = undefined): Pod[] {
+        const a = this;
+        const result = B.map((b) => a.addPod(b, subclass));
+        return subclass ? subclass.fromValue(result) : result;
     };
 }

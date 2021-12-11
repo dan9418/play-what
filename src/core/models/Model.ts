@@ -9,28 +9,6 @@ export default class Model implements IModelConfig {
     id: PresetId;
     name: string;
     tags: Tag[];
-    value: any;
-
-    constructor(presetMap, presetId: PresetId) {
-        const preset = presetMap.get(presetId);
-        if (!preset) throw new Error(`Unknown prestId: ${presetId}`);
-
-        this.modelId = preset.modelId;
-        this.id = preset.id;
-        this.name = preset.name;
-        this.tags = preset.tags;
-        this.value = preset.value;
-    }
-
-    getSubsets(isList = false) {
-        const compareValue = isList ? this.value : [this.value];
-        return MASTER_PRESETS.filter(preset => compareValue.length !== preset.value.length && Model.containsSubset(compareValue, preset.value));
-    }
-
-    getSupersets(isList = false) {
-        const compareValue = isList ? this.value : [this.value];
-        return MASTER_PRESETS.filter(preset => compareValue.length !== preset.value.length && Model.containsSubset(preset.value, compareValue));
-    }
 
     static fromValue = (presetArray, subclass, value: any, isList = false) => {
         const compareValue = isList ? Model.reduceList(value) : Model.reduce(value);
