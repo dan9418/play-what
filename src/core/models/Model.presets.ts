@@ -459,8 +459,11 @@ export const CORE_INTERVALS = [
     [INTERVAL_PRESET_MAP.get(IntervalId.m7), INTERVAL_PRESET_MAP.get(IntervalId.M7)]
 ];
 
-export const MASTER_PRESETS: IModelConfig[] = [
-    ...podToPodList(INTERVAL_PRESETS),
-    ...CHORD_PRESETS,
-    ...SCALE_PRESETS
-];
+console.log('pw-presets', NOTE_PRESETS, INTERVAL_PRESETS, CHORD_PRESETS, SCALE_PRESETS);
+
+export const logPresetJson = () => {
+    console.log('pw-presets notes', JSON.stringify(NOTE_PRESETS));
+    console.log('pw-presets intervals', JSON.stringify(INTERVAL_PRESETS));
+    console.log('pw-presets chords', JSON.stringify(CHORD_PRESETS));
+    console.log('pw-presets scales', JSON.stringify(SCALE_PRESETS));
+}

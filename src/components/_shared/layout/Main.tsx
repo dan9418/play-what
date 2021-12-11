@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { logPresetJson } from '../../../core/models/Model.presets';
 
 const StyledMain = styled.main`
 	margin: auto;
@@ -12,6 +13,7 @@ const StyledMain = styled.main`
 `;
 
 const Main: React.FC = ({ children }) => {
+  false && logPresetJson();
   return (
     <StyledMain>
       {children}

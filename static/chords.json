@@ -1,6 +1,7 @@
 [
     {
-        "id": "maj-triad",
+        "modelId": "chords",
+        "id": "major-triad",
         "name": "Major Triad",
         "value": [
             [
@@ -19,11 +20,11 @@
         "tags": [
             "major",
             "triad"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "maj-6",
+        "modelId": "chords",
+        "id": "major-6th",
         "name": "Major 6th",
         "value": [
             [
@@ -45,12 +46,12 @@
         ],
         "tags": [
             "major",
-            "sixth"
-        ],
-        "voicings": []
+            "6th"
+        ]
     },
     {
-        "id": "maj-7",
+        "modelId": "chords",
+        "id": "major-7th",
         "name": "Major 7th",
         "value": [
             [
@@ -72,12 +73,12 @@
         ],
         "tags": [
             "major",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "min-triad",
+        "modelId": "chords",
+        "id": "minor-triad",
         "name": "Minor Triad",
         "value": [
             [
@@ -96,11 +97,11 @@
         "tags": [
             "minor",
             "triad"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "min-6",
+        "modelId": "chords",
+        "id": "minor-6th",
         "name": "Minor 6th",
         "value": [
             [
@@ -122,12 +123,12 @@
         ],
         "tags": [
             "minor",
-            "sixth"
-        ],
-        "voicings": []
+            "6th"
+        ]
     },
     {
-        "id": "min-7",
+        "modelId": "chords",
+        "id": "minor-7th",
         "name": "Minor 7th",
         "value": [
             [
@@ -149,12 +150,12 @@
         ],
         "tags": [
             "minor",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "min-maj-7",
+        "modelId": "chords",
+        "id": "minor-major-7th",
         "name": "Minor-Major 7th",
         "value": [
             [
@@ -176,12 +177,12 @@
         ],
         "tags": [
             "minor",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "dom-7",
+        "modelId": "chords",
+        "id": "dom-7th",
         "name": "Dominant 7th",
         "value": [
             [
@@ -203,12 +204,12 @@
         ],
         "tags": [
             "dominant",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "dom-7-b9",
+        "modelId": "chords",
+        "id": "dom-7th-b9",
         "name": "Dominant 7th (b9)",
         "value": [
             [
@@ -235,11 +236,11 @@
         "tags": [
             "dominant",
             "extended"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "aug-triad",
+        "modelId": "chords",
+        "id": "augmented-triad",
         "name": "Augmented Triad",
         "value": [
             [
@@ -258,11 +259,11 @@
         "tags": [
             "augmented",
             "triad"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "aug-7",
+        "modelId": "chords",
+        "id": "augmented-7th",
         "name": "Augmented 7th",
         "value": [
             [
@@ -284,12 +285,12 @@
         ],
         "tags": [
             "augmented",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "aug-maj-7",
+        "modelId": "chords",
+        "id": "augmented-major-7th",
         "name": "Augmented Major 7th",
         "value": [
             [
@@ -311,12 +312,12 @@
         ],
         "tags": [
             "augmented",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "dim-triad",
+        "modelId": "chords",
+        "id": "diminished-triad",
         "name": "Diminished Triad",
         "value": [
             [
@@ -335,11 +336,11 @@
         "tags": [
             "diminished",
             "triad"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "dim-7",
+        "modelId": "chords",
+        "id": "diminished-7th",
         "name": "Diminished 7th",
         "value": [
             [
@@ -361,12 +362,12 @@
         ],
         "tags": [
             "diminished",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "half-dim-7",
+        "modelId": "chords",
+        "id": "half-diminished-7th",
         "name": "Half-Diminished 7th",
         "value": [
             [
@@ -388,12 +389,12 @@
         ],
         "tags": [
             "diminished",
-            "seventh"
-        ],
-        "voicings": []
+            "7th"
+        ]
     },
     {
-        "id": "sus-2",
+        "modelId": "chords",
+        "id": "suspended-2nd",
         "name": "Suspended 2nd",
         "value": [
             [
@@ -412,11 +413,11 @@
         "tags": [
             "suspended",
             "triad"
-        ],
-        "voicings": []
+        ]
     },
     {
-        "id": "sus-4",
+        "modelId": "chords",
+        "id": "suspended-4th",
         "name": "Suspended 4th",
         "value": [
             [
@@ -435,7 +436,6 @@
         "tags": [
             "suspended",
             "triad"
-        ],
-        "voicings": []
+        ]
     }
 ]

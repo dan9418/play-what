@@ -1,0 +1,212 @@
+[
+    {
+        "modelId": "notes",
+        "id": "c",
+        "name": "C",
+        "value": [
+            0,
+            0
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "c-sharp",
+        "name": "C#",
+        "value": [
+            1,
+            0
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "d-flat",
+        "name": "Db",
+        "value": [
+            1,
+            1
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "d",
+        "name": "D",
+        "value": [
+            2,
+            1
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "d-sharp",
+        "name": "D#",
+        "value": [
+            3,
+            1
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "e-flat",
+        "name": "Eb",
+        "value": [
+            3,
+            2
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "e",
+        "name": "E",
+        "value": [
+            4,
+            2
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "e-sharp",
+        "name": "E#",
+        "value": [
+            5,
+            2
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "f-flat",
+        "name": "Fb",
+        "value": [
+            4,
+            3
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "f",
+        "name": "F",
+        "value": [
+            5,
+            3
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "f-sharp",
+        "name": "F#",
+        "value": [
+            6,
+            3
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "g-flat",
+        "name": "Gb",
+        "value": [
+            6,
+            4
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "g",
+        "name": "G",
+        "value": [
+            7,
+            4
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "g-sharp",
+        "name": "G#",
+        "value": [
+            8,
+            4
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "a-flat",
+        "name": "Ab",
+        "value": [
+            8,
+            5
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "a",
+        "name": "A",
+        "value": [
+            9,
+            5
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "a-sharp",
+        "name": "A#",
+        "value": [
+            10,
+            5
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "b-flat",
+        "name": "Bb",
+        "value": [
+            10,
+            6
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "b",
+        "name": "B",
+        "value": [
+            11,
+            6
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "b-sharp",
+        "name": "B#",
+        "value": [
+            0,
+            6
+        ],
+        "tags": []
+    },
+    {
+        "modelId": "notes",
+        "id": "c-flat",
+        "name": "Cb",
+        "value": [
+            11,
+            0
+        ],
+        "tags": []
+    }
+]
