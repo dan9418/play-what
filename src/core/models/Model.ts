@@ -1,13 +1,14 @@
-import NumberUtils from '../general/Number.utils';
-import ToneUtils from '../tone/Tone.utils';
-import TuningUtils from '../tuning/Tuning.utils';
-import { IModelConfig, IPod, MAX_POD, ModelId, PresetId, Tag } from './Model.constants';
+import { IModelConfig, IPod, ModelId, PresetId, Tag } from './Model.constants';
 
 export default class Model implements IModelConfig {
     modelId: ModelId;
     id: PresetId;
     name: string;
     tags: Tag[];
+
+    getPreview() {
+        return this.name || 'unnamed';
+    }
 
     static fromValue = (presetArray, subclass, value: any) => {
         const preset = presetArray.find(p => subclass.arePodsEqual(p.value, subclass.reducePods(value)));
@@ -17,6 +18,14 @@ export default class Model implements IModelConfig {
         }
         return new subclass(preset.id);
     }
+
+    static containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
+        for (let i = 0; i < subset.length; i++) {
+            if (!podList.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
+                return false;
+        }
+        return true;
+    };
 
     // Search
 
@@ -55,16 +64,6 @@ export default class Model implements IModelConfig {
         const pod = A.findIndex(a => this.isPodAtPitch(a, p, matchOctave));
         return pod !== -1 ? pod : null;
     };*/
-
-    // Other
-
-    static containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
-        for (let i = 0; i < subset.length; i++) {
-            if (!podList.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
-                return false;
-        }
-        return true;
-    };
 
     /*static sort = (podList: IPod[]) => {
         return podList.sort((a, b) => {

@@ -19,8 +19,8 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                     {
                         intervals.map((ivl, i) => (
                             <li key={ivl.id}>
-                                <div>{ivl.id}</div>
-                                {notes && <div>{notes[i].id}</div>}
+                                <div>{ivl.getName()}</div>
+                                {notes && <div>{notes[i].getName()}</div>}
                             </li>
                         ))
                     }

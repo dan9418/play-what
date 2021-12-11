@@ -2,6 +2,7 @@ import NumberUtils from '../general/Number.utils';
 import { DEGREE_PRESETS } from '../theory/Degree.constants';
 import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
+import IntervalSpan from './Interval';
 import Model from './Model';
 import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
@@ -24,6 +25,10 @@ export default class Note extends Pod {
     constructor(id: NoteId) {
         super(NOTE_PRESET_MAP, id);
     }
+
+    addIntervals(B: IntervalSpan[]): Note[] {
+        return super.addIntervals(B, Note) as Note[];
+    };
 
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value);
 
@@ -85,8 +90,8 @@ export default class Note extends Pod {
         return { spelling, accidental, octave };
     }
 
-    static getName = (note: IPod, options: INoteNameOptions = {}): string => {
-        const { spelling, accidental, octave } = this.getNameParts(note, options);
+    getName = (options: INoteNameOptions = {}): string => {
+        const { spelling, accidental, octave } = Note.getNameParts(this.pod, options);
 
         const o = options.includeOctave ? octave : '';
         return `${spelling}${accidental}${o}`;

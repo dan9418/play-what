@@ -19,14 +19,6 @@ export default class Pod extends Model {
         this.pod = preset.value;
     }
 
-    /*getIntervalListPods() {
-        return [this.pod];
-    }*/
-
-    getPreview() {
-        return this.name;
-    }
-
     addPod(b: Pod, subclass = undefined): Pod {
         const a = this;
         const p = a.pod[0] + b.pod[0];

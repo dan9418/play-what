@@ -56,7 +56,7 @@ export default class PodList extends Model {
     getNoteListClasses() {
         if (!this.root) return;
 
-        return this.root.addIntervals(this.intervals, Note);
+        return this.root.addIntervals(this.intervals);
     }
 
     /*getNoteListPods(): IPod[] {
