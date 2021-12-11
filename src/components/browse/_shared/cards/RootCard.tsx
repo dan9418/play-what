@@ -12,6 +12,10 @@ const StyledRoot = styled.div`
         border-collapse: collapse;
         width: 100%;
 
+        td {
+            padding: 1px;
+        }
+
         a {
             text-decoration: none;
             font-size: 90%;

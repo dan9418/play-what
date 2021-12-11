@@ -1,9 +1,10 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useQueryParam, StringParam } from "use-query-params";
 import Card from "../../../_shared/ui/Card";
 
-const StyledInversions = styled.div`
+const StyledOctaves = styled.div`
     ul {
         display: flex;
         align-items: center;
@@ -21,6 +22,7 @@ const StyledInversions = styled.div`
             display: flex;
             align-items: center;
             justify-content: center;
+            aspect-ratio: 1;
             width: 100%;
 
             &.active {
@@ -36,25 +38,29 @@ const StyledInversions = styled.div`
 `;
 
 
-const InversionCard: React.FC<any> = ({ model }) => {
+const OctaveCard: React.FC<any> = ({ model }) => {
 
-    const inversions = ['None', 'First', 'Second', 'Third'];
+    const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    const [rootParam, setRootParam] = useQueryParam("root", StringParam);
+
+    if (!rootParam) return null;
 
     return (
-        <Card title="Inversion">
-            <StyledInversions>
+        <Card title="Octave">
+            <StyledOctaves>
                 <ul>
-                    {inversions.map(o => {
+                    {octaves.map(o => {
                         return (
                             <li key={o}>
-                                <Link to={``} className={o === 'None' ? `active` : ''}>{o}</Link>
+                                <Link to={``} className={o === 4 ? `active` : ''}>{o}</Link>
                             </li>
                         );
                     })}
                 </ul>
-            </StyledInversions>
+            </StyledOctaves>
         </Card>
     );
 };
 
-export default InversionCard;
+export default OctaveCard;
