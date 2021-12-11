@@ -8,14 +8,16 @@ const StyledFilterList = styled.ul`
    align-items: center;
    justify-content: center;
    gap: 8px;
-   padding: 16px 0;
-
+   margin-bottom: 16px;
    button {
         background-color: transparent;
         border: 1px solid green;
         color: green;
         padding: 4px 8px;
         font-size: 80%;
+        :hover {
+            background-color: rgba(0,0,0,0.1);
+        }
    }
 `;
 

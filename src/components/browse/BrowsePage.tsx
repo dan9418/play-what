@@ -7,33 +7,37 @@ import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledBrowsePage = styled(StyledPageBody)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
 
     .tile-container {
         padding: 16px;
         gap: 16px;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
         width: 100%;
 
         a {
-            width: 100%;
-            height: 64px;
             display: flex;
             align-items: center;
             justify-content: center;
+            aspect-ratio: 1;
 
             text-decoration: none;
-            background-color: ${THEME.clickable};
-            color: white;
+            border: 2px solid ${THEME.clickable};
+            color: ${THEME.clickable};
             border-radius: 8px;
-            font-size: 200%;
+            font-size: 140%;
+            font-weight: bold;
+
+            height: 128px;
+            width: 128px;
 
             &:hover {
-                background-color: ${THEME.active};
+                background-color: rgba(0,0,0,0.1)
             }
         }
     }
@@ -47,9 +51,10 @@ const BrowsePage: React.FC<any> = props => {
             <BreadcrumbList id="browse" name="Browse" path={props.path} />
             <PageTitle title="Browse Ideas" subtitle="Select a category to get started..." />
             <div className="tile-container">
+                <Link to="/browse/notes">Notes</Link>
+                <Link to="/browse/intervals">Intervals</Link>
                 <Link to="/browse/chords">Chords</Link>
                 <Link to="/browse/scales">Scales</Link>
-                <Link to="/browse/intervals">Intervals</Link>
                 <Link to="/browse/songs">Songs</Link>
             </div>
         </StyledBrowsePage>

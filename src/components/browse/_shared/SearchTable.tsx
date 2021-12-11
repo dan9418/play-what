@@ -20,7 +20,7 @@ const StyledSearchTable = styled.table`
     tbody {
         tr {
             &:hover {
-                background-color: ${COLOR.light2};
+                background-color: rgba(0,0,0,0.1);
             }
         }
     }

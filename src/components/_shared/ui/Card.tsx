@@ -18,10 +18,12 @@ const StyledCard = styled.div`
 const Card: React.FC<any> = ({ title, action, children }) => {
     return (
         <StyledCard>
-            <div className="header">
-                <h2>{title}</h2>
-                {action}
-            </div>
+            {title &&
+                <div className="header">
+                    <h2>{title}</h2>
+                    {action}
+                </div>
+            }
             {children}
         </StyledCard >
     );

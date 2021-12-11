@@ -12,13 +12,13 @@ const IntervalsPage: React.FC<any> = props => {
             tag={IntervalTag}
             headers={[
                 'Name',
-                'Id'
+                'Tags'
             ]}
             rows={INTERVAL_PRESETS}
             getCols={preset => {
                 return [
                     <Link to={`/browse/intervals/${preset.id}`}>{preset.name}</Link>,
-                    preset.id
+                    preset.tags.join(', ')
                 ]
             }}
             {...props}

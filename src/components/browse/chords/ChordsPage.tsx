@@ -13,15 +13,15 @@ const ChordsPage: React.FC<any> = props => {
             tag={ChordTag}
             headers={[
                 'Name',
-                'Id',
-                'Intervals'
+                'Intervals',
+                'Tags'
             ]}
             rows={CHORD_PRESETS.map(p => new Chord(p.id))}
             getCols={preset => {
                 return [
                     <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
-                    preset.id,
-                    preset.getIntervalListString()
+                    preset.getIntervalListString(),
+                    preset.tags.join(', ')
                 ]
             }}
             {...props}

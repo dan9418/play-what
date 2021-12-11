@@ -12,13 +12,13 @@ const NotesPage: React.FC<any> = props => {
             tag={NoteTag}
             headers={[
                 'Name',
-                'Id'
+                'Tags'
             ]}
             rows={NOTE_PRESETS}
             getCols={preset => {
                 return [
                     <Link to={`/browse/notes/${preset.id}`}>{preset.name}</Link>,
-                    preset.id
+                    preset.tags.join(', ')
                 ]
             }}
             {...props}
