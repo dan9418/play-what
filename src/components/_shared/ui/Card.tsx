@@ -7,15 +7,21 @@ const StyledCard = styled.div`
     border-radius: 16px;
     padding: 16px;
 
-    h2 {
+    .header {
         margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 `;
 
-const Card: React.FC<any> = ({ title, children }) => {
+const Card: React.FC<any> = ({ title, action, children }) => {
     return (
         <StyledCard>
-            <h2>{title}</h2>
+            <div className="header">
+                <h2>{title}</h2>
+                {action}
+            </div>
             {children}
         </StyledCard >
     );

@@ -49,8 +49,13 @@ const NoteLink: React.FC<any> = ({ noteId }) => {
 };
 
 const RootCard: React.FC<any> = () => {
+    const pageProps = usePageProps();
+    const [rootParam, setRootParam] = useQueryParam("root", StringParam);
     return (
-        <Card title="Root">
+        <Card
+            title={`${rootParam ? 'Change' : 'Set'} Root`}
+            action={rootParam ? <Link to={pageProps.path}>Clear</Link> : undefined}
+        >
             <StyledRoot>
                 <table>
                     <tbody>
