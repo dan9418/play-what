@@ -23,4 +23,25 @@ export default class Pod extends Model {
         if (!preset) throw new Error('Unknown pod value');
         return new subclass(preset.id);
     }
+
+    static addPod = (a: IPod, b: IPod, reduceResult = false, modelClass = undefined): IPod => {
+        const p = a[0] + b[0];
+        const d = a[1] + b[1];
+        const result: IPod = [p, d];
+        const resultPod = reduceResult ? this.reduce(result) : result;
+        return modelClass ? new modelClass.fromValue(resultPod) : resultPod;
+    }
+
+    static subtractPod = (a: IPod, b: IPod, reduceResult = false, modelClass = undefined): IPod => {
+        const p = a[0] - b[0];
+        const d = a[1] - b[1];
+        const result: IPod = [p, d];
+        const resultPod = reduceResult ? this.reduce(result) : result;
+        return modelClass ? new modelClass.fromValue(resultPod) : resultPod;
+    }
+
+    static addPodList = (a: IPod, B: IPod[], modelClass = undefined): IPod[] => {
+        const newValue = B.map((b) => Pod.addPod(a, b, undefined, modelClass));
+        return newValue;
+    };
 }

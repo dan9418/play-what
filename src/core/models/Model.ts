@@ -72,27 +72,6 @@ export default class Model implements IModelConfig {
         return A.map((a) => this.reduce(a));
     }
 
-    // Addition
-
-    static addPod = (a: IPod, b: IPod, reduceResult = false): IPod => {
-        const p = a[0] + b[0];
-        const d = a[1] + b[1];
-        const result: IPod = [p, d];
-        return reduceResult ? this.reduce(result) : result;
-    }
-
-    static subtractPod = (a: IPod, b: IPod, reduceResult = false): IPod => {
-        const p = a[0] - b[0];
-        const d = a[1] - b[1];
-        const result: IPod = [p, d];
-        return reduceResult ? this.reduce(result) : result;
-    }
-
-    static addPodList = (a: IPod, B: IPod[]): IPod[] => {
-        const newValue = B.map((b) => this.addPod(a, b));
-        return newValue;
-    };
-
     // Property Derivation
 
     static getPitchClass = (pod: IPod): number => {

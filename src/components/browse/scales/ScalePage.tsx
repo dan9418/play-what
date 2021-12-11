@@ -8,7 +8,7 @@ import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
-import ViewerCard from "../_shared/cards/ViewerCard";
+import DetailsCard from "../_shared/cards/DetailsCard";
 
 const StyledScalePage = styled(StyledPageBody)`
    
@@ -28,7 +28,7 @@ const ScalePage: React.FC<any> = props => {
                     <RelatedCard model={scale} />
                 </StyledPane>
                 <StyledPane>
-                    <ViewerCard model={scale} />
+                    <DetailsCard model={scale} />
                     <SoundCard model={scale} />
                 </StyledPane>
             </StyledDoublePane>

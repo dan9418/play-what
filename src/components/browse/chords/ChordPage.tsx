@@ -10,7 +10,7 @@ import InversionsCard from "../_shared/cards/InversionsCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
-import ViewerCard from "../_shared/cards/ViewerCard";
+import DetailsCard from "../_shared/cards/DetailsCard";
 
 const StyledChordPage = styled(StyledPageBody)`
 
@@ -32,7 +32,7 @@ const ChordPage: React.FC<any> = props => {
                     <RelatedCard model={chord} />
                 </StyledPane>
                 <StyledPane>
-                    <ViewerCard model={chord} />
+                    <DetailsCard model={chord} />
                     <SoundCard model={chord} />
                 </StyledPane>
             </StyledDoublePane>

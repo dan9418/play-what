@@ -7,7 +7,7 @@ import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import SoundCard from "../_shared/cards/SoundCard";
-import ViewerCard from "../_shared/cards/ViewerCard";
+import DetailsCard from "../_shared/cards/DetailsCard";
 
 const StyledIntervalPage = styled(StyledPageBody)`
     
@@ -26,7 +26,7 @@ const IntervalPage: React.FC<any> = props => {
                     <RelatedCard model={interval} />
                 </StyledPane>
                 <StyledPane>
-                    <ViewerCard model={interval} />
+                    <DetailsCard model={interval} />
                     <SoundCard model={interval} />
                 </StyledPane>
             </StyledDoublePane>
