@@ -35,7 +35,20 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
 
     const [selectedTags, setSelectedTags] = useState([]);
 
-    const tags = Object.values(tag)
+    const filteredRows = rows.filter(r => {
+        if (!selectedTags.length) return true;
+        for (let i = 0; i < selectedTags.length; i++) {
+            if (!r.tags.includes(selectedTags[i])) {
+                return false;
+            }
+        }
+        return true;
+    });
+
+    const tags = Object.values(tag).filter(t => {
+        return filteredRows.find(r => r.tags.includes(t))
+    });
+
     return (
         <StyledSearchPage>
             <BreadcrumbList id={title.toLowerCase()} name={title} path={path} />
@@ -44,7 +57,7 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
                 <div>
                     <Card >
                         <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                        <SearchTable headers={headers} rows={rows} getCols={getCols} selectedTags={selectedTags} />
+                        <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
                     </Card>
                 </div>
                 <div>

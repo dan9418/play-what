@@ -35,10 +35,9 @@ export interface ISearchTableProps {
     rows: any[];
     headers: string[];
     getCols: (row: any) => any[];
-    selectedTags: string[];
 }
 
-const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols, selectedTags }) => {
+const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols }) => {
     return (
         <StyledSearchTable>
             <thead>
@@ -48,15 +47,7 @@ const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols, sele
             </thead>
             <tbody>
                 {
-                    rows.filter(r => {
-                        if (!selectedTags.length) return true;
-                        for (let i = 0; i < selectedTags.length; i++) {
-                            if (!r.tags.includes(selectedTags[i])) {
-                                return false;
-                            }
-                        }
-                        return true;
-                    }).map(row => (
+                    rows.map(row => (
                         <tr>
                             {getCols(row).map((c, i) => <td key={i}>{c}</td>)}
                         </tr>
