@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import FilterList from "../../_shared/inputs/FilterList";
@@ -32,6 +32,10 @@ interface ISearchPageProps extends ISearchTableProps {
 }
 
 const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, rows, headers, getCols }) => {
+
+    const [selectedTags, setSelectedTags] = useState([]);
+
+    const tags = Object.values(tag)
     return (
         <StyledSearchPage>
             <BreadcrumbList id={title.toLowerCase()} name={title} path={path} />
@@ -39,8 +43,8 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
             <div className="grid">
                 <div>
                     <Card >
-                        <FilterList tag={tag} />
-                        <SearchTable headers={headers} rows={rows} getCols={getCols} />
+                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+                        <SearchTable headers={headers} rows={rows} getCols={getCols} selectedTags={selectedTags} />
                     </Card>
                 </div>
                 <div>

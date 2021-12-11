@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import THEME, { COLOR } from "../../../styles/theme";
+import THEME from "../../../styles/theme";
 
 const StyledSearchTable = styled.table`
     width: 100%;
@@ -34,10 +34,11 @@ const StyledSearchTable = styled.table`
 export interface ISearchTableProps {
     rows: any[];
     headers: string[];
-    getCols: (row: any) => any[]
+    getCols: (row: any) => any[];
+    selectedTags: string[];
 }
 
-const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols }) => {
+const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols, selectedTags }) => {
     return (
         <StyledSearchTable>
             <thead>
@@ -47,7 +48,15 @@ const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols }) =>
             </thead>
             <tbody>
                 {
-                    rows.map(row => (
+                    rows.filter(r => {
+                        if (!selectedTags.length) return true;
+                        for (let i = 0; i < selectedTags.length; i++) {
+                            if (!r.tags.includes(selectedTags[i])) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }).map(row => (
                         <tr>
                             {getCols(row).map((c, i) => <td key={i}>{c}</td>)}
                         </tr>
