@@ -13,6 +13,12 @@ const StyledSearchPage = styled(StyledPageBody)`
     max-width: 1024px;
     margin: auto;
 
+    ul {
+        li {
+            padding: 4px;
+        }
+    }
+
     .grid {
         margin-top: 16px;
         display: grid;
@@ -62,9 +68,11 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
                 </div>
                 <div>
                     <Card title="Reference">
-                        <Link to="">Example 1</Link>
-                        <Link to="">Example 2</Link>
-                        <Link to="">Example 3</Link>
+                        <ul>
+                            <li><Link to="">Example 1</Link></li>
+                            <li><Link to="">Example 2</Link></li>
+                            <li><Link to="">Example 3</Link></li>
+                        </ul>
                     </Card>
                 </div>
             </div>

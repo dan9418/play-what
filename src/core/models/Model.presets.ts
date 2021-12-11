@@ -69,121 +69,121 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
         IntervalId.m2,
         'Minor 2nd',
         [1, 1],
-        [IntervalTag.Minor]
+        [IntervalTag.Second, IntervalTag.Minor]
     )],
     [IntervalId.M2, formatIntervalPreset(
         IntervalId.M2,
         'Major 2nd',
         [2, 1],
-        [IntervalTag.Major]
+        [IntervalTag.Second, IntervalTag.Major]
     )],
     [IntervalId.A2, formatIntervalPreset(
         IntervalId.A2,
         'Augmented 2nd',
         [3, 1],
-        [IntervalTag.Augmented]
+        [IntervalTag.Second, IntervalTag.Augmented]
     )],
     [IntervalId.d3, formatIntervalPreset(
         IntervalId.d3,
         'Diminished 3rd',
         [2, 2],
-        [IntervalTag.Diminished]
+        [IntervalTag.Third, IntervalTag.Diminished]
     )],
     [IntervalId.m3, formatIntervalPreset(
         IntervalId.m3,
         'Minor 3rd',
         [3, 2],
-        [IntervalTag.Minor]
+        [IntervalTag.Third, IntervalTag.Minor]
     )],
     [IntervalId.M3, formatIntervalPreset(
         IntervalId.M3,
         'Major 3rd',
         [4, 2],
-        [IntervalTag.Major]
+        [IntervalTag.Third, IntervalTag.Major]
     )],
     [IntervalId.A3, formatIntervalPreset(
         IntervalId.A3,
         'Augmented 3rd',
         [5, 2],
-        [IntervalTag.Augmented]
+        [IntervalTag.Third, IntervalTag.Augmented]
     )],
     [IntervalId.d4, formatIntervalPreset(
         IntervalId.d4,
         'Diminished 4th',
         [4, 3],
-        [IntervalTag.Diminished]
+        [IntervalTag.Fourth, IntervalTag.Diminished]
     )],
     [IntervalId.P4, formatIntervalPreset(
         IntervalId.P4,
         'Perfect 4th',
         [5, 3],
-        [IntervalTag.Perfect]
+        [IntervalTag.Fourth, IntervalTag.Perfect]
     )],
     [IntervalId.A4, formatIntervalPreset(
         IntervalId.A4,
         'Augmented 4th',
         [6, 3],
-        [IntervalTag.Augmented]
+        [IntervalTag.Fourth, IntervalTag.Augmented]
     )],
     [IntervalId.d5, formatIntervalPreset(
         IntervalId.d5,
         'Diminished 5th',
         [6, 4],
-        [IntervalTag.Diminished]
+        [IntervalTag.Fifth, IntervalTag.Diminished]
     )],
     [IntervalId.P5, formatIntervalPreset(
         IntervalId.P5,
         'Perfect 5th',
         [7, 4],
-        [IntervalTag.Perfect]
+        [IntervalTag.Fifth, IntervalTag.Perfect]
     )],
     [IntervalId.A5, formatIntervalPreset(
         IntervalId.A5,
         'Augmented 5th',
         [8, 4],
-        [IntervalTag.Augmented]
+        [IntervalTag.Fifth, IntervalTag.Augmented]
     )],
     [IntervalId.d6, formatIntervalPreset(
         IntervalId.d6,
         'Diminished 6th',
         [7, 5],
-        [IntervalTag.Diminished]
+        [IntervalTag.Sixth, IntervalTag.Diminished]
     )],
     [IntervalId.m6, formatIntervalPreset(
         IntervalId.m6,
         'Minor 6th',
         [8, 5],
-        [IntervalTag.Minor]
+        [IntervalTag.Sixth, IntervalTag.Minor]
     )],
     [IntervalId.M6, formatIntervalPreset(
         IntervalId.M6,
         'Major 6th',
         [9, 5],
-        [IntervalTag.Major]
+        [IntervalTag.Sixth, IntervalTag.Major]
     )],
     [IntervalId.A6, formatIntervalPreset(
         IntervalId.A6,
         'Augmented 6th',
         [10, 5],
-        [IntervalTag.Augmented]
+        [IntervalTag.Sixth, IntervalTag.Augmented]
     )],
     [IntervalId.d7, formatIntervalPreset(
         IntervalId.d7,
         'Diminished 7th',
         [9, 6],
-        [IntervalTag.Diminished]
+        [IntervalTag.Seventh, IntervalTag.Diminished]
     )],
     [IntervalId.m7, formatIntervalPreset(
         IntervalId.m7,
         'Minor 7th',
         [10, 6],
-        [IntervalTag.Minor]
+        [IntervalTag.Seventh, IntervalTag.Minor]
     )],
     [IntervalId.M7, formatIntervalPreset(
         IntervalId.M7,
         'Major 7th',
         [11, 6],
-        [IntervalTag.Major]
+        [IntervalTag.Seventh, IntervalTag.Major]
     )],
     [IntervalId.P8, formatIntervalPreset(
         IntervalId.P8,
