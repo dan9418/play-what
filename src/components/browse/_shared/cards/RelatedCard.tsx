@@ -4,6 +4,23 @@ import styled from 'styled-components';
 import Card from "../../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+    @media(min-width: 512px) {
+		grid-template-columns: 1fr 1fr;
+        & > :first-child {
+            border-right: 1px solid #ccc;
+        }
+	}
+
+    h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 90%;
+        color: #555;
+    }
+
     h2, h3, h4 {
         margin-bottom: 8px;
     }
@@ -29,7 +46,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
         <Card title="Related">
             <StyledRelated>
                 {subsets && subsets.length > 0 &&
-                    <>
+                    <div>
                         <h2>Subsets</h2>
                         {subsets.map(s => (
                             <>
@@ -41,10 +58,10 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                                 </ul>
                             </>
                         ))}
-                    </>
+                    </div>
                 }
                 {supersets && supersets.length > 0 &&
-                    <>
+                    <div>
                         <h2>Supersets</h2>
                         {supersets.map(s => (
                             <>
@@ -56,7 +73,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                                 </ul>
                             </>
                         ))}
-                    </>
+                    </div>
                 }
             </StyledRelated>
         </Card>

@@ -6,12 +6,12 @@ import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
+import DetailsCard from "../_shared/cards/DetailsCard";
 import InversionsCard from "../_shared/cards/InversionsCard";
+import OctaveCard from "../_shared/cards/OctaveCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
-import DetailsCard from "../_shared/cards/DetailsCard";
-import OctaveCard from "../_shared/cards/OctaveCard";
 
 const StyledChordPage = styled(StyledPageBody)`
 
@@ -31,10 +31,10 @@ const ChordPage: React.FC<any> = props => {
                     <RootCard model={chord} />
                     <OctaveCard model={chord} />
                     <InversionsCard model={chord} />
-                    <RelatedCard model={chord} />
                 </StyledPane>
                 <StyledPane>
                     <DetailsCard model={chord} />
+                    <RelatedCard model={chord} />
                     <SoundCard model={chord} />
                 </StyledPane>
             </StyledDoublePane>
