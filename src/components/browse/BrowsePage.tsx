@@ -55,7 +55,6 @@ const BrowsePage: React.FC<any> = props => {
                 <Link to="/browse/intervals">Intervals</Link>
                 <Link to="/browse/chords">Chords</Link>
                 <Link to="/browse/scales">Scales</Link>
-                <Link to="/browse/songs">Songs</Link>
             </div>
         </StyledBrowsePage>
     );

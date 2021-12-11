@@ -9,8 +9,8 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
   const notes = NOTE_JSON.map(note => createNode({
     ...note,
     internal: {
-      type: `Interval`,
-      contentDigest: createContentDigest(ivl)
+      type: `Note`,
+      contentDigest: createContentDigest(note)
     }
   }));
 
