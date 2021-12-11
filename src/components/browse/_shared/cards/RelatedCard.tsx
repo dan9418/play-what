@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Card from "../../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
-    h3 {
+    h2, h3, h4 {
         margin-bottom: 8px;
     }
 
@@ -24,54 +24,38 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     const subsets = model.getSubsets && model.getSubsets();
     const supersets = model.getSupersets && model.getSupersets();
-    const intervals = model.getIntervalListClasses && model.getIntervalListClasses();
-    const notes = model.getNoteListClasses && model.getNoteListClasses();
 
     return (
         <Card title="Related">
             <StyledRelated>
-                {notes && notes.length > 0 &&
-                    <>
-                        <h3>Notes</h3>
-                        <ul>
-                            {notes.map(s => (
-                                <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
-                            ))}
-                        </ul>
-                    </>
-                }
-                {intervals && intervals.length > 0 &&
-                    <>
-                        <h3>Intervals</h3>
-                        <ul>
-                            {intervals.map(ivl => {
-                                return (
-                                    <li key={ivl.id}>
-                                        <Link to={`/browse/intervals/${ivl.id}`}>{ivl.name}</Link>
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </>
-                }
                 {subsets && subsets.length > 0 &&
                     <>
-                        <h3>Subsets</h3>
-                        <ul>
-                            {subsets.map(s => (
-                                <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
-                            ))}
-                        </ul>
+                        <h2>Subsets</h2>
+                        {subsets.map(s => (
+                            <>
+                                <h3>{s.modelName}</h3>
+                                <ul>
+                                    {s.values.map(s => (
+                                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
+                                    ))}
+                                </ul>
+                            </>
+                        ))}
                     </>
                 }
                 {supersets && supersets.length > 0 &&
                     <>
-                        <h3>Supersets</h3>
-                        <ul>
-                            {supersets.map(s => (
-                                <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
-                            ))}
-                        </ul>
+                        <h2>Supersets</h2>
+                        {supersets.map(s => (
+                            <>
+                                <h3>{s.modelName}</h3>
+                                <ul>
+                                    {s.values.map(s => (
+                                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
+                                    ))}
+                                </ul>
+                            </>
+                        ))}
                     </>
                 }
             </StyledRelated>

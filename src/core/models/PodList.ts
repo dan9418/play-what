@@ -1,6 +1,7 @@
 import IntervalSpan from '@pw-core/models/Interval';
 import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
+import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import Pod from './Pod';
 
@@ -48,9 +49,9 @@ export default class PodList extends Model {
         return this.intervals;
     }
 
-    /*getIntervalListPods(): IPod[] {
+    getIntervalListPods(): IPod[] {
         return this.getIntervalListClasses().map(ivl => ivl.pod);
-    }*/
+    }
 
     getIntervalListString(): string {
         const nameArr = this.getIntervalListClasses().map(ivl => ivl.getName());
@@ -73,13 +74,79 @@ export default class PodList extends Model {
     }*/
 
     getSubsets() {
-        return [];
-        //return MASTER_PRESETS.filter(preset => this.intervals.length !== preset.value.length && Model.containsSubset(compareValue, preset.value));
+        const result = [
+            {
+                modelName: 'Intervals',
+                values: this.intervals
+            }
+        ];
+
+        if (this.root) {
+            result.push({
+                modelName: 'Notes',
+                values: this.getNoteListClasses()
+            });
+        }
+
+        const intervalPods = this.getIntervalListPods();
+
+        const chords = CHORD_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(intervalPods, preset.value)
+        );
+
+        if (chords.length) {
+            result.push({
+                modelName: 'Chords',
+                values: chords
+            });
+        }
+
+        const scales = SCALE_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(intervalPods, preset.value)
+        );
+
+        if (scales.length) {
+            result.push({
+                modelName: 'Scales',
+                values: scales
+            });
+        }
+
+        return result;
     }
 
     getSupersets() {
-        return [];
-        //return MASTER_PRESETS.filter(preset => this.intervals.length !== preset.value.length && Model.containsSubset(preset.value, compareValue));
+        const result = [];
+
+        const intervalPods = this.getIntervalListPods();
+
+        const chords = CHORD_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(preset.value, intervalPods)
+        );
+
+        if (chords.length) {
+            result.push({
+                modelName: 'Chords',
+                values: chords
+            });
+        }
+
+        const scales = SCALE_PRESETS.filter(preset =>
+            intervalPods.length !== preset.value.length &&
+            Model.containsSubset(preset.value, intervalPods)
+        );
+
+        if (scales.length) {
+            result.push({
+                modelName: 'Scales',
+                values: scales
+            });
+        }
+
+        return result;
     }
 
     getPreview() {
