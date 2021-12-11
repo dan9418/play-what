@@ -113,7 +113,8 @@ export interface IModelConfig {
 	modelId: ModelId;
 	id: string;
 	name: string;
-	tags: Tag[]
+	tags: Tag[];
+	value: any;
 }
 
 export enum ScaleTag {

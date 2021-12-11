@@ -19,7 +19,7 @@ const StyledDetailsCard = styled.div`
             padding: 4px;
             text-align: center;
             &.featured {
-                font-size: 140%;
+                font-size: 160%;
                 font-weight: bold;
             }
             &.frequency, &.ratio {

@@ -1,6 +1,6 @@
-import { IModelConfig, IPod, ModelId, PresetId, Tag } from './Model.constants';
+import { IPod, ModelId, PresetId, Tag } from './Model.constants';
 
-export default class Model implements IModelConfig {
+export default class Model {
     modelId: ModelId;
     id: PresetId;
     name: string;
