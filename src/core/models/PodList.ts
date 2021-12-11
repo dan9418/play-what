@@ -27,6 +27,10 @@ export default class PodList extends Model {
         }
     }
 
+    getName = () => {
+        return `${this.root ? `${this.root.getName()} ` : ''}${this.name}`;
+    }
+
     applyRoot(noteId: NoteId) {
         let note;
         try {

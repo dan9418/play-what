@@ -23,8 +23,8 @@ const ChordPage: React.FC<any> = props => {
 
     return (
         <StyledChordPage>
-            <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
-            <PageTitle title={chord.name} subtitle="Chord" />
+            <BreadcrumbList id={chord.id} name={chord.getName()} path={props.path} />
+            <PageTitle title={chord.getName()} subtitle="Chord" />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={chord} />

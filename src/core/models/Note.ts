@@ -2,6 +2,7 @@ import NumberUtils from '../general/Number.utils';
 import { DEGREE_PRESETS } from '../theory/Degree.constants';
 import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
+import TuningUtils from '../tuning/Tuning.utils';
 import IntervalSpan from './Interval';
 import Model from './Model';
 import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
@@ -95,5 +96,9 @@ export default class Note extends Pod {
 
         const o = options.includeOctave ? octave : '';
         return `${spelling}${accidental}${o}`;
+    }
+
+    getFrequency = () => {
+        return `${TuningUtils.getFrequency(this.pod[0])}Hz`;
     }
 }

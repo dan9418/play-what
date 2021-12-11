@@ -17,6 +17,10 @@ export default class IntervalSpan extends Pod {
         return IntervalSpan.getName(this.pod);
     }
 
+    getRatio = () => {
+        return '1:1';
+    }
+
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value);
 
     static getIntervalOffset = (pod: IPod, coreIvl: IModelConfig) => {
