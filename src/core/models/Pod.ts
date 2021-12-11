@@ -51,6 +51,6 @@ export default class Pod extends Model {
     addPodList(B: Pod[], subclass = undefined): Pod[] {
         const a = this;
         const result = B.map((b) => a.addPod(b, subclass));
-        return subclass ? subclass.fromValue(result) : result;
+        return result;
     };
 }

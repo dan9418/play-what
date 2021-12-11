@@ -22,8 +22,8 @@ const StyledRelated = styled.div`
 
 const RelatedCard: React.FC<any> = ({ model }) => {
 
-    const subsets = model.getSubsets();
-    const supersets = model.getSupersets();
+    const subsets = model.getSubsets && model.getSubsets();
+    const supersets = model.getSupersets && model.getSupersets();
     const intervals = model.getIntervalListClasses && model.getIntervalListClasses();
     const notes = model.getNoteListClasses && model.getNoteListClasses();
 
@@ -54,7 +54,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                         </ul>
                     </>
                 }
-                {subsets.length > 0 &&
+                {subsets && subsets.length > 0 &&
                     <>
                         <h3>Subsets</h3>
                         <ul>
@@ -64,7 +64,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                         </ul>
                     </>
                 }
-                {supersets.length > 0 &&
+                {supersets && supersets.length > 0 &&
                     <>
                         <h3>Supersets</h3>
                         <ul>
