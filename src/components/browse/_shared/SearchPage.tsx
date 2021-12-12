@@ -61,10 +61,8 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
             <PageTitle title={title} subtitle={subtitle} />
             <div className="grid">
                 <div>
-                    <Card >
-                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                        <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
-                    </Card>
+                    <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+                    <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
                 </div>
                 <div>
                     <Card title="Reference">
