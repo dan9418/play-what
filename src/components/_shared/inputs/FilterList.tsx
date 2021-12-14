@@ -11,17 +11,17 @@ const StyledFilterList = styled.ul`
    margin-bottom: 16px;
    button {
         background-color: ${({ theme }) => theme.transparent};;
-        border: 1px solid ${props => props.theme.clickable};;
-        color: ${props => props.theme.clickable};
+        border: 1px solid ${props => props.theme.state.interactive};;
+        color: ${props => props.theme.state.interactive};
         padding: 4px 8px;
         font-size: 80%;
         :hover {
-            background-color: ${({ theme }) => theme.hover};
+            background-color: ${({ theme }) => theme.state.hoverDark};
         }
 
         &.active {
             color: ${({ theme }) => theme.white};;
-            background-color: ${props => props.theme.clickable};
+            background-color: ${props => props.theme.state.interactive};
         }
    }
 `;

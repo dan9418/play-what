@@ -10,7 +10,7 @@ const StyledPageNav = styled.nav`
     right: 0;
     z-index: 2001;
 	background: ${({ theme }) => theme.surface.gradient};
-	border-bottom: 1px solid ${({ theme }) => theme.border};
+	border-bottom: 1px solid ${({ theme }) => theme.utils.border};
 
 	> ul {
 		height: 100%;

@@ -17,24 +17,36 @@ export const COLOR = {
 	dark2: '#282A3A',
 	dark3: '#101223',
 	black: '#000',
+	// Other
 	transparent: 'transparent',
-	hover: 'rgba(0,0,0,0.1)',
-	hoverLight: 'rgba(255,255,255,0.1)',
+	transparentDark: 'rgba(0,0,0,0.1)',
+	transparentLight: 'rgba(255,255,255,0.1)',
 	gradient: 'linear-gradient(180deg, rgba(229,232,232,1) 0%, rgba(239,242,242,1) 31%, rgba(229,232,232,1) 100%)'
 }
 
 const THEME = {
 	...COLOR,
-	temp: COLOR.black,
-	primary: COLOR.darkBlue,
-	clickable: COLOR.green,
-	active: COLOR.orange,
-	border: COLOR.light3,
+	utils: {
+		border: COLOR.light3
+	},
+	state: {
+		active: COLOR.orange,
+		interactive: COLOR.green,
+		hoverDark: COLOR.transparentDark,
+		hoverLight: COLOR.transparentLight
+	},
+	brand: {
+		primary: COLOR.orange,
+		secondary: COLOR.green,
+		dark: COLOR.darkBlue,
+		light: COLOR.light1
+	},
 	status: {
 		postive: COLOR.green,
-		negative: COLOR.red,
 		warning: COLOR.orange,
-		info: COLOR.lightBlue
+		negative: COLOR.red,
+		info: COLOR.lightBlue,
+		highlight: COLOR.ivory
 	}
 }
 

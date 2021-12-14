@@ -19,12 +19,12 @@ export const StyledTabList = styled.ul`
 
 		&.active {
 			font-weight: bold;
-			background: ${({ theme }) => theme.darkBlue}11;
-			border-bottom: 2px solid ${({ theme }) => theme.active};
+			background: ${({ theme }) => theme.brand.dark}11;
+			border-bottom: 2px solid ${({ theme }) => theme.state.active};
 		}
 
 		&:hover {
-			background: ${({ theme }) => theme.clickable};
+			background: ${({ theme }) => theme.state.interactive};
 			color: ${({ theme }) => theme.white};
 		}
 

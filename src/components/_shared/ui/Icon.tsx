@@ -15,9 +15,9 @@ const StyledSVG = styled.svg`
 		if ($hoverColor) {
 			return `
 				&:hover {
-					fill: ${$hoverColor || theme.active};
+					fill: ${$hoverColor || theme.state.active};
 					& * {
-						fill: ${$hoverColor || theme.active}
+						fill: ${$hoverColor || theme.state.active}
 					}
 				}
 			`;

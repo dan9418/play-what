@@ -39,7 +39,7 @@ const StyledHomePage = styled(StyledPageBody)`
 		&.secondary {
 			button {
 				background: transparent;
-				color: ${props => props.theme.clickable};
+				color: ${props => props.theme.state.interactive};
 
 				&:hover {
 					background: rgba(0,0,0,0.05)

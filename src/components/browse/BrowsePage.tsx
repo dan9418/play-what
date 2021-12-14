@@ -26,8 +26,8 @@ const StyledBrowsePage = styled(StyledPageBody)`
             aspect-ratio: 1;
 
             text-decoration: none;
-            border: 2px solid ${props => props.theme.clickable};
-            color: ${props => props.theme.clickable};
+            border: 2px solid ${props => props.theme.state.interactive};
+            color: ${props => props.theme.state.interactive};
             border-radius: 8px;
             font-size: 140%;
             font-weight: bold;
@@ -36,7 +36,7 @@ const StyledBrowsePage = styled(StyledPageBody)`
             width: 128px;
 
             &:hover {
-                background-color: ${({ theme }) => theme.hover};
+                background-color: ${({ theme }) => theme.state.hoverDark};
             }
         }
     }

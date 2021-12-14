@@ -8,7 +8,7 @@ export const StyledNumbericInput = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	//border: 2px solid ${({ theme }) => theme.border};
+	//border: 2px solid ${({ theme }) => theme.utils.border};
 	border-radius: 4px;
 	background-color: ${({ theme }) => theme.light3};
 
@@ -24,7 +24,7 @@ export const StyledNumbericInput = styled.div`
 		color: ${({ theme }) => theme.dark3};
 		background-color: ${({ theme }) => theme.light3};
 		&:hover { //:not(:focus) {
-			background-color: ${({ theme }) => theme.clickable};
+			background-color: ${({ theme }) => theme.state.interactive};
 			color: white;
 		}
 	}
@@ -33,11 +33,11 @@ export const StyledNumbericInput = styled.div`
 
 		&:first-child {
             border-radius: 4px 0 0 4px;
-			border-right: 1px solid ${({ theme }) => theme.border};
+			border-right: 1px solid ${({ theme }) => theme.utils.border};
         }
         &:last-child {
             border-radius: 0 4px 4px 0;
-			border-left: 1px solid ${({ theme }) => theme.border};
+			border-left: 1px solid ${({ theme }) => theme.utils.border};
         }
 	}
 

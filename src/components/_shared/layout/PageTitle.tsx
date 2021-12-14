@@ -5,7 +5,7 @@ const StyledPageTitle = styled.div`
     width: 100%;
 
     .header {
-        border-bottom: 1px solid ${({ theme }) => theme.border};    
+        border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
         padding-bottom: 16px;
         width: 100%;
         margin: auto;

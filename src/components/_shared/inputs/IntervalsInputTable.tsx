@@ -18,12 +18,12 @@ const StyledIntervalTable = styled.table`
 
     tfoot {
         display: none;
-        //border-top: 1px solid ${({ theme }) => theme.border};
+        //border-top: 1px solid ${({ theme }) => theme.utils.border};
         th {
             padding: 4px;    
             text-align: center;
             font-weight: normal;
-            color: ${({ theme }) => theme.border};
+            color: ${({ theme }) => theme.utils.border};
             &.active {
                 background-color: ${({ theme }) => theme.light3};
                 color: ${({ theme }) => theme.medium};
@@ -49,7 +49,7 @@ const StyledIntervalTable = styled.table`
         box-sizing: border-box;
 
         :hover {
-            background-color: ${({ theme }) => theme.clickable};
+            background-color: ${({ theme }) => theme.state.interactive};
             color: white;
         }
 
@@ -60,7 +60,7 @@ const StyledIntervalTable = styled.table`
 
         &.active {
             color: white;
-            background-color: ${({ theme }) => theme.active};
+            background-color: ${({ theme }) => theme.state.active};
         }
     }
 `;

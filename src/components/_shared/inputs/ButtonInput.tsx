@@ -8,7 +8,7 @@ const StyledButton = styled.button`
 	font-size: 110%;
     padding: 8px 16px;
 	color: ${({ theme }) => theme.white};
-	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.clickable};
+	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.state.interactive};
 
 	&:hover {
 		opacity: .9;

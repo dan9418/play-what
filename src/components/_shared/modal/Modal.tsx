@@ -48,7 +48,7 @@ const StyledModal = styled.div`
 	}
 
 	.header {
-		background: ${props => props.theme.darkBlue};
+		background: ${props => props.theme.brand.dark};
 		color: ${({ theme }) => theme.white};
 
 		background-color: ${({ theme }) => theme.medium};
@@ -89,15 +89,15 @@ const StyledModal = styled.div`
 		width: 100%;
 
 		background: ${props => props.theme.light1};
-		border-left: 1px solid ${({ theme }) => theme.border};
-		border-right: 1px solid ${({ theme }) => theme.border};
+		border-left: 1px solid ${({ theme }) => theme.utils.border};
+		border-right: 1px solid ${({ theme }) => theme.utils.border};
 	}
 
 	.footer {
 		background: ${props => props.theme.light1};
 
 		padding: 8px 16px 16px;
-		border: 1px solid ${({ theme }) => theme.border};
+		border: 1px solid ${({ theme }) => theme.utils.border};
 
 		bottom: 0;
 

@@ -13,7 +13,7 @@ const StyledSiteHeader = styled.div`
     right: 0;
     z-index: 2000;
 
-	background-color: ${({ theme }) => theme.darkBlue};
+	background-color: ${({ theme }) => theme.brand.dark};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	.width-cap {
@@ -37,11 +37,11 @@ const StyledSiteHeader = styled.div`
 		padding: 0 8px;
 
 		&:hover {
-			background-color: ${({ theme }) => theme.hoverLight};
+			background-color: ${({ theme }) => theme.state.hoverLight};
 		}
 
 		&.active {
-			border-bottom: 2px solid ${props => props.theme.active};
+			border-bottom: 2px solid ${props => props.theme.state.active};
 		}
 	}
 

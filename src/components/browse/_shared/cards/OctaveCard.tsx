@@ -26,12 +26,12 @@ const StyledOctaves = styled.div`
             width: 100%;
 
             &.active {
-                background-color: ${props => props.theme.active};
+                background-color: ${props => props.theme.state.active};
                 color: ${({ theme }) => theme.white};
             }
 
             :hover {
-                background: ${({ theme }) => theme.hover};
+                background: ${({ theme }) => theme.state.hoverDark};
             }
         }
     }
