@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     border-radius: 4px;
 	font-size: 110%;
     padding: 8px 16px;
-	color: white;
+	color: ${({ theme }) => theme.white};
 	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.clickable};
 
 	&:hover {

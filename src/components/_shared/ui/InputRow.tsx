@@ -14,7 +14,7 @@ export const StyledInputRow = styled.div`
     }
 
     label {
-        color: #333;
+        color: ${({ theme }) => theme.dark3};
         font-weight: bold;
         margin: 4px;
     }

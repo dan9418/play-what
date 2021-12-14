@@ -36,7 +36,7 @@ const StyledBrowsePage = styled(StyledPageBody)`
             width: 128px;
 
             &:hover {
-                background-color: rgba(0,0,0,0.1)
+                background-color: ${({ theme }) => theme.hover};
             }
         }
     }

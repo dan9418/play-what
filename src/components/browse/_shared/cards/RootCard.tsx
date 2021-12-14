@@ -28,11 +28,11 @@ const StyledRoot = styled.div`
 
             &.active {
                 background-color: ${props => props.theme.active};
-                color: white;
+                color: ${({ theme }) => theme.white};
             }
 
             :hover {
-                background: rgba(0,0,0,0.1);
+                background: ${({ theme }) => theme.hover};
             }
         }
         .primary a {

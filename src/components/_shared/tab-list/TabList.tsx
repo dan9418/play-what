@@ -25,7 +25,7 @@ export const StyledTabList = styled.ul`
 
 		&:hover {
 			background: ${({ theme }) => theme.clickable};
-			color: white;
+			color: ${({ theme }) => theme.white};
 		}
 
 	}

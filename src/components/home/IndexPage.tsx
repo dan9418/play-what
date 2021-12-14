@@ -18,7 +18,7 @@ const StyledHomePage = styled(StyledPageBody)`
 	> p {
 		max-width: 768px;
 		font-size: 120%;
-		color: #333;
+		color: ${({ theme }) => theme.dark3};
 		text-align: center;
 		line-height: 150%;
 		margin-top: 32px;

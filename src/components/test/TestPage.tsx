@@ -34,14 +34,14 @@ const StyledTestPage = styled(StyledPageBody)`
         }
 
         thead th {
-            background-color: rgba(0, 0, 0, .2);
+            background-color: ${({ theme }) => theme.hover};
         }
 
         tbody td:nth-child(2), tbody th:nth-child(2) {
             border-right: 1px solid ${props => props.theme.border};
         }
         tr:nth-child(2n+1) {
-            background-color: rgba(0, 0, 0, .1);
+            background-color: ${({ theme }) => theme.hover};
         }
 
         .pod {
@@ -50,7 +50,7 @@ const StyledTestPage = styled(StyledPageBody)`
         }
 
         .invalid {
-            color: red;
+            color: ${({ theme }) => theme.status.error};
             font-weight: bold;
         }
     }

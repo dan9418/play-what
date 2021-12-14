@@ -16,15 +16,19 @@ export const COLOR = {
 	dark1: '#404252',
 	dark2: '#282A3A',
 	dark3: '#101223',
-	black: '#000'
+	black: '#000',
+	transparent: 'transparent',
+	hover: 'rgba(0,0,0,0.1)',
+	hoverLight: 'rgba(255,255,255,0.1)'
 }
 
 const THEME = {
+	...COLOR,
 	temp: COLOR.black,
 	primary: COLOR.darkBlue,
 	clickable: COLOR.green,
 	active: COLOR.orange,
-	border: '#bbb',//COLOR.mediumLight,
+	border: COLOR.light3,
 	status: {
 		postive: COLOR.green,
 		negative: COLOR.red,

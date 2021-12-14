@@ -18,7 +18,7 @@ const StyledRelated = styled.div`
     h2 {
         text-transform: uppercase;
         font-size: 90%;
-        color: #555;
+        color: #${({ theme }) => theme.medium1};
     }
 
     h2, h3, h4 {

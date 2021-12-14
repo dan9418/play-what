@@ -19,7 +19,7 @@ const StyledErrorPage = styled.section`
 
 		p {
 			margin: 16px 0;
-			color: red;
+			color: ${({ theme }) => theme.status.error};
 		}
 	}
 `;

@@ -12,7 +12,7 @@ const StyledSearchTable = styled.table`
             text-align: left;
             background-color: ${props => props.theme.surface.nav};
             padding: 8px;
-            color: white;
+            color: ${({ theme }) => theme.white};
         }
     }
 

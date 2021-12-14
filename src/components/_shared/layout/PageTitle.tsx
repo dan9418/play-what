@@ -14,14 +14,14 @@ const StyledPageTitle = styled.div`
             width: 100%;
             font-size: 300%;
             text-align: left;
-            color: #333;
+            color: ${({ theme }) => theme.dark2};;
         }
 
         > h2 {
             margin-top: 8px;
             width: 100%;
             text-align: left;
-            color: #555;
+            color: ${({ theme }) => theme.medium3};;
             font-size: 100%;
         }
     }

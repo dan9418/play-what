@@ -25,7 +25,7 @@ const StyledSiteHeader = styled.div`
 	}
 	
 	a {
-		color: white;
+		color: ${({ theme }) => theme.white};
 		text-decoration: none;
 		white-space: nowrap;
 		height: 64px;
@@ -37,7 +37,7 @@ const StyledSiteHeader = styled.div`
 		padding: 0 8px;
 
 		&:hover {
-			background-color: rgba(255,255,255,0.1);
+			background-color: ${({ theme }) => theme.hoverLight};
 		}
 
 		&.active {
@@ -58,7 +58,7 @@ const StyledSiteHeader = styled.div`
 		.separator {
 			height: 48px;
 			width: 1px;
-			background-color: rgba(255,255,255,0.5);
+			background-color: ${({ theme }) => theme.light1};
 			margin: 8px;
 		}
 	}

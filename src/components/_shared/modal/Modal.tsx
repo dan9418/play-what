@@ -1,8 +1,8 @@
 
 import React from "react";
 import styled from "styled-components";
-import ButtonInput from "../../../../ui/inputs/ButtonInput";
 import { useModalContext } from "../../../contexts/ModalContext";
+import ButtonInput from "../inputs/ButtonInput";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -49,7 +49,7 @@ const StyledModal = styled.div`
 
 	.header {
 		background: ${props => props.theme.surface.nav};
-		color: white;
+		color: ${({ theme }) => theme.white};
 
 		background-color: ${({ theme }) => theme.medium};
 		padding: 0 16px;

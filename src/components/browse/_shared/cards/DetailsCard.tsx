@@ -12,7 +12,7 @@ const StyledDetailsCard = styled.div`
             padding: 4px 8px 4px 4px;
             font-size: 80%;
             text-transform: uppercase;
-            color: #555;
+            color: ${({ theme }) => theme.medium1};
         }
 
         td {
@@ -24,7 +24,7 @@ const StyledDetailsCard = styled.div`
             }
             &.frequency, &.ratio {
                 font-size: 80%;
-                color: #555;
+                color: ${({ theme }) => theme.medium1};
                 font-style: italic;
             }
         }

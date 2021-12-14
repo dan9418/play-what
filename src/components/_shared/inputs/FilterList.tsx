@@ -10,17 +10,17 @@ const StyledFilterList = styled.ul`
    gap: 4px;
    margin-bottom: 16px;
    button {
-        background-color: transparent;
+        background-color: ${({ theme }) => theme.transparent};;
         border: 1px solid ${props => props.theme.clickable};;
         color: ${props => props.theme.clickable};
         padding: 4px 8px;
         font-size: 80%;
         :hover {
-            background-color: rgba(0,0,0,0.1);
+            background-color: ${({ theme }) => theme.hover};
         }
 
         &.active {
-            color: white;
+            color: ${({ theme }) => theme.white};;
             background-color: ${props => props.theme.clickable};
         }
    }
