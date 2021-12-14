@@ -1,12 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
+import Model from "../../core/models/Model";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
-import Model from "../../core/models/Model";
 import Note from "../../core/models/Note";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
-import THEME from "../../styles/theme";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 
 const FIRST_OCTAVE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
@@ -39,14 +38,14 @@ const StyledTestPage = styled(StyledPageBody)`
         }
 
         tbody td:nth-child(2), tbody th:nth-child(2) {
-            border-right: 1px solid ${THEME.border};
+            border-right: 1px solid ${props => props.theme.border};
         }
         tr:nth-child(2n+1) {
             background-color: rgba(0, 0, 0, .1);
         }
 
         .pod {
-            color: ${THEME.surface.bg};
+            color: ${props => props.theme.surface.bg};
             font-size: 80%;
         }
 

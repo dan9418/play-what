@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import THEME from "../../styles/theme";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
@@ -27,8 +26,8 @@ const StyledBrowsePage = styled(StyledPageBody)`
             aspect-ratio: 1;
 
             text-decoration: none;
-            border: 2px solid ${THEME.clickable};
-            color: ${THEME.clickable};
+            border: 2px solid ${props => props.theme.clickable};
+            color: ${props => props.theme.clickable};
             border-radius: 8px;
             font-size: 140%;
             font-weight: bold;

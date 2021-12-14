@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import THEME from "../../../styles/theme";
 import ButtonInput from "./ButtonInput";
 
 const StyledFilterList = styled.ul`
@@ -12,8 +11,8 @@ const StyledFilterList = styled.ul`
    margin-bottom: 16px;
    button {
         background-color: transparent;
-        border: 1px solid ${THEME.clickable};;
-        color: ${THEME.clickable};
+        border: 1px solid ${props => props.theme.clickable};;
+        color: ${props => props.theme.clickable};
         padding: 4px 8px;
         font-size: 80%;
         :hover {
@@ -22,7 +21,7 @@ const StyledFilterList = styled.ul`
 
         &.active {
             color: white;
-            background-color: ${THEME.clickable};
+            background-color: ${props => props.theme.clickable};
         }
    }
 `;

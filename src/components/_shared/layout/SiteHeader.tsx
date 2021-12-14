@@ -1,7 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import THEME from '../../../styles/theme';
 import Icon from '../ui/Icon';
 
 const StyledSiteHeader = styled.div`
@@ -42,7 +41,7 @@ const StyledSiteHeader = styled.div`
 		}
 
 		&.active {
-			border-bottom: 2px solid ${THEME.active};
+			border-bottom: 2px solid ${props => props.theme.active};
 		}
 	}
 

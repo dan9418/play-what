@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import ButtonInput from "../../../../ui/inputs/ButtonInput";
 import { useModalContext } from "../../../contexts/ModalContext";
-import THEME from "../../../styles/theme";
 
 const StyledModal = styled.div`
 	background: rgba(0, 0, 0, .2);
@@ -49,8 +48,7 @@ const StyledModal = styled.div`
 	}
 
 	.header {
-		//background: ${THEME.surface.gradient};
-		background: ${THEME.surface.nav};
+		background: ${props => props.theme.surface.nav};
 		color: white;
 
 		background-color: ${({ theme }) => theme.medium};
@@ -74,7 +72,7 @@ const StyledModal = styled.div`
 			right: 0;
 			top: 0;
 
-			background: ${THEME.text.dark};
+			background: ${props => props.theme.text.dark};
 
 			height: 64px;
 			width: 64px;
@@ -90,13 +88,13 @@ const StyledModal = styled.div`
 		height: 100%;
 		width: 100%;
 
-		background: ${THEME.surface.bg};
+		background: ${props => props.theme.surface.bg};
 		border-left: 1px solid ${({ theme }) => theme.border};
 		border-right: 1px solid ${({ theme }) => theme.border};
 	}
 
 	.footer {
-		background: ${THEME.surface.bg};
+		background: ${props => props.theme.surface.bg};
 
 		padding: 8px 16px 16px;
 		border: 1px solid ${({ theme }) => theme.border};

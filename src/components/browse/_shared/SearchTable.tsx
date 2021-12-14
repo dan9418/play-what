@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import THEME from "../../../styles/theme";
 
 const StyledSearchTable = styled.table`
     width: 100%;
@@ -11,7 +10,7 @@ const StyledSearchTable = styled.table`
     thead {
         tr th {
             text-align: left;
-            background-color: ${THEME.surface.nav};
+            background-color: ${props => props.theme.surface.nav};
             padding: 8px;
             color: white;
         }

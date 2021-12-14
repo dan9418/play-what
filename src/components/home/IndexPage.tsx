@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import THEME from "../../styles/theme";
 import ButtonInput from "../_shared/inputs/ButtonInput";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
@@ -40,7 +39,7 @@ const StyledHomePage = styled(StyledPageBody)`
 		&.secondary {
 			button {
 				background: transparent;
-				color: ${THEME.clickable};
+				color: ${props => props.theme.clickable};
 
 				&:hover {
 					background: rgba(0,0,0,0.05)
