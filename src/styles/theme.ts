@@ -1,5 +1,5 @@
-export const COLOR = {
-	darkBlue: '#2C3D4C', //'#3C4953',
+const COLOR = {
+	darkBlue: '#2C3D4C',
 	lightBlue: '#2589BD',
 	green: '#72B01D',
 	orange: '#FF7F11',
@@ -42,7 +42,7 @@ const THEME = {
 		light: COLOR.light1
 	},
 	status: {
-		postive: COLOR.green,
+		positive: COLOR.green,
 		warning: COLOR.orange,
 		negative: COLOR.red,
 		info: COLOR.lightBlue,

@@ -1,9 +1,8 @@
 import React from "react";
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { StyledPageBody } from "../components/_shared/layout/PageBody";
 import PageTitle from "../components/_shared/layout/PageTitle";
 import Card from "../components/_shared/ui/Card";
-import THEME, { COLOR } from "../styles/theme";
 
 const StyledThemePage = styled(StyledPageBody)`
 	display: flex;
@@ -38,149 +37,56 @@ const Swatch = styled.div`
     background-color: ${props => props.$color};
 `;
 
+const SwatchSelector: React.FC<any> = ({ type, value, title }) => {
+    const theme = useTheme();
+    let color;
+    if (type) {
+        color = theme[type][value];
+    }
+    else {
+        color = theme[value];
+    }
+    return (
+        <div className="row">
+            <Swatch $color={color} />
+            <div>
+                <label>{title}</label>
+            </div>
+        </div>
+    );
+}
+
 const ThemePage: React.FC<any> = () => {
     return (
         <StyledThemePage>
             <PageTitle title="Theme" />
             <Card title="Brand">
-                <div className="row">
-                    <Swatch $color={THEME.active} />
-                    <div>
-                        <label>Primary</label>
-                        <ul>
-                            <li>State - Active, Selected</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={THEME.clickable} />
-                    <div>
-                        <label>Secondary</label>
-                        <ul>
-                            <li>Action - Interactive, Clickable</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={THEME.surface.nav} />
-                    <div>
-                        <label>Off-black (Navy)</label>
-                        <ul>
-                            <li>Site nav</li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={THEME.surface.bg} />
-                    <div>
-                        <label>Off-white</label>
-                        <ul>
-                            <li>Site background</li>
-                        </ul>
-                    </div>
-                </div>
+                <SwatchSelector title="Primary" type="brand" value="primary" />
+                <SwatchSelector title="Secondary" type="brand" value="secondary" />
+                <SwatchSelector title="Dark" type="brand" value="dark" />
+                <SwatchSelector title="Light" type="brand" value="light" />
             </Card>
 
             <Card title="Status">
-                <div className="row">
-                    <Swatch $color={THEME.clickable} />
-                    <div>
-                        <label>Positive</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={THEME.active} />
-                    <div>
-                        <label>Warning</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.red} />
-                    <div>
-                        <label>Negative / Error</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.lightBlue} />
-                    <div>
-                        <label>Information</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.ivory} />
-                    <div>
-                        <label>Highlight</label>
-                    </div>
-                </div>
+                <SwatchSelector title="Positive" type="status" value="positive" />
+                <SwatchSelector title="Negative" type="status" value="negative" />
+                <SwatchSelector title="Warning" type="status" value="warning" />
+                <SwatchSelector title="Info" type="status" value="info" />
+                <SwatchSelector title="Highlight" type="status" value="highlight" />
             </Card>
 
             <Card title="Neutral">
-                <div className="row">
-                    <Swatch $color={COLOR.white} />
-                    <div>
-                        <label>White</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.light1} />
-                    <div>
-                        <label>Light 1</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.light2} />
-                    <div>
-                        <label>Light 2</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.light3} />
-                    <div>
-                        <label>Light 3</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.medium1} />
-                    <div>
-                        <label>Medium 1</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.medium2} />
-                    <div>
-                        <label>Medium 2</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.medium3} />
-                    <div>
-                        <label>Medium 3</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.dark1} />
-                    <div>
-                        <label>Dark 1</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.dark2} />
-                    <div>
-                        <label>Dark 2</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.dark3} />
-                    <div>
-                        <label>Dark 3</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <Swatch $color={COLOR.black} />
-                    <div>
-                        <label>Black</label>
-                    </div>
-                </div>
+                <SwatchSelector title="White" value="white" />
+                <SwatchSelector title="Light 1" value="light1" />
+                <SwatchSelector title="Light 2" value="light2" />
+                <SwatchSelector title="Light 3" value="light3" />
+                <SwatchSelector title="Medium 1" value="medium1" />
+                <SwatchSelector title="Medium 2" value="medium2" />
+                <SwatchSelector title="Medium 3" value="medium3" />
+                <SwatchSelector title="Dark 1" value="dark1" />
+                <SwatchSelector title="Dark 2" value="dark2" />
+                <SwatchSelector title="Dark 3" value="dark3" />
+                <SwatchSelector title="Black" value="black" />
             </Card>
         </StyledThemePage>
     );
