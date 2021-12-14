@@ -13,7 +13,7 @@ const StyledSiteHeader = styled.div`
     right: 0;
     z-index: 2000;
 
-	background-color: ${({ theme }) => theme.surface.nav};
+	background-color: ${({ theme }) => theme.darkBlue};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	.width-cap {
@@ -80,9 +80,9 @@ const StyledSiteHeader = styled.div`
 		svg {
 			height: 32px;
 			width: 32px;
-			fill: white;
+			fill: ${({ theme }) => theme.white};
 			* {
-				fill: white;
+				fill: ${({ theme }) => theme.white};
 			}
 		}
 	}

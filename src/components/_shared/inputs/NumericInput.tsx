@@ -10,7 +10,7 @@ export const StyledNumbericInput = styled.div`
 
 	//border: 2px solid ${({ theme }) => theme.border};
 	border-radius: 4px;
-	background-color: ${({ theme }) => theme.surface.highlight};
+	background-color: ${({ theme }) => theme.light3};
 
 	input, button {
 		width: 32px;
@@ -21,8 +21,8 @@ export const StyledNumbericInput = styled.div`
 		align-items: center;
 		justify-content: center;
 
-		color: ${({ theme }) => theme.text.dark};
-		background-color: ${({ theme }) => theme.surface.highlight};
+		color: ${({ theme }) => theme.dark3};
+		background-color: ${({ theme }) => theme.light3};
 		&:hover { //:not(:focus) {
 			background-color: ${({ theme }) => theme.clickable};
 			color: white;

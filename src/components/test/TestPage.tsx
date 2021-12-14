@@ -45,7 +45,7 @@ const StyledTestPage = styled(StyledPageBody)`
         }
 
         .pod {
-            color: ${props => props.theme.surface.bg};
+            color: ${props => props.theme.light1};
             font-size: 80%;
         }
 

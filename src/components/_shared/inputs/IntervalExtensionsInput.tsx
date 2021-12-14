@@ -9,11 +9,11 @@ const StyledIntervalTable = styled.table`
     table-layout: fixed;
     text-align: center;
     border-collapse: collapse;
-    color: ${({ theme }) => theme.text.mediumDark};
+    color: ${({ theme }) => theme.dark1};
 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `th:nth-child(${c + 1})`).join(',')}, 
     ${({ $inactiveCols }) => $inactiveCols.map(c => `td:nth-child(${c + 1})`).join(',')} {
-        background-color: ${({ theme }) => theme.surface.highlight};
+        background-color: ${({ theme }) => theme.light3};
     }
 
     tfoot {
@@ -25,7 +25,7 @@ const StyledIntervalTable = styled.table`
             font-weight: normal;
             color: ${({ theme }) => theme.border};
             &.active {
-                background-color: ${({ theme }) => theme.surface.highlight};
+                background-color: ${({ theme }) => theme.light3};
                 color: ${({ theme }) => theme.medium};
             }
         }
@@ -55,7 +55,7 @@ const StyledIntervalTable = styled.table`
 
         &.inactive {
             //background-color: ${({ theme }) => theme.light};
-            //color: ${({ theme }) => theme.text.mediumDark};
+            //color: ${({ theme }) => theme.dark1};
         }
 
         &.active {

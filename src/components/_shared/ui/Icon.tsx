@@ -5,9 +5,9 @@ const StyledSVG = styled.svg`
 	${({ $rotate }) => $rotate ? `transform: rotate(${$rotate}deg)` : ''};
 	${({ $color, theme }) => {
 		return `
-				fill: ${$color || theme.text.medium};
+				fill: ${$color || theme.medium};
 				& * {
-					fill: ${$color || theme.text.medium}
+					fill: ${$color || theme.medium}
 				}
 			`;
 	}}

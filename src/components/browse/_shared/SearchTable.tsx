@@ -10,7 +10,7 @@ const StyledSearchTable = styled.table`
     thead {
         tr th {
             text-align: left;
-            background-color: ${props => props.theme.surface.nav};
+            background-color: ${props => props.theme.darkBlue};
             padding: 8px;
             color: ${({ theme }) => theme.white};
         }

@@ -48,7 +48,7 @@ const StyledModal = styled.div`
 	}
 
 	.header {
-		background: ${props => props.theme.surface.nav};
+		background: ${props => props.theme.darkBlue};
 		color: ${({ theme }) => theme.white};
 
 		background-color: ${({ theme }) => theme.medium};
@@ -72,7 +72,7 @@ const StyledModal = styled.div`
 			right: 0;
 			top: 0;
 
-			background: ${props => props.theme.text.dark};
+			background: ${props => props.theme.dark3};
 
 			height: 64px;
 			width: 64px;
@@ -88,13 +88,13 @@ const StyledModal = styled.div`
 		height: 100%;
 		width: 100%;
 
-		background: ${props => props.theme.surface.bg};
+		background: ${props => props.theme.light1};
 		border-left: 1px solid ${({ theme }) => theme.border};
 		border-right: 1px solid ${({ theme }) => theme.border};
 	}
 
 	.footer {
-		background: ${props => props.theme.surface.bg};
+		background: ${props => props.theme.light1};
 
 		padding: 8px 16px 16px;
 		border: 1px solid ${({ theme }) => theme.border};
@@ -117,8 +117,8 @@ const StyledModal = styled.div`
 			margin-right: 8px;
 		}
 		button:first-child {
-			background-color: ${({ theme }) => theme.surface.highlight};
-			color: ${({ theme }) => theme.text.mediumDark};
+			background-color: ${({ theme }) => theme.light3};
+			color: ${({ theme }) => theme.dark1};
 		}
 	}
 `;

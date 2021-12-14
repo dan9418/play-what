@@ -19,7 +19,7 @@ export const StyledTabList = styled.ul`
 
 		&.active {
 			font-weight: bold;
-			background: ${({ theme }) => theme.surface.nav}11;
+			background: ${({ theme }) => theme.darkBlue}11;
 			border-bottom: 2px solid ${({ theme }) => theme.active};
 		}
 
