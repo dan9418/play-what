@@ -3,49 +3,59 @@ import Note from "@pw-core/models/Note";
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { StringParam, useQueryParam } from "use-query-params";
 import { usePageProps } from "../../../../contexts/PagePropsContext";
+import { useRootParam } from "../../../../state/state";
+import NumericInput from "../../../_shared/inputs/NumericInput";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRoot = styled.div`
-   table {
-        border-collapse: collapse;
+    ul {
+        display: grid;
         width: 100%;
+        grid-template-columns: repeat(7, 1fr);
+    }
 
-        td {
-            padding: 1px;
-        }
-
-        a {
-            text-decoration: none;
-            font-size: 90%;
-            padding: 4px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1;
-
-            &.active {
-                background-color: ${props => props.theme.state.active};
-                color: ${({ theme }) => theme.white};
-            }
-
-            :hover {
-                background: ${({ theme }) => theme.state.hoverDark};
+    .oct-acc {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+        @media(min-width: 512px) {
+            grid-template-columns: auto auto;
+            & > :first-child:not(:only-child) {
+                padding-right: 16px;
+                border-right: 1px solid #ccc;
             }
         }
-        .primary a {
-            font-weight: bold;
-            font-size: 110%;
-            padding: 8px;
+        ul {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    a {
+        width: 100%;
+        text-decoration: none;
+        font-size: 140%;
+        padding: 8px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 1;
+
+        &.active {
+            background-color: ${props => props.theme.state.active};
+            color: ${({ theme }) => theme.white};
+        }
+
+        :hover {
+            background: ${({ theme }) => theme.state.hoverDark};
         }
     }
 `;
 
 const NoteLink: React.FC<any> = ({ noteId }) => {
     const pageProps = usePageProps();
-    const [rootParam, setRootParam] = useQueryParam("root", StringParam);
+    const [rootParam] = useRootParam();
 
     const note = new Note(noteId);
     return <Link to={`${pageProps && pageProps.path}?root=${note.id}`} className={note.id === rootParam ? 'active' : ''
@@ -54,44 +64,34 @@ const NoteLink: React.FC<any> = ({ noteId }) => {
 
 const RootCard: React.FC<any> = () => {
     const pageProps = usePageProps();
-    const [rootParam, setRootParam] = useQueryParam("root", StringParam);
+    const [rootParam, b, root] = useRootParam();
+
+
     return (
         <Card
-            title={`${rootParam ? 'Change' : 'Set'} Root`}
+            title={`Root`}
             action={rootParam ? <Link to={pageProps && pageProps.path}>Clear</Link> : undefined}
         >
             <StyledRoot>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><NoteLink noteId={NoteId.Cs} /></td>
-                            <td><NoteLink noteId={NoteId.Ds} /></td>
-                            <td><NoteLink noteId={NoteId.Es} /></td>
-                            <td><NoteLink noteId={NoteId.Fs} /></td>
-                            <td><NoteLink noteId={NoteId.Gs} /></td>
-                            <td><NoteLink noteId={NoteId.As} /></td>
-                            <td><NoteLink noteId={NoteId.Bs} /></td>
-                        </tr>
-                        <tr className="primary">
-                            <td><NoteLink noteId={NoteId.C} /></td>
-                            <td><NoteLink noteId={NoteId.D} /></td>
-                            <td><NoteLink noteId={NoteId.E} /></td>
-                            <td><NoteLink noteId={NoteId.F} /></td>
-                            <td><NoteLink noteId={NoteId.G} /></td>
-                            <td><NoteLink noteId={NoteId.A} /></td>
-                            <td><NoteLink noteId={NoteId.B} /></td>
-                        </tr>
-                        <tr>
-                            <td><NoteLink noteId={NoteId.Cb} /></td>
-                            <td><NoteLink noteId={NoteId.Db} /></td>
-                            <td><NoteLink noteId={NoteId.Eb} /></td>
-                            <td><NoteLink noteId={NoteId.Fb} /></td>
-                            <td><NoteLink noteId={NoteId.Gb} /></td>
-                            <td><NoteLink noteId={NoteId.Ab} /></td>
-                            <td><NoteLink noteId={NoteId.Bb} /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3>Spelling</h3>
+                <ul>
+                    <li><NoteLink noteId={NoteId.C} /></li>
+                    <li><NoteLink noteId={NoteId.D} /></li>
+                    <li><NoteLink noteId={NoteId.E} /></li>
+                    <li><NoteLink noteId={NoteId.F} /></li>
+                    <li><NoteLink noteId={NoteId.G} /></li>
+                    <li><NoteLink noteId={NoteId.A} /></li>
+                    <li><NoteLink noteId={NoteId.B} /></li>
+                </ul>
+                <h3>Accidental</h3>
+                <div className="oct-acc">
+                    <NumericInput value={4} setValue={null} />
+                    <ul>
+                        <li><NoteLink noteId={NoteId.C} /></li>
+                        <li><NoteLink noteId={NoteId.D} /></li>
+                        <li><NoteLink noteId={NoteId.E} /></li>
+                    </ul>
+                </div>
             </StyledRoot>
         </Card>
     );

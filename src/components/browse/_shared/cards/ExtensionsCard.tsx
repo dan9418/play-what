@@ -38,6 +38,7 @@ const StyledExtensions = styled.div`
 
 
 const ExtensionsCard: React.FC<any> = ({ model }) => {
+    return null;
 
     const extensions = ['b9', 9, '#9', 'b11', 11, '#11', 'b13', 13, '#13'];
 

@@ -37,6 +37,7 @@ const StyledInversions = styled.div`
 
 
 const InversionCard: React.FC<any> = ({ model }) => {
+    return null;
 
     const inversions = ['None', 'First', 'Second', 'Third'];
 

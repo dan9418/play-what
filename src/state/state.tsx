@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState } from 'recoil';
-import { NOTE_PRESETS } from '../core/models/Note.constants';
-import { useQueryParam, StringParam } from "use-query-params"
+import { StringParam, useQueryParam } from "use-query-params";
+import { NoteId } from '../core/models/Model.constants';
+import Note from '../core/models/Note';
 
 interface IHistoryEntry {
     id: string;
@@ -40,12 +41,7 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
 export const useRootParam = (getPreset = false) => {
 
     const [rootParam, setRootParam] = useQueryParam("root", StringParam);
+    const preset = new Note(rootParam as NoteId);
 
-    if (getPreset) {
-        return [];
-        //return NOTE_PRESETS.find(p => p.id.toLowerCase() === rootParam.toLowerCase());
-    }
-    else {
-        return [rootParam, setRootParam]
-    }
+    return [rootParam, setRootParam, preset]
 }

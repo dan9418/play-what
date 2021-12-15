@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import Icon from "../ui/Icon";
 import ButtonInput from "./ButtonInput";
 import { IInputProps } from "./Input.constants";
 
@@ -7,46 +8,38 @@ export const StyledNumbericInput = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
-	//border: 2px solid ${({ theme }) => theme.utils.border};
-	border-radius: 4px;
-	background-color: ${({ theme }) => theme.light3};
+	gap: 8px;
 
 	input, button {
-		width: 32px;
-		height: 32px;
+		width: 48px;
+		height: 48px;
 		padding: 0;
 
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border-radius: 4px;
 
-		color: ${({ theme }) => theme.dark3};
-		background-color: ${({ theme }) => theme.light3};
-		&:hover { //:not(:focus) {
-			background-color: ${({ theme }) => theme.state.interactive};
-			color: white;
+		color: ${({ theme }) => theme.state.interactive};
+		background-color: ${({ theme }) => theme.white};
+		&:hover {
+			background-color: ${({ theme }) => theme.light2};
 		}
 	}
 
 	button {
-
-		&:first-child {
-            border-radius: 4px 0 0 4px;
-			border-right: 1px solid ${({ theme }) => theme.utils.border};
-        }
-        &:last-child {
-            border-radius: 0 4px 4px 0;
-			border-left: 1px solid ${({ theme }) => theme.utils.border};
-        }
+		svg, svg * {
+			fill: ${({ theme }) => theme.state.interactive};
+		}
 	}
 
 	input {
-		padding: 4px 8px;
-		
 		cursor: pointer;
 		border: none;
 		font-weight: bold;
+		text-align: center;
+
+		border: 1px solid ${({ theme }) => theme.state.interactive};
 	}
     
 	font-size: 110%;
@@ -63,9 +56,9 @@ const NumericInput: React.FC<INumericInputProps> = ({ value, setValue, ...rest }
 
 	return (
 		<StyledNumbericInput>
-			<ButtonInput onClick={() => setValue(value - 1)}>-</ButtonInput>
+			<ButtonInput onClick={() => setValue(value - 1)}><Icon iconId="minus" /></ButtonInput>
 			<input type="number" value={value} onChange={onChange} {...rest} />
-			<ButtonInput onClick={() => setValue(value + 1)}>+</ButtonInput>
+			<ButtonInput onClick={() => setValue(value + 1)}><Icon iconId="plus" /></ButtonInput>
 		</StyledNumbericInput>
 	);
 }
