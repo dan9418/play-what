@@ -15,14 +15,14 @@ const ScalesPage: React.FC<any> = props => {
             headers={[
                 'Name',
                 'Intervals',
-                'Tags'
+                //'Tags'
             ]}
             rows={SCALE_PRESETS.map(p => new Scale(p.id))}
             getCols={preset => {
                 return [
                     <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
-                    preset.tags.join(', ')
+                    //preset.tags.join(', ')
                 ]
             }}
             {...props}

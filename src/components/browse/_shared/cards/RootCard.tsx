@@ -54,6 +54,7 @@ const StyledRoot = styled.div`
         &.active {
             background-color: ${props => props.theme.state.active};
             color: ${({ theme }) => theme.white};
+            font-weight: bold;
         }
 
         :hover {

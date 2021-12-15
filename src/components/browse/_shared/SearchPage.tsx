@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
@@ -60,17 +59,10 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
             <BreadcrumbList id={title.toLowerCase()} name={title} path={path} />
             <PageTitle title={title} subtitle={subtitle} />
             <div className="grid">
+                <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
                 <div>
-                    <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                    <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
-                </div>
-                <div>
-                    <Card title="Reference">
-                        <ul>
-                            <li><Link to="">Example 1</Link></li>
-                            <li><Link to="">Example 2</Link></li>
-                            <li><Link to="">Example 3</Link></li>
-                        </ul>
+                    <Card title="Filters">
+                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
                     </Card>
                 </div>
             </div>

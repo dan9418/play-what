@@ -9,7 +9,7 @@ const StyledDetailsCard = styled.div`
     
         th {
             text-align: right;
-            padding-right: 32px;
+            padding-right: 16px;
             text-transform: uppercase;
             color: ${({ theme }) => theme.medium3};
             border-right: 1px solid ${({ theme }) => theme.utils.border};
