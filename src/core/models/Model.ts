@@ -1,3 +1,4 @@
+import NumberUtils from '../general/Number.utils';
 import { IPod, ModelId, PresetId, Tag } from './Model.constants';
 
 export default class Model {
@@ -29,7 +30,7 @@ export default class Model {
 
     // Search
 
-    /*static isPodAtPitch = (pod: IPod, p: number, matchOctave = false): IPod | null => {
+    static isPodAtPitch = (pod: IPod, p: number, matchOctave = false): IPod | null => {
         const pitchOffset = 0;
         const target = p - pitchOffset;
         let a = pod[0];
@@ -39,7 +40,7 @@ export default class Model {
             b = NumberUtils.modulo(b, 12);
         }
         return a === b ? pod : null;
-    };*/
+    };
 
     /*static getPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): IPod | null => {
         const pod = A.find(a => this.isPodAtPitch(a, p, matchOctave));
@@ -60,10 +61,10 @@ export default class Model {
 
     // Search
 
-    /*static getIndexOfPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): number | null => {
+    static getIndexOfPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): number | null => {
         const pod = A.findIndex(a => this.isPodAtPitch(a, p, matchOctave));
         return pod !== -1 ? pod : null;
-    };*/
+    };
 
     /*static sort = (podList: IPod[]) => {
         return podList.sort((a, b) => {

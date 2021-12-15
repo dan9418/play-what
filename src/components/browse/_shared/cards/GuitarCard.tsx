@@ -14,7 +14,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
     return (
         <Card title="Guitar">
             <StyledGuitarCard>
-                <Fretboard />
+                <Fretboard model={model} />
             </StyledGuitarCard>
         </Card >
     );

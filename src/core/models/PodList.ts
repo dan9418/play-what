@@ -64,9 +64,9 @@ export default class PodList extends Model {
         return this.root.addIntervals(this.intervals);
     }
 
-    /*getNoteListPods(): IPod[] {
+    getNoteListPods(): IPod[] {
         return this.getNoteListClasses().map(ivl => ivl.pod);
-    }*/
+    }
 
     /*getNoteListString(): string {
         const nameArr = this.getNoteListClasses().map(note => note.name);

@@ -1,3 +1,4 @@
+import PodList from '../../../core/models/PodList';
 import { FRETBOARD_TUNING } from './Fretboard.api';
 
 export interface IFretboardProps {
@@ -5,6 +6,7 @@ export interface IFretboardProps {
 	tuning?: number[];
 	showFretDots?: boolean;
 	showFretNumbers?: boolean;
+	model?: PodList;
 }
 
 export interface IFretProps extends IFretboardProps {
