@@ -7,7 +7,6 @@ import PageTitle from "../../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import Card from "../../_shared/ui/Card";
 import DetailsCard from "../_shared/cards/DetailsCard";
-import OctaveCard from "../_shared/cards/OctaveCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import SoundCard from "../_shared/cards/SoundCard";
 
@@ -26,7 +25,6 @@ const NotePage: React.FC<any> = props => {
             <StyledDoublePane>
                 <StyledPane>
                     <Card title="Frequency" />
-                    <OctaveCard model={note} />
                 </StyledPane>
                 <StyledPane>
                     <DetailsCard model={note} />

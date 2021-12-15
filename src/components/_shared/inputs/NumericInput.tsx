@@ -24,6 +24,7 @@ export const StyledNumbericInput = styled.div`
 		background-color: ${({ theme }) => theme.white};
 		&:hover {
 			background-color: ${({ theme }) => theme.light2};
+			color: ${({ theme }) => theme.state.interactive};
 		}
 	}
 
@@ -39,7 +40,8 @@ export const StyledNumbericInput = styled.div`
 		font-weight: bold;
 		text-align: center;
 
-		border: 1px solid ${({ theme }) => theme.state.interactive};
+		border: 1px solid ${({ theme }) => theme.state.active};
+		color: ${({ theme }) => theme.state.active};
 	}
     
 	font-size: 110%;

@@ -16,18 +16,23 @@ const StyledRoot = styled.div`
     }
 
     .oct-acc {
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr;
-        @media(min-width: 512px) {
-            grid-template-columns: auto auto;
-            & > :first-child:not(:only-child) {
-                padding-right: 16px;
-                border-right: 1px solid #ccc;
-            }
+        .row {
+            margin-top: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
+        
         ul {
-            grid-template-columns: repeat(3, 1fr);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-left: auto;
+            a {
+                height: 48px;
+                width: 48px;
+            }
         }
     }
 
@@ -49,17 +54,43 @@ const StyledRoot = styled.div`
 
         :hover {
             background: ${({ theme }) => theme.state.hoverDark};
+            color: ${({ theme }) => theme.state.interactive};
         }
     }
 `;
 
+
 const NoteLink: React.FC<any> = ({ noteId }) => {
     const pageProps = usePageProps();
-    const [rootParam] = useRootParam();
+    const [rootParam] = useRootParam() as Note;
+    let base = rootParam && rootParam.replace('-flat', '').replace('-sharp', '');
 
     const note = new Note(noteId);
-    return <Link to={`${pageProps && pageProps.path}?root=${note.id}`} className={note.id === rootParam ? 'active' : ''
-    }> {note.name}</Link >
+    return (
+        <Link to={`${pageProps && pageProps.path}?root=${note.id}`} className={note.id === base ? 'active' : ''}>
+            {note.name}
+        </Link >
+    );
+};
+
+const AccidentalLink: React.FC<any> = ({ offset }) => {
+    const pageProps = usePageProps();
+    const [rootParam, b, root] = useRootParam() as Note;
+
+    const actualOffset = root.getAccidentalOffset();
+
+    let base = rootParam.replace('-flat', '').replace('-sharp', '');
+    let suffix = '';
+    if (offset === -1) suffix = '-flat';
+    else if (offset === 1) suffix = '-sharp';
+
+    return (
+        <Link to={`${pageProps && pageProps.path}?root=${base}${suffix}`} className={offset === actualOffset ? 'active' : ''}>
+            {offset === -1 && '♭'}
+            {offset === 0 && '♮'}
+            {offset === 1 && '♯'}
+        </Link >
+    );
 };
 
 const RootCard: React.FC<any> = () => {
@@ -73,7 +104,6 @@ const RootCard: React.FC<any> = () => {
             action={rootParam ? <Link to={pageProps && pageProps.path}>Clear</Link> : undefined}
         >
             <StyledRoot>
-                <h3>Spelling</h3>
                 <ul>
                     <li><NoteLink noteId={NoteId.C} /></li>
                     <li><NoteLink noteId={NoteId.D} /></li>
@@ -83,15 +113,24 @@ const RootCard: React.FC<any> = () => {
                     <li><NoteLink noteId={NoteId.A} /></li>
                     <li><NoteLink noteId={NoteId.B} /></li>
                 </ul>
-                <h3>Accidental</h3>
-                <div className="oct-acc">
-                    <NumericInput value={4} setValue={null} />
-                    <ul>
-                        <li><NoteLink noteId={NoteId.C} /></li>
-                        <li><NoteLink noteId={NoteId.D} /></li>
-                        <li><NoteLink noteId={NoteId.E} /></li>
-                    </ul>
-                </div>
+                {rootParam &&
+                    <div className="oct-acc">
+                        <div className="row">
+                            <h3>Octave</h3>
+                            <NumericInput value={4} setValue={null} />
+                        </div>
+                        <div className="row">
+                            <h3>Accidental</h3>
+                            <div>
+                                <ul>
+                                    <li><AccidentalLink offset={-1} /></li>
+                                    <li><AccidentalLink offset={0} /></li>
+                                    <li><AccidentalLink offset={1} /></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
             </StyledRoot>
         </Card>
     );

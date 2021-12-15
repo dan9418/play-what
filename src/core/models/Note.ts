@@ -31,6 +31,10 @@ export default class Note extends Pod {
         return super.addIntervals(B, Note) as Note[];
     };
 
+    getAccidentalOffset(): number {
+        return Note.getAccidentalOffset(this.pod);
+    };
+
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value);
 
     static getAccidentalOffset = (pod: IPod): number => {

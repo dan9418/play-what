@@ -41,7 +41,7 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
 export const useRootParam = (getPreset = false) => {
 
     const [rootParam, setRootParam] = useQueryParam("root", StringParam);
-    const preset = new Note(rootParam as NoteId);
+    const preset = rootParam ? new Note(rootParam as NoteId) : undefined;
 
     return [rootParam, setRootParam, preset]
 }

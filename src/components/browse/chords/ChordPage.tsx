@@ -9,7 +9,6 @@ import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import ExtensionsCard from "../_shared/cards/ExtensionsCard";
 import InversionsCard from "../_shared/cards/InversionsCard";
-import OctaveCard from "../_shared/cards/OctaveCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
@@ -30,7 +29,6 @@ const ChordPage: React.FC<any> = props => {
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={chord} />
-                    <OctaveCard model={chord} />
                     <InversionsCard model={chord} />
                     <ExtensionsCard model={chord} />
                 </StyledPane>
