@@ -34,18 +34,18 @@ const StyledTestPage = styled(StyledPageBody)`
         }
 
         thead th {
-            background-color: ${({ theme }) => theme.state.hoverDark};
+            background-color: ${({ theme }) => theme.utils.hoverDark};
         }
 
         tbody td:nth-child(2), tbody th:nth-child(2) {
             border-right: 1px solid ${props => props.theme.utils.border};
         }
         tr:nth-child(2n+1) {
-            background-color: ${({ theme }) => theme.state.hoverDark};
+            background-color: ${({ theme }) => theme.utils.hoverDark};
         }
 
         .pod {
-            color: ${props => props.theme.light1};
+            color: ${props => props.theme.text.secondary};
             font-size: 80%;
         }
 

@@ -10,7 +10,7 @@ import Card from "../../../_shared/ui/Card";
 
 const StyledRoot = styled.div`
     h3 {
-        color: ${props => props.theme.medium3};
+        color: ${props => props.theme.text.secondary};
     }
 
     ul {
@@ -52,14 +52,14 @@ const StyledRoot = styled.div`
         aspect-ratio: 1;
 
         &.active {
-            background-color: ${props => props.theme.state.active};
-            color: ${({ theme }) => theme.white};
+            background-color: ${props => props.theme.action.active};
+            color: ${({ theme }) => theme.text.inverted};
             font-weight: bold;
         }
 
         :hover {
-            background: ${({ theme }) => theme.state.hoverDark};
-            color: ${({ theme }) => theme.state.interactive};
+            background: ${({ theme }) => theme.utils.hoverDark};
+            color: ${({ theme }) => theme.action.interactive};
         }
     }
 `;

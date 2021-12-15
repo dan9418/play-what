@@ -7,7 +7,7 @@ const StyledSiteFooter = styled.div`
 	padding: 0 16px;
 
 	color: ${({ theme }) => theme.white};
-	background-color: ${({ theme }) => theme.brand.dark};
+	background-color: ${({ theme }) => theme.brand.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	display: flex;

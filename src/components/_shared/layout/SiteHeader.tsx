@@ -1,6 +1,6 @@
 import { Link } from 'gatsby';
 import React from 'react';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import Icon from '../ui/Icon';
 
 const StyledSiteHeader = styled.div`
@@ -13,7 +13,7 @@ const StyledSiteHeader = styled.div`
     right: 0;
     z-index: 2000;
 
-	background-color: ${({ theme }) => theme.brand.dark};
+	background-color: ${({ theme }) => theme.surface.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	.width-cap {
@@ -25,7 +25,7 @@ const StyledSiteHeader = styled.div`
 	}
 	
 	a {
-		color: ${({ theme }) => theme.white};
+		color: ${({ theme }) => theme.text.inverted};
 		text-decoration: none;
 		white-space: nowrap;
 		height: 64px;
@@ -37,11 +37,11 @@ const StyledSiteHeader = styled.div`
 		padding: 0 8px;
 
 		&:hover {
-			background-color: ${({ theme }) => theme.state.hoverLight};
+			background-color: ${({ theme }) => theme.utils.hoverLight};
 		}
 
 		&.active {
-			border-bottom: 2px solid ${props => props.theme.state.active};
+			border-bottom: 2px solid ${props => props.theme.action.active};
 		}
 	}
 
@@ -58,7 +58,7 @@ const StyledSiteHeader = styled.div`
 		.separator {
 			height: 48px;
 			width: 1px;
-			background-color: ${({ theme }) => theme.light1};
+			background-color: ${({ theme }) => theme.text.secondary};
 			margin: 8px;
 		}
 	}
@@ -76,21 +76,13 @@ const StyledSiteHeader = styled.div`
 			display: flex;
 			align-items: center;
 		}
-
-		svg {
-			height: 32px;
-			width: 32px;
-			fill: ${({ theme }) => theme.white};
-			* {
-				fill: ${({ theme }) => theme.white};
-			}
-		}
 	}
 `;
 
 const getLinkProps = id => ({ to: `/${id}`, className: typeof window !== 'undefined' && window.location.pathname.includes(id) ? 'active' : undefined })
 
 const SiteHeader: React.FC = () => {
+	const theme = useTheme();
 	return (
 		<StyledSiteHeader>
 			<div className="width-cap">
@@ -106,7 +98,7 @@ const SiteHeader: React.FC = () => {
 					</div>
 					<div className="separator" />
 					<div className="icon-links">
-						<a href=""><Icon iconId="github" /></a>
+						<a href=""><Icon iconId="github" color={theme.text.inverted} size={32} /></a>
 					</div>
 				</div>
 			</div>

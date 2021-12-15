@@ -25,22 +25,13 @@ const COLOR = {
 }
 
 const THEME = {
-	...COLOR,
-	utils: {
-		border: COLOR.light3,
-		card: COLOR.white,
-	},
-	state: {
-		active: COLOR.orange,
-		interactive: COLOR.green,
-		hoverDark: COLOR.transparentDark,
-		hoverLight: COLOR.transparentLight
-	},
 	brand: {
 		primary: COLOR.orange,
 		secondary: COLOR.green,
-		dark: COLOR.darkBlue,
-		light: COLOR.light1
+	},
+	action: {
+		active: COLOR.orange,
+		interactive: COLOR.green,
 	},
 	status: {
 		positive: COLOR.green,
@@ -48,6 +39,22 @@ const THEME = {
 		negative: COLOR.red,
 		info: COLOR.lightBlue,
 		highlight: COLOR.ivory
+	},
+	surface: {
+		card: COLOR.white,
+		bg: COLOR.light1,
+		nav: COLOR.darkBlue,
+	},
+	text: {
+		primary: COLOR.dark1,
+		secondary: COLOR.medium1,
+		inverted: COLOR.white
+	},
+	utils: {
+		border: COLOR.light3,
+		transparent: COLOR.transparent,
+		hoverDark: COLOR.transparentDark,
+		hoverLight: COLOR.transparentLight
 	}
 }
 

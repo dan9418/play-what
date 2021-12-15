@@ -24,7 +24,7 @@ const StyledInversions = styled.div`
             width: 100%;
 
             &.active {
-                background-color: ${props => props.theme.state.active};
+                background-color: ${props => props.theme.action.active};
                 color: ${({ theme }) => theme.white};
             }
 

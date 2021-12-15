@@ -34,10 +34,10 @@ export const ThemeManager: React.FC = ({ children }) => {
     console.log('dpb', theme);
 
     useEffect(() => {
-        document.documentElement.style.setProperty('--bg', theme.brand.light);
-        document.documentElement.style.setProperty('--fg', theme.brand.dark);
-        document.documentElement.style.setProperty('--link', theme.state.interactive);
-    }, [theme.brand.light, theme.brand.dark, theme.state.interactive])
+        document.documentElement.style.setProperty('--bg', theme.surface.bg);
+        document.documentElement.style.setProperty('--fg', theme.text.primary);
+        document.documentElement.style.setProperty('--link', theme.action.interactive);
+    }, [theme.surface.bg, theme.text.primary, theme.action.interactive])
 
     return (
         <ThemeProvider theme={theme}>

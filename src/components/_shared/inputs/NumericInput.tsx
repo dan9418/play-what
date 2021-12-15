@@ -20,17 +20,17 @@ export const StyledNumbericInput = styled.div`
 		justify-content: center;
 		border-radius: 4px;
 
-		color: ${({ theme }) => theme.state.interactive};
-		background-color: ${({ theme }) => theme.white};
+		color: ${({ theme }) => theme.action.interactive};
+		background-color: ${({ theme }) => theme.text.inverted};
 		&:hover {
-			background-color: ${({ theme }) => theme.light2};
-			color: ${({ theme }) => theme.state.interactive};
+			background-color: ${({ theme }) => theme.status.highlight};
+			color: ${({ theme }) => theme.action.interactive};
 		}
 	}
 
 	button {
 		svg, svg * {
-			fill: ${({ theme }) => theme.state.interactive};
+			fill: ${({ theme }) => theme.action.interactive};
 		}
 	}
 
@@ -40,8 +40,8 @@ export const StyledNumbericInput = styled.div`
 		font-weight: bold;
 		text-align: center;
 
-		border: 1px solid ${({ theme }) => theme.state.active};
-		color: ${({ theme }) => theme.state.active};
+		border: 1px solid ${({ theme }) => theme.action.active};
+		color: ${({ theme }) => theme.action.active};
 	}
     
 	font-size: 110%;

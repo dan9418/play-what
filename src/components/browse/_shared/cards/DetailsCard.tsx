@@ -11,7 +11,7 @@ const StyledDetailsCard = styled.div`
             text-align: right;
             padding-right: 16px;
             text-transform: uppercase;
-            color: ${({ theme }) => theme.medium3};
+            color: ${({ theme }) => theme.text.secondary};
             border-right: 1px solid ${({ theme }) => theme.utils.border};
         }
 
@@ -25,7 +25,8 @@ const StyledDetailsCard = styled.div`
                 border-bottom: 1px solid ${({ theme }) => theme.utils.border};
             }
             &.frequency, &.ratio {
-                color: ${({ theme }) => theme.medium1};
+                color: ${({ theme }) => theme.text.secondary};
+                font-size: 80%;
             }
         }
     }

@@ -18,7 +18,7 @@ const StyledHomePage = styled(StyledPageBody)`
 	> p {
 		max-width: 768px;
 		font-size: 120%;
-		color: ${({ theme }) => theme.dark3};
+		color: ${({ theme }) => theme.text.primary};
 		text-align: center;
 		line-height: 150%;
 		margin-top: 32px;
@@ -39,7 +39,7 @@ const StyledHomePage = styled(StyledPageBody)`
 		&.secondary {
 			button {
 				background: transparent;
-				color: ${props => props.theme.state.interactive};
+				color: ${props => props.theme.action.interactive};
 
 				&:hover {
 					background: rgba(0,0,0,0.05)

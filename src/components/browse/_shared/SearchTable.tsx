@@ -10,16 +10,16 @@ const StyledSearchTable = styled.table`
     thead {
         tr th {
             text-align: left;
-            background-color: ${props => props.theme.brand.dark};
+            background-color: ${props => props.theme.surface.nav};
             padding: 8px;
-            color: ${({ theme }) => theme.white};
+            color: ${({ theme }) => theme.text.inverted};
         }
     }
 
     tbody {
         tr {
             &:hover {
-                background-color: rgba(0,0,0,0.1);
+                background-color: ${({ theme }) => theme.utils.hoverDark};
             }
         }
     }

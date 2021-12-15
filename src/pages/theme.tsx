@@ -41,7 +41,7 @@ const StyledThemePage = styled(StyledPageBody)`
                 font-style: italic;
             }
             span {
-                color: ${props => props.theme.medium1};
+                color: ${props => props.theme.text.secondary};
             }
         }
     }
@@ -89,6 +89,31 @@ const ThemePage: React.FC<any> = () => {
             <PageTitle title="Theme" />
             <div className="grid">
                 <div>
+                    <Card title="Brand">
+                        <SwatchSelector title="Primary" type="brand" attr="primary" />
+                        <SwatchSelector title="Secondary" type="brand" attr="secondary" />
+                    </Card>
+
+                    <Card title="Action">
+                        <SwatchSelector title="Active" type="action" attr="active" />
+                        <SwatchSelector title="Interactive" type="action" attr="interactive" />
+                    </Card>
+
+                    <Card title="Status">
+                        <SwatchSelector title="Positive" type="status" attr="positive" />
+                        <SwatchSelector title="Negative" type="status" attr="negative" />
+                        <SwatchSelector title="Warning" type="status" attr="warning" />
+                        <SwatchSelector title="Info" type="status" attr="info" />
+                        <SwatchSelector title="Highlight" type="status" attr="highlight" />
+                    </Card>
+                    {/*<Card title="Palette">
+                        <SwatchSelector title="Dark Blue" attr="darkBlue" />
+                        <SwatchSelector title="Light Blue" attr="lightBlue" />
+                        <SwatchSelector title="Green" attr="green" />
+                        <SwatchSelector title="Orange" attr="orange" />
+                        <SwatchSelector title="Red" attr="red" />
+                        <SwatchSelector title="Ivory" attr="ivory" />
+                    </Card>
                     <Card title="Neutral">
                         <SwatchSelector title="White" attr="white" />
                         <SwatchSelector title="Light 1" attr="light1" />
@@ -101,35 +126,25 @@ const ThemePage: React.FC<any> = () => {
                         <SwatchSelector title="Dark 2" attr="dark2" />
                         <SwatchSelector title="Dark 3" attr="dark3" />
                         <SwatchSelector title="Black" attr="black" />
-                    </Card>
+                    </Card>*/}
                 </div>
                 <div>
-                    <Card title="Brand">
-                        <SwatchSelector title="Primary" type="brand" attr="primary" />
-                        <SwatchSelector title="Secondary" type="brand" attr="secondary" />
-                        <SwatchSelector title="Foreground" type="brand" attr="dark" />
-                        <SwatchSelector title="Background" type="brand" attr="light" />
+                    <Card title="Surface">
+                        <SwatchSelector title="Navigation" type="surface" attr="nav" />
+                        <SwatchSelector title="Background" type="surface" attr="bg" />
+                        <SwatchSelector title="Card" type="surface" attr="card" />
                     </Card>
 
-                    <Card title="Utils">
+                    <Card title="Text">
+                        <SwatchSelector title="Primary" type="text" attr="primary" />
+                        <SwatchSelector title="Secondary" type="text" attr="secondary" />
+                        <SwatchSelector title="Inverted" type="text" attr="inverted" />
+                    </Card>
+
+                    <Card title="Utility">
                         <SwatchSelector title="Border" type="utils" attr="border" />
-                        <SwatchSelector title="Card" type="utils" attr="card" />
-                    </Card>
-
-                    <Card title="Status">
-                        <SwatchSelector title="Positive" type="status" attr="positive" />
-                        <SwatchSelector title="Negative" type="status" attr="negative" />
-                        <SwatchSelector title="Warning" type="status" attr="warning" />
-                        <SwatchSelector title="Info" type="status" attr="info" />
-                        <SwatchSelector title="Highlight" type="status" attr="highlight" />
-                    </Card>
-
-                    <Card title="Utils">
-                        <SwatchSelector title="Positive" type="status" attr="positive" />
-                        <SwatchSelector title="Negative" type="status" attr="negative" />
-                        <SwatchSelector title="Warning" type="status" attr="warning" />
-                        <SwatchSelector title="Info" type="status" attr="info" />
-                        <SwatchSelector title="Highlight" type="status" attr="highlight" />
+                        <SwatchSelector title="Hover Dark" type="utils" attr="hoverDark" />
+                        <SwatchSelector title="Hover Light" type="utils" attr="hoverLight" />
                     </Card>
                 </div>
             </div>

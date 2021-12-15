@@ -10,18 +10,18 @@ const StyledFilterList = styled.ul`
    gap: 4px;
    margin-bottom: 16px;
    button {
-        background-color: ${({ theme }) => theme.transparent};;
-        border: 1px solid ${props => props.theme.state.interactive};;
-        color: ${props => props.theme.state.interactive};
+        background-color: ${({ theme }) => theme.utils.transparent};;
+        border: 1px solid ${props => props.theme.action.interactive};;
+        color: ${props => props.theme.action.interactive};
         padding: 4px 8px;
         font-size: 80%;
         :hover {
-            background-color: ${({ theme }) => theme.state.hoverDark};
+            background-color: ${({ theme }) => theme.utils.hoverDark};
         }
 
         &.active {
-            color: ${({ theme }) => theme.white};;
-            background-color: ${props => props.theme.state.interactive};
+            color: ${({ theme }) => theme.text.primary};;
+            background-color: ${props => props.theme.utils.interactive};
         }
    }
 `;

@@ -48,7 +48,7 @@ const StyledModal = styled.div`
 	}
 
 	.header {
-		background: ${props => props.theme.brand.dark};
+		background: ${props => props.theme.brand.nav};
 		color: ${({ theme }) => theme.white};
 
 		background-color: ${({ theme }) => theme.medium};

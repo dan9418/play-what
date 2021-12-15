@@ -49,7 +49,7 @@ const StyledIntervalTable = styled.table`
         box-sizing: border-box;
 
         :hover {
-            background-color: ${({ theme }) => theme.state.interactive};
+            background-color: ${({ theme }) => theme.action.interactive};
             color: white;
         }
 
@@ -60,7 +60,7 @@ const StyledIntervalTable = styled.table`
 
         &.active {
             color: white;
-            background-color: ${({ theme }) => theme.state.active};
+            background-color: ${({ theme }) => theme.action.active};
         }
     }
 `;

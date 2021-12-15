@@ -7,8 +7,8 @@ const StyledButton = styled.button`
     border-radius: 4px;
 	font-size: 110%;
     padding: 8px 16px;
-	color: ${({ theme }) => theme.white};
-	background-color: ${({ $isActive, theme }) => $isActive ? theme.medium : theme.state.interactive};
+	color: ${({ theme }) => theme.text.inverted};
+	background-color: ${({ $isActive, theme }) => $isActive ? theme.action.active : theme.action.interactive};
 
 	&:hover {
 		opacity: .9;
