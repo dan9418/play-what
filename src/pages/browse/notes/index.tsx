@@ -1,3 +1,3 @@
-import ScalesPage from "../../../components/browse/scales/ScalesPage";
+import NotesPage from "../../../components/browse/notes/NotesPage";
 
-export default ScalesPage;
+export default NotesPage;

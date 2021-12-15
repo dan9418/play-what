@@ -31,7 +31,7 @@ const StyledSearchPage = styled(StyledPageBody)`
 
 interface ISearchPageProps extends ISearchTableProps {
     path?: string;
-    tag: any;
+    tag?: any;
     title: string;
     subtitle: string;
 }
@@ -50,7 +50,7 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
         return true;
     });
 
-    const tags = Object.values(tag).filter(t => {
+    const tags = tag && Object.values(tag).filter(t => {
         return filteredRows.find(r => r.tags.includes(t))
     });
 
@@ -60,11 +60,13 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
             <PageTitle title={title} subtitle={subtitle} />
             <div className="grid">
                 <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
-                <div>
-                    <Card title="Filters">
-                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                    </Card>
-                </div>
+                {tags &&
+                    <div>
+                        <Card title="Filters">
+                            <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+                        </Card>
+                    </div>
+                }
             </div>
         </StyledSearchPage>
     );
