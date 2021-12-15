@@ -22,6 +22,7 @@ const StyledThemePage = styled(StyledPageBody)`
     }
 
     .theme-btns {
+        font-weight: bold;
         margin-top: 16px;
         display: grid;
         gap: 16px;
@@ -36,7 +37,7 @@ const StyledThemePage = styled(StyledPageBody)`
     }
 
     ${StyledCard} {
-        margin-bottom: 16px;
+        margin: 16px 0;
     }
 
     .row {
@@ -106,15 +107,18 @@ const ThemePage: React.FC<any> = () => {
     return (
         <StyledThemePage>
             <PageTitle title="Theme" />
-            <div className="theme-btns">
-                <ButtonInput onClick={() => setTheme(THEME)} >Reset Light Theme</ButtonInput>
-                <ButtonInput onClick={() => setTheme(DARK_THEME)} >Reset Dark Theme</ButtonInput>
-            </div>
+            <Card title="Reset Theme">
+                <div className="theme-btns">
+                    <ButtonInput onClick={() => setTheme(THEME)} >Light</ButtonInput>
+                    <ButtonInput onClick={() => setTheme(DARK_THEME)} >Dark</ButtonInput>
+                </div>
+            </Card>
             <div className="grid">
                 <div>
                     <Card title="Brand">
                         <SwatchSelector title="Primary" type="brand" attr="primary" />
                         <SwatchSelector title="Secondary" type="brand" attr="secondary" />
+                        <SwatchSelector title="Accent" type="brand" attr="accent" />
                     </Card>
 
                     <Card title="Action">

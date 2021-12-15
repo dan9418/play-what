@@ -3,10 +3,15 @@ import styled from 'styled-components';
 import Card from "../../../_shared/ui/Card";
 
 const StyledDetailsCard = styled.div`
+    aspect-ratio: 1.5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     table {
         border-collapse: collapse;
-        margin: auto;
-    
+   
         th {
             text-align: right;
             padding-right: 16px;

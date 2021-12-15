@@ -28,6 +28,7 @@ const THEME = {
 	brand: {
 		primary: COLOR.orange,
 		secondary: COLOR.green,
+		accent: COLOR.darkBlue,
 	},
 	action: {
 		active: COLOR.orange,
