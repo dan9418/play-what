@@ -25,11 +25,11 @@ const IntervalPage: React.FC<any> = props => {
             <StyledDoublePane>
                 <StyledPane>
                     <Card title="Ratio" />
+                    <RelatedCard model={interval} />
+                    <SoundCard model={interval} />
                 </StyledPane>
                 <StyledPane>
                     <DetailsCard model={interval} />
-                    <RelatedCard model={interval} />
-                    <SoundCard model={interval} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledIntervalPage >

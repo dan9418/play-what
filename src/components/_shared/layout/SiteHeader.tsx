@@ -46,7 +46,7 @@ const StyledSiteHeader = styled.div`
 	}
 
 	.logo {
-		font-size: 110%;
+		font-size: 32px;
 		text-transform: uppercase;
 		letter-spacing: 4px;
 		font-weight: 300;

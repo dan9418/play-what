@@ -25,11 +25,11 @@ const NotePage: React.FC<any> = props => {
             <StyledDoublePane>
                 <StyledPane>
                     <Card title="Frequency" />
+                    <RelatedCard model={note} />
+                    <SoundCard model={note} />
                 </StyledPane>
                 <StyledPane>
                     <DetailsCard model={note} />
-                    <RelatedCard model={note} />
-                    <SoundCard model={note} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledNotePage >
