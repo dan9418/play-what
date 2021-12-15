@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Card from "../../../_shared/ui/Card";
 
 const StyledDetailsCard = styled.div`
-    aspect-ratio: 1.5;
+    //aspect-ratio: 1.5;
 
     display: flex;
     align-items: center;
