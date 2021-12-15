@@ -6,7 +6,7 @@ const COLOR = {
 	red: 'red',
 	ivory: '#F6F7EB',
 	// Neutral
-	white: '#FFF',
+	white: '#FFFFFF',
 	light1: '#F3F4F8',
 	light2: '#D2D4DA',
 	light3: '#B3B5BD',
@@ -16,7 +16,7 @@ const COLOR = {
 	dark1: '#404252',
 	dark2: '#282A3A',
 	dark3: '#101223',
-	black: '#000',
+	black: '#000000',
 	// Other
 	transparent: 'transparent',
 	transparentDark: 'rgba(0,0,0,0.1)',
@@ -27,7 +27,8 @@ const COLOR = {
 const THEME = {
 	...COLOR,
 	utils: {
-		border: COLOR.light3
+		border: COLOR.light3,
+		card: COLOR.white,
 	},
 	state: {
 		active: COLOR.orange,
