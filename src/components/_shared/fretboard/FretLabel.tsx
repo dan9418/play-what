@@ -1,10 +1,9 @@
 
-import * as React from "react";
-import styled from "styled-components";
 import ToneUtils from "@pw-core/tone/Tone.utils";
 import TuningUtils from "@pw-core/tuning/Tuning.utils";
+import * as React from "react";
+import styled from "styled-components";
 import { IFretLabelProps } from "./Fretboard.defaults";
-import viewerUtils from "./Viewer.utils";
 
 const StyledFretLabel = styled.div`
 	position: absolute;
@@ -25,32 +24,14 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, labelBy, modelId, matchOctave, details, voicing, stringIndex }) => {
+const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, stringIndex }) => {
 
-	const podOptions = {
-		matchOctave,
-		modelId,
-		labelBy
-	};
+	const isVisible = true;
+	let bgColor = 'black';
+	let fgColor = 'white';
 
-	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
+	if (!isVisible) return null;
 
-	if (!podProps) return null;
-
-	let { bgColor, fgColor, text, interval } = podProps;
-
-	const hasVoicing = voicing && voicing.value && voicing.value.length;
-
-	const voicingForString = hasVoicing && voicing.value[stringIndex];
-
-	const isNoteInVoicing = hasVoicing && Array.isArray(voicingForString) ?
-		voicingForString.some(x => interval[1] + 1 === x) :
-		interval[1] + 1 === voicingForString;
-
-	if (hasVoicing && !isNoteInVoicing) {
-		bgColor = `${bgColor}22`;
-		fgColor = '#ffffff99'
-	}
 
 	const f = TuningUtils.getFrequency(noteIndex);
 
