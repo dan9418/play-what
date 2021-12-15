@@ -1,8 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
 
-const StyledCard = styled.div`
-    background: white;
+export const StyledCard = styled.div`
+    background: ${props => props.theme.utils.card};
     width: 100%;
     border-radius: 16px;
     padding: 16px;

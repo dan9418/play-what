@@ -3,7 +3,7 @@ const COLOR = {
 	lightBlue: '#2589BD',
 	green: '#72B01D',
 	orange: '#FF7F11',
-	red: 'red',
+	red: '#C50707',
 	ivory: '#F6F7EB',
 	// Neutral
 	white: '#FFFFFF',

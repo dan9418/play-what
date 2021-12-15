@@ -3,6 +3,12 @@ import { atom, useRecoilState } from 'recoil';
 import { StringParam, useQueryParam } from "use-query-params";
 import { NoteId } from '../core/models/Model.constants';
 import Note from '../core/models/Note';
+import THEME from '../styles/theme';
+
+export const themeState = atom<typeof THEME>({
+    key: 'themeState',
+    default: THEME
+});
 
 interface IHistoryEntry {
     id: string;
