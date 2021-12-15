@@ -5,27 +5,27 @@ import Card from "../../../_shared/ui/Card";
 const StyledDetailsCard = styled.div`
     table {
         border-collapse: collapse;
-        width: 100%;
+        margin: auto;
     
         th {
             text-align: right;
-            padding: 4px 8px 4px 4px;
-            font-size: 80%;
+            padding-right: 32px;
             text-transform: uppercase;
-            color: ${({ theme }) => theme.medium1};
+            color: ${({ theme }) => theme.medium3};
+            border-right: 1px solid ${({ theme }) => theme.utils.border};
         }
 
         td {
-            padding: 4px;
+            padding: 8px 16px;
             text-align: center;
+            font-size: 140%;
             &.featured {
-                font-size: 160%;
+                font-size: 200%;
                 font-weight: bold;
+                border-bottom: 1px solid ${({ theme }) => theme.utils.border};
             }
             &.frequency, &.ratio {
-                font-size: 80%;
                 color: ${({ theme }) => theme.medium1};
-                font-style: italic;
             }
         }
     }
@@ -38,7 +38,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
     if (!intervals && !notes) return null;
 
     return (
-        <Card title="Details">
+        <Card>
             <StyledDetailsCard>
                 <table>
                     <tbody>

@@ -9,6 +9,10 @@ import NumericInput from "../../../_shared/inputs/NumericInput";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRoot = styled.div`
+    h3 {
+        color: ${props => props.theme.medium3};
+    }
+
     ul {
         display: grid;
         width: 100%;
