@@ -1,8 +1,12 @@
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import styled, { useTheme } from 'styled-components';
+import ButtonInput from "../components/_shared/inputs/ButtonInput";
 import { StyledPageBody } from "../components/_shared/layout/PageBody";
 import PageTitle from "../components/_shared/layout/PageTitle";
 import Card, { StyledCard } from "../components/_shared/ui/Card";
+import { themeState } from "../state/state";
+import THEME, { DARK_THEME } from "../styles/theme";
 import { useSetTheme } from "../styles/ThemeManager";
 
 const StyledThemePage = styled(StyledPageBody)`
@@ -14,6 +18,20 @@ const StyledThemePage = styled(StyledPageBody)`
         grid-template-columns: 1fr;
         @media(min-width: 512px) {
             grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .theme-btns {
+        margin-top: 16px;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+        @media(min-width: 512px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        button {
+            width: 100%;
         }
     }
 
@@ -84,9 +102,14 @@ const SwatchSelector: React.FC<any> = ({ type, attr, title }) => {
 }
 
 const ThemePage: React.FC<any> = () => {
+    const setTheme = useSetRecoilState(themeState);
     return (
         <StyledThemePage>
             <PageTitle title="Theme" />
+            <div className="theme-btns">
+                <ButtonInput onClick={() => setTheme(THEME)} >Reset Light Theme</ButtonInput>
+                <ButtonInput onClick={() => setTheme(DARK_THEME)} >Reset Dark Theme</ButtonInput>
+            </div>
             <div className="grid">
                 <div>
                     <Card title="Brand">

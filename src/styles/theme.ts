@@ -58,4 +58,22 @@ const THEME = {
 	}
 }
 
+export const DARK_THEME = {
+	...THEME,
+	surface: {
+		card: COLOR.dark2,
+		bg: COLOR.dark1,
+		nav: COLOR.dark3,
+	},
+	text: {
+		primary: COLOR.light2,
+		secondary: COLOR.medium1,
+		inverted: COLOR.light1
+	},
+	utils: {
+		...THEME.utils,
+		border: COLOR.light3
+	}
+}
+
 export default THEME;
