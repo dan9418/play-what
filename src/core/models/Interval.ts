@@ -17,6 +17,9 @@ export default class IntervalSpan extends Pod {
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value, arePodsEqual, reducePod);
 
     getColor(): string | undefined {
+        return this.equals(new IntervalSpan(IntervalId.P1)) ?
+            'red' : '#333';
+
         return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
     }
 
