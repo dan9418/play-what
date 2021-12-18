@@ -5,15 +5,16 @@ import FretLabel from "./FretLabel";
 
 export const Fret: React.FC<IFretProps> = props => {
 
-	const { tuning, stringIndex, fretIndex, showFretNumbers, showFretDots } = props;
+	const { tuning, stringIndex, fretIndex, showFretNumbers, showFretDots, getFretLabelProps } = props;
 
 	const classes = ['fret'];
 	if (fretIndex === 0)
 		classes.push('open');
 
-	const noteIndex = tuning[stringIndex] + fretIndex;
 	const isLowString = stringIndex === tuning.length - 1;
 	const isHighString = stringIndex === 0;
+
+	const fretLabelProps = getFretLabelProps ? getFretLabelProps(stringIndex, fretIndex, tuning) : {};
 
 	return (
 		<div className={classes.join(' ')}>
@@ -21,7 +22,7 @@ export const Fret: React.FC<IFretProps> = props => {
 				{showFretNumbers && isHighString && fretIndex > 0 && fretIndex}
 			</div>
 			<div className='fret-string' />
-			<FretLabel noteIndex={noteIndex} stringIndex={stringIndex} {...props} />
+			<FretLabel {...fretLabelProps} />
 			<div className="fret-dots">
 				{showFretDots && isLowString && fretIndex > 0 && getDotsForFret(fretIndex)}
 			</div>
