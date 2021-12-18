@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "./Input.constants";
 
 const StyledDropdownInput = styled.select`
 	font-size: 110%;
@@ -16,7 +15,9 @@ const StyledDropdownInput = styled.select`
 	}
 `;
 
-interface IDropdownInputProps extends IInputProps {
+interface IDropdownInputProps {
+	value: any;
+	setValue: Function;
 	options: any[];
 	idProperty?: string;
 	displayProperty?: string;

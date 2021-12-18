@@ -2,7 +2,6 @@ import React from "react";
 import styled from 'styled-components';
 import Icon from "../ui/Icon";
 import ButtonInput from "./ButtonInput";
-import { IInputProps } from "./Input.constants";
 
 export const StyledNumbericInput = styled.div`
 	display: flex;
@@ -48,7 +47,9 @@ export const StyledNumbericInput = styled.div`
 	cursor: pointer;
 `;
 
-interface INumericInputProps extends IInputProps {
+interface INumericInputProps {
+	value: number;
+	setValue: (number) => void;
 	min?: number;
 	max?: number;
 }
