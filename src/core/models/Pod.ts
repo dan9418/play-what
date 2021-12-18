@@ -1,6 +1,6 @@
 import Model from './Model';
 import { IntervalId, IPod, NoteId } from './Model.constants';
-import { arePodsEqual } from './Pod.static';
+import { addPods, arePodsEqual } from './Pod.static';
 
 export default class Pod extends Model {
 

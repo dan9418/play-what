@@ -1,5 +1,4 @@
 import Note from '../../core/models/Note';
-import { arePodsEqual } from '../../core/models/Pod.static';
 import PodList from '../../core/models/PodList';
 import TuningUtils from '../../core/tuning/Tuning.utils';
 
@@ -74,11 +73,11 @@ export const getDotsForFret = (fretNumber: number): string => {
 
 export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps => {
 	const noteIndex = tuning[stringIndex] + fretIndex;
-	const note = model.tryGetNoteAtPitch(noteIndex);
+	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
 
 	if (!note) return {};
 
-	const color = note.getColor(true)
+	const color = interval.getColor();
 	const freq = TuningUtils.getFrequency(noteIndex);
 
 	return {

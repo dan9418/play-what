@@ -1,3 +1,4 @@
+import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
 import { IModelConfig, IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
@@ -11,6 +12,10 @@ export default class IntervalSpan extends Pod {
 
     constructor(id: IntervalId) {
         super(INTERVAL_PRESET_MAP, id);
+    }
+
+    getColor(): string | undefined {
+        return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
     }
 
     getName = () => {

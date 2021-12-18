@@ -1,13 +1,13 @@
 import NumberUtils from '../general/Number.utils';
-import { DEFAULT_DEGREE_COLOR_SCHEME, DEGREE_PRESETS } from '../theory/Degree.constants';
+import { DEGREE_PRESETS } from '../theory/Degree.constants';
+import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
-import IntervalSpan from './Interval';
 import Model from './Model';
-import { ACCIDENTAL, IntervalId, IPod, NoteId } from './Model.constants';
+import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
-import { addPod, arePodsEqual, reducePod } from './Pod.static';
+import { arePodsEqual, reducePod } from './Pod.static';
 
 interface INoteNameOptions {
     includeOctave?: boolean;
@@ -22,8 +22,6 @@ interface INoteNameParts {
 export default class Note extends Pod {
 
     id: NoteId;
-    root?: Note;
-    interval?: IntervalSpan;
 
     constructor(id: NoteId) {
         super(NOTE_PRESET_MAP, id);
@@ -33,25 +31,11 @@ export default class Note extends Pod {
         return Note.getAccidentalOffset(this.pod);
     };
 
-    getColor(useBinaryColorScheme = false): string | undefined {
-        if (!this.interval || !this.root) return;
-
-        if (useBinaryColorScheme) {
-            return this.interval.equals(new IntervalSpan(IntervalId.P1)) ? 'red' : '#333';
-        }
-
-        return DEFAULT_DEGREE_COLOR_SCHEME[this.interval.pod[1]];
+    getColor(): string | undefined {
+        return DEFAULT_PITCH_COLOR_SCHEME[this.pod[0]];
     }
 
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
-
-    static fromRootedInterval = (root: Note, interval: IntervalSpan) => {
-        const notePod = addPod(root.pod, interval.pod);
-        const note = Note.fromValue(notePod);
-        note.root = root;
-        note.interval = interval;
-        return note;
-    }
 
     static getAccidentalOffset = (pod: IPod): number => {
         const [p, d] = pod;

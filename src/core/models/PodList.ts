@@ -3,7 +3,7 @@ import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
-import { arePodListsEqual, getIndexOfPodAtPitch } from './Pod.static';
+import { addPods, arePodListsEqual, getIndexOfPodAtPitch } from './Pod.static';
 
 export default class PodList extends Model {
 
@@ -46,7 +46,7 @@ export default class PodList extends Model {
         let notePods;
         try {
             root = new Note(noteId);
-            notes = this.intervals.map(ivl => Note.fromRootedInterval(root, ivl));
+            notes = this.intervals.map(ivl => Note.fromValue(addPods(ivl.pod, root.pod)));
             notePods = notes.map(n => n.pod);
         }
         catch (e) {
@@ -144,11 +144,14 @@ export default class PodList extends Model {
         return this.getIntervalListString();
     }
 
-    tryGetNoteAtPitch(noteIndex: number): Note {
+    tryGetPodPairAtPitch(noteIndex: number): [IntervalSpan, Note] {
         const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
-        if (index == null) return;
+        if (index == null) return [undefined, undefined];
 
-        return this.notes[index];
+        return [
+            this.intervals[index],
+            this.notes[index]
+        ];
     }
 }

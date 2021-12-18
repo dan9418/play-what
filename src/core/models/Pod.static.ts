@@ -52,7 +52,7 @@ export const getIndexOfPodAtPitch = (A: IPod[], p: number, matchOctave: boolean)
 }*/
 
 
-export const addPod = (a: IPod, b: IPod): IPod => {
+export const addPods = (a: IPod, b: IPod): IPod => {
     const p = a[0] + b[0];
     const d = a[1] + b[1];
     const result: IPod = [p, d];
@@ -68,7 +68,7 @@ export const addPod = (a: IPod, b: IPod): IPod => {
 }*/
 
 export const addPodList = (a: IPod, B: IPod[]): IPod[] => {
-    const result = B.map((b) => addPod(a, b));
+    const result = B.map((b) => addPods(a, b));
     return result;
 };
 

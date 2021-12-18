@@ -74,7 +74,7 @@ const getRoots = () => {
             const rootPod: IPod = [diatonicPitch + offset, d];
 
             const intervals = FIRST_OCTAVE_INTERVALS.map(ivl => {
-                const ivlPod = Model.addPod(rootPod, ivl.value);
+                const ivlPod = Model.addPods(rootPod, ivl.value);
                 const ivlName = Note.getName(ivlPod);
 
                 //const isInvalid = ivlName.includes(invalidSymbol);

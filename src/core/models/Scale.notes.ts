@@ -46,7 +46,7 @@
 // 	};
 
 // 	static transpose({ A, b }) {
-// 		return Model.addPod({ A, b });
+// 		return Model.addPods({ A, b });
 // 	}
 
 // 	getName() {
