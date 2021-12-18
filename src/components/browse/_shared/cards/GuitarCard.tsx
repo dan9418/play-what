@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { VOICING_PRESETS } from "../../../../core/theory/Voicing.constants";
+import { VOICING_PRESETS } from "../../../../viewers/fretboard/Fretboard.voicing";
 import Fretboard from "../../../../viewers/fretboard/Fretboard";
 import { getFretboardProps } from "../../../../viewers/fretboard/Fretboard.utils";
 import DropdownInput from "../../../_shared/inputs/DropdownInput";

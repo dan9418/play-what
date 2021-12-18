@@ -1,7 +1,8 @@
-import { IntervalSpan } from '@pw-core/models/Interval';
+import IntervalSpan from '../../core/models/Interval';
 import Note from '../../core/models/Note';
 import PodList from '../../core/models/PodList';
-import { IVoicing } from './../../core/theory/Voicing.constants';
+import { FRETBOARD_TUNING_MAP, TuningId } from './Fretboard.tuning';
+import { IVoicing } from './Fretboard.voicing';
 
 export interface IFretLabelProps {
 	note?: Note;
@@ -22,35 +23,13 @@ export interface IFretProps extends IFretboardProps {
 	fretIndex: number;
 }
 
-
-
 export const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false, true, false, true, false, false];
 
 export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-export const FRETBOARD_TUNING = {
-	standard: {
-		id: 'standard',
-		name: 'Standard',
-		value: [16, 11, 7, 2, -3, -8] // e B G D A E
-	},
-	standardBass: {
-		id: 'standardBass',
-		name: 'Bass',
-		value: [7, 2, -3, -8] // G D A E
-	},
-	dropD: {
-		id: 'dropD',
-		name: 'Drop D',
-		value: [16, 11, 7, 2, -3, -10] // e B G D A D
-	}
-};
-
-export const FRETBOARD_TUNING_VALUES = Object.values(FRETBOARD_TUNING);
-
 export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
 	fretRange: [0, 12],
-	tuning: FRETBOARD_TUNING.standard.value,
+	tuning: FRETBOARD_TUNING_MAP.get(TuningId.Standard).value,
 	showFretDots: true,
 	showFretNumbers: true
 };

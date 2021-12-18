@@ -1,3 +1,4 @@
+import ArrayUtils from "../../core/general/Array.utils";
 
 export enum VoicingId {
     None = 'None',
@@ -154,4 +155,4 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     )]
 ])
 
-export const VOICING_PRESETS = Array.from(VOICING_PRESET_MAP).map(([k, v]) => v);
+export const VOICING_PRESETS = ArrayUtils.mapToArray(VOICING_PRESET_MAP);
