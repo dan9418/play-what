@@ -1,6 +1,6 @@
 import Model from '../../core/models/Model';
-import { IPod } from '../../core/models/Model.constants';
 import Note from '../../core/models/Note';
+import Pod from '../../core/models/Pod';
 import PodList from '../../core/models/PodList';
 import TuningUtils from '../../core/tuning/Tuning.utils';
 
@@ -73,16 +73,20 @@ export const getDotsForFret = (fretNumber: number): string => {
 	return '';
 };
 
-export const getFretLabelPropsAnon = (notePods: IPod[], stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps => {
+export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps => {
+	const notePods = model.getNoteListPods(); // Should avoid extra computation
 	const noteIndex = tuning[stringIndex] + fretIndex;
 	const index = Model.getIndexOfPodAtPitch(notePods, noteIndex, false);
 
 	if (index === null) return {};
 
+	const notePod = notePods[index];
+
+	const color = Pod.arePodsEqual(model.root.pod, notePod) ? 'red' : '#333';
 	const freq = TuningUtils.getFrequency(noteIndex);
 
 	return {
-		color: '#333',
+		color,
 		freq
 	}
 }
@@ -91,9 +95,8 @@ export const getFretboardProps = (model: PodList): IFretboardProps => {
 
 	let getFretLabelProps;
 	if (model) {
-		const notePods = model.getNoteListPods();
 		getFretLabelProps = (stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps =>
-			getFretLabelPropsAnon(notePods, stringIndex, fretIndex, tuning)
+			getFretLabelPropsAnon(model, stringIndex, fretIndex, tuning)
 	}
 
 	return {
