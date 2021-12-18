@@ -29,6 +29,10 @@ export default class PodList extends Model {
         }
     }
 
+    static fromRootedIntervals = (root: Note, intervals: IntervalSpan[]) => {
+        return intervals.map(ivl => Note.fromRootedInterval(root, ivl));
+    }
+
     getName = () => {
         return `${this.root ? `${this.root.getName()} ` : ''}${this.name}`;
     }
@@ -62,7 +66,7 @@ export default class PodList extends Model {
     getNoteListClasses() {
         if (!this.root) return;
 
-        return this.root.addIntervals(this.intervals);
+        return this.intervals.map(ivl => Note.fromRootedInterval(this.root, ivl));
     }
 
     getNoteListPods(): IPod[] {

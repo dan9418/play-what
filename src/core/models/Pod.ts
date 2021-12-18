@@ -19,28 +19,6 @@ export default class Pod extends Model {
         this.pod = preset.value;
     }
 
-    addPod(b: Pod, subclass = undefined): Pod {
-        const a = this;
-        const p = a.pod[0] + b.pod[0];
-        const d = a.pod[1] + b.pod[1];
-        const result: IPod = [p, d];
-        return subclass ? subclass.fromValue(result) : result;
-    }
-
-    /*subtractPod(b: Pod, subclass = undefined): Pod {
-        const a = this;
-        const p = a.pod[0] - b.pod[0];
-        const d = a.pod[1] - b.pod[1];
-        const result: IPod = [p, d];
-        return subclass ? subclass.fromValue(result) : result;
-    }*/
-
-    addIntervals(B: Pod[], subclass = undefined): Pod[] {
-        const a = this;
-        const result = B.map((b) => a.addPod(b, subclass));
-        return result;
-    };
-
     static reducePods = (a: IPod, max = MAX_POD): IPod => {
         const p = NumberUtils.modulo(a[0], max[0]);
         const d = NumberUtils.modulo(a[1], max[1]);

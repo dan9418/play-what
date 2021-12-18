@@ -1,4 +1,3 @@
-import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
 import { IModelConfig, IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
@@ -57,12 +56,6 @@ export default class IntervalSpan extends Pod {
 
     static getIntervalOffset = (pod: IPod, coreIvl: IModelConfig) => {
         return coreIvl.value[0] - pod[0];
-    }
-
-    static getPodColor = (pod: IPod) => {
-        if (!pod) return null;
-        const [p, d] = pod;
-        return DEFAULT_DEGREE_COLOR_SCHEME[d];
     }
 
     static getName = (interval: IPod): string => {

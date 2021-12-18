@@ -50,3 +50,24 @@ export const getIndexOfPodAtPitch = (A: IPod[], p: number, matchOctave: boolean)
         }
     });
 }*/
+
+
+export const addPod = (a: IPod, b: IPod): IPod => {
+    const p = a[0] + b[0];
+    const d = a[1] + b[1];
+    const result: IPod = [p, d];
+    return result;
+}
+
+/*subtractPod(b: Pod, subclass = undefined): Pod {
+    const a = this;
+    const p = a.pod[0] - b.pod[0];
+    const d = a.pod[1] - b.pod[1];
+    const result: IPod = [p, d];
+    return subclass ? subclass.fromValue(result) : result;
+}*/
+
+export const addPodList = (a: IPod, B: IPod[]): IPod[] => {
+    const result = B.map((b) => addPod(a, b));
+    return result;
+};
