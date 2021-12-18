@@ -1,7 +1,6 @@
 import * as React from "react";
-import * as api from './Fretboard.api';
-import DEFAULT_FRETBOARD_PROPS, { IFretboardProps, IFretProps } from "./Fretboard.defaults";
 import StyledFretboard from "./Fretboard.styles";
+import { DEFAULT_FRETBOARD_PROPS, getDotsForFret, getFretRatios, IFretboardProps, IFretProps } from "./Fretboard.utils";
 import FretLabel from "./FretLabel";
 
 export const Fret: React.FC<IFretProps> = props => {
@@ -24,7 +23,7 @@ export const Fret: React.FC<IFretProps> = props => {
 			<div className='fret-string' />
 			<FretLabel noteIndex={noteIndex} stringIndex={stringIndex} {...props} />
 			<div className="fret-dots">
-				{showFretDots && isLowString && fretIndex > 0 && api.getDotsForFret(fretIndex)}
+				{showFretDots && isLowString && fretIndex > 0 && getDotsForFret(fretIndex)}
 			</div>
 		</div>
 	);
@@ -57,7 +56,7 @@ const Fretboard: React.FC<IFretboardProps> = (userProps) => {
 	const [lo, hi] = props.fretRange;
 	const numFrets = hi - lo + 1;
 	const numStrings = props.tuning.length;
-	const gridTemplateColumns = api.getFretRatios(numFrets).map(n => n + 'fr').join(' ');
+	const gridTemplateColumns = getFretRatios(numFrets).map(n => n + 'fr').join(' ');
 	const gridTemplateRows = `repeat(${numStrings}, 1fr)`;
 	const fretboardStyles = {
 		gridTemplateColumns,

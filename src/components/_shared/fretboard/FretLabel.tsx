@@ -4,12 +4,12 @@ import TuningUtils from "@pw-core/tuning/Tuning.utils";
 import * as React from "react";
 import styled from "styled-components";
 import Model from "../../../core/models/Model";
-import { IFretLabelProps } from "./Fretboard.defaults";
+import { IFretLabelProps } from "./Fretboard.utils";
 
 const StyledFretLabel = styled.div`
 	position: absolute;
-	width: 90%;
-	height: 90%;
+	width: 32px;
+	height: 32px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -31,11 +31,11 @@ const FretLabel: React.FC<IFretLabelProps> = ({ noteIndex, model }) => {
 
 	const notes = model.getNoteListPods();
 
-	const isVisible = Model.getIndexOfPodAtPitch(notes, noteIndex, false);
+	const index = Model.getIndexOfPodAtPitch(notes, noteIndex, false);
 
-	if (!isVisible) return null;
+	if (index === null) return null;
 
-	let bgColor = 'black';
+	let bgColor = '#333'; //Pod.arePodsEqual(model.intervals[0].pod, [0, 0]) ? 'red' : 'black';
 	let fgColor = 'white';
 
 	const f = TuningUtils.getFrequency(noteIndex);
