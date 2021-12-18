@@ -4,7 +4,7 @@ import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
 import Model from './Model';
-import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
+import { ACCIDENTAL, IPod, MAX_POD, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
 import { arePodsEqual, reducePod } from './Pod.static';
@@ -29,17 +29,12 @@ export default class Note extends Pod {
 
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
 
-    getAccidentalOffset(): number {
-        return Note.getAccidentalOffset(this.pod);
-    };
-
     getColor(): string | undefined {
         return DEFAULT_PITCH_COLOR_SCHEME[this.pod[0]];
     }
 
-
-    static getAccidentalOffset = (pod: IPod): number => {
-        const [p, d] = pod;
+    getAccidentalOffset(): number {
+        const [p, d] = this.pod;
 
         let offset = p - ROOT_SCALE[d][0];
 
@@ -63,7 +58,8 @@ export default class Note extends Pod {
         return offset;
     }
 
-    static getAccidentalString = (offset: number): string => {
+    getAccidentalString(): string {
+        const offset = this.getAccidentalOffset();
         if (offset > 0) {
             return ACCIDENTAL.sharp.symbol.repeat(offset);
         }
@@ -73,38 +69,41 @@ export default class Note extends Pod {
         return '';
     };
 
-    static createPod = (degree: number, accidental: number, octave: number): IPod => {
+    /*static createPod = (degree: number, accidental: number, octave: number): IPod => {
         const pitchClass = NumberUtils.modulo(ROOT_SCALE[degree][0] + accidental, 12);
         const pitch = (octave * 12) + pitchClass;
         return [pitch, degree];
-    }
+    }*/
 
     /*static getPitchClass = (pod: IPod): number => {
         return NumberUtils.modulo(pod[0], MAX_POD[0]);
     }*/
 
-    static getOctave = (pod: IPod, midi = false): number => {
-        const raw = Math.floor(pod[0] / 12);
+    getOctave(): number {
+        const midi = false;
+        const raw = Math.floor(this.pod[0] / 12);
         return midi ? raw + 4 : raw;
     }
 
-    /*static getDegree = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[1], MAX_POD[1]);
-    }*/
+    getDegree(): number {
+        return NumberUtils.modulo(this.pod[1], MAX_POD[1]);
+    }
 
-    static getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
-        const reducedValue = reducePod(note);
+    getSpelling(): string {
+        const degree = this.getDegree();
+        const spelling = DEGREE_PRESETS[degree].name;
+        return spelling;
+    }
 
-        const d = reducedValue[1];
-        const offset = this.getAccidentalOffset(reducedValue);
-        const accidental = this.getAccidentalString(offset);
-        const spelling = DEGREE_PRESETS[d].name;
-        const octave = this.getOctave(note, true);
+    getNameParts(): INoteNameParts {
+        const accidental = this.getAccidentalString();
+        const spelling = this.getSpelling();
+        const octave = this.getOctave();
         return { spelling, accidental, octave };
     }
 
     getName = (options: INoteNameOptions = {}): string => {
-        const { spelling, accidental, octave } = Note.getNameParts(this.pod, options);
+        const { spelling, accidental, octave } = this.getNameParts();
 
         const o = options.includeOctave ? octave : '';
         return `${spelling}${accidental}${o}`;
