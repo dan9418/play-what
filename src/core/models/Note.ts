@@ -27,6 +27,8 @@ export default class Note extends Pod {
         super(NOTE_PRESET_MAP, id);
     }
 
+    static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
+
     getAccidentalOffset(): number {
         return Note.getAccidentalOffset(this.pod);
     };
@@ -35,7 +37,6 @@ export default class Note extends Pod {
         return DEFAULT_PITCH_COLOR_SCHEME[this.pod[0]];
     }
 
-    static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
 
     static getAccidentalOffset = (pod: IPod): number => {
         const [p, d] = pod;
