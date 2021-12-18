@@ -75,7 +75,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                                 <th>Frequency</th>
                                 {notes.map((note, i) => {
                                     return (
-                                        <td key={note.id} className={`frequency`}>{note.getFrequency()}</td>
+                                        <td key={note.id} className={`frequency`}>{note.getFrequency(true)}</td>
                                     );
                                 })}
                             </tr>

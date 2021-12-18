@@ -1,8 +1,3 @@
-/*static getPodAtPitch = (A: IPod[], p: number, matchOctave: boolean): IPod | null => {
-    const pod = A.find(a => this.isPodAtPitch(a, p, matchOctave));
-    return pod ? pod : null;
-};*/
-
 import NumberUtils from "../general/Number.utils";
 import { IPod, MAX_POD } from "./Model.constants";
 

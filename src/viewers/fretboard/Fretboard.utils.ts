@@ -78,7 +78,7 @@ export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretI
 	if (!note) return {};
 
 	const color = interval.getColor();
-	const freq = TuningUtils.getFrequency(noteIndex);
+	const freq = note.getFrequency() as number;
 
 	return {
 		color,

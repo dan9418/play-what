@@ -30,7 +30,7 @@ export default class Note extends Pod {
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
 
     getColor(): string | undefined {
-        return DEFAULT_PITCH_COLOR_SCHEME[this.pod[0]];
+        return DEFAULT_PITCH_COLOR_SCHEME[this.getPitch()];
     }
 
     getAccidentalOffset(): number {
@@ -69,13 +69,17 @@ export default class Note extends Pod {
         return '';
     };
 
+    getPitch(): number {
+        return this.pod[0];
+    }
+
     getPitchClass(): number {
-        return NumberUtils.modulo(this.pod[0], MAX_POD[0]);
+        return NumberUtils.modulo(this.getPitch(), MAX_POD[0]);
     }
 
     getOctave(): number {
         const midi = false;
-        const raw = Math.floor(this.pod[0] / 12);
+        const raw = Math.floor(this.getPitch() / 12);
         return midi ? raw + 4 : raw;
     }
 
@@ -103,7 +107,8 @@ export default class Note extends Pod {
         return `${spelling}${accidental}${o}`;
     }
 
-    getFrequency = () => {
-        return `${TuningUtils.getFrequency(this.pod[0])}Hz`;
+    getFrequency = (format = false) => {
+        const f = TuningUtils.getFrequency(this.getPitch());
+        return format ? `${f.toFixed(2)}Hz` : f;
     }
 }
