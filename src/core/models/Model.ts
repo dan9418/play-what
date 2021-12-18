@@ -10,8 +10,8 @@ export default class Model {
         return this.name || 'unnamed';
     }
 
-    static fromValue = (presetArray, subclass, value: any) => {
-        const preset = presetArray.find(p => subclass.arePodsEqual(p.value, subclass.reducePods(value)));
+    static fromValue = (presetArray, subclass, value: any, compareFn: any, reduceFn: any) => {
+        const preset = presetArray.find(p => compareFn(p.value, reduceFn(value)));
         if (!preset) {
             console.error(presetArray[0].modelId, value, presetArray);
             throw new Error('Unknown model value');

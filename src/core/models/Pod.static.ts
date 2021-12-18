@@ -4,7 +4,7 @@
 };*/
 
 import NumberUtils from "../general/Number.utils";
-import { IPod } from "./Model.constants";
+import { IPod, MAX_POD } from "./Model.constants";
 
 // Sound
 
@@ -71,3 +71,28 @@ export const addPodList = (a: IPod, B: IPod[]): IPod[] => {
     const result = B.map((b) => addPod(a, b));
     return result;
 };
+
+export const reducePod = (a: IPod, max = MAX_POD): IPod => {
+    const p = NumberUtils.modulo(a[0], max[0]);
+    const d = NumberUtils.modulo(a[1], max[1]);
+    return [p, d];
+}
+
+export const arePodsEqual = (a: IPod, b: IPod): boolean => {
+    if (!a || !b || a.length !== 2 || b.length !== 2) return false;
+    return a[0] === b[0] && a[1] === b[1];
+}
+
+export const reducePodList = (A: IPod[]): IPod[] => {
+    return A.map((a) => reducePod(a));
+}
+
+export const arePodListsEqual = (A: IPod[], B: IPod[]): boolean => {
+    if (!A || !B || A.length !== B.length) return false;
+    for (let i = 0; i < A.length; i++) {
+        const a = A[i];
+        const b = B[i];
+        if (!arePodsEqual(a, b)) return false;
+    }
+    return true;
+}

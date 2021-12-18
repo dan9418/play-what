@@ -1,6 +1,7 @@
 import Model from './Model';
 import { ChordId, IPod } from './Model.constants';
 import { CHORD_PRESETS, CHORD_PRESET_MAP } from './Model.presets';
+import { arePodListsEqual, reducePodList } from './Pod.static';
 import PodList from './PodList';
 
 export default class Chord extends PodList {
@@ -9,5 +10,5 @@ export default class Chord extends PodList {
         super(CHORD_PRESET_MAP, id, options);
     }
 
-    static fromValue = (value: IPod[]) => Model.fromValue(CHORD_PRESETS, Chord, value);
+    static fromValue = (value: IPod[]) => Model.fromValue(CHORD_PRESETS, Chord, value, arePodListsEqual, reducePodList);
 }

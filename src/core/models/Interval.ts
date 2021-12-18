@@ -3,6 +3,7 @@ import Model from "./Model";
 import { IModelConfig, IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
 import { CHORD_PRESETS, CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP, SCALE_PRESETS } from './Model.presets';
 import Pod from "./Pod";
+import { arePodsEqual, reducePod } from "./Pod.static";
 
 export default class IntervalSpan extends Pod {
 
@@ -52,14 +53,14 @@ export default class IntervalSpan extends Pod {
         return result;
     }
 
-    static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value);
+    static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value, arePodsEqual, reducePod);
 
     static getIntervalOffset = (pod: IPod, coreIvl: IModelConfig) => {
         return coreIvl.value[0] - pod[0];
     }
 
     static getName = (interval: IPod): string => {
-        const reduced = Pod.reducePods(interval);
+        const reduced = reducePod(interval);
 
         const [noteIndex, d] = reduced;
         const degreeIntervals = CORE_INTERVALS[d];

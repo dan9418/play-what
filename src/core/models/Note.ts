@@ -7,7 +7,7 @@ import Model from './Model';
 import { ACCIDENTAL, IPod, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
-import { addPod } from './Pod.static';
+import { addPod, arePodsEqual, reducePod } from './Pod.static';
 
 interface INoteNameOptions {
     includeOctave?: boolean;
@@ -35,11 +35,11 @@ export default class Note extends Pod {
 
     //getColor
 
-    static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value);
+    static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
 
     static fromRootedInterval = (root: Note, interval: IntervalSpan) => {
         const notePod = addPod(root.pod, interval.pod);
-        const note = Model.fromValue(NOTE_PRESETS, Note, notePod);
+        const note = Note.fromValue(notePod);
         note.root = root;
         note.interval = interval;
         return note;
@@ -87,7 +87,7 @@ export default class Note extends Pod {
     }
 
     static getNameParts = (note: IPod, options: INoteNameOptions = {}): INoteNameParts => {
-        const reducedValue = Note.reducePods(note);
+        const reducedValue = reducePod(note);
 
         const d = reducedValue[1];
         const offset = this.getAccidentalOffset(reducedValue);

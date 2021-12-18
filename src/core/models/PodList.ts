@@ -3,7 +3,6 @@ import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
-import Pod from './Pod';
 import { getIndexOfPodAtPitch } from './Pod.static';
 
 export default class PodList extends Model {
@@ -29,9 +28,9 @@ export default class PodList extends Model {
         }
     }
 
-    static fromRootedIntervals = (root: Note, intervals: IntervalSpan[]) => {
+    /*static fromRootedIntervals = (root: Note, intervals: IntervalSpan[]) => {
         return intervals.map(ivl => Note.fromRootedInterval(root, ivl));
-    }
+    }*/
 
     getName = () => {
         return `${this.root ? `${this.root.getName()} ` : ''}${this.name}`;
@@ -167,19 +166,5 @@ export default class PodList extends Model {
         const notes = this.getNoteListClasses();
 
         return notes[index];
-    }
-
-    static reducePods = (A: IPod[]): IPod[] => {
-        return A.map((a) => Pod.reducePods(a));
-    }
-
-    static arePodsEqual = (A: IPod[], B: IPod[]): boolean => {
-        if (!A || !B || A.length !== B.length) return false;
-        for (let i = 0; i < A.length; i++) {
-            const a = A[i];
-            const b = B[i];
-            if (!Pod.arePodsEqual(a, b)) return false;
-        }
-        return true;
     }
 }

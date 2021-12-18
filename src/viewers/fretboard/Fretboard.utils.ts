@@ -1,5 +1,5 @@
 import Note from '../../core/models/Note';
-import Pod from '../../core/models/Pod';
+import { arePodsEqual } from '../../core/models/Pod.static';
 import PodList from '../../core/models/PodList';
 import TuningUtils from '../../core/tuning/Tuning.utils';
 
@@ -78,7 +78,7 @@ export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretI
 
 	if (!note) return {};
 
-	const color = Pod.arePodsEqual(model.root.pod, note.pod) ? 'red' : '#333';
+	const color = arePodsEqual(model.root.pod, note.pod) ? 'red' : '#333';
 	const freq = TuningUtils.getFrequency(noteIndex);
 
 	return {
