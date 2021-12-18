@@ -1,5 +1,6 @@
 import Model from './Model';
 import { IntervalId, IPod, NoteId } from './Model.constants';
+import { arePodsEqual } from './Pod.static';
 
 export default class Pod extends Model {
 
@@ -18,16 +19,7 @@ export default class Pod extends Model {
         this.pod = preset.value;
     }
 
-    /*static getPitchClass = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[0], MAX_POD[0]);
-    }*/
-
-    static getOctave = (pod: IPod, midi = false): number => {
-        const raw = Math.floor(pod[0] / 12);
-        return midi ? raw + 4 : raw;
+    equals(b: Pod) {
+        return arePodsEqual(this.pod, b.pod);
     }
-
-    /*static getDegree = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[1], MAX_POD[1]);
-    }*/
 }

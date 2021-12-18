@@ -48,30 +48,30 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                 {subsets && subsets.length > 0 &&
                     <div>
                         <h2>Subsets</h2>
-                        {subsets.map(s => (
-                            <>
+                        {subsets.map((s, i) => (
+                            <React.Fragment key={i}>
                                 <h3>{s.modelName}</h3>
                                 <ul>
                                     {s.values.map(s => (
                                         <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
                                     ))}
                                 </ul>
-                            </>
+                            </React.Fragment>
                         ))}
                     </div>
                 }
                 {supersets && supersets.length > 0 &&
                     <div>
                         <h2>Supersets</h2>
-                        {supersets.map(s => (
-                            <>
+                        {supersets.map((s, i) => (
+                            <React.Fragment key={i}>
                                 <h3>{s.modelName}</h3>
                                 <ul>
                                     {s.values.map(s => (
                                         <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
                                     ))}
                                 </ul>
-                            </>
+                            </React.Fragment>
                         ))}
                     </div>
                 }

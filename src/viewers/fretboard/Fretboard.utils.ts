@@ -78,7 +78,7 @@ export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretI
 
 	if (!note) return {};
 
-	const color = arePodsEqual(model.root.pod, note.pod) ? 'red' : '#333';
+	const color = note.getColor(true)
 	const freq = TuningUtils.getFrequency(noteIndex);
 
 	return {
@@ -90,7 +90,7 @@ export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretI
 export const getFretboardProps = (model: PodList): IFretboardProps => {
 
 	let getFretLabelProps;
-	if (model) {
+	if (model && model.root) {
 		getFretLabelProps = (stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps =>
 			getFretLabelPropsAnon(model, stringIndex, fretIndex, tuning)
 	}
