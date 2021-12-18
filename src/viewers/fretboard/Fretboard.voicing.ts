@@ -40,7 +40,7 @@ const formatPreset = (id: VoicingId, name: string, value: (number | number[])[])
 
 export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     // Triads
-    [VoicingId.None, formatPreset(
+    [VoicingId.Chord_Triad_CShape_1, formatPreset(
         VoicingId.Chord_Triad_CShape_1,
         'C Shape Triad',
         [3, 1, 5, 3, 1, null]

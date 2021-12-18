@@ -1,7 +1,7 @@
 import IntervalSpan from '../../core/models/Interval';
 import Note from '../../core/models/Note';
 import PodList from '../../core/models/PodList';
-import { FRETBOARD_TUNING_MAP, TuningId } from './Fretboard.tuning';
+import { FRETBOARD_TUNING_MAP, ITuning, TuningId } from './Fretboard.tuning';
 import { IVoicing } from './Fretboard.voicing';
 
 export interface IFretLabelProps {
@@ -85,7 +85,7 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 	}
 }
 
-export const getFretboardProps = (model: PodList, voicing?: IVoicing): IFretboardProps => {
+export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning): IFretboardProps => {
 
 	let getFretLabelProps;
 	if (model && model.root) {
@@ -95,6 +95,7 @@ export const getFretboardProps = (model: PodList, voicing?: IVoicing): IFretboar
 
 	return {
 		...DEFAULT_FRETBOARD_PROPS,
+		tuning: tuning.value,
 		getFretLabelProps
 	}
 }

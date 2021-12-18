@@ -29,7 +29,7 @@ export const FRETBOARD_TUNING_MAP = new Map<TuningId, ITuning>([
         'Standard Bass',
         [7, 2, -3, -8] // G D A E
     )],
-    [TuningId.Standard, formatPreset(
+    [TuningId.DropD, formatPreset(
         TuningId.DropD,
         'Drop D',
         [16, 11, 7, 2, -3, -10] // e B G D A D
