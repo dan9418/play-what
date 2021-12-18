@@ -124,19 +124,13 @@ const RootCard: React.FC<any> = () => {
                         <InputRow label="Octave">
                             <NumericInput value={4} setValue={null} />
                         </InputRow>
-                        <InputRow label="Octave">
-                            <NumericInput value={4} setValue={null} />
+                        <InputRow label="Accidental">
+                            <ul>
+                                <li><AccidentalLink offset={-1} /></li>
+                                <li><AccidentalLink offset={0} /></li>
+                                <li><AccidentalLink offset={1} /></li>
+                            </ul>
                         </InputRow>
-                        <div className="row">
-                            <h3>Accidental</h3>
-                            <div>
-                                <ul>
-                                    <li><AccidentalLink offset={-1} /></li>
-                                    <li><AccidentalLink offset={0} /></li>
-                                    <li><AccidentalLink offset={1} /></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 }
             </StyledRoot>

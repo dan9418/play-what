@@ -5,6 +5,7 @@ import Fretboard from "../../../../viewers/fretboard/Fretboard";
 import { getFretboardProps } from "../../../../viewers/fretboard/Fretboard.utils";
 import DropdownInput from "../../../_shared/inputs/DropdownInput";
 import Card from "../../../_shared/ui/Card";
+import InputRow from "../../../_shared/ui/InputRow";
 
 const StyledGuitarCard = styled.div`
     
@@ -31,9 +32,9 @@ const GuitarCard: React.FC<any> = ({ model }) => {
         <Card title="Guitar">
             <StyledGuitarCard>
                 <Fretboard {...fretboardProps} />
-                <div>
+                <InputRow label="Voicing">
                     <DropdownInput value={voicing} setValue={setVoicing} options={OPTIONS} />
-                </div>
+                </InputRow>
             </StyledGuitarCard>
         </Card >
     );
