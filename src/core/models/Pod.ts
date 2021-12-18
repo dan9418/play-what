@@ -1,6 +1,7 @@
+import NumberUtils from '../general/Number.utils';
 import Model from './Model';
-import { IntervalId, IPod, NoteId } from './Model.constants';
-import { addPods, arePodsEqual } from './Pod.static';
+import { IntervalId, IPod, MAX_POD, NoteId } from './Model.constants';
+import { arePodsEqual } from './Pod.static';
 
 export default class Pod extends Model {
 
@@ -21,5 +22,9 @@ export default class Pod extends Model {
 
     equals(b: Pod) {
         return arePodsEqual(this.pod, b.pod);
+    }
+
+    getDegree(): number {
+        return NumberUtils.modulo(this.pod[1], MAX_POD[1]);
     }
 }

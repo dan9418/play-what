@@ -25,7 +25,7 @@ export enum VoicingId {
     Scale_DoubleOctave_DShape_1 = 'Scale_DoubleOctave_DShape_1',
 }
 
-interface IVoicing {
+export interface IVoicing {
     id: VoicingId;
     name: string;
     value: (number | number[])[]

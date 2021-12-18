@@ -1,6 +1,7 @@
+import { IntervalSpan } from '@pw-core/models/Interval';
 import Note from '../../core/models/Note';
 import PodList from '../../core/models/PodList';
-import TuningUtils from '../../core/tuning/Tuning.utils';
+import { IVoicing } from './../../core/theory/Voicing.constants';
 
 export interface IFretLabelProps {
 	note?: Note;
@@ -71,11 +72,30 @@ export const getDotsForFret = (fretNumber: number): string => {
 	return '';
 };
 
-export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps => {
+const doesVoicingValueMatch = (d: number, v: number) => {
+	return d + 1 === v;
+}
+
+const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIndex: number) => {
+	if (!voicing) return true;
+	const v = voicing.value[stringIndex];
+	const d = interval.getDegree();
+	if (Array.isArray(v)) {
+		return v.some(n => doesVoicingValueMatch(d, n));
+	}
+	else if (typeof v === 'number') {
+		return doesVoicingValueMatch(d, v);
+	}
+	return false;
+}
+
+const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: number, tuning: number[], voicing?: IVoicing): IFretLabelProps => {
 	const noteIndex = tuning[stringIndex] + fretIndex;
 	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
 
 	if (!note) return {};
+
+	if (!isIntervalInVoicing(interval, voicing, stringIndex)) return {};
 
 	const color = interval.getColor();
 	const freq = note.getFrequency() as number;
@@ -86,12 +106,12 @@ export const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretI
 	}
 }
 
-export const getFretboardProps = (model: PodList): IFretboardProps => {
+export const getFretboardProps = (model: PodList, voicing?: IVoicing): IFretboardProps => {
 
 	let getFretLabelProps;
 	if (model && model.root) {
 		getFretLabelProps = (stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps =>
-			getFretLabelPropsAnon(model, stringIndex, fretIndex, tuning)
+			getFretLabelPropsAnon(model, stringIndex, fretIndex, tuning, voicing)
 	}
 
 	return {

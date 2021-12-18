@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { VOICING_PRESETS } from "../../../../core/theory/Voicing.constants";
 import Fretboard from "../../../../viewers/fretboard/Fretboard";
 import { getFretboardProps } from "../../../../viewers/fretboard/Fretboard.utils";
 import Card from "../../../_shared/ui/Card";
@@ -12,7 +13,9 @@ const GuitarCard: React.FC<any> = ({ model }) => {
 
     if (!model.root || !model.intervals) return null;
 
-    const fretboardProps = getFretboardProps(model);
+    const voicing = VOICING_PRESETS[18];
+
+    const fretboardProps = getFretboardProps(model, voicing);
 
     return (
         <Card title="Guitar">

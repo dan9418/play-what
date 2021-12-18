@@ -83,10 +83,6 @@ export default class Note extends Pod {
         return midi ? raw + 4 : raw;
     }
 
-    getDegree(): number {
-        return NumberUtils.modulo(this.pod[1], MAX_POD[1]);
-    }
-
     getSpelling(): string {
         const degree = this.getDegree();
         const spelling = DEGREE_PRESETS[degree].name;
