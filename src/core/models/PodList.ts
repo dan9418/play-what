@@ -4,6 +4,7 @@ import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import Pod from './Pod';
+import { getIndexOfPodAtPitch } from './Pod.static';
 
 export default class PodList extends Model {
 
@@ -151,6 +152,17 @@ export default class PodList extends Model {
 
     getPreview() {
         return this.getIntervalListString();
+    }
+
+    tryGetNoteAtPitch(noteIndex: number): Note {
+        const notePods = this.getNoteListPods();
+        const index = getIndexOfPodAtPitch(notePods, noteIndex, false);
+
+        if (index == null) return;
+
+        const notes = this.getNoteListClasses();
+
+        return notes[index];
     }
 
     static reducePods = (A: IPod[]): IPod[] => {
