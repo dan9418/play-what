@@ -1,15 +1,18 @@
-import IntervalSpan from '@pw-core/models/Interval';
+import IntervalSpan from './Interval';
 import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
-import { getIndexOfPodAtPitch } from './Pod.static';
+import { arePodListsEqual, getIndexOfPodAtPitch } from './Pod.static';
 
 export default class PodList extends Model {
 
     id: ChordId | ScaleId;
-    intervals: IntervalSpan[];
     root: Note;
+    podList: IPod[];
+    intervals: IntervalSpan[];
+    notePods?: IPod[];
+    notes?: Note;
 
     constructor(presetMap, presetId: ChordId | ScaleId, options) {
         super();
@@ -21,6 +24,7 @@ export default class PodList extends Model {
         this.id = preset.id;
         this.name = preset.name;
         this.tags = preset.tags;
+        this.podList = preset.value;
         this.intervals = preset.value.map(pod => IntervalSpan.fromValue(pod));
 
         if (options && options.root) {
@@ -28,57 +32,40 @@ export default class PodList extends Model {
         }
     }
 
-    /*static fromRootedIntervals = (root: Note, intervals: IntervalSpan[]) => {
-        return intervals.map(ivl => Note.fromRootedInterval(root, ivl));
-    }*/
+    equals(B: PodList) {
+        return arePodListsEqual(this.podList, B.podList);
+    }
 
     getName = () => {
         return `${this.root ? `${this.root.getName()} ` : ''}${this.name}`;
     }
 
     applyRoot(noteId: NoteId) {
-        let note;
+        let root;
+        let notes;
+        let notePods;
         try {
-            note = new Note(noteId);
+            root = new Note(noteId);
+            notes = this.intervals.map(ivl => Note.fromRootedInterval(root, ivl));
+            notePods = notes.map(n => n.pod);
         }
         catch (e) {
             console.error(e);
             throw new Error('Unable to apply root');
         }
-        this.root = note;
+        this.root = root;
+        this.notes = notes;
+        this.notePods = notePods;
         return this;
     }
 
-    getIntervalListClasses(): IntervalSpan {
-        return this.intervals;
-    }
-
-    getIntervalListPods(): IPod[] {
-        return this.getIntervalListClasses().map(ivl => ivl.pod);
-    }
-
     getIntervalListString(): string {
-        const nameArr = this.getIntervalListClasses().map(ivl => ivl.getName());
+        const nameArr = this.intervals.map(ivl => ivl.getName());
         return nameArr.join(', ');
     }
-
-    getNoteListClasses() {
-        if (!this.root) return;
-
-        return this.intervals.map(ivl => Note.fromRootedInterval(this.root, ivl));
-    }
-
-    getNoteListPods(): IPod[] {
-        return this.getNoteListClasses().map(ivl => ivl.pod);
-    }
-
-    /*getNoteListString(): string {
-        const nameArr = this.getNoteListClasses().map(note => note.name);
-        return nameArr.join(', ');
-    }*/
 
     getSubsets() {
-        const result = [
+        const result: any[] = [
             {
                 modelName: 'Intervals',
                 values: this.intervals
@@ -88,11 +75,11 @@ export default class PodList extends Model {
         if (this.root) {
             result.push({
                 modelName: 'Notes',
-                values: this.getNoteListClasses()
+                values: this.notes
             });
         }
 
-        const intervalPods = this.getIntervalListPods();
+        const intervalPods = this.podList;
 
         const chords = CHORD_PRESETS.filter(preset =>
             intervalPods.length !== preset.value.length &&
@@ -124,7 +111,7 @@ export default class PodList extends Model {
     getSupersets() {
         const result = [];
 
-        const intervalPods = this.getIntervalListPods();
+        const intervalPods = this.podList;
 
         const chords = CHORD_PRESETS.filter(preset =>
             intervalPods.length !== preset.value.length &&
@@ -158,13 +145,10 @@ export default class PodList extends Model {
     }
 
     tryGetNoteAtPitch(noteIndex: number): Note {
-        const notePods = this.getNoteListPods();
-        const index = getIndexOfPodAtPitch(notePods, noteIndex, false);
+        const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
         if (index == null) return;
 
-        const notes = this.getNoteListClasses();
-
-        return notes[index];
+        return this.notes[index];
     }
 }

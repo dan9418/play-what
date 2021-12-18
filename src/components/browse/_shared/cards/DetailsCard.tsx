@@ -38,8 +38,8 @@ const StyledDetailsCard = styled.div`
 `;
 
 const DetailsCard: React.FC<any> = ({ model }) => {
-    const intervals = model.getIntervalListClasses && model.getIntervalListClasses();
-    const notes = model.getNoteListClasses && model.getNoteListClasses();
+    const intervals = model.intervals;
+    const notes = model.notes;
 
     if (!intervals && !notes) return null;
 
