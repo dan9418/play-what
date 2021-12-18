@@ -1,7 +1,7 @@
 import IntervalSpan from '../../core/models/Interval';
 import Note from '../../core/models/Note';
 import PodList from '../../core/models/PodList';
-import { FRETBOARD_TUNING_MAP, ITuning, TuningId } from './Fretboard.tuning';
+import { TUNING_PRESET_MAP, ITuning, TuningId } from './Fretboard.tuning';
 import { IVoicing } from './Fretboard.voicing';
 
 export interface IFretLabelProps {
@@ -29,7 +29,7 @@ export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
 export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
 	fretRange: [0, 12],
-	tuning: FRETBOARD_TUNING_MAP.get(TuningId.Standard).value,
+	tuning: TUNING_PRESET_MAP.get(TuningId.Standard).value,
 	showFretDots: true,
 	showFretNumbers: true
 };
@@ -95,7 +95,7 @@ export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: I
 
 	return {
 		...DEFAULT_FRETBOARD_PROPS,
-		tuning: tuning.value,
+		tuning: tuning ? tuning.value : DEFAULT_FRETBOARD_PROPS.tuning,
 		getFretLabelProps
 	}
 }

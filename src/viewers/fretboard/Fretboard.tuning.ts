@@ -18,7 +18,7 @@ const formatPreset = (id: TuningId, name: string, value: number[]): ITuning => (
     value
 });
 
-export const FRETBOARD_TUNING_MAP = new Map<TuningId, ITuning>([
+export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     [TuningId.Standard, formatPreset(
         TuningId.Standard,
         'Standard',
@@ -36,4 +36,4 @@ export const FRETBOARD_TUNING_MAP = new Map<TuningId, ITuning>([
     )]
 ]);
 
-export const FRETBOARD_TUNING_VALUES = ArrayUtils.mapToArray(FRETBOARD_TUNING_MAP);
+export const FRETBOARD_TUNING_VALUES = ArrayUtils.mapToArray(TUNING_PRESET_MAP);
