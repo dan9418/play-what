@@ -7,6 +7,7 @@ import { usePageProps } from "../../../../contexts/PagePropsContext";
 import { useRootParam } from "../../../../state/state";
 import NumericInput from "../../../_shared/inputs/NumericInput";
 import Card from "../../../_shared/ui/Card";
+import InputRow from "../../../_shared/ui/InputRow";
 
 const StyledRoot = styled.div`
     h3 {
@@ -120,10 +121,12 @@ const RootCard: React.FC<any> = () => {
                 </ul>
                 {rootParam &&
                     <div className="oct-acc">
-                        <div className="row">
-                            <h3>Octave</h3>
+                        <InputRow label="Octave">
                             <NumericInput value={4} setValue={null} />
-                        </div>
+                        </InputRow>
+                        <InputRow label="Octave">
+                            <NumericInput value={4} setValue={null} />
+                        </InputRow>
                         <div className="row">
                             <h3>Accidental</h3>
                             <div>
