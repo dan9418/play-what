@@ -4,7 +4,7 @@ import Model from "./Model";
 import { IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
 import { CHORD_PRESETS, CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP, SCALE_PRESETS } from './Model.presets';
 import Pod from "./Pod";
-import { arePodsEqual, reducePod } from "./Pod.static";
+import { arePodsEqual, listContainsSubset, reducePod } from "./Pod.static";
 
 export default class IntervalSpan extends Pod {
 
@@ -86,14 +86,16 @@ export default class IntervalSpan extends Pod {
         return `1:${ratio.toFixed(2)}`;
     }
 
+    isInSuperset(superset: IPod[]) {
+        if (superset.length <= 1) return false;
+        return listContainsSubset(superset, [this.pod]);
+    }
+
     getSupersets() {
         const result = [];
 
-        const intervalPods = [this.pod];
-
         const chords = CHORD_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(preset.value, intervalPods)
+            this.isInSuperset(preset.value)
         );
 
         if (chords.length) {
@@ -104,8 +106,7 @@ export default class IntervalSpan extends Pod {
         }
 
         const scales = SCALE_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(preset.value, intervalPods)
+            this.isInSuperset(preset.value)
         );
 
         if (scales.length) {
@@ -117,6 +118,5 @@ export default class IntervalSpan extends Pod {
 
         return result;
     }
-
 
 }

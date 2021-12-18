@@ -1,4 +1,4 @@
-import { IPod, ModelId, PresetId, Tag } from './Model.constants';
+import { ModelId, PresetId, Tag } from './Model.constants';
 
 export default class Model {
     modelId: ModelId;
@@ -18,12 +18,4 @@ export default class Model {
         }
         return new subclass(preset.id);
     }
-
-    static containsSubset = (podList: IPod[], subset: IPod[]): boolean => {
-        for (let i = 0; i < subset.length; i++) {
-            if (!podList.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
-                return false;
-        }
-        return true;
-    };
 }

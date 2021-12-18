@@ -3,7 +3,7 @@ import Model from './Model';
 import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
-import { addPods, arePodListsEqual, getIndexOfPodAtPitch } from './Pod.static';
+import { addPods, arePodListsEqual, getIndexOfPodAtPitch, listContainsSubset } from './Pod.static';
 
 export default class PodList extends Model {
 
@@ -64,6 +64,16 @@ export default class PodList extends Model {
         return nameArr.join(', ');
     }
 
+    isInSuperset(superset: IPod[]) {
+        if (superset.length <= this.podList.length) return false;
+        return listContainsSubset(superset, this.podList);
+    }
+
+    containsSubset(subset: IPod[]) {
+        if (subset.length >= this.podList.length) return false;
+        return listContainsSubset(this.podList, subset);
+    }
+
     getSubsets() {
         const result: any[] = [
             {
@@ -79,11 +89,8 @@ export default class PodList extends Model {
             });
         }
 
-        const intervalPods = this.podList;
-
         const chords = CHORD_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(intervalPods, preset.value)
+            this.containsSubset(preset.value)
         );
 
         if (chords.length) {
@@ -94,8 +101,7 @@ export default class PodList extends Model {
         }
 
         const scales = SCALE_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(intervalPods, preset.value)
+            this.containsSubset(preset.value)
         );
 
         if (scales.length) {
@@ -111,11 +117,8 @@ export default class PodList extends Model {
     getSupersets() {
         const result = [];
 
-        const intervalPods = this.podList;
-
         const chords = CHORD_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(preset.value, intervalPods)
+            this.isInSuperset(preset.value)
         );
 
         if (chords.length) {
@@ -126,8 +129,7 @@ export default class PodList extends Model {
         }
 
         const scales = SCALE_PRESETS.filter(preset =>
-            intervalPods.length !== preset.value.length &&
-            Model.containsSubset(preset.value, intervalPods)
+            this.isInSuperset(preset.value)
         );
 
         if (scales.length) {

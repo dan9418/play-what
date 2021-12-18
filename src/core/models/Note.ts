@@ -69,15 +69,9 @@ export default class Note extends Pod {
         return '';
     };
 
-    /*static createPod = (degree: number, accidental: number, octave: number): IPod => {
-        const pitchClass = NumberUtils.modulo(ROOT_SCALE[degree][0] + accidental, 12);
-        const pitch = (octave * 12) + pitchClass;
-        return [pitch, degree];
-    }*/
-
-    /*static getPitchClass = (pod: IPod): number => {
-        return NumberUtils.modulo(pod[0], MAX_POD[0]);
-    }*/
+    getPitchClass(): number {
+        return NumberUtils.modulo(this.pod[0], MAX_POD[0]);
+    }
 
     getOctave(): number {
         const midi = false;

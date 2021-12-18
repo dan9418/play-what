@@ -96,3 +96,11 @@ export const arePodListsEqual = (A: IPod[], B: IPod[]): boolean => {
     }
     return true;
 }
+
+export const listContainsSubset = (podList: IPod[], subset: IPod[]): boolean => {
+    for (let i = 0; i < subset.length; i++) {
+        if (!podList.find(x => x[0] === subset[i][0] && x[1] === subset[i][1]))
+            return false;
+    }
+    return true;
+};
