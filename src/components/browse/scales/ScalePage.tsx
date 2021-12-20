@@ -19,9 +19,9 @@ const StyledScalePage = styled(StyledPageBody)`
 
 const ScalePage: React.FC<any> = props => {
 
-    const [rootParam, setRootParam] = useRootParam();
+    const [rootParam, setRootParam, root] = useRootParam();
 
-    const scale = new Scale(props.params.id, { root: rootParam });
+    const scale = new Scale(props.params.id, { root });
 
     return (
         <StyledScalePage>

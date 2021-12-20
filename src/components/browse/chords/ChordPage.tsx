@@ -17,9 +17,9 @@ const StyledChordPage = styled(StyledPageBody)`
 `;
 
 const ChordPage: React.FC<any> = props => {
-    const [rootParam, setRootParam] = useRootParam();
+    const [rootParam, setRootParam, root] = useRootParam();
 
-    const chord = new Chord(props.params.id, { root: rootParam });
+    const chord = new Chord(props.params.id, { root });
 
     return (
         <StyledChordPage>

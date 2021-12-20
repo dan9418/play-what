@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState } from 'recoil';
 import { StringParam, useQueryParam } from "use-query-params";
-import { NoteId } from '../core/models/Model.constants';
 import Note from '../core/models/Note';
 import THEME from '../styles/theme';
 
@@ -47,7 +46,7 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
 export const useRootParam = (getPreset = false) => {
 
     const [rootParam, setRootParam] = useQueryParam("root", StringParam);
-    const preset = rootParam ? new Note(rootParam as NoteId) : undefined;
+    const note = rootParam ? Note.fromId(rootParam) : undefined;
 
-    return [rootParam, setRootParam, preset]
+    return [rootParam, setRootParam, note]
 }

@@ -1,6 +1,6 @@
 import IntervalSpan from './Interval';
 import Model from './Model';
-import { ChordId, IPod, NoteId, ScaleId } from './Model.constants';
+import { ChordId, IPod, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import { addPods, arePodListsEqual, getIndexOfPodAtPitch, listContainsSubset } from './Pod.static';
@@ -40,13 +40,11 @@ export default class PodList extends Model {
         return `${this.root ? `${this.root.getName()} ` : ''}${this.name}`;
     }
 
-    applyRoot(noteId: NoteId) {
-        let root;
+    applyRoot(root: Note) {
         let notes;
         let notePods;
         try {
-            root = new Note(noteId);
-            notes = this.intervals.map(ivl => Note.fromValue(addPods(ivl.pod, root.pod)));
+            notes = this.intervals.map(ivl => new Note(addPods(ivl.pod, root.pod)));
             notePods = notes.map(n => n.pod);
         }
         catch (e) {

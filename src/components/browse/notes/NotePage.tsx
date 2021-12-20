@@ -1,6 +1,7 @@
 import Note from "@pw-core/models/Note";
 import React from "react";
 import styled from 'styled-components';
+import { NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -16,7 +17,8 @@ const StyledNotePage = styled(StyledPageBody)`
 
 
 const NotePage: React.FC<any> = props => {
-    const note = new Note(props.params.id);
+    const notePreset = NOTE_PRESET_MAP.get(props.params.id);
+    const note = new Note(notePreset.value);
 
     return (
         <StyledNotePage>

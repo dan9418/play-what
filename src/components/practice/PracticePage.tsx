@@ -26,8 +26,10 @@ const StyledPracticePage = styled(StyledPageBody)`
 const PracticePage: React.FC<any> = () => {
     const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.E));
 
-    const root = new Note(rootPreset.id as NoteId);
-    const scale = new Scale(ScaleId.Ionian, { root: root.id });
+    const root = new Note(rootPreset.value);
+    const scale = new Scale(ScaleId.Ionian, { root });
+
+    console.log('dpb', root, scale);
 
     const items = [
         {
@@ -87,7 +89,7 @@ const PracticePage: React.FC<any> = () => {
                         <>
                             <h3>{item.modelId}</h3>
                             <Fretboard {...getFretboardProps(
-                                new model(modelId, { root: rootId }),
+                                new model(modelId, { root: Note.fromId(rootId) }),
                                 VOICING_PRESET_MAP.get(voicingId),
                             )} />
                         </>

@@ -11,7 +11,7 @@ export default class Pod extends Model {
         super();
 
         if (!preset) {
-            console.warn('Unknown pod preset', preset);
+            //console.warn('Unknown pod preset', preset);
         }
         else {
             this.modelId = preset.modelId;

@@ -68,10 +68,11 @@ const StyledRoot = styled.div`
 
 const NoteLink: React.FC<any> = ({ noteId }) => {
     const pageProps = usePageProps();
-    const [rootParam] = useRootParam() as Note;
+    const [rootParam, setRootParam, root] = useRootParam() as Note;
     let base = rootParam && rootParam.replace('-flat', '').replace('-sharp', '');
 
-    const note = new Note(noteId);
+    const note = Note.fromId(noteId);
+
     return (
         <Link to={`${pageProps && pageProps.path}?root=${note.id}`} className={note.id === base ? 'active' : ''}>
             {note.name}

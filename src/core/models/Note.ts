@@ -23,25 +23,19 @@ export default class Note extends Pod {
 
     id: NoteId;
 
-    constructor(id: NoteId) {
-        super(NOTE_PRESET_MAP.get(id) || Note.fromId(id));
-    }
-
-    static fromValue = (value: IPod) => {
-        //Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod);
-        const temp = new Note(NoteId.C);
-        temp.pod = value;
-        temp.tags = []; // TODO
-        temp.name = temp.getName();
-        temp.id = toDashedCase(temp.name) as any;
-        return temp;
+    constructor(pod: IPod) {
+        super(undefined);
+        this.pod = pod;
+        this.tags = []; // TODO
+        this.name = this.getName();
+        this.id = toDashedCase(this.name) as any;
     }
 
     static fromId = (id: string) => {
         let sharps = (id.match(/-sharp/g) || []).length;
         let flats = (id.match(/-flat/g) || []).length;
         const nativeNoteId = id[0] as NoteId;
-        const note = new Note(nativeNoteId);
+        const note = new Note(NOTE_PRESET_MAP.get(nativeNoteId).value);
         note.pod[0] = NumberUtils.modulo(note.pod[0] + sharps - flats, 12);
         // @ts-ignore TODO
         note.value = note.pod;
