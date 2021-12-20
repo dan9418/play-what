@@ -121,37 +121,37 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     [VoicingId.Scale_DoubleOctave_EShape_1, formatPreset(
         VoicingId.Scale_DoubleOctave_EShape_1,
         'E Shape Scale (Locrian)',
-        [[1], [6, 7], [3, 4, 5], [7, 1, 2], [4, 5, 6], [1, 2, 3]]
+        [[1, 2, 3], [6, 7], [3, 4, 5], [7, 1, 2], [4, 5, 6], [1, 2, 3]]
     )],
     [VoicingId.Scale_DoubleOctave_EShape_2, formatPreset(
         VoicingId.Scale_DoubleOctave_EShape_2,
         'E Shape Scale (Ionian)',
-        [[7, 1], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]
+        [[7, 1, 2], [5, 6], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]
     )],
     [VoicingId.Scale_DoubleOctave_DShape_1, formatPreset(
         VoicingId.Scale_DoubleOctave_DShape_1,
         'D Shape Scale (Dorian)',
-        [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]]
+        [[1, 2, 3], [5, 6, 7], [2, 3, 4], [6, 7, 1], [4, 5], [1, 2, 3]]
     )],
     [VoicingId.Scale_DoubleOctave_CShape_1, formatPreset(
         VoicingId.Scale_DoubleOctave_CShape_1,
         'C Shape Scale (Phrygian)',
-        [[1], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]]
+        [[1, 2, 3], [5, 6, 7], [3, 4], [7, 1, 2], [4, 5, 6], [1, 2, 3]]
     )],
     [VoicingId.Scale_DoubleOctave_CShape_2, formatPreset(
         VoicingId.Scale_DoubleOctave_CShape_2,
         'C Shape Scale (Lydian)',
-        [[7, 1], [4, 5, 6], [2, 3], [6, 7, 1], [3, 4, 5], [1, 2]]
+        [[7, 1, 2], [4, 5, 6], [2, 3], [6, 7, 1], [3, 4, 5], [1, 2]]
     )],
     [VoicingId.Scale_DoubleOctave_AShape_1, formatPreset(
         VoicingId.Scale_DoubleOctave_AShape_1,
         'A Shape Scale (Mixolydian)',
-        [[1], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]
+        [[1, 2], [5, 6, 7], [2, 3, 4], [6, 7, 1], [3, 4, 5], [1, 2]]
     )],
     [VoicingId.Scale_DoubleOctave_GShape_1, formatPreset(
         VoicingId.Scale_DoubleOctave_GShape_1,
         'G Shape Scale (Aeolian)',
-        [[1], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]]
+        [[1, 2, 3], [5, 6, 7], [2, 3, 4], [7, 1], [4, 5, 6], [1, 2, 3]]
     )]
 ])
 

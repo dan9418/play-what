@@ -19,8 +19,6 @@ export const useSetTheme = () => {
             }
         }
 
-        console.log('dpb', newValue);
-
         setTheme({
             ...theme,
             ...newValue
@@ -30,8 +28,6 @@ export const useSetTheme = () => {
 
 export const ThemeManager: React.FC = ({ children }) => {
     const theme = useRecoilValue(themeState);
-
-    console.log('dpb', theme);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--bg', theme.surface.bg);

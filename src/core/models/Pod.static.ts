@@ -99,3 +99,7 @@ export const listContainsSubset = (podList: IPod[], subset: IPod[]): boolean => 
     }
     return true;
 };
+
+export const getDegree = (pod: IPod) => {
+    return NumberUtils.modulo(pod[1], MAX_POD[1]);
+}

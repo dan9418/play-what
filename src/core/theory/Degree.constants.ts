@@ -1,4 +1,3 @@
-import { IModelConfig } from "../models.constants";
 
 export const MAX_DEGREE = 7
 
@@ -12,7 +11,7 @@ export enum DegreeId {
 	B = 'B',
 }
 
-export const DEGREE_PRESET_MAP = new Map<DegreeId, IModelConfig<number>>([
+export const DEGREE_PRESET_MAP = new Map<DegreeId, any>([
 	[DegreeId.C, {
 		id: DegreeId.C,
 		name: 'C',

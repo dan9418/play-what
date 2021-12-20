@@ -11,7 +11,7 @@ export default class IntervalSpan extends Pod {
     id: IntervalId;
 
     constructor(id: IntervalId) {
-        super(INTERVAL_PRESET_MAP, id);
+        super(INTERVAL_PRESET_MAP.get(id));
     }
 
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value, arePodsEqual, reducePod);
