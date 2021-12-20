@@ -34,9 +34,11 @@ export default class Note extends Pod {
     static fromId = (id: string) => {
         let sharps = (id.match(/-sharp/g) || []).length;
         let flats = (id.match(/-flat/g) || []).length;
-        const nativeNoteId = id[0] as NoteId;
-        const note = new Note(NOTE_PRESET_MAP.get(nativeNoteId).value);
-        note.pod[0] = NumberUtils.modulo(note.pod[0] + sharps - flats, 12);
+        const nativeNoteId = id.slice(0, 1) as NoteId;
+        const notePreset = NOTE_PRESET_MAP.get(nativeNoteId).value;
+        const note = new Note(notePreset);
+        const pod = [NumberUtils.modulo(note.pod[0] + sharps - flats, 12), note.pod[1]]
+        note.pod = pod as IPod;
         // @ts-ignore TODO
         note.value = note.pod;
         note.id = id as any;

@@ -8,7 +8,7 @@ const formatPreset = (modelId: ModelId, id: PresetId, name: string, value: any, 
         modelId,
         id,
         name,
-        value: isList ? value.map(id => INTERVAL_PRESET_MAP.get(id).value) as any : value,
+        value: Object.freeze(isList ? value.map(id => INTERVAL_PRESET_MAP.get(id).value) as any : value),
         tags
     }
 };

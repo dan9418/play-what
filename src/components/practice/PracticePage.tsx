@@ -29,7 +29,7 @@ const PracticePage: React.FC<any> = () => {
     const root = new Note(rootPreset.value);
     const scale = new Scale(ScaleId.Ionian, { root });
 
-    console.log('dpb', root, scale);
+    console.log('dpb rootPreset', rootPreset);
 
     const items = [
         {
@@ -80,16 +80,20 @@ const PracticePage: React.FC<any> = () => {
         <StyledPracticePage>
             <PageTitle title="Practice" />
             <InputRow label="Root">
-                <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={setRootPreset} />
+                <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
+                    setRootPreset(p);
+                }} />
             </InputRow>
             <Card title="CAGED" >
                 {items.map(item => {
                     const { model, modelId, rootId, voicingId } = item;
+                    const instance = new model(modelId, { root: Note.fromId(rootId) });
+                    console.log('dpb scale', rootId, instance);
                     return (
                         <>
                             <h3>{item.modelId}</h3>
                             <Fretboard {...getFretboardProps(
-                                new model(modelId, { root: Note.fromId(rootId) }),
+                                instance,
                                 VOICING_PRESET_MAP.get(voicingId),
                             )} />
                         </>

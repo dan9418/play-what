@@ -44,8 +44,9 @@ export default class PodList extends Model {
         let notes;
         let notePods;
         try {
-            notes = this.intervals.map(ivl => new Note(addPods(ivl.pod, root.pod)));
-            notePods = notes.map(n => n.pod);
+            notePods = this.intervals.map(ivl => addPods(ivl.pod, root.pod));
+            console.log('dpb math', root, this.intervals, notePods);
+            notes = notePods.map(pod => new Note(pod));
         }
         catch (e) {
             console.error(e);
