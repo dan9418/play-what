@@ -54,7 +54,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                                 {notes.map((note, i) => {
                                     return (
                                         <td key={note.id} className={`note featured`}>
-                                            {note.getName()}
+                                            {note.name}
                                             <sub>{note.getOctave()}</sub>
                                         </td>
                                     );

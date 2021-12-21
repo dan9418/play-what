@@ -22,7 +22,7 @@ const NotePage: React.FC<any> = props => {
 
     return (
         <StyledNotePage>
-            <BreadcrumbList id={note.id} name={note.getName()} path={props.path} />
+            <BreadcrumbList id={note.id} name={note.name} path={props.path} />
             <PageTitle title={note.name} subtitle="Note" />
             <StyledDoublePane>
                 <StyledPane>

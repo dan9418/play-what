@@ -41,10 +41,11 @@ export default class Note extends Pod {
         const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
         const note = new Note(pod);
         note.modelId = ModelId.Note;
+        note.id = id as any;
+        note.name = note.getName();
         note.pod = pod as IPod;
         // @ts-ignore TODO
         note.value = note.pod;
-        note.id = id as any;
         return note;
     }
 
