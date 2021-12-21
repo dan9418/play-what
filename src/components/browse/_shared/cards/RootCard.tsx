@@ -4,8 +4,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { useRootParam } from "../../../../state/state";
-import NumericInput from "../../../_shared/inputs/NumericInput";
+import { useOctaveParam, useRootParam } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
 import InputRow from "../../../_shared/ui/InputRow";
 
@@ -100,10 +99,26 @@ const AccidentalLink: React.FC<any> = ({ offset }) => {
     );
 };
 
+const OctaveLink: React.FC<any> = ({ offset }) => {
+    const pageProps = usePageProps();
+    const [octaveParam, setOctaveParam] = useOctaveParam();
+
+    const targetOctave = (octaveParam || 4) + offset;
+
+    const to = pageProps.location.href.includes('octave=') ?
+        pageProps.location.href.replace(`octave=${octaveParam}`, `octave=${targetOctave}`) :
+        `${pageProps && pageProps.location.href}&octave=${targetOctave}`;
+
+    return (
+        <Link to={to} className={offset === 0 ? 'active' : ''}>
+            {targetOctave}
+        </Link >
+    );
+};
+
 const RootCard: React.FC<any> = () => {
     const pageProps = usePageProps();
     const [rootParam, b, root] = useRootParam();
-
 
     return (
         <Card
@@ -122,14 +137,18 @@ const RootCard: React.FC<any> = () => {
                 </ul>
                 {rootParam &&
                     <div className="oct-acc">
-                        <InputRow label="Octave">
-                            <NumericInput value={4} setValue={null} />
-                        </InputRow>
                         <InputRow label="Accidental">
                             <ul>
                                 <li><AccidentalLink offset={-1} /></li>
                                 <li><AccidentalLink offset={0} /></li>
                                 <li><AccidentalLink offset={1} /></li>
+                            </ul>
+                        </InputRow>
+                        <InputRow label="Octave">
+                            <ul>
+                                <li><OctaveLink offset={-1} /></li>
+                                <li><OctaveLink offset={0} /></li>
+                                <li><OctaveLink offset={1} /></li>
                             </ul>
                         </InputRow>
                     </div>

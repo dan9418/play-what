@@ -51,3 +51,5 @@ export const useRootParam = () => {
 
     return [rootParam, setRootParam, note]
 }
+
+export const useOctaveParam = () => useQueryParam("octave", NumberParam);
