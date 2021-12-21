@@ -4,7 +4,7 @@ import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
 import { toDashedCase } from './../general/String.utils';
-import { ACCIDENTAL, IPod, MAX_POD, NoteId } from './Model.constants';
+import { ACCIDENTAL, IPod, MAX_POD, ModelId, NoteId } from './Model.constants';
 import { NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
 import { reducePod } from './Pod.static';
@@ -25,19 +25,22 @@ export default class Note extends Pod {
 
     constructor(pod: IPod) {
         super(undefined);
+        this.modelId = ModelId.Note;
         this.pod = pod;
         this.tags = []; // TODO
         this.name = this.getName();
         this.id = toDashedCase(this.name) as any;
     }
 
-    static fromId = (id: string) => {
+    static fromId = (id: string, octave = 4) => {
         let sharps = (id.match(/-sharp/g) || []).length;
         let flats = (id.match(/-flat/g) || []).length;
         const nativeNoteId = id.slice(0, 1) as NoteId;
-        const notePreset = NOTE_PRESET_MAP.get(nativeNoteId).value;
-        const note = new Note(notePreset);
-        const pod = [NumberUtils.modulo(note.pod[0] + sharps - flats, 12), note.pod[1]]
+        const nativePod = NOTE_PRESET_MAP.get(nativeNoteId).value;
+        //const pod = [note.pod[0] + sharps - flats, 12, note.pod[1]];
+        const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
+        const note = new Note(pod);
+        note.modelId = ModelId.Note;
         note.pod = pod as IPod;
         // @ts-ignore TODO
         note.value = note.pod;
@@ -51,6 +54,7 @@ export default class Note extends Pod {
 
     getAccidentalOffset(): number {
         const [p, d] = reducePod(this.pod);
+        console.log('dpb', this.pod, [p, d]);
 
         let offset = p - ROOT_SCALE[d][0];
 
@@ -94,13 +98,14 @@ export default class Note extends Pod {
     }
 
     getOctave(): number {
-        const midi = false;
+        const midi = true;
         const raw = Math.floor(this.getPitch() / 12);
         return midi ? raw + 4 : raw;
     }
 
     getDegreeId(): DegreeId {
         const degree = this.getDegree();
+        console.log('dpb', DEGREE_PRESETS[degree].id);
         return DEGREE_PRESETS[degree].id;
     }
 
@@ -109,8 +114,8 @@ export default class Note extends Pod {
     }
 
     getNameParts(): INoteNameParts {
-        const accidental = this.getAccidentalString();
         const spelling = this.getSpelling();
+        const accidental = this.getAccidentalString();
         const octave = this.getOctave();
         return { spelling, accidental, octave };
     }
