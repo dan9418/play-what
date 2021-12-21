@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { atom, useRecoilState } from 'recoil';
-import { StringParam, useQueryParam } from "use-query-params";
+import { NumberParam, StringParam, useQueryParam } from "use-query-params";
 import Note from '../core/models/Note';
 import THEME from '../styles/theme';
 
@@ -43,10 +43,11 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
     return [history, popAt];
 }
 
-export const useRootParam = (getPreset = false) => {
+export const useRootParam = () => {
 
     const [rootParam, setRootParam] = useQueryParam("root", StringParam);
-    const note = rootParam ? Note.fromId(rootParam) : undefined;
+    const [octaveParam, setOctaveParam] = useQueryParam("octave", NumberParam);
+    const note = rootParam ? Note.fromId(rootParam, octaveParam) : undefined;
 
     return [rootParam, setRootParam, note]
 }
