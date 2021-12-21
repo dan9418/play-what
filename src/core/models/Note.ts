@@ -37,8 +37,10 @@ export default class Note extends Pod {
         let flats = (id.match(/-flat/g) || []).length;
         const nativeNoteId = id.slice(0, 1) as NoteId;
         const nativePod = NOTE_PRESET_MAP.get(nativeNoteId).value;
-        //const pod = [note.pod[0] + sharps - flats, 12, note.pod[1]];
-        const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
+        const octaveBasePitch = typeof octave === 'undefined' ? 0 : ((octave - 4) * 12);
+        const pitch = octaveBasePitch + nativePod[0] + sharps - flats;
+        const pod = [pitch, nativePod[1]] as IPod;
+        //const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
         const note = new Note(pod);
         note.modelId = ModelId.Note;
         note.id = id as any;
