@@ -5,6 +5,10 @@ import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import { addPods, arePodListsEqual, getIndexOfPodAtPitch, listContainsSubset } from './Pod.static';
 
+export interface IPodListOptions {
+    root?: Note;
+}
+
 export default class PodList extends Model {
 
     id: ChordId | ScaleId;
@@ -14,7 +18,7 @@ export default class PodList extends Model {
     notePods?: IPod[];
     notes?: Note;
 
-    constructor(presetMap, presetId: ChordId | ScaleId, options) {
+    constructor(presetMap, presetId: ChordId | ScaleId, options?: IPodListOptions) {
         super();
 
         const preset = presetMap.get(presetId);
@@ -45,7 +49,6 @@ export default class PodList extends Model {
         let notePods;
         try {
             notePods = this.intervals.map(ivl => addPods(ivl.pod, root.pod));
-            console.log('dpb math', root, this.intervals, notePods);
             notes = notePods.map(pod => new Note(pod));
         }
         catch (e) {

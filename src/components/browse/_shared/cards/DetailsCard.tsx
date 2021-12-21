@@ -53,9 +53,22 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                                 <th>Notes</th>
                                 {notes.map((note, i) => {
                                     return (
-
-                                        <td key={note.id} className={`note featured`}>{note.getName()}</td>
-
+                                        <td key={note.id} className={`note featured`}>
+                                            {note.getName()}
+                                            <sub>{note.getOctave()}</sub>
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        }
+                        {notes &&
+                            <tr>
+                                <th>Pods</th>
+                                {notes.map((note, i) => {
+                                    return (
+                                        <td key={note.id} className={`ratio`}>
+                                            {JSON.stringify(note.pod)}
+                                        </td>
                                     );
                                 })}
                             </tr>
@@ -64,9 +77,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                             <th>Intervals</th>
                             {intervals.map((ivl, i) => {
                                 return (
-
                                     <td key={ivl.id} className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</td>
-
                                 );
                             })}
                         </tr>

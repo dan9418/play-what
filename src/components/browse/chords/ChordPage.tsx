@@ -32,8 +32,8 @@ const ChordPage: React.FC<any> = props => {
                     <SoundCard model={chord} />
                 </StyledPane>
                 <StyledPane>
-                    <GuitarCard model={chord} />
                     <DetailsCard model={chord} />
+                    <GuitarCard model={chord} />
                 </StyledPane>
             </StyledDoublePane>
         </StyledChordPage >
