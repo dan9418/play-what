@@ -1,7 +1,8 @@
 import Chord from "@pw-core/models/Chord";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { useRootParam } from "../../../state/state";
+import { rootState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -17,7 +18,7 @@ const StyledChordPage = styled(StyledPageBody)`
 `;
 
 const ChordPage: React.FC<any> = props => {
-    const [rootParam, setRootParam, root] = useRootParam();
+    const root = useRecoilValue(rootState)
 
     const chord = new Chord(props.params.id, { root });
 

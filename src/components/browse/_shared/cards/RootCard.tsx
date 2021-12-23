@@ -2,9 +2,12 @@ import { NoteId } from "@pw-core/models/Model.constants";
 import Note from "@pw-core/models/Note";
 import { Link } from "gatsby";
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { useOctaveParam, useRootParam } from "../../../../state/state";
+import NumberUtils from "../../../../core/general/Number.utils";
+import { rootState } from "../../../../state/state";
+import NumericInput from "../../../_shared/inputs/NumericInput";
 import Card from "../../../_shared/ui/Card";
 import InputRow from "../../../_shared/ui/InputRow";
 
@@ -40,7 +43,10 @@ const StyledRoot = styled.div`
         }
     }
 
-    a {
+    button {
+        appearance: none;
+        background-color: transparent;
+        border: none;
         width: 100%;
         text-decoration: none;
         font-size: 140%;
@@ -50,6 +56,7 @@ const StyledRoot = styled.div`
         align-items: center;
         justify-content: center;
         aspect-ratio: 1;
+        color: ${({ theme }) => theme.action.interactive};
 
         &.active {
             background-color: ${props => props.theme.action.active};
@@ -66,64 +73,59 @@ const StyledRoot = styled.div`
 
 
 const NoteLink: React.FC<any> = ({ noteId }) => {
-    const pageProps = usePageProps();
-    const [rootParam, setRootParam, root] = useRootParam() as Note;
-    let base = rootParam && rootParam.replace('-flat', '').replace('-sharp', '');
+    const [root, setRoot] = useRecoilState(rootState);
 
+    const base = root && root.id.replace('-flat', '').replace('-sharp', '');
     const note = Note.fromId(noteId);
 
     return (
-        <Link to={`${pageProps && pageProps.path}?root=${note.id}`} className={note.id === base ? 'active' : ''}>
+        <button type="button" onClick={() => setRoot(note)} className={note.id === base ? 'active' : ''}>
             {note.name}
-        </Link >
+        </button >
     );
 };
 
 const AccidentalLink: React.FC<any> = ({ offset }) => {
-    const pageProps = usePageProps();
-    const [rootParam, b, root] = useRootParam() as Note;
+    const [root, setRoot] = useRecoilState(rootState)
 
     const actualOffset = root.getAccidentalOffset();
 
-    let base = rootParam.replace('-flat', '').replace('-sharp', '');
+    let base = root && root.id.replace('-flat', '').replace('-sharp', '');
     let suffix = '';
     if (offset === -1) suffix = '-flat';
     else if (offset === 1) suffix = '-sharp';
 
+    const noteId = `${base}${suffix}`;
+
+    const note = Note.fromId(noteId);
+
     return (
-        <Link to={`${pageProps && pageProps.path}?root=${base}${suffix}`} className={offset === actualOffset ? 'active' : ''}>
+        <button type="button" onClick={() => setRoot(note)} className={offset === actualOffset ? 'active' : ''}>
             {offset === -1 && '♭'}
             {offset === 0 && '♮'}
             {offset === 1 && '♯'}
-        </Link >
-    );
-};
-
-const OctaveLink: React.FC<any> = ({ offset }) => {
-    const pageProps = usePageProps();
-    const [octaveParam, setOctaveParam] = useOctaveParam();
-
-    const targetOctave = (octaveParam || 4) + offset;
-
-    const to = pageProps.location.href.includes('octave=') ?
-        pageProps.location.href.replace(`octave=${octaveParam}`, `octave=${targetOctave}`) :
-        `${pageProps && pageProps.location.href}&octave=${targetOctave}`;
-
-    return (
-        <Link to={to} className={offset === 0 ? 'active' : ''}>
-            {targetOctave}
-        </Link >
+        </button >
     );
 };
 
 const RootCard: React.FC<any> = () => {
     const pageProps = usePageProps();
-    const [rootParam, b, root] = useRootParam();
+    const [root, setRoot] = useRecoilState(rootState);
+
+    console.log('dpb x', root, root && root.getOctave());
+
+
+    const octave = root && root.getOctave() || 4;
+    const setOctave = v => {
+        const note = new Note([(v - 4) * 12 + NumberUtils.modulo(root.pod[0], 12), root.pod[1]]);
+        console.log('dpb x', v, note, note.getOctave());
+        setRoot(note);
+    };
 
     return (
         <Card
             title={`Root`}
-            action={rootParam ? <Link to={pageProps && pageProps.path}>Clear</Link> : undefined}
+            action={root ? <Link to={pageProps && pageProps.path}>Clear</Link> : undefined}
         >
             <StyledRoot>
                 <ul>
@@ -135,7 +137,7 @@ const RootCard: React.FC<any> = () => {
                     <li><NoteLink noteId={NoteId.A} /></li>
                     <li><NoteLink noteId={NoteId.B} /></li>
                 </ul>
-                {rootParam &&
+                {root &&
                     <div className="oct-acc">
                         <InputRow label="Accidental">
                             <ul>
@@ -145,11 +147,7 @@ const RootCard: React.FC<any> = () => {
                             </ul>
                         </InputRow>
                         <InputRow label="Octave">
-                            <ul>
-                                <li><OctaveLink offset={-1} /></li>
-                                <li><OctaveLink offset={0} /></li>
-                                <li><OctaveLink offset={1} /></li>
-                            </ul>
+                            <NumericInput value={octave} setValue={setOctave} />
                         </InputRow>
                     </div>
                 }

@@ -1,7 +1,8 @@
 import Scale from "@pw-core/models/Scale";
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { useRootParam } from "../../../state/state";
+import { rootState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
@@ -19,7 +20,7 @@ const StyledScalePage = styled(StyledPageBody)`
 
 const ScalePage: React.FC<any> = props => {
 
-    const [rootParam, setRootParam, root] = useRootParam();
+    const root = useRecoilValue(rootState)
 
     const scale = new Scale(props.params.id, { root });
 
