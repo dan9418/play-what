@@ -36,7 +36,7 @@ const StyledRoot = styled.div`
             justify-content: center;
             gap: 8px;
             margin-left: auto;
-            a {
+            button {
                 height: 48px;
                 width: 48px;
             }
