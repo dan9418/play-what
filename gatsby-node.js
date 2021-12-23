@@ -1,12 +1,12 @@
-const NOTE_JSON = require("./static/notes.json")
-const INTERVAL_JSON = require("./static/intervals.json")
+//const NOTE_JSON = require("./static/notes.json")
+//const INTERVAL_JSON = require("./static/intervals.json")
 const CHORD_JSON = require("./static/chords.json")
 const SCALE_JSON = require("./static/scales.json")
 
 module.exports.sourceNodes = ({ actions, createContentDigest }) => {
   const { createNode } = actions
 
-  const notes = NOTE_JSON.map(note => createNode({
+  /*const notes = NOTE_JSON.map(note => createNode({
     ...note,
     internal: {
       type: `Note`,
@@ -20,7 +20,7 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
       type: `Interval`,
       contentDigest: createContentDigest(ivl)
     }
-  }));
+  }));*/
 
   const chords = CHORD_JSON.map(chord => createNode({
     ...chord,
@@ -38,5 +38,5 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
     }
   }));
 
-  return [...notes, ...intervals, ...chords, ...scales];
+  return [/*...notes, ...intervals, */...chords, ...scales];
 }

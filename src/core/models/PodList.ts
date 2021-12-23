@@ -77,19 +77,20 @@ export default class PodList extends Model {
     }
 
     getSubsets() {
-        const result: any[] = [
+        const result: any[] = []
+        /*result.push([
             {
                 modelName: 'Intervals',
                 values: this.intervals
             }
-        ];
+        ]);
 
         if (this.root) {
             result.push({
                 modelName: 'Notes',
                 values: this.notes
             });
-        }
+        }*/
 
         const chords = CHORD_PRESETS.filter(preset =>
             this.containsSubset(preset.value)

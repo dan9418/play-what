@@ -50,8 +50,8 @@ const BrowsePage: React.FC<any> = props => {
             <BreadcrumbList id="browse" name="Browse" path={props.path} />
             <PageTitle title="Browse Ideas" subtitle="Select a category to get started..." />
             <div className="tile-container">
-                <Link to="/browse/notes">Notes</Link>
-                <Link to="/browse/intervals">Intervals</Link>
+                {/*<Link to="/browse/notes">Notes</Link>
+                <Link to="/browse/intervals">Intervals</Link>*/}
                 <Link to="/browse/chords">Chords</Link>
                 <Link to="/browse/scales">Scales</Link>
             </div>
