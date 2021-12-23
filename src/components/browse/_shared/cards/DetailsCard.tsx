@@ -7,7 +7,7 @@ const StyledDetailsCard = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    //justify-content: center;
 
     table {
         border-collapse: collapse;

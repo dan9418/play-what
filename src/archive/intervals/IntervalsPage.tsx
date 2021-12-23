@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { IntervalTag } from "@pw-core/models/Model.constants";
 import { INTERVAL_PRESETS } from "@pw-core/models/Model.presets";
-import SearchPage from "../_shared/SearchPage";
+import SearchPage from "../../components/browse/_shared/SearchPage";
 
 const IntervalsPage: React.FC<any> = props => {
     return (
