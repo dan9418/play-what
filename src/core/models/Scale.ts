@@ -17,40 +17,56 @@ export default class Scale extends PodList {
     static fromValue = (value: IPod[]) => Model.fromValue(SCALE_PRESETS, Scale, value, arePodListsEqual, reducePodList);
 
     getMode(d) {
-        /*let mode = [...A];
-        mode = ArrayUtils.rotate(mode, d);
-        const modelRoot = mode[0];
-        const newMode = mode.map((m) => [m[0] + modelRoot[0], m[1] + modelRoot[1]]);
-        return newMode;*/
+        let rotated = [...this.podList];
+        rotated = ArrayUtils.rotate(rotated, d);
+        for (let i = (this.podList.length - d); i < rotated.length; i++) {
+            const curPod = rotated[i];
+            rotated[i] = [curPod[0] + 12, curPod[1] + 7];
+        }
+        // Get difference between each interval
+        const newPods: IPod[] = [[0, 0]];
+        const newIntervals = [new IntervalSpan(IntervalId.P1)];
+        for (let i = 0; i < rotated.length - 1; i++) {
+            const newPod = subtractPods(rotated[i + 1], rotated[0])
+            newPods.push(newPod);
+            const newIvl = IntervalSpan.fromValue(newPod);
+            newIntervals.push(newIvl);
+        }
+        console.log('dpb mode', newPods, newIntervals);
+        const mode = Scale.fromValue(newPods);
+        console.log('dpb mode', mode);
+
+        /*if (this.root) {
+            numeral.applyRoot(this.notes[d]);
+            console.log('dpb num root', numeral);
+        }*/
+        return mode;
     };
 
-    getAllModes({ scale, modelRoot }) {
-        /*const modes = [];
-        for (let i = 1; i <= scale.length; i++) {
-            modes.push(getMode({ scale, degree: i }));
+    getAllModes() {
+        const modes = [];
+        for (let i = 0; i < this.podList.length; i++) {
+            modes.push(this.getMode(i));
         }
-        return modes.map((m, i) => ({
-            name: `Degree ${i + 1}`,
-            a: modelRoot,
-            B: m
-        }));*/
+        return modes;
     };
 
     getNumeral(d) {
-        const LIMIT = 7;
+        // Get every other interval
         const curIntervals = [];
-        const newPods: IPod[] = [[0, 0]];
-        const newIntervals = [new IntervalSpan(IntervalId.P1)];
-        for (let i = 0; i < LIMIT; i = i + 2) {
+        for (let i = 0; i < this.podList.length; i = i + 2) {
             const curD = NumberUtils.moduloSum(d, i, this.podList.length);
             const curIvl = this.intervals[curD];
             curIntervals.push(curIvl);
         }
+        // Get difference between each interval
+        const newPods: IPod[] = [[0, 0]];
+        //const newIntervals = [new IntervalSpan(IntervalId.P1)];
         for (let i = 0; i < curIntervals.length - 1; i++) {
             const newPod = subtractPods(curIntervals[i + 1].pod, curIntervals[0].pod)
-            const newIvl = IntervalSpan.fromValue(newPod);
             newPods.push(newPod);
-            newIntervals.push(newIvl);
+            //const newIvl = IntervalSpan.fromValue(newPod);
+            //newIntervals.push(newIvl);
         }
         const numeral = Chord.fromValue(newPods);
         console.log('dpb num', numeral/*, curIntervals, newPods, newIntervals*/);

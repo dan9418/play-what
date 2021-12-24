@@ -57,7 +57,6 @@ export default class Note extends Pod {
 
     getAccidentalOffset(): number {
         const [p, d] = reducePod(this.pod);
-        console.log('dpb', this.pod, [p, d]);
 
         let offset = p - ROOT_SCALE[d][0];
 
@@ -108,7 +107,6 @@ export default class Note extends Pod {
 
     getDegreeId(): DegreeId {
         const degree = this.getDegree();
-        console.log('dpb', DEGREE_PRESETS[degree].id);
         return DEGREE_PRESETS[degree].id;
     }
 

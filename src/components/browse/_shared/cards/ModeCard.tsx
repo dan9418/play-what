@@ -37,7 +37,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
     const pageProps = usePageProps();
     const [root, setRoot] = useRecoilState(rootState);
 
-    const numerals = model.getAllNumerals();
+    const modes = model.getAllModes();
 
     return (
         <Card
@@ -45,7 +45,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
         >
             <StyledModeCard>
                 <ul>
-                    {numerals.map(n => (
+                    {modes.map(n => (
                         <li key={n.id}>
                             <Link to={`/browse/${n.modelId}/${n.id}`}>{n.name}</Link>
                         </li>

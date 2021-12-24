@@ -28,7 +28,7 @@ const BreadcrumbList = ({ id, name, path }) => {
     pieces.reduce((prev, cur, i, arr) => {
         const val = prev ? `${prev}/${cur}` : cur;
         paths.push(
-            <li>
+            <li key={i}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
                 <Link to={`/${val}`}>{cur}</Link>
             </li>
