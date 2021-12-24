@@ -1,9 +1,3 @@
-// import { INTERVAL_PRESET_MAP } from '../pod/Interval';
-// import index from '../index/PodIndex';
-// import chord from './Chord';
-// import Model from './Model';
-
-// class Scale extends Model {
 // 	static getMode({ A, d }) {
 // 		return chord.getInversion({ A, n: d });
 // 		/*let mode = [...A];
@@ -44,33 +38,3 @@
 // 		}
 // 		return numerals;*/
 // 	};
-
-// 	static transpose({ A, b }) {
-// 		return Model.addPods({ A, b });
-// 	}
-
-// 	getName() {
-// 		return '?';
-// 	}
-
-// 	getType() {
-// 		return 'scale';
-// 	}
-
-// }
-
-// Scale.preset = SCALE_PRESET_MAP;
-// Scale.presetValues = SCALE_PRESETS;
-
-// export default Scale;
-
-
-// interface IScaleNameOptions {
-// 	useLongName?: boolean;
-// }
-
-// export const getScaleName = (scale: IPod[], options: IScaleNameOptions = {}): string => {
-// 	const preset = SCALE_PRESETS.find(v => Model.areEqual(scale, v.value));
-// 	const presetName = preset ? (options.useLongName ? preset.name : preset.id) : 'Unknown Scale';
-// 	return presetName;
-// };

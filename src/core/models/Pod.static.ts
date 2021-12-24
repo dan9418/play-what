@@ -54,13 +54,12 @@ export const addPods = (a: IPod, b: IPod): IPod => {
     return result;
 }
 
-/*subtractPod(b: Pod, subclass = undefined): Pod {
-    const a = this;
-    const p = a.pod[0] - b.pod[0];
-    const d = a.pod[1] - b.pod[1];
+export const subtractPods = (a: IPod, b: IPod): IPod => {
+    const p = a[0] - b[0];
+    const d = a[1] - b[1];
     const result: IPod = [p, d];
-    return subclass ? subclass.fromValue(result) : result;
-}*/
+    return result;
+}
 
 export const addPodList = (a: IPod, B: IPod[]): IPod[] => {
     const result = B.map((b) => addPods(a, b));

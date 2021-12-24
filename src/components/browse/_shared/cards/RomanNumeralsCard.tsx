@@ -32,9 +32,11 @@ const StyledRomanNumeralsCard = styled.div`
     }
 `;
 
-const RomanNumeralsCard: React.FC<any> = () => {
+const RomanNumeralsCard: React.FC<any> = ({ model }) => {
     const pageProps = usePageProps();
     const [root, setRoot] = useRecoilState(rootState);
+
+    const numerals = model.getAllNumerals();
 
     return (
         <Card
@@ -42,7 +44,9 @@ const RomanNumeralsCard: React.FC<any> = () => {
         >
             <StyledRomanNumeralsCard>
                 <ul>
-                    <li>test</li>
+                    {numerals.map(n => (
+                        <li key={n.id}>{n.name}</li>
+                    ))}
                 </ul>
             </StyledRomanNumeralsCard>
         </Card>
