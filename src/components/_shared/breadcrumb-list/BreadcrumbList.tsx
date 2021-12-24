@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from 'react';
 import styled from 'styled-components';
-import { useHistory } from "../../../state/state";
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
@@ -12,24 +11,31 @@ const StyledBreadcrumbList = styled.ul`
     gap: 8px;
     padding: 16px 0;
     white-space: nowrap;
+    text-transform: uppercase;
     svg {
         margin-right: 8px;
     }
 `
 
 const BreadcrumbList = ({ id, name, path }) => {
-
-    const [history, popAt] = useHistory(id, name, path);
-
-    const links = history.map((entry, i) => {
-        return (
-            <li key={entry.id}>
+    let pieces = path.split('/');
+    pieces = pieces.slice(0, pieces.length - 1);
+    const paths = [
+        <li>
+            <Link to={`/`}>Home</Link>
+        </li>
+    ];
+    pieces.reduce((prev, cur, i, arr) => {
+        const val = prev ? `${prev}/${cur}` : cur;
+        paths.push(
+            <li>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
-                <Link to={entry.path} onClick={() => popAt(i)}>{entry.name}</Link>
+                <Link to={`/${val}`}>{cur}</Link>
             </li>
         );
-    });
-    return <StyledBreadcrumbList>{links}</StyledBreadcrumbList>;
+        return val;
+    }, '');
+    return <StyledBreadcrumbList>{paths}</StyledBreadcrumbList>;
 }
 
 export default BreadcrumbList;
