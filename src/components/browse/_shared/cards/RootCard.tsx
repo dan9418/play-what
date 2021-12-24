@@ -47,6 +47,7 @@ const StyledRoot = styled.div`
         appearance: none;
         background-color: transparent;
         border: none;
+        cursor: pointer;
         width: 100%;
         text-decoration: none;
         font-size: 140%;
@@ -112,13 +113,9 @@ const RootCard: React.FC<any> = () => {
     const pageProps = usePageProps();
     const [root, setRoot] = useRecoilState(rootState);
 
-    console.log('dpb x', root, root && root.getOctave());
-
-
     const octave = root && root.getOctave() || 4;
     const setOctave = v => {
         const note = new Note([(v - 4) * 12 + NumberUtils.modulo(root.pod[0], 12), root.pod[1]]);
-        console.log('dpb x', v, note, note.getOctave());
         setRoot(note);
     };
 
