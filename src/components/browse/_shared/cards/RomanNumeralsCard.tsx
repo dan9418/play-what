@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
@@ -45,7 +46,9 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
             <StyledRomanNumeralsCard>
                 <ul>
                     {numerals.map(n => (
-                        <li key={n.id}>{n.name}</li>
+                        <li key={n.id}>
+                            <Link to={`/browse/${n.modelId}/${n.id}`}>{n.name}</Link>
+                        </li>
                     ))}
                 </ul>
             </StyledRomanNumeralsCard>

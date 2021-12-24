@@ -27,8 +27,9 @@ const ScalePage: React.FC<any> = props => {
 
     return (
         <StyledScalePage>
-            <BreadcrumbList id={scale.id} name={scale.getName()} path={props.path} />
-            <PageTitle title={scale.getName()} subtitle="Scale" />
+            <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
+            <PageTitle title={scale.name} subtitle="Scale" />
+            <DetailsCard model={scale} />
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={scale} />
@@ -37,7 +38,6 @@ const ScalePage: React.FC<any> = props => {
                     <SoundCard model={scale} />
                 </StyledPane>
                 <StyledPane>
-                    <DetailsCard model={scale} />
                     <GuitarCard model={scale} />
                 </StyledPane>
             </StyledDoublePane>

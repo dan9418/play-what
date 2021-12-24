@@ -1,17 +1,19 @@
 import React from "react";
 import styled from 'styled-components';
-import Card from "../../../_shared/ui/Card";
+import { StyledCard } from "../../../_shared/ui/Card";
 
-const StyledDetailsCard = styled.div`
+const StyledDetailsCard = styled(StyledCard)`
     //aspect-ratio: 1.5;
+
+    margin-top: 16px;
 
     display: flex;
     align-items: center;
-    //justify-content: center;
+    justify-content: center;
+    overflow-x: auto;
 
     table {
         border-collapse: collapse;
-        width: 100%;
    
         th {
             text-align: right;
@@ -45,65 +47,63 @@ const DetailsCard: React.FC<any> = ({ model }) => {
     if (!intervals && !notes) return null;
 
     return (
-        <Card>
-            <StyledDetailsCard>
-                <table>
-                    <tbody>
-                        {notes &&
-                            <tr>
-                                <th>Notes</th>
-                                {notes.map((note, i) => {
-                                    return (
-                                        <td key={note.id} className={`note featured`}>
-                                            {note.name}
-                                            <sub>{note.getOctave()}</sub>
-                                        </td>
-                                    );
-                                })}
-                            </tr>
-                        }
-                        {notes &&
-                            <tr>
-                                <th>Pods</th>
-                                {notes.map((note, i) => {
-                                    return (
-                                        <td key={note.id} className={`ratio`}>
-                                            {JSON.stringify(note.pod)}
-                                        </td>
-                                    );
-                                })}
-                            </tr>
-                        }
+        <StyledDetailsCard>
+            <table>
+                <tbody>
+                    {notes &&
                         <tr>
-                            <th>Intervals</th>
-                            {intervals.map((ivl, i) => {
+                            <th>Notes</th>
+                            {notes.map((note, i) => {
                                 return (
-                                    <td key={ivl.id} className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</td>
+                                    <td key={note.id} className={`note featured`}>
+                                        {note.name}
+                                        <sub>{note.getOctave()}</sub>
+                                    </td>
                                 );
                             })}
                         </tr>
-                        {notes &&
-                            <tr>
-                                <th>Frequency</th>
-                                {notes.map((note, i) => {
-                                    return (
-                                        <td key={note.id} className={`frequency`}>{note.getFrequency(true)}</td>
-                                    );
-                                })}
-                            </tr>
-                        }
+                    }
+                    {notes &&
                         <tr>
-                            <th>Ratio</th>
-                            {intervals.map((ivl, i) => {
+                            <th>Pods</th>
+                            {notes.map((note, i) => {
                                 return (
-                                    <td key={ivl.id} className={`ratio`}>{ivl.getRatio()}</td>
+                                    <td key={note.id} className={`ratio`}>
+                                        {JSON.stringify(note.pod)}
+                                    </td>
                                 );
                             })}
                         </tr>
-                    </tbody>
-                </table>
-            </StyledDetailsCard>
-        </Card >
+                    }
+                    <tr>
+                        <th>Intervals</th>
+                        {intervals.map((ivl, i) => {
+                            return (
+                                <td key={ivl.id} className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</td>
+                            );
+                        })}
+                    </tr>
+                    {notes &&
+                        <tr>
+                            <th>Frequency</th>
+                            {notes.map((note, i) => {
+                                return (
+                                    <td key={note.id} className={`frequency`}>{note.getFrequency(true)}</td>
+                                );
+                            })}
+                        </tr>
+                    }
+                    <tr>
+                        <th>Ratio</th>
+                        {intervals.map((ivl, i) => {
+                            return (
+                                <td key={ivl.id} className={`ratio`}>{ivl.getRatio()}</td>
+                            );
+                        })}
+                    </tr>
+                </tbody>
+            </table>
+        </StyledDetailsCard>
     );
 };
 
