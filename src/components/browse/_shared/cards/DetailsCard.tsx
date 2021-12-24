@@ -63,7 +63,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                             })}
                         </tr>
                     }
-                    {notes &&
+                    {notes && false && 
                         <tr>
                             <th>Pods</th>
                             {notes.map((note, i) => {
