@@ -18,23 +18,3 @@
 // 			B: m
 // 		}));*/
 // 	};
-
-// 	static getNumeral({ A, d }) {
-// 		const LIMIT = 7;
-// 		const numeral = [];
-// 		for (let i = 0; i < LIMIT; i = i + 2) {
-// 			const curD = index.moduloSum({ a: d, b: i, divisor: A.length });
-// 			const ivl = A[curD];
-// 			if (i < d) ivl[0] = ivl[0] + 12;
-// 			numeral.push(ivl);
-// 		}
-// 		return numeral;
-// 	};
-
-// 	static getAllNumerals({ scale, modelRoot }) {
-// 		/*const numerals = [];
-// 		for (let i = 0; i < scale.length; i++) {
-// 			numerals.push(getNumeral({ scale, modelRoot, degree: i }));
-// 		}
-// 		return numerals;*/
-// 	};

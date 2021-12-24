@@ -53,8 +53,13 @@ export default class Scale extends PodList {
             newPods.push(newPod);
             newIntervals.push(newIvl);
         }
-        console.log('dpb num', curIntervals, newPods, newIntervals);
-        return Chord.fromValue(newPods);
+        const numeral = Chord.fromValue(newPods);
+        console.log('dpb num', numeral/*, curIntervals, newPods, newIntervals*/);
+        if (this.root) {
+            numeral.applyRoot(this.notes[d]);
+            console.log('dpb num root', numeral);
+        }
+        return numeral;
     };
 
     getAllNumerals() {

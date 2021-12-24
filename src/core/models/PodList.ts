@@ -58,6 +58,7 @@ export default class PodList extends Model {
         this.root = root;
         this.notes = notes;
         this.notePods = notePods;
+        this.name = this.getName();
         return this;
     }
 
