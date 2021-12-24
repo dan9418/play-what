@@ -10,6 +10,7 @@ import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
+import RomanNumeralsCard from "../_shared/cards/RomanNumeralsCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
 
@@ -31,6 +32,7 @@ const ScalePage: React.FC<any> = props => {
             <StyledDoublePane>
                 <StyledPane>
                     <RootCard model={scale} />
+                    <RomanNumeralsCard model={scale} />
                     <RelatedCard model={scale} />
                     <SoundCard model={scale} />
                 </StyledPane>
