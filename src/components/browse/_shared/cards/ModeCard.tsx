@@ -37,7 +37,13 @@ const ModeCard: React.FC<any> = ({ model }) => {
     const pageProps = usePageProps();
     const [root, setRoot] = useRecoilState(rootState);
 
-    const modes = model.getAllModes();
+    let modes = [];
+    try {
+        modes = model.getAllModes();
+    }
+    catch (e) {
+        return null;
+    }
 
     return (
         <Card
