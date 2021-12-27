@@ -431,6 +431,36 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.M7],
         [ScaleTag.Heptatonic, ScaleTag.Minor]
     )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Dorian b2',
+        [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.m7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Lydian #5',
+        [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.A4, IntervalId.A5, IntervalId.M6, IntervalId.M7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Lydian Dominant',
+        [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.A4, IntervalId.P5, IntervalId.M6, IntervalId.m7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Mixolydian b6',
+        [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Aeolian b5',
+        [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.d5, IntervalId.m6, IntervalId.m7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
+    [ScaleId.MelodicMinor, formatScalePreset(
+        ScaleId.MelodicMinor, 'Altered / Super Locrian',
+        [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.d4, IntervalId.d5, IntervalId.m6, IntervalId.m7],
+        [ScaleTag.Heptatonic, ScaleTag.Minor]
+    )],
     // Pentatonic
     [ScaleId.MajorPentatonic, formatScalePreset(
         ScaleId.MajorPentatonic, 'Major Pentatonic',
