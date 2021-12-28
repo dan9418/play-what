@@ -3,12 +3,20 @@ const readline = require('readline');
 
 
 const containsRotation = (arr, val) => {
-    
-    return arr.find(line => (line + line).includes(val));
+    const ret = arr.find(line => {
+        const doubleLine = `${(line + line)}`;
+        const doubleVal = `${(val + val)}`;
+        const result = doubleLine.includes(val) && doubleLine !== doubleVal;
+        //console.log(doubleLine, doubleVal, result);
+        return result;
+    });
+    //console.log('ret', ret);
 }
 
 async function processLineByLine() {
-    const arr = fs.readFileSync('./src/scripts/binary.txt').toString().split("\r\n");
+    const arr = fs.readFileSync('./src/scripts/binary.txt').toString().split(/\r?\n/g);
+    console.log(arr.length)
+
     const fileStream = fs.createReadStream('./src/scripts/binary.txt');
 
     const rl = readline.createInterface({
@@ -20,7 +28,8 @@ async function processLineByLine() {
 
     for await (const line of rl) {
         if (!containsRotation(arr, line.trim())) {
-            fs.writeFileSync('./src/scripts/filtered.txt', content + '\n', { flag: 'a+' }, err => { })
+            //console.log('write');
+            fs.writeFileSync('./src/scripts/filtered.txt', line + '\n', { flag: 'a+' }, err => { })
         }
     }
 }
