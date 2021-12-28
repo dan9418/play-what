@@ -2,10 +2,14 @@ const fs = require('fs')
 
 // Function to print the output
 function printTheArray(arr, n) {
+    let content = '';
     for (let i = 0; i < n; i++) {
-        fs.writeFileSync('./binary.txt', arr[i] + '', { flag: 'a+' }, err => {})
+        content = content + arr[i];
     }
-    fs.writeFileSync('./binary.txt', '\n', { flag: 'a+' }, err => {})
+    if (content[0] === '0') return;
+    const numOnes = (content.match(/1/g) || []).length;
+    if (numOnes === 0 || numOnes === 1 || numOnes === 2 || numOnes === n) return;
+    fs.writeFileSync(`./src/scripts/binary-${numOnes}.txt`, content + '\n', { flag: 'a+' }, err => { })
 }
 
 // Function to generate all binary strings
