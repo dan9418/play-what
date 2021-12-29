@@ -33,11 +33,11 @@ const ScalePage: React.FC<any> = props => {
             <StyledPane>
                 <DetailsCard model={scale} />
                 <RootCard model={scale} />
+                <GuitarCard model={scale} />
                 <RomanNumeralsCard model={scale} />
                 <ModeCard model={scale} />
                 <RelatedCard model={scale} />
                 <SoundCard model={scale} />
-                <GuitarCard model={scale} />
             </StyledPane>
         </StyledScalePage >
     );

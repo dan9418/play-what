@@ -7,28 +7,12 @@ import { rootState } from "../../../../state/state";
 import Card from "../../../_shared/ui/Card";
 
 const StyledRomanNumeralsCard = styled.div`
-    button {
-        appearance: none;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        width: 100%;
-        padding: 8px;
-        border-radius: 4px;
+    ul {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        color: ${({ theme }) => theme.action.interactive};
-
-        &.active {
-            background-color: ${props => props.theme.action.active};
-            color: ${({ theme }) => theme.text.inverted};
-            font-weight: bold;
-        }
-
-        :hover {
-            background: ${({ theme }) => theme.utils.hoverDark};
-            color: ${({ theme }) => theme.action.interactive};
+        gap: 4px;
+        flex-wrap: wrap;
+        a {
+            padding: 4px;
         }
     }
 `;

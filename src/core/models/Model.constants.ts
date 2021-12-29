@@ -67,23 +67,43 @@ export enum IntervalId {
 }
 
 export enum ScaleId {
+	// Diatonic
 	Ionian = 'ionian',
 	Dorian = 'dorian',
 	Phrygian = 'phrygian',
-	PhrygianDominant = 'phrygian-dominant',
 	Lydian = 'lydian',
 	Mixolydian = 'mixolydian',
-	DominantBebop = 'dominant-bebop',
-	MajorBebop = 'major-bebop',
 	Aeolian = 'aeolian',
 	Locrian = 'locrian',
-	NaturalMinor = 'natural-minor',
-	HarmonicMinor = 'harmonic-minor',
-	MelodicMinor = 'melodic-minor',
+	// Pentatonic
 	MajorPentatonic = 'major-pentatonic',
+	Egyptian = 'egyptian',
+	ManGong = 'man-gong',
+	Ritusen = 'ritusen',
 	MinorPentatonic = 'minor-pentatonic',
+	// Melodic Minor
+	MelodicMinor = 'melodic-minor',
+	DorianFlat2 = 'dorian-flat-2',
+	LydianSharp5 = 'lydian-sharp-5',
+	LydianDominiant = 'lydian-dominant',
+	MixolydianFlatSix = 'mixolydian-flat-6',
+	AeolianFlat5 = 'aeolian-flat-5',
+	SuperLocrian = 'super-locrian',
+	// Harmonic Minor
+	HarmonicMinor = 'harmonic-minor',
+	Locrian6 = 'locrian-6',
+	IonianSharp5 = 'ionian-sharp-5',
+	DorianSharp4 = 'dorian-sharp-4',
+	PhrygianDominant = 'phrygian-dominant',
+	LydianSharp2 = 'lydian-sharp-2',
+	SuperLocrianDoubleFlat7 = 'super-locrian-double-flat-7',
+	// Bebop
+	DominantBebop = 'dominant-bebop',
+	MajorBebop = 'major-bebop',
+	// Blues
 	MajorBlues = 'major-blues',
 	MinorBlues = 'minor-blues',
+	// Other
 	Chromatic = 'chromatic'
 }
 
@@ -129,6 +149,9 @@ export enum ScaleTag {
 	Bebop = 'Bebop',
 	Major = 'Major',
 	Minor = 'Minor',
+	Exotic = 'Exotic',
+	MelodicMode = 'MelodicMode',
+	HarmonicMode = 'HarmonicMode'
 }
 
 export enum ChordTag {

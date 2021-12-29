@@ -387,73 +387,73 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
     [ScaleId.HarmonicMinor, formatScalePreset(
         ScaleId.HarmonicMinor, 'Harmonic Minor',
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.M7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Minor, ScaleTag.HarmonicMode]
     )],
-    [ScaleId.PhrygianDominant, formatScalePreset(
-        ScaleId.PhrygianDominant, 'Locrian 6',
+    [ScaleId.Locrian6, formatScalePreset(
+        ScaleId.Locrian6, 'Locrian 6',
         [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.P4, IntervalId.d5, IntervalId.M6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.HarmonicMode]
     )],
-    [ScaleId.PhrygianDominant, formatScalePreset(
-        ScaleId.PhrygianDominant, 'Ionian #5',
+    [ScaleId.IonianSharp5, formatScalePreset(
+        ScaleId.IonianSharp5, 'Ionian #5',
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.A5, IntervalId.M6, IntervalId.M7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.HarmonicMode]
     )],
-    [ScaleId.PhrygianDominant, formatScalePreset(
-        ScaleId.PhrygianDominant, 'Dorian #4',
+    [ScaleId.DorianSharp4, formatScalePreset(
+        ScaleId.DorianSharp4, 'Dorian #4',
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.A4, IntervalId.P5, IntervalId.M6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.HarmonicMode]
     )],
     [ScaleId.PhrygianDominant, formatScalePreset(
         ScaleId.PhrygianDominant, 'Phrygian Dominant',
         [IntervalId.P1, IntervalId.m2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.Dominant, ScaleTag.HarmonicMode]
     )],
-    [ScaleId.PhrygianDominant, formatScalePreset(
-        ScaleId.PhrygianDominant, 'Lydian #2',
+    [ScaleId.LydianSharp2, formatScalePreset(
+        ScaleId.LydianSharp2, 'Lydian #2',
         [IntervalId.P1, IntervalId.A2, IntervalId.M3, IntervalId.A4, IntervalId.P5, IntervalId.M6, IntervalId.M7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.HarmonicMode]
     )],
-    [ScaleId.PhrygianDominant, formatScalePreset(
-        ScaleId.PhrygianDominant, 'Super Locrian bb7',
+    [ScaleId.SuperLocrianDoubleFlat7, formatScalePreset(
+        ScaleId.SuperLocrianDoubleFlat7, 'Super Locrian bb7',
         [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.d4, IntervalId.d5, IntervalId.m6, IntervalId.d7],
-        [ScaleTag.Heptatonic, ScaleTag.Major, ScaleTag.Dominant]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.HarmonicMode]
     )],
     // Melodic Minor
     [ScaleId.MelodicMinor, formatScalePreset(
         ScaleId.MelodicMinor, 'Melodic Minor',
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.M7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Minor, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Dorian b2',
+    [ScaleId.DorianFlat2, formatScalePreset(
+        ScaleId.DorianFlat2, 'Dorian b2',
         [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Lydian #5',
+    [ScaleId.LydianSharp5, formatScalePreset(
+        ScaleId.LydianSharp5, 'Lydian #5',
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.A4, IntervalId.A5, IntervalId.M6, IntervalId.M7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Lydian Dominant',
+    [ScaleId.LydianDominiant, formatScalePreset(
+        ScaleId.LydianDominiant, 'Lydian Dominant',
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.A4, IntervalId.P5, IntervalId.M6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.Dominant, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Mixolydian b6',
+    [ScaleId.MixolydianFlatSix, formatScalePreset(
+        ScaleId.MixolydianFlatSix, 'Mixolydian b6',
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Aeolian b5',
+    [ScaleId.AeolianFlat5, formatScalePreset(
+        ScaleId.AeolianFlat5, 'Aeolian b5',
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.d5, IntervalId.m6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.MelodicMode]
     )],
-    [ScaleId.MelodicMinor, formatScalePreset(
-        ScaleId.MelodicMinor, 'Altered / Super Locrian',
+    [ScaleId.SuperLocrian, formatScalePreset(
+        ScaleId.SuperLocrian, 'Super Locrian', // Altered
         [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.d4, IntervalId.d5, IntervalId.m6, IntervalId.m7],
-        [ScaleTag.Heptatonic, ScaleTag.Minor]
+        [ScaleTag.Heptatonic, ScaleTag.Exotic, ScaleTag.MelodicMode]
     )],
     // Pentatonic
     [ScaleId.MajorPentatonic, formatScalePreset(
@@ -461,20 +461,20 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P5, IntervalId.M6],
         [ScaleTag.Pentatonic, ScaleTag.Major]
     )],
-    [ScaleId.MajorPentatonic, formatScalePreset(
-        ScaleId.MajorPentatonic, 'Egyptian',
+    [ScaleId.Egyptian, formatScalePreset(
+        ScaleId.Egyptian, 'Egyptian',
         [IntervalId.P1, IntervalId.M2, IntervalId.P4, IntervalId.P5, IntervalId.m7],
-        [ScaleTag.Pentatonic]
+        [ScaleTag.Pentatonic, ScaleTag.Exotic]
     )],
-    [ScaleId.MajorPentatonic, formatScalePreset(
-        ScaleId.MajorPentatonic, 'Man Gong',
+    [ScaleId.ManGong, formatScalePreset(
+        ScaleId.ManGong, 'Man Gong',
         [IntervalId.P1, IntervalId.m3, IntervalId.P4, IntervalId.m6, IntervalId.m7],
-        [ScaleTag.Pentatonic]
+        [ScaleTag.Pentatonic, ScaleTag.Exotic]
     )],
-    [ScaleId.MajorPentatonic, formatScalePreset(
-        ScaleId.MajorPentatonic, 'Ritusen',
+    [ScaleId.Ritusen, formatScalePreset(
+        ScaleId.Ritusen, 'Ritusen',
         [IntervalId.P1, IntervalId.M2, IntervalId.P4, IntervalId.P5, IntervalId.M6],
-        [ScaleTag.Pentatonic]
+        [ScaleTag.Pentatonic, ScaleTag.Exotic]
     )],
     [ScaleId.MinorPentatonic, formatScalePreset(
         ScaleId.MinorPentatonic, 'Minor Pentatonic',

@@ -82,6 +82,12 @@ export default class PodList extends Model {
             this.containsSubset(preset.value)
         );
     }
+    
+    getSuperchords() {
+        return CHORD_PRESETS.filter(preset =>
+            this.isInSuperset(preset.value)
+        );
+    }
 
     getSubscales() {
         return SCALE_PRESETS.filter(preset =>
@@ -91,12 +97,6 @@ export default class PodList extends Model {
 
     getSuperscales() {
         return SCALE_PRESETS.filter(preset =>
-            this.isInSuperset(preset.value)
-        );
-    }
-
-    getSuperchords() {
-        return CHORD_PRESETS.filter(preset =>
             this.isInSuperset(preset.value)
         );
     }

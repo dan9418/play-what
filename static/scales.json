@@ -34,9 +34,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "major"
+            "Heptatonic",
+            "Diatonic",
+            "Major"
         ]
     },
     {
@@ -74,9 +74,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "minor"
+            "Heptatonic",
+            "Diatonic",
+            "Minor"
         ]
     },
     {
@@ -114,9 +114,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "minor"
+            "Heptatonic",
+            "Diatonic",
+            "Minor"
         ]
     },
     {
@@ -154,9 +154,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "major"
+            "Heptatonic",
+            "Diatonic",
+            "Major"
         ]
     },
     {
@@ -194,10 +194,10 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "major",
-            "dominant"
+            "Heptatonic",
+            "Diatonic",
+            "Major",
+            "Dominant"
         ]
     },
     {
@@ -235,9 +235,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "minor"
+            "Heptatonic",
+            "Diatonic",
+            "Minor"
         ]
     },
     {
@@ -275,49 +275,9 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "diatonic",
-            "minor"
-        ]
-    },
-    {
-        "modelId": "scales",
-        "id": "natural-minor",
-        "name": "Natural Minor",
-        "value": [
-            [
-                0,
-                0
-            ],
-            [
-                2,
-                1
-            ],
-            [
-                3,
-                2
-            ],
-            [
-                5,
-                3
-            ],
-            [
-                7,
-                4
-            ],
-            [
-                8,
-                5
-            ],
-            [
-                10,
-                6
-            ]
-        ],
-        "tags": [
-            "heptatonic",
-            "diatonic",
-            "minor"
+            "Heptatonic",
+            "Diatonic",
+            "Minor"
         ]
     },
     {
@@ -355,8 +315,250 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "minor"
+            "Heptatonic",
+            "Minor",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "locrian-6",
+        "name": "Locrian 6",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "ionian-sharp-5",
+        "name": "Ionian #5",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "dorian-sharp-4",
+        "name": "Dorian #4",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "phrygian-dominant",
+        "name": "Phrygian Dominant",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "Dominant",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "lydian-sharp-2",
+        "name": "Lydian #2",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                6,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "HarmonicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "super-locrian-double-flat-7",
+        "name": "Super Locrian bb7",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                4,
+                3
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                9,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "HarmonicMode"
         ]
     },
     {
@@ -394,8 +596,250 @@
             ]
         ],
         "tags": [
-            "heptatonic",
-            "minor"
+            "Heptatonic",
+            "Minor",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "dorian-flat-2",
+        "name": "Dorian b2",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "lydian-sharp-5",
+        "name": "Lydian #5",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                6,
+                3
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "lydian-dominant",
+        "name": "Lydian Dominant",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                6,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "Dominant",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "mixolydian-flat-6",
+        "name": "Mixolydian b6",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "aeolian-flat-5",
+        "name": "Aeolian b5",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "MelodicMode"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "super-locrian",
+        "name": "Super Locrian",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                1,
+                1
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                4,
+                3
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Heptatonic",
+            "Exotic",
+            "MelodicMode"
         ]
     },
     {
@@ -425,8 +869,101 @@
             ]
         ],
         "tags": [
-            "pentatonic",
-            "major"
+            "Pentatonic",
+            "Major"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "egyptian",
+        "name": "Egyptian",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Pentatonic",
+            "Exotic"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "man-gong",
+        "name": "Man Gong",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                8,
+                5
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "Pentatonic",
+            "Exotic"
+        ]
+    },
+    {
+        "modelId": "scales",
+        "id": "ritusen",
+        "name": "Ritusen",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ]
+        ],
+        "tags": [
+            "Pentatonic",
+            "Exotic"
         ]
     },
     {
@@ -456,8 +993,8 @@
             ]
         ],
         "tags": [
-            "pentatonic",
-            "minor"
+            "Pentatonic",
+            "Minor"
         ]
     },
     {
@@ -491,9 +1028,9 @@
             ]
         ],
         "tags": [
-            "hexatonic",
-            "blues",
-            "major"
+            "Hexatonic",
+            "Blues",
+            "Major"
         ]
     },
     {
@@ -527,9 +1064,9 @@
             ]
         ],
         "tags": [
-            "hexatonic",
-            "blues",
-            "minor"
+            "Hexatonic",
+            "Blues",
+            "Minor"
         ]
     },
     {
@@ -571,10 +1108,10 @@
             ]
         ],
         "tags": [
-            "octatonic",
-            "bebop",
-            "major",
-            "dominant"
+            "Octatonic",
+            "Bebop",
+            "Major",
+            "Dominant"
         ]
     },
     {
@@ -616,49 +1153,9 @@
             ]
         ],
         "tags": [
-            "octatonic",
-            "bebop",
-            "major"
-        ]
-    },
-    {
-        "modelId": "scales",
-        "id": "phrygian-dominant",
-        "name": "Phrygian Dominant",
-        "value": [
-            [
-                0,
-                0
-            ],
-            [
-                1,
-                1
-            ],
-            [
-                4,
-                2
-            ],
-            [
-                5,
-                3
-            ],
-            [
-                7,
-                4
-            ],
-            [
-                8,
-                5
-            ],
-            [
-                10,
-                6
-            ]
-        ],
-        "tags": [
-            "heptatonic",
-            "major",
-            "dominant"
+            "Octatonic",
+            "Bebop",
+            "Major"
         ]
     }
 ]
