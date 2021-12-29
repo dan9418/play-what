@@ -23,7 +23,10 @@ const StyledRoot = styled.div`
     }
 
     .oct-acc {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 16px;
 
         .row {
             margin-top: 4px;

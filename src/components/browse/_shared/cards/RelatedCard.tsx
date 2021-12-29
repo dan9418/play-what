@@ -39,44 +39,58 @@ const StyledRelated = styled.div`
 
 const RelatedCard: React.FC<any> = ({ model }) => {
 
-    const subsets = model.getSubsets && model.getSubsets();
-    const supersets = model.getSupersets && model.getSupersets();
+    const subchords = model.getSubchords();
+    const subscales = model.getSubscales();
+    const superchords = model.getSuperchords();
+    const superscales = model.getSuperscales();
 
     return (
-        <Card title="Related">
-            <StyledRelated>
-                {subsets && subsets.length > 0 &&
-                    <div>
-                        <h2>Subsets</h2>
-                        {subsets.map((s, i) => (
-                            <React.Fragment key={i}>
-                                <h3>{s.modelName}</h3>
-                                <ul>
-                                    {s.values.map(s => (
-                                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
-                                    ))}
-                                </ul>
-                            </React.Fragment>
-                        ))}
-                    </div>
-                }
-                {supersets && supersets.length > 0 &&
-                    <div>
-                        <h2>Supersets</h2>
-                        {supersets.map((s, i) => (
-                            <React.Fragment key={i}>
-                                <h3>{s.modelName}</h3>
-                                <ul>
-                                    {s.values.map(s => (
-                                        <li key={s.id}><Link to={`/browse/${s.modelId}/${s.id}`}>{s.name}</Link></li>
-                                    ))}
-                                </ul>
-                            </React.Fragment>
-                        ))}
-                    </div>
-                }
-            </StyledRelated>
-        </Card>
+        <>
+            {subchords.length > 0 &&
+                <Card title="Child Chords">
+                    <StyledRelated>
+                        <ul>
+                            {subchords.map(s => (
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                            ))}
+                        </ul>
+                    </StyledRelated>
+                </Card>
+            }
+            {superchords.length > 0 &&
+                <Card title="Parent Chords">
+                    <StyledRelated>
+                        <ul>
+                            {superchords.map(s => (
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                            ))}
+                        </ul>
+                    </StyledRelated>
+                </Card>
+            }
+            {subscales.length > 0 &&
+                <Card title="Child Scales">
+                    <StyledRelated>
+                        <ul>
+                            {subscales.map(s => (
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                            ))}
+                        </ul>
+                    </StyledRelated>
+                </Card>
+            }
+            {superscales.length > 0 &&
+                <Card title="Parent Chords">
+                    <StyledRelated>
+                        <ul>
+                            {superscales.map(s => (
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                            ))}
+                        </ul>
+                    </StyledRelated>
+                </Card>
+            }
+        </>
     );
 };
 

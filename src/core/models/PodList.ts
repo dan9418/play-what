@@ -77,73 +77,28 @@ export default class PodList extends Model {
         return listContainsSubset(this.podList, subset);
     }
 
-    getSubsets() {
-        const result: any[] = []
-        /*result.push([
-            {
-                modelName: 'Intervals',
-                values: this.intervals
-            }
-        ]);
-
-        if (this.root) {
-            result.push({
-                modelName: 'Notes',
-                values: this.notes
-            });
-        }*/
-
-        const chords = CHORD_PRESETS.filter(preset =>
+    getSubchords() {
+        return CHORD_PRESETS.filter(preset =>
             this.containsSubset(preset.value)
         );
-
-        if (chords.length) {
-            result.push({
-                modelName: 'Chords',
-                values: chords
-            });
-        }
-
-        const scales = SCALE_PRESETS.filter(preset =>
-            this.containsSubset(preset.value)
-        );
-
-        if (scales.length) {
-            result.push({
-                modelName: 'Scales',
-                values: scales
-            });
-        }
-
-        return result;
     }
 
-    getSupersets() {
-        const result = [];
+    getSubscales() {
+        return SCALE_PRESETS.filter(preset =>
+            this.containsSubset(preset.value)
+        );
+    }
 
-        const chords = CHORD_PRESETS.filter(preset =>
+    getSuperscales() {
+        return SCALE_PRESETS.filter(preset =>
             this.isInSuperset(preset.value)
         );
+    }
 
-        if (chords.length) {
-            result.push({
-                modelName: 'Chords',
-                values: chords
-            });
-        }
-
-        const scales = SCALE_PRESETS.filter(preset =>
+    getSuperchords() {
+        return CHORD_PRESETS.filter(preset =>
             this.isInSuperset(preset.value)
         );
-
-        if (scales.length) {
-            result.push({
-                modelName: 'Scales',
-                values: scales
-            });
-        }
-
-        return result;
     }
 
     getPreview() {

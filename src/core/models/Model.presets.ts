@@ -296,12 +296,6 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7],
         [ChordTag.Dominant, ChordTag.Seventh]
     )],
-    [ChordId.Dom7b9, formatChordPreset(
-        ChordId.Dom7b9,
-        'Dominant 7th (b9)',
-        [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7, IntervalId.b9],
-        [ChordTag.Dominant, ChordTag.Extended]
-    )],
     [ChordId.AugTriad, formatChordPreset(
         ChordId.AugTriad,
         'Augmented Triad',
