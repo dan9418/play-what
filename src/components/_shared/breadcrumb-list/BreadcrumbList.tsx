@@ -21,7 +21,7 @@ const BreadcrumbList = ({ id, name, path }) => {
     let pieces = path.split('/');
     pieces = pieces.slice(0, pieces.length - 1);
     const paths = [
-        <li>
+        <li key="0">
             <Link to={`/`}>Home</Link>
         </li>
     ];

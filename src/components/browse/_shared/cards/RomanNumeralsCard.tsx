@@ -23,6 +23,8 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
 
     const numerals = model.getAllNumerals();
 
+    if (!numerals.length) return null;
+
     return (
         <Card
             title="Roman Numerals"

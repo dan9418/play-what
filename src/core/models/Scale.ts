@@ -73,18 +73,18 @@ export default class Scale extends PodList {
             //newIntervals.push(newIvl);
         }
         const numeral = Chord.fromValue(newPods);
-        console.log('dpb num', numeral/*, curIntervals, newPods, newIntervals*/);
         if (this.root) {
             numeral.applyRoot(this.notes[d]);
-            console.log('dpb num root', numeral);
         }
         return numeral;
     };
 
     getAllNumerals() {
         const numerals = [];
-        for (let i = 0; i < this.podList.length; i++) {
-            numerals.push(this.getNumeral(i));
+        if (this.tags.includes(ScaleTag.Diatonic)) {
+            for (let i = 0; i < this.podList.length; i++) {
+                numerals.push(this.getNumeral(i));
+            }
         }
         return numerals;
     };
