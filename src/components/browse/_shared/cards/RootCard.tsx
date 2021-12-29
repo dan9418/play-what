@@ -23,6 +23,8 @@ const StyledRoot = styled.div`
     }
 
     .oct-acc {
+        display: flex;
+
         .row {
             margin-top: 4px;
             display: flex;
@@ -56,7 +58,7 @@ const StyledRoot = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        aspect-ratio: 1;
+        //aspect-ratio: 1;
         color: ${({ theme }) => theme.action.interactive};
 
         &.active {
@@ -136,14 +138,14 @@ const RootCard: React.FC<any> = () => {
                 </ul>
                 {root &&
                     <div className="oct-acc">
-                        <InputRow label="Accidental">
+                        <InputRow label="Accidental" y>
                             <ul>
                                 <li><AccidentalLink offset={-1} /></li>
                                 <li><AccidentalLink offset={0} /></li>
                                 <li><AccidentalLink offset={1} /></li>
                             </ul>
                         </InputRow>
-                        <InputRow label="Octave">
+                        <InputRow label="Octave" y>
                             <NumericInput value={octave} setValue={setOctave} />
                         </InputRow>
                     </div>

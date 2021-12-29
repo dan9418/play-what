@@ -6,7 +6,7 @@ import { rootState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
-import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
+import { StyledPane } from "../../_shared/layout/Pane";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import ModeCard from "../_shared/cards/ModeCard";
@@ -30,19 +30,15 @@ const ScalePage: React.FC<any> = props => {
         <StyledScalePage>
             <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
             <PageTitle title={scale.name} subtitle="Scale" />
-            <DetailsCard model={scale} />
-            <StyledDoublePane>
-                <StyledPane>
-                    <RootCard model={scale} />
-                    <RomanNumeralsCard model={scale} />
-                    <ModeCard model={scale} />
-                    <RelatedCard model={scale} />
-                    <SoundCard model={scale} />
-                </StyledPane>
-                <StyledPane>
-                    <GuitarCard model={scale} />
-                </StyledPane>
-            </StyledDoublePane>
+            <StyledPane>
+                <DetailsCard model={scale} />
+                <RootCard model={scale} />
+                <RomanNumeralsCard model={scale} />
+                <ModeCard model={scale} />
+                <RelatedCard model={scale} />
+                <SoundCard model={scale} />
+                <GuitarCard model={scale} />
+            </StyledPane>
         </StyledScalePage >
     );
 };

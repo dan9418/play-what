@@ -28,4 +28,5 @@ export const StyledPane = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
+	margin: 16px 0;
 `

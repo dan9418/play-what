@@ -6,7 +6,7 @@ import { rootState } from "../../../state/state";
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../../_shared/layout/PageBody";
 import PageTitle from "../../_shared/layout/PageTitle";
-import { StyledDoublePane, StyledPane } from "../../_shared/layout/Pane";
+import { StyledPane } from "../../_shared/layout/Pane";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
@@ -26,17 +26,13 @@ const ChordPage: React.FC<any> = props => {
         <StyledChordPage>
             <BreadcrumbList id={chord.id} name={chord.name} path={props.path} />
             <PageTitle title={chord.name} subtitle="Chord" />
-            <DetailsCard model={chord} />
-            <StyledDoublePane>
-                <StyledPane>
-                    <RootCard model={chord} />
-                    <RelatedCard model={chord} />
-                    <SoundCard model={chord} />
-                </StyledPane>
-                <StyledPane>
-                    <GuitarCard model={chord} />
-                </StyledPane>
-            </StyledDoublePane>
+            <StyledPane>
+                <DetailsCard model={chord} />
+                <RootCard model={chord} />
+                <RelatedCard model={chord} />
+                <SoundCard model={chord} />
+                <GuitarCard model={chord} />
+            </StyledPane>
         </StyledChordPage >
     );
 };

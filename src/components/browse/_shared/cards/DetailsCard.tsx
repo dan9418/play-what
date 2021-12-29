@@ -3,38 +3,24 @@ import styled from 'styled-components';
 import { StyledCard } from "../../../_shared/ui/Card";
 
 const StyledDetailsCard = styled(StyledCard)`
-    //aspect-ratio: 1.5;
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: auto;
 
-    margin-top: 16px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow-x: auto;
-
-    table {
-        border-collapse: collapse;
-   
-        th {
-            text-align: right;
-            padding-right: 16px;
-            text-transform: uppercase;
-            color: ${({ theme }) => theme.text.secondary};
-            border-right: 1px solid ${({ theme }) => theme.utils.border};
-        }
-
-        td {
+        .box {
             padding: 8px 16px;
             text-align: center;
             font-size: 140%;
-            &.featured {
+            .featured {
                 font-size: 200%;
                 font-weight: bold;
-                border-bottom: 1px solid ${({ theme }) => theme.utils.border};
             }
-            &.frequency, &.ratio {
+            .frequency, .ratio {
                 color: ${({ theme }) => theme.text.secondary};
                 font-size: 80%;
+                padding: 4px;
             }
         }
     }
@@ -48,61 +34,18 @@ const DetailsCard: React.FC<any> = ({ model }) => {
 
     return (
         <StyledDetailsCard>
-            <table>
-                <tbody>
-                    {notes &&
-                        <tr>
-                            <th>Notes</th>
-                            {notes.map((note, i) => {
-                                return (
-                                    <td key={note.id} className={`note featured`}>
-                                        {note.name}
-                                        <sub>{note.getOctave()}</sub>
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                    }
-                    {notes && false && 
-                        <tr>
-                            <th>Pods</th>
-                            {notes.map((note, i) => {
-                                return (
-                                    <td key={note.id} className={`ratio`}>
-                                        {JSON.stringify(note.pod)}
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                    }
-                    <tr>
-                        <th>Intervals</th>
-                        {intervals.map((ivl, i) => {
-                            return (
-                                <td key={ivl.id} className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</td>
-                            );
-                        })}
-                    </tr>
-                    {notes &&
-                        <tr>
-                            <th>Frequency</th>
-                            {notes.map((note, i) => {
-                                return (
-                                    <td key={note.id} className={`frequency`}>{note.getFrequency(true)}</td>
-                                );
-                            })}
-                        </tr>
-                    }
-                    <tr>
-                        <th>Ratio</th>
-                        {intervals.map((ivl, i) => {
-                            return (
-                                <td key={ivl.id} className={`ratio`}>{ivl.getRatio()}</td>
-                            );
-                        })}
-                    </tr>
-                </tbody>
-            </table>
+            <ul>
+                {intervals.map((ivl, i) => {
+                    return (
+                        <li key={ivl.id} className={`box`}>
+                            {notes && <div className={`note featured`}>{notes[i].name}<sub>{notes[i].getOctave()}</sub></div>}
+                            <div className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</div>
+                            {notes && <div className={`frequency`}>{notes[i].getFrequency(true)}</div>}
+                            <div className={`ratio`}>{ivl.getRatio()}</div>
+                        </li>
+                    );
+                })}
+            </ul>
         </StyledDetailsCard>
     );
 };

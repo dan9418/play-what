@@ -6,12 +6,14 @@ export const StyledInputRow = styled.div`
     align-items: flex-start;
     flex-direction: column;
 
-    @media(min-width: 512px) {
-        align-items: center;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-bottom: 8px;
-    }
+    ${props => props.$y ? '' : `
+        @media(min-width: 512px) {
+            align-items: center;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+    `}
 
     label {
         color: ${({ theme }) => theme.dark3};
@@ -20,9 +22,9 @@ export const StyledInputRow = styled.div`
     }
 `;
 
-const InputRow = ({ label, children }) => {
+const InputRow = ({ label, children, y = false, ...rest }) => {
     return (
-        <StyledInputRow>
+        <StyledInputRow $y={y} {...rest}>
             <label>{label}</label>
             <div className="octave">
                 {children}
