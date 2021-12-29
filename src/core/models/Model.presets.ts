@@ -248,23 +248,12 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
 ]);
 
 export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
+    // Triads
     [ChordId.MajTriad, formatChordPreset(
         ChordId.MajTriad,
         'Major Triad',
         [IntervalId.P1, IntervalId.M3, IntervalId.P5],
         [ChordTag.Major, ChordTag.Triad]
-    )],
-    [ChordId.Maj6, formatChordPreset(
-        ChordId.Maj6,
-        'Major 6th',
-        [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M6],
-        [ChordTag.Major, ChordTag.Sixth]
-    )],
-    [ChordId.Maj7, formatChordPreset(
-        ChordId.Maj7,
-        'Major 7th',
-        [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
-        [ChordTag.Major, ChordTag.Seventh]
     )],
     [ChordId.MinTriad, formatChordPreset(
         ChordId.MinTriad,
@@ -272,22 +261,29 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         [IntervalId.P1, IntervalId.m3, IntervalId.P5],
         [ChordTag.Minor, ChordTag.Triad]
     )],
-    [ChordId.Min6, formatChordPreset(
-        ChordId.Min6,
-        'Minor 6th',
-        [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M6],
-        [ChordTag.Minor, ChordTag.Sixth]
+    [ChordId.AugTriad, formatChordPreset(
+        ChordId.AugTriad,
+        'Augmented Triad',
+        [IntervalId.P1, IntervalId.M3, IntervalId.A5],
+        [ChordTag.Augmented, ChordTag.Triad]
+    )],
+    [ChordId.DimTriad, formatChordPreset(
+        ChordId.DimTriad,
+        'Diminished Triad',
+        [IntervalId.P1, IntervalId.m3, IntervalId.d5],
+        [ChordTag.Diminished, ChordTag.Triad]
+    )],
+    // Sevenths
+    [ChordId.Maj7, formatChordPreset(
+        ChordId.Maj7,
+        'Major 7th',
+        [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
+        [ChordTag.Major, ChordTag.Seventh]
     )],
     [ChordId.Min7, formatChordPreset(
         ChordId.Min7,
         'Minor 7th',
         [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.m7],
-        [ChordTag.Minor, ChordTag.Seventh]
-    )],
-    [ChordId.MinMaj7, formatChordPreset(
-        ChordId.MinMaj7,
-        'Minor-Major 7th',
-        [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M7],
         [ChordTag.Minor, ChordTag.Seventh]
     )],
     [ChordId.Dom7, formatChordPreset(
@@ -296,29 +292,11 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7],
         [ChordTag.Dominant, ChordTag.Seventh]
     )],
-    [ChordId.AugTriad, formatChordPreset(
-        ChordId.AugTriad,
-        'Augmented Triad',
-        [IntervalId.P1, IntervalId.M3, IntervalId.A5],
-        [ChordTag.Augmented, ChordTag.Triad]
-    )],
-    [ChordId.Aug7, formatChordPreset(
-        ChordId.Aug7,
-        'Augmented 7th',
-        [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.m7],
-        [ChordTag.Augmented, ChordTag.Seventh]
-    )],
-    [ChordId.AugMaj7, formatChordPreset(
-        ChordId.AugMaj7,
-        'Augmented Major 7th',
-        [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.M7],
-        [ChordTag.Augmented, ChordTag.Seventh]
-    )],
-    [ChordId.DimTriad, formatChordPreset(
-        ChordId.DimTriad,
-        'Diminished Triad',
-        [IntervalId.P1, IntervalId.m3, IntervalId.d5],
-        [ChordTag.Diminished, ChordTag.Triad]
+    [ChordId.MinMaj7, formatChordPreset(
+        ChordId.MinMaj7,
+        'Minor-Major 7th',
+        [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M7],
+        [ChordTag.Minor, ChordTag.Seventh]
     )],
     [ChordId.Dim7, formatChordPreset(
         ChordId.Dim7,
@@ -332,6 +310,32 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         [IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.m7],
         [ChordTag.Diminished, ChordTag.Seventh]
     )],
+    [ChordId.Aug7, formatChordPreset(
+        ChordId.Aug7,
+        'Augmented 7th',
+        [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.m7],
+        [ChordTag.Augmented, ChordTag.Seventh]
+    )],
+    [ChordId.AugMaj7, formatChordPreset(
+        ChordId.AugMaj7,
+        'Augmented Major 7th',
+        [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.M7],
+        [ChordTag.Augmented, ChordTag.Seventh]
+    )],
+    // Sixths
+    [ChordId.Maj6, formatChordPreset(
+        ChordId.Maj6,
+        'Major 6th',
+        [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M6],
+        [ChordTag.Major, ChordTag.Sixth]
+    )],
+    [ChordId.Min6, formatChordPreset(
+        ChordId.Min6,
+        'Minor 6th',
+        [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M6],
+        [ChordTag.Minor, ChordTag.Sixth]
+    )],
+    // Suspended
     [ChordId.Sus2, formatChordPreset(
         ChordId.Sus2,
         'Suspended 2nd',

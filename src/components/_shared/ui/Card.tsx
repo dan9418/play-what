@@ -15,9 +15,9 @@ export const StyledCard = styled.div`
     }
 `;
 
-const Card: React.FC<any> = ({ title, action, children }) => {
+const Card: React.FC<any> = ({ title, action, children, ...rest }) => {
     return (
-        <StyledCard>
+        <StyledCard {...rest}>
             {title &&
                 <div className="header">
                     <h2>{title}</h2>

@@ -14,6 +14,8 @@ const StyledBrowsePage = styled(StyledPageBody)`
     margin: auto;
 
     ${StyledPane} {
+        max-width: 512px;
+        margin: 16px auto;
         p {
             margin: 16px 0 48px;
         }

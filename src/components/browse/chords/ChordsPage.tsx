@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
@@ -34,43 +35,58 @@ const ChordsPage: React.FC<any> = props => {
                     </p>
                     <h3>Types of Chords</h3>
                     <ul>
-                        <li><a href="#triads">Triads</a></li>
-                        <li><a href="#triads">Seventh Chords</a></li>
-                        <li><a href="#triads">Sixth Chords</a></li>
+                        <li><a href="#triad">Triads</a></li>
+                        <li><a href="#seventh">Seventh Chords</a></li>
+                        <li><a href="#sixth">Sixth Chords</a></li>
+                        <li><a href="#suspended">Suspended Chords</a></li>
                     </ul>
                 </Card>
-                <Card title="Triads">
+                <Card title="Triads" id="triad">
                     <p>
-                        A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
+                        A triad is the most basic type of chord. It consists of 3 intervals (a root, a third, and a fifth). The specific types of thirds and fifths define the different types of triads.
                     </p>
                     <h3>Examples</h3>
                     <ul>
-                        <li><a href="#triads">Major Triad</a></li>
-                        <li><a href="#triads">Minor Triad</a></li>
-                        <li><a href="#triads">Augmented Triad</a></li>
-                        <li><a href="#triads">Diminished Triad</a></li>
+                        <li><Link to='/browse/chords/major-triad'>Major Triad</Link></li>
+                        <li><Link to='/browse/chords/minor-triad'>Minor Triad</Link></li>
+                        <li><Link to='/browse/chords/augmented-triad'>Augmented Triad</Link></li>
+                        <li><Link to='/browse/chords/diminished-triad'>Diminished Triad</Link></li>
                     </ul>
                 </Card>
-                <Card title="Seventh Chords">
+                <Card title="Seventh Chords" id="seventh">
                     <p>
-                        A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
+                        A seventh chord is a triad with an additional interval (a seventh) stacked on top.
                     </p>
                     <h3>Examples</h3>
                     <ul>
-                        <li><a href="#triads">Major Seventh</a></li>
-                        <li><a href="#triads">Minor Seventh</a></li>
-                        <li><a href="#triads">Dominant Seventh</a></li>
-                        <li><a href="#triads">Half-Diminished Seventh</a></li>
+                        <li><Link to='/browse/chords/major-7th'>Major 7th</Link></li>
+                        <li><Link to='/browse/chords/minor-7th'>Minor 7th</Link></li>
+                        <li><Link to='/browse/chords/dominant-7th'>Dominant 7th</Link></li>
+                        <li><Link to='/browse/chords/minor-major-7th'>Minor-Major 7th</Link></li>
+                        <li><Link to='/browse/chords/diminished-7th'>Diminished 7th</Link></li>
+                        <li><Link to='/browse/chords/half-diminished-7th'>Half-Diminished 7th</Link></li>
+                        <li><Link to='/browse/chords/augmented-7th'>Augmented 7th</Link></li>
+                        <li><Link to='/browse/chords/augmented-major-7th'>Augmented Major 7th</Link></li>
                     </ul>
                 </Card>
-                <Card title="Sixth Chords">
+                <Card title="Sixth Chords" id="sixth">
                     <p>
-                        A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
+                        A sixth chord is like a seventh chord, except it uses a sixth interval in place of the seventh.
                     </p>
                     <h3>Examples</h3>
                     <ul>
-                        <li><a href="#triads">Major Sixth</a></li>
-                        <li><a href="#triads">Minor Sixth</a></li>
+                        <li><Link to='/browse/chords/major-6th'>Major 6th</Link></li>
+                        <li><Link to='/browse/chords/minor-6th'>Minor 6th</Link></li>
+                    </ul>
+                </Card>
+                <Card title="Suspended Chords" id="suspended">
+                    <p>
+                        A suspended chord is a like a triad, except it uses a second or fourth interval in place of the third.
+                    </p>
+                    <h3>Examples</h3>
+                    <ul>
+                        <li><Link to='/browse/chords/suspended-2nd'>Suspended 2nd</Link></li>
+                        <li><Link to='/browse/chords/suspended-4th'>Suspended 4th</Link></li>
                     </ul>
                 </Card>
             </StyledPane>
