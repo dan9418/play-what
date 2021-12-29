@@ -73,3 +73,45 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
 };
 
 export default SearchPage;
+
+/*
+    <SearchPage
+        title="Chords"
+        subtitle="A chord is a group of notes played simultaneously"
+        tag={ChordTag}
+        headers={[
+            'Name',
+            'Intervals',
+            //'Tags'
+        ]}
+        rows={CHORD_PRESETS.map(p => new Chord(p.id))}
+        getCols={preset => {
+            return [
+                <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
+                preset.getIntervalListString(),
+                //preset.tags.join(', ')
+            ]
+        }}
+        {...props}
+    />
+
+    <SearchPage
+        title="Scales"
+        subtitle="A scale is a group of notes played sequentially"
+        tag={ScaleTag}
+        headers={[
+            'Name',
+            'Intervals',
+            //'Tags'
+        ]}
+        rows={SCALE_PRESETS.map(p => new Scale(p.id))}
+        getCols={preset => {
+            return [
+                <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
+                preset.getIntervalListString(),
+                //preset.tags.join(', ')
+            ]
+        }}
+        {...props}
+    />
+*/
