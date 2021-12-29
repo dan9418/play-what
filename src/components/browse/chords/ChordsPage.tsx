@@ -27,7 +27,7 @@ const ChordsPage: React.FC<any> = props => {
     return (
         <StyledChordsPage>
             <BreadcrumbList id="chords" name="Chords" path={props.path} />
-            <PageTitle title="Chords" subtitle="The bulding blocks of harmony" />
+            <PageTitle title="Chords" subtitle="The foundation of harmony" />
             <StyledPane>
                 <Card title="Chord Basics">
                     <p>
