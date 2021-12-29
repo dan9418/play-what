@@ -4,40 +4,24 @@ import styled from 'styled-components';
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
+import { StyledPane } from "../_shared/layout/Pane";
+import Card from "../_shared/ui/Card";
+import Icon from "../_shared/ui/Icon";
 
 const StyledBrowsePage = styled(StyledPageBody)`
     width: 100%;
     max-width: 1024px;
     margin: auto;
 
-    .tile-container {
-        padding: 16px;
-        gap: 16px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
+    ${StyledPane} {
+        p {
+            margin: 16px 0 48px;
+        }
 
         a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            aspect-ratio: 1;
-
-            text-decoration: none;
-            border: 2px solid ${props => props.theme.action.interactive};
-            color: ${props => props.theme.action.interactive};
-            border-radius: 8px;
+            display: block;
             font-size: 140%;
-            font-weight: bold;
-
-            height: 128px;
-            width: 128px;
-
-            &:hover {
-                background-color: ${({ theme }) => theme.utils.hoverDark};
-            }
+            text-align: right;
         }
     }
 `;
@@ -48,13 +32,21 @@ const BrowsePage: React.FC<any> = props => {
     return (
         <StyledBrowsePage>
             <BreadcrumbList id="browse" name="Browse" path={props.path} />
-            <PageTitle title="Browse Ideas" subtitle="Select a category to get started..." />
-            <div className="tile-container">
-                {/*<Link to="/browse/notes">Notes</Link>
-                <Link to="/browse/intervals">Intervals</Link>*/}
-                <Link to="/browse/chords">Chords</Link>
-                <Link to="/browse/scales">Scales</Link>
-            </div>
+            <PageTitle title="Browse" subtitle={null} />
+            <StyledPane>
+                <Card title="Chords">
+                    <p>
+                        A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
+                    </p>
+                    <Link to="/browse/chords">Explore Chords <Icon iconId="next" /></Link>
+                </Card>
+                <Card title="Scales">
+                    <p>
+                        A scale is a group of notes played sequentially. They are the basic building blocks of melody.
+                    </p>
+                    <Link to="/browse/scales">Explore Scales <Icon iconId="next" /></Link>
+                </Card>
+            </StyledPane>
         </StyledBrowsePage>
     );
 };
