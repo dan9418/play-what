@@ -3,7 +3,7 @@ import ArrayUtils from '../general/Array.utils';
 import NumberUtils from '../general/Number.utils';
 import Chord from './Chord';
 import Model from './Model';
-import { IntervalId, IPod, ScaleId } from './Model.constants';
+import { IntervalId, IPod, ScaleId, ScaleTag } from './Model.constants';
 import { SCALE_PRESETS, SCALE_PRESET_MAP } from './Model.presets';
 import { arePodListsEqual, reducePodList, subtractPods } from './Pod.static';
 import PodList from './PodList';
@@ -32,9 +32,7 @@ export default class Scale extends PodList {
             const newIvl = IntervalSpan.fromValue(newPod);
             newIntervals.push(newIvl);
         }
-        console.log('dpb mode', newPods, newIntervals);
         const mode = Scale.fromValue(newPods);
-        console.log('dpb mode', mode);
 
         /*if (this.root) {
             numeral.applyRoot(this.notes[d]);
@@ -45,8 +43,14 @@ export default class Scale extends PodList {
 
     getAllModes() {
         const modes = [];
-        for (let i = 0; i < this.podList.length; i++) {
-            modes.push(this.getMode(i));
+        if (this.tags.includes(ScaleTag.Diatonic) ||
+            this.tags.includes(ScaleTag.Pentatonic) ||
+            this.tags.includes(ScaleTag.MelodicMode) ||
+            this.tags.includes(ScaleTag.HarmonicMode)
+        ) {
+            for (let i = 0; i < this.podList.length; i++) {
+                modes.push(this.getMode(i));
+            }
         }
         return modes;
     };
