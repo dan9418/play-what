@@ -40,13 +40,13 @@ const BrowsePage: React.FC<any> = props => {
                     <p>
                         A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
                     </p>
-                    <Link to="/browse/chords">Explore Chords <Icon iconId="next" /></Link>
+                    <Link to="/chords">Explore Chords <Icon iconId="next" /></Link>
                 </Card>
                 <Card title="Scales">
                     <p>
                         A scale is a group of notes played sequentially. They are the basic building blocks of melody.
                     </p>
-                    <Link to="/browse/scales">Explore Scales <Icon iconId="next" /></Link>
+                    <Link to="/scales">Explore Scales <Icon iconId="next" /></Link>
                 </Card>
             </StyledPane>
         </StyledBrowsePage>

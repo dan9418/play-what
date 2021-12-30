@@ -29,7 +29,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subchords.map(s => (
-                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/chords/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -40,7 +40,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superchords.map(s => (
-                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/chords/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -51,7 +51,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subscales.map(s => (
-                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/scales/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -62,7 +62,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superscales.map(s => (
-                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/scales/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>

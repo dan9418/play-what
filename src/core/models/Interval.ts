@@ -61,7 +61,6 @@ export default class IntervalSpan extends Pod {
 
         const value = `${qualityStr}${d + 1}`;
 
-        console.log('dpb', value);
         /*if (isExtended) {
             console.log('x', value);
             if (value === 'm2') value = 'b9'

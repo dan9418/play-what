@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { StyledCard } from "../../../_shared/ui/Card";
+import { StyledCard } from "../ui/Card";
 
 const StyledDetailsCard = styled(StyledCard)`
     ul {

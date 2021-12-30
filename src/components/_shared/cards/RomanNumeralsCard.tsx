@@ -33,7 +33,7 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                 <ul>
                     {numerals.map((n, i) => (
                         <li key={i}>
-                            <Link to={`/browse/${n.modelId}/${n.id}`}>{n.name}</Link>
+                            <Link to={`/${n.modelId}/${n.id}`}>{n.name}</Link>
                         </li>
                     ))}
                 </ul>
