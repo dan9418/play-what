@@ -11,7 +11,7 @@ const StyledBreadcrumbList = styled.ul`
     gap: 8px;
     padding: 16px 0;
     white-space: nowrap;
-    text-transform: uppercase;
+    text-transform: capitalize;
     svg {
         margin-right: 8px;
     }
@@ -20,17 +20,13 @@ const StyledBreadcrumbList = styled.ul`
 const BreadcrumbList = ({ id, name, path }) => {
     let pieces = path.split('/');
     pieces = pieces.slice(0, pieces.length - 1);
-    const paths = [
-        <li key="0">
-            <Link to={`/`}>Home</Link>
-        </li>
-    ];
+    const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
-        const val = prev ? `${prev}/${cur}` : cur;
+        const val = prev ? `${prev}/${cur}` : '/';
         paths.push(
             <li key={i}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
-                <Link to={`/${val}`}>{cur}</Link>
+                <Link to={`/${val}`}>{i === 0 ? 'Home' : cur}</Link>
             </li>
         );
         return val;
