@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import Card from "../../../_shared/ui/Card";
+import Card from "../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
     ul {

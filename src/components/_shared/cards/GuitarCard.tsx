@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Fretboard from "../../../../viewers/fretboard/Fretboard";
-import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../../viewers/fretboard/Fretboard.tuning";
-import { getFretboardProps } from "../../../../viewers/fretboard/Fretboard.utils";
-import { VoicingId, VOICING_PRESETS } from "../../../../viewers/fretboard/Fretboard.voicing";
-import DropdownInput from "../../../_shared/inputs/DropdownInput";
-import Card from "../../../_shared/ui/Card";
-import InputRow from "../../../_shared/ui/InputRow";
+import Fretboard from "../../../viewers/fretboard/Fretboard";
+import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../viewers/fretboard/Fretboard.tuning";
+import { getFretboardProps } from "../../../viewers/fretboard/Fretboard.utils";
+import { VoicingId, VOICING_PRESETS } from "../../../viewers/fretboard/Fretboard.voicing";
+import DropdownInput from "../../_shared/inputs/DropdownInput";
+import Card from "../../_shared/ui/Card";
+import InputRow from "../../_shared/ui/InputRow";
 
 const StyledGuitarCard = styled.div`
     

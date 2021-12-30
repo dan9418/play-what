@@ -4,12 +4,12 @@ import { Link } from "gatsby";
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { usePageProps } from "../../../../contexts/PagePropsContext";
-import NumberUtils from "../../../../core/general/Number.utils";
-import { rootState } from "../../../../state/state";
-import NumericInput from "../../../_shared/inputs/NumericInput";
-import Card from "../../../_shared/ui/Card";
-import InputRow from "../../../_shared/ui/InputRow";
+import { usePageProps } from "../../../contexts/PagePropsContext";
+import NumberUtils from "../../../core/general/Number.utils";
+import { rootState } from "../../../state/state";
+import NumericInput from "../../_shared/inputs/NumericInput";
+import Card from "../../_shared/ui/Card";
+import InputRow from "../../_shared/ui/InputRow";
 
 const StyledRoot = styled.div`
     h3 {

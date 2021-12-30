@@ -2,9 +2,9 @@ import { Link } from "gatsby";
 import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { usePageProps } from "../../../../contexts/PagePropsContext";
-import { rootState } from "../../../../state/state";
-import Card from "../../../_shared/ui/Card";
+import { usePageProps } from "../../../contexts/PagePropsContext";
+import { rootState } from "../../../state/state";
+import Card from "../../_shared/ui/Card";
 
 const StyledRomanNumeralsCard = styled.div`
     ul {

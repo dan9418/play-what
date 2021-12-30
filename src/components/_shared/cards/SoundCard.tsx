@@ -1,9 +1,9 @@
+import Model from "@pw-core/models/Model";
 import React from "react";
 import styled from 'styled-components';
-import Model from "@pw-core/models/Model";
-import ButtonInput from "../../../_shared/inputs/ButtonInput";
-import Card from "../../../_shared/ui/Card";
-import Icon from "../../../_shared/ui/Icon";
+import ButtonInput from "../../_shared/inputs/ButtonInput";
+import Card from "../../_shared/ui/Card";
+import Icon from "../../_shared/ui/Icon";
 
 const StyledSoundCard = styled.div`
     display: flex;

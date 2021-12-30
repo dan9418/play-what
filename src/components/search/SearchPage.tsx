@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
-import FilterList from "../../_shared/inputs/FilterList";
-import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageTitle from "../../_shared/layout/PageTitle";
-import Card from "../../_shared/ui/Card";
+import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
+import FilterList from "../_shared/inputs/FilterList";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageTitle from "../_shared/layout/PageTitle";
+import Card from "../_shared/ui/Card";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
 
 const StyledSearchPage = styled(StyledPageBody)`

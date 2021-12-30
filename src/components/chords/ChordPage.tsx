@@ -2,16 +2,16 @@ import Chord from "@pw-core/models/Chord";
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
-import { rootState } from "../../../state/state";
-import BreadcrumbList from "../../_shared/breadcrumb-list/BreadcrumbList";
-import { StyledPageBody } from "../../_shared/layout/PageBody";
-import PageTitle from "../../_shared/layout/PageTitle";
-import { StyledPane } from "../../_shared/layout/Pane";
+import { rootState } from "../../state/state";
+import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
+import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageTitle from "../_shared/layout/PageTitle";
+import { StyledPane } from "../_shared/layout/Pane";
 
 const StyledChordPage = styled(StyledPageBody)`
 
