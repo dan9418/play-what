@@ -22,15 +22,16 @@ const BreadcrumbList = ({ id, name, path }) => {
     pieces = pieces.slice(0, pieces.length - 1);
     const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
-        const val = prev ? `${prev}/${cur}` : '/';
+        const path = `${prev}/${cur}`.replace('//', '/');
+        console.log('dpb', path, prev, cur)
         paths.push(
             <li key={i}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
-                <Link to={`/${val}`}>{i === 0 ? 'Home' : cur}</Link>
+                <Link to={path || '/'}>{i === 0 ? 'Home' : cur.replaceAll('-', ' ')}</Link>
             </li>
         );
-        return val;
-    }, '');
+        return path;
+    }, '/');
     return <StyledBreadcrumbList>{paths}</StyledBreadcrumbList>;
 }
 
