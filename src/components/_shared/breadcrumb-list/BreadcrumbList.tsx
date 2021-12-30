@@ -23,7 +23,6 @@ const BreadcrumbList = ({ id, name, path }) => {
     const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/');
-        console.log('dpb', path, prev, cur)
         paths.push(
             <li key={i}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}

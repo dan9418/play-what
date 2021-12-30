@@ -51,17 +51,17 @@ export default class IntervalSpan extends Pod {
         }
 
         const offset = ivl.value[0] - reduced[0];
-        let qualityStr = quality.symbol
 
-        if (!offset) return `${qualityStr}${d + 1}`;
-        if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
-        if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
+        if (offset === 0) return `${quality.symbol}${d + 1}`;
+        else if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
+        else if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
 
         const count = Math.abs(offset);
-        qualityStr = qualityStr.repeat(count);
+        const qualityStr = quality.symbol.repeat(count);
 
         const value = `${qualityStr}${d + 1}`;
 
+        console.log('dpb', value);
         /*if (isExtended) {
             console.log('x', value);
             if (value === 'm2') value = 'b9'
