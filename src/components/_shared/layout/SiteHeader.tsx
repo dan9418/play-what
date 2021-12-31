@@ -1,10 +1,9 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
-import Icon from '../ui/Icon';
 
 const StyledSiteHeader = styled.div`
-    height: 64px;
+    height: 32px;
 	padding: 0 16px;
 
     position: fixed;
@@ -20,7 +19,7 @@ const StyledSiteHeader = styled.div`
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		max-width: 1920px;
+		max-width: 1024px;
 		margin: auto;
 	}
 	
@@ -28,8 +27,8 @@ const StyledSiteHeader = styled.div`
 		color: ${({ theme }) => theme.text.inverted};
 		text-decoration: none;
 		white-space: nowrap;
-		height: 64px;
-		line-height: 64px;
+		height: 32px;
+		line-height: 32px;
 
 		//display: flex;
 		//align-items: center;
@@ -46,7 +45,7 @@ const StyledSiteHeader = styled.div`
 	}
 
 	.logo {
-		font-size: 32px;
+		font-size: 16px;
 		text-transform: uppercase;
 		letter-spacing: 4px;
 		font-weight: 300;
@@ -56,7 +55,7 @@ const StyledSiteHeader = styled.div`
 		display: flex;
 
 		.separator {
-			height: 48px;
+			height: 24px;
 			width: 1px;
 			background-color: ${({ theme }) => theme.text.secondary};
 			margin: 8px;
@@ -92,14 +91,6 @@ const SiteHeader: React.FC = () => {
 				<div className="links-container">
 					<div className="nav-links">
 						<Link {...getLinkProps('browse')}>Browse</Link>
-						<Link {...getLinkProps('theme')}>Theme</Link>
-						<Link {...getLinkProps('practice')}>Practice</Link>
-						{/*<Link {...getLinkProps('docs')}>Docs</Link>
-						<Link {...getLinkProps('test')}>Test</Link>*/}
-					</div>
-					<div className="separator" />
-					<div className="icon-links">
-						<a href=""><Icon iconId="github" color={theme.text.inverted} size={32} /></a>
 					</div>
 				</div>
 			</div>
