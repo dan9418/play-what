@@ -1,6 +1,7 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import Main from "./src/components/_shared/layout/Main";
+import SiteFooter from "./src/components/_shared/layout/SiteFooter";
 import SiteHeader from "./src/components/_shared/layout/SiteHeader";
 import ErrorBoundary from "./src/components/_shared/utils/ErrorBoundary";
 import { PagePropsContextProvider } from "./src/contexts/PagePropsContext";
@@ -25,6 +26,7 @@ export const wrapPageElement = ({ element, props }) => {
                 <SiteHeader />
                 <Main>
                     {element}
+                    <SiteFooter />
                 </Main>
             </PagePropsContextProvider>
         </>

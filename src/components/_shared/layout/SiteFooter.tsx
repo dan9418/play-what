@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const StyledSiteFooter = styled.div`
-    height: 64px;
+const StyledSiteFooter = styled.footer`
+    height: 128px;
 	width: 100%;
 	padding: 0 16px;
 
-	color: ${({ theme }) => theme.white};
-	background-color: ${({ theme }) => theme.brand.nav};
+	color: ${({ theme }) => theme.text.inverted};
+	background-color: ${({ theme }) => theme.surface.nav};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	display: flex;

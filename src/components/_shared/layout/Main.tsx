@@ -5,10 +5,11 @@ import { logPresetJson } from '../../../core/models/Model.presets';
 const StyledMain = styled.main`
 	margin: auto;
 	width: 100%;
+  min-height: 100vh;
 
   position: relative;
 
-  padding: 64px 0;
+  padding: 64px 0 0;
   overflow: auto;
 `;
 
