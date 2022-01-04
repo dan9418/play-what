@@ -1,4 +1,3 @@
-import { NoteId } from "@pw-core/models/Model.constants";
 import Note from "@pw-core/models/Note";
 import { Link } from "gatsby";
 import React from "react";
@@ -6,10 +5,11 @@ import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps } from "../../../contexts/PagePropsContext";
 import NumberUtils from "../../../core/general/Number.utils";
+import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import { rootState } from "../../../state/state";
-import NumericInput from "../../_shared/inputs/NumericInput";
 import Card from "../../_shared/ui/Card";
 import InputRow from "../../_shared/ui/InputRow";
+import DropdownInput from "../inputs/DropdownInput";
 
 const StyledRoot = styled.div`
     h3 {
@@ -114,6 +114,14 @@ const AccidentalLink: React.FC<any> = ({ offset }) => {
     );
 };
 
+const NOTE_OPTIONS = [
+    {
+        id: 'unselected',
+        name: '---'
+    },
+    ...NOTE_PRESETS
+];
+
 const RootCard: React.FC<any> = () => {
     const pageProps = usePageProps();
     const [root, setRoot] = useRecoilState(rootState);
@@ -124,37 +132,16 @@ const RootCard: React.FC<any> = () => {
         setRoot(note);
     };
 
+    const selectedRoot = root ? root : { id: 'unselected' };
+
     return (
-        <Card
-            title={`Root`}
-            action={root ? <Link to={pageProps && pageProps.path}>Clear</Link> : undefined}
-        >
-            <StyledRoot>
-                <ul>
-                    <li><NoteLink noteId={NoteId.C} /></li>
-                    <li><NoteLink noteId={NoteId.D} /></li>
-                    <li><NoteLink noteId={NoteId.E} /></li>
-                    <li><NoteLink noteId={NoteId.F} /></li>
-                    <li><NoteLink noteId={NoteId.G} /></li>
-                    <li><NoteLink noteId={NoteId.A} /></li>
-                    <li><NoteLink noteId={NoteId.B} /></li>
-                </ul>
-                {root &&
-                    <div className="oct-acc">
-                        <InputRow label="Accidental" y>
-                            <ul>
-                                <li><AccidentalLink offset={-1} /></li>
-                                <li><AccidentalLink offset={0} /></li>
-                                <li><AccidentalLink offset={1} /></li>
-                            </ul>
-                        </InputRow>
-                        <InputRow label="Octave" y>
-                            <NumericInput value={octave} setValue={setOctave} />
-                        </InputRow>
-                    </div>
-                }
-            </StyledRoot>
-        </Card>
+
+        <StyledRoot>
+            <InputRow label="Root">
+                <DropdownInput options={NOTE_OPTIONS} value={selectedRoot.id} setValue={note => setRoot(note.id === 'unselected' ? undefined : new Note(note.value))} />
+            </InputRow>
+        </StyledRoot>
+
     );
 };
 

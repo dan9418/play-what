@@ -9,7 +9,7 @@ const StyledMain = styled.main`
 
   position: relative;
 
-  padding: 64px 0 0;
+  padding: 32px 0 0;
   overflow: auto;
 `;
 

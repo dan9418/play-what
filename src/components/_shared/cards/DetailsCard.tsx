@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import { StyledCard } from "../ui/Card";
+import RootCard from "./RootCard";
 
 const StyledDetailsCard = styled(StyledCard)`
     ul {
@@ -46,6 +47,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                     );
                 })}
             </ul>
+            <RootCard />
         </StyledDetailsCard>
     );
 };

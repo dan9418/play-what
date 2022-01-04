@@ -7,6 +7,7 @@ const StyledSiteFooter = styled.footer`
     height: 64px;
 	width: 100%;
 	padding: 0 16px;
+	font-size: 90%;
 
 	color: ${({ theme }) => theme.text.inverted};
 	background-color: ${({ theme }) => theme.surface.nav};
@@ -59,8 +60,9 @@ const SiteFooter: React.FC = () => {
 					<Icon iconId="github" color={theme.text.inverted} size={14} />
 					GitHub
 				</a>
+				<div className="separator" />
 				<a href="https://danbednarczyk.com">
-					Personal Site
+					2022 Dan Bednarczyk
 				</a>
 			</div>
 		</StyledSiteFooter>

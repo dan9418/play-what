@@ -9,7 +9,6 @@ import GuitarCard from "../_shared/cards/GuitarCard";
 import ModeCard from "../_shared/cards/ModeCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
 import RomanNumeralsCard from "../_shared/cards/RomanNumeralsCard";
-import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
@@ -32,7 +31,6 @@ const ScalePage: React.FC<any> = props => {
             <PageTitle title={scale.name} subtitle="Scale" />
             <StyledPane>
                 <DetailsCard model={scale} />
-                <RootCard model={scale} />
                 <GuitarCard model={scale} />
                 <RomanNumeralsCard model={scale} />
                 <ModeCard model={scale} />

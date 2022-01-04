@@ -7,7 +7,6 @@ import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
-import RootCard from "../_shared/cards/RootCard";
 import SoundCard from "../_shared/cards/SoundCard";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
@@ -28,7 +27,6 @@ const ChordPage: React.FC<any> = props => {
             <PageTitle title={chord.name} subtitle="Chord" />
             <StyledPane>
                 <DetailsCard model={chord} />
-                <RootCard model={chord} />
                 <GuitarCard model={chord} />
                 <RelatedCard model={chord} />
                 <SoundCard model={chord} />

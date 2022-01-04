@@ -9,7 +9,7 @@ const StyledBreadcrumbList = styled.ul`
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    padding: 16px 0;
+    padding: 0 0 16px 0;
     white-space: nowrap;
     text-transform: capitalize;
     svg {
