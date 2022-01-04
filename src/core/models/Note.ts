@@ -130,6 +130,6 @@ export default class Note extends Pod {
 
     getFrequency = (format = false) => {
         const f = TuningUtils.getFrequency(this.getPitch());
-        return format ? `${f.toFixed(2)}Hz` : f;
+        return format ? `${f.toFixed(0)} Hz` : f;
     }
 }

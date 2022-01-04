@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import Card from "../../_shared/ui/Card";
 
 const StyledRelated = styled.div`
@@ -24,6 +25,15 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     return (
         <>
+            <Card title="Other Roots">
+                <StyledRelated>
+                    <ul>
+                        {NOTE_PRESETS.map(s => (
+                            <li key={s.id}><Link to={`/chords/${model.id}/${s.id}`}>{s.name} {/*model.name*/}</Link></li>
+                        ))}
+                    </ul>
+                </StyledRelated>
+            </Card>
             {subchords.length > 0 &&
                 <Card title="Child Chords">
                     <StyledRelated>
