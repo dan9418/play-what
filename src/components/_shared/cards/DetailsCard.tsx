@@ -8,15 +8,21 @@ const StyledDetailsCard = styled(StyledCard)`
         display: flex;
         align-items: center;
         justify-content: center;
-        overflow-x: auto;
+
+        flex-direction: column;
+        @media(min-width: 512px) {
+            flex-direction: row;
+        }
 
         .box {
             padding: 8px 16px;
             text-align: center;
             font-size: 140%;
             .featured {
-                font-size: 200%;
                 font-weight: bold;
+                @media(min-width: 512px) {
+                    font-size: 200%;
+                }
             }
             .frequency, .ratio {
                 color: ${({ theme }) => theme.text.secondary};
