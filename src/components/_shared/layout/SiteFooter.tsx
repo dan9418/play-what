@@ -58,8 +58,8 @@ const SiteFooter: React.FC = () => {
 	return (
 		<StyledSiteFooter className="footer">
 			<div className="nav-links">
-				<Link to='/about'>About</Link>
-				<div className="separator" />
+				{/*<Link to='/about'>About</Link>
+				<div className="separator" />*/}
 				<Link to='/dev'>Developer Panel</Link>
 				<div className="separator" />
 				<a href="https://github.com/dan9418/play-what">

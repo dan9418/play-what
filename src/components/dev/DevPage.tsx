@@ -8,7 +8,10 @@ const StyledDevPage = styled(StyledPageBody)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+
+    li {
+        padding: 8px;
+    }
 `;
 
 const DevPage: React.FC<any> = () => {
