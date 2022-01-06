@@ -1,31 +1,34 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
-import { ThemeProvider } from 'styled-components';
 import Main from "./src/components/_shared/layout/Main";
+import SiteFooter from "./src/components/_shared/layout/SiteFooter";
 import SiteHeader from "./src/components/_shared/layout/SiteHeader";
 import ErrorBoundary from "./src/components/_shared/utils/ErrorBoundary";
-import THEME from "./src/styles/theme";
+import { PagePropsContextProvider } from "./src/contexts/PagePropsContext";
+import { ThemeManager } from "./src/styles/ThemeManager";
 
-export const wrapRootElement = ({ element }) => {
+export const wrapRootElement = ({ element, ...props }) => {
     return (
         <ErrorBoundary>
             <RecoilRoot>
-                <ThemeProvider theme={THEME}>
+                <ThemeManager>
                     {element}
-                </ThemeProvider>
+                </ThemeManager>
             </RecoilRoot>
         </ErrorBoundary>
     )
 }
 
-
 export const wrapPageElement = ({ element, props }) => {
     return (
         <>
-            <SiteHeader />
-            <Main>
-                {element}
-            </Main>
+            <PagePropsContextProvider value={props}>
+                <SiteHeader />
+                <Main>
+                    {element}
+                    <SiteFooter />
+                </Main>
+            </PagePropsContextProvider>
         </>
     )
 }
