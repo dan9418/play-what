@@ -25,7 +25,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     return (
         <>
-            <Card title="Other Roots">
+            {false && <Card title="Other Roots">
                 <StyledRelated>
                     <ul>
                         {NOTE_PRESETS.map(s => (
@@ -33,7 +33,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                         ))}
                     </ul>
                 </StyledRelated>
-            </Card>
+            </Card>}
             {subchords.length > 0 &&
                 <Card title="Child Chords">
                     <StyledRelated>

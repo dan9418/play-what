@@ -29,21 +29,29 @@ const ChordsPage: React.FC<any> = props => {
             <BreadcrumbList id="chords" name="Chords" path={props.path} />
             <PageTitle title="Chords" subtitle="The foundation of harmony" />
             <StyledPane>
-                <Card title="Chord Basics">
-                    <p>
-                        A chord is a group of notes played simultaneously. They are the basic building blocks of harmony.
+                <div>
+                    <p className="intro">
+                        A chord is a collection of musical notes, which are generally played simultaneously.
+                        Chords are defined by their first note (the <em>root</em>) and its relationship to the following notes (<em>intervals</em>).
+                        Most chords contain a root, a third, and a fifth. Advanced chords may include additional intervals, substitutions, and omissions.
                     </p>
+                    <p className="intro">
+                        In their most common form, chords contain at least three notes spanning a single octave.
+                        Chords spanning more than one octave are called <em>extended chords</em> and are not yet covered here.
+                    </p>
+                    {/*
                     <h3>Types of Chords</h3>
                     <ul>
                         <li><a href="#triad">Triads</a></li>
                         <li><a href="#seventh">Seventh Chords</a></li>
                         <li><a href="#sixth">Sixth Chords</a></li>
                         <li><a href="#suspended">Suspended Chords</a></li>
-                    </ul>
-                </Card>
+                    </ul>*/}
+                </div>
                 <Card title="Triads" id="triad">
                     <p>
-                        A triad is the most basic type of chord. It consists of 3 intervals (a root, a third, and a fifth). The specific types of thirds and fifths define the different types of triads.
+                        A triad is the most basic type of chord. It consists of 3 intervals (a root, a third, and a fifth).
+                        The specific thirds and fifths used determine the type (or <em>quality</em>) of the triad.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -55,7 +63,7 @@ const ChordsPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Seventh Chords" id="seventh">
                     <p>
-                        A seventh chord is a triad with an additional interval (a seventh) stacked on top.
+                        A seventh chord is a triad with an additional seventh interval stacked on top.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -71,7 +79,8 @@ const ChordsPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Sixth Chords" id="sixth">
                     <p>
-                        A sixth chord is like a seventh chord, except it uses a sixth interval in place of the seventh.
+                        A sixth chord is a triad with an additional sixth interval stacked on top.
+                        They are similar in function to seventh chords.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -81,7 +90,7 @@ const ChordsPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Suspended Chords" id="suspended">
                     <p>
-                        A suspended chord is a like a triad, except it uses a second or fourth interval in place of the third.
+                        A suspended chord is a like a triad, except it sustitutes a second or fourth interval in place of the third.
                     </p>
                     <h3>Examples</h3>
                     <ul>

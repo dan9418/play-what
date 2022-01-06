@@ -13,6 +13,11 @@ const StyledScalesPage = styled(StyledPageBody)`
     max-width: 1024px;
     margin: auto;
 
+    .intro {
+        font-size: 110%;
+        line-height: 120%;
+    }
+
     ${StyledPane} {
         h3, p {
             margin: 16px 0;
@@ -30,18 +35,26 @@ const ScalesPage: React.FC<any> = props => {
             <BreadcrumbList id="scales" name="Scales" path={props.path} />
             <PageTitle title="Scales" subtitle="The foundation of melody" />
             <StyledPane>
-                <Card title="Scale Basics">
-                    <p>
-                        A scale is a group of notes played sequentially. They are the basic building blocks of melody.
+                <div>
+                    <p className="intro">
+                        A scale is a collection of musical notes, which are generally played sequentially and ordered by pitch.
+                        Scales are defined by their first note (the <em>root</em>) and its relationship to the following notes (<em>intervals</em>).
                     </p>
-                    <h3>Types of Scales</h3>
+                    <p className="intro">
+                        In their most common form, scales contain seven notes spanning a single octave. These seven <em>degrees</em> are lettered A-G.
+                    </p>
+                    <h2>Modes</h2>
+                    <p className="intro">
+                        A <em>mode</em> is simply a rotation of any given scale.
+                    </p>
+                    {/*<h3>Types of Scales</h3>
                     <ul>
                         <li><a href="#diatonic">Diatonic</a></li>
                         <li><a href="#pentatonic">Pentatonic</a></li>
                         <li><a href="#blues">Blues</a></li>
                         <li><a href="#bebop">Bebop</a></li>
-                    </ul>
-                </Card>
+                    </ul>*/}
+                </div>
                 <Card title="Common Scales" id="common">
                     <ul>
                         <li><Link to={`/scales/${ScaleId.Ionian}`}>Major (Ionian)</Link></li>
@@ -54,7 +67,8 @@ const ScalesPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Diatonic Modes" id="diatonic">
                     <p>
-                        Diatonic scales are the most common type in Western music.
+                        Diatonic scales are by far the most common type in Western music. They are defined by a specific sequence of seven intervals containing five whole-steps and two half-steps.
+                        The most common form of the diatonic scale is the Major scale (AKA the Ionian mode), which follows the pattern W-W-W-H-W-W-H.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -69,7 +83,9 @@ const ScalesPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Harmonic Minor Modes" id="harmonic">
                     <p>
-                        Harmonic minor scales are...
+                        The Harmonic Minor scale is a slight variation of the Natural Minor scale (which itself is just a mode of the Diatonic scale).
+                        The only difference is that the seventh degree is raised a half-step, creating a Major 7th interval instead of a Minor 7th.
+                        This slight variation to the diatonic scale creates seven more unique modes.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -84,7 +100,9 @@ const ScalesPage: React.FC<any> = props => {
                 </Card>
                 <Card title="Melodic Minor Modes" id="melodic">
                     <p>
-                        Melodic minor scales are...
+                        The Melodic Minor scale is formed by making one additional change to the Harmonic Minor scale.
+                        We simply raise the sixth degree by a half-step, creating a Major 6th interval instead of a Major 7th.
+                        This variation also creates seven unique modes.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -97,9 +115,10 @@ const ScalesPage: React.FC<any> = props => {
                         <li><Link to={`/scales/${ScaleId.SuperLocrian}`}>Super Locrian (Altered)</Link></li>
                     </ul>
                 </Card>
-                <Card title="Pentatonic" id="pentatonic">
+                <Card title="Pentatonic Modes" id="pentatonic">
                     <p>
-                        Pentatonic scales contains 5 notes.
+                        Pentatonic scales contain only five notes and are often a subset of diatonic scales.
+                        For example, the Major Pentatonic scale is the same as a Major Diatonic scale without the 4th and 7th degrees.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -110,9 +129,9 @@ const ScalesPage: React.FC<any> = props => {
                         <li><Link to={`/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
                     </ul>
                 </Card>
-                <Card title="Blues" id="blues">
+                <Card title="Blues Scales" id="blues">
                     <p>
-                        Blues scales are pentatonic scales with an extra note.
+                        Blues scales are pentatonic scales with an extra "blue" note.
                     </p>
                     <h3>Examples</h3>
                     <ul>
@@ -120,9 +139,9 @@ const ScalesPage: React.FC<any> = props => {
                         <li><Link to={`/scales/${ScaleId.MinorBlues}`}>Minor Blues</Link></li>
                     </ul>
                 </Card>
-                <Card title="Bebop" id="bebop">
+                <Card title="Bebop Scales" id="bebop">
                     <p>
-                        Bebop scales are diatonic scales with an extra note.
+                        Bebop scales are diatonic scales with an extra chomatic passing note.
                     </p>
                     <h3>Examples</h3>
                     <ul>
