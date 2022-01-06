@@ -1,0 +1,410 @@
+[
+    {
+        "modelId": "chords",
+        "id": "major-triad",
+        "name": "Major Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "major",
+            "triad"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "major-6th",
+        "name": "Major 6th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ]
+        ],
+        "tags": [
+            "major",
+            "6th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "major-7th",
+        "name": "Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "major",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "minor-triad",
+        "name": "Minor Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "minor",
+            "triad"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "minor-6th",
+        "name": "Minor 6th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                9,
+                5
+            ]
+        ],
+        "tags": [
+            "minor",
+            "6th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "minor-7th",
+        "name": "Minor 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "minor",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "minor-major-7th",
+        "name": "Minor-Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "minor",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "dom-7th",
+        "name": "Dominant 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "dominant",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "augmented-triad",
+        "name": "Augmented Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ]
+        ],
+        "tags": [
+            "augmented",
+            "triad"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "augmented-7th",
+        "name": "Augmented 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "augmented",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "augmented-major-7th",
+        "name": "Augmented Major 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                8,
+                4
+            ],
+            [
+                11,
+                6
+            ]
+        ],
+        "tags": [
+            "augmented",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "diminished-triad",
+        "name": "Diminished Triad",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ]
+        ],
+        "tags": [
+            "diminished",
+            "triad"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "diminished-7th",
+        "name": "Diminished 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                9,
+                6
+            ]
+        ],
+        "tags": [
+            "diminished",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "half-diminished-7th",
+        "name": "Half-Diminished 7th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                3,
+                2
+            ],
+            [
+                6,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "tags": [
+            "diminished",
+            "7th"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "suspended-2nd",
+        "name": "Suspended 2nd",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                2,
+                1
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "suspended",
+            "triad"
+        ]
+    },
+    {
+        "modelId": "chords",
+        "id": "suspended-4th",
+        "name": "Suspended 4th",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ]
+        ],
+        "tags": [
+            "suspended",
+            "triad"
+        ]
+    }
+]
