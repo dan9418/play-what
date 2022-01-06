@@ -55,7 +55,7 @@ const StyledThemePage = styled(StyledPageBody)`
                 font-size: 120%;
             }
             li {
-                list-style-type: circle;
+                list-style-type: disc;
                 margin-left: 16px;
                 font-style: italic;
             }

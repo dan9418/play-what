@@ -1,6 +1,10 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
 import styled, { useTheme } from 'styled-components';
+import SwitchInput from '../../../archive/_inputs/SwitchInput';
+import { themeState } from '../../../state/state';
+import THEME, { DARK_THEME } from '../../../styles/theme';
 
 const StyledSiteHeader = styled.div`
     height: 32px;
@@ -30,13 +34,10 @@ const StyledSiteHeader = styled.div`
 		height: 32px;
 		line-height: 32px;
 
-		//display: flex;
-		//align-items: center;
-
 		padding: 0 8px;
 
 		&:hover {
-			background-color: ${({ theme }) => theme.utils.hoverLight};
+			color: ${({ theme }) => theme.text.secondary};
 		}
 
 		&.active {
@@ -51,47 +52,32 @@ const StyledSiteHeader = styled.div`
 		font-weight: 300;
 	}
 
-	.links-container {
+	.night-mode {
 		display: flex;
-
-		.separator {
-			height: 24px;
-			width: 1px;
-			background-color: ${({ theme }) => theme.text.secondary};
-			margin: 8px;
-		}
-	}
-
-	.nav-links {
-		display: flex;
-		align-items: center;
-	}
-
-	.icon-links {
-		display: flex;
-		align-items: center;
-
-		a {
-			display: flex;
-			align-items: center;
-		}
+		align-items: center;s
 	}
 `;
 
-const getLinkProps = id => ({ to: `/${id}`, className: typeof window !== 'undefined' && window.location.pathname.includes(id) ? 'active' : undefined })
+/// const getLinkProps = id => ({ to: `/${id}`, className: typeof window !== 'undefined' && window.location.pathname.includes(id) ? 'active' : undefined })
 
 const SiteHeader: React.FC = () => {
 	const theme = useTheme();
+	const setTheme = useSetRecoilState(themeState);
+	const [isNightMode, setIsNightMode] = useState(false);
+
+	const onThemeToggle = v => {
+		setTheme(isNightMode ? THEME : DARK_THEME);
+		setIsNightMode(v);
+	}
+
 	return (
 		<StyledSiteHeader>
 			<div className="width-cap">
 				<Link to="/" className="logo">
 					Play <em><b>What?</b></em>
 				</Link>
-				<div className="links-container">
-					<div className="nav-links">
-						<Link {...getLinkProps('browse')}>Browse</Link>
-					</div>
+				<div className="night-mode">
+					<SwitchInput value={isNightMode} setValue={onThemeToggle} />
 				</div>
 			</div>
 		</StyledSiteHeader>

@@ -17,7 +17,7 @@ const StyledChordsPage = styled(StyledPageBody)`
             margin: 16px 0;
         }
         li {
-            list-style-type: circle;
+            list-style-type: disc;
             margin-left: 16px;
         }
     }

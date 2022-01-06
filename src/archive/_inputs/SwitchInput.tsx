@@ -1,31 +1,37 @@
 import React from "react";
 import styled from 'styled-components';
+import Icon from "../../components/_shared/ui/Icon";
+import THEME from "../../styles/theme";
 import { IInputProps } from "./Input.constants";
 
 const StyledSwitch = styled.button`
 	border: none;
-	padding: 4px;
-
 	-ms-user-select: none;
     user-select: none;
-    height: 32px;
-    width: 80px;
-    border-radius: 32px;
+    height: 22px;
+    width: 64px;
+    border-radius: 24px;
 	display: inline-flex;
     align-items: center;
+	justify-content: space-between;
 	cursor: pointer;
+	overflow: hidden;
 	
-	justify-content: ${({ $active }) => $active ? 'flex-end' : 'flex-start'};	
-	background-color: ${({ $active, theme }) => $active ? theme.action.active : theme.light3};	
-	&:hover {
-		background-color: ${({ theme }) => theme.action.interactive};	
+	background-color: ${({ theme }) => theme.surface.bg};
+	:hover {
+		background-color: ${({ theme }) => theme.action.active};
 	}
 
 	& .ball {
-		height: 24px;
-		width: 24px;
-		border-radius: 100%;
-		background-color: #fff;
+		height: 100%;
+		width: 50%;
+
+		${({ $active, theme }) => `&.${$active ? 'moon' : 'sun'} { background-color: ${theme.action.interactive} }`};
+		
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 `;
 
@@ -38,7 +44,12 @@ interface ISwitchInputProps extends IInputProps {
 const SwitchInput: React.FC<ISwitchInputProps> = ({ value, setValue }) => {
 	return (
 		<StyledSwitch $active={value} onClick={() => setValue(!value)}>
-			<div className='ball' />
+			<div className='ball sun'>
+				<Icon iconId="sun" color={'white'} size={16} />
+			</div>
+			<div className='ball moon'>
+				<Icon iconId="moon" color={value ? 'white' : THEME.brand.accent} size={24} />
+			</div>
 		</StyledSwitch>
 	);
 }
