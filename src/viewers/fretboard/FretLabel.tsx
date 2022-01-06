@@ -1,5 +1,4 @@
 
-import ToneUtils from "@pw-core/tone/Tone.utils";
 import * as React from "react";
 import styled from "styled-components";
 import { IFretLabelProps } from "./Fretboard.utils";
@@ -28,7 +27,7 @@ const FretLabel: React.FC<IFretLabelProps> = ({ color, freq }) => {
 	let fgColor = 'white';
 
 	return (
-		<StyledFretLabel $bgColor={color} $fgColor={fgColor} onClick={() => ToneUtils.playSound(freq)}>
+		<StyledFretLabel $bgColor={color} $fgColor={fgColor} onClick={null}>
 			{null}
 		</StyledFretLabel>
 	);

@@ -116,7 +116,6 @@ export enum ChordId {
 	Min7 = 'minor-7th',
 	MinMaj7 = 'minor-major-7th',
 	Dom7 = 'dom-7th',
-	Dom7b9 = 'dom-7th-b9',
 	AugTriad = 'augmented-triad',
 	Aug7 = 'augmented-7th',
 	AugMaj7 = 'augmented-major-7th',

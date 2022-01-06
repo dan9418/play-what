@@ -209,37 +209,6 @@
     },
     {
         "modelId": "chords",
-        "id": "dom-7th-b9",
-        "name": "Dominant 7th (b9)",
-        "value": [
-            [
-                0,
-                0
-            ],
-            [
-                4,
-                2
-            ],
-            [
-                7,
-                4
-            ],
-            [
-                10,
-                6
-            ],
-            [
-                13,
-                8
-            ]
-        ],
-        "tags": [
-            "dominant",
-            "extended"
-        ]
-    },
-    {
-        "modelId": "chords",
         "id": "augmented-triad",
         "name": "Augmented Triad",
         "value": [
