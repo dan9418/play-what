@@ -35,9 +35,16 @@ const StyledSiteFooter = styled.footer`
 	}
 
 	a {
-		color: white;
+		color: ${({ theme }) => theme.text.inverted};;
 		margin: 4px 8px;
 		text-decoration: none;
+
+		display: flex;
+		align-items: center;
+
+		&:hover {
+			color: ${({ theme }) => theme.text.secondary};
+		}
 
 		svg {
 			margin-right: 4px;
@@ -52,12 +59,11 @@ const SiteFooter: React.FC = () => {
 		<StyledSiteFooter className="footer">
 			<div className="nav-links">
 				<Link to='/about'>About</Link>
-				<Link to='/docs'>Docs</Link>
-				<Link to='/theme'>Theme</Link>
-				<Link to='/practice'>Practice</Link>
+				<div className="separator" />
+				<Link to='/dev'>Developer Panel</Link>
 				<div className="separator" />
 				<a href="https://github.com/dan9418/play-what">
-					<Icon iconId="github" color={theme.text.inverted} size={14} />
+					{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
 					GitHub
 				</a>
 				<div className="separator" />
