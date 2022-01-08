@@ -18,12 +18,14 @@
     "gh-pages": "^3.2.3"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^2.0.2",
     "color": "^4.0.2",
     "gatsby": "^4.2.0",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gatsby-plugin-image": "^2.2.0",
     "gatsby-plugin-sass": "^5.2.0",
     "gatsby-plugin-sharp": "^4.2.0",
+    "gatsby-plugin-styled-components": "^5.4.0",
     "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-source-filesystem": "^4.2.0",
     "react": "^17.0.1",
