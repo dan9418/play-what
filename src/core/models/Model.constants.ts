@@ -142,7 +142,7 @@ export enum ScaleTag {
 	Heptatonic = 'Heptatonic',
 	Octatonic = 'Octatonic',
 	Diatonic = 'Diatonic',
-	Chromatic = 'Chromatic',
+	//Chromatic = 'Chromatic',
 	Dominant = 'Dominant',
 	Blues = 'Blues',
 	Bebop = 'Bebop',

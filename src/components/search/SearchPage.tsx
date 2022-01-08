@@ -2,8 +2,9 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import Chord from "../../core/models/Chord";
-import { ChordTag } from "../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../core/models/Model.presets";
+import { ChordTag, ScaleTag } from "../../core/models/Model.constants";
+import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
+import Scale from "../../core/models/Scale";
 import FilterList from "../_shared/inputs/FilterList";
 import Card from "../_shared/ui/Card";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
@@ -99,7 +100,7 @@ export const SearchChordsCard: React.FC = props => {
             rows={CHORD_PRESETS.map(p => new Chord(p.id))}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
+                    <Link to={`/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
                 ]
             }}
@@ -108,24 +109,22 @@ export const SearchChordsCard: React.FC = props => {
     );
 };
 
-/*
-<SearchPage
-    title="Scales"
-    subtitle="A scale is a group of notes played sequentially"
-    tag={ScaleTag}
-    headers={[
-        'Name',
-        'Intervals',
-        //'Tags'
-    ]}
-    rows={SCALE_PRESETS.map(p => new Scale(p.id))}
-    getCols={preset => {
-        return [
-            <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
-            preset.getIntervalListString(),
-            //preset.tags.join(', ')
-        ]
-    }}
-    {...props}
-/>
-*/
+export const SearchScalesCard: React.FC = props => {
+    return (
+        <SearchCard
+            tag={ScaleTag}
+            headers={[
+                'Name',
+                'Intervals',
+            ]}
+            rows={SCALE_PRESETS.map(p => new Scale(p.id))}
+            getCols={preset => {
+                return [
+                    <Link to={`/scales/${preset.id}`}>{preset.name}</Link>,
+                    preset.getIntervalListString(),
+                ]
+            }}
+            {...props}
+        />
+    );
+};
