@@ -47,28 +47,28 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     )],
     [VoicingId.Chord_Triad_AShape_1, formatPreset(
         VoicingId.Chord_Triad_AShape_1,
-        'C Shape Triad',
+        'A Shape Triad',
         [5, 3, 1, 5, 1, null]
     )],
     [VoicingId.Chord_Triad_GShape_1, formatPreset(
         VoicingId.Chord_Triad_GShape_1,
-        'C Shape Triad',
+        'G Shape Triad',
         [1, 5, 1, 5, 3, 1]
     )],
     [VoicingId.Chord_Triad_EShape_1, formatPreset(
         VoicingId.Chord_Triad_EShape_1,
-        'C Shape Triad',
+        'E Shape Triad',
         [1, 5, 3, 1, 5, 1]
     )],
     [VoicingId.Chord_Triad_DShape_1, formatPreset(
         VoicingId.Chord_Triad_DShape_1,
-        'C Shape Triad',
+        'D Shape Triad',
         [3, 1, 5, 1, null, null]
     )],
     // Sixths
     [VoicingId.Chord_Sixth_CShape_1, formatPreset(
         VoicingId.Chord_Sixth_CShape_1,
-        'A Shape 6th Chord',
+        'C Shape 6th Chord',
         [3, 6, 5, 3, 1, null]
     )],
     [VoicingId.Chord_Sixth_AShape_1, formatPreset(
@@ -78,28 +78,28 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     )],
     [VoicingId.Chord_Sixth_GShape_1, formatPreset(
         VoicingId.Chord_Sixth_GShape_1,
-        'A Shape 6th Chord',
+        'G Shape 6th Chord',
         [6, 5, 1, 5, 3, 1]
     )],
     [VoicingId.Chord_Sixth_EShape_1, formatPreset(
         VoicingId.Chord_Sixth_EShape_1,
-        'A Shape 6th Chord',
+        'E Shape 6th Chord',
         [1, 5, 3, 6, 5, 1]
     )],
     [VoicingId.Chord_Sixth_DShape_1, formatPreset(
         VoicingId.Chord_Sixth_DShape_1,
-        'A Shape 6th Chord',
+        'D Shape 6th Chord',
         [3, 6, 5, 1, null, null]
     )],
     // Sevenths
     [VoicingId.Chord_Seventh_CShape_1, formatPreset(
         VoicingId.Chord_Seventh_CShape_1,
-        'G Shape 7th Chord',
+        'C Shape 7th Chord',
         [3, 7, 5, 3, 1, null]
     )],
     [VoicingId.Chord_Seventh_AShape_1, formatPreset(
         VoicingId.Chord_Seventh_AShape_1,
-        'G Shape 7th Chord',
+        'A Shape 7th Chord',
         [5, 3, 7, 5, 1, null]
     )],
     [VoicingId.Chord_Seventh_GShape_1, formatPreset(
@@ -109,12 +109,12 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
     )],
     [VoicingId.Chord_Seventh_EShape_1, formatPreset(
         VoicingId.Chord_Seventh_EShape_1,
-        'G Shape 7th Chord',
+        'E Shape 7th Chord',
         [1, 5, 3, 7, 5, 1]
     )],
     [VoicingId.Chord_Seventh_DShape_1, formatPreset(
         VoicingId.Chord_Seventh_DShape_1,
-        'G Shape 7th Chord',
+        'D Shape 7th Chord',
         [3, 7, 5, 1, null, null]
     )],
     // CAGED Scales
