@@ -11,6 +11,8 @@ const StyledDevPage = styled(StyledPageBody)`
 
     li {
         padding: 8px;
+        font-size: 120%;
+        text-align: center;
     }
 `;
 
@@ -19,6 +21,9 @@ const DevPage: React.FC<any> = () => {
         <StyledDevPage>
             <PageTitle title="Developer Panel" />
             <ul>
+                <li>
+                    <Link to='/test'>Tests</Link>
+                </li>
                 <li>
                     <Link to='/theme'>Theme</Link>
                 </li>

@@ -36,12 +36,16 @@ const ModeCard: React.FC<any> = ({ model }) => {
     switch (type) {
         case ScaleTag.Diatonic:
             modeType = 'Diatonic';
+            break;
         case ScaleTag.Pentatonic:
             modeType = 'Pentatonic';
+            break;
         case ScaleTag.MelodicMode:
             modeType = 'Melodic Minor';
+            break;
         case ScaleTag.HarmonicMode:
             modeType = 'Harmonic Minor';
+            break;
     }
 
     const modes = SCALE_PRESETS.filter(p => p.tags.includes(type));

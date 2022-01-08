@@ -9,6 +9,7 @@ import { arePodsEqual, listContainsSubset, reducePod } from "./Pod.static";
 export default class IntervalSpan extends Pod {
 
     id: IntervalId;
+    offset: number;
 
     constructor(id: IntervalId) {
         super(INTERVAL_PRESET_MAP.get(id));
@@ -51,6 +52,8 @@ export default class IntervalSpan extends Pod {
         }
 
         const offset = ivl.value[0] - reduced[0];
+
+        this.offset = offset;
 
         if (offset === 0) return `${quality.symbol}${d + 1}`;
         else if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
