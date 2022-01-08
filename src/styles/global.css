@@ -27,6 +27,7 @@ html, body {
 
 a {
   color: var(--link);
+  text-decoration: none;
 }
 
 input[type="number"]::-webkit-outer-spin-button,
