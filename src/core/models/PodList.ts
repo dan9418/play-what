@@ -44,6 +44,23 @@ export default class PodList extends Model {
         return `${this.root ? `${this.root.name} ` : ''}${this.name}`;
     }
 
+    getShortName = () => {
+        const name = this.name
+            .replace('Major', 'Maj')
+            .replace('Minor', 'Min')
+            .replace('Augmented', 'Aug')
+            .replace('Diminished', 'Dim')
+            .replace('Suspended', 'Sus')
+            .replace('Dominant', 'Dom')
+            .replace('st', '')
+            .replace('nd', '')
+            .replace('rd', '')
+            .replace('th', '')
+            .replace('Pentatonic', 'Pent');
+
+        return name;
+    }
+
     applyRoot(root: Note) {
         let notes;
         let notePods;
@@ -82,7 +99,7 @@ export default class PodList extends Model {
             this.containsSubset(preset.value)
         );
     }
-    
+
     getSuperchords() {
         return CHORD_PRESETS.filter(preset =>
             this.isInSuperset(preset.value)
