@@ -9,7 +9,13 @@ const StyledFilterList = styled.ul`
    justify-content: center;
    gap: 4px;
    margin-bottom: 16px;
-   button {
+
+    > li {
+        margin: 0  !important;
+        list-style-type: none !important;
+    }
+
+    button {
         background-color: ${({ theme }) => theme.utils.transparent};;
         border: 1px solid ${props => props.theme.action.interactive};;
         color: ${props => props.theme.action.interactive};
@@ -23,7 +29,7 @@ const StyledFilterList = styled.ul`
             color: ${({ theme }) => theme.text.primary};;
             background-color: ${props => props.theme.utils.interactive};
         }
-   }
+    }
 `;
 
 

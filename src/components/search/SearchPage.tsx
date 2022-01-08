@@ -1,42 +1,26 @@
+import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
+import Chord from "../../core/models/Chord";
+import { ChordTag } from "../../core/models/Model.constants";
+import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import FilterList from "../_shared/inputs/FilterList";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import Card from "../_shared/ui/Card";
+import Card, { StyledCard } from "../_shared/ui/Card";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
 
-const StyledSearchPage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
-
+const StyledSearchCard = styled.div`
     ul {
         li {
             padding: 4px;
         }
     }
-
-    .grid {
-        margin-top: 16px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr;
-        @media(min-width: 512px) {
-            grid-template-columns: 3fr 2fr;
-        }
-    }
 `;
 
-interface ISearchPageProps extends ISearchTableProps {
-    path?: string;
+interface ISearchCardProps extends ISearchTableProps {
     tag?: any;
-    title: string;
-    subtitle: string;
 }
 
-const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, rows, headers, getCols }) => {
+const SearchCard: React.FC<ISearchCardProps> = ({ tag, rows, headers, getCols }) => {
 
     const [selectedTags, setSelectedTags] = useState([]);
 
@@ -55,63 +39,58 @@ const SearchPage: React.FC<ISearchPageProps> = ({ path, tag, title, subtitle, ro
     });
 
     return (
-        <StyledSearchPage>
-            <BreadcrumbList id={title.toLowerCase()} name={title} path={path} />
-            <PageTitle title={title} subtitle={subtitle} />
-            <div className="grid">
-                <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
+        <Card title="All Chords">
+            <StyledSearchCard>
+                <h3>Filters</h3>
                 {tags &&
-                    <div>
-                        <Card title="Filters">
-                            <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                        </Card>
-                    </div>
+                    <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
                 }
-            </div>
-        </StyledSearchPage>
+                <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
+            </StyledSearchCard>
+        </Card>
     );
 };
 
-export default SearchPage;
+export default SearchCard;
+
+export const SearchChordsCard: React.FC = props => {
+    return (
+        <SearchCard
+            tag={ChordTag}
+            headers={[
+                'Name',
+                'Intervals',
+            ]}
+            rows={CHORD_PRESETS.map(p => new Chord(p.id))}
+            getCols={preset => {
+                return [
+                    <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
+                    preset.getIntervalListString(),
+                ]
+            }}
+            {...props}
+        />
+    );
+};
 
 /*
-    <SearchPage
-        title="Chords"
-        subtitle="A chord is a group of notes played simultaneously"
-        tag={ChordTag}
-        headers={[
-            'Name',
-            'Intervals',
-            //'Tags'
-        ]}
-        rows={CHORD_PRESETS.map(p => new Chord(p.id))}
-        getCols={preset => {
-            return [
-                <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
-                preset.getIntervalListString(),
-                //preset.tags.join(', ')
-            ]
-        }}
-        {...props}
-    />
-
-    <SearchPage
-        title="Scales"
-        subtitle="A scale is a group of notes played sequentially"
-        tag={ScaleTag}
-        headers={[
-            'Name',
-            'Intervals',
-            //'Tags'
-        ]}
-        rows={SCALE_PRESETS.map(p => new Scale(p.id))}
-        getCols={preset => {
-            return [
-                <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
-                preset.getIntervalListString(),
-                //preset.tags.join(', ')
-            ]
-        }}
-        {...props}
-    />
+<SearchPage
+    title="Scales"
+    subtitle="A scale is a group of notes played sequentially"
+    tag={ScaleTag}
+    headers={[
+        'Name',
+        'Intervals',
+        //'Tags'
+    ]}
+    rows={SCALE_PRESETS.map(p => new Scale(p.id))}
+    getCols={preset => {
+        return [
+            <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
+            preset.getIntervalListString(),
+            //preset.tags.join(', ')
+        ]
+    }}
+    {...props}
+/>
 */

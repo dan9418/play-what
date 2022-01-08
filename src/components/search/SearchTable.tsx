@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const StyledSearchTable = styled.table`
     width: 100%;
-    max-width: 1024px;
     margin: auto;
     border-collapse: collapse;
 
