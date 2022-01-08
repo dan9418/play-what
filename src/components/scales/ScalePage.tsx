@@ -23,7 +23,7 @@ const ScalePage: React.FC<any> = props => {
 
     const root = useRecoilValue(rootState)
 
-    const scale = new Scale(props.params.id, { root });
+    const scale = new Scale(props.pageContext.modelId, { root });
 
     return (
         <StyledScalePage>

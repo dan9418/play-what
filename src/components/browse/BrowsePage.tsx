@@ -63,14 +63,14 @@ const BrowsePage: React.FC<any> = props => {
                     </p>
                     <h3>Common Chords</h3>
                     <ul>
-                        <li><Link to={`/chords/${ChordId.MajTriad}`}>Major Triad</Link></li>
-                        <li><Link to={`/chords/${ChordId.MinTriad}`}>Minor Triad</Link></li>
-                        <li><Link to={`/chords/${ChordId.Maj7}`}>Major 7th</Link></li>
-                        <li><Link to={`/chords/${ChordId.Min7}`}>Minor 7th</Link></li>
-                        <li><Link to={`/chords/${ChordId.Dom7}`}>Dominant 7th</Link></li>
-                        <li><Link to={`/chords/${ChordId.HalfDim7}`}>Half-Diminished 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.MajTriad}`}>Major Triad</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.MinTriad}`}>Minor Triad</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Maj7}`}>Major 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Min7}`}>Minor 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Dom7}`}>Dominant 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.HalfDim7}`}>Half-Diminished 7th</Link></li>
                     </ul>
-                    <Link to="/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
+                    <Link to="/browse/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
                 </Card>
                 <Card title="Scales">
                     <p>
@@ -78,14 +78,14 @@ const BrowsePage: React.FC<any> = props => {
                     </p>
                     <h3>Common Scales</h3>
                     <ul>
-                        <li><Link to={`/scales/${ScaleId.Ionian}`}>Major (Ionian)</Link></li>
-                        <li><Link to={`/scales/${ScaleId.Aeolian}`}>Natural Minor (Aeolian)</Link></li>
-                        <li><Link to={`/scales/${ScaleId.MelodicMinor}`}>Melodic Minor</Link></li>
-                        <li><Link to={`/scales/${ScaleId.HarmonicMinor}`}>Harmonic Minor</Link></li>
-                        <li><Link to={`/scales/${ScaleId.MajorPentatonic}`}>Major Pentatonic</Link></li>
-                        <li><Link to={`/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.Ionian}`}>Major (Ionian)</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.Aeolian}`}>Natural Minor (Aeolian)</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}`}>Melodic Minor</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}`}>Harmonic Minor</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}`}>Major Pentatonic</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
                     </ul>
-                    <Link to="/scales" className="all">See All Scales <Icon iconId="next" size={12} /></Link>
+                    <Link to="/browse/scales" className="all">See All Scales <Icon iconId="next" size={12} /></Link>
                 </Card>
             </StyledPane>
         </StyledBrowsePage>

@@ -40,3 +40,56 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
 
   return [...notes, /*...intervals, */...chords, ...scales];
 }
+
+module.exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  /*const { data } = await graphql(`
+    query {
+      //your query here
+    }
+  `)*/
+
+  CHORD_JSON.forEach(model => {
+    createPage({
+      path: `/browse/chords/${model.id}/`,
+      component: require.resolve(
+        './src/components/chords/ChordPage.tsx'
+      ),
+      context: { modelId: model.id },
+    });
+
+    NOTE_JSON.forEach(root => {
+      createPage({
+        path: `/browse/chords/${model.id}/root/${root.id}/`,
+        component: require.resolve(
+          './src/components/chords/ChordPage.tsx'
+        ),
+        context: { modelId: model.id, rootId: root.id },
+      });
+    })
+
+  });
+
+  SCALE_JSON.forEach(model => {
+    createPage({
+      path: `/browse/scales/${model.id}/`,
+      component: require.resolve(
+        './src/components/scales/ScalePage.tsx'
+      ),
+      context: { modelId: model.id },
+    });
+
+    NOTE_JSON.forEach(root => {
+      createPage({
+        path: `/browse/scales/${model.id}/root/${root.id}/`,
+        component: require.resolve(
+          './src/components/scales/ScalePage.tsx'
+        ),
+        context: { modelId: model.id, rootId: root.id },
+      });
+    })
+
+  });
+
+}

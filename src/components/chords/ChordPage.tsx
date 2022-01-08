@@ -19,7 +19,7 @@ const StyledChordPage = styled(StyledPageBody)`
 const ChordPage: React.FC<any> = props => {
     const root = useRecoilValue(rootState)
 
-    const chord = new Chord(props.params.id, { root });
+    const chord = new Chord(props.pageContext.modelId, { root });
 
     return (
         <StyledChordPage>

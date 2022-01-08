@@ -66,10 +66,10 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/chords/major-triad'>Major Triad</Link></li>
-                            <li><Link to='/chords/minor-triad'>Minor Triad</Link></li>
-                            <li><Link to='/chords/augmented-triad'>Augmented Triad</Link></li>
-                            <li><Link to='/chords/diminished-triad'>Diminished Triad</Link></li>
+                            <li><Link to='/browse/chords/major-triad'>Major Triad</Link></li>
+                            <li><Link to='/browse/chords/minor-triad'>Minor Triad</Link></li>
+                            <li><Link to='/browse/chords/augmented-triad'>Augmented Triad</Link></li>
+                            <li><Link to='/browse/chords/diminished-triad'>Diminished Triad</Link></li>
                         </ul>
                     </Card>
                     <Card title="Seventh Chords" id="seventh">
@@ -78,14 +78,14 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/chords/major-7th'>Major 7th</Link></li>
-                            <li><Link to='/chords/minor-7th'>Minor 7th</Link></li>
-                            <li><Link to='/chords/dominant-7th'>Dominant 7th</Link></li>
-                            <li><Link to='/chords/minor-major-7th'>Minor-Major 7th</Link></li>
-                            <li><Link to='/chords/diminished-7th'>Diminished 7th</Link></li>
-                            <li><Link to='/chords/half-diminished-7th'>Half-Diminished 7th</Link></li>
-                            <li><Link to='/chords/augmented-7th'>Augmented 7th</Link></li>
-                            <li><Link to='/chords/augmented-major-7th'>Augmented Major 7th</Link></li>
+                            <li><Link to='/browse/chords/major-7th'>Major 7th</Link></li>
+                            <li><Link to='/browse/chords/minor-7th'>Minor 7th</Link></li>
+                            <li><Link to='/browse/chords/dominant-7th'>Dominant 7th</Link></li>
+                            <li><Link to='/browse/chords/minor-major-7th'>Minor-Major 7th</Link></li>
+                            <li><Link to='/browse/chords/diminished-7th'>Diminished 7th</Link></li>
+                            <li><Link to='/browse/chords/half-diminished-7th'>Half-Diminished 7th</Link></li>
+                            <li><Link to='/browse/chords/augmented-7th'>Augmented 7th</Link></li>
+                            <li><Link to='/browse/chords/augmented-major-7th'>Augmented Major 7th</Link></li>
                         </ul>
                     </Card>
                     <Card title="Sixth Chords" id="sixth">
@@ -95,8 +95,8 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/chords/major-6th'>Major 6th</Link></li>
-                            <li><Link to='/chords/minor-6th'>Minor 6th</Link></li>
+                            <li><Link to='/browse/chords/major-6th'>Major 6th</Link></li>
+                            <li><Link to='/browse/chords/minor-6th'>Minor 6th</Link></li>
                         </ul>
                     </Card>
                     <Card title="Suspended Chords" id="suspended">
@@ -105,8 +105,8 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/chords/suspended-2nd'>Suspended 2nd</Link></li>
-                            <li><Link to='/chords/suspended-4th'>Suspended 4th</Link></li>
+                            <li><Link to='/browse/chords/suspended-2nd'>Suspended 2nd</Link></li>
+                            <li><Link to='/browse/chords/suspended-4th'>Suspended 4th</Link></li>
                         </ul>
                     </Card>
                 </StyledPane>

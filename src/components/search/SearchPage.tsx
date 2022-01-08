@@ -100,7 +100,7 @@ export const SearchChordsCard: React.FC = props => {
             rows={CHORD_PRESETS.map(p => new Chord(p.id))}
             getCols={preset => {
                 return [
-                    <Link to={`/chords/${preset.id}`}>{preset.name}</Link>,
+                    <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
                 ]
             }}
@@ -120,7 +120,7 @@ export const SearchScalesCard: React.FC = props => {
             rows={SCALE_PRESETS.map(p => new Scale(p.id))}
             getCols={preset => {
                 return [
-                    <Link to={`/scales/${preset.id}`}>{preset.name}</Link>,
+                    <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
                 ]
             }}

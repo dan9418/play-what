@@ -29,7 +29,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                 <StyledRelated>
                     <ul>
                         {NOTE_PRESETS.map(s => (
-                            <li key={s.id}><Link to={`/chords/${model.id}/${s.id}`}>{s.name} {/*model.name*/}</Link></li>
+                            <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}`}>{s.name} {/*model.name*/}</Link></li>
                         ))}
                     </ul>
                 </StyledRelated>
@@ -39,7 +39,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subchords.map(s => (
-                                <li key={s.id}><Link to={`/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -50,7 +50,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superchords.map(s => (
-                                <li key={s.id}><Link to={`/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -61,7 +61,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subscales.map(s => (
-                                <li key={s.id}><Link to={`/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -72,7 +72,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superscales.map(s => (
-                                <li key={s.id}><Link to={`/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
