@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { usePageProps } from "../../../contexts/PagePropsContext";
 import NumberUtils from "../../../core/general/Number.utils";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
-import { rootState } from "../../../state/state";
 import InputRow from "../../_shared/ui/InputRow";
 import DropdownInput from "../inputs/DropdownInput";
 
@@ -30,13 +29,12 @@ const NOTE_OPTIONS = [
 const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))
 
 const RootCard: React.FC<any> = () => {
-    const pageProps = usePageProps();
-    const [root, setRoot] = useRecoilState(rootState);
+    const { pageContext } = usePageProps() as any;
+    const root = pageContext.rootId ? Note.fromId(pageContext.rootId) : undefined;
 
     const octave = root && root.getOctave() || 4;
     const setOctave = v => {
         const note = new Note([(v - 4) * 12 + NumberUtils.modulo(root.pod[0], 12), root.pod[1]]);
-        setRoot(note);
     };
 
     const selectedRoot = root ? root : { id: 'unselected' };

@@ -4,11 +4,6 @@ import { NumberParam, StringParam, useQueryParam } from "use-query-params";
 import Note from '../core/models/Note';
 import THEME from '../styles/theme';
 
-export const rootState = atom<Note | undefined>({
-    key: 'rootState',
-    default: undefined
-});
-
 export const themeState = atom<typeof THEME>({
     key: 'themeState',
     default: THEME
