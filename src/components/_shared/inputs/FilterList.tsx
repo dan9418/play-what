@@ -6,9 +6,7 @@ const StyledFilterList = styled.ul`
    display: flex;
    flex-wrap: wrap;
    align-items: center;
-   justify-content: center;
-   gap: 4px;
-   margin-bottom: 16px;
+   gap: 8px;
 
     > li {
         margin: 0  !important;
@@ -26,8 +24,8 @@ const StyledFilterList = styled.ul`
         }
 
         &.active {
-            color: ${({ theme }) => theme.text.primary};;
-            background-color: ${props => props.theme.utils.interactive};
+            color: ${({ theme }) => theme.text.inverted};;
+            background-color: ${props => props.theme.action.interactive};
         }
     }
 `;

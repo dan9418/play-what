@@ -5,13 +5,37 @@ import Chord from "../../core/models/Chord";
 import { ChordTag } from "../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import FilterList from "../_shared/inputs/FilterList";
-import Card, { StyledCard } from "../_shared/ui/Card";
+import Card from "../_shared/ui/Card";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
 
 const StyledSearchCard = styled.div`
-    ul {
-        li {
-            padding: 4px;
+    .filter-box {
+        //background-color: ${props => props.theme.status.highlight};
+        border: 1px solid ${props => props.theme.action.interactive};
+        border-radius: 8px;
+        padding: 8px;
+        margin-bottom: 16px;
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 0 0 8px;
+
+            h3 {
+                margin: 0;
+                color: ${props => props.theme.text.secondary};
+            }
+
+            .clear {
+                background-color: transparent;
+                color: ${props => props.theme.action.interactive};
+                text-decoration: underline;
+                border: none;
+                appearance: none;
+                padding: 4px;
+                cursor: pointer;
+            }
         }
     }
 `;
@@ -34,17 +58,28 @@ const SearchCard: React.FC<ISearchCardProps> = ({ tag, rows, headers, getCols })
         return true;
     });
 
-    const tags = tag && Object.values(tag).filter(t => {
+    const tags = tag && Object.values(tag);/*.filter(t => {
         return filteredRows.find(r => r.tags.includes(t))
-    });
+    });*/
 
     return (
         <Card title="All Chords">
             <StyledSearchCard>
-                <h3>Filters</h3>
-                {tags &&
-                    <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                }
+                <div className="filter-box">
+                    <div className="top">
+                        <h3>Filters</h3>
+                        {selectedTags.length > 0 &&
+                            <button
+                                type="button"
+                                onClick={() => setSelectedTags([])}
+                                className="clear"
+                            >Clear</button>
+                        }
+                    </div>
+                    {tags &&
+                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
+                    }
+                </div>
                 <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
             </StyledSearchCard>
         </Card>

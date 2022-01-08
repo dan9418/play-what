@@ -163,9 +163,9 @@ export enum ChordTag {
 	Seventh = 'Seventh',
 	Suspended = 'Suspended',
 	Dominant = 'Dominant',
-	Extended = 'Extended',
-	Altered = 'Altered',
-	Diatonic = 'Diatonic'
+	//Extended = 'Extended',
+	//Altered = 'Altered',
+	//Diatonic = 'Diatonic'
 }
 
 export enum IntervalTag {
