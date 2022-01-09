@@ -50,6 +50,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
     }
   `)*/
 
+  // CHORDS
+
+  createPage({
+    path: `/browse/chords/`,
+    component: require.resolve(
+      './src/components/chords/ChordsPage.tsx'
+    ),
+    context: {},
+  });
+
   CHORD_JSON.forEach(model => {
     createPage({
       path: `/browse/chords/${model.id}/`,
@@ -69,6 +79,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
       });
     })
 
+  });
+
+  // SCALES
+
+  createPage({
+    path: `/browse/scales/`,
+    component: require.resolve(
+      './src/components/scales/ScalesPage.tsx'
+    ),
+    context: {},
   });
 
   SCALE_JSON.forEach(model => {
