@@ -1,5 +1,9 @@
 import React from "react";
+import { useRecoilValue } from "recoil";
 import styled from 'styled-components';
+import NumberUtils from "../../../core/general/Number.utils";
+import Note from "../../../core/models/Note";
+import { octaveState } from "../../../state/state";
 import { StyledCard } from "../ui/Card";
 import RootCard from "./RootCard";
 
@@ -36,6 +40,7 @@ const StyledDetailsCard = styled(StyledCard)`
 const DetailsCard: React.FC<any> = ({ model }) => {
     const intervals = model.intervals;
     const notes = model.notes;
+    const octave = useRecoilValue(octaveState);
 
     if (!intervals && !notes) return null;
 
@@ -43,11 +48,15 @@ const DetailsCard: React.FC<any> = ({ model }) => {
         <StyledDetailsCard>
             <ul>
                 {intervals.map((ivl, i) => {
+                    const octaveCorrectNote = notes && new Note([
+                        (octave - 4) * 12 + NumberUtils.modulo(notes[i].pod[0], 12),
+                        notes[i].pod[1]
+                    ]);
                     return (
                         <li key={ivl.id} className={`box`}>
                             {notes && <div className={`note featured`}>{notes[i].name}<sub>{notes[i].getOctave()}</sub></div>}
                             <div className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</div>
-                            {notes && <div className={`frequency`}>{notes[i].getFrequency(true)}</div>}
+                            {notes && <div className={`frequency`}>{octaveCorrectNote.getFrequency(true)}</div>}
                             <div className={`ratio`}>{ivl.getRatio()}</div>
                         </li>
                     );

@@ -2,6 +2,11 @@ import { useEffect } from 'react';
 import { atom, useRecoilState } from 'recoil';
 import THEME from '../styles/theme';
 
+export const octaveState = atom<number>({
+    key: 'octaveState',
+    default: 4
+});
+
 export const themeState = atom<typeof THEME>({
     key: 'themeState',
     default: THEME

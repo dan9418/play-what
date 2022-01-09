@@ -17,9 +17,9 @@ const StyledBreadcrumbList = styled.ul`
     }
 `
 
-const BreadcrumbList = ({ id, name, path }) => {
+const BreadcrumbList = ({ path }) => {
     let pieces = path.split('/');
-    pieces = pieces.slice(0, pieces.length - 1);
+    pieces = pieces.slice(0, pieces.length - 1).filter(p => !['root'].includes(p));
     const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/');

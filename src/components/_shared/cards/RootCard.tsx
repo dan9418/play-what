@@ -1,10 +1,10 @@
-import Note from "@pw-core/models/Note";
 import { navigate } from "gatsby";
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../../contexts/PagePropsContext";
-import NumberUtils from "../../../core/general/Number.utils";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
+import { octaveState } from "../../../state/state";
 import InputRow from "../../_shared/ui/InputRow";
 import DropdownInput from "../inputs/DropdownInput";
 
@@ -31,11 +31,7 @@ const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1
 const RootCard: React.FC<any> = () => {
     const root = useRoot();
     const pageProps = usePageProps();
-
-    const octave = root && root.getOctave() || 4;
-    const setOctave = v => {
-        const note = new Note([(v - 4) * 12 + NumberUtils.modulo(root.pod[0], 12), root.pod[1]]);
-    };
+    const [octave, setOctave] = useRecoilState(octaveState);
 
     const selectedRoot = root ? root : { id: 'unselected' };
 
@@ -55,19 +51,15 @@ const RootCard: React.FC<any> = () => {
         }
     }
 
-    console.log('dpb', selectedRoot);
-
     return (
-
         <StyledRoot>
             <InputRow label="Root">
                 <DropdownInput options={NOTE_OPTIONS} value={selectedRoot} setValue={onChangeRoot} />
             </InputRow>
             <InputRow label="Octave">
-                <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={note => setOctave(note.id)} />
+                <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
             </InputRow>
         </StyledRoot>
-
     );
 };
 
