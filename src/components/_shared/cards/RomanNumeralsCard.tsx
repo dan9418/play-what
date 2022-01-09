@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import Card from "../../_shared/ui/Card";
 
 const StyledRomanNumeralsCard = styled.div`
@@ -30,7 +29,6 @@ const StyledRomanNumeralsCard = styled.div`
 `;
 
 const RomanNumeralsCard: React.FC<any> = ({ model }) => {
-    const rootSuffix = useRootSuffix();
 
     const numerals = model.getAllNumerals();
 
@@ -55,7 +53,7 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                             <th>Name</th>
                             {numerals.map((n, i) => (
                                 <td key={i}>
-                                    <Link to={`/${n.modelId}/${n.id}/${rootSuffix}`}>{n.getShortName()}</Link>
+                                    <Link to={`/browse/${n.modelId}/${n.id}/${n.root.id}`}>{n.getShortName()}</Link>
                                 </td>
                             ))}
                         </tr>
