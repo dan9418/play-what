@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
 import { ChordTag, ScaleTag } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
@@ -90,6 +91,8 @@ const SearchCard: React.FC<ISearchCardProps> = ({ tag, rows, headers, getCols })
 export default SearchCard;
 
 export const SearchChordsCard: React.FC = props => {
+    const rootSuffix = useRootSuffix();
+
     return (
         <SearchCard
             tag={ChordTag}
@@ -100,7 +103,7 @@ export const SearchChordsCard: React.FC = props => {
             rows={CHORD_PRESETS.map(p => new Chord(p.id))}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/chords/${preset.id}`}>{preset.name}</Link>,
+                    <Link to={`/browse/chords/${preset.id}/${rootSuffix}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
                 ]
             }}
@@ -110,6 +113,8 @@ export const SearchChordsCard: React.FC = props => {
 };
 
 export const SearchScalesCard: React.FC = props => {
+    const rootSuffix = useRootSuffix();
+
     return (
         <SearchCard
             tag={ScaleTag}
@@ -120,7 +125,7 @@ export const SearchScalesCard: React.FC = props => {
             rows={SCALE_PRESETS.map(p => new Scale(p.id))}
             getCols={preset => {
                 return [
-                    <Link to={`/browse/scales/${preset.id}`}>{preset.name}</Link>,
+                    <Link to={`/browse/scales/${preset.id}/${rootSuffix}`}>{preset.name}</Link>,
                     preset.getIntervalListString(),
                 ]
             }}

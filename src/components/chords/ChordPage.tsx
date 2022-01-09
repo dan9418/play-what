@@ -1,7 +1,9 @@
 import Chord from "@pw-core/models/Chord";
 import React from "react";
 import styled from 'styled-components';
+import { useRoot } from "../../contexts/PagePropsContext";
 import Note from "../../core/models/Note";
+import { useRootParam } from "../../state/state";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
@@ -17,7 +19,7 @@ const StyledChordPage = styled(StyledPageBody)`
 
 const ChordPage: React.FC<any> = props => {
 
-    const root = props.pageContext.rootId ? Note.fromId(props.pageContext.rootId) : undefined;
+    const root = useRoot();
 
     const chord = new Chord(props.pageContext.modelId, { root });
 

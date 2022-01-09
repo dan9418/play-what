@@ -1,6 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../contexts/PagePropsContext";
+import { ChordId } from "../../core/models/Model.constants";
 import { SearchChordsCard } from "../search/SearchPage";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
@@ -20,7 +22,6 @@ const StyledChordsPage = styled(StyledPageBody)`
     h3, p {
         margin: 16px 0;
     }
-    
 
     ${StyledPane} {
         li {
@@ -31,6 +32,8 @@ const StyledChordsPage = styled(StyledPageBody)`
 `;
 
 const ChordsPage: React.FC<any> = props => {
+    const rootSuffix = useRootSuffix();
+
     return (
         <StyledChordsPage>
             <BreadcrumbList id="chords" name="Chords" path={props.path} />
@@ -66,10 +69,10 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/browse/chords/major-triad'>Major Triad</Link></li>
-                            <li><Link to='/browse/chords/minor-triad'>Minor Triad</Link></li>
-                            <li><Link to='/browse/chords/augmented-triad'>Augmented Triad</Link></li>
-                            <li><Link to='/browse/chords/diminished-triad'>Diminished Triad</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.AugTriad}/${rootSuffix}`}>Augmented Triad</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.DimTriad}/${rootSuffix}`}>Diminished Triad</Link></li>
                         </ul>
                     </Card>
                     <Card title="Seventh Chords" id="seventh">
@@ -78,14 +81,14 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/browse/chords/major-7th'>Major 7th</Link></li>
-                            <li><Link to='/browse/chords/minor-7th'>Minor 7th</Link></li>
-                            <li><Link to='/browse/chords/dominant-7th'>Dominant 7th</Link></li>
-                            <li><Link to='/browse/chords/minor-major-7th'>Minor-Major 7th</Link></li>
-                            <li><Link to='/browse/chords/diminished-7th'>Diminished 7th</Link></li>
-                            <li><Link to='/browse/chords/half-diminished-7th'>Half-Diminished 7th</Link></li>
-                            <li><Link to='/browse/chords/augmented-7th'>Augmented 7th</Link></li>
-                            <li><Link to='/browse/chords/augmented-major-7th'>Augmented Major 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Min7}/${rootSuffix}`}>Minor 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Dom7}/${rootSuffix}`}>Dominant 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.MinMaj7}/${rootSuffix}`}>Minor-Major 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Dim7}/${rootSuffix}`}>Diminished 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`}>Half-Diminished 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Aug7}/${rootSuffix}`}>Augmented 7th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.AugMaj7}/${rootSuffix}`}>Augmented Major 7th</Link></li>
                         </ul>
                     </Card>
                     <Card title="Sixth Chords" id="sixth">
@@ -95,8 +98,8 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/browse/chords/major-6th'>Major 6th</Link></li>
-                            <li><Link to='/browse/chords/minor-6th'>Minor 6th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Maj6}/${rootSuffix}`}>Major 6th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Min6}/${rootSuffix}`}>Minor 6th</Link></li>
                         </ul>
                     </Card>
                     <Card title="Suspended Chords" id="suspended">
@@ -105,8 +108,8 @@ const ChordsPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to='/browse/chords/suspended-2nd'>Suspended 2nd</Link></li>
-                            <li><Link to='/browse/chords/suspended-4th'>Suspended 4th</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Sus2}/${rootSuffix}`}>Suspended 2nd</Link></li>
+                            <li><Link to={`/browse/chords/${ChordId.Sus4}/${rootSuffix}`}>Suspended 4th</Link></li>
                         </ul>
                     </Card>
                 </StyledPane>

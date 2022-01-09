@@ -1,8 +1,7 @@
 import Note from "@pw-core/models/Note";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from 'styled-components';
-import { usePageProps } from "../../../contexts/PagePropsContext";
+import { useRoot } from "../../../contexts/PagePropsContext";
 import NumberUtils from "../../../core/general/Number.utils";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import InputRow from "../../_shared/ui/InputRow";
@@ -29,8 +28,7 @@ const NOTE_OPTIONS = [
 const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))
 
 const RootCard: React.FC<any> = () => {
-    const { pageContext } = usePageProps() as any;
-    const root = pageContext.rootId ? Note.fromId(pageContext.rootId) : undefined;
+    const root = useRoot();
 
     const octave = root && root.getOctave() || 4;
     const setOctave = v => {

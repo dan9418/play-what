@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import { ScaleTag } from "../../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Card from "../../_shared/ui/Card";
@@ -22,6 +23,8 @@ const StyledModeCard = styled.div`
 `;
 
 const ModeCard: React.FC<any> = ({ model }) => {
+
+    const rootSuffix = useRootSuffix();
 
     const type = model.tags.find(t =>
         t === ScaleTag.Diatonic ||
@@ -58,7 +61,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
                 <ul>
                     {modes.map(n => (
                         <li key={n.id}>
-                            <Link to={`/${n.modelId}/${n.id}`} className={model.id === n.id ? 'active' : ''}>{n.name}</Link>
+                            <Link to={`/${n.modelId}/${n.id}/${rootSuffix}`} className={model.id === n.id ? 'active' : ''}>{n.name}</Link>
                         </li>
                     ))}
                 </ul>

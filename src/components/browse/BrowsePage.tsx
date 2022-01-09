@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../core/models/Model.constants";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
@@ -52,6 +53,9 @@ const StyledBrowsePage = styled(StyledPageBody)`
 
 const BrowsePage: React.FC<any> = props => {
 
+    const rootSuffix = useRootSuffix();
+
+
     return (
         <StyledBrowsePage>
             <BreadcrumbList id="browse" name="Browse" path={props.path} />
@@ -63,12 +67,12 @@ const BrowsePage: React.FC<any> = props => {
                     </p>
                     <h3>Common Chords</h3>
                     <ul>
-                        <li><Link to={`/browse/chords/${ChordId.MajTriad}`}>Major Triad</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.MinTriad}`}>Minor Triad</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Maj7}`}>Major 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Min7}`}>Minor 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Dom7}`}>Dominant 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.HalfDim7}`}>Half-Diminished 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Min7}/${rootSuffix}`}>Minor 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.Dom7}/${rootSuffix}`}>Dominant 7th</Link></li>
+                        <li><Link to={`/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`}>Half-Diminished 7th</Link></li>
                     </ul>
                     <Link to="/browse/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
                 </Card>
@@ -78,12 +82,12 @@ const BrowsePage: React.FC<any> = props => {
                     </p>
                     <h3>Common Scales</h3>
                     <ul>
-                        <li><Link to={`/browse/scales/${ScaleId.Ionian}`}>Major (Ionian)</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.Aeolian}`}>Natural Minor (Aeolian)</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}`}>Melodic Minor</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}`}>Harmonic Minor</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}`}>Major Pentatonic</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`}>Harmonic Minor</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
+                        <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
                     </ul>
                     <Link to="/browse/scales" className="all">See All Scales <Icon iconId="next" size={12} /></Link>
                 </Card>

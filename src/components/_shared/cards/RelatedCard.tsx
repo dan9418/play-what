@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import Card from "../../_shared/ui/Card";
 
@@ -18,6 +19,8 @@ const StyledRelated = styled.div`
 
 const RelatedCard: React.FC<any> = ({ model }) => {
 
+    const rootSuffix = useRootSuffix();
+
     const subchords = model.getSubchords();
     const subscales = model.getSubscales();
     const superchords = model.getSuperchords();
@@ -29,7 +32,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                 <StyledRelated>
                     <ul>
                         {NOTE_PRESETS.map(s => (
-                            <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}`}>{s.name} {/*model.name*/}</Link></li>
+                            <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}/${rootSuffix}`}>{s.name} {/*model.name*/}</Link></li>
                         ))}
                     </ul>
                 </StyledRelated>
@@ -39,7 +42,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subchords.map(s => (
-                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}/${rootSuffix}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -50,7 +53,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superchords.map(s => (
-                                <li key={s.id}><Link to={`/browse/chords/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/chords/${s.id}/${rootSuffix}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -61,7 +64,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {subscales.map(s => (
-                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}/${rootSuffix}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>
@@ -72,7 +75,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <StyledRelated>
                         <ul>
                             {superscales.map(s => (
-                                <li key={s.id}><Link to={`/browse/scales/${s.id}`}>{s.name}</Link></li>
+                                <li key={s.id}><Link to={`/browse/scales/${s.id}/${rootSuffix}`}>{s.name}</Link></li>
                             ))}
                         </ul>
                     </StyledRelated>

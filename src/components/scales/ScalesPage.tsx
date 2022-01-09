@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ScaleId } from "../../core/models/Model.constants";
 import { SearchScalesCard } from "../search/SearchPage";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
@@ -32,6 +33,8 @@ const StyledScalesPage = styled(StyledPageBody)`
 `;
 
 const ScalesPage: React.FC<any> = props => {
+    const rootSuffix = useRootSuffix();
+
     return (
         <StyledScalesPage>
             <BreadcrumbList id="scales" name="Scales" path={props.path} />
@@ -63,12 +66,12 @@ const ScalesPage: React.FC<any> = props => {
                 <StyledPane>
                     <Card title="Common Scales" id="common">
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}`}>Major (Ionian)</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}`}>Natural Minor (Aeolian)</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}`}>Melodic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}`}>Harmonic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}`}>Major Pentatonic</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`}>Harmonic Minor</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
                         </ul>
                     </Card>
                     <Card title="Diatonic Modes" id="diatonic">
@@ -78,13 +81,13 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}`}>Ionian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Dorian}`}>Dorian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Phrygian}`}>Phrygian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Lydian}`}>Lydian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Mixolydian}`}>Mixolydian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}`}>Aeolian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Locrian}`}>Locrian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Ionian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Dorian}/${rootSuffix}`}>Dorian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Phrygian}/${rootSuffix}`}>Phrygian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Lydian}/${rootSuffix}`}>Lydian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Mixolydian}/${rootSuffix}`}>Mixolydian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Aeolian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Locrian}/${rootSuffix}`}>Locrian</Link></li>
                         </ul>
                     </Card>
                     <Card title="Harmonic Minor Modes" id="harmonic">
@@ -95,13 +98,13 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}`}>Harmonic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Locrian6}`}>Locrian 6</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.IonianSharp5}`}>Ionian #5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DorianSharp4}`}>Dorian #4</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.PhrygianDominant}`}>Phrygian Dominant</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp2}`}>Lydian #2</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrianDoubleFlat7}`}>Super Locrian bb7</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Harmonic Minor</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Locrian6}/${rootSuffix}`}>Locrian 6</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.IonianSharp5}/${rootSuffix}`}>Ionian #5</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.DorianSharp4}/${rootSuffix}`}>Dorian #4</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.PhrygianDominant}/${rootSuffix}`}>Phrygian Dominant</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp2}/${rootSuffix}`}>Lydian #2</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrianDoubleFlat7}/${rootSuffix}`}>Super Locrian bb7</Link></li>
                         </ul>
                     </Card>
                     <Card title="Melodic Minor Modes" id="melodic">
@@ -112,13 +115,13 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}`}>Melodic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DorianFlat2}`}>Dorian b2</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp5}`}>Lydian #5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianDominiant}`}>Lydian Dominant</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MixolydianFlatSix}`}>Mixolydian b6</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.AeolianFlat5}`}>Aeolian b5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrian}`}>Super Locrian (Altered)</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.DorianFlat2}/${rootSuffix}`}>Dorian b2</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp5}/${rootSuffix}`}>Lydian #5</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.LydianDominiant}/${rootSuffix}`}>Lydian Dominant</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MixolydianFlatSix}/${rootSuffix}`}>Mixolydian b6</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.AeolianFlat5}/${rootSuffix}`}>Aeolian b5</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrian}/${rootSuffix}`}>Super Locrian (Altered)</Link></li>
                         </ul>
                     </Card>
                     <Card title="Pentatonic Modes" id="pentatonic">
@@ -128,11 +131,11 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}`}>Major Pentatonic</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Egyptian}`}>Egyptian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.ManGong}`}>Man Gong</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Ritusen}`}>Ritusen</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}`}>Minor Pentatonic</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Egyptian}/${rootSuffix}`}>Egyptian</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.ManGong}/${rootSuffix}`}>Man Gong</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.Ritusen}/${rootSuffix}`}>Ritusen</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
                         </ul>
                     </Card>
                     <Card title="Blues Scales" id="blues">
@@ -141,8 +144,8 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.MajorBlues}`}>Major Blues</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorBlues}`}>Minor Blues</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MajorBlues}/${rootSuffix}`}>Major Blues</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MinorBlues}/${rootSuffix}`}>Minor Blues</Link></li>
                         </ul>
                     </Card>
                     <Card title="Bebop Scales" id="bebop">
@@ -151,8 +154,8 @@ const ScalesPage: React.FC<any> = props => {
                         </p>
                         <h3>Examples</h3>
                         <ul>
-                            <li><Link to={`/browse/scales/${ScaleId.MajorBebop}`}>Major Bebop</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DominantBebop}`}>Dominant Bebop</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.MajorBebop}/${rootSuffix}`}>Major Bebop</Link></li>
+                            <li><Link to={`/browse/scales/${ScaleId.DominantBebop}/${rootSuffix}`}>Dominant Bebop</Link></li>
                         </ul>
                     </Card>
                 </StyledPane>
