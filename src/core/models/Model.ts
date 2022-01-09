@@ -10,7 +10,7 @@ export default class Model {
         return this.name || 'unnamed';
     }
 
-    static fromValue = (presetArray, subclass, value: any, compareFn: any, reduceFn: any) => {
+    static fromValue(presetArray, subclass, value: any, compareFn: any, reduceFn: any) {
         const preset = presetArray.find(p => compareFn(p.value, reduceFn(value)));
         if (!preset) {
             console.error(presetArray[0].modelId, value, presetArray);

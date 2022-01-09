@@ -55,7 +55,7 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                             <th>Name</th>
                             {numerals.map((n, i) => (
                                 <td key={i}>
-                                    <Link to={`/${n.modelId}/${s.id}/${rootSuffix}`}>{n.getShortName()}</Link>
+                                    <Link to={`/${n.modelId}/${n.id}/${rootSuffix}`}>{n.getShortName()}</Link>
                                 </td>
                             ))}
                         </tr>

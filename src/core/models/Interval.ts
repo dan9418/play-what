@@ -24,7 +24,7 @@ export default class IntervalSpan extends Pod {
         return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
     }
 
-    getName = () => {
+    getName() {
         const reduced = reducePod(this.pod);
 
         const [noteIndex, d] = reduced;
@@ -80,7 +80,7 @@ export default class IntervalSpan extends Pod {
         return value;
     }
 
-    getRatio = () => {
+    getRatio() {
         const [p] = this.pod;
 
         const baseline = TuningUtils.getFrequency(0);

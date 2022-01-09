@@ -33,7 +33,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
         t === ScaleTag.HarmonicMode
     );
 
-    if (!type) return;
+    if (!type) return null;
 
     let modeType = '';
     switch (type) {
