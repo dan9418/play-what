@@ -61,7 +61,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
                 <ul>
                     {modes.map(n => (
                         <li key={n.id}>
-                            <Link to={`/${n.modelId}/${n.id}/${rootSuffix}`} className={model.id === n.id ? 'active' : ''}>{n.name}</Link>
+                            <Link to={`/browse/${n.modelId}/${n.id}/${rootSuffix}`} className={model.id === n.id ? 'active' : ''}>{n.name}</Link>
                         </li>
                     ))}
                 </ul>
