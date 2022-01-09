@@ -27,7 +27,7 @@ const FretLabel: React.FC<IFretLabelProps> = ({ color, freq }) => {
 	let fgColor = 'white';
 
 	return (
-		<StyledFretLabel $bgColor={color} $fgColor={fgColor} onClick={null}>
+		<StyledFretLabel $bgColor={color} $fgColor={fgColor} onClick={null} className="fret-label">
 			{null}
 		</StyledFretLabel>
 	);
