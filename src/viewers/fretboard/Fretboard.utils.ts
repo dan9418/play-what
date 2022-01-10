@@ -28,7 +28,7 @@ export const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false
 export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
 export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
-	fretRange: [0, 12],
+	fretRange: [1, 12],
 	tuning: TUNING_PRESET_MAP.get(TuningId.Standard).value,
 	showFretDots: true,
 	showFretNumbers: true

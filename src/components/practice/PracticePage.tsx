@@ -21,27 +21,22 @@ const StyledPracticePage = styled(StyledPageBody)`
     
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
+        .fret-label {
+            height: 8px;
+            width: 8px;
+        }
+        table {
+            width: 100%;
 
-        ul {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-
-            .fret-label {
-                height: 6px;
-                width: 6px;
-            }
-
-            li {
-                width: 100%;
+            td {
+                width: 33%;
             }
         }
     }
 `;
 
 const PracticePage: React.FC<any> = () => {
-    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.F));
+    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.Fs));
 
     const root = new Note(rootPreset.value);
     const scale = new Scale(ScaleId.Ionian, { root });
@@ -160,16 +155,24 @@ const PracticePage: React.FC<any> = () => {
         {
             model: Scale,
             modelId: ScaleId.Ritusen,
-            rootId: scale.notes[3].id,
+            rootId: scale.notes[4].id,
             voicingId: VoicingId.Scale_DoubleOctave_AShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.MinorPentatonic,
-            rootId: scale.notes[4].id,
+            rootId: scale.notes[5].id,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_1
         }
     ];
+
+    const display = [
+        [pentatonicItems[0], diatonicItems[0], romanNumeralItems[0]],
+        [pentatonicItems[1], diatonicItems[1], romanNumeralItems[1]],
+        [pentatonicItems[2], diatonicItems[2], romanNumeralItems[2]],
+        [pentatonicItems[3], diatonicItems[4], romanNumeralItems[4]],
+        [pentatonicItems[4], diatonicItems[5], romanNumeralItems[5]],
+    ]
 
     return (
         <StyledPracticePage>
@@ -179,59 +182,36 @@ const PracticePage: React.FC<any> = () => {
                     setRootPreset(p);
                 }} />
             </InputRow>
-            <Card title="Diatonic Modes" >
-                <ul>
-                    {diatonicItems.map(item => {
-                        const { model, modelId, rootId, voicingId } = item;
-                        const instance = new model(modelId, { root: Note.fromId(rootId) });
-                        console.log('dpb scale', rootId, instance);
-                        return (
-                            <li>
-                                <h3>{item.modelId}</h3>
-                                <Fretboard {...getFretboardProps(
-                                    instance,
-                                    VOICING_PRESET_MAP.get(voicingId),
-                                )} />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </Card>
-            <Card title="Diatonic Roman Numerals" >
-                <ul>
-                    {romanNumeralItems.map(item => {
-                        const { model, modelId, rootId, voicingId } = item;
-                        const instance = new model(modelId, { root: Note.fromId(rootId) });
-                        console.log('dpb scale', rootId, instance);
-                        return (
-                            <li>
-                                <h3>{item.modelId}</h3>
-                                <Fretboard {...getFretboardProps(
-                                    instance,
-                                    VOICING_PRESET_MAP.get(voicingId),
-                                )} />
-                            </li>
-                        );
-                    })}
-                </ul>
-            </Card>
-            <Card title="Pentatonic Modes" >
-                <ul>
-                    {pentatonicItems.map(item => {
-                        const { model, modelId, rootId, voicingId } = item;
-                        const instance = new model(modelId, { root: Note.fromId(rootId) });
-                        console.log('dpb scale', rootId, instance);
-                        return (
-                            <li>
-                                <h3>{item.modelId}</h3>
-                                <Fretboard {...getFretboardProps(
-                                    instance,
-                                    VOICING_PRESET_MAP.get(voicingId),
-                                )} />
-                            </li>
-                        );
-                    })}
-                </ul>
+            <Card title="CAGED" >
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        {display.map((item, i) => {
+                            return (
+                                <tr key={i}>
+                                    {item.map(item => {
+                                        const { model, modelId, rootId, voicingId } = item as any;
+                                        const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                        console.log('dpb scale', rootId, instance);
+                                        return (
+                                            <td key={modelId}>
+                                                <h3>{modelId}</h3>
+                                                <Fretboard
+                                                    {...getFretboardProps(
+                                                        instance,
+                                                        VOICING_PRESET_MAP.get(voicingId),
+                                                    )}
+                                                    fretRange={[1, 14]}
+                                                />
+                                            </td>
+                                        );
+                                    })}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
             </Card>
         </StyledPracticePage>
     );
