@@ -30,6 +30,7 @@ const StyledPracticePage = styled(StyledPageBody)`
 
             td {
                 width: 33%;
+                padding: 0 2px;
             }
         }
     }

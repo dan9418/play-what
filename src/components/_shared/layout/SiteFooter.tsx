@@ -6,8 +6,8 @@ import Icon from '../ui/Icon';
 const StyledSiteFooter = styled.footer`
     height: 64px;
 	width: 100%;
-	padding: 0 16px;
-	font-size: 90%;
+	font-size: 80%;
+	white-space: nowrap;
 
 	color: ${({ theme }) => theme.text.inverted};
 	background-color: ${({ theme }) => theme.surface.nav};
