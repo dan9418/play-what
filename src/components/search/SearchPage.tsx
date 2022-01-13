@@ -15,6 +15,10 @@ const StyledSearchPage = styled(StyledPageBody)`
     ${StyledCard} {
         max-width: 768px;
     }
+
+    .search-bar {
+        margin: 32px auto;
+    }
 `;
 
 const SearchPage: React.FC<any> = () => {

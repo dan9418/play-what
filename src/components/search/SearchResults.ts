@@ -39,6 +39,3 @@ ALL_PRESETS.forEach(p => {
         });
     })
 });
-
-
-console.log('dpb ALL_RESULTS', ALL_RESULTS);

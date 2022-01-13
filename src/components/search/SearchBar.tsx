@@ -9,7 +9,6 @@ const StyledSearchBar = styled.form`
         max-width: 512px;
         display: grid;
         grid-template-columns: 1fr auto;
-        margin: 32px auto;
 
         input, button {
             padding: 8px 8px;
@@ -38,13 +37,12 @@ const StyledSearchBar = styled.form`
     }
 `;
 
-const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: externalSetQuery }) => {
+const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: externalSetQuery, placeholder }) => {
     const [_query, _setQuery] = useState(externalQuery);
     const query = typeof externalQuery === 'undefined' ? _query : externalQuery;
     const setQuery = typeof externalSetQuery === 'undefined' ? _setQuery : externalSetQuery;
 
     const onChange = e => {
-        console.log('dpb', e.target.value);
         setQuery(e.target.value);
     }
 
@@ -64,7 +62,7 @@ const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: e
                     ref={searchRef}
                     onChange={onChange}
                     value={query as string}
-                    placeholder="Search the site..."
+                    placeholder={placeholder || "Search the site..."}
                 />
                 <button type="submit" onSubmit={onSubmit}>Search</button>
             </div>
