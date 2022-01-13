@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import SearchBar from "../search/SearchBar";
 import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -11,13 +11,28 @@ const StyledHomePage = styled(StyledPageBody)`
 	//justify-content: center;
 
 	h1 {
-		text-align: center !important;
-		width: 100%;
+		margin-top: 32px;
+		font-size: 220%;
+		@media(min-width: 512px) {
+			font-size: 360%;
+		}
+		@media(min-width: 1024px) {
+			font-size: 500%;
+		}
+	}
+
+	p {
+		font-size: 100%;
+		@media(min-width: 512px) {
+			font-size: 120%;
+		}
+		@media(min-width: 1024px) {
+			font-size: 140%;
+		}
 	}
 
 	.intro {
 		max-width: 768px;
-		font-size: 120%;
 		color: ${({ theme }) => theme.text.primary};
 		text-align: center;
 		line-height: 120%;
@@ -30,27 +45,29 @@ const StyledHomePage = styled(StyledPageBody)`
 		text-align: center;
 		margin-top: 16px;
 	}
+	
+	.or {
+		font-size: 120%;
+		color: ${({ theme }) => theme.text.secondary};
+		text-align: center;
+		padding: 0 0 32px 0;
+	}
 
 	> a {
+		border-radius: 8px;
+		cursor: pointer;
+		color: white;
+		font-weight: bold;
+		background-color: ${props => props.theme.action.interactive};
+		padding: 8px 16px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	
 		width: 100%;
 		@media(min-width: 512px) {
-			width: 50%;
-		}
-		
-		margin-top: 32px;
-		text-align: center;
-		text-decoration: none;
-		cursor: pointer;
-		border: none;
-		border-radius: 4px;
-		font-size: 120%;
-		font-weight: bold;
-		padding: 8px 16px;
-		color: ${({ theme }) => theme.text.inverted};
-		background-color: ${({ $isActive, theme }) => $isActive ? theme.action.active : theme.action.interactive};
-
-		&:hover {
-			opacity: .9;
+			width: 50%
 		}
 	}
 `;
@@ -58,15 +75,18 @@ const StyledHomePage = styled(StyledPageBody)`
 const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
-			<PageTitle title="Play What?" />
+			<h1>Play <em>What?</em></h1>
 			<p className="intro">
-				<b>Play What</b> is a toolkit for exploring musical concepts and visualizing them on the guitar.
+				A toolkit for exploring and visualizing musical concepts.
 			</p>
 			<p className="disclaimer">
 				This site is under active development and is slated for a formal Beta release in Q1 2022.
 			</p>
-			<Link to="/browse">Browse</Link>
-			<Link to="/search">Search</Link>
+			<SearchBar />
+			<div className="or">
+				{`~ or ~`}
+			</div>
+			<Link to="/browse">Browse Chords & Scales</Link>
 		</StyledHomePage>
 	);
 };

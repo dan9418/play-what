@@ -1,5 +1,5 @@
 import { navigate } from "gatsby";
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 
 const StyledSearchBar = styled.form`
@@ -38,7 +38,10 @@ const StyledSearchBar = styled.form`
     }
 `;
 
-const SearchBar: React.FC<any> = ({ searchRef, query, setQuery }) => {
+const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: externalSetQuery }) => {
+    const [_query, _setQuery] = useState(externalQuery);
+    const query = typeof externalQuery === 'undefined' ? _query : externalQuery;
+    const setQuery = typeof externalSetQuery === 'undefined' ? _setQuery : externalSetQuery;
 
     const onChange = e => {
         console.log('dpb', e.target.value);
