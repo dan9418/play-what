@@ -7,16 +7,13 @@ import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import { octaveState } from "../../../state/state";
 import InputRow from "../../_shared/ui/InputRow";
 import DropdownInput from "../inputs/DropdownInput";
+import Card, { StyledCard } from "../ui/Card";
 
 const StyledRoot = styled.div`
     margin-top: 16px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
-
-    background-color: ${props => props.theme.surface.bg};
-    border-radius: 8px;
-    padding: 8px;
 
     select {
         width: 100%;
@@ -64,14 +61,16 @@ const RootCard: React.FC<any> = () => {
     }
 
     return (
-        <StyledRoot>
-            <InputRow label="Root">
-                <DropdownInput options={NOTE_OPTIONS} value={selectedRoot} setValue={onChangeRoot} />
-            </InputRow>
-            <InputRow label="Octave">
-                <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
-            </InputRow>
-        </StyledRoot>
+        <Card title="Root">
+            <StyledRoot>
+                <InputRow label="Spelling">
+                    <DropdownInput options={NOTE_OPTIONS} value={selectedRoot} setValue={onChangeRoot} />
+                </InputRow>
+                <InputRow label="Octave">
+                    <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
+                </InputRow>
+            </StyledRoot>
+        </Card>
     );
 };
 

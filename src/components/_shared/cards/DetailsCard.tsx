@@ -5,7 +5,6 @@ import NumberUtils from "../../../core/general/Number.utils";
 import Note from "../../../core/models/Note";
 import { octaveState } from "../../../state/state";
 import { StyledCard } from "../ui/Card";
-import RootCard from "./RootCard";
 
 const StyledDetailsCard = styled(StyledCard)`
     table {
@@ -63,13 +62,17 @@ const StyledDetailsCard = styled(StyledCard)`
                 font-size: 100%;
             }
         }
+
+        .root {
+            color: red;
+        }
     }
 `;
 
-const NoteCell = ({ note }) => {
+const NoteCell = ({ note, i }) => {
     if (!note) return null;
     return (
-        <td className={`note featured`}>{note.name}<sub>{note.getOctave()}</sub></td>
+        <td className={`note featured ${i === 0 ? 'root' : ''}`}>{note.name}<sub>{note.getOctave()}</sub></td>
     );
 };
 
@@ -117,8 +120,8 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                     {intervals.map((ivl, i) => {
                         const note = notes && notes[i];
                         return (
-                            <tr key={ivl.id} className={`box ${i === 0 ? 'root' : ''}`}>
-                                <NoteCell note={note} key={i} />
+                            <tr key={ivl.id}>
+                                <NoteCell note={note} key={i} i={i} />
                                 <IntervalCell interval={ivl} key={i} isFeatured={!note} />
                                 <PitchCell note={note} key={i} />
                                 <RatioCell interval={ivl} key={i} />
@@ -131,7 +134,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                 <tbody>
                     {notes && <tr>
                         <th>Note</th>
-                        {notes.map((note, i) => <NoteCell note={note} key={i} />)}
+                        {notes.map((note, i) => <NoteCell note={note} key={i} i={i} />)}
                     </tr>}
                     <tr>
                         <th>Interval</th>
@@ -147,8 +150,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                     </tr>
                 </tbody>
             </table>
-            <RootCard />
-        </StyledDetailsCard>
+        </StyledDetailsCard >
     );
 };
 

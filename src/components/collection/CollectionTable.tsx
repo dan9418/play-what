@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 
-const StyledSearchTable = styled.table`
+const StyledCollectionTable = styled.table`
     width: 100%;
     margin: auto;
     border-collapse: collapse;
@@ -29,15 +29,15 @@ const StyledSearchTable = styled.table`
     }
 `;
 
-export interface ISearchTableProps {
+export interface ICollectionTableProps {
     rows: any[];
     headers: string[];
     getCols: (row: any) => any[];
 }
 
-const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols }) => {
+const CollectionTable: React.FC<ICollectionTableProps> = ({ rows, headers, getCols }) => {
     return (
-        <StyledSearchTable>
+        <StyledCollectionTable>
             <thead>
                 <tr>
                     {headers.map((h, i) => <th key={i}>{h}</th>)}
@@ -52,8 +52,8 @@ const SearchTable: React.FC<ISearchTableProps> = ({ rows, headers, getCols }) =>
                     ))
                 }
             </tbody>
-        </StyledSearchTable>
+        </StyledCollectionTable>
     );
 };
 
-export default SearchTable;
+export default CollectionTable;

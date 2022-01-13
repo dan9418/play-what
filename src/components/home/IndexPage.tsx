@@ -65,7 +65,8 @@ const IndexPage: React.FC<any> = () => {
 			<p className="disclaimer">
 				This site is under active development and is slated for a formal Beta release in Q1 2022.
 			</p>
-			<Link to="/browse">Start Exploring!</Link>
+			<Link to="/browse">Browse</Link>
+			<Link to="/search">Search</Link>
 		</StyledHomePage>
 	);
 };
