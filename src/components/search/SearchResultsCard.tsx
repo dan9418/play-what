@@ -30,6 +30,12 @@ const doTagsMatch = (selectedTags, r) => {
     });
 }
 
+const doesQueryMatch = (query = '', r) => {
+    return r.text.match(new RegExp(query, 'gi'));
+    const pieces = query.split(' ');
+    return pieces.some(p => r.text.match(new RegExp(p, 'gi')));
+}
+
 const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
 
     const [isFiltering, setIsFiltering] = useState(false);
@@ -53,8 +59,7 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
 
     let filteredResults = query ?
         ALL_RESULTS.filter(r => {
-            const isMatch = r.text.match(new RegExp(query as string, 'gi'));
-            return isMatch && doTagsMatch(selectedTags, r);
+            return doesQueryMatch(query, r) && doTagsMatch(selectedTags, r);
         })
         :
         ALL_RESULTS.filter(r => {

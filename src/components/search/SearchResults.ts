@@ -1,4 +1,4 @@
-import { ModelId } from "../../core/models/Model.constants";
+import { ModelId, ScaleTag } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 
 interface IResult {
@@ -29,7 +29,7 @@ ALL_PRESETS.forEach(p => {
         text: getName(p.modelId, p.name),
         to: getLink(p.modelId, p.id),
         tags: p.tags,
-        isCommon: true
+        isCommon: !p.tags.includes(ScaleTag.Exotic)
     });
     NOTE_PRESETS.forEach(n => {
         ALL_RESULTS.push({
