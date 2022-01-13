@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
 import { ModelId } from "../../core/models/Model.constants";
-import { ALL_PRESETS } from "../../core/models/Model.presets";
+import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import Card, { StyledCard } from "../_shared/ui/Card";
 
@@ -12,25 +12,34 @@ interface IResult {
     to: string;
 }
 
-const getName = (modelType: ModelId, name: string): string => {
+const getName = (modelType: ModelId, name: string, root?: string): string => {
     switch (modelType) {
         case ModelId.Chord:
-            return `${name} Chord`
+            return `${root ? root : ''} ${name} Chord`
         case ModelId.Scale:
-            return `${name} Scale`
+            return `${root ? root : ''} ${name} Scale`
         default:
-            return name;
+            return `${root ? root : ''} ${name}`;
     }
 }
 
-const getLink = (modelType: ModelId, id: string): string => {
-    return `/browse/${modelType}/${id}`;
+const getLink = (modelType: ModelId, id: string, root?: string): string => {
+    return `/browse/${modelType}/${id}${root ? `/root/${root}` : ''}`;
 }
 
-const ALL_RESULTS: IResult[] = ALL_PRESETS.map(p => ({
-    text: getName(p.modelId, p.name),
-    to: getLink(p.modelId, p.id)
-}));
+const ALL_RESULTS: IResult[] = [];
+ALL_PRESETS.forEach(p => {
+    ALL_RESULTS.push({
+        text: getName(p.modelId, p.name),
+        to: getLink(p.modelId, p.id)
+    });
+    NOTE_PRESETS.forEach(n => {
+        ALL_RESULTS.push({
+            text: getName(p.modelId, p.name, n.name),
+            to: getLink(p.modelId, p.id, n.id)
+        });
+    })
+});
 
 const StyledSearchPage = styled(StyledPageBody)`
 	display: flex;
