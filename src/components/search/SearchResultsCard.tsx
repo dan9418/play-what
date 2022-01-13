@@ -1,6 +1,9 @@
 import { Link, navigate } from "gatsby";
-import React from "react";
-import styled from 'styled-components';
+import React, { useState } from "react";
+import styled, { css } from 'styled-components';
+import ArrayUtils from "../../core/general/Array.utils";
+import ButtonInput from "../_shared/inputs/ButtonInput";
+import FilterList from "../_shared/inputs/FilterList";
 import Card from "../_shared/ui/Card";
 import { ALL_RESULTS } from "./SearchResults";
 
@@ -19,15 +22,60 @@ const StyledSearchResultsList = styled.ul`
     }
 `;
 
+const doTagsMatch = (selectedTags, r) => {
+    if (!selectedTags.length) return true;
+
+    return !selectedTags.some(t => {
+        return !r.tags.includes(t);
+    });
+}
+
 const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
 
-    const filteredResults = ALL_RESULTS.filter(r => {
-        if (!query && !r.isCommon) return false;
-        return r.text.match(new RegExp(query as string, 'gi'));
+    const [isFiltering, setIsFiltering] = useState(false);
+    const [selectedTags, setSelectedTags] = useState([]);
+
+    const action = <ButtonInput
+        className={`filter ${isFiltering ? 'active' : ''}`}
+        onClick={() => setIsFiltering(!isFiltering)}
+        css={css`
+            color: ${props => props.theme.action.interactive};
+            background-color: transparent;
+            text-decoration: underline;
+            &.active {
+                color: white;
+                background-color: ${props => props.theme.action.interactive};
+            }
+        `}
+    >
+        Filter
+    </ButtonInput>;
+
+    let filteredResults = query ?
+        ALL_RESULTS.filter(r => {
+            const isMatch = r.text.match(new RegExp(query as string, 'gi'));
+            return isMatch && doTagsMatch(selectedTags, r);
+        })
+        :
+        ALL_RESULTS.filter(r => {
+            return r.isCommon && doTagsMatch(selectedTags, r);
+        });
+
+    const tagSet = new Set();
+    filteredResults.forEach(r => {
+        console.log('dpb', r.tags);
+        r.tags.forEach(t => tagSet.add(t));
     });
+    const tags = ArrayUtils.setToArray(tagSet) || [];
+    console.log('dpb', tagSet, tags);
 
     return (
-        <Card title={!query ? 'Popular Pages' : 'Results'}>
+        <Card title={!query ? 'Popular Pages' : 'Results'} action={action}>
+            {isFiltering && <FilterList
+                tags={tags}
+                selectedTags={selectedTags}
+                setSelectedTags={setSelectedTags}
+            />}
             <StyledSearchResultsList>
                 {filteredResults.map((r, i) => <li key={r.to}>
                     <Link

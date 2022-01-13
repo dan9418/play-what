@@ -4,6 +4,7 @@ import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 interface IResult {
     text: string;
     to: string;
+    tags: string[];
     isCommon?: boolean;
 }
 
@@ -27,12 +28,17 @@ ALL_PRESETS.forEach(p => {
     ALL_RESULTS.push({
         text: getName(p.modelId, p.name),
         to: getLink(p.modelId, p.id),
+        tags: p.tags,
         isCommon: true
     });
     NOTE_PRESETS.forEach(n => {
         ALL_RESULTS.push({
             text: getName(p.modelId, p.name, n.name),
-            to: getLink(p.modelId, p.id, n.id)
+            to: getLink(p.modelId, p.id, n.id),
+            tags: p.tags
         });
     })
 });
+
+
+console.log('dpb ALL_RESULTS', ALL_RESULTS);

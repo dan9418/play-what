@@ -10,8 +10,11 @@ const rotate = (arr: any[], count: number): any[] => {
 // @ts-ignore
 const mapToArray = (map: Record<any, any>): any[] => Array.from(map).map(([k, v]) => v);
 
+const setToArray = (map: Set<any>): any[] => Array.from(map);
+
 export default {
 	splitAt,
 	rotate,
-	mapToArray
+	mapToArray,
+	setToArray
 };

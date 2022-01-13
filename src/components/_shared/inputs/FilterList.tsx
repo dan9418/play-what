@@ -46,10 +46,8 @@ const StyledFilterList = styled.div`
 `;
 
 
-const FilterList: React.FC<any> = ({ tag, selectedTags, setSelectedTags }) => {
-    const tags = tag && Object.values(tag);/*.filter(t => {
-        return filteredRows.find(r => r.tags.includes(t))
-    });*/
+const FilterList: React.FC<any> = ({ tags, selectedTags, setSelectedTags }) => {
+
     const toggle = t => {
         if (selectedTags.includes(t)) {
             setSelectedTags(selectedTags.filter(x => x !== t));
