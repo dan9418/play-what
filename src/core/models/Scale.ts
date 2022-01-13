@@ -3,12 +3,14 @@ import ArrayUtils from '../general/Array.utils';
 import NumberUtils from '../general/Number.utils';
 import Chord from './Chord';
 import Model from './Model';
-import { IntervalId, IPod, ScaleId, ScaleTag } from './Model.constants';
+import { IntervalId, IPod, ModelId, ScaleId, ScaleTag } from './Model.constants';
 import { SCALE_PRESETS, SCALE_PRESET_MAP } from './Model.presets';
 import { arePodListsEqual, reducePodList, subtractPods } from './Pod.static';
 import PodList from './PodList';
 
 export default class Scale extends PodList {
+
+    modelId = ModelId.Scale;
 
     constructor(id: ScaleId, options = undefined) {
         super(SCALE_PRESET_MAP, id, options);

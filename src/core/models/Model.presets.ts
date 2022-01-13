@@ -515,6 +515,7 @@ export const NOTE_PRESETS = ArrayUtils.mapToArray(NOTE_PRESET_MAP);
 export const SCALE_PRESETS = ArrayUtils.mapToArray(SCALE_PRESET_MAP);
 export const CHORD_PRESETS = ArrayUtils.mapToArray(CHORD_PRESET_MAP);
 export const INTERVAL_PRESETS = ArrayUtils.mapToArray(INTERVAL_PRESET_MAP);
+export const ALL_PRESETS = [...CHORD_PRESETS, ...SCALE_PRESETS];
 
 // Definition groupings
 

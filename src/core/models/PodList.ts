@@ -1,6 +1,6 @@
 import IntervalSpan from './Interval';
 import Model from './Model';
-import { ChordId, IPod, ScaleId } from './Model.constants';
+import { ChordId, IPod, ModelId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import { addPods, arePodListsEqual, getIndexOfPodAtPitch, listContainsSubset } from './Pod.static';
@@ -11,6 +11,7 @@ export interface IPodListOptions {
 
 export default class PodList extends Model {
 
+    modelId: ModelId | undefined;
     id: ChordId | ScaleId;
     root: Note;
     podList: IPod[];
