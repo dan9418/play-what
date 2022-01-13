@@ -1,6 +1,7 @@
-import { Link } from "gatsby";
-import React, { useRef, useState } from "react";
+import { Link, navigate } from "gatsby";
+import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
+import { useQueryParam } from "use-query-params";
 import { ModelId } from "../../core/models/Model.constants";
 import { ALL_PRESETS } from "../../core/models/Model.presets";
 import { StyledPageBody } from "../_shared/layout/PageBody";
@@ -11,12 +12,23 @@ interface IResult {
     to: string;
 }
 
+const getName = (modelType: ModelId, name: string): string => {
+    switch (modelType) {
+        case ModelId.Chord:
+            return `${name} Chord`
+        case ModelId.Scale:
+            return `${name} Scale`
+        default:
+            return name;
+    }
+}
+
 const getLink = (modelType: ModelId, id: string): string => {
     return `/browse/${modelType}/${id}`;
 }
 
 const ALL_RESULTS: IResult[] = ALL_PRESETS.map(p => ({
-    text: p.name,
+    text: getName(p.modelId, p.name),
     to: getLink(p.modelId, p.id)
 }));
 
@@ -71,37 +83,67 @@ const StyledSearchPage = styled(StyledPageBody)`
         li a {
             padding: 8px 0;
             display: block;
+
+            &:focus, &:hover {
+                padding: 8px;
+                background-color: ${props => props.theme.action.interactive};
+                color: white;
+                border-radius: 8px;
+            }
         }
     }
 `;
 
 const SearchPage: React.FC<any> = () => {
-    const [query, setQuery] = useState('');
-    const [results, setResults] = useState(ALL_RESULTS);
+
+    const [qp] = useQueryParam('query');
+
+    const [query, setQuery] = useState(qp || '');
     const searchRef = useRef();
+    const resultsRef = useRef();
+
+    useEffect(() => {
+        const ref = qp ? resultsRef : searchRef;
+        ref.current && ref.current.focus();
+    }, []);
 
     const onChange = e => {
         console.log('dpb', e.target.value);
         setQuery(e.target.value);
-        setResults(ALL_RESULTS.filter(r => {
-            return r.text.match(new RegExp(e.target.value, 'gi'));
-        }));
     }
+
+    const onSubmit = e => {
+        if (e.preventDefault) e.preventDefault();
+        navigate(`/search?query=${e.target.value}`);
+        return false;
+    }
+
+    const filteredResults = ALL_RESULTS.filter(r => {
+        return r.text.match(new RegExp(query as string, 'gi'));
+    });
 
     return (
         <StyledSearchPage>
             <form role="search">
                 <div className="search-bar">
-                    <input type="search" id="site-search" name="query" ref={searchRef} onChange={onChange}
+                    <input
+                        type="search"
+                        id="site-search"
+                        name="query"
+                        ref={searchRef}
+                        onChange={onChange}
+                        value={query as string}
                         placeholder="Search the site..."
                     />
-                    <button>Search</button>
+                    <button type="submit" onSubmit={onSubmit}>Search</button>
                 </div>
             </form>
             <Card title="Results">
                 <ul>
-                    {results.map(r => <li key={r.to}>
-                        <Link to={r.to}>{r.text}</Link>
+                    {filteredResults.map((r, i) => <li key={r.to}>
+                        <Link to={r.to}
+                            ref={i === 0 ? resultsRef : undefined}
+                        >{r.text}</Link>
                     </li>)}
                 </ul>
             </Card>
