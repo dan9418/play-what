@@ -1,7 +1,8 @@
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import Card from "../_shared/ui/Card";
+import { ALL_RESULTS } from "./SearchResults";
 
 const StyledSearchResultsList = styled.ul` 
     font-size: 110%;
@@ -18,14 +19,37 @@ const StyledSearchResultsList = styled.ul`
     }
 `;
 
-const SearchResultsCard: React.FC<any> = ({ resultsRef, resultsData, isDefault }) => {
+const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
+
+    const filteredResults = ALL_RESULTS.filter(r => {
+        if (!query && !r.isCommon) return false;
+        return r.text.match(new RegExp(query as string, 'gi'));
+    });
+
     return (
-        <Card title={isDefault ? 'Popular Pages' : 'Results'}>
+        <Card title={!query ? 'Popular Pages' : 'Results'}>
             <StyledSearchResultsList>
-                {resultsData.map((r, i) => <li key={r.to}>
-                    <Link to={r.to}
+                {filteredResults.map((r, i) => <li key={r.to}>
+                    <Link
+                        id={`search-result=${i}`}
+                        to={r.to}
                         ref={i === 0 ? resultsRef : undefined}
-                    >{r.text}</Link>
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                                navigate(r.to);
+                            }
+                            if (e.key === 'ArrowDown') {
+                                const next = document.getElementById(`search-result=${i + 1}`);
+                                if (next) next.focus();
+                            }
+                            if (e.key === 'ArrowUp') {
+                                const prev = document.getElementById(`search-result=${i - 1}`);
+                                if (prev) prev.focus();
+                            }
+                        }}
+                    >
+                        {r.text}
+                    </Link>
                 </li>)}
             </StyledSearchResultsList>
         </Card>

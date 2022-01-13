@@ -1,3 +1,4 @@
+import { navigate } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 
@@ -37,11 +38,17 @@ const StyledSearchBar = styled.form`
     }
 `;
 
-const SearchBar: React.FC<any> = ({ searchRef, onSubmit, query, setQuery }) => {
+const SearchBar: React.FC<any> = ({ searchRef, query, setQuery }) => {
 
     const onChange = e => {
         console.log('dpb', e.target.value);
         setQuery(e.target.value);
+    }
+
+    const onSubmit = e => {
+        if (e.preventDefault) e.preventDefault();
+        navigate(`/search?query=${e.target.value}`);
+        return false;
     }
 
     return (
