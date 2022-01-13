@@ -5,8 +5,8 @@ import { IFretLabelProps } from "./Fretboard.utils";
 
 const StyledFretLabel = styled.div`
 	position: absolute;
-	width: 16px;
-	height: 16px;
+	height: 60%;
+	aspect-ratio: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,8 +16,7 @@ const StyledFretLabel = styled.div`
 
 	cursor: pointer;
 	&:hover {
-		width: 24px;
-		height: 24px;
+		height: 80%;
 	}
 `;
 

@@ -58,24 +58,6 @@ const StyledFretboard = styled.div`
     .fret-number, .fret-dots {
         color: #888;
     }
-
-    /* Fret Label */
-
-    .fret-label {
-        position: absolute;
-        width: 90%;
-        height: 90%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100%;
-    }
-
-    .fret-label:hover {
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-    }
 `;
 
 export default StyledFretboard;

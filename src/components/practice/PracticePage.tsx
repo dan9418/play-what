@@ -21,10 +21,6 @@ const StyledPracticePage = styled(StyledPageBody)`
     
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
-        .fret-label {
-            height: 8px;
-            width: 8px;
-        }
         table {
             width: 100%;
 

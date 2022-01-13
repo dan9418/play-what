@@ -1,7 +1,7 @@
 import IntervalSpan from '../../core/models/Interval';
 import Note from '../../core/models/Note';
 import PodList from '../../core/models/PodList';
-import { TUNING_PRESET_MAP, ITuning, TuningId } from './Fretboard.tuning';
+import { ITuning, TuningId, TUNING_PRESET_MAP } from './Fretboard.tuning';
 import { IVoicing } from './Fretboard.voicing';
 
 export interface IFretLabelProps {
@@ -72,9 +72,17 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 	const noteIndex = tuning[stringIndex] + fretIndex;
 	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
 
-	if (!note) return {};
+	if (!note) {
+		return {
+			
+		}
+	}
 
-	if (!isIntervalInVoicing(interval, voicing, stringIndex)) return {};
+	if (!isIntervalInVoicing(interval, voicing, stringIndex)) {
+		return {
+			color: `#00000033`
+		}
+	}
 
 	const color = interval.getColor();
 	const freq = note.getFrequency() as number;
