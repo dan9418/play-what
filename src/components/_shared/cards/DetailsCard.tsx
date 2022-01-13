@@ -1,6 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import styled from 'styled-components';
+import styled from "styled-components";
 import NumberUtils from "../../../core/general/Number.utils";
 import Note from "../../../core/models/Note";
 import { octaveState } from "../../../state/state";
@@ -8,60 +8,120 @@ import { StyledCard } from "../ui/Card";
 import RootCard from "./RootCard";
 
 const StyledDetailsCard = styled(StyledCard)`
-    ul {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        flex-direction: column;
-        @media(min-width: 512px) {
-            flex-direction: row;
+    table {
+        &.mobile {
+            display: table;
+            @media(min-width: 512px) {
+                display: none;
+            }
+        }
+        &.desktop {
+            display: none;
+            @media(min-width: 512px) {
+                display: table;
+            }
         }
 
-        .box {
-            padding: 8px 16px;
-            text-align: center;
-            font-size: 140%;
-            .featured {
-                font-weight: bold;
-                @media(min-width: 512px) {
-                    font-size: 200%;
-                }
-            }
-            .frequency, .ratio {
-                color: ${({ theme }) => theme.text.secondary};
-                font-size: 80%;
-                padding: 4px;
-            }
+        margin: auto;
+        border-collapse: collapse;
+
+        td, th {
+            padding: 8px;
+        }
+
+        th {
+            text-transform: uppercase;
+            color: ${props => props.theme.text.secondary};
+        }
+
+        .featured {
+            font-weight: bold;
+            font-size: 120%;
         }
     }
 `;
 
+const NoteCell = ({ note }) => {
+    if (!note) return null;
+    return (
+        <td className={`note featured`}>{note.name}<sub>{note.getOctave()}</sub></td>
+    );
+};
+
+const IntervalCell = ({ interval, isFeatured }) => {
+    return (
+        <td className={`interval ${isFeatured ? 'featured' : ''}`}>{interval.getName()}</td>
+    );
+};
+
+const PitchCell = ({ note }) => {
+    if (!note) return null;
+    return (
+        <td className={`frequency`}>{note.getFrequency(true)}</td>
+    );
+};
+
+const RatioCell = ({ interval }) => {
+    return (
+        <td className={`ratio`}>{interval.getRatio()}</td>
+    );
+};
+
 const DetailsCard: React.FC<any> = ({ model }) => {
     const intervals = model.intervals;
-    const notes = model.notes;
     const octave = useRecoilValue(octaveState);
+    const notes = model.notes && model.notes.map(n => new Note([
+        (octave - 4) * 12 + NumberUtils.modulo(n.pod[0], 12),
+        n.pod[1]
+    ]));
 
     if (!intervals && !notes) return null;
 
     return (
-        <StyledDetailsCard>
-            <ul>
-                {intervals.map((ivl, i) => {
-                    const octaveCorrectNote = notes && new Note([
-                        (octave - 4) * 12 + NumberUtils.modulo(notes[i].pod[0], 12),
-                        notes[i].pod[1]
-                    ]);
-                    return (
-                        <li key={ivl.id} className={`box`}>
-                            {notes && <div className={`note featured`}>{notes[i].name}<sub>{notes[i].getOctave()}</sub></div>}
-                            <div className={`interval ${notes ? '' : 'featured'}`}>{ivl.getName()}</div>
-                            {notes && <div className={`frequency`}>{octaveCorrectNote.getFrequency(true)}</div>}
-                            <div className={`ratio`}>{ivl.getRatio()}</div>
-                        </li>
-                    );
-                })}
-            </ul>
+        <StyledDetailsCard $n={intervals.length}>
+            <table className="mobile">
+                <thead>
+                    <tr>
+                        {notes && <th>Note</th>}
+                        <th>Interval</th>
+                        {notes && <th>Pitch</th>}
+                        <th>Ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {intervals.map((ivl, i) => {
+                        const note = notes && notes[i];
+                        return (
+                            <tr key={ivl.id} className={`box ${i === 0 ? 'root' : ''}`}>
+                                <NoteCell note={note} key={i} />
+                                <IntervalCell interval={ivl} key={i} isFeatured={!note} />
+                                <PitchCell note={note} key={i} />
+                                <RatioCell interval={ivl} key={i} />
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+            <table className="desktop">
+                <tbody>
+                    {notes && <tr>
+                        <th>Note</th>
+                        {notes.map((note, i) => <NoteCell note={note} key={i} />)}
+                    </tr>}
+                    <tr>
+                        <th>Interval</th>
+                        {intervals.map((ivl, i) => <IntervalCell interval={ivl} key={i} isFeatured={!notes} />)}
+                    </tr>
+                    {notes && <tr>
+                        <th>Pitch</th>
+                        {notes.map((note, i) => <PitchCell note={note} key={i} />)}
+                    </tr>}
+                    <tr>
+                        <th>Ratio</th>
+                        {intervals.map((ivl, i) => <RatioCell interval={ivl} key={i} />)}
+                    </tr>
+                </tbody>
+            </table>
             <RootCard />
         </StyledDetailsCard>
     );
