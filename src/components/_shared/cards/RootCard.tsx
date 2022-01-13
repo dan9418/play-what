@@ -13,8 +13,20 @@ const StyledRoot = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
+
+    background-color: ${props => props.theme.surface.bg};
+    border-radius: 8px;
+    padding: 8px;
+
+    select {
+        width: 100%;
+    }
+
     @media(min-width: 512px) {
         grid-template-columns: 1fr 1fr;
+        select {
+            width: 128px;
+        }
     }
 `;
 

@@ -1,16 +1,5 @@
-import { ChordId, CHORD_PRESETS } from '../Chord.constants';
-import { NoteId } from "../Note.constants";
 import { IChartConfig } from "./Chart.constants";
-
-export const ALL_CHORDS_CONFIG: IChartConfig = {
-    name: 'All Chords',
-    sections: [
-        {
-            name: 'A',
-            chords: CHORD_PRESETS.map(chord => ([NoteId.C, chord.id as ChordId, 4]))
-        }
-    ]
-}
+import { ChordId, NoteId } from './Model.constants';
 
 export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
     name: 'Autumn Leaves',
@@ -151,14 +140,14 @@ export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
             chords: [
                 [NoteId.Eb, ChordId.Maj7, 4],
                 [NoteId.G, ChordId.HalfDim7, 2],
-                [NoteId.C, ChordId.Dom7b9, 2],
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.F, ChordId.Min7, 4],
                 [NoteId.A, ChordId.HalfDim7, 2],
-                [NoteId.D, ChordId.Dom7b9, 2],
+                [NoteId.D, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.Eb, ChordId.Maj7, 4],
                 [NoteId.Ab, ChordId.Dom7, 4],
                 [NoteId.G, ChordId.HalfDim7, 4],
-                [NoteId.C, ChordId.Dom7b9, 4]
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 4]
             ]
         },
         {
@@ -168,7 +157,7 @@ export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
                 [NoteId.Ab, ChordId.Min6, 4],
                 [NoteId.Eb, ChordId.Maj7, 4],
                 [NoteId.D, ChordId.HalfDim7, 2],
-                [NoteId.G, ChordId.Dom7b9, 2],
+                [NoteId.G, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.C, ChordId.Min7, 4],
                 [NoteId.F, ChordId.Dom7, 4],
                 [NoteId.F, ChordId.Min7, 4],
@@ -180,14 +169,14 @@ export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
             chords: [
                 [NoteId.Eb, ChordId.Maj7, 4],
                 [NoteId.G, ChordId.HalfDim7, 2],
-                [NoteId.C, ChordId.Dom7b9, 2],
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.F, ChordId.Min7, 4],
                 [NoteId.A, ChordId.HalfDim7, 2],
-                [NoteId.D, ChordId.Dom7b9, 2],
+                [NoteId.D, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.Eb, ChordId.Maj7, 4],
                 [NoteId.Ab, ChordId.Dom7, 4],
                 [NoteId.G, ChordId.HalfDim7, 4],
-                [NoteId.C, ChordId.Dom7b9, 4]
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 4]
             ]
         },
         {
@@ -198,9 +187,9 @@ export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
                 [NoteId.Eb, ChordId.Maj7, 2],
                 [NoteId.Ab, ChordId.Dom7, 2],
                 [NoteId.G, ChordId.HalfDim7, 2],
-                [NoteId.C, ChordId.Dom7b9, 2],
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.F, ChordId.Min7, 4],
-                [NoteId.Bb, ChordId.Dom7b9, 4],
+                [NoteId.Bb, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.Eb, ChordId.Maj7, 8]
             ]
         }
@@ -241,10 +230,10 @@ export const SWEET_GEORGIA_BROWN_CONFIG: IChartConfig = {
             chords: [
                 [NoteId.F, ChordId.Min7, 2],
                 [NoteId.G, ChordId.HalfDim7, 2],
-                [NoteId.C, ChordId.Dom7b9, 2],
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.F, ChordId.Min7, 2],
                 [NoteId.G, ChordId.HalfDim7, 2],
-                [NoteId.C, ChordId.Dom7b9, 2],
+                [NoteId.C, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.Ab, ChordId.Dom7, 2],
                 [NoteId.G, ChordId.Dom7, 2],
                 [NoteId.Gb, ChordId.Dom7, 2],
@@ -318,11 +307,11 @@ export const ON_GREEN_DOLPIN_STREET_CONFIG: IChartConfig = {
                 [NoteId.D, ChordId.Min7, 2],
                 [NoteId.D, ChordId.Min7, 2],
                 [NoteId.B, ChordId.HalfDim7, 2],
-                [NoteId.E, ChordId.Dom7b9, 2],
+                [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.A, ChordId.Min7, 2],
                 [NoteId.A, ChordId.Min7, 2],
                 [NoteId.Fs, ChordId.HalfDim7, 2],
-                [NoteId.B, ChordId.Dom7b9, 2],
+                [NoteId.B, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.E, ChordId.Min7, 2],
                 [NoteId.A, ChordId.Min7, 2],
                 [NoteId.D, ChordId.Min7, 2],
@@ -477,15 +466,15 @@ export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
             chords: [
                 [NoteId.Bb, ChordId.Maj7, 4],
                 [NoteId.E, ChordId.HalfDim7, 2],
-                [NoteId.A, ChordId.Dom7b9, 2],
+                [NoteId.A, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.D, ChordId.Min7, 4],
                 [NoteId.Bb, ChordId.Min7, 2],
                 [NoteId.Eb, ChordId.Maj7, 2],
                 [NoteId.F, ChordId.Maj7, 4],
                 [NoteId.E, ChordId.HalfDim7, 2],
-                [NoteId.A, ChordId.Dom7b9, 2],
+                [NoteId.A, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.A, ChordId.HalfDim7, 4],
-                [NoteId.D, ChordId.Dom7b9, 4]
+                [NoteId.D, /*ChordId.Dom7b9*/ChordId.Dom7, 4]
             ]
         },
         {
@@ -501,11 +490,11 @@ export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
             name: 'A\'',
             chords: [
                 [NoteId.E, ChordId.HalfDim7, 4],
-                [NoteId.A, ChordId.Dom7b9, 4],
+                [NoteId.A, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.D, ChordId.HalfDim7, 4],
-                [NoteId.G, ChordId.Dom7b9, 4],
+                [NoteId.G, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.C, ChordId.HalfDim7, 4],
-                [NoteId.F, ChordId.Dom7b9, 4],
+                [NoteId.F, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.Bb, ChordId.Maj7, 8]
             ]
         }
@@ -524,14 +513,14 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
                 [NoteId.Eb, ChordId.Dom7, 4],
                 [NoteId.G, ChordId.MajTriad, 8],
                 [NoteId.B, ChordId.Min7, 4],
-                [NoteId.E, ChordId.Dom7b9, 4]
+                [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 4]
             ]
         },
         {
             name: 'B',
             chords: [
                 [NoteId.A, ChordId.Min7, 4],
-                [NoteId.E, ChordId.Dom7b9, 4],
+                [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.A, ChordId.Min7, 8],
                 [NoteId.Eb, ChordId.Dom7, 8],
                 [NoteId.A, ChordId.Min7, 4],
@@ -546,14 +535,14 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
                 [NoteId.Eb, ChordId.Dom7, 4],
                 [NoteId.G, ChordId.MajTriad, 8],
                 [NoteId.B, ChordId.Min7, 4],
-                [NoteId.E, ChordId.Dom7b9, 4]
+                [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 4]
             ]
         },
         {
             name: 'C',
             chords: [
                 [NoteId.A, ChordId.Min7, 4],
-                [NoteId.E, ChordId.Dom7b9, 4],
+                [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 4],
                 [NoteId.A, ChordId.Min7, 4],
                 [NoteId.C, ChordId.Min6, 4],
                 [NoteId.B, ChordId.Min7, 2],

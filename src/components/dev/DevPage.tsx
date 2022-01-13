@@ -22,16 +22,19 @@ const DevPage: React.FC<any> = () => {
             <PageTitle title="Developer Panel" />
             <ul>
                 <li>
-                    <Link to='/test'>Tests</Link>
+                    <Link to='/test'>Code Tests</Link>
                 </li>
                 <li>
-                    <Link to='/theme'>Theme</Link>
+                    <Link to='/theme'>Edit Theme</Link>
                 </li>
                 <li>
-                    <Link to='/docs'>Docs</Link>
+                    <Link to='/docs'>Documentation</Link>
                 </li>
                 <li>
-                    <Link to='/practice'>Practice</Link>
+                    <Link to='/practice'>Guitar Practice</Link>
+                </li>
+                <li>
+                    <Link to='/charts'>Chord Charts</Link>
                 </li>
             </ul>
         </StyledDevPage>

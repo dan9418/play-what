@@ -11,14 +11,18 @@ export const StyledInputRow = styled.div`
             align-items: center;
             flex-direction: row;
             justify-content: space-between;
-            margin-bottom: 8px;
+            //margin-bottom: 8px;
         }
     `}
 
-    label {
+    > label {
         color: ${({ theme }) => theme.dark3};
         font-weight: bold;
-        margin: 4px;
+        margin: 8px;
+    }
+
+    > div {
+        width: 100%;
     }
 `;
 
@@ -26,7 +30,7 @@ const InputRow = ({ label, children, y = false, ...rest }) => {
     return (
         <StyledInputRow $y={y} {...rest}>
             <label>{label}</label>
-            <div className="octave">
+            <div>
                 {children}
             </div>
         </StyledInputRow>

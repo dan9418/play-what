@@ -20,6 +20,9 @@ const StyledDetailsCard = styled(StyledCard)`
             @media(min-width: 512px) {
                 display: table;
             }
+            th {
+                display: none;
+            }
         }
 
         margin: auto;
@@ -27,16 +30,38 @@ const StyledDetailsCard = styled(StyledCard)`
 
         td, th {
             padding: 8px;
+            @media(min-width: 512px) {
+                padding: 8px 16px;
+            }
+            text-align: center;
         }
 
         th {
             text-transform: uppercase;
-            color: ${props => props.theme.text.secondary};
+            font-size: 80%;
         }
 
         .featured {
             font-weight: bold;
+            font-size: 150%;
+            @media(min-width: 512px) {
+                font-size: 300%;
+            }
+        }
+
+        .interval {
             font-size: 120%;
+            @media(min-width: 512px) {
+                font-size: 200%;
+            }
+        }
+
+        .ratio, .frequency {
+            color: ${props => props.theme.text.secondary};
+            font-size: 80%;
+            @media(min-width: 512px) {
+                font-size: 100%;
+            }
         }
     }
 `;
