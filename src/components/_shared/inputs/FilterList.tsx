@@ -41,12 +41,18 @@ const StyledFilterList = styled.div`
                 color: ${({ theme }) => theme.text.inverted};;
                 background-color: ${props => props.theme.action.interactive};
             }
+
+            :disabled {
+                color: ${({ theme }) => theme.text.inverted};
+                background-color: ${props => props.theme.text.secondary};
+                cursor: not-allowed;
+            }
         }
     }
 `;
 
 
-const FilterList: React.FC<any> = ({ tags, selectedTags, setSelectedTags }) => {
+const FilterList: React.FC<any> = ({ tags, availableTags, selectedTags, setSelectedTags }) => {
 
     const toggle = t => {
         if (selectedTags.includes(t)) {
@@ -70,7 +76,11 @@ const FilterList: React.FC<any> = ({ tags, selectedTags, setSelectedTags }) => {
             <ul>
                 {tags.map(t => (
                     <li key={t}>
-                        <ButtonInput onClick={() => toggle(t)} className={selectedTags.includes(t) ? 'active' : ''}>
+                        <ButtonInput
+                            onClick={() => toggle(t)}
+                            className={selectedTags.includes(t) ? 'active' : ''}
+                            disabled={!availableTags.includes(t)}
+                        >
                             {t}
                         </ButtonInput>
                     </li>

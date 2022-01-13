@@ -67,17 +67,24 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
         });
 
     const tagSet = new Set();
-    filteredResults.forEach(r => {
-        console.log('dpb', r.tags);
+    ALL_RESULTS.forEach(r => {
+        if (r.to.includes('root')) return;
         r.tags.forEach(t => tagSet.add(t));
     });
     const tags = ArrayUtils.setToArray(tagSet) || [];
-    console.log('dpb', tagSet, tags);
+
+    const tagSet2 = new Set();
+    filteredResults.forEach(r => {
+        if (r.to.includes('root')) return;
+        r.tags.forEach(t => tagSet2.add(t));
+    });
+    const availableTags = ArrayUtils.setToArray(tagSet2) || [];
 
     return (
         <Card title={!query ? 'Popular Pages' : 'Results'} action={action}>
             {isFiltering && <FilterList
                 tags={tags}
+                availableTags={availableTags}
                 selectedTags={selectedTags}
                 setSelectedTags={setSelectedTags}
             />}
