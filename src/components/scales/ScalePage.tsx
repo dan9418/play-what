@@ -2,7 +2,6 @@ import Scale from "@pw-core/models/Scale";
 import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
-import Note from "../../core/models/Note";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
@@ -26,7 +25,7 @@ const ScalePage: React.FC<any> = props => {
 
     return (
         <StyledScalePage>
-            <BreadcrumbList id={scale.id} name={scale.name} path={props.path} />
+            <BreadcrumbList path={props.path} />
             <PageTitle title={scale.name} subtitle="Scale" />
             <StyledPane>
                 <DetailsCard model={scale} />

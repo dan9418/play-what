@@ -58,7 +58,7 @@ const BrowsePage: React.FC<any> = props => {
 
     return (
         <StyledBrowsePage>
-            <BreadcrumbList id="browse" name="Browse" path={props.path} />
+            <BreadcrumbList path={props.path} />
             <PageTitle title="Browse" subtitle={null} />
             <StyledPane>
                 <Card title="Chords">

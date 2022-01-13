@@ -37,7 +37,7 @@ const ScalesPage: React.FC<any> = props => {
 
     return (
         <StyledScalesPage>
-            <BreadcrumbList id="scales" name="Scales" path={props.path} />
+            <BreadcrumbList path={props.path} />
             <PageTitle title="Scales" subtitle="The foundation of melody" />
             <div>
                 <p className="intro">

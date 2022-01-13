@@ -36,18 +36,18 @@ const ChordsPage: React.FC<any> = props => {
 
     return (
         <StyledChordsPage>
-            <BreadcrumbList id="chords" name="Chords" path={props.path} />
+            <BreadcrumbList path={props.path} />
             <PageTitle title="Chords" subtitle="The foundation of harmony" />
             <div>
                 <p className="intro">
-                    A chord is a collection of musical notes, which are generally played simultaneously.
+                    A chord is a collection of musical notes, usually played simultaneously.
                     Chords are defined by their first note (the <em>root</em>) and its relationship to the following notes (<em>intervals</em>).
-                    Most chords contain a root, a third, and a fifth. Advanced chords may include additional intervals, substitutions, and omissions.
                 </p>
-                <p className="intro">
+                {false && <p className="intro">
+                    Most chords contain a root, a third, and a fifth. Advanced chords may include additional intervals, substitutions, and/or omissions.
                     In their most common form, chords contain at least three notes spanning a single octave.
                     Chords spanning more than one octave are called <em>extended chords</em> and are not yet covered here.
-                </p>
+                </p>}
                 {/*
                     <h3>Types of Chords</h3>
                     <ul>
