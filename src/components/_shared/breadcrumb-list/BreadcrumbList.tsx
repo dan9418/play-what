@@ -4,12 +4,17 @@ import styled from 'styled-components';
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
-    font-size: 110%;
+    font-size: 80%;
+    padding: 0 0 8px 0;
+    @media(min-width: 512px) {
+        font-size: 110%;
+        padding: 0 0 16px 0;
+    }
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 8px;
-    padding: 0 0 16px 0;
     white-space: nowrap;
     text-transform: capitalize;
     svg {

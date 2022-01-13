@@ -6,23 +6,32 @@ const StyledPageTitle = styled.div`
 
     .header {
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
-        padding-bottom: 16px;
         width: 100%;
         margin: auto;
+        padding-bottom: 8px;
+        @media(min-width: 512px) {
+            padding-bottom: 16px;
+        }
 
         > h1 {
             width: 100%;
-            font-size: 300%;
+            font-size: 150%;
+            @media(min-width: 512px) {
+                font-size: 300%;
+            }
             text-align: left;
             color: ${({ theme }) => theme.text.primary};;
         }
 
         > h2 {
-            margin-top: 8px;
+            margin-top: 4px;
             width: 100%;
             text-align: left;
             color: ${({ theme }) => theme.text.secondary};;
-            font-size: 100%;
+            font-size: 80%;
+            @media(min-width: 512px) {
+                font-size: 100%;
+            }
         }
     }
 `
@@ -32,7 +41,7 @@ const PageTitle: React.FC<any> = ({ title, subtitle, children }) => {
         <StyledPageTitle>
             <div className="header">
                 <h1>{title}</h1>
-                <h2>{subtitle}</h2>
+                {subtitle && <h2>{subtitle}</h2>}
             </div>
             {children}
         </StyledPageTitle>

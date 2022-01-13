@@ -1,45 +1,18 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
 import { ChordTag, ScaleTag } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
 import Scale from "../../core/models/Scale";
+import ButtonInput from "../_shared/inputs/ButtonInput";
 import FilterList from "../_shared/inputs/FilterList";
 import Card from "../_shared/ui/Card";
 import SearchTable, { ISearchTableProps } from "./SearchTable";
 
 const StyledSearchCard = styled.div`
-    .filter-box {
-        //background-color: ${props => props.theme.status.highlight};
-        border: 1px solid ${props => props.theme.action.interactive};
-        border-radius: 8px;
-        padding: 8px;
-        margin-bottom: 16px;
 
-        .top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0 0 8px;
-
-            h3 {
-                margin: 0;
-                color: ${props => props.theme.text.secondary};
-            }
-
-            .clear {
-                background-color: transparent;
-                color: ${props => props.theme.action.interactive};
-                text-decoration: underline;
-                border: none;
-                appearance: none;
-                padding: 4px;
-                cursor: pointer;
-            }
-        }
-    }
 `;
 
 interface ISearchCardProps extends ISearchTableProps {
@@ -47,8 +20,24 @@ interface ISearchCardProps extends ISearchTableProps {
 }
 
 const SearchCard: React.FC<ISearchCardProps> = ({ tag, rows, headers, getCols }) => {
-
+    const [isFiltering, setIsFiltering] = useState(false);
     const [selectedTags, setSelectedTags] = useState([]);
+
+    const action = <ButtonInput
+        className={`filter ${isFiltering ? 'active' : ''}`}
+        onClick={() => setIsFiltering(!isFiltering)}
+        css={css`
+            color: ${props => props.theme.action.interactive};
+            background-color: transparent;
+            text-decoration: underline;
+            &.active {
+                color: white;
+                background-color: ${props => props.theme.action.interactive};
+            }
+        `}
+    >
+        Filter
+    </ButtonInput>;
 
     const filteredRows = rows.filter(r => {
         if (!selectedTags.length) return true;
@@ -60,28 +49,10 @@ const SearchCard: React.FC<ISearchCardProps> = ({ tag, rows, headers, getCols })
         return true;
     });
 
-    const tags = tag && Object.values(tag);/*.filter(t => {
-        return filteredRows.find(r => r.tags.includes(t))
-    });*/
-
     return (
-        <Card title="All Chords">
+        <Card title="All Chords" action={action} >
             <StyledSearchCard>
-                <div className="filter-box">
-                    <div className="top">
-                        <h3>Filters</h3>
-                        {selectedTags.length > 0 &&
-                            <button
-                                type="button"
-                                onClick={() => setSelectedTags([])}
-                                className="clear"
-                            >Clear</button>
-                        }
-                    </div>
-                    {tags &&
-                        <FilterList tags={tags} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />
-                    }
-                </div>
+                {isFiltering && <FilterList tag={tag} selectedTags={selectedTags} setSelectedTags={setSelectedTags} />}
                 <SearchTable headers={headers} rows={filteredRows} getCols={getCols} />
             </StyledSearchCard>
         </Card>

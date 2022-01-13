@@ -32,8 +32,12 @@ const StyledHomePage = styled(StyledPageBody)`
 	}
 
 	> a {
+		width: 100%;
+		@media(min-width: 512px) {
+			width: 50%;
+		}
+		
 		margin-top: 32px;
-		width: 50%;
 		text-align: center;
 		text-decoration: none;
 		cursor: pointer;
