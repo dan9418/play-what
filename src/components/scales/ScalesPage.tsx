@@ -3,7 +3,8 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ScaleId } from "../../core/models/Model.constants";
-import { CollectionScalesCard } from "../collection/CollectionPage";
+import { SCALE_PRESETS } from "../../core/models/Model.presets";
+import CollectionCard, { CollectionScalesCard } from "../collection/CollectionCard";
 import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
@@ -61,7 +62,7 @@ const ScalesPage: React.FC<any> = props => {
             </div>
             <StyledDoublePane>
                 <StyledPane>
-                    <CollectionScalesCard />
+                    <CollectionCard title="All Scales" data={SCALE_PRESETS} />
                 </StyledPane>
                 <StyledPane>
                     <Card title="Common Scales" id="common">

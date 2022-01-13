@@ -98,10 +98,10 @@ const IndexPage: React.FC<any> = () => {
 		<StyledHomePage>
 			<h1>Play <em>What?</em></h1>
 			<p className="intro">
-				A toolkit for exploring and visualizing musical concepts.
+				A toolkit for exploring and visualizing musical concepts
 			</p>
 			<p className="disclaimer">
-				This site is under active development and is slated for a formal Beta release in Q1 2022.
+				This site is under active development and is slated for a formal Beta release in Q1 2022
 			</p>
 			<h3>What will you play today?</h3>
 			<SearchBar placeholder={placeholder} />
