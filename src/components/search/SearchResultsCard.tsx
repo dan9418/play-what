@@ -95,6 +95,7 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
                         to={r.to}
                         ref={i === 0 ? resultsRef : undefined}
                         onKeyDown={(e) => {
+                            e.preventDefault();
                             if (e.key === 'Enter') {
                                 navigate(r.to);
                             }

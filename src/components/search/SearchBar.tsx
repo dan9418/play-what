@@ -38,7 +38,7 @@ const StyledSearchBar = styled.form`
 `;
 
 const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: externalSetQuery, placeholder }) => {
-    const [_query, _setQuery] = useState(externalQuery);
+    const [_query, _setQuery] = useState('');
     const query = typeof externalQuery === 'undefined' ? _query : externalQuery;
     const setQuery = typeof externalSetQuery === 'undefined' ? _setQuery : externalSetQuery;
 
@@ -47,13 +47,17 @@ const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: e
     }
 
     const onSubmit = e => {
-        if (e.preventDefault) e.preventDefault();
-        navigate(`/search?query=${e.target.value}`);
+        e.preventDefault();
+        const value = e.target.elements.query.value;
+        console.log('dpb', e, value);
+        const query = new URLSearchParams({ query: value });
+        const path = `/search/?${query.toString()}`;
+        navigate(path);
         return false;
     }
 
     return (
-        <StyledSearchBar role="search">
+        <StyledSearchBar role="search" onSubmit={onSubmit}>
             <div className="search-bar">
                 <input
                     type="search"
@@ -64,7 +68,7 @@ const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: e
                     value={query as string}
                     placeholder={placeholder || "Search the site..."}
                 />
-                <button type="submit" onSubmit={onSubmit}>Search</button>
+                <button type="submit" >Search</button>
             </div>
         </StyledSearchBar>
     );
