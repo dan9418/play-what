@@ -56,6 +56,7 @@ const StyledHomePage = styled(StyledPageBody)`
 	h3 {
 		margin-top: 64px;
 		font-style: italic;
+		color: ${({ theme }) => theme.surface.nav};
 	}
 
 	.search-bar {
