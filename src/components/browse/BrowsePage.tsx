@@ -55,7 +55,6 @@ const BrowsePage: React.FC<any> = props => {
 
     const rootSuffix = useRootSuffix();
 
-
     return (
         <StyledBrowsePage>
             <BreadcrumbList path={props.path} />

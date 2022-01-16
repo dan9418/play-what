@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import SEO from "../utils/SEO";
 
 const StyledPageTitle = styled.div`
     width: 100%;
@@ -38,13 +39,16 @@ const StyledPageTitle = styled.div`
 
 const PageTitle: React.FC<any> = ({ title, subtitle, children }) => {
     return (
-        <StyledPageTitle>
-            <div className="header">
-                <h1>{title}</h1>
-                {subtitle && <h2>{subtitle}</h2>}
-            </div>
-            {children}
-        </StyledPageTitle>
+        <>
+            <SEO title={title} />
+            <StyledPageTitle>
+                <div className="header">
+                    <h1>{title}</h1>
+                    {subtitle && <h2>{subtitle}</h2>}
+                </div>
+                {children}
+            </StyledPageTitle>
+        </>
     );
 };
 

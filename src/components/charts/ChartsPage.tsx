@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
 import { CHART_PRESETS, getParsedChart } from "../../core/models/Chart.constants";
@@ -67,7 +68,7 @@ const PracticePage: React.FC<any> = () => {
                             <ul className="chords">
                                 {s.chords.map((c, j) =>
                                     <li key={j}>
-                                        <div className="chord">{c.getShortName()}</div>
+                                        <Link to={`/browse/chords/${c.id}/root/${c.root.id}`} className="chord">{c.getShortName()}</Link>
                                     </li>
                                 )}
                             </ul>

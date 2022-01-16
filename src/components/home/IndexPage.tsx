@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SearchBar from "../search/SearchBar";
 import { ALL_RESULTS } from "../search/SearchResults";
 import { StyledPageBody } from "../_shared/layout/PageBody";
+import SEO from "../_shared/utils/SEO";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -97,6 +98,7 @@ const IndexPage: React.FC<any> = () => {
 
 	return (
 		<StyledHomePage>
+			<SEO />
 			<h1>Play <em>What?</em></h1>
 			<p className="intro">
 				A toolkit for exploring and visualizing musical concepts

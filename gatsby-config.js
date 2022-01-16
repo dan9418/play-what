@@ -4,6 +4,8 @@ module.exports = {
   //pathPrefix: "/play-what",
   siteMetadata: {
     title: `Play What`,
+    description: "Music Theory Toolkit",
+    url: "www.play-what.com",
   },
   plugins: [
     {
