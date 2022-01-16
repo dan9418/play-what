@@ -79,8 +79,8 @@ export const BLUE_BOSSA_CONFIG: IChartConfig = {
                 [NoteId.D, ChordId.HalfDim7, 4],
                 [NoteId.G, ChordId.Dom7, 4],
                 [NoteId.C, ChordId.Min7, 4],
-                [NoteId.D, ChordId.HalfDim7, 4],
-                [NoteId.G, ChordId.Dom7, 4]
+                [NoteId.D, ChordId.HalfDim7, 2],
+                [NoteId.G, ChordId.Dom7, 2]
             ]
         }
     ]

@@ -1,7 +1,7 @@
 import * as CHARTS from './Chart.presets';
 import Chord from './Chord';
 import { ChordId, NoteId } from './Model.constants';
-import { NOTE_PRESET_MAP } from './Model.presets';
+import { CHORD_PRESET_MAP, NOTE_PRESET_MAP } from './Model.presets';
 import Note from './Note';
 
 export type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];
@@ -24,9 +24,16 @@ export const CHART_PRESETS = Object.values(CHARTS).map(chart => {
     }
 });
 
+interface IChordItem {
+    t?: number;
+    rootName: string;
+    structureName: string;
+    chord: Chord
+}
+
 interface ISectionParsed {
     name: string;
-    chords: Chord[]
+    chords: IChordItem[]
 }
 
 export interface IChartParsed {
@@ -46,9 +53,16 @@ export const getParsedChart = (config: IChartConfig): IChartParsed => {
             const [noteId, chordId, t] = chordConfig;
 
             const root = new Note(NOTE_PRESET_MAP.get(noteId).value || [0, 0]);
+            const short = new Chord(chordId);
             const chord = new Chord(chordId, { root });
 
-            chords.push(...(new Array(t / 2).fill(chord)));
+            chords.push({
+                t,
+                rootName: root.name,
+                structureName: short.getShortName(),
+                chord
+            });
+            //chords.push(...(new Array(t / 2).fill(chord)));
         }
         sections.push({
             name: sectionConfig.name || 'Section',

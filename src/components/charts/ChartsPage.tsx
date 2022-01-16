@@ -10,7 +10,7 @@ import InputRow, { StyledInputRow } from "../_shared/ui/InputRow";
 
 const StyledPracticePage = styled(StyledPageBody)`
 	width: 100%;
-    max-width: 100%;
+    max-width: 1024px;
     margin: auto;
     
     ${StyledCard}, ${StyledInputRow} {
@@ -34,16 +34,54 @@ const StyledPracticePage = styled(StyledPageBody)`
     }
 
     .chord {
-        font-size: 140%;
-        padding: 8px;
         white-space: nowrap;
         border-radius: 8px;
-        border: 1px solid black;
-        aspect-ratio: 2;
+        //border: 1px solid ${props => props.theme.utils.border};
+        background-color: ${props => props.theme.action.interactive};
+        color: white;
+        
+
+        :hover {
+            background-color: ${props => props.theme.action.active};
+        }
+
+        &.t-2 {
+            aspect-ratio: 1;
+            font-size: 80%;
+        }
+
+        &.t-2 {
+            aspect-ratio: 2;
+            font-size: 90%;
+        }
+
+        &.t-4 {
+            aspect-ratio: 4;
+        }
+
+        &.t-8 {
+            aspect-ratio: 8;
+            font-size: 120%;
+        }
+
+        &.t-16 {
+            aspect-ratio: 16;
+            font-size: 140%;
+        }
 
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .root-name {
+            font-weight: bold;
+            margin: 8px;
+            font-size: 140%;
+        }
+
+        .structure-name {
+            font-size: 100%;
+        }
     }
 `;
 
@@ -62,17 +100,27 @@ const PracticePage: React.FC<any> = () => {
             </InputRow>
             <Card title={chart.name}>
                 <ul className="sections">
-                    {chart.sections.map((s, i) =>
-                        <li key={i}>
-                            <h3>Section {s.name}</h3>
-                            <ul className="chords">
-                                {s.chords.map((c, j) =>
-                                    <li key={j}>
-                                        <Link to={`/browse/chords/${c.id}/root/${c.root.id}`} className="chord">{c.getShortName()}</Link>
-                                    </li>
-                                )}
-                            </ul>
-                        </li>
+                    {chart.sections.map((s, i) => {
+                        return (
+                            <li key={i}>
+                                <h3>Section {s.name}</h3>
+                                <ul className="chords">
+                                    {s.chords.map((c, j) => {
+                                        const { chord, rootName, structureName, t } = c;
+                                        return (
+                                            <li key={j} style={{ gridColumn: `span ${t / 2}` }}>
+                                                <Link to={`/browse/chords/${chord.id}/root/${chord.root.id}`} className={`chord t-${t}`}>
+                                                    <div className="root-name">{rootName}</div>
+                                                    <div className="structure-name">{structureName}</div>
+                                                </Link>
+                                            </li>
+                                        );
+                                    }
+                                    )}
+                                </ul>
+                            </li>
+                        );
+                    }
                     )}
                 </ul>
             </Card>
