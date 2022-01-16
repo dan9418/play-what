@@ -31,14 +31,11 @@ const StyledSiteFooter = styled.footer`
 		height: 16px;
 		width: 1px;
 		background-color: ${({ theme }) => theme.text.secondary};
-		margin: 8px;
+		margin: 4px;
 	}
 	
-	& > div {
-		padding: 8px;
-	}
-
 	a {
+		padding: 8px;
 		color: ${({ theme }) => theme.text.inverted};;
 		margin: 4px 8px;
 		text-decoration: none;
@@ -47,7 +44,9 @@ const StyledSiteFooter = styled.footer`
 		align-items: center;
 
 		&:hover {
-			color: ${({ theme }) => theme.text.secondary};
+			background-color: rgba(255,255,255,0.1);
+			border-radius: 8px;
+			color: white;
 		}
 
 		svg {

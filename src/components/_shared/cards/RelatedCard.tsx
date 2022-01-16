@@ -7,8 +7,14 @@ import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models
 import CollectionTable from "../../collection/CollectionTable";
 import Card from "../../_shared/ui/Card";
 
-const StyledRelated = styled.div`
-    overflow-x: auto;
+const StyledCollectionList = styled.ul`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    a {
+        padding: 4px 8px;
+    }
 `;
 
 
@@ -25,58 +31,58 @@ const RelatedCard: React.FC<any> = ({ model }) => {
 
     return (
         <>
+
             {false && <Card title="Other Roots">
-                <StyledRelated>
-                    <ul>
-                        {NOTE_PRESETS.map(s => (
-                            <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}/${rootSuffix}`}>{s.name} {/*model.name*/}</Link></li>
-                        ))}
-                    </ul>
-                </StyledRelated>
+                <ul>
+                    {NOTE_PRESETS.map(s => (
+                        <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}/${rootSuffix}`}>{s.name} {/*model.name*/}</Link></li>
+                    ))}
+                </ul>
             </Card>}
 
             {subchords.length > 0 &&
                 <Card title="Child Chords">
-                    <StyledRelated>
-                        <CollectionTable data={subchords} semitones={semitones} />
-                    </StyledRelated>
+                    <CollectionTable data={subchords} semitones={semitones} />
                 </Card>
             }
             {superchords.length > 0 &&
                 <Card title="Parent Chords">
-                    <StyledRelated>
-                        <CollectionTable data={superchords} semitones={semitones} />
-                    </StyledRelated>
+                    <CollectionTable data={superchords} semitones={semitones} />
                 </Card>
             }
             {subscales.length > 0 &&
                 <Card title="Child Scales">
-                    <StyledRelated>
-                        <CollectionTable data={subscales} semitones={semitones} />
-                    </StyledRelated>
+                    <CollectionTable data={subscales} semitones={semitones} />
                 </Card>
             }
             {superscales.length > 0 &&
                 <Card title="Parent Scales">
-                    <StyledRelated>
-                        <CollectionTable data={superscales} semitones={semitones} />
-                    </StyledRelated>
+                    <CollectionTable data={superscales} semitones={semitones} />
                 </Card>
             }
             {model.modelId === ModelId.Chord &&
                 <Card title="Other Chords">
-                    <StyledRelated>
-                        <CollectionTable data={CHORD_PRESETS} semitones={semitones} />
-                    </StyledRelated>
+                    <StyledCollectionList>
+                        {CHORD_PRESETS.map(p => <li key={p.id}>
+                            <Link to={`/browse/chords/${p.id}/${rootSuffix}`}>
+                                {p.name}
+                            </Link>
+                        </li>)}
+                    </StyledCollectionList>
                 </Card>
             }
             {model.modelId === ModelId.Scale &&
                 <Card title="Other Scales">
-                    <StyledRelated>
-                        <CollectionTable data={SCALE_PRESETS} semitones={semitones} />
-                    </StyledRelated>
+                    <StyledCollectionList>
+                        {SCALE_PRESETS.map(p => <li key={p.id}>
+                            <Link to={`/browse/scales/${p.id}/${rootSuffix}`}>
+                                {p.name}
+                            </Link>
+                        </li>)}
+                    </StyledCollectionList>
                 </Card>
             }
+
         </>
     );
 };

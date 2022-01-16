@@ -37,7 +37,8 @@ const StyledSiteHeader = styled.div`
 		padding: 0 8px;
 
 		&:hover {
-			color: ${({ theme }) => theme.text.secondary};
+			background-color: rgba(255,255,255,0.1);
+			color: white;
 		}
 
 		&.active {

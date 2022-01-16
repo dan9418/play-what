@@ -27,7 +27,6 @@ const StyledSwitch = styled.button`
 		width: 50%;
 
 		${({ $active, theme }) => `&.${$active ? 'moon' : 'sun'} { background-color: ${theme.action.interactive} }`};
-		
 
 		display: flex;
 		align-items: center;

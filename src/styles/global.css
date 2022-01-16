@@ -1,7 +1,8 @@
 :root {
   --bg: #F3F4F8;;
   --fg: #282A3A;;
-  --link: #72B01D;;
+  --interactive: #72B01D;
+  --active: #FF7F11
 }
 
 * {
@@ -26,8 +27,12 @@ html, body {
 }
 
 a {
-  color: var(--link);
+  color: var(--interactive);
   text-decoration: none;
+}
+
+a:hover {
+  color: var(--active);
 }
 
 input[type="number"]::-webkit-outer-spin-button,

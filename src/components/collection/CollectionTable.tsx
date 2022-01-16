@@ -19,6 +19,11 @@ const StyledCollectionTable = styled.table`
             text-align: center;
             width: 32px;
             height: 32px;
+
+            display: none;
+            @media(min-width: 512px) {
+                display: table-cell;
+            }
         }
 
         &:first-child {
