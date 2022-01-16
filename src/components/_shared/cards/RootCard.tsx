@@ -61,16 +61,18 @@ const RootCard: React.FC<any> = () => {
     }
 
     return (
-        <Card title="Root">
-            <StyledRoot>
-                <InputRow label="Spelling">
+        <StyledRoot>
+            <Card>
+                <InputRow label="Root">
                     <DropdownInput options={NOTE_OPTIONS} value={selectedRoot} setValue={onChangeRoot} />
                 </InputRow>
+            </Card>
+            <Card>
                 <InputRow label="Octave">
                     <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
                 </InputRow>
-            </StyledRoot>
-        </Card>
+            </Card>
+        </StyledRoot>
     );
 };
 
