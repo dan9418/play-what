@@ -5,6 +5,7 @@ export const StyledInputRow = styled.div`
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    width: 100%;
 
     ${props => props.$y ? '' : `
         @media(min-width: 512px) {
@@ -19,10 +20,7 @@ export const StyledInputRow = styled.div`
         color: ${({ theme }) => theme.dark3};
         font-weight: bold;
         margin: 8px;
-    }
-
-    > div {
-        width: 100%;
+        white-space: nowrap;
     }
 `;
 

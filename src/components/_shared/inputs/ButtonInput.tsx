@@ -11,7 +11,7 @@ const StyledButton = styled.button`
 	background-color: ${({ $isActive, theme }) => $isActive ? theme.action.active : theme.action.interactive};
 
 	&:hover {
-		opacity: .9;
+		background-color: ${({ $isActive, theme }) => $isActive ? theme.action.active : theme.action.active};
 	}
 `;
 

@@ -74,7 +74,7 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 
 	if (!note) {
 		return {
-			
+
 		}
 	}
 
@@ -93,7 +93,7 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 	}
 }
 
-export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning): IFretboardProps => {
+export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning, fretRange?): IFretboardProps => {
 
 	let getFretLabelProps;
 	if (model && model.root) {
@@ -103,6 +103,7 @@ export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: I
 
 	return {
 		...DEFAULT_FRETBOARD_PROPS,
+		fretRange: fretRange ? fretRange : DEFAULT_FRETBOARD_PROPS.fretRange,
 		tuning: tuning ? tuning.value : DEFAULT_FRETBOARD_PROPS.tuning,
 		getFretLabelProps
 	}
