@@ -133,6 +133,7 @@ export interface IModelConfig {
 	id: string;
 	name: string;
 	tags: Tag[];
+	aliases: string[];
 	value: any;
 }
 

@@ -3,30 +3,31 @@ import { ChordId, IModelConfig, IntervalId, IPod, ModelId, NoteId, PresetId, Sca
 
 // Helpers
 
-const formatPreset = (modelId: ModelId, id: PresetId, name: string, value: any, tags = [], isList = false): IModelConfig => {
+const formatPreset = (modelId: ModelId, id: PresetId, name: string, value: any, tags = [], aliases = [], isList = false): IModelConfig => {
     return {
         modelId,
         id,
         name,
         value: Object.freeze(isList ? value.map(id => INTERVAL_PRESET_MAP.get(id).value) as any : value),
+        aliases,
         tags
     }
 };
 
-const formatNotePreset = (id: PresetId, name: string, value: IPod, tags = []): IModelConfig =>
-    formatPreset(ModelId.Note, id, name, value, tags);
+const formatNotePreset = (id: PresetId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelId.Note, id, name, value, tags, aliases);
 
 
-const formatIntervalPreset = (id: PresetId, name: string, value: IPod, tags = []): IModelConfig =>
-    formatPreset(ModelId.Interval, id, name, value, tags);
+const formatIntervalPreset = (id: PresetId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelId.Interval, id, name, value, tags, aliases);
 
 
-const formatChordPreset = (id: PresetId, name: string, value: IntervalId[], tags = []): IModelConfig =>
-    formatPreset(ModelId.Chord, id, name, value, tags, true);
+const formatChordPreset = (id: PresetId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelId.Chord, id, name, value, tags, aliases, true);
 
 
-const formatScalePreset = (id: PresetId, name: string, value: IntervalId[], tags = []): IModelConfig =>
-    formatPreset(ModelId.Scale, id, name, value, tags, true);
+const formatScalePreset = (id: PresetId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelId.Scale, id, name, value, tags, aliases, true);
 
 
 const podToPodList = (podPresets: IModelConfig[]): IModelConfig[] =>
@@ -308,7 +309,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         ChordId.HalfDim7,
         'Half-Diminished 7th',
         [IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.m7],
-        [Tag.Diminished, Tag.Seventh]
+        [Tag.Diminished, Tag.Seventh],
+        ['Minor 7th Flat 5']
     )],
     [ChordId.Aug7, formatChordPreset(
         ChordId.Aug7,
@@ -355,7 +357,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
     [ScaleId.Ionian, formatScalePreset(
         ScaleId.Ionian, 'Ionian',
         [IntervalId.P1, IntervalId.M2, IntervalId.M3, IntervalId.P4, IntervalId.P5, IntervalId.M6, IntervalId.M7],
-        [Tag.Heptatonic, Tag.Diatonic, Tag.Major]
+        [Tag.Heptatonic, Tag.Diatonic, Tag.Major],
+        ['Major', 'Diatonic']
     )],
     [ScaleId.Dorian, formatScalePreset(
         ScaleId.Dorian, 'Dorian',
@@ -380,7 +383,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
     [ScaleId.Aeolian, formatScalePreset(
         ScaleId.Aeolian, 'Aeolian',
         [IntervalId.P1, IntervalId.M2, IntervalId.m3, IntervalId.P4, IntervalId.P5, IntervalId.m6, IntervalId.m7],
-        [Tag.Heptatonic, Tag.Diatonic, Tag.Minor]
+        [Tag.Heptatonic, Tag.Diatonic, Tag.Minor],
+        ['Minor', 'Natural Minor']
     )],
     [ScaleId.Locrian, formatScalePreset(
         ScaleId.Locrian, 'Locrian',
@@ -455,9 +459,10 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
         [Tag.Heptatonic, Tag.Exotic, Tag.MelodicMode]
     )],
     [ScaleId.SuperLocrian, formatScalePreset(
-        ScaleId.SuperLocrian, 'Super Locrian', // Altered
+        ScaleId.SuperLocrian, 'Super Locrian',
         [IntervalId.P1, IntervalId.m2, IntervalId.m3, IntervalId.d4, IntervalId.d5, IntervalId.m6, IntervalId.m7],
-        [Tag.Heptatonic, Tag.Exotic, Tag.MelodicMode]
+        [Tag.Heptatonic, Tag.Exotic, Tag.MelodicMode],
+        ['Altered']
     )],
     // Pentatonic
     [ScaleId.MajorPentatonic, formatScalePreset(

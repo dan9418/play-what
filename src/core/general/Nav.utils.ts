@@ -1,3 +1,6 @@
+import { ModelId } from '../models/Model.constants';
+import { ALL_PRESETS } from './../models/Model.presets';
+
 interface ISearchResult {
     to: string;
     text: string;
@@ -9,8 +12,23 @@ interface ISearchCandidate {
     keywords: string[];
 }
 
-const doesQueryMatch = (query = '', cand: ISearchCandidate) => {
-    return cand.keywords.some(kw => query.match(new RegExp(kw, 'gi')));
+const doesQueryMatch = (query = '', keywords: string[]) => {
+    return keywords.some(kw => query.match(new RegExp(kw, 'gi')));
+}
+
+const getLink = (modelType: ModelId, id: string, root?: string): string => {
+    return `/browse/${modelType}/${id}${root ? `/root/${root}/` : ''}`;
+}
+
+const getName = (modelType: ModelId, name: string, root?: string): string => {
+    switch (modelType) {
+        case ModelId.Chord:
+            return `${root ? root : ''} ${name} Chord`
+        case ModelId.Scale:
+            return `${root ? root : ''} ${name} Scale`
+        default:
+            return `${root ? root : ''} ${name}`;
+    }
 }
 
 const BASIC_PAGES: ISearchCandidate[] = [
@@ -31,42 +49,19 @@ export const getSearchResults = (query: string): ISearchResult[] => {
 
     if (!query) return BASIC_PAGES;
 
-    BASIC_PAGES.forEach(p => doesQueryMatch(query, p) ? results.push(p) : undefined);
+    BASIC_PAGES.forEach(p => doesQueryMatch(query, p.keywords) ? results.push(p) : undefined);
+
+    ALL_PRESETS.forEach(p => {
+        if (doesQueryMatch(query, [p.name, ...p.tags])) {
+            const validNames = [p.name, ...p.aliases];
+            validNames.forEach(x =>
+                results.push({
+                    text: getName(p.modelId, x),
+                    to: getLink(p.modelId, p.id)
+                })
+            );
+        }
+    });
 
     return results;
 };
-
-/*
-const getName = (modelType: ModelId, name: string, root?: string): string => {
-    switch (modelType) {
-        case ModelId.Chord:
-            return `${root ? root : ''} ${name} Chord`
-        case ModelId.Scale:
-            return `${root ? root : ''} ${name} Scale`
-        default:
-            return `${root ? root : ''} ${name}`;
-    }
-}
-
-const getLink = (modelType: ModelId, id: string, root?: string): string => {
-    return `/browse/${modelType}/${id}${root ? `/root/${root}` : ''}`;
-}
-
-export const ALL_RESULTS: IResult[] = [];
-ALL_PRESETS.forEach(p => {
-    ALL_RESULTS.push({
-        text: getName(p.modelId, p.name),
-        to: getLink(p.modelId, p.id),
-        tags: p.tags,
-        isCommon: !p.tags.includes(Tag.Exotic)
-    });
-    NOTE_PRESETS.forEach(n => {
-        ALL_RESULTS.push({
-            text: getName(p.modelId, p.name, n.name),
-            to: getLink(p.modelId, p.id, n.id),
-            tags: p.tags
-        });
-    })
-});
-
-*/
