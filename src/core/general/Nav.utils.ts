@@ -3,8 +3,35 @@ interface ISearchResult {
     text: string;
 }
 
+interface ISearchCandidate {
+    text: string;
+    to: string;
+    keywords: string[];
+}
+
+const doesQueryMatch = (query = '', cand: ISearchCandidate) => {
+    return cand.keywords.some(kw => query.match(new RegExp(kw, 'gi')));
+}
+
+const BASIC_PAGES: ISearchCandidate[] = [
+    {
+        text: 'All Chords',
+        to: '/browse/chords',
+        keywords: ['all', 'chord']
+    },
+    {
+        text: 'All Scales',
+        to: '/browse/scales',
+        keywords: ['all', 'scale', 'mode']
+    }
+];
+
 export const getSearchResults = (query: string): ISearchResult[] => {
     const results: ISearchResult[] = [];
+
+    if (!query) return BASIC_PAGES;
+
+    BASIC_PAGES.forEach(p => doesQueryMatch(query, p) ? results.push(p) : undefined);
 
     return results;
 };

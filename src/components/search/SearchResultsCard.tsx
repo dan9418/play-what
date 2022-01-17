@@ -2,6 +2,7 @@ import { Link, navigate } from "gatsby";
 import React, { useState } from "react";
 import styled, { css } from 'styled-components';
 import ArrayUtils from "../../core/general/Array.utils";
+import { getSearchResults } from "../../core/general/Nav.utils";
 import ButtonInput from "../_shared/inputs/ButtonInput";
 import FilterList from "../_shared/inputs/FilterList";
 import Card from "../_shared/ui/Card";
@@ -20,20 +21,6 @@ const StyledSearchResultsList = styled.ul`
         }
     }
 `;
-
-const doTagsMatch = (selectedTags, r) => {
-    if (!selectedTags.length) return true;
-
-    return !selectedTags.some(t => {
-        return !r.tags.includes(t);
-    });
-}
-
-const doesQueryMatch = (query = '', r) => {
-    return r.text.match(new RegExp(query, 'gi'));
-    const pieces = query.split(' ');
-    return pieces.some(p => r.text.match(new RegExp(p, 'gi')));
-}
 
 const ALL_RESULTS = [];
 
@@ -58,14 +45,7 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
         Filter
     </ButtonInput>;
 
-    let filteredResults = query ?
-        ALL_RESULTS.filter(r => {
-            return doesQueryMatch(query, r) && doTagsMatch(selectedTags, r);
-        })
-        :
-        ALL_RESULTS.filter(r => {
-            return r.isCommon && doTagsMatch(selectedTags, r);
-        });
+    let filteredResults = getSearchResults(query);
 
     const tagSet = new Set();
     ALL_RESULTS.forEach(r => {
@@ -74,18 +54,12 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
     });
     const tags = ArrayUtils.setToArray(tagSet) || [];
 
-    const tagSet2 = new Set();
-    filteredResults.forEach(r => {
-        if (r.to.includes('root')) return;
-        r.tags.forEach(t => tagSet2.add(t));
-    });
-    const availableTags = ArrayUtils.setToArray(tagSet2) || [];
 
     return (
         <Card title={!query ? 'Popular Pages' : 'Results'} action={action}>
             {isFiltering && <FilterList
                 tags={tags}
-                availableTags={availableTags}
+                availableTags={[]}
                 selectedTags={selectedTags}
                 setSelectedTags={setSelectedTags}
             />}
