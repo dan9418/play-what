@@ -5,6 +5,7 @@ export default class Model {
     id: PresetId;
     name: string;
     tags: Tag[];
+    aliases: string[];
 
     getPreview() {
         return this.name || 'unnamed';

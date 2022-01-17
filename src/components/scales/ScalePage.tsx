@@ -23,9 +23,11 @@ const ScalePage: React.FC<any> = props => {
     const root = useRoot();
     const scale = new Scale(props.pageContext.modelId, { root });
 
+    const subtitle = scale.aliases.length ? `Also known as the ${scale.aliases.join('/')} Scale` : 'Scale';
+
     return (
         <StyledScalePage>
-            <PageTitle title={scale.name} subtitle="Scale" />
+            <PageTitle title={scale.name} subtitle={subtitle} />
             <StyledPane>
                 <DetailsCard model={scale} />
                 <RootCard />

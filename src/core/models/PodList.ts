@@ -29,6 +29,7 @@ export default class PodList extends Model {
         this.id = preset.id;
         this.name = preset.name;
         this.tags = preset.tags;
+        this.aliases = preset.aliases;
         this.podList = preset.value;
         this.intervals = preset.value.map(pod => IntervalSpan.fromValue(pod));
 

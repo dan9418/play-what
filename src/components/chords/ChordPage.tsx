@@ -21,9 +21,11 @@ const ChordPage: React.FC<any> = props => {
 
     const chord = new Chord(props.pageContext.modelId, { root });
 
+    const subtitle = chord.aliases.length ? `Also known as ${chord.aliases.join(', ')}` : 'Chord';
+
     return (
         <StyledChordPage>
-            <PageTitle title={chord.name} subtitle="Chord" />
+            <PageTitle title={chord.name} subtitle={subtitle} />
             <StyledPane>
                 <DetailsCard model={chord} />
                 <RootCard />

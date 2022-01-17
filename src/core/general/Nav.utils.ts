@@ -52,7 +52,7 @@ export const getSearchResults = (query: string): ISearchResult[] => {
     BASIC_PAGES.forEach(p => doesQueryMatch(query, p.keywords) ? results.push(p) : undefined);
 
     ALL_PRESETS.forEach(p => {
-        if (doesQueryMatch(query, [p.name, ...p.tags])) {
+        if (doesQueryMatch(query, [p.name, ...p.tags, ...p.aliases])) {
             const validNames = [p.name, ...p.aliases];
             validNames.forEach(x =>
                 results.push({
