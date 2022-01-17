@@ -1,13 +1,15 @@
-import { ModelId, ScaleTag } from "../../core/models/Model.constants";
-import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
-
-interface IResult {
-    text: string;
+interface ISearchResult {
     to: string;
-    tags: string[];
-    isCommon?: boolean;
+    text: string;
 }
 
+export const getSearchResults = (query: string): ISearchResult[] => {
+    const results: ISearchResult[] = [];
+
+    return results;
+};
+
+/*
 const getName = (modelType: ModelId, name: string, root?: string): string => {
     switch (modelType) {
         case ModelId.Chord:
@@ -39,3 +41,5 @@ ALL_PRESETS.forEach(p => {
         });
     })
 });
+
+*/

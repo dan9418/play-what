@@ -5,7 +5,6 @@ import ArrayUtils from "../../core/general/Array.utils";
 import ButtonInput from "../_shared/inputs/ButtonInput";
 import FilterList from "../_shared/inputs/FilterList";
 import Card from "../_shared/ui/Card";
-import { ALL_RESULTS } from "./SearchResults";
 
 const StyledSearchResultsList = styled.ul` 
     font-size: 110%;
@@ -35,6 +34,8 @@ const doesQueryMatch = (query = '', r) => {
     const pieces = query.split(' ');
     return pieces.some(p => r.text.match(new RegExp(p, 'gi')));
 }
+
+const ALL_RESULTS = [];
 
 const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
 

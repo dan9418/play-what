@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import SearchBar from "../search/SearchBar";
-import { ALL_RESULTS } from "../search/SearchResults";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import SEO from "../_shared/utils/SEO";
 
@@ -92,6 +91,7 @@ const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 
 	useEffect(() => {
+		const ALL_RESULTS = [];
 		const id = setInterval(() => setPlaceholder(ALL_RESULTS[Math.floor(Math.random() * ALL_RESULTS.length)].text), 2000);
 		return () => clearInterval(id);
 	}, []);
