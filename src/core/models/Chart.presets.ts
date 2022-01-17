@@ -304,12 +304,10 @@ export const ON_GREEN_DOLPIN_STREET_CONFIG: IChartConfig = {
         {
             name: 'C',
             chords: [
-                [NoteId.D, ChordId.Min7, 2],
-                [NoteId.D, ChordId.Min7, 2],
+                [NoteId.D, ChordId.Min7, 4],
                 [NoteId.B, ChordId.HalfDim7, 2],
                 [NoteId.E, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
-                [NoteId.A, ChordId.Min7, 2],
-                [NoteId.A, ChordId.Min7, 2],
+                [NoteId.A, ChordId.Min7, 4],
                 [NoteId.Fs, ChordId.HalfDim7, 2],
                 [NoteId.B, /*ChordId.Dom7b9*/ChordId.Dom7, 2],
                 [NoteId.E, ChordId.Min7, 2],

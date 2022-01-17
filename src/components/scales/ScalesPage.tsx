@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ScaleId } from "../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../core/models/Model.presets";
-import CollectionCard, { CollectionScalesCard } from "../collection/CollectionCard";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
+import CollectionCard from "../collection/CollectionCard";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../_shared/layout/Pane";
@@ -38,7 +37,6 @@ const ScalesPage: React.FC<any> = props => {
 
     return (
         <StyledScalesPage>
-            <BreadcrumbList path={props.path} />
             <PageTitle title="Scales" subtitle="The foundation of melody" />
             <div>
                 <p className="intro">

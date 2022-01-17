@@ -5,7 +5,6 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId } from "../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../_shared/layout/Pane";
@@ -37,7 +36,6 @@ const ChordsPage: React.FC<any> = props => {
 
     return (
         <StyledChordsPage>
-            <BreadcrumbList path={props.path} />
             <PageTitle title="Chords" subtitle="The foundation of harmony" />
             <div>
                 <p className="intro">

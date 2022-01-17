@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from 'react';
 import styled from 'styled-components';
+import { usePageProps } from "../../../contexts/PagePropsContext";
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`
@@ -20,23 +21,33 @@ const StyledBreadcrumbList = styled.ul`
     svg {
         margin-right: 8px;
     }
+
+    span {
+        color: ${props => props.theme.text.secondary};
+    }
 `
 
-const BreadcrumbList = ({ path }) => {
+const BreadcrumbList = () => {
+    const { path } = usePageProps();
     let pieces = path.split('/');
-    pieces = pieces.slice(0, pieces.length - 1).filter(p => !['root'].includes(p));
     const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
-        const path = `${prev}/${cur}`.replace('//', '/');
+        const path = `${prev}/${cur}`.replace('//', '/') || '/';
+        const isLink = !['root'].includes(cur);
+        const text = i === 0 ? 'Home' : cur.replaceAll('-', ' ').replace(' sharp', '#').replace(' flat', 'b');
+
+        const Tag = isLink ? Link : 'span';
+        const to = isLink ? path : undefined;
+
         paths.push(
             <li key={i}>
                 {i > 0 && <Icon iconId="next" size={10} color="grey" />}
-                <Link to={path || '/'}>{i === 0 ? 'Home' : cur.replaceAll('-', ' ')}</Link>
+                <Tag to={to}>{text}</Tag>
             </li>
         );
         return path;
     }, '/');
-    return <StyledBreadcrumbList>{paths}</StyledBreadcrumbList>;
+    return <StyledBreadcrumbList>{paths.slice(0, paths.length - 1)}</StyledBreadcrumbList>;
 }
 
 export default BreadcrumbList;

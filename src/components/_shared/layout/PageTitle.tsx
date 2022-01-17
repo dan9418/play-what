@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BreadcrumbList from '../breadcrumb-list/BreadcrumbList';
 import SEO from "../utils/SEO";
 
 const StyledPageTitle = styled.div`
@@ -41,6 +42,7 @@ const PageTitle: React.FC<any> = ({ title, subtitle, children }) => {
     return (
         <>
             <SEO title={title} />
+            <BreadcrumbList />
             <StyledPageTitle>
                 <div className="header">
                     <h1>{title}</h1>

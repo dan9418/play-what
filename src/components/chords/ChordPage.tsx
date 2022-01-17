@@ -2,7 +2,6 @@ import Chord from "@pw-core/models/Chord";
 import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import DetailsCard from "../_shared/cards/DetailsCard";
 import GuitarCard from "../_shared/cards/GuitarCard";
 import RelatedCard from "../_shared/cards/RelatedCard";
@@ -24,7 +23,6 @@ const ChordPage: React.FC<any> = props => {
 
     return (
         <StyledChordPage>
-            <BreadcrumbList path={props.path} />
             <PageTitle title={chord.name} subtitle="Chord" />
             <StyledPane>
                 <DetailsCard model={chord} />

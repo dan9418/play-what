@@ -3,7 +3,6 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../core/models/Model.constants";
-import BreadcrumbList from "../_shared/breadcrumb-list/BreadcrumbList";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 import { StyledPane } from "../_shared/layout/Pane";
@@ -57,7 +56,6 @@ const BrowsePage: React.FC<any> = props => {
 
     return (
         <StyledBrowsePage>
-            <BreadcrumbList path={props.path} />
             <PageTitle title="Browse" subtitle={null} />
             <StyledPane>
                 <Card title="Chords">
