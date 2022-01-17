@@ -64,7 +64,7 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
                 setSelectedTags={setSelectedTags}
             />}
             <StyledSearchResultsList>
-                {filteredResults.map((r, i) => <li key={r.to}>
+                {filteredResults.map((r, i) => <li key={r.text}>
                     <Link
                         id={`search-result=${i}`}
                         to={r.to}
