@@ -3,7 +3,7 @@ import ArrayUtils from '../general/Array.utils';
 import NumberUtils from '../general/Number.utils';
 import Chord from './Chord';
 import Model from './Model';
-import { IntervalId, IPod, ModelId, ScaleId, ScaleTag } from './Model.constants';
+import { IntervalId, IPod, ModelId, ScaleId, Tag } from './Model.constants';
 import { SCALE_PRESETS, SCALE_PRESET_MAP } from './Model.presets';
 import { arePodListsEqual, reducePodList, subtractPods } from './Pod.static';
 import PodList from './PodList';
@@ -45,10 +45,10 @@ export default class Scale extends PodList {
 
     getAllModes() {
         const modes = [];
-        if (this.tags.includes(ScaleTag.Diatonic) ||
-            this.tags.includes(ScaleTag.Pentatonic) ||
-            this.tags.includes(ScaleTag.MelodicMode) ||
-            this.tags.includes(ScaleTag.HarmonicMode)
+        if (this.tags.includes(Tag.Diatonic) ||
+            this.tags.includes(Tag.Pentatonic) ||
+            this.tags.includes(Tag.MelodicMode) ||
+            this.tags.includes(Tag.HarmonicMode)
         ) {
             for (let i = 0; i < this.podList.length; i++) {
                 modes.push(this.getMode(i));
@@ -83,7 +83,7 @@ export default class Scale extends PodList {
 
     getAllNumerals() {
         const numerals = [];
-        if (this.tags.includes(ScaleTag.Diatonic)) {
+        if (this.tags.includes(Tag.Diatonic)) {
             for (let i = 0; i < this.podList.length; i++) {
                 numerals.push(this.getNumeral(i));
             }

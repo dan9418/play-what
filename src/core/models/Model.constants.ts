@@ -136,39 +136,22 @@ export interface IModelConfig {
 	value: any;
 }
 
-export enum ScaleTag {
+export enum Tag {
 	Pentatonic = 'Pentatonic',
 	Hexatonic = 'Hexatonic',
 	Heptatonic = 'Heptatonic',
 	Octatonic = 'Octatonic',
-	Diatonic = 'Diatonic',
-	//Chromatic = 'Chromatic',
-	Dominant = 'Dominant',
+	Chromatic = 'Chromatic',
 	Blues = 'Blues',
 	Bebop = 'Bebop',
-	Major = 'Major',
-	Minor = 'Minor',
 	Exotic = 'Exotic',
 	MelodicMode = 'MelodicMode',
-	HarmonicMode = 'HarmonicMode'
-}
-
-export enum ChordTag {
-	Major = 'Major',
-	Minor = 'Minor',
-	Diminished = 'Diminished',
-	Augmented = 'Augmented',
+	HarmonicMode = 'HarmonicMode',
 	Triad = 'Triad',
-	Sixth = 'Sixth',
-	Seventh = 'Seventh',
 	Suspended = 'Suspended',
 	Dominant = 'Dominant',
-	//Extended = 'Extended',
-	//Altered = 'Altered',
-	//Diatonic = 'Diatonic'
-}
-
-export enum IntervalTag {
+	Altered = 'Altered',
+	Diatonic = 'Diatonic',
 	Major = 'Major',
 	Minor = 'Minor',
 	Diminished = 'Diminished',
@@ -182,8 +165,6 @@ export enum IntervalTag {
 	Seventh = 'Seventh',
 	Extended = 'Extended',
 }
-
-export type Tag = IntervalTag | ScaleTag | ChordTag;
 
 export type IPod = [number, number];
 

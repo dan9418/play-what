@@ -58,7 +58,7 @@ ALL_PRESETS.forEach(p => {
         text: getName(p.modelId, p.name),
         to: getLink(p.modelId, p.id),
         tags: p.tags,
-        isCommon: !p.tags.includes(ScaleTag.Exotic)
+        isCommon: !p.tags.includes(Tag.Exotic)
     });
     NOTE_PRESETS.forEach(n => {
         ALL_RESULTS.push({

@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../../contexts/PagePropsContext";
-import { ScaleTag } from "../../../core/models/Model.constants";
+import { Tag } from "../../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Card from "../../_shared/ui/Card";
 
@@ -27,26 +27,26 @@ const ModeCard: React.FC<any> = ({ model }) => {
     const rootSuffix = useRootSuffix();
 
     const type = model.tags.find(t =>
-        t === ScaleTag.Diatonic ||
-        t === ScaleTag.Pentatonic ||
-        t === ScaleTag.MelodicMode ||
-        t === ScaleTag.HarmonicMode
+        t === Tag.Diatonic ||
+        t === Tag.Pentatonic ||
+        t === Tag.MelodicMode ||
+        t === Tag.HarmonicMode
     );
 
     if (!type) return null;
 
     let modeType = '';
     switch (type) {
-        case ScaleTag.Diatonic:
+        case Tag.Diatonic:
             modeType = 'Diatonic';
             break;
-        case ScaleTag.Pentatonic:
+        case Tag.Pentatonic:
             modeType = 'Pentatonic';
             break;
-        case ScaleTag.MelodicMode:
+        case Tag.MelodicMode:
             modeType = 'Melodic Minor';
             break;
-        case ScaleTag.HarmonicMode:
+        case Tag.HarmonicMode:
             modeType = 'Harmonic Minor';
             break;
     }
