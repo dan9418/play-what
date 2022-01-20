@@ -45,47 +45,34 @@ const BASIC_PAGES: ISearchCandidate[] = [
     }
 ];
 
+const REGEX_NOTE_NAME = /\b[A-G](b|\sflat|\ssharp)*\b/gi; // accidental symbols should be sanitized
+const REGEX_FLAT = /\b[A-G]b\b/gi;
+
+const getNoteIdFromQuery = (query: string): string | undefined => {
+    const noteMatches = query.match(REGEX_NOTE_NAME);
+
+    if (!noteMatches || !noteMatches.length) return;
+
+    const match = noteMatches[0];
+    const noteId = match.replaceAll(' ', '-');
+
+    return noteId;
+}
+
+const sanitizeQuery = query => query.trim().toLowerCase().replaceAll('#', '-sharp').replaceAll(REGEX_FLAT, m => `${m.charAt(0)}-flat`).replaceAll(/[^A-Z1-9]/gi, ' ');
+
 export const getSearchResults = (query: string): ISearchResult[] => {
     const results: ISearchResult[] = [];
 
     if (!query) return BASIC_PAGES;
 
-    const santized = query.toLowerCase().replaceAll('#', 'sharp');
+    const sanitized = sanitizeQuery(query);
+    console.log(query, sanitized);
 
-    ALL_PRESETS.forEach(p => {
-        if (doesQueryMatch(santized, [p.name, ...p.tags, ...p.aliases])) {
-            const validNames = [p.name, ...p.aliases];
-            validNames.forEach(x =>
-                results.push({
-                    text: getName(p.modelId, x),
-                    to: getLink(p.modelId, p.id)
-                })
-            );
-        }
-    });
+    getNoteIdFromQuery(sanitized);
 
-    const noteNames = NOTE_PRESETS.filter(p => {
 
-        const noDash = p.id.replaceAll('-', ' ');
-        const nat = p.id.replaceAll('-', '').replaceAll('sharp', '#').replaceAll('flat', 'b');
-
-        console.log('dpb', p.id, noDash, nat);
-
-        return doesQueryMatch(
-            query,
-            [
-                new RegExp("\\b" + p.id + "\\b"),
-                new RegExp("\\b" + noDash + "\\b"),
-                new RegExp("\\b" + nat + "\\b")
-            ]
-        )
-
-    });
-
-    console.log('dpb', noteNames);
-
-    const rooted = [];
-    if (noteNames.length) {
+    /*if (noteNames.length) {
         for (let i = 0; i < results.length; i++) {
             const r = results[i];
             noteNames.forEach(x => {
@@ -96,9 +83,9 @@ export const getSearchResults = (query: string): ISearchResult[] => {
                 rooted.push(newEntry);
             });
         }
-    }
+    }*/
 
-    const basics = BASIC_PAGES.filter(p => doesQueryMatch(santized, p.keywords));
+    const basics = BASIC_PAGES.filter(p => doesQueryMatch(sanitized, p.keywords));
 
-    return [...rooted, ...results, ...basics];
+    return [...basics];
 };

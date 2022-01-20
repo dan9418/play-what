@@ -91,6 +91,7 @@ const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 
 	useEffect(() => {
+		return;
 		const ALL_RESULTS = [];
 		const id = setInterval(() => setPlaceholder(ALL_RESULTS[Math.floor(Math.random() * ALL_RESULTS.length)].text), 2000);
 		return () => clearInterval(id);
