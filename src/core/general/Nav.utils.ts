@@ -133,9 +133,10 @@ const rankResults = (results: IModelPresetResult[], rootId): IModelPresetResult[
 
 const formatPresets = (presets: IModelConfig[], rootId?: string): ISearchResult[] => {
     return presets.map(p => {
+        const root = rootId ? NOTE_PRESET_MAP.get(rootId as NoteId).name : undefined;
         return {
-            text: getName(p.modelId, p.name, rootId ? NOTE_PRESET_MAP.get(rootId as NoteId).name : undefined),
-            to: getLink(p.modelId, p.id)
+            text: getName(p.modelId, p.name, root),
+            to: getLink(p.modelId, p.id, rootId)
         };
     });
 }

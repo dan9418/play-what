@@ -1,6 +1,8 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
+import { getModelIdText, ModelId } from "../../core/models/Model.constants";
+import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import SearchBar from "../search/SearchBar";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import SEO from "../_shared/utils/SEO";
@@ -91,9 +93,12 @@ const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 
 	useEffect(() => {
-		return;
-		const ALL_RESULTS = [];
-		const id = setInterval(() => setPlaceholder(ALL_RESULTS[Math.floor(Math.random() * ALL_RESULTS.length)].text), 2000);
+		const id = setInterval(() => {
+			const root = NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
+			const structure = ALL_PRESETS[Math.floor(Math.random() * ALL_PRESETS.length)];
+			const text = `${root.name} ${structure.name} ${getModelIdText(structure.modelId)}`;
+			setPlaceholder(text);
+		}, 2000);
 		return () => clearInterval(id);
 	}, []);
 

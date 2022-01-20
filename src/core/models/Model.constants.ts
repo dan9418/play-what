@@ -8,6 +8,17 @@ export enum ModelId {
 	Scale = 'scales',
 }
 
+export const getModelIdText = (modelId: ModelId): string => {
+	switch (modelId) {
+		case ModelId.Chord:
+			return 'Chord';
+		case ModelId.Scale:
+			return 'Scale';
+		default:
+			return '';
+	}
+}
+
 export enum NoteId {
 	C = 'c',
 	Cs = 'c-sharp',

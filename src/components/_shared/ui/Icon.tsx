@@ -393,6 +393,7 @@ const ICON = {
 	confirm: Confirm,
 	cancel: Cancel,
 	zoom: Zoom,
+	search: Search,
 	speaker: Speaker,
 	playPause: PlayPause,
 	// Utility

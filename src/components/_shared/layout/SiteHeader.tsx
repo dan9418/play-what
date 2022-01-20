@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components';
 import SwitchInput from '../../../archive/_inputs/SwitchInput';
 import { themeState } from '../../../state/state';
 import THEME, { DARK_THEME } from '../../../styles/theme';
+import Icon from '../ui/Icon';
 
 const StyledSiteHeader = styled.div`
     height: 32px;
@@ -55,7 +56,19 @@ const StyledSiteHeader = styled.div`
 
 	.night-mode {
 		display: flex;
-		align-items: center;s
+		align-items: center;
+	}
+
+	.right {
+		display: flex;
+		align-items; center;
+		gap: 8px;
+	}
+
+	.search {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 `;
 
@@ -77,8 +90,13 @@ const SiteHeader: React.FC = () => {
 				<Link to="/" className="logo">
 					Play <em><b>What?</b></em>
 				</Link>
-				<div className="night-mode">
-					<SwitchInput value={isNightMode} setValue={onThemeToggle} />
+				<div className="right">
+					<Link to="/search" className="search">
+						<Icon iconId='search' />
+					</Link>
+					<div className="night-mode">
+						<SwitchInput value={isNightMode} setValue={onThemeToggle} />
+					</div>
 				</div>
 			</div>
 		</StyledSiteHeader>
