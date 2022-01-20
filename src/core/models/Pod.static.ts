@@ -102,3 +102,16 @@ export const listContainsSubset = (podList: IPod[], subset: IPod[]): boolean => 
 export const getDegree = (pod: IPod) => {
     return NumberUtils.modulo(pod[1], MAX_POD[1]);
 }
+
+export const getShortName = str => str.
+    replace('Major', 'Maj')
+    .replace('Minor', 'Min')
+    .replace('Augmented', 'Aug')
+    .replace('Diminished', 'Dim')
+    .replace('Suspended', 'Sus')
+    .replace('Dominant', 'Dom')
+    .replace('Pentatonic', 'Pent')
+    .replace('st', '')
+    .replace('nd', '')
+    .replace('rd', '')
+    .replace('th', '');

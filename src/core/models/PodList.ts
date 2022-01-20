@@ -3,7 +3,7 @@ import Model from './Model';
 import { ChordId, IPod, ModelId, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
-import { addPods, arePodListsEqual, getIndexOfPodAtPitch, listContainsSubset } from './Pod.static';
+import { addPods, arePodListsEqual, getIndexOfPodAtPitch, getShortName, listContainsSubset } from './Pod.static';
 
 export interface IPodListOptions {
     root?: Note;
@@ -47,20 +47,7 @@ export default class PodList extends Model {
     }
 
     getShortName = () => {
-        const name = this.name
-            .replace('Major', 'Maj')
-            .replace('Minor', 'Min')
-            .replace('Augmented', 'Aug')
-            .replace('Diminished', 'Dim')
-            .replace('Suspended', 'Sus')
-            .replace('Dominant', 'Dom')
-            .replace('st', '')
-            .replace('nd', '')
-            .replace('rd', '')
-            .replace('th', '')
-            .replace('Pentatonic', 'Pent');
-
-        return name;
+        return getShortName(this.name)
     }
 
     applyRoot(root: Note) {

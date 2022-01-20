@@ -1,6 +1,5 @@
-import { NOTE_PRESETS } from '@pw-core/models/Model.presets';
-import { ModelId } from '../models/Model.constants';
-import { ALL_PRESETS } from './../models/Model.presets';
+import { IModelConfig, ModelId, NoteId, Tag } from '../models/Model.constants';
+import { ALL_PRESETS, NOTE_PRESET_MAP } from './../models/Model.presets';
 
 interface ISearchResult {
     to: string;
@@ -59,33 +58,103 @@ const getNoteIdFromQuery = (query: string): string | undefined => {
     return noteId;
 }
 
+const getModelIdFromQuery = (query: string): ModelId | undefined => {
+    if (query.match('chord')) return ModelId.Chord;
+    if (query.match('scale')) return ModelId.Scale;
+}
+
+interface IModelPresetResult extends IModelConfig {
+    score: number;
+}
+
+const getTags = (query: string): Tag[] => {
+    const items = [];
+    if (query.match(/maj|major/)) items.push(Tag.Major);
+    if (query.match(/min|minor/)) items.push(Tag.Minor);
+    if (query.match(/triad|chord/)) items.push(Tag.Triad);
+    if (query.match(/aug|augmented/)) items.push(Tag.Augmented);
+    if (query.match(/dim|diminished/)) items.push(Tag.Diminished);
+    if (query.match(/sus|suspended/)) items.push(Tag.Suspended);
+    if (query.match(/dom|dominant/)) items.push(Tag.Dominant);
+    if (query.match(/pent|pentatonic/)) items.push(Tag.Pentatonic);
+    if (query.match(/hex|hexatonic/)) items.push(Tag.Hexatonic);
+    if (query.match(/oct|octatonic/)) items.push(Tag.Octatonic);
+    if (query.match(/dia|diatonic/)) items.push(Tag.Diatonic);
+    if (query.match(/2|2nd|two|second/)) items.push(Tag.Second);
+    if (query.match(/3|3rd|three|third/)) items.push(Tag.Third);
+    if (query.match(/4|4th|four|fourth/)) items.push(Tag.Fourth);
+    if (query.match(/5|5th|five|fifth/)) items.push(Tag.Fifth);
+    if (query.match(/6|6th|six|sixth/)) items.push(Tag.Sixth);
+    if (query.match(/7|7th|seven|seventh/)) items.push(Tag.Seventh);
+    if (query.match(/beb|bebop/)) items.push(Tag.Bebop);
+    if (query.match(/blu|blues/)) items.push(Tag.Blues);
+    if (query.match(/mel|melodic|minor/)) items.push(Tag.MelodicMode);
+    if (query.match(/harm|harmonic|minor/)) items.push(Tag.HarmonicMode);
+    return items;
+}
+
+const extendPreset = (preset: IModelConfig, query: string, allTags: Tag[]): IModelPresetResult => {
+
+    let score = 0;
+
+    if (query.match(preset.name)) {
+        score = 100;
+    }
+
+    score = score + allTags.filter(queryTag => preset.tags.some(presetTag => presetTag === queryTag)).length;
+
+    return {
+        ...preset,
+        score
+    }
+}
+
+const getPresetsFromQuery = (query: string, modelId?: ModelId): IModelPresetResult[] => {
+    const allTags = getTags(query);
+    return ALL_PRESETS.filter(p => !(modelId && p.modelId !== modelId))
+        .map(p => {
+            return extendPreset(p, query, allTags);
+            //return query.split(' ').some(query => query.match(query));
+        });
+}
+
+const rankResults = (results: IModelPresetResult[], rootId): IModelPresetResult[] => {
+    return results.filter(r => rootId || r.score).sort((a, b) => b.score - a.score)
+}
+
+const formatPresets = (presets: IModelConfig[], rootId?: string): ISearchResult[] => {
+    return presets.map(p => {
+        if (rootId) {
+            return {
+                text: `${NOTE_PRESET_MAP.get(rootId as NoteId).name} ${p.name}`,
+                to: getLink(p.modelId, p.id, rootId)
+            };
+        }
+        return {
+            text: p.name,
+            to: getLink(p.modelId, p.id)
+        };
+    });
+}
+
 const sanitizeQuery = query => query.trim().toLowerCase().replaceAll('#', '-sharp').replaceAll(REGEX_FLAT, m => `${m.charAt(0)}-flat`).replaceAll(/[^A-Z1-9]/gi, ' ');
 
 export const getSearchResults = (query: string): ISearchResult[] => {
-    const results: ISearchResult[] = [];
-
     if (!query) return BASIC_PAGES;
 
     const sanitized = sanitizeQuery(query);
     console.log(query, sanitized);
 
-    getNoteIdFromQuery(sanitized);
+    const rootId = getNoteIdFromQuery(sanitized);
+    const modelId = getModelIdFromQuery(sanitized);
 
+    const presets = getPresetsFromQuery(sanitized, modelId);
 
-    /*if (noteNames.length) {
-        for (let i = 0; i < results.length; i++) {
-            const r = results[i];
-            noteNames.forEach(x => {
-                const newEntry = {
-                    text: `${x.name} ${r.text}`,
-                    to: `${r.to}/root/${x.id}`
-                };
-                rooted.push(newEntry);
-            });
-        }
-    }*/
+    const ranked = rankResults(presets, rootId);
+
+    const results = formatPresets(ranked, rootId);
 
     const basics = BASIC_PAGES.filter(p => doesQueryMatch(sanitized, p.keywords));
 
-    return [...basics];
+    return [...results, ...basics];
 };
