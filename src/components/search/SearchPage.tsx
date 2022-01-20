@@ -2,18 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
 import { StyledPageBody } from "../_shared/layout/PageBody";
+import PageTitle from "../_shared/layout/PageTitle";
 import { StyledCard } from "../_shared/ui/Card";
 import SearchBar from "./SearchBar";
 import SearchResultsCard from "./SearchResultsCard";
 
 const StyledSearchPage = styled(StyledPageBody)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	//justify-content: center;
-
     ${StyledCard} {
         max-width: 768px;
+        margin: auto;
     }
 
     .search-bar {
@@ -37,6 +34,7 @@ const SearchPage: React.FC<any> = () => {
 
     return (
         <StyledSearchPage>
+            <PageTitle title="Search" />
             <SearchBar searchRef={searchRef} query={query} setQuery={setQuery} />
             <SearchResultsCard resultsRef={resultsRef} query={query} />
         </StyledSearchPage>

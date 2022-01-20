@@ -33,6 +33,11 @@ const getName = (modelType: ModelId, name: string, root?: string): string => {
 
 const BASIC_PAGES: ISearchCandidate[] = [
     {
+        text: 'Browse',
+        to: '/browse',
+        keywords: ['all', 'chord', 'scale', 'browse']
+    },
+    {
         text: 'All Chords',
         to: '/browse/chords',
         keywords: ['all', 'chord']
@@ -97,8 +102,12 @@ const extendPreset = (preset: IModelConfig, query: string, allTags: Tag[]): IMod
 
     let score = 0;
 
-    if (query.match(preset.name)) {
+    if (query.match(preset.name.toLowerCase())) {
         score = 100;
+    }
+
+    if (preset.name.toLowerCase().match(new RegExp(query.split(' ').join('|'), 'gi'))) {
+        score = score + 50;
     }
 
     score = score + allTags.filter(queryTag => preset.tags.some(presetTag => presetTag === queryTag)).length;
@@ -124,14 +133,8 @@ const rankResults = (results: IModelPresetResult[], rootId): IModelPresetResult[
 
 const formatPresets = (presets: IModelConfig[], rootId?: string): ISearchResult[] => {
     return presets.map(p => {
-        if (rootId) {
-            return {
-                text: `${NOTE_PRESET_MAP.get(rootId as NoteId).name} ${p.name}`,
-                to: getLink(p.modelId, p.id, rootId)
-            };
-        }
         return {
-            text: p.name,
+            text: getName(p.modelId, p.name, rootId ? NOTE_PRESET_MAP.get(rootId as NoteId).name : undefined),
             to: getLink(p.modelId, p.id)
         };
     });
@@ -143,7 +146,6 @@ export const getSearchResults = (query: string): ISearchResult[] => {
     if (!query) return BASIC_PAGES;
 
     const sanitized = sanitizeQuery(query);
-    console.log(query, sanitized);
 
     const rootId = getNoteIdFromQuery(sanitized);
     const modelId = getModelIdFromQuery(sanitized);

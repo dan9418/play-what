@@ -56,7 +56,7 @@ const SearchResultsCard: React.FC<any> = ({ resultsRef, query }) => {
 
 
     return (
-        <Card title={!query ? 'Popular Pages' : 'Results'} action={action}>
+        <Card title={!query ? 'Popular Pages' : 'Results'} action={null}>
             {isFiltering && <FilterList
                 tags={tags}
                 availableTags={[]}
