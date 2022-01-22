@@ -1,9 +1,22 @@
 import ArrayUtils from "../../core/general/Array.utils";
+import Note from '../../core/models/Note';
+import { NoteId } from './../../core/models/Model.constants';
 
 export enum TuningId {
     Standard = 'standard',
+    StandardSeven = 'standard-seven',
     StandardBass = 'standard-bass',
-    DropD = 'drop-d'
+    Flat = 'flat',
+    DoubleFlat = 'double-flat',
+    DropD = 'drop-d',
+    DADGAD = 'dadgad',
+    OpenA = 'open-a',
+    OpenB = 'open-b',
+    OpenC = 'open-c',
+    OpenD = 'open-d',
+    OpenE = 'open-e',
+    OpenF = 'open-f',
+    OpenG = 'open-g',
 }
 
 export interface ITuning {
@@ -18,22 +31,178 @@ const formatPreset = (id: TuningId, name: string, value: number[]): ITuning => (
     value
 });
 
+const getPitch = (noteId: NoteId, octave: number): number => Note.getNote(noteId, octave).pod[0];
+
 export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     [TuningId.Standard, formatPreset(
         TuningId.Standard,
         'Standard',
-        [16, 11, 7, 2, -3, -8] // e B G D A E
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.E, 3)
+        ]
+    )],
+    [TuningId.Flat, formatPreset(
+        TuningId.Flat,
+        'Flat',
+        [
+            getPitch(NoteId.Eb, 5),
+            getPitch(NoteId.Bb, 4),
+            getPitch(NoteId.Gb, 4),
+            getPitch(NoteId.Db, 4),
+            getPitch(NoteId.Ab, 3),
+            getPitch(NoteId.Eb, 3)
+        ]
+    )],
+    [TuningId.DoubleFlat, formatPreset(
+        TuningId.DoubleFlat,
+        'Double Flat',
+        [
+            getPitch(NoteId.D, 5),
+            getPitch(NoteId.A, 4),
+            getPitch(NoteId.F, 4),
+            getPitch(NoteId.C, 4),
+            getPitch(NoteId.G, 3),
+            getPitch(NoteId.D, 3)
+        ]
+    )],
+    [TuningId.StandardSeven, formatPreset(
+        TuningId.StandardSeven,
+        'Standard 7-String',
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.E, 3),
+            getPitch(NoteId.B, 3)
+        ]
     )],
     [TuningId.StandardBass, formatPreset(
         TuningId.StandardBass,
         'Standard Bass',
-        [7, 2, -3, -8] // G D A E
+        [
+            getPitch(NoteId.G, 3),
+            getPitch(NoteId.D, 3),
+            getPitch(NoteId.A, 2),
+            getPitch(NoteId.E, 2)
+        ]
     )],
     [TuningId.DropD, formatPreset(
         TuningId.DropD,
         'Drop D',
-        [16, 11, 7, 2, -3, -10] // e B G D A D
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.D, 3)
+        ]
+    )],
+    [TuningId.DADGAD, formatPreset(
+        TuningId.DADGAD,
+        'DADGAD',
+        [
+            getPitch(NoteId.D, 5),
+            getPitch(NoteId.A, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.D, 3)
+        ]
+    )],
+    [TuningId.OpenA, formatPreset(
+        TuningId.OpenA,
+        'Open A',
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.A, 4),
+            getPitch(NoteId.E, 4),
+            getPitch(NoteId.Cs, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.E, 3)
+        ]
+    )],
+    [TuningId.OpenB, formatPreset(
+        TuningId.OpenB,
+        'Open B',
+        [
+            getPitch(NoteId.Ds, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.Fs, 4),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.Fs, 3),
+            getPitch(NoteId.B, 3)
+        ]
+    )],
+    [TuningId.OpenC, formatPreset(
+        TuningId.OpenC,
+        'Open C',
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.C, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.C, 4),
+            getPitch(NoteId.G, 3),
+            getPitch(NoteId.C, 3)
+        ]
+    )],
+    [TuningId.OpenD, formatPreset(
+        TuningId.OpenD,
+        'Open D',
+        [
+            getPitch(NoteId.D, 5),
+            getPitch(NoteId.A, 4),
+            getPitch(NoteId.Fs, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.D, 3)
+        ]
+    )],
+    [TuningId.OpenE, formatPreset(
+        TuningId.OpenE,
+        'Open E',
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.Gs, 4),
+            getPitch(NoteId.E, 4),
+            getPitch(NoteId.B, 3),
+            getPitch(NoteId.E, 3)
+        ]
+    )],
+    [TuningId.OpenF, formatPreset(
+        TuningId.OpenF,
+        'Open F',
+        [
+            getPitch(NoteId.F, 5),
+            getPitch(NoteId.C, 4),
+            getPitch(NoteId.F, 4),
+            getPitch(NoteId.C, 4),
+            getPitch(NoteId.A, 3),
+            getPitch(NoteId.F, 3)
+        ]
+    )],
+    [TuningId.OpenG, formatPreset(
+        TuningId.OpenG,
+        'Open G',
+        [
+            getPitch(NoteId.D, 5),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.G, 3),
+            getPitch(NoteId.D, 3)
+        ]
     )]
 ]);
 
 export const FRETBOARD_TUNING_VALUES = ArrayUtils.mapToArray(TUNING_PRESET_MAP);
+
+console.log('dpb', FRETBOARD_TUNING_VALUES);

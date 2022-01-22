@@ -51,7 +51,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
     );
 
     return (
-        <Card title="Guitar" action={<ButtonInput onClick={() => setIsEditing(!isEditing)}>Edit</ButtonInput>}>
+        <Card title="Guitar" action={<ButtonInput onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
             <StyledGuitarCard>
                 {isEditing &&
                     <ul className="edit">

@@ -132,4 +132,12 @@ export default class Note extends Pod {
         const f = TuningUtils.getFrequency(this.getPitch());
         return format ? `${f.toFixed(0)} Hz` : f;
     }
+
+    static getNote = (noteId: NoteId, octave: number) => {
+        const notePreset = NOTE_PRESET_MAP.get(noteId);
+        return new Note([
+            (octave - 4) * 12 + NumberUtils.modulo(notePreset.value[0], 12),
+            notePreset.value[1]
+        ]);
+    }
 }

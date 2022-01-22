@@ -42,7 +42,8 @@ const StyledRoot = styled.div`
 
     .edit {
         margin-top: 16px;
-        background-color: ${THEME.status.highlight};
+        //background-color: ${THEME.status.highlight};
+        border: 1px solid ${props => props.theme.utils.border};
         border-radius: 8px;
         padding: 8px;
 
@@ -90,7 +91,7 @@ const RootCard: React.FC<any> = () => {
         navigate(sanitized);
     }
 
-    const action = <ButtonInput onClick={() => setIsEditing(!isEditing)}>Edit</ButtonInput>;
+    const action = <ButtonInput onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>;
 
     return (
         <StyledRoot>
