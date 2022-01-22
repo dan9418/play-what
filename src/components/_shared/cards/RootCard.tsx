@@ -5,9 +5,11 @@ import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../../contexts/PagePropsContext";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
 import { octaveState } from "../../../state/state";
+import THEME from "../../../styles/theme";
 import InputRow from "../../_shared/ui/InputRow";
 import DropdownInput from "../inputs/DropdownInput";
-import Card, { StyledCard } from "../ui/Card";
+import RootInput from "../inputs/RootInput";
+import Card, { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledRoot = styled.div`
     margin-top: 16px;
@@ -27,6 +29,12 @@ const StyledRoot = styled.div`
     }
 `;
 
+const StyledRootless = styled(StyledCard)`
+    margin-top: 16px;
+    background-color: ${THEME.status.highlight};
+    border: 1px solid ${props => props.theme.utils.border};
+`;
+
 const NOTE_OPTIONS = [
     {
         id: 'unselected',
@@ -41,6 +49,16 @@ const RootCard: React.FC<any> = () => {
     const root = useRoot();
     const pageProps = usePageProps();
     const [octave, setOctave] = useRecoilState(octaveState);
+
+    if (!root) {
+        return (
+            <StyledRootless>
+                <CardHeader title="No Root" />
+                This chord does not have a root. To see the notes in this chord, select a root below.
+                <RootInput />
+            </StyledRootless>
+        )
+    }
 
     const selectedRoot = root ? root : { id: 'unselected' };
 

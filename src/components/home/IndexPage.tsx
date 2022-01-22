@@ -86,6 +86,10 @@ const StyledHomePage = styled(StyledPageBody)`
 	
 		width: 100%;
 		max-width: 512px;
+
+		&:hover {
+			color: white;
+		}
 	}
 `;
 
