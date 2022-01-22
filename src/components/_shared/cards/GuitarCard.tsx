@@ -36,8 +36,14 @@ const GuitarCard: React.FC<any> = ({ model }) => {
 
     if (!model.root || !model.intervals) return null;
 
+    const filteredVoicings = VOICING_OPTIONS.filter(v => {
+        if (!v.value) return true;
+        const containsNonModelIntervals = v.value.some(x => x && !model.intervals.find(ivl => ivl.pod[1] + 1 === x));
+        return !containsNonModelIntervals;
+    });
+
     const [isEditing, setIsEditing] = useState(false);
-    const [voicing, setVoicing] = useState(VOICING_OPTIONS[0]);
+    const [voicing, setVoicing] = useState(filteredVoicings[0]);
     const [tuning, setTuning] = useState(FRETBOARD_TUNING_VALUES[0]);
     const [fretRange, setFretRange] = useState(DEFAULT_FRETBOARD_PROPS.fretRange);
 
@@ -63,7 +69,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
                         {tuning.id === TuningId.Standard &&
                             <li>
                                 <InputRow label="Voicing">
-                                    <DropdownInput value={voicing} setValue={setVoicing} options={VOICING_OPTIONS} />
+                                    <DropdownInput value={voicing} setValue={setVoicing} options={filteredVoicings} />
                                 </InputRow>
                             </li>
                         }
