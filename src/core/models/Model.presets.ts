@@ -534,7 +534,7 @@ export const CORE_INTERVALS = [
     [INTERVAL_PRESET_MAP.get(IntervalId.m7), INTERVAL_PRESET_MAP.get(IntervalId.M7)]
 ];
 
-console.log('pw-presets', NOTE_PRESETS, INTERVAL_PRESETS, CHORD_PRESETS, SCALE_PRESETS);
+//console.log('pw-presets', NOTE_PRESETS, INTERVAL_PRESETS, CHORD_PRESETS, SCALE_PRESETS);
 
 export const logPresetJson = () => {
     console.log('pw-presets notes', JSON.stringify(NOTE_PRESETS));

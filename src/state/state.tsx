@@ -39,7 +39,6 @@ export const useHistory = (id: string, name: string, path: string): [any, any] =
             }
         ]);
     }, []);
-    console.log('pw-history', history);
 
     const popAt = i => setHistory([...history.slice(0, i || 1)]);
 

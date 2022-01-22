@@ -39,6 +39,17 @@ const StyledPracticePage = styled(StyledPageBody)`
         //border: 1px solid ${props => props.theme.utils.border};
         background-color: ${props => props.theme.action.interactive};
         color: white;
+        //height: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        @media(min-width: 512px) {
+            flex-direction: row;
+        }
+
         
 
         :hover {
@@ -56,6 +67,7 @@ const StyledPracticePage = styled(StyledPageBody)`
         }
 
         &.t-4 {
+            font-size: 100%;
             aspect-ratio: 4;
         }
 
@@ -69,13 +81,8 @@ const StyledPracticePage = styled(StyledPageBody)`
             font-size: 140%;
         }
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
         .root-name {
             font-weight: bold;
-            margin: 8px;
             font-size: 140%;
         }
 

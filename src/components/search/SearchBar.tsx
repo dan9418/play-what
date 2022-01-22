@@ -49,9 +49,9 @@ const SearchBar: React.FC<any> = ({ searchRef, query: externalQuery, setQuery: e
     const onSubmit = e => {
         e.preventDefault();
         const value = e.target.elements.query.value;
-        console.log('dpb', e, value);
         const query = new URLSearchParams({ query: value });
-        const path = `/search/?${query.toString()}`;
+        const qs = query ? `?${query.toString()}` : '';
+        const path = `/search/${qs}`;
         navigate(path);
         return false;
     }
