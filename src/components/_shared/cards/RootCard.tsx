@@ -62,6 +62,7 @@ const StyledRootless = styled(StyledCard)`
     margin-top: 16px;
     background-color: ${THEME.status.highlight};
     border: 1px solid ${props => props.theme.utils.border};
+    color: ${THEME.text.primary};
 `;
 
 const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))

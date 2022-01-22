@@ -32,7 +32,7 @@ const SEO: React.FC<ISEOProps> = ({ title, description, style }) => {
     } = site.siteMetadata;
 
     const seo = {
-        title: `${title ? `${title} - ` : ''}${titleSuffix}`,
+        title: `${title ? `${title} | ` : ''}${titleSuffix}`,
         description: description || defaultDescription,
         url: `${baseUrl}${pathname}`,
     };

@@ -3,7 +3,7 @@ const path = require('path')
 module.exports = {
   //pathPrefix: "/play-what",
   siteMetadata: {
-    title: `Play What`,
+    title: `Play What?`,
     description: "Music Theory Toolkit",
     url: "www.play-what.com",
   },
