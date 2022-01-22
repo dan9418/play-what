@@ -4,6 +4,8 @@ import { ALL_PRESETS, NOTE_PRESET_MAP } from './../models/Model.presets';
 interface ISearchResult {
     to: string;
     text: string;
+    modelId?: ModelId;
+    aliases?: string[]
 }
 
 interface ISearchCandidate {
@@ -136,12 +138,29 @@ const formatPresets = (presets: IModelConfig[], rootId?: string): ISearchResult[
         const root = rootId ? NOTE_PRESET_MAP.get(rootId as NoteId).name : undefined;
         return {
             text: getName(p.modelId, p.name, root),
-            to: getLink(p.modelId, p.id, rootId)
+            to: getLink(p.modelId, p.id, rootId),
+            aliases: p.aliases,
+            modelId: p.modelId
         };
     });
 }
 
 const sanitizeQuery = query => query.trim().toLowerCase().replaceAll('#', '-sharp').replaceAll(REGEX_FLAT, m => `${m.charAt(0)}-flat`).replaceAll(/[^A-Z1-9]/gi, ' ');
+
+const getAliases = (presets: ISearchResult[]): ISearchResult[] => {
+    const ret = [];
+    for (let i = 0; i < presets.length; i++) {
+        const p = presets[i];
+        ret.push(p);
+        if (p.aliases) {
+            p.aliases.forEach(a => ret.push({
+                to: p.to,
+                text: `${a} ${p.modelId === ModelId.Chord ? ' Chord' : ' Scale'}`
+            }));
+        }
+    }
+    return ret;
+}
 
 export const getSearchResults = (query: string): ISearchResult[] => {
     if (!query) return BASIC_PAGES;
@@ -157,7 +176,9 @@ export const getSearchResults = (query: string): ISearchResult[] => {
 
     const results = formatPresets(ranked, rootId);
 
+    const resultsWithAliases = getAliases(results);
+
     const basics = BASIC_PAGES.filter(p => doesQueryMatch(sanitized, p.keywords));
 
-    return [...results, ...basics];
+    return [...resultsWithAliases, ...basics];
 };

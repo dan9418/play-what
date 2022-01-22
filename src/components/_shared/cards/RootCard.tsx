@@ -72,11 +72,13 @@ const RootCard: React.FC<any> = () => {
     const [octave, setOctave] = useRecoilState(octaveState);
     const [isEditing, setIsEditing] = useState(false);
 
+    const modelType = pageProps.path.includes('chord') ? 'chord' : 'scale';
+
     if (!root) {
         return (
             <StyledRootless>
                 <CardHeader title="No Root" />
-                This chord does not have a root. To see the notes in this chord, select a root below.
+                This {modelType} does not have a root. To see the notes in this {modelType}, select a root below.
                 <RootInput />
             </StyledRootless>
         )
