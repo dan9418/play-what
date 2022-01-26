@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import ArrayUtils from "../../../core/general/Array.utils";
 import Chord from "../../../core/models/Chord";
 import { ChordId, NoteId, ScaleId } from "../../../core/models/Model.constants";
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
@@ -7,7 +8,7 @@ import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { getFretboardProps } from "../../../viewers/fretboard/Fretboard.utils";
-import { VoicingId, VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
+import { VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../inputs/DropdownInput";
 import { StyledPageBody } from "../../layout/PageBody";
 import PageTitle from "../../layout/PageTitle";
@@ -15,10 +16,7 @@ import Card, { StyledCard } from "../../ui/Card";
 import InputRow, { StyledInputRow } from "../../ui/InputRow";
 
 const StyledCAGEDPage = styled(StyledPageBody)`
-	width: 100%;
-    max-width: 100%;
-    margin: auto;
-    
+	    
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
         table {
@@ -26,187 +24,170 @@ const StyledCAGEDPage = styled(StyledPageBody)`
 
             td {
                 width: 33%;
-                padding: 0 2px;
+                padding: 24px 2px 16px;
             }
         }
     }
 `;
 
 const CAGEDPage: React.FC<any> = () => {
-    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.Fs));
+    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
 
     const root = new Note(rootPreset.value);
-    const scale = new Scale(ScaleId.Ionian, { root });
+    const majorScale = new Scale(ScaleId.Ionian, { root });
+    const minorScale = new Scale(ScaleId.Ionian, { root });
 
     console.log('dpb rootPreset', rootPreset);
 
-    const diatonicItems = [
-        {
-            model: Scale,
-            modelId: ScaleId.Ionian,
-            rootId: scale.notes[0].id,
-            voicingId: VoicingId.Scale_DoubleOctave_EShape_2
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Dorian,
-            rootId: scale.notes[1].id,
-            voicingId: VoicingId.Scale_DoubleOctave_DShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Phrygian,
-            rootId: scale.notes[2].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Lydian,
-            rootId: scale.notes[3].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_2
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Mixolydian,
-            rootId: scale.notes[4].id,
-            voicingId: VoicingId.Scale_DoubleOctave_AShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Aeolian,
-            rootId: scale.notes[5].id,
-            voicingId: VoicingId.Scale_DoubleOctave_GShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Locrian,
-            rootId: scale.notes[6].id,
-            voicingId: VoicingId.Scale_DoubleOctave_EShape_1
-        }
-    ];
-
-    const romanNumeralItems = [
-        {
-            model: Chord,
-            modelId: ChordId.Maj7,
-            rootId: scale.notes[0].id,
-            voicingId: VoicingId.Scale_DoubleOctave_EShape_2
-        },
+    const majorItems = [
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: scale.notes[1].id,
-            voicingId: VoicingId.Scale_DoubleOctave_DShape_1
-        },
-        {
-            model: Chord,
-            modelId: ChordId.Min7,
-            rootId: scale.notes[2].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_1
-        },
-        {
-            model: Chord,
-            modelId: ChordId.Maj7,
-            rootId: scale.notes[3].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_2
+            rootId: majorScale.notes[1].id,
+            voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Dom7,
-            rootId: scale.notes[4].id,
-            voicingId: VoicingId.Scale_DoubleOctave_AShape_1
+            rootId: majorScale.notes[4].id,
+            voicingId: null
+        },
+        {
+            model: Chord,
+            modelId: ChordId.Maj7,
+            rootId: majorScale.notes[0].id,
+            voicingId: null
+        }
+    ];
+
+    const minorItems = [
+        {
+            model: Chord,
+            modelId: ChordId.HalfDim7,
+            rootId: minorScale.notes[2].id,
+            voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: scale.notes[5].id,
-            voicingId: VoicingId.Scale_DoubleOctave_GShape_1
+            rootId: minorScale.notes[4].id,
+            voicingId: null
         },
         {
             model: Chord,
-            modelId: ChordId.HalfDim7,
-            rootId: scale.notes[6].id,
-            voicingId: VoicingId.Scale_DoubleOctave_EShape_1
+            modelId: ChordId.Min7,
+            rootId: minorScale.notes[0].id,
+            voicingId: null
         }
     ];
-
-    const pentatonicItems = [
-        {
-            model: Scale,
-            modelId: ScaleId.MajorPentatonic,
-            rootId: scale.notes[0].id,
-            voicingId: VoicingId.Scale_DoubleOctave_EShape_2
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Egyptian,
-            rootId: scale.notes[1].id,
-            voicingId: VoicingId.Scale_DoubleOctave_DShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.ManGong,
-            rootId: scale.notes[2].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.Ritusen,
-            rootId: scale.notes[4].id,
-            voicingId: VoicingId.Scale_DoubleOctave_AShape_1
-        },
-        {
-            model: Scale,
-            modelId: ScaleId.MinorPentatonic,
-            rootId: scale.notes[5].id,
-            voicingId: VoicingId.Scale_DoubleOctave_CShape_1
-        }
-    ];
-
-    const display = [
-        [pentatonicItems[0], diatonicItems[0], romanNumeralItems[0]],
-        [pentatonicItems[1], diatonicItems[1], romanNumeralItems[1]],
-        [pentatonicItems[2], diatonicItems[2], romanNumeralItems[2]],
-        [pentatonicItems[3], diatonicItems[4], romanNumeralItems[4]],
-        [pentatonicItems[4], diatonicItems[5], romanNumeralItems[5]],
-    ]
 
     return (
         <StyledCAGEDPage>
-            <PageTitle title="CAGED" />
+            <PageTitle title="Chord Progressions" />
             <InputRow label="Root">
                 <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
                     setRootPreset(p);
                 }} />
             </InputRow>
-            <Card title="Pentatonic Modes | Diatonic Modes | 7th Chords" >
+            <Card title="Major II-V-I" >
                 <table>
                     <thead>
+                        <tr>
+                            <th>II</th>
+                            <th>V</th>
+                            <th>I</th>
+                        </tr>
                     </thead>
                     <tbody>
-                        {display.map((item, i) => {
-                            return (
-                                <tr key={i}>
-                                    {item.map(item => {
-                                        const { model, modelId, rootId, voicingId } = item as any;
-                                        const instance = new model(modelId, { root: Note.fromId(rootId) });
-                                        console.log('dpb scale', rootId, instance);
-                                        return (
-                                            <td key={modelId}>
-                                                <h3>{modelId}</h3>
-                                                <Fretboard
-                                                    {...getFretboardProps(
-                                                        instance,
-                                                        VOICING_PRESET_MAP.get(voicingId),
-                                                    )}
-                                                    fretRange={[1, 14]}
-                                                />
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            );
-                        })}
+                        <tr >
+                            {majorItems.map(item => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+
+                                return (
+                                    <td key={modelId}>
+                                        <h3>{modelId}</h3>
+                                        <Fretboard
+                                            {...getFretboardProps(
+                                                instance,
+                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                            )}
+                                            fretRange={[1, 14]}
+                                        />
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                        <tr >
+                            {ArrayUtils.rotate([...majorItems], 1).map(item => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+
+                                return (
+                                    <td key={modelId}>
+                                        <h3>{modelId}</h3>
+                                        <Fretboard
+                                            {...getFretboardProps(
+                                                instance,
+                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                            )}
+                                            fretRange={[1, 14]}
+                                        />
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                    </tbody>
+                </table>
+            </Card>
+            <Card title="Minor ii-v-i" >
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ii</th>
+                            <th>v</th>
+                            <th>i</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            {minorItems.map(item => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+
+                                return (
+                                    <td key={modelId}>
+                                        <h3>{modelId}</h3>
+                                        <Fretboard
+                                            {...getFretboardProps(
+                                                instance,
+                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                            )}
+                                            fretRange={[1, 14]}
+                                        />
+                                    </td>
+                                );
+                            })}
+                        </tr>
+                        <tr>
+                            {ArrayUtils.rotate([...minorItems], 1).map(item => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+
+                                return (
+                                    <td key={modelId}>
+                                        <h3>{modelId}</h3>
+                                        <Fretboard
+                                            {...getFretboardProps(
+                                                instance,
+                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                            )}
+                                            fretRange={[1, 14]}
+                                        />
+                                    </td>
+                                );
+                            })}
+                        </tr>
                     </tbody>
                 </table>
             </Card>
