@@ -8,6 +8,3 @@ export const ROOT_SCALE = DIATONIC_VALUES.map((pod, i) => (
 		ROOT_DEGREE + pod.value[1]
 	]
 ));
-
-
-console.log('Root Scale', ROOT_SCALE);

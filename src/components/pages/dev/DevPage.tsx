@@ -23,27 +23,27 @@ const DevPage: React.FC<any> = () => {
             <Card title="Tests" >
                 <ul>
                     <li>
-                        <Link to='/test'>All Intervals From All Roots</Link>
+                        <Link to='/dev/test/all-intervals-from-all-roots'>All Intervals From All Roots</Link>
                     </li>
                 </ul>
             </Card>
             <Card title="Guitar Practice" >
                 <ul>
                     <li>
-                        <Link to='/charts'>Chord Charts</Link>
+                        <Link to='/dev/practice/charts'>Chord Charts</Link>
                     </li>
                     <li>
-                        <Link to='/practice'>Guitar Practice</Link>
+                        <Link to='/dev/practice/caged'>Guitar Practice</Link>
                     </li>
                 </ul>
             </Card>
             <Card title="Experimental Features" >
                 <ul>
                     <li>
-                        <Link to='/theme'>Edit Theme</Link>
+                        <Link to='/dev/experimental/theme'>Edit Theme</Link>
                     </li>
                     <li>
-                        <Link to='/docs'>Documentation</Link>
+                        <Link to='/dev/experimental/docs'>Documentation</Link>
                     </li>
                 </ul>
             </Card>

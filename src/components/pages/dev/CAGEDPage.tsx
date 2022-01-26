@@ -179,7 +179,7 @@ const CAGEDPage: React.FC<any> = () => {
                     setRootPreset(p);
                 }} />
             </InputRow>
-            <Card title="7th Chords | Pentatonic Modes | Diatonic Modes" >
+            <Card title="Pentatonic Modes | Diatonic Modes | 7th Chords" >
                 <table>
                     <thead>
                     </thead>

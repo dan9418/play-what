@@ -33,7 +33,7 @@ const BreadcrumbList = () => {
     const paths = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/') || '/';
-        const isLink = !['root'].includes(cur);
+        const isLink = !['root', 'practice', 'test', 'experimental'].includes(cur);
         const text = i === 0 ? 'Home' : cur.replaceAll('-', ' ').replace(' sharp', '#').replace(' flat', 'b');
 
         const Tag = isLink ? Link : 'span';
