@@ -17,6 +17,12 @@ export enum VoicingId {
     Chord_Seventh_GShape_1 = 'Chord_Seventh_GShape_1',
     Chord_Seventh_EShape_1 = 'Chord_Seventh_EShape_1',
     Chord_Seventh_DShape_1 = 'Chord_Seventh_DShape_1',
+    Chord_Shell_E_37 = 'Chord_Shell_E_37',
+    Chord_Shell_E_73 = 'Chord_Shell_E_73',
+    Chord_Shell_A_37 = 'Chord_Shell_A_37',
+    Chord_Shell_A_73 = 'Chord_Shell_A_73',
+    Chord_Shell_D_37 = 'Chord_Shell_D_37',
+    Chord_Shell_D_73 = 'Chord_Shell_D_73',
     Scale_DoubleOctave_CShape_1 = 'Scale_DoubleOctave_CShape_1',
     Scale_DoubleOctave_CShape_2 = 'Scale_DoubleOctave_CShape_2',
     Scale_DoubleOctave_AShape_1 = 'Scale_DoubleOctave_AShape_1',
@@ -116,6 +122,37 @@ export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
         VoicingId.Chord_Seventh_DShape_1,
         'D Shape 7th Chord',
         [3, 7, 5, 1, null, null]
+    )],
+    // Shells
+    [VoicingId.Chord_Shell_E_37, formatPreset(
+        VoicingId.Chord_Shell_E_37,
+        'Shell E 3-7',
+        [null, null, null, 7, 3, 1]
+    )],
+    [VoicingId.Chord_Shell_E_73, formatPreset(
+        VoicingId.Chord_Shell_E_73,
+        'Shell E 7-3',
+        [null, null, 3, 7, null, 1]
+    )],
+    [VoicingId.Chord_Shell_A_37, formatPreset(
+        VoicingId.Chord_Shell_A_37,
+        'Shell A 3-7',
+        [null, null, 7, 3, 1, null]
+    )],
+    [VoicingId.Chord_Shell_A_73, formatPreset(
+        VoicingId.Chord_Shell_A_73,
+        'Shell A 7-3',
+        [null, 3, 7, null, 1, null]
+    )],
+    [VoicingId.Chord_Shell_D_37, formatPreset(
+        VoicingId.Chord_Shell_D_37,
+        'Shell D 3-7',
+        [null, 7, 3, 1, null, null]
+    )],
+    [VoicingId.Chord_Shell_D_73, formatPreset(
+        VoicingId.Chord_Shell_D_73,
+        'Shell D 7-3',
+        [3, 7, null, 1, null, null]
     )],
     // CAGED Scales
     [VoicingId.Scale_DoubleOctave_EShape_1, formatPreset(
