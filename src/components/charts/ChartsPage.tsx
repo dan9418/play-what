@@ -14,8 +14,7 @@ const StyledPracticePage = styled(StyledPageBody)`
     margin: auto;
     
     ${StyledCard}, ${StyledInputRow} {
-        margin-top: 16px;
-
+        margin: 16px 0;
     }
 
     .sections {
@@ -48,9 +47,7 @@ const StyledPracticePage = styled(StyledPageBody)`
         gap: 4px;
         @media(min-width: 512px) {
             flex-direction: row;
-        }
-
-        
+        }  
 
         :hover {
             background-color: ${props => props.theme.action.active};

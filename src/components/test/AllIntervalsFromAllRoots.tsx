@@ -19,12 +19,13 @@ const StyledTest = styled.div`
         
     table {
         border-collapse: collapse;
+        margin: 16px auto;
 
         td, th {
             border: 1px solid ${({ theme }) => theme.utils.border};
 
             height: 40px;
-            width: 40px;
+            width: 44px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -36,6 +37,9 @@ const StyledTest = styled.div`
 
         th {
             background-color: ${({ theme }) => theme.utils.hoverDark};
+        }
+        td {
+            background-color: white;
         }
 
         .pod {

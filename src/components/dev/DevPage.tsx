@@ -3,16 +3,17 @@ import React from "react";
 import styled from 'styled-components';
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
+import Card, { StyledCard } from "../_shared/ui/Card";
 
 const StyledDevPage = styled(StyledPageBody)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	
+    ${StyledCard} {
+        margin-top: 16px;
+    }
 
     li {
         padding: 8px;
         font-size: 120%;
-        text-align: center;
     }
 `;
 
@@ -20,24 +21,30 @@ const DevPage: React.FC<any> = () => {
     return (
         <StyledDevPage>
             <PageTitle title="Developer Panel" />
-            <ul>
-                <li>
-                    <Link to='/test'>Code Tests</Link>
-                </li>
-                <li>
-                    <Link to='/theme'>Edit Theme</Link>
-                </li>
-                <li>
-                    <Link to='/docs'>Documentation</Link>
-                </li>
-                <li>
-                    <Link to='/practice'>Guitar Practice</Link>
-                </li>
-                <li>
-                    <Link to='/charts'>Chord Charts</Link>
-                </li>
-            </ul>
-        </StyledDevPage>
+            <Card title="Tests" >
+                <ul>
+                    <li>
+                        <Link to='/test'>All Intervals From All Roots</Link>
+                    </li>
+                </ul>
+            </Card>
+            <Card title="Experimental Features" >
+                <ul>
+                    <li>
+                        <Link to='/charts'>Chord Charts</Link>
+                    </li>
+                    <li>
+                        <Link to='/practice'>Guitar Practice</Link>
+                    </li>
+                    <li>
+                        <Link to='/theme'>Edit Theme</Link>
+                    </li>
+                    <li>
+                        <Link to='/docs'>Documentation</Link>
+                    </li>
+                </ul>
+            </Card>
+        </StyledDevPage >
     )
 };
 

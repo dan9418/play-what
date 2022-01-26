@@ -4,11 +4,6 @@ import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 
 const StyledDocsPage = styled(StyledPageBody)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
     p {
         padding: 32px 16px;
     }
