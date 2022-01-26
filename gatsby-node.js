@@ -55,7 +55,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/browse/chords/`,
     component: require.resolve(
-      './src/components/chords/ChordsPage.tsx'
+      './src/components/pages/ChordsPage.tsx'
     ),
     context: {},
   });
@@ -64,7 +64,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/browse/chords/${model.id}/`,
       component: require.resolve(
-        './src/components/chords/ChordPage.tsx'
+        './src/components/pages/ChordPage.tsx'
       ),
       context: { modelId: model.id },
     });
@@ -73,7 +73,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: `/browse/chords/${model.id}/root/${root.id}/`,
         component: require.resolve(
-          './src/components/chords/ChordPage.tsx'
+          './src/components/pages/ChordPage.tsx'
         ),
         context: { modelId: model.id, rootId: root.id },
       });
@@ -86,7 +86,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/browse/scales/`,
     component: require.resolve(
-      './src/components/scales/ScalesPage.tsx'
+      './src/components/pages/ScalesPage.tsx'
     ),
     context: {},
   });
@@ -95,7 +95,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/browse/scales/${model.id}/`,
       component: require.resolve(
-        './src/components/scales/ScalePage.tsx'
+        './src/components/pages/ScalePage.tsx'
       ),
       context: { modelId: model.id },
     });
@@ -104,7 +104,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: `/browse/scales/${model.id}/root/${root.id}/`,
         component: require.resolve(
-          './src/components/scales/ScalePage.tsx'
+          './src/components/pages/ScalePage.tsx'
         ),
         context: { modelId: model.id, rootId: root.id },
       });

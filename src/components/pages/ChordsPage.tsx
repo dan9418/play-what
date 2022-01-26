@@ -5,10 +5,10 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId } from "../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import { StyledDoublePane, StyledPane } from "../_shared/layout/Pane";
-import Card from "../_shared/ui/Card";
+import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
+import { StyledDoublePane, StyledPane } from "../layout/Pane";
+import Card from "../ui/Card";
 
 const StyledChordsPage = styled(StyledPageBody)`
     width: 100%;

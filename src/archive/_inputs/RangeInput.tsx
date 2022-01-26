@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
-import { IInputProps } from "../components/_shared/inputs/Input.constants";
-import NumericInput from "../components/_shared/inputs/NumericInput";
+import { IInputProps } from "../components/inputs/Input.constants";
+import NumericInput from "../components/inputs/NumericInput";
 
 export const StyledRangeInput = styled.div`
 	display: flex;

@@ -2,16 +2,15 @@ import Scale from "@pw-core/models/Scale";
 import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
-import DetailsCard from "../_shared/cards/DetailsCard";
-import GuitarCard from "../_shared/cards/GuitarCard";
-import ModeCard from "../_shared/cards/ModeCard";
-import RelatedCard from "../_shared/cards/RelatedCard";
-import RomanNumeralsCard from "../_shared/cards/RomanNumeralsCard";
-import RootCard from "../_shared/cards/RootCard";
-import SoundCard from "../_shared/cards/SoundCard";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import { StyledPane } from "../_shared/layout/Pane";
+import DetailsCard from "../cards/DetailsCard";
+import GuitarCard from "../cards/GuitarCard";
+import ModeCard from "../cards/ModeCard";
+import RelatedCard from "../cards/RelatedCard";
+import RomanNumeralsCard from "../cards/RomanNumeralsCard";
+import RootCard from "../cards/RootCard";
+import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
+import { StyledPane } from "../layout/Pane";
 
 const StyledScalePage = styled(StyledPageBody)`
    
@@ -35,7 +34,6 @@ const ScalePage: React.FC<any> = props => {
                 <ModeCard model={scale} />
                 <GuitarCard model={scale} />
                 <RelatedCard model={scale} />
-                <SoundCard model={scale} />
             </StyledPane>
         </StyledScalePage >
     );

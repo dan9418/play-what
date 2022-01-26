@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import styled, { css } from 'styled-components';
 import ArrayUtils from "../../core/general/Array.utils";
 import { getSearchResults } from "../../core/general/Nav.utils";
-import ButtonInput from "../_shared/inputs/ButtonInput";
-import FilterList from "../_shared/inputs/FilterList";
-import Card from "../_shared/ui/Card";
+import ButtonInput from "../inputs/ButtonInput";
+import FilterList from "../inputs/FilterList";
+import Card from "../ui/Card";
 
 const StyledSearchResultsList = styled.ul` 
     font-size: 110%;

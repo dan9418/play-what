@@ -1,9 +1,9 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
-import Main from "./src/components/_shared/layout/Main";
-import SiteFooter from "./src/components/_shared/layout/SiteFooter";
-import SiteHeader from "./src/components/_shared/layout/SiteHeader";
-import ErrorBoundary from "./src/components/_shared/utils/ErrorBoundary";
+import Main from "./src/components/layout/Main";
+import SiteFooter from "./src/components/layout/SiteFooter";
+import SiteHeader from "./src/components/layout/SiteHeader";
+import ErrorBoundary from "./src/components/utils/ErrorBoundary";
 import { PagePropsContextProvider } from "./src/contexts/PagePropsContext";
 import './src/styles/global.css';
 import { ThemeManager } from "./src/styles/ThemeManager";

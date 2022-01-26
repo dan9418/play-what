@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import { StyledCard } from "../_shared/ui/Card";
+import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
+import { StyledCard } from "../ui/Card";
 import SearchBar from "../search/SearchBar";
 import SearchResultsCard from "../search/SearchResultsCard";
 

@@ -3,11 +3,11 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../core/models/Model.constants";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import { StyledPane } from "../_shared/layout/Pane";
-import Card, { StyledCard } from "../_shared/ui/Card";
-import Icon from "../_shared/ui/Icon";
+import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
+import { StyledPane } from "../layout/Pane";
+import Card, { StyledCard } from "../ui/Card";
+import Icon from "../ui/Icon";
 
 const StyledBrowsePage = styled(StyledPageBody)`
     width: 100%;

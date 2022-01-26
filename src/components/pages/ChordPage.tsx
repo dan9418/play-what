@@ -2,14 +2,13 @@ import Chord from "@pw-core/models/Chord";
 import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
-import DetailsCard from "../_shared/cards/DetailsCard";
-import GuitarCard from "../_shared/cards/GuitarCard";
-import RelatedCard from "../_shared/cards/RelatedCard";
-import RootCard from "../_shared/cards/RootCard";
-import SoundCard from "../_shared/cards/SoundCard";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import PageTitle from "../_shared/layout/PageTitle";
-import { StyledPane } from "../_shared/layout/Pane";
+import DetailsCard from "../cards/DetailsCard";
+import GuitarCard from "../cards/GuitarCard";
+import RelatedCard from "../cards/RelatedCard";
+import RootCard from "../cards/RootCard";
+import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
+import { StyledPane } from "../layout/Pane";
 
 const StyledChordPage = styled(StyledPageBody)`
 
@@ -31,7 +30,6 @@ const ChordPage: React.FC<any> = props => {
                 <RootCard />
                 <GuitarCard model={chord} />
                 <RelatedCard model={chord} />
-                <SoundCard model={chord} />
             </StyledPane>
         </StyledChordPage >
     );

@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { getModelIdText, ModelId } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import SearchBar from "../search/SearchBar";
-import { StyledPageBody } from "../_shared/layout/PageBody";
-import SEO from "../_shared/utils/SEO";
+import { StyledPageBody } from "../layout/PageBody";
+import SEO from "../utils/SEO";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
