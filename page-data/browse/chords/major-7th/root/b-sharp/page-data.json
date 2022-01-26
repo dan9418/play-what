@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/major-7th/root/b-sharp/",
     "result": {"pageContext":{"modelId":"major-7th","rootId":"b-sharp"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/minor-7th/root/f/",
     "result": {"pageContext":{"modelId":"minor-7th","rootId":"f"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/diminished-triad/root/d-flat/",
     "result": {"pageContext":{"modelId":"diminished-triad","rootId":"d-flat"}},
     "staticQueryHashes": ["3439708972"]}

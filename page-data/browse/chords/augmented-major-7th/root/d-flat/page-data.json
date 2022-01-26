@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/augmented-major-7th/root/d-flat/",
     "result": {"pageContext":{"modelId":"augmented-major-7th","rootId":"d-flat"}},
     "staticQueryHashes": ["3439708972"]}

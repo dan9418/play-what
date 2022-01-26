@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/minor-triad/root/d-sharp/",
     "result": {"pageContext":{"modelId":"minor-triad","rootId":"d-sharp"}},
     "staticQueryHashes": ["3439708972"]}

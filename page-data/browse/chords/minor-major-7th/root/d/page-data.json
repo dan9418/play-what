@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/minor-major-7th/root/d/",
     "result": {"pageContext":{"modelId":"minor-major-7th","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

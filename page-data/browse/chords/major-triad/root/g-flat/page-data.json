@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/major-triad/root/g-flat/",
     "result": {"pageContext":{"modelId":"major-triad","rootId":"g-flat"}},
     "staticQueryHashes": ["3439708972"]}

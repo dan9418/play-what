@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/augmented-triad/root/f/",
     "result": {"pageContext":{"modelId":"augmented-triad","rootId":"f"}},
     "staticQueryHashes": ["3439708972"]}

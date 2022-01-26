@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-chords-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-chord-page-tsx",
     "path": "/browse/chords/augmented-triad/root/c-sharp/",
     "result": {"pageContext":{"modelId":"augmented-triad","rootId":"c-sharp"}},
     "staticQueryHashes": ["3439708972"]}
