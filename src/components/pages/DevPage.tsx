@@ -9,18 +9,17 @@ const StyledDevPage = styled(StyledPageBody)`
 	
     ${StyledCard} {
         margin-top: 16px;
-    }
-
-    li {
-        padding: 8px;
-        font-size: 120%;
+         li {
+            padding: 8px;
+            font-size: 120%;
+        }
     }
 `;
 
 const DevPage: React.FC<any> = () => {
     return (
         <StyledDevPage>
-            <PageTitle title="Developer Panel" />
+            <PageTitle title="Developer Panel" subtitle="Advanced Users Only" />
             <Card title="Tests" >
                 <ul>
                     <li>
@@ -28,7 +27,7 @@ const DevPage: React.FC<any> = () => {
                     </li>
                 </ul>
             </Card>
-            <Card title="Experimental Features" >
+            <Card title="Guitar Practice" >
                 <ul>
                     <li>
                         <Link to='/charts'>Chord Charts</Link>
@@ -36,6 +35,10 @@ const DevPage: React.FC<any> = () => {
                     <li>
                         <Link to='/practice'>Guitar Practice</Link>
                     </li>
+                </ul>
+            </Card>
+            <Card title="Experimental Features" >
+                <ul>
                     <li>
                         <Link to='/theme'>Edit Theme</Link>
                     </li>

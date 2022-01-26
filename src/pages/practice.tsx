@@ -1,3 +1,3 @@
-import PracticePage from "../components/practice/PracticePage";
+import PracticePage from "../components/pages/PracticePage";
 
 export default PracticePage;

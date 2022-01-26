@@ -4,8 +4,8 @@ import { useQueryParam } from "use-query-params";
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
 import { StyledCard } from "../_shared/ui/Card";
-import SearchBar from "./SearchBar";
-import SearchResultsCard from "./SearchResultsCard";
+import SearchBar from "../search/SearchBar";
+import SearchResultsCard from "../search/SearchResultsCard";
 
 const StyledSearchPage = styled(StyledPageBody)`
     ${StyledCard} {

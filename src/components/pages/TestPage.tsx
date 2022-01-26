@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { StyledPageBody } from "../_shared/layout/PageBody";
 import PageTitle from "../_shared/layout/PageTitle";
-import AllIntervalsFromAllRoots from "./AllIntervalsFromAllRoots";
+import AllIntervalsFromAllRoots from "../test/AllIntervalsFromAllRoots";
 
 const StyledTestPage = styled(StyledPageBody)`
 

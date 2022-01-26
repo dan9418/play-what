@@ -1,3 +1,3 @@
-import DocsPage from "../components/docs/DocsPage";
+import DocsPage from "../components/pages/DocsPage";
 
 export default DocsPage;
