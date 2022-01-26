@@ -33,7 +33,13 @@ const DevPage: React.FC<any> = () => {
                         <Link to='/dev/practice/charts'>Chord Charts</Link>
                     </li>
                     <li>
-                        <Link to='/dev/practice/caged'>Guitar Practice</Link>
+                        <Link to='/dev/practice/voicings'>Chord Voicings</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/practice/chord-progressions'>Chord Progressions</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/practice/caged'>CAGED Shapes</Link>
                     </li>
                 </ul>
             </Card>
