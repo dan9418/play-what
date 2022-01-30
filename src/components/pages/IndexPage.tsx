@@ -6,6 +6,7 @@ import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import SearchBar from "../search/SearchBar";
 import { StyledPageBody } from "../layout/PageBody";
 import SEO from "../utils/SEO";
+import THEME from "../../styles/theme";
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -14,6 +15,7 @@ const StyledHomePage = styled(StyledPageBody)`
 	//justify-content: center;
 
 	h1 {
+		font-weight: 300;
 		margin: 32px auto;
 		font-size: 200%;
 		@media(min-width: 512px) {
@@ -21,6 +23,17 @@ const StyledHomePage = styled(StyledPageBody)`
 		}
 		@media(min-width: 1024px) {
 			font-size: 500%;
+		}
+
+		.play {
+			color: ${THEME.brand.secondary};
+		}
+		.what {
+			color: ${THEME.brand.primary};
+			font-style: italic;
+		}
+		.q {
+			color: ${THEME.brand.secondary};
 		}
 	}
 
@@ -109,7 +122,11 @@ const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
 			<SEO />
-			<h1>Play <em>What?</em></h1>
+			<h1>
+				<span className="play">play{` `}</span>
+				<span className="what">what{` `}</span>
+				<span className="q">?</span>
+			</h1>
 			<p className="intro">
 				A toolkit for exploring and visualizing musical concepts
 			</p>
