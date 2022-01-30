@@ -11,12 +11,12 @@ export default class Model {
         return this.name || 'unnamed';
     }
 
-    static fromValue(presetArray, subclass, value: any, compareFn: any, reduceFn: any) {
+    static fromValue(presetArray, subclass, value: any, compareFn: any, reduceFn: any, fromId = false) {
         const preset = presetArray.find(p => compareFn(p.value, reduceFn(value)));
         if (!preset) {
             console.error(presetArray[0].modelId, value, presetArray);
             throw new Error('Unknown model value');
         }
-        return new subclass(preset.id);
+        return fromId ? subclass.fromId(preset.id) : new subclass(preset.id);
     }
 }

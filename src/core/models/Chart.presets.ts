@@ -3,6 +3,7 @@ import { ChordId, NoteId } from './Model.constants';
 
 export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
     name: 'Autumn Leaves',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',
@@ -58,6 +59,7 @@ export const AUTUMN_LEAVES_CONFIG: IChartConfig = {
 
 export const BLUE_BOSSA_CONFIG: IChartConfig = {
     name: 'Blue Bossa',
+    keyCenter: NoteId.C,
     sections: [
         {
             name: 'A',
@@ -88,6 +90,7 @@ export const BLUE_BOSSA_CONFIG: IChartConfig = {
 
 export const ALL_OF_ME_CONFIG: IChartConfig = {
     name: 'All of Me',
+    keyCenter: NoteId.F,
     sections: [
         {
             name: 'A',
@@ -134,6 +137,7 @@ export const ALL_OF_ME_CONFIG: IChartConfig = {
 
 export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
     name: 'It Could Happen To You',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',
@@ -198,6 +202,7 @@ export const IT_COULD_HAPPEN_TO_YOU_CONFIG: IChartConfig = {
 
 export const SWEET_GEORGIA_BROWN_CONFIG: IChartConfig = {
     name: 'Sweet Georgia Brown',
+    keyCenter: NoteId.F,
     sections: [
         {
             name: 'A',
@@ -248,6 +253,7 @@ export const SWEET_GEORGIA_BROWN_CONFIG: IChartConfig = {
 
 export const SO_WHAT_CONFIG: IChartConfig = {
     name: 'So What',
+    keyCenter: NoteId.D,
     sections: [
         {
             name: 'A',
@@ -263,6 +269,7 @@ export const SO_WHAT_CONFIG: IChartConfig = {
 
 export const ON_GREEN_DOLPIN_STREET_CONFIG: IChartConfig = {
     name: 'On Green Dolphin Street',
+    keyCenter: NoteId.C,
     sections: [
         {
             name: 'A',
@@ -322,6 +329,7 @@ export const ON_GREEN_DOLPIN_STREET_CONFIG: IChartConfig = {
 
 export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
     name: 'Have You Met Miss Jones?',
+    keyCenter: NoteId.F,
     sections: [
         {
             name: 'A',
@@ -386,6 +394,7 @@ export const HAVE_YOU_MET_MISS_JONES_CONFIG: IChartConfig = {
 
 export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
     name: 'All The Things You Are',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',
@@ -446,6 +455,7 @@ export const ALL_THE_THINGS_YOU_ARE_CONFIG: IChartConfig = {
 
 export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
     name: 'Stella By Starlight',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',
@@ -503,6 +513,7 @@ export const STELLA_BY_STARLIGHT_CONFIG: IChartConfig = {
 
 export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
     name: 'Out Of Nowhere',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',
@@ -559,6 +570,7 @@ export const OUT_OF_NOWHERE_CONFIG: IChartConfig = {
 
 export const ITS_A_BLUE_WORLD_CONFIG: IChartConfig = {
     name: 'It\'s A Blue World',
+    keyCenter: NoteId.C,
     sections: [
         {
             name: 'A',
@@ -619,6 +631,7 @@ export const ITS_A_BLUE_WORLD_CONFIG: IChartConfig = {
 
 export const ALONE_AGAIN_CONFIG: IChartConfig = {
     name: 'Alone Again',
+    keyCenter: NoteId.G,
     sections: [
         {
             name: 'A',

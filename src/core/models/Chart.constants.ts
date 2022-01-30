@@ -13,7 +13,8 @@ export interface ISectionConfig {
 
 export interface IChartConfig {
     name: string;
-    sections: ISectionConfig[]
+    sections: ISectionConfig[];
+    keyCenter: NoteId;
 }
 
 export const CHART_PRESETS = Object.values(CHARTS).map(chart => {
@@ -38,7 +39,8 @@ interface ISectionParsed {
 
 export interface IChartParsed {
     name: string;
-    sections: ISectionParsed[]
+    sections: ISectionParsed[];
+    keyCenter: NoteId;
 }
 
 export const getParsedChart = (config: IChartConfig): IChartParsed => {
@@ -71,7 +73,7 @@ export const getParsedChart = (config: IChartConfig): IChartParsed => {
     }
 
     return {
-        name: config.name,
+        ...config,
         sections
     };
 }

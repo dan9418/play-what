@@ -1,12 +1,18 @@
 import { Link } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
+import { addPods, reducePod, subtractPods } from "../../../core/models/Pod.static";
 import { CHART_PRESETS, getParsedChart } from "../../../core/models/Chart.constants";
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
 import DropdownInput from "../../inputs/DropdownInput";
 import { StyledPageBody } from "../../layout/PageBody";
 import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
 import InputRow, { StyledInputRow } from "../../ui/InputRow";
+import IntervalSpan from "../../../core/models/Interval";
+import Note from "../../../core/models/Note";
+import Chord from "../../../core/models/Chord";
+import { ChordId } from "../../../core/models/Model.constants";
 
 const StyledPracticePage = styled(StyledPageBody)`
 	width: 100%;
@@ -91,16 +97,25 @@ const StyledPracticePage = styled(StyledPageBody)`
 
 const PracticePage: React.FC<any> = () => {
     const [chartPreset, setChartPreset] = useState(CHART_PRESETS[0]);
+    const [keyCenter, setKeyCenter] = useState(CHART_PRESETS[0].value.keyCenter);
 
     const chart = getParsedChart(chartPreset.value);
 
     console.log('dpb chart', chart);
+
+    const diff = reducePod(
+        subtractPods(NOTE_PRESET_MAP.get(keyCenter).value, NOTE_PRESET_MAP.get(chartPreset.value.keyCenter).value),
+        [12, 7]
+    );
 
     return (
         <StyledPracticePage>
             <PageTitle title="Chord Charts" />
             <InputRow label="Chart">
                 <DropdownInput options={CHART_PRESETS} value={chartPreset} setValue={setChartPreset} />
+            </InputRow>
+            <InputRow label="Key Center">
+                <DropdownInput options={NOTE_PRESETS} value={{ id: keyCenter }} setValue={v => setKeyCenter(v.id)} />
             </InputRow>
             <Card title={chart.name}>
                 <ul className="sections">
@@ -110,10 +125,25 @@ const PracticePage: React.FC<any> = () => {
                                 <h3>Section {s.name}</h3>
                                 <ul className="chords">
                                     {s.chords.map((c, j) => {
-                                        const { chord, rootName, structureName, t } = c;
+                                        const { chord, structureName, t } = c;
+                                        const adjustedPod = reducePod(
+                                            addPods(chord.root.pod, diff),
+                                            [12, 7]
+                                        );
+
+                                        let adjustedRoot;
+                                        try {
+                                            adjustedRoot = Note.fromValue(adjustedPod);
+                                        }
+                                        catch (e) {
+                                            return <li>?</li>
+                                        }
+
+                                        //const adjustedChord = new Chord(chord.id as ChordId, { root: adjustedRoot });
+                                        const rootName = adjustedRoot.name;
                                         return (
                                             <li key={j} style={{ gridColumn: `span ${t / 2}` }}>
-                                                <Link to={`/browse/chords/${chord.id}/root/${chord.root.id}`} className={`chord t-${t}`}>
+                                                <Link to={`/browse/chords/${chord.id}/root/${adjustedRoot.id}`} className={`chord t-${t}`}>
                                                     <div className="root-name">{rootName}</div>
                                                     <div className="structure-name">{structureName}</div>
                                                 </Link>

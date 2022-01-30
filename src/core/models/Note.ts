@@ -4,10 +4,11 @@ import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
 import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
 import { toDashedCase } from './../general/String.utils';
+import Model from './Model';
 import { ACCIDENTAL, IPod, MAX_POD, ModelId, NoteId } from './Model.constants';
-import { NOTE_PRESET_MAP } from './Model.presets';
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
-import { reducePod } from './Pod.static';
+import { arePodsEqual, reducePod } from './Pod.static';
 
 interface INoteNameOptions {
     includeOctave?: boolean;
@@ -31,6 +32,8 @@ export default class Note extends Pod {
         this.name = this.getName();
         this.id = toDashedCase(this.name) as any;
     }
+
+    static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod, true);
 
     static fromId = (id: string, octave = 4) => {
         let sharps = (id.match(/-sharp/g) || []).length;
