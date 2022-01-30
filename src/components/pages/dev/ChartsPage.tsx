@@ -1,5 +1,5 @@
 import { Link } from "gatsby";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import { addPods, reducePod, subtractPods } from "../../../core/models/Pod.static";
 import { CHART_PRESETS, getParsedChart } from "../../../core/models/Chart.constants";
@@ -98,6 +98,10 @@ const StyledPracticePage = styled(StyledPageBody)`
 const PracticePage: React.FC<any> = () => {
     const [chartPreset, setChartPreset] = useState(CHART_PRESETS[0]);
     const [keyCenter, setKeyCenter] = useState(CHART_PRESETS[0].value.keyCenter);
+
+    useEffect(() => {
+        setKeyCenter(chartPreset.value.keyCenter);
+    }, [chartPreset.id]);
 
     const chart = getParsedChart(chartPreset.value);
 
