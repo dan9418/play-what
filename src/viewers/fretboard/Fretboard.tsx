@@ -14,7 +14,7 @@ export const Fret: React.FC<IFretProps> = props => {
 	const isLowString = stringIndex === tuning.length - 1;
 	const isHighString = stringIndex === 0;
 
-	const fretLabelProps = getFretLabelProps ? getFretLabelProps(stringIndex, fretIndex, tuning) : {};
+	const fretLabelProps = getFretLabelProps ? getFretLabelProps(props) : {};
 
 	return (
 		<div className={classes.join(' ')}>

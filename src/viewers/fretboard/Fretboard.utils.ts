@@ -68,7 +68,8 @@ const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIn
 	return false;
 }
 
-const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: number, tuning: number[], voicing?: IVoicing): IFretLabelProps => {
+const getFretLabelPropsAnon = (props: IFretProps, model, voicing, getColor): IFretLabelProps => {
+	const { stringIndex, fretIndex, tuning } = props;
 	const noteIndex = tuning[stringIndex] + fretIndex;
 	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
 
@@ -84,7 +85,7 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 		}
 	}
 
-	const color = interval.getColor();
+	const color = getColor ? getColor(interval, note) : interval.getColor();
 	const freq = note.getFrequency() as number;
 
 	return {
@@ -93,12 +94,12 @@ const getFretLabelPropsAnon = (model: PodList, stringIndex: number, fretIndex: n
 	}
 }
 
-export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning, fretRange?): IFretboardProps => {
+export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning, fretRange?, getColor): IFretboardProps => {
 
 	let getFretLabelProps;
 	if (model && model.root) {
-		getFretLabelProps = (stringIndex: number, fretIndex: number, tuning: number[]): IFretLabelProps =>
-			getFretLabelPropsAnon(model, stringIndex, fretIndex, tuning, voicing)
+		getFretLabelProps = (fretProps: IFretProps): IFretLabelProps =>
+			getFretLabelPropsAnon(fretProps, model, voicing, getColor)
 	}
 
 	return {

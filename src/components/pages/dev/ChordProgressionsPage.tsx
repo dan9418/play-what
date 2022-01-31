@@ -81,6 +81,14 @@ const CAGEDPage: React.FC<any> = () => {
         }
     ];
 
+    const getColor = (ivl, note) => {
+        if (ivl.pod[1] === 0) return 'red';
+        if (ivl.pod[1] === 2) return 'blue';
+        if (ivl.pod[1] === 4) return 'black';
+        if (ivl.pod[1] === 6) return 'black';
+        return 'black';
+    };
+
     return (
         <StyledCAGEDPage>
             <PageTitle title="Chord Progressions" />
@@ -111,6 +119,9 @@ const CAGEDPage: React.FC<any> = () => {
                                             {...getFretboardProps(
                                                 instance,
                                                 voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                                undefined,
+                                                undefined,
+                                                getColor
                                             )}
                                             fretRange={[1, 14]}
                                         />
@@ -130,6 +141,9 @@ const CAGEDPage: React.FC<any> = () => {
                                             {...getFretboardProps(
                                                 instance,
                                                 voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                                undefined,
+                                                undefined,
+                                                getColor
                                             )}
                                             fretRange={[1, 14]}
                                         />
@@ -162,6 +176,9 @@ const CAGEDPage: React.FC<any> = () => {
                                             {...getFretboardProps(
                                                 instance,
                                                 voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                                undefined,
+                                                undefined,
+                                                getColor
                                             )}
                                             fretRange={[1, 14]}
                                         />
@@ -181,6 +198,9 @@ const CAGEDPage: React.FC<any> = () => {
                                             {...getFretboardProps(
                                                 instance,
                                                 voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
+                                                undefined,
+                                                undefined,
+                                                getColor
                                             )}
                                             fretRange={[1, 14]}
                                         />
