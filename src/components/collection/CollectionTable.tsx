@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useRoot, useRootSuffix } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
-import { IModelConfig, ModelId } from "../../core/models/Model.constants";
+import { IModelConfig, ModelType } from "../../core/models/Model.constants";
 import Scale from "../../core/models/Scale";
 
 const StyledCollectionTable = styled.table`
@@ -95,13 +95,13 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = []
             <tbody>
                 {
                     data.map(d => {
-                        const cl = d.modelId === ModelId.Chord ? Chord : Scale;
-                        const model = new cl(d.id, { root });
+                        const cl = d.modelType === ModelType.Chord ? Chord : Scale;
+                        const model = new cl(d.modelId, { root });
 
                         return (
                             <tr>
                                 <td>
-                                    <Link to={`/browse/${model.modelId}/${model.id}/${rootSuffix}`}>
+                                    <Link to={`/browse/${model.modelType}/${model.modelId}/${rootSuffix}`}>
                                         {model.getShortName()}
                                     </Link>
                                 </td>

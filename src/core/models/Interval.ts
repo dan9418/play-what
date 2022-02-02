@@ -8,11 +8,11 @@ import { arePodsEqual, listContainsSubset, reducePod } from "./Pod.static";
 
 export default class IntervalSpan extends Pod {
 
-    id: IntervalId;
+    modelId: IntervalId;
     offset: number;
 
-    constructor(id: IntervalId) {
-        super(INTERVAL_PRESET_MAP.get(id));
+    constructor(modelId: IntervalId) {
+        super(INTERVAL_PRESET_MAP.get(modelId));
     }
 
     static fromValue = (value: IPod) => Model.fromValue(INTERVAL_PRESETS, IntervalSpan, value, arePodsEqual, reducePod);

@@ -1,12 +1,12 @@
 import ArrayUtils from "../general/Array.utils";
-import { ChordId, IModelConfig, IntervalId, IPod, ModelId, NoteId, PresetId, ScaleId, Tag } from "./Model.constants";
+import { ChordId, IModelConfig, IntervalId, IPod, ModelType, NoteId, ModelId, ScaleId, Tag } from "./Model.constants";
 
 // Helpers
 
-const formatPreset = (modelId: ModelId, id: PresetId, name: string, value: any, tags = [], aliases = [], isList = false): IModelConfig => {
+const formatPreset = (modelType: ModelType, modelId: ModelId, name: string, value: any, tags = [], aliases = [], isList = false): IModelConfig => {
     return {
+        modelType,
         modelId,
-        id,
         name,
         value: Object.freeze(isList ? value.map(id => INTERVAL_PRESET_MAP.get(id).value) as any : value),
         aliases,
@@ -14,20 +14,20 @@ const formatPreset = (modelId: ModelId, id: PresetId, name: string, value: any, 
     }
 };
 
-const formatNotePreset = (id: PresetId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
-    formatPreset(ModelId.Note, id, name, value, tags, aliases);
+const formatNotePreset = (modelId: ModelId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelType.Note, modelId, name, value, tags, aliases);
 
 
-const formatIntervalPreset = (id: PresetId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
-    formatPreset(ModelId.Interval, id, name, value, tags, aliases);
+const formatIntervalPreset = (modelId: ModelId, name: string, value: IPod, tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelType.Interval, modelId, name, value, tags, aliases);
 
 
-const formatChordPreset = (id: PresetId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
-    formatPreset(ModelId.Chord, id, name, value, tags, aliases, true);
+const formatChordPreset = (modelId: ModelId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelType.Chord, modelId, name, value, tags, aliases, true);
 
 
-const formatScalePreset = (id: PresetId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
-    formatPreset(ModelId.Scale, id, name, value, tags, aliases, true);
+const formatScalePreset = (modelId: ModelId, name: string, value: IntervalId[], tags = [], aliases = []): IModelConfig =>
+    formatPreset(ModelType.Scale, modelId, name, value, tags, aliases, true);
 
 
 const podToPodList = (podPresets: IModelConfig[]): IModelConfig[] =>

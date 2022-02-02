@@ -43,19 +43,19 @@ const CAGEDPage: React.FC<any> = () => {
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: majorScale.notes[1].id,
+            rootId: majorScale.notes[1].modelId,
             voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Dom7,
-            rootId: majorScale.notes[4].id,
+            rootId: majorScale.notes[4].modelId,
             voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Maj7,
-            rootId: majorScale.notes[0].id,
+            rootId: majorScale.notes[0].modelId,
             voicingId: null
         }
     ];
@@ -64,19 +64,19 @@ const CAGEDPage: React.FC<any> = () => {
         {
             model: Chord,
             modelId: ChordId.HalfDim7,
-            rootId: minorScale.notes[2].id,
+            rootId: minorScale.notes[2].modelId,
             voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: minorScale.notes[4].id,
+            rootId: minorScale.notes[4].modelId,
             voicingId: null
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: minorScale.notes[0].id,
+            rootId: minorScale.notes[0].modelId,
             voicingId: null
         }
     ];

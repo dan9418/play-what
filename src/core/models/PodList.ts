@@ -1,6 +1,6 @@
 import IntervalSpan from './Interval';
 import Model from './Model';
-import { ChordId, IPod, ModelId, ScaleId } from './Model.constants';
+import { ChordId, IPod, ModelType, ScaleId } from './Model.constants';
 import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
 import Note from './Note';
 import { addPods, arePodListsEqual, getIndexOfPodAtPitch, getShortName, listContainsSubset } from './Pod.static';
@@ -11,8 +11,8 @@ export interface IPodListOptions {
 
 export default class PodList extends Model {
 
-    modelId: ModelId | undefined;
-    id: ChordId | ScaleId;
+    modelType: ModelType;
+    modelId: ChordId | ScaleId;
     root: Note;
     podList: IPod[];
     intervals: IntervalSpan[];
@@ -25,8 +25,8 @@ export default class PodList extends Model {
         const preset = presetMap.get(presetId);
         if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
 
+        this.modelType = preset.modelType;
         this.modelId = preset.modelId;
-        this.id = preset.id;
         this.name = preset.name;
         this.tags = preset.tags;
         this.aliases = preset.aliases;

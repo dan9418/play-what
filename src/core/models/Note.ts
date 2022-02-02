@@ -5,7 +5,7 @@ import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
 import { toDashedCase } from './../general/String.utils';
 import Model from './Model';
-import { ACCIDENTAL, IPod, MAX_POD, ModelId, NoteId } from './Model.constants';
+import { ACCIDENTAL, IPod, MAX_POD, ModelType, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
 import { arePodsEqual, reducePod } from './Pod.static';
@@ -22,31 +22,31 @@ interface INoteNameParts {
 
 export default class Note extends Pod {
 
-    id: NoteId;
+    modelId: NoteId;
 
     constructor(pod: IPod) {
         super(undefined);
-        this.modelId = ModelId.Note;
+        this.modelType = ModelType.Note;
         this.pod = pod;
         this.tags = []; // TODO
         this.name = this.getName();
-        this.id = toDashedCase(this.name) as any;
+        this.modelId = toDashedCase(this.name) as any;
     }
 
     static fromValue = (value: IPod) => Model.fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod, true);
 
-    static fromId = (id: string, octave = 4) => {
-        let sharps = (id.match(/-sharp/g) || []).length;
-        let flats = (id.match(/-flat/g) || []).length;
-        const nativeNoteId = id.slice(0, 1) as NoteId;
+    static fromId = (modelId: string, octave = 4) => {
+        let sharps = (modelId.match(/-sharp/g) || []).length;
+        let flats = (modelId.match(/-flat/g) || []).length;
+        const nativeNoteId = modelId.slice(0, 1) as NoteId;
         const nativePod = NOTE_PRESET_MAP.get(nativeNoteId).value;
         const octaveBasePitch = typeof octave === 'undefined' ? 0 : ((octave - 4) * 12);
         const pitch = octaveBasePitch + nativePod[0] + sharps - flats;
         const pod = [pitch, nativePod[1]] as IPod;
         //const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
         const note = new Note(pod);
-        note.modelId = ModelId.Note;
-        note.id = id as any;
+        note.modelType = ModelType.Note;
+        note.modelId = modelId as any;
         note.name = note.getName();
         note.pod = pod as IPod;
         // @ts-ignore TODO

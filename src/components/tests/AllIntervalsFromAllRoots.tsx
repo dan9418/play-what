@@ -110,7 +110,7 @@ const AllIntervalsFromAllRoots: React.FC<any> = () => {
                         <th>Root</th>
                         {
                             FIRST_OCTAVE_INTERVALS.map(ivl => {
-                                return <th colSpan={SHOW_PODS ? 2 : 1} key={ivl.id}>{IntervalSpan.fromValue(ivl.value).getName()}</th>
+                                return <th colSpan={SHOW_PODS ? 2 : 1} key={ivl.modelId}>{IntervalSpan.fromValue(ivl.value).getName()}</th>
                             })
                         }
                     </tr>
@@ -125,11 +125,11 @@ const AllIntervalsFromAllRoots: React.FC<any> = () => {
                                     {
                                         r.intervals.map(ivl => {
                                             return <>
-                                                <td key={ivl.id + 'n'} className={ivl.isInvalid ? 'invalid' : ''}>
+                                                <td key={ivl.modelId + 'n'} className={ivl.isInvalid ? 'invalid' : ''}>
                                                     {ivl.name}
                                                 </td>
                                                 {SHOW_PODS &&
-                                                    <td key={ivl.id + 'p'} className="pod">
+                                                    <td key={ivl.modelId + 'p'} className="pod">
                                                         {JSON.stringify(ivl.pod)}
                                                     </td>}
                                             </>

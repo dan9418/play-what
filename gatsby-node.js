@@ -62,20 +62,20 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   CHORD_JSON.forEach(model => {
     createPage({
-      path: `/browse/chords/${model.id}/`,
+      path: `/browse/chords/${model.modelId}/`,
       component: require.resolve(
-        './src/components/pages/ChordPage.tsx'
+        './src/components/pages/PodListPage.tsx'
       ),
-      context: { modelId: model.id },
+      context: { modelType: 'chords', modelId: model.modelId },
     });
 
     NOTE_JSON.forEach(root => {
       createPage({
-        path: `/browse/chords/${model.id}/root/${root.id}/`,
+        path: `/browse/chords/${model.modelId}/root/${root.modelId}/`,
         component: require.resolve(
-          './src/components/pages/ChordPage.tsx'
+          './src/components/pages/PodListPage.tsx'
         ),
-        context: { modelId: model.id, rootId: root.id },
+        context: { modelType: 'chords', modelId: model.modelId, rootId: root.modelId },
       });
     })
 
@@ -93,20 +93,20 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   SCALE_JSON.forEach(model => {
     createPage({
-      path: `/browse/scales/${model.id}/`,
+      path: `/browse/scales/${model.modelId}/`,
       component: require.resolve(
-        './src/components/pages/ScalePage.tsx'
+        './src/components/pages/PodListPage.tsx'
       ),
-      context: { modelId: model.id },
+      context: { modelType: 'scales', modelId: model.modelId },
     });
 
     NOTE_JSON.forEach(root => {
       createPage({
-        path: `/browse/scales/${model.id}/root/${root.id}/`,
+        path: `/browse/scales/${model.modelId}/root/${root.modelId}/`,
         component: require.resolve(
-          './src/components/pages/ScalePage.tsx'
+          './src/components/pages/PodListPage.tsx'
         ),
-        context: { modelId: model.id, rootId: root.id },
+        context: { modelType: 'scales', modelId: model.modelId, rootId: root.modelId },
       });
     })
 

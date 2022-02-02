@@ -1,10 +1,10 @@
-import { IModelConfig, ModelId, NoteId, Tag } from '../models/Model.constants';
+import { IModelConfig, ModelType, NoteId, Tag } from '../models/Model.constants';
 import { ALL_PRESETS, NOTE_PRESET_MAP } from './../models/Model.presets';
 
 interface ISearchResult {
     to: string;
     text: string;
-    modelId?: ModelId;
+    modelType?: ModelType;
     aliases?: string[]
 }
 
@@ -18,15 +18,15 @@ const doesQueryMatch = (query = '', keywords: (string | RegExp)[]) => {
     return keywords.some(kw => query.match(new RegExp(kw, 'gi')));
 }
 
-const getLink = (modelType: ModelId, id: string, root?: string): string => {
-    return `/browse/${modelType}/${id}${root ? `/root/${root}/` : ''}`;
+const getLink = (modelType: ModelType, modelId: string, root?: string): string => {
+    return `/browse/${modelType}/${modelId}${root ? `/root/${root}/` : ''}`;
 }
 
-const getName = (modelType: ModelId, name: string, root?: string): string => {
+const getName = (modelType: ModelType, name: string, root?: string): string => {
     switch (modelType) {
-        case ModelId.Chord:
+        case ModelType.Chord:
             return `${root ? root : ''} ${name} Chord`
-        case ModelId.Scale:
+        case ModelType.Scale:
             return `${root ? root : ''} ${name} Scale`
         default:
             return `${root ? root : ''} ${name}`;
@@ -65,9 +65,9 @@ const getNoteIdFromQuery = (query: string): string | undefined => {
     return noteId;
 }
 
-const getModelIdFromQuery = (query: string): ModelId | undefined => {
-    if (query.match('chord')) return ModelId.Chord;
-    if (query.match('scale')) return ModelId.Scale;
+const getModelTypeFromQuery = (query: string): ModelType | undefined => {
+    if (query.match('chord')) return ModelType.Chord;
+    if (query.match('scale')) return ModelType.Scale;
 }
 
 interface IModelPresetResult extends IModelConfig {
@@ -120,9 +120,9 @@ const extendPreset = (preset: IModelConfig, query: string, allTags: Tag[]): IMod
     }
 }
 
-const getPresetsFromQuery = (query: string, modelId?: ModelId): IModelPresetResult[] => {
+const getPresetsFromQuery = (query: string, modelType?: ModelType): IModelPresetResult[] => {
     const allTags = getTags(query);
-    return ALL_PRESETS.filter(p => !(modelId && p.modelId !== modelId))
+    return ALL_PRESETS.filter(p => !(modelType && p.modelType !== modelType))
         .map(p => {
             return extendPreset(p, query, allTags);
             //return query.split(' ').some(query => query.match(query));
@@ -137,10 +137,10 @@ const formatPresets = (presets: IModelConfig[], rootId?: string): ISearchResult[
     return presets.map(p => {
         const root = rootId ? NOTE_PRESET_MAP.get(rootId as NoteId).name : undefined;
         return {
-            text: getName(p.modelId, p.name, root),
-            to: getLink(p.modelId, p.id, rootId),
+            text: getName(p.modelType, p.name, root),
+            to: getLink(p.modelType, p.modelId, rootId),
             aliases: p.aliases,
-            modelId: p.modelId
+            modelType: p.modelType
         };
     });
 }
@@ -155,7 +155,7 @@ const getAliases = (presets: ISearchResult[]): ISearchResult[] => {
         if (p.aliases) {
             p.aliases.forEach(a => ret.push({
                 to: p.to,
-                text: `${a} ${p.modelId === ModelId.Chord ? ' Chord' : ' Scale'}`
+                text: `${a} ${p.modelType === ModelType.Chord ? ' Chord' : ' Scale'}`
             }));
         }
     }
@@ -168,9 +168,9 @@ export const getSearchResults = (query: string): ISearchResult[] => {
     const sanitized = sanitizeQuery(query);
 
     const rootId = getNoteIdFromQuery(sanitized);
-    const modelId = getModelIdFromQuery(sanitized);
+    const modelType = getModelTypeFromQuery(sanitized);
 
-    const presets = getPresetsFromQuery(sanitized, modelId);
+    const presets = getPresetsFromQuery(sanitized, modelType);
 
     const ranked = rankResults(presets, rootId);
 

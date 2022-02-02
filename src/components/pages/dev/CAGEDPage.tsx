@@ -44,43 +44,43 @@ const CAGEDPage: React.FC<any> = () => {
         {
             model: Scale,
             modelId: ScaleId.Ionian,
-            rootId: scale.notes[0].id,
+            rootId: scale.notes[0].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_EShape_2
         },
         {
             model: Scale,
             modelId: ScaleId.Dorian,
-            rootId: scale.notes[1].id,
+            rootId: scale.notes[1].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_DShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.Phrygian,
-            rootId: scale.notes[2].id,
+            rootId: scale.notes[2].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.Lydian,
-            rootId: scale.notes[3].id,
+            rootId: scale.notes[3].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_2
         },
         {
             model: Scale,
             modelId: ScaleId.Mixolydian,
-            rootId: scale.notes[4].id,
+            rootId: scale.notes[4].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_AShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.Aeolian,
-            rootId: scale.notes[5].id,
+            rootId: scale.notes[5].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_GShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.Locrian,
-            rootId: scale.notes[6].id,
+            rootId: scale.notes[6].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_EShape_1
         }
     ];
@@ -89,43 +89,43 @@ const CAGEDPage: React.FC<any> = () => {
         {
             model: Chord,
             modelId: ChordId.Maj7,
-            rootId: scale.notes[0].id,
+            rootId: scale.notes[0].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_EShape_2
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: scale.notes[1].id,
+            rootId: scale.notes[1].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_DShape_1
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: scale.notes[2].id,
+            rootId: scale.notes[2].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_1
         },
         {
             model: Chord,
             modelId: ChordId.Maj7,
-            rootId: scale.notes[3].id,
+            rootId: scale.notes[3].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_2
         },
         {
             model: Chord,
             modelId: ChordId.Dom7,
-            rootId: scale.notes[4].id,
+            rootId: scale.notes[4].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_AShape_1
         },
         {
             model: Chord,
             modelId: ChordId.Min7,
-            rootId: scale.notes[5].id,
+            rootId: scale.notes[5].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_GShape_1
         },
         {
             model: Chord,
             modelId: ChordId.HalfDim7,
-            rootId: scale.notes[6].id,
+            rootId: scale.notes[6].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_EShape_1
         }
     ];
@@ -134,31 +134,31 @@ const CAGEDPage: React.FC<any> = () => {
         {
             model: Scale,
             modelId: ScaleId.MajorPentatonic,
-            rootId: scale.notes[0].id,
+            rootId: scale.notes[0].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_EShape_2
         },
         {
             model: Scale,
             modelId: ScaleId.Egyptian,
-            rootId: scale.notes[1].id,
+            rootId: scale.notes[1].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_DShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.ManGong,
-            rootId: scale.notes[2].id,
+            rootId: scale.notes[2].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.Ritusen,
-            rootId: scale.notes[4].id,
+            rootId: scale.notes[4].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_AShape_1
         },
         {
             model: Scale,
             modelId: ScaleId.MinorPentatonic,
-            rootId: scale.notes[5].id,
+            rootId: scale.notes[5].modelId,
             voicingId: VoicingId.Scale_DoubleOctave_CShape_1
         }
     ];

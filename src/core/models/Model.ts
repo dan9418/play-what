@@ -1,8 +1,8 @@
-import { ModelId, PresetId, Tag } from './Model.constants';
+import { ModelType, ModelId, Tag } from './Model.constants';
 
 export default class Model {
+    modelType: ModelType;
     modelId: ModelId;
-    id: PresetId;
     name: string;
     tags: Tag[];
     aliases: string[];
@@ -17,6 +17,6 @@ export default class Model {
             console.error(presetArray[0].modelId, value, presetArray);
             throw new Error('Unknown model value');
         }
-        return fromId ? subclass.fromId(preset.id) : new subclass(preset.id);
+        return fromId ? subclass.fromId(preset.modelId) : new subclass(preset.modelId);
     }
 }

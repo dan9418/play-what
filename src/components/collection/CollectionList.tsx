@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useRoot, useRootSuffix } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
-import { ModelId } from "../../core/models/Model.constants";
+import { ModelType } from "../../core/models/Model.constants";
 import Scale from "../../core/models/Scale";
 
 const StyledCollectionList = styled.ul`
@@ -32,13 +32,13 @@ const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
         <StyledCollectionList>
             {
                 data.map(d => {
-                    const cl = d.modelId === ModelId.Chord ? Chord : Scale;
+                    const cl = d.modelType === ModelType.Chord ? Chord : Scale;
                     // @ts-ignore
-                    const model = new cl(d.id, { root });
+                    const model = new cl(d.modelId, { root });
 
                     return (
-                        <li key={d.id}>
-                            <Link to={`/browse/${cl.modelId}/${d.id}/${rootSuffix}`}>
+                        <li key={d.modelId}>
+                            <Link to={`/browse/${d.modelType}/${d.modelId}/${rootSuffix}`}>
                                 {model.name}
                             </Link>
                         </li>

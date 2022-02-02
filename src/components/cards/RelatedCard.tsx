@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import { useRootSuffix } from "../../contexts/PagePropsContext";
-import { ModelId } from "../../core/models/Model.constants";
+import { ModelType } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
@@ -24,7 +24,7 @@ const RelatedCard: React.FC<any> = ({ model }) => {
             {false && <Card title="Other Roots">
                 <ul>
                     {NOTE_PRESETS.map(s => (
-                        <li key={s.id}><Link to={`/browse/chords/${model.id}/${s.id}/${rootSuffix}`}>{s.name} {/*model.name*/}</Link></li>
+                        <li key={s.modelId}><Link to={`/browse/chords/${model.modelId}/${s.modelId}/${rootSuffix}`}>{s.name} {/*model.name*/}</Link></li>
                     ))}
                 </ul>
             </Card>}
@@ -49,12 +49,12 @@ const RelatedCard: React.FC<any> = ({ model }) => {
                     <CollectionTable data={superscales} semitones={semitones} />
                 </Card>
             }
-            {model.modelId === ModelId.Chord &&
+            {model.modelType === ModelType.Chord &&
                 <Card title="Other Chords">
                     <CollectionList data={CHORD_PRESETS} />
                 </Card>
             }
-            {model.modelId === ModelId.Scale &&
+            {model.modelType === ModelType.Scale &&
                 <Card title="Other Scales">
                     <CollectionList data={SCALE_PRESETS} />
                 </Card>

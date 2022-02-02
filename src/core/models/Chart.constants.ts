@@ -19,7 +19,7 @@ export interface IChartConfig {
 
 export const CHART_PRESETS = Object.values(CHARTS).map(chart => {
     return {
-        id: chart.name,
+        modelId: chart.name,
         name: chart.name,
         value: chart
     }

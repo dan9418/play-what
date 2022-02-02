@@ -120,7 +120,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                     {intervals.map((ivl, i) => {
                         const note = notes && notes[i];
                         return (
-                            <tr key={ivl.id}>
+                            <tr key={ivl.modelId}>
                                 <NoteCell note={note} key={i} i={i} />
                                 <IntervalCell interval={ivl} key={i} isFeatured={!note} />
                                 <PitchCell note={note} key={i} />

@@ -1,21 +1,34 @@
 import { MAX_DEGREE, ROOT_DEGREE } from "../theory/Degree.constants";
 import { MAX_PITCH, ROOT_PITCH } from "../theory/Pitch.constants";
+import Chord from "./Chord";
+import Scale from "./Scale";
 
-export enum ModelId {
+export enum ModelType {
 	Note = 'notes',
 	Interval = 'intervals',
 	Chord = 'chords',
 	Scale = 'scales',
 }
 
-export const getModelIdText = (modelId: ModelId): string => {
-	switch (modelId) {
-		case ModelId.Chord:
+export const getModelIdText = (modelType: ModelType): string => {
+	switch (modelType) {
+		case ModelType.Chord:
 			return 'Chord';
-		case ModelId.Scale:
+		case ModelType.Scale:
 			return 'Scale';
 		default:
 			return '';
+	}
+}
+
+export const getModelIdClass = (modelType: ModelType): any => {
+	switch (modelType) {
+		case ModelType.Chord:
+			return Chord;
+		case ModelType.Scale:
+			return Scale;
+		default:
+			return;
 	}
 }
 
@@ -137,11 +150,11 @@ export enum ChordId {
 	Sus4 = 'suspended-4th',
 }
 
-export type PresetId = NoteId | IntervalId | ChordId | ScaleId;
+export type ModelId = NoteId | IntervalId | ChordId | ScaleId;
 
 export interface IModelConfig {
-	modelId: ModelId;
-	id: string;
+	modelType: ModelType;
+	modelId: string;
 	name: string;
 	tags: Tag[];
 	aliases: string[];

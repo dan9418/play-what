@@ -1,5 +1,5 @@
 import Model from './Model';
-import { ChordId, IPod, ModelId } from './Model.constants';
+import { ChordId, IPod, ModelType } from './Model.constants';
 import { CHORD_PRESETS, CHORD_PRESET_MAP } from './Model.presets';
 import { arePodListsEqual, reducePodList } from './Pod.static';
 import PodList from './PodList';
@@ -137,14 +137,14 @@ const getSymbol = (degree, quality) => {
 
 export default class Chord extends PodList {
 
-    modelId = ModelId.Chord;
+    modelType = ModelType.Chord;
 
-    constructor(id: ChordId, options = undefined) {
-        super(CHORD_PRESET_MAP, id, options);
+    constructor(modelId: ChordId, options = undefined) {
+        super(CHORD_PRESET_MAP, modelId, options);
     }
 
     getNumeral(n) {
-        return getSymbol(n, this.id);
+        return getSymbol(n, this.modelId);
     }
 
     static fromValue = (value: IPod[]) => Model.fromValue(CHORD_PRESETS, Chord, value, arePodListsEqual, reducePodList);

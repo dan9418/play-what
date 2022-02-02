@@ -4,7 +4,7 @@ import { arePodsEqual, getDegree } from './Pod.static';
 
 export default class Pod extends Model {
 
-    id: NoteId | IntervalId;
+    modelId: NoteId | IntervalId;
     pod: IPod;
 
     constructor(preset) {
@@ -14,8 +14,8 @@ export default class Pod extends Model {
             //console.warn('Unknown pod preset', preset);
         }
         else {
+            this.modelType = preset.modelType;
             this.modelId = preset.modelId;
-            this.id = preset.id;
             this.name = preset.name;
             this.tags = preset.tags;
             this.pod = preset.value;
