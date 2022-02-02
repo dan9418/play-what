@@ -55,13 +55,12 @@ export const getParsedChart = (config: IChartConfig): IChartParsed => {
             const [noteId, chordId, t] = chordConfig;
 
             const root = new Note(NOTE_PRESET_MAP.get(noteId).value || [0, 0]);
-            const short = new Chord(chordId);
             const chord = new Chord(chordId, { root });
 
             chords.push({
                 t,
                 rootName: root.name,
-                structureName: short.getShortName(),
+                structureName: chord.getSymbol(),
                 chord
             });
             //chords.push(...(new Array(t / 2).fill(chord)));

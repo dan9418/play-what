@@ -58,6 +58,14 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                             })}
                         </tr>
                         <tr>
+                            <th>Degree</th>
+                            {numerals.map((n, i) => (
+                                <th key={i}>
+                                    {i + 1}
+                                </th>
+                            ))}
+                        </tr>
+                        <tr>
                             <th>Name</th>
                             {numerals.map((n, i) => (
                                 <td key={i}>
@@ -66,16 +74,6 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                             ))}
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Degree</th>
-                            {numerals.map((n, i) => (
-                                <th key={i}>
-                                    {i + 1}
-                                </th>
-                            ))}
-                        </tr>
-                    </tfoot>
                 </table>
             </StyledRomanNumeralsCard>
         </Card>

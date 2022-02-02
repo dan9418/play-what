@@ -10,9 +10,11 @@ const getSymbol = (modelId, symbolType = 'jazz') => {
     switch (modelId) {
         case ChordId.MajTriad:
         case ChordId.Maj7:
+        case ChordId.Maj6:
             return CHORD_QUALITY.major.name[symbolType];
         case ChordId.MinTriad:
         case ChordId.Min7:
+        case ChordId.Min6:
             return CHORD_QUALITY.minor.name[symbolType];
         case ChordId.Dom7:
             return CHORD_QUALITY.dominant.name[symbolType];
@@ -48,6 +50,10 @@ export default class Chord extends PodList {
 
     constructor(modelId: ChordId, options = undefined) {
         super(CHORD_PRESET_MAP, modelId, options);
+    }
+
+    getSymbol(symbolType?) {
+        return getSymbol(this.modelId, symbolType);
     }
 
     getNumeralParts(n, symbolType?): [string, string] {

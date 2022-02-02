@@ -12,10 +12,13 @@ const StyledCollectionList = styled.ul`
     gap: 8px;
 
     a {
-        padding: 4px 8px;
+        padding: 2px; 
+    }
+    li {
         &:not(:last-child) {
             ::after {
                 content: ', ';
+                color: ${props => props.theme.text.secondary};
             }
         }
     }

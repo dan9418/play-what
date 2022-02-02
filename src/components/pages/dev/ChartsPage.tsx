@@ -87,7 +87,7 @@ const StyledPracticePage = styled(StyledPageBody)`
         }
 
         .structure-name {
-            font-size: 100%;
+            font-size: 140%;
         }
     }
 `;
@@ -144,7 +144,7 @@ const PracticePage: React.FC<any> = () => {
                                             <li key={j} style={{ gridColumn: `span ${t / 2}` }}>
                                                 <Link to={`/browse/chords/${chord.modelId}/root/${adjustedRoot.modelId}`} className={`chord t-${t}`}>
                                                     <div className="root-name">{rootName}</div>
-                                                    <div className="structure-name">{structureName}</div>
+                                                    <sup className="structure-name">{structureName}</sup>
                                                 </Link>
                                             </li>
                                         );
