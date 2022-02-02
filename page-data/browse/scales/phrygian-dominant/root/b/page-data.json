@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/phrygian-dominant/root/b/",
-    "result": {"pageContext":{"modelId":"phrygian-dominant","rootId":"b"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"phrygian-dominant","rootId":"b"}},
     "staticQueryHashes": ["3439708972"]}

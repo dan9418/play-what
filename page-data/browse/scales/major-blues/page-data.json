@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/major-blues/",
-    "result": {"pageContext":{"modelId":"major-blues"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"major-blues"}},
     "staticQueryHashes": ["3439708972"]}

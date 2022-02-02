@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/major-7th/root/d/",
-    "result": {"pageContext":{"modelId":"major-7th","rootId":"d"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"major-7th","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

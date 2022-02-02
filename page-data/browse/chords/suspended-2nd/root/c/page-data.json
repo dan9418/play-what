@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/suspended-2nd/root/c/",
-    "result": {"pageContext":{"modelId":"suspended-2nd","rootId":"c"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"suspended-2nd","rootId":"c"}},
     "staticQueryHashes": ["3439708972"]}

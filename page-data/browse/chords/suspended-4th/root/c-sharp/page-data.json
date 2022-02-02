@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/suspended-4th/root/c-sharp/",
-    "result": {"pageContext":{"modelId":"suspended-4th","rootId":"c-sharp"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"suspended-4th","rootId":"c-sharp"}},
     "staticQueryHashes": ["3439708972"]}

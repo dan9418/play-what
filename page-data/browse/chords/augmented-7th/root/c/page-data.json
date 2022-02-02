@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/augmented-7th/root/c/",
-    "result": {"pageContext":{"modelId":"augmented-7th","rootId":"c"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"augmented-7th","rootId":"c"}},
     "staticQueryHashes": ["3439708972"]}

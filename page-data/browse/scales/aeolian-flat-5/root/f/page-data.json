@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/aeolian-flat-5/root/f/",
-    "result": {"pageContext":{"modelId":"aeolian-flat-5","rootId":"f"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"aeolian-flat-5","rootId":"f"}},
     "staticQueryHashes": ["3439708972"]}

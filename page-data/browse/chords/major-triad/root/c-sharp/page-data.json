@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/major-triad/root/c-sharp/",
-    "result": {"pageContext":{"modelId":"major-triad","rootId":"c-sharp"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"major-triad","rootId":"c-sharp"}},
     "staticQueryHashes": ["3439708972"]}

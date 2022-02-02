@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/dominant-bebop/root/g-sharp/",
-    "result": {"pageContext":{"modelId":"dominant-bebop","rootId":"g-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"dominant-bebop","rootId":"g-sharp"}},
     "staticQueryHashes": ["3439708972"]}

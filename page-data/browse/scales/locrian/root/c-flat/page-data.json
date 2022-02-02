@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/locrian/root/c-flat/",
-    "result": {"pageContext":{"modelId":"locrian","rootId":"c-flat"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"locrian","rootId":"c-flat"}},
     "staticQueryHashes": ["3439708972"]}

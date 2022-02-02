@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/lydian/root/b/",
-    "result": {"pageContext":{"modelId":"lydian","rootId":"b"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"lydian","rootId":"b"}},
     "staticQueryHashes": ["3439708972"]}

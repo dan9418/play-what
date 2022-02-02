@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/mixolydian-flat-6/root/f-flat/",
-    "result": {"pageContext":{"modelId":"mixolydian-flat-6","rootId":"f-flat"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"mixolydian-flat-6","rootId":"f-flat"}},
     "staticQueryHashes": ["3439708972"]}

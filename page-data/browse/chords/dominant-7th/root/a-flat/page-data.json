@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/dominant-7th/root/a-flat/",
-    "result": {"pageContext":{"modelId":"dominant-7th","rootId":"a-flat"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"dominant-7th","rootId":"a-flat"}},
     "staticQueryHashes": ["3439708972"]}

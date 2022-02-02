@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/minor-triad/root/a/",
-    "result": {"pageContext":{"modelId":"minor-triad","rootId":"a"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"minor-triad","rootId":"a"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/dominant-bebop/root/e/",
-    "result": {"pageContext":{"modelId":"dominant-bebop","rootId":"e"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"dominant-bebop","rootId":"e"}},
     "staticQueryHashes": ["3439708972"]}

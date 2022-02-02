@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/harmonic-minor/",
-    "result": {"pageContext":{"modelId":"harmonic-minor"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"harmonic-minor"}},
     "staticQueryHashes": ["3439708972"]}

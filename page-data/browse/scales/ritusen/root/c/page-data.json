@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/ritusen/root/c/",
-    "result": {"pageContext":{"modelId":"ritusen","rootId":"c"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"ritusen","rootId":"c"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/major-blues/root/f-flat/",
-    "result": {"pageContext":{"modelId":"major-blues","rootId":"f-flat"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"major-blues","rootId":"f-flat"}},
     "staticQueryHashes": ["3439708972"]}

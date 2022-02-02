@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/ionian/root/a/",
-    "result": {"pageContext":{"modelId":"ionian","rootId":"a"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"ionian","rootId":"a"}},
     "staticQueryHashes": ["3439708972"]}

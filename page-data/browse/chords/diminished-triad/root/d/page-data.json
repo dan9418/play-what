@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/diminished-triad/root/d/",
-    "result": {"pageContext":{"modelId":"diminished-triad","rootId":"d"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"diminished-triad","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

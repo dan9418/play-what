@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/suspended-2nd/root/f-flat/",
-    "result": {"pageContext":{"modelId":"suspended-2nd","rootId":"f-flat"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"suspended-2nd","rootId":"f-flat"}},
     "staticQueryHashes": ["3439708972"]}

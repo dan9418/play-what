@@ -1,7 +1,7 @@
 [
     {
-        "modelId": "chords",
-        "id": "major-triad",
+        "modelType": "chords",
+        "modelId": "major-triad",
         "name": "Major Triad",
         "value": [
             [
@@ -23,8 +23,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "major-6th",
+        "modelType": "chords",
+        "modelId": "major-6th",
         "name": "Major 6th",
         "value": [
             [
@@ -50,8 +50,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "major-7th",
+        "modelType": "chords",
+        "modelId": "major-7th",
         "name": "Major 7th",
         "value": [
             [
@@ -77,8 +77,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "minor-triad",
+        "modelType": "chords",
+        "modelId": "minor-triad",
         "name": "Minor Triad",
         "value": [
             [
@@ -100,8 +100,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "minor-6th",
+        "modelType": "chords",
+        "modelId": "minor-6th",
         "name": "Minor 6th",
         "value": [
             [
@@ -127,8 +127,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "minor-7th",
+        "modelType": "chords",
+        "modelId": "minor-7th",
         "name": "Minor 7th",
         "value": [
             [
@@ -154,8 +154,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "minor-major-7th",
+        "modelType": "chords",
+        "modelId": "minor-major-7th",
         "name": "Minor-Major 7th",
         "value": [
             [
@@ -181,8 +181,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "dominant-7th",
+        "modelType": "chords",
+        "modelId": "dominant-7th",
         "name": "Dominant 7th",
         "value": [
             [
@@ -208,8 +208,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "augmented-triad",
+        "modelType": "chords",
+        "modelId": "augmented-triad",
         "name": "Augmented Triad",
         "value": [
             [
@@ -231,8 +231,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "augmented-7th",
+        "modelType": "chords",
+        "modelId": "augmented-7th",
         "name": "Augmented 7th",
         "value": [
             [
@@ -258,8 +258,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "augmented-major-7th",
+        "modelType": "chords",
+        "modelId": "augmented-major-7th",
         "name": "Augmented Major 7th",
         "value": [
             [
@@ -285,8 +285,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "diminished-triad",
+        "modelType": "chords",
+        "modelId": "diminished-triad",
         "name": "Diminished Triad",
         "value": [
             [
@@ -308,8 +308,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "diminished-7th",
+        "modelType": "chords",
+        "modelId": "diminished-7th",
         "name": "Diminished 7th",
         "value": [
             [
@@ -335,8 +335,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "half-diminished-7th",
+        "modelType": "chords",
+        "modelId": "half-diminished-7th",
         "name": "Half-Diminished 7th",
         "value": [
             [
@@ -362,8 +362,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "suspended-2nd",
+        "modelType": "chords",
+        "modelId": "suspended-2nd",
         "name": "Suspended 2nd",
         "value": [
             [
@@ -385,8 +385,8 @@
         ]
     },
     {
-        "modelId": "chords",
-        "id": "suspended-4th",
+        "modelType": "chords",
+        "modelId": "suspended-4th",
         "name": "Suspended 4th",
         "value": [
             [

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/man-gong/root/a-flat/",
-    "result": {"pageContext":{"modelId":"man-gong","rootId":"a-flat"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"man-gong","rootId":"a-flat"}},
     "staticQueryHashes": ["3439708972"]}

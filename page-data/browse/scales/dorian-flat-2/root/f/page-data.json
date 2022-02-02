@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/dorian-flat-2/root/f/",
-    "result": {"pageContext":{"modelId":"dorian-flat-2","rootId":"f"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"dorian-flat-2","rootId":"f"}},
     "staticQueryHashes": ["3439708972"]}

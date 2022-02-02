@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/diminished-triad/root/g-flat/",
-    "result": {"pageContext":{"modelId":"diminished-triad","rootId":"g-flat"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"diminished-triad","rootId":"g-flat"}},
     "staticQueryHashes": ["3439708972"]}

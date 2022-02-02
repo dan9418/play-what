@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/ionian-sharp-5/root/d-sharp/",
-    "result": {"pageContext":{"modelId":"ionian-sharp-5","rootId":"d-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"ionian-sharp-5","rootId":"d-sharp"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/phrygian/",
-    "result": {"pageContext":{"modelId":"phrygian"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"phrygian"}},
     "staticQueryHashes": ["3439708972"]}

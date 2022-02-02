@@ -1,7 +1,7 @@
 [
     {
-        "modelId": "notes",
-        "id": "c",
+        "modelType": "notes",
+        "modelId": "c",
         "name": "C",
         "value": [
             0,
@@ -10,8 +10,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "c-sharp",
+        "modelType": "notes",
+        "modelId": "c-sharp",
         "name": "C#",
         "value": [
             1,
@@ -20,8 +20,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "d-flat",
+        "modelType": "notes",
+        "modelId": "d-flat",
         "name": "Db",
         "value": [
             1,
@@ -30,8 +30,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "d",
+        "modelType": "notes",
+        "modelId": "d",
         "name": "D",
         "value": [
             2,
@@ -40,8 +40,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "d-sharp",
+        "modelType": "notes",
+        "modelId": "d-sharp",
         "name": "D#",
         "value": [
             3,
@@ -50,8 +50,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "e-flat",
+        "modelType": "notes",
+        "modelId": "e-flat",
         "name": "Eb",
         "value": [
             3,
@@ -60,8 +60,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "e",
+        "modelType": "notes",
+        "modelId": "e",
         "name": "E",
         "value": [
             4,
@@ -70,8 +70,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "e-sharp",
+        "modelType": "notes",
+        "modelId": "e-sharp",
         "name": "E#",
         "value": [
             5,
@@ -80,8 +80,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "f-flat",
+        "modelType": "notes",
+        "modelId": "f-flat",
         "name": "Fb",
         "value": [
             4,
@@ -90,8 +90,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "f",
+        "modelType": "notes",
+        "modelId": "f",
         "name": "F",
         "value": [
             5,
@@ -100,8 +100,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "f-sharp",
+        "modelType": "notes",
+        "modelId": "f-sharp",
         "name": "F#",
         "value": [
             6,
@@ -110,8 +110,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "g-flat",
+        "modelType": "notes",
+        "modelId": "g-flat",
         "name": "Gb",
         "value": [
             6,
@@ -120,8 +120,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "g",
+        "modelType": "notes",
+        "modelId": "g",
         "name": "G",
         "value": [
             7,
@@ -130,8 +130,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "g-sharp",
+        "modelType": "notes",
+        "modelId": "g-sharp",
         "name": "G#",
         "value": [
             8,
@@ -140,8 +140,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "a-flat",
+        "modelType": "notes",
+        "modelId": "a-flat",
         "name": "Ab",
         "value": [
             8,
@@ -150,8 +150,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "a",
+        "modelType": "notes",
+        "modelId": "a",
         "name": "A",
         "value": [
             9,
@@ -160,8 +160,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "a-sharp",
+        "modelType": "notes",
+        "modelId": "a-sharp",
         "name": "A#",
         "value": [
             10,
@@ -170,8 +170,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "b-flat",
+        "modelType": "notes",
+        "modelId": "b-flat",
         "name": "Bb",
         "value": [
             10,
@@ -180,8 +180,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "b",
+        "modelType": "notes",
+        "modelId": "b",
         "name": "B",
         "value": [
             11,
@@ -190,8 +190,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "b-sharp",
+        "modelType": "notes",
+        "modelId": "b-sharp",
         "name": "B#",
         "value": [
             0,
@@ -200,8 +200,8 @@
         "tags": []
     },
     {
-        "modelId": "notes",
-        "id": "c-flat",
+        "modelType": "notes",
+        "modelId": "c-flat",
         "name": "Cb",
         "value": [
             11,

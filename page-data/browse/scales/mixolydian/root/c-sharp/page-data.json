@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/mixolydian/root/c-sharp/",
-    "result": {"pageContext":{"modelId":"mixolydian","rootId":"c-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"mixolydian","rootId":"c-sharp"}},
     "staticQueryHashes": ["3439708972"]}

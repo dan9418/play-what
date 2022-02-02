@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/lydian/root/c-sharp/",
-    "result": {"pageContext":{"modelId":"lydian","rootId":"c-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"lydian","rootId":"c-sharp"}},
     "staticQueryHashes": ["3439708972"]}

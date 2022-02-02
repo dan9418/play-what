@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/major-bebop/root/f/",
-    "result": {"pageContext":{"modelId":"major-bebop","rootId":"f"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"major-bebop","rootId":"f"}},
     "staticQueryHashes": ["3439708972"]}

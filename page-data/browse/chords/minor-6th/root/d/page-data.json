@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/minor-6th/root/d/",
-    "result": {"pageContext":{"modelId":"minor-6th","rootId":"d"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"minor-6th","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

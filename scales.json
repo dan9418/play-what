@@ -1,7 +1,7 @@
 [
     {
-        "modelId": "scales",
-        "id": "ionian",
+        "modelType": "scales",
+        "modelId": "ionian",
         "name": "Ionian",
         "value": [
             [
@@ -40,8 +40,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "dorian",
+        "modelType": "scales",
+        "modelId": "dorian",
         "name": "Dorian",
         "value": [
             [
@@ -80,8 +80,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "phrygian",
+        "modelType": "scales",
+        "modelId": "phrygian",
         "name": "Phrygian",
         "value": [
             [
@@ -120,8 +120,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "lydian",
+        "modelType": "scales",
+        "modelId": "lydian",
         "name": "Lydian",
         "value": [
             [
@@ -160,8 +160,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "mixolydian",
+        "modelType": "scales",
+        "modelId": "mixolydian",
         "name": "Mixolydian",
         "value": [
             [
@@ -201,8 +201,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "aeolian",
+        "modelType": "scales",
+        "modelId": "aeolian",
         "name": "Aeolian",
         "value": [
             [
@@ -241,8 +241,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "locrian",
+        "modelType": "scales",
+        "modelId": "locrian",
         "name": "Locrian",
         "value": [
             [
@@ -281,8 +281,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "harmonic-minor",
+        "modelType": "scales",
+        "modelId": "harmonic-minor",
         "name": "Harmonic Minor",
         "value": [
             [
@@ -321,8 +321,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "locrian-6",
+        "modelType": "scales",
+        "modelId": "locrian-6",
         "name": "Locrian 6",
         "value": [
             [
@@ -361,8 +361,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "ionian-sharp-5",
+        "modelType": "scales",
+        "modelId": "ionian-sharp-5",
         "name": "Ionian #5",
         "value": [
             [
@@ -401,8 +401,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "dorian-sharp-4",
+        "modelType": "scales",
+        "modelId": "dorian-sharp-4",
         "name": "Dorian #4",
         "value": [
             [
@@ -441,8 +441,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "phrygian-dominant",
+        "modelType": "scales",
+        "modelId": "phrygian-dominant",
         "name": "Phrygian Dominant",
         "value": [
             [
@@ -482,8 +482,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "lydian-sharp-2",
+        "modelType": "scales",
+        "modelId": "lydian-sharp-2",
         "name": "Lydian #2",
         "value": [
             [
@@ -522,8 +522,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "super-locrian-double-flat-7",
+        "modelType": "scales",
+        "modelId": "super-locrian-double-flat-7",
         "name": "Super Locrian bb7",
         "value": [
             [
@@ -562,8 +562,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "melodic-minor",
+        "modelType": "scales",
+        "modelId": "melodic-minor",
         "name": "Melodic Minor",
         "value": [
             [
@@ -602,8 +602,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "dorian-flat-2",
+        "modelType": "scales",
+        "modelId": "dorian-flat-2",
         "name": "Dorian b2",
         "value": [
             [
@@ -642,8 +642,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "lydian-sharp-5",
+        "modelType": "scales",
+        "modelId": "lydian-sharp-5",
         "name": "Lydian #5",
         "value": [
             [
@@ -682,8 +682,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "lydian-dominant",
+        "modelType": "scales",
+        "modelId": "lydian-dominant",
         "name": "Lydian Dominant",
         "value": [
             [
@@ -723,8 +723,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "mixolydian-flat-6",
+        "modelType": "scales",
+        "modelId": "mixolydian-flat-6",
         "name": "Mixolydian b6",
         "value": [
             [
@@ -763,8 +763,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "aeolian-flat-5",
+        "modelType": "scales",
+        "modelId": "aeolian-flat-5",
         "name": "Aeolian b5",
         "value": [
             [
@@ -803,8 +803,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "super-locrian",
+        "modelType": "scales",
+        "modelId": "super-locrian",
         "name": "Super Locrian",
         "value": [
             [
@@ -843,8 +843,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "major-pentatonic",
+        "modelType": "scales",
+        "modelId": "major-pentatonic",
         "name": "Major Pentatonic",
         "value": [
             [
@@ -874,8 +874,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "egyptian",
+        "modelType": "scales",
+        "modelId": "egyptian",
         "name": "Egyptian",
         "value": [
             [
@@ -905,8 +905,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "man-gong",
+        "modelType": "scales",
+        "modelId": "man-gong",
         "name": "Man Gong",
         "value": [
             [
@@ -936,8 +936,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "ritusen",
+        "modelType": "scales",
+        "modelId": "ritusen",
         "name": "Ritusen",
         "value": [
             [
@@ -967,8 +967,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "minor-pentatonic",
+        "modelType": "scales",
+        "modelId": "minor-pentatonic",
         "name": "Minor Pentatonic",
         "value": [
             [
@@ -998,8 +998,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "major-blues",
+        "modelType": "scales",
+        "modelId": "major-blues",
         "name": "Major Blues",
         "value": [
             [
@@ -1034,8 +1034,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "minor-blues",
+        "modelType": "scales",
+        "modelId": "minor-blues",
         "name": "Minor Blues",
         "value": [
             [
@@ -1070,8 +1070,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "dominant-bebop",
+        "modelType": "scales",
+        "modelId": "dominant-bebop",
         "name": "Dominant Bebob",
         "value": [
             [
@@ -1115,8 +1115,8 @@
         ]
     },
     {
-        "modelId": "scales",
-        "id": "major-bebop",
+        "modelType": "scales",
+        "modelId": "major-bebop",
         "name": "Major Bebob",
         "value": [
             [

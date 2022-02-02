@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/dominant-bebop/root/d-flat/",
-    "result": {"pageContext":{"modelId":"dominant-bebop","rootId":"d-flat"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"dominant-bebop","rootId":"d-flat"}},
     "staticQueryHashes": ["3439708972"]}

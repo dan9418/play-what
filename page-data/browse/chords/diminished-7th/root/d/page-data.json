@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/diminished-7th/root/d/",
-    "result": {"pageContext":{"modelId":"diminished-7th","rootId":"d"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"diminished-7th","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

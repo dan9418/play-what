@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/major-pentatonic/root/d/",
-    "result": {"pageContext":{"modelId":"major-pentatonic","rootId":"d"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"major-pentatonic","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

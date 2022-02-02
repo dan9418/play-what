@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/harmonic-minor/root/d-sharp/",
-    "result": {"pageContext":{"modelId":"harmonic-minor","rootId":"d-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"harmonic-minor","rootId":"d-sharp"}},
     "staticQueryHashes": ["3439708972"]}

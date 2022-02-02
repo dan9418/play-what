@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/mixolydian/",
-    "result": {"pageContext":{"modelId":"mixolydian"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"mixolydian"}},
     "staticQueryHashes": ["3439708972"]}

@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/locrian-6/root/f-sharp/",
-    "result": {"pageContext":{"modelId":"locrian-6","rootId":"f-sharp"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"locrian-6","rootId":"f-sharp"}},
     "staticQueryHashes": ["3439708972"]}

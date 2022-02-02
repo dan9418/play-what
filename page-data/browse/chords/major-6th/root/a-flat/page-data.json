@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-chord-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/chords/major-6th/root/a-flat/",
-    "result": {"pageContext":{"modelId":"major-6th","rootId":"a-flat"}},
+    "result": {"pageContext":{"modelType":"chords","modelId":"major-6th","rootId":"a-flat"}},
     "staticQueryHashes": ["3439708972"]}

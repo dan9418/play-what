@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-scale-page-tsx",
+    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
     "path": "/browse/scales/super-locrian/root/e/",
-    "result": {"pageContext":{"modelId":"super-locrian","rootId":"e"}},
+    "result": {"pageContext":{"modelType":"scales","modelId":"super-locrian","rootId":"e"}},
     "staticQueryHashes": ["3439708972"]}
