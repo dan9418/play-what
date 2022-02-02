@@ -37,8 +37,6 @@ const CAGEDPage: React.FC<any> = () => {
     const majorScale = new Scale(ScaleId.Ionian, { root });
     const minorScale = new Scale(ScaleId.Ionian, { root });
 
-    console.log('dpb rootPreset', rootPreset);
-
     const majorItems = [
         {
             model: Chord,

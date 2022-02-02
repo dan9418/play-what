@@ -204,5 +204,3 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
 ]);
 
 export const FRETBOARD_TUNING_VALUES = ArrayUtils.mapToArray(TUNING_PRESET_MAP);
-
-console.log('dpb', FRETBOARD_TUNING_VALUES);

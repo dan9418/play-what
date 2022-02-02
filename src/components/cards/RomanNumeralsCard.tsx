@@ -26,6 +26,10 @@ const StyledRomanNumeralsCard = styled.div`
             font-family: serif;
         }
     }
+
+    sup {
+        font-size: 80%;
+    }
 `;
 
 const RomanNumeralsCard: React.FC<any> = ({ model }) => {
@@ -43,11 +47,15 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                     <tbody>
                         <tr className="numeral">
                             <th>Numeral</th>
-                            {numerals.map((n, i) => (
-                                <td key={i}>
-                                    {n.getNumeral(i + 1)}
-                                </td>
-                            ))}
+                            {numerals.map((n, i) => {
+                                const [numeral, symbol] = n.getNumeralParts(i + 1)
+                                return (
+                                    <td key={i} className="numeral">
+                                        {numeral}
+                                        <sup className="symbol">{symbol}</sup>
+                                    </td>
+                                );
+                            })}
                         </tr>
                         <tr>
                             <th>Name</th>
@@ -60,7 +68,7 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th >Degree</th>
+                            <th>Degree</th>
                             {numerals.map((n, i) => (
                                 <th key={i}>
                                     {i + 1}

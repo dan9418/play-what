@@ -1,10 +1,12 @@
 import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
-import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
+import { getModelIdClass, getModelIdText, ModelType } from "../../core/models/Model.constants";
 import DetailsCard from "../cards/DetailsCard";
 import GuitarCard from "../cards/GuitarCard";
+import ModeCard from "../cards/ModeCard";
 import RelatedCard from "../cards/RelatedCard";
+import RomanNumeralsCard from "../cards/RomanNumeralsCard";
 import RootCard from "../cards/RootCard";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
@@ -20,14 +22,13 @@ interface IPodListPageProps {
 
 const PodlistPage: React.FC<IPodListPageProps> = props => {
 
+    const { modelType, modelId } = props.pageContext;
     const root = useRoot();
 
-    const cl = getModelIdClass(props.pageContext.modelType);
-    const clText = getModelIdText(props.pageContext.modelType);
+    const cl = getModelIdClass(modelType);
+    const clText = getModelIdText(modelType);
 
-    console.log('dpb', props.pageContext.modelType, cl);
-
-    const podList = new cl(props.pageContext.modelId, { root });
+    const podList = new cl(modelId, { root });
     const title = `${podList.name} ${clText}`;
 
     const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
@@ -38,6 +39,8 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
             <StyledPane>
                 <DetailsCard model={podList} />
                 <RootCard />
+                {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
+                {modelType === ModelType.Scale && <ModeCard model={podList} />}
                 <GuitarCard model={podList} />
                 <RelatedCard model={podList} />
             </StyledPane>

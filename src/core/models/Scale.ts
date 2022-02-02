@@ -36,10 +36,6 @@ export default class Scale extends PodList {
         }
         const mode = Scale.fromValue(newPods);
 
-        /*if (this.root) {
-            numeral.applyRoot(this.notes[d]);
-            console.log('dpb num root', numeral);
-        }*/
         return mode;
     };
 

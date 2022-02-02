@@ -38,8 +38,6 @@ const CAGEDPage: React.FC<any> = () => {
     const root = new Note(rootPreset.value);
     const scale = new Scale(ScaleId.Ionian, { root });
 
-    console.log('dpb rootPreset', rootPreset);
-
     const diatonicItems = [
         {
             model: Scale,
@@ -190,7 +188,6 @@ const CAGEDPage: React.FC<any> = () => {
                                     {item.map(item => {
                                         const { model, modelId, rootId, voicingId } = item as any;
                                         const instance = new model(modelId, { root: Note.fromId(rootId) });
-                                        console.log('dpb scale', rootId, instance);
                                         return (
                                             <td key={modelId}>
                                                 <h3>{modelId}</h3>

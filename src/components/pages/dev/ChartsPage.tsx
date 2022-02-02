@@ -102,8 +102,6 @@ const PracticePage: React.FC<any> = () => {
 
     const chart = getParsedChart(chartPreset.value);
 
-    console.log('dpb chart', chart);
-
     const diff = reducePod(
         subtractPods(NOTE_PRESET_MAP.get(keyCenter).value, NOTE_PRESET_MAP.get(chartPreset.value.keyCenter).value),
         [12, 7]
