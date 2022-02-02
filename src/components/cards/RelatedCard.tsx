@@ -1,22 +1,11 @@
 import { Link } from "gatsby";
 import React from "react";
-import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ModelId } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
+import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";
-
-const StyledCollectionList = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-
-    a {
-        padding: 4px 8px;
-    }
-`;
-
 
 const RelatedCard: React.FC<any> = ({ model }) => {
 
@@ -62,24 +51,12 @@ const RelatedCard: React.FC<any> = ({ model }) => {
             }
             {model.modelId === ModelId.Chord &&
                 <Card title="Other Chords">
-                    <StyledCollectionList>
-                        {CHORD_PRESETS.map(p => <li key={p.id}>
-                            <Link to={`/browse/chords/${p.id}/${rootSuffix}`}>
-                                {p.name}
-                            </Link>
-                        </li>)}
-                    </StyledCollectionList>
+                    <CollectionList data={CHORD_PRESETS} />
                 </Card>
             }
             {model.modelId === ModelId.Scale &&
                 <Card title="Other Scales">
-                    <StyledCollectionList>
-                        {SCALE_PRESETS.map(p => <li key={p.id}>
-                            <Link to={`/browse/scales/${p.id}/${rootSuffix}`}>
-                                {p.name}
-                            </Link>
-                        </li>)}
-                    </StyledCollectionList>
+                    <CollectionList data={SCALE_PRESETS} />
                 </Card>
             }
 

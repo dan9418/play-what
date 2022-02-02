@@ -12,11 +12,17 @@ const StyledCollectionTable = styled.table`
     border-collapse: collapse;
     white-space: nowrap;
 
+    td {  
+        &:not(:first-child) {
+            font-size: 80%;
+        }
+    }
+
     td, th {
         line-height: 32px;
+        text-align: center;
         
         &:not(:first-child) {
-            text-align: center;
             width: 32px;
             height: 32px;
 
@@ -43,23 +49,22 @@ const StyledCollectionTable = styled.table`
     }
 
     thead {
+        text-transform: uppercase;
+        font-size: 80%;
+        
+        @media(max-width: 511px) {
+            display: none;
+        }
         tr th {
             background-color: ${props => props.theme.surface.nav};
             color: ${({ theme }) => theme.text.inverted};
         }
+        
         th:first-child {
             border-radius: 8px 0 0 8px;
         }
         th:last-child {
             border-radius: 0 8px 8px 0;
-        }
-    }
-
-    tbody {
-        tr {
-            &:hover {
-                background-color: ${({ theme }) => theme.utils.hoverDark};
-            }
         }
     }
 
@@ -73,7 +78,7 @@ export interface ICollectionTableProps {
     semitones?: number[];
 }
 
-const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = [] }) => {
     const rootSuffix = useRootSuffix();
@@ -83,7 +88,8 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = []
             <thead>
                 <tr>
                     <th>Name</th>
-                    {SEMITONES.map((h, i) => <th key={i}>{h}</th>)}
+                    <th colSpan={12}>{root ? 'Notes' : 'Intervals'}</th>
+                    {/*SEMITONES.map((h, i) => <th key={i}>{h}</th>)*/}
                 </tr>
             </thead>
             <tbody>

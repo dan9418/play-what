@@ -107,6 +107,15 @@ export default class PodList extends Model {
         );
     }
 
+    getAllRelated() {
+        return [
+            ...this.getSubchords(),
+            ...this.getSubscales(),
+            ...this.getSuperchords(),
+            ...this.getSuperscales()
+        ]
+    }
+
     getPreview() {
         return this.getIntervalListString();
     }
