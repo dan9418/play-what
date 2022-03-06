@@ -6,7 +6,6 @@ import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.preset
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { getFretboardProps } from "../../../viewers/fretboard/Fretboard.utils";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../inputs/DropdownInput";
 import { StyledPageBody } from "../../layout/PageBody";
@@ -192,10 +191,8 @@ const CAGEDPage: React.FC<any> = () => {
                                             <td key={modelId}>
                                                 <h3>{modelId}</h3>
                                                 <Fretboard
-                                                    {...getFretboardProps(
-                                                        instance,
-                                                        VOICING_PRESET_MAP.get(voicingId),
-                                                    )}
+                                                    model={instance}
+                                                    voicing={VOICING_PRESET_MAP.get(voicingId)}
                                                     fretRange={[1, 14]}
                                                 />
                                             </td>

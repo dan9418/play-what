@@ -7,7 +7,7 @@ import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.preset
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { getFretboardProps } from "../../../viewers/fretboard/Fretboard.utils";
+import { IFretProps } from "../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../inputs/DropdownInput";
 import { StyledPageBody } from "../../layout/PageBody";
@@ -79,11 +79,17 @@ const CAGEDPage: React.FC<any> = () => {
         }
     ];
 
-    const getColor = (ivl, note) => {
-        if (ivl.pod[1] === 0) return 'red';
-        if (ivl.pod[1] === 2) return 'blue';
-        if (ivl.pod[1] === 4) return 'black';
-        if (ivl.pod[1] === 6) return 'black';
+    const getColor = (fretProps: IFretProps) => {
+        const { stringIndex, fretIndex, tuning, model, voicing } = fretProps;
+        const noteIndex = tuning[stringIndex] + fretIndex;
+        const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+
+        if (!note) return;
+
+        if (interval.pod[1] === 0) return 'red';
+        if (interval.pod[1] === 2) return 'blue';
+        if (interval.pod[1] === 4) return 'black';
+        if (interval.pod[1] === 6) return 'black';
         return 'black';
     };
 
@@ -114,13 +120,9 @@ const CAGEDPage: React.FC<any> = () => {
                                     <td key={modelId}>
                                         <h3>{modelId}</h3>
                                         <Fretboard
-                                            {...getFretboardProps(
-                                                instance,
-                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
-                                                undefined,
-                                                undefined,
-                                                getColor
-                                            )}
+                                            model={instance}
+                                            voicing={voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined}
+                                            colorMapFn={getColor}
                                             fretRange={[1, 14]}
                                         />
                                     </td>
@@ -136,13 +138,9 @@ const CAGEDPage: React.FC<any> = () => {
                                     <td key={modelId}>
                                         <h3>{modelId}</h3>
                                         <Fretboard
-                                            {...getFretboardProps(
-                                                instance,
-                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
-                                                undefined,
-                                                undefined,
-                                                getColor
-                                            )}
+                                            model={instance}
+                                            voicing={voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined}
+                                            colorMapFn={getColor}
                                             fretRange={[1, 14]}
                                         />
                                     </td>
@@ -171,13 +169,9 @@ const CAGEDPage: React.FC<any> = () => {
                                     <td key={modelId}>
                                         <h3>{modelId}</h3>
                                         <Fretboard
-                                            {...getFretboardProps(
-                                                instance,
-                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
-                                                undefined,
-                                                undefined,
-                                                getColor
-                                            )}
+                                            model={instance}
+                                            voicing={voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined}
+                                            colorMapFn={getColor}
                                             fretRange={[1, 14]}
                                         />
                                     </td>
@@ -193,13 +187,9 @@ const CAGEDPage: React.FC<any> = () => {
                                     <td key={modelId}>
                                         <h3>{modelId}</h3>
                                         <Fretboard
-                                            {...getFretboardProps(
-                                                instance,
-                                                voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined,
-                                                undefined,
-                                                undefined,
-                                                getColor
-                                            )}
+                                            model={instance}
+                                            voicing={voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined}
+                                            colorMapFn={getColor}
                                             fretRange={[1, 14]}
                                         />
                                     </td>

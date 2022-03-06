@@ -5,7 +5,6 @@ import { ChordId, NoteId } from "../../../core/models/Model.constants";
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { getFretboardProps } from "../../../viewers/fretboard/Fretboard.utils";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../inputs/DropdownInput";
 import { StyledPageBody } from "../../layout/PageBody";
@@ -56,10 +55,8 @@ const VoicingRow = ({ voicingIds, model, modelId, root }) => (
                 <td key={modelId}>
                     <h3>{modelId}</h3>
                     <Fretboard
-                        {...getFretboardProps(
-                            instance,
-                            VOICING_PRESET_MAP.get(voicingId),
-                        )}
+                        model={instance}
+                        voicing={VOICING_PRESET_MAP.get(voicingId)}
                         fretRange={[1, 14]}
                     />
                 </td>
