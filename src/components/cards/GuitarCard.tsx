@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import Fretboard from "../../viewers/fretboard/Fretboard";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../viewers/fretboard/Fretboard.tuning";
-import { DEFAULT_FRETBOARD_PROPS, getFretboardProps } from "../../viewers/fretboard/Fretboard.utils";
+import { DEFAULT_FRETBOARD_PROPS } from "../../viewers/fretboard/Fretboard.utils";
 import { VoicingId, VOICING_PRESETS } from "../../viewers/fretboard/Fretboard.voicing";
 import ButtonInput from "../inputs/ButtonInput";
 import DropdownInput from "../inputs/DropdownInput";
@@ -49,13 +49,6 @@ const GuitarCard: React.FC<any> = ({ model }) => {
 
     const [fretLo, fretHi] = fretRange;
 
-    const fretboardProps = getFretboardProps(
-        model,
-        voicing.id === VoicingId.None ? undefined : voicing,
-        tuning,
-        fretRange
-    );
-
     return (
         <Card title="Guitar" action={<ButtonInput onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
             <StyledGuitarCard>
@@ -85,7 +78,12 @@ const GuitarCard: React.FC<any> = ({ model }) => {
                         </li>
                     </ul>
                 }
-                <Fretboard {...fretboardProps} />
+                <Fretboard
+                    model={model}
+                    voicing={voicing}
+                    tuning={tuning.value}
+                    fretRange={fretRange}
+                />
             </StyledGuitarCard>
         </Card >
     );

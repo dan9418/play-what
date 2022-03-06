@@ -1,6 +1,8 @@
+import Chord from '../../core/models/Chord';
 import IntervalSpan from '../../core/models/Interval';
+import { IModelConfig } from '../../core/models/Model.constants';
 import Note from '../../core/models/Note';
-import PodList from '../../core/models/PodList';
+import Scale from '../../core/models/Scale';
 import { ITuning, TuningId, TUNING_PRESET_MAP } from './Fretboard.tuning';
 import { IVoicing } from './Fretboard.voicing';
 
@@ -12,10 +14,12 @@ export interface IFretLabelProps {
 
 export interface IFretboardProps {
 	fretRange?: [number, number];
-	tuning?: number[];
 	showFretDots?: boolean;
 	showFretNumbers?: boolean;
-	getFretLabelProps?: (stringIndex: number, fretIndex: number, tuning: number[]) => IFretLabelProps;
+	colorMapFn?: (fretProps: IFretProps) => string | undefined;
+	voicing?: IVoicing,
+	tuning?: number[]; // ITuning,
+	model?: Chord | Scale;
 }
 
 export interface IFretProps extends IFretboardProps {
@@ -27,11 +31,39 @@ export const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false
 
 export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
+const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIndex: number) => {
+	if (!voicing || !voicing.value) return true;
+	const v = voicing.value[stringIndex];
+	const d = interval.getDegree();
+	if (Array.isArray(v)) {
+		return v.some(n => doesVoicingValueMatch(d, n));
+	}
+	else if (typeof v === 'number') {
+		return doesVoicingValueMatch(d, v);
+	}
+	return false;
+}
+
+export const getFretColor = (props: IFretProps): string | undefined => {
+	const { stringIndex, fretIndex, tuning, model, voicing } = props;
+	const noteIndex = tuning[stringIndex] + fretIndex;
+	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+
+	if (!note) return;
+
+	if (voicing && !isIntervalInVoicing(interval, voicing, stringIndex)) {
+		return `#00000033`
+	}
+
+	return interval.getColor();
+}
+
 export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
 	fretRange: [1, 12],
 	tuning: TUNING_PRESET_MAP.get(TuningId.Standard).value,
 	showFretDots: true,
-	showFretNumbers: true
+	showFretNumbers: true,
+	colorMapFn: getFretColor
 };
 
 export const getFretRatios = (numFrets: number): number[] => {
@@ -53,59 +85,4 @@ export const getDotsForFret = (fretNumber: number): string => {
 
 const doesVoicingValueMatch = (d: number, v: number) => {
 	return d + 1 === v;
-}
-
-const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIndex: number) => {
-	if (!voicing) return true;
-	const v = voicing.value[stringIndex];
-	const d = interval.getDegree();
-	if (Array.isArray(v)) {
-		return v.some(n => doesVoicingValueMatch(d, n));
-	}
-	else if (typeof v === 'number') {
-		return doesVoicingValueMatch(d, v);
-	}
-	return false;
-}
-
-const getFretLabelPropsAnon = (props: IFretProps, model, voicing, getColor): IFretLabelProps => {
-	const { stringIndex, fretIndex, tuning } = props;
-	const noteIndex = tuning[stringIndex] + fretIndex;
-	const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
-
-	if (!note) {
-		return {
-
-		}
-	}
-
-	if (!isIntervalInVoicing(interval, voicing, stringIndex)) {
-		return {
-			color: `#00000033`
-		}
-	}
-
-	const color = getColor ? getColor(interval, note) : interval.getColor();
-	const freq = note.getFrequency() as number;
-
-	return {
-		color,
-		freq
-	}
-}
-
-export const getFretboardProps = (model: PodList, voicing?: IVoicing, tuning?: ITuning, fretRange?, getColor): IFretboardProps => {
-
-	let getFretLabelProps;
-	if (model && model.root) {
-		getFretLabelProps = (fretProps: IFretProps): IFretLabelProps =>
-			getFretLabelPropsAnon(fretProps, model, voicing, getColor)
-	}
-
-	return {
-		...DEFAULT_FRETBOARD_PROPS,
-		fretRange: fretRange ? fretRange : DEFAULT_FRETBOARD_PROPS.fretRange,
-		tuning: tuning ? tuning.value : DEFAULT_FRETBOARD_PROPS.tuning,
-		getFretLabelProps
-	}
 }

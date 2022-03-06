@@ -94,12 +94,12 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = []
             </thead>
             <tbody>
                 {
-                    data.map(d => {
+                    data.map((d, i) => {
                         const cl = d.modelType === ModelType.Chord ? Chord : Scale;
                         const model = new cl(d.modelId, { root });
 
                         return (
-                            <tr>
+                            <tr key={i}>
                                 <td>
                                     <Link to={`/browse/${model.modelType}/${model.modelId}/${rootSuffix}`}>
                                         {model.getShortName()}

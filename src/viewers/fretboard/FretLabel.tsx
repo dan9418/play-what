@@ -1,7 +1,7 @@
 
 import * as React from "react";
 import styled from "styled-components";
-import { IFretLabelProps } from "./Fretboard.utils";
+import { IFretProps } from "./Fretboard.utils";
 
 const StyledFretLabel = styled.div`
 	position: absolute;
@@ -21,12 +21,14 @@ const StyledFretLabel = styled.div`
 `;
 
 
-const FretLabel: React.FC<IFretLabelProps> = ({ color, freq }) => {
+const FretLabel: React.FC<IFretProps> = props => {
+
+	const bgColor = props.colorMapFn(props);
 
 	let fgColor = 'white';
 
 	return (
-		<StyledFretLabel $bgColor={color} $fgColor={fgColor} onClick={null} className="fret-label">
+		<StyledFretLabel $bgColor={bgColor} $fgColor={fgColor} onClick={null} className="fret-label">
 			{null}
 		</StyledFretLabel>
 	);

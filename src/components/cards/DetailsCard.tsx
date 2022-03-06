@@ -121,10 +121,10 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                         const note = notes && notes[i];
                         return (
                             <tr key={ivl.modelId}>
-                                <NoteCell note={note} key={i} i={i} />
-                                <IntervalCell interval={ivl} key={i} isFeatured={!note} />
-                                <PitchCell note={note} key={i} />
-                                <RatioCell interval={ivl} key={i} />
+                                <NoteCell note={note} i={i} />
+                                <IntervalCell interval={ivl} isFeatured={!note} />
+                                <PitchCell note={note} />
+                                <RatioCell interval={ivl} />
                             </tr>
                         );
                     })}
