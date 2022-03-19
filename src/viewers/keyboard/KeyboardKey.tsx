@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import ColorUtils from "../../../core/color/Color.utils";
+import ColorUtils from "../../core/color/Color.utils";
 import { IKeyboardKeyProps, KeyType } from './Keyboard.defaults';
 
 // Key dimensions relative to white key width

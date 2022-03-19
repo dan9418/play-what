@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NumberUtils from "../../../core/general/Number.utils";
+import NumberUtils from "../../core/general/Number.utils";
 import DEFAULT_PROPS, { BLACK_KEY_INDICES, IKeyboardProps, KeyType } from "./Keyboard.defaults";
 import StyledKeyboard from "./Keyboard.styles";
 import KeyboardKey from "./KeyboardKey";

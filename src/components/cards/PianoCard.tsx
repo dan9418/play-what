@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Keyboard from "../../archive/_viewers/keyboard/Keyboard";
-import DEFAULT_KEYBOARD_PROPS from "../../archive/_viewers/keyboard/Keyboard.defaults";
+import Keyboard from "../../viewers/keyboard/Keyboard";
+import DEFAULT_KEYBOARD_PROPS from "../../viewers/keyboard/Keyboard.defaults";
 import ButtonInput from "../inputs/ButtonInput";
 import NumericInput from "../inputs/NumericInput";
 import Card from "../ui/Card";

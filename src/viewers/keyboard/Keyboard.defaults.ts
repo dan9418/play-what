@@ -1,5 +1,5 @@
-import Chord from "../../../core/models/Chord";
-import Scale from "../../../core/models/Scale";
+import Chord from "../../core/models/Chord";
+import Scale from "../../core/models/Scale";
 
 export enum KeyType {
 	Black = 'black',
