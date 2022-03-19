@@ -7,6 +7,12 @@ import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledDetailsCard = styled(StyledCard)`
+    .header {
+        display: none;
+        @media(min-width: 512px) {
+            display: unset;
+        }
+    }
     table {
         &.mobile {
             display: table;
@@ -28,9 +34,9 @@ const StyledDetailsCard = styled(StyledCard)`
         border-collapse: collapse;
 
         td, th {
-            padding: 8px;
+            padding: 4px;
             @media(min-width: 512px) {
-                padding: 8px 16px;
+                padding: 4px 16px;
             }
             text-align: center;
         }

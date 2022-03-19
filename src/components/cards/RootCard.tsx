@@ -55,6 +55,13 @@ const StyledRootless = styled(StyledCard)`
     background-color: ${THEME.status.highlight};
     border: 1px solid ${props => props.theme.utils.border};
     color: ${THEME.text.primary};
+    b {
+        margin-right: 4px;
+    }
+    .text {
+        margin-bottom: 8px;
+        display: inline-block;
+    }
 `;
 
 const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))
@@ -70,7 +77,9 @@ const RootCard: React.FC<any> = () => {
     if (!root) {
         return (
             <StyledRootless>
-                This {modelType} does not have a root. To see the notes in this {modelType}, select a root below.
+                <span className="text">
+                    <b>This {modelType} does not have a root.</b>
+                    Please select a root to see the notes.</span>
                 <RootInput />
             </StyledRootless>
         )
