@@ -2,6 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { useRoot } from "../../contexts/PagePropsContext";
 import { getModelIdClass, getModelIdText, ModelType } from "../../core/models/Model.constants";
+import GrandStaff from "../../viewers/grand-staff/GrandStaff";
 import DetailsCard from "../cards/DetailsCard";
 import GuitarCard from "../cards/GuitarCard";
 import ModeCard from "../cards/ModeCard";
@@ -41,9 +42,9 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
             <PageTitle title={title} action={<RootCard />} />
             <StyledPane>
                 <DetailsCard model={podList} />
-
                 {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
                 {modelType === ModelType.Scale && <ModeCard model={podList} />}
+                <GrandStaff model={podList} />
                 <ViewerManager model={podList} />
                 <RelatedCard model={podList} />
             </StyledPane>
