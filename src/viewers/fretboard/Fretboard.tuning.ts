@@ -10,6 +10,8 @@ export enum TuningId {
     DoubleFlat = 'double-flat',
     DropD = 'drop-d',
     DADGAD = 'dadgad',
+    Banjo = 'banjo',
+    Violin = 'violin',
     OpenA = 'open-a',
     OpenB = 'open-b',
     OpenC = 'open-c',
@@ -115,6 +117,29 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
             getPitch(NoteId.D, 4),
             getPitch(NoteId.A, 3),
             getPitch(NoteId.D, 3)
+        ]
+    )],
+    // Unconfirmed
+    [TuningId.Banjo, formatPreset(
+        TuningId.Banjo,
+        'Banjo',
+        [
+            getPitch(NoteId.G, 5),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.G, 4),
+            getPitch(NoteId.B, 4),
+            getPitch(NoteId.D, 3)
+        ]
+    )],
+    // Unconfirmed
+    [TuningId.Violin, formatPreset(
+        TuningId.Violin,
+        'Violin',
+        [
+            getPitch(NoteId.E, 5),
+            getPitch(NoteId.A, 4),
+            getPitch(NoteId.D, 4),
+            getPitch(NoteId.G, 4)
         ]
     )],
     [TuningId.OpenA, formatPreset(
