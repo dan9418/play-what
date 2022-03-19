@@ -38,7 +38,7 @@ const StyledPageTitle = styled.div`
     }
 `
 
-const PageTitle: React.FC<any> = ({ title, subtitle, children }) => {
+const PageTitle: React.FC<any> = ({ title, subtitle, action, children }) => {
     return (
         <>
             <SEO title={title} />
@@ -47,6 +47,7 @@ const PageTitle: React.FC<any> = ({ title, subtitle, children }) => {
                 <div className="header">
                     <h1>{title}</h1>
                     {subtitle && <h2>{subtitle}</h2>}
+                    {action}
                 </div>
                 {children}
             </StyledPageTitle>

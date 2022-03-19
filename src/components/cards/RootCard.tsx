@@ -8,44 +8,37 @@ import THEME from "../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import DropdownInput from "../inputs/DropdownInput";
 import RootInput from "../inputs/RootInput";
-import Card, { CardHeader, StyledCard } from "../ui/Card";
+import { CardHeader, StyledCard } from "../ui/Card";
 import InputRow from "../ui/InputRow";
 
 const StyledRoot = styled.div`
-    margin-top: 16px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-
-    @media(min-width: 512px) {
-
-    }
-
+    font-size: 120%;
+    color: ${({ theme }) => theme.text.secondary};
+    padding: 0 8px;
     .root {
-        font-size: 200%;
-        font-weight: bolder;
-        text-align: center;
-
+        label {
+            font-weight: bold;
+            margin-right: 8px;
+        }
         sub {
             font-size: 80%;
             font-weight: normal;
+            margin-right: 8px;
         }
-
-        .f {
-            color: ${props => props.theme.text.secondary};
-            font-size: 60%;
-            margin-left: 16px;
-            font-weight: normal;
+        button {
+            padding: 4px;
+            background-color: transparent;
+            color: ${({ theme }) => theme.action.interactive};
         }
     }
 
     .edit {
         margin-top: 16px;
-        //background-color: ${THEME.status.highlight};
         border: 1px solid ${props => props.theme.utils.border};
+        //background-color: ${({ theme }) => theme.surface.card};
+        background-color: ${THEME.status.highlight};
         border-radius: 8px;
-        padding: 8px;
-
+        padding: 16px;
         display: flex;
         flex-direction: column;
         gap: 8px;
@@ -77,7 +70,6 @@ const RootCard: React.FC<any> = () => {
     if (!root) {
         return (
             <StyledRootless>
-                <CardHeader title="No Root" />
                 This {modelType} does not have a root. To see the notes in this {modelType}, select a root below.
                 <RootInput />
             </StyledRootless>
@@ -97,22 +89,23 @@ const RootCard: React.FC<any> = () => {
 
     return (
         <StyledRoot>
-            <Card title="Root" action={action}>
-                <div className="root">
-                    {root.name}
-                    <sub>{octave}</sub>
-                    <span className='f'>{root.getFrequency(true)}</span>
+
+            <div className="root">
+                <label>Root:</label>
+                {root.name}
+                <sub>{octave}</sub>
+                {action}
+            </div>
+            {isEditing && (
+                <div className="edit">
+                    <RootInput />
+                    <InputRow label="Octave">
+                        <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
+                    </InputRow>
+                    <ButtonInput onClick={onClear}>Reset</ButtonInput>
                 </div>
-                {isEditing && (
-                    <div className="edit">
-                        <RootInput />
-                        <InputRow label="Octave">
-                            <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
-                        </InputRow>
-                        <ButtonInput onClick={onClear}>Reset</ButtonInput>
-                    </div>
-                )}
-            </Card>
+            )}
+
         </StyledRoot>
     );
 };

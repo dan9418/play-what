@@ -4,7 +4,7 @@ import styled from "styled-components";
 import NumberUtils from "../../core/general/Number.utils";
 import Note from "../../core/models/Note";
 import { octaveState } from "../../state/state";
-import { StyledCard } from "../ui/Card";
+import { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledDetailsCard = styled(StyledCard)`
     table {
@@ -107,6 +107,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
 
     return (
         <StyledDetailsCard $n={intervals.length}>
+            <CardHeader title={notes ? 'Notes' : 'Intervals'} />
             <table className="mobile">
                 <thead>
                     <tr>

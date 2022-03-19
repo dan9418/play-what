@@ -31,14 +31,16 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
     const podList = new cl(modelId, { root });
     const title = `${podList.name} ${clText}`;
 
-    const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
+    //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
+
+
 
     return (
         <StyledPodlistPage>
-            <PageTitle title={title} />
+            <PageTitle title={title} action={<RootCard />} />
             <StyledPane>
                 <DetailsCard model={podList} />
-                <RootCard />
+
                 {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
                 {modelType === ModelType.Scale && <ModeCard model={podList} />}
                 <GuitarCard model={podList} />

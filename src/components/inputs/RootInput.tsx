@@ -6,7 +6,6 @@ import { NoteId } from "../../core/models/Model.constants";
 import { NOTE_PRESET_MAP } from "../../core/models/Model.presets";
 
 const StyledRootInput = styled.div`
-    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     width: 100%;
