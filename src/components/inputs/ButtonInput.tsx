@@ -13,17 +13,33 @@ const StyledButton = styled.button`
 	&:hover {
 		background-color: ${({ $isActive, theme }) => $isActive ? theme.action.active : theme.action.active};
 	}
+
+	&.link {
+		padding: 4px 8px;
+		background-color: transparent;
+		color: ${({ theme }) => theme.action.interactive};
+		&:hover {
+			background-color: rgba(0,0,0,0.1)
+		}
+	}
 `;
 
 const ButtonInput = props => {
-	const { disabled, onClick, children, isActive, hoverable, className } = props;
+	const { disabled, onClick, children, isActive, hoverable, className, isLink } = props;
 
 	const hov = onClick || hoverable;
 	const isDisabled = disabled || false;
 	const clickHander = onClick || (() => null);
 
 	return (
-		<StyledButton type='button' disabled={isDisabled} onClick={clickHander} $isActive={isActive} className={className}>{children}</StyledButton>
+		<StyledButton
+			type='button'
+			disabled={isDisabled}
+			onClick={clickHander}
+			$isActive={isActive}
+			className={`${className} ${isLink ? 'link' : ''}`}>
+			{children}
+		</StyledButton>
 	);
 }
 

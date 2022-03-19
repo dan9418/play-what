@@ -50,7 +50,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
     const [fretLo, fretHi] = fretRange;
 
     return (
-        <Card title="Guitar" action={<ButtonInput onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
+        <Card title="Guitar" action={<ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
             <StyledGuitarCard>
                 {isEditing &&
                     <ul className="edit">

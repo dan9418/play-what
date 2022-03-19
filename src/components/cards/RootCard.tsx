@@ -25,11 +25,6 @@ const StyledRoot = styled.div`
             font-weight: normal;
             margin-right: 8px;
         }
-        button {
-            padding: 4px;
-            background-color: transparent;
-            color: ${({ theme }) => theme.action.interactive};
-        }
     }
 
     .edit {
@@ -94,7 +89,7 @@ const RootCard: React.FC<any> = () => {
         navigate(sanitized);
     }
 
-    const action = <ButtonInput onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>;
+    const action = <ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>;
 
     return (
         <StyledRoot>
