@@ -1,3 +1,4 @@
+import THEME from "../../styles/theme";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
@@ -19,7 +20,7 @@ export default class IntervalSpan extends Pod {
 
     getColor(): string | undefined {
         return this.equals(new IntervalSpan(IntervalId.P1)) ?
-            'red' : '#555';
+            'red' : THEME.status.info;
 
         return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
     }

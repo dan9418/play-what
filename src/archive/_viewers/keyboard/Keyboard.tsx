@@ -36,7 +36,7 @@ const Keyboard: React.FC<IKeyboardProps> = (userProps) => {
 
 	const props = { ...DEFAULT_PROPS, ...userProps };
 
-	const [dims, setDims] = useState([512, 512]);
+	const [dims, setDims] = useState([128, 128]);
 
 	useEffect(() => {
 		const resetDimensions = (e) => {

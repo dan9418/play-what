@@ -8,16 +8,7 @@ import Card from "../ui/Card";
 import InputRow from "../ui/InputRow";
 
 const StyledPianoCard = styled.div`
-    ul {
-        border: 1px solid ${props => props.theme.utils.border};
-        padding: 8px;
-        border-radius: 8px;
-        margin-bottom: 16px;
-
-        li {
-            padding: 8px 0;
-        }
-    }
+   
 `;
 
 
@@ -31,13 +22,13 @@ const PianoCard: React.FC<any> = ({ model }) => {
     const [keyLo, keyHi] = keyRange;
 
     return (
-        <Card title="Piano" action={<ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
+        <Card title="Piano [BETA]" action={<ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
             <StyledPianoCard>
                 {isEditing &&
                     <ul className="edit">
                         <li>
                             <InputRow label="Low Key">
-                                <NumericInput value={keyLo} min={0} max={keyHi} setValue={v => setKeyRange([v, keyHi])} />
+                                <NumericInput value={keyLo} min={-24} max={keyHi} setValue={v => setKeyRange([v, keyHi])} />
                             </InputRow>
                         </li>
                         <li>

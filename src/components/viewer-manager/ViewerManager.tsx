@@ -5,8 +5,11 @@ import PianoCard from "../cards/PianoCard";
 
 const StyledViewerManager = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
+    @media(min-width: 512px) {
+        grid-template-columns: 1fr 1fr;
+    }
 `;
 
 const ViewerManager: React.FC<any> = ({ model }) => {

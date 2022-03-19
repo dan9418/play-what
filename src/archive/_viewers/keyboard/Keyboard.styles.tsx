@@ -1,14 +1,12 @@
 import styled from 'styled-components';
 
 const StyledKeyboard = styled.div`
-    display: flex;
+    display: inline-flex;
 	width: 100%;
-	min-width: 100px;
-
+	//min-width: 100px;
     font-size: 12px;
 	text-align: center;
 	font-family: sans-serif;
-	
 	margin: 16px 0;
 
     .center {

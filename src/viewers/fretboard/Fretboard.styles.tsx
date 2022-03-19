@@ -4,9 +4,7 @@ const StyledFretboard = styled.div`
     display: inline-grid;
 	width: 100%;
 	background-image: radial-gradient(ellipse, #E8DBB8 0%, #D0B27C 100%);
-
 	font-size: 90%;
-	
 	margin: 16px 0;
 
     .fret {
