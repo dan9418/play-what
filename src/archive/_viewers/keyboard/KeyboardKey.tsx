@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 import ColorUtils from "../../../core/color/Color.utils";
-import viewerUtils from '../Viewer.utils';
 import { IKeyboardKeyProps, KeyType } from './Keyboard.defaults';
 
 // Key dimensions relative to white key width
@@ -41,20 +40,17 @@ const StyledKeyLabel = styled.div`
 	color: ${({ $color }) => ColorUtils.getFgColor($color)};
 `;
 
-const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ keyType, noteIndex, scale, details, hideLabel, modelId, matchOctave }) => {
+const KeyboardKey: React.FC<IKeyboardKeyProps> = props => {
 
-	const podOptions = {
-		matchOctave,
-		hideLabel,
-		modelId
-	};
-	const podProps = viewerUtils.getPodProps(details, noteIndex, podOptions);
+	const { keyType, noteIndex, scale, hideLabel, model, colorMapFn } = props;
+
+	const bgColor = colorMapFn(props);
 
 	const scaleStyles = getScaleStyles(keyType, scale);
 	const classes = ['keyboard-key', `${keyType}-key`, keyType];
 
 	const colorStyles = {
-		backgroundColor: podProps ? podProps.bgColor : ''
+		backgroundColor: bgColor ? bgColor : ''
 	}
 
 	const keyStyles = keyType === KeyType.White ? scaleStyles : { ...scaleStyles, ...colorStyles };
@@ -63,8 +59,8 @@ const KeyboardKey: React.FC<IKeyboardKeyProps> = ({ keyType, noteIndex, scale, d
 	return (
 		<StyledKey className={`${keyType}-key-container`}>
 			<div className={classes.join(' ')} style={keyStyles} >
-				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={podProps && podProps.bgColor}>
-					{podProps && podProps.text}
+				<StyledKeyLabel className='keyboard-key-label' style={labelStyles} $color={bgColor}>
+					{null}
 				</StyledKeyLabel>
 			</div>
 		</StyledKey>

@@ -19,7 +19,7 @@ export default class IntervalSpan extends Pod {
 
     getColor(): string | undefined {
         return this.equals(new IntervalSpan(IntervalId.P1)) ?
-            'red' : '#333';
+            'red' : '#555';
 
         return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
     }
