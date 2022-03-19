@@ -131,7 +131,7 @@ const IndexPage: React.FC<any> = () => {
 				A toolkit for exploring and visualizing musical concepts
 			</p>
 			<p className="disclaimer">
-				This site is under active development and is slated for a formal Beta release in Q1 2022
+				This site is under active development and a formal Beta release is planned for Q2 2022
 			</p>
 			<h3>What will you play today?</h3>
 			<SearchBar placeholder={placeholder} />
