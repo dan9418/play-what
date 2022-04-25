@@ -12,13 +12,16 @@ import { CardHeader, StyledCard } from "../ui/Card";
 import InputRow from "../ui/InputRow";
 
 const StyledRoot = styled.div`
-    font-size: 120%;
+    font-size: 140%;
     color: ${({ theme }) => theme.text.secondary};
     padding: 0 8px;
     .root {
         label {
-            font-weight: bold;
             margin-right: 8px;
+            font-size: 80%;
+        }
+        :not(label), :not(button) {
+            font-weight: bold;
         }
         sub {
             font-size: 80%;
@@ -38,10 +41,6 @@ const StyledRoot = styled.div`
         flex-direction: column;
         gap: 8px;
         align-items: flex-end;
-
-        button {
-            margin-left: auto;
-        }
     }
 `;
 
@@ -89,7 +88,17 @@ const RootCard: React.FC<any> = () => {
         navigate(sanitized);
     }
 
-    const action = <ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>;
+    const toggle = (
+        <ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>
+            {isEditing ? 'Cancel' : 'Edit'}
+        </ButtonInput>
+    );
+
+    const remove = root ? (
+        <ButtonInput isLink onClick={onClear}>
+            Remove
+        </ButtonInput>
+    ) : null;
 
     return (
         <StyledRoot>
@@ -98,7 +107,8 @@ const RootCard: React.FC<any> = () => {
                 <label>Root:</label>
                 {root.name}
                 <sub>{octave}</sub>
-                {action}
+                {toggle}
+                {remove}
             </div>
             {isEditing && (
                 <div className="edit">
@@ -106,7 +116,6 @@ const RootCard: React.FC<any> = () => {
                     <InputRow label="Octave">
                         <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
                     </InputRow>
-                    <ButtonInput onClick={onClear}>Reset</ButtonInput>
                 </div>
             )}
 
