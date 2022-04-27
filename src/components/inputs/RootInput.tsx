@@ -1,32 +1,37 @@
 import { Link } from "gatsby";
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
 import { NoteId } from "../../core/models/Model.constants";
 import { NOTE_PRESET_MAP } from "../../core/models/Model.presets";
+import { octaveState } from "../../state/state";
+import InputRow from "../ui/InputRow";
+import DropdownInput from "./DropdownInput";
 
 const StyledRootInput = styled.div`
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     width: 100%;
 
     @media(min-width: 512px) {
 
     }
 
+    .spelling, .accidental {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+    }
+
     a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        padding: 4px;
 
-        &.main {
-            font-size: 140%;
-            padding: 8px 4px;
-            font-weight: bold;
-        }
-
+        height: 32px;
+        width: 32px;
         border-radius: 4px;
 
         &:hover, &.active {
@@ -35,6 +40,8 @@ const StyledRootInput = styled.div`
         }
     }
 `;
+
+const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))
 
 const RootInput: React.FC<any> = () => {
     const root = useRoot();
@@ -49,24 +56,33 @@ const RootInput: React.FC<any> = () => {
         path.slice(rootIndex + 5, rootIndex + 6) :
         path;
 
+    const [octave, setOctave] = useRecoilState(octaveState);
+
     return (
         <StyledRootInput>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`} className="main">{NOTE_PRESET_MAP.get(NoteId.C).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.D}`} className="main">{NOTE_PRESET_MAP.get(NoteId.D).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.E}`} className="main">{NOTE_PRESET_MAP.get(NoteId.E).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.F}`} className="main">{NOTE_PRESET_MAP.get(NoteId.F).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.G}`} className="main">{NOTE_PRESET_MAP.get(NoteId.G).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.A}`} className="main">{NOTE_PRESET_MAP.get(NoteId.A).name}</Link>
-            <Link activeClassName="active" to={`${basePath}root/${NoteId.B}`} className="main">{NOTE_PRESET_MAP.get(NoteId.B).name}</Link>
-            {root && <>
-                <div />
-                <div />
-                <div />
-                <div />
-                <Link activeClassName="active" to={`${basePath}${rootKey}-flat`} className="main">b</Link>
-                <Link activeClassName="active" to={`${basePath}${rootKey}`} className="main">{NOTE_PRESET_MAP.get(rootKey).name}</Link>
-                <Link activeClassName="active" to={`${basePath}${rootKey}-sharp`} className="main">#</Link>
-            </>}
+            <InputRow label="Spelling">
+                <div className="spelling">
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`} >{NOTE_PRESET_MAP.get(NoteId.C).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.D}`} >{NOTE_PRESET_MAP.get(NoteId.D).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.E}`} >{NOTE_PRESET_MAP.get(NoteId.E).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.F}`} >{NOTE_PRESET_MAP.get(NoteId.F).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.G}`} >{NOTE_PRESET_MAP.get(NoteId.G).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.A}`} >{NOTE_PRESET_MAP.get(NoteId.A).name}</Link>
+                    <Link activeClassName="active" to={`${basePath}root/${NoteId.B}`} >{NOTE_PRESET_MAP.get(NoteId.B).name}</Link>
+                </div>
+            </InputRow>
+            {root && (
+                <InputRow label="Accidental">
+                    <div className="accidental">
+                        <Link activeClassName="active" to={`${basePath}${rootKey}-flat`} >b</Link>
+                        <Link activeClassName="active" to={`${basePath}${rootKey}`} >none</Link>
+                        <Link activeClassName="active" to={`${basePath}${rootKey}-sharp`} >#</Link>
+                    </div>
+                </InputRow>
+            )}
+            <InputRow label="Octave">
+                <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
+            </InputRow>
         </StyledRootInput>
     );
 };

@@ -7,6 +7,11 @@ export const octaveState = atom<number>({
     default: 4
 });
 
+export const isEditingKeyState = atom<boolean>({
+    key: 'isEditingKey',
+    default: false
+});
+
 export const themeState = atom<typeof THEME>({
     key: 'themeState',
     default: THEME

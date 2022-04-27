@@ -1,46 +1,21 @@
 import { navigate } from "gatsby";
-import React, { useState } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
-import { octaveState } from "../../state/state";
+import { isEditingKeyState, octaveState } from "../../state/state";
 import THEME from "../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
-import DropdownInput from "../inputs/DropdownInput";
 import RootInput from "../inputs/RootInput";
-import { CardHeader, StyledCard } from "../ui/Card";
-import InputRow from "../ui/InputRow";
+import { StyledCard } from "../ui/Card";
 
 const StyledRoot = styled.div`
-    font-size: 140%;
-    color: ${({ theme }) => theme.text.secondary};
-    padding: 0 8px;
-    .root {
-        label {
-            margin-right: 8px;
-            font-size: 80%;
-        }
-        :not(label), :not(button) {
-            font-weight: bold;
-        }
-        sub {
-            font-size: 80%;
-            font-weight: normal;
-            margin-right: 8px;
-        }
-    }
-
     .edit {
         margin-top: 16px;
         border: 1px solid ${props => props.theme.utils.border};
-        //background-color: ${({ theme }) => theme.surface.card};
-        background-color: ${THEME.status.highlight};
+        background-color: ${({ theme }) => theme.status.highlight};
         border-radius: 8px;
         padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        align-items: flex-end;
     }
 `;
 
@@ -58,13 +33,12 @@ const StyledRootless = styled(StyledCard)`
     }
 `;
 
-const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({ id: i + 1, name: i + 1 }))
 
 const RootCard: React.FC<any> = () => {
     const root = useRoot();
     const pageProps = usePageProps();
     const [octave, setOctave] = useRecoilState(octaveState);
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useRecoilState(isEditingKeyState);
 
     const modelType = pageProps.path.includes('chord') ? 'chord' : 'scale';
 
@@ -113,12 +87,8 @@ const RootCard: React.FC<any> = () => {
             {isEditing && (
                 <div className="edit">
                     <RootInput />
-                    <InputRow label="Octave">
-                        <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
-                    </InputRow>
                 </div>
             )}
-
         </StyledRoot>
     );
 };
