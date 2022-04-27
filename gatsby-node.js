@@ -4,10 +4,11 @@ const CHORD_JSON = require("./static/chords.json")
 const SCALE_JSON = require("./static/scales.json")
 
 module.exports.sourceNodes = ({ actions, createContentDigest }) => {
-  const { createNode } = actions
+  const { createNode } = actions;
 
   const notes = NOTE_JSON.map(note => createNode({
     ...note,
+    id: note.modelId,
     internal: {
       type: `Note`,
       contentDigest: createContentDigest(note)
@@ -24,6 +25,7 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
 
   const chords = CHORD_JSON.map(chord => createNode({
     ...chord,
+    id: chord.modelId,
     internal: {
       type: `Chord`,
       contentDigest: createContentDigest(chord)
@@ -32,6 +34,7 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
 
   const scales = SCALE_JSON.map(scale => createNode({
     ...scale,
+    id: scale.modelId,
     internal: {
       type: `Scale`,
       contentDigest: createContentDigest(scale)
@@ -42,7 +45,15 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
 }
 
 module.exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
+
+  createPage({
+    path: `/looper-club/`,
+    component: require.resolve(
+      './src/components/pages/LooperClubPage.tsx'
+    ),
+    context: {},
+  });
 
   /*const { data } = await graphql(`
     query {
