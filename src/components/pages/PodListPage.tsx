@@ -42,7 +42,7 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
         <StyledPodlistPage>
             <PageTitle title={title} />
             <StyledPane>
-                <ColumnManager>
+                <ColumnManager cols={['300px', 'auto']}>
                     <RootCard />
                     <DetailsCard model={podList} />
                 </ColumnManager>

@@ -14,6 +14,9 @@ const StyledDetailsCard = styled(StyledCard)`
         }
     }
     table {
+        margin: auto;
+        border-collapse: collapse;
+
         &.mobile {
             display: table;
             @media(min-width: 512px) {
@@ -30,13 +33,10 @@ const StyledDetailsCard = styled(StyledCard)`
             }
         }
 
-        margin: auto;
-        border-collapse: collapse;
-
         td, th {
             padding: 4px;
             @media(min-width: 512px) {
-                padding: 4px 16px;
+                padding: 4px 8px;
             }
             text-align: center;
         }
@@ -50,14 +50,14 @@ const StyledDetailsCard = styled(StyledCard)`
             font-weight: bold;
             font-size: 150%;
             @media(min-width: 512px) {
-                font-size: 300%;
+                font-size: 200%;
             }
         }
 
         .interval {
             font-size: 120%;
             @media(min-width: 512px) {
-                font-size: 200%;
+                font-size: 150%;
             }
         }
 

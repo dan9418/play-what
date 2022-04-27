@@ -8,13 +8,13 @@ const StyledColumnManager = styled.div`
     grid-template-columns: 1fr;
     gap: 16px;
     @media(min-width: 512px) {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: ${({ $cols }) => $cols.join(' ')}
     }
 `;
 
-const ColumnManager: React.FC<any> = ({ children }) => {
+const ColumnManager: React.FC<any> = ({ children, cols = ['1fr', '1fr'] }) => {
     return (
-        <StyledColumnManager>
+        <StyledColumnManager $cols={cols}>
             {children}
         </StyledColumnManager >
     );

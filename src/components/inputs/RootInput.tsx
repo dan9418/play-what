@@ -25,6 +25,10 @@ const StyledRootInput = styled.div`
         gap: 4px;
     }
 
+    .accidental > a:nth-child(2) {
+        width: 64px
+    }
+
     a {
         display: flex;
         align-items: center;
@@ -60,7 +64,7 @@ const RootInput: React.FC<any> = () => {
 
     return (
         <StyledRootInput>
-            <InputRow label="Spelling">
+            <InputRow label="Spelling" y>
                 <div className="spelling">
                     <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`} >{NOTE_PRESET_MAP.get(NoteId.C).name}</Link>
                     <Link activeClassName="active" to={`${basePath}root/${NoteId.D}`} >{NOTE_PRESET_MAP.get(NoteId.D).name}</Link>
@@ -73,14 +77,14 @@ const RootInput: React.FC<any> = () => {
             </InputRow>
             {root && (
                 <>
-                    <InputRow label="Accidental">
+                    <InputRow label="Accidental" y>
                         <div className="accidental">
-                            <Link activeClassName="active" to={`${basePath}${rootKey}-flat`} >b</Link>
-                            <Link activeClassName="active" to={`${basePath}${rootKey}`} >none</Link>
-                            <Link activeClassName="active" to={`${basePath}${rootKey}-sharp`} >#</Link>
+                            <Link activeClassName="active" to={`${basePath}root/${rootKey}-flat`} >b</Link>
+                            <Link activeClassName="active" to={`${basePath}root/${rootKey}`} >none</Link>
+                            <Link activeClassName="active" to={`${basePath}root/${rootKey}-sharp`} >#</Link>
                         </div>
                     </InputRow>
-                    <InputRow label="Octave">
+                    <InputRow label="Octave" y>
                         <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
                     </InputRow>
                 </>

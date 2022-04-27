@@ -99,7 +99,7 @@ const LooperClubPage: React.FC = () => {
 							<td>4/13/22</td>
 							<td>Looping basics</td>
 							<td>
-								<a href=''>Slides</a>
+								<a target='_blank' href='https://docs.google.com/presentation/d/1l6zCgsN9t4kfMcHPHay-_Q-2Ps3RKWtKqQCC8SEHyYc/edit?usp=sharing'>Slides</a>
 							</td>
 						</tr>
 						<tr>
