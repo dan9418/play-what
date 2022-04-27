@@ -10,6 +10,12 @@ import RootInput from "../inputs/RootInput";
 import { StyledCard } from "../ui/Card";
 
 const StyledRoot = styled.div`
+    margin-top: 8px;
+    .preview {
+        label { margin-right: 4px; }
+        button { margin-left: 4px; }
+        b { font-size: 120%; }
+    }
     .edit {
         margin-top: 16px;
         border: 1px solid ${props => props.theme.utils.border};
@@ -77,9 +83,9 @@ const RootCard: React.FC<any> = () => {
     return (
         <StyledRoot>
 
-            <div className="root">
+            <div className="preview">
                 <label>Root:</label>
-                {root.name}
+                <b>{root.name}</b>
                 <sub>{octave}</sub>
                 {toggle}
                 {remove}
