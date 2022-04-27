@@ -5,8 +5,11 @@ import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
 
 const StyledLooperClubPage = styled(StyledPageBody)`
-	 ${StyledCard} {
+	${StyledCard} {
         margin-top: 16px;
+		ul {
+			margin-bottom: 16px;
+		}
         li {
             padding: 8px;
             font-size: 120%;
@@ -15,6 +18,18 @@ const StyledLooperClubPage = styled(StyledPageBody)`
 
 	p {
 		margin-bottom: 16px;
+	}
+
+	h4 {
+		margin: 8px 0;
+		color: ${({ theme }) => theme.text.secondary};
+	}
+
+	.contact {
+		display: grid;
+		@media(min-width: 512px) {
+			grid-template-columns: 1fr 1fr;
+		}
 	}
 
 	table {
@@ -110,6 +125,31 @@ const LooperClubPage: React.FC = () => {
 						</tr>
 					</tbody>
 				</table>
+			</Card>
+			<Card title="Contact"  >
+				<div className="contact">
+					<div>
+						<h3>The Library of Musiclandria</h3>
+						<h4>Venue & Sponsor</h4>
+						<ul>
+							<li><a href="https://www.musiclandria.com/">Website</a></li>
+							<li><a href="https://www.instagram.com/musiclandria/">Instagram</a></li>
+							<li><a href="https://www.facebook.com/libraryofmusiclandria/">Facebook</a></li>
+							<li><a href="https://www.musiclandria.com/donate-monthly">Donate</a></li>
+						</ul>
+					</div>
+					<div>
+						<h3>Dan Bednarczyk</h3>
+						<h4>Workshop Facilitator</h4>
+						<ul>
+							<li><a href="https://www.instagram.com/pineapple_dan_creates/">Instagram</a></li>
+							<li><a href="https://danbednarczyk.com/">Website</a></li>
+							<li><a href="https://danbednarczyk.bandcamp.com/">Bandcamp</a></li>
+							<li><a href="https://open.spotify.com/artist/37bMMmv82uI3xhb0S8hL9V?si=HTEihmXtSt-aBan4obvTJQ">Spotify</a></li>
+							<li><a href="https://music.apple.com/us/artist/dan-bednarczyk/1590781822">Apple Music</a></li>
+						</ul>
+					</div>
+				</div>
 			</Card>
 			<Card title="Sacramento Dirt Radio" >
 				<p>
