@@ -72,17 +72,19 @@ const RootInput: React.FC<any> = () => {
                 </div>
             </InputRow>
             {root && (
-                <InputRow label="Accidental">
-                    <div className="accidental">
-                        <Link activeClassName="active" to={`${basePath}${rootKey}-flat`} >b</Link>
-                        <Link activeClassName="active" to={`${basePath}${rootKey}`} >none</Link>
-                        <Link activeClassName="active" to={`${basePath}${rootKey}-sharp`} >#</Link>
-                    </div>
-                </InputRow>
+                <>
+                    <InputRow label="Accidental">
+                        <div className="accidental">
+                            <Link activeClassName="active" to={`${basePath}${rootKey}-flat`} >b</Link>
+                            <Link activeClassName="active" to={`${basePath}${rootKey}`} >none</Link>
+                            <Link activeClassName="active" to={`${basePath}${rootKey}-sharp`} >#</Link>
+                        </div>
+                    </InputRow>
+                    <InputRow label="Octave">
+                        <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
+                    </InputRow>
+                </>
             )}
-            <InputRow label="Octave">
-                <DropdownInput options={OCTAVE_OPTIONS} value={{ id: octave }} setValue={o => setOctave(o.id)} />
-            </InputRow>
         </StyledRootInput>
     );
 };

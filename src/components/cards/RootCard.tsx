@@ -4,41 +4,22 @@ import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
 import { isEditingKeyState, octaveState } from "../../state/state";
-import THEME from "../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import RootInput from "../inputs/RootInput";
-import { StyledCard } from "../ui/Card";
+import Card from "../ui/Card";
 
 const StyledRoot = styled.div`
     margin-top: 8px;
     .preview {
-        label { margin-right: 4px; }
-        button { margin-left: 4px; }
-        b { font-size: 120%; }
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 300%;
     }
-    .edit {
-        margin-top: 16px;
-        border: 1px solid ${props => props.theme.utils.border};
-        background-color: ${({ theme }) => theme.status.highlight};
-        border-radius: 8px;
-        padding: 16px;
+    .rootless {
+        margin: 8px 0 16px;
     }
 `;
-
-const StyledRootless = styled(StyledCard)`
-    margin-top: 16px;
-    background-color: ${THEME.status.highlight};
-    border: 1px solid ${props => props.theme.utils.border};
-    color: ${THEME.text.primary};
-    b {
-        margin-right: 4px;
-    }
-    .text {
-        margin-bottom: 8px;
-        display: inline-block;
-    }
-`;
-
 
 const RootCard: React.FC<any> = () => {
     const root = useRoot();
@@ -47,18 +28,6 @@ const RootCard: React.FC<any> = () => {
     const [isEditing, setIsEditing] = useRecoilState(isEditingKeyState);
 
     const modelType = pageProps.path.includes('chord') ? 'chord' : 'scale';
-
-    if (!root) {
-        return (
-            <StyledRootless>
-                <span className="text">
-                    <b>This {modelType} does not have a root.</b>
-                    Please select a root to see the notes.</span>
-                <RootInput />
-            </StyledRootless>
-        )
-    }
-
 
     const onClear = () => {
         const rootIndex = pageProps.path.lastIndexOf('root');
@@ -70,7 +39,7 @@ const RootCard: React.FC<any> = () => {
 
     const toggle = (
         <ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>
-            {isEditing ? 'Cancel' : 'Edit'}
+            {isEditing ? 'Done' : 'Edit'}
         </ButtonInput>
     );
 
@@ -80,22 +49,30 @@ const RootCard: React.FC<any> = () => {
         </ButtonInput>
     ) : null;
 
-    return (
-        <StyledRoot>
+    console.log('dpb', isEditing || !root);
 
-            <div className="preview">
-                <label>Root:</label>
-                <b>{root.name}</b>
-                <sub>{octave}</sub>
-                {toggle}
-                {remove}
-            </div>
-            {isEditing && (
-                <div className="edit">
+    return (
+        <Card title="Root" action={root && toggle}>
+            <StyledRoot>
+                {!root && (
+                    <div className="rootless">
+                        <b>This {modelType} does not have a root.</b>
+                        <br />
+                        Please select a root to see the notes.
+                    </div>
+                )}
+                {(isEditing || !root) && (
                     <RootInput />
-                </div>
-            )}
-        </StyledRoot>
+                )}
+
+                {(!isEditing && root) && (
+                    <div className="preview">
+                        <b>{root.name}</b>
+                        <sub>{octave}</sub>
+                    </div>
+                )}
+            </StyledRoot>
+        </Card>
     );
 };
 

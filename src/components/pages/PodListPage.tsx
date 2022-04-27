@@ -6,13 +6,14 @@ import GrandStaff from "../../viewers/grand-staff/GrandStaff";
 import DetailsCard from "../cards/DetailsCard";
 import GuitarCard from "../cards/GuitarCard";
 import ModeCard from "../cards/ModeCard";
+import PianoCard from "../cards/PianoCard";
 import RelatedCard from "../cards/RelatedCard";
 import RomanNumeralsCard from "../cards/RomanNumeralsCard";
 import RootCard from "../cards/RootCard";
+import ColumnManager from "../column-manager/ColumnManager";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
-import ViewerManager from "../viewer-manager/ViewerManager";
 
 const StyledPodlistPage = styled(StyledPageBody)`
 
@@ -39,13 +40,20 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
 
     return (
         <StyledPodlistPage>
-            <PageTitle title={title} action={<RootCard />} />
+            <PageTitle title={title} />
             <StyledPane>
-                <DetailsCard model={podList} />
+                <ColumnManager>
+                    <RootCard />
+                    <DetailsCard model={podList} />
+                </ColumnManager>
+
                 {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
                 {modelType === ModelType.Scale && <ModeCard model={podList} />}
                 <GrandStaff model={podList} />
-                <ViewerManager model={podList} />
+                <ColumnManager>
+                    <GuitarCard model={podList} />
+                    <PianoCard model={podList} />
+                </ColumnManager>
                 <RelatedCard model={podList} />
             </StyledPane>
         </StyledPodlistPage >
