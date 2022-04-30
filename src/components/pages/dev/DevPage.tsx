@@ -41,6 +41,9 @@ const DevPage: React.FC<any> = () => {
                     <li>
                         <Link to='/dev/practice/caged'>CAGED Shapes</Link>
                     </li>
+                    <li>
+                        <Link to='/dev/practice/extensions'>Extensions</Link>
+                    </li>
                 </ul>
             </Card>
             <Card title="Experimental Features" >
