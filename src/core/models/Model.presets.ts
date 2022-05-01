@@ -393,7 +393,87 @@ const EXTENDED_CHORDS: IExtendedChordConfig[] = [
         name: 'Dominant 9', chordId: ChordId.Dom9, baseChordId: ChordId.Dom7, extensions: [
             IntervalId.x9
         ]
-    }
+    },
+    {
+        name: 'Dominant #9', chordId: ChordId.DomSharp9, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.s9
+        ]
+    },
+    {
+        name: 'Dominant 11', chordId: ChordId.Dom11, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.x11
+        ]
+    },
+    {
+        name: 'Dominant #11', chordId: ChordId.DomSharp11, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.s11
+        ]
+    },
+    {
+        name: 'Dominant b13', chordId: ChordId.DomFlat13, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.b13
+        ]
+    },
+    {
+        name: 'Dominant 13', chordId: ChordId.Dom13, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.x13
+        ]
+    },
+    /*{
+        name: 'Dominant b5', chordId: ChordId.DomFlat5, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.d9
+        ]
+    },
+    {
+        name: 'Dominant #5', chordId: ChordId.DomSharp5, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.A5
+        ]
+    },*/
+    {
+        name: 'Minor b9', chordId: ChordId.MinFlat9, baseChordId: ChordId.Min7, extensions: [
+            IntervalId.b9
+        ]
+    },
+    {
+        name: 'Minor 9', chordId: ChordId.Min9, baseChordId: ChordId.Min7, extensions: [
+            IntervalId.x9
+        ]
+    },
+    {
+        name: 'Minor 11', chordId: ChordId.Min11, baseChordId: ChordId.Min7, extensions: [
+            IntervalId.x11
+        ]
+    },
+    {
+        name: 'Minor 13', chordId: ChordId.Min13, baseChordId: ChordId.Min7, extensions: [
+            IntervalId.x13
+        ]
+    },
+    {
+        name: 'Major 9', chordId: ChordId.Maj9, baseChordId: ChordId.Maj7, extensions: [
+            IntervalId.x9
+        ]
+    },
+    {
+        name: 'Major 11', chordId: ChordId.Maj11, baseChordId: ChordId.Maj7, extensions: [
+            IntervalId.x11
+        ]
+    },
+    {
+        name: 'Major #11', chordId: ChordId.MajSharp11, baseChordId: ChordId.Maj7, extensions: [
+            IntervalId.s11
+        ]
+    },
+    {
+        name: 'Major 13', chordId: ChordId.Maj13, baseChordId: ChordId.Maj7, extensions: [
+            IntervalId.x13
+        ]
+    },
+    /*{
+        name: 'Major #5', chordId: ChordId.MajSharp5, baseChordId: ChordId.Maj7, extensions: [
+            IntervalId.x9
+        ]
+    }*/
 ];
 
 EXTENDED_CHORDS.forEach(chord => addExtendedChordPreset(chord));
@@ -580,7 +660,7 @@ export const CORE_INTERVALS = [
     [INTERVAL_PRESET_MAP.get(IntervalId.m7), INTERVAL_PRESET_MAP.get(IntervalId.M7)]
 ];
 
-//console.log('pw-presets', NOTE_PRESETS, INTERVAL_PRESETS, CHORD_PRESETS, SCALE_PRESETS);
+// console.log('pw-presets', NOTE_PRESETS, INTERVAL_PRESETS, CHORD_PRESETS, SCALE_PRESETS);
 
 export const logPresetJson = () => {
     console.log('pw-presets notes', JSON.stringify(NOTE_PRESETS));

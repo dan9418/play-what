@@ -13,7 +13,7 @@ const StyledMain = styled.main`
   overflow: auto;
 `;
 
-const Main: React.FC = ({ children }) => {
+const Main: React.FC<any> = ({ children }) => {
   false && logPresetJson();
   return (
     <StyledMain>
