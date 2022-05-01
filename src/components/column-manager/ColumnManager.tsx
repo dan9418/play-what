@@ -1,7 +1,5 @@
 import React from "react";
 import styled from 'styled-components';
-import GuitarCard from "../cards/GuitarCard";
-import PianoCard from "../cards/PianoCard";
 
 const StyledColumnManager = styled.div`
     display: grid;

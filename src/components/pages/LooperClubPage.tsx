@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import ColumnManager from "../column-manager/ColumnManager";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
@@ -90,6 +91,7 @@ const LooperClubPage: React.FC = () => {
 					<thead>
 						<tr>
 							<th>Date</th>
+							<th>Time</th>
 							<th>Topic</th>
 							<th>Links</th>
 						</tr>
@@ -97,20 +99,23 @@ const LooperClubPage: React.FC = () => {
 					<tbody>
 						<tr>
 							<td>4/13/22</td>
-							<td>Looping basics</td>
+							<td>6:30-8pm</td>
+							<td>Looping Fundamentals</td>
 							<td>
 								<a target='_blank' href='https://docs.google.com/presentation/d/1l6zCgsN9t4kfMcHPHay-_Q-2Ps3RKWtKqQCC8SEHyYc/edit?usp=sharing'>Slides</a>
 							</td>
 						</tr>
 						<tr>
 							<td>5/11/22</td>
-							<td>Quantization</td>
+							<td>6:30-8pm</td>
+							<td>Rhythm & Quantization</td>
 							<td>
 								TBA
 							</td>
 						</tr>
 						<tr>
 							<td>6/?/22</td>
+							<td></td>
 							<td>???</td>
 							<td>
 
@@ -118,6 +123,7 @@ const LooperClubPage: React.FC = () => {
 						</tr>
 						<tr>
 							<td>7/?/22</td>
+							<td></td>
 							<td>???</td>
 							<td>
 
@@ -125,6 +131,14 @@ const LooperClubPage: React.FC = () => {
 						</tr>
 					</tbody>
 				</table>
+			</Card>
+			<Card title="Potential Future Topics">
+				<ul>
+					<li>DAW looping</li>
+					<li>Using effects and effects-chaining</li>
+					<li>Exploring creative constraints</li>
+					<li>Multitrack looping</li>
+				</ul>
 			</Card>
 			<Card title="Contact"  >
 				<div className="contact">
@@ -151,12 +165,23 @@ const LooperClubPage: React.FC = () => {
 					</div>
 				</div>
 			</Card>
-			<Card title="Sacramento Dirt Radio" >
-				<p>
-					Sacramento Dirt is a new radio station featuring only local Sacramento artists which is run out of The Library of Musiclandria.
-				</p>
-				<Dirt />
+			<Card title="Volunteer Opportunity">
+				<p>Dan is only available to host this workshop until July. Interested in taking over? <em>Get in touch.</em></p>
 			</Card>
+			<ColumnManager>
+				<Card title="Sacramento Dirt Radio" >
+					<p>
+						Sacramento Dirt is a new radio station featuring only local Sacramento artists which is run out of The Library of Musiclandria.
+					</p>
+					<Dirt />
+				</Card>
+				<Card title="Loop Examples" >
+					<ul>
+						<li><a href="https://www.youtube.com/watch?v=rg6JOG1yNQ4">Paul Davids: The Magic of Guitar Looping</a></li>
+						<li>More coming soon...</li>
+					</ul>
+				</Card>
+			</ColumnManager>
 		</StyledLooperClubPage>
 	);
 };
