@@ -1,5 +1,5 @@
 import ArrayUtils from "../general/Array.utils";
-import { ChordId, IModelConfig, IntervalId, IPod, ModelType, NoteId, ModelId, ScaleId, Tag } from "./Model.constants";
+import { ChordId, IModelConfig, IntervalId, IPod, ModelId, ModelType, NoteId, ScaleId, Tag } from "./Model.constants";
 import { getExtensionInversionId } from "./Pod.static";
 
 // Helpers
@@ -18,7 +18,7 @@ const formatPreset = (modelType: ModelType, modelId: ModelId, name: string, valu
                 term = getExtensionInversionId(id);
             }
             return INTERVAL_PRESET_MAP.get(term).value
-        }) : value),        aliases,
+        }) : value), aliases,
         tags
     }
 };
@@ -396,7 +396,7 @@ const EXTENDED_CHORDS: IExtendedChordConfig[] = [
     }
 ];
 
-//EXTENDED_CHORDS.forEach(chord => addExtendedChordPreset(chord));
+EXTENDED_CHORDS.forEach(chord => addExtendedChordPreset(chord));
 
 export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
     // Diatonic
