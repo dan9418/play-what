@@ -49,8 +49,6 @@ const RootCard: React.FC<any> = () => {
         </ButtonInput>
     ) : null;
 
-    console.log('dpb', isEditing || !root);
-
     return (
         <Card title="Root" action={root && toggle}>
             <StyledRoot>

@@ -148,6 +148,20 @@ export enum ChordId {
 	HalfDim7 = 'half-diminished-7th',
 	Sus2 = 'suspended-2nd',
 	Sus4 = 'suspended-4th',
+	DomFlat9 = 'dominant-flat-9th',
+	Dom9 = 'dominant-9th',
+	DomSharp9 = 'dominant-sharp-9th',
+	DomSharp11 = 'dominant-sharp-11th',
+	DomFlat13 = 'dominant-flat-13th',
+	Dom13 = 'dominant-13th',
+	MinFlat9 = 'minor-flat-9th',
+	Min9 = 'minor-9th',
+	Min11 = 'minor-11th',
+	Min13 = 'minor-13th',
+	MajSharp11 = 'major-sharp-11th',
+	Maj13 = 'major-13th',
+	MajFlat5 = 'major-flat-5',
+	MajSharp5 = 'major-sharp-5'
 }
 
 export type ModelId = NoteId | IntervalId | ChordId | ScaleId;
