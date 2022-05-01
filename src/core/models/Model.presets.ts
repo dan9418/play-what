@@ -1,5 +1,6 @@
 import ArrayUtils from "../general/Array.utils";
 import { ChordId, IModelConfig, IntervalId, IPod, ModelType, NoteId, ModelId, ScaleId, Tag } from "./Model.constants";
+import { getExtensionInversionId } from "./Pod.static";
 
 // Helpers
 
@@ -8,8 +9,16 @@ const formatPreset = (modelType: ModelType, modelId: ModelId, name: string, valu
         modelType,
         modelId,
         name,
-        value: Object.freeze(isList ? value.map(id => INTERVAL_PRESET_MAP.get(id).value) as any : value),
-        aliases,
+        // @ts-ignore
+        valueIds: value,
+        value: Object.freeze(isList ? value.map(id => {
+            const isExtended = id.includes('9') || id.includes('11') || id.includes('13');
+            let term = id;
+            if (isExtended) {
+                term = getExtensionInversionId(id);
+            }
+            return INTERVAL_PRESET_MAP.get(term).value
+        }) : value),        aliases,
         tags
     }
 };
@@ -351,6 +360,43 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
         [Tag.Suspended, Tag.Triad]
     )]
 ]);
+
+
+interface IExtendedChordConfig {
+    chordId: ChordId,
+    name: string,
+    baseChordId: ChordId,
+    extensions: IntervalId[]
+}
+
+const addExtendedChordPreset = (config: IExtendedChordConfig) => {
+    const { chordId, name, baseChordId, extensions } = config;
+    const basePreset = CHORD_PRESET_MAP.get(baseChordId);
+
+    let baseIds = (basePreset as any).valueIds;
+
+    const extensionPreset = formatChordPreset(chordId, name, [
+        ...baseIds,
+        ...extensions,
+    ], [...basePreset.tags, Tag.Extended], basePreset.aliases);
+
+    return CHORD_PRESET_MAP.set(chordId, extensionPreset);
+};
+
+const EXTENDED_CHORDS: IExtendedChordConfig[] = [
+    {
+        name: 'Dominant b9', chordId: ChordId.DomFlat9, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.b9
+        ]
+    },
+    {
+        name: 'Dominant 9', chordId: ChordId.Dom9, baseChordId: ChordId.Dom7, extensions: [
+            IntervalId.x9
+        ]
+    }
+];
+
+//EXTENDED_CHORDS.forEach(chord => addExtendedChordPreset(chord));
 
 export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
     // Diatonic
