@@ -1,0 +1,68 @@
+[
+    {
+        "modelType": "chords",
+        "modelId": "dominant-flat-9th",
+        "name": "Dominant b9",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ],
+            [
+                1,
+                1
+            ]
+        ],
+        "aliases": [],
+        "tags": [
+            "Dominant",
+            "Seventh",
+            "Extended"
+        ]
+    },
+    {
+        "modelType": "chords",
+        "modelId": "dominant-9th",
+        "name": "Dominant 9",
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                4,
+                2
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ],
+            [
+                2,
+                1
+            ]
+        ],
+        "aliases": [],
+        "tags": [
+            "Dominant",
+            "Seventh",
+            "Extended"
+        ]
+    }
+]
