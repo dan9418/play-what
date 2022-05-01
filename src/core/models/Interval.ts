@@ -2,10 +2,10 @@ import THEME from "../../styles/theme";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
-import { IntervalId, INTERVAL_QUALITY, IPod } from './Model.constants';
+import { IntervalId, INTERVAL_QUALITY, IPod, MAX_POD } from './Model.constants';
 import { CHORD_PRESETS, CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP, SCALE_PRESETS } from './Model.presets';
 import Pod from "./Pod";
-import { arePodsEqual, listContainsSubset, reducePod } from "./Pod.static";
+import { arePodsEqual, getExtensionInversionId, listContainsSubset, reducePod } from "./Pod.static";
 
 export default class IntervalSpan extends Pod {
 
@@ -23,6 +23,10 @@ export default class IntervalSpan extends Pod {
             'red' : THEME.status.info;
 
         return DEFAULT_DEGREE_COLOR_SCHEME[this.pod[1]];
+    }
+
+    getIsExtended(): boolean {
+        return this.pod[0] > MAX_POD[0] || this.pod[1] > MAX_POD[1];
     }
 
     getName() {
@@ -63,20 +67,13 @@ export default class IntervalSpan extends Pod {
         const count = Math.abs(offset);
         const qualityStr = quality.symbol.repeat(count);
 
-        const value = `${qualityStr}${d + 1}`;
+        let value = `${qualityStr}${d + 1}`;
 
-        /*if (isExtended) {
-            console.log('x', value);
-            if (value === 'm2') value = 'b9'
-            else if (value === 'M2') value = '9'
-            else if (value === 'm3') value = '#9'
-            else if (value === 'M3') value = 'b11'
-            else if (value === 'P4') value = '11'
-            else if (value === 'A4' || value === 'd5') value = '#11'
-            else if (value === 'm6') value = 'b13'
-            else if (value === 'M6') value = '13'
-            else if (value === 'm7') value = '#13'
-        }*/
+        const isExtended = this.getIsExtended();
+
+        if (isExtended) {
+            value = getExtensionInversionId(value as IntervalId);
+        }
 
         return value;
     }
