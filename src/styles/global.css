@@ -6,8 +6,28 @@
 }
 
 @font-face {
-  font-family: "Montserrat";
-  src: url("./fonts/Montserrat-VariableFont_wght.ttf");
+  font-family: "Evolventa";
+  src: url("./fonts/Evolventa-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("./fonts/Evolventa-Bold.ttf");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("./fonts/Evolventa-Oblique.ttf");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Evolventa";
+  src: url("./fonts/Evolventa-BoldOblique.ttf");
+  font-weight: bold;
+  font-style: italic;
+
 }
 
 * {
@@ -20,7 +40,7 @@
 body {
   background-color: var(--bg);
   color: var(--fg);
-  font-family: "Montserrat", sans-serif;
+  font-family: "Evolventa", sans-serif;
   min-height: 100vh;
 }
 
