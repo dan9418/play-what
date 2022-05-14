@@ -1,12 +1,13 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import { getModelIdText, ModelType } from "../../core/models/Model.constants";
+import logoSrc from '../../../static/logo.png';
+import { getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
-import SearchBar from "../search/SearchBar";
 import { StyledPageBody } from "../layout/PageBody";
+import SearchBar from "../search/SearchBar";
 import SEO from "../utils/SEO";
-import THEME from "../../styles/theme";
+
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -14,26 +15,16 @@ const StyledHomePage = styled(StyledPageBody)`
 	align-items: center;
 	//justify-content: center;
 
-	h1 {
-		font-weight: 300;
-		margin: 32px auto;
-		font-size: 200%;
+	.logo {
+		width: 256px;
+		margin: 16px 0 32px;
 		@media(min-width: 512px) {
-			font-size: 360%;
+			width: 512px;
+			margin: 32px 0 64px;
 		}
 		@media(min-width: 1024px) {
-			font-size: 500%;
-		}
-
-		.play {
-			color: ${THEME.brand.secondary};
-		}
-		.what {
-			color: ${THEME.brand.primary};
-			font-style: italic;
-		}
-		.q {
-			color: ${THEME.brand.secondary};
+			width: 1024px;
+			margin: 64px 0 128px;
 		}
 	}
 
@@ -42,8 +33,6 @@ const StyledHomePage = styled(StyledPageBody)`
 		color: ${({ theme }) => theme.text.primary};
 		text-align: center;
 		line-height: 120%;
-		margin-top: 32px;
-		margin-top: 32px;
 		font-size: 120%;
 		@media(min-width: 512px) {
 			font-size: 140%;
@@ -57,13 +46,14 @@ const StyledHomePage = styled(StyledPageBody)`
 		font-style: italic;
 		color: ${({ theme }) => theme.text.secondary};
 		text-align: center;
-		margin-top: 16px;
-		margin-top: 32px;
+		margin-top: 8px;
 		font-size: 80%;
 		@media(min-width: 512px) {
+			margin-top: 16px;
 			font-size: 100%;
 		}
 		@media(min-width: 1024px) {
+			margin-top: 32px;
 			font-size: 120%;
 		}
 	}
@@ -122,11 +112,7 @@ const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
 			<SEO />
-			<h1>
-				<span className="play">play{` `}</span>
-				<span className="what">what{` `}</span>
-				<span className="q">?</span>
-			</h1>
+			<img src={logoSrc} className="logo" />
 			<p className="intro">
 				A toolkit for exploring and visualizing musical concepts
 			</p>
