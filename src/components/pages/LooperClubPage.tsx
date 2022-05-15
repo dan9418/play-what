@@ -4,6 +4,7 @@ import ColumnManager from "../column-manager/ColumnManager";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
+import groupLoop from '../../../static/group-loop_4-13-22.mp3';
 
 const StyledLooperClubPage = styled(StyledPageBody)`
 	${StyledCard} {
@@ -42,6 +43,14 @@ const StyledLooperClubPage = styled(StyledPageBody)`
 			padding: 8px;
 			&:not(:last-child) {
 				border-right: 1px solid ${({ theme }) => theme.utils.border};
+			}
+			& > a {
+				&:not(:last-child) {
+					margin-right: 4px;
+					::after {
+						content: ', ';
+					}
+				}
 			}
 		}
 		thead {
@@ -103,22 +112,15 @@ const LooperClubPage: React.FC = () => {
 							<td>Looping Fundamentals</td>
 							<td>
 								<a target='_blank' href='https://docs.google.com/presentation/d/1l6zCgsN9t4kfMcHPHay-_Q-2Ps3RKWtKqQCC8SEHyYc/edit?usp=sharing'>Slides</a>
+								<a target='_blank' href={groupLoop}>Group Loop</a>
 							</td>
 						</tr>
 						<tr>
-							<td>5/11/22</td>
+							<td>6/8/22</td>
 							<td>6:30-8pm</td>
 							<td>Rhythm & Quantization</td>
 							<td>
-								TBA
-							</td>
-						</tr>
-						<tr>
-							<td>6/?/22</td>
-							<td></td>
-							<td>???</td>
-							<td>
-
+								<a target='_blank' href='https://docs.google.com/presentation/d/1zANlaJWdp9u1F_K101D7ggzvP53fhbky_V-ZQDhnq74/edit?usp=sharing'>Slides</a>
 							</td>
 						</tr>
 						<tr>
