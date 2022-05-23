@@ -49,6 +49,9 @@ const DevPage: React.FC<any> = () => {
             <Card title="Experimental Features" >
                 <ul>
                     <li>
+                        <Link to='/view/'>View Instruments</Link>
+                    </li>
+                    <li>
                         <Link to='/dev/experimental/theme'>Edit Theme</Link>
                     </li>
                     <li>
