@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 
-const StyledColumnManager = styled.div`
+export const StyledColumnManager = styled.div`
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr;

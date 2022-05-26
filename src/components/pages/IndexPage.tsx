@@ -5,9 +5,12 @@ import logoSrc from '../../../static/logo.png';
 import placeholderSrc from '../../../static/note-logo.png';
 import { getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
+import Fretboard from "../../viewers/fretboard/Fretboard";
+import ButtonInput from "../inputs/ButtonInput";
 import { StyledPageBody } from "../layout/PageBody";
 import SearchBar from "../search/SearchBar";
 import SEO from "../utils/SEO";
+import { DEFAULT_MODEL } from "./view/view.defaults";
 
 
 const StyledHomePage = styled(StyledPageBody)`
@@ -144,6 +147,20 @@ const IndexPage: React.FC<any> = () => {
 				This site is under active development and is currently unstable.<br />A formal Beta release is planned for Q2 2022.
 			</p>
 			<section>
+				<h3>Visualize notes on instruments</h3>
+				<div>
+					<div>
+						<p>Project notes on a variety of instruments and customize them to your hearts content. Play What supports different tunings, voicings, inversions, and colors.</p>
+						<Link to="/view/fretboard">Try It Now</Link>
+					</div>
+					<div>
+						<Fretboard
+							model={DEFAULT_MODEL}
+						/>
+					</div>
+				</div>
+			</section>
+			<section>
 				<h3>Explore chords and scales</h3>
 				<div>
 					<div>
@@ -151,19 +168,7 @@ const IndexPage: React.FC<any> = () => {
 						<Link to="/browse">Start Browsing</Link>
 					</div>
 					<div>
-						<img src={placeholderSrc} className="placeholder" />
-					</div>
-				</div>
-			</section>
-			<section>
-				<h3>Visualize notes on instruments</h3>
-				<div>
-					<div>
-						<p>Project notes on a variety of instruments and customize them to your hearts content. Play What supports different tunings, voicings, inversions, and colors.</p>
-						<Link to="/browse">Try It Now</Link>
-					</div>
-					<div>
-						<img src={placeholderSrc} className="placeholder" />
+						<Link to="/browse"><ButtonInput>Explore Now!</ButtonInput></Link>
 					</div>
 				</div>
 			</section>
