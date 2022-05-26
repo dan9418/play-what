@@ -10,6 +10,7 @@ import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../viewers/fretboard/Fretboard.tuning";
 import { DEFAULT_FRETBOARD_PROPS } from "../../../viewers/fretboard/Fretboard.utils";
 import { VoicingId, VOICING_PRESETS } from "../../../viewers/fretboard/Fretboard.voicing";
+import ColumnManager from "../../column-manager/ColumnManager";
 import ButtonInput from "../../inputs/ButtonInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
@@ -31,6 +32,8 @@ const StyledFretboardpage = styled.div`
 
     ${StyledCard} {
         margin: 16px auto;
+
+        
     }
 `;
 
@@ -83,8 +86,8 @@ const Fretboardpage: React.FC<any> = () => {
     });
 
     // UI
-    const [isEditingFretboard, setIsEditingFretboard] = useState(false);
-    const [isEditingNotes, setIsEditingNotes] = useState(false);
+    const [isEditingFretboard, setIsEditingFretboard] = useState(true);
+    const [isEditingNotes, setIsEditingNotes] = useState(true);
 
     // Fretboard
     const [voicing, setVoicing] = useState(filteredVoicings[0]);
@@ -95,73 +98,77 @@ const Fretboardpage: React.FC<any> = () => {
     return (
         <StyledFretboardpage>
             <PageTitle title="View" subtitle="Fretboard" />
-            <Card title="Configure Instrument" action={
-                <ButtonInput isLink onClick={() => setIsEditingFretboard(!isEditingFretboard)}>
-                    <Icon iconId={isEditingFretboard ? 'down' : 'next'} />
-                </ButtonInput>
-            }>
-                {isEditingFretboard &&
-                    <ul className="edit">
-                        <li>
-                            <InputRow label="Tuning">
-                                <DropdownInput value={tuning} setValue={setTuning} options={FRETBOARD_TUNING_VALUES} />
-                            </InputRow>
-                        </li>
-                        {tuning.id === TuningId.Standard &&
-                            <li>
-                                <InputRow label="Voicing">
-                                    <DropdownInput value={voicing} setValue={setVoicing} options={filteredVoicings} />
-                                </InputRow>
-                            </li>
+            <ColumnManager>
+                <Card title="" className="resize">
+                    <Fretboard
+                        model={model}
+                        voicing={voicing}
+                        tuning={tuning.value}
+                        fretRange={fretRange}
+                    />
+                </Card >
+                <div>
+                    <Card title="Configure Instrument" action={
+                        <ButtonInput isLink onClick={() => setIsEditingFretboard(!isEditingFretboard)}>
+                            <Icon iconId={isEditingFretboard ? 'down' : 'next'} />
+                        </ButtonInput>
+                    }>
+                        {isEditingFretboard &&
+                            <ul className="edit">
+                                <li>
+                                    <InputRow label="Tuning">
+                                        <DropdownInput value={tuning} setValue={setTuning} options={FRETBOARD_TUNING_VALUES} />
+                                    </InputRow>
+                                </li>
+                                {tuning.id === TuningId.Standard &&
+                                    <li>
+                                        <InputRow label="Voicing">
+                                            <DropdownInput value={voicing} setValue={setVoicing} options={filteredVoicings} />
+                                        </InputRow>
+                                    </li>
+                                }
+                                <li>
+                                    <InputRow label="Low Fret">
+                                        <NumericInput value={fretLo} min={0} max={fretHi} setValue={v => setFretRange([v, fretHi])} />
+                                    </InputRow>
+                                </li>
+                                <li>
+                                    <InputRow label="High Fret">
+                                        <NumericInput value={fretHi} min={fretLo} max={24} setValue={v => setFretRange([fretLo, v])} />
+                                    </InputRow>
+                                </li>
+                            </ul>
                         }
-                        <li>
-                            <InputRow label="Low Fret">
-                                <NumericInput value={fretLo} min={0} max={fretHi} setValue={v => setFretRange([v, fretHi])} />
-                            </InputRow>
-                        </li>
-                        <li>
-                            <InputRow label="High Fret">
-                                <NumericInput value={fretHi} min={fretLo} max={24} setValue={v => setFretRange([fretLo, v])} />
-                            </InputRow>
-                        </li>
-                    </ul>
-                }
 
-            </Card >
-            <Card title="Configure Notes" action={
-                <ButtonInput isLink onClick={() => setIsEditingNotes(!isEditingNotes)}>
-                    <Icon iconId={isEditingNotes ? 'down' : 'next'} />
-                </ButtonInput>
-            }>
-                {isEditingNotes ?
-                    <ul className="edit">
-                        <li>
-                            <InputRow label="Model Type">
-                                <DropdownInput value={modelType} setValue={setModelType} options={TYPE_OPTIONS} />
-                            </InputRow>
-                        </li>
-                        <li>
-                            <InputRow label="Preset">
-                                <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} />
-                            </InputRow>
-                        </li>
-                        <li>
-                            <InputRow label="Root">
-                                <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} />
-                            </InputRow>
-                        </li>
-                    </ul>
-                    : null}
+                    </Card >
+                    <Card title="Configure Notes" action={
+                        <ButtonInput isLink onClick={() => setIsEditingNotes(!isEditingNotes)}>
+                            <Icon iconId={isEditingNotes ? 'down' : 'next'} />
+                        </ButtonInput>
+                    }>
+                        {isEditingNotes ?
+                            <ul className="edit">
+                                <li>
+                                    <InputRow label="Model Type">
+                                        <DropdownInput value={modelType} setValue={setModelType} options={TYPE_OPTIONS} />
+                                    </InputRow>
+                                </li>
+                                <li>
+                                    <InputRow label="Preset">
+                                        <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} />
+                                    </InputRow>
+                                </li>
+                                <li>
+                                    <InputRow label="Root">
+                                        <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} />
+                                    </InputRow>
+                                </li>
+                            </ul>
+                            : null}
 
-            </Card >
-            <Card title="" className="resize">
-                <Fretboard
-                    model={model}
-                    voicing={voicing}
-                    tuning={tuning.value}
-                    fretRange={fretRange}
-                />
-            </Card >
+                    </Card >
+                </div>
+            </ColumnManager>
         </StyledFretboardpage>
     );
 };

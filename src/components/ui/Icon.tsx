@@ -419,7 +419,7 @@ interface IIconProps {
 	className?: string;
 }
 
-const Icon: React.FC<IIconProps> = ({ iconId, color, hoverColor, size, rotate, ...props }) => {
+const Icon: React.FC<IIconProps> = ({ iconId, color, hoverColor, size = 16, rotate, ...props }) => {
 	const IconComponent = ICON[iconId];
 	return <IconComponent $color={color} $hoverColor={hoverColor} $size={size} $rotate={rotate} {...props} />;
 }
