@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import Chord from "../../../core/models/Chord";
+import { ModelType, NoteId } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
+import Note from "../../../core/models/Note";
+import Scale from "../../../core/models/Scale";
 import THEME from "../../../styles/theme";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../viewers/fretboard/Fretboard.tuning";
@@ -11,7 +16,6 @@ import NumericInput from "../../inputs/NumericInput";
 import Card, { StyledCard } from "../../ui/Card";
 import Icon from "../../ui/Icon";
 import InputRow from "../../ui/InputRow";
-import { DEFAULT_MODEL } from "./view.defaults";
 
 const StyledFretboardpage = styled.div`
     .resize {
@@ -25,17 +29,6 @@ const StyledFretboardpage = styled.div`
         max-width: 1024px;
         margin: 16px auto;
     }
-    
-    ul {
-        border: 1px solid ${props => props.theme.utils.border};
-        padding: 8px;
-        border-radius: 8px;
-        margin-bottom: 16px;
-
-        li {
-            padding: 8px 0;
-        }
-    }
 `;
 
 const VOICING_OPTIONS = [
@@ -45,11 +38,39 @@ const VOICING_OPTIONS = [
         value: undefined
     },
     ...VOICING_PRESETS
+];
+
+const TYPE_OPTIONS = [
+    {
+        id: ModelType.Chord,
+        name: 'Chords',
+        value: ModelType.Chord,
+        data: CHORD_PRESETS
+    },
+    {
+        id: ModelType.Scale,
+        name: 'Scales',
+        value: ModelType.Chord,
+        data: SCALE_PRESETS
+    }
 ]
 
 const Fretboardpage: React.FC<any> = () => {
 
-    let model = DEFAULT_MODEL;
+    // Notes
+    const [modelType, _setModelType] = useState(TYPE_OPTIONS[0]);
+    const modelOptions = modelType.data;
+    const [modelConfig, setModelConfig] = useState(modelOptions[0]);
+
+    const setModelType = type => { _setModelType(type); setModelConfig(type.data[0]) }
+
+    let model;
+    if (modelType.id === ModelType.Chord) {
+        model = new Chord(modelConfig.modelId, { root: Note.fromId(NoteId.C) })
+    }
+    else if (modelType.id === ModelType.Scale) {
+        model = new Scale(modelConfig.modelId, { root: Note.fromId(NoteId.C) })
+    }
 
     const filteredVoicings = VOICING_OPTIONS.filter(v => {
         if (!v.value) return true;
@@ -57,13 +78,14 @@ const Fretboardpage: React.FC<any> = () => {
         return !containsNonModelIntervals;
     });
 
+    // UI
     const [isEditingFretboard, setIsEditingFretboard] = useState(false);
     const [isEditingNotes, setIsEditingNotes] = useState(false);
 
+    // Fretboard
     const [voicing, setVoicing] = useState(filteredVoicings[0]);
     const [tuning, setTuning] = useState(FRETBOARD_TUNING_VALUES[0]);
     const [fretRange, setFretRange] = useState(DEFAULT_FRETBOARD_PROPS.fretRange);
-
     const [fretLo, fretHi] = fretRange;
 
     return (
@@ -106,7 +128,20 @@ const Fretboardpage: React.FC<any> = () => {
                     <Icon iconId={isEditingNotes ? 'down' : 'next'} />
                 </ButtonInput>
             }>
-                {isEditingNotes ? 'notes' : null}
+                {isEditingNotes ?
+                    <ul className="edit">
+                        <li>
+                            <InputRow label="Model Type">
+                                <DropdownInput value={modelType} setValue={setModelType} options={TYPE_OPTIONS} />
+                            </InputRow>
+                        </li>
+                        <li>
+                            <InputRow label="Preset">
+                                <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} />
+                            </InputRow>
+                        </li>
+                    </ul>
+                    : null}
 
             </Card >
             <Card title="Guitar" className="resize">
