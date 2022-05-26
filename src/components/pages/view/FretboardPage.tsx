@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import THEME from "../../../styles/theme";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../viewers/fretboard/Fretboard.tuning";
 import { DEFAULT_FRETBOARD_PROPS } from "../../../viewers/fretboard/Fretboard.utils";
@@ -7,11 +8,24 @@ import { VoicingId, VOICING_PRESETS } from "../../../viewers/fretboard/Fretboard
 import ButtonInput from "../../inputs/ButtonInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
-import Card from "../../ui/Card";
+import Card, { StyledCard } from "../../ui/Card";
+import Icon from "../../ui/Icon";
 import InputRow from "../../ui/InputRow";
 import { DEFAULT_MODEL } from "./view.defaults";
 
-const StyledGuitarCard = styled.div`
+const StyledFretboardpage = styled.div`
+    .resize {
+        overflow: auto;
+        resize: both;
+        padding: 26px;
+        border: 1px solid ${THEME.brand.accent};
+    }
+
+    ${StyledCard} {
+        max-width: 1024px;
+        margin: 16px auto;
+    }
+    
     ul {
         border: 1px solid ${props => props.theme.utils.border};
         padding: 8px;
@@ -33,7 +47,7 @@ const VOICING_OPTIONS = [
     ...VOICING_PRESETS
 ]
 
-const GuitarCard: React.FC<any> = () => {
+const Fretboardpage: React.FC<any> = () => {
 
     let model = DEFAULT_MODEL;
 
@@ -43,7 +57,9 @@ const GuitarCard: React.FC<any> = () => {
         return !containsNonModelIntervals;
     });
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditingFretboard, setIsEditingFretboard] = useState(false);
+    const [isEditingNotes, setIsEditingNotes] = useState(false);
+
     const [voicing, setVoicing] = useState(filteredVoicings[0]);
     const [tuning, setTuning] = useState(FRETBOARD_TUNING_VALUES[0]);
     const [fretRange, setFretRange] = useState(DEFAULT_FRETBOARD_PROPS.fretRange);
@@ -51,9 +67,13 @@ const GuitarCard: React.FC<any> = () => {
     const [fretLo, fretHi] = fretRange;
 
     return (
-        <Card title="Guitar" action={<ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
-            <StyledGuitarCard>
-                {isEditing &&
+        <StyledFretboardpage>
+            <Card title="Fretboard" action={
+                <ButtonInput isLink onClick={() => setIsEditingFretboard(!isEditingFretboard)}>
+                    <Icon iconId={isEditingFretboard ? 'down' : 'next'} />
+                </ButtonInput>
+            }>
+                {isEditingFretboard &&
                     <ul className="edit">
                         <li>
                             <InputRow label="Tuning">
@@ -79,15 +99,26 @@ const GuitarCard: React.FC<any> = () => {
                         </li>
                     </ul>
                 }
+
+            </Card >
+            <Card title="Notes" action={
+                <ButtonInput isLink onClick={() => setIsEditingNotes(!isEditingNotes)}>
+                    <Icon iconId={isEditingNotes ? 'down' : 'next'} />
+                </ButtonInput>
+            }>
+                {isEditingNotes ? 'notes' : null}
+
+            </Card >
+            <Card title="Guitar" className="resize">
                 <Fretboard
                     model={model}
                     voicing={voicing}
                     tuning={tuning.value}
                     fretRange={fretRange}
                 />
-            </StyledGuitarCard>
-        </Card >
+            </Card >
+        </StyledFretboardpage>
     );
 };
 
-export default GuitarCard;
+export default Fretboardpage;
