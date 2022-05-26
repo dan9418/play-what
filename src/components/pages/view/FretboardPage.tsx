@@ -14,26 +14,40 @@ import ColumnManager from "../../column-manager/ColumnManager";
 import ButtonInput from "../../inputs/ButtonInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
-import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
 import Icon from "../../ui/Icon";
 import InputRow from "../../ui/InputRow";
 
 const StyledFretboardpage = styled.div`
-    max-width: 1024px;
-    margin: 20px auto;
+    min-height: 95vh;
+    padding: 16px;
+
+    .view-header {
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: ${THEME.text.primary};
+        line-height: 48px;
+        font-size: 140%;
+        font-weight: bold;
+
+        position: fixed;
+        top: 48px;
+        left: 0;
+        right: 0;
+        z-index: 3001;
+        height: 48px;
+        background-color: ${THEME.surface.card};
+        border-bottom: 1px solid ${THEME.utils.border};
+    }
     
     .resize {
+        width: 100%;
         overflow: auto;
         resize: both;
-        padding: 26px;
         border: 1px solid ${THEME.brand.accent};
-    }
-
-    ${StyledCard} {
-        margin: 16px auto;
-
-        
     }
 `;
 
@@ -97,18 +111,12 @@ const Fretboardpage: React.FC<any> = () => {
 
     return (
         <StyledFretboardpage>
-            <PageTitle title="View" subtitle="Fretboard" />
-            <ColumnManager>
-                <Card title="" className="resize">
-                    <Fretboard
-                        model={model}
-                        voicing={voicing}
-                        tuning={tuning.value}
-                        fretRange={fretRange}
-                    />
-                </Card >
+            <div className="view-header">
+                View
+            </div>
+            <ColumnManager tablet={["1fr", "2fr"]} desktop={["1fr", "2fr", "1fr"]}>
                 <div>
-                    <Card title="Configure Instrument" action={
+                    <Card title="Instrument" action={
                         <ButtonInput isLink onClick={() => setIsEditingFretboard(!isEditingFretboard)}>
                             <Icon iconId={isEditingFretboard ? 'down' : 'next'} />
                         </ButtonInput>
@@ -141,7 +149,20 @@ const Fretboardpage: React.FC<any> = () => {
                         }
 
                     </Card >
-                    <Card title="Configure Notes" action={
+                </div>
+                <div>
+                    <Card title="Fretboard" className="resize">
+                        <Fretboard
+                            model={model}
+                            voicing={voicing}
+                            tuning={tuning.value}
+                            fretRange={fretRange}
+                        />
+                    </Card>
+                </div>
+
+                <div>
+                    <Card title="Notes" action={
                         <ButtonInput isLink onClick={() => setIsEditingNotes(!isEditingNotes)}>
                             <Icon iconId={isEditingNotes ? 'down' : 'next'} />
                         </ButtonInput>

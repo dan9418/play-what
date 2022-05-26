@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
+import groupLoop from '../../../static/group-loop_4-13-22.mp3';
 import ColumnManager from "../column-manager/ColumnManager";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
-import groupLoop from '../../../static/group-loop_4-13-22.mp3';
 
 const StyledLooperClubPage = styled(StyledPageBody)`
 	${StyledCard} {
@@ -170,7 +170,7 @@ const LooperClubPage: React.FC = () => {
 			<Card title="Volunteer Opportunity">
 				<p>Dan is only available to host this workshop until July. Interested in taking over? <em>Get in touch.</em></p>
 			</Card>
-			<ColumnManager>
+			<ColumnManager tablet={["1fr", "1fr"]}>
 				<Card title="Sacramento Dirt Radio" >
 					<p>
 						Sacramento Dirt is a new radio station featuring only local Sacramento artists which is run out of The Library of Musiclandria.

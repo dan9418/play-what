@@ -36,13 +36,11 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
 
     //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
 
-
-
     return (
         <StyledPodlistPage>
             <PageTitle title={title} />
             <StyledPane>
-                <ColumnManager cols={['300px', 'auto']}>
+                <ColumnManager tablet={['300px', 'auto']}>
                     <RootCard />
                     <DetailsCard model={podList} />
                 </ColumnManager>
