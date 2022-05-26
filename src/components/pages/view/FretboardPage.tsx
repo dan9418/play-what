@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
 import Chord from "../../../core/models/Chord";
-import { ModelType, NoteId } from "../../../core/models/Model.constants";
-import { CHORD_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
+import { ModelType } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
 import THEME from "../../../styles/theme";
@@ -13,11 +13,15 @@ import { VoicingId, VOICING_PRESETS } from "../../../viewers/fretboard/Fretboard
 import ButtonInput from "../../inputs/ButtonInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
+import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
 import Icon from "../../ui/Icon";
 import InputRow from "../../ui/InputRow";
 
 const StyledFretboardpage = styled.div`
+    max-width: 1024px;
+    margin: 20px auto;
+    
     .resize {
         overflow: auto;
         resize: both;
@@ -26,7 +30,6 @@ const StyledFretboardpage = styled.div`
     }
 
     ${StyledCard} {
-        max-width: 1024px;
         margin: 16px auto;
     }
 `;
@@ -61,15 +64,16 @@ const Fretboardpage: React.FC<any> = () => {
     const [modelType, _setModelType] = useState(TYPE_OPTIONS[0]);
     const modelOptions = modelType.data;
     const [modelConfig, setModelConfig] = useState(modelOptions[0]);
+    const [root, setRoot] = useState(NOTE_PRESETS[0]);
 
     const setModelType = type => { _setModelType(type); setModelConfig(type.data[0]) }
 
     let model;
     if (modelType.id === ModelType.Chord) {
-        model = new Chord(modelConfig.modelId, { root: Note.fromId(NoteId.C) })
+        model = new Chord(modelConfig.modelId, { root: Note.fromId(root.modelId) })
     }
     else if (modelType.id === ModelType.Scale) {
-        model = new Scale(modelConfig.modelId, { root: Note.fromId(NoteId.C) })
+        model = new Scale(modelConfig.modelId, { root: Note.fromId(root.modelId) })
     }
 
     const filteredVoicings = VOICING_OPTIONS.filter(v => {
@@ -90,7 +94,8 @@ const Fretboardpage: React.FC<any> = () => {
 
     return (
         <StyledFretboardpage>
-            <Card title="Fretboard" action={
+            <PageTitle title="View" subtitle="Fretboard" />
+            <Card title="Configure Instrument" action={
                 <ButtonInput isLink onClick={() => setIsEditingFretboard(!isEditingFretboard)}>
                     <Icon iconId={isEditingFretboard ? 'down' : 'next'} />
                 </ButtonInput>
@@ -123,7 +128,7 @@ const Fretboardpage: React.FC<any> = () => {
                 }
 
             </Card >
-            <Card title="Notes" action={
+            <Card title="Configure Notes" action={
                 <ButtonInput isLink onClick={() => setIsEditingNotes(!isEditingNotes)}>
                     <Icon iconId={isEditingNotes ? 'down' : 'next'} />
                 </ButtonInput>
@@ -140,11 +145,16 @@ const Fretboardpage: React.FC<any> = () => {
                                 <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} />
                             </InputRow>
                         </li>
+                        <li>
+                            <InputRow label="Root">
+                                <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} />
+                            </InputRow>
+                        </li>
                     </ul>
                     : null}
 
             </Card >
-            <Card title="Guitar" className="resize">
+            <Card title="" className="resize">
                 <Fretboard
                     model={model}
                     voicing={voicing}
