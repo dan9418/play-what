@@ -10,7 +10,6 @@ import Menu from './Menu';
 
 const StyledSiteHeader = styled.div`
     height: 48px;
-	padding: 0 16px;
 
     position: fixed;
     top: 0;
@@ -68,6 +67,10 @@ const StyledSiteHeader = styled.div`
 		display: flex;
 		align-items; center;
 		gap: 8px;
+	}
+
+	.right {
+		margin-right: 16px;
 	}
 
 	.search, .menu {

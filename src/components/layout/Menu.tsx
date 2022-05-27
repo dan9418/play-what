@@ -3,7 +3,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledMenu = styled.div`
-    width: 360px;
+    width: 100%;
+    @media(min-width: 512px) {
+        width: 360px;
+    }
+
     height: 100%;
     background-color:  ${({ theme }) => theme.surface.card};
     border-right: 1px solid ${({ theme }) => theme.utils.border};
