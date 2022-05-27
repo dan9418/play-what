@@ -50,7 +50,7 @@ const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, 
         <StyledInstrumentCol>
             <ColHeader title="Instrument" subTitle="Fretboard" />
             <Card title="Tuning">
-                <ul className="edit">
+                <ul>
                     <li>
                         <InputRow label="Preset">
                             <DropdownInput value={tuning} setValue={setTuning} options={FRETBOARD_TUNING_VALUES} />
@@ -66,7 +66,7 @@ const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, 
                 </ul>
             </Card >
             <Card title="Range">
-                <ul className="edit">
+                <ul>
                     <li>
                         <InputRow label="Low Fret">
                             <NumericInput value={fretLo} min={0} max={fretHi} setValue={v => setFretRange([v, fretHi])} />

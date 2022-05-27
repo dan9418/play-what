@@ -26,7 +26,7 @@ const PianoCard: React.FC<any> = () => {
         <Card title="Piano [BETA]" action={<ButtonInput isLink onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'Done' : 'Edit'}</ButtonInput>}>
             <StyledPianoCard>
                 {isEditing &&
-                    <ul className="edit">
+                    <ul>
                         <li>
                             <InputRow label="Low Key">
                                 <NumericInput value={keyLo} min={-24} max={keyHi} setValue={v => setKeyRange([v, keyHi])} />

@@ -29,7 +29,8 @@ const StyledContainer = styled.div`
     z-index: 3001;
 
     & > ${StyledCard} {
-        margin: 16px;
+        width: 80%;
+        height: 80%;
         position: relative;
         padding: 64px 16px;
 

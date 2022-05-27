@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import Chord from "../../../core/models/Chord";
@@ -5,6 +6,7 @@ import { ChordId, ModelId, ModelType, NoteId, ScaleId } from "../../../core/mode
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
+import { getModelRoute } from "../../../core/routing/Routing.utils";
 import DropdownInput from "../../inputs/DropdownInput";
 import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
@@ -79,8 +81,11 @@ const NotesCol: React.FC<INotesColProps> = props => {
     return (
         <StyledNotesCol>
             <ColHeader title="Notes" subTitle="..." />
+            <Card title="Notes">
+                <Link to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}>{model.name}</Link>
+            </Card>
             <Card title="Root">
-                <ul className="edit">
+                <ul>
                     <li>
                         <InputRow label="Key Center">
                             <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} />
@@ -89,7 +94,7 @@ const NotesCol: React.FC<INotesColProps> = props => {
                 </ul>
             </Card>
             <Card title="Intervals">
-                <ul className="edit">
+                <ul>
                     <li>
                         <InputRow label="Model Type">
                             <DropdownInput value={modelType} setValue={setModelType} options={TYPE_OPTIONS} />
