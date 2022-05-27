@@ -32,7 +32,7 @@ export interface IInstrumentColProps {
 }
 
 export const DEFAULT_VOICING = VOICING_OPTIONS[0];
-export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0].value
+export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0];
 export const DEFAULT_FRET_RANGE = DEFAULT_FRETBOARD_PROPS.fretRange;
 
 const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, fretRange, setVoicing, setTuning, setFretRange }) => {

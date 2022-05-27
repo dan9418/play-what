@@ -17,7 +17,7 @@ const MainCol: React.FC<any> = (props) => {
 
     console.log('dpb', props)
 
-    const fretboard = <Fretboard {...props} />;
+    const fretboard = <Fretboard {...props} tuning={props.tuning.value} />;
 
     return (
         <>

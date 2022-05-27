@@ -1,7 +1,7 @@
 import React from "react";
 import styled from 'styled-components';
 import Chord from "../../../core/models/Chord";
-import { ModelType } from "../../../core/models/Model.constants";
+import { ChordId, ModelId, ModelType, NoteId, ScaleId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
@@ -32,9 +32,11 @@ export interface INotesColProps {
     modelType: typeof TYPE_OPTIONS[0];
     modelConfig;
     root: Note;
+    model: Chord | Scale;
     setModelType?;
     setModelConfig?;
     setRoot?;
+    setModel?;
 }
 
 export const DEFAULT_MODEL_TYPE = TYPE_OPTIONS[0];
@@ -42,20 +44,35 @@ export const DEFAULT_MODEL_CONFIG = TYPE_OPTIONS[0].data[0];
 export const DEFAULT_ROOT = NOTE_PRESETS[0];
 export const DEFAULT_MODEL = new Chord(DEFAULT_MODEL_CONFIG.modelId, { root: Note.fromId(DEFAULT_ROOT.modelId) })
 
+const getNewModel = (modelType: ModelType, modelId: ModelId, root: NoteId) => {
+    let newModel;
+    if (modelType === ModelType.Chord) {
+        newModel = new Chord(modelId as ChordId, { root: Note.fromId(root) })
+    }
+    else if (modelType === ModelType.Scale) {
+        newModel = new Scale(modelId as ScaleId, { root: Note.fromId(root) })
+    }
+    return newModel;
+}
+
 const NotesCol: React.FC<INotesColProps> = props => {
 
-    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig, setRoot } = props;
-
-    const setModelType = type => { setModelType(type); setModelConfig(type.data[0]) }
-
+    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig: _setModelConfig, setRoot: _setRoot, model, setModel } = props;
     const modelOptions = modelType.data;
 
-    let model;
-    if (modelType.id === ModelType.Chord) {
-        model = new Chord(modelConfig.modelId, { root: Note.fromId(root.modelId) })
+    const setModelType = type => {
+        _setModelType(type);
+        _setModelConfig(type.data[0])
     }
-    else if (modelType.id === ModelType.Scale) {
-        model = new Scale(modelConfig.modelId, { root: Note.fromId(root.modelId) })
+    const setModelConfig = config => {
+        let newModel = getNewModel(config.modelType, config.modelId, root.modelId);
+        _setModelConfig(config);
+        setModel(newModel);
+    }
+    const setRoot = newRoot => {
+        let newModel = getNewModel(modelConfig.modelType, modelConfig.modelId, newRoot.modelId);
+        _setRoot(newRoot);
+        setModel(newModel);
     }
 
     return (
@@ -85,7 +102,6 @@ const NotesCol: React.FC<INotesColProps> = props => {
             </Card>
         </StyledNotesCol>
     );
-
 };
 
 export default NotesCol;
