@@ -12,9 +12,11 @@ const StyledFretboardPage = styled.div`
 
     .view-header {
         padding: 0 16px;
+        height: 48px;
+
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
         color: ${({ theme }) => theme.text.primary};
         line-height: 48px;
@@ -26,7 +28,7 @@ const StyledFretboardPage = styled.div`
         left: 0;
         right: 0;
         z-index: 2001;
-        height: 48px;
+
         background-color: ${({ theme }) => theme.surface.card};
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};
     }
@@ -73,9 +75,7 @@ const FretboardPage: React.FC = () => {
     return (
         <StyledFretboardPage>
             <div className="view-header">
-                <span>Instrument</span>
                 <span>View</span>
-                <span>Notes</span>
             </div>
             <ColumnManager tablet={["1fr", "2fr"]} desktop={["1fr", "2fr", "1fr"]}>
                 <InstrumentCol {...instrumentColProps} />

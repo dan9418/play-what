@@ -8,6 +8,7 @@ import Scale from "../../../core/models/Scale";
 import DropdownInput from "../../inputs/DropdownInput";
 import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
+import ColHeader from "./ColHeader";
 
 const StyledNotesCol = styled.div`
     
@@ -77,6 +78,7 @@ const NotesCol: React.FC<INotesColProps> = props => {
 
     return (
         <StyledNotesCol>
+            <ColHeader title="Notes" subTitle="..." />
             <Card title="Root">
                 <ul className="edit">
                     <li>

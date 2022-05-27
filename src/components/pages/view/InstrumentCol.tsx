@@ -7,6 +7,7 @@ import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
 import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
+import ColHeader from "./ColHeader";
 
 const StyledInstrumentCol = styled.div`
 
@@ -47,6 +48,7 @@ const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, 
 
     return (
         <StyledInstrumentCol>
+            <ColHeader title="Instrument" subTitle="Fretboard" />
             <Card title="Tuning">
                 <ul className="edit">
                     <li>
