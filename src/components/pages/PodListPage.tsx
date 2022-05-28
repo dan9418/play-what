@@ -48,7 +48,7 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
                 {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
                 {modelType === ModelType.Scale && <ModeCard model={podList} />}
                 <GrandStaff model={podList} />
-                <ColumnManager>
+                <ColumnManager tablet={['1fr', '1fr']}>
                     <GuitarCard model={podList} />
                     <PianoCard model={podList} />
                 </ColumnManager>

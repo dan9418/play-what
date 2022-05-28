@@ -5,6 +5,7 @@ import ButtonInput from "../../inputs/ButtonInput";
 import Modal from "../../layout/Modal";
 import Card from "../../ui/Card";
 import Icon from "../../ui/Icon";
+import ColHeader from "./ColHeader";
 
 const StyledMainCol = styled.div`
     .maximize {
@@ -29,6 +30,7 @@ const MainCol: React.FC<any> = (props) => {
                 </Modal>
             )}
             <StyledMainCol>
+                <ColHeader title="View" subTitle="..." />
                 <Card title="Fretboard" className="view"
                     action={<ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
                         <Icon iconId="maximize" />

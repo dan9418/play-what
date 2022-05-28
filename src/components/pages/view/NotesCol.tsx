@@ -16,7 +16,7 @@ const StyledNotesCol = styled.div`
     
 `;
 
-const TYPE_OPTIONS = [
+export const MODEL_TYPE_OPTIONS = [
     {
         id: ModelType.Chord,
         name: 'Chords',
@@ -26,13 +26,13 @@ const TYPE_OPTIONS = [
     {
         id: ModelType.Scale,
         name: 'Scales',
-        value: ModelType.Chord,
+        value: ModelType.Scale,
         data: SCALE_PRESETS
     }
 ]
 
 export interface INotesColProps {
-    modelType: typeof TYPE_OPTIONS[0];
+    modelType: typeof MODEL_TYPE_OPTIONS[0];
     modelConfig;
     root: Note;
     model: Chord | Scale;
@@ -42,12 +42,12 @@ export interface INotesColProps {
     setModel?;
 }
 
-export const DEFAULT_MODEL_TYPE = TYPE_OPTIONS[0];
-export const DEFAULT_MODEL_CONFIG = TYPE_OPTIONS[0].data[0];
+export const DEFAULT_MODEL_TYPE = MODEL_TYPE_OPTIONS[0];
+export const DEFAULT_MODEL_CONFIG = MODEL_TYPE_OPTIONS[0].data[0];
 export const DEFAULT_ROOT = NOTE_PRESETS[0];
-export const DEFAULT_MODEL = new Chord(DEFAULT_MODEL_CONFIG.modelId, { root: Note.fromId(DEFAULT_ROOT.modelId) })
+//export const DEFAULT_MODEL = new Chord(DEFAULT_MODEL_CONFIG.modelId, { root: Note.fromId(DEFAULT_ROOT.modelId) })
 
-const getNewModel = (modelType: ModelType, modelId: ModelId, root: NoteId) => {
+export const getNewModel = (modelType: ModelType, modelId: ModelId, root: NoteId) => {
     let newModel;
     if (modelType === ModelType.Chord) {
         newModel = new Chord(modelId as ChordId, { root: Note.fromId(root) })
@@ -97,7 +97,7 @@ const NotesCol: React.FC<INotesColProps> = props => {
                 <ul>
                     <li>
                         <InputRow label="Model Type">
-                            <DropdownInput value={modelType} setValue={setModelType} options={TYPE_OPTIONS} />
+                            <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} />
                         </InputRow>
                     </li>
                     <li>

@@ -66,11 +66,11 @@ const StyledSiteHeader = styled.div`
 	.right, .left {
 		display: flex;
 		align-items; center;
-		gap: 8px;
 	}
-
+	
 	.right {
 		margin-right: 16px;
+		gap: 8px;
 	}
 
 	.search, .menu {
