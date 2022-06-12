@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Fretboard from "../../../viewers/fretboard/Fretboard";
 import ButtonInput from "../../inputs/ButtonInput";
 import Modal from "../../layout/Modal";
 import Card from "../../ui/Card";
@@ -13,30 +12,33 @@ const StyledMainCol = styled.div`
     }
 `;
 
-const MainCol: React.FC<any> = (props) => {
+interface IMainColProps {
+    title: string;
+    viewer: any;
+}
+
+const MainCol: React.FC<IMainColProps> = (props) => {
     const [isFullScreen, setIsFullScreen] = useState(false);
 
-    console.log('dpb', props)
-
-    const fretboard = <Fretboard {...props} tuning={props.tuning.value} />;
+    const { title, viewer } = props;
 
     return (
         <>
             {isFullScreen && (
                 <Modal setIsOpen={setIsFullScreen}>
                     <div className="resize">
-                        {fretboard}
+                        {viewer}
                     </div>
                 </Modal>
             )}
             <StyledMainCol>
                 <ColHeader title="View" subTitle="..." />
-                <Card title="Fretboard" className="view"
+                <Card title={title} className="view"
                     action={<ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
                         <Icon iconId="maximize" />
                     </ButtonInput>}
                 >
-                    {fretboard}
+                    {viewer}
                 </Card>
             </StyledMainCol>
         </>

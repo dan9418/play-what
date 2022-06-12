@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
 import { NOTE_PRESETS } from "../../../core/models/Model.presets";
+import Fretboard from "../../../viewers/fretboard/Fretboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import { StyledCard } from "../../ui/Card";
-import InstrumentCol, { DEFAULT_FRET_RANGE, DEFAULT_TUNING, DEFAULT_VOICING } from "./InstrumentCol";
+import FretboardCol, { DEFAULT_FRET_RANGE, DEFAULT_TUNING, DEFAULT_VOICING } from "./FretboardCol";
 import MainCol from "./MainCol";
 import NotesCol, { DEFAULT_MODEL_CONFIG, DEFAULT_MODEL_TYPE, DEFAULT_ROOT, getNewModel, MODEL_TYPE_OPTIONS } from "./NotesCol";
 
@@ -71,11 +72,20 @@ const FretboardPage: React.FC = () => {
         setModel
     }
 
+    const mainColProps = {
+        title: 'Fretboard',
+        viewer: <Fretboard
+            {...instrumentColProps}
+            {...notesColProps}
+            tuning={instrumentColProps.tuning.value}
+        />
+    };
+
     return (
         <StyledFretboardPage>
             <ColumnManager tablet={["1fr", "2fr"]} desktop={["1fr", "2fr", "1fr"]}>
-                <InstrumentCol {...instrumentColProps} />
-                <MainCol {...instrumentColProps} {...notesColProps} />
+                <FretboardCol {...instrumentColProps} />
+                <MainCol {...mainColProps} />
                 <NotesCol {...notesColProps} />
             </ColumnManager>
         </StyledFretboardPage>

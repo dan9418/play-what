@@ -9,7 +9,7 @@ import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
 import ColHeader from "./ColHeader";
 
-const StyledInstrumentCol = styled.div`
+const StyledFretboardCol = styled.div`
 
 `;
 
@@ -22,7 +22,7 @@ const VOICING_OPTIONS = [
     ...VOICING_PRESETS
 ];
 
-export interface IInstrumentColProps {
+export interface IFretboardColProps {
     voicing;
     tuning;
     fretRange;
@@ -36,7 +36,7 @@ export const DEFAULT_VOICING = VOICING_OPTIONS[0];
 export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0];
 export const DEFAULT_FRET_RANGE = DEFAULT_FRETBOARD_PROPS.fretRange;
 
-const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, fretRange, setVoicing, setTuning, setFretRange }) => {
+const FretboardCol: React.FC<IFretboardColProps> = ({ model, voicing, tuning, fretRange, setVoicing, setTuning, setFretRange }) => {
 
     const filteredVoicings = VOICING_OPTIONS.filter(v => {
         if (!v.value) return true;
@@ -47,7 +47,7 @@ const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, 
     const [fretLo, fretHi] = fretRange;
 
     return (
-        <StyledInstrumentCol>
+        <StyledFretboardCol>
             <ColHeader title="Instrument" subTitle="Fretboard" />
             <Card title="Tuning">
                 <ul>
@@ -79,8 +79,8 @@ const InstrumentCol: React.FC<IInstrumentColProps> = ({ model, voicing, tuning, 
                     </li>
                 </ul>
             </Card >
-        </StyledInstrumentCol>
+        </StyledFretboardCol>
     );
 };
 
-export default InstrumentCol;
+export default FretboardCol;

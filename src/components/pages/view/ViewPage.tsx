@@ -182,7 +182,7 @@ const ViewPage: React.FC<any> = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><Link to='/view/fretboard/'>Double Octave</Link></td>
+                                    <td><Link to='/view/keyboard/'>Double Octave</Link></td>
                                     <td>C2-C4</td>
                                 </tr>
                             </tbody>
