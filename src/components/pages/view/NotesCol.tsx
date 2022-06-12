@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import Chord from "../../../core/models/Chord";
-import { ChordId, ModelId, ModelType, NoteId, ScaleId } from "../../../core/models/Model.constants";
+import { ChordId, IModelConfig, ModelId, ModelType, NoteId, ScaleId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
@@ -34,7 +34,7 @@ export const MODEL_TYPE_OPTIONS = [
 export interface INotesColProps {
     modelType: typeof MODEL_TYPE_OPTIONS[0];
     modelConfig;
-    root: Note;
+    root: IModelConfig | any;
     model: Chord | Scale;
     setModelType?;
     setModelConfig?;
@@ -78,6 +78,8 @@ const NotesCol: React.FC<INotesColProps> = props => {
         setModel(newModel);
     }
 
+    console.log('dpb', MODEL_TYPE_OPTIONS, modelType, modelOptions, modelConfig)
+
     return (
         <StyledNotesCol>
             <ColHeader title="Notes" subTitle="..." />
@@ -88,7 +90,7 @@ const NotesCol: React.FC<INotesColProps> = props => {
                 <ul>
                     <li>
                         <InputRow label="Key Center">
-                            <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} />
+                            <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} idProperty="modelId" />
                         </InputRow>
                     </li>
                 </ul>
@@ -97,12 +99,12 @@ const NotesCol: React.FC<INotesColProps> = props => {
                 <ul>
                     <li>
                         <InputRow label="Model Type">
-                            <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} />
+                            <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} idProperty="id" />
                         </InputRow>
                     </li>
                     <li>
                         <InputRow label="Preset">
-                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} />
+                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
                         </InputRow>
                     </li>
                 </ul>
