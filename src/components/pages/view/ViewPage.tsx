@@ -12,6 +12,10 @@ import Card, { StyledCard } from "../../ui/Card";
 import { getNewModel } from "./NotesCol";
 
 const StyledViewPage = styled(StyledPageBody)`
+
+    p {
+        margin-top: 16px;
+    }
 	
     ${StyledCard} {
         .fretboard, .keyboard {
@@ -64,6 +68,9 @@ const ViewPage: React.FC<any> = () => {
     return (
         <StyledViewPage>
             <PageTitle title="Instruments" subtitle="Choose an instrument preset" />
+            <p>
+                More instruments and tunings coming soon!
+            </p>
             <Card title="Guitar">
                 <div className='instrument'>
                     <div>
@@ -77,10 +84,10 @@ const ViewPage: React.FC<any> = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><Link to='/view/fretboard/'>Standard</Link></td>
+                                    <td><Link to='/view/fretboard/'>Standard 6-String</Link></td>
                                     <td>E, A, D, G, B, E</td>
                                 </tr>
-                                <tr>
+                                {/*<tr>
                                     <td><Link to='/view/fretboard/'>Flat</Link></td>
                                     <td>Eb, Ab, Db, Gb, Bb, Eb</td>
                                 </tr>
@@ -123,7 +130,7 @@ const ViewPage: React.FC<any> = () => {
                                 <tr>
                                     <td><Link to='/view/fretboard/'>Open G</Link></td>
                                     <td>D, G, G, B, D</td>
-                                </tr>
+                                </tr>*/}
                             </tbody>
                         </table>
 
@@ -139,7 +146,7 @@ const ViewPage: React.FC<any> = () => {
                     </div>
                 </div>
             </Card>
-            <Card title="Bass">
+            {/*<Card title="Bass">
                 <div className='instrument'>
                     <div>
                         <h4>Available Tunings</h4>
@@ -152,7 +159,7 @@ const ViewPage: React.FC<any> = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><Link to='/view/fretboard/'>Standard</Link></td>
+                                    <td><Link to='/view/fretboard/'>Standard 4-String</Link></td>
                                     <td>E, A, D, G</td>
                                 </tr>
                             </tbody>
@@ -168,11 +175,11 @@ const ViewPage: React.FC<any> = () => {
                         </Link>
                     </div>
                 </div>
-            </Card>
+            </Card>*/}
             <Card title="Keyboard">
                 <div className='instrument'>
                     <div>
-                        <h4>Available Tunings</h4>
+                        <h4>Available Presets</h4>
                         <table>
                             <thead>
                                 <tr>
