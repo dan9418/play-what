@@ -151,7 +151,7 @@ const IndexPage: React.FC<any> = () => {
 				<div>
 					<div>
 						<p>Project notes on a variety of instruments and customize them to your hearts content. Play What supports different tunings, voicings, inversions, and colors.</p>
-						<Link to="/view/fretboard">Try It Now</Link>
+						<Link to="/view">See Instruments</Link>
 					</div>
 					<div>
 						<Fretboard
