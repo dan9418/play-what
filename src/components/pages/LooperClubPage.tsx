@@ -1,7 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
 import groupLoop from '../../../static/group-loop_4-13-22.mp3';
-import ColumnManager from "../column-manager/ColumnManager";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
@@ -91,58 +90,17 @@ const Dirt: React.FC = () => (
 );
 
 const LooperClubPage: React.FC = () => {
-
 	return (
 		<StyledLooperClubPage>
 			<PageTitle title="Looper Club" subtitle="The Library of Musiclandria" />
-			<Card title="Workshops" >
-				<table>
-					<thead>
-						<tr>
-							<th>Date</th>
-							<th>Time</th>
-							<th>Topic</th>
-							<th>Links</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>4/13/22</td>
-							<td>6:30-8pm</td>
-							<td>Looping Fundamentals</td>
-							<td>
-								<a target='_blank' href='https://docs.google.com/presentation/d/1l6zCgsN9t4kfMcHPHay-_Q-2Ps3RKWtKqQCC8SEHyYc/edit?usp=sharing'>Slides</a>
-								<a target='_blank' href={groupLoop}>Group Loop</a>
-							</td>
-						</tr>
-						<tr>
-							<td>6/8/22</td>
-							<td>6:30-8pm</td>
-							<td>Rhythm & Quantization</td>
-							<td>
-								<a target='_blank' href='https://docs.google.com/presentation/d/1zANlaJWdp9u1F_K101D7ggzvP53fhbky_V-ZQDhnq74/edit?usp=sharing'>Slides</a>
-							</td>
-						</tr>
-						<tr>
-							<td>7/?/22</td>
-							<td></td>
-							<td>???</td>
-							<td>
-
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</Card>
-			<Card title="Potential Future Topics">
+			<Card title="Links">
 				<ul>
-					<li>DAW looping</li>
-					<li>Using effects and effects-chaining</li>
-					<li>Exploring creative constraints</li>
-					<li>Multitrack looping</li>
+					<li><a target='_blank' href='https://docs.google.com/presentation/d/1l6zCgsN9t4kfMcHPHay-_Q-2Ps3RKWtKqQCC8SEHyYc/edit?usp=sharing'>Slide Deck</a></li>
+					<li><a target='_blank' href={groupLoop}>Group Loop</a></li>
+					<li><a href="https://www.youtube.com/watch?v=rg6JOG1yNQ4">Paul Davids: The Magic of Guitar Looping</a></li>
 				</ul>
 			</Card>
-			<Card title="Contact"  >
+			<Card title="Contact">
 				<div className="contact">
 					<div>
 						<h3>The Library of Musiclandria</h3>
@@ -167,23 +125,12 @@ const LooperClubPage: React.FC = () => {
 					</div>
 				</div>
 			</Card>
-			<Card title="Volunteer Opportunity">
-				<p>Dan is only available to host this workshop until July. Interested in taking over? <em>Get in touch.</em></p>
+			<Card title="Sacramento Dirt Radio" >
+				<p>
+					Sacramento Dirt is a new radio station featuring only local Sacramento artists which is run out of The Library of Musiclandria.
+				</p>
+				<Dirt />
 			</Card>
-			<ColumnManager tablet={["1fr", "1fr"]}>
-				<Card title="Sacramento Dirt Radio" >
-					<p>
-						Sacramento Dirt is a new radio station featuring only local Sacramento artists which is run out of The Library of Musiclandria.
-					</p>
-					<Dirt />
-				</Card>
-				<Card title="Loop Examples" >
-					<ul>
-						<li><a href="https://www.youtube.com/watch?v=rg6JOG1yNQ4">Paul Davids: The Magic of Guitar Looping</a></li>
-						<li>More coming soon...</li>
-					</ul>
-				</Card>
-			</ColumnManager>
 		</StyledLooperClubPage>
 	);
 };
