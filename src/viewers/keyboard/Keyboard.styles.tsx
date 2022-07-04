@@ -39,9 +39,9 @@ const StyledKeyboard = styled.div`
         border-radius: 0 0 5% 5%;
     }
 
-    .white-key:hover {
+    /*.white-key:hover {
         box-shadow: 0 0 1px 2px black inset;
-    }
+    }*/
 
     .black-key {
         box-shadow: 0 0 1px 2px #555 inset;
@@ -49,10 +49,10 @@ const StyledKeyboard = styled.div`
         border-radius: 0 0 10% 10%;
     }
 
-    .black-key:hover {
+    /*.black-key:hover {
         background-color: #333;
         box-shadow: 0 0 1px 2px black inset;
-    }
+    }*/
 
     /* Colors (applied only in absence of degree class) */
 
@@ -82,9 +82,9 @@ const StyledKeyboard = styled.div`
         justify-content: center;
     }
 
-    .white-key .keyboard-key-label:hover {
+    /*.white-key .keyboard-key-label:hover {
         box-shadow: 0 0 1px 2px black inset;
-    }
+    }*/
 
     .black-key .keyboard-key-label {
         bottom: 105%;

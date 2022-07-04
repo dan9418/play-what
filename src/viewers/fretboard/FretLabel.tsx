@@ -14,10 +14,10 @@ const StyledFretLabel = styled.div`
 	background-color: ${({ $bgColor }) => $bgColor ? $bgColor : 'transparent'};
 	color: ${({ $fgColor }) => $fgColor ? $fgColor : ''};
 
-	cursor: pointer;
+	/*cursor: pointer;
 	&:hover {
 		height: 80%;
-	}
+	}*/
 `;
 
 
