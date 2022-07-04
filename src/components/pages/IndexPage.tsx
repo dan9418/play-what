@@ -144,7 +144,7 @@ const IndexPage: React.FC<any> = () => {
 				A toolkit for exploring and visualizing musical concepts
 			</p>
 			<p className="disclaimer">
-				This site is under active development and is currently unstable.<br />A formal Beta release is planned for Q2 2022.
+				This site is under active development and is currently unstable.<br />A formal Beta release is planned for 8/5/22.
 			</p>
 			<section>
 				<h3>Visualize notes on instruments</h3>
