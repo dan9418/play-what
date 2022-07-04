@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import logoSrc from '../../../static/logo.png';
 import placeholderSrc from '../../../static/note-logo.png';
-import { getModelIdText } from "../../core/models/Model.constants";
+import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
+import Note from "../../core/models/Note";
 import Fretboard from "../../viewers/fretboard/Fretboard";
+import DetailsCard from "../cards/DetailsCard";
 import ButtonInput from "../inputs/ButtonInput";
 import { StyledPageBody } from "../layout/PageBody";
 import SearchBar from "../search/SearchBar";
@@ -27,8 +29,8 @@ const StyledHomePage = styled(StyledPageBody)`
 			margin: 32px 0 64px;
 		}
 		@media(min-width: 1024px) {
-			width: 1024px;
-			margin: 64px 0 128px;
+			width: 768px;
+			margin: 48px 0 96px;
 		}
 	}
 
@@ -79,13 +81,13 @@ const StyledHomePage = styled(StyledPageBody)`
 				grid-template-columns: 1fr 1fr;
 			}
 
-			& > div:first-child {
+			& > div.txt {
 				a {
 					display: block;
 					margin-top: 16px;
 				}
 			}
-			& > div:last-child {
+			& > div.action {
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -125,13 +127,18 @@ const StyledHomePage = styled(StyledPageBody)`
 
 const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
+	const [model, setModel] = useState(DEFAULT_MODEL);
 
 	useEffect(() => {
 		const id = setInterval(() => {
 			const root = NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
 			const structure = ALL_PRESETS[Math.floor(Math.random() * ALL_PRESETS.length)];
 			const text = `${root.name} ${structure.name} ${getModelIdText(structure.modelType)}`;
+			const cl = getModelIdClass(structure.modelType);
+			const m = new cl(structure.modelId, { root: Note.fromId(root.modelId) })
+
 			setPlaceholder(text);
+			setModel(m);
 		}, 2000);
 		return () => clearInterval(id);
 	}, []);
@@ -147,51 +154,53 @@ const IndexPage: React.FC<any> = () => {
 				This site is under active development and is currently unstable.<br />A formal Beta release is planned for 8/5/22.
 			</p>
 			<section>
+				<h3>Explore music theory</h3>
+				<div>
+					<div className="txt">
+						<p>Browse an extensive library of chords, scales, and modes in every key. Easily identify relationships between them and jump between pages.</p>
+						<Link to="/browse">Browse Chords & Scales</Link>
+					</div>
+					<div className="action">
+						<DetailsCard model={model} />
+					</div>
+				</div>
+			</section>
+			<section>
 				<h3>Visualize notes on instruments</h3>
 				<div>
-					<div>
-						<p>Project notes on a variety of instruments and customize them to your hearts content. Play What supports different tunings, voicings, inversions, and colors.</p>
+					<div className="txt">
+						<p>Project notes on a variety of instruments and customize how they're displayed. Play What supports different tunings, voicings, labels, and colors.</p>
 						<Link to="/view">See Instruments</Link>
 					</div>
-					<div>
-						<Fretboard
-							model={DEFAULT_MODEL}
-						/>
-					</div>
+					<Link to="/view/fretboard" >
+						<div>
+							<Fretboard
+								model={model}
+							/>
+						</div>
+					</Link>
 				</div>
 			</section>
 			<section>
-				<h3>Explore chords and scales</h3>
+				<h3>Search for chords and scales</h3>
 				<div>
-					<div>
-						<p>Browse an extensive library of chords, scales, and modes in every key. Easily identify relationships between them and jump between pages.</p>
-						<Link to="/browse">Start Browsing</Link>
-					</div>
-					<div>
-						<Link to="/browse"><ButtonInput>Explore Now!</ButtonInput></Link>
-					</div>
-				</div>
-			</section>
-			<section>
-				<h3>Search the world of music theory</h3>
-				<div>
-					<div>
+					<div className="txt">
 						<p>Search for any chord, scale, or mode in any key. Bookmark any page.</p>
 						<Link to="/search">Go To Search Page</Link>
 					</div>
-					<div>
-						<SearchBar placeholder={placeholder} />
+					<div className="action">
+						<SearchBar placeholder={placeholder} query={placeholder} />
 					</div>
 				</div>
 			</section>
 			<section>
 				<h3>Build your own practice materials</h3>
 				<div>
-					<div>
+					<div className="txt">
 						<p>Customize your own cheat sheets, flash cards, chord charts, and tabs.</p>
-						<Link to="/">Coming Soon!</Link>
+						<Link to="/coming-soon">Coming Soon!</Link>
 					</div>
-					<div>
+					<div className="action">
 						<img src={placeholderSrc} className="placeholder" />
 					</div>
 				</div>
