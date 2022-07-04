@@ -20,7 +20,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
     });
 
     return (
-        <Card title="Guitar" action={<Link to={`/view/fretboard?${qp.toString()}`}>Edit</Link>}>
+        <Card title="Fretboard" action={<Link to={`/view/fretboard?${qp.toString()}`}>Edit</Link>}>
             <StyledGuitarCard>
                 <Fretboard
                     model={model}

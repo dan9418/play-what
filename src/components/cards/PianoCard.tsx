@@ -21,7 +21,7 @@ const PianoCard: React.FC<any> = ({ model }) => {
     });
 
     return (
-        <Card title="Guitar" action={<Link to={`/view/keyboard?${qp.toString()}`}>Edit</Link>}>
+        <Card title="Keyboard" action={<Link to={`/view/keyboard?${qp.toString()}`}>Edit</Link>}>
             <StyledPianoCard>
                 <Keyboard
                     keyRange={DEFAULT_KEYBOARD_PROPS.keyRange as [number, number]}

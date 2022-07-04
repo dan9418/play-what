@@ -14,7 +14,6 @@ const StyledBrowsePage = styled(StyledPageBody)`
     max-width: 1024px;
     margin: auto;
 
-    
     ${StyledPane} {
         display: grid;
         grid-template-columns: 1fr;
@@ -22,18 +21,7 @@ const StyledBrowsePage = styled(StyledPageBody)`
             grid-template-columns: 1fr 1fr;
         }
 
-        ${StyledCard} {
-        }
-        
-        //max-width: 768px;
         margin: 16px auto;
-        p {
-            margin: 16px 0
-        }
-
-        h3 {
-            margin-bottom: 8px;
-        }
 
         a.all {
             display: block;
@@ -59,10 +47,6 @@ const BrowsePage: React.FC<any> = props => {
             <PageTitle title="Browse" subtitle={null} />
             <StyledPane>
                 <Card title="Chords">
-                    <p>
-                        A chord is a group of notes, generally played simultaneously. Chords are the basic building blocks of harmony.
-                    </p>
-                    <h3>Common Chords</h3>
                     <ul>
                         <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
                         <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
@@ -74,10 +58,6 @@ const BrowsePage: React.FC<any> = props => {
                     <Link to="/browse/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
                 </Card>
                 <Card title="Scales">
-                    <p>
-                        A scale is a group of notes, generally played sequentially. Scales are the basic building blocks of melody.
-                    </p>
-                    <h3>Common Scales</h3>
                     <ul>
                         <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
                         <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>

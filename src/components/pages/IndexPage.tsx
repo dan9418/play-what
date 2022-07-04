@@ -7,8 +7,7 @@ import { getModelIdClass, getModelIdText } from "../../core/models/Model.constan
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import Fretboard from "../../viewers/fretboard/Fretboard";
-import DetailsCard from "../cards/DetailsCard";
-import ButtonInput from "../inputs/ButtonInput";
+import PreviewCard from "../cards/PreviewCard";
 import { StyledPageBody } from "../layout/PageBody";
 import SearchBar from "../search/SearchBar";
 import SEO from "../utils/SEO";
@@ -161,7 +160,7 @@ const IndexPage: React.FC<any> = () => {
 						<Link to="/browse">Browse Chords & Scales</Link>
 					</div>
 					<div className="action">
-						<DetailsCard model={model} />
+						<PreviewCard model={model} />
 					</div>
 				</div>
 			</section>
