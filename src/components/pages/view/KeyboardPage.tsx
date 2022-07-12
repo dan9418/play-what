@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import Keyboard from "../../../viewers/keyboard/Keyboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
+import PageTitle from "../../layout/PageTitle";
 import { StyledCard } from "../../ui/Card";
+import DetailsCol from "./DetailsCol";
 import KeyboardCol, { DEFAULT_KEY_RANGE } from "./KeyboardCol";
 import MainCol from "./MainCol";
 import NotesCol from "./NotesCol";
+import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
@@ -17,6 +20,10 @@ const StyledKeyboardPage = styled.div`
         & > div > ${StyledCard}:not(:last-child) {
             margin-bottom: 16px;
         }
+    }
+
+    ${StyledColumnManager} {
+        margin-top: 16px;
     }
 `;
 
@@ -66,10 +73,25 @@ const KeyboardPage: React.FC = () => {
 
     return (
         <StyledKeyboardPage>
-            <ColumnManager tablet={["1fr", "2fr"]} desktop={["1fr", "2fr", "1fr"]}>
-                <KeyboardCol {...instrumentColProps} />
+            <PageTitle title="Keyboard" />
+            <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
-                <NotesCol {...notesColProps} />
+                <TabCard
+                    tabs={[
+                        {
+                            text: 'Summary',
+                            content: <DetailsCol {...notesColProps} />
+                        },
+                        {
+                            text: 'Instrument',
+                            content: <KeyboardCol {...instrumentColProps} />
+                        },
+                        {
+                            text: 'Notes',
+                            content: <NotesCol {...notesColProps} />
+                        }
+                    ]}
+                />
             </ColumnManager>
         </StyledKeyboardPage>
     );

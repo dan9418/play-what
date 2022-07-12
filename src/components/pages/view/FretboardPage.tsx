@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
+import PageTitle from "../../layout/PageTitle";
 import { StyledCard } from "../../ui/Card";
 import DetailsCol from "./DetailsCol";
 import FretboardCol, { DEFAULT_FRET_RANGE, DEFAULT_TUNING, DEFAULT_VOICING } from "./FretboardCol";
@@ -19,6 +20,10 @@ const StyledFretboardPage = styled.div`
         & > div > ${StyledCard}:not(:last-child) {
             margin-bottom: 16px;
         }
+    }
+
+    ${StyledColumnManager} {
+        margin-top: 16px;
     }
 `;
 
@@ -73,6 +78,7 @@ const FretboardPage: React.FC = () => {
 
     return (
         <StyledFretboardPage>
+            <PageTitle title="Fretboard" />
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
                 <TabCard
