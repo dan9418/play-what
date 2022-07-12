@@ -48,7 +48,7 @@ export default class Chord extends PodList {
 
     modelType = ModelType.Chord;
 
-    constructor(modelId: ChordId, options = undefined) {
+    constructor(modelId: ChordId, options: any = undefined) {
         super(CHORD_PRESET_MAP, modelId, options);
     }
 

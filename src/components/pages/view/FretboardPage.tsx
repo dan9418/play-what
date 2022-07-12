@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import { StyledCard } from "../../ui/Card";
+import DetailsCol from "./DetailsCol";
 import FretboardCol, { DEFAULT_FRET_RANGE, DEFAULT_TUNING, DEFAULT_VOICING } from "./FretboardCol";
 import MainCol from "./MainCol";
 import NotesCol from "./NotesCol";
@@ -72,10 +73,14 @@ const FretboardPage: React.FC = () => {
 
     return (
         <StyledFretboardPage>
-            <ColumnManager tablet={["1fr", "1fr"]} desktop={["1fr", "1fr"]}>
+            <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
                 <TabCard
                     tabs={[
+                        {
+                            text: 'Summary',
+                            content: <DetailsCol {...notesColProps} />
+                        },
                         {
                             text: 'Instrument',
                             content: <FretboardCol {...instrumentColProps} />

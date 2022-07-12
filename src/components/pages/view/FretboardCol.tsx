@@ -5,11 +5,13 @@ import { DEFAULT_FRETBOARD_PROPS } from "../../../viewers/fretboard/Fretboard.ut
 import { VoicingId, VOICING_PRESETS } from "../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../inputs/DropdownInput";
 import NumericInput from "../../inputs/NumericInput";
-import Card from "../../ui/Card";
+import Card, { CardHeader } from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
 
 const StyledFretboardCol = styled.div`
-
+    .header:not(:first-child) {
+        margin-top: 16px;
+    }
 `;
 
 const VOICING_OPTIONS = [
@@ -47,36 +49,34 @@ const FretboardCol: React.FC<IFretboardColProps> = ({ model, voicing, tuning, fr
 
     return (
         <StyledFretboardCol>
-            <Card title="Tuning">
-                <ul>
+            <CardHeader title="Tuning" />
+            <ul>
+                <li>
+                    <InputRow label="Preset">
+                        <DropdownInput value={tuning} setValue={setTuning} options={FRETBOARD_TUNING_VALUES} />
+                    </InputRow>
+                </li>
+                {tuning.id === TuningId.Standard &&
                     <li>
-                        <InputRow label="Preset">
-                            <DropdownInput value={tuning} setValue={setTuning} options={FRETBOARD_TUNING_VALUES} />
+                        <InputRow label="Voicing">
+                            <DropdownInput value={voicing} setValue={setVoicing} options={filteredVoicings} />
                         </InputRow>
                     </li>
-                    {tuning.id === TuningId.Standard &&
-                        <li>
-                            <InputRow label="Voicing">
-                                <DropdownInput value={voicing} setValue={setVoicing} options={filteredVoicings} />
-                            </InputRow>
-                        </li>
-                    }
-                </ul>
-            </Card >
-            <Card title="Range">
-                <ul>
-                    <li>
-                        <InputRow label="Low Fret">
-                            <NumericInput value={fretLo} min={0} max={fretHi} setValue={v => setFretRange([v, fretHi])} />
-                        </InputRow>
-                    </li>
-                    <li>
-                        <InputRow label="High Fret">
-                            <NumericInput value={fretHi} min={fretLo} max={24} setValue={v => setFretRange([fretLo, v])} />
-                        </InputRow>
-                    </li>
-                </ul>
-            </Card >
+                }
+            </ul>
+            <CardHeader title="Range" />
+            <ul>
+                <li>
+                    <InputRow label="Low Fret">
+                        <NumericInput value={fretLo} min={0} max={fretHi} setValue={v => setFretRange([v, fretHi])} />
+                    </InputRow>
+                </li>
+                <li>
+                    <InputRow label="High Fret">
+                        <NumericInput value={fretHi} min={fretLo} max={24} setValue={v => setFretRange([fretLo, v])} />
+                    </InputRow>
+                </li>
+            </ul>
         </StyledFretboardCol>
     );
 };

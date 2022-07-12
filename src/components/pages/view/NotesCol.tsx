@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import Chord from "../../../core/models/Chord";
@@ -6,13 +5,14 @@ import { ChordId, IModelConfig, ModelId, ModelType, NoteId, ScaleId } from "../.
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
-import { getModelRoute } from "../../../core/routing/Routing.utils";
 import DropdownInput from "../../inputs/DropdownInput";
-import Card from "../../ui/Card";
+import Card, { CardHeader } from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
 
 const StyledNotesCol = styled.div`
-    
+    .header:not(:first-child) {
+        margin-top: 16px;
+    }
 `;
 
 export const MODEL_TYPE_OPTIONS = [
@@ -81,32 +81,28 @@ const NotesCol: React.FC<INotesColProps> = props => {
 
     return (
         <StyledNotesCol>
-            <Card title="Notes">
-                <Link to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}>{model.name}</Link>
-            </Card>
-            <Card title="Root">
-                <ul>
-                    <li>
-                        <InputRow label="Key Center">
-                            <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} idProperty="modelId" />
-                        </InputRow>
-                    </li>
-                </ul>
-            </Card>
-            <Card title="Intervals">
-                <ul>
-                    <li>
-                        <InputRow label="Model Type">
-                            <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} idProperty="id" />
-                        </InputRow>
-                    </li>
-                    <li>
-                        <InputRow label="Preset">
-                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
-                        </InputRow>
-                    </li>
-                </ul>
-            </Card>
+            <CardHeader title="Root" />
+            <ul>
+                <li>
+                    <InputRow label="Key Center">
+                        <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} idProperty="modelId" />
+                    </InputRow>
+                </li>
+            </ul>
+
+            <CardHeader title="Intervals" />
+            <ul>
+                <li>
+                    <InputRow label="Model Type">
+                        <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} idProperty="id" />
+                    </InputRow>
+                </li>
+                <li>
+                    <InputRow label="Preset">
+                        <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
+                    </InputRow>
+                </li>
+            </ul>
         </StyledNotesCol>
     );
 };

@@ -7,26 +7,30 @@ const StyledTabCard = styled(StyledCard)`
         display: flex;
         align-items: center;
         //justify-content: space-between;
-        border-bottom: 1px solid ${props => props.theme.utils.border};
+        //border-bottom: 1px solid ${props => props.theme.utils.border};
+        margin-bottom: 16px;
 
         button {
             padding: 8px 16px;
-            width: 100%;
             appearance: none;
             border: none;
             cursor: pointer;
-            background-color: white;
-            border-bottom: 2px solid white;
+            background-color: ${props => props.theme.surface.card};
+            border-bottom: 2px solid ${props => props.theme.utils.border};
 
             font-size: 120%;
 
+            color: ${props => props.theme.text.secondary};
+
             &:hover {
-                background-color: #DEDEDE;
+                border-bottom: 2px solid  ${props => props.theme.action.interactive};
+                color: ${props => props.theme.text.primary};
             }
             
             &.active {
                 border-color: ${props => props.theme.action.active};
                 font-weight: bold;
+                color: ${props => props.theme.text.primary};
             }
         }
     }

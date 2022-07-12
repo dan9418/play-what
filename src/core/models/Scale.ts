@@ -12,7 +12,7 @@ export default class Scale extends PodList {
 
     modelType = ModelType.Scale;
 
-    constructor(modelId: ScaleId, options = undefined) {
+    constructor(modelId: ScaleId, options: any = undefined) {
         super(SCALE_PRESET_MAP, modelId, options);
     }
 
