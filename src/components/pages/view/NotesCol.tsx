@@ -10,7 +10,6 @@ import { getModelRoute } from "../../../core/routing/Routing.utils";
 import DropdownInput from "../../inputs/DropdownInput";
 import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
-import ColHeader from "./ColHeader";
 
 const StyledNotesCol = styled.div`
     
@@ -78,11 +77,10 @@ const NotesCol: React.FC<INotesColProps> = props => {
         setModel(newModel);
     }
 
-    console.log('dpb', MODEL_TYPE_OPTIONS, modelType, modelOptions, modelConfig)
+    //console.log('dpb', MODEL_TYPE_OPTIONS, modelType, modelOptions, modelConfig)
 
     return (
         <StyledNotesCol>
-            <ColHeader title="Notes" subTitle="..." />
             <Card title="Notes">
                 <Link to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}>{model.name}</Link>
             </Card>

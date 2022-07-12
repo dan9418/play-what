@@ -4,7 +4,6 @@ import DEFAULT_KEYBOARD_PROPS from "../../../viewers/keyboard/Keyboard.defaults"
 import NumericInput from "../../inputs/NumericInput";
 import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
-import ColHeader from "./ColHeader";
 
 const StyledKeyboardCol = styled.div`
 
@@ -25,7 +24,6 @@ const KeyboardCol: React.FC<IKeyboardColProps> = ({ keyRange, setKeyRange }) => 
 
     return (
         <StyledKeyboardCol>
-            <ColHeader title="Instrument" subTitle="Keyboard" />
             <Card title="Range">
                 <ul>
                     <li>
