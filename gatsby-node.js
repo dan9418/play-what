@@ -47,14 +47,6 @@ module.exports.sourceNodes = ({ actions, createContentDigest }) => {
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  createPage({
-    path: `/looper-club/`,
-    component: require.resolve(
-      './src/components/pages/LooperClubPage.tsx'
-    ),
-    context: {},
-  });
-
   /*const { data } = await graphql(`
     query {
       //your query here

@@ -44,12 +44,13 @@ const StyledSiteFooter = styled.footer`
 
 	.nav-links {
 		display: flex;
-		align-items: flex-start;
+		align-items: center;
 		justify-content: center;
 		gap: 16px;
 		flex-direction: column;
 		text-align: center;
 		@media(min-width: 512px) {
+			align-items: flex-start;
 			flex-direction: row;
 			text-align: left;
 		}
@@ -60,7 +61,6 @@ const SiteFooter: React.FC = () => {
 	const theme = useTheme();
 	return (
 		<StyledSiteFooter className="footer">
-
 			<div className="nav-links">
 				<section>
 					<h3>Site</h3>
@@ -83,17 +83,17 @@ const SiteFooter: React.FC = () => {
 					<h3>Resources</h3>
 					<ul>
 						<li>
-							<Link to='/'>Help</Link>
+							<Link to='/help'>Help</Link>
 						</li>
 						<li>
-							<Link to='/'>About</Link>
+							<Link to='/about'>About</Link>
 						</li>
 						<li>
 							<Link to='/coming-soon'>Coming Soon</Link>
 						</li>
-						<li>
+						{/*<li>
 							<Link to='/coming-soon'>Submit Feedback</Link>
-						</li>
+						</li>*/}
 						<li>
 							<Link to='/dev'>Developer Panel</Link>
 						</li>
@@ -108,12 +108,12 @@ const SiteFooter: React.FC = () => {
 								GitHub</a>
 						</li>
 						<li>
-							<a href=''>
+							<a href='https://www.instagram.com/dan.bednarczyk/'>
 								{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
 								Instagram</a>
 						</li>
 						<li>
-							<a href=''>
+							<a href='https://danbednarczyk.com'>
 								{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
 								Author Website</a>
 						</li>
