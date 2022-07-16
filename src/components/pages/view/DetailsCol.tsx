@@ -5,12 +5,17 @@ import Chord from "../../../core/models/Chord";
 import { IModelConfig } from "../../../core/models/Model.constants";
 import Scale from "../../../core/models/Scale";
 import { getModelRoute } from "../../../core/routing/Routing.utils";
+import CardSection from "./CardSection";
 import { MODEL_TYPE_OPTIONS } from "./NotesCol";
 
 const StyledDetailsCol = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 16px;
+    grid-template-columns: 1fr;
+    @media(min-width: 512px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    
     .name {
         font-size: 140%;
         display: block;
@@ -38,18 +43,25 @@ const StyledDetailsCol = styled.div`
             }
         }
     }
-    .instrument {
-        .inst-name {
-            font-weight: bold;
-            font-size: 140%;
-            text-align: center;
-            padding: 8px;
-        }
-        .tuning {
-            font-size: 120%;
-            text-align: center;
-            color: ${props => props.theme.text.secondary};
-        }
+    .notes, .instrument {
+        
+        min-height: 128px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .inst-name {
+        font-weight: bold;
+        font-size: 140%;
+        text-align: center;
+        padding: 8px;
+    }
+    .tuning {
+        font-size: 120%;
+        text-align: center;
+        color: ${props => props.theme.text.secondary};
     }
 `;
 
@@ -72,25 +84,27 @@ const DetailsCol: React.FC<IDetailsColProps> = props => {
 
     return (
         <StyledDetailsCol>
-            <div className="notes">
-                <h3>Notes</h3>
-                <Link to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}
-                    className="name"
-                >{model.name}</Link>
-                <div className="info">
-                    {model.notes && model.notes.map((note, i) => (
-                        <div key={i} className="item">
-                            <div className="note">{note.name}</div>
-                            <div className="interval">{model.intervals[i].getName()}</div>
-                        </div>
-                    ))}
+            <CardSection title="Notes">
+                <div className="notes">
+                    <Link to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}
+                        className="name"
+                    >{model.name}</Link>
+                    <div className="info">
+                        {model.notes && model.notes.map((note, i) => (
+                            <div key={i} className="item">
+                                <div className="note">{note.name}</div>
+                                <div className="interval">{model.intervals[i].getName()}</div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-            <div className="instrument">
-                <h3>Instrument</h3>
-                <div className="inst-name">{instrumentName}</div>
-                <div className="tuning">{instrumentTuning}</div>
-            </div>
+            </CardSection>
+            <CardSection title="Instrument">
+                <div className="instrument">
+                    <div className="inst-name">{instrumentName}</div>
+                    <div className="tuning">{instrumentTuning}</div>
+                </div>
+            </CardSection>
         </StyledDetailsCol>
     );
 };

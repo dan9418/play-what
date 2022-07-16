@@ -4,7 +4,6 @@ import { StyledCard } from "../../ui/Card";
 
 const StyledTabCard = styled(StyledCard)`
     padding: 0;
-    min-height: 256px;
     
     .content {
         padding: 16px;
@@ -14,7 +13,6 @@ const StyledTabCard = styled(StyledCard)`
         width: 100%;
         bottom: 2px;
         border-bottom: 2px solid #EEE;
-        margin-bottom: 8px;
     }
     > ul {
         display: flex;
@@ -33,7 +31,9 @@ const StyledTabCard = styled(StyledCard)`
             border-radius: 8px 8px 0 0;
             border-bottom: 2px solid #EEE;
 
-            font-size: 120%;
+            @media(min-width: 512px) {
+                font-size: 120%;
+            }
 
             color: ${props => props.theme.text.secondary};
 
