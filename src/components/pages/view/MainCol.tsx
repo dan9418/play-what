@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from 'styled-components';
-import ButtonInput from "../../inputs/ButtonInput";
 import Modal from "../../layout/Modal";
-import Card from "../../ui/Card";
-import Icon from "../../ui/Icon";
 
 const StyledMainCol = styled.div`
+    padding: 16px;
     .maximize {
         background-color: transparent !important;
     }
 `;
 
 interface IMainColProps {
-    title: string;
     viewer: any;
+    isFullScreen: boolean;
+    setIsFullScreen: Function;
 }
 
 const MainCol: React.FC<IMainColProps> = (props) => {
-    const [isFullScreen, setIsFullScreen] = useState(false);
 
-    const { title, viewer } = props;
+    const { viewer, isFullScreen, setIsFullScreen } = props;
 
     return (
         <>
@@ -31,13 +29,7 @@ const MainCol: React.FC<IMainColProps> = (props) => {
                 </Modal>
             )}
             <StyledMainCol>
-                <Card title={title} className="view"
-                    action={<ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
-                        <Icon iconId="maximize" />
-                    </ButtonInput>}
-                >
-                    {viewer}
-                </Card>
+                {viewer}
             </StyledMainCol>
         </>
     );

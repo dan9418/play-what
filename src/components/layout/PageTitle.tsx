@@ -22,7 +22,11 @@ const StyledPageTitle = styled.div`
                 font-size: 300%;
             }
             text-align: left;
-            color: ${({ theme }) => theme.text.primary};;
+            color: ${({ theme }) => theme.text.primary};
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         > h2 {
@@ -41,13 +45,16 @@ const StyledPageTitle = styled.div`
 const PageTitle: React.FC<any> = ({ title, subtitle, action, children }) => {
     return (
         <>
-            <SEO title={title} />
+            <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
             <BreadcrumbList />
             <StyledPageTitle>
                 <div className="header">
-                    <h1>{title}</h1>
+                    <h1>
+                        {title}
+                        {action && <div className='action'>{action}</div>}
+                    </h1>
                     {subtitle && <h2>{subtitle}</h2>}
-                    {action}
+
                 </div>
                 {children}
             </StyledPageTitle>
