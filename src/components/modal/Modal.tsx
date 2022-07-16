@@ -81,6 +81,9 @@ const StyledModal = styled.div`
 	}
 
 	.body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
 		margin: 64px 0;
 		padding: 0 16px 228px;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from "react";
 
 const StyledCardSection = styled.div`
     h3 {
@@ -8,7 +9,7 @@ const StyledCardSection = styled.div`
         color: ${props => props.theme.text.secondary};
     }
     & > .content {
-        background: #fafafa;
+        background: ${props => props.theme.surface.bg};
         border-radius: 8px;
         padding: 8px;
     }

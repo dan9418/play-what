@@ -12,7 +12,7 @@ const StyledTabCard = styled(StyledCard)`
         position: relative;
         width: 100%;
         bottom: 2px;
-        border-bottom: 2px solid #EEE;
+        border-bottom: 2px solid ${props => props.theme.surface.bg};
     }
     > ul {
         display: flex;
@@ -29,7 +29,7 @@ const StyledTabCard = styled(StyledCard)`
             background-color: ${props => props.theme.surface.card};
             border-bottom: 2px solid transparent;
             border-radius: 8px 8px 0 0;
-            border-bottom: 2px solid #EEE;
+            border-bottom: 2px solid ${props => props.theme.surface.bg};
 
             @media(min-width: 512px) {
                 font-size: 120%;

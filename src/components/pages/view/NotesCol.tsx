@@ -1,18 +1,19 @@
 import React from "react";
 import styled from 'styled-components';
+import { ColorScheme, COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Chord from "../../../core/models/Chord";
 import { ChordId, IModelConfig, ModelId, ModelType, NoteId, ScaleId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
 import DropdownInput from "../../inputs/DropdownInput";
-import Card, { CardHeader } from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
+import CardSection from "./CardSection";
 
 const StyledNotesCol = styled.div`
-    .header:not(:first-child) {
-        margin-top: 16px;
-    }
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
 `;
 
 export const MODEL_TYPE_OPTIONS = [
@@ -39,6 +40,8 @@ export interface INotesColProps {
     setModelConfig?;
     setRoot?;
     setModel?;
+    colorScheme: ColorScheme;
+    setColorScheme;
 }
 
 export const DEFAULT_MODEL_TYPE = MODEL_TYPE_OPTIONS[0];
@@ -59,7 +62,7 @@ export const getNewModel = (modelType: ModelType, modelId: ModelId, root: NoteId
 
 const NotesCol: React.FC<INotesColProps> = props => {
 
-    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig: _setModelConfig, setRoot: _setRoot, model, setModel } = props;
+    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig: _setModelConfig, setRoot: _setRoot, model, setModel, colorScheme, setColorScheme } = props;
     const modelOptions = modelType.data;
 
     const setModelType = type => {
@@ -81,28 +84,43 @@ const NotesCol: React.FC<INotesColProps> = props => {
 
     return (
         <StyledNotesCol>
-            <CardHeader title="Root" />
-            <ul>
-                <li>
-                    <InputRow label="Key Center">
-                        <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} idProperty="modelId" />
-                    </InputRow>
-                </li>
-            </ul>
-
-            <CardHeader title="Intervals" />
-            <ul>
-                <li>
-                    <InputRow label="Model Type">
-                        <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} idProperty="id" />
-                    </InputRow>
-                </li>
-                <li>
-                    <InputRow label="Preset">
-                        <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
-                    </InputRow>
-                </li>
-            </ul>
+            <CardSection title="Root" >
+                <ul>
+                    <li>
+                        <InputRow label="Key Center">
+                            <DropdownInput value={root} setValue={setRoot} options={NOTE_PRESETS} idProperty="modelId" />
+                        </InputRow>
+                    </li>
+                </ul>
+            </CardSection>
+            <CardSection title="Intervals" >
+                <ul>
+                    <li>
+                        <InputRow label="Model Type">
+                            <DropdownInput value={modelType} setValue={setModelType} options={MODEL_TYPE_OPTIONS} idProperty="id" />
+                        </InputRow>
+                    </li>
+                    <li>
+                        <InputRow label="Preset">
+                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
+                        </InputRow>
+                    </li>
+                </ul>
+            </CardSection>
+            <CardSection title="Colors" >
+                <ul>
+                    <li>
+                        <InputRow label="Color By">
+                            <DropdownInput value={{ id: colorScheme }} setValue={v => setColorScheme(v.id)} options={COLOR_SCHEMES} idProperty="id" />
+                        </InputRow>
+                    </li>
+                    {/*<li>
+                        <InputRow label="Color Scheme">
+                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
+                        </InputRow>
+                    </li>*/}
+                </ul>
+            </CardSection>
         </StyledNotesCol>
     );
 };
