@@ -27,11 +27,9 @@ const IndexPage: React.FC<any> = () => {
             <Card title="Public User Beta: 8/5/22">
                 <ul>
                     <li>New home page</li>
-                    <li>Improved navigation</li>
                     <li>Customizable note labels</li>
                     <li>Customizable note colors</li>
                     <li>Better extended chords experience</li>
-                    <li>Better mobile experience</li>
                     <li>Feedback / feature request form</li>
                     <li>Basic documentation</li>
                 </ul>

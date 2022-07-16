@@ -59,13 +59,6 @@ const DevPage: React.FC<any> = () => {
                     </li>
                 </ul>
             </Card>
-            <Card title="Misc" >
-                <ul>
-                    <li>
-                        <Link to='/looper-club'>Musiclandria Looper Club</Link>
-                    </li>
-                </ul>
-            </Card>
         </StyledDevPage >
     )
 };
