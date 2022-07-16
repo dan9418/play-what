@@ -14,7 +14,7 @@ const StyledTabCard = styled(StyledCard)`
         width: 100%;
         bottom: 2px;
         border-bottom: 2px solid #EEE;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
     }
     > ul {
         display: flex;

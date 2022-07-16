@@ -17,7 +17,7 @@ export default class PodList extends Model {
     podList: IPod[];
     intervals: IntervalSpan[];
     notePods?: IPod[];
-    notes?: Note;
+    notes?: Note[];
 
     constructor(presetMap, presetId: ChordId | ScaleId, options?: IPodListOptions) {
         super();

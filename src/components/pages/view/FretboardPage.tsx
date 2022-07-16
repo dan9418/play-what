@@ -70,7 +70,9 @@ const FretboardPage: React.FC = () => {
         root,
         setRoot,
         model,
-        setModel
+        setModel,
+        instrumentName: 'Guitar',
+        instrumentTuning: instrumentColProps.tuning.name
     }
 
     const mainColProps = {
@@ -101,12 +103,12 @@ const FretboardPage: React.FC = () => {
                             content: <DetailsCol {...notesColProps} />
                         },
                         {
-                            text: 'Instrument',
-                            content: <FretboardCol {...instrumentColProps} />
-                        },
-                        {
                             text: 'Notes',
                             content: <NotesCol {...notesColProps} />
+                        },
+                        {
+                            text: 'Instrument',
+                            content: <FretboardCol {...instrumentColProps} />
                         }
                     ]}
                 />
