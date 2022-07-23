@@ -2,7 +2,7 @@ import { navigate } from "gatsby";
 import React, { useState } from "react";
 import styled from 'styled-components';
 
-const StyledSearchBar = styled.form`
+export const StyledSearchBar = styled.form`
     width: 100%;
     .search-bar {
         width: 100%;
