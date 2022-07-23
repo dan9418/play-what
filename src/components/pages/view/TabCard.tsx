@@ -21,7 +21,7 @@ const StyledTabCard = styled(StyledCard)`
         
         button {
             position: relative;
-            z-index: 100000000;
+            z-index: 1000;
             padding: 16px 16px 12px;
             appearance: none;
             border: none;

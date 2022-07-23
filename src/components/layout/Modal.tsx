@@ -26,7 +26,7 @@ const StyledContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 300100000000000;
+    z-index: 3001;
 
     & > ${StyledCard} {
         width: 80%;

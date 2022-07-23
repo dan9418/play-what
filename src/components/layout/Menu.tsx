@@ -17,16 +17,20 @@ const StyledMenu = styled.div`
     top: 48px;
     bottom: 0;
     left: 0;
-    z-index: 3001;
+    z-index: 4001;
     padding: 16px 0;
 
     .active {
         font-weight: bold;
+        background-color:  ${({ theme }) => theme.surface.bg};
     }
 
     ul > ul {
         padding-left: 16px;
         font-size: 80%;
+        .active {
+            border-radius: 8px 0 0 8px;
+        }
     }
 
     a {
@@ -46,13 +50,15 @@ const StyledOverlay = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 3000;
+    z-index: 4000;
 `
 
-const getLinkProps = (to: string, currentPath: string) => {
+const getLinkProps = (to: string, currentPath: string, isTop: boolean) => {
+    console.log('dpb', to, currentPath);
+    const isActive = isTop ? currentPath === to : currentPath.includes(to);
     return {
         to,
-        className: to === currentPath ? 'active' : undefined
+        className: isActive ? 'active' : undefined
     }
 }
 
@@ -64,63 +70,72 @@ interface ILink {
 
 const LINKS: ILink[] = [
     {
-        path: '/',
+        path: '',
         name: 'Home'
     },
     {
-        path: '/browse',
+        path: 'browse',
         name: 'Browse',
         children: [
             {
-                path: '/chords',
+                path: 'chords',
                 name: 'Chords'
             },
             {
-                path: '/scales',
+                path: 'scales',
                 name: 'Scales'
             }
         ]
     },
     {
-        path: '/view',
+        path: 'view',
         name: 'Instruments',
         children: [
             {
-                path: '/fretboard',
+                path: 'fretboard',
                 name: 'Fretboard'
             },
             {
-                path: '/keyboard',
+                path: 'keyboard',
                 name: 'Keyboard'
             }
         ]
     },
     {
-        path: '/search',
+        path: 'search',
         name: 'Search'
     },
     {
-        path: '/coming-soon',
+        path: 'coming-soon',
         name: 'Coming Soon'
     },
     {
-        path: '/about',
+        path: 'about',
         name: 'About'
     }
 ]
 
-const getMenuItem = (link: ILink, currentPath: string, basePath = '') => {
+const getMenuItem = (link: ILink, currentPath: string, pathParts: string[] = []) => {
     const { name, path, children } = link;
-    const fullPath = `${basePath}${path}`;
+    const newPathParts = [...pathParts, path];
+
+    const isHome = path === '';
+    const isTop = newPathParts.length === 1;
+
+    const fullPath =
+        isHome ? '/' : `/${newPathParts.join('/')}/`
+
+    // console.log('dpb', newPathParts, fullPath);
+
     return (
-        <>
-            <li key={name}>
-                <Link {...getLinkProps(fullPath, currentPath)}>{name}</Link>
+        <React.Fragment key={name}>
+            <li >
+                <Link {...getLinkProps(fullPath, currentPath, isTop)}>{name}</Link>
             </li>
             {
-                children && <ul key={`${name}-children`}>{children.map(c => getMenuItem(c, currentPath, fullPath))}</ul>
+                children && <ul>{children.map(c => getMenuItem(c, currentPath, newPathParts))}</ul>
             }
-        </>
+        </React.Fragment>
     );
 }
 
@@ -135,9 +150,6 @@ const Menu: React.FC<any> = ({ isOpen, setIsOpen, children }) => {
     }, [path]);
 
     if (!isOpen) return null;
-
-
-    console.log('dpb', path);
 
     return (
         <>
