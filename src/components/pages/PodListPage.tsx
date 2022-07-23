@@ -23,7 +23,7 @@ interface IPodListPageProps {
     pageContext: any;
 }
 
-const PodlistPage: React.FC<IPodListPageProps> = props => {
+const PodListPage: React.FC<IPodListPageProps> = props => {
 
     const { modelType, modelId } = props.pageContext;
     const root = useRoot();
@@ -58,4 +58,4 @@ const PodlistPage: React.FC<IPodListPageProps> = props => {
     );
 };
 
-export default PodlistPage;
+export default PodListPage;

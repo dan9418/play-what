@@ -30,14 +30,14 @@ const StyledBreadcrumbList = styled.ul`
 const BreadcrumbList = () => {
     const { path } = usePageProps();
     let pieces = path.split('/');
-    const paths = [];
+    const paths: any[] = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/') || '/';
         const isLink = !['root', 'practice', 'test', 'experimental'].includes(cur);
         const text = i === 0 ? 'Home' : cur.replaceAll('-', ' ').replace(' sharp', '#').replace(' flat', 'b');
 
         const Tag = isLink ? Link : 'span';
-        const to = isLink ? path : undefined;
+        const to: any = isLink ? path : undefined;
 
         paths.push(
             <li key={i}>

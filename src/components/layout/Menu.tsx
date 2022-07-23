@@ -54,7 +54,6 @@ const StyledOverlay = styled.div`
 `
 
 const getLinkProps = (to: string, currentPath: string, isTop: boolean) => {
-    console.log('dpb', to, currentPath);
     const isActive = isTop ? currentPath === to : currentPath.includes(to);
     return {
         to,
@@ -124,8 +123,6 @@ const getMenuItem = (link: ILink, currentPath: string, pathParts: string[] = [])
 
     const fullPath =
         isHome ? '/' : `/${newPathParts.join('/')}/`
-
-    // console.log('dpb', newPathParts, fullPath);
 
     return (
         <React.Fragment key={name}>
