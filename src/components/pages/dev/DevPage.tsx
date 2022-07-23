@@ -27,35 +27,25 @@ const DevPage: React.FC<any> = () => {
                     </li>
                 </ul>
             </Card>
-            <Card title="Guitar Practice" >
-                <ul>
-                    <li>
-                        <Link to='/dev/practice/charts'>Chord Charts</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/practice/voicings'>Chord Voicings</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/practice/chord-progressions'>Chord Progressions</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/practice/caged'>CAGED Shapes</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/practice/extensions'>Extensions</Link>
-                    </li>
-                </ul>
-            </Card>
             <Card title="Experimental Features" >
                 <ul>
                     <li>
-                        <Link to='/view/'>View Instruments</Link>
+                        <Link to='/dev/experimental/charts'>Chord Charts</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/experimental/voicings'>Chord Voicings</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/experimental/chord-progressions'>Chord Progressions</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/experimental/caged'>CAGED Shapes</Link>
+                    </li>
+                    <li>
+                        <Link to='/dev/experimental/extensions'>Extensions</Link>
                     </li>
                     <li>
                         <Link to='/dev/experimental/theme'>Edit Theme</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/docs'>Documentation</Link>
                     </li>
                 </ul>
             </Card>

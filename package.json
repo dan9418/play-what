@@ -4,6 +4,7 @@
   "private": true,
   "description": "www.play-what.com",
   "author": "Dan Bednarczyk",
+  "license": "UNLICENSED",
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",

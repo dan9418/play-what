@@ -30,8 +30,8 @@ const StyledExtensionsPage = styled(StyledPageBody)`
 const ExtensionsPage: React.FC<any> = () => {
     return (
         <StyledExtensionsPage>
-            <PageTitle title="Extended Chords" />
-            <Card title="Available Extensions">
+            <PageTitle title="Extended Intervals" />
+            <Card title="">
                 <table>
                     <thead>
                         <tr>

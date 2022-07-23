@@ -1,5 +1,5 @@
+import React from "react";
 import { Link } from "gatsby";
-import React from 'react';
 import styled from 'styled-components';
 import { usePageProps } from "../../contexts/PagePropsContext";
 import Icon from "../ui/Icon";
@@ -33,7 +33,7 @@ const BreadcrumbList = () => {
     const paths: any[] = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/') || '/';
-        const isLink = !['root', 'practice', 'test', 'experimental'].includes(cur);
+        const isLink = !['root', 'test', 'experimental'].includes(cur);
         const text = i === 0 ? 'Home' : cur.replaceAll('-', ' ').replace(' sharp', '#').replace(' flat', 'b');
 
         const Tag = isLink ? Link : 'span';
