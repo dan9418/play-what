@@ -75,7 +75,9 @@ const StyledHomePage = styled(StyledPageBody)`
 	.preview {
 		margin: 32px;
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		@media(min-width: 512px) {
+			grid-template-columns: 1fr 1fr;
+		}
 		gap: 16px;
 
 		width: 80%;
@@ -87,7 +89,9 @@ const StyledHomePage = styled(StyledPageBody)`
 
 	.grid {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		@media(min-width: 512px) {
+			grid-template-columns: 1fr 1fr;
+		}
 		gap: 32px;
 	}
 

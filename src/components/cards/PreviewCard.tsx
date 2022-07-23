@@ -7,28 +7,18 @@ import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledPreviewCard = styled(StyledCard)`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     h2 {
         font-size: 100%;
         padding-bottom: 8px;
     }
-    .header {
-        display: none;
-        @media(min-width: 512px) {
-            display: unset;
-        }
-    }
     table {
-        margin: auto;
         border-collapse: collapse;
 
-        &.desktop {
+        th {
             display: none;
-            @media(min-width: 512px) {
-                display: table;
-            }
-            th {
-                display: none;
-            }
         }
 
         td, th {
@@ -80,7 +70,7 @@ const PreviewCard: React.FC<any> = ({ model }) => {
 
     return (
         <StyledPreviewCard $n={intervals.length}>
-            <CardHeader title={model.name} />
+            {/*<CardHeader title={model.name} />*/}
             <table className="desktop">
                 <tbody>
                     {notes && <tr>
