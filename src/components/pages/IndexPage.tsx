@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import logoSrc from '../../../static/logo.png';
+import logoSrc from '../../../static/play_what_logo_web.png';
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
@@ -168,7 +168,7 @@ const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
 			<SEO />
-			<img src={logoSrc} className="logo" />
+			<img src={logoSrc} className="logo" /*width={768} height={128}*/  />
 			<p className="intro">
 				Every chord. Every scale. Every key.
 				{/*A toolkit for exploring and visualizing musical concepts*/}
