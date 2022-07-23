@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { usePageProps } from '../../contexts/PagePropsContext';
 
@@ -127,13 +127,21 @@ const getMenuItem = (link: ILink, currentPath: string, basePath = '') => {
 const Menu: React.FC<any> = ({ isOpen, setIsOpen, children }) => {
     const { path } = usePageProps();
 
+    const closeMenu = () => setIsOpen(false);
+
+    useEffect(() => {
+        if (!isOpen) return;
+        closeMenu();
+    }, [path]);
+
     if (!isOpen) return null;
+
 
     console.log('dpb', path);
 
     return (
         <>
-            <StyledOverlay onClick={() => setIsOpen(false)} />
+            <StyledOverlay onClick={closeMenu} />
             <StyledMenu>
                 <ul>
                     {
