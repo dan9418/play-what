@@ -39,7 +39,7 @@ const StyledSiteFooter = styled.footer`
 
 	section {
 		width: 100%;
-		max-width: 256px;
+		max-width: 160px;
 	}
 
 	.nav-links {
@@ -52,7 +52,6 @@ const StyledSiteFooter = styled.footer`
 		@media(min-width: 512px) {
 			align-items: flex-start;
 			flex-direction: row;
-			text-align: left;
 		}
 	}
 `;

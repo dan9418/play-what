@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { usePageProps } from '../../contexts/PagePropsContext';
 
 const StyledMenu = styled.div`
     width: 100%;
@@ -17,8 +18,16 @@ const StyledMenu = styled.div`
     bottom: 0;
     left: 0;
     z-index: 3001;
-
     padding: 16px 0;
+
+    .active {
+        font-weight: bold;
+    }
+
+    ul > ul {
+        padding-left: 16px;
+        font-size: 80%;
+    }
 
     a {
         font-size: 120%;
@@ -40,32 +49,96 @@ const StyledOverlay = styled.div`
     z-index: 3000;
 `
 
+const getLinkProps = (to: string, currentPath: string) => {
+    return {
+        to,
+        className: to === currentPath ? 'active' : undefined
+    }
+}
+
+interface ILink {
+    path: string;
+    name: string;
+    children?: ILink[]
+}
+
+const LINKS: ILink[] = [
+    {
+        path: '/',
+        name: 'Home'
+    },
+    {
+        path: '/browse',
+        name: 'Browse',
+        children: [
+            {
+                path: '/chords',
+                name: 'Chords'
+            },
+            {
+                path: '/scales',
+                name: 'Scales'
+            }
+        ]
+    },
+    {
+        path: '/view',
+        name: 'Instruments',
+        children: [
+            {
+                path: '/fretboard',
+                name: 'Fretboard'
+            },
+            {
+                path: '/keyboard',
+                name: 'Keyboard'
+            }
+        ]
+    },
+    {
+        path: '/search',
+        name: 'Search'
+    },
+    {
+        path: '/coming-soon',
+        name: 'Coming Soon'
+    },
+    {
+        path: '/about',
+        name: 'About'
+    }
+]
+
+const getMenuItem = (link: ILink, currentPath: string, basePath = '') => {
+    const { name, path, children } = link;
+    const fullPath = `${basePath}${path}`;
+    return (
+        <>
+            <li key={name}>
+                <Link {...getLinkProps(fullPath, currentPath)}>{name}</Link>
+            </li>
+            {
+                children && <ul key={`${name}-children`}>{children.map(c => getMenuItem(c, currentPath, fullPath))}</ul>
+            }
+        </>
+    );
+}
+
 const Menu: React.FC<any> = ({ isOpen, setIsOpen, children }) => {
+    const { path } = usePageProps();
+
     if (!isOpen) return null;
+
+    console.log('dpb', path);
 
     return (
         <>
             <StyledOverlay onClick={() => setIsOpen(false)} />
             <StyledMenu>
                 <ul>
-                    <li>
-                        <Link to='/'>Home</Link>
-                    </li>
-                    <li>
-                        <Link to='/browse'>Browse</Link>
-                    </li>
-                    <li>
-                        <Link to='/search'>Search</Link>
-                    </li>
-                    <li>
-                        <Link to='/view'>Instruments</Link>
-                    </li>
-                    <li>
-                        <Link to='/about'>About</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev'>Developer Panel</Link>
-                    </li>
+                    {
+                        LINKS.map(l => getMenuItem(l, path))
+                    }
                 </ul>
                 {children}
             </StyledMenu>
