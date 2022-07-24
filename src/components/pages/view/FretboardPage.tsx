@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import { ColorScheme, COLOR_SCHEMES } from "../../../core/color/Color.utils";
+import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import ButtonInput from "../../inputs/ButtonInput";
@@ -52,8 +52,10 @@ const FretboardPage: React.FC = () => {
     const [tuning, setTuning] = useState(DEFAULT_TUNING);
     const [fretRange, setFretRange] = useState(DEFAULT_FRET_RANGE);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [colorScheme, setColorScheme] = useState(COLOR_SCHEMES[1]);
+    const [colorScheme, _setColorScheme] = useState(COLOR_SCHEMES[1]);
     const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
+
+    const setColorScheme = cs => { _setColorScheme(cs); setColorConfig(cs.defaultConfig) }
 
     const instrumentColProps = {
         model,

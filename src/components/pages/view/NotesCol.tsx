@@ -6,6 +6,7 @@ import { ChordId, IModelConfig, ModelId, ModelType, NoteId, ScaleId } from "../.
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
 import Note from "../../../core/models/Note";
 import Scale from "../../../core/models/Scale";
+import ColorSchemeInput from "../../inputs/ColorSchemeInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import InputRow from "../../ui/InputRow";
 import CardSection from "./CardSection";
@@ -43,6 +44,7 @@ export interface INotesColProps {
     colorScheme: IColorScheme;
     setColorScheme;
     colorConfig: string[];
+    setColorConfig;
 }
 
 export const DEFAULT_MODEL_TYPE = MODEL_TYPE_OPTIONS[0];
@@ -63,7 +65,7 @@ export const getNewModel = (modelType: ModelType, modelId: ModelId, root: NoteId
 
 const NotesCol: React.FC<INotesColProps> = props => {
 
-    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig: _setModelConfig, setRoot: _setRoot, model, setModel, colorScheme, setColorScheme } = props;
+    const { modelType, modelConfig, root, setModelType: _setModelType, setModelConfig: _setModelConfig, setRoot: _setRoot, model, setModel, colorScheme, setColorScheme, colorConfig, setColorConfig } = props;
     const modelOptions = modelType.data;
 
     const setModelType = type => {
@@ -115,11 +117,11 @@ const NotesCol: React.FC<INotesColProps> = props => {
                             <DropdownInput value={colorScheme} setValue={setColorScheme} options={COLOR_SCHEMES} idProperty="id" />
                         </InputRow>
                     </li>
-                    {/*<li>
+                    <li>
                         <InputRow label="Color Scheme">
-                            <DropdownInput value={modelConfig} setValue={setModelConfig} options={modelOptions} idProperty="modelId" />
+                            <ColorSchemeInput value={colorConfig} setValue={setColorConfig} labelFn={colorScheme.labelFn} />
                         </InputRow>
-                    </li>*/}
+                    </li>
                 </ul>
             </CardSection>
         </StyledNotesCol>
