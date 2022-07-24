@@ -52,7 +52,8 @@ const FretboardPage: React.FC = () => {
     const [tuning, setTuning] = useState(DEFAULT_TUNING);
     const [fretRange, setFretRange] = useState(DEFAULT_FRET_RANGE);
     const [isFullScreen, setIsFullScreen] = useState(false);
-    const [colorScheme, setColorScheme] = useState(ColorScheme.HighlightRoot);
+    const [colorScheme, setColorScheme] = useState(COLOR_SCHEMES[1]);
+    const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
 
     const instrumentColProps = {
         model,
@@ -76,7 +77,9 @@ const FretboardPage: React.FC = () => {
         instrumentName: 'Guitar',
         instrumentTuning: instrumentColProps.tuning.name,
         colorScheme,
-        setColorScheme
+        setColorScheme,
+        colorConfig,
+        setColorConfig
     }
 
     const mainColProps = {
@@ -90,11 +93,9 @@ const FretboardPage: React.FC = () => {
                 const noteIndex = tuning[stringIndex] + fretIndex;
                 const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
 
-                if (!note) return;
+                const cs = COLOR_SCHEMES.find(cs => cs.id === colorScheme.id);
 
-                const cs = COLOR_SCHEMES.find(cs => cs.id === colorScheme);
-
-                return cs && cs.fn(note)
+                return cs && cs.fn(note, colorConfig)
             }}
             tuning={instrumentColProps.tuning.value}
         />

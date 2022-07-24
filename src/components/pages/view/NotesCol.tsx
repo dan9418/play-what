@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import { ColorScheme, COLOR_SCHEMES } from "../../../core/color/Color.utils";
+import { ColorScheme, COLOR_SCHEMES, IColorScheme } from "../../../core/color/Color.utils";
 import Chord from "../../../core/models/Chord";
 import { ChordId, IModelConfig, ModelId, ModelType, NoteId, ScaleId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS, NOTE_PRESETS, SCALE_PRESETS } from "../../../core/models/Model.presets";
@@ -40,8 +40,9 @@ export interface INotesColProps {
     setModelConfig?;
     setRoot?;
     setModel?;
-    colorScheme: ColorScheme;
+    colorScheme: IColorScheme;
     setColorScheme;
+    colorConfig: string[];
 }
 
 export const DEFAULT_MODEL_TYPE = MODEL_TYPE_OPTIONS[0];
@@ -111,7 +112,7 @@ const NotesCol: React.FC<INotesColProps> = props => {
                 <ul>
                     <li>
                         <InputRow label="Color By">
-                            <DropdownInput value={{ id: colorScheme }} setValue={v => setColorScheme(v.id)} options={COLOR_SCHEMES} idProperty="id" />
+                            <DropdownInput value={colorScheme} setValue={setColorScheme} options={COLOR_SCHEMES} idProperty="id" />
                         </InputRow>
                     </li>
                     {/*<li>

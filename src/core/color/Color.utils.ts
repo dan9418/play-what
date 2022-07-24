@@ -10,35 +10,40 @@ export enum ColorScheme {
 	PitchClass,
 }
 
-interface IColorSchemeConfig {
+export interface IColorScheme {
 	id: ColorScheme;
 	name: string;
-	fn: (note?: Note, config?: any) => string;
+	defaultConfig: string[]
+	fn: (note?: Note, config?: string[]) => string | false;
 }
 
 const RED = 'red';
 const BLACK = '#555';
 
-export const COLOR_SCHEMES: IColorSchemeConfig[] = [
+export const COLOR_SCHEMES: IColorScheme[] = [
 	{
 		id: ColorScheme.Monochrome,
 		name: 'Monochrome',
-		fn: (note, config = BLACK) => config
+		defaultConfig: [BLACK],
+		fn: (note, config = [BLACK]) => note ? config[0] : false
 	},
 	{
 		id: ColorScheme.HighlightRoot,
 		name: 'Highlight Root',
-		fn: (note, config = [RED, BLACK]) => note && note.getDegree() === 0 ? config[0] : config[1]
+		defaultConfig: [RED, BLACK],
+		fn: (note, config = [RED, BLACK]) => note ? (note.getDegree() === 0 ? config[0] : config[1]) : false
 	},
 	{
 		id: ColorScheme.Degree,
 		name: 'Interval Degree',
-		fn: (note, config = DEFAULT_DEGREE_COLOR_SCHEME) => config[note && note.getDegree() || 0]
+		defaultConfig: DEFAULT_DEGREE_COLOR_SCHEME,
+		fn: (note, config = DEFAULT_DEGREE_COLOR_SCHEME) => note ? config[note.getDegree() || 0] : false
 	},
 	{
 		id: ColorScheme.PitchClass,
 		name: 'Pitch Class',
-		fn: (note, config = DEFAULT_PITCH_COLOR_SCHEME) => config[note && note.getPitchClass() || 0]
+		defaultConfig: DEFAULT_PITCH_COLOR_SCHEME,
+		fn: (note, config = DEFAULT_PITCH_COLOR_SCHEME) => note ? config[note.getPitchClass() || 0] : false
 	}
 ];
 
