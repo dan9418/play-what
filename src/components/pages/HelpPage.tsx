@@ -125,7 +125,23 @@ const HelpPage: React.FC<any> = props => {
                     <ul>
                         <li>
                             <div className="q">When will the site be finished?</div>
-                            <div className="ans">The official beta will be launched on 8/5/22.</div>
+                            <div className="ans">The first public beta will open on 8/5/22. The official launch will be sometime in 2023. More information is available on the <Link to='/coming-soon'>Coming Soon Page</Link></div>
+                        </li>
+                        <li>
+                            <div className="q">Where can I submit feedback? Report bugs? Request features?</div>
+                            <div className="ans">A feedback form will be provided soon.</div>
+                        </li>
+                        <li>
+                            <div className="q">Where can I find more information about Play What and the author?</div>
+                            <div className="ans">A good place to start might be the <Link to='/about'>About Page</Link>.</div>
+                        </li>
+                        <li>
+                            <div className="q">Is the software open source?</div>
+                            <div className="ans">No, but it will be once all logistics and documentation concerns have been addressed.</div>
+                        </li>
+                        <li>
+                            <div className="q">Can I customize the theme?</div>
+                            <div className="ans"><Link to='/dev/experimental/theme'>You can try</Link>, but it's not officially supported.</div>
                         </li>
                     </ul>
                 </Card>
