@@ -105,12 +105,16 @@ const LINKS: ILink[] = [
         name: 'Search'
     },
     {
-        path: 'coming-soon',
-        name: 'Coming Soon'
+        path: 'help',
+        name: 'Help'
     },
     {
         path: 'about',
         name: 'About'
+    },
+    {
+        path: 'coming-soon',
+        name: 'Coming Soon'
     }
 ]
 
