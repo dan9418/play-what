@@ -1,6 +1,6 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
-import styled, { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import logoSrc from '../../../static/play_what_logo_web.png';
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
@@ -182,7 +182,8 @@ const StyledHomePage = styled(StyledPageBody)`
 const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 	const [model, setModel] = useState(DEFAULT_MODEL);
-	const theme = useTheme();
+
+	const modelPath = `/browse/${model.modelType}/${model.modelId}/root/${model.root.modelId}`
 
 	useEffect(() => {
 		const id = setInterval(() => {
@@ -224,7 +225,7 @@ const IndexPage: React.FC<any> = () => {
 					<Icon iconId={IconId.Guitar} size={64} />
 					View Instruments
 				</Link>
-				<Link to="/browse" className="tile">
+				<Link to={modelPath} className="tile">
 					<Icon iconId={IconId.Dice} size={64} />
 					Random Page
 				</Link>
@@ -234,9 +235,9 @@ const IndexPage: React.FC<any> = () => {
 					<h3>Explore Music Theory</h3>
 					<div>
 						<div className="txt">
-							<p>Browse chords and scales and explore their relationships.</p>
-							<Link to="/browse">Chords</Link>
-							<Link to="/browse">Scales</Link>
+							<p>Browse chords and scales in detail. Explore their relationships.</p>
+							<Link to="/browse/chords">Chords</Link>
+							<Link to="/browse/scales">Scales</Link>
 						</div>
 					</div>
 				</section>
@@ -244,7 +245,7 @@ const IndexPage: React.FC<any> = () => {
 					<h3>Customize Instruments</h3>
 					<div>
 						<div className="txt">
-							<p>Play What currents supports two instrument types with plans for more.</p>
+							<p>Play What currently supports two instrument types.</p>
 							<Link to="/view/fretboard">Fretboard</Link>
 							<Link to="/view/keyboard">Keyboard</Link>
 						</div>
@@ -255,7 +256,7 @@ const IndexPage: React.FC<any> = () => {
 					<div>
 						<div className="txt">
 							<p>Use the form below to provide feedback, report bugs, request features, or contact the author.</p>
-							<Link to="/browse">Take The Survey</Link>
+							<Link to="TODO">Take The Survey</Link>
 						</div>
 					</div>
 				</section>
