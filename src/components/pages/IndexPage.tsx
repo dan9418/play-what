@@ -5,8 +5,6 @@ import logoSrc from '../../../static/play_what_logo_web.png';
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
-import Fretboard from "../../viewers/fretboard/Fretboard";
-import PreviewCard from "../cards/PreviewCard";
 import { StyledPageBody } from "../layout/PageBody";
 import SearchBar, { StyledSearchBar } from "../search/SearchBar";
 import SEO from "../utils/SEO";
@@ -149,6 +147,21 @@ const StyledHomePage = styled(StyledPageBody)`
 			color: white;
 		}
 	}
+
+	.tiles {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 16px;
+		
+		.tile {
+			background-color: white;
+			border-radius: 8px;
+			padding: 16px 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+	}
 `;
 
 const IndexPage: React.FC<any> = () => {
@@ -172,7 +185,7 @@ const IndexPage: React.FC<any> = () => {
 	return (
 		<StyledHomePage>
 			<SEO />
-			<img src={logoSrc} className="logo" /*width={768} height={128}*/  />
+			<img src={logoSrc} className="logo" /*width={768} height={128}*/ />
 			<p className="intro">
 				Every chord. Every scale. Every key.
 				{/*A toolkit for exploring and visualizing musical concepts*/}
@@ -182,61 +195,60 @@ const IndexPage: React.FC<any> = () => {
 				This site is under active development and is currently unstable.<br />A formal Beta release is planned for 8/5/22.
 			</p>*/}
 			<SearchBar placeholder={placeholder} />
-			<div className="preview">
+			{/*<div className="preview">
 				<PreviewCard model={model} />
 				<Fretboard model={model} />
+			</div>*/}
+			<div className="tiles">
+				<Link to="/browse" className="tile">
+					Browse Chords & Scales
+				</Link>
+				<Link to="/view" className="tile">
+					View Instruments
+				</Link>
+				<Link to="/browse" className="tile">
+					Random Page
+				</Link>
 			</div>
 			<div className="grid">
 				<section>
-					<h3>Explore music theory</h3>
+					<h3>Explore Music Theory</h3>
 					<div>
 						<div className="txt">
-							<p>Browse an extensive library of chords, scales, and modes in every key. Easily identify relationships between them and jump between pages.</p>
-							<Link to="/browse">Browse Chords & Scales</Link>
+							<p>Browse chords and scales and explore their relationships.</p>
+							<Link to="/browse">Chords</Link>
+							<Link to="/browse">Scales</Link>
 						</div>
-						{/*<div className="action">
-						<PreviewCard model={model} />
-					</div>*/}
 					</div>
 				</section>
 				<section>
-					<h3>Visualize notes on instruments</h3>
+					<h3>Customize Instruments</h3>
 					<div>
 						<div className="txt">
-							<p>Project notes on a variety of instruments and customize how they're displayed. Play What supports different tunings, voicings, labels, and colors.</p>
-							<Link to="/view">See Instruments</Link>
+							<p>Play What currents supports two instrument types with plans for more.</p>
+							<Link to="/view/fretboard">Fretboard</Link>
+							<Link to="/view/keyboard">Keyboard</Link>
 						</div>
-						{/*<Link to="/view/fretboard" >
-						<div>
-							<Fretboard
-								model={model}
-							/>
-						</div>
-					</Link>*/}
 					</div>
 				</section>
 				<section>
-					<h3>Search for chords and scales</h3>
+					<h3>Have Feedback? Get In Touch</h3>
 					<div>
 						<div className="txt">
-							<p>Search for any chord, scale, or mode in any key. Bookmark any page.</p>
-							<Link to="/search">Go To Search Page</Link>
+							<p>Use the form below to provide feedback, report bugs, request features, or contact the author.</p>
+							<Link to="/browse">Take The Survey</Link>
 						</div>
-						{/*<div className="action">
-						<SearchBar placeholder={placeholder} query={placeholder} />
-					</div>*/}
 					</div>
 				</section>
 				<section>
-					<h3>Coming Soon</h3>
+					<h3>Confused? Learn More</h3>
 					<div>
 						<div className="txt">
-							<p>Build your own practice materials, including cheat sheets, flash cards, chord charts, and guitar tabs.</p>
-							<Link to="/coming-soon">And More!</Link>
+							<p>Play What offers something for musicians of all skill levels. Use the resources below to find the features most useful for you.</p>
+							<Link to="/help">Help</Link>
+							<Link to="/about">About</Link>
+							<Link to="/coming-soon">Coming Soon</Link>
 						</div>
-						{/*<div className="action">
-						<img src={placeholderSrc} className="placeholder" />
-					</div>*/}
 					</div>
 				</section>
 			</div>

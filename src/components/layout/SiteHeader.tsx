@@ -7,6 +7,8 @@ import THEME, { DARK_THEME } from '../../styles/theme';
 import SwitchInput from '../inputs/SwitchInput';
 import Icon from '../ui/Icon';
 import Menu from './Menu';
+import { useLocation } from "@reach/router";
+
 
 const StyledSiteHeader = styled.div`
     height: 48px;
@@ -88,6 +90,7 @@ const SiteHeader: React.FC = () => {
 	const setTheme = useSetRecoilState(themeState);
 	const [isNightMode, setIsNightMode] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const { pathname } = useLocation();
 
 	const onThemeToggle = v => {
 		setTheme(isNightMode ? THEME : DARK_THEME);
@@ -102,9 +105,11 @@ const SiteHeader: React.FC = () => {
 						<button type="button" className="menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
 							<Icon iconId='menu'></Icon>
 						</button>
-						<Link to="/" className="logo">
-							Play What?
-						</Link>
+						{pathname !== '/' &&
+							<Link to="/" className="logo">
+								Play What?
+							</Link>
+						}
 					</div>
 					<div className="right">
 						<Link to="/search" className="search">
