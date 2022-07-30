@@ -1,15 +1,15 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import logoSrc from '../../../static/play_what_logo_web.png';
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import { StyledPageBody } from "../layout/PageBody";
 import SearchBar, { StyledSearchBar } from "../search/SearchBar";
+import Icon, { IconId } from "../ui/Icon";
 import SEO from "../utils/SEO";
 import { DEFAULT_MODEL } from "./view/view.defaults";
-
 
 const StyledHomePage = styled(StyledPageBody)`
 	display: flex;
@@ -125,7 +125,7 @@ const StyledHomePage = styled(StyledPageBody)`
 
 	h3 {
 		margin: 32px 0 16px;
-		color: ${({ theme }) => theme.surface.nav};
+		color: ${({ theme }) => theme.text.primary};
 	}
 
 	> a {
@@ -154,12 +154,27 @@ const StyledHomePage = styled(StyledPageBody)`
 		gap: 16px;
 		
 		.tile {
-			background-color: white;
+			background-color: ${props => props.theme.surface.card};
 			border-radius: 8px;
-			padding: 16px 8px;
+			padding: 16px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			flex-direction: column;
+			gap: 16px;
+
+			border: 1px solid ${props => props.theme.utils.border};
+
+			svg, svg * {
+				fill: ${props => props.theme.action.interactive};
+			}
+			&:hover {
+				svg, svg * {
+					fill: ${props => props.theme.action.active};
+				}
+				border-color: ${props => props.theme.action.active};
+
+			}
 		}
 	}
 `;
@@ -167,6 +182,7 @@ const StyledHomePage = styled(StyledPageBody)`
 const IndexPage: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 	const [model, setModel] = useState(DEFAULT_MODEL);
+	const theme = useTheme();
 
 	useEffect(() => {
 		const id = setInterval(() => {
@@ -201,12 +217,15 @@ const IndexPage: React.FC<any> = () => {
 			</div>*/}
 			<div className="tiles">
 				<Link to="/browse" className="tile">
+					<Icon iconId={IconId.Browse} size={64} />
 					Browse Chords & Scales
 				</Link>
 				<Link to="/view" className="tile">
+					<Icon iconId={IconId.Guitar} size={64} />
 					View Instruments
 				</Link>
 				<Link to="/browse" className="tile">
+					<Icon iconId={IconId.Dice} size={64} />
 					Random Page
 				</Link>
 			</div>

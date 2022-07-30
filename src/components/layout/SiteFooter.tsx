@@ -20,14 +20,13 @@ const StyledSiteFooter = styled.footer`
 
 	h3 {
 		text-transform: uppercase;
-		padding-bottom: 8px;
 		margin-bottom: 8px;
 		//border-bottom: 1px solid ${({ theme }) => theme.utils.border};
 	}
 
 	a {
 		display: block;
-		padding: 8px 0;
+		padding: 4px;
 		color: ${({ theme }) => theme.text.inverted};
 
 		&.name {
@@ -100,21 +99,18 @@ const SiteFooter: React.FC = () => {
 				</section>
 				<section>
 					<h3>Contact</h3>
-					<ul>
+					<ul>	
 						<li>
-							<a href='https://github.com/dan9418/play-what'>
-								{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
-								GitHub</a>
+							<a href='https://github.com/dan9418/play-what'>GitHub</a>
 						</li>
 						<li>
-							<a href='https://www.instagram.com/dan.bednarczyk/'>
-								{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
-								Instagram</a>
+							<a href='https://www.instagram.com/dan.bednarczyk/'>Instagram</a>
 						</li>
 						<li>
-							<a href='https://danbednarczyk.com'>
-								{false && <Icon iconId="github" color={theme.text.inverted} size={14} />}
-								Author Website</a>
+							<a href='https://danbednarczyk.com'>Author Website</a>
+						</li>
+						<li>
+							<a href='TODO'>Provide Feedback</a>
 						</li>
 					</ul>
 				</section>

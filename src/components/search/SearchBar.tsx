@@ -27,6 +27,7 @@ export const StyledSearchBar = styled.form`
             color: white;
             font-weight: bold;
             background-color: ${props => props.theme.action.interactive};
+            &:hover { background-color: ${props => props.theme.action.active}; }
             border-left: none;
             padding: 8px 16px;
 
