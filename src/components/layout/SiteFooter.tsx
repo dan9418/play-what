@@ -1,7 +1,7 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled, { useTheme } from 'styled-components';
-import Icon from '../ui/Icon';
+import { FEEDBACK_LINK } from '../../config/constants';
 
 const StyledSiteFooter = styled.footer`
     min-height: 256px;
@@ -99,18 +99,18 @@ const SiteFooter: React.FC = () => {
 				</section>
 				<section>
 					<h3>Contact</h3>
-					<ul>	
+					<ul>
 						<li>
-							<a href='https://github.com/dan9418/play-what'>GitHub</a>
+							<a target="_blank" href='https://github.com/dan9418/play-what'>GitHub</a>
 						</li>
 						<li>
-							<a href='https://www.instagram.com/dan.bednarczyk/'>Instagram</a>
+							<a target="_blank" href='https://www.instagram.com/dan.bednarczyk/'>Instagram</a>
 						</li>
 						<li>
-							<a href='https://danbednarczyk.com'>Author Website</a>
+							<a target="_blank" href='https://danbednarczyk.com'>Author Website</a>
 						</li>
 						<li>
-							<a href='TODO'>Provide Feedback</a>
+							<a target="_blank" href={FEEDBACK_LINK}>Provide Feedback</a>
 						</li>
 					</ul>
 				</section>

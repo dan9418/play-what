@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
 import logoSrc from '../../../static/play_what_logo_web.png';
+import { FEEDBACK_LINK } from "../../config/constants";
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
@@ -195,7 +196,7 @@ const IndexPage: React.FC<any> = () => {
 
 			setPlaceholder(text);
 			setModel(m);
-		}, 4000);
+		}, 2000);
 		return () => clearInterval(id);
 	}, []);
 
@@ -256,7 +257,7 @@ const IndexPage: React.FC<any> = () => {
 					<div>
 						<div className="txt">
 							<p>Use the form below to provide feedback, report bugs, request features, or contact the author.</p>
-							<Link to="TODO">Take The Survey</Link>
+							<Link target="_blank" to={FEEDBACK_LINK}>Take The Survey</Link>
 						</div>
 					</div>
 				</section>
