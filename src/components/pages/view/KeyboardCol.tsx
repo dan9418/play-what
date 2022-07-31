@@ -2,8 +2,8 @@ import React from "react";
 import styled from 'styled-components';
 import DEFAULT_KEYBOARD_PROPS from "../../../viewers/keyboard/Keyboard.defaults";
 import NumericInput from "../../inputs/NumericInput";
-import Card from "../../ui/Card";
 import InputRow from "../../ui/InputRow";
+import CardSection from "./CardSection";
 
 const StyledKeyboardCol = styled.div`
 
@@ -24,7 +24,7 @@ const KeyboardCol: React.FC<IKeyboardColProps> = ({ keyRange, setKeyRange }) => 
 
     return (
         <StyledKeyboardCol>
-            <Card title="Range">
+            <CardSection title="Range" >
                 <ul>
                     <li>
                         <InputRow label="Low Key">
@@ -37,7 +37,7 @@ const KeyboardCol: React.FC<IKeyboardColProps> = ({ keyRange, setKeyRange }) => 
                         </InputRow>
                     </li>
                 </ul>
-            </Card >
+            </CardSection>
         </StyledKeyboardCol>
     );
 };

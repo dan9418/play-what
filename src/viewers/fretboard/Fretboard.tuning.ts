@@ -38,7 +38,7 @@ const getPitch = (noteId: NoteId, octave: number): number => Note.getNote(noteId
 export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     [TuningId.Standard, formatPreset(
         TuningId.Standard,
-        'Standard',
+        'Standard Guitar',
         [
             getPitch(NoteId.E, 5),
             getPitch(NoteId.B, 4),
@@ -50,7 +50,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     )],
     [TuningId.Flat, formatPreset(
         TuningId.Flat,
-        'Flat',
+        'Flat Gtr',
         [
             getPitch(NoteId.Eb, 5),
             getPitch(NoteId.Bb, 4),
@@ -62,7 +62,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     )],
     [TuningId.DoubleFlat, formatPreset(
         TuningId.DoubleFlat,
-        'Double Flat',
+        'Double Flat Gtr',
         [
             getPitch(NoteId.D, 5),
             getPitch(NoteId.A, 4),
@@ -74,7 +74,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     )],
     [TuningId.StandardSeven, formatPreset(
         TuningId.StandardSeven,
-        'Standard 7-String',
+        'Standard 7-String Gtr',
         [
             getPitch(NoteId.E, 5),
             getPitch(NoteId.B, 4),
@@ -97,7 +97,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
     )],
     [TuningId.DropD, formatPreset(
         TuningId.DropD,
-        'Drop D',
+        'Drop D Gtr',
         [
             getPitch(NoteId.E, 5),
             getPitch(NoteId.B, 4),
@@ -120,7 +120,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
         ]
     )],
     // Unconfirmed
-    [TuningId.Banjo, formatPreset(
+    /*[TuningId.Banjo, formatPreset(
         TuningId.Banjo,
         'Banjo',
         [
@@ -130,7 +130,7 @@ export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
             getPitch(NoteId.B, 4),
             getPitch(NoteId.D, 3)
         ]
-    )],
+    )],*/
     // Unconfirmed
     [TuningId.Violin, formatPreset(
         TuningId.Violin,

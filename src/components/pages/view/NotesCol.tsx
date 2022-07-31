@@ -113,12 +113,12 @@ const NotesCol: React.FC<INotesColProps> = props => {
             <CardSection title="Colors" >
                 <ul>
                     <li>
-                        <InputRow label="Color By">
+                        <InputRow label="Color Scheme">
                             <DropdownInput value={colorScheme} setValue={setColorScheme} options={COLOR_SCHEMES} idProperty="id" />
                         </InputRow>
                     </li>
                     <li>
-                        <InputRow label="Color Scheme">
+                        <InputRow label="Color Config">
                             <ColorSchemeInput value={colorConfig} setValue={setColorConfig} labelFn={colorScheme.labelFn} />
                         </InputRow>
                     </li>

@@ -77,7 +77,7 @@ const FretboardPage: React.FC = () => {
         setRoot,
         model,
         setModel,
-        instrumentName: 'Guitar',
+        instrumentName: 'Fretboard',
         instrumentTuning: instrumentColProps.tuning.name,
         colorScheme,
         setColorScheme,
@@ -98,7 +98,7 @@ const FretboardPage: React.FC = () => {
 
                 const cs = COLOR_SCHEMES.find(cs => cs.id === colorScheme.id);
 
-                if(!cs) return;
+                if (!cs) return;
 
                 const color = cs.fn(note, interval, colorConfig);
 
@@ -123,22 +123,24 @@ const FretboardPage: React.FC = () => {
             />
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
-                <TabCard
-                    tabs={[
-                        {
-                            text: 'Summary',
-                            content: <DetailsCol {...notesColProps} />
-                        },
-                        {
-                            text: 'Notes',
-                            content: <NotesCol {...notesColProps} />
-                        },
-                        {
-                            text: 'Instrument',
-                            content: <FretboardCol {...instrumentColProps} />
-                        }
-                    ]}
-                />
+                <div>
+                    <TabCard
+                        tabs={[
+                            {
+                                text: 'Summary',
+                                content: <DetailsCol {...notesColProps} />
+                            },
+                            {
+                                text: 'Notes',
+                                content: <NotesCol {...notesColProps} />
+                            },
+                            {
+                                text: 'Instrument',
+                                content: <FretboardCol {...instrumentColProps} />
+                            }
+                        ]}
+                    />
+                </div>
             </ColumnManager>
         </StyledFretboardPage>
     );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
+import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Keyboard from "../../../viewers/keyboard/Keyboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import PageTitle from "../../layout/PageTitle";
@@ -45,11 +46,15 @@ const KeyboardPage: React.FC = () => {
     } = modelState;
 
     const [keyRange, setKeyRange] = useState<[number, number]>(DEFAULT_KEY_RANGE);
+    const [colorScheme, _setColorScheme] = useState(COLOR_SCHEMES[1]);
+    const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
+
+    const setColorScheme = cs => { _setColorScheme(cs); setColorConfig(cs.defaultConfig) }
 
     const instrumentColProps = {
         model,
         keyRange,
-        setKeyRange
+        setKeyRange,
     }
 
     const notesColProps = {
@@ -60,7 +65,13 @@ const KeyboardPage: React.FC = () => {
         root,
         setRoot,
         model,
-        setModel
+        setModel,
+        colorScheme,
+        setColorScheme,
+        colorConfig,
+        setColorConfig,
+        instrumentName: 'Keyboard',
+        instrumentTuning: ''
     }
 
     const mainColProps = {
@@ -68,6 +79,18 @@ const KeyboardPage: React.FC = () => {
         viewer: <Keyboard
             {...instrumentColProps}
             {...notesColProps}
+            colorMapFn={props => {
+                const { noteIndex, model } = props;
+                const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+
+                const cs = COLOR_SCHEMES.find(cs => cs.id === colorScheme.id);
+
+                if (!cs) return;
+
+                const color = cs.fn(note, interval, colorConfig);
+
+                return color;
+            }}
         />
     };
 
