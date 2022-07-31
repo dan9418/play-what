@@ -43,7 +43,7 @@ export default class PodList extends Model {
     }
 
     getName = () => {
-        return `${this.root ? `${this.root.name} ` : ''}${this.name}`;
+        return this.name;
     }
 
     getShortName = () => {
@@ -64,7 +64,7 @@ export default class PodList extends Model {
         this.root = root;
         this.notes = notes;
         this.notePods = notePods;
-        this.name = this.getName();
+        this.name = `${this.root.name} ${this.name}`
         return this;
     }
 

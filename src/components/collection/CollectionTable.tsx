@@ -102,7 +102,7 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = []
                             <tr key={i}>
                                 <td>
                                     <Link to={`/browse/${model.modelType}/${model.modelId}/${rootSuffix}`}>
-                                        {model.getShortName()}
+                                        {model.getName()}
                                     </Link>
                                 </td>
                                 {SEMITONES.map((h, i) => {
