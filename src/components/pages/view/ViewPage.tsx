@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { ChordId, ModelType, NoteId } from "../../../core/models/Model.constants";
-import THEME from "../../../styles/theme";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { TuningId, TUNING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.tuning";
 import Keyboard from "../../../viewers/keyboard/Keyboard";
@@ -19,10 +18,10 @@ const StyledViewPage = styled(StyledPageBody)`
     }
 
     ${StyledCard} {
-        border: 1px solid ${THEME.status.highlight};
+        background-color: ${props => props.theme.surface.card};
+        border: 1px solid ${props => props.theme.status.interactive};
         &:hover {
-            border: 1px solid ${THEME.action.active};
-            background-color: ${THEME.status.highlight};
+            border-color: ${props => props.theme.status.active};
         }
 
         .fretboard, .keyboard {
@@ -33,8 +32,15 @@ const StyledViewPage = styled(StyledPageBody)`
                 font-weight: bold;
                 display: block;
                 text-align: right;
+
+                
             }
         }
+        .text {
+            color: ${props => props.theme.text.secondary};
+            margin: 16px 0;
+        }
+        
     }
 `;
 
@@ -50,10 +56,13 @@ const ViewPage: React.FC<any> = () => {
 
     return (
         <StyledViewPage>
-            <PageTitle title="Instruments" subtitle="Choose an instrument" />
+            <PageTitle title="Instruments" subtitle="Choose an instrument type" />
             <ColumnManager desktop={['1fr', '1fr']} >
                 <Link to='/view/fretboard/'>
-                    <Card title="Guitar">
+                    <Card title="Fretboard">
+                        <div className="text">
+                            Guitar, Bass, Mandolin, etc...
+                        </div>
                         <Fretboard
                             {...COMMON_FRETBOARD_PROPS}
                             tuning={TUNING_PRESET_MAP.get(TuningId.Standard).value}
@@ -62,6 +71,9 @@ const ViewPage: React.FC<any> = () => {
                 </Link>
                 <Link to='/view/keyboard/'>
                     <Card title="Keyboard">
+                        <div className="text">
+                            Piano, Synthesizer, etc...
+                        </div>
                         <Keyboard
                             model={COMMON_MODEL}
                             keyRange={DEFAULT_KEYBOARD_PROPS.keyRange as [number, number]}

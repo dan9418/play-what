@@ -151,9 +151,13 @@ const StyledHomePage = styled(StyledPageBody)`
 
 	.tiles {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
 		gap: 16px;
 		
+		grid-template-columns: 100%;
+		@media(min-width: 512px) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
 		.tile {
 			background-color: ${props => props.theme.surface.card};
 			border-radius: 8px;
@@ -164,7 +168,7 @@ const StyledHomePage = styled(StyledPageBody)`
 			flex-direction: column;
 			gap: 16px;
 
-			border: 1px solid ${props => props.theme.utils.border};
+			border: 1px solid ${props => props.theme.action.interactive};
 
 			svg, svg * {
 				fill: ${props => props.theme.action.interactive};
