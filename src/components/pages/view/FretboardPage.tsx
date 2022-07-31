@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from 'styled-components';
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
+import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import ButtonInput from "../../inputs/ButtonInput";
 import PageTitle from "../../layout/PageTitle";
@@ -97,7 +98,15 @@ const FretboardPage: React.FC = () => {
 
                 const cs = COLOR_SCHEMES.find(cs => cs.id === colorScheme.id);
 
-                return cs && cs.fn(note, colorConfig)
+                if(!cs) return;
+
+                const color = cs.fn(note, interval, colorConfig);
+
+                if (color && voicing && !isIntervalInVoicing(interval, voicing, stringIndex)) {
+                    return `${color}33`
+                }
+
+                return color;
             }}
             tuning={instrumentColProps.tuning.value}
         />

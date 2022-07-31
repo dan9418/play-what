@@ -31,7 +31,7 @@ export const DOTTED_FRET_INDICES = [true, false, false, true, false, true, false
 
 export const FRET_SIZE_RATIO = Math.pow((1 / 2), (1 / 12));
 
-const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIndex: number) => {
+export const isIntervalInVoicing = (interval: IntervalSpan, voicing: IVoicing, stringIndex: number) => {
 	if (!voicing || !voicing.value) return true;
 	const v = voicing.value[stringIndex];
 	const d = interval.getDegree();

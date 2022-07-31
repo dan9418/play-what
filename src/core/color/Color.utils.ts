@@ -1,4 +1,5 @@
 import color from 'color';
+import IntervalSpan from '../models/Interval';
 import Note from '../models/Note';
 import { DEFAULT_DEGREE_COLOR_SCHEME } from '../theory/Degree.constants';
 import { DEFAULT_PITCH_COLOR_SCHEME } from '../theory/Pitch.constants';
@@ -14,40 +15,40 @@ export interface IColorScheme {
 	id: ColorScheme;
 	name: string;
 	defaultConfig: string[]
-	fn: (note?: Note, config?: string[]) => string | false;
+	fn: (note?: Note, interval?: IntervalSpan, config?: string[]) => string | false;
 	labelFn: (index: number) => string;
 }
 
 const RED = '#FF0000';
-const BLACK = '#666';
+const BLACK = '#666666';
 
 export const COLOR_SCHEMES: IColorScheme[] = [
 	{
 		id: ColorScheme.Monochrome,
 		name: 'Monochrome',
 		defaultConfig: [BLACK],
-		fn: (note, config = [BLACK]) => note ? config[0] : false,
+		fn: (note, interval, config = [BLACK]) => note ? config[0] : false,
 		labelFn: (index) => '*'
 	},
 	{
 		id: ColorScheme.HighlightRoot,
 		name: 'Highlight Root',
 		defaultConfig: [RED, BLACK],
-		fn: (note, config = [RED, BLACK]) => note ? (note.getDegree() === 0 ? config[0] : config[1]) : false,
+		fn: (note, interval, config = [RED, BLACK]) => interval ? (interval.getDegree() === 0 ? config[0] : config[1]) : false,
 		labelFn: (index) => index === 0 ? 'R' : '*'
 	},
 	{
 		id: ColorScheme.Degree,
 		name: 'Interval Degree',
 		defaultConfig: DEFAULT_DEGREE_COLOR_SCHEME,
-		fn: (note, config = DEFAULT_DEGREE_COLOR_SCHEME) => note ? config[note.getDegree() || 0] : false,
+		fn: (note, interval, config = DEFAULT_DEGREE_COLOR_SCHEME) => interval ? config[interval.getDegree() || 0] : false,
 		labelFn: (index) => index + 1 + ''
 	},
 	{
 		id: ColorScheme.PitchClass,
 		name: 'Pitch Class',
 		defaultConfig: DEFAULT_PITCH_COLOR_SCHEME,
-		fn: (note, config = DEFAULT_PITCH_COLOR_SCHEME) => note ? config[note.getPitchClass() || 0] : false,
+		fn: (note, interval, config = DEFAULT_PITCH_COLOR_SCHEME) => note ? config[note.getPitchClass() || 0] : false,
 		labelFn: (index) => index + ''
 	}
 ];
