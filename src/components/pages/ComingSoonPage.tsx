@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { FEEDBACK_LINK } from "../../config/constants";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
@@ -60,12 +61,7 @@ const IndexPage: React.FC<any> = () => {
                             <td>8/5/22</td>
                             <td>
                                 <ul>
-                                    <li>New home page</li>
-                                    <li>Customizable note labels</li>
-                                    <li>Customizable note colors</li>
-                                    <li>Better extended chords experience</li>
-                                    <li>Feedback / feature request form</li>
-                                    <li>Basic documentation</li>
+                                    <li>Final bug fixes and audits</li>
                                 </ul>
                             </td>
                         </tr>
@@ -108,7 +104,7 @@ const IndexPage: React.FC<any> = () => {
                 </table>
             </Card>
             <Card title="Request A Feature">
-                <p>A form for submitting feature requests, bugs, and general feedback will be provided soon.</p>
+                <p><a target="_blank" href={FEEDBACK_LINK}>Use this form</a> to submit a feature request or provide feedback.</p>
             </Card>
         </StyledComingSoonPage>
     );

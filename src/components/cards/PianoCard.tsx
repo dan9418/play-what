@@ -4,9 +4,13 @@ import styled from 'styled-components';
 import Keyboard from "../../viewers/keyboard/Keyboard";
 import DEFAULT_KEYBOARD_PROPS from "../../viewers/keyboard/Keyboard.defaults";
 import Card from "../ui/Card";
+import Icon from "../ui/Icon";
 
 const StyledPianoCard = styled.div`
-   
+    .customize {
+        display: flex;
+        align-items: center;
+    }
 `;
 
 
@@ -21,7 +25,7 @@ const PianoCard: React.FC<any> = ({ model }) => {
     });
 
     return (
-        <Card title="Keyboard" action={<Link to={`/view/keyboard?${qp.toString()}`}>Edit</Link>}>
+        <Card title="Keyboard" action={<Link to={`/view/keyboard?${qp.toString()}`}>Customize <Icon iconId="next" size={8} /></Link>}>
             <StyledPianoCard>
                 <Keyboard
                     keyRange={DEFAULT_KEYBOARD_PROPS.keyRange as [number, number]}

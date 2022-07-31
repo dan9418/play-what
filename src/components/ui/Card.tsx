@@ -11,6 +11,7 @@ export const StyledCard = styled.div`
         margin-bottom: 16px;
         display: flex;
         align-items: center;
+        gap: 8px;
         justify-content: space-between;
     }
 `;

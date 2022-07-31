@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import styled from 'styled-components';
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
 import { isEditingKeyState, octaveState } from "../../state/state";
+import THEME from "../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";
 import RootInput from "../inputs/RootInput";
 import Card from "../ui/Card";
@@ -18,6 +19,13 @@ const StyledRoot = styled.div`
     }
     .rootless {
         margin: 8px 0 16px;
+    }
+    .remove {
+        margin-top: 24px;
+        margin-left: auto;
+        display: block;
+        font-size: 80%;
+        color: red; //${THEME.status.negative};
     }
 `;
 
@@ -44,14 +52,14 @@ const RootCard: React.FC<any> = () => {
     );
 
     const remove = root ? (
-        <ButtonInput isLink onClick={onClear}>
-            Remove
+        <ButtonInput isLink onClick={onClear} className="remove">
+            Remove Root
         </ButtonInput>
     ) : null;
 
     return (
-        <Card title="Root" action={root && toggle}>
-            <StyledRoot>
+        <Card title="Root" action={root && toggle} css={root ? `color: ${THEME.text.primary};` : `background-color: ${THEME.status.highlight}; border: 1px solid ${THEME.status.warning}; color: ${THEME.text.primary};`}>
+            <StyledRoot $isRootless={!root}>
                 {!root && (
                     <div className="rootless">
                         <b>This {modelType} does not have a root.</b>
@@ -62,6 +70,8 @@ const RootCard: React.FC<any> = () => {
                 {(isEditing || !root) && (
                     <RootInput />
                 )}
+
+                {isEditing && remove}
 
                 {(!isEditing && root) && (
                     <div className="preview">

@@ -64,7 +64,7 @@ const RootInput: React.FC<any> = () => {
 
     return (
         <StyledRootInput>
-            <InputRow label="Spelling" y>
+            <InputRow label={root ? "Spelling" : undefined} y>
                 <div className="spelling">
                     <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`} >{NOTE_PRESET_MAP.get(NoteId.C).name}</Link>
                     <Link activeClassName="active" to={`${basePath}root/${NoteId.D}`} >{NOTE_PRESET_MAP.get(NoteId.D).name}</Link>

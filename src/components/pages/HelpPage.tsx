@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import { FEEDBACK_LINK } from "../../config/constants";
 import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
@@ -129,7 +130,7 @@ const HelpPage: React.FC<any> = props => {
                         </li>
                         <li>
                             <div className="q">Where can I submit feedback? Report bugs? Request features?</div>
-                            <div className="ans">A feedback form will be provided soon.</div>
+                            <div className="ans"><a target="_blank" href={FEEDBACK_LINK}>Use this form</a>.</div>
                         </li>
                         <li>
                             <div className="q">Where can I find more information about Play What and the author?</div>

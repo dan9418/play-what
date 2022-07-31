@@ -3,9 +3,13 @@ import React from "react";
 import styled from 'styled-components';
 import Fretboard from "../../viewers/fretboard/Fretboard";
 import Card from "../ui/Card";
+import Icon from "../ui/Icon";
 
 const StyledGuitarCard = styled.div`
-
+    .customize {
+        display: flex;
+        align-items: center;
+    }
 `;
 
 
@@ -20,7 +24,7 @@ const GuitarCard: React.FC<any> = ({ model }) => {
     });
 
     return (
-        <Card title="Fretboard" action={<Link to={`/view/fretboard?${qp.toString()}`}>Edit</Link>}>
+        <Card title="Fretboard" action={<Link className="customize" to={`/view/fretboard?${qp.toString()}`}>Customize <Icon iconId="next" size={8} /></Link>}>
             <StyledGuitarCard>
                 <Fretboard
                     model={model}
