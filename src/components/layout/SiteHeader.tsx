@@ -55,9 +55,16 @@ const StyledSiteHeader = styled.div`
 	}
 
 	.logo {
-		font-size: 24px;
-		letter-spacing: 4px;
+		font-size: 18px;
 		font-weight: bold;
+		letter-spacing: 2px;
+		@media(min-width: 512px) {
+			font-size: 20px;
+			letter-spacing: 4px;
+		}
+		@media(min-width: 1024px) {
+			font-size: 24px;
+		}
 	}
 
 	.night-mode {
@@ -73,6 +80,15 @@ const StyledSiteHeader = styled.div`
 	.right {
 		margin-right: 16px;
 		gap: 8px;
+
+		a {
+			display: none;
+		}
+		@media(min-width: 512px) {
+			a {
+				display: flex;
+			}
+		}
 	}
 
 	.search, .menu {
@@ -80,6 +96,10 @@ const StyledSiteHeader = styled.div`
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	.search {
+		width: 32px;
 	}
 `;
 
@@ -112,13 +132,13 @@ const SiteHeader: React.FC = () => {
 						}
 					</div>
 					<div className="right">
-						<Link to="/search" className="search">
-							<Icon iconId='search' />
-						</Link>
-						<Link to="/help" className="search">
+						<Link to="/help" className="search" title='Help'>
 							<Icon iconId='help' />
 						</Link>
-						<Link to="/search" className="search">
+						<Link to="/about" className="search" title='About'>
+							<Icon iconId='info' />
+						</Link>
+						<Link to="/search" className="search" title='Search'>
 							<Icon iconId='search' />
 						</Link>
 						<div className="night-mode">
