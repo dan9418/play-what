@@ -106,12 +106,12 @@ const KeyboardPage: React.FC = () => {
                             content: <DetailsCol {...notesColProps} />
                         },
                         {
-                            text: 'Instrument',
-                            content: <KeyboardCol {...instrumentColProps} />
-                        },
-                        {
                             text: 'Notes',
                             content: <NotesCol {...notesColProps} />
+                        },
+                        {
+                            text: 'Instrument',
+                            content: <KeyboardCol {...instrumentColProps} />
                         }
                     ]}
                 />

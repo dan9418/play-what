@@ -115,6 +115,12 @@ const SiteHeader: React.FC = () => {
 						<Link to="/search" className="search">
 							<Icon iconId='search' />
 						</Link>
+						<Link to="/help" className="search">
+							<Icon iconId='help' />
+						</Link>
+						<Link to="/search" className="search">
+							<Icon iconId='search' />
+						</Link>
 						<div className="night-mode">
 							<SwitchInput value={isNightMode} setValue={onThemeToggle} />
 						</div>

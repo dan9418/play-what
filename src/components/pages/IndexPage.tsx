@@ -240,7 +240,7 @@ const IndexPage: React.FC<any> = () => {
 					<h3>Explore Music Theory</h3>
 					<div>
 						<div className="txt">
-							<p>Browse chords and scales in detail. Explore their relationships.</p>
+							<p>Browse an extensive library of chords and scales. Explore their relationships and physical properties in detail.</p>
 							<Link to="/browse/chords">Chords</Link>
 							<Link to="/browse/scales">Scales</Link>
 						</div>
@@ -250,7 +250,7 @@ const IndexPage: React.FC<any> = () => {
 					<h3>Customize Instruments</h3>
 					<div>
 						<div className="txt">
-							<p>Play What currently supports two instrument types.</p>
+							<p>Play What currently supports two instrument types. Both can be customized to suit your needs.</p>
 							<Link to="/view/fretboard">Fretboard</Link>
 							<Link to="/view/keyboard">Keyboard</Link>
 						</div>

@@ -51,7 +51,6 @@ const IndexPage: React.FC<any> = () => {
                             <th>Release</th>
                             <th>Version</th>
                             <th>Date</th>
-                            <th>Features</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,27 +58,24 @@ const IndexPage: React.FC<any> = () => {
                             <td>Public User Beta</td>
                             <td>0.1.0</td>
                             <td>8/5/22</td>
-                            <td>
-                                <ul>
-                                    <li>Final bug fixes and audits</li>
-                                </ul>
-                            </td>
                         </tr>
                         <tr>
                             <td>Official Launch</td>
                             <td>1.0.0</td>
                             <td>2023</td>
-                            <td>
+                        </tr>
+                        <tr>
+                            <td colSpan={3}>
                                 <ul>
-                                    <li>Finalized Name</li>
-                                    <li>Fresh Logo</li>
-                                    <li>Sharing Features</li>
-                                    <li>Chord Progressions</li>
+                                    <li>Possible name change</li>
+                                    <li>Fresh logo</li>
+                                    <li>Sharing features</li>
+                                    <li>Chord progressions</li>
                                     <li>Cadences</li>
                                     <li>More tunings/voicings</li>
-                                    <li>Open Source License</li>
-                                    <li>Code Documentation</li>
-                                    <li>Bug Fixes</li>
+                                    <li>Open source license</li>
+                                    <li>Technical documentation</li>
+                                    <li>Bug fixes</li>
                                 </ul>
                             </td>
                         </tr>
@@ -87,15 +83,17 @@ const IndexPage: React.FC<any> = () => {
                             <td>Future Versions</td>
                             <td>X.0.0</td>
                             <td>TBD</td>
-                            <td>
+                        </tr>
+                        <tr>
+                            <td colSpan={3}>
                                 <ul>
-                                    <li>Build-Your-Own Practice Materials</li>
-                                    <li>Grand Staff Viewer</li>
-                                    <li>Chord Inversions</li>
-                                    <li>Rhythm Features</li>
-                                    <li>Sound Features</li>
-                                    <li>Ear Training</li>
-                                    <li>User Accounts</li>
+                                    <li>Build-your-own practice materials</li>
+                                    <li>Grand staff viewer</li>
+                                    <li>Chord inversions</li>
+                                    <li>Rhythm support</li>
+                                    <li>Sound support</li>
+                                    <li>Ear training</li>
+                                    <li>User accounts</li>
                                     <li>...and more!</li>
                                 </ul>
                             </td>
@@ -106,7 +104,7 @@ const IndexPage: React.FC<any> = () => {
             <Card title="Request A Feature">
                 <p><a target="_blank" href={FEEDBACK_LINK}>Use this form</a> to submit a feature request or provide feedback.</p>
             </Card>
-        </StyledComingSoonPage>
+        </StyledComingSoonPage >
     );
 };
 
