@@ -53,6 +53,13 @@ const StyledSiteFooter = styled.footer`
 			flex-direction: row;
 		}
 	}
+
+	.version {
+		margin: 32px 0;
+		font-size: 80%;
+		text-align: center;
+		letter-spacing: 2px;
+	}
 `;
 
 const SiteFooter: React.FC = () => {
@@ -118,6 +125,8 @@ const SiteFooter: React.FC = () => {
 			<a href="https://danbednarczyk.com" className="name">
 				2022 Dan Bednarczyk
 			</a>
+
+			<div className='version'>v0.1.0</div>
 		</StyledSiteFooter>
 	);
 };
