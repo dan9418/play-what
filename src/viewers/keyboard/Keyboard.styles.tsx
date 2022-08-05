@@ -44,7 +44,7 @@ const StyledKeyboard = styled.div`
     }*/
 
     .black-key {
-        box-shadow: 0 0 1px 2px #555 inset;
+        box-shadow: 0 0 1px 2px #333 inset;
         z-index: 10;
         border-radius: 0 0 10% 10%;
     }

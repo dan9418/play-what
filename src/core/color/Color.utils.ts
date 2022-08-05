@@ -19,8 +19,8 @@ export interface IColorScheme {
 	labelFn: (index: number) => string;
 }
 
-const RED = '#FF0000';
-const BLACK = '#666666';
+const RED = '#dd1122';
+const BLACK = '#6b6b7b';
 
 export const COLOR_SCHEMES: IColorScheme[] = [
 	{
