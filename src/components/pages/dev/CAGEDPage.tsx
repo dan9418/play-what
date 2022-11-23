@@ -18,21 +18,23 @@ const StyledCAGEDPage = styled(StyledPageBody)`
     max-width: 100%;
     margin: auto;
     
+    .scroll {
+        overflow-x: auto;
+    }
+
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
         table {
-            width: 100%;
-
             td {
-                width: 33%;
-                padding: 0 2px;
+                width: 256px;
+                padding: 0 4px;
             }
         }
     }
 `;
 
 const CAGEDPage: React.FC<any> = () => {
-    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.Fs));
+    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.A));
 
     const root = new Note(rootPreset.value);
     const scale = new Scale(ScaleId.Ionian, { root });
@@ -161,11 +163,17 @@ const CAGEDPage: React.FC<any> = () => {
     ];
 
     const display = [
-        [pentatonicItems[0], diatonicItems[0], romanNumeralItems[0]],
-        [pentatonicItems[1], diatonicItems[1], romanNumeralItems[1]],
-        [pentatonicItems[2], diatonicItems[2], romanNumeralItems[2]],
-        [pentatonicItems[3], diatonicItems[4], romanNumeralItems[4]],
-        [pentatonicItems[4], diatonicItems[5], romanNumeralItems[5]],
+        [pentatonicItems[4],    pentatonicItems[0],    pentatonicItems[1],     pentatonicItems[2],     pentatonicItems[3],     ],
+        [diatonicItems[5],      diatonicItems[0],      diatonicItems[1],       diatonicItems[2],       diatonicItems[4],       ],
+        [romanNumeralItems[5],  romanNumeralItems[0],  romanNumeralItems[1],   romanNumeralItems[2],   romanNumeralItems[4],   ]
+    ]
+
+    const FRET_RANGE = [
+        [1, 5],
+        [4, 7 +1],
+        [6, 10],
+        [9, 12 + 1],
+        [11, 14 + 1]
     ]
 
     return (
@@ -177,32 +185,36 @@ const CAGEDPage: React.FC<any> = () => {
                 }} />
             </InputRow>
             <Card title="Pentatonic Modes | Diatonic Modes | 7th Chords" >
-                <table>
-                    <thead>
-                    </thead>
-                    <tbody>
-                        {display.map((item, i) => {
-                            return (
-                                <tr key={i}>
-                                    {item.map(item => {
-                                        const { model, modelId, rootId, voicingId } = item as any;
-                                        const instance = new model(modelId, { root: Note.fromId(rootId) });
-                                        return (
-                                            <td key={modelId}>
-                                                <h3>{modelId}</h3>
-                                                <Fretboard
-                                                    model={instance}
-                                                    voicing={VOICING_PRESET_MAP.get(voicingId)}
-                                                    fretRange={[1, 14]}
-                                                />
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <div className="scroll">
+                    <table>
+                        <thead>
+                        </thead>
+                        <tbody>
+                            {display.map((item, i) => {
+                                return (
+                                    <tr key={i}>
+                                        {item.map((item, j) => {
+                                            const { model, modelId, rootId, voicingId } = item as any;
+                                            const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                            return (
+                                                <td key={modelId}>
+                                                    <h3>{modelId}</h3>
+                                                    <Fretboard
+                                                        model={instance}
+                                                        voicing={VOICING_PRESET_MAP.get(voicingId)}
+                                                        fretRange={FRET_RANGE[j]}
+                                                        showFretNumbers={false}
+                                                        showFretDots={false}
+                                                    />
+                                                </td>
+                                            );
+                                        })}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
             </Card>
         </StyledCAGEDPage>
     );
