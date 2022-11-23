@@ -30,19 +30,7 @@ const DevPage: React.FC<any> = () => {
             <Card title="Experimental Features" >
                 <ul>
                     <li>
-                        <Link to='/dev/experimental/charts'>Chord Charts</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/voicings'>Chord Voicings</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/chord-progressions'>Chord Progressions</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/caged'>CAGED Shapes</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/extensions'>Extensions</Link>
+                        <Link to='/dev/notebook'>Notebook</Link>
                     </li>
                     <li>
                         <Link to='/dev/experimental/theme'>Edit Theme</Link>
