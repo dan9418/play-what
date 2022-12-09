@@ -10,6 +10,7 @@ import { LINK_PREFIX, LISTS } from "./notebook.data";
 const StyledNotebookPage = styled(StyledPageBody)`
     ${StyledCard} {
         margin-top: 16px;
+        font-size: 120%;
     }
 `;
 
@@ -17,9 +18,7 @@ const NotebookPage: React.FC = () => {
     return (
         <StyledNotebookPage>
             <PageTitle title="Music Notebook" subtitle="A work in progress" />
-            <Card title="Pages" >
-                <List lists={LISTS} prefix={LINK_PREFIX} />
-            </Card>
+            <List lists={LISTS} prefix={LINK_PREFIX} level={2} />
         </StyledNotebookPage >
     );
 };

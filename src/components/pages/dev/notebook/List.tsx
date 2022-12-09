@@ -1,6 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import PageTitle from "../../../layout/PageTitle";
+import Card from "../../../ui/Card";
 
 export interface IListItem {
     text: string;
@@ -15,6 +17,9 @@ export interface IList {
 }
 
 const StyledList = styled.section`
+    li {
+        margin-left: 8px;
+    }
     li:not(:first-child) {
         margin-top: 4px;
     }
@@ -27,13 +32,24 @@ const StyledList = styled.section`
     }
 `;
 
-export const List: React.FC<IList & { level?: number, prefix?: string }> = ({ title, subtitle, items, lists, level = 1, prefix = '' }) => {
+const Heading: React.FC<any> = ({ title, subtitle, level }) => {
     const Title = `h${level}` as any;
     const Subtitle = `h${level + 1}` as any;
     return (
-        <StyledList>
+        <>
             {title && <Title>{title}</Title>}
             {subtitle && <Subtitle>{subtitle}</Subtitle>}
+        </>
+    )
+}
+
+export const List: React.FC<IList & { level?: number, prefix?: string }> = ({ title, subtitle, items, lists, level = 1, prefix = '' }) => {
+
+    //const HeadTag = level === 1 ? PageTitle : level === 2 ? Card : Heading
+
+    return (
+        <StyledList>
+            <Heading title={title} subtitle={subtitle} level={level} />
             <ul>
                 {items && items.length > 0 && (
                     items.map(({ text, link }) => (
