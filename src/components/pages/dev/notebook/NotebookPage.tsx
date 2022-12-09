@@ -3,7 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import { StyledPageBody } from "../../../layout/PageBody";
 import PageTitle from "../../../layout/PageTitle";
-import Card, { StyledCard } from "../../../ui/Card";
+import Card, { CardHeader, StyledCard } from "../../../ui/Card";
 
 const StyledNotebookPage = styled(StyledPageBody)`
     ${StyledCard} {
@@ -20,6 +20,7 @@ const NotebookPage: React.FC<any> = () => {
         <StyledNotebookPage>
             <PageTitle title="Music Notebook" subtitle="A work in progress" />
             <Card title="Pages" >
+                <CardHeader as="h3" title="Intervals" />
                 <ul>
                     <li>
                         <Link to='/charts'>Chord Charts</Link>
