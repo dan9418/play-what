@@ -43,7 +43,7 @@ export const LISTS = [
                 items: [
                     {
                         text: 'Common Voicings From E-A-D Roots',
-                        link: '/voicings/common-voicings-from-e-a-d-roots'
+                        link: '/chords/voicings/common-voicings-from-e-a-d-roots'
                     },
                     {
                         text: 'Chord inversions'
