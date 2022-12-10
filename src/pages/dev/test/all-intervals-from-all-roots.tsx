@@ -1,3 +1,3 @@
-import AllIntervalsFromAllRootsPage from "../../../components/pages/dev/AllIntervalsFromAllRootsPage";
+import { Page } from "../../../components/pages/dev/test/all-intervals-from-all-roots.page";
 
-export default AllIntervalsFromAllRootsPage;
+export default Page;

@@ -1,3 +1,3 @@
-import ExtensionsPage from "../../../../../components/pages/dev/ExtensionsPage";
+import { Page } from "../../../../../components/pages/dev/notebook/intervals/basic/intervals-table.page";
 
-export default ExtensionsPage;
+export default Page;

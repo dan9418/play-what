@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import ArrayUtils from "../../../core/general/Array.utils";
-import Chord from "../../../core/models/Chord";
-import { ChordId, NoteId, ScaleId } from "../../../core/models/Model.constants";
-import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
-import Note from "../../../core/models/Note";
-import Scale from "../../../core/models/Scale";
-import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { IFretProps } from "../../../viewers/fretboard/Fretboard.utils";
-import { VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
-import DropdownInput from "../../inputs/DropdownInput";
-import { StyledPageBody } from "../../layout/PageBody";
-import PageTitle from "../../layout/PageTitle";
-import Card, { StyledCard } from "../../ui/Card";
-import InputRow, { StyledInputRow } from "../../ui/InputRow";
+import ArrayUtils from "../../../../../core/general/Array.utils";
+import Chord from "../../../../../core/models/Chord";
+import { ChordId, NoteId, ScaleId } from "../../../../../core/models/Model.constants";
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../core/models/Model.presets";
+import Note from "../../../../../core/models/Note";
+import Scale from "../../../../../core/models/Scale";
+import Fretboard from "../../../../../viewers/fretboard/Fretboard";
+import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
+import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
+import DropdownInput from "../../../../inputs/DropdownInput";
+import { StyledPageBody } from "../../../../layout/PageBody";
+import PageTitle from "../../../../layout/PageTitle";
+import Card, { StyledCard } from "../../../../ui/Card";
+import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
 const StyledCAGEDPage = styled(StyledPageBody)`
 	    
@@ -30,7 +30,7 @@ const StyledCAGEDPage = styled(StyledPageBody)`
     }
 `;
 
-const CAGEDPage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
     const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
 
     const root = new Note(rootPreset.value);
@@ -202,5 +202,3 @@ const CAGEDPage: React.FC<any> = () => {
         </StyledCAGEDPage>
     );
 };
-
-export default CAGEDPage;

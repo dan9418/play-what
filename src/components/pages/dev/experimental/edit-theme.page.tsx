@@ -1,13 +1,13 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled, { useTheme } from 'styled-components';
-import { themeState } from "../../../state/state";
-import THEME, { DARK_THEME } from "../../../styles/theme";
-import { useSetTheme } from "../../../styles/ThemeManager";
-import ButtonInput from "../../inputs/ButtonInput";
-import { StyledPageBody } from "../../layout/PageBody";
-import PageTitle from "../../layout/PageTitle";
-import Card, { StyledCard } from "../../ui/Card";
+import { themeState } from "../../../../state/state";
+import THEME, { DARK_THEME } from "../../../../styles/theme";
+import { useSetTheme } from "../../../../styles/ThemeManager";
+import ButtonInput from "../../../inputs/ButtonInput";
+import { StyledPageBody } from "../../../layout/PageBody";
+import PageTitle from "../../../layout/PageTitle";
+import Card, { StyledCard } from "../../../ui/Card";
 
 const StyledThemePage = styled(StyledPageBody)`
     max-width: 1024px;
@@ -102,7 +102,7 @@ const SwatchSelector: React.FC<any> = ({ type, attr, title }) => {
     );
 }
 
-const ThemePage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
     const setTheme = useSetRecoilState(themeState);
     return (
         <StyledThemePage>
@@ -178,5 +178,3 @@ const ThemePage: React.FC<any> = () => {
         </StyledThemePage>
     );
 };
-
-export default ThemePage;

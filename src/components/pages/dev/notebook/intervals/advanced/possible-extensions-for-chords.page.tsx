@@ -1,8 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
-import { StyledPageBody } from "../../layout/PageBody";
-import PageTitle from "../../layout/PageTitle";
-import Card, { StyledCard } from "../../ui/Card";
+import { StyledPageBody } from "../../../../../layout/PageBody";
+import PageTitle from "../../../../../layout/PageTitle";
+import Card, { StyledCard } from "../../../../../ui/Card";
 
 const StyledExtensionsPage = styled(StyledPageBody)`
 
@@ -27,7 +27,7 @@ const StyledExtensionsPage = styled(StyledPageBody)`
     }
 `;
 
-const ExtensionsPage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
     return (
         <StyledExtensionsPage>
             <PageTitle title="Extended Intervals" />
@@ -126,5 +126,3 @@ const ExtensionsPage: React.FC<any> = () => {
         </StyledExtensionsPage>
     )
 };
-
-export default ExtensionsPage;

@@ -10,7 +10,8 @@ export const LISTS = [
                 title: 'Basics',
                 items: [
                     {
-                        text: 'Table of intervals and # semitones'
+                        text: 'Table of intervals and # semitones',
+                        link: '/intervals/basic/intervals-table'
                     },
                     {
                         text: 'Table of intervals from fret positions'

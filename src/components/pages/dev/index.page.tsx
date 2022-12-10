@@ -16,7 +16,7 @@ const StyledDevPage = styled(StyledPageBody)`
     }
 `;
 
-const DevPage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
     return (
         <StyledDevPage>
             <PageTitle title="Developer Panel" subtitle="Advanced Users Only" />
@@ -40,5 +40,3 @@ const DevPage: React.FC<any> = () => {
         </StyledDevPage >
     )
 };
-
-export default DevPage;

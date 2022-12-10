@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import styled from 'styled-components';
-import Chord from "../../../core/models/Chord";
-import { ChordId, NoteId } from "../../../core/models/Model.constants";
-import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
-import Note from "../../../core/models/Note";
-import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { VoicingId, VOICING_PRESET_MAP } from "../../../viewers/fretboard/Fretboard.voicing";
-import DropdownInput from "../../inputs/DropdownInput";
-import { StyledPageBody } from "../../layout/PageBody";
-import PageTitle from "../../layout/PageTitle";
-import Card, { StyledCard } from "../../ui/Card";
-import InputRow, { StyledInputRow } from "../../ui/InputRow";
+import Chord from "../../../../../../core/models/Chord";
+import { ChordId, NoteId } from "../../../../../../core/models/Model.constants";
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../../core/models/Model.presets";
+import Note from "../../../../../../core/models/Note";
+import Fretboard from "../../../../../../viewers/fretboard/Fretboard";
+import { VoicingId, VOICING_PRESET_MAP } from "../../../../../../viewers/fretboard/Fretboard.voicing";
+import DropdownInput from "../../../../../inputs/DropdownInput";
+import { StyledPageBody } from "../../../../../layout/PageBody";
+import PageTitle from "../../../../../layout/PageTitle";
+import Card, { StyledCard } from "../../../../../ui/Card";
+import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
 const StyledVoicingsPage = styled(StyledPageBody)`
     max-width: 1920px;
@@ -95,7 +95,7 @@ const CHORDS = [
     }
 ];
 
-const VoicingsPage: React.FC = () => {
+export const Page: React.FC = () => {
     const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
 
     const root = new Note(rootPreset.value);
@@ -150,5 +150,3 @@ const VoicingsPage: React.FC = () => {
         </StyledVoicingsPage>
     );
 };
-
-export default VoicingsPage;

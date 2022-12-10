@@ -1,3 +1,3 @@
-import CAGEDPage from "../../../../components/pages/dev/CAGEDPage";
+import { Page } from "../../../../components/pages/dev/notebook/caged/chords-and-scales-within-shapes.page";
 
-export default CAGEDPage;
+export default Page;

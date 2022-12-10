@@ -1,3 +1,3 @@
-import NotebookPage from "../../../components/pages/dev/notebook/NotebookPage";
+import { Page } from "../../../components/pages/dev/notebook/index.page";
 
-export default NotebookPage;
+export default Page;

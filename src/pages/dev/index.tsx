@@ -1,3 +1,3 @@
-import DevPage from "../../components/pages/dev/DevPage";
+import { Page } from "../../components/pages/dev/index.page";
 
-export default DevPage;
+export default Page;

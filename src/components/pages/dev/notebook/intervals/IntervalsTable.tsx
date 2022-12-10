@@ -1,8 +1,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
-import { IntervalId } from '../../../../core/models/Model.constants';
-import { INTERVAL_PRESET_MAP } from '../../../../core/models/Model.presets';
+import { IntervalId } from '../../../../../core/models/Model.constants';
+import { INTERVAL_PRESET_MAP } from '../../../../../core/models/Model.presets';
 
 const StyledIntervalTable = styled.table`
     width: 100%;
@@ -28,6 +28,7 @@ const StyledIntervalTable = styled.table`
 
     td, th {
         padding: 8px;
+        border: 1px solid black;
     }
 
     button {
@@ -62,7 +63,7 @@ const StyledIntervalTable = styled.table`
 
 const IntervalButton: React.FC<any> = ({ preset, setIntervals, intervals }) => {
     return (
-        <button type="button" className="" onClick={null}>{preset.id}</button>
+        <button type="button" className="" onClick={() => null}>{preset.modelId}</button>
     );
 }
 

@@ -1,3 +1,3 @@
-import ExtensionsPage from "../../../../../components/pages/dev/ExtensionsPage";
+import { Page } from "../../../../../components/pages/dev/notebook/intervals/advanced/possible-extensions-for-chords.page";
 
-export default ExtensionsPage;
+export default Page;

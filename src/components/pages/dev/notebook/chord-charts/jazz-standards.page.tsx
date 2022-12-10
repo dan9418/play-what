@@ -1,15 +1,15 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from 'styled-components';
-import { CHART_PRESETS, getParsedChart } from "../../../core/models/Chart.constants";
-import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../core/models/Model.presets";
-import Note from "../../../core/models/Note";
-import { addPods, reducePod, subtractPods } from "../../../core/models/Pod.static";
-import DropdownInput from "../../inputs/DropdownInput";
-import { StyledPageBody } from "../../layout/PageBody";
-import PageTitle from "../../layout/PageTitle";
-import Card, { StyledCard } from "../../ui/Card";
-import InputRow, { StyledInputRow } from "../../ui/InputRow";
+import { CHART_PRESETS, getParsedChart } from "../../../../../core/models/Chart.constants";
+import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../core/models/Model.presets";
+import Note from "../../../../../core/models/Note";
+import { addPods, reducePod, subtractPods } from "../../../../../core/models/Pod.static";
+import DropdownInput from "../../../../inputs/DropdownInput";
+import { StyledPageBody } from "../../../../layout/PageBody";
+import PageTitle from "../../../../layout/PageTitle";
+import Card, { StyledCard } from "../../../../ui/Card";
+import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
 const StyledPracticePage = styled(StyledPageBody)`
 	width: 100%;
@@ -92,7 +92,7 @@ const StyledPracticePage = styled(StyledPageBody)`
     }
 `;
 
-const PracticePage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
     const [chartPreset, setChartPreset] = useState(CHART_PRESETS[0]);
     const [keyCenter, setKeyCenter] = useState(CHART_PRESETS[0].value.keyCenter);
 
@@ -160,5 +160,3 @@ const PracticePage: React.FC<any> = () => {
         </StyledPracticePage>
     );
 };
-
-export default PracticePage;

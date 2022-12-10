@@ -14,7 +14,7 @@ const StyledNotebookPage = styled(StyledPageBody)`
     }
 `;
 
-const NotebookPage: React.FC = () => {
+export const Page : React.FC = () => {
     return (
         <StyledNotebookPage>
             <PageTitle title="Music Notebook" subtitle="A work in progress" />
@@ -24,5 +24,3 @@ const NotebookPage: React.FC = () => {
         </StyledNotebookPage >
     );
 };
-
-export default NotebookPage;

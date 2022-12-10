@@ -1,3 +1,3 @@
-import ChartsPage from "../../../../components/pages/dev/ChartsPage";
+import { Page } from "../../../../components/pages/dev/notebook/chord-charts/jazz-standards.page";
 
-export default ChartsPage;
+export default Page;
