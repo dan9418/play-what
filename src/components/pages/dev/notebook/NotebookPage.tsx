@@ -18,7 +18,9 @@ const NotebookPage: React.FC = () => {
     return (
         <StyledNotebookPage>
             <PageTitle title="Music Notebook" subtitle="A work in progress" />
-            <List lists={LISTS} prefix={LINK_PREFIX} level={2} />
+            <Card title="Pages" >
+                <List lists={LISTS} prefix={LINK_PREFIX} level={1} />
+            </Card>
         </StyledNotebookPage >
     );
 };
