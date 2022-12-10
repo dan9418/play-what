@@ -24,11 +24,11 @@ export const LISTS = [
                 title: 'Advanced',
                 items: [
                     {
-                        text: 'Table of extended intervals vs standard intervals'
+                        text: 'Possible extensions for chords',
+                        link: '/intervals/advanced/possible-extensions-for-chords'
                     },
                     {
-                        text: 'Possible extensions in basic chords',
-                        link: '/extensions'
+                        text: 'Table of extended intervals vs standard intervals'
                     }
                 ]
             }
@@ -41,17 +41,11 @@ export const LISTS = [
                 title: 'Voicings',
                 items: [
                     {
+                        text: 'Common Voicings From E-A-D Roots',
+                        link: '/voicings/common-voicings-from-e-a-d-roots'
+                    },
+                    {
                         text: 'Chord inversions'
-                    },
-                    {
-                        text: 'Triad/seventh voicings from E/A/G/G roots'
-                    },
-                    {
-                        text: 'Shell voicings from E/A/D roots'
-                    },
-                    {
-                        text: 'Chord Voicings',
-                        link: '/voicings'
                     }
                 ]
             },
@@ -116,12 +110,12 @@ export const LISTS = [
         title: 'Chord Progressions',
         items: [
             {
-                text: 'List of common progressions with roman numerals',
-                link: ''
+                text: '2-5-1 On The Guitar',
+                link: '/chord-progressions/2-5-1-on-guitar'
             },
             {
-                text: 'Chord Progressions',
-                link: '/chord-progressions'
+                text: 'List of common progressions with roman numerals',
+                link: ''
             }
         ]
     },
@@ -129,19 +123,11 @@ export const LISTS = [
         title: 'The CAGED System',
         items: [
             {
-                text: 'CAGED Shapes',
-                link: '/caged'
-            },
-            {
-                text: '5 shapes',
-                link: ''
+                text: 'Chords and scales within shapes',
+                link: '/caged/chords-and-scales-within-shapes'
             },
             {
                 text: 'Links between shapes',
-                link: ''
-            },
-            {
-                text: 'Chords/scales within shapes',
                 link: ''
             }
         ]
@@ -151,7 +137,7 @@ export const LISTS = [
         items: [
             {
                 text: 'Jazz Standards',
-                link: '/charts'
+                link: '/chord-charts/jazz-standards'
             }
         ]
     }
