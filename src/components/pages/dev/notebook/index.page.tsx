@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { StyledPageBody } from "../../../layout/PageBody";
 import PageTitle from "../../../layout/PageTitle";
 import Card, { CardHeader, StyledCard } from "../../../ui/Card";
-import { List } from "./List";
+import { List } from "../../../ui/List";
 import { LINK_PREFIX, LISTS } from "./notebook.data";
 
 const StyledNotebookPage = styled(StyledPageBody)`

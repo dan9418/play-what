@@ -1,8 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import PageTitle from "../../../layout/PageTitle";
-import Card from "../../../ui/Card";
 
 export interface IListItem {
     text: string;

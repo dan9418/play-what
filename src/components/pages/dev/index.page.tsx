@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { StyledPageBody } from "../../layout/PageBody";
 import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
+import { List } from "../../ui/List";
 
 const StyledDevPage = styled(StyledPageBody)`
 	
@@ -20,22 +21,36 @@ export const Page: React.FC<any> = () => {
     return (
         <StyledDevPage>
             <PageTitle title="Developer Panel" subtitle="Advanced Users Only" />
-            <Card title="Tests" >
-                <ul>
-                    <li>
-                        <Link to='/dev/test/all-intervals-from-all-roots'>All Intervals From All Roots</Link>
-                    </li>
-                </ul>
-            </Card>
-            <Card title="Experimental Features" >
-                <ul>
-                    <li>
-                        <Link to='/dev/notebook'>Notebook</Link>
-                    </li>
-                    <li>
-                        <Link to='/dev/experimental/theme'>Edit Theme</Link>
-                    </li>
-                </ul>
+            <Card>
+                <List lists={[
+                    {
+                        title: 'Tests',
+                        items: [
+                            {
+                                text: 'All Intervals From All Roots',
+                                link: '/test/all-intervals-from-all-roots'
+                            }
+                        ]
+                    },
+                    {
+                        title: 'Experimental',
+                        items: [
+                            {
+                                text: 'Edit Theme',
+                                link: '/experimental/edit-theme'
+                            }
+                        ]
+                    }
+                ]}
+                    items={[
+                        {
+                            text: 'Notebook',
+                            link: '/notebook/'
+                        }
+                    ]}
+                    prefix="/dev"
+                    level={1}
+                />
             </Card>
         </StyledDevPage >
     )
