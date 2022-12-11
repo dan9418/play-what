@@ -1,3 +1,3 @@
-import ViewPage from "../../components/pages/view/ViewPage";
+import { Page } from "../../components/pages/view/ViewPage";
 
-export default ViewPage;
+export default Page;

@@ -34,7 +34,7 @@ const StyledFretboardPage = styled(PageLayout)`
     }
 `;
 
-const FretboardPage: React.FC = () => {
+export const Page: React.FC = () => {
 
     const [qpModelType, qpModelId, qpRootId] = useModelQueryParams();
     const modelState = useModelState(qpModelType, qpModelId, qpRootId);
@@ -145,5 +145,3 @@ const FretboardPage: React.FC = () => {
         </StyledFretboardPage >
     );
 };
-
-export default FretboardPage;

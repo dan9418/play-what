@@ -1,3 +1,3 @@
-import FretboardPage from "../../components/pages/view/FretboardPage";
+import { Page } from "../../components/pages/view/FretboardPage";
 
-export default FretboardPage;
+export default Page;

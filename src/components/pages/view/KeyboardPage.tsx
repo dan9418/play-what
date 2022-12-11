@@ -28,9 +28,7 @@ const StyledKeyboardPage = styled(PageLayout)`
     }
 `;
 
-
-
-const KeyboardPage: React.FC = () => {
+export const Page: React.FC = () => {
 
     const [qpModelType, qpModelId, qpRootId] = useModelQueryParams();
     const modelState = useModelState(qpModelType, qpModelId, qpRootId);
@@ -118,5 +116,3 @@ const KeyboardPage: React.FC = () => {
         </StyledKeyboardPage>
     );
 };
-
-export default KeyboardPage;

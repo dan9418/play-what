@@ -1,3 +1,3 @@
-import KeyboardPage from "../../components/pages/view/KeyboardPage";
+import { Page } from "../../components/pages/view/KeyboardPage";
 
-export default KeyboardPage;
+export default Page;
