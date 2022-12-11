@@ -2,15 +2,11 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
 import Card, { CardHeader, StyledCard } from "../ui/Card";
 
-const StyledHelpPage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
+const StyledHelpPage = styled(PageTitle)`
 
     ${StyledCard} {
         li {
@@ -48,11 +44,8 @@ const StyledHelpPage = styled(StyledPageBody)`
 
 
 const HelpPage: React.FC<any> = props => {
-
-
     return (
-        <StyledHelpPage>
-            <PageTitle title="Help" subtitle={null} />
+        <StyledHelpPage title="Help" >
             <StyledPane>
                 <Card title="Website Sections">
                     <p>

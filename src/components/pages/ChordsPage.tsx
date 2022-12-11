@@ -5,15 +5,12 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId } from "../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledChordsPage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
+const StyledChordsPage = styled(PageTitle)`
+
     
     .intro {
         padding: 0 16px;
@@ -35,8 +32,7 @@ const ChordsPage: React.FC<any> = props => {
     const rootSuffix = useRootSuffix();
 
     return (
-        <StyledChordsPage>
-            <PageTitle title="Chords" subtitle="The foundation of harmony" />
+        <StyledChordsPage title="Chords" subtitle="The foundation of harmony">
             <div>
                 <p className="intro">
                     A chord is a collection of musical notes, usually played simultaneously.

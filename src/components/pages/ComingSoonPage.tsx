@@ -1,13 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import Card, { StyledCard } from "../ui/Card";
 
-
-
-const StyledComingSoonPage = styled(StyledPageBody)`
+const StyledComingSoonPage = styled(PageTitle)`
     table {
         border-collapse: collapse;
         width: 100%;
@@ -40,10 +37,8 @@ const StyledComingSoonPage = styled(StyledPageBody)`
 `;
 
 const IndexPage: React.FC<any> = () => {
-
     return (
-        <StyledComingSoonPage>
-            <PageTitle title="Coming Soon" subtitle="Potential Features" />
+        <StyledComingSoonPage title="Coming Soon" subtitle="Potential Features">
             <Card title="Release Schedule">
                 <table>
                     <thead>

@@ -10,12 +10,11 @@ import Fretboard from "../../../../../viewers/fretboard/Fretboard";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../inputs/DropdownInput";
-import { StyledPageBody } from "../../../../layout/PageBody";
 import PageTitle from "../../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
-const StyledCAGEDPage = styled(StyledPageBody)`
+const StyledCAGEDPage = styled(PageTitle)`
 	    
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
@@ -94,8 +93,7 @@ export const Page: React.FC<any> = () => {
     };
 
     return (
-        <StyledCAGEDPage>
-            <PageTitle title="Chord Progressions" />
+        <StyledCAGEDPage title="Chord Progressions">
             <InputRow label="Root">
                 <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
                     setRootPreset(p);

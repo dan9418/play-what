@@ -16,7 +16,7 @@ import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledFretboardPage = styled.div`
+const StyledFretboardPage = styled(PageTitle)`
     min-height: 95vh;
     padding: 16px;
     .maximize {
@@ -113,14 +113,14 @@ const FretboardPage: React.FC = () => {
     };
 
     return (
-        <StyledFretboardPage>
-            <PageTitle title="Fretboard" subtitle={model.name}
-                action={
-                    <ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
-                        <Icon iconId="maximize" size={24} />
-                    </ButtonInput>
-                }
-            />
+        <StyledFretboardPage
+            title="Fretboard"
+            subtitle={model.name}
+            action={
+                <ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
+                    <Icon iconId="maximize" size={24} />
+                </ButtonInput>
+            }>
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
                 <div>
@@ -142,7 +142,7 @@ const FretboardPage: React.FC = () => {
                     />
                 </div>
             </ColumnManager>
-        </StyledFretboardPage>
+        </StyledFretboardPage >
     );
 };
 

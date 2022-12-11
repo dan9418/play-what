@@ -6,11 +6,7 @@ import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledAboutPage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
-
+const StyledAboutPage = styled(PageTitle)`
     p {
         margin: 16px 0;
     }
@@ -22,10 +18,8 @@ const StyledAboutPage = styled(StyledPageBody)`
 `;
 
 const AboutPage: React.FC = () => {
-
     return (
-        <StyledAboutPage>
-            <PageTitle title="About" />
+        <StyledAboutPage title="About" >
             <StyledPane>
                 <Card title="What Is Play What?">
                     <p>

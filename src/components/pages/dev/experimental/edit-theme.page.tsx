@@ -5,12 +5,10 @@ import { themeState } from "../../../../state/state";
 import THEME, { DARK_THEME } from "../../../../styles/theme";
 import { useSetTheme } from "../../../../styles/ThemeManager";
 import ButtonInput from "../../../inputs/ButtonInput";
-import { StyledPageBody } from "../../../layout/PageBody";
 import PageTitle from "../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../ui/Card";
 
-const StyledThemePage = styled(StyledPageBody)`
-    max-width: 1024px;
+const StyledThemePage = styled(PageTitle)`
     .grid {
         margin-top: 16px;
         display: grid;
@@ -105,8 +103,7 @@ const SwatchSelector: React.FC<any> = ({ type, attr, title }) => {
 export const Page: React.FC<any> = () => {
     const setTheme = useSetRecoilState(themeState);
     return (
-        <StyledThemePage>
-            <PageTitle title="Theme" />
+        <StyledThemePage title="Theme" >
             <Card title="Reset Theme">
                 <div className="theme-btns">
                     <ButtonInput onClick={() => setTheme(THEME)} >Light</ButtonInput>

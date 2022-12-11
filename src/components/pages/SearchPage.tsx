@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
-import { StyledCard } from "../ui/Card";
 import SearchBar from "../search/SearchBar";
 import SearchResultsCard from "../search/SearchResultsCard";
+import { StyledCard } from "../ui/Card";
 
-const StyledSearchPage = styled(StyledPageBody)`
+const StyledSearchPage = styled(PageTitle)`
     ${StyledCard} {
         max-width: 768px;
         margin: auto;
@@ -33,8 +32,7 @@ const SearchPage: React.FC<any> = () => {
     }, []);
 
     return (
-        <StyledSearchPage>
-            <PageTitle title="Search" />
+        <StyledSearchPage title="Search" >
             <SearchBar searchRef={searchRef} query={query} setQuery={setQuery} />
             <SearchResultsCard resultsRef={resultsRef} query={query} />
         </StyledSearchPage>

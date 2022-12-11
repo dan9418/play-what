@@ -7,12 +7,11 @@ import { TuningId, TUNING_PRESET_MAP } from "../../../viewers/fretboard/Fretboar
 import Keyboard from "../../../viewers/keyboard/Keyboard";
 import DEFAULT_KEYBOARD_PROPS from "../../../viewers/keyboard/Keyboard.defaults";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
-import { StyledPageBody } from "../../layout/PageBody";
 import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
 import { getNewModel } from "./NotesCol";
 
-const StyledViewPage = styled(StyledPageBody)`
+const StyledViewPage = styled(PageTitle)`
     ${StyledColumnManager} {
         margin-top: 16px;
     }
@@ -55,8 +54,7 @@ const COMMON_FRETBOARD_PROPS = {
 const ViewPage: React.FC<any> = () => {
 
     return (
-        <StyledViewPage>
-            <PageTitle title="Instruments" subtitle="Choose an instrument type" />
+        <StyledViewPage title="Instruments" subtitle="Choose an instrument type">
             <ColumnManager desktop={['1fr', '1fr']} >
                 <Link to='/view/fretboard/'>
                     <Card title="Fretboard">

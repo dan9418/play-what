@@ -1,18 +1,20 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import BreadcrumbList from '../breadcrumb-list/BreadcrumbList';
 import SEO from "../utils/SEO";
 
 const StyledPageTitle = styled.div`
     width: 100%;
+    max-width: 1024px;
+    margin: auto;
 
-    .header {
+    > .header {
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
         width: 100%;
         margin: auto;
-        padding-bottom: 8px;
+        padding: 0 8px 8px;
         @media(min-width: 512px) {
-            padding-bottom: 16px;
+            padding: 0 16px 16px;
         }
 
         > h1 {
@@ -42,23 +44,33 @@ const StyledPageTitle = styled.div`
     }
 `
 
-const PageTitle: React.FC<any> = ({ title, subtitle, action, children }) => {
-    return (
-        <>
-            <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
-            <BreadcrumbList />
-            <StyledPageTitle>
-                <div className="header">
-                    <h1>
-                        {title}
-                        {action && <div className='action'>{action}</div>}
-                    </h1>
-                    {subtitle && <h2>{subtitle}</h2>}
+interface IPageTitleProps extends PropsWithChildren<any> {
+    title: string;
+    subtitle?: string;
+    action?: any;
+    className?: string;
+    isHome?: boolean;
+}
 
-                </div>
-                {children}
-            </StyledPageTitle>
-        </>
+const PageTitle: React.FC<IPageTitleProps> = ({ title, subtitle, action, className, children, isHome }) => {
+    return (
+        <StyledPageTitle className={className}>
+            <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
+            {!isHome &&
+                <>
+                    <BreadcrumbList />
+                    <div className="header">
+                        <h1>
+                            {title}
+                            {action && <div className='action'>{action}</div>}
+                        </h1>
+                        {subtitle && <h2>{subtitle}</h2>}
+
+                    </div>
+                </>
+            }
+            {children}
+        </StyledPageTitle>
     );
 };
 

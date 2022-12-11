@@ -1,12 +1,10 @@
-import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { StyledPageBody } from "../../layout/PageBody";
 import PageTitle from "../../layout/PageTitle";
 import Card, { StyledCard } from "../../ui/Card";
 import { List } from "../../ui/List";
 
-const StyledDevPage = styled(StyledPageBody)`
+const StyledDevPage = styled(PageTitle)`
 	
     ${StyledCard} {
         margin-top: 16px;
@@ -19,8 +17,7 @@ const StyledDevPage = styled(StyledPageBody)`
 
 export const Page: React.FC<any> = () => {
     return (
-        <StyledDevPage>
-            <PageTitle title="Developer Panel" subtitle="Advanced Users Only" />
+        <StyledDevPage title="Developer Panel" subtitle="Advanced Users Only" >
             <Card>
                 <List lists={[
                     {

@@ -3,16 +3,12 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../core/models/Model.constants";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
-import Card, { StyledCard } from "../ui/Card";
+import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 
-const StyledBrowsePage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
+const StyledBrowsePage = styled(PageTitle)`
 
     ${StyledPane} {
         display: grid;
@@ -43,8 +39,7 @@ const BrowsePage: React.FC<any> = props => {
     const rootSuffix = useRootSuffix();
 
     return (
-        <StyledBrowsePage>
-            <PageTitle title="Browse" subtitle={null} />
+        <StyledBrowsePage title="Browse">
             <StyledPane>
                 <Card title="Chords">
                     <ul>

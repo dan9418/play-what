@@ -6,15 +6,11 @@ import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../core/models/Model.
 import Note from "../../../../../core/models/Note";
 import { addPods, reducePod, subtractPods } from "../../../../../core/models/Pod.static";
 import DropdownInput from "../../../../inputs/DropdownInput";
-import { StyledPageBody } from "../../../../layout/PageBody";
 import PageTitle from "../../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
-const StyledPracticePage = styled(StyledPageBody)`
-	width: 100%;
-    max-width: 1024px;
-    margin: auto;
+const StyledPracticePage = styled(PageTitle)`
     
     ${StyledCard}, ${StyledInputRow} {
         margin: 16px 0;
@@ -108,8 +104,7 @@ export const Page: React.FC<any> = () => {
     );
 
     return (
-        <StyledPracticePage>
-            <PageTitle title="Chord Charts" />
+        <StyledPracticePage title="Chord Charts">
             <InputRow label="Chart">
                 <DropdownInput options={CHART_PRESETS} value={chartPreset} setValue={setChartPreset} />
             </InputRow>

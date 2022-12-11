@@ -5,16 +5,12 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ScaleId } from "../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledDoublePane, StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledScalesPage = styled(StyledPageBody)`
-    width: 100%;
-    max-width: 1024px;
-    margin: auto;
-    
+const StyledScalesPage = styled(PageTitle)`
+
     .intro {
         padding: 0 16px;
     }
@@ -36,8 +32,7 @@ const ScalesPage: React.FC<any> = props => {
     const rootSuffix = useRootSuffix();
 
     return (
-        <StyledScalesPage>
-            <PageTitle title="Scales" subtitle="The foundation of melody" />
+        <StyledScalesPage title="Scales" subtitle="The foundation of melody">
             <div>
                 <p className="intro">
                     A scale is a collection of musical notes, which are generally played sequentially and ordered by pitch.

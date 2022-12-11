@@ -13,7 +13,7 @@ import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledKeyboardPage = styled.div`
+const StyledKeyboardPage = styled(PageTitle)`
     min-height: 95vh;
     padding: 16px;
 
@@ -95,8 +95,7 @@ const KeyboardPage: React.FC = () => {
     };
 
     return (
-        <StyledKeyboardPage>
-            <PageTitle title="Keyboard" />
+        <StyledKeyboardPage title="Keyboard" >
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
                 <TabCard

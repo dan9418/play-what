@@ -8,15 +8,11 @@ import Scale from "../../../../../core/models/Scale";
 import Fretboard from "../../../../../viewers/fretboard/Fretboard";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../inputs/DropdownInput";
-import { StyledPageBody } from "../../../../layout/PageBody";
 import PageTitle from "../../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
-const StyledCAGEDPage = styled(StyledPageBody)`
-	width: 100%;
-    max-width: 100%;
-    margin: auto;
+const StyledCAGEDPage = styled(PageTitle)`
     
     .scroll {
         overflow-x: auto;
@@ -177,8 +173,7 @@ export const Page: React.FC<any> = () => {
     ]
 
     return (
-        <StyledCAGEDPage>
-            <PageTitle title="CAGED" />
+        <StyledCAGEDPage title="CAGED">
             <InputRow label="Root">
                 <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
                     setRootPreset(p);

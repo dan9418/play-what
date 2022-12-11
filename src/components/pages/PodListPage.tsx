@@ -11,11 +11,10 @@ import RelatedCard from "../cards/RelatedCard";
 import RomanNumeralsCard from "../cards/RomanNumeralsCard";
 import RootCard from "../cards/RootCard";
 import ColumnManager from "../column-manager/ColumnManager";
-import { StyledPageBody } from "../layout/PageBody";
 import PageTitle from "../layout/PageTitle";
 import { StyledPane } from "../layout/Pane";
 
-const StyledPodlistPage = styled(StyledPageBody)`
+const StyledPodlistPage = styled(PageTitle)`
 
 `;
 
@@ -37,8 +36,7 @@ const PodListPage: React.FC<IPodListPageProps> = props => {
     //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
 
     return (
-        <StyledPodlistPage>
-            <PageTitle title={title} />
+        <StyledPodlistPage title={title}>
             <StyledPane>
                 <ColumnManager tablet={['300px', 'auto']}>
                     <RootCard />

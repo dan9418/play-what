@@ -6,13 +6,12 @@ import { FEEDBACK_LINK } from "../../config/constants";
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
-import { StyledPageBody } from "../layout/PageBody";
+import PageTitle from "../layout/PageTitle";
 import SearchBar, { StyledSearchBar } from "../search/SearchBar";
 import Icon, { IconId } from "../ui/Icon";
-import SEO from "../utils/SEO";
 import { DEFAULT_MODEL } from "./view/view.defaults";
 
-const StyledHomePage = styled(StyledPageBody)`
+const StyledHomePage = styled(PageTitle)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -205,8 +204,7 @@ const IndexPage: React.FC<any> = () => {
 	}, []);
 
 	return (
-		<StyledHomePage>
-			<SEO />
+		<StyledHomePage isHome>
 			<img src={logoSrc} className="logo" /*width={768} height={128}*/ />
 			<p className="intro">
 				Every chord. Every scale. Every key.

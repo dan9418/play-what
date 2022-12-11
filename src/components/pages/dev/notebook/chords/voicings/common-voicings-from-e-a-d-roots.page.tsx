@@ -7,12 +7,11 @@ import Note from "../../../../../../core/models/Note";
 import Fretboard from "../../../../../../viewers/fretboard/Fretboard";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../../inputs/DropdownInput";
-import { StyledPageBody } from "../../../../../layout/PageBody";
 import PageTitle from "../../../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
-const StyledVoicingsPage = styled(StyledPageBody)`
+const StyledVoicingsPage = styled(PageTitle)`
     max-width: 1920px;
 
     ${StyledCard}, ${StyledInputRow} {
@@ -101,8 +100,7 @@ export const Page: React.FC = () => {
     const root = new Note(rootPreset.value);
 
     return (
-        <StyledVoicingsPage>
-            <PageTitle title="Chord Voicings" />
+        <StyledVoicingsPage title="Chord Voicings">
             <InputRow label="Root">
                 <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
                     setRootPreset(p);

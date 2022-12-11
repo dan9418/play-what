@@ -1,10 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import { StyledPageBody } from "../../../../../layout/PageBody";
 import PageTitle from "../../../../../layout/PageTitle";
 import Card, { StyledCard } from "../../../../../ui/Card";
 
-const StyledExtensionsPage = styled(StyledPageBody)`
+const StyledExtensionsPage = styled(PageTitle)`
 
     ${StyledCard} {
         margin-top: 16px;
@@ -29,8 +28,7 @@ const StyledExtensionsPage = styled(StyledPageBody)`
 
 export const Page: React.FC<any> = () => {
     return (
-        <StyledExtensionsPage>
-            <PageTitle title="Extended Intervals" />
+        <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
                 <table>
                     <thead>
