@@ -2,11 +2,11 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { StyledPageBody } from "../layout/PageBody";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledAboutPage = styled(PageTitle)`
+const StyledAboutPage = styled(PageLayout)`
     p {
         margin: 16px 0;
     }

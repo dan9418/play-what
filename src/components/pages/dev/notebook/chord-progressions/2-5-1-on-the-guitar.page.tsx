@@ -10,11 +10,11 @@ import Fretboard from "../../../../../viewers/fretboard/Fretboard";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../inputs/DropdownInput";
-import PageTitle from "../../../../layout/PageTitle";
+import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
-const StyledCAGEDPage = styled(PageTitle)`
+const StyledCAGEDPage = styled(PageLayout)`
 	    
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;

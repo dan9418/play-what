@@ -7,11 +7,11 @@ import Note from "../../../../../../core/models/Note";
 import Fretboard from "../../../../../../viewers/fretboard/Fretboard";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../../inputs/DropdownInput";
-import PageTitle from "../../../../../layout/PageTitle";
+import PageLayout from "../../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
-const StyledVoicingsPage = styled(PageTitle)`
+const StyledVoicingsPage = styled(PageLayout)`
     max-width: 1920px;
 
     ${StyledCard}, ${StyledInputRow} {

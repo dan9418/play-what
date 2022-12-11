@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import SearchBar from "../search/SearchBar";
 import SearchResultsCard from "../search/SearchResultsCard";
 import { StyledCard } from "../ui/Card";
 
-const StyledSearchPage = styled(PageTitle)`
+const StyledSearchPage = styled(PageLayout)`
     ${StyledCard} {
         max-width: 768px;
         margin: auto;

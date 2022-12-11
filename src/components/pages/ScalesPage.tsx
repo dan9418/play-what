@@ -5,11 +5,11 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ScaleId } from "../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledDoublePane, StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledScalesPage = styled(PageTitle)`
+const StyledScalesPage = styled(PageLayout)`
 
     .intro {
         padding: 0 16px;

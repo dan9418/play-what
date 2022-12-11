@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
-import PageTitle from "../../../../../layout/PageTitle";
+import PageLayout from "../../../../../layout/PageLayout";
 import Card from "../../../../../ui/Card";
 import { IntervalsTable } from "../IntervalsTable";
 
-const StyledExtensionsPage = styled(PageTitle)`
+const StyledExtensionsPage = styled(PageLayout)`
 
 `;
 

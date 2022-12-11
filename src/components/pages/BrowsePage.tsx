@@ -3,12 +3,12 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../core/models/Model.constants";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 
-const StyledBrowsePage = styled(PageTitle)`
+const StyledBrowsePage = styled(PageLayout)`
 
     ${StyledPane} {
         display: grid;

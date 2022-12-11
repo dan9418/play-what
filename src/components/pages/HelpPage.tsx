@@ -2,11 +2,11 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledPane } from "../layout/Pane";
 import Card, { CardHeader, StyledCard } from "../ui/Card";
 
-const StyledHelpPage = styled(PageTitle)`
+const StyledHelpPage = styled(PageLayout)`
 
     ${StyledCard} {
         li {

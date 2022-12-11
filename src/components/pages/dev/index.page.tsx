@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
-import PageTitle from "../../layout/PageTitle";
+import PageLayout from "../../layout/PageLayout";
 import Card, { StyledCard } from "../../ui/Card";
 import { List } from "../../ui/List";
 
-const StyledDevPage = styled(PageTitle)`
+const StyledDevPage = styled(PageLayout)`
 	
     ${StyledCard} {
         margin-top: 16px;

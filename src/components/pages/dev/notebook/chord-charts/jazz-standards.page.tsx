@@ -6,11 +6,11 @@ import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../core/models/Model.
 import Note from "../../../../../core/models/Note";
 import { addPods, reducePod, subtractPods } from "../../../../../core/models/Pod.static";
 import DropdownInput from "../../../../inputs/DropdownInput";
-import PageTitle from "../../../../layout/PageTitle";
+import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
 
-const StyledPracticePage = styled(PageTitle)`
+const StyledPracticePage = styled(PageLayout)`
     
     ${StyledCard}, ${StyledInputRow} {
         margin: 16px 0;

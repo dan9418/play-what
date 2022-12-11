@@ -1,11 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
-import PageTitle from "../../../layout/PageTitle";
+import PageLayout from "../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../ui/Card";
 import { List } from "../../../ui/List";
 import { LINK_PREFIX, LISTS } from "./notebook.data";
 
-const StyledNotebookPage = styled(PageTitle)`
+const StyledNotebookPage = styled(PageLayout)`
     ${StyledCard} {
         margin-top: 16px;
         font-size: 120%;

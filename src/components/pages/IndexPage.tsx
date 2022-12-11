@@ -6,12 +6,12 @@ import { FEEDBACK_LINK } from "../../config/constants";
 import { getModelIdClass, getModelIdText } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import SearchBar, { StyledSearchBar } from "../search/SearchBar";
 import Icon, { IconId } from "../ui/Icon";
 import { DEFAULT_MODEL } from "./view/view.defaults";
 
-const StyledHomePage = styled(PageTitle)`
+const StyledHomePage = styled(PageLayout)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;

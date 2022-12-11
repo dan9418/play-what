@@ -1,10 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import Card, { StyledCard } from "../ui/Card";
 
-const StyledComingSoonPage = styled(PageTitle)`
+const StyledComingSoonPage = styled(PageLayout)`
     table {
         border-collapse: collapse;
         width: 100%;

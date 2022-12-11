@@ -5,11 +5,11 @@ import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ChordId } from "../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../core/models/Model.presets";
 import CollectionCard from "../collection/CollectionCard";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledDoublePane, StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
-const StyledChordsPage = styled(PageTitle)`
+const StyledChordsPage = styled(PageLayout)`
 
     
     .intro {

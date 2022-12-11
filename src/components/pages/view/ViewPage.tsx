@@ -7,11 +7,11 @@ import { TuningId, TUNING_PRESET_MAP } from "../../../viewers/fretboard/Fretboar
 import Keyboard from "../../../viewers/keyboard/Keyboard";
 import DEFAULT_KEYBOARD_PROPS from "../../../viewers/keyboard/Keyboard.defaults";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
-import PageTitle from "../../layout/PageTitle";
+import PageLayout from "../../layout/PageLayout";
 import Card, { StyledCard } from "../../ui/Card";
 import { getNewModel } from "./NotesCol";
 
-const StyledViewPage = styled(PageTitle)`
+const StyledViewPage = styled(PageLayout)`
     ${StyledColumnManager} {
         margin-top: 16px;
     }

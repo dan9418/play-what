@@ -5,7 +5,7 @@ import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
 import ButtonInput from "../../inputs/ButtonInput";
-import PageTitle from "../../layout/PageTitle";
+import PageLayout from "../../layout/PageLayout";
 import { StyledCard } from "../../ui/Card";
 import Icon from "../../ui/Icon";
 import DetailsCol from "./DetailsCol";
@@ -16,7 +16,7 @@ import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledFretboardPage = styled(PageTitle)`
+const StyledFretboardPage = styled(PageLayout)`
     min-height: 95vh;
     padding: 16px;
     .maximize {

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BreadcrumbList from '../breadcrumb-list/BreadcrumbList';
 import SEO from "../utils/SEO";
 
-const StyledPageTitle = styled.div`
+const StyledPageLayout = styled.div`
     width: 100%;
     max-width: 1024px;
     margin: auto;
@@ -44,7 +44,7 @@ const StyledPageTitle = styled.div`
     }
 `
 
-interface IPageTitleProps extends PropsWithChildren<any> {
+interface IPageLayoutProps extends PropsWithChildren<any> {
     title: string;
     subtitle?: string;
     action?: any;
@@ -52,9 +52,9 @@ interface IPageTitleProps extends PropsWithChildren<any> {
     isHome?: boolean;
 }
 
-const PageTitle: React.FC<IPageTitleProps> = ({ title, subtitle, action, className, children, isHome }) => {
+const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, className, children, isHome }) => {
     return (
-        <StyledPageTitle className={className}>
+        <StyledPageLayout className={className}>
             <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
             {!isHome &&
                 <>
@@ -70,8 +70,8 @@ const PageTitle: React.FC<IPageTitleProps> = ({ title, subtitle, action, classNa
                 </>
             }
             {children}
-        </StyledPageTitle>
+        </StyledPageLayout>
     );
 };
 
-export default PageTitle;
+export default PageLayout;

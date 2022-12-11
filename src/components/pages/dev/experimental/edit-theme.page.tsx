@@ -5,10 +5,10 @@ import { themeState } from "../../../../state/state";
 import THEME, { DARK_THEME } from "../../../../styles/theme";
 import { useSetTheme } from "../../../../styles/ThemeManager";
 import ButtonInput from "../../../inputs/ButtonInput";
-import PageTitle from "../../../layout/PageTitle";
+import PageLayout from "../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../ui/Card";
 
-const StyledThemePage = styled(PageTitle)`
+const StyledThemePage = styled(PageLayout)`
     .grid {
         margin-top: 16px;
         display: grid;

@@ -43,7 +43,7 @@ const Heading: React.FC<any> = ({ title, subtitle, level }) => {
 
 export const List: React.FC<IList & { level?: number, prefix?: string }> = ({ title, subtitle, items, lists, level = 1, prefix = '' }) => {
 
-    //const HeadTag = level === 1 ? PageTitle : level === 2 ? Card : Heading
+    //const HeadTag = level === 1 ? PageLayout : level === 2 ? Card : Heading
 
     return (
         <StyledList>

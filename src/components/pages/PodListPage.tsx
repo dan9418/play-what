@@ -11,10 +11,10 @@ import RelatedCard from "../cards/RelatedCard";
 import RomanNumeralsCard from "../cards/RomanNumeralsCard";
 import RootCard from "../cards/RootCard";
 import ColumnManager from "../column-manager/ColumnManager";
-import PageTitle from "../layout/PageTitle";
+import PageLayout from "../layout/PageLayout";
 import { StyledPane } from "../layout/Pane";
 
-const StyledPodlistPage = styled(PageTitle)`
+const StyledPodlistPage = styled(PageLayout)`
 
 `;
 

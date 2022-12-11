@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Keyboard from "../../../viewers/keyboard/Keyboard";
 import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
-import PageTitle from "../../layout/PageTitle";
+import PageLayout from "../../layout/PageLayout";
 import { StyledCard } from "../../ui/Card";
 import DetailsCol from "./DetailsCol";
 import KeyboardCol, { DEFAULT_KEY_RANGE } from "./KeyboardCol";
@@ -13,7 +13,7 @@ import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledKeyboardPage = styled(PageTitle)`
+const StyledKeyboardPage = styled(PageLayout)`
     min-height: 95vh;
     padding: 16px;
 

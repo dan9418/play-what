@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import PageTitle from "../../../layout/PageTitle";
+import PageLayout from "../../../layout/PageLayout";
 import AllIntervalsFromAllRoots from "../../../tests/AllIntervalsFromAllRoots";
 
-const StyledTestPage = styled(PageTitle)`
+const StyledTestPage = styled(PageLayout)`
 
 `;
 
