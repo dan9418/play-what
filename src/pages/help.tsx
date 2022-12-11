@@ -1,3 +1,3 @@
-import HelpPage from "../components/pages/HelpPage";
+import { Page } from "../components/pages/help.page";
 
-export default HelpPage;
+export default Page;

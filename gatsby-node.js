@@ -58,7 +58,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/browse/chords/`,
     component: require.resolve(
-      './src/components/pages/ChordsPage.tsx'
+      './src/components/pages/chords.page.tsx'
     ),
     context: {},
   });
@@ -67,7 +67,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/browse/chords/${model.modelId}/`,
       component: require.resolve(
-        './src/components/pages/PodListPage.tsx'
+        './src/components/pages/pod-list.page.tsx'
       ),
       context: { modelType: 'chords', modelId: model.modelId },
     });
@@ -76,7 +76,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: `/browse/chords/${model.modelId}/root/${root.modelId}/`,
         component: require.resolve(
-          './src/components/pages/PodListPage.tsx'
+          './src/components/pages/pod-list.page.tsx'
         ),
         context: { modelType: 'chords', modelId: model.modelId, rootId: root.modelId },
       });
@@ -89,7 +89,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/browse/scales/`,
     component: require.resolve(
-      './src/components/pages/ScalesPage.tsx'
+      './src/components/pages/scales.page.tsx'
     ),
     context: {},
   });
@@ -98,7 +98,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: `/browse/scales/${model.modelId}/`,
       component: require.resolve(
-        './src/components/pages/PodListPage.tsx'
+        './src/components/pages/pod-list.page.tsx'
       ),
       context: { modelType: 'scales', modelId: model.modelId },
     });
@@ -107,7 +107,7 @@ module.exports.createPages = async ({ graphql, actions }) => {
       createPage({
         path: `/browse/scales/${model.modelId}/root/${root.modelId}/`,
         component: require.resolve(
-          './src/components/pages/PodListPage.tsx'
+          './src/components/pages/pod-list.page.tsx'
         ),
         context: { modelType: 'scales', modelId: model.modelId, rootId: root.modelId },
       });

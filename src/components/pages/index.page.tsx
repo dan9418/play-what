@@ -183,7 +183,7 @@ const StyledHomePage = styled(PageLayout)`
 	}
 `;
 
-const IndexPage: React.FC<any> = () => {
+export const Page: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 	const [model, setModel] = useState(DEFAULT_MODEL);
 
@@ -278,5 +278,3 @@ const IndexPage: React.FC<any> = () => {
 		</StyledHomePage>
 	);
 };
-
-export default IndexPage;

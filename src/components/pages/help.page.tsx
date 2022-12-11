@@ -43,7 +43,7 @@ const StyledHelpPage = styled(PageLayout)`
 `;
 
 
-const HelpPage: React.FC<any> = props => {
+export const Page: React.FC<any> = props => {
     return (
         <StyledHelpPage title="Help" >
             <StyledPane>
@@ -143,5 +143,3 @@ const HelpPage: React.FC<any> = props => {
         </StyledHelpPage>
     );
 };
-
-export default HelpPage;

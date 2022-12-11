@@ -1,3 +1,3 @@
-import IndexPage from "../components/pages/IndexPage";
+import { Page } from "../components/pages/index.page";
 
-export default IndexPage;
+export default Page;

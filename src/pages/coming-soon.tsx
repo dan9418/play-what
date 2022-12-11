@@ -1,3 +1,3 @@
-import ComingSoonPage from "../components/pages/ComingSoonPage";
+import { Page } from "../components/pages/coming-soon.page";
 
-export default ComingSoonPage;
+export default { Page };

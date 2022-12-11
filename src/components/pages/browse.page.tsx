@@ -34,7 +34,7 @@ const StyledBrowsePage = styled(PageLayout)`
 `;
 
 
-const BrowsePage: React.FC<any> = props => {
+export const Page: React.FC<any> = props => {
 
     const rootSuffix = useRootSuffix();
 
@@ -67,5 +67,3 @@ const BrowsePage: React.FC<any> = props => {
         </StyledBrowsePage>
     );
 };
-
-export default BrowsePage;
