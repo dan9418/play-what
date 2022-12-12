@@ -5,8 +5,8 @@ import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import { ScaleId } from "../../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../../core/models/Model.presets";
 import CollectionCard from "../../collection/CollectionCard";
+import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
-import { StyledDoublePane, StyledPane } from "../../layout/Pane";
 import Card from "../../ui/Card";
 
 const StyledScalesPage = styled(PageLayout)`
@@ -18,13 +18,10 @@ const StyledScalesPage = styled(PageLayout)`
     h3, p {
         margin: 16px 0;
     }
-    
 
-    ${StyledPane} {
-        li {
-            list-style-type: disc;
-            margin-left: 16px;
-        }
+    li {
+        list-style-type: disc;
+        margin-left: 16px;
     }
 `;
 
@@ -53,11 +50,11 @@ const ScalesPage: React.FC<any> = props => {
                         <li><a href="#bebop">Bebop</a></li>
                     </ul>*/}
             </div>
-            <StyledDoublePane>
-                <StyledPane>
+            <ColumnManager>
+                <ColumnManager>
                     <CollectionCard title="All Scales" data={SCALE_PRESETS} />
-                </StyledPane>
-                <StyledPane>
+                </ColumnManager>
+                <ColumnManager>
                     <Card title="Common Scales" id="common">
                         <ul>
                             <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
@@ -152,8 +149,8 @@ const ScalesPage: React.FC<any> = props => {
                             <li><Link to={`/browse/scales/${ScaleId.DominantBebop}/${rootSuffix}`}>Dominant Bebop</Link></li>
                         </ul>
                     </Card>
-                </StyledPane>
-            </StyledDoublePane>
+                </ColumnManager>
+            </ColumnManager>
         </StyledScalesPage>
     );
 };

@@ -3,33 +3,22 @@ import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import { ChordId, ScaleId } from "../../../core/models/Model.constants";
+import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
-import { StyledPane } from "../../layout/Pane";
 import Card from "../../ui/Card";
 import Icon from "../../ui/Icon";
 
 const StyledBrowsePage = styled(PageLayout)`
+    a.all {
+        display: block;
+        font-size: 140%;
+        text-align: right;
+        margin-top: 32px;
+    }
 
-    ${StyledPane} {
-        display: grid;
-        grid-template-columns: 1fr;
-        @media(min-width: 512px) {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        margin: 16px auto;
-
-        a.all {
-            display: block;
-            font-size: 140%;
-            text-align: right;
-            margin-top: 32px;
-        }
-
-        li {
-            list-style-type: disc;
-            margin-left: 16px;
-        }
+    li {
+        list-style-type: disc;
+        margin-left: 16px;
     }
 `;
 
@@ -40,7 +29,7 @@ const Page: React.FC<any> = props => {
 
     return (
         <StyledBrowsePage title="Browse">
-            <StyledPane>
+            <ColumnManager desktop={["1fr", "1fr"]}>
                 <Card title="Chords">
                     <ul>
                         <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
@@ -63,7 +52,7 @@ const Page: React.FC<any> = props => {
                     </ul>
                     <Link to="/browse/scales" className="all">See All Scales <Icon iconId="next" size={12} /></Link>
                 </Card>
-            </StyledPane>
+            </ColumnManager>
         </StyledBrowsePage>
     );
 };

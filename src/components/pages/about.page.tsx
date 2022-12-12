@@ -1,8 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
+import ColumnManager from "../column-manager/ColumnManager";
 import PageLayout from "../layout/PageLayout";
-import { StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";
 
 const StyledAboutPage = styled(PageLayout)`
@@ -10,7 +10,7 @@ const StyledAboutPage = styled(PageLayout)`
         margin: 16px 0;
     }
 
-    ${StyledPane} li a {
+    li a {
         display: block;
         padding: 8px;
     }
@@ -19,7 +19,7 @@ const StyledAboutPage = styled(PageLayout)`
 const Page: React.FC = () => {
     return (
         <StyledAboutPage title="About" >
-            <StyledPane>
+            <ColumnManager>
                 <Card title="What Is Play What?">
                     <p>
                         Play What is a website for visualizing music theory concepts and exploring their relationships.
@@ -63,7 +63,7 @@ const Page: React.FC = () => {
                         The <Link to='/dev'>Developer Panel</Link> includes experimental and admin features.
                     </p>
                 </Card>
-            </StyledPane>
+            </ColumnManager>
         </StyledAboutPage>
     );
 };

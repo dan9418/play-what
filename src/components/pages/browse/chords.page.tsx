@@ -5,13 +5,11 @@ import { useRootSuffix } from "../../../contexts/PagePropsContext";
 import { ChordId } from "../../../core/models/Model.constants";
 import { CHORD_PRESETS } from "../../../core/models/Model.presets";
 import CollectionCard from "../../collection/CollectionCard";
+import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
-import { StyledDoublePane, StyledPane } from "../../layout/Pane";
 import Card from "../../ui/Card";
 
 const StyledChordsPage = styled(PageLayout)`
-
-    
     .intro {
         padding: 0 16px;
     }
@@ -20,11 +18,9 @@ const StyledChordsPage = styled(PageLayout)`
         margin: 16px 0;
     }
 
-    ${StyledPane} {
-        li {
-            list-style-type: disc;
-            margin-left: 16px;
-        }
+    li {
+        list-style-type: disc;
+        margin-left: 16px;
     }
 `;
 
@@ -52,11 +48,11 @@ const ChordsPage: React.FC<any> = props => {
                         <li><a href="#suspended">Suspended Chords</a></li>
                     </ul>*/}
             </div>
-            <StyledDoublePane>
-                <StyledPane>
+            <ColumnManager>
+                <ColumnManager>
                     <CollectionCard title="All Chords" data={CHORD_PRESETS} />
-                </StyledPane>
-                <StyledPane>
+                </ColumnManager>
+                <ColumnManager>
                     <Card title="Triads" id="triad">
                         <p>
                             A triad is the most basic type of chord. It consists of 3 intervals (a root, a third, and a fifth).
@@ -107,9 +103,8 @@ const ChordsPage: React.FC<any> = props => {
                             <li><Link to={`/browse/chords/${ChordId.Sus4}/${rootSuffix}`}>Suspended 4th</Link></li>
                         </ul>
                     </Card>
-                </StyledPane>
-
-            </StyledDoublePane>
+                </ColumnManager>
+            </ColumnManager>
         </StyledChordsPage>
     );
 };

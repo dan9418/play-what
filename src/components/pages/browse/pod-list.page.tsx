@@ -12,7 +12,6 @@ import RomanNumeralsCard from "../../cards/RomanNumeralsCard";
 import RootCard from "../../cards/RootCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
-import { StyledPane } from "../../layout/Pane";
 
 const StyledPodlistPage = styled(PageLayout)`
 
@@ -37,7 +36,7 @@ const PodListPage: React.FC<IPodListPageProps> = props => {
 
     return (
         <StyledPodlistPage title={title}>
-            <StyledPane>
+            <ColumnManager>
                 <ColumnManager tablet={['300px', 'auto']}>
                     <RootCard />
                     <DetailsCard model={podList} />
@@ -51,7 +50,7 @@ const PodListPage: React.FC<IPodListPageProps> = props => {
                     <PianoCard model={podList} />
                 </ColumnManager>
                 <RelatedCard model={podList} />
-            </StyledPane>
+            </ColumnManager>
         </StyledPodlistPage >
     );
 };
