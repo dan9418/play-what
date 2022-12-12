@@ -36,7 +36,7 @@ const StyledComingSoonPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     return (
         <StyledComingSoonPage title="Coming Soon" subtitle="Potential Features">
             <Card title="Release Schedule">
@@ -102,3 +102,5 @@ export const Page: React.FC<any> = () => {
         </StyledComingSoonPage >
     );
 };
+
+export default Page;

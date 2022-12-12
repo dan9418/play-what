@@ -12,7 +12,7 @@ const StyledNotebookPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC = () => {
+const Page: React.FC = () => {
     return (
         <StyledNotebookPage title="Music Notebook" subtitle="A work in progress" >
             <Card title="Pages" >
@@ -21,3 +21,5 @@ export const Page: React.FC = () => {
         </StyledNotebookPage >
     );
 };
+
+export default Page;

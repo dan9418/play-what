@@ -100,7 +100,7 @@ const SwatchSelector: React.FC<any> = ({ type, attr, title }) => {
     );
 }
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     const setTheme = useSetRecoilState(themeState);
     return (
         <StyledThemePage title="Theme" >
@@ -175,3 +175,5 @@ export const Page: React.FC<any> = () => {
         </StyledThemePage>
     );
 };
+
+export default Page;

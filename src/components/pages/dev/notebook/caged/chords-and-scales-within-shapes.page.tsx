@@ -29,7 +29,7 @@ const StyledCAGEDPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.A));
 
     const root = new Note(rootPreset.value);
@@ -214,3 +214,5 @@ export const Page: React.FC<any> = () => {
         </StyledCAGEDPage>
     );
 };
+
+export default Page;

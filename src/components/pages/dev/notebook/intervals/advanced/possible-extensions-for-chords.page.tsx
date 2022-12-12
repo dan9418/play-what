@@ -26,7 +26,7 @@ const StyledExtensionsPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     return (
         <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
@@ -124,3 +124,5 @@ export const Page: React.FC<any> = () => {
         </StyledExtensionsPage>
     )
 };
+
+export default Page;

@@ -17,7 +17,7 @@ const StyledAboutPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC = () => {
+const Page: React.FC = () => {
     return (
         <StyledAboutPage title="About" >
             <StyledPane>
@@ -68,3 +68,5 @@ export const Page: React.FC = () => {
         </StyledAboutPage>
     );
 };
+
+export default Page;

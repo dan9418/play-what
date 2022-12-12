@@ -183,7 +183,7 @@ const StyledHomePage = styled(PageLayout)`
 	}
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
 	const [placeholder, setPlaceholder] = useState('Search the site');
 	const [model, setModel] = useState(DEFAULT_MODEL);
 
@@ -278,3 +278,5 @@ export const Page: React.FC<any> = () => {
 		</StyledHomePage>
 	);
 };
+
+export default Page;

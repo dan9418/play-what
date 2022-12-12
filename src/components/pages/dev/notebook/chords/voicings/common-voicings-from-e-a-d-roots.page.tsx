@@ -94,7 +94,7 @@ const CHORDS = [
     }
 ];
 
-export const Page: React.FC = () => {
+const Page: React.FC = () => {
     const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
 
     const root = new Note(rootPreset.value);
@@ -148,3 +148,5 @@ export const Page: React.FC = () => {
         </StyledVoicingsPage>
     );
 };
+
+export default Page;

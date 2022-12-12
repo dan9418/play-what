@@ -8,7 +8,7 @@ const StyledExtensionsPage = styled(PageLayout)`
 
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     return (
         <StyledExtensionsPage title="Intervals Table">
             <Card>
@@ -17,3 +17,5 @@ export const Page: React.FC<any> = () => {
         </StyledExtensionsPage>
     )
 };
+
+export default Page;

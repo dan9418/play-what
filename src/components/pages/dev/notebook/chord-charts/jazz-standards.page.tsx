@@ -88,7 +88,7 @@ const StyledPracticePage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
     const [chartPreset, setChartPreset] = useState(CHART_PRESETS[0]);
     const [keyCenter, setKeyCenter] = useState(CHART_PRESETS[0].value.keyCenter);
 
@@ -155,3 +155,5 @@ export const Page: React.FC<any> = () => {
         </StyledPracticePage>
     );
 };
+
+export default Page;

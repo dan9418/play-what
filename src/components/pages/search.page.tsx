@@ -17,7 +17,7 @@ const StyledSearchPage = styled(PageLayout)`
     }
 `;
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
 
     const [qp] = useQueryParam('query');
 
@@ -38,3 +38,5 @@ export const Page: React.FC<any> = () => {
         </StyledSearchPage>
     );
 };
+
+export default Page;

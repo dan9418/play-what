@@ -51,7 +51,7 @@ const COMMON_FRETBOARD_PROPS = {
     showFretDots: false
 }
 
-export const Page: React.FC<any> = () => {
+const Page: React.FC<any> = () => {
 
     return (
         <StyledViewPage title="Instruments" subtitle="Choose an instrument type">
@@ -82,3 +82,5 @@ export const Page: React.FC<any> = () => {
         </StyledViewPage >
     )
 };
+
+export default Page;
