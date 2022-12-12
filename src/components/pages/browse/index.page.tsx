@@ -15,11 +15,6 @@ const StyledBrowsePage = styled(PageLayout)`
         text-align: right;
         margin-top: 32px;
     }
-
-    li {
-        list-style-type: disc;
-        margin-left: 16px;
-    }
 `;
 
 
@@ -31,7 +26,7 @@ const Page: React.FC<any> = props => {
         <StyledBrowsePage title="Browse">
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <Card title="Chords">
-                    <ul>
+                    <ul className="disc">
                         <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
                         <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
                         <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
@@ -42,7 +37,7 @@ const Page: React.FC<any> = props => {
                     <Link to="/browse/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
                 </Card>
                 <Card title="Scales">
-                    <ul>
+                    <ul className="disc">
                         <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
                         <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
                         <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>

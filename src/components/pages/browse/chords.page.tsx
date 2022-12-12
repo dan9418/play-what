@@ -17,11 +17,6 @@ const StyledChordsPage = styled(PageLayout)`
     h3, p {
         margin: 16px 0;
     }
-
-    li {
-        list-style-type: disc;
-        margin-left: 16px;
-    }
 `;
 
 const ChordsPage: React.FC<any> = props => {
@@ -59,7 +54,7 @@ const ChordsPage: React.FC<any> = props => {
                             The specific thirds and fifths used determine the type (or <em>quality</em>) of the triad.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.AugTriad}/${rootSuffix}`}>Augmented Triad</Link></li>
@@ -71,7 +66,7 @@ const ChordsPage: React.FC<any> = props => {
                             A seventh chord is a triad with an additional seventh interval stacked on top.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.Min7}/${rootSuffix}`}>Minor 7th</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.Dom7}/${rootSuffix}`}>Dominant 7th</Link></li>
@@ -88,7 +83,7 @@ const ChordsPage: React.FC<any> = props => {
                             They are similar in function to seventh chords.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/chords/${ChordId.Maj6}/${rootSuffix}`}>Major 6th</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.Min6}/${rootSuffix}`}>Minor 6th</Link></li>
                         </ul>
@@ -98,7 +93,7 @@ const ChordsPage: React.FC<any> = props => {
                             A suspended chord is a like a triad, except it sustitutes a second or fourth interval in place of the third.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/chords/${ChordId.Sus2}/${rootSuffix}`}>Suspended 2nd</Link></li>
                             <li><Link to={`/browse/chords/${ChordId.Sus4}/${rootSuffix}`}>Suspended 4th</Link></li>
                         </ul>

@@ -6,12 +6,6 @@ import PageLayout from "../layout/PageLayout";
 import Card, { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledHelpPage = styled(PageLayout)`
-
-    li {
-        list-style-type: disc;
-        margin: 8px 0 8px 16px;
-    }
-
     .q {
         font-weight: bold;
     }
@@ -47,7 +41,7 @@ const Page: React.FC<any> = props => {
                     The <Link to="/browse">browse</Link> section is an extensive directory of many <Link to="/browse/chords">chords</Link> and <Link to="/browse/scales">scales</Link>.
                     <CardHeader level={4} title="Landing Pages" />
                     There is a landing page for each of the "model types"
-                    <ul>
+                    <ul className="disc">
                         <li>
                             <Link to="/browse/chords">Chords</Link>
                         </li>
@@ -90,7 +84,7 @@ const Page: React.FC<any> = props => {
                 </p>
                 <p>
                     The search query can include the name and/or key center for any chord or scale in the Play What library. It also understands some other common keywords:
-                    <ul>
+                    <ul className="disc">
                         <li>Major</li>
                         <li>Minor</li>
                         <li>Triad</li>
@@ -108,7 +102,7 @@ const Page: React.FC<any> = props => {
                 </p>
             </Card>
             <Card title="FAQ">
-                <ul>
+                <ul className="disc">
                     <li>
                         <div className="q">When will the site be finished?</div>
                         <div className="ans">The first public beta will open on 8/5/22. The official launch will be sometime in 2023. More information is available on the <Link to='/coming-soon'>Coming Soon Page</Link></div>

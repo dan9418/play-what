@@ -52,6 +52,11 @@ const StyledPageLayout = styled.div`
             margin-top: 16px;
         }
     }
+
+    ul.disc li {
+        list-style-type: disc;
+        margin: 8px 0 8px 16px;
+    }
 `
 
 interface IPageLayoutProps extends PropsWithChildren<any> {

@@ -18,11 +18,6 @@ const StyledScalesPage = styled(PageLayout)`
     h3, p {
         margin: 16px 0;
     }
-
-    li {
-        list-style-type: disc;
-        margin-left: 16px;
-    }
 `;
 
 const ScalesPage: React.FC<any> = props => {
@@ -56,7 +51,7 @@ const ScalesPage: React.FC<any> = props => {
                 </ColumnManager>
                 <ColumnManager>
                     <Card title="Common Scales" id="common">
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
@@ -71,7 +66,7 @@ const ScalesPage: React.FC<any> = props => {
                             The most common form of the diatonic scale is the Major scale (AKA the Ionian mode), which follows the pattern W-W-W-H-W-W-H.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Ionian</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.Dorian}/${rootSuffix}`}>Dorian</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.Phrygian}/${rootSuffix}`}>Phrygian</Link></li>
@@ -88,7 +83,7 @@ const ScalesPage: React.FC<any> = props => {
                             This slight variation to the diatonic scale creates seven more unique modes.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Harmonic Minor</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.Locrian6}/${rootSuffix}`}>Locrian 6</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.IonianSharp5}/${rootSuffix}`}>Ionian #5</Link></li>
@@ -105,7 +100,7 @@ const ScalesPage: React.FC<any> = props => {
                             This variation also creates seven unique modes.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.DorianFlat2}/${rootSuffix}`}>Dorian b2</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.LydianSharp5}/${rootSuffix}`}>Lydian #5</Link></li>
@@ -121,7 +116,7 @@ const ScalesPage: React.FC<any> = props => {
                             For example, the Major Pentatonic scale is the same as a Major Diatonic scale without the 4th and 7th degrees.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.Egyptian}/${rootSuffix}`}>Egyptian</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.ManGong}/${rootSuffix}`}>Man Gong</Link></li>
@@ -134,7 +129,7 @@ const ScalesPage: React.FC<any> = props => {
                             Blues scales are pentatonic scales with an extra "blue" note.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.MajorBlues}/${rootSuffix}`}>Major Blues</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.MinorBlues}/${rootSuffix}`}>Minor Blues</Link></li>
                         </ul>
@@ -144,7 +139,7 @@ const ScalesPage: React.FC<any> = props => {
                             Bebop scales are diatonic scales with an extra chomatic passing note.
                         </p>
                         <h3>Examples</h3>
-                        <ul>
+                        <ul className="disc">
                             <li><Link to={`/browse/scales/${ScaleId.MajorBebop}/${rootSuffix}`}>Major Bebop</Link></li>
                             <li><Link to={`/browse/scales/${ScaleId.DominantBebop}/${rootSuffix}`}>Dominant Bebop</Link></li>
                         </ul>

@@ -25,12 +25,6 @@ const StyledComingSoonPage = styled(PageLayout)`
             }
         }
     }
-
-    li {
-        margin-bottom: 8px;
-        list-style-type: disc;
-        margin-left: 16px;
-    }
 `;
 
 const Page: React.FC<any> = () => {
@@ -58,7 +52,7 @@ const Page: React.FC<any> = () => {
                         </tr>
                         <tr>
                             <td colSpan={3}>
-                                <ul>
+                                <ul className="disc">
                                     <li>Possible name change</li>
                                     <li>Fresh logo</li>
                                     <li>Sharing features</li>
@@ -78,7 +72,7 @@ const Page: React.FC<any> = () => {
                         </tr>
                         <tr>
                             <td colSpan={3}>
-                                <ul>
+                                <ul className="disc">
                                     <li>Build-your-own practice materials</li>
                                     <li>Grand staff viewer</li>
                                     <li>Chord inversions</li>

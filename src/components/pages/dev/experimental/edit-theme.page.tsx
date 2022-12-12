@@ -48,11 +48,6 @@ const StyledThemePage = styled(PageLayout)`
                 font-weight: bold;
                 font-size: 120%;
             }
-            li {
-                list-style-type: disc;
-                margin-left: 16px;
-                font-style: italic;
-            }
             span {
                 color: ${props => props.theme.text.secondary};
             }
