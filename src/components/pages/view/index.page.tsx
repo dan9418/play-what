@@ -12,9 +12,7 @@ import Card, { StyledCard } from "../../ui/Card";
 import { getNewModel } from "./NotesCol";
 
 const StyledViewPage = styled(PageLayout)`
-    ${StyledColumnManager} {
-        margin-top: 16px;
-    }
+
 
     ${StyledCard} {
         background-color: ${props => props.theme.surface.card};
@@ -55,7 +53,7 @@ const Page: React.FC<any> = () => {
 
     return (
         <StyledViewPage title="Instruments" subtitle="Choose an instrument type">
-            <ColumnManager desktop={['1fr', '1fr']} >
+            <ColumnManager  tablet={['1fr', '1fr']} >
                 <Link to='/view/fretboard/'>
                     <Card title="Fretboard">
                         <div className="text">

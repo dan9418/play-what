@@ -1,5 +1,5 @@
-import React from "react";
 import { Link } from "gatsby";
+import React from "react";
 import styled from 'styled-components';
 import { usePageProps } from "../../contexts/PagePropsContext";
 import Icon from "../ui/Icon";
@@ -27,13 +27,15 @@ const StyledBreadcrumbList = styled.ul`
     }
 `
 
+const NON_LINK_TERMS = ['root', 'test', 'experimental', 'caged', 'chord-progressions', 'chord-charts', 'voicings', 'basics', 'advanced', 'intervals'];
+
 const BreadcrumbList = () => {
     const { path } = usePageProps();
     let pieces = path.split('/');
     const paths: any[] = [];
     pieces.reduce((prev, cur, i, arr) => {
         const path = `${prev}/${cur}`.replace('//', '/') || '/';
-        const isLink = !['root', 'test', 'experimental'].includes(cur);
+        const isLink = !NON_LINK_TERMS.includes(cur);
         const text = i === 0 ? 'Home' : cur.replaceAll('-', ' ').replace(' sharp', '#').replace(' flat', 'b');
 
         const Tag = isLink ? Link : 'span';

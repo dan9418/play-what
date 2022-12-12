@@ -15,18 +15,18 @@ const StyledHomePage = styled(PageLayout)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	//justify-content: center;
 
 	.logo {
+		display: block;
 		width: 256px;
-		margin: 16px 0;
+		margin: 16px auto;
 		@media(min-width: 512px) {
 			width: 512px;
-			margin: 32px 0;
+			margin: 32px auto;
 		}
 		@media(min-width: 1024px) {
 			width: 768px;
-			margin: 48px 0;
+			margin: 48px auto;
 		}
 	}
 
@@ -40,6 +40,7 @@ const StyledHomePage = styled(PageLayout)`
 		text-align: center;
 		line-height: 120%;
 		font-size: 120%;
+		margin: auto;
 		@media(min-width: 512px) {
 			font-size: 140%;
 		}
@@ -91,6 +92,7 @@ const StyledHomePage = styled(PageLayout)`
 			grid-template-columns: 1fr 1fr;
 		}
 		gap: 32px;
+		margin: 0 16px;
 	}
 
 	section {
@@ -151,6 +153,7 @@ const StyledHomePage = styled(PageLayout)`
 	.tiles {
 		display: grid;
 		gap: 16px;
+		margin: 0 16px;
 		
 		grid-template-columns: 100%;
 		@media(min-width: 512px) {
@@ -160,7 +163,7 @@ const StyledHomePage = styled(PageLayout)`
 		.tile {
 			background-color: ${props => props.theme.surface.card};
 			border-radius: 8px;
-			padding: 16px;
+			padding: 20px;
 			display: flex;
 			align-items: center;
 			justify-content: center;

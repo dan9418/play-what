@@ -21,7 +21,7 @@ const STATIC_PAGES = [
   { route: '/dev/notebook/index/' },
   { route: '/dev/notebook/caged/chords-and-scales-within-shapes/' },
   { route: '/dev/notebook/chord-charts/jazz-standards/' },
-  { route: '/dev/notebook/chord-progressions/2-5-1-on-the-guitar/' },
+  { route: '/dev/notebook/chord-progressions/2-5-1-on-guitar/' },
   { route: '/dev/notebook/chords/voicings/common-voicings-from-e-a-d-roots/' },
   { route: '/dev/notebook/intervals/advanced/possible-extensions-for-chords/' },
   { route: '/dev/notebook/intervals/basic/intervals-table/' }

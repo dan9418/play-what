@@ -5,12 +5,7 @@ import Card, { StyledCard } from "../../../ui/Card";
 import { List } from "../../../ui/List";
 import { LINK_PREFIX, LISTS } from "./notebook.data";
 
-const StyledNotebookPage = styled(PageLayout)`
-    ${StyledCard} {
-        margin-top: 16px;
-        font-size: 120%;
-    }
-`;
+const StyledNotebookPage = styled(PageLayout)``;
 
 const Page: React.FC = () => {
     return (

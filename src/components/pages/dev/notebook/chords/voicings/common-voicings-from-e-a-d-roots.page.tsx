@@ -8,20 +8,21 @@ import Fretboard from "../../../../../../viewers/fretboard/Fretboard";
 import { VoicingId, VOICING_PRESET_MAP } from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../../inputs/DropdownInput";
 import PageLayout from "../../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../../ui/Card";
+import Card from "../../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
 const StyledVoicingsPage = styled(PageLayout)`
     max-width: 1920px;
 
-    ${StyledCard}, ${StyledInputRow} {
-        margin-top: 16px;
-        table {
-            width: 100%;
-            td {
-                width: 25%;
-            }
+    table {
+        width: 100%;
+        td {
+            width: 25%;
         }
+    }
+
+    ${StyledInputRow} {
+        margin-bottom: 16px;  
     }
 `;
 

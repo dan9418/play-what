@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import PageLayout from "../../../layout/PageLayout";
 import AllIntervalsFromAllRoots from "../../../tests/AllIntervalsFromAllRoots";
 
-const StyledTestPage = styled(PageLayout)`
-
-`;
+const StyledTestPage = styled(PageLayout)``;
 
 const Page: React.FC<any> = () => {
     return (

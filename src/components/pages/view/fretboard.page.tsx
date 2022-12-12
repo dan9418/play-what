@@ -3,36 +3,18 @@ import styled from 'styled-components';
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import Fretboard from "../../../viewers/fretboard/Fretboard";
 import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
-import ColumnManager, { StyledColumnManager } from "../../column-manager/ColumnManager";
-import ButtonInput from "../../inputs/ButtonInput";
+import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
-import { StyledCard } from "../../ui/Card";
-import Icon from "../../ui/Icon";
 import DetailsCol from "./DetailsCol";
 import FretboardCol, { DEFAULT_FRET_RANGE, DEFAULT_TUNING, DEFAULT_VOICING } from "./FretboardCol";
 import MainCol from "./MainCol";
+import MaximizeButton from "./MaximizeButton";
 import NotesCol from "./NotesCol";
 import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledFretboardPage = styled(PageLayout)`
-    min-height: 95vh;
-    padding: 16px;
-    .maximize {
-        background-color: transparent !important;
-    }
-
-    ${StyledColumnManager} {
-        & > div > ${StyledCard}:not(:last-child) {
-            margin-bottom: 16px;
-        }
-    }
-
-    ${StyledColumnManager} {
-        margin-top: 16px;
-    }
-`;
+const StyledFretboardPage = styled(PageLayout)``;
 
 const Page: React.FC = () => {
 
@@ -116,11 +98,7 @@ const Page: React.FC = () => {
         <StyledFretboardPage
             title="Fretboard"
             subtitle={model.name}
-            action={
-                <ButtonInput className="maximize" onClick={() => setIsFullScreen(true)}>
-                    <Icon iconId="maximize" size={24} />
-                </ButtonInput>
-            }>
+            action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}>
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />
                 <div>

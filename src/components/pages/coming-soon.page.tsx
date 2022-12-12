@@ -2,7 +2,7 @@ import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
 import PageLayout from "../layout/PageLayout";
-import Card, { StyledCard } from "../ui/Card";
+import Card from "../ui/Card";
 
 const StyledComingSoonPage = styled(PageLayout)`
     table {
@@ -26,13 +26,10 @@ const StyledComingSoonPage = styled(PageLayout)`
         }
     }
 
-	${StyledCard} {
-        margin-top: 16px;
-        li {
-            margin-bottom: 8px;
-            list-style-type: disc;
-            margin-left: 16px;
-        }
+    li {
+        margin-bottom: 8px;
+        list-style-type: disc;
+        margin-left: 16px;
     }
 `;
 

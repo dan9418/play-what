@@ -8,25 +8,13 @@ import { StyledCard } from "../../ui/Card";
 import DetailsCol from "./DetailsCol";
 import KeyboardCol, { DEFAULT_KEY_RANGE } from "./KeyboardCol";
 import MainCol from "./MainCol";
+import MaximizeButton from "./MaximizeButton";
 import NotesCol from "./NotesCol";
 import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledKeyboardPage = styled(PageLayout)`
-    min-height: 95vh;
-    padding: 16px;
-
-    ${StyledColumnManager} {
-        & > div > ${StyledCard}:not(:last-child) {
-            margin-bottom: 16px;
-        }
-    }
-
-    ${StyledColumnManager} {
-        margin-top: 16px;
-    }
-`;
+const StyledKeyboardPage = styled(PageLayout)``;
 
 const Page: React.FC = () => {
 
@@ -44,6 +32,7 @@ const Page: React.FC = () => {
     } = modelState;
 
     const [keyRange, setKeyRange] = useState<[number, number]>(DEFAULT_KEY_RANGE);
+    const [isFullScreen, setIsFullScreen] = useState(false);
     const [colorScheme, _setColorScheme] = useState(COLOR_SCHEMES[1]);
     const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
 
@@ -74,6 +63,8 @@ const Page: React.FC = () => {
 
     const mainColProps = {
         title: 'Keyboard',
+        isFullScreen,
+        setIsFullScreen,
         viewer: <Keyboard
             {...instrumentColProps}
             {...notesColProps}
@@ -93,8 +84,8 @@ const Page: React.FC = () => {
     };
 
     return (
-        <StyledKeyboardPage title="Keyboard" >
-            <ColumnManager desktop={["1fr", "1fr"]}>
+        <StyledKeyboardPage title="Keyboard" action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}>
+            <ColumnManager desktop={["1fr", "1fr"]} >
                 <MainCol {...mainColProps} />
                 <TabCard
                     tabs={[

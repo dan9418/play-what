@@ -7,15 +7,9 @@ import Card, { CardHeader, StyledCard } from "../ui/Card";
 
 const StyledHelpPage = styled(PageLayout)`
 
-    ${StyledCard} {
-        li {
-            list-style-type: disc;
-            margin: 8px 0 8px 16px;
-        }
-    }
-
-    p + p {
-        margin-top: 16px;
+    li {
+        list-style-type: disc;
+        margin: 8px 0 8px 16px;
     }
 
     .q {

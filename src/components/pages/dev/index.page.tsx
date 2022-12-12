@@ -1,19 +1,10 @@
 import React from "react";
 import styled from 'styled-components';
 import PageLayout from "../../layout/PageLayout";
-import Card, { StyledCard } from "../../ui/Card";
+import Card from "../../ui/Card";
 import { List } from "../../ui/List";
 
-const StyledDevPage = styled(PageLayout)`
-	
-    ${StyledCard} {
-        margin-top: 16px;
-         li {
-            padding: 8px;
-            font-size: 120%;
-        }
-    }
-`;
+const StyledDevPage = styled(PageLayout)``;
 
 const Page: React.FC<any> = () => {
     return (

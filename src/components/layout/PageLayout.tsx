@@ -1,12 +1,14 @@
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import BreadcrumbList from '../breadcrumb-list/BreadcrumbList';
+import { StyledCard } from '../ui/Card';
 import SEO from "../utils/SEO";
 
 const StyledPageLayout = styled.div`
     width: 100%;
     max-width: 1024px;
     margin: auto;
+    min-height: calc(100vh - 330px);
 
     > .header {
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
@@ -45,6 +47,10 @@ const StyledPageLayout = styled.div`
 
     > .content {
         margin: 16px 0;
+
+        ${StyledCard} + ${StyledCard}, p + p {
+            margin-top: 16px;
+        }
     }
 `
 
@@ -58,7 +64,7 @@ interface IPageLayoutProps extends PropsWithChildren<any> {
 
 const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, className, children, isHome }) => {
     return (
-        <StyledPageLayout className={className}>
+        <StyledPageLayout>
             <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
             {!isHome &&
                 <>
@@ -73,7 +79,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, class
                     </div>
                 </>
             }
-            <div className="content">
+            <div className={`content ${className}`}>
                 {children}
             </div>
         </StyledPageLayout>

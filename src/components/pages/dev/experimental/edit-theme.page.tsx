@@ -34,10 +34,6 @@ const StyledThemePage = styled(PageLayout)`
         }
     }
 
-    ${StyledCard} {
-        margin: 16px 0;
-    }
-
     .row {
         display: flex;
         align-items: center;

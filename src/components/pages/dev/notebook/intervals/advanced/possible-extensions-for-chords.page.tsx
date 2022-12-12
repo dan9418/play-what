@@ -1,14 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
 import PageLayout from "../../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../../ui/Card";
+import Card from "../../../../../ui/Card";
 
 const StyledExtensionsPage = styled(PageLayout)`
-
-    ${StyledCard} {
-        margin-top: 16px;
-    }
-
     table {
         width: 100%;
         border-collapse: collapse;
