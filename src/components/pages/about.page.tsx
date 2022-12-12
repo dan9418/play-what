@@ -1,7 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { StyledPageBody } from "../layout/PageBody";
 import PageLayout from "../layout/PageLayout";
 import { StyledPane } from "../layout/Pane";
 import Card from "../ui/Card";

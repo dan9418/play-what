@@ -42,6 +42,10 @@ const StyledPageLayout = styled.div`
             }
         }
     }
+
+    > .content {
+        margin: 16px 0;
+    }
 `
 
 interface IPageLayoutProps extends PropsWithChildren<any> {
@@ -69,7 +73,9 @@ const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, class
                     </div>
                 </>
             }
-            {children}
+            <div className="content">
+                {children}
+            </div>
         </StyledPageLayout>
     );
 };
