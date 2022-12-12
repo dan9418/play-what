@@ -1,12 +1,12 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { useRootSuffix } from "../../contexts/PagePropsContext";
-import { ChordId, ScaleId } from "../../core/models/Model.constants";
-import PageLayout from "../layout/PageLayout";
-import { StyledPane } from "../layout/Pane";
-import Card from "../ui/Card";
-import Icon from "../ui/Icon";
+import { useRootSuffix } from "../../../contexts/PagePropsContext";
+import { ChordId, ScaleId } from "../../../core/models/Model.constants";
+import PageLayout from "../../layout/PageLayout";
+import { StyledPane } from "../../layout/Pane";
+import Card from "../../ui/Card";
+import Icon from "../../ui/Icon";
 
 const StyledBrowsePage = styled(PageLayout)`
 

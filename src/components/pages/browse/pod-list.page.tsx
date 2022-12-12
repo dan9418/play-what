@@ -1,18 +1,18 @@
 import React from "react";
 import styled from 'styled-components';
-import { useRoot } from "../../contexts/PagePropsContext";
-import { getModelIdClass, getModelIdText, ModelType } from "../../core/models/Model.constants";
-import GrandStaff from "../../viewers/grand-staff/GrandStaff";
-import DetailsCard from "../cards/DetailsCard";
-import GuitarCard from "../cards/GuitarCard";
-import ModeCard from "../cards/ModeCard";
-import PianoCard from "../cards/PianoCard";
-import RelatedCard from "../cards/RelatedCard";
-import RomanNumeralsCard from "../cards/RomanNumeralsCard";
-import RootCard from "../cards/RootCard";
-import ColumnManager from "../column-manager/ColumnManager";
-import PageLayout from "../layout/PageLayout";
-import { StyledPane } from "../layout/Pane";
+import { useRoot } from "../../../contexts/PagePropsContext";
+import { getModelIdClass, getModelIdText, ModelType } from "../../../core/models/Model.constants";
+import GrandStaff from "../../../viewers/grand-staff/GrandStaff";
+import DetailsCard from "../../cards/DetailsCard";
+import GuitarCard from "../../cards/GuitarCard";
+import ModeCard from "../../cards/ModeCard";
+import PianoCard from "../../cards/PianoCard";
+import RelatedCard from "../../cards/RelatedCard";
+import RomanNumeralsCard from "../../cards/RomanNumeralsCard";
+import RootCard from "../../cards/RootCard";
+import ColumnManager from "../../column-manager/ColumnManager";
+import PageLayout from "../../layout/PageLayout";
+import { StyledPane } from "../../layout/Pane";
 
 const StyledPodlistPage = styled(PageLayout)`
 

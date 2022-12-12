@@ -5,12 +5,12 @@ const SCALE_JSON = require("./static/scales.json")
 
 const STATIC_PAGES = [
   { route: '/about/' },
-  { route: '/browse/' },
-  { route: '/chords/' },
+  { route: '/browse/index/' },
+  { route: '/browse/chords/' },
+  { route: '/browse/scales/' },
   { route: '/coming-soon/' },
   { route: '/help/' },
   { route: '/index/' },
-  { route: '/scales/' },
   { route: '/search/' },
   { route: '/view/index/' },
   { route: '/view/fretboard/' },
@@ -26,6 +26,8 @@ const STATIC_PAGES = [
   { route: '/dev/notebook/intervals/advanced/possible-extensions-for-chords/' },
   { route: '/dev/notebook/intervals/basic/intervals-table/' }
 ];
+
+const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';
 
 module.exports.sourceNodes = ({ actions, createContentDigest }) => {
   const { createNode } = actions;
@@ -93,18 +95,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
   CHORD_JSON.forEach(model => {
     createPage({
       path: `/browse/chords/${model.modelId}/`,
-      component: require.resolve(
-        './src/components/pages/pod-list.page.tsx'
-      ),
+      component: require.resolve(POD_LIST_PATH),
       context: { modelType: 'chords', modelId: model.modelId },
     });
 
     NOTE_JSON.forEach(root => {
       createPage({
         path: `/browse/chords/${model.modelId}/root/${root.modelId}/`,
-        component: require.resolve(
-          './src/components/pages/pod-list.page.tsx'
-        ),
+        component: require.resolve(POD_LIST_PATH),
         context: { modelType: 'chords', modelId: model.modelId, rootId: root.modelId },
       });
     })
@@ -116,18 +114,14 @@ module.exports.createPages = async ({ graphql, actions }) => {
   SCALE_JSON.forEach(model => {
     createPage({
       path: `/browse/scales/${model.modelId}/`,
-      component: require.resolve(
-        './src/components/pages/pod-list.page.tsx'
-      ),
+      component: require.resolve(POD_LIST_PATH),
       context: { modelType: 'scales', modelId: model.modelId },
     });
 
     NOTE_JSON.forEach(root => {
       createPage({
         path: `/browse/scales/${model.modelId}/root/${root.modelId}/`,
-        component: require.resolve(
-          './src/components/pages/pod-list.page.tsx'
-        ),
+        component: require.resolve(POD_LIST_PATH),
         context: { modelType: 'scales', modelId: model.modelId, rootId: root.modelId },
       });
     })

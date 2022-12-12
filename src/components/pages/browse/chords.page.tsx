@@ -1,13 +1,13 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
-import { useRootSuffix } from "../../contexts/PagePropsContext";
-import { ChordId } from "../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../core/models/Model.presets";
-import CollectionCard from "../collection/CollectionCard";
-import PageLayout from "../layout/PageLayout";
-import { StyledDoublePane, StyledPane } from "../layout/Pane";
-import Card from "../ui/Card";
+import { useRootSuffix } from "../../../contexts/PagePropsContext";
+import { ChordId } from "../../../core/models/Model.constants";
+import { CHORD_PRESETS } from "../../../core/models/Model.presets";
+import CollectionCard from "../../collection/CollectionCard";
+import PageLayout from "../../layout/PageLayout";
+import { StyledDoublePane, StyledPane } from "../../layout/Pane";
+import Card from "../../ui/Card";
 
 const StyledChordsPage = styled(PageLayout)`
 
