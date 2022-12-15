@@ -24,6 +24,10 @@ const StyledCAGEDPage = styled(PageLayout)`
             td {
                 width: 256px;
                 padding: 0 4px;
+
+                h3 {
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -179,7 +183,7 @@ const Page: React.FC<any> = () => {
                     setRootPreset(p);
                 }} />
             </InputRow>
-            <Card title="Pentatonic Modes | Diatonic Modes | 7th Chords" >
+            <Card title="Shape Comparisons" >
                 <div className="scroll">
                     <table>
                         <thead>
@@ -187,24 +191,30 @@ const Page: React.FC<any> = () => {
                         <tbody>
                             {display.map((item, i) => {
                                 return (
-                                    <tr key={i}>
-                                        {item.map((item, j) => {
-                                            const { model, modelId, rootId, voicingId } = item as any;
-                                            const instance = new model(modelId, { root: Note.fromId(rootId) });
-                                            return (
-                                                <td key={modelId}>
-                                                    <h3>{modelId}</h3>
-                                                    <Fretboard
-                                                        model={instance}
-                                                        voicing={VOICING_PRESET_MAP.get(voicingId)}
-                                                        fretRange={FRET_RANGE[j]}
-                                                        showFretNumbers={false}
-                                                        showFretDots={false}
-                                                    />
-                                                </td>
-                                            );
-                                        })}
-                                    </tr>
+                                    <>
+                                        <tr key={i}>
+                                            {i === 0 && <th>Pentatonic</th>}
+                                            {i === 1 && <th>Diatonic</th>}
+                                            {i === 2 && <th>Seventh</th>}
+                                            {item.map((item, j) => {
+                                                const { model, modelId, rootId, voicingId } = item as any;
+                                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                                return (
+                                                    <td key={modelId}>
+                                                        <h3>{instance.getName()}</h3>
+                                                        <Fretboard
+                                                            model={instance}
+                                                            voicing={VOICING_PRESET_MAP.get(voicingId)}
+                                                            fretRange={FRET_RANGE[j]}
+                                                            showFretNumbers={false}
+                                                            showFretDots={false}
+                                                        />
+                                                    </td>
+                                                
+                                                );
+                                            })}
+                                        </tr>
+                                    </>
                                 );
                             })}
                         </tbody>
