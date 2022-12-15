@@ -6,10 +6,10 @@ import SEO from "../utils/SEO";
 
 const StyledPageLayout = styled.div`
     width: 100%;
-    max-width: 1024px;
+    max-width: ${({ $maxWidth }) => $maxWidth || '1024px'};
     margin: auto;
     min-height: calc(100vh - 330px);
-
+F
     > .header {
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
         width: 100%;
@@ -65,11 +65,12 @@ interface IPageLayoutProps extends PropsWithChildren<any> {
     action?: any;
     className?: string;
     isHome?: boolean;
+    maxWidth?: string;
 }
 
-const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, className, children, isHome }) => {
+const PageLayout: React.FC<IPageLayoutProps> = ({ title, subtitle, action, maxWidth, className, children, isHome }) => {
     return (
-        <StyledPageLayout>
+        <StyledPageLayout $maxWidth={maxWidth}>
             <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
             {!isHome &&
                 <>

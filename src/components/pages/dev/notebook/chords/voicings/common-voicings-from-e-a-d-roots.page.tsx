@@ -12,12 +12,10 @@ import Card from "../../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
 const StyledVoicingsPage = styled(PageLayout)`
-    max-width: 1920px;
-
     table {
         width: 100%;
         td {
-            width: 25%;
+            width: 22%;
         }
     }
 
@@ -49,17 +47,21 @@ const VOICINGS_D = [
 
 const VoicingRow = ({ voicingIds, model, modelId, root }) => (
     <tr>
-        {voicingIds.map(voicingId => {
+        {voicingIds.map((voicingId, i) => {
             const instance = new model(modelId, { root });
             return (
-                <td key={modelId}>
-                    <h3>{modelId}</h3>
-                    <Fretboard
-                        model={instance}
-                        voicing={VOICING_PRESET_MAP.get(voicingId)}
-                        fretRange={[1, 14]}
-                    />
-                </td>
+                <>
+                    {i === 0 && <th>{instance.getName()}</th>}
+                    <td key={modelId}>
+                        <Fretboard
+                            model={instance}
+                            voicing={VOICING_PRESET_MAP.get(voicingId)}
+                            fretRange={[1, 14]}
+                            showFretDots={false}
+                            showFretNumbers={false}
+                        />
+                    </td>
+                </>
             );
         })}
     </tr>
@@ -68,6 +70,7 @@ const VoicingRow = ({ voicingIds, model, modelId, root }) => (
 const THEAD = (
     <thead>
         <tr>
+            <th>Model</th>
             <th>Triad</th>
             <th>Seventh</th>
             <th>Drop 3-7</th>
@@ -101,7 +104,7 @@ const Page: React.FC = () => {
     const root = new Note(rootPreset.value);
 
     return (
-        <StyledVoicingsPage title="Chord Voicings">
+        <StyledVoicingsPage title="Chord Voicings" maxWidth="1920px">
             <InputRow label="Root">
                 <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
                     setRootPreset(p);
