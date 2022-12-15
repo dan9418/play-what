@@ -21,6 +21,9 @@ const StyledCAGEDPage = styled(PageLayout)`
     ${StyledCard}, ${StyledInputRow} {
         margin-top: 16px;
         table {
+            width: 100%;
+        }
+        table.shapes {
             td {
                 width: 256px;
                 padding: 0 4px;
@@ -28,6 +31,11 @@ const StyledCAGEDPage = styled(PageLayout)`
                 h3 {
                     font-size: 14px;
                 }
+            }
+        }
+        table.links {
+            td {    
+                padding: 0 4px;
             }
         }
     }
@@ -185,7 +193,7 @@ const Page: React.FC<any> = () => {
             </InputRow>
             <Card title="Shape Comparisons" >
                 <div className="scroll">
-                    <table>
+                    <table className="shapes">
                         <thead>
                         </thead>
                         <tbody>
@@ -215,6 +223,85 @@ const Page: React.FC<any> = () => {
                                             })}
                                         </tr>
                                     </>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </Card>
+            <Card title="Shape Links" >
+                <div className="scroll">
+                    <table className="links">
+                        <thead>
+                            <th>Diatonic</th>
+                        </thead>
+                        <tbody>
+                            {diatonicItems.map((item, i) => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                return (
+                                    <tr key={i}>                     
+                                        <td key={modelId}>
+                                            <h3>{instance.getName()}</h3>
+                                            <Fretboard
+                                                model={instance}
+                                                voicing={VOICING_PRESET_MAP.get(voicingId)}
+                                                fretRange={[0, 24]}
+                                                showFretNumbers={false}
+                                                showFretDots={false}
+                                            />
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                    <table className="links">
+                        <thead>
+                            <th>Pentatonic</th>
+                        </thead>
+                        <tbody>
+                            {pentatonicItems.map((item, i) => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                return (
+                                    <tr key={i}>                     
+                                        <td key={modelId}>
+                                            <h3>{instance.getName()}</h3>
+                                            <Fretboard
+                                                model={instance}
+                                                voicing={VOICING_PRESET_MAP.get(voicingId)}
+                                                fretRange={[0, 24]}
+                                                showFretNumbers={false}
+                                                showFretDots={false}
+                                            />
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                    <table className="links">
+                        <thead>
+                            <th>Roman Numerals</th>
+                        </thead>
+                        <tbody>
+                            {romanNumeralItems.map((item, i) => {
+                                const { model, modelId, rootId, voicingId } = item as any;
+                                const instance = new model(modelId, { root: Note.fromId(rootId) });
+                                return (
+                                    <tr key={i}>                     
+                                        <td key={modelId}>
+                                            <h3>{instance.getName()}</h3>
+                                            <Fretboard
+                                                model={instance}
+                                                voicing={VOICING_PRESET_MAP.get(voicingId)}
+                                                fretRange={[0, 24]}
+                                                showFretNumbers={false}
+                                                showFretDots={false}
+                                            />
+                                        </td>
+                                    </tr>
                                 );
                             })}
                         </tbody>
