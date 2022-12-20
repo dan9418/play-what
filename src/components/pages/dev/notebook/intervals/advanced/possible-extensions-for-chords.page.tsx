@@ -1,23 +1,18 @@
 import React from "react";
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PageLayout from "../../../../../layout/PageLayout";
 import Card from "../../../../../ui/Card";
+import { Table } from "../../../../../ui/Table";
 
 const StyledExtensionsPage = styled(PageLayout)`
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        td, td {
-            padding: 4px;
-            text-align: center;
-        }
-        thead tr:first-child {
-            border-bottom: 1px solid ${props => props.theme.utils.border}    
-        }
-        td:first-child {
-            font-weight: bold;
-            border-right: 1px solid ${props => props.theme.utils.border}
-        }
+
+`;
+
+const styles = css`
+    width: 100%;
+    td, th {
+        padding: 4px;
+        text-align: center;
     }
 `;
 
@@ -25,96 +20,30 @@ const Page: React.FC<any> = () => {
     return (
         <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>b9</th>
-                            <th>9</th>
-                            <th>#9</th>
-                            <th>11</th>
-                            <th>#11</th>
-                            <th>b13</th>
-                            <th>13</th>
-                            <th>b5</th>
-                            <th>#5</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Dom</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                        </tr>
-                        <tr>
-                            <td>min</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>Maj</td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td>X</td>
-                        </tr>
-                        <tr>
-                            <td>M6</td>
-                            <td>?</td>
-                            <td>?</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>m6</td>
-                            <td>?</td>
-                            <td>?</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>m/M</td>
-                            <td></td>
-                            <td>X</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <Table
+                    headers={[undefined, 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5']}
+                    rows={[
+                        {
+                            cols: [{ content: 'Dom', isHeader: true }, 'X', 'X', 'X', undefined, 'X', 'X', 'X', 'X', 'X']
+                        },
+                        {
+                            cols: [{ content: 'min', isHeader: true }, undefined, 'X', undefined, 'X', undefined, undefined, 'X', undefined, undefined]
+                        },
+                        {
+                            cols: [{ content: 'Maj', isHeader: true }, '?', 'X', undefined, 'X', 'X', undefined, 'X', undefined, 'X']
+                        },
+                        {
+                            cols: [{ content: 'M6', isHeader: true }, '?', '?', 'X', 'X', 'X', undefined, undefined, undefined, undefined]
+                        },
+                        {
+                            cols: [{ content: 'm6', isHeader: true }, undefined, '?', undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+                        },
+                        {
+                            cols: [{ content: 'm/M', isHeader: true }, undefined, 'X', undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+                        }
+                    ]}
+                    styles={styles}
+                />
             </Card>
         </StyledExtensionsPage>
     )

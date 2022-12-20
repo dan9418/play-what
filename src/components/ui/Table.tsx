@@ -1,34 +1,43 @@
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
 const StyledTable = styled.table`
    
 `;
 
-interface ITRowProps {
-    cols: string[];
+interface IColConfig {
     isHeader?: boolean;
+    content: any;
 }
 
-const TRow: React.FC<ITRowProps> = ({ cols, isHeader }) => {
-    const ColTag = isHeader ? 'th' : 'td';
-    return (
-        <tr>
-            {cols.map(col => <ColTag key={col}>{col}</ColTag>)}
-        </tr>
-    );
-}
+type TCol = string | number | IColConfig | ReactNode;
 
 interface ITableProps {
-    headers?: string[];
-    footers?: string[];
+    headers?: TCol[];
+    footers?: TCol[];
     rows: {
-        cols: string[];
+        cols: TCol[];
     }[];
     styles?: any;
 }
 
+interface ITRowProps {
+    cols: TCol[];
+    isHeader?: boolean;
+}
+
+const TRow: React.FC<ITRowProps> = ({ cols, isHeader }) => {
+    return (
+        <tr>
+            {cols.map((col: any, i) => {
+                const content = col && col.hasOwnProperty('content') ? col.content : col;
+                const ColTag = (isHeader || col && col.isHeader) ? 'th' : 'td';
+                return <ColTag key={i}>{content || ''}</ColTag>
+            })}
+        </tr>
+    );
+}
 
 export const Table: React.FC<ITableProps> = ({ headers, footers, rows, styles }) => {
     return (
