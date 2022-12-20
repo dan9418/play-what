@@ -21,8 +21,8 @@ const Page: React.FC<any> = () => {
         <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
                 <Table
-                    headers={[undefined, 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5']}
-                    rows={[
+                    thead={[{ cols: [undefined, 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }]}
+                    tbody={[
                         {
                             cols: [{ content: 'Dom', isHeader: true }, 'X', 'X', 'X', undefined, 'X', 'X', 'X', 'X', 'X']
                         },

@@ -6,57 +6,85 @@ const StyledTable = styled.table`
    
 `;
 
+// Col
+
 interface IColConfig {
     isHeader?: boolean;
     content: any;
 }
 
+interface IColProps extends IColConfig {
+    index: number;
+}
+
 type TCol = string | number | IColConfig | ReactNode;
 
-interface ITableProps {
-    headers?: TCol[];
-    footers?: TCol[];
-    rows: {
-        cols: TCol[];
-    }[];
-    styles?: any;
+const Col: React.FC<IColProps> = ({ index, isHeader, content }) => {
+    const ColTag = isHeader ? 'th' : 'td';
+    return <ColTag>{content || ''}</ColTag>
 }
 
-interface ITRowProps {
+// Row
+
+interface IRowConfig {
+    defaultColConfig?: Omit<IColConfig, 'content'>;
     cols: TCol[];
-    isHeader?: boolean;
 }
 
-const TRow: React.FC<ITRowProps> = ({ cols, isHeader }) => {
+const getIsConfig = (col: TCol): col is IColConfig => typeof col === 'object' && col !== null && col.hasOwnProperty('content');
+
+const Row: React.FC<IRowConfig> = ({ cols, defaultColConfig = {} }) => {
     return (
         <tr>
             {cols.map((col: any, i) => {
-                const content = col && col.hasOwnProperty('content') ? col.content : col;
-                const ColTag = (isHeader || col && col.isHeader) ? 'th' : 'td';
-                return <ColTag key={i}>{content || ''}</ColTag>
+                const isDefined = !!col;
+                const isConfig = getIsConfig(col);
+                const colConfig = !isDefined ?
+                    defaultColConfig :
+                    !isConfig ? {
+                        ...defaultColConfig,
+                        content: col
+                    } : {
+                        ...defaultColConfig,
+                        ...col
+                    }
+                return <Col key={i} index={i} content="" {...colConfig} />
             })}
         </tr>
     );
 }
 
-export const Table: React.FC<ITableProps> = ({ headers, footers, rows, styles }) => {
+// Table Section
+
+interface ITableSectionConfig {
+    Tag: 'thead' | 'tfoot' | 'tbody';
+    rows: IRowConfig[];
+}
+
+const TableSection: React.FC<ITableSectionConfig> = ({ Tag, rows }) => (
+    <Tag>
+        {rows.map((row, i) => <Row key={i} cols={row.cols} defaultColConfig={Tag === 'tbody' ? undefined : { isHeader: true }} />)}
+    </Tag>
+)
+
+// Table
+
+interface ITableConfig {
+    thead?: IRowConfig[];
+    tfoot?: IRowConfig[];
+    tbody: IRowConfig[];
+    styles?: any;
+    caption?: string;
+    colGroup?: any[];
+}
+
+export const Table: React.FC<ITableConfig> = ({ thead, tfoot, tbody, styles, colGroup, caption }) => {
     return (
         <StyledTable css={styles}>
-            {headers && (
-                <thead>
-                    <TRow cols={headers} isHeader />
-                </thead>
-            )}
-            {footers && (
-                <tfoot>
-                    <TRow cols={footers} isHeader />
-                </tfoot>
-            )}
-            {rows && (
-                <tbody>
-                    {rows.map((row, i) => <TRow key={i} cols={row.cols} />)}
-                </tbody>
-            )}
+            {caption && <caption>{caption}</caption>}
+            {thead && <TableSection Tag="thead" rows={thead} />}
+            {tfoot && <TableSection Tag="tfoot" rows={tfoot} />}
+            {tbody && <TableSection Tag="tbody" rows={tbody} />}
         </StyledTable>
     );
 }

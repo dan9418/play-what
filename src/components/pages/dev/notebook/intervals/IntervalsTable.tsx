@@ -17,7 +17,11 @@ const getName = (id: IntervalId): string => {
     return (new IntervalSpan(id)).getName();
 }
 
-const FOOTERS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+const FOOTERS = [
+    {
+        cols: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
+    }
+];
 
 const ROWS = [
     {
@@ -72,6 +76,6 @@ const ROWS = [
 
 export const IntervalsTable: React.FC = () => {
     return (
-        <Table footers={FOOTERS} rows={ROWS} styles={styles} />
+        <Table tfoot={FOOTERS} tbody={ROWS} styles={styles} />
     );
 }
