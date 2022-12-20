@@ -11,6 +11,7 @@ const StyledTable = styled.table`
 interface IColConfig {
     isHeader?: boolean;
     content: any;
+    colSpan?: number;
 }
 
 interface IColProps extends IColConfig {
@@ -19,9 +20,9 @@ interface IColProps extends IColConfig {
 
 type TCol = string | number | IColConfig | ReactNode;
 
-const Col: React.FC<IColProps> = ({ index, isHeader, content }) => {
+const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan }) => {
     const ColTag = isHeader ? 'th' : 'td';
-    return <ColTag>{content || ''}</ColTag>
+    return <ColTag colSpan={colSpan}>{content || ''}</ColTag>
 }
 
 // Row
