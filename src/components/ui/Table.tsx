@@ -1,5 +1,6 @@
 
-import React, { ReactNode } from 'react';
+import { Link } from 'gatsby';
+import React, { Fragment, ReactNode } from 'react';
 import styled from 'styled-components';
 
 const StyledTable = styled.table`
@@ -13,6 +14,7 @@ interface IColConfig {
     content: any;
     colSpan?: number;
     className?: string;
+    link?: string;
 }
 
 interface IColProps extends IColConfig {
@@ -21,9 +23,16 @@ interface IColProps extends IColConfig {
 
 type TCol = string | number | IColConfig | ReactNode;
 
-const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan, className }) => {
+const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan, className, link }) => {
     const ColTag = isHeader ? 'th' : 'td';
-    return <ColTag colSpan={colSpan} className={className}>{content || ''}</ColTag>
+    const WrapperTag = link ? Link : Fragment;
+    const wrapperProps: any = link ? { to: link } : {};
+
+    return <ColTag colSpan={colSpan} className={className}>
+        <WrapperTag {...wrapperProps}>
+            {content || ''}
+        </WrapperTag>
+    </ColTag>
 }
 
 // Row

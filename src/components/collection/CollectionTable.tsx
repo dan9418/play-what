@@ -1,12 +1,13 @@
-import { Link } from "gatsby";
 import React from "react";
-import styled from 'styled-components';
+import { css } from 'styled-components';
 import { useRoot, useRootSuffix } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
 import { IModelConfig, ModelType } from "../../core/models/Model.constants";
+import Note from "../../core/models/Note";
 import Scale from "../../core/models/Scale";
+import { Table } from "../ui/Table";
 
-const StyledCollectionTable = styled.table`
+const tableStyles = css`
     width: 100%;
     margin: auto;
     border-collapse: collapse;
@@ -80,48 +81,56 @@ export interface ICollectionTableProps {
 
 const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
+const getSemitoneCol = (model: Chord | Scale, h: number, semitones: number[], root?: Note) => {
+    const index = model.intervals.findIndex(ivl => ivl.pod[0] + 1 === h);
+    const className = semitones.includes(h) ? 'active' : undefined;
+    if (index < 0) {
+        return {
+            className,
+            content: ''
+        };
+    }
+    const mod = root ? (model.notes as Note[])[index] : model.intervals[index];
+    return (
+        {
+            className,
+            content: mod.getName()
+        }
+    );
+}
+
 const CollectionTable: React.FC<ICollectionTableProps> = ({ data, semitones = [] }) => {
     const rootSuffix = useRootSuffix();
     const root = useRoot();
     return (
-        <StyledCollectionTable>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th colSpan={12}>{root ? 'Notes' : 'Intervals'}</th>
-                    {/*SEMITONES.map((h, i) => <th key={i}>{h}</th>)*/}
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    data.map((d, i) => {
-                        const cl = d.modelType === ModelType.Chord ? Chord : Scale;
-                        const model = new cl(d.modelId, { root });
-
-                        return (
-                            <tr key={i}>
-                                <td>
-                                    <Link to={`/browse/${model.modelType}/${model.modelId}/${rootSuffix}`}>
-                                        {model.getName()}
-                                    </Link>
-                                </td>
-                                {SEMITONES.map((h, i) => {
-                                    const index = model.intervals.findIndex(ivl => ivl.pod[0] + 1 === h);
-                                    const className = semitones.includes(h) ? 'active' : '';
-                                    if (index < 0) return <td key={i} className={className} />;
-                                    const mod = root ? model.notes[index] : model.intervals[index];
-                                    return (
-                                        <td key={i} className={className}>
-                                            {mod.getName()}
-                                        </td>
-                                    );
-                                })}
-                            </tr>
-                        );
-                    })
-                }
-            </tbody>
-        </StyledCollectionTable>
+        <Table
+            styles={tableStyles}
+            thead={[{
+                cols: [
+                    'Name',
+                    {
+                        colSpan: 12,
+                        content: root ? 'Notes' : 'Intervals'
+                    }
+                ]
+            }]}
+            tbody={data.map((d, i) => {
+                const cl = d.modelType === ModelType.Chord ? Chord : Scale;
+                // @ts-ignore
+                const model = new cl(d.modelId, { root });
+                return (
+                    {
+                        cols: [
+                            {
+                                link: `/browse/${model.modelType}/${model.modelId}/${rootSuffix}`,
+                                content: model.getName()
+                            },
+                            ...SEMITONES.map((h, i) => getSemitoneCol(model, h, semitones, root))
+                        ]
+                    }
+                );
+            })}
+        />
     );
 };
 
