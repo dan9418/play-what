@@ -5,6 +5,7 @@ import NumberUtils from "../../core/general/Number.utils";
 import Note from "../../core/models/Note";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
+import { Table } from "../ui/Table";
 
 const StyledDetailsCard = styled(StyledCard)`
     .header {
@@ -75,27 +76,35 @@ const StyledDetailsCard = styled(StyledCard)`
     }
 `;
 
-const NoteCell = ({ note, i }) => {
-    if (!note) return null;
+const getNoteCell = (note, i) => {
+    if (!note) return;
     return (
-        <td className={`note featured ${i === 0 ? 'root' : ''}`}>{note.name}<sub>{note.getOctave()}</sub></td>
+        {
+            className: `note featured ${i === 0 ? 'root' : ''}`,
+            content: (
+                <>
+                    {note.name}
+                    <sub>{note.getOctave()}</sub>
+                </>
+            )
+        }
     );
 };
 
-const IntervalCell = ({ interval, isFeatured }) => {
+const getIntervalCell = (interval, isFeatured) => {
     return (
         <td className={`interval ${isFeatured ? 'featured' : ''}`}>{interval.getName()}</td>
     );
 };
 
-const PitchCell = ({ note }) => {
-    if (!note) return null;
+const getPitchCell = (note) => {
+    if (!note) return;
     return (
         <td className={`frequency`}>{note.getFrequency(true)}</td>
     );
 };
 
-const RatioCell = ({ interval }) => {
+const getRatioCell = (interval) => {
     return (
         <td className={`ratio`}>{interval.getRatio()}</td>
     );
@@ -114,49 +123,71 @@ const DetailsCard: React.FC<any> = ({ model }) => {
     return (
         <StyledDetailsCard $n={intervals.length}>
             <CardHeader title={notes ? 'Notes' : 'Intervals'} />
-            <table className="mobile">
-                <thead>
-                    <tr>
-                        {notes && <th>Note</th>}
-                        <th>Interval</th>
-                        {notes && <th>Pitch</th>}
-                        <th>Ratio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {intervals.map((ivl, i) => {
-                        const note = notes && notes[i];
-                        return (
-                            <tr key={ivl.modelId}>
-                                <NoteCell note={note} i={i} />
-                                <IntervalCell interval={ivl} isFeatured={!note} />
-                                <PitchCell note={note} />
-                                <RatioCell interval={ivl} />
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <table className="desktop">
-                <tbody>
-                    {notes && <tr>
-                        <th>Note</th>
-                        {notes.map((note, i) => <NoteCell note={note} key={i} i={i} />)}
-                    </tr>}
-                    <tr>
-                        <th>Interval</th>
-                        {intervals.map((ivl, i) => <IntervalCell interval={ivl} key={i} isFeatured={!notes} />)}
-                    </tr>
-                    {notes && <tr>
-                        <th>Pitch</th>
-                        {notes.map((note, i) => <PitchCell note={note} key={i} />)}
-                    </tr>}
-                    <tr>
-                        <th>Ratio</th>
-                        {intervals.map((ivl, i) => <RatioCell interval={ivl} key={i} />)}
-                    </tr>
-                </tbody>
-            </table>
+            <Table
+                className="mobile"
+                thead={[{
+                    cols: [
+                        notes ? 'Note' : undefined,
+                        'Interval',
+                        notes ? 'Pitch' : undefined,
+                        'Ratio'
+                    ]
+                }]}
+                tbody={intervals.map((ivl, i) => {
+                    const note = notes && notes[i];
+                    return (
+                        {
+                            cols: [
+                                getNoteCell(note, i),
+                                getIntervalCell(ivl, !note),
+                                getPitchCell(note),
+                                getRatioCell(ivl)
+                            ]
+                        }
+                    );
+                })}
+            />
+            <Table
+                className="desktop"
+                tbody={[
+                    notes ? {
+                        cols: [
+                            {
+                                isHeader: true,
+                                content: 'Note'
+                            },
+                            ...notes.map((note, i) => getNoteCell(note, i))
+                        ]
+                    } : undefined,
+                    {
+                        cols: [
+                            {
+                                isHeader: true,
+                                content: 'Interval'
+                            },
+                            ...intervals.map((ivl, i) => getIntervalCell(ivl, !notes))
+                        ]
+                    },
+                    notes ? {
+                        cols: [
+                            {
+                                isHeader: true,
+                                content: 'Pitch'
+                            },
+                            ...notes.map((note, i) => getPitchCell(note))
+                        ]
+                    } : undefined,
+                    {
+                        cols: [
+                            {
+                                isHeader: true,
+                                content: 'Ratio'
+                            },
+                            ...intervals.map((ivl, i) => getRatioCell(ivl))
+                        ]
+                    },
+                ]}
+            />
         </StyledDetailsCard >
     );
 };
