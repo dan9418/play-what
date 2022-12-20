@@ -21,25 +21,25 @@ const Page: React.FC<any> = () => {
         <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
                 <Table
-                    thead={[{ cols: [undefined, 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }]}
+                    thead={[{ cols: ['', 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }]}
                     tbody={[
                         {
-                            cols: [{ content: 'Dom', isHeader: true }, 'X', 'X', 'X', undefined, 'X', 'X', 'X', 'X', 'X']
+                            cols: [{ content: 'Dom', isHeader: true }, 'X', 'X', 'X', '', 'X', 'X', 'X', 'X', 'X']
                         },
                         {
-                            cols: [{ content: 'min', isHeader: true }, undefined, 'X', undefined, 'X', undefined, undefined, 'X', undefined, undefined]
+                            cols: [{ content: 'min', isHeader: true }, '', 'X', '', 'X', '', '', 'X', '', '']
                         },
                         {
-                            cols: [{ content: 'Maj', isHeader: true }, '?', 'X', undefined, 'X', 'X', undefined, 'X', undefined, 'X']
+                            cols: [{ content: 'Maj', isHeader: true }, '?', 'X', '', 'X', 'X', '', 'X', '', 'X']
                         },
                         {
-                            cols: [{ content: 'M6', isHeader: true }, '?', '?', 'X', 'X', 'X', undefined, undefined, undefined, undefined]
+                            cols: [{ content: 'M6', isHeader: true }, '?', '?', 'X', 'X', 'X', '', '', '', '']
                         },
                         {
-                            cols: [{ content: 'm6', isHeader: true }, undefined, '?', undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+                            cols: [{ content: 'm6', isHeader: true }, '', '?', '', '', '', '', '', '', '']
                         },
                         {
-                            cols: [{ content: 'm/M', isHeader: true }, undefined, 'X', undefined, undefined, undefined, undefined, undefined, undefined, undefined]
+                            cols: [{ content: 'm/M', isHeader: true }, '', 'X', '', '', '', '', '', '', '']
                         }
                     ]}
                     styles={styles}
