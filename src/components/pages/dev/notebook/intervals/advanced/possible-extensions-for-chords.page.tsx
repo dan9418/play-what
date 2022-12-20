@@ -16,33 +16,24 @@ const styles = css`
     }
 `;
 
+const HEAD = [{ cols: ['', 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }];
+const BODY = [
+    { cols: ['Dom', 'X', 'X', 'X', '', 'X', 'X', 'X', 'X', 'X'] },
+    { cols: ['min', '', 'X', '', 'X', '', '', 'X', '', ''] },
+    { cols: ['Maj', '?', 'X', '', 'X', 'X', '', 'X', '', 'X'] },
+    { cols: ['M6', '?', '?', 'X', 'X', 'X', '', '', '', ''] },
+    { cols: ['m6', '', '?', '', '', '', '', '', '', ''] },
+    { cols: ['m/M', '', 'X', '', '', '', '', '', '', ''] }
+];
+
 const Page: React.FC<any> = () => {
     return (
         <StyledExtensionsPage title="Extended Intervals">
             <Card title="">
                 <Table
                     headerColIndicies={[0]}
-                    thead={[{ cols: ['', 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }]}
-                    tbody={[
-                        {
-                            cols: ['Dom', 'X', 'X', 'X', '', 'X', 'X', 'X', 'X', 'X']
-                        },
-                        {
-                            cols: ['min', '', 'X', '', 'X', '', '', 'X', '', '']
-                        },
-                        {
-                            cols: ['Maj', '?', 'X', '', 'X', 'X', '', 'X', '', 'X']
-                        },
-                        {
-                            cols: ['M6', '?', '?', 'X', 'X', 'X', '', '', '', '']
-                        },
-                        {
-                            cols: ['m6', '', '?', '', '', '', '', '', '', '']
-                        },
-                        {
-                            cols: ['m/M', '', 'X', '', '', '', '', '', '', '']
-                        }
-                    ]}
+                    thead={HEAD}
+                    tbody={BODY}
                     styles={styles}
                 />
             </Card>

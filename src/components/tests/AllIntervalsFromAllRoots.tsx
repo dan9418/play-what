@@ -109,30 +109,33 @@ const getRoots = (): ITestShape[] => {
     return roots;
 }
 
+const HEAD = [
+    {
+        cols: [
+            'Root',
+            ...FIRST_OCTAVE_INTERVALS.map(ivl => IntervalSpan.fromValue(ivl.value).getName())
+        ]
+    }
+];
+
+const BODY = getRoots().map(r => ({
+    cols: [
+        r.name,
+        ...r.intervals.map(ivl => ({
+            className: ivl.isInvalid ? 'invalid' : '',
+            content: ivl.name
+        }))
+    ]
+}))
+
 const AllIntervalsFromAllRoots: React.FC<any> = () => {
-    const roots = getRoots();
     return (
         <StyledTest>
             <Table
                 styles={tableStyles}
                 headerColIndicies={[0]}
-                thead={[
-                    {
-                        cols: [
-                            'Root',
-                            ...FIRST_OCTAVE_INTERVALS.map(ivl => IntervalSpan.fromValue(ivl.value).getName())
-                        ]
-                    }
-                ]}
-                tbody={roots.map(r => ({
-                    cols: [
-                        r.name,
-                        ...r.intervals.map(ivl => ({
-                            className: ivl.isInvalid ? 'invalid' : '',
-                            content: ivl.name
-                        }))
-                    ]
-                }))}
+                thead={HEAD}
+                tbody={BODY}
             />
         </StyledTest>
     );
