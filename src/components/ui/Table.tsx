@@ -12,6 +12,7 @@ interface IColConfig {
     isHeader?: boolean;
     content: any;
     colSpan?: number;
+    className?: string;
 }
 
 interface IColProps extends IColConfig {
@@ -20,9 +21,9 @@ interface IColProps extends IColConfig {
 
 type TCol = string | number | IColConfig | ReactNode;
 
-const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan }) => {
+const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan, className }) => {
     const ColTag = isHeader ? 'th' : 'td';
-    return <ColTag colSpan={colSpan}>{content || ''}</ColTag>
+    return <ColTag colSpan={colSpan} className={className}>{content || ''}</ColTag>
 }
 
 // Row
@@ -30,13 +31,14 @@ const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan }) => {
 interface IRowConfig {
     defaultColConfig?: Omit<IColConfig, 'content'>;
     cols: TCol[];
+    className?: string;
 }
 
 const getIsConfig = (col: TCol): col is IColConfig => typeof col === 'object' && col !== null && col.hasOwnProperty('content');
 
-const Row: React.FC<IRowConfig> = ({ cols, defaultColConfig = {} }) => {
+const Row: React.FC<IRowConfig> = ({ cols, defaultColConfig = {}, className }) => {
     return (
-        <tr>
+        <tr className={className}>
             {cols.map((col: any, i) => {
                 const isDefined = !!col;
                 const isConfig = getIsConfig(col);
