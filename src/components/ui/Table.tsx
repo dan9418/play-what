@@ -63,7 +63,14 @@ interface ITableSectionConfig {
 
 const TableSection: React.FC<ITableSectionConfig> = ({ Tag, rows }) => (
     <Tag>
-        {rows.map((row, i) => <Row key={i} cols={row.cols} defaultColConfig={Tag === 'tbody' ? undefined : { isHeader: true }} />)}
+        {rows.map((row, i) => <Row key={i} cols={row.cols} defaultColConfig={
+            Tag === 'tbody' ?
+                row.defaultColConfig :
+                {
+                    isHeader: true,
+                    ...(row.defaultColConfig || {})
+                }
+        } />)}
     </Tag>
 )
 
