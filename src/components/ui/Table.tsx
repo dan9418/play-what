@@ -44,29 +44,22 @@ const Col: React.FC<IColProps> = ({ index, isHeader, content, colSpan, className
 // Row
 
 interface IRowConfig {
-    defaultColConfig?: Omit<IColConfig, 'content'>;
     cols: (TCol | TOmit)[];
     className?: string;
+    isHeader?: boolean;
+    headerColIndicies?: number[];
 }
 
 const getIsConfig = (col: TCol): col is IColConfig => typeof col === 'object' && col !== null && col.hasOwnProperty('content');
 
-const Row: React.FC<IRowConfig> = ({ cols, defaultColConfig = {}, className }) => {
+const Row: React.FC<IRowConfig> = ({ cols, isHeader, className, headerColIndicies = [] }) => {
     return (
         <tr className={className}>
             {cols.map((col: any, i) => {
                 if (getIsTypeOmit(col)) return null;
                 const isConfig = getIsConfig(col);
-                const colConfig = col === '' ?
-                    defaultColConfig :
-                    !isConfig ? {
-                        ...defaultColConfig,
-                        content: col
-                    } : {
-                        ...defaultColConfig,
-                        ...col
-                    }
-                return <Col key={i} index={i} content="" {...colConfig} />
+                const colConfig = !isConfig ? { content: col } : col
+                return <Col key={i} index={i} isHeader={isHeader || headerColIndicies.includes(i)} {...colConfig} />
             })}
         </tr>
     );
@@ -77,24 +70,19 @@ const Row: React.FC<IRowConfig> = ({ cols, defaultColConfig = {}, className }) =
 interface ITableSectionConfig {
     Tag: 'thead' | 'tfoot' | 'tbody';
     rows: (IRowConfig | TOmit)[];
+    headerColIndicies?: number[];
 }
 
-const TableSection: React.FC<ITableSectionConfig> = ({ Tag, rows }) => (
+const TableSection: React.FC<ITableSectionConfig> = ({ Tag, rows, headerColIndicies }) => (
     <Tag>
         {rows.map((row, i) => {
             if (getIsTypeOmit(row)) return null;
             return (
                 <Row
                     key={i}
-                    {...row}
-                    defaultColConfig={
-                        Tag === 'tbody' ?
-                            row.defaultColConfig :
-                            {
-                                isHeader: true,
-                                ...(row.defaultColConfig || {})
-                            }
-                    } />
+                    isHeader={Tag !== 'tbody'}
+                    headerColIndicies={headerColIndicies}
+                    {...row} />
             );
         })}
     </Tag>
@@ -115,16 +103,17 @@ interface ITableConfig {
     caption?: string;
     colGroups?: IColGroup[];
     className?: string;
+    headerColIndicies?: number[];
 }
 
-export const Table: React.FC<ITableConfig> = ({ thead, tfoot, tbody, styles, colGroups, caption, className }) => {
+export const Table: React.FC<ITableConfig> = ({ thead, tfoot, tbody, styles, colGroups, caption, headerColIndicies, className }) => {
     return (
         <StyledTable css={styles} className={className}>
             {colGroups && <colgroup>{colGroups.map((cg, i) => <col key={i} {...cg} />)}</colgroup>}
             {caption && <caption>{caption}</caption>}
-            {thead && <TableSection Tag="thead" rows={thead} />}
-            {tfoot && <TableSection Tag="tfoot" rows={tfoot} />}
-            {tbody && <TableSection Tag="tbody" rows={tbody} />}
+            {thead && <TableSection Tag="thead" rows={thead} headerColIndicies={headerColIndicies} />}
+            {tfoot && <TableSection Tag="tfoot" rows={tfoot} headerColIndicies={headerColIndicies} />}
+            {tbody && <TableSection Tag="tbody" rows={tbody} headerColIndicies={headerColIndicies} />}
         </StyledTable>
     );
 }

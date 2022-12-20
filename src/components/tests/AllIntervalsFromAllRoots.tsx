@@ -115,6 +115,7 @@ const AllIntervalsFromAllRoots: React.FC<any> = () => {
         <StyledTest>
             <Table
                 styles={tableStyles}
+                headerColIndicies={[0]}
                 thead={[
                     {
                         cols: [

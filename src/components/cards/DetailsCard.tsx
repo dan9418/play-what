@@ -149,40 +149,29 @@ const DetailsCard: React.FC<any> = ({ model }) => {
             />
             <Table
                 className="desktop"
+                headerColIndicies={[0]}
                 tbody={[
                     notes ? {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Note'
-                            },
+                            'Note',
                             ...notes.map((note, i) => getNoteCell(note, i))
                         ]
                     } : undefined,
                     {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Interval'
-                            },
+                            'Interval',
                             ...intervals.map((ivl, i) => getIntervalCell(ivl, !notes))
                         ]
                     },
                     notes ? {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Pitch'
-                            },
+                            'Pitch',
                             ...notes.map((note, i) => getPitchCell(note))
                         ]
                     } : undefined,
                     {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Ratio'
-                            },
+                            'Ratio',
                             ...intervals.map((ivl, i) => getRatioCell(ivl))
                         ]
                     },

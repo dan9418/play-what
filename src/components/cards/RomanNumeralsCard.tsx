@@ -41,14 +41,12 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
         >
             <Table
                 styles={tableStyles}
+                headerColIndicies={[0]}
                 tbody={[
                     {
                         className: 'numeral',
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Numeral'
-                            },
+                            'Numeral',
                             ...numerals.map((n, i) => {
                                 const [numeral, symbol] = n.getNumeralParts(i + 1)
                                 return (
@@ -66,19 +64,13 @@ const RomanNumeralsCard: React.FC<any> = ({ model }) => {
                     },
                     {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Degree'
-                            },
+                            'Degree',
                             ...numerals.map((n, i) => i + 1)
                         ]
                     },
                     {
                         cols: [
-                            {
-                                isHeader: true,
-                                content: 'Name'
-                            },
+                            'Name',
                             ...numerals.map((n, i) => ({
                                 link: `/browse/${n.modelType}/${n.modelId}/${n.root ? `root/${n.root.modelId}` : ''}`,
                                 content: n.getShortName()
