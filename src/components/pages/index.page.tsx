@@ -211,17 +211,8 @@ const Page: React.FC<any> = () => {
 			<img src={logoSrc} className="logo" /*width={768} height={128}*/ />
 			<p className="intro">
 				Every chord. Every scale. Every key.
-				{/*A toolkit for exploring and visualizing musical concepts*/}
 			</p>
-
-			{/*<p className="disclaimer">
-				This site is under active development and is currently unstable.<br />A formal Beta release is planned for 8/5/22.
-			</p>*/}
 			<SearchBar placeholder={placeholder} />
-			{/*<div className="preview">
-				<PreviewCard model={model} />
-				<Fretboard model={model} />
-			</div>*/}
 			<div className="tiles">
 				<Link to="/browse" className="tile">
 					<Icon iconId={IconId.Browse} size={64} />
