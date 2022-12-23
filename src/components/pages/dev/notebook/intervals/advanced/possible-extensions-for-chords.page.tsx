@@ -1,19 +1,12 @@
 import React from "react";
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import PageLayout from "../../../../../layout/PageLayout";
 import Card from "../../../../../ui/Card";
 import { Table } from "../../../../../ui/Table";
+import { TABLE_STYLES_1 } from "../../../../../ui/Table.styles";
 
 const StyledExtensionsPage = styled(PageLayout)`
 
-`;
-
-const styles = css`
-    width: 100%;
-    td, th {
-        padding: 4px;
-        text-align: center;
-    }
 `;
 
 const HEAD = [{ cols: ['', 'b9', '9', '#9', '11', '#11', 'b13', '13', 'b5', '#5'] }];
@@ -34,7 +27,7 @@ const Page: React.FC<any> = () => {
                     headerColIndicies={[0]}
                     thead={HEAD}
                     tbody={BODY}
-                    styles={styles}
+                    styles={TABLE_STYLES_1}
                 />
             </Card>
         </StyledExtensionsPage>

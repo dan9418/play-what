@@ -77,7 +77,6 @@ const StyledDetailsCard = styled(StyledCard)`
 `;
 
 const getNoteCell = (note, i) => {
-    if (!note) return;
     return (
         {
             className: `note featured ${i === 0 ? 'root' : ''}`,
@@ -98,7 +97,6 @@ const getIntervalCell = (interval, isFeatured) => {
 };
 
 const getPitchCell = (note) => {
-    if (!note) return;
     return (
         <td className={`frequency`}>{note.getFrequency(true)}</td>
     );
@@ -113,7 +111,8 @@ const getRatioCell = (interval) => {
 const DetailsCard: React.FC<any> = ({ model }) => {
     const intervals = model.intervals;
     const octave = useRecoilValue(octaveState);
-    const notes = model.notes && model.notes.map(n => new Note([
+    const hasNotes = !!model.notes;
+    const notes = hasNotes && model.notes.map(n => new Note([
         (octave - 4) * 12 + NumberUtils.modulo(n.pod[0], 12),
         n.pod[1]
     ]));
@@ -122,25 +121,25 @@ const DetailsCard: React.FC<any> = ({ model }) => {
 
     return (
         <StyledDetailsCard $n={intervals.length}>
-            <CardHeader title={notes ? 'Notes' : 'Intervals'} />
+            <CardHeader title={hasNotes ? 'Notes' : 'Intervals'} />
             <Table
                 className="mobile"
                 thead={[{
                     cols: [
-                        notes ? 'Note' : undefined,
+                        hasNotes ? 'Note' : undefined,
                         'Interval',
-                        notes ? 'Pitch' : undefined,
+                        hasNotes ? 'Pitch' : undefined,
                         'Ratio'
                     ]
                 }]}
                 tbody={intervals.map((ivl, i) => {
-                    const note = notes && notes[i];
+                    const note = hasNotes && notes[i];
                     return (
                         {
                             cols: [
-                                getNoteCell(note, i),
+                                hasNotes ? getNoteCell(note, i) : undefined,
                                 getIntervalCell(ivl, !note),
-                                getPitchCell(note),
+                                hasNotes ? getPitchCell(note) : undefined,
                                 getRatioCell(ivl)
                             ]
                         }
@@ -151,7 +150,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                 className="desktop"
                 headerColIndicies={[0]}
                 tbody={[
-                    notes ? {
+                    hasNotes ? {
                         cols: [
                             'Note',
                             ...notes.map((note, i) => getNoteCell(note, i))
@@ -163,7 +162,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
                             ...intervals.map((ivl, i) => getIntervalCell(ivl, !notes))
                         ]
                     },
-                    notes ? {
+                    hasNotes ? {
                         cols: [
                             'Pitch',
                             ...notes.map((note, i) => getPitchCell(note))

@@ -1,17 +1,10 @@
 
 import React from 'react';
+import IntervalSpan from '../../../../../core/models/Interval';
 import { IntervalId } from '../../../../../core/models/Model.constants';
 import { Table } from '../../../../ui/Table';
-import IntervalSpan from '../../../../../core/models/Interval';
-import { css } from 'styled-components';
+import { TABLE_STYLES_1 } from '../../../../ui/Table.styles';
 
-const styles = css`
-    width: 100%;
-    td, th {
-        padding: 4px;
-        text-align: center;
-    }
-`;
 
 const getName = (id: IntervalId): string => {
     return (new IntervalSpan(id)).getName();
@@ -76,6 +69,6 @@ const ROWS = [
 
 export const IntervalsTable: React.FC = () => {
     return (
-        <Table tfoot={FOOTERS} tbody={ROWS} styles={styles} />
+        <Table tfoot={FOOTERS} tbody={ROWS} styles={TABLE_STYLES_1} />
     );
 }

@@ -8,6 +8,7 @@ import { addPods } from "../../core/models/Pod.static";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import { Table } from "../ui/Table";
+import { TABLE_STYLES_1 } from "../ui/Table.styles";
 
 const FIRST_OCTAVE_INTERVALS = INTERVAL_PRESETS.filter(ivl => ivl.value[0] < 12);
 const ACCIDENTALS = ACCIDENTAL_VALUES.filter(a => Math.abs(a.value) < 2);
@@ -15,38 +16,7 @@ const ACCIDENTALS = ACCIDENTAL_VALUES.filter(a => Math.abs(a.value) < 2);
 const StyledTest = styled.div`
     height: 100%;
     width: 100%;
-    overflow: auto; 
-`;
-
-const tableStyles = css`
-    border-collapse: collapse;
-    margin: 16px auto;
-
-    td, th {
-        border: 1px solid ${({ theme }) => theme.utils.border};
-
-        height: 40px;
-        width: 44px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-    th {
-        text-align: left;
-        white-space: nowrap;
-    }
-
-    th {
-        background-color: ${({ theme }) => theme.utils.hoverDark};
-    }
-    td {
-        background-color: white;
-    }
-
-    .pod {
-        color: ${props => props.theme.text.secondary};
-        font-size: 80%;
-    }
+    overflow: auto;
 
     .invalid {
         color: ${({ theme }) => theme.status.negative};
@@ -132,7 +102,7 @@ const AllIntervalsFromAllRoots: React.FC<any> = () => {
     return (
         <StyledTest>
             <Table
-                styles={tableStyles}
+                styles={TABLE_STYLES_1}
                 headerColIndicies={[0]}
                 thead={HEAD}
                 tbody={BODY}
