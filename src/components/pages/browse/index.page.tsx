@@ -7,6 +7,7 @@ import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import Card from "../../ui/Card";
 import Icon from "../../ui/Icon";
+import { SimpleList } from "../../ui/List";
 
 const StyledBrowsePage = styled(PageLayout)`
     a.all {
@@ -26,25 +27,29 @@ const Page: React.FC<any> = props => {
         <StyledBrowsePage title="Browse">
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <Card title="Chords">
-                    <ul className="disc">
-                        <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Min7}/${rootSuffix}`}>Minor 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.Dom7}/${rootSuffix}`}>Dominant 7th</Link></li>
-                        <li><Link to={`/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`}>Half-Diminished 7th</Link></li>
-                    </ul>
+                    <SimpleList
+                        items={[
+                            ['Major Triad', `/browse/chords/${ChordId.MajTriad}/${rootSuffix}`],
+                            ['Minor Triad', `/browse/chords/${ChordId.MinTriad}/${rootSuffix}`],
+                            ['Major 7th', `/browse/chords/${ChordId.Maj7}/${rootSuffix}`],
+                            ['Minor 7th', `/browse/chords/${ChordId.Min7}/${rootSuffix}`],
+                            ['Dominant 7th', `/browse/chords/${ChordId.Dom7}/${rootSuffix}`],
+                            ['Half-Diminished 7th', `/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`]
+                        ]}
+                    />
                     <Link to="/browse/chords" className="all">See All Chords <Icon iconId="next" size={12} /></Link>
                 </Card>
                 <Card title="Scales">
-                    <ul className="disc">
-                        <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`}>Harmonic Minor</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
-                        <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
-                    </ul>
+                    <SimpleList
+                        items={[
+                            ['Major (Ionian)', `/browse/scales/${ScaleId.Ionian}/${rootSuffix}`],
+                            ['Natural Minor (Aeolian)', `/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`],
+                            ['Melodic Minor', `/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`],
+                            ['Harmonic Minor', `/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`],
+                            ['Major Pentatonic', `/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`],
+                            ['Minor Pentatonic', `/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`]
+                        ]}
+                    />
                     <Link to="/browse/scales" className="all">See All Scales <Icon iconId="next" size={12} /></Link>
                 </Card>
             </ColumnManager>

@@ -9,7 +9,7 @@ const StyledPageLayout = styled.div`
     max-width: ${({ $maxWidth }) => $maxWidth || '1024px'};
     margin: auto;
     min-height: calc(100vh - 330px);
-F
+
     > .header {
         border-bottom: 1px solid ${({ theme }) => theme.utils.border};    
         width: 100%;
@@ -51,11 +51,6 @@ F
         ${StyledCard} + ${StyledCard}, p + p {
             margin-top: 16px;
         }
-    }
-
-    ul.disc li {
-        list-style-type: disc;
-        margin: 8px 0 8px 16px;
     }
 `
 

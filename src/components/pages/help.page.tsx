@@ -3,14 +3,17 @@ import React from "react";
 import styled from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
 import PageLayout from "../layout/PageLayout";
-import Card, { CardHeader, StyledCard } from "../ui/Card";
+import Card, { CardHeader } from "../ui/Card";
+import { SimpleList } from "../ui/List";
 
 const StyledHelpPage = styled(PageLayout)`
     .q {
+        margin-top: 4px;
         font-weight: bold;
     }
 
     .ans {
+        margin-top: 2px;
         font-style: italic;
         color: ${props => props.theme.text.secondary};
     }
@@ -41,14 +44,10 @@ const Page: React.FC<any> = props => {
                     The <Link to="/browse">browse</Link> section is an extensive directory of many <Link to="/browse/chords">chords</Link> and <Link to="/browse/scales">scales</Link>.
                     <CardHeader level={4} title="Landing Pages" />
                     There is a landing page for each of the "model types"
-                    <ul className="disc">
-                        <li>
-                            <Link to="/browse/chords">Chords</Link>
-                        </li>
-                        <li>
-                            <Link to="/browse/scales">Scales</Link>
-                        </li>
-                    </ul>
+                    <SimpleList items={[
+                        ['Chords', '/browse/chords'],
+                        ['Scales', '/browse/scales']
+                    ]} />
                     <p>
                         Each landing page contains a brief description of the musical concept and a few subcategories. There is also a table comparing the intervals used to define each chord or scale.
                     </p>
@@ -84,25 +83,25 @@ const Page: React.FC<any> = props => {
                 </p>
                 <p>
                     The search query can include the name and/or key center for any chord or scale in the Play What library. It also understands some other common keywords:
-                    <ul className="disc">
-                        <li>Major</li>
-                        <li>Minor</li>
-                        <li>Triad</li>
-                        <li>Suspended</li>
-                        <li>Dominant</li>
-                        <li>Diatonic</li>
-                        <li>Diminished</li>
-                        <li>Augmented</li>
-                        <li>Perfect</li>
-                        <li>Pentatonic</li>
-                        <li>Hexatonic</li>
-                        <li>Heptatonic</li>
-                        <li>Octatonic</li>
-                    </ul>
+                    <SimpleList items={[
+                        'Major',
+                        'Minor',
+                        'Triad',
+                        'Suspended',
+                        'Dominant',
+                        'Diatonic',
+                        'Diminished',
+                        'Augmented',
+                        'Perfect',
+                        'Pentatonic',
+                        'Hexatonic',
+                        'Heptatonic',
+                        'Octatonic',
+                    ]} />
                 </p>
             </Card>
             <Card title="FAQ">
-                <ul className="disc">
+                <ul>
                     <li>
                         <div className="q">When will the site be finished?</div>
                         <div className="ans">The first public beta will open on 8/5/22. The official launch will be sometime in 2023. More information is available on the <Link to='/coming-soon'>Coming Soon Page</Link></div>

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import { FEEDBACK_LINK } from "../../config/constants";
 import PageLayout from "../layout/PageLayout";
 import Card from "../ui/Card";
+import { SimpleList } from "../ui/List";
 import { Table } from "../ui/Table";
 
 const StyledComingSoonPage = styled(PageLayout)``;
@@ -50,17 +51,17 @@ const Page: React.FC<any> = () => {
                             cols: [{
                                 colSpan: 3,
                                 content: (
-                                    <ul className="disc">
-                                        <li>Possible name change</li>
-                                        <li>Fresh logo</li>
-                                        <li>Sharing features</li>
-                                        <li>Chord progressions</li>
-                                        <li>Cadences</li>
-                                        <li>More tunings/voicings</li>
-                                        <li>Open source license</li>
-                                        <li>Technical documentation</li>
-                                        <li>Bug fixes</li>
-                                    </ul>
+                                    <SimpleList items={[
+                                        'Possible name change',
+                                        'Fresh logo',
+                                        'Sharing features',
+                                        'Chord progressions',
+                                        'Cadences',
+                                        'More tunings/voicings',
+                                        'Open source license',
+                                        'Technical documentation',
+                                        'Bug fixes',
+                                    ]} />
                                 )
                             }]
                         },
@@ -71,16 +72,16 @@ const Page: React.FC<any> = () => {
                             cols: [{
                                 colSpan: 3,
                                 content: (
-                                    <ul className="disc">
-                                        <li>Build-your-own practice materials</li>
-                                        <li>Grand staff viewer</li>
-                                        <li>Chord inversions</li>
-                                        <li>Rhythm support</li>
-                                        <li>Sound support</li>
-                                        <li>Ear training</li>
-                                        <li>User accounts</li>
-                                        <li>...and more!</li>
-                                    </ul>
+                                    <SimpleList items={[
+                                        'Build-your-own practice materials',
+                                        'Grand staff viewer',
+                                        'Chord inversions',
+                                        'Rhythm support',
+                                        'Sound support',
+                                        'Ear training',
+                                        'User accounts',
+                                        '...and more!',
+                                    ]} />
                                 )
                             }]
                         },

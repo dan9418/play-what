@@ -1,5 +1,6 @@
 import { Link } from "gatsby";
 import React from "react";
+import { LIST_STYLES_2 } from "./List.styles";
 
 export interface IListItem {
     text: string;
@@ -32,6 +33,7 @@ const Heading: React.FC<any> = ({ title, subtitle, level }) => {
 
 export const List: React.FC<IListProps> = ({ title, subtitle, items, lists, level = 1, prefix = '', styles }) => {
     return (
+        // @ts-ignore
         <section css={styles}>
             <Heading title={title} subtitle={subtitle} level={level} />
             <ul>
@@ -49,5 +51,23 @@ export const List: React.FC<IListProps> = ({ title, subtitle, items, lists, leve
                 )}
             </ul>
         </section>
+    );
+}
+
+export const SimpleList: React.FC<{ items: (string | [string, string])[] }> = ({ items }) => {
+    const formattedItems: IListItem[] = items.map(item => {
+        if (Array.isArray(item)) {
+            const [text, link] = item;
+            return {
+                text,
+                link
+            }
+        }
+        return {
+            text: item
+        }
+    })
+    return (
+        <List items={formattedItems} styles={LIST_STYLES_2} />
     );
 }

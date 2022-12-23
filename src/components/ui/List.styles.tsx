@@ -23,3 +23,10 @@ export const LIST_STYLES_1 = css`
         }
     }
 `;
+
+export const LIST_STYLES_2 = css`
+    li {
+        list-style-type: disc;
+        margin: 8px 0 8px 16px;
+    }
+`;

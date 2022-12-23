@@ -1,4 +1,3 @@
-import { Link } from "gatsby";
 import React from "react";
 import styled from 'styled-components';
 import { useRootSuffix } from "../../../contexts/PagePropsContext";
@@ -8,6 +7,7 @@ import CollectionCard from "../../collection/CollectionCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import Card from "../../ui/Card";
+import { SimpleList } from "../../ui/List";
 
 const StyledScalesPage = styled(PageLayout)`
 
@@ -43,7 +43,7 @@ const ScalesPage: React.FC<any> = props => {
                         <li><a href="#pentatonic">Pentatonic</a></li>
                         <li><a href="#blues">Blues</a></li>
                         <li><a href="#bebop">Bebop</a></li>
-                    </ul>*/}
+                    ]} />*/}
             </div>
             <ColumnManager>
                 <ColumnManager>
@@ -51,14 +51,14 @@ const ScalesPage: React.FC<any> = props => {
                 </ColumnManager>
                 <ColumnManager>
                     <Card title="Common Scales" id="common">
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Major (Ionian)</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Natural Minor (Aeolian)</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`}>Harmonic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major (Ionian)', `/browse/scales/${ScaleId.Ionian}/${rootSuffix}`],
+                            ['Natural Minor (Aeolian)', `/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`],
+                            ['Melodic Minor', `/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`],
+                            ['Harmonic Minor', `/browse/scales/${ScaleId.HarmonicMinor}/${rootSuffix}`],
+                            ['Major Pentatonic', `/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`],
+                            ['Minor Pentatonic', `/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Diatonic Modes" id="diatonic">
                         <p>
@@ -66,15 +66,15 @@ const ScalesPage: React.FC<any> = props => {
                             The most common form of the diatonic scale is the Major scale (AKA the Ionian mode), which follows the pattern W-W-W-H-W-W-H.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Ionian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Dorian}/${rootSuffix}`}>Dorian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Phrygian}/${rootSuffix}`}>Phrygian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Lydian}/${rootSuffix}`}>Lydian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Mixolydian}/${rootSuffix}`}>Mixolydian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`}>Aeolian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Locrian}/${rootSuffix}`}>Locrian</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Ionian', `/browse/scales/${ScaleId.Ionian}/${rootSuffix}`],
+                            ['Dorian', `/browse/scales/${ScaleId.Dorian}/${rootSuffix}`],
+                            ['Phrygian', `/browse/scales/${ScaleId.Phrygian}/${rootSuffix}`],
+                            ['Lydian', `/browse/scales/${ScaleId.Lydian}/${rootSuffix}`],
+                            ['Mixolydian', `/browse/scales/${ScaleId.Mixolydian}/${rootSuffix}`],
+                            ['Aeolian', `/browse/scales/${ScaleId.Aeolian}/${rootSuffix}`],
+                            ['Locrian', `/browse/scales/${ScaleId.Locrian}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Harmonic Minor Modes" id="harmonic">
                         <p>
@@ -83,15 +83,15 @@ const ScalesPage: React.FC<any> = props => {
                             This slight variation to the diatonic scale creates seven more unique modes.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.Ionian}/${rootSuffix}`}>Harmonic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Locrian6}/${rootSuffix}`}>Locrian 6</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.IonianSharp5}/${rootSuffix}`}>Ionian #5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DorianSharp4}/${rootSuffix}`}>Dorian #4</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.PhrygianDominant}/${rootSuffix}`}>Phrygian Dominant</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp2}/${rootSuffix}`}>Lydian #2</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrianDoubleFlat7}/${rootSuffix}`}>Super Locrian bb7</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Harmonic Minor', `/browse/scales/${ScaleId.Ionian}/${rootSuffix}`],
+                            ['Locrian 6', `/browse/scales/${ScaleId.Locrian6}/${rootSuffix}`],
+                            ['Ionian #5', `/browse/scales/${ScaleId.IonianSharp5}/${rootSuffix}`],
+                            ['Dorian #4', `/browse/scales/${ScaleId.DorianSharp4}/${rootSuffix}`],
+                            ['Phrygian Dominant', `/browse/scales/${ScaleId.PhrygianDominant}/${rootSuffix}`],
+                            ['Lydian #2', `/browse/scales/${ScaleId.LydianSharp2}/${rootSuffix}`],
+                            ['Super Locrian bb7', `/browse/scales/${ScaleId.SuperLocrianDoubleFlat7}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Melodic Minor Modes" id="melodic">
                         <p>
@@ -100,15 +100,15 @@ const ScalesPage: React.FC<any> = props => {
                             This variation also creates seven unique modes.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`}>Melodic Minor</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DorianFlat2}/${rootSuffix}`}>Dorian b2</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianSharp5}/${rootSuffix}`}>Lydian #5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.LydianDominiant}/${rootSuffix}`}>Lydian Dominant</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MixolydianFlatSix}/${rootSuffix}`}>Mixolydian b6</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.AeolianFlat5}/${rootSuffix}`}>Aeolian b5</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.SuperLocrian}/${rootSuffix}`}>Super Locrian (Altered)</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Melodic Minor', `/browse/scales/${ScaleId.MelodicMinor}/${rootSuffix}`],
+                            ['Dorian b2', `/browse/scales/${ScaleId.DorianFlat2}/${rootSuffix}`],
+                            ['Lydian #5', `/browse/scales/${ScaleId.LydianSharp5}/${rootSuffix}`],
+                            ['Lydian Dominant', `/browse/scales/${ScaleId.LydianDominiant}/${rootSuffix}`],
+                            ['Mixolydian b6', `/browse/scales/${ScaleId.MixolydianFlatSix}/${rootSuffix}`],
+                            ['Aeolian b5', `/browse/scales/${ScaleId.AeolianFlat5}/${rootSuffix}`],
+                            ['Super Locrian (Altered)', `/browse/scales/${ScaleId.SuperLocrian}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Pentatonic Modes" id="pentatonic">
                         <p>
@@ -116,33 +116,33 @@ const ScalesPage: React.FC<any> = props => {
                             For example, the Major Pentatonic scale is the same as a Major Diatonic scale without the 4th and 7th degrees.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`}>Major Pentatonic</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Egyptian}/${rootSuffix}`}>Egyptian</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.ManGong}/${rootSuffix}`}>Man Gong</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.Ritusen}/${rootSuffix}`}>Ritusen</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`}>Minor Pentatonic</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major Pentatonic', `/browse/scales/${ScaleId.MajorPentatonic}/${rootSuffix}`],
+                            ['Egyptian', `/browse/scales/${ScaleId.Egyptian}/${rootSuffix}`],
+                            ['Man Gong', `/browse/scales/${ScaleId.ManGong}/${rootSuffix}`],
+                            ['Ritusen', `/browse/scales/${ScaleId.Ritusen}/${rootSuffix}`],
+                            ['Minor Pentatonic', `/browse/scales/${ScaleId.MinorPentatonic}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Blues Scales" id="blues">
                         <p>
                             Blues scales are pentatonic scales with an extra "blue" note.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.MajorBlues}/${rootSuffix}`}>Major Blues</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.MinorBlues}/${rootSuffix}`}>Minor Blues</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major Blues', `/browse/scales/${ScaleId.MajorBlues}/${rootSuffix}`],
+                            ['Minor Blues', `/browse/scales/${ScaleId.MinorBlues}/${rootSuffix}`],
+                        ]} />
                     </Card>
                     <Card title="Bebop Scales" id="bebop">
                         <p>
                             Bebop scales are diatonic scales with an extra chomatic passing note.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/scales/${ScaleId.MajorBebop}/${rootSuffix}`}>Major Bebop</Link></li>
-                            <li><Link to={`/browse/scales/${ScaleId.DominantBebop}/${rootSuffix}`}>Dominant Bebop</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major Bebop', `/browse/scales/${ScaleId.MajorBebop}/${rootSuffix}`],
+                            ['Dominant Bebop', `/browse/scales/${ScaleId.DominantBebop}/${rootSuffix}`],
+                        ]} />
                     </Card>
                 </ColumnManager>
             </ColumnManager>

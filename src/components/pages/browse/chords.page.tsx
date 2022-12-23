@@ -8,6 +8,7 @@ import CollectionCard from "../../collection/CollectionCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import Card from "../../ui/Card";
+import { SimpleList } from "../../ui/List";
 
 const StyledChordsPage = styled(PageLayout)`
     .intro {
@@ -41,7 +42,7 @@ const ChordsPage: React.FC<any> = props => {
                         <li><a href="#seventh">Seventh Chords</a></li>
                         <li><a href="#sixth">Sixth Chords</a></li>
                         <li><a href="#suspended">Suspended Chords</a></li>
-                    </ul>*/}
+                    />*/}
             </div>
             <ColumnManager>
                 <ColumnManager>
@@ -54,28 +55,28 @@ const ChordsPage: React.FC<any> = props => {
                             The specific thirds and fifths used determine the type (or <em>quality</em>) of the triad.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/chords/${ChordId.MajTriad}/${rootSuffix}`}>Major Triad</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.MinTriad}/${rootSuffix}`}>Minor Triad</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.AugTriad}/${rootSuffix}`}>Augmented Triad</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.DimTriad}/${rootSuffix}`}>Diminished Triad</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major Triad', `/browse/chords/${ChordId.MajTriad}/${rootSuffix}`],
+                            ['Minor Triad', `/browse/chords/${ChordId.MinTriad}/${rootSuffix}`],
+                            ['Augmented Triad', `/browse/chords/${ChordId.AugTriad}/${rootSuffix}`],
+                            ['Diminished Triad', `/browse/chords/${ChordId.DimTriad}/${rootSuffix}`]
+                        ]} />
                     </Card>
                     <Card title="Seventh Chords" id="seventh">
                         <p>
                             A seventh chord is a triad with an additional seventh interval stacked on top.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/chords/${ChordId.Maj7}/${rootSuffix}`}>Major 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Min7}/${rootSuffix}`}>Minor 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Dom7}/${rootSuffix}`}>Dominant 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.MinMaj7}/${rootSuffix}`}>Minor-Major 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Dim7}/${rootSuffix}`}>Diminished 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`}>Half-Diminished 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Aug7}/${rootSuffix}`}>Augmented 7th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.AugMaj7}/${rootSuffix}`}>Augmented Major 7th</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major 7th', `/browse/chords/${ChordId.Maj7}/${rootSuffix}`],
+                            ['Minor 7th', `/browse/chords/${ChordId.Min7}/${rootSuffix}`],
+                            ['Dominant 7th', `/browse/chords/${ChordId.Dom7}/${rootSuffix}`],
+                            ['Minor - Major 7th', `/browse/chords/${ChordId.MinMaj7}/${rootSuffix}`],
+                            ['Diminished 7th', `/browse/chords/${ChordId.Dim7}/${rootSuffix}`],
+                            ['Half - Diminished 7th', `/browse/chords/${ChordId.HalfDim7}/${rootSuffix}`],
+                            ['Augmented 7th', `/browse/chords/${ChordId.Aug7}/${rootSuffix}`],
+                            ['Augmented Major 7th', `/browse/chords/${ChordId.AugMaj7}/${rootSuffix}`]
+                        ]} />
                     </Card>
                     <Card title="Sixth Chords" id="sixth">
                         <p>
@@ -83,20 +84,20 @@ const ChordsPage: React.FC<any> = props => {
                             They are similar in function to seventh chords.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/chords/${ChordId.Maj6}/${rootSuffix}`}>Major 6th</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Min6}/${rootSuffix}`}>Minor 6th</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Major 6th', `/browse/chords/${ChordId.Maj6}/${rootSuffix}`],
+                            ['Minor 6th', `/browse/chords/${ChordId.Min6}/${rootSuffix}`]
+                        ]} />
                     </Card>
                     <Card title="Suspended Chords" id="suspended">
                         <p>
                             A suspended chord is a like a triad, except it sustitutes a second or fourth interval in place of the third.
                         </p>
                         <h3>Examples</h3>
-                        <ul className="disc">
-                            <li><Link to={`/browse/chords/${ChordId.Sus2}/${rootSuffix}`}>Suspended 2nd</Link></li>
-                            <li><Link to={`/browse/chords/${ChordId.Sus4}/${rootSuffix}`}>Suspended 4th</Link></li>
-                        </ul>
+                        <SimpleList items={[
+                            ['Suspended 2nd', `/browse/chords/${ChordId.Sus2}/${rootSuffix}`],
+                            ['Suspended 4th', `/browse/chords/${ChordId.Sus4}/${rootSuffix}`]
+                        ]} />
                     </Card>
                 </ColumnManager>
             </ColumnManager>
