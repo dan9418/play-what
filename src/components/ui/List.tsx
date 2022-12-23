@@ -1,6 +1,5 @@
 import { Link } from "gatsby";
 import React from "react";
-import styled from 'styled-components';
 
 export interface IListItem {
     text: string;
@@ -14,21 +13,11 @@ export interface IList {
     items?: | IListItem[];
 }
 
-const StyledList = styled.section`
-    li {
-        margin-left: 8px;
-    }
-    li:not(:first-child) {
-        margin-top: 4px;
-    }
-    h1, h2, h3, h4, h5, h6, h7 {
-        font-weight: bold;
-    }
-    h1, h2, h3, h4, h5, h6, h7, ul {
-        margin-top: 16px;
-        margin-left: 8px;
-    }
-`;
+export interface IListProps extends IList {
+    level?: number;
+    prefix?: string;
+    styles?: any;
+}
 
 const Heading: React.FC<any> = ({ title, subtitle, level }) => {
     const Title = `h${level}` as any;
@@ -41,12 +30,9 @@ const Heading: React.FC<any> = ({ title, subtitle, level }) => {
     )
 }
 
-export const List: React.FC<IList & { level?: number, prefix?: string }> = ({ title, subtitle, items, lists, level = 1, prefix = '' }) => {
-
-    //const HeadTag = level === 1 ? PageLayout : level === 2 ? Card : Heading
-
+export const List: React.FC<IListProps> = ({ title, subtitle, items, lists, level = 1, prefix = '', styles }) => {
     return (
-        <StyledList>
+        <section css={styles}>
             <Heading title={title} subtitle={subtitle} level={level} />
             <ul>
                 {items && items.length > 0 && (
@@ -62,6 +48,6 @@ export const List: React.FC<IList & { level?: number, prefix?: string }> = ({ ti
                     </li>
                 )}
             </ul>
-        </StyledList>
+        </section>
     );
 }
