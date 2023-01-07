@@ -1,8 +1,12 @@
 import { ModelId, ModelType, NoteId } from "../models/Model.constants";
 
-export const getModelRoute = (modelType: ModelType, modelId: ModelId, rootId?: NoteId) => {
+export const getModelRoute = (
+  modelType: ModelType,
+  modelId?: ModelId,
+  rootId?: NoteId
+) => {
+  const modelSuffix = modelId ? `/${modelId}` : "";
+  const rootSuffix = rootId ? `/root/${rootId}` : "";
 
-    const rootSuffix = rootId ? `/root/${rootId}` : '';
-
-    return `/browse/${modelType}/${modelId}${rootSuffix}`;
-}
+  return `/browse/${modelType}${modelSuffix}${rootSuffix}/`;
+};
