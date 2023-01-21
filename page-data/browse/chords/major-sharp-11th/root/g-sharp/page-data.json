@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
+    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
     "path": "/browse/chords/major-sharp-11th/root/g-sharp/",
     "result": {"pageContext":{"modelType":"chords","modelId":"major-sharp-11th","rootId":"g-sharp"}},
     "staticQueryHashes": ["3439708972"]}

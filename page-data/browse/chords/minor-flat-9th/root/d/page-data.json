@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
+    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
     "path": "/browse/chords/minor-flat-9th/root/d/",
     "result": {"pageContext":{"modelType":"chords","modelId":"minor-flat-9th","rootId":"d"}},
     "staticQueryHashes": ["3439708972"]}

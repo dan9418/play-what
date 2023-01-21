@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
+    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
     "path": "/browse/scales/melodic-minor/root/e-sharp/",
     "result": {"pageContext":{"modelType":"scales","modelId":"melodic-minor","rootId":"e-sharp"}},
     "staticQueryHashes": ["3439708972"]}

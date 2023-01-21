@@ -1,5 +1,5 @@
 {
-    "componentChunkName": "component---src-components-pages-pod-list-page-tsx",
+    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
     "path": "/browse/chords/minor-11th/root/e-sharp/",
     "result": {"pageContext":{"modelType":"chords","modelId":"minor-11th","rootId":"e-sharp"}},
     "staticQueryHashes": ["3439708972"]}
