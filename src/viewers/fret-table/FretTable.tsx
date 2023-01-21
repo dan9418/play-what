@@ -26,19 +26,54 @@ const tableStyles = css`
   td,
   th {
     min-width: 32px;
+
     text-align: center;
   }
   tbody td {
-    background-color: white;
+    background-color: #e8dbb8;
+
+    border-right: 1px solid grey;
+    &:first-child {
+      border-left: 1px solid grey;
+    }
+    .fret-content {
+      min-height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .fret-string {
+      height: 1px;
+      background: #bbb;
+      width: 100%;
+      position: absolute;
+      margin: auto 0;
+    }
+    .fret-flag {
+      height: 16px;
+      width: 16px;
+      background: red;
+      border-radius: 100%;
+      z-index: 1;
+    }
+  }
+  tbody tr {
+    &:first-child {
+      border-top: 1px solid grey;
+    }
+    &:last-child {
+      border-bottom: 1px solid grey;
+    }
   }
 `;
 
 const FretTable: React.FC<IFretTableProps> = (userProps) => {
   const props = { ...DEFAULT_FRET_TABLE_PROPS, ...userProps };
 
-  const [lo, hi] = props.fretRange;
+  const [lo, hi] = props.fretRange as [number, number];
   const numFrets = hi - lo + 1;
-  const numStrings = props.tuning.value.length;
+  const numStrings = (props.tuning as ITuning).value.length;
 
   const fretNums: number[] = [];
   for (let i = 0; i < numFrets; i++) {
@@ -55,7 +90,12 @@ const FretTable: React.FC<IFretTableProps> = (userProps) => {
     const frets: IColConfig[] = [];
     for (let i = 0; i < numFrets; i++) {
       frets.push({
-        content: "x",
+        content: (
+          <div className="fret-content">
+            <div className="fret-string" />
+            <div className="fret-flag" />
+          </div>
+        ),
       });
     }
     strings.push({
