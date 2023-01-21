@@ -16,18 +16,24 @@ export const StyledCard = styled.div`
     }
 `;
 
-export const CardHeader: React.FC<any> = ({ title, as: AsTag = 'h2', action = null }) => (
-    <div className="header">
-        <AsTag>{title}</AsTag>
-        {action}
-    </div>
-);
+export const CardHeader: React.FC<any> = ({ title, level = 2, action = null }) => {
+    const AsTag: any = `h${level}`;
+    return (
+        <div className="header">
+            <AsTag>{title}</AsTag>
+            {action}
+        </div>
+    );
+}
 
-const Card: React.FC<any> = ({ title, action, children, as, ...rest }) => {
+const Card: React.FC<any> = ({ title, subtitle, action, children, level, ...rest }) => {
     return (
         <StyledCard {...rest}>
             {title &&
-                <CardHeader title={title} action={action} as={as} />
+                <CardHeader title={title} action={action} level={level} />
+            }
+            {subtitle &&
+                <CardHeader title={subtitle} level={level + 1} />
             }
             {children}
         </StyledCard >

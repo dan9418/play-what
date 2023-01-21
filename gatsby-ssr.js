@@ -21,14 +21,12 @@ export const wrapRootElement = ({ element, ...props }) => {
 
 export const wrapPageElement = ({ element, props }) => {
     return (
-        <>
-            <PagePropsContextProvider value={props}>
-                <SiteHeader />
-                <Main>
-                    {element}
-                    <SiteFooter />
-                </Main>
-            </PagePropsContextProvider>
-        </>
-    )
-}
+        <PagePropsContextProvider value={props}>
+            <SiteHeader />
+            <Main>
+                {element}
+                <SiteFooter />
+            </Main>
+        </PagePropsContextProvider>
+    );
+};

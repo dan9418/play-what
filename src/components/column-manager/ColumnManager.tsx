@@ -20,6 +20,11 @@ export const StyledColumnManager = styled.div`
    
 `;
 
+export interface IColumnManagerProps {
+    tablet?: string[];
+    desktop?: string[];
+}
+
 const ColumnManager: React.FC<any> = ({ children, tablet, desktop }) => {
     return (
         <StyledColumnManager $tablet={tablet} $desktop={desktop}>

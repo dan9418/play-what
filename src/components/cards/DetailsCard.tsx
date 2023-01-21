@@ -5,6 +5,7 @@ import NumberUtils from "../../core/general/Number.utils";
 import Note from "../../core/models/Note";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
+import { Table } from "../ui/Table";
 
 const StyledDetailsCard = styled(StyledCard)`
     .header {
@@ -75,27 +76,33 @@ const StyledDetailsCard = styled(StyledCard)`
     }
 `;
 
-const NoteCell = ({ note, i }) => {
-    if (!note) return null;
+const getNoteCell = (note, i) => {
     return (
-        <td className={`note featured ${i === 0 ? 'root' : ''}`}>{note.name}<sub>{note.getOctave()}</sub></td>
+        {
+            className: `note featured ${i === 0 ? 'root' : ''}`,
+            content: (
+                <>
+                    {note.name}
+                    <sub>{note.getOctave()}</sub>
+                </>
+            )
+        }
     );
 };
 
-const IntervalCell = ({ interval, isFeatured }) => {
+const getIntervalCell = (interval, isFeatured) => {
     return (
         <td className={`interval ${isFeatured ? 'featured' : ''}`}>{interval.getName()}</td>
     );
 };
 
-const PitchCell = ({ note }) => {
-    if (!note) return null;
+const getPitchCell = (note) => {
     return (
         <td className={`frequency`}>{note.getFrequency(true)}</td>
     );
 };
 
-const RatioCell = ({ interval }) => {
+const getRatioCell = (interval) => {
     return (
         <td className={`ratio`}>{interval.getRatio()}</td>
     );
@@ -104,7 +111,8 @@ const RatioCell = ({ interval }) => {
 const DetailsCard: React.FC<any> = ({ model }) => {
     const intervals = model.intervals;
     const octave = useRecoilValue(octaveState);
-    const notes = model.notes && model.notes.map(n => new Note([
+    const hasNotes = !!model.notes;
+    const notes = hasNotes && model.notes.map(n => new Note([
         (octave - 4) * 12 + NumberUtils.modulo(n.pod[0], 12),
         n.pod[1]
     ]));
@@ -113,50 +121,61 @@ const DetailsCard: React.FC<any> = ({ model }) => {
 
     return (
         <StyledDetailsCard $n={intervals.length}>
-            <CardHeader title={notes ? 'Notes' : 'Intervals'} />
-            <table className="mobile">
-                <thead>
-                    <tr>
-                        {notes && <th>Note</th>}
-                        <th>Interval</th>
-                        {notes && <th>Pitch</th>}
-                        <th>Ratio</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {intervals.map((ivl, i) => {
-                        const note = notes && notes[i];
-                        return (
-                            <tr key={ivl.modelId}>
-                                <NoteCell note={note} i={i} />
-                                <IntervalCell interval={ivl} isFeatured={!note} />
-                                <PitchCell note={note} />
-                                <RatioCell interval={ivl} />
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <table className="desktop">
-                <tbody>
-                    {notes && <tr>
-                        <th>Note</th>
-                        {notes.map((note, i) => <NoteCell note={note} key={i} i={i} />)}
-                    </tr>}
-                    <tr>
-                        <th>Interval</th>
-                        {intervals.map((ivl, i) => <IntervalCell interval={ivl} key={i} isFeatured={!notes} />)}
-                    </tr>
-                    {notes && <tr>
-                        <th>Pitch</th>
-                        {notes.map((note, i) => <PitchCell note={note} key={i} />)}
-                    </tr>}
-                    <tr>
-                        <th>Ratio</th>
-                        {intervals.map((ivl, i) => <RatioCell interval={ivl} key={i} />)}
-                    </tr>
-                </tbody>
-            </table>
+            <CardHeader title={hasNotes ? 'Notes' : 'Intervals'} />
+            <Table
+                className="mobile"
+                thead={[{
+                    cols: [
+                        hasNotes ? 'Note' : undefined,
+                        'Interval',
+                        hasNotes ? 'Pitch' : undefined,
+                        'Ratio'
+                    ]
+                }]}
+                tbody={intervals.map((ivl, i) => {
+                    const note = hasNotes && notes[i];
+                    return (
+                        {
+                            cols: [
+                                hasNotes ? getNoteCell(note, i) : undefined,
+                                getIntervalCell(ivl, !note),
+                                hasNotes ? getPitchCell(note) : undefined,
+                                getRatioCell(ivl)
+                            ]
+                        }
+                    );
+                })}
+            />
+            <Table
+                className="desktop"
+                headerColIndicies={[0]}
+                tbody={[
+                    hasNotes ? {
+                        cols: [
+                            'Note',
+                            ...notes.map((note, i) => getNoteCell(note, i))
+                        ]
+                    } : undefined,
+                    {
+                        cols: [
+                            'Interval',
+                            ...intervals.map((ivl, i) => getIntervalCell(ivl, !notes))
+                        ]
+                    },
+                    hasNotes ? {
+                        cols: [
+                            'Pitch',
+                            ...notes.map((note, i) => getPitchCell(note))
+                        ]
+                    } : undefined,
+                    {
+                        cols: [
+                            'Ratio',
+                            ...intervals.map((ivl, i) => getRatioCell(ivl))
+                        ]
+                    },
+                ]}
+            />
         </StyledDetailsCard >
     );
 };

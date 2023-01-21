@@ -1,83 +1,80 @@
-import { Link } from "gatsby";
 import React from "react";
-import styled from 'styled-components';
+import { css } from "styled-components";
+import { NoteId } from "../../core/models/Model.constants";
+import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
+import { Table } from "../ui/Table";
 
-const StyledRomanNumeralsCard = styled.div`
-    table {
-        border-collapse: collapse;
-        width: 100%;
+const tableStyles = css`
+  border-collapse: collapse;
+  width: 100%;
 
-        th {
-            //color: ${props => props.theme.brand.accent};
-            &:first-child {
-                text-align: right;
-            }
-            padding: 4px;
-        }
-        
-        td {
-            padding: 4px;
-            text-align: center;
-        }
-
-        .numeral td {
-            font-size: 160%;
-            font-family: serif;
-        }
+  th {
+    //color: ${(props) => props.theme.brand.accent};
+    &:first-child {
+      text-align: right;
     }
+    padding: 4px;
+  }
 
+  td {
+    padding: 4px;
+    text-align: center;
     sup {
-        font-size: 80%;
+      font-size: 80%;
     }
+  }
+
+  .numeral td {
+    font-size: 160%;
+    font-family: serif;
+  }
 `;
 
 const RomanNumeralsCard: React.FC<any> = ({ model }) => {
+  const numerals = model.getAllNumerals();
 
-    const numerals = model.getAllNumerals();
+  if (!numerals.length) return null;
 
-    if (!numerals.length) return null;
-
-    return (
-        <Card
-            title="Roman Numerals"
-        >
-            <StyledRomanNumeralsCard>
-                <table>
-                    <tbody>
-                        <tr className="numeral">
-                            <th>Numeral</th>
-                            {numerals.map((n, i) => {
-                                const [numeral, symbol] = n.getNumeralParts(i + 1)
-                                return (
-                                    <td key={i} className="numeral">
-                                        {numeral}
-                                        <sup className="symbol">{symbol}</sup>
-                                    </td>
-                                );
-                            })}
-                        </tr>
-                        <tr>
-                            <th>Degree</th>
-                            {numerals.map((n, i) => (
-                                <th key={i}>
-                                    {i + 1}
-                                </th>
-                            ))}
-                        </tr>
-                        <tr>
-                            <th>Name</th>
-                            {numerals.map((n, i) => (
-                                <td key={i}>
-                                    <Link to={`/browse/${n.modelType}/${n.modelId}/${n.root ? `root/${n.root.modelId}` : ''}`}>{n.getShortName()}</Link>
-                                </td>
-                            ))}
-                        </tr>
-                    </tbody>
-                </table>
-            </StyledRomanNumeralsCard>
-        </Card>
-    );
+  return (
+    <Card title="Roman Numerals">
+      <Table
+        styles={tableStyles}
+        headerColIndicies={[0]}
+        tbody={[
+          {
+            className: "numeral",
+            cols: [
+              "Numeral",
+              ...numerals.map((n, i) => {
+                const [numeral, symbol] = n.getNumeralParts(i + 1);
+                return {
+                  content: (
+                    <>
+                      {numeral}
+                      <sup className="symbol">{symbol}</sup>
+                    </>
+                  ),
+                };
+              }),
+            ],
+          },
+          {
+            cols: ["Degree", ...numerals.map((n, i) => i + 1)],
+          },
+          {
+            cols: [
+              "Name",
+              ...numerals.map((n, i) => ({
+                link: getModelRoute(n.modelType, n.modelId, n.root as NoteId),
+                content: n.getShortName(),
+              })),
+            ],
+          },
+        ]}
+      />
+    </Card>
+  );
 };
 
 export default RomanNumeralsCard;
