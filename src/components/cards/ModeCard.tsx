@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRootSuffix } from "../../contexts/PagePropsContext";
+import { useRootId } from "../../contexts/PagePropsContext";
 import { NoteId, Tag } from "../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../core/models/Model.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
@@ -24,7 +24,7 @@ const StyledModeCard = styled.div`
 `;
 
 const ModeCard: React.FC<any> = ({ model }) => {
-  const rootSuffix = useRootSuffix();
+  const rootId = useRootId();
 
   const type = model.tags.find(
     (t) =>
@@ -61,7 +61,7 @@ const ModeCard: React.FC<any> = ({ model }) => {
           {modes.map((n) => (
             <li key={n.modelId}>
               <Link
-                to={getModelRoute(n.modelType, n.modelId, rootSuffix as NoteId)}
+                to={getModelRoute(n.modelType, n.modelId, rootId)}
                 className={model.modelId === n.modelId ? "active" : ""}
               >
                 {n.name}

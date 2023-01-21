@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRootSuffix } from "../../../contexts/PagePropsContext";
+import { useRootId } from "../../../contexts/PagePropsContext";
 import {
   ChordId,
   ModelType,
@@ -18,6 +18,7 @@ import { SimpleList } from "../../ui/List";
 const StyledChordsPage = styled(PageLayout)`
   .intro {
     padding: 0 16px;
+    margin-bottom: 16px;
   }
 
   h3,
@@ -27,7 +28,7 @@ const StyledChordsPage = styled(PageLayout)`
 `;
 
 const ChordsPage: React.FC<any> = (props) => {
-  const rootSuffix = useRootSuffix() as NoteId;
+  const rootId = useRootId();
 
   return (
     <StyledChordsPage title="Chords" subtitle="The foundation of harmony">
@@ -72,19 +73,19 @@ const ChordsPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major Triad",
-                  getModelRoute(ModelType.Chord, ChordId.MajTriad, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.MajTriad, rootId),
                 ],
                 [
                   "Minor Triad",
-                  getModelRoute(ModelType.Chord, ChordId.MinTriad, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.MinTriad, rootId),
                 ],
                 [
                   "Augmented Triad",
-                  getModelRoute(ModelType.Chord, ChordId.AugTriad, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.AugTriad, rootId),
                 ],
                 [
                   "Diminished Triad",
-                  getModelRoute(ModelType.Chord, ChordId.DimTriad, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.DimTriad, rootId),
                 ],
               ]}
             />
@@ -99,35 +100,35 @@ const ChordsPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major 7th",
-                  getModelRoute(ModelType.Chord, ChordId.Maj7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Maj7, rootId),
                 ],
                 [
                   "Minor 7th",
-                  getModelRoute(ModelType.Chord, ChordId.Min7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Min7, rootId),
                 ],
                 [
                   "Dominant 7th",
-                  getModelRoute(ModelType.Chord, ChordId.Dom7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Dom7, rootId),
                 ],
                 [
                   "Minor - Major 7th",
-                  getModelRoute(ModelType.Chord, ChordId.MinMaj7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.MinMaj7, rootId),
                 ],
                 [
                   "Diminished 7th",
-                  getModelRoute(ModelType.Chord, ChordId.Dim7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Dim7, rootId),
                 ],
                 [
                   "Half - Diminished 7th",
-                  getModelRoute(ModelType.Chord, ChordId.HalfDim7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.HalfDim7, rootId),
                 ],
                 [
                   "Augmented 7th",
-                  getModelRoute(ModelType.Chord, ChordId.Aug7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Aug7, rootId),
                 ],
                 [
                   "Augmented Major 7th",
-                  getModelRoute(ModelType.Chord, ChordId.AugMaj7, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.AugMaj7, rootId),
                 ],
               ]}
             />
@@ -142,11 +143,11 @@ const ChordsPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major 6th",
-                  getModelRoute(ModelType.Chord, ChordId.Maj6, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Maj6, rootId),
                 ],
                 [
                   "Minor 6th",
-                  getModelRoute(ModelType.Chord, ChordId.Min6, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Min6, rootId),
                 ],
               ]}
             />
@@ -161,11 +162,11 @@ const ChordsPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Suspended 2nd",
-                  getModelRoute(ModelType.Chord, ChordId.Sus2, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Sus2, rootId),
                 ],
                 [
                   "Suspended 4th",
-                  getModelRoute(ModelType.Chord, ChordId.Sus4, rootSuffix),
+                  getModelRoute(ModelType.Chord, ChordId.Sus4, rootId),
                 ],
               ]}
             />

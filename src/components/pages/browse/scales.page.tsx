@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useRootSuffix } from "../../../contexts/PagePropsContext";
+import { useRootId } from "../../../contexts/PagePropsContext";
 import {
   ModelType,
   NoteId,
@@ -17,6 +17,7 @@ import { SimpleList } from "../../ui/List";
 const StyledScalesPage = styled(PageLayout)`
   .intro {
     padding: 0 16px;
+    margin-bottom: 16px;
   }
 
   h3,
@@ -26,7 +27,7 @@ const StyledScalesPage = styled(PageLayout)`
 `;
 
 const ScalesPage: React.FC<any> = (props) => {
-  const rootSuffix = useRootSuffix() as NoteId;
+  const rootId = useRootId();
 
   return (
     <StyledScalesPage title="Scales" subtitle="The foundation of melody">
@@ -63,34 +64,26 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major (Ionian)",
-                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootId),
                 ],
                 [
                   "Natural Minor (Aeolian)",
-                  getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootId),
                 ],
                 [
                   "Melodic Minor",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.MelodicMinor,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.MelodicMinor, rootId),
                 ],
                 [
                   "Harmonic Minor",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.HarmonicMinor,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.HarmonicMinor, rootId),
                 ],
                 [
                   "Major Pentatonic",
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.MajorPentatonic,
-                    rootSuffix
+                    rootId
                   ),
                 ],
                 [
@@ -98,7 +91,7 @@ const ScalesPage: React.FC<any> = (props) => {
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.MinorPentatonic,
-                    rootSuffix
+                    rootId
                   ),
                 ],
               ]}
@@ -117,35 +110,31 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Ionian",
-                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootId),
                 ],
                 [
                   "Dorian",
-                  getModelRoute(ModelType.Scale, ScaleId.Dorian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Dorian, rootId),
                 ],
                 [
                   "Phrygian",
-                  getModelRoute(ModelType.Scale, ScaleId.Phrygian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Phrygian, rootId),
                 ],
                 [
                   "Lydian",
-                  getModelRoute(ModelType.Scale, ScaleId.Lydian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Lydian, rootId),
                 ],
                 [
                   "Mixolydian",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.Mixolydian,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.Mixolydian, rootId),
                 ],
                 [
                   "Aeolian",
-                  getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootId),
                 ],
                 [
                   "Locrian",
-                  getModelRoute(ModelType.Scale, ScaleId.Locrian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Locrian, rootId),
                 ],
               ]}
             />
@@ -164,50 +153,38 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Harmonic Minor",
-                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Ionian, rootId),
                 ],
                 [
                   "Locrian 6",
-                  getModelRoute(ModelType.Scale, ScaleId.Locrian6, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Locrian6, rootId),
                 ],
                 [
                   "Ionian #5",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.IonianSharp5,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.IonianSharp5, rootId),
                 ],
                 [
                   "Dorian #4",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.DorianSharp4,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.DorianSharp4, rootId),
                 ],
                 [
                   "Phrygian Dominant",
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.PhrygianDominant,
-                    rootSuffix
+                    rootId
                   ),
                 ],
                 [
                   "Lydian #2",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.LydianSharp2,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.LydianSharp2, rootId),
                 ],
                 [
                   "Super Locrian bb7",
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.SuperLocrianDoubleFlat7,
-                    rootSuffix
+                    rootId
                   ),
                 ],
               ]}
@@ -225,34 +202,22 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Melodic Minor",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.MelodicMinor,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.MelodicMinor, rootId),
                 ],
                 [
                   "Dorian b2",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.DorianFlat2,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.DorianFlat2, rootId),
                 ],
                 [
                   "Lydian #5",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.LydianSharp5,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.LydianSharp5, rootId),
                 ],
                 [
                   "Lydian Dominant",
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.LydianDominiant,
-                    rootSuffix
+                    rootId
                   ),
                 ],
                 [
@@ -260,24 +225,16 @@ const ScalesPage: React.FC<any> = (props) => {
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.MixolydianFlatSix,
-                    rootSuffix
+                    rootId
                   ),
                 ],
                 [
                   "Aeolian b5",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.AeolianFlat5,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.AeolianFlat5, rootId),
                 ],
                 [
                   "Super Locrian (Altered)",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.SuperLocrian,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.SuperLocrian, rootId),
                 ],
               ]}
             />
@@ -296,27 +253,27 @@ const ScalesPage: React.FC<any> = (props) => {
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.MajorPentatonic,
-                    rootSuffix
+                    rootId
                   ),
                 ],
                 [
                   "Egyptian",
-                  getModelRoute(ModelType.Scale, ScaleId.Egyptian, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Egyptian, rootId),
                 ],
                 [
                   "Man Gong",
-                  getModelRoute(ModelType.Scale, ScaleId.ManGong, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.ManGong, rootId),
                 ],
                 [
                   "Ritusen",
-                  getModelRoute(ModelType.Scale, ScaleId.Ritusen, rootSuffix),
+                  getModelRoute(ModelType.Scale, ScaleId.Ritusen, rootId),
                 ],
                 [
                   "Minor Pentatonic",
                   getModelRoute(
                     ModelType.Scale,
                     ScaleId.MinorPentatonic,
-                    rootSuffix
+                    rootId
                   ),
                 ],
               ]}
@@ -329,19 +286,11 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major Blues",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.MajorBlues,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.MajorBlues, rootId),
                 ],
                 [
                   "Minor Blues",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.MinorBlues,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.MinorBlues, rootId),
                 ],
               ]}
             />
@@ -356,19 +305,11 @@ const ScalesPage: React.FC<any> = (props) => {
               items={[
                 [
                   "Major Bebop",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.MajorBebop,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.MajorBebop, rootId),
                 ],
                 [
                   "Dominant Bebop",
-                  getModelRoute(
-                    ModelType.Scale,
-                    ScaleId.DominantBebop,
-                    rootSuffix
-                  ),
+                  getModelRoute(ModelType.Scale, ScaleId.DominantBebop, rootId),
                 ],
               ]}
             />

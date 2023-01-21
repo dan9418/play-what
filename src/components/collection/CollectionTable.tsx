@@ -1,6 +1,6 @@
 import React from "react";
 import { css } from "styled-components";
-import { useRoot, useRootSuffix } from "../../contexts/PagePropsContext";
+import { useRoot, useRootId } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
 import {
   IModelConfig,
@@ -110,7 +110,7 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
   data,
   semitones = [],
 }) => {
-  const rootSuffix = useRootSuffix();
+  const rootId = useRootId();
   const root = useRoot();
   return (
     <Table
@@ -136,7 +136,7 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
               link: getModelRoute(
                 model.modelType,
                 model.modelId,
-                rootSuffix as NoteId
+                rootId as NoteId
               ),
               content: model.getName(),
             },

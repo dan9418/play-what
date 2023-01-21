@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRootSuffix } from "../../../contexts/PagePropsContext";
+import { useRootId } from "../../../contexts/PagePropsContext";
 import {
   ChordId,
   ModelType,
@@ -25,7 +25,7 @@ const StyledBrowsePage = styled(PageLayout)`
 `;
 
 const Page: React.FC<any> = (props) => {
-  const rootSuffix = useRootSuffix() as NoteId;
+  const rootId = useRootId();
 
   return (
     <StyledBrowsePage title="Browse">
@@ -35,27 +35,27 @@ const Page: React.FC<any> = (props) => {
             items={[
               [
                 "Major Triad",
-                getModelRoute(ModelType.Chord, ChordId.MajTriad, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.MajTriad, rootId),
               ],
               [
                 "Minor Triad",
-                getModelRoute(ModelType.Chord, ChordId.MinTriad, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.MinTriad, rootId),
               ],
               [
                 "Major 7th",
-                getModelRoute(ModelType.Chord, ChordId.Maj7, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.Maj7, rootId),
               ],
               [
                 "Minor 7th",
-                getModelRoute(ModelType.Chord, ChordId.Min7, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.Min7, rootId),
               ],
               [
                 "Dominant 7th",
-                getModelRoute(ModelType.Chord, ChordId.Dom7, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.Dom7, rootId),
               ],
               [
                 "Half-Diminished 7th",
-                getModelRoute(ModelType.Chord, ChordId.HalfDim7, rootSuffix),
+                getModelRoute(ModelType.Chord, ChordId.HalfDim7, rootId),
               ],
             ]}
           />
@@ -68,43 +68,27 @@ const Page: React.FC<any> = (props) => {
             items={[
               [
                 "Major (Ionian)",
-                getModelRoute(ModelType.Scale, ScaleId.Ionian, rootSuffix),
+                getModelRoute(ModelType.Scale, ScaleId.Ionian, rootId),
               ],
               [
                 "Natural Minor (Aeolian)",
-                getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootSuffix),
+                getModelRoute(ModelType.Scale, ScaleId.Aeolian, rootId),
               ],
               [
                 "Melodic Minor",
-                getModelRoute(
-                  ModelType.Scale,
-                  ScaleId.MelodicMinor,
-                  rootSuffix
-                ),
+                getModelRoute(ModelType.Scale, ScaleId.MelodicMinor, rootId),
               ],
               [
                 "Harmonic Minor",
-                getModelRoute(
-                  ModelType.Scale,
-                  ScaleId.HarmonicMinor,
-                  rootSuffix
-                ),
+                getModelRoute(ModelType.Scale, ScaleId.HarmonicMinor, rootId),
               ],
               [
                 "Major Pentatonic",
-                getModelRoute(
-                  ModelType.Scale,
-                  ScaleId.MajorPentatonic,
-                  rootSuffix
-                ),
+                getModelRoute(ModelType.Scale, ScaleId.MajorPentatonic, rootId),
               ],
               [
                 "Minor Pentatonic",
-                getModelRoute(
-                  ModelType.Scale,
-                  ScaleId.MinorPentatonic,
-                  rootSuffix
-                ),
+                getModelRoute(ModelType.Scale, ScaleId.MinorPentatonic, rootId),
               ],
             ]}
           />

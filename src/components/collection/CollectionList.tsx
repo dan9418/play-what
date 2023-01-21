@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRoot, useRootSuffix } from "../../contexts/PagePropsContext";
+import { useRoot, useRootId } from "../../contexts/PagePropsContext";
 import Chord from "../../core/models/Chord";
 import { ModelType, NoteId } from "../../core/models/Model.constants";
 import Scale from "../../core/models/Scale";
@@ -30,7 +30,7 @@ interface ICollectionListProps {
 }
 
 const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
-  const rootSuffix = useRootSuffix();
+  const rootId = useRootId();
   const root = useRoot();
   return (
     <StyledCollectionList>
@@ -41,9 +41,7 @@ const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
 
         return (
           <li key={d.modelId}>
-            <Link
-              to={getModelRoute(d.modelType, d.modelId, rootSuffix as NoteId)}
-            >
+            <Link to={getModelRoute(d.modelType, d.modelId, rootId)}>
               {model.name}
             </Link>
           </li>
