@@ -1,20 +1,28 @@
+import Note from "../../core/models/Note";
 import {
   ITuning,
   TuningId,
   TUNING_PRESET_MAP,
 } from "../fretboard/Fretboard.tuning";
 import { getDotsForFret } from "../fretboard/Fretboard.utils";
+import {
+  IVoicing,
+  VoicingId,
+  VOICING_PRESET_MAP,
+} from "../fretboard/Fretboard.voicing";
 
 // FRETBOARD
 
 interface IFretboardContext {
   fretRange: [number, number];
   tuning: ITuning;
+  voicing: IVoicing;
 }
 
 const DEFAULT_FRETBOARD_CONTEXT: IFretboardContext = {
   fretRange: [0, 12],
   tuning: TUNING_PRESET_MAP.get(TuningId.Standard) as ITuning,
+  voicing: VOICING_PRESET_MAP.get(VoicingId.None) as IVoicing,
 };
 
 interface IFretboardConfig {
@@ -29,6 +37,9 @@ interface IFretContext {
   index: number;
   number: number;
   noteIndex: number;
+  stringIndex: number;
+  isInModel: boolean;
+  isInVoicing: boolean;
 }
 
 export interface IFretConfig {
@@ -85,10 +96,11 @@ export const DEFAULT_GET_FRETBOARD_CONFIG: TGetFretboardConfig = (
 export const DEFAULT_GET_FRET_CONFIG: TGetFretConfig = (
   fretContext
 ): IFretConfig => {
+  if (fretContext.index === 5) return;
   return {
     color: "blue",
     text: "",
-    opacity: 1,
+    opacity: 0.5,
   };
 };
 
@@ -107,11 +119,15 @@ export const getFretTableProps = (
     const frets: IFretConfig[] = [];
     for (let f = 0; f < numFrets; f++) {
       const openNoteIndex = (tuning as ITuning).value[f];
+      const noteIndex = openNoteIndex + f;
       frets.push(
         getFretConfig({
           index: f,
           number: lo + f,
-          noteIndex: openNoteIndex + f,
+          noteIndex,
+          stringIndex: s,
+          isInModel: true,
+          isInVoicing: false,
         })
       );
     }
