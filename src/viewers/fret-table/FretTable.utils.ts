@@ -1,10 +1,16 @@
+import Chord from "../../core/models/Chord";
+import { ChordId } from "../../core/models/Model.constants";
 import Note from "../../core/models/Note";
+import Scale from "../../core/models/Scale";
 import {
   ITuning,
   TuningId,
   TUNING_PRESET_MAP,
 } from "../fretboard/Fretboard.tuning";
-import { getDotsForFret } from "../fretboard/Fretboard.utils";
+import {
+  getDotsForFret,
+  isIntervalInVoicing,
+} from "../fretboard/Fretboard.utils";
 import {
   IVoicing,
   VoicingId,
@@ -17,12 +23,14 @@ interface IFretboardContext {
   fretRange: [number, number];
   tuning: ITuning;
   voicing: IVoicing;
+  model: Chord | Scale;
 }
 
 const DEFAULT_FRETBOARD_CONTEXT: IFretboardContext = {
   fretRange: [0, 12],
   tuning: TUNING_PRESET_MAP.get(TuningId.Standard) as ITuning,
   voicing: VOICING_PRESET_MAP.get(VoicingId.None) as IVoicing,
+  model: new Chord(ChordId.Maj7),
 };
 
 interface IFretboardConfig {
@@ -54,7 +62,10 @@ type TGetFretboardConfig = (
   fretboardContext: IFretboardContext
 ) => IFretboardConfig;
 
-type TGetFretConfig = (fretContext: IFretContext) => IFretConfig;
+type TGetFretConfig = (
+  fretContext: IFretContext,
+  fretboardContext: IFretboardContext
+) => IFretConfig;
 
 export interface IFretTableProps {
   fretboardConfig: IFretboardConfig;
@@ -120,15 +131,23 @@ export const getFretTableProps = (
     for (let f = 0; f < numFrets; f++) {
       const openNoteIndex = (tuning as ITuning).value[f];
       const noteIndex = openNoteIndex + f;
+      const [ivl, nt] = fretboardContext.model.tryGetPodPairAtPitch(noteIndex);
+      const isInModel = ivl ? true : false;
+      const isInVoicing = ivl
+        ? isIntervalInVoicing(ivl, fretboardContext.voicing, s)
+        : false;
       frets.push(
-        getFretConfig({
-          index: f,
-          number: lo + f,
-          noteIndex,
-          stringIndex: s,
-          isInModel: true,
-          isInVoicing: false,
-        })
+        getFretConfig(
+          {
+            index: f,
+            number: lo + f,
+            noteIndex,
+            stringIndex: s,
+            isInModel,
+            isInVoicing,
+          },
+          fretboardContext
+        )
       );
     }
     strings.push(frets);
