@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import FretTable from "../../../viewers/fret-table/FretTable";
-import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
+import {
+  IFretProps,
+  isIntervalInVoicing,
+} from "../../../viewers/fretboard/Fretboard.utils";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import Card from "../../ui/Card";
@@ -15,7 +18,6 @@ import FretboardCol, {
 import MainCol from "./MainCol";
 import MaximizeButton from "./MaximizeButton";
 import NotesCol from "./NotesCol";
-import TabCard from "./TabCard";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
@@ -74,6 +76,30 @@ const Page: React.FC = () => {
     setColorConfig,
   };
 
+  const colorMapFn = (props: IFretProps) => {
+    const { stringIndex, fretIndex, tuning, model, voicing } = props;
+    // @ts-ignore
+    const noteIndex = tuning[stringIndex] + fretIndex;
+    // @ts-ignore
+    const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+
+    const cs = COLOR_SCHEMES.find((cs) => cs.id === colorScheme.id);
+
+    if (!cs) return;
+
+    const color = cs.fn(note, interval, colorConfig);
+
+    if (
+      color &&
+      voicing &&
+      !isIntervalInVoicing(interval, voicing, stringIndex)
+    ) {
+      return `${color}33`;
+    }
+
+    return color;
+  };
+
   const mainColProps = {
     isFullScreen,
     setIsFullScreen,
@@ -81,27 +107,7 @@ const Page: React.FC = () => {
       <FretTable
         {...instrumentColProps}
         {...notesColProps}
-        colorMapFn={(props) => {
-          const { stringIndex, fretIndex, tuning, model, voicing } = props;
-          const noteIndex = tuning[stringIndex] + fretIndex;
-          const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
-
-          const cs = COLOR_SCHEMES.find((cs) => cs.id === colorScheme.id);
-
-          if (!cs) return;
-
-          const color = cs.fn(note, interval, colorConfig);
-
-          if (
-            color &&
-            voicing &&
-            !isIntervalInVoicing(interval, voicing, stringIndex)
-          ) {
-            return `${color}33`;
-          }
-
-          return color;
-        }}
+        colorMapFn={colorMapFn as any}
         tuning={instrumentColProps.tuning.value}
       />
     ),
