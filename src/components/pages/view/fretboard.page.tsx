@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
 import FretTable from "../../../viewers/fret-table/FretTable";
-import { getFretTableProps } from "../../../viewers/fret-table/FretTable.utils";
-import Fretboard from "../../../viewers/fretboard/Fretboard";
-import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import DetailsCol from "./DetailsCol";
@@ -78,7 +75,7 @@ const Page: React.FC = () => {
   const mainColProps = {
     isFullScreen,
     setIsFullScreen,
-    viewer: <FretTable {...getFretTableProps()} />,
+    viewer: <FretTable />,
     /*<Fretboard
         {...instrumentColProps}
         {...notesColProps}

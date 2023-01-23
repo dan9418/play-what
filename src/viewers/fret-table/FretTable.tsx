@@ -1,9 +1,11 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import { IColConfig, IRowConfig, Table } from "../../components/ui/Table";
+import {
+  DEFAULT_FRETBOARD_PROPS,
+  IFretboardProps,
+} from "../fretboard/Fretboard.utils";
 import FretFlag from "./FretFlag";
-import { IFretTableProps } from "./FretTable.utils";
-
 const StyledFretTable = styled.div``;
 
 const tableStyles = css`
@@ -47,19 +49,21 @@ const tableStyles = css`
   }
 `;
 
-const FretTable: React.FC<IFretTableProps> = (props) => {
-  const { fretboardConfig, fretMap } = props;
-  const { fretDotLabels, fretNumberLabels, stringLabels } = fretboardConfig;
+const FretTable: React.FC<IFretboardProps> = (userProps) => {
+  const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
+
+  const { fretRange, showFretDots, showFretNumbers, tuning } = props;
+  const [lo, hi] = fretRange as [number, number];
 
   const strings: IRowConfig[] = [];
-  for (let s = 0; s < fretMap.length; s++) {
+  for (let s = 0; s < (tuning as number[]).length; s++) {
     const frets: IColConfig[] = [];
-    for (let f = 0; f < fretMap[s].length; f++) {
+    for (let f = lo; f <= hi; f++) {
       frets.push({
         content: (
           <div className="fret-content">
             <div className="fret-string" />
-            {fretMap ? <FretFlag fretConfig={fretMap[s][f]} /> : undefined}
+            <FretFlag />
           </div>
         ),
       });
