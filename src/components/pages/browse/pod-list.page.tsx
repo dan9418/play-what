@@ -6,7 +6,6 @@ import {
   getModelIdText,
   ModelType,
 } from "../../../core/models/Model.constants";
-import GrandStaff from "../../../viewers/grand-staff/GrandStaff";
 import DetailsCard from "../../cards/DetailsCard";
 import GuitarCard from "../../cards/GuitarCard";
 import ModeCard from "../../cards/ModeCard";
@@ -44,7 +43,6 @@ const PodListPage: React.FC<IPodListPageProps> = (props) => {
 
         {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
         {modelType === ModelType.Scale && <ModeCard model={podList} />}
-        <GrandStaff model={podList} />
         <ColumnManager>
           <GuitarCard model={podList} />
         </ColumnManager>
