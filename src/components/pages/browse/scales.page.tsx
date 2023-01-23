@@ -54,7 +54,7 @@ const ScalesPage: React.FC<any> = (props) => {
                         <li><a href="#bebop">Bebop</a></li>
                     ]} />*/}
       </div>
-      <ColumnManager>
+      <ColumnManager desktop={["2fr", "1fr"]}>
         <ColumnManager>
           <CollectionCard title="All Scales" data={SCALE_PRESETS} />
         </ColumnManager>

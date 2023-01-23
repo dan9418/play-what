@@ -57,7 +57,7 @@ const ChordsPage: React.FC<any> = (props) => {
                         <li><a href="#suspended">Suspended Chords</a></li>
                     />*/}
       </div>
-      <ColumnManager>
+      <ColumnManager desktop={["2fr", "1fr"]}>
         <ColumnManager>
           <CollectionCard title="All Chords" data={CHORD_PRESETS} />
         </ColumnManager>

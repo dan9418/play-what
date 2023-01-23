@@ -5,6 +5,7 @@ import FretTable from "../../../viewers/fret-table/FretTable";
 import { isIntervalInVoicing } from "../../../viewers/fretboard/Fretboard.utils";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
+import Card from "../../ui/Card";
 import DetailsCol from "./DetailsCol";
 import FretboardCol, {
   DEFAULT_FRET_RANGE,
@@ -115,22 +116,11 @@ const Page: React.FC = () => {
       <ColumnManager desktop={["1fr", "1fr"]}>
         <MainCol {...mainColProps} />
         <div>
-          <TabCard
-            tabs={[
-              {
-                text: "Summary",
-                content: <DetailsCol {...notesColProps} />,
-              },
-              {
-                text: "Notes",
-                content: <NotesCol {...notesColProps} />,
-              },
-              {
-                text: "Instrument",
-                content: <FretboardCol {...instrumentColProps} />,
-              },
-            ]}
-          />
+          <Card>
+            <DetailsCol {...notesColProps} />
+            <NotesCol {...notesColProps} />
+            <FretboardCol {...instrumentColProps} />
+          </Card>
         </div>
       </ColumnManager>
     </StyledFretboardPage>
