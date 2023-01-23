@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 
-const StyledCardSection = styled.div`
+export const StyledCardSection = styled.div`
   h3 {
     text-transform: uppercase;
     font-size: 80%;

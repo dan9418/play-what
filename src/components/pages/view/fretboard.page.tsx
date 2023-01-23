@@ -9,6 +9,7 @@ import {
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
 import Card from "../../ui/Card";
+import { StyledCardSection } from "./CardSection";
 import DetailsCol from "./DetailsCol";
 import FretboardCol, {
   DEFAULT_FRET_RANGE,
@@ -21,7 +22,11 @@ import NotesCol from "./NotesCol";
 import useModelQueryParams from "./useModelQueryParams";
 import { useModelState } from "./useModelState";
 
-const StyledFretboardPage = styled(PageLayout)``;
+const StyledFretboardPage = styled(PageLayout)`
+  ${StyledCardSection} {
+    margin-top: 16px;
+  }
+`;
 
 const Page: React.FC = () => {
   const [qpModelType, qpModelId, qpRootId] = useModelQueryParams();

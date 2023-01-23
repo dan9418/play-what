@@ -1,10 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-import {
-  ColorScheme,
-  COLOR_SCHEMES,
-  IColorScheme,
-} from "../../../core/color/Color.utils";
+import { COLOR_SCHEMES, IColorScheme } from "../../../core/color/Color.utils";
 import Chord from "../../../core/models/Chord";
 import {
   ChordId,
@@ -25,12 +20,6 @@ import ColorSchemeInput from "../../inputs/ColorSchemeInput";
 import DropdownInput from "../../inputs/DropdownInput";
 import InputRow from "../../ui/InputRow";
 import CardSection from "./CardSection";
-
-const StyledNotesCol = styled.div`
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr;
-`;
 
 export const MODEL_TYPE_OPTIONS = [
   {
@@ -119,69 +108,53 @@ const NotesCol: React.FC<INotesColProps> = (props) => {
   //console.log('dpb', MODEL_TYPE_OPTIONS, modelType, modelOptions, modelConfig)
 
   return (
-    <StyledNotesCol>
+    <>
       <CardSection title="Root">
-        <ul>
-          <li>
-            <InputRow label="Key Center">
-              <DropdownInput
-                value={root}
-                setValue={setRoot}
-                options={NOTE_PRESETS}
-                idProperty="modelId"
-              />
-            </InputRow>
-          </li>
-        </ul>
+        <InputRow label="Key Center">
+          <DropdownInput
+            value={root}
+            setValue={setRoot}
+            options={NOTE_PRESETS}
+            idProperty="modelId"
+          />
+        </InputRow>
       </CardSection>
       <CardSection title="Intervals">
-        <ul>
-          <li>
-            <InputRow label="Model Type">
-              <DropdownInput
-                value={modelType}
-                setValue={setModelType}
-                options={MODEL_TYPE_OPTIONS}
-                idProperty="id"
-              />
-            </InputRow>
-          </li>
-          <li>
-            <InputRow label="Preset">
-              <DropdownInput
-                value={modelConfig}
-                setValue={setModelConfig}
-                options={modelOptions}
-                idProperty="modelId"
-              />
-            </InputRow>
-          </li>
-        </ul>
+        <InputRow label="Model Type">
+          <DropdownInput
+            value={modelType}
+            setValue={setModelType}
+            options={MODEL_TYPE_OPTIONS}
+            idProperty="id"
+          />
+        </InputRow>
+        <InputRow label="Preset">
+          <DropdownInput
+            value={modelConfig}
+            setValue={setModelConfig}
+            options={modelOptions}
+            idProperty="modelId"
+          />
+        </InputRow>
       </CardSection>
       <CardSection title="Colors">
-        <ul>
-          <li>
-            <InputRow label="Color Scheme">
-              <DropdownInput
-                value={colorScheme}
-                setValue={setColorScheme}
-                options={COLOR_SCHEMES}
-                idProperty="id"
-              />
-            </InputRow>
-          </li>
-          <li>
-            <InputRow label="Color Config">
-              <ColorSchemeInput
-                value={colorConfig}
-                setValue={setColorConfig}
-                labelFn={colorScheme.labelFn}
-              />
-            </InputRow>
-          </li>
-        </ul>
+        <InputRow label="Color Scheme">
+          <DropdownInput
+            value={colorScheme}
+            setValue={setColorScheme}
+            options={COLOR_SCHEMES}
+            idProperty="id"
+          />
+        </InputRow>
+        <InputRow label="Color Config">
+          <ColorSchemeInput
+            value={colorConfig}
+            setValue={setColorConfig}
+            labelFn={colorScheme.labelFn}
+          />
+        </InputRow>
       </CardSection>
-    </StyledNotesCol>
+    </>
   );
 };
 

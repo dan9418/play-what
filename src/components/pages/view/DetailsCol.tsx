@@ -36,8 +36,7 @@ const StyledDetailsCol = styled.div`
       }
     }
   }
-  .notes,
-  .instrument {
+  .notes {
     min-height: 128px;
 
     display: flex;
