@@ -1,156 +1,184 @@
 import React, { useState } from "react";
-import styled from 'styled-components';
+import styled from "styled-components";
 import Chord from "../../../../../../core/models/Chord";
 import { ChordId, NoteId } from "../../../../../../core/models/Model.constants";
-import { NOTE_PRESETS, NOTE_PRESET_MAP } from "../../../../../../core/models/Model.presets";
+import {
+  NOTE_PRESETS,
+  NOTE_PRESET_MAP,
+} from "../../../../../../core/models/Model.presets";
 import Note from "../../../../../../core/models/Note";
-import Fretboard from "../../../../../../viewers/fretboard/Fretboard";
-import { VoicingId, VOICING_PRESET_MAP } from "../../../../../../viewers/fretboard/Fretboard.voicing";
+import FretTable from "../../../../../../viewers/fret-table/FretTable";
+import {
+  VoicingId,
+  VOICING_PRESET_MAP,
+} from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import DropdownInput from "../../../../../inputs/DropdownInput";
 import PageLayout from "../../../../../layout/PageLayout";
-import Card from "../../../../../ui/Card";
+import Card, { StyledCard } from "../../../../../ui/Card";
 import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
 
 const StyledVoicingsPage = styled(PageLayout)`
-    table {
-        width: 100%;
-        td {
-            width: 22%;
-        }
+  ${StyledCard} > table {
+    width: 100%;
+    > tbody > tr > td {
+      width: 20%;
     }
+  }
 
-    ${StyledInputRow} {
-        margin-bottom: 16px;  
-    }
+  ${StyledInputRow} {
+    margin-bottom: 16px;
+  }
 `;
 
 const VOICINGS_E = [
-    VoicingId.Chord_Triad_EShape_1,
-    VoicingId.Chord_Seventh_EShape_1,
-    VoicingId.Chord_Shell_A_37,
-    VoicingId.Chord_Shell_A_73,
+  VoicingId.Chord_Triad_EShape_1,
+  VoicingId.Chord_Seventh_EShape_1,
+  VoicingId.Chord_Shell_A_37,
+  VoicingId.Chord_Shell_A_73,
 ];
 
 const VOICINGS_A = [
-    VoicingId.Chord_Triad_AShape_1,
-    VoicingId.Chord_Seventh_AShape_1,
-    VoicingId.Chord_Shell_A_37,
-    VoicingId.Chord_Shell_A_73,
+  VoicingId.Chord_Triad_AShape_1,
+  VoicingId.Chord_Seventh_AShape_1,
+  VoicingId.Chord_Shell_A_37,
+  VoicingId.Chord_Shell_A_73,
 ];
 
 const VOICINGS_D = [
-    VoicingId.Chord_Triad_DShape_1,
-    VoicingId.Chord_Seventh_DShape_1,
-    VoicingId.Chord_Shell_D_37,
-    VoicingId.Chord_Shell_D_73,
+  VoicingId.Chord_Triad_DShape_1,
+  VoicingId.Chord_Seventh_DShape_1,
+  VoicingId.Chord_Shell_D_37,
+  VoicingId.Chord_Shell_D_73,
 ];
 
 const VoicingRow = ({ voicingIds, model, modelId, root }) => (
-    <tr>
-        {voicingIds.map((voicingId, i) => {
-            const instance = new model(modelId, { root });
-            return (
-                <>
-                    {i === 0 && <th>{instance.getName()}</th>}
-                    <td key={modelId}>
-                        <Fretboard
-                            model={instance}
-                            voicing={VOICING_PRESET_MAP.get(voicingId)}
-                            fretRange={[1, 14]}
-                            showFretDots={false}
-                            showFretNumbers={false}
-                        />
-                    </td>
-                </>
-            );
-        })}
-    </tr>
+  <tr>
+    {voicingIds.map((voicingId, i) => {
+      const instance = new model(modelId, { root });
+      return (
+        <>
+          {i === 0 && <th>{instance.getName()}</th>}
+          <td key={modelId}>
+            <FretTable
+              model={instance}
+              voicing={VOICING_PRESET_MAP.get(voicingId)}
+              fretRange={[1, 14]}
+              showFretDots={false}
+              showFretNumbers={false}
+            />
+          </td>
+        </>
+      );
+    })}
+  </tr>
 );
 
 const THEAD = (
-    <thead>
-        <tr>
-            <th>Model</th>
-            <th>Triad</th>
-            <th>Seventh</th>
-            <th>Drop 3-7</th>
-            <th>Drop 7-3</th>
-        </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Triad</th>
+      <th>Seventh</th>
+      <th>Drop 3-7</th>
+      <th>Drop 7-3</th>
+    </tr>
+  </thead>
 );
 
 const CHORDS = [
-    {
-        model: Chord,
-        modelId: ChordId.Maj7,
-    },
-    {
-        model: Chord,
-        modelId: ChordId.Min7,
-    },
-    {
-        model: Chord,
-        modelId: ChordId.Dom7,
-    },
-    {
-        model: Chord,
-        modelId: ChordId.HalfDim7,
-    }
+  {
+    model: Chord,
+    modelId: ChordId.Maj7,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Min7,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Dom7,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.HalfDim7,
+  },
 ];
 
 const Page: React.FC = () => {
-    const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
+  const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
 
-    const root = new Note(rootPreset.value);
+  const root = new Note(rootPreset.value);
 
-    return (
-        <StyledVoicingsPage title="Chord Voicings" maxWidth="1920px">
-            <InputRow label="Root">
-                <DropdownInput options={NOTE_PRESETS} value={rootPreset} setValue={p => {
-                    setRootPreset(p);
-                }} />
-            </InputRow>
-            <Card title="E Root" >
-                <table>
-                    {THEAD}
-                    <tbody>
-                        {CHORDS.map((chord, i) => {
-                            const { model, modelId } = chord;
-                            return (
-                                <VoicingRow key={i} model={model} modelId={modelId} root={root} voicingIds={VOICINGS_E} />
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </Card>
-            <Card title="A Root" >
-                <table>
-                    {THEAD}
-                    <tbody>
-                        {CHORDS.map((chord, i) => {
-                            const { model, modelId } = chord;
-                            return (
-                                <VoicingRow key={i} model={model} modelId={modelId} root={root} voicingIds={VOICINGS_A} />
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </Card>
-            <Card title="D Root" >
-                <table>
-                    {THEAD}
-                    <tbody>
-                        {CHORDS.map((chord, i) => {
-                            const { model, modelId } = chord;
-                            return (
-                                <VoicingRow key={i} model={model} modelId={modelId} root={root} voicingIds={VOICINGS_D} />
-                            );
-                        })}
-                    </tbody>
-                </table>
-            </Card>
-        </StyledVoicingsPage>
-    );
+  return (
+    <StyledVoicingsPage title="Chord Voicings" maxWidth="1920px">
+      <InputRow label="Root">
+        <DropdownInput
+          options={NOTE_PRESETS}
+          value={rootPreset}
+          setValue={(p) => {
+            setRootPreset(p);
+          }}
+        />
+      </InputRow>
+      <Card title="E Root">
+        <table>
+          {THEAD}
+          <tbody>
+            {CHORDS.map((chord, i) => {
+              const { model, modelId } = chord;
+              return (
+                <VoicingRow
+                  key={i}
+                  model={model}
+                  modelId={modelId}
+                  root={root}
+                  voicingIds={VOICINGS_E}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
+      <Card title="A Root">
+        <table>
+          {THEAD}
+          <tbody>
+            {CHORDS.map((chord, i) => {
+              const { model, modelId } = chord;
+              return (
+                <VoicingRow
+                  key={i}
+                  model={model}
+                  modelId={modelId}
+                  root={root}
+                  voicingIds={VOICINGS_A}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
+      <Card title="D Root">
+        <table>
+          {THEAD}
+          <tbody>
+            {CHORDS.map((chord, i) => {
+              const { model, modelId } = chord;
+              return (
+                <VoicingRow
+                  key={i}
+                  model={model}
+                  modelId={modelId}
+                  root={root}
+                  voicingIds={VOICINGS_D}
+                />
+              );
+            })}
+          </tbody>
+        </table>
+      </Card>
+    </StyledVoicingsPage>
+  );
 };
 
 export default Page;

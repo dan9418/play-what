@@ -14,8 +14,7 @@ const tableStyles = css`
   border-collapse: collapse;
   td,
   th {
-    min-width: 32px;
-
+    min-width: 18px;
     text-align: center;
   }
   tbody td {
@@ -97,7 +96,7 @@ const FretTable: React.FC<IFretboardProps> = (userProps) => {
   }
 
   return (
-    <StyledFretTable className="fret-table">
+    <StyledFretTable>
       <Table
         thead={showFretNumbers ? [{ cols: fretNums }] : undefined}
         tfoot={showFretDots ? [{ cols: fretDots }] : undefined}

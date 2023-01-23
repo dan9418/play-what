@@ -13,20 +13,20 @@ import {
 } from "../../../../../core/models/Model.presets";
 import Note from "../../../../../core/models/Note";
 import Scale from "../../../../../core/models/Scale";
-import Fretboard from "../../../../../viewers/fretboard/Fretboard";
+import FretTable from "../../../../../viewers/fret-table/FretTable";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import ColumnManager from "../../../../column-manager/ColumnManager";
 import DropdownInput from "../../../../inputs/DropdownInput";
 import PageLayout from "../../../../layout/PageLayout";
-import Card from "../../../../ui/Card";
-import InputRow, { StyledInputRow } from "../../../../ui/InputRow";
+import Card, { StyledCard } from "../../../../ui/Card";
+import InputRow from "../../../../ui/InputRow";
 
 const StyledCAGEDPage = styled(PageLayout)`
-  table {
+  ${StyledCard} > table {
     width: 100%;
 
-    td {
+    > tbody > tr > td {
       width: 33%;
       padding: 24px 2px 16px;
     }
@@ -128,7 +128,7 @@ const Page: React.FC<any> = () => {
                   return (
                     <td key={modelId}>
                       <h3>{modelId}</h3>
-                      <Fretboard
+                      <FretTable
                         model={instance}
                         voicing={
                           voicingId
@@ -152,7 +152,7 @@ const Page: React.FC<any> = () => {
                   return (
                     <td key={modelId}>
                       <h3>{modelId}</h3>
-                      <Fretboard
+                      <FretTable
                         model={instance}
                         voicing={
                           voicingId
@@ -189,7 +189,7 @@ const Page: React.FC<any> = () => {
                   return (
                     <td key={modelId}>
                       <h3>{modelId}</h3>
-                      <Fretboard
+                      <FretTable
                         model={instance}
                         voicing={
                           voicingId
@@ -213,7 +213,7 @@ const Page: React.FC<any> = () => {
                   return (
                     <td key={modelId}>
                       <h3>{modelId}</h3>
-                      <Fretboard
+                      <FretTable
                         model={instance}
                         voicing={
                           voicingId

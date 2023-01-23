@@ -68,7 +68,7 @@ export const getFretColor = (props: IFretProps): string | undefined => {
   if (!note) return;
 
   if (voicing && !isIntervalInVoicing(interval, voicing, stringIndex)) {
-    return `#00000033`;
+    return `#00000011`;
   }
 
   return interval.getColor();
