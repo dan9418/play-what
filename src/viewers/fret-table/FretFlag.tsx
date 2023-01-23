@@ -1,14 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
 
-export interface IFretConfig {
+interface IFretFlagProps {
   color?: string;
   text?: string | number;
   opacity?: number;
-}
-
-interface IFretFlagProps {
-  fretConfig?: IFretConfig;
 }
 
 export const StyledFretFlag = styled.div<{
@@ -23,8 +19,7 @@ export const StyledFretFlag = styled.div<{
   z-index: 1;
 `;
 
-const FretFlag: React.FC<IFretFlagProps> = ({ fretConfig }) => {
-  const { color, text, opacity } = fretConfig || {};
+const FretFlag: React.FC<IFretFlagProps> = ({ color, text, opacity }) => {
   return (
     <StyledFretFlag $color={color} $opacity={opacity}>
       {text}

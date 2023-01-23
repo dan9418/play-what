@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { IColConfig, IRowConfig, Table } from "../../components/ui/Table";
 import {
   DEFAULT_FRETBOARD_PROPS,
+  getDotsForFret,
   IFretboardProps,
 } from "../fretboard/Fretboard.utils";
 import FretFlag from "./FretFlag";
@@ -52,18 +53,40 @@ const tableStyles = css`
 const FretTable: React.FC<IFretboardProps> = (userProps) => {
   const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
 
-  const { fretRange, showFretDots, showFretNumbers, tuning } = props;
+  const { fretRange, showFretDots, showFretNumbers, tuning, colorMapFn } =
+    props;
   const [lo, hi] = fretRange as [number, number];
 
+  const numFrets = hi - lo + 1;
+  const numStrings = (tuning as number[]).length;
+
+  const fretNums: number[] = [];
+  for (let i = 0; i < numFrets; i++) {
+    fretNums.push(lo + i);
+  }
+
+  const fretDots: string[] = [];
+  for (let i = 0; i < numFrets; i++) {
+    fretDots.push(getDotsForFret(lo + i));
+  }
+
   const strings: IRowConfig[] = [];
-  for (let s = 0; s < (tuning as number[]).length; s++) {
+  for (let s = 0; s < numStrings; s++) {
     const frets: IColConfig[] = [];
     for (let f = lo; f <= hi; f++) {
       frets.push({
         content: (
           <div className="fret-content">
             <div className="fret-string" />
-            <FretFlag />
+            <FretFlag
+              color={(colorMapFn as any)({
+                stringIndex: s,
+                fretIndex: f,
+                ...props,
+              })}
+              text=""
+              opacity={1}
+            />
           </div>
         ),
       });
@@ -76,8 +99,8 @@ const FretTable: React.FC<IFretboardProps> = (userProps) => {
   return (
     <StyledFretTable className="fret-table">
       <Table
-        thead={[{ cols: fretNumberLabels }]}
-        tfoot={[{ cols: fretDotLabels }]}
+        thead={showFretNumbers ? [{ cols: fretNums }] : undefined}
+        tfoot={showFretDots ? [{ cols: fretDots }] : undefined}
         tbody={strings}
         styles={tableStyles}
       />
