@@ -74,7 +74,7 @@ const SiteFooter: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/view">View</Link>
+              <Link to="/view/fretboard">Fretboard</Link>
             </li>
             <li>
               <Link to="/browse">Browse</Link>
