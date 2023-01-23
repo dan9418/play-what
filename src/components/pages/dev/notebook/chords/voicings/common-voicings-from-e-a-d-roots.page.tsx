@@ -1,27 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Chord from "../../../../../../core/models/Chord";
 import { ChordId, NoteId } from "../../../../../../core/models/Model.constants";
-import {
-  NOTE_PRESETS,
-  NOTE_PRESET_MAP,
-} from "../../../../../../core/models/Model.presets";
 import Note from "../../../../../../core/models/Note";
 import FretTable from "../../../../../../viewers/fret-table/FretTable";
 import {
   VoicingId,
   VOICING_PRESET_MAP,
 } from "../../../../../../viewers/fretboard/Fretboard.voicing";
-import DropdownInput from "../../../../../inputs/DropdownInput";
 import PageLayout from "../../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../../ui/Card";
-import InputRow, { StyledInputRow } from "../../../../../ui/InputRow";
+import { StyledInputRow } from "../../../../../ui/InputRow";
+import { Table } from "../../../../../ui/Table";
 
 const StyledVoicingsPage = styled(PageLayout)`
-  ${StyledCard} > table {
-    width: 100%;
-    > tbody > tr > td {
-      width: 20%;
+  ${StyledCard} {
+    margin-bottom: 16px;
+    > table {
+      width: 100%;
+      > tbody > tr > td {
+        padding: 8px;
+      }
     }
   }
 
@@ -33,8 +32,8 @@ const StyledVoicingsPage = styled(PageLayout)`
 const VOICINGS_E = [
   VoicingId.Chord_Triad_EShape_1,
   VoicingId.Chord_Seventh_EShape_1,
-  VoicingId.Chord_Shell_A_37,
-  VoicingId.Chord_Shell_A_73,
+  VoicingId.Chord_Shell_E_37,
+  VoicingId.Chord_Shell_E_73,
 ];
 
 const VOICINGS_A = [
@@ -51,39 +50,59 @@ const VOICINGS_D = [
   VoicingId.Chord_Shell_D_73,
 ];
 
-const VoicingRow = ({ voicingIds, model, modelId, root }) => (
-  <tr>
-    {voicingIds.map((voicingId, i) => {
-      const instance = new model(modelId, { root });
-      return (
-        <>
-          {i === 0 && <th>{instance.getName()}</th>}
-          <td key={modelId}>
-            <FretTable
-              model={instance}
-              voicing={VOICING_PRESET_MAP.get(voicingId)}
-              fretRange={[1, 14]}
-              showFretDots={false}
-              showFretNumbers={false}
-            />
-          </td>
-        </>
-      );
-    })}
-  </tr>
-);
+const ROOTS = [
+  ["E", VOICINGS_E, [6, 10]],
+  ["A", VOICINGS_A, [2, 6]],
+  ["D", VOICINGS_D, [8, 12]],
+];
 
-const THEAD = (
-  <thead>
-    <tr>
-      <th>Model</th>
-      <th>Triad</th>
-      <th>Seventh</th>
-      <th>Drop 3-7</th>
-      <th>Drop 7-3</th>
-    </tr>
-  </thead>
-);
+const getVoicingCols = ({ voicingIds, model, modelId, root, range }) =>
+  voicingIds.map((voicingId, i) => {
+    const instance = new model(modelId, { root });
+    return {
+      content: (
+        <FretTable
+          model={instance}
+          voicing={VOICING_PRESET_MAP.get(voicingId)}
+          fretRange={range}
+          showFretDots={false}
+          showFretNumbers={false}
+        />
+      ),
+    };
+  });
+
+const getChordRows = (chords: any[], voicingIds: any[], root, range) => {
+  return chords.map((chord, i) => {
+    const { model, modelId } = chord;
+    return {
+      cols: [
+        modelId,
+        ...getVoicingCols({
+          voicingIds,
+          model,
+          modelId,
+          root,
+          range,
+        }),
+      ],
+    };
+  });
+};
+
+const getRootCard = (root: string, voicings: any[], range: any) => {
+  return (
+    <Card title={`${root} Root`}>
+      <Table
+        thead={[{ cols: THEAD }]}
+        tbody={getChordRows(CHORDS, voicings, ROOT, range)}
+        headerColIndicies={[0]}
+      />
+    </Card>
+  );
+};
+
+const THEAD = ["Model", "Triad", "Seventh", "Drop 3-7", "Drop 7-3"];
 
 const CHORDS = [
   {
@@ -104,79 +123,14 @@ const CHORDS = [
   },
 ];
 
+const ROOT = Note.fromId(NoteId.C);
+
 const Page: React.FC = () => {
-  const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
-
-  const root = new Note(rootPreset.value);
-
   return (
-    <StyledVoicingsPage title="Chord Voicings" maxWidth="1920px">
-      <InputRow label="Root">
-        <DropdownInput
-          options={NOTE_PRESETS}
-          value={rootPreset}
-          setValue={(p) => {
-            setRootPreset(p);
-          }}
-        />
-      </InputRow>
-      <Card title="E Root">
-        <table>
-          {THEAD}
-          <tbody>
-            {CHORDS.map((chord, i) => {
-              const { model, modelId } = chord;
-              return (
-                <VoicingRow
-                  key={i}
-                  model={model}
-                  modelId={modelId}
-                  root={root}
-                  voicingIds={VOICINGS_E}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </Card>
-      <Card title="A Root">
-        <table>
-          {THEAD}
-          <tbody>
-            {CHORDS.map((chord, i) => {
-              const { model, modelId } = chord;
-              return (
-                <VoicingRow
-                  key={i}
-                  model={model}
-                  modelId={modelId}
-                  root={root}
-                  voicingIds={VOICINGS_A}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </Card>
-      <Card title="D Root">
-        <table>
-          {THEAD}
-          <tbody>
-            {CHORDS.map((chord, i) => {
-              const { model, modelId } = chord;
-              return (
-                <VoicingRow
-                  key={i}
-                  model={model}
-                  modelId={modelId}
-                  root={root}
-                  voicingIds={VOICINGS_D}
-                />
-              );
-            })}
-          </tbody>
-        </table>
-      </Card>
+    <StyledVoicingsPage title="Chord Voicings">
+      {ROOTS.map(([root, voicings, range]) =>
+        getRootCard(root, voicings, range)
+      )}
     </StyledVoicingsPage>
   );
 };
