@@ -68,7 +68,7 @@ const FRET_RANGE: [number, number][] = [
   [11, 14 + 1],
 ];
 
-const Page: React.FC<any> = () => {
+const Page: React.FC = () => {
   return (
     <StyledCAGEDPage title="CAGED">
       <Card title="Shape Comparisons">
@@ -82,14 +82,17 @@ const Page: React.FC<any> = () => {
                   const instance = new model(modelId, {
                     root: Note.fromId(rootId),
                   });
+                  const voicing = VOICING_PRESET_MAP.get(voicingId);
+                  const fretRange = FRET_RANGE[j - 1];
+                  console.log("dpb", fretRange);
                   return {
                     content: (
                       <>
                         <h3>{instance.getName()}</h3>
                         <FretTable
                           model={instance}
-                          voicing={VOICING_PRESET_MAP.get(voicingId)}
-                          fretRange={FRET_RANGE[j - 1]}
+                          voicing={voicing}
+                          fretRange={fretRange}
                           showFretNumbers={false}
                           showFretDots={false}
                         />

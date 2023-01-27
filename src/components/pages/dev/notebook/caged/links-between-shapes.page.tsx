@@ -27,7 +27,7 @@ const StyledCAGEDPage = styled(PageLayout)`
   }
 `;
 
-const Page: React.FC<any> = () => {
+const Page: React.FC = () => {
   return (
     <StyledCAGEDPage title="CAGED">
       <Card title="Shape Links">

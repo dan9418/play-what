@@ -8,7 +8,7 @@ import Note from "../../../../../core/models/Note";
 import Scale from "../../../../../core/models/Scale";
 import { VoicingId } from "../../../../../viewers/fretboard/Fretboard.voicing";
 
-const ROOT = Note.fromId(NoteId.C);
+const ROOT = Note.fromId(NoteId.A);
 
 const SCALE = new Scale(ScaleId.Ionian, { root: ROOT });
 const SCALE_NOTES = SCALE.notes as Note[];
