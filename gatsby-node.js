@@ -18,6 +18,7 @@ const STATIC_PAGES = [
   { route: '/dev/test/all-intervals-from-all-roots/' },
   { route: '/dev/notebook/index/' },
   { route: '/dev/notebook/caged/chords-and-scales-within-shapes/' },
+  { route: '/dev/notebook/caged/links-between-shapes/' },
   { route: '/dev/notebook/chord-charts/jazz-standards/' },
   { route: '/dev/notebook/chord-progressions/2-5-1-on-guitar/' },
   { route: '/dev/notebook/chords/voicings/common-voicings-from-e-a-d-roots/' },

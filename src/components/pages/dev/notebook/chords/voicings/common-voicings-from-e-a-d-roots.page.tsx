@@ -129,7 +129,7 @@ const Page: React.FC = () => {
   return (
     <StyledVoicingsPage title="Chord Voicings">
       {ROOTS.map(([root, voicings, range]) =>
-        getRootCard(root, voicings, range)
+        getRootCard(root as string, voicings as VoicingId[], range)
       )}
     </StyledVoicingsPage>
   );
