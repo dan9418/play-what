@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Note from "../../../../../core/models/Note";
-import FretTable from "../../../../../viewers/fret-table/FretTable";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
+import FretboardCell from "../../../../ui/FretboardCell";
 import { Table } from "../../../../ui/Table";
 import {
   DIATONIC_ITEMS,
@@ -13,21 +13,15 @@ import {
 } from "./caged.shared";
 
 const StyledCAGEDPage = styled(PageLayout)`
-  .scroll {
-    overflow-x: auto;
-  }
-
+  overflow-x: scroll;
+  min-width: 1024px;
   ${StyledCard} {
     margin-top: 16px;
-    table.shapes {
+    > table {
+      table-layout: fixed;
       width: 100%;
       > tbody > tr > td {
-        width: 256px;
-        padding: 0 4px;
-
-        h3 {
-          font-size: 14px;
-        }
+        vertical-align: top;
       }
     }
   }
@@ -61,51 +55,48 @@ const DISPLAY = [
 ];
 
 const FRET_RANGE: [number, number][] = [
-  [1, 5],
-  [4, 7 + 1],
-  [6, 10],
-  [9, 12 + 1],
-  [11, 14 + 1],
+  [1, 1 + 4],
+  [4, 4 + 4],
+  [6, 6 + 4],
+  [9, 9 + 4],
+  [11, 11 + 4],
 ];
 
 const Page: React.FC = () => {
   return (
-    <StyledCAGEDPage title="CAGED">
-      <Card title="Shape Comparisons">
-        <div className="scroll">
-          <Table
-            tbody={DISPLAY.map((row, i) => {
-              return {
-                cols: row.map((col, j) => {
-                  if (j === 0) return col;
-                  const { model, modelId, rootId, voicingId } = col as any;
-                  const instance = new model(modelId, {
-                    root: Note.fromId(rootId),
-                  });
-                  const voicing = VOICING_PRESET_MAP.get(voicingId);
-                  const fretRange = FRET_RANGE[j - 1];
-                  console.log("dpb", fretRange);
-                  return {
-                    content: (
-                      <>
-                        <h3>{instance.getName()}</h3>
-                        <FretTable
-                          model={instance}
-                          voicing={voicing}
-                          fretRange={fretRange}
-                          showFretNumbers={false}
-                          showFretDots={false}
-                        />
-                      </>
-                    ),
-                  };
-                }),
-              };
-            })}
-            headerColIndicies={[0]}
-            className="shapes"
-          />
-        </div>
+    <StyledCAGEDPage title="CAGED Shapes">
+      <Card title="Shape Relationships">
+        <Table
+          thead={[{ cols: ["", "G", "E", "D", "C", "A"] }]}
+          tbody={DISPLAY.map((row, i) => {
+            return {
+              cols: row.map((col, j) => {
+                if (j === 0) return col;
+                const { model, modelId, rootId, voicingId } = col as any;
+                const instance = new model(modelId, {
+                  root: Note.fromId(rootId),
+                });
+                const voicing = VOICING_PRESET_MAP.get(voicingId);
+                const fretRange = FRET_RANGE[j - 1];
+                return {
+                  content: (
+                    <FretboardCell
+                      caption={instance.getName()}
+                      fretboardConfig={{
+                        model: instance,
+                        voicing,
+                        fretRange,
+                        showFretNumbers: false,
+                        showFretDots: false,
+                      }}
+                    />
+                  ),
+                };
+              }),
+            };
+          })}
+          headerColIndicies={[0]}
+        />
       </Card>
     </StyledCAGEDPage>
   );

@@ -96,10 +96,6 @@ export const LISTS = [
             text: "Table of roman numerals",
             link: "",
           },
-          {
-            text: "7 guitar shapes and links",
-            link: "",
-          },
         ],
       },
     ],

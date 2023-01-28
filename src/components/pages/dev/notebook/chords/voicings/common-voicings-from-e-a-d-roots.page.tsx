@@ -3,29 +3,27 @@ import styled from "styled-components";
 import Chord from "../../../../../../core/models/Chord";
 import { ChordId, NoteId } from "../../../../../../core/models/Model.constants";
 import Note from "../../../../../../core/models/Note";
-import FretTable from "../../../../../../viewers/fret-table/FretTable";
 import {
   VoicingId,
   VOICING_PRESET_MAP,
 } from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../../ui/Card";
-import { StyledInputRow } from "../../../../../ui/InputRow";
+import FretboardCell from "../../../../../ui/FretboardCell";
 import { Table } from "../../../../../ui/Table";
 
 const StyledVoicingsPage = styled(PageLayout)`
+  overflow-x: scroll;
+  min-width: 1024px;
   ${StyledCard} {
-    margin-bottom: 16px;
+    margin-top: 16px;
     > table {
+      table-layout: fixed;
       width: 100%;
       > tbody > tr > td {
-        padding: 8px;
+        vertical-align: top;
       }
     }
-  }
-
-  ${StyledInputRow} {
-    margin-bottom: 16px;
   }
 `;
 
@@ -59,14 +57,17 @@ const ROOTS = [
 const getVoicingCols = ({ voicingIds, model, modelId, root, range }) =>
   voicingIds.map((voicingId, i) => {
     const instance = new model(modelId, { root });
+    const voicing = VOICING_PRESET_MAP.get(voicingId);
     return {
       content: (
-        <FretTable
-          model={instance}
-          voicing={VOICING_PRESET_MAP.get(voicingId)}
-          fretRange={range}
-          showFretDots={false}
-          showFretNumbers={false}
+        <FretboardCell
+          fretboardConfig={{
+            model: instance,
+            voicing,
+            fretRange: range,
+            showFretNumbers: false,
+            showFretDots: false,
+          }}
         />
       ),
     };

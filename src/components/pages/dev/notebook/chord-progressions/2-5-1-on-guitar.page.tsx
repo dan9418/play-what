@@ -9,21 +9,25 @@ import {
 import Note from "../../../../../core/models/Note";
 import Scale from "../../../../../core/models/Scale";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../../../core/theory/Degree.constants";
-import FretTable from "../../../../../viewers/fret-table/FretTable";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import ColumnManager from "../../../../column-manager/ColumnManager";
 import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
+import FretboardCell from "../../../../ui/FretboardCell";
 import { Table } from "../../../../ui/Table";
 
 const StyledCAGEDPage = styled(PageLayout)`
-  ${StyledCard} > table {
-    width: 100%;
-
-    > tbody > tr > td {
-      width: 33%;
-      padding: 24px 2px 16px;
+  overflow-x: scroll;
+  min-width: 1024px;
+  ${StyledCard} {
+    margin-top: 16px;
+    > table {
+      table-layout: fixed;
+      width: 100%;
+      > tbody > tr > td {
+        vertical-align: top;
+      }
     }
   }
 `;
@@ -102,21 +106,23 @@ const getRows = (items: any[]) => {
         const instance = new model(modelId, {
           root: Note.fromId(rootId),
         });
+        const voicing = voicingId
+          ? VOICING_PRESET_MAP.get(voicingId)
+          : undefined;
+        const fretRange = [1, 14] as [number, number];
         return {
           content: (
-            <>
-              <h3>{modelId}</h3>
-              <FretTable
-                model={instance}
-                voicing={
-                  voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined
-                }
-                fretRange={[1, 14]}
-                colorMapFn={getColor}
-                showFretDots={false}
-                showFretNumbers={false}
-              />
-            </>
+            <FretboardCell
+              caption={instance.getName()}
+              fretboardConfig={{
+                model: instance,
+                voicing,
+                fretRange,
+                showFretNumbers: false,
+                showFretDots: false,
+                colorMapFn: getColor,
+              }}
+            />
           ),
         };
       }),
