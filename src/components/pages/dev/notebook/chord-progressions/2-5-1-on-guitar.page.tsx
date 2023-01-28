@@ -1,26 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import ArrayUtils from "../../../../../core/general/Array.utils";
 import Chord from "../../../../../core/models/Chord";
 import {
   ChordId,
   NoteId,
   ScaleId,
 } from "../../../../../core/models/Model.constants";
-import {
-  NOTE_PRESETS,
-  NOTE_PRESET_MAP,
-} from "../../../../../core/models/Model.presets";
 import Note from "../../../../../core/models/Note";
 import Scale from "../../../../../core/models/Scale";
+import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../../../core/theory/Degree.constants";
 import FretTable from "../../../../../viewers/fret-table/FretTable";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import ColumnManager from "../../../../column-manager/ColumnManager";
-import DropdownInput from "../../../../inputs/DropdownInput";
 import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
-import InputRow from "../../../../ui/InputRow";
+import { Table } from "../../../../ui/Table";
 
 const StyledCAGEDPage = styled(PageLayout)`
   ${StyledCard} > table {
@@ -33,202 +28,119 @@ const StyledCAGEDPage = styled(PageLayout)`
   }
 `;
 
+const ROOT = Note.fromId(NoteId.C);
+
+const MAJOR = new Scale(ScaleId.Ionian, { root: ROOT });
+const MAJOR_NOTES = MAJOR.notes as Note[];
+
+const MINOR = new Scale(ScaleId.Ionian, { root: ROOT });
+const MINOR_NOTES = MINOR.notes as Note[];
+
+const MAJOR_ITEMS = [
+  {
+    model: Chord,
+    modelId: ChordId.Min7,
+    rootId: MAJOR_NOTES[1].modelId,
+    voicingId: null,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Dom7,
+    rootId: MAJOR_NOTES[4].modelId,
+    voicingId: null,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Maj7,
+    rootId: MAJOR_NOTES[0].modelId,
+    voicingId: null,
+  },
+];
+
+const MINOR_ITEMS = [
+  {
+    model: Chord,
+    modelId: ChordId.HalfDim7,
+    rootId: MINOR_NOTES[2].modelId,
+    voicingId: null,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Min7,
+    rootId: MINOR_NOTES[4].modelId,
+    voicingId: null,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.Min7,
+    rootId: MINOR_NOTES[0].modelId,
+    voicingId: null,
+  },
+];
+
+const getColor = (fretProps: IFretProps) => {
+  const { stringIndex, fretIndex, tuning, model } = fretProps;
+  // @ts-ignore
+  const noteIndex = tuning[stringIndex] + fretIndex;
+  // @ts-ignore
+  const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+
+  if (!note) return;
+
+  if (interval.pod[1] === 0) return DEFAULT_DEGREE_COLOR_SCHEME[0];
+  if (interval.pod[1] === 2) return DEFAULT_DEGREE_COLOR_SCHEME[4];
+  if (interval.pod[1] === 4) return "black";
+  if (interval.pod[1] === 6) return "black";
+  return "black";
+};
+
+const getRows = (items: any[]) => {
+  return [
+    {
+      cols: items.map((item) => {
+        const { model, modelId, rootId, voicingId } = item as any;
+        const instance = new model(modelId, {
+          root: Note.fromId(rootId),
+        });
+        return {
+          content: (
+            <>
+              <h3>{modelId}</h3>
+              <FretTable
+                model={instance}
+                voicing={
+                  voicingId ? VOICING_PRESET_MAP.get(voicingId) : undefined
+                }
+                fretRange={[1, 14]}
+                colorMapFn={getColor}
+                showFretDots={false}
+                showFretNumbers={false}
+              />
+            </>
+          ),
+        };
+      }),
+    },
+  ];
+};
+
 const Page: React.FC<any> = () => {
-  const [rootPreset, setRootPreset] = useState(NOTE_PRESET_MAP.get(NoteId.C));
-
-  const root = new Note(rootPreset.value);
-  const majorScale = new Scale(ScaleId.Ionian, { root });
-  const minorScale = new Scale(ScaleId.Ionian, { root });
-
-  const majorItems = [
-    {
-      model: Chord,
-      modelId: ChordId.Min7,
-      rootId: majorScale.notes[1].modelId,
-      voicingId: null,
-    },
-    {
-      model: Chord,
-      modelId: ChordId.Dom7,
-      rootId: majorScale.notes[4].modelId,
-      voicingId: null,
-    },
-    {
-      model: Chord,
-      modelId: ChordId.Maj7,
-      rootId: majorScale.notes[0].modelId,
-      voicingId: null,
-    },
-  ];
-
-  const minorItems = [
-    {
-      model: Chord,
-      modelId: ChordId.HalfDim7,
-      rootId: minorScale.notes[2].modelId,
-      voicingId: null,
-    },
-    {
-      model: Chord,
-      modelId: ChordId.Min7,
-      rootId: minorScale.notes[4].modelId,
-      voicingId: null,
-    },
-    {
-      model: Chord,
-      modelId: ChordId.Min7,
-      rootId: minorScale.notes[0].modelId,
-      voicingId: null,
-    },
-  ];
-
-  const getColor = (fretProps: IFretProps) => {
-    const { stringIndex, fretIndex, tuning, model, voicing } = fretProps;
-    const noteIndex = tuning[stringIndex] + fretIndex;
-    const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
-
-    if (!note) return;
-
-    if (interval.pod[1] === 0) return "red";
-    if (interval.pod[1] === 2) return "blue";
-    if (interval.pod[1] === 4) return "black";
-    if (interval.pod[1] === 6) return "black";
-    return "black";
-  };
-
   return (
     <StyledCAGEDPage title="Chord Progressions">
       <ColumnManager>
-        <InputRow label="Root">
-          <DropdownInput
-            options={NOTE_PRESETS}
-            value={rootPreset}
-            setValue={(p) => {
-              setRootPreset(p);
-            }}
-          />
-        </InputRow>
         <Card title="Major II-V-I">
-          <table>
-            <thead>
-              <tr>
-                <th>II</th>
-                <th>V</th>
-                <th>I</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {majorItems.map((item) => {
-                  const { model, modelId, rootId, voicingId } = item as any;
-                  const instance = new model(modelId, {
-                    root: Note.fromId(rootId),
-                  });
-
-                  return (
-                    <td key={modelId}>
-                      <h3>{modelId}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={
-                          voicingId
-                            ? VOICING_PRESET_MAP.get(voicingId)
-                            : undefined
-                        }
-                        colorMapFn={getColor}
-                        fretRange={[1, 14]}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {ArrayUtils.rotate([...majorItems], 1).map((item) => {
-                  const { model, modelId, rootId, voicingId } = item as any;
-                  const instance = new model(modelId, {
-                    root: Note.fromId(rootId),
-                  });
-
-                  return (
-                    <td key={modelId}>
-                      <h3>{modelId}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={
-                          voicingId
-                            ? VOICING_PRESET_MAP.get(voicingId)
-                            : undefined
-                        }
-                        colorMapFn={getColor}
-                        fretRange={[1, 14]}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
-            </tbody>
-          </table>
+          <Table
+            className="links"
+            thead={[{ cols: ["II", "V", "I"] }]}
+            tbody={getRows(MAJOR_ITEMS)}
+          />
         </Card>
         <Card title="Minor ii-v-i">
-          <table>
-            <thead>
-              <tr>
-                <th>ii</th>
-                <th>v</th>
-                <th>i</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {minorItems.map((item) => {
-                  const { model, modelId, rootId, voicingId } = item as any;
-                  const instance = new model(modelId, {
-                    root: Note.fromId(rootId),
-                  });
-
-                  return (
-                    <td key={modelId}>
-                      <h3>{modelId}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={
-                          voicingId
-                            ? VOICING_PRESET_MAP.get(voicingId)
-                            : undefined
-                        }
-                        colorMapFn={getColor}
-                        fretRange={[1, 14]}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
-              <tr>
-                {ArrayUtils.rotate([...minorItems], 1).map((item) => {
-                  const { model, modelId, rootId, voicingId } = item as any;
-                  const instance = new model(modelId, {
-                    root: Note.fromId(rootId),
-                  });
-
-                  return (
-                    <td key={modelId}>
-                      <h3>{modelId}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={
-                          voicingId
-                            ? VOICING_PRESET_MAP.get(voicingId)
-                            : undefined
-                        }
-                        colorMapFn={getColor}
-                        fretRange={[1, 14]}
-                      />
-                    </td>
-                  );
-                })}
-              </tr>
-            </tbody>
-          </table>
+          <Table
+            className="links"
+            thead={[{ cols: ["ii", "v", "i"] }]}
+            tbody={getRows(MINOR_ITEMS)}
+          />
         </Card>
       </ColumnManager>
     </StyledCAGEDPage>
