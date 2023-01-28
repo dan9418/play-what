@@ -5,6 +5,7 @@ import FretTable from "../../../../../viewers/fret-table/FretTable";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../../ui/Card";
+import { Table } from "../../../../ui/Table";
 import {
   DIATONIC_ITEMS,
   PENTATONIC_ITEMS,
@@ -27,92 +28,53 @@ const StyledCAGEDPage = styled(PageLayout)`
   }
 `;
 
+const getRows = (items: any[]) => {
+  return items.map((item, i) => {
+    const { model, modelId, rootId, voicingId } = item as any;
+    const instance = new model(modelId, {
+      root: Note.fromId(rootId),
+    });
+    return {
+      cols: [
+        {
+          content: (
+            <>
+              <h3>{instance.getName()}</h3>
+              <FretTable
+                model={instance}
+                voicing={VOICING_PRESET_MAP.get(voicingId)}
+                fretRange={[4, 19]}
+                showFretNumbers={false}
+                showFretDots={false}
+              />
+            </>
+          ),
+        },
+      ],
+    };
+  });
+};
+
 const Page: React.FC = () => {
   return (
     <StyledCAGEDPage title="CAGED">
       <Card title="Shape Links">
         <div className="scroll">
-          <table className="links">
-            <thead>
-              <th>Diatonic</th>
-            </thead>
-            <tbody>
-              {DIATONIC_ITEMS.map((item, i) => {
-                const { model, modelId, rootId, voicingId } = item as any;
-                const instance = new model(modelId, {
-                  root: Note.fromId(rootId),
-                });
-                return (
-                  <tr key={i}>
-                    <td key={modelId}>
-                      <h3>{instance.getName()}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={VOICING_PRESET_MAP.get(voicingId)}
-                        fretRange={[0, 24]}
-                        showFretNumbers={false}
-                        showFretDots={false}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <table className="links">
-            <thead>
-              <th>Pentatonic</th>
-            </thead>
-            <tbody>
-              {PENTATONIC_ITEMS.map((item, i) => {
-                const { model, modelId, rootId, voicingId } = item as any;
-                const instance = new model(modelId, {
-                  root: Note.fromId(rootId),
-                });
-                return (
-                  <tr key={i}>
-                    <td key={modelId}>
-                      <h3>{instance.getName()}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={VOICING_PRESET_MAP.get(voicingId)}
-                        fretRange={[0, 24]}
-                        showFretNumbers={false}
-                        showFretDots={false}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <table className="links">
-            <thead>
-              <th>Roman Numerals</th>
-            </thead>
-            <tbody>
-              {ROMAN_NUMERAL_ITEMS.map((item, i) => {
-                const { model, modelId, rootId, voicingId } = item as any;
-                const instance = new model(modelId, {
-                  root: Note.fromId(rootId),
-                });
-                return (
-                  <tr key={i}>
-                    <td key={modelId}>
-                      <h3>{instance.getName()}</h3>
-                      <FretTable
-                        model={instance}
-                        voicing={VOICING_PRESET_MAP.get(voicingId)}
-                        fretRange={[0, 24]}
-                        showFretNumbers={false}
-                        showFretDots={false}
-                      />
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <Table
+            className="links"
+            thead={[{ cols: ["Diatonic"] }]}
+            tbody={getRows(DIATONIC_ITEMS)}
+          />
+          <Table
+            className="links"
+            thead={[{ cols: ["Pentatonic"] }]}
+            tbody={getRows(PENTATONIC_ITEMS)}
+          />
+          <Table
+            className="links"
+            thead={[{ cols: ["Roman Numerals"] }]}
+            tbody={getRows(ROMAN_NUMERAL_ITEMS)}
+          />
         </div>
       </Card>
     </StyledCAGEDPage>
