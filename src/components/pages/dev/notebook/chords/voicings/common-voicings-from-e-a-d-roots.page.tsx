@@ -27,36 +27,54 @@ const StyledVoicingsPage = styled(PageLayout)`
   }
 `;
 
-const VOICINGS_E = [
-  VoicingId.Chord_Triad_EShape_1,
-  VoicingId.Chord_Seventh_EShape_1,
-  VoicingId.Chord_Shell_E_37,
-  VoicingId.Chord_Shell_E_73,
+const THEAD = ["Model", "Triad", "Seventh", "Drop 3-7", "Drop 7-3"];
+
+const CHORD_IDS = [ChordId.Maj7, ChordId.Min7, ChordId.Dom7, ChordId.HalfDim7];
+
+const CHORD_ROOT = Note.fromId(NoteId.C);
+
+interface IRootCard {
+  stringRoot: string;
+  fretRange: [number, number];
+  voicingids: VoicingId[];
+}
+
+const CARDS: IRootCard[] = [
+  {
+    stringRoot: "E",
+    fretRange: [6, 10],
+    voicingids: [
+      VoicingId.Chord_Triad_EShape_1,
+      VoicingId.Chord_Seventh_EShape_1,
+      VoicingId.Chord_Shell_E_37,
+      VoicingId.Chord_Shell_E_73,
+    ],
+  },
+  {
+    stringRoot: "A",
+    fretRange: [2, 6],
+    voicingids: [
+      VoicingId.Chord_Triad_AShape_1,
+      VoicingId.Chord_Seventh_AShape_1,
+      VoicingId.Chord_Shell_A_37,
+      VoicingId.Chord_Shell_A_73,
+    ],
+  },
+  {
+    stringRoot: "D",
+    fretRange: [8, 12],
+    voicingids: [
+      VoicingId.Chord_Triad_DShape_1,
+      VoicingId.Chord_Seventh_DShape_1,
+      VoicingId.Chord_Shell_D_37,
+      VoicingId.Chord_Shell_D_73,
+    ],
+  },
 ];
 
-const VOICINGS_A = [
-  VoicingId.Chord_Triad_AShape_1,
-  VoicingId.Chord_Seventh_AShape_1,
-  VoicingId.Chord_Shell_A_37,
-  VoicingId.Chord_Shell_A_73,
-];
-
-const VOICINGS_D = [
-  VoicingId.Chord_Triad_DShape_1,
-  VoicingId.Chord_Seventh_DShape_1,
-  VoicingId.Chord_Shell_D_37,
-  VoicingId.Chord_Shell_D_73,
-];
-
-const ROOTS = [
-  ["E", VOICINGS_E, [6, 10]],
-  ["A", VOICINGS_A, [2, 6]],
-  ["D", VOICINGS_D, [8, 12]],
-];
-
-const getVoicingCols = ({ voicingIds, model, modelId, root, range }) =>
+const getVoicingCols = ({ voicingIds, modelId, root, fretRange }) =>
   voicingIds.map((voicingId, i) => {
-    const instance = new model(modelId, { root });
+    const instance = new Chord(modelId, { root });
     const voicing = VOICING_PRESET_MAP.get(voicingId);
     return {
       content: (
@@ -64,7 +82,7 @@ const getVoicingCols = ({ voicingIds, model, modelId, root, range }) =>
           fretboardConfig={{
             model: instance,
             voicing,
-            fretRange: range,
+            fretRange,
             showFretNumbers: false,
             showFretDots: false,
           }}
@@ -73,64 +91,50 @@ const getVoicingCols = ({ voicingIds, model, modelId, root, range }) =>
     };
   });
 
-const getChordRows = (chords: any[], voicingIds: any[], root, range) => {
-  return chords.map((chord, i) => {
-    const { model, modelId } = chord;
+const getChordRows = (
+  chordIds: ChordId[],
+  voicingIds: VoicingId[],
+  root: Note,
+  fretRange: [number, number]
+) => {
+  return chordIds.map((modelId, i) => {
     return {
       cols: [
-        modelId,
+        new Chord(modelId).getName(),
         ...getVoicingCols({
           voicingIds,
-          model,
           modelId,
           root,
-          range,
+          fretRange,
         }),
       ],
     };
   });
 };
 
-const getRootCard = (root: string, voicings: any[], range: any) => {
+const getRootCard = (
+  chordIds: ChordId[],
+  root: Note,
+  stringRoot: string,
+  voicingIds: VoicingId[],
+  fretRange: [number, number]
+) => {
   return (
-    <Card title={`${root} Root`}>
+    <Card title={`${stringRoot} Root`}>
       <Table
         thead={[{ cols: THEAD }]}
-        tbody={getChordRows(CHORDS, voicings, ROOT, range)}
+        tbody={getChordRows(chordIds, voicingIds, root, fretRange)}
         headerColIndicies={[0]}
       />
     </Card>
   );
 };
 
-const THEAD = ["Model", "Triad", "Seventh", "Drop 3-7", "Drop 7-3"];
-
-const CHORDS = [
-  {
-    model: Chord,
-    modelId: ChordId.Maj7,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.Min7,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.Dom7,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.HalfDim7,
-  },
-];
-
-const ROOT = Note.fromId(NoteId.C);
-
 const Page: React.FC = () => {
   return (
     <StyledVoicingsPage title="Chord Voicings">
-      {ROOTS.map(([root, voicings, range]) =>
-        getRootCard(root as string, voicings as VoicingId[], range)
+      {CARDS.map(({ stringRoot, voicingids, fretRange }) =>
+        getRootCard(CHORD_IDS, CHORD_ROOT, stringRoot, voicingids, fretRange)
       )}
     </StyledVoicingsPage>
   );
