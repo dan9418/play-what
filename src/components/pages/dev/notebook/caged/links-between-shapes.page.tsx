@@ -3,9 +3,9 @@ import styled from "styled-components";
 import Note from "../../../../../core/models/Note";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../ui/Card";
+import { StyledCard } from "../../../../ui/Card";
 import FretboardCell from "../../../../ui/FretboardCell";
-import { Table } from "../../../../ui/Table";
+import SmartCard from "../../../../ui/SmartCard";
 import {
   DIATONIC_ITEMS,
   PENTATONIC_ITEMS,
@@ -56,18 +56,25 @@ const getRows = (items: any[]) => {
   });
 };
 
+const CARD_CONFIGS = [
+  {
+    title: "Diatonic",
+    table: { tbody: getRows(DIATONIC_ITEMS) },
+  },
+  {
+    title: "Pentatonic",
+    table: { tbody: getRows(PENTATONIC_ITEMS) },
+  },
+  {
+    title: "Roman Numerals",
+    table: { tbody: getRows(ROMAN_NUMERAL_ITEMS) },
+  },
+];
+
 const Page: React.FC = () => {
   return (
     <StyledCAGEDPage title="CAGED Shape Links">
-      <Card title="Diatonic">
-        <Table tbody={getRows(DIATONIC_ITEMS)} />
-      </Card>
-      <Card title="Pentatonic">
-        <Table tbody={getRows(PENTATONIC_ITEMS)} />
-      </Card>
-      <Card title="Roman Numerals">
-        <Table tbody={getRows(ROMAN_NUMERAL_ITEMS)} />
-      </Card>
+      <SmartCard cards={CARD_CONFIGS} />
     </StyledCAGEDPage>
   );
 };

@@ -3,29 +3,15 @@ import styled from "styled-components";
 import Note from "../../../../../core/models/Note";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../ui/Card";
 import FretboardCell from "../../../../ui/FretboardCell";
-import { Table } from "../../../../ui/Table";
+import SmartCard, { ICardConfig } from "../../../../ui/SmartCard";
 import {
   DIATONIC_ITEMS,
   PENTATONIC_ITEMS,
   ROMAN_NUMERAL_ITEMS,
 } from "./caged.shared";
 
-const StyledCAGEDPage = styled(PageLayout)`
-  overflow-x: scroll;
-  min-width: 1024px;
-  ${StyledCard} {
-    margin-top: 16px;
-    > table {
-      table-layout: fixed;
-      width: 100%;
-      > tbody > tr > td {
-        vertical-align: top;
-      }
-    }
-  }
-`;
+const StyledCAGEDPage = styled(PageLayout)``;
 
 const DISPLAY = [
   [
@@ -94,12 +80,21 @@ const getRows = (rows: any[]) => {
   });
 };
 
+const getCardConfig = (): ICardConfig => {
+  return {
+    title: "Shape Relationships",
+    table: {
+      thead: HEAD,
+      tbody: getRows(DISPLAY),
+      headerColIndicies: [0],
+    },
+  };
+};
+
 const Page: React.FC = () => {
   return (
     <StyledCAGEDPage title="CAGED Shapes">
-      <Card title="Shape Relationships">
-        <Table thead={HEAD} tbody={getRows(DISPLAY)} headerColIndicies={[0]} />
-      </Card>
+      <SmartCard cards={[getCardConfig()]} />
     </StyledCAGEDPage>
   );
 };

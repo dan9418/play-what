@@ -11,26 +11,11 @@ import Scale from "../../../../../core/models/Scale";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../../../../../core/theory/Degree.constants";
 import { IFretProps } from "../../../../../viewers/fretboard/Fretboard.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
-import ColumnManager from "../../../../column-manager/ColumnManager";
 import PageLayout from "../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../ui/Card";
 import FretboardCell from "../../../../ui/FretboardCell";
-import { Table } from "../../../../ui/Table";
+import SmartCard, { ICardConfig } from "../../../../ui/SmartCard";
 
-const StyledCAGEDPage = styled(PageLayout)`
-  overflow-x: scroll;
-  min-width: 1024px;
-  ${StyledCard} {
-    margin-top: 16px;
-    > table {
-      table-layout: fixed;
-      width: 100%;
-      > tbody > tr > td {
-        vertical-align: top;
-      }
-    }
-  }
-`;
+const StyledCAGEDPage = styled(PageLayout)``;
 
 const ROOT = Note.fromId(NoteId.C);
 
@@ -130,25 +115,29 @@ const getRows = (items: any[]) => {
   ];
 };
 
+const getCardConfigs = (): ICardConfig[] => {
+  return [
+    {
+      title: "Major II-V-I",
+      table: {
+        thead: [{ cols: ["II", "V", "I"] }],
+        tbody: getRows(MAJOR_ITEMS),
+      },
+    },
+    {
+      title: "Minor ii-v-i",
+      table: {
+        thead: [{ cols: ["ii", "v", "i"] }],
+        tbody: getRows(MINOR_ITEMS),
+      },
+    },
+  ];
+};
+
 const Page: React.FC<any> = () => {
   return (
     <StyledCAGEDPage title="Chord Progressions">
-      <ColumnManager>
-        <Card title="Major II-V-I">
-          <Table
-            className="links"
-            thead={[{ cols: ["II", "V", "I"] }]}
-            tbody={getRows(MAJOR_ITEMS)}
-          />
-        </Card>
-        <Card title="Minor ii-v-i">
-          <Table
-            className="links"
-            thead={[{ cols: ["ii", "v", "i"] }]}
-            tbody={getRows(MINOR_ITEMS)}
-          />
-        </Card>
-      </ColumnManager>
+      <SmartCard cards={getCardConfigs()} />
     </StyledCAGEDPage>
   );
 };
