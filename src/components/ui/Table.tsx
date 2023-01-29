@@ -116,7 +116,7 @@ interface IColGroup {
   className?: string;
 }
 
-interface ITableConfig {
+export interface ITableConfig {
   thead?: (IRowConfig | TOmit)[];
   tfoot?: (IRowConfig | TOmit)[];
   tbody: (IRowConfig | TOmit)[];

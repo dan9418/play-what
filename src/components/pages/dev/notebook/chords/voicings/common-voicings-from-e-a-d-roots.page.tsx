@@ -8,24 +8,10 @@ import {
   VOICING_PRESET_MAP,
 } from "../../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../../layout/PageLayout";
-import Card, { StyledCard } from "../../../../../ui/Card";
 import FretboardCell from "../../../../../ui/FretboardCell";
-import { Table } from "../../../../../ui/Table";
+import SmartCard, { ICardConfig } from "../../../../../ui/SmartCard";
 
-const StyledVoicingsPage = styled(PageLayout)`
-  overflow-x: scroll;
-  min-width: 1024px;
-  ${StyledCard} {
-    margin-top: 16px;
-    > table {
-      table-layout: fixed;
-      width: 100%;
-      > tbody > tr > td {
-        vertical-align: top;
-      }
-    }
-  }
-`;
+const StyledVoicingsPage = styled(PageLayout)``;
 
 const THEAD = ["Model", "Triad", "Seventh", "Drop 3-7", "Drop 7-3"];
 
@@ -119,23 +105,30 @@ const getRootCard = (
   voicingIds: VoicingId[],
   fretRange: [number, number]
 ) => {
-  return (
-    <Card title={`${stringRoot} Root`}>
-      <Table
-        thead={[{ cols: THEAD }]}
-        tbody={getChordRows(chordIds, voicingIds, root, fretRange)}
-        headerColIndicies={[0]}
-      />
-    </Card>
+  return {
+    title: `${stringRoot} Root`,
+    table: {
+      thead: [{ cols: THEAD }],
+      tbody: getChordRows(chordIds, voicingIds, root, fretRange),
+      headerColIndicies: [0],
+    },
+  };
+};
+
+const getCardConfigs = (
+  cards: IRootCard[],
+  chordIds: ChordId[],
+  root: Note
+): ICardConfig[] => {
+  return cards.map(({ stringRoot, voicingids, fretRange }) =>
+    getRootCard(chordIds, root, stringRoot, voicingids, fretRange)
   );
 };
 
 const Page: React.FC = () => {
   return (
     <StyledVoicingsPage title="Chord Voicings">
-      {CARDS.map(({ stringRoot, voicingids, fretRange }) =>
-        getRootCard(CHORD_IDS, CHORD_ROOT, stringRoot, voicingids, fretRange)
-      )}
+      <SmartCard cards={getCardConfigs(CARDS, CHORD_IDS, CHORD_ROOT)} />
     </StyledVoicingsPage>
   );
 };
