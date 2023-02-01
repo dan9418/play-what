@@ -22,8 +22,11 @@ const STATIC_PAGES = [
   { route: '/dev/notebook/chord-charts/jazz-standards/' },
   { route: '/dev/notebook/chord-progressions/2-5-1-on-guitar/' },
   { route: '/dev/notebook/chords/voicings/common-voicings-from-e-a-d-roots/' },
-  { route: '/dev/notebook/intervals/advanced/possible-extensions-for-chords/' },
-  { route: '/dev/notebook/intervals/basic/intervals-table/' }
+  { route: '/dev/notebook/chords/extensions/possible-extensions-for-chords/' },
+  { route: '/dev/notebook/intervals/extended-intervals-vs-standard-intervals/' },
+  { route: '/dev/notebook/intervals/intervals-from-fret-positions/' },
+  { route: '/dev/notebook/intervals/intervals-vs-harmonics/' },
+  { route: '/dev/notebook/intervals/intervals-vs-semitones/' }
 ];
 
 const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';

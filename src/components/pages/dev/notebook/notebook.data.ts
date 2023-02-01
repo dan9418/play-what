@@ -8,26 +8,20 @@ export const LISTS = [
         title: "Basics",
         items: [
           {
-            text: "Table of intervals and # semitones",
-            link: "/intervals/basic/intervals-table",
-          },
-          {
-            text: "Table of intervals from fret positions",
-          },
-          {
-            text: "Table of intervals mapped to harmonics",
-          },
-        ],
-      },
-      {
-        title: "Advanced",
-        items: [
-          {
-            text: "Possible extensions for chords",
-            link: "/intervals/advanced/possible-extensions-for-chords",
+            text: "Table of intervals and semitones",
+            link: "/intervals/intervals-vs-semitones",
           },
           {
             text: "Table of extended intervals vs standard intervals",
+            link: "/intervals/extended-intervals-vs-standard-intervals",
+          },
+          {
+            text: "Table of intervals vs harmonics",
+            link: "/intervals/intervals-vs-harmonics",
+          },
+          {
+            text: "Table of intervals from fret positions",
+            link: "/intervals/intervals-from-fret-positions",
           },
         ],
       },
@@ -53,6 +47,7 @@ export const LISTS = [
         items: [
           {
             text: "Table of extensions found/possible in chords",
+            link: "/chords/extensions/possible-extensions-for-chords",
           },
           {
             text: "Table of common chords and possible voicings",
