@@ -3,27 +3,22 @@ export const LINK_PREFIX = "/dev/notebook";
 export const LISTS = [
   {
     title: "Intervals",
-    lists: [
+    items: [
       {
-        title: "Basics",
-        items: [
-          {
-            text: "Table of intervals and semitones",
-            link: "/intervals/intervals-vs-semitones",
-          },
-          {
-            text: "Table of extended intervals vs standard intervals",
-            link: "/intervals/extended-intervals-vs-standard-intervals",
-          },
-          {
-            text: "Table of intervals vs harmonics",
-            link: "/intervals/intervals-vs-harmonics",
-          },
-          {
-            text: "Table of intervals from fret positions",
-            link: "/intervals/intervals-from-fret-positions",
-          },
-        ],
+        text: "Table of intervals and semitones",
+        link: "/intervals/intervals-vs-semitones",
+      },
+      {
+        text: "Table of extended intervals vs standard intervals",
+        link: "/intervals/extended-intervals-vs-standard-intervals",
+      },
+      {
+        text: "Table of intervals vs harmonics",
+        link: "/intervals/intervals-vs-harmonics",
+      },
+      {
+        text: "Table of intervals from fret positions",
+        link: "/intervals/intervals-from-fret-positions",
       },
     ],
   },
