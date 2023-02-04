@@ -16,36 +16,36 @@ const StyledCAGEDPage = styled(PageLayout)``;
 const DISPLAY = [
   [
     "Pentatonic",
+    PENTATONIC_ITEMS[0],
+    PENTATONIC_ITEMS[1],
     PENTATONIC_ITEMS[2],
     PENTATONIC_ITEMS[3],
     PENTATONIC_ITEMS[4],
-    PENTATONIC_ITEMS[0],
-    PENTATONIC_ITEMS[1],
   ],
   [
     "Diatonic",
+    DIATONIC_ITEMS[0],
+    DIATONIC_ITEMS[1],
     DIATONIC_ITEMS[2],
     DIATONIC_ITEMS[4],
     DIATONIC_ITEMS[5],
-    DIATONIC_ITEMS[0],
-    DIATONIC_ITEMS[1],
   ],
   [
     "Seventh",
+    ROMAN_NUMERAL_ITEMS[0],
+    ROMAN_NUMERAL_ITEMS[1],
     ROMAN_NUMERAL_ITEMS[2],
     ROMAN_NUMERAL_ITEMS[4],
     ROMAN_NUMERAL_ITEMS[5],
-    ROMAN_NUMERAL_ITEMS[0],
-    ROMAN_NUMERAL_ITEMS[1],
   ],
 ];
 
 const FRET_RANGE: [number, number][] = [
+  [4, 4 + 4],
+  [6, 6 + 4],
   [9, 9 + 4],
   [11, 11 + 4],
   [1, 1 + 4],
-  [4, 4 + 4],
-  [6, 6 + 4],
 ];
 
 const HEAD = [{ cols: ["", "C", "A", "G", "E", "D"] }];
