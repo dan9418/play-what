@@ -8,7 +8,7 @@ import Note from "../../../../../core/models/Note";
 import Scale from "../../../../../core/models/Scale";
 import { VoicingId } from "../../../../../viewers/fretboard/Fretboard.voicing";
 
-const ROOT = Note.fromId(NoteId.A);
+const ROOT = Note.fromId(NoteId.C);
 
 const SCALE = new Scale(ScaleId.Ionian, { root: ROOT });
 const SCALE_NOTES = SCALE.notes as Note[];
@@ -133,5 +133,50 @@ export const PENTATONIC_ITEMS = [
     modelId: ScaleId.MinorPentatonic,
     rootId: SCALE_NOTES[5].modelId,
     voicingId: VoicingId.Scale_DoubleOctave_CShape_1,
+  },
+];
+
+export const TRIAD_ITEMS = [
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: SCALE_NOTES[0].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_EShape_2,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MinTriad,
+    rootId: SCALE_NOTES[1].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_DShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MinTriad,
+    rootId: SCALE_NOTES[2].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_CShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: SCALE_NOTES[3].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_CShape_2,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: SCALE_NOTES[4].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_AShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MinTriad,
+    rootId: SCALE_NOTES[5].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_GShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.DimTriad,
+    rootId: SCALE_NOTES[6].modelId,
+    voicingId: VoicingId.Scale_DoubleOctave_EShape_1,
   },
 ];
