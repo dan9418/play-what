@@ -104,15 +104,19 @@ export const LISTS = [
     ],
   },
   {
-    title: "The CAGED System",
+    title: "Guitar Shapes",
     items: [
       {
-        text: "Chords and scales within shapes",
-        link: "/caged/chords-and-scales-within-shapes",
+        text: "The CAGED System",
+        link: "/shapes/the-caged-system",
       },
       {
-        text: "Links between shapes",
-        link: "/caged/links-between-shapes",
+        text: "Relationship of shapes",
+        link: "/shapes/relationship-of-shapes",
+      },
+      {
+        text: "connecting-shapes",
+        link: "/shapes/connecting-shapes",
       },
     ],
   },

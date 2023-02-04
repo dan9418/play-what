@@ -108,7 +108,7 @@ const getCardConfig = (): ICardConfig => {
 
 const Page: React.FC = () => {
   return (
-    <StyledCAGEDPage title="Connecting Shapes">
+    <StyledCAGEDPage title="Relationship of Shapes">
       <SmartCard cards={[getCardConfig()]} />
     </StyledCAGEDPage>
   );

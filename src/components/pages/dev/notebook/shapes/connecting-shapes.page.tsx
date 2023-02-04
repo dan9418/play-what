@@ -73,7 +73,7 @@ const CARD_CONFIGS = [
 
 const Page: React.FC = () => {
   return (
-    <StyledCAGEDPage title="CAGED Shape Links">
+    <StyledCAGEDPage title="Connecting Shapes">
       <SmartCard cards={CARD_CONFIGS} />
     </StyledCAGEDPage>
   );
