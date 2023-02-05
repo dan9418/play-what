@@ -7,7 +7,8 @@ import {
   IFretboardProps,
 } from "../fretboard/Fretboard.utils";
 import FretFlag from "./FretFlag";
-const StyledFretTable = styled.div``;
+
+export const StyledFretTable = styled.div``;
 
 const tableStyles = css`
   width: 100%;
