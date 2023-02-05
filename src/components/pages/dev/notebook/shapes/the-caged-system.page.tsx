@@ -3,19 +3,15 @@ import styled from "styled-components";
 import Note from "../../../../../core/models/Note";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
-import { StyledCard } from "../../../../ui/Card";
 import FretboardCell from "../../../../ui/FretboardCell";
 import SmartCard, { ICardConfig } from "../../../../ui/SmartCard";
-import {
-  CAGED_ITEMS,
-  DIATONIC_ITEMS,
-  PENTATONIC_ITEMS,
-  ROMAN_NUMERAL_ITEMS,
-} from "./caged.shared";
+import { CAGED_ITEMS } from "./caged.shared";
 
 const StyledCAGEDPage = styled(PageLayout)``;
 
 const HEAD = [{ cols: ["C", "A", "G", "E", "D"] }];
+
+const RANGE = [3, 2, 3, 2, 3];
 
 const getRows = (rows: any[]) => {
   return rows.map((row, i) => {
@@ -27,7 +23,10 @@ const getRows = (rows: any[]) => {
         });
         const voicing = VOICING_PRESET_MAP.get(voicingId);
         const startingFret = 0;
-        const fretRange: [number, number] = [startingFret, startingFret + 12];
+        const fretRange: [number, number] = [
+          startingFret,
+          startingFret + RANGE[j],
+        ];
         return {
           content: (
             <FretboardCell

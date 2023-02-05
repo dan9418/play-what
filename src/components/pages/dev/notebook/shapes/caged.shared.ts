@@ -185,31 +185,31 @@ export const CAGED_ITEMS = [
   {
     model: Chord,
     modelId: ChordId.MajTriad,
-    rootId: SCALE_NOTES[0].modelId,
+    rootId: NoteId.C,
     voicingId: VoicingId.Chord_Triad_CShape_1,
   },
   {
     model: Chord,
     modelId: ChordId.MajTriad,
-    rootId: SCALE_NOTES[0].modelId,
+    rootId: NoteId.A,
     voicingId: VoicingId.Chord_Triad_AShape_1,
   },
   {
     model: Chord,
     modelId: ChordId.MajTriad,
-    rootId: SCALE_NOTES[0].modelId,
+    rootId: NoteId.G,
     voicingId: VoicingId.Chord_Triad_GShape_1,
   },
   {
     model: Chord,
     modelId: ChordId.MajTriad,
-    rootId: SCALE_NOTES[0].modelId,
+    rootId: NoteId.E,
     voicingId: VoicingId.Chord_Triad_EShape_1,
   },
   {
     model: Chord,
     modelId: ChordId.MajTriad,
-    rootId: SCALE_NOTES[0].modelId,
+    rootId: NoteId.D,
     voicingId: VoicingId.Chord_Triad_DShape_1,
   },
 ];
