@@ -1,11 +1,48 @@
 import React from "react";
 import styled from "styled-components";
+import Chord from "../../../../../core/models/Chord";
+import { ChordId, NoteId } from "../../../../../core/models/Model.constants";
 import Note from "../../../../../core/models/Note";
-import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
+import {
+  VoicingId,
+  VOICING_PRESET_MAP,
+} from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
 import FretboardCell from "../../../../ui/FretboardCell";
 import SmartCard, { ICardConfig } from "../../../../ui/SmartCard";
-import { CAGED_ITEMS } from "./caged.shared";
+
+export const CAGED_ITEMS = [
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    voicingId: VoicingId.Chord_Triad_CShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.A,
+    voicingId: VoicingId.Chord_Triad_AShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.G,
+    voicingId: VoicingId.Chord_Triad_GShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.E,
+    voicingId: VoicingId.Chord_Triad_EShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.D,
+    voicingId: VoicingId.Chord_Triad_DShape_1,
+  },
+];
 
 const StyledCAGEDPage = styled(PageLayout)``;
 

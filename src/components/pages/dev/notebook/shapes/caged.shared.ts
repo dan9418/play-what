@@ -180,36 +180,3 @@ export const TRIAD_ITEMS = [
     voicingId: VoicingId.Scale_DoubleOctave_EShape_1,
   },
 ];
-
-export const CAGED_ITEMS = [
-  {
-    model: Chord,
-    modelId: ChordId.MajTriad,
-    rootId: NoteId.C,
-    voicingId: VoicingId.Chord_Triad_CShape_1,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.MajTriad,
-    rootId: NoteId.A,
-    voicingId: VoicingId.Chord_Triad_AShape_1,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.MajTriad,
-    rootId: NoteId.G,
-    voicingId: VoicingId.Chord_Triad_GShape_1,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.MajTriad,
-    rootId: NoteId.E,
-    voicingId: VoicingId.Chord_Triad_EShape_1,
-  },
-  {
-    model: Chord,
-    modelId: ChordId.MajTriad,
-    rootId: NoteId.D,
-    voicingId: VoicingId.Chord_Triad_DShape_1,
-  },
-];

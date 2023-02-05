@@ -115,7 +115,7 @@ export const LISTS = [
         link: "/shapes/relationship-of-shapes",
       },
       {
-        text: "connecting-shapes",
+        text: "Connecting Shapes",
         link: "/shapes/connecting-shapes",
       },
     ],
