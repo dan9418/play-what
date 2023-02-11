@@ -1,18 +1,30 @@
-import { Link } from "gatsby";
 import React from "react";
-import { useRootSuffix } from "../../contexts/PagePropsContext";
-import Chord from "../../core/models/Chord";
-import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
-import Scale from "../../core/models/Scale";
-import Card from "../ui/Card";
-import CollectionTable, { ICollectionTableProps } from "./CollectionTable";
+import styled from "styled-components";
+import Card, { ICardProps } from "../ui/Card";
+import CollectionTable from "./CollectionTable";
 
-const CollectionCard: React.FC<any> = ({ title, data }) => {
-    return (
-        <Card title={title} >
-            <CollectionTable data={data} />
-        </Card>
-    );
+interface ICollectionCardProps extends ICardProps {
+  data: any[];
+  description?: string;
+}
+
+const StyledCollectionCard = styled(Card)`
+  p {
+    margin: 16px 0;
+  }
+`;
+
+const CollectionCard: React.FC<ICollectionCardProps> = ({
+  description,
+  data,
+  ...rest
+}) => {
+  return (
+    <StyledCollectionCard {...rest}>
+      {description && <p>{description}</p>}
+      <CollectionTable data={data} />
+    </StyledCollectionCard>
+  );
 };
 
 export default CollectionCard;
