@@ -72,15 +72,8 @@ const Page: React.FC<any> = (props) => {
           </p>
           <CardHeader level={3} title="View" />
           <p>
-            The <Link to="/view">view pages</Link> provide an interface to view
-            any chord or scale on an instrument.
-          </p>
-          <p>
-            Play What currently supports a{" "}
-            <Link to="/view/fretboard">fretboard</Link> and a{" "}
-            <Link to="/view/keyboard">keyboard</Link>. The fretboard paramaters
-            can be configured to suit a number of instruments like guitar, bass,
-            mandolin, etc..
+            The <Link to="/view/fretboard">Fretboard page</Link> provide an
+            interface to view any chord or scale on an instrument.
           </p>
           <p>There are 3 tabs for viewing/editing the viewer</p>
           <CardHeader level={4} title="Summary" />

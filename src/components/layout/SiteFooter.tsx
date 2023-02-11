@@ -74,7 +74,7 @@ const SiteFooter: React.FC = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/view">View</Link>
+              <Link to="/view/fretboard">Fretboard</Link>
             </li>
             <li>
               <Link to="/browse">Browse</Link>
@@ -137,7 +137,7 @@ const SiteFooter: React.FC = () => {
         2023 Dan Bednarczyk
       </a>
 
-      <div className="version">v0.1.1</div>
+      <div className="version">v0.1.2</div>
     </StyledSiteFooter>
   );
 };

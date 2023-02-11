@@ -230,9 +230,9 @@ const Page: React.FC<any> = () => {
           <Icon iconId={IconId.Browse} size={64} />
           Browse Chords & Scales
         </Link>
-        <Link to="/view" className="tile">
+        <Link to="/view/fretboard" className="tile">
           <Icon iconId={IconId.Guitar} size={64} />
-          View Instruments
+          Customize Fretboard
         </Link>
         <Link to={modelPath} className="tile">
           <Icon iconId={IconId.Dice} size={64} />
@@ -258,11 +258,10 @@ const Page: React.FC<any> = () => {
           <div>
             <div className="txt">
               <p>
-                Play What currently supports two instrument types. Both can be
-                customized to suit your needs.
+                Play What currently supports one instrument type, but more are
+                planned for future versions.
               </p>
               <Link to="/view/fretboard">Fretboard</Link>
-              <Link to="/view/keyboard">Keyboard</Link>
             </div>
           </div>
         </section>
