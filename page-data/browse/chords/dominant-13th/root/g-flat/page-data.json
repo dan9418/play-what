@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/dominant-13th/root/g-flat/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"dominant-13th","rootId":"g-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/dominant-13th/root/g-flat/","result":{"pageContext":{"modelType":"chords","modelId":"dominant-13th","rootId":"g-flat"}},"staticQueryHashes":["3439708972"]}

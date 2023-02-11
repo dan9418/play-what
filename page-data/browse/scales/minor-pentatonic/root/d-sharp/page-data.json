@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/minor-pentatonic/root/d-sharp/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"minor-pentatonic","rootId":"d-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/minor-pentatonic/root/d-sharp/","result":{"pageContext":{"modelType":"scales","modelId":"minor-pentatonic","rootId":"d-sharp"}},"staticQueryHashes":["3439708972"]}

@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/major-11th/root/d-sharp/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"major-11th","rootId":"d-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/major-11th/root/d-sharp/","result":{"pageContext":{"modelType":"chords","modelId":"major-11th","rootId":"d-sharp"}},"staticQueryHashes":["3439708972"]}

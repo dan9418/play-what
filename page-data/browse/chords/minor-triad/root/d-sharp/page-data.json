@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/minor-triad/root/d-sharp/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"minor-triad","rootId":"d-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/minor-triad/root/d-sharp/","result":{"pageContext":{"modelType":"chords","modelId":"minor-triad","rootId":"d-sharp"}},"staticQueryHashes":["3439708972"]}

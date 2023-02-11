@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/half-diminished-7th/root/b/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"half-diminished-7th","rootId":"b"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/half-diminished-7th/root/b/","result":{"pageContext":{"modelType":"chords","modelId":"half-diminished-7th","rootId":"b"}},"staticQueryHashes":["3439708972"]}

@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/egyptian/root/e-sharp/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"egyptian","rootId":"e-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/egyptian/root/e-sharp/","result":{"pageContext":{"modelType":"scales","modelId":"egyptian","rootId":"e-sharp"}},"staticQueryHashes":["3439708972"]}

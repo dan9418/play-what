@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/dominant-sharp-9th/root/e-flat/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"dominant-sharp-9th","rootId":"e-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/dominant-sharp-9th/root/e-flat/","result":{"pageContext":{"modelType":"chords","modelId":"dominant-sharp-9th","rootId":"e-flat"}},"staticQueryHashes":["3439708972"]}

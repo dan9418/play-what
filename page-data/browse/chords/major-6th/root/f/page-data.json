@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/major-6th/root/f/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"major-6th","rootId":"f"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/major-6th/root/f/","result":{"pageContext":{"modelType":"chords","modelId":"major-6th","rootId":"f"}},"staticQueryHashes":["3439708972"]}

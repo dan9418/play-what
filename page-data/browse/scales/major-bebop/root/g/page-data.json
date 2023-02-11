@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/major-bebop/root/g/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"major-bebop","rootId":"g"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/major-bebop/root/g/","result":{"pageContext":{"modelType":"scales","modelId":"major-bebop","rootId":"g"}},"staticQueryHashes":["3439708972"]}

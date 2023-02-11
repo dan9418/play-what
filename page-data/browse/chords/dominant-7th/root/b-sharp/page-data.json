@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/dominant-7th/root/b-sharp/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"dominant-7th","rootId":"b-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/dominant-7th/root/b-sharp/","result":{"pageContext":{"modelType":"chords","modelId":"dominant-7th","rootId":"b-sharp"}},"staticQueryHashes":["3439708972"]}

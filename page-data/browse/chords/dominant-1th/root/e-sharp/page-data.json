@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/dominant-1th/root/e-sharp/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"dominant-1th","rootId":"e-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/dominant-1th/root/e-sharp/","result":{"pageContext":{"modelType":"chords","modelId":"dominant-1th","rootId":"e-sharp"}},"staticQueryHashes":["3439708972"]}

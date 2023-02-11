@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/mixolydian-flat-6/root/a-flat/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"mixolydian-flat-6","rootId":"a-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/mixolydian-flat-6/root/a-flat/","result":{"pageContext":{"modelType":"scales","modelId":"mixolydian-flat-6","rootId":"a-flat"}},"staticQueryHashes":["3439708972"]}

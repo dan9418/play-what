@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/lydian-dominant/root/a/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"lydian-dominant","rootId":"a"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/lydian-dominant/root/a/","result":{"pageContext":{"modelType":"scales","modelId":"lydian-dominant","rootId":"a"}},"staticQueryHashes":["3439708972"]}

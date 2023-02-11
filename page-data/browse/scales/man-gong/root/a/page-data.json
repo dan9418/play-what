@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/man-gong/root/a/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"man-gong","rootId":"a"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/man-gong/root/a/","result":{"pageContext":{"modelType":"scales","modelId":"man-gong","rootId":"a"}},"staticQueryHashes":["3439708972"]}

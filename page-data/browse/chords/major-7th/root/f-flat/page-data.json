@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/major-7th/root/f-flat/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"major-7th","rootId":"f-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/major-7th/root/f-flat/","result":{"pageContext":{"modelType":"chords","modelId":"major-7th","rootId":"f-flat"}},"staticQueryHashes":["3439708972"]}

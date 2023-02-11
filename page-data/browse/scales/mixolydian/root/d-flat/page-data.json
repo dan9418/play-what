@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/mixolydian/root/d-flat/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"mixolydian","rootId":"d-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/mixolydian/root/d-flat/","result":{"pageContext":{"modelType":"scales","modelId":"mixolydian","rootId":"d-flat"}},"staticQueryHashes":["3439708972"]}

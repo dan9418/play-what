@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/diminished-7th/root/f/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"diminished-7th","rootId":"f"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/diminished-7th/root/f/","result":{"pageContext":{"modelType":"chords","modelId":"diminished-7th","rootId":"f"}},"staticQueryHashes":["3439708972"]}

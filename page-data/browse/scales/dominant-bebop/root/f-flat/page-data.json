@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/dominant-bebop/root/f-flat/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"dominant-bebop","rootId":"f-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/dominant-bebop/root/f-flat/","result":{"pageContext":{"modelType":"scales","modelId":"dominant-bebop","rootId":"f-flat"}},"staticQueryHashes":["3439708972"]}

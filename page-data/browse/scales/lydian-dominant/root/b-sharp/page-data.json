@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/scales/lydian-dominant/root/b-sharp/",
-    "result": {"pageContext":{"modelType":"scales","modelId":"lydian-dominant","rootId":"b-sharp"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/scales/lydian-dominant/root/b-sharp/","result":{"pageContext":{"modelType":"scales","modelId":"lydian-dominant","rootId":"b-sharp"}},"staticQueryHashes":["3439708972"]}

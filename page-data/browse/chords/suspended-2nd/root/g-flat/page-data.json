@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-components-pages-browse-pod-list-page-tsx",
-    "path": "/browse/chords/suspended-2nd/root/g-flat/",
-    "result": {"pageContext":{"modelType":"chords","modelId":"suspended-2nd","rootId":"g-flat"}},
-    "staticQueryHashes": ["3439708972"]}
+{"componentChunkName":"component---src-components-pages-browse-pod-list-page-tsx","path":"/browse/chords/suspended-2nd/root/g-flat/","result":{"pageContext":{"modelType":"chords","modelId":"suspended-2nd","rootId":"g-flat"}},"staticQueryHashes":["3439708972"]}
