@@ -1,7 +1,7 @@
-import IntervalSpan from '@pw-core/models/Interval';
 import ArrayUtils from '../general/Array.utils';
 import NumberUtils from '../general/Number.utils';
 import Chord from './Chord';
+import IntervalSpan from './Interval';
 import Model from './Model';
 import { IntervalId, IPod, ModelType, ScaleId, Tag } from './Model.constants';
 import { SCALE_PRESETS, SCALE_PRESET_MAP } from './Model.presets';
@@ -18,7 +18,7 @@ export default class Scale extends PodList {
 
     static fromValue = (value: IPod[]) => Model.fromValue(SCALE_PRESETS, Scale, value, arePodListsEqual, reducePodList);
 
-    getMode(d) {
+    getMode(d): Scale {
         let rotated = [...this.podList];
         rotated = ArrayUtils.rotate(rotated, d);
         for (let i = (this.podList.length - d); i < rotated.length; i++) {
@@ -39,8 +39,8 @@ export default class Scale extends PodList {
         return mode;
     };
 
-    getAllModes() {
-        const modes = [];
+    getAllModes(): Scale[] {
+        const modes: Scale[] = [];
         if (this.tags.includes(Tag.Diatonic) ||
             this.tags.includes(Tag.Pentatonic) ||
             this.tags.includes(Tag.MelodicMode) ||
@@ -53,9 +53,9 @@ export default class Scale extends PodList {
         return modes;
     };
 
-    getNumeral(d) {
+    getNumeral(d): Chord {
         // Get every other interval
-        const curIntervals = [];
+        const curIntervals: IntervalSpan[] = [];
         for (let i = 0; i < this.podList.length; i = i + 2) {
             const curD = NumberUtils.moduloSum(d, i, this.podList.length);
             const curIvl = this.intervals[curD];
@@ -71,14 +71,14 @@ export default class Scale extends PodList {
             //newIntervals.push(newIvl);
         }
         const numeral = Chord.fromValue(newPods);
-        if (this.root) {
+        if (this.root && this.notes) {
             numeral.applyRoot(this.notes[d]);
         }
         return numeral;
     };
 
-    getAllNumerals() {
-        const numerals = [];
+    getAllNumerals(): Chord[] {
+        const numerals: Chord[] = [];
         if (this.tags.includes(Tag.Diatonic)) {
             for (let i = 0; i < this.podList.length; i++) {
                 numerals.push(this.getNumeral(i));

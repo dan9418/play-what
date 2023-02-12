@@ -72,7 +72,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({ model, title = "
             cols: [
               "Name",
               ...numerals.map((n, i) => ({
-                link: getModelRoute(n.modelType, n.modelId, n.root as NoteId),
+                link: getModelRoute(n.modelType, n.modelId, n.root.modelId),
                 content: n.getShortName(),
               })),
             ],
