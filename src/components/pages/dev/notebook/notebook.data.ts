@@ -66,15 +66,16 @@ export const LISTS = [
     title: "Roman Numerals",
     items: [
       {
-        text: "Deriving numerals from common scales",
+        text: "Deriving numerals from scales",
+        link: "/roman-numerals/deriving-numerals-from-scales",
       },
       {
         text: "Common chord progressions",
-        link: "",
+        link: "/roman-numerals/common-chord-progressions",
       },
       {
         text: "2-5-1 on the guitar",
-        link: "/chord-progressions/2-5-1-on-guitar",
+        link: "/roman-numerals/2-5-1-on-guitar",
       },
     ],
   },

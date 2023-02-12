@@ -1,6 +1,7 @@
 import React from "react";
 import { css } from "styled-components";
 import { NoteId } from "../../core/models/Model.constants";
+import Scale from "../../core/models/Scale";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -31,13 +32,18 @@ const tableStyles = css`
   }
 `;
 
-const RomanNumeralsCard: React.FC<any> = ({ model }) => {
+interface IRomanNumeralsCardProps {
+  model: Scale;
+  title?: string;
+}
+
+const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({ model, title = "Roman Numerals" }) => {
   const numerals = model.getAllNumerals();
 
   if (!numerals.length) return null;
 
   return (
-    <Card title="Roman Numerals">
+    <Card title={title}>
       <Table
         styles={tableStyles}
         headerColIndicies={[0]}
