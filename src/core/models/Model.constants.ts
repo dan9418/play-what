@@ -270,7 +270,7 @@ export const INTERVAL_QUALITY: { [x: string]: IIntervalQuality } = {
 		id: 'dim',
 		name: 'Diminished',
 		symbol: 'd',
-		down: null,
+		down: undefined,
 		up: 'min'
 	},
 	min: {
@@ -299,7 +299,7 @@ export const INTERVAL_QUALITY: { [x: string]: IIntervalQuality } = {
 		name: 'Augmented',
 		symbol: 'A',
 		down: 'maj',
-		up: null
+		up: undefined
 	}
 };
 

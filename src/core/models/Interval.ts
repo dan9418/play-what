@@ -2,7 +2,7 @@ import THEME from "../../styles/theme";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import Model from "./Model";
-import { IntervalId, INTERVAL_QUALITY, IPod, MAX_POD } from './Model.constants';
+import { IIntervalQuality, IModelConfig, IntervalId, INTERVAL_QUALITY, IPod, MAX_POD } from './Model.constants';
 import { CHORD_PRESETS, CORE_INTERVALS, INTERVAL_PRESETS, INTERVAL_PRESET_MAP, SCALE_PRESETS } from './Model.presets';
 import Pod from "./Pod";
 import { arePodsEqual, getExtensionInversionId, listContainsSubset, reducePod } from "./Pod.static";
@@ -33,7 +33,7 @@ export default class IntervalSpan extends Pod {
         const reduced = reducePod(this.pod);
 
         const [noteIndex, d] = reduced;
-        const degreeIntervals = CORE_INTERVALS[d];
+        const degreeIntervals = CORE_INTERVALS[d] as IModelConfig[];
         if (!degreeIntervals) return '?';
 
         const pIvl = degreeIntervals[0];
@@ -41,8 +41,8 @@ export default class IntervalSpan extends Pod {
         const hiIvl = degreeIntervals[degreeIntervals.length - 1];
 
         // determine core interval and quality
-        let ivl = null;
-        let quality = null;
+        let ivl: IModelConfig | undefined;
+        let quality: IIntervalQuality | undefined;
         if (degreeIntervals.length === 1) {
             ivl = pIvl; // perfect
             quality = INTERVAL_QUALITY.perfect;
@@ -56,16 +56,16 @@ export default class IntervalSpan extends Pod {
             quality = INTERVAL_QUALITY.maj;
         }
 
-        const offset = ivl.value[0] - reduced[0];
+        const offset = (ivl as IModelConfig).value[0] - reduced[0];
 
         this.offset = offset;
 
-        if (offset === 0) return `${quality.symbol}${d + 1}`;
+        if (offset === 0) return `${(quality as IIntervalQuality).symbol}${d + 1}`;
         else if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
         else if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
 
         const count = Math.abs(offset);
-        const qualityStr = quality.symbol.repeat(count);
+        const qualityStr = (quality as IIntervalQuality).symbol.repeat(count);
 
         let value = `${qualityStr}${d + 1}`;
 
@@ -95,7 +95,7 @@ export default class IntervalSpan extends Pod {
     }
 
     getSupersets() {
-        const result = [];
+        const result: any[] = [];
 
         const chords = CHORD_PRESETS.filter(preset =>
             this.isInSuperset(preset.value)

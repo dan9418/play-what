@@ -120,14 +120,16 @@ export default class PodList extends Model {
         return this.getIntervalListString();
     }
 
-    tryGetPodPairAtPitch(noteIndex: number): [IntervalSpan, Note] {
+    tryGetPodPairAtPitch(noteIndex: number): [IntervalSpan, Note] | [undefined, undefined] {
+        if (!this.notePods) return [undefined, undefined];
+        
         const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
         if (index == null) return [undefined, undefined];
 
         return [
             this.intervals[index],
-            this.notes[index]
+            (this.notes as Note[])[index]
         ];
     }
 }

@@ -5,7 +5,7 @@ import { ROOT_SCALE } from '../theory/Theory.constants';
 import TuningUtils from '../tuning/Tuning.utils';
 import { toDashedCase } from './../general/String.utils';
 import Model from './Model';
-import { ACCIDENTAL, IPod, MAX_POD, ModelType, NoteId } from './Model.constants';
+import { ACCIDENTAL, IModelConfig, IPod, MAX_POD, ModelType, NoteId } from './Model.constants';
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from './Model.presets';
 import Pod from './Pod';
 import { arePodsEqual, reducePod } from './Pod.static';
@@ -39,7 +39,7 @@ export default class Note extends Pod {
         let sharps = (modelId.match(/-sharp/g) || []).length;
         let flats = (modelId.match(/-flat/g) || []).length;
         const nativeNoteId = modelId.slice(0, 1) as NoteId;
-        const nativePod = NOTE_PRESET_MAP.get(nativeNoteId).value;
+        const nativePod = (NOTE_PRESET_MAP.get(nativeNoteId) as IModelConfig).value;
         const octaveBasePitch = typeof octave === 'undefined' ? 0 : ((octave - 4) * 12);
         const pitch = octaveBasePitch + nativePod[0] + sharps - flats;
         const pod = [pitch, nativePod[1]] as IPod;
@@ -137,7 +137,7 @@ export default class Note extends Pod {
     }
 
     static getNote = (noteId: NoteId, octave: number) => {
-        const notePreset = NOTE_PRESET_MAP.get(noteId);
+        const notePreset = NOTE_PRESET_MAP.get(noteId) as IModelConfig;
         return new Note([
             (octave - 4) * 12 + NumberUtils.modulo(notePreset.value[0], 12),
             notePreset.value[1]
