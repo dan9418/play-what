@@ -13,10 +13,6 @@ export const LISTS = [
         link: "/intervals/extended-intervals-vs-standard-intervals",
       },
       {
-        text: "Table of intervals vs harmonics",
-        link: "/intervals/intervals-vs-harmonics",
-      },
-      {
         text: "Table of intervals from fret positions",
         link: "/intervals/intervals-from-fret-positions",
       },
@@ -24,99 +20,61 @@ export const LISTS = [
   },
   {
     title: "Chords",
-    lists: [
+    items: [
       {
-        title: "Voicings",
-        items: [
-          {
-            text: "Common Voicings From E-A-D Roots",
-            link: "/chords/voicings/common-voicings-from-e-a-d-roots",
-          },
-          {
-            text: "Chord inversions",
-          },
-        ],
+        text: "Types of chords",
+        link: "/browse/chords",
       },
       {
-        title: "Extended Chords",
-        items: [
-          {
-            text: "Table of extensions found/possible in chords",
-            link: "/chords/extensions/possible-extensions-for-chords",
-          },
-          {
-            text: "Table of common chords and possible voicings",
-          },
-        ],
+        text: "Common voicings",
+        link: "/chords/voicings/common-voicings-from-e-a-d-roots",
       },
       {
-        title: "Altered Chords",
-        items: [
-          {
-            text: "List of common examples",
-          },
-        ],
+        text: "Inversions",
+      },
+      {
+        text: "Extended and altered chords",
+      },
+      {
+        text: "All possible chord extensions",
+        link: "/chords/extensions/possible-extensions-for-chords",
+      },
+      {
+        text: "Common extended chords and voicings",
       },
     ],
   },
   {
     title: "Scales",
-    lists: [
+    items: [
       {
-        title: "Basics",
-        items: [
-          {
-            text: "Comparison of intervals in common scales",
-            link: "",
-          },
-          {
-            text: "Comparison of common scales on fretboard",
-            link: "",
-          },
-        ],
+        text: "Types of scales",
+        link: "/browse/scales",
       },
       {
-        title: "Diatonic Modes",
-        items: [
-          {
-            text: "Table of intervals, degrees (#/b), extensions",
-            link: "",
-          },
-          {
-            text: "Table of roman numerals",
-            link: "",
-          },
-        ],
+        text: "Common patterns",
+      },
+      {
+        text: "Modes",
+      },
+      {
+        text: "Unconventional and exotic scales",
       },
     ],
   },
   {
-    title: "Chord Progressions",
+    title: "Roman Numerals",
     items: [
       {
-        text: "2-5-1 On The Guitar",
-        link: "/chord-progressions/2-5-1-on-guitar",
+        text: "Deriving numerals from common scales",
       },
       {
-        text: "List of common progressions with roman numerals",
+        text: "Common chord progressions",
         link: "",
       },
-    ],
-  },
-  {
-    title: "Guitar Shapes",
-    items: [
       {
-        text: "The CAGED System",
-        link: "/shapes/the-caged-system",
-      },
-      {
-        text: "Relationship of shapes",
-        link: "/shapes/relationship-of-shapes",
-      },
-      {
-        text: "Connecting Shapes",
-        link: "/shapes/connecting-shapes",
+        text: "2-5-1 on the guitar",
+        link: "/chord-progressions/2-5-1-on-guitar",
       },
     ],
   },
@@ -124,8 +82,34 @@ export const LISTS = [
     title: "Chord Charts",
     items: [
       {
-        text: "Jazz Standards",
+        text: "Jazz standards",
         link: "/chord-charts/jazz-standards",
+      },
+    ],
+  },
+  {
+    title: "Guitar Shapes",
+    items: [
+      {
+        text: "The CAGED system",
+        link: "/shapes/the-caged-system",
+      },
+      {
+        text: "Relationship of shapes",
+        link: "/shapes/relationship-of-shapes",
+      },
+      {
+        text: "Connecting shapes",
+        link: "/shapes/connecting-shapes",
+      },
+    ],
+  },
+  {
+    title: "Musical Physics & Tuning Systems",
+    items: [
+      {
+        text: "Intervals vs harmonics",
+        link: "/intervals/intervals-vs-harmonics",
       },
     ],
   },

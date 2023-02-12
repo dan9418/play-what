@@ -77,6 +77,7 @@ const ChordsPage: React.FC = () => {
             chord.tags.includes(Tag.Extended)
           )}
         />
+        {/* Altered Chords */}
       </ColumnManager>
     </StyledChordsPage>
   );
