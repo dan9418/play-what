@@ -1,4 +1,4 @@
-import { IPod } from "../models.constants";
+import { IPod } from "../models/Model.constants";
 
 export interface IDiatonic {
 	id: string;
