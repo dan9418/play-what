@@ -12,7 +12,7 @@ const ROMAN_NUMERAL = {
 	V: 5,
 	IV: 4,
 	I: 1
-};
+} as const;
 
 const modulo = (a: number, b: number): number => {
 	return ((a % b) + b) % b;

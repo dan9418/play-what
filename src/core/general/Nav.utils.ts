@@ -3,10 +3,11 @@ import {
   ModelId,
   ModelType,
   NoteId,
-  Tag,
+  Tag
 } from "../models/Model.constants";
 import { getModelRoute } from "../routing/Routing.utils";
 import { ALL_PRESETS, NOTE_PRESET_MAP } from "./../models/Model.presets";
+import { replaceAll } from "./String.utils";
 
 interface ISearchResult {
   to: string;
@@ -63,7 +64,7 @@ const getNoteIdFromQuery = (query: string): string | undefined => {
   if (!noteMatches || !noteMatches.length) return;
 
   const match = noteMatches[0];
-  const noteId = match.replaceAll(" ", "-");
+  const noteId = replaceAll(match, " ", "-");
 
   return noteId;
 };
@@ -162,11 +163,11 @@ const formatPresets = (
 ): ISearchResult[] => {
   return presets.map((p) => {
     const root = rootId
-      ? NOTE_PRESET_MAP.get(rootId as NoteId).name
+      ? (NOTE_PRESET_MAP.get(rootId as NoteId) as IModelConfig).name
       : undefined;
     return {
       text: getName(p.modelType, p.name, root),
-      to: getModelRoute(p.modelType, p.modelId as ModelId, rootId),
+      to: getModelRoute(p.modelType, p.modelId as ModelId, rootId as NoteId),
       aliases: p.aliases,
       modelType: p.modelType,
     };
@@ -182,7 +183,7 @@ const sanitizeQuery = (query) =>
     .replaceAll(/[^A-Z1-9]/gi, " ");
 
 const getAliases = (presets: ISearchResult[]): ISearchResult[] => {
-  const ret = [];
+  const ret: any[] = [];
   for (let i = 0; i < presets.length; i++) {
     const p = presets[i];
     ret.push(p);
