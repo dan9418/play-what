@@ -37,10 +37,13 @@ interface IRomanNumeralsCardProps {
   title?: string;
 }
 
-const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({ model, title = "Roman Numerals" }) => {
+const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
+  model,
+  title = "Roman Numerals",
+}) => {
   const numerals = model.getAllNumerals();
 
-  if (!numerals.length) return null;
+  if (!numerals.length || numerals.find((n) => !n)) return null;
 
   return (
     <Card title={title}>
@@ -72,7 +75,11 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({ model, title = "
             cols: [
               "Name",
               ...numerals.map((n, i) => ({
-                link: getModelRoute(n.modelType, n.modelId, n.root.modelId),
+                link: getModelRoute(
+                  n.modelType,
+                  n.modelId,
+                  n.root && n.root.modelId
+                ),
                 content: n.getShortName(),
               })),
             ],
