@@ -180,3 +180,36 @@ export const TRIAD_ITEMS = [
     voicingId: VoicingId.Scale_DoubleOctave_EShape_1,
   },
 ];
+
+export const SHAPE_ITEMS = [
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    //voicingId: VoicingId.Scale_DoubleOctave_EShape_2,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    //voicingId: VoicingId.Scale_DoubleOctave_DShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    //voicingId: VoicingId.Scale_DoubleOctave_CShape_1,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    //voicingId: VoicingId.Scale_DoubleOctave_CShape_2,
+  },
+  {
+    model: Chord,
+    modelId: ChordId.MajTriad,
+    rootId: NoteId.C,
+    //voicingId: VoicingId.Scale_DoubleOctave_AShape_1,
+  },
+];

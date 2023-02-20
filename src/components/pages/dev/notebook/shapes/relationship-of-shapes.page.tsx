@@ -9,6 +9,7 @@ import {
   DIATONIC_ITEMS,
   PENTATONIC_ITEMS,
   ROMAN_NUMERAL_ITEMS,
+  SHAPE_ITEMS,
   TRIAD_ITEMS,
 } from "./caged.shared";
 
@@ -16,8 +17,15 @@ const StyledCAGEDPage = styled(PageLayout)``;
 
 const DISPLAY = [
   [
+    "Shapes",
+    SHAPE_ITEMS[0],
+    SHAPE_ITEMS[1],
+    SHAPE_ITEMS[2],
+    SHAPE_ITEMS[3],
+    SHAPE_ITEMS[4],
+  ],
+  [
     "Pentatonic",
-
     PENTATONIC_ITEMS[2],
     PENTATONIC_ITEMS[3],
     PENTATONIC_ITEMS[4],
@@ -26,7 +34,6 @@ const DISPLAY = [
   ],
   [
     "Diatonic",
-
     DIATONIC_ITEMS[2],
     DIATONIC_ITEMS[4],
     DIATONIC_ITEMS[5],
@@ -35,7 +42,6 @@ const DISPLAY = [
   ],
   [
     "Seventh",
-
     ROMAN_NUMERAL_ITEMS[2],
     ROMAN_NUMERAL_ITEMS[4],
     ROMAN_NUMERAL_ITEMS[5],
@@ -44,7 +50,6 @@ const DISPLAY = [
   ],
   [
     "Triad",
-
     TRIAD_ITEMS[2],
     TRIAD_ITEMS[4],
     TRIAD_ITEMS[5],
