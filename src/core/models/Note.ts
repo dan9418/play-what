@@ -28,12 +28,12 @@ interface INoteNameParts {
 
 export default class Note extends Pod {
   modelId: NoteId;
+  modelType = ModelType.Note;
+  tags = [];
 
   constructor(pod: IPod) {
     super(undefined);
-    this.modelType = ModelType.Note;
     this.pod = pod;
-    this.tags = []; // TODO
     this.name = this.getName();
     this.modelId = toDashedCase(this.name) as any;
   }

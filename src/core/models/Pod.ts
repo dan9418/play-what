@@ -1,32 +1,30 @@
-import Model from './Model';
-import { IntervalId, IPod, NoteId } from './Model.constants';
-import { arePodsEqual, getDegree } from './Pod.static';
+import Model from "./Model";
+import { IntervalId, IPod, NoteId } from "./Model.constants";
+import { arePodsEqual, getDegree } from "./Pod.static";
 
 export default class Pod extends Model {
+  modelId: NoteId | IntervalId;
+  pod: IPod;
 
-    modelId: NoteId | IntervalId;
-    pod: IPod;
+  constructor(preset) {
+    super();
 
-    constructor(preset) {
-        super();
-
-        if (!preset) {
-            //console.warn('Unknown pod preset', preset);
-        }
-        else {
-            this.modelType = preset.modelType;
-            this.modelId = preset.modelId;
-            this.name = preset.name;
-            this.tags = preset.tags;
-            this.pod = preset.value;
-        }
+    if (!preset) {
+      //console.warn('Unknown pod preset', preset);
+    } else {
+      this.modelType = preset.modelType;
+      this.modelId = preset.modelId;
+      this.name = preset.name;
+      this.tags = preset.tags;
+      this.pod = preset.value;
     }
+  }
 
-    equals(b: Pod) {
-        return arePodsEqual(this.pod, b.pod);
-    }
+  equals(b: Pod) {
+    return arePodsEqual(this.pod, b.pod);
+  }
 
-    getDegree(): number {
-        return getDegree(this.pod);
-    }
+  getDegree(): number {
+    return getDegree(this.pod);
+  }
 }
