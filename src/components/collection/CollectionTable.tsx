@@ -1,14 +1,9 @@
 import React from "react";
 import { css } from "styled-components";
-import { useRoot, useRootId } from "../../contexts/PagePropsContext";
-import Chord from "../../core/models/Chord";
-import {
-  IModelConfig,
-  ModelType,
-  NoteId,
-} from "../../core/models/Model.constants";
-import Note from "../../core/models/Note";
-import Scale from "../../core/models/Scale";
+import { useRootId } from "../../contexts/PagePropsContext";
+import { IModelConfig, IPod, NoteId } from "../../core/models/Model.constants";
+import { getIntervalFromValue } from "../../core/models/Model.generation";
+import { getRootedName } from "../../core/models/Pod.static";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
 
@@ -86,12 +81,12 @@ export interface ICollectionTableProps {
 const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const getSemitoneCol = (
-  model: Chord | Scale,
+  pods: IPod[],
   h: number,
   semitones: number[],
-  root?: Note
+  rootId?: NoteId
 ) => {
-  const index = model.intervals.findIndex((ivl) => ivl.pod[0] + 1 === h);
+  const index = pods.findIndex((ivl) => ivl[0] + 1 === h);
   const className = semitones.includes(h) ? "active" : undefined;
   if (index < 0) {
     return {
@@ -99,10 +94,10 @@ const getSemitoneCol = (
       content: "",
     };
   }
-  const mod = root ? (model.notes as Note[])[index] : model.intervals[index];
+  const text = rootId ? "?" : getIntervalFromValue(pods[index]).presetId;
   return {
     className,
-    content: mod.getName(),
+    content: text,
   };
 };
 
@@ -111,7 +106,6 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
   semitones = [],
 }) => {
   const rootId = useRootId();
-  const root = useRoot();
   return (
     <Table
       styles={tableStyles}
@@ -121,27 +115,20 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
             "Name",
             {
               colSpan: 12,
-              content: root ? "Notes" : "Intervals",
+              content: rootId ? "Notes" : "Intervals",
             },
           ],
         },
       ]}
       tbody={data.map((d, i) => {
-        const cl = d.modelType === ModelType.Chord ? Chord : Scale;
-        // @ts-ignore
-        const model = new cl(d.presetId, { root });
         return {
           cols: [
             {
-              link: getModelRoute(
-                model.modelType,
-                model.presetId,
-                rootId as NoteId
-              ),
-              content: model.getName(),
+              link: getModelRoute(d.presetType, d.presetId, rootId as NoteId),
+              content: getRootedName(d, rootId as NoteId),
             },
             ...SEMITONES.map((h, i) =>
-              getSemitoneCol(model, h, semitones, root)
+              getSemitoneCol(d.value, h, semitones, rootId as NoteId)
             ),
           ],
         };

@@ -165,10 +165,12 @@ export type PresetId = NoteId | IntervalId | ChordId | ScaleId;
 
 export interface IModelConfig {
   modelType: ModelType;
-  presetId: string;
+  presetType: PresetType;
+  presetId: PresetId;
   name: string;
   tags: Tag[];
   aliases: string[];
+  valueIds: IPod | IntervalId[];
   value: any;
 }
 
