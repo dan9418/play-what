@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  NoteId,
-  ScaleId,
-  Tag,
-} from "../../../../../core/models/Model.constants";
+import { NoteId, Tag } from "../../../../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../../../../core/models/Model.presets";
-import Note from "../../../../../core/models/Note";
+import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import Scale from "../../../../../core/models/Scale";
 import RomanNumeralsCard from "../../../../cards/RomanNumeralsCard";
 import PageLayout from "../../../../layout/PageLayout";
@@ -18,7 +14,7 @@ const StyledPage = styled(PageLayout)`
   }
 `;
 
-const ROOT = Note.fromId(NoteId.C);
+const ROOT = getNoteFromId(NoteId.C);
 
 const DIATONIC_SCALES = SCALE_PRESETS.filter((scale) =>
   scale.tags.includes(Tag.Diatonic)

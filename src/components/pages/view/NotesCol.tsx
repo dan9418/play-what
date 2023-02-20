@@ -4,9 +4,9 @@ import Chord from "../../../core/models/Chord";
 import {
   ChordId,
   IModelConfig,
-  PresetId,
-  ModelType,
   NoteId,
+  PresetId,
+  PresetType,
   ScaleId,
 } from "../../../core/models/Model.constants";
 import {
@@ -14,7 +14,7 @@ import {
   NOTE_PRESETS,
   SCALE_PRESETS,
 } from "../../../core/models/Model.presets";
-import Note from "../../../core/models/Note";
+import { getNoteFromId } from "../../../core/models/Note.utils";
 import Scale from "../../../core/models/Scale";
 import ColorSchemeInput from "../../inputs/ColorSchemeInput";
 import DropdownInput from "../../inputs/DropdownInput";
@@ -23,15 +23,15 @@ import CardSection from "./CardSection";
 
 export const MODEL_TYPE_OPTIONS = [
   {
-    id: ModelType.Chord,
+    id: PresetType.Chord,
     name: "Chords",
-    value: ModelType.Chord,
+    value: PresetType.Chord,
     data: CHORD_PRESETS,
   },
   {
-    id: ModelType.Scale,
+    id: PresetType.Scale,
     name: "Scales",
-    value: ModelType.Scale,
+    value: PresetType.Scale,
     data: SCALE_PRESETS,
   },
 ];
@@ -56,15 +56,15 @@ export const DEFAULT_MODEL_CONFIG = MODEL_TYPE_OPTIONS[0].data[0];
 export const DEFAULT_ROOT = NOTE_PRESETS[0];
 
 export const getNewModel = (
-  modelType: ModelType,
+  presetType: PresetType,
   presetId: PresetId,
   root: NoteId
 ) => {
   let newModel;
-  if (modelType === ModelType.Chord) {
-    newModel = new Chord(presetId as ChordId, { root: Note.fromId(root) });
-  } else if (modelType === ModelType.Scale) {
-    newModel = new Scale(presetId as ScaleId, { root: Note.fromId(root) });
+  if (presetType === PresetType.Chord) {
+    newModel = new Chord(presetId as ChordId, { root: getNoteFromId(root) });
+  } else if (presetType === PresetType.Scale) {
+    newModel = new Scale(presetId as ScaleId, { root: getNoteFromId(root) });
   }
   return newModel;
 };

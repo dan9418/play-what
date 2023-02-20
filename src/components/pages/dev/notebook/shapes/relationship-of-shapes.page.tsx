@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Note from "../../../../../core/models/Note";
+import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
 import FretboardCell from "../../../../ui/FretboardCell";
@@ -76,7 +76,7 @@ const getRows = (rows: any[]) => {
         if (j === 0) return col;
         const { model, presetId, rootId, voicingId } = col as any;
         const instance = new model(presetId, {
-          root: Note.fromId(rootId),
+          root: getNoteFromId(rootId),
         });
         const voicing = VOICING_PRESET_MAP.get(voicingId);
         const startingFret = STARTING_FRET[j - 1];

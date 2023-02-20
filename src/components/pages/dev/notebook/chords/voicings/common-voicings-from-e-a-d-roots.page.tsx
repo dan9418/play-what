@@ -1,8 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Chord from "../../../../../../core/models/Chord";
-import { ChordId, NoteId } from "../../../../../../core/models/Model.constants";
-import Note from "../../../../../../core/models/Note";
+import {
+  ChordId,
+  IModelConfig,
+  IPod,
+  NoteId,
+} from "../../../../../../core/models/Model.constants";
+import { NOTE_PRESET_MAP } from "../../../../../../core/models/Model.presets";
 import {
   VoicingId,
   VOICING_PRESET_MAP,
@@ -17,7 +22,7 @@ const THEAD = ["Model", "Triad", "Seventh", "Drop 3-7", "Drop 7-3"];
 
 const CHORD_IDS = [ChordId.Maj7, ChordId.Min7, ChordId.Dom7, ChordId.HalfDim7];
 
-const CHORD_ROOT = Note.fromId(NoteId.C);
+const CHORD_ROOT = (NOTE_PRESET_MAP.get(NoteId.C) as IModelConfig).value;
 
 interface IRootCard {
   stringRoot: string;
@@ -80,7 +85,7 @@ const getVoicingCols = ({ voicingIds, presetId, root, fretRange }) =>
 const getChordRows = (
   chordIds: ChordId[],
   voicingIds: VoicingId[],
-  root: Note,
+  root: IPod,
   fretRange: [number, number]
 ) => {
   return chordIds.map((presetId, i) => {
@@ -100,7 +105,7 @@ const getChordRows = (
 
 const getRootCard = (
   chordIds: ChordId[],
-  root: Note,
+  root: IPod,
   stringRoot: string,
   voicingIds: VoicingId[],
   fretRange: [number, number]
@@ -118,7 +123,7 @@ const getRootCard = (
 const getCardConfigs = (
   cards: IRootCard[],
   chordIds: ChordId[],
-  root: Note
+  root: IPod
 ): ICardConfig[] => {
   return cards.map(({ stringRoot, voicingids, fretRange }) =>
     getRootCard(chordIds, root, stringRoot, voicingids, fretRange)

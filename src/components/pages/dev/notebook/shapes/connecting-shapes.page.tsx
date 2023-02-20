@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Note from "../../../../../core/models/Note";
+import { IModelConfig } from "../../../../../core/models/Model.constants";
+import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import { VOICING_PRESET_MAP } from "../../../../../viewers/fretboard/Fretboard.voicing";
 import PageLayout from "../../../../layout/PageLayout";
 import { StyledCard } from "../../../../ui/Card";
@@ -31,7 +32,7 @@ const getRows = (items: any[]) => {
   return items.map((item, i) => {
     const { model, presetId, rootId, voicingId } = item as any;
     const instance = new model(presetId, {
-      root: Note.fromId(rootId),
+      root: (getNoteFromId(rootId) as IModelConfig).value,
     });
     const voicing = VOICING_PRESET_MAP.get(voicingId);
     const fretRange = [4, 19] as [number, number];

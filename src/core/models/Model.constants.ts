@@ -1,7 +1,5 @@
 import { MAX_DEGREE, ROOT_DEGREE } from "../theory/Degree.constants";
 import { MAX_PITCH, ROOT_PITCH } from "../theory/Pitch.constants";
-import Chord from "./Chord";
-import Scale from "./Scale";
 
 export enum ModelType {
   Pod = "pod",

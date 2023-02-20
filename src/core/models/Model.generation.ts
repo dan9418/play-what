@@ -20,9 +20,6 @@ const fromValue = (
     : new subclass(preset.presetId);
 };
 
-// export const getNotefromValue = (value: IPod) =>
-//   fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod, true);
-
 // export const getChordfromValue = (value: IPod[]) =>
 //   fromValue(CHORD_PRESETS, Chord, value, arePodListsEqual, reducePodList);
 

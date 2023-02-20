@@ -2,9 +2,16 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import NumberUtils from "../../core/general/Number.utils";
-import { getName, getRatio } from "../../core/models/Interval.utils";
+import {
+  getName as getIntervalName,
+  getRatio,
+} from "../../core/models/Interval.utils";
 import { IPod } from "../../core/models/Model.constants";
-import Note from "../../core/models/Note";
+import {
+  getFrequency,
+  getName as getNoteName,
+  getOctave,
+} from "../../core/models/Note.utils";
 import PodList from "../../core/models/PodList";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
@@ -81,13 +88,13 @@ const StyledDetailsCard = styled(StyledCard)<{ $n: number }>`
   }
 `;
 
-const getNoteCell = (note, i) => {
+const getNoteCell = (note: IPod, i: number) => {
   return {
     className: `note featured ${i === 0 ? "root" : ""}`,
     content: (
       <>
-        {note.name}
-        <sub>{note.getOctave()}</sub>
+        {getNoteName(note)}
+        <sub>{getOctave(note)}</sub>
       </>
     ),
   };
@@ -96,13 +103,13 @@ const getNoteCell = (note, i) => {
 const getIntervalCell = (interval: IPod, isFeatured) => {
   return (
     <td className={`interval ${isFeatured ? "featured" : ""}`}>
-      {getName(interval)}
+      {getIntervalName(interval)}
     </td>
   );
 };
 
-const getPitchCell = (note) => {
-  return <td className={`frequency`}>{note.getFrequency(true)}</td>;
+const getPitchCell = (note: IPod) => {
+  return <td className={`frequency`}>{getFrequency(note, true)}</td>;
 };
 
 const getRatioCell = (interval: IPod) => {
@@ -116,16 +123,13 @@ interface IDetailsCardProps {
 const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
   const intervalPods = model.intervalPods;
   const octave = useRecoilValue(octaveState);
-  const hasNotes = !!model.notes;
+  const hasNotes = !!model.notePods;
   const notes =
     hasNotes &&
-    (model.notes as Note[]).map(
-      (n) =>
-        new Note([
-          (octave - 4) * 12 + NumberUtils.modulo(n.pod[0], 12),
-          n.pod[1],
-        ])
-    );
+    (model.notePods as IPod[]).map((n) => [
+      (octave - 4) * 12 + NumberUtils.modulo(n[0], 12),
+      n[1],
+    ]);
 
   if (!intervalPods && !notes) return null;
 
@@ -164,7 +168,7 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
             ? {
                 cols: [
                   "Note",
-                  ...(notes as Note[]).map((note, i) => getNoteCell(note, i)),
+                  ...(notes as IPod[]).map((note, i) => getNoteCell(note, i)),
                 ],
               }
             : undefined,
@@ -178,7 +182,7 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
             ? {
                 cols: [
                   "Pitch",
-                  ...(notes as Note[]).map((note, i) => getPitchCell(note)),
+                  ...(notes as IPod[]).map((note, i) => getPitchCell(note)),
                 ],
               }
             : undefined,

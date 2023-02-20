@@ -11,11 +11,9 @@ import {
   NOTE_PRESETS,
   POD_LIST_PRESETS,
 } from "../../core/models/Model.presets";
-import Note from "../../core/models/Note";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import PageLayout from "../layout/PageLayout";
 import Icon, { IconId } from "../ui/Icon";
-import { DEFAULT_MODEL } from "./view/view.defaults";
 
 const StyledHomePage = styled(PageLayout)`
   display: flex;

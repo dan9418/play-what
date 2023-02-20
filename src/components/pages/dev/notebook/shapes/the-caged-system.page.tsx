@@ -6,7 +6,7 @@ import {
   NoteId,
   ScaleId,
 } from "../../../../../core/models/Model.constants";
-import Note from "../../../../../core/models/Note";
+import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import Scale from "../../../../../core/models/Scale";
 import { StyledFretTable } from "../../../../../viewers/fret-table/FretTable";
 import {
@@ -163,7 +163,7 @@ const getRows = (rows: any[]) => {
       cols: row.map((col, j) => {
         const { model, presetId, rootId, voicingId, range } = col as any;
         const instance = new model(presetId, {
-          root: Note.fromId(rootId),
+          root: getNoteFromId(rootId),
         });
         const voicing = VOICING_PRESET_MAP.get(voicingId);
         const fretRange: [number, number] = range;

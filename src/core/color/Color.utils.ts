@@ -1,6 +1,6 @@
 import color from "color";
 import { IPod } from "../models/Model.constants";
-import Note from "../models/Note";
+import { getDegree } from "../models/Pod.static";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../theory/Pitch.constants";
 
@@ -15,7 +15,7 @@ export interface IColorScheme {
   id: ColorScheme;
   name: string;
   defaultConfig: string[];
-  fn: (note?: Note, interval?: IPod, config?: string[]) => string | false;
+  fn: (note?: IPod, interval?: IPod, config?: string[]) => string | false;
   labelFn: (index: number) => string;
 }
 
@@ -35,7 +35,7 @@ export const COLOR_SCHEMES: IColorScheme[] = [
     name: "Highlight Root",
     defaultConfig: [RED, BLACK],
     fn: (note, interval, config = [RED, BLACK]) =>
-      interval ? (interval.getDegree() === 0 ? config[0] : config[1]) : false,
+      interval ? (getDegree(interval) === 0 ? config[0] : config[1]) : false,
     labelFn: (index) => (index === 0 ? "R" : "*"),
   },
   {
@@ -43,7 +43,7 @@ export const COLOR_SCHEMES: IColorScheme[] = [
     name: "Interval Degree",
     defaultConfig: DEFAULT_DEGREE_COLOR_SCHEME,
     fn: (note, interval, config = DEFAULT_DEGREE_COLOR_SCHEME) =>
-      interval ? config[interval.getDegree() || 0] : false,
+      interval ? config[getDegree(interval) || 0] : false,
     labelFn: (index) => index + 1 + "",
   },
   {

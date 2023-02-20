@@ -1,13 +1,12 @@
 import Chord from "../../core/models/Chord";
 import { IPod } from "../../core/models/Model.constants";
-import Note from "../../core/models/Note";
 import { getDegree } from "../../core/models/Pod.static";
 import Scale from "../../core/models/Scale";
 import { TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
 import { IVoicing } from "./Fretboard.voicing";
 
 export interface IFretLabelProps {
-  note?: Note;
+  note?: IPod;
   color?: string;
   freq?: number;
 }

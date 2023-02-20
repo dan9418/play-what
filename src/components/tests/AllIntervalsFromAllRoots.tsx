@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { getName } from "../../core/models/Interval.utils";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
-import Note from "../../core/models/Note";
+import { getNoteFromPod } from "../../core/models/Note.utils";
 import { addPods } from "../../core/models/Pod.static";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
@@ -52,16 +52,8 @@ const getRoots = (): ITestShape[] => {
 
       const intervals = FIRST_OCTAVE_INTERVALS.map((ivl) => {
         const ivlPod = addPods(rootPod, ivl.value);
-        let note;
+        let note = getNoteFromPod(ivlPod);
         let isInvalid = false;
-
-        try {
-          note = new Note(ivlPod);
-        } catch (e) {
-          isInvalid = true;
-        }
-
-        //const isInvalid = ivlName.length > 5;
 
         return {
           name: note ? (note.name as string) : "?",

@@ -2,7 +2,6 @@ import { getName } from "./Interval.utils";
 import Model from "./Model";
 import { ChordId, IPod, ModelType, ScaleId } from "./Model.constants";
 import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
-import Note from "./Note";
 import {
   addPods,
   arePodListsEqual,
@@ -12,16 +11,15 @@ import {
 } from "./Pod.static";
 
 export interface IPodListOptions {
-  root?: Note;
+  root?: IPod;
 }
 
 export default class PodList extends Model {
   modelType: ModelType;
   presetId: ChordId | ScaleId;
-  root: Note;
+  root: IPod;
   intervalPods: IPod[];
   notePods?: IPod[];
-  notes?: Note[];
 
   constructor(
     presetMap,
@@ -57,20 +55,17 @@ export default class PodList extends Model {
     return getShortName(this.name);
   };
 
-  applyRoot(root: Note) {
-    let notes;
+  applyRoot(root: IPod) {
     let notePods;
     try {
-      notePods = this.intervalPods.map((ivl) => addPods(ivl, root.pod));
-      notes = notePods.map((pod) => new Note(pod));
+      notePods = this.intervalPods.map((ivl) => addPods(root, ivl));
     } catch (e) {
       console.error(e);
       throw new Error("Unable to apply root");
     }
     this.root = root;
-    this.notes = notes;
     this.notePods = notePods;
-    this.name = `${this.root.name} ${this.name}`;
+    this.name = `${"ROOT"} ${this.name}`;
     return this;
   }
 
@@ -120,13 +115,13 @@ export default class PodList extends Model {
 
   tryGetPodPairAtPitch(
     noteIndex: number
-  ): [IPod, Note] | [undefined, undefined] {
+  ): [IPod, IPod] | [undefined, undefined] {
     if (!this.notePods) return [undefined, undefined];
 
     const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
     if (index == null) return [undefined, undefined];
 
-    return [this.intervalPods[index], (this.notes as Note[])[index]];
+    return [this.intervalPods[index], (this.notePods as IPod[])[index]];
   }
 }
