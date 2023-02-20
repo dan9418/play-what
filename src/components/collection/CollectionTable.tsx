@@ -1,8 +1,8 @@
 import React from "react";
 import { css } from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
+import { getName } from "../../core/models/Interval.utils";
 import { IModelConfig, IPod, NoteId } from "../../core/models/Model.constants";
-import { getIntervalFromValue } from "../../core/models/Model.generation";
 import { getRootedName } from "../../core/models/Pod.static";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
@@ -94,7 +94,7 @@ const getSemitoneCol = (
       content: "",
     };
   }
-  const text = rootId ? "?" : getIntervalFromValue(pods[index]).presetId;
+  const text = rootId ? "?" : getName(pods[index]);
   return {
     className,
     content: text,
