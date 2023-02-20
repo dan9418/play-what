@@ -16,9 +16,9 @@ const GuitarCard: React.FC<any> = ({ model }) => {
   if (!model.root || !model.intervals) return null;
 
   const qp = new URLSearchParams({
-    modelId: model.modelId,
+    presetId: model.presetId,
     modelType: model.modelType,
-    rootId: model.root.modelId,
+    rootId: model.root.presetId,
   });
 
   return (

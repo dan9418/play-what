@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { IModelConfig } from "../../core/models/Model.constants";
 import Card, { ICardProps } from "../ui/Card";
 import CollectionTable from "./CollectionTable";
 
 interface ICollectionCardProps extends ICardProps {
-  data: any[];
+  data: IModelConfig[];
   description?: string;
 }
 

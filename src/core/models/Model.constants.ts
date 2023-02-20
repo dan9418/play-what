@@ -165,7 +165,7 @@ export type ModelId = NoteId | IntervalId | ChordId | ScaleId;
 
 export interface IModelConfig {
   modelType: ModelType;
-  modelId: string;
+  presetId: string;
   name: string;
   tags: Tag[];
   aliases: string[];

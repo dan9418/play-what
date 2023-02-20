@@ -1,8 +1,8 @@
 import NumberUtils from "../general/Number.utils";
 import { ChordId, CHORD_QUALITY } from "./Model.constants";
 
-export const getSymbol = (modelId, symbolType = "jazz") => {
-  switch (modelId) {
+export const getSymbol = (presetId, symbolType = "jazz") => {
+  switch (presetId) {
     case ChordId.MajTriad:
     case ChordId.Maj7:
     case ChordId.Maj6:
@@ -22,9 +22,9 @@ export const getSymbol = (modelId, symbolType = "jazz") => {
   }
 };
 
-export const getNumeralText = (n, modelId) => {
+export const getNumeralText = (n, presetId) => {
   const text = NumberUtils.romanize(n);
-  switch (modelId) {
+  switch (presetId) {
     case ChordId.HalfDim7:
     case ChordId.Min7:
     case ChordId.MinTriad:
@@ -40,9 +40,9 @@ export const getNumeralText = (n, modelId) => {
 };
 
 export const getNumeralParts = (
-  modelId: ChordId,
+  presetId: ChordId,
   n: number,
   symbolType?: string
 ): [string, string] => {
-  return [getNumeralText(n, modelId), getSymbol(modelId, symbolType)];
+  return [getNumeralText(n, presetId), getSymbol(presetId, symbolType)];
 };

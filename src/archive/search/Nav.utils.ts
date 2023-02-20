@@ -170,7 +170,7 @@ const formatPresets = (
       : undefined;
     return {
       text: getName(p.modelType, p.name, root),
-      to: getModelRoute(p.modelType, p.modelId as ModelId, rootId as NoteId),
+      to: getModelRoute(p.modelType, p.presetId as ModelId, rootId as NoteId),
       aliases: p.aliases,
       modelType: p.modelType,
     };

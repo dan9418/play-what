@@ -129,13 +129,13 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
       tbody={data.map((d, i) => {
         const cl = d.modelType === ModelType.Chord ? Chord : Scale;
         // @ts-ignore
-        const model = new cl(d.modelId, { root });
+        const model = new cl(d.presetId, { root });
         return {
           cols: [
             {
               link: getModelRoute(
                 model.modelType,
-                model.modelId,
+                model.presetId,
                 rootId as NoteId
               ),
               content: model.getName(),

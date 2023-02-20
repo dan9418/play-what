@@ -7,15 +7,15 @@ export default class Chord extends PodList {
   modelType = ModelType.PodList;
   presetType = PresetType.Chord;
 
-  constructor(modelId: ChordId, options: any = undefined) {
-    super(CHORD_PRESET_MAP, modelId, options);
+  constructor(presetId: ChordId, options: any = undefined) {
+    super(CHORD_PRESET_MAP, presetId, options);
   }
 
   getSymbol(symbolType?) {
-    return getSymbol(this.modelId, symbolType);
+    return getSymbol(this.presetId, symbolType);
   }
 
   getNumeralParts(n, symbolType?): [string, string] {
-    return getNumeralParts(this.modelId as ChordId, n, symbolType);
+    return getNumeralParts(this.presetId as ChordId, n, symbolType);
   }
 }

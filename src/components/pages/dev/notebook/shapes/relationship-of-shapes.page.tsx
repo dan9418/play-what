@@ -74,8 +74,8 @@ const getRows = (rows: any[]) => {
     return {
       cols: row.map((col, j) => {
         if (j === 0) return col;
-        const { model, modelId, rootId, voicingId } = col as any;
-        const instance = new model(modelId, {
+        const { model, presetId, rootId, voicingId } = col as any;
+        const instance = new model(presetId, {
           root: Note.fromId(rootId),
         });
         const voicing = VOICING_PRESET_MAP.get(voicingId);

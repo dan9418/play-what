@@ -58,9 +58,9 @@ const CARDS: IRootCard[] = [
   },
 ];
 
-const getVoicingCols = ({ voicingIds, modelId, root, fretRange }) =>
+const getVoicingCols = ({ voicingIds, presetId, root, fretRange }) =>
   voicingIds.map((voicingId, i) => {
-    const instance = new Chord(modelId, { root });
+    const instance = new Chord(presetId, { root });
     const voicing = VOICING_PRESET_MAP.get(voicingId);
     return {
       content: (
@@ -83,13 +83,13 @@ const getChordRows = (
   root: Note,
   fretRange: [number, number]
 ) => {
-  return chordIds.map((modelId, i) => {
+  return chordIds.map((presetId, i) => {
     return {
       cols: [
-        new Chord(modelId).getName(),
+        new Chord(presetId).getName(),
         ...getVoicingCols({
           voicingIds,
-          modelId,
+          presetId,
           root,
           fretRange,
         }),

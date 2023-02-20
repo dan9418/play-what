@@ -17,13 +17,13 @@ import PageLayout from "../../layout/PageLayout";
 const StyledPodlistPage = styled(PageLayout)``;
 
 const PodListPage: React.FC<ModelPageProps> = (props) => {
-  const { presetType, modelId } = props.pageContext;
+  const { presetType, presetId } = props.pageContext;
   const root = useRoot();
 
   const cl = getModelIdClass(presetType);
   const clText = presetType;
 
-  const podList = new cl(modelId, { root });
+  const podList = new cl(presetId, { root });
   const title = `${podList.name} ${clText}`;
 
   //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';

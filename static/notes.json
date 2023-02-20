@@ -1,7 +1,7 @@
 [
     {
         "modelType": "notes",
-        "modelId": "c",
+        "presetId": "c",
         "name": "C",
         "value": [
             0,
@@ -11,7 +11,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "c-sharp",
+        "presetId": "c-sharp",
         "name": "C#",
         "value": [
             1,
@@ -21,7 +21,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "d-flat",
+        "presetId": "d-flat",
         "name": "Db",
         "value": [
             1,
@@ -31,7 +31,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "d",
+        "presetId": "d",
         "name": "D",
         "value": [
             2,
@@ -41,7 +41,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "d-sharp",
+        "presetId": "d-sharp",
         "name": "D#",
         "value": [
             3,
@@ -51,7 +51,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "e-flat",
+        "presetId": "e-flat",
         "name": "Eb",
         "value": [
             3,
@@ -61,7 +61,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "e",
+        "presetId": "e",
         "name": "E",
         "value": [
             4,
@@ -71,7 +71,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "e-sharp",
+        "presetId": "e-sharp",
         "name": "E#",
         "value": [
             5,
@@ -81,7 +81,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "f-flat",
+        "presetId": "f-flat",
         "name": "Fb",
         "value": [
             4,
@@ -91,7 +91,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "f",
+        "presetId": "f",
         "name": "F",
         "value": [
             5,
@@ -101,7 +101,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "f-sharp",
+        "presetId": "f-sharp",
         "name": "F#",
         "value": [
             6,
@@ -111,7 +111,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "g-flat",
+        "presetId": "g-flat",
         "name": "Gb",
         "value": [
             6,
@@ -121,7 +121,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "g",
+        "presetId": "g",
         "name": "G",
         "value": [
             7,
@@ -131,7 +131,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "g-sharp",
+        "presetId": "g-sharp",
         "name": "G#",
         "value": [
             8,
@@ -141,7 +141,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "a-flat",
+        "presetId": "a-flat",
         "name": "Ab",
         "value": [
             8,
@@ -151,7 +151,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "a",
+        "presetId": "a",
         "name": "A",
         "value": [
             9,
@@ -161,7 +161,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "a-sharp",
+        "presetId": "a-sharp",
         "name": "A#",
         "value": [
             10,
@@ -171,7 +171,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "b-flat",
+        "presetId": "b-flat",
         "name": "Bb",
         "value": [
             10,
@@ -181,7 +181,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "b",
+        "presetId": "b",
         "name": "B",
         "value": [
             11,
@@ -191,7 +191,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "b-sharp",
+        "presetId": "b-sharp",
         "name": "B#",
         "value": [
             0,
@@ -201,7 +201,7 @@
     },
     {
         "modelType": "notes",
-        "modelId": "c-flat",
+        "presetId": "c-flat",
         "name": "Cb",
         "value": [
             11,

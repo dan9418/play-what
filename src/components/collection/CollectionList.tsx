@@ -33,12 +33,12 @@ const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
     <StyledCollectionList>
       {data.map((d) => {
         const model = POD_LIST_PRESETS.find(
-          (preset) => preset.modelId === d.modelId
+          (preset) => preset.presetId === d.presetId
         );
 
         return (
-          <li key={d.modelId}>
-            <Link to={getModelRoute(d.modelType, d.modelId, rootId)}>
+          <li key={d.presetId}>
+            <Link to={getModelRoute(d.modelType, d.presetId, rootId)}>
               {model.name}
             </Link>
           </li>

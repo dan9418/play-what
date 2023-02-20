@@ -73,7 +73,11 @@ const DetailsCol: React.FC<IDetailsColProps> = (props) => {
       <CardSection>
         <div className="notes">
           <Link
-            to={getModelRoute(modelType.id, modelConfig.modelId, root.modelId)}
+            to={getModelRoute(
+              modelType.id,
+              modelConfig.presetId,
+              root.presetId
+            )}
             className="name"
           >
             {model.name}

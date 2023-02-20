@@ -13,12 +13,12 @@ const fromValue = (
 ) => {
   const preset = presetArray.find((p) => compareFn(p.value, reduceFn(value)));
   if (!preset) {
-    console.error(presetArray[0].modelId, value, presetArray);
+    console.error(presetArray[0].presetId, value, presetArray);
     throw new Error("Unknown model value");
   }
   return fromId
-    ? subclass.fromId(preset.modelId)
-    : new subclass(preset.modelId);
+    ? subclass.fromId(preset.presetId)
+    : new subclass(preset.presetId);
 };
 
 export const getIntervalFromValue = (value: IPod) =>

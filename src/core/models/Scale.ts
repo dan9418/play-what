@@ -19,8 +19,8 @@ export default class Scale extends PodList {
   modelType = ModelType.PodList;
   prsetType = PresetType.Scale;
 
-  constructor(modelId: ScaleId, options: any = undefined) {
-    super(SCALE_PRESET_MAP, modelId, options);
+  constructor(presetId: ScaleId, options: any = undefined) {
+    super(SCALE_PRESET_MAP, presetId, options);
   }
 
   getMode(d): Scale {

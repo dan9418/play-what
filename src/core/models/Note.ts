@@ -28,7 +28,7 @@ interface INoteNameParts {
 }
 
 export default class Note extends Pod {
-  modelId: NoteId;
+  presetId: NoteId;
   modelType = ModelType.Pod;
   presetType = PresetType.Note;
   tags = [];
@@ -37,13 +37,13 @@ export default class Note extends Pod {
     super(undefined);
     this.pod = pod;
     this.name = this.getName();
-    this.modelId = toDashedCase(this.name) as any;
+    this.presetId = toDashedCase(this.name) as any;
   }
 
-  static fromId = (modelId: string, octave = 4) => {
-    let sharps = (modelId.match(/-sharp/g) || []).length;
-    let flats = (modelId.match(/-flat/g) || []).length;
-    const nativeNoteId = modelId.slice(0, 1) as NoteId;
+  static fromId = (presetId: string, octave = 4) => {
+    let sharps = (presetId.match(/-sharp/g) || []).length;
+    let flats = (presetId.match(/-flat/g) || []).length;
+    const nativeNoteId = presetId.slice(0, 1) as NoteId;
     const nativePod = (NOTE_PRESET_MAP.get(nativeNoteId) as IModelConfig).value;
     const octaveBasePitch =
       typeof octave === "undefined" ? 0 : (octave - 4) * 12;
@@ -53,7 +53,7 @@ export default class Note extends Pod {
     const note = new Note(pod);
     note.modelType = ModelType.Pod;
     note.presetType = PresetType.Note;
-    note.modelId = modelId as any;
+    note.presetId = presetId as any;
     note.name = note.getName();
     note.pod = pod as IPod;
     // @ts-ignore TODO

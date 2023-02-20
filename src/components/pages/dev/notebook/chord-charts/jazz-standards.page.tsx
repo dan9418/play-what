@@ -105,7 +105,7 @@ const Page: React.FC<any> = () => {
 
   useEffect(() => {
     setKeyCenter(chartPreset.value.keyCenter);
-  }, [chartPreset.modelId]);
+  }, [chartPreset.presetId]);
 
   const chart = getParsedChart(chartPreset.value);
 
@@ -129,8 +129,8 @@ const Page: React.FC<any> = () => {
       <InputRow label="Key Center">
         <DropdownInput
           options={NOTE_PRESETS}
-          value={{ modelId: keyCenter }}
-          setValue={(v) => setKeyCenter(v.modelId)}
+          value={{ presetId: keyCenter }}
+          setValue={(v) => setKeyCenter(v.presetId)}
         />
       </InputRow>
       <Card title={chart.name}>
@@ -154,15 +154,15 @@ const Page: React.FC<any> = () => {
                       return <li>?</li>;
                     }
 
-                    //const adjustedChord = new Chord(chord.modelId as ChordId, { root: adjustedRoot });
+                    //const adjustedChord = new Chord(chord.presetId as ChordId, { root: adjustedRoot });
                     const rootName = adjustedRoot.name;
                     return (
                       <li key={j} style={{ gridColumn: `span ${t / 2}` }}>
                         <Link
                           to={getModelRoute(
                             PresetType.Chord,
-                            chord.modelId,
-                            adjustedRoot.modelId
+                            chord.presetId,
+                            adjustedRoot.presetId
                           )}
                           className={`chord t-${t}`}
                         >

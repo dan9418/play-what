@@ -5,7 +5,7 @@ import Note from "../core/models/Note";
 
 export interface IPageContext {
   presetType: PresetType;
-  modelId: ModelId;
+  presetId: ModelId;
   rootId: NoteId;
 }
 
@@ -37,5 +37,5 @@ export const useRoot = (): Note | undefined => {
 
 export const useRootId = (): NoteId | undefined => {
   const root = useRoot();
-  return root ? root.modelId : undefined;
+  return root ? root.presetId : undefined;
 };

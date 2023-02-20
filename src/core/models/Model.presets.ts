@@ -16,7 +16,7 @@ import { getExtensionInversionId } from "./Pod.static";
 
 const formatPreset = (
   modelType: ModelType,
-  modelId: ModelId,
+  presetId: ModelId,
   name: string,
   value: any,
   tags = [] as Tag[],
@@ -25,7 +25,7 @@ const formatPreset = (
 ): IModelConfig => {
   return {
     modelType,
-    modelId,
+    presetId,
     name,
     // @ts-ignore
     valueIds: value,
@@ -50,22 +50,23 @@ const formatPreset = (
 
 const formatPodPreset = (
   modelType: ModelType.Note | ModelType.Interval,
-  modelId: ModelId,
+  presetId: ModelId,
   name: string,
   value: IPod,
   tags = [] as Tag[],
   aliases = [] as string[]
-): IModelConfig => formatPreset(modelType, modelId, name, value, tags, aliases);
+): IModelConfig =>
+  formatPreset(modelType, presetId, name, value, tags, aliases);
 
 const formatPodListPreset = (
   modelType: ModelType.Chord | ModelType.Scale,
-  modelId: ModelId,
+  presetId: ModelId,
   name: string,
   value: IntervalId[],
   tags = [] as Tag[],
   aliases = [] as string[]
 ): IModelConfig =>
-  formatPreset(modelType, modelId, name, value, tags, aliases, true);
+  formatPreset(modelType, presetId, name, value, tags, aliases, true);
 
 // Definition maps
 

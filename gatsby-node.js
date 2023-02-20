@@ -37,7 +37,7 @@ const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';
 
 //   const notes = NOTE_JSON.map(note => createNode({
 //     ...note,
-//     id: note.modelId,
+//     id: note.presetId,
 //     internal: {
 //       type: `Note`,
 //       contentDigest: createContentDigest(note)
@@ -46,7 +46,7 @@ const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';
 
 //   const chords = CHORD_JSON.map(chord => createNode({
 //     ...chord,
-//     id: chord.modelId,
+//     id: chord.presetId,
 //     internal: {
 //       type: `Chord`,
 //       contentDigest: createContentDigest(chord)
@@ -55,7 +55,7 @@ const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';
 
 //   const scales = SCALE_JSON.map(scale => createNode({
 //     ...scale,
-//     id: scale.modelId,
+//     id: scale.presetId,
 //     internal: {
 //       type: `Scale`,
 //       contentDigest: createContentDigest(scale)
@@ -81,16 +81,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   // CHORD_JSON.forEach(model => {
   //   createPage({
-  //     path: `/browse/chords/${model.modelId}/`,
+  //     path: `/browse/chords/${model.presetId}/`,
   //     component: require.resolve(POD_LIST_PATH),
-  //     context: { presetType: 'chords', modelId: model.modelId },
+  //     context: { presetType: 'chords', presetId: model.presetId },
   //   });
 
   //   NOTE_JSON.forEach(root => {
   //     createPage({
-  //       path: `/browse/chords/${model.modelId}/root/${root.modelId}/`,
+  //       path: `/browse/chords/${model.presetId}/root/${root.presetId}/`,
   //       component: require.resolve(POD_LIST_PATH),
-  //       context: { presetType: 'chords', modelId: model.modelId, rootId: root.modelId },
+  //       context: { presetType: 'chords', presetId: model.presetId, rootId: root.presetId },
   //     });
   //   })
 
@@ -98,16 +98,16 @@ module.exports.createPages = async ({ graphql, actions }) => {
 
   // SCALE_JSON.forEach(model => {
   //   createPage({
-  //     path: `/browse/scales/${model.modelId}/`,
+  //     path: `/browse/scales/${model.presetId}/`,
   //     component: require.resolve(POD_LIST_PATH),
-  //     context: { presetType: 'scales', modelId: model.modelId },
+  //     context: { presetType: 'scales', presetId: model.presetId },
   //   });
 
   //   NOTE_JSON.forEach(root => {
   //     createPage({
-  //       path: `/browse/scales/${model.modelId}/root/${root.modelId}/`,
+  //       path: `/browse/scales/${model.presetId}/root/${root.presetId}/`,
   //       component: require.resolve(POD_LIST_PATH),
-  //       context: { presetType: 'scales', modelId: model.modelId, rootId: root.modelId },
+  //       context: { presetType: 'scales', presetId: model.presetId, rootId: root.presetId },
   //     });
   //   })
 

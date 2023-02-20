@@ -201,8 +201,8 @@ const Page: React.FC<any> = () => {
       )}`;
       const route = getModelRoute(
         structure.modelType,
-        structure.modelId,
-        root.modelId
+        structure.presetId,
+        root.presetId
       );
 
       setModelPath(route);

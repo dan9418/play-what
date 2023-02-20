@@ -22,11 +22,11 @@ import {
 } from "./Pod.static";
 
 export default class IntervalSpan extends Pod {
-  modelId: IntervalId;
+  presetId: IntervalId;
   offset: number;
 
-  constructor(modelId: IntervalId) {
-    super(INTERVAL_PRESET_MAP.get(modelId));
+  constructor(presetId: IntervalId) {
+    super(INTERVAL_PRESET_MAP.get(presetId));
   }
 
   getColor(): string | undefined {

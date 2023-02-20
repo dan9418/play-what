@@ -18,7 +18,7 @@ export interface IPodListOptions {
 
 export default class PodList extends Model {
   modelType: ModelType;
-  modelId: ChordId | ScaleId;
+  presetId: ChordId | ScaleId;
   root: Note;
   podList: IPod[];
   intervals: IntervalSpan[];
@@ -36,7 +36,7 @@ export default class PodList extends Model {
     if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
 
     this.modelType = preset.modelType;
-    this.modelId = preset.modelId;
+    this.presetId = preset.presetId;
     this.name = preset.name;
     this.tags = preset.tags;
     this.aliases = preset.aliases;

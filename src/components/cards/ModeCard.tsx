@@ -59,10 +59,10 @@ const ModeCard: React.FC<any> = ({ model }) => {
       <StyledModeCard>
         <ul>
           {modes.map((n) => (
-            <li key={n.modelId}>
+            <li key={n.presetId}>
               <Link
-                to={getModelRoute(n.modelType, n.modelId, rootId)}
-                className={model.modelId === n.modelId ? "active" : ""}
+                to={getModelRoute(n.modelType, n.presetId, rootId)}
+                className={model.presetId === n.presetId ? "active" : ""}
               >
                 {n.name}
               </Link>

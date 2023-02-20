@@ -57,14 +57,14 @@ export const DEFAULT_ROOT = NOTE_PRESETS[0];
 
 export const getNewModel = (
   modelType: ModelType,
-  modelId: ModelId,
+  presetId: ModelId,
   root: NoteId
 ) => {
   let newModel;
   if (modelType === ModelType.Chord) {
-    newModel = new Chord(modelId as ChordId, { root: Note.fromId(root) });
+    newModel = new Chord(presetId as ChordId, { root: Note.fromId(root) });
   } else if (modelType === ModelType.Scale) {
-    newModel = new Scale(modelId as ScaleId, { root: Note.fromId(root) });
+    newModel = new Scale(presetId as ScaleId, { root: Note.fromId(root) });
   }
   return newModel;
 };
@@ -91,15 +91,19 @@ const NotesCol: React.FC<INotesColProps> = (props) => {
     _setModelConfig(type.data[0]);
   };
   const setModelConfig = (config) => {
-    let newModel = getNewModel(config.modelType, config.modelId, root.modelId);
+    let newModel = getNewModel(
+      config.modelType,
+      config.presetId,
+      root.presetId
+    );
     _setModelConfig(config);
     setModel(newModel);
   };
   const setRoot = (newRoot) => {
     let newModel = getNewModel(
       modelConfig.modelType,
-      modelConfig.modelId,
-      newRoot.modelId
+      modelConfig.presetId,
+      newRoot.presetId
     );
     _setRoot(newRoot);
     setModel(newModel);
@@ -115,7 +119,7 @@ const NotesCol: React.FC<INotesColProps> = (props) => {
             value={root}
             setValue={setRoot}
             options={NOTE_PRESETS}
-            idProperty="modelId"
+            idProperty="presetId"
           />
         </InputRow>
       </CardSection>
@@ -133,7 +137,7 @@ const NotesCol: React.FC<INotesColProps> = (props) => {
             value={modelConfig}
             setValue={setModelConfig}
             options={modelOptions}
-            idProperty="modelId"
+            idProperty="presetId"
           />
         </InputRow>
       </CardSection>

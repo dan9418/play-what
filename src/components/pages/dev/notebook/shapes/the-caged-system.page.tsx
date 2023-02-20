@@ -20,35 +20,35 @@ import SmartCard, { ICardConfig } from "../../../../ui/SmartCard";
 export const CAGED_CHORDS = [
   {
     model: Chord,
-    modelId: ChordId.MajTriad,
+    presetId: ChordId.MajTriad,
     rootId: NoteId.C,
     voicingId: VoicingId.Chord_Triad_CShape_1,
     range: [0, 3],
   },
   {
     model: Chord,
-    modelId: ChordId.MajTriad,
+    presetId: ChordId.MajTriad,
     rootId: NoteId.A,
     voicingId: VoicingId.Chord_Triad_AShape_1,
     range: [-1, 3],
   },
   {
     model: Chord,
-    modelId: ChordId.MajTriad,
+    presetId: ChordId.MajTriad,
     rootId: NoteId.G,
     voicingId: VoicingId.Chord_Triad_GShape_1,
     range: [-1, 3],
   },
   {
     model: Chord,
-    modelId: ChordId.MajTriad,
+    presetId: ChordId.MajTriad,
     rootId: NoteId.E,
     voicingId: VoicingId.Chord_Triad_EShape_1,
     range: [-1, 2],
   },
   {
     model: Chord,
-    modelId: ChordId.MajTriad,
+    presetId: ChordId.MajTriad,
     rootId: NoteId.D,
     voicingId: VoicingId.Chord_Triad_DShape_1,
     range: [-1, 3],
@@ -58,35 +58,35 @@ export const CAGED_CHORDS = [
 export const CAGED_SCALES = [
   {
     model: Scale,
-    modelId: ScaleId.Phrygian,
+    presetId: ScaleId.Phrygian,
     rootId: NoteId.E,
     //voicingId: VoicingId.Scale_DoubleOctave_EShape_1,
     range: [0, 3],
   },
   {
     model: Scale,
-    modelId: ScaleId.Mixolydian,
+    presetId: ScaleId.Mixolydian,
     rootId: NoteId.G,
     //voicingId: VoicingId.Scale_DoubleOctave_EShape_2,
     range: [2, 6],
   },
   {
     model: Scale,
-    modelId: ScaleId.Aeolian,
+    presetId: ScaleId.Aeolian,
     rootId: NoteId.A,
     //voicingId: VoicingId.Scale_DoubleOctave_GShape_1,
     range: [4, 8],
   },
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.E,
     //voicingId: VoicingId.Scale_DoubleOctave_EShape_2,
     range: [11, 14],
   },
   {
     model: Scale,
-    modelId: ScaleId.Dorian,
+    presetId: ScaleId.Dorian,
     rootId: NoteId.D,
     //voicingId: VoicingId.Scale_DoubleOctave_DShape_1,
     range: [9, 13],
@@ -96,35 +96,35 @@ export const CAGED_SCALES = [
 export const CAGED_MAJOR = [
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.C,
     //voicingId: VoicingId.Chord_Triad_CShape_1,
     range: [0, 3],
   },
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.A,
     //voicingId: VoicingId.Chord_Triad_AShape_1,
     range: [-1, 3],
   },
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.G,
     //voicingId: VoicingId.Chord_Triad_GShape_1,
     range: [-1, 3],
   },
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.E,
     //voicingId: VoicingId.Chord_Triad_EShape_1,
     range: [-1, 2],
   },
   {
     model: Scale,
-    modelId: ScaleId.Ionian,
+    presetId: ScaleId.Ionian,
     rootId: NoteId.D,
     //voicingId: VoicingId.Chord_Triad_DShape_1,
     range: [-1, 3],
@@ -161,8 +161,8 @@ const getRows = (rows: any[]) => {
   return rows.map((row, i) => {
     return {
       cols: row.map((col, j) => {
-        const { model, modelId, rootId, voicingId, range } = col as any;
-        const instance = new model(modelId, {
+        const { model, presetId, rootId, voicingId, range } = col as any;
+        const instance = new model(presetId, {
           root: Note.fromId(rootId),
         });
         const voicing = VOICING_PRESET_MAP.get(voicingId);

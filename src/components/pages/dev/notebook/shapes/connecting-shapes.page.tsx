@@ -29,8 +29,8 @@ const StyledCAGEDPage = styled(PageLayout)`
 
 const getRows = (items: any[]) => {
   return items.map((item, i) => {
-    const { model, modelId, rootId, voicingId } = item as any;
-    const instance = new model(modelId, {
+    const { model, presetId, rootId, voicingId } = item as any;
+    const instance = new model(presetId, {
       root: Note.fromId(rootId),
     });
     const voicing = VOICING_PRESET_MAP.get(voicingId);

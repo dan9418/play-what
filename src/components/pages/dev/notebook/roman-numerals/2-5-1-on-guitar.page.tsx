@@ -28,20 +28,20 @@ const MINOR_NOTES = MINOR.notes as Note[];
 const MAJOR_ITEMS = [
   {
     model: Chord,
-    modelId: ChordId.Min7,
-    rootId: MAJOR_NOTES[1].modelId,
+    presetId: ChordId.Min7,
+    rootId: MAJOR_NOTES[1].presetId,
     voicingId: null,
   },
   {
     model: Chord,
-    modelId: ChordId.Dom7,
-    rootId: MAJOR_NOTES[4].modelId,
+    presetId: ChordId.Dom7,
+    rootId: MAJOR_NOTES[4].presetId,
     voicingId: null,
   },
   {
     model: Chord,
-    modelId: ChordId.Maj7,
-    rootId: MAJOR_NOTES[0].modelId,
+    presetId: ChordId.Maj7,
+    rootId: MAJOR_NOTES[0].presetId,
     voicingId: null,
   },
 ];
@@ -49,20 +49,20 @@ const MAJOR_ITEMS = [
 const MINOR_ITEMS = [
   {
     model: Chord,
-    modelId: ChordId.HalfDim7,
-    rootId: MINOR_NOTES[2].modelId,
+    presetId: ChordId.HalfDim7,
+    rootId: MINOR_NOTES[2].presetId,
     voicingId: null,
   },
   {
     model: Chord,
-    modelId: ChordId.Min7,
-    rootId: MINOR_NOTES[4].modelId,
+    presetId: ChordId.Min7,
+    rootId: MINOR_NOTES[4].presetId,
     voicingId: null,
   },
   {
     model: Chord,
-    modelId: ChordId.Min7,
-    rootId: MINOR_NOTES[0].modelId,
+    presetId: ChordId.Min7,
+    rootId: MINOR_NOTES[0].presetId,
     voicingId: null,
   },
 ];
@@ -87,8 +87,8 @@ const getRows = (items: any[]) => {
   return [
     {
       cols: items.map((item) => {
-        const { model, modelId, rootId, voicingId } = item as any;
-        const instance = new model(modelId, {
+        const { model, presetId, rootId, voicingId } = item as any;
+        const instance = new model(presetId, {
           root: Note.fromId(rootId),
         });
         const voicing = voicingId
