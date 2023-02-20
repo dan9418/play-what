@@ -1,7 +1,5 @@
-import Chord from "../../core/models/Chord";
-import { IPod } from "../../core/models/Model.constants";
+import { IModelConfig, IPod } from "../../core/models/Model.constants";
 import { getDegree } from "../../core/models/Pod.static";
-import Scale from "../../core/models/Scale";
 import { TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
 import { IVoicing } from "./Fretboard.voicing";
 
@@ -18,7 +16,7 @@ export interface IFretboardProps {
   colorMapFn?: (fretProps: IFretProps) => string | undefined;
   voicing?: IVoicing;
   tuning?: number[]; // ITuning,
-  model?: Chord | Scale;
+  model?: IModelConfig;
 }
 
 export interface IFretProps extends IFretboardProps {
