@@ -6,13 +6,12 @@ import {
   getName as getIntervalName,
   getRatio,
 } from "../../core/models/Interval.utils";
-import { IPod } from "../../core/models/Model.constants";
+import { IModelConfig, IPod } from "../../core/models/Model.constants";
 import {
   getFrequency,
   getName as getNoteName,
   getOctave,
 } from "../../core/models/Note.utils";
-import PodList from "../../core/models/PodList";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -117,7 +116,7 @@ const getRatioCell = (interval: IPod) => {
 };
 
 interface IDetailsCardProps {
-  model: PodList;
+  model: IModelConfig;
 }
 
 const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {

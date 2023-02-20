@@ -6,6 +6,7 @@ import {
   MAX_POD,
   NoteId,
 } from "./Model.constants";
+import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
 
 // Sound
 
@@ -178,4 +179,75 @@ export const getExtensionInversionId = (id: IntervalId): IntervalId => {
 
 export const getRootedName = (modelConfig: IModelConfig, rootId: NoteId) => {
   return `${rootId || ""} ${modelConfig.name}`;
+};
+
+export const isInSuperset = (intervalPods: IPod[], superset: IPod[]) => {
+  if (superset.length <= intervalPods.length) return false;
+  return listContainsSubset(superset, intervalPods);
+};
+
+export const containsSubset = (intervalPods: IPod[], subset: IPod[]) => {
+  if (subset.length >= intervalPods.length) return false;
+  return listContainsSubset(intervalPods, subset);
+};
+
+export const getSubchords = (intervalPods: IPod[]) => {
+  return CHORD_PRESETS.filter((preset) =>
+    containsSubset(intervalPods, preset.value)
+  );
+};
+
+export const getSuperchords = (intervalPods: IPod[]) => {
+  return CHORD_PRESETS.filter((preset) =>
+    isInSuperset(intervalPods, preset.value)
+  );
+};
+
+export const getSubscales = (intervalPods: IPod[]) => {
+  return SCALE_PRESETS.filter((preset) =>
+    containsSubset(intervalPods, preset.value)
+  );
+};
+
+export const getSuperscales = (intervalPods: IPod[]) => {
+  return SCALE_PRESETS.filter((preset) =>
+    isInSuperset(intervalPods, preset.value)
+  );
+};
+
+export const getAllRelated = (intervalPods: IPod[]) => {
+  return [
+    ...getSubchords(intervalPods),
+    ...getSubscales(intervalPods),
+    ...getSuperchords(intervalPods),
+    ...getSuperscales(intervalPods),
+  ];
+};
+
+// applyRoot(root: IPod) {
+//   let notePods;
+//   try {
+//     notePods = this.intervalPods.map((ivl) => addPods(root, ivl));
+//   } catch (e) {
+//     console.error(e);
+//     throw new Error("Unable to apply root");
+//   }
+//   this.root = root;
+//   this.notePods = notePods;
+//   this.name = `${"ROOT"} ${this.name}`;
+//   return this;
+// }
+
+export const tryGetPodPairAtPitch = (
+  intervalPods: IPod[],
+  notePods: IPod[],
+  noteIndex: number
+): [IPod, IPod] | [undefined, undefined] => {
+  if (!notePods) return [undefined, undefined];
+
+  const index = getIndexOfPodAtPitch(notePods, noteIndex, false);
+
+  if (index == null) return [undefined, undefined];
+
+  return [intervalPods[index], (notePods as IPod[])[index]];
 };
