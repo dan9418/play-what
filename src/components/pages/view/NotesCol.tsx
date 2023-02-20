@@ -4,7 +4,7 @@ import Chord from "../../../core/models/Chord";
 import {
   ChordId,
   IModelConfig,
-  ModelId,
+  PresetId,
   ModelType,
   NoteId,
   ScaleId,
@@ -57,7 +57,7 @@ export const DEFAULT_ROOT = NOTE_PRESETS[0];
 
 export const getNewModel = (
   modelType: ModelType,
-  presetId: ModelId,
+  presetId: PresetId,
   root: NoteId
 ) => {
   let newModel;

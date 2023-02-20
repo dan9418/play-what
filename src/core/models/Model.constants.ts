@@ -161,7 +161,7 @@ export enum ChordId {
   MajSharp5 = "major-sharp-5",
 }
 
-export type ModelId = NoteId | IntervalId | ChordId | ScaleId;
+export type PresetId = NoteId | IntervalId | ChordId | ScaleId;
 
 export interface IModelConfig {
   modelType: ModelType;

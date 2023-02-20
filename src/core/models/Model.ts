@@ -1,8 +1,8 @@
-import { ModelId, ModelType, Tag } from "./Model.constants";
+import { PresetId, ModelType, Tag } from "./Model.constants";
 
 export default class Model {
   modelType: ModelType;
-  presetId: ModelId;
+  presetId: PresetId;
   name: string;
   tags: Tag[];
   aliases: string[];

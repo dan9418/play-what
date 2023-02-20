@@ -4,7 +4,7 @@ import {
   IModelConfig,
   IntervalId,
   IPod,
-  ModelId,
+  PresetId,
   ModelType,
   NoteId,
   ScaleId,
@@ -16,7 +16,7 @@ import { getExtensionInversionId } from "./Pod.static";
 
 const formatPreset = (
   modelType: ModelType,
-  presetId: ModelId,
+  presetId: PresetId,
   name: string,
   value: any,
   tags = [] as Tag[],
@@ -50,7 +50,7 @@ const formatPreset = (
 
 const formatPodPreset = (
   modelType: ModelType.Note | ModelType.Interval,
-  presetId: ModelId,
+  presetId: PresetId,
   name: string,
   value: IPod,
   tags = [] as Tag[],
@@ -60,7 +60,7 @@ const formatPodPreset = (
 
 const formatPodListPreset = (
   modelType: ModelType.Chord | ModelType.Scale,
-  presetId: ModelId,
+  presetId: PresetId,
   name: string,
   value: IntervalId[],
   tags = [] as Tag[],
@@ -1255,12 +1255,12 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
 
 // Merged maps
 
-// export const POD_PRESET_MAP = new Map<ModelId, IModelConfig>([
+// export const POD_PRESET_MAP = new Map<PresetId, IModelConfig>([
 //   ...NOTE_PRESET_MAP,
 //   ...INTERVAL_PRESET_MAP,
 // ]);
 
-export const POD_LIST_PRESET_MAP = new Map<ModelId, IModelConfig>([
+export const POD_LIST_PRESET_MAP = new Map<PresetId, IModelConfig>([
   ...CHORD_PRESET_MAP,
   ...SCALE_PRESET_MAP,
 ]);

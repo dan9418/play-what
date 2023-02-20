@@ -1,11 +1,11 @@
 import { PageProps } from "gatsby";
 import React from "react";
-import { ModelId, NoteId, PresetType } from "../core/models/Model.constants";
+import { PresetId, NoteId, PresetType } from "../core/models/Model.constants";
 import Note from "../core/models/Note";
 
 export interface IPageContext {
   presetType: PresetType;
-  presetId: ModelId;
+  presetId: PresetId;
   rootId: NoteId;
 }
 
