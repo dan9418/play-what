@@ -91,7 +91,7 @@ const getChordRows = (
   return chordIds.map((presetId, i) => {
     return {
       cols: [
-        new Chord(presetId).getName(),
+        presetId,
         ...getVoicingCols({
           voicingIds,
           presetId,

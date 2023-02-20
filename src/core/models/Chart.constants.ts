@@ -1,6 +1,8 @@
 import * as CHARTS from "./Chart.presets";
 import Chord from "./Chord";
-import { ChordId, NoteId } from "./Model.constants";
+import { getSymbol } from "./Chord.utils";
+import { ChordId, IModelConfig, NoteId } from "./Model.constants";
+import { getNoteFromId } from "./Note.utils";
 
 export type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];
 
@@ -27,7 +29,7 @@ interface IChordItem {
   t?: number;
   rootName: string;
   structureName: string;
-  chord: Chord;
+  chord: IModelConfig;
 }
 
 interface ISectionParsed {
@@ -52,12 +54,12 @@ export const getParsedChart = (config: IChartConfig): IChartParsed => {
       const chordConfig = sectionConfig.chords[c];
       const [noteId, chordId, t] = chordConfig;
 
-      const chord = new Chord(chordId, { root });
+      const chord = new Chord(chordId, { root: getNoteFromId(noteId) });
 
       chords.push({
         t,
         rootName: noteId,
-        structureName: chord.getSymbol(),
+        structureName: getSymbol(chordId),
         chord,
       });
       //chords.push(...(new Array(t / 2).fill(chord)));

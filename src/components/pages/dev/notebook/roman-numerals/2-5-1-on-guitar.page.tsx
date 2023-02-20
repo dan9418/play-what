@@ -33,19 +33,16 @@ const MINOR_NOTES = MINOR.notePods as IPod[];
 
 const MAJOR_ITEMS = [
   {
-    model: Chord,
     presetId: ChordId.Min7,
     rootId: getNoteFromPod(MAJOR_NOTES[1]),
     voicingId: null,
   },
   {
-    model: Chord,
     presetId: ChordId.Dom7,
     rootId: getNoteFromPod(MAJOR_NOTES[4]),
     voicingId: null,
   },
   {
-    model: Chord,
     presetId: ChordId.Maj7,
     rootId: getNoteFromPod(MAJOR_NOTES[0]),
     voicingId: null,
@@ -54,19 +51,16 @@ const MAJOR_ITEMS = [
 
 const MINOR_ITEMS = [
   {
-    model: Chord,
     presetId: ChordId.HalfDim7,
     rootId: getNoteFromPod(MINOR_NOTES[2]),
     voicingId: null,
   },
   {
-    model: Chord,
     presetId: ChordId.Min7,
     rootId: getNoteFromPod(MINOR_NOTES[4]),
     voicingId: null,
   },
   {
-    model: Chord,
     presetId: ChordId.Min7,
     rootId: getNoteFromPod(MINOR_NOTES[0]),
     voicingId: null,
@@ -93,8 +87,8 @@ const getRows = (items: any[]) => {
   return [
     {
       cols: items.map((item) => {
-        const { model, presetId, rootId, voicingId } = item as any;
-        const instance = new model(presetId, {
+        const { presetId, rootId, voicingId } = item as any;
+        const instance = new Chord(presetId, {
           root: (getNoteFromId(rootId) as IModelConfig).value,
         });
         const voicing = voicingId

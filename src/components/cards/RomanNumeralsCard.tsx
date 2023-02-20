@@ -1,5 +1,6 @@
 import React from "react";
 import { css } from "styled-components";
+import { getNumeralParts } from "../../core/models/Chord.utils";
 import { NoteId } from "../../core/models/Model.constants";
 import Scale from "../../core/models/Scale";
 import { getModelRoute } from "../../core/routing/Routing.utils";
@@ -56,7 +57,10 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
             cols: [
               "Numeral",
               ...numerals.map((n, i) => {
-                const [numeral, symbol] = n.getNumeralParts(i + 1);
+                const [numeral, symbol] = getNumeralParts(
+                  model.presetId,
+                  i + 1
+                );
                 return {
                   content: (
                     <>
