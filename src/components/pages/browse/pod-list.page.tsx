@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { useRoot } from "../../../contexts/PagePropsContext";
+import { ModelPageProps, useRoot } from "../../../contexts/PagePropsContext";
 import {
   getModelIdClass,
-  getModelIdText,
-  ModelType,
+  PresetType,
 } from "../../../core/models/Model.constants";
 import DetailsCard from "../../cards/DetailsCard";
 import GuitarCard from "../../cards/GuitarCard";
@@ -17,16 +16,12 @@ import PageLayout from "../../layout/PageLayout";
 
 const StyledPodlistPage = styled(PageLayout)``;
 
-interface IPodListPageProps {
-  pageContext: any;
-}
-
-const PodListPage: React.FC<IPodListPageProps> = (props) => {
-  const { modelType, modelId } = props.pageContext;
+const PodListPage: React.FC<ModelPageProps> = (props) => {
+  const { presetType, modelId } = props.pageContext;
   const root = useRoot();
 
-  const cl = getModelIdClass(modelType);
-  const clText = getModelIdText(modelType);
+  const cl = getModelIdClass(presetType);
+  const clText = presetType;
 
   const podList = new cl(modelId, { root });
   const title = `${podList.name} ${clText}`;
@@ -41,8 +36,10 @@ const PodListPage: React.FC<IPodListPageProps> = (props) => {
           <DetailsCard model={podList} />
         </ColumnManager>
 
-        {modelType === ModelType.Scale && <RomanNumeralsCard model={podList} />}
-        {modelType === ModelType.Scale && <ModeCard model={podList} />}
+        {presetType === PresetType.Scale && (
+          <RomanNumeralsCard model={podList} />
+        )}
+        {presetType === PresetType.Scale && <ModeCard model={podList} />}
         <ColumnManager>
           <GuitarCard model={podList} />
         </ColumnManager>

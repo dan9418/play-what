@@ -11,6 +11,7 @@ import {
   MAX_POD,
   ModelType,
   NoteId,
+  PresetType,
 } from "./Model.constants";
 import { NOTE_PRESET_MAP } from "./Model.presets";
 import Pod from "./Pod";
@@ -28,7 +29,8 @@ interface INoteNameParts {
 
 export default class Note extends Pod {
   modelId: NoteId;
-  modelType = ModelType.Note;
+  modelType = ModelType.Pod;
+  presetType = PresetType.Note;
   tags = [];
 
   constructor(pod: IPod) {
@@ -49,7 +51,8 @@ export default class Note extends Pod {
     const pod = [pitch, nativePod[1]] as IPod;
     //const pod = [NumberUtils.modulo(nativePod[0] + sharps - flats, 12), nativePod[1]] as IPod;
     const note = new Note(pod);
-    note.modelType = ModelType.Note;
+    note.modelType = ModelType.Pod;
+    note.presetType = PresetType.Note;
     note.modelId = modelId as any;
     note.name = note.getName();
     note.pod = pod as IPod;

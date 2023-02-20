@@ -5,13 +5,12 @@ import {
   CHART_PRESETS,
   getParsedChart,
 } from "../../../../../core/models/Chart.constants";
-import { ModelType } from "../../../../../core/models/Model.constants";
+import { PresetType } from "../../../../../core/models/Model.constants";
 import { getNotefromValue } from "../../../../../core/models/Model.generation";
 import {
   NOTE_PRESETS,
   NOTE_PRESET_MAP,
 } from "../../../../../core/models/Model.presets";
-import Note from "../../../../../core/models/Note";
 import {
   addPods,
   reducePod,
@@ -161,7 +160,7 @@ const Page: React.FC<any> = () => {
                       <li key={j} style={{ gridColumn: `span ${t / 2}` }}>
                         <Link
                           to={getModelRoute(
-                            ModelType.Chord,
+                            PresetType.Chord,
                             chord.modelId,
                             adjustedRoot.modelId
                           )}

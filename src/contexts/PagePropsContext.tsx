@@ -1,9 +1,17 @@
 import { PageProps } from "gatsby";
-import React, { PropsWithChildren } from "react";
-import { NoteId } from "../core/models/Model.constants";
+import React from "react";
+import { ModelId, NoteId, PresetType } from "../core/models/Model.constants";
 import Note from "../core/models/Note";
 
-const PagePropsContext = React.createContext<PageProps>(undefined as any);
+export interface IPageContext {
+  presetType: PresetType;
+  modelId: ModelId;
+  rootId: NoteId;
+}
+
+export type ModelPageProps = PageProps<object, IPageContext>;
+
+const PagePropsContext = React.createContext<ModelPageProps>(undefined as any);
 
 export const PagePropsContextProvider: React.FC<{
   value: any;
@@ -17,10 +25,11 @@ export const PagePropsContextProvider: React.FC<{
   );
 };
 
-export const usePageProps = (): PageProps => React.useContext(PagePropsContext);
+export const usePageProps = (): ModelPageProps =>
+  React.useContext(PagePropsContext);
 
 export const useRoot = (): Note | undefined => {
-  const props: any = usePageProps();
+  const props = usePageProps();
   return props.pageContext.rootId
     ? Note.fromId(props.pageContext.rootId)
     : undefined;

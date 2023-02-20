@@ -1,12 +1,12 @@
-import { ModelId, ModelType, NoteId } from "../models/Model.constants";
+import { ModelId, NoteId, PresetType } from "../models/Model.constants";
 
 export const getModelRoute = (
-  modelType: ModelType,
+  presetType: PresetType,
   modelId?: ModelId,
   rootId?: NoteId
 ) => {
   const modelSuffix = modelId ? `/${modelId}` : "";
   const rootSuffix = rootId ? `/root/${rootId}` : "";
 
-  return `/browse/${modelType}${modelSuffix}${rootSuffix}/`;
+  return `/browse/${presetType}${modelSuffix}${rootSuffix}/`;
 };

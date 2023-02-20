@@ -1,7 +1,14 @@
 import ArrayUtils from "../general/Array.utils";
 import Chord from "./Chord";
 import IntervalSpan from "./Interval";
-import { IntervalId, IPod, ModelType, ScaleId, Tag } from "./Model.constants";
+import {
+  IntervalId,
+  IPod,
+  ModelType,
+  PresetType,
+  ScaleId,
+  Tag,
+} from "./Model.constants";
 import { getIntervalFromValue, getScalefromValue } from "./Model.generation";
 import { SCALE_PRESET_MAP } from "./Model.presets";
 import { subtractPods } from "./Pod.static";
@@ -9,7 +16,8 @@ import PodList from "./PodList";
 import { getAllNumerals } from "./Scale.utils";
 
 export default class Scale extends PodList {
-  modelType = ModelType.Scale;
+  modelType = ModelType.PodList;
+  prsetType = PresetType.Scale;
 
   constructor(modelId: ScaleId, options: any = undefined) {
     super(SCALE_PRESET_MAP, modelId, options);

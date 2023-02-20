@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { FEEDBACK_LINK } from "../../config/constants";
-import { ModelType } from "../../core/models/Model.constants";
+import { PresetType } from "../../core/models/Model.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import ColumnManager from "../column-manager/ColumnManager";
 import PageLayout from "../layout/PageLayout";
@@ -45,14 +45,14 @@ const Page: React.FC<any> = (props) => {
           <p>
             The <Link to="/browse">browse</Link> section is an extensive
             directory of many{" "}
-            <Link to={getModelRoute(ModelType.Chord)}>chords</Link> and{" "}
-            <Link to={getModelRoute(ModelType.Scale)}>scales</Link>.
+            <Link to={getModelRoute(PresetType.Chord)}>chords</Link> and{" "}
+            <Link to={getModelRoute(PresetType.Scale)}>scales</Link>.
             <CardHeader level={4} title="Landing Pages" />
             There is a landing page for each of the "model types"
             <SimpleList
               items={[
-                ["Chords", getModelRoute(ModelType.Chord)],
-                ["Scales", getModelRoute(ModelType.Scale)],
+                ["Chords", getModelRoute(PresetType.Chord)],
+                ["Scales", getModelRoute(PresetType.Scale)],
               ]}
             />
             <p>

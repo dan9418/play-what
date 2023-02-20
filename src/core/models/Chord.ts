@@ -1,10 +1,11 @@
 import { getNumeralParts, getSymbol } from "./Chord.utils";
-import { ChordId, ModelType } from "./Model.constants";
+import { ChordId, ModelType, PresetType } from "./Model.constants";
 import { CHORD_PRESET_MAP } from "./Model.presets";
 import PodList from "./PodList";
 
 export default class Chord extends PodList {
-  modelType = ModelType.Chord;
+  modelType = ModelType.PodList;
+  presetType = PresetType.Chord;
 
   constructor(modelId: ChordId, options: any = undefined) {
     super(CHORD_PRESET_MAP, modelId, options);

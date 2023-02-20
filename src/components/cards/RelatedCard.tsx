@@ -1,5 +1,5 @@
 import React from "react";
-import { ModelType } from "../../core/models/Model.constants";
+import { ModelType, PresetType } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
@@ -35,12 +35,12 @@ const RelatedCard: React.FC<any> = ({ model }) => {
           <CollectionTable data={superscales} semitones={semitones} />
         </Card>
       )}
-      {model.modelType === ModelType.Chord && (
+      {model.modelType === PresetType.Chord && (
         <Card title="Other Chords">
           <CollectionList data={CHORD_PRESETS} />
         </Card>
       )}
-      {model.modelType === ModelType.Scale && (
+      {model.modelType === PresetType.Scale && (
         <Card title="Other Scales">
           <CollectionList data={SCALE_PRESETS} />
         </Card>

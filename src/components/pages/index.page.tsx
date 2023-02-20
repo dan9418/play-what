@@ -4,13 +4,12 @@ import styled from "styled-components";
 import logoSrc from "../../../static/play_what_logo_web.png";
 import { FEEDBACK_LINK } from "../../config/constants";
 import {
-  getModelIdClass,
-  getModelIdText,
-  ModelType,
+  getPresetTypeText,
+  PresetType,
 } from "../../core/models/Model.constants";
 import {
-  POD_LIST_PRESETS,
   NOTE_PRESETS,
+  POD_LIST_PRESETS,
 } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import { getModelRoute } from "../../core/routing/Routing.utils";
@@ -189,13 +188,7 @@ const StyledHomePage = styled(PageLayout)`
 `;
 
 const Page: React.FC<any> = () => {
-  const [model, setModel] = useState(DEFAULT_MODEL);
-
-  const modelPath = getModelRoute(
-    model.modelType,
-    model.modelId,
-    model.root.modelId
-  );
+  const [modelPath, setModelPath] = useState("");
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -203,13 +196,16 @@ const Page: React.FC<any> = () => {
         NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
       const structure =
         POD_LIST_PRESETS[Math.floor(Math.random() * POD_LIST_PRESETS.length)];
-      const text = `${root.name} ${structure.name} ${getModelIdText(
+      const text = `${root.name} ${structure.name} ${getPresetTypeText(
         structure.modelType
       )}`;
-      const cl = getModelIdClass(structure.modelType);
-      const m = new cl(structure.modelId, { root: Note.fromId(root.modelId) });
+      const route = getModelRoute(
+        structure.modelType,
+        structure.modelId,
+        root.modelId
+      );
 
-      setModel(m);
+      setModelPath(route);
     }, 2000);
     return () => clearInterval(id);
   }, []);
@@ -241,8 +237,8 @@ const Page: React.FC<any> = () => {
                 Browse an extensive library of chords and scales. Explore their
                 relationships and physical properties in detail.
               </p>
-              <Link to={getModelRoute(ModelType.Scale)}>Chords</Link>
-              <Link to={getModelRoute(ModelType.Chord)}>Scales</Link>
+              <Link to={getModelRoute(PresetType.Scale)}>Chords</Link>
+              <Link to={getModelRoute(PresetType.Chord)}>Scales</Link>
             </div>
           </div>
         </section>
