@@ -1,7 +1,6 @@
-import IntervalSpan from "./Interval";
+import { getName } from "./Interval.utils";
 import Model from "./Model";
 import { ChordId, IPod, ModelType, ScaleId } from "./Model.constants";
-import { getIntervalFromValue } from "./Model.generation";
 import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
 import Note from "./Note";
 import {
@@ -20,8 +19,7 @@ export default class PodList extends Model {
   modelType: ModelType;
   presetId: ChordId | ScaleId;
   root: Note;
-  podList: IPod[];
-  intervals: IntervalSpan[];
+  intervalPods: IPod[];
   notePods?: IPod[];
   notes?: Note[];
 
@@ -40,8 +38,7 @@ export default class PodList extends Model {
     this.name = preset.name;
     this.tags = preset.tags;
     this.aliases = preset.aliases;
-    this.podList = preset.value;
-    this.intervals = preset.value.map((pod) => getIntervalFromValue(pod));
+    this.intervalPods = preset.value;
 
     if (options && options.root) {
       this.applyRoot(options.root);
@@ -49,7 +46,7 @@ export default class PodList extends Model {
   }
 
   equals(B: PodList) {
-    return arePodListsEqual(this.podList, B.podList);
+    return arePodListsEqual(this.intervalPods, B.intervalPods);
   }
 
   getName = () => {
@@ -64,7 +61,7 @@ export default class PodList extends Model {
     let notes;
     let notePods;
     try {
-      notePods = this.intervals.map((ivl) => addPods(ivl.pod, root.pod));
+      notePods = this.intervalPods.map((ivl) => addPods(ivl, root.pod));
       notes = notePods.map((pod) => new Note(pod));
     } catch (e) {
       console.error(e);
@@ -78,18 +75,18 @@ export default class PodList extends Model {
   }
 
   getIntervalListString(): string {
-    const nameArr = this.intervals.map((ivl) => ivl.getName());
+    const nameArr = this.intervalPods.map((ivl) => getName(ivl));
     return nameArr.join(", ");
   }
 
   isInSuperset(superset: IPod[]) {
-    if (superset.length <= this.podList.length) return false;
-    return listContainsSubset(superset, this.podList);
+    if (superset.length <= this.intervalPods.length) return false;
+    return listContainsSubset(superset, this.intervalPods);
   }
 
   containsSubset(subset: IPod[]) {
-    if (subset.length >= this.podList.length) return false;
-    return listContainsSubset(this.podList, subset);
+    if (subset.length >= this.intervalPods.length) return false;
+    return listContainsSubset(this.intervalPods, subset);
   }
 
   getSubchords() {
@@ -123,13 +120,13 @@ export default class PodList extends Model {
 
   tryGetPodPairAtPitch(
     noteIndex: number
-  ): [IntervalSpan, Note] | [undefined, undefined] {
+  ): [IPod, Note] | [undefined, undefined] {
     if (!this.notePods) return [undefined, undefined];
 
     const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
     if (index == null) return [undefined, undefined];
 
-    return [this.intervals[index], (this.notes as Note[])[index]];
+    return [this.intervalPods[index], (this.notes as Note[])[index]];
   }
 }

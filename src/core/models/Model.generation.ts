@@ -1,4 +1,3 @@
-import IntervalSpan from "./Interval";
 import { IPod } from "./Model.constants";
 import { INTERVAL_PRESETS } from "./Model.presets";
 import { arePodsEqual, reducePod } from "./Pod.static";
@@ -20,9 +19,6 @@ const fromValue = (
     ? subclass.fromId(preset.presetId)
     : new subclass(preset.presetId);
 };
-
-export const getIntervalFromValue = (value: IPod) =>
-  fromValue(INTERVAL_PRESETS, IntervalSpan, value, arePodsEqual, reducePod);
 
 // export const getNotefromValue = (value: IPod) =>
 //   fromValue(NOTE_PRESETS, Note, value, arePodsEqual, reducePod, true);

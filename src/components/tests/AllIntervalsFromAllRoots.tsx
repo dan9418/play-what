@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { getName } from "../../core/models/Interval.utils";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
-import { getIntervalFromValue } from "../../core/models/Model.generation";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import { addPods } from "../../core/models/Pod.static";
@@ -82,12 +82,7 @@ const getRoots = (): ITestShape[] => {
 
 const HEAD = [
   {
-    cols: [
-      "Root",
-      ...FIRST_OCTAVE_INTERVALS.map((ivl) =>
-        getIntervalFromValue(ivl.value).getName()
-      ),
-    ],
+    cols: ["Root", ...FIRST_OCTAVE_INTERVALS.map((ivl) => getName(ivl.value))],
   },
 ];
 

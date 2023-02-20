@@ -2,9 +2,10 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
 import NumberUtils from "../../core/general/Number.utils";
-import IntervalSpan from "../../core/models/Interval";
-import { getRatio } from "../../core/models/Interval.utils";
+import { getName, getRatio } from "../../core/models/Interval.utils";
+import { IPod } from "../../core/models/Model.constants";
 import Note from "../../core/models/Note";
+import PodList from "../../core/models/PodList";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -92,10 +93,10 @@ const getNoteCell = (note, i) => {
   };
 };
 
-const getIntervalCell = (interval, isFeatured) => {
+const getIntervalCell = (interval: IPod, isFeatured) => {
   return (
     <td className={`interval ${isFeatured ? "featured" : ""}`}>
-      {interval.getName()}
+      {getName(interval)}
     </td>
   );
 };
@@ -104,17 +105,21 @@ const getPitchCell = (note) => {
   return <td className={`frequency`}>{note.getFrequency(true)}</td>;
 };
 
-const getRatioCell = (interval: IntervalSpan) => {
-  return <td className={`ratio`}>{getRatio(interval.pod)}</td>;
+const getRatioCell = (interval: IPod) => {
+  return <td className={`ratio`}>{getRatio(interval)}</td>;
 };
 
-const DetailsCard: React.FC<any> = ({ model }) => {
-  const intervals = model.intervals;
+interface IDetailsCardProps {
+  model: PodList;
+}
+
+const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
+  const intervalPods = model.intervalPods;
   const octave = useRecoilValue(octaveState);
   const hasNotes = !!model.notes;
   const notes =
     hasNotes &&
-    model.notes.map(
+    (model.notes as Note[]).map(
       (n) =>
         new Note([
           (octave - 4) * 12 + NumberUtils.modulo(n.pod[0], 12),
@@ -122,10 +127,10 @@ const DetailsCard: React.FC<any> = ({ model }) => {
         ])
     );
 
-  if (!intervals && !notes) return null;
+  if (!intervalPods && !notes) return null;
 
   return (
-    <StyledDetailsCard $n={intervals.length}>
+    <StyledDetailsCard $n={intervalPods.length}>
       <CardHeader title={hasNotes ? "Notes" : "Intervals"} />
       <Table
         className="mobile"
@@ -139,7 +144,7 @@ const DetailsCard: React.FC<any> = ({ model }) => {
             ],
           },
         ]}
-        tbody={intervals.map((ivl, i) => {
+        tbody={intervalPods.map((ivl, i) => {
           const note = hasNotes && notes[i];
           return {
             cols: [
@@ -157,22 +162,28 @@ const DetailsCard: React.FC<any> = ({ model }) => {
         tbody={[
           hasNotes
             ? {
-                cols: ["Note", ...notes.map((note, i) => getNoteCell(note, i))],
+                cols: [
+                  "Note",
+                  ...(notes as Note[]).map((note, i) => getNoteCell(note, i)),
+                ],
               }
             : undefined,
           {
             cols: [
               "Interval",
-              ...intervals.map((ivl, i) => getIntervalCell(ivl, !notes)),
+              ...intervalPods.map((ivl, i) => getIntervalCell(ivl, !notes)),
             ],
           },
           hasNotes
             ? {
-                cols: ["Pitch", ...notes.map((note, i) => getPitchCell(note))],
+                cols: [
+                  "Pitch",
+                  ...(notes as Note[]).map((note, i) => getPitchCell(note)),
+                ],
               }
             : undefined,
           {
-            cols: ["Ratio", ...intervals.map((ivl, i) => getRatioCell(ivl))],
+            cols: ["Ratio", ...intervalPods.map((ivl, i) => getRatioCell(ivl))],
           },
         ]}
       />

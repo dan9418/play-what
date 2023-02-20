@@ -1,15 +1,7 @@
 import ArrayUtils from "../general/Array.utils";
 import Chord from "./Chord";
-import IntervalSpan from "./Interval";
-import {
-  IntervalId,
-  IPod,
-  ModelType,
-  PresetType,
-  ScaleId,
-  Tag,
-} from "./Model.constants";
-import { getIntervalFromValue, getScalefromValue } from "./Model.generation";
+import { IPod, ModelType, PresetType, ScaleId, Tag } from "./Model.constants";
+import { getScalefromValue } from "./Model.generation";
 import { SCALE_PRESET_MAP } from "./Model.presets";
 import { subtractPods } from "./Pod.static";
 import PodList from "./PodList";
@@ -32,12 +24,9 @@ export default class Scale extends PodList {
     }
     // Get difference between each interval
     const newPods: IPod[] = [[0, 0]];
-    const newIntervals = [new IntervalSpan(IntervalId.P1)];
     for (let i = 0; i < rotated.length - 1; i++) {
       const newPod = subtractPods(rotated[i + 1], rotated[0]);
       newPods.push(newPod);
-      const newIvl = getIntervalFromValue(newPod);
-      newIntervals.push(newIvl);
     }
     const mode = getScalefromValue(newPods);
 

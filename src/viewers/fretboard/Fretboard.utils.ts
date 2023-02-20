@@ -1,6 +1,7 @@
 import Chord from "../../core/models/Chord";
-import IntervalSpan from "../../core/models/Interval";
+import { IPod } from "../../core/models/Model.constants";
 import Note from "../../core/models/Note";
+import { getDegree } from "../../core/models/Pod.static";
 import Scale from "../../core/models/Scale";
 import { TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
 import { IVoicing } from "./Fretboard.voicing";
@@ -44,13 +45,13 @@ export const DOTTED_FRET_INDICES = [
 export const FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);
 
 export const isIntervalInVoicing = (
-  interval: IntervalSpan,
+  interval: IPod,
   voicing: IVoicing,
   stringIndex: number
 ) => {
   if (!voicing || !voicing.value) return true;
   const v = voicing.value[stringIndex];
-  const d = interval.getDegree();
+  const d = getDegree(interval);
   if (Array.isArray(v)) {
     return v.some((n) => doesVoicingValueMatch(d, n));
   } else if (typeof v === "number") {
@@ -70,7 +71,7 @@ export const getFretColor = (props: IFretProps): string | undefined => {
     return `#00000011`;
   }
 
-  if (interval.pod[0] === 0 && interval.pod[1] === 0) return "red";
+  if (interval[0] === 0 && interval[1] === 0) return "red";
 
   return "#555";
 };
