@@ -11,7 +11,6 @@ const STATIC_PAGES = [
   { route: '/coming-soon/' },
   { route: '/help/' },
   { route: '/index/' },
-  { route: '/search/' },
   { route: '/view/fretboard/' },
   { route: '/dev/index/' },
   { route: '/dev/experimental/edit-theme/' },
