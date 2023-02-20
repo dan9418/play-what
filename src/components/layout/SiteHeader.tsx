@@ -91,22 +91,19 @@ const StyledSiteHeader = styled.div`
 		}
 	}
 
-	.search, .menu {
+	.icon, .menu {
 		width: 48px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.search {
+	.icon {
 		width: 32px;
 	}
 `;
 
-/// const getLinkProps = id => ({ to: `/${id}`, className: typeof window !== 'undefined' && window.location.pathname.includes(id) ? 'active' : undefined })
-
 const SiteHeader: React.FC = () => {
-	const theme = useTheme();
 	const setTheme = useSetRecoilState(themeState);
 	const [isNightMode, setIsNightMode] = useState(false);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -132,14 +129,11 @@ const SiteHeader: React.FC = () => {
 						}
 					</div>
 					<div className="right">
-						<Link to="/help" className="search" title='Help'>
+						<Link to="/help" className="icon" title='Help'>
 							<Icon iconId='help' />
 						</Link>
-						<Link to="/about" className="search" title='About'>
+						<Link to="/about" className="icon" title='About'>
 							<Icon iconId='info' />
-						</Link>
-						<Link to="/search" className="search" title='Search'>
-							<Icon iconId='search' />
 						</Link>
 						<div className="night-mode">
 							<SwitchInput value={isNightMode} setValue={onThemeToggle} />

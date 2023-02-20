@@ -1,4 +1,5 @@
-import { IModelConfig } from '../models.constants';
+import { IModelConfig } from "../models/Model.constants";
+
 export const MAX_PITCH = 12;
 
 export enum PitchId {
@@ -6,22 +7,26 @@ export enum PitchId {
 	Midi = 'Midi'
 }
 
-export const PITCH_PRESET_MAP = new Map<PitchId, IModelConfig<number>>([
+interface IPitchPreset {
+	id: PitchId
+	name: string;
+	value: number;
+};
+
+export const PITCH_PRESET_MAP = new Map<PitchId, IPitchPreset>([
 	[PitchId.MiddleC, {
 		id: PitchId.MiddleC,
 		name: 'Middle C',
-		tags: [],
 		value: 0
 	}],
 	[PitchId.Midi, {
 		id: PitchId.Midi,
 		name: 'MIDI',
-		tags: [],
 		value: 60
 	}]
 ]);
 
-export const ROOT_PITCH = PITCH_PRESET_MAP.get(PitchId.MiddleC).value;
+export const ROOT_PITCH = (PITCH_PRESET_MAP.get(PitchId.MiddleC) as IPitchPreset).value;
 
 export const DEFAULT_PITCH_COLOR_SCHEME = [
 	'#ED1C24',

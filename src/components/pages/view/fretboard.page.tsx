@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
+import IntervalSpan from "../../../core/models/Interval";
 import FretTable from "../../../viewers/fret-table/FretTable";
 import {
   IFretProps,
@@ -97,7 +98,7 @@ const Page: React.FC = () => {
     if (
       color &&
       voicing &&
-      !isIntervalInVoicing(interval, voicing, stringIndex)
+      !isIntervalInVoicing(interval as IntervalSpan, voicing, stringIndex)
     ) {
       return `${color}33`;
     }

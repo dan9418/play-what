@@ -79,9 +79,6 @@ const SiteFooter: React.FC = () => {
             <li>
               <Link to="/browse">Browse</Link>
             </li>
-            <li>
-              <Link to="/search">Search</Link>
-            </li>
           </ul>
         </section>
         <section>
@@ -133,7 +130,7 @@ const SiteFooter: React.FC = () => {
           </ul>
         </section>
       </div>
-      <a href="https://danbednarczyk.com" className="name">
+      <a href="http://danbednarczyk.com" className="name">
         2023 Dan Bednarczyk
       </a>
 

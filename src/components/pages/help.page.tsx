@@ -40,7 +40,7 @@ const Page: React.FC<any> = (props) => {
     <StyledHelpPage title="Help">
       <ColumnManager>
         <Card title="Website Sections">
-          <p>Play What is currently comprised of 3 different domains: </p>
+          <p>Play What is currently comprised of 2 different domains: </p>
           <CardHeader level={3} title="Browse" />
           <p>
             The <Link to="/browse">browse</Link> section is an extensive
@@ -90,35 +90,6 @@ const Page: React.FC<any> = (props) => {
           <p>
             The instrument tab contains inputs for configuring the instrument,
             like tuning and range.
-          </p>
-
-          <CardHeader level={3} title="Search" />
-          <p>
-            The <Link to="/search">search page</Link> provides an interface for
-            finding specific chords and scales by name. This page is still
-            experimental and unoptimized.
-          </p>
-          <p>
-            The search query can include the name and/or key center for any
-            chord or scale in the Play What library. It also understands some
-            other common keywords:
-            <SimpleList
-              items={[
-                "Major",
-                "Minor",
-                "Triad",
-                "Suspended",
-                "Dominant",
-                "Diatonic",
-                "Diminished",
-                "Augmented",
-                "Perfect",
-                "Pentatonic",
-                "Hexatonic",
-                "Heptatonic",
-                "Octatonic",
-              ]}
-            />
           </p>
         </Card>
         <Card title="FAQ">
