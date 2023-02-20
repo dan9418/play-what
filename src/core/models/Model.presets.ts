@@ -48,75 +48,56 @@ const formatPreset = (
   };
 };
 
-const formatNotePreset = (
+const formatPodPreset = (
+  modelType: ModelType.Note | ModelType.Interval,
   modelId: ModelId,
   name: string,
   value: IPod,
   tags = [] as Tag[],
   aliases = [] as string[]
-): IModelConfig =>
-  formatPreset(ModelType.Note, modelId, name, value, tags, aliases);
+): IModelConfig => formatPreset(modelType, modelId, name, value, tags, aliases);
 
-const formatIntervalPreset = (
-  modelId: ModelId,
-  name: string,
-  value: IPod,
-  tags = [] as Tag[],
-  aliases = [] as string[]
-): IModelConfig =>
-  formatPreset(ModelType.Interval, modelId, name, value, tags, aliases);
-
-const formatChordPreset = (
+const formatPodListPreset = (
+  modelType: ModelType.Chord | ModelType.Scale,
   modelId: ModelId,
   name: string,
   value: IntervalId[],
   tags = [] as Tag[],
   aliases = [] as string[]
 ): IModelConfig =>
-  formatPreset(ModelType.Chord, modelId, name, value, tags, aliases, true);
-
-const formatScalePreset = (
-  modelId: ModelId,
-  name: string,
-  value: IntervalId[],
-  tags = [] as Tag[],
-  aliases = [] as string[]
-): IModelConfig =>
-  formatPreset(ModelType.Scale, modelId, name, value, tags, aliases, true);
-
-const podToPodList = (podPresets: IModelConfig[]): IModelConfig[] =>
-  podPresets.map((preset) => ({ ...preset, value: [preset.value] as any }));
+  formatPreset(modelType, modelId, name, value, tags, aliases, true);
 
 // Definition maps
 
 export const NOTE_PRESET_MAP = new Map<NoteId, IModelConfig>([
-  [NoteId.C, formatNotePreset(NoteId.C, "C", [0, 0])],
-  [NoteId.Cs, formatNotePreset(NoteId.Cs, "C#", [1, 0])],
-  [NoteId.Db, formatNotePreset(NoteId.Db, "Db", [1, 1])],
-  [NoteId.D, formatNotePreset(NoteId.D, "D", [2, 1])],
-  [NoteId.Ds, formatNotePreset(NoteId.Ds, "D#", [3, 1])],
-  [NoteId.Eb, formatNotePreset(NoteId.Eb, "Eb", [3, 2])],
-  [NoteId.E, formatNotePreset(NoteId.E, "E", [4, 2])],
-  [NoteId.Es, formatNotePreset(NoteId.Es, "E#", [5, 2])],
-  [NoteId.Fb, formatNotePreset(NoteId.Fb, "Fb", [4, 3])],
-  [NoteId.F, formatNotePreset(NoteId.F, "F", [5, 3])],
-  [NoteId.Fs, formatNotePreset(NoteId.Fs, "F#", [6, 3])],
-  [NoteId.Gb, formatNotePreset(NoteId.Gb, "Gb", [6, 4])],
-  [NoteId.G, formatNotePreset(NoteId.G, "G", [7, 4])],
-  [NoteId.Gs, formatNotePreset(NoteId.Gs, "G#", [8, 4])],
-  [NoteId.Ab, formatNotePreset(NoteId.Ab, "Ab", [8, 5])],
-  [NoteId.A, formatNotePreset(NoteId.A, "A", [9, 5])],
-  [NoteId.As, formatNotePreset(NoteId.As, "A#", [10, 5])],
-  [NoteId.Bb, formatNotePreset(NoteId.Bb, "Bb", [10, 6])],
-  [NoteId.B, formatNotePreset(NoteId.B, "B", [11, 6])],
-  [NoteId.Bs, formatNotePreset(NoteId.Bs, "B#", [0, 6])],
-  [NoteId.Cb, formatNotePreset(NoteId.Cb, "Cb", [11, 0])],
+  [NoteId.C, formatPodPreset(ModelType.Note, NoteId.C, "C", [0, 0])],
+  [NoteId.Cs, formatPodPreset(ModelType.Note, NoteId.Cs, "C#", [1, 0])],
+  [NoteId.Db, formatPodPreset(ModelType.Note, NoteId.Db, "Db", [1, 1])],
+  [NoteId.D, formatPodPreset(ModelType.Note, NoteId.D, "D", [2, 1])],
+  [NoteId.Ds, formatPodPreset(ModelType.Note, NoteId.Ds, "D#", [3, 1])],
+  [NoteId.Eb, formatPodPreset(ModelType.Note, NoteId.Eb, "Eb", [3, 2])],
+  [NoteId.E, formatPodPreset(ModelType.Note, NoteId.E, "E", [4, 2])],
+  [NoteId.Es, formatPodPreset(ModelType.Note, NoteId.Es, "E#", [5, 2])],
+  [NoteId.Fb, formatPodPreset(ModelType.Note, NoteId.Fb, "Fb", [4, 3])],
+  [NoteId.F, formatPodPreset(ModelType.Note, NoteId.F, "F", [5, 3])],
+  [NoteId.Fs, formatPodPreset(ModelType.Note, NoteId.Fs, "F#", [6, 3])],
+  [NoteId.Gb, formatPodPreset(ModelType.Note, NoteId.Gb, "Gb", [6, 4])],
+  [NoteId.G, formatPodPreset(ModelType.Note, NoteId.G, "G", [7, 4])],
+  [NoteId.Gs, formatPodPreset(ModelType.Note, NoteId.Gs, "G#", [8, 4])],
+  [NoteId.Ab, formatPodPreset(ModelType.Note, NoteId.Ab, "Ab", [8, 5])],
+  [NoteId.A, formatPodPreset(ModelType.Note, NoteId.A, "A", [9, 5])],
+  [NoteId.As, formatPodPreset(ModelType.Note, NoteId.As, "A#", [10, 5])],
+  [NoteId.Bb, formatPodPreset(ModelType.Note, NoteId.Bb, "Bb", [10, 6])],
+  [NoteId.B, formatPodPreset(ModelType.Note, NoteId.B, "B", [11, 6])],
+  [NoteId.Bs, formatPodPreset(ModelType.Note, NoteId.Bs, "B#", [0, 6])],
+  [NoteId.Cb, formatPodPreset(ModelType.Note, NoteId.Cb, "Cb", [11, 0])],
 ]);
 
 export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   [
     IntervalId.P1,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.P1,
       "Perfect Unison",
       [0, 0],
@@ -125,7 +106,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.m2,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.m2,
       "Minor 2nd",
       [1, 1],
@@ -134,7 +116,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.M2,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.M2,
       "Major 2nd",
       [2, 1],
@@ -143,7 +126,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.A2,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.A2,
       "Augmented 2nd",
       [3, 1],
@@ -152,7 +136,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.d3,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.d3,
       "Diminished 3rd",
       [2, 2],
@@ -161,7 +146,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.m3,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.m3,
       "Minor 3rd",
       [3, 2],
@@ -170,7 +156,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.M3,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.M3,
       "Major 3rd",
       [4, 2],
@@ -179,7 +166,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.A3,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.A3,
       "Augmented 3rd",
       [5, 2],
@@ -188,7 +176,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.d4,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.d4,
       "Diminished 4th",
       [4, 3],
@@ -197,7 +186,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.P4,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.P4,
       "Perfect 4th",
       [5, 3],
@@ -206,7 +196,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.A4,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.A4,
       "Augmented 4th",
       [6, 3],
@@ -215,7 +206,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.d5,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.d5,
       "Diminished 5th",
       [6, 4],
@@ -224,7 +216,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.P5,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.P5,
       "Perfect 5th",
       [7, 4],
@@ -233,7 +226,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.A5,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.A5,
       "Augmented 5th",
       [8, 4],
@@ -242,7 +236,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.d6,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.d6,
       "Diminished 6th",
       [7, 5],
@@ -251,7 +246,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.m6,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.m6,
       "Minor 6th",
       [8, 5],
@@ -260,7 +256,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.M6,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.M6,
       "Major 6th",
       [9, 5],
@@ -269,7 +266,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.A6,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.A6,
       "Augmented 6th",
       [10, 5],
@@ -278,7 +276,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.d7,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.d7,
       "Diminished 7th",
       [9, 6],
@@ -287,7 +286,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.m7,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.m7,
       "Minor 7th",
       [10, 6],
@@ -296,7 +296,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.M7,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.M7,
       "Major 7th",
       [11, 6],
@@ -305,23 +306,48 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.P8,
-    formatIntervalPreset(IntervalId.P8, "Octave", [12, 7], [Tag.Perfect]),
+    formatPodPreset(
+      ModelType.Interval,
+      IntervalId.P8,
+      "Octave",
+      [12, 7],
+      [Tag.Perfect]
+    ),
   ],
   [
     IntervalId.b9,
-    formatIntervalPreset(IntervalId.b9, "Flat Ninth", [13, 8], [Tag.Extended]),
+    formatPodPreset(
+      ModelType.Interval,
+      IntervalId.b9,
+      "Flat Ninth",
+      [13, 8],
+      [Tag.Extended]
+    ),
   ],
   [
     IntervalId.x9,
-    formatIntervalPreset(IntervalId.x9, "Ninth", [14, 8], [Tag.Extended]),
+    formatPodPreset(
+      ModelType.Interval,
+      IntervalId.x9,
+      "Ninth",
+      [14, 8],
+      [Tag.Extended]
+    ),
   ],
   [
     IntervalId.s9,
-    formatIntervalPreset(IntervalId.s9, "Sharp Ninth", [15, 8], [Tag.Extended]),
+    formatPodPreset(
+      ModelType.Interval,
+      IntervalId.s9,
+      "Sharp Ninth",
+      [15, 8],
+      [Tag.Extended]
+    ),
   ],
   [
     IntervalId.b11,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.b11,
       "Flat Eleventh",
       [16, 10],
@@ -330,11 +356,18 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.x11,
-    formatIntervalPreset(IntervalId.x11, "Eleventh", [17, 10], [Tag.Extended]),
+    formatPodPreset(
+      ModelType.Interval,
+      IntervalId.x11,
+      "Eleventh",
+      [17, 10],
+      [Tag.Extended]
+    ),
   ],
   [
     IntervalId.s11,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.s11,
       "Sharp Eleventh",
       [18, 10],
@@ -343,7 +376,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.b13,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.b13,
       "Flat Thirteenth",
       [20, 12],
@@ -352,7 +386,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.x13,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.x13,
       "Thirteenth",
       [21, 12],
@@ -361,7 +396,8 @@ export const INTERVAL_PRESET_MAP = new Map<IntervalId, IModelConfig>([
   ],
   [
     IntervalId.s13,
-    formatIntervalPreset(
+    formatPodPreset(
+      ModelType.Interval,
       IntervalId.s13,
       "Sharp Thirteenth",
       [22, 12],
@@ -374,7 +410,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   // Triads
   [
     ChordId.MajTriad,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.MajTriad,
       "Major Triad",
       [IntervalId.P1, IntervalId.M3, IntervalId.P5],
@@ -383,7 +420,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.MinTriad,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.MinTriad,
       "Minor Triad",
       [IntervalId.P1, IntervalId.m3, IntervalId.P5],
@@ -392,7 +430,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.AugTriad,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.AugTriad,
       "Augmented Triad",
       [IntervalId.P1, IntervalId.M3, IntervalId.A5],
@@ -401,7 +440,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.DimTriad,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.DimTriad,
       "Diminished Triad",
       [IntervalId.P1, IntervalId.m3, IntervalId.d5],
@@ -411,7 +451,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   // Sevenths
   [
     ChordId.Maj7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Maj7,
       "Major 7th",
       [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M7],
@@ -420,7 +461,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Min7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Min7,
       "Minor 7th",
       [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.m7],
@@ -429,7 +471,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Dom7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Dom7,
       "Dominant 7th",
       [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.m7],
@@ -438,7 +481,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.MinMaj7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.MinMaj7,
       "Minor-Major 7th",
       [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M7],
@@ -447,7 +491,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Dim7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Dim7,
       "Diminished 7th",
       [IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.d7],
@@ -456,7 +501,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.HalfDim7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.HalfDim7,
       "Half-Diminished 7th",
       [IntervalId.P1, IntervalId.m3, IntervalId.d5, IntervalId.m7],
@@ -466,7 +512,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Aug7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Aug7,
       "Augmented 7th",
       [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.m7],
@@ -475,7 +522,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.AugMaj7,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.AugMaj7,
       "Augmented Major 7th",
       [IntervalId.P1, IntervalId.M3, IntervalId.A5, IntervalId.M7],
@@ -485,7 +533,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   // Sixths
   [
     ChordId.Maj6,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Maj6,
       "Major 6th",
       [IntervalId.P1, IntervalId.M3, IntervalId.P5, IntervalId.M6],
@@ -494,7 +543,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Min6,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Min6,
       "Minor 6th",
       [IntervalId.P1, IntervalId.m3, IntervalId.P5, IntervalId.M6],
@@ -504,7 +554,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   // Suspended
   [
     ChordId.Sus2,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Sus2,
       "Suspended 2nd",
       [IntervalId.P1, IntervalId.M2, IntervalId.P5],
@@ -513,7 +564,8 @@ export const CHORD_PRESET_MAP = new Map<ChordId, IModelConfig>([
   ],
   [
     ChordId.Sus4,
-    formatChordPreset(
+    formatPodListPreset(
+      ModelType.Chord,
       ChordId.Sus4,
       "Suspended 4th",
       [IntervalId.P1, IntervalId.P4, IntervalId.P5],
@@ -536,7 +588,8 @@ const addExtendedChordPreset = (config: IExtendedChordConfig) => {
   // @ts-ignore
   let baseIds = basePreset.valueIds;
 
-  const extensionPreset = formatChordPreset(
+  const extensionPreset = formatPodListPreset(
+    ModelType.Chord,
     chordId,
     name,
     [...baseIds, ...extensions],
@@ -661,7 +714,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Diatonic
   [
     ScaleId.Ionian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Ionian,
       "Ionian",
       [
@@ -679,7 +733,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Dorian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Dorian,
       "Dorian",
       [
@@ -696,7 +751,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Phrygian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Phrygian,
       "Phrygian",
       [
@@ -713,7 +769,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Lydian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Lydian,
       "Lydian",
       [
@@ -730,7 +787,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Mixolydian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Mixolydian,
       "Mixolydian",
       [
@@ -747,7 +805,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Aeolian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Aeolian,
       "Aeolian",
       [
@@ -765,7 +824,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Locrian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Locrian,
       "Locrian",
       [
@@ -783,7 +843,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Harmonic Minor
   [
     ScaleId.HarmonicMinor,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.HarmonicMinor,
       "Harmonic Minor",
       [
@@ -800,7 +861,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Locrian6,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Locrian6,
       "Locrian 6",
       [
@@ -817,7 +879,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.IonianSharp5,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.IonianSharp5,
       "Ionian #5",
       [
@@ -834,7 +897,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.DorianSharp4,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.DorianSharp4,
       "Dorian #4",
       [
@@ -851,7 +915,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.PhrygianDominant,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.PhrygianDominant,
       "Phrygian Dominant",
       [
@@ -868,7 +933,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.LydianSharp2,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.LydianSharp2,
       "Lydian #2",
       [
@@ -885,7 +951,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.SuperLocrianDoubleFlat7,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.SuperLocrianDoubleFlat7,
       "Super Locrian bb7",
       [
@@ -903,7 +970,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Melodic Minor
   [
     ScaleId.MelodicMinor,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MelodicMinor,
       "Melodic Minor",
       [
@@ -920,7 +988,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.DorianFlat2,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.DorianFlat2,
       "Dorian b2",
       [
@@ -937,7 +1006,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.LydianSharp5,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.LydianSharp5,
       "Lydian #5",
       [
@@ -954,7 +1024,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.LydianDominiant,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.LydianDominiant,
       "Lydian Dominant",
       [
@@ -971,7 +1042,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.MixolydianFlatSix,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MixolydianFlatSix,
       "Mixolydian b6",
       [
@@ -988,7 +1060,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.AeolianFlat5,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.AeolianFlat5,
       "Aeolian b5",
       [
@@ -1005,7 +1078,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.SuperLocrian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.SuperLocrian,
       "Super Locrian",
       [
@@ -1024,7 +1098,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Pentatonic
   [
     ScaleId.MajorPentatonic,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MajorPentatonic,
       "Major Pentatonic",
       [
@@ -1039,7 +1114,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Egyptian,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Egyptian,
       "Egyptian",
       [
@@ -1054,7 +1130,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.ManGong,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.ManGong,
       "Man Gong",
       [
@@ -1069,7 +1146,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.Ritusen,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.Ritusen,
       "Ritusen",
       [
@@ -1084,7 +1162,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.MinorPentatonic,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MinorPentatonic,
       "Minor Pentatonic",
       [
@@ -1100,7 +1179,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Blues
   [
     ScaleId.MajorBlues,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MajorBlues,
       "Major Blues",
       [
@@ -1116,7 +1196,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.MinorBlues,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MinorBlues,
       "Minor Blues",
       [
@@ -1133,7 +1214,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   // Bebop
   [
     ScaleId.DominantBebop,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.DominantBebop,
       "Dominant Bebob",
       [
@@ -1151,7 +1233,8 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
   [
     ScaleId.MajorBebop,
-    formatScalePreset(
+    formatPodListPreset(
+      ModelType.Scale,
       ScaleId.MajorBebop,
       "Major Bebob",
       [
