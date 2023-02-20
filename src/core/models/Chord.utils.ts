@@ -38,3 +38,11 @@ export const getNumeralText = (n, modelId) => {
       return text;
   }
 };
+
+export const getNumeralParts = (
+  modelId: ChordId,
+  n: number,
+  symbolType?: string
+): [string, string] => {
+  return [getNumeralText(n, modelId), getSymbol(modelId, symbolType)];
+};

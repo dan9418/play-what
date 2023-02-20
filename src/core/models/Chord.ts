@@ -1,4 +1,4 @@
-import { getNumeralText, getSymbol } from "./Chord.utils";
+import { getNumeralParts, getNumeralText, getSymbol } from "./Chord.utils";
 import Model from "./Model";
 import { ChordId, IPod, ModelType } from "./Model.constants";
 import { CHORD_PRESETS, CHORD_PRESET_MAP } from "./Model.presets";
@@ -17,10 +17,7 @@ export default class Chord extends PodList {
   }
 
   getNumeralParts(n, symbolType?): [string, string] {
-    return [
-      getNumeralText(n, this.modelId),
-      getSymbol(this.modelId, symbolType),
-    ];
+    return getNumeralParts(this.modelId as ChordId, n, symbolType);
   }
 
   static fromValue = (value: IPod[]) =>
