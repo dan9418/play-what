@@ -1,12 +1,6 @@
-import { Link } from "gatsby";
 import React from "react";
-import { useRootSuffix } from "../../contexts/PagePropsContext";
 import { ModelType } from "../../core/models/Model.constants";
-import {
-  CHORD_PRESETS,
-  NOTE_PRESETS,
-  SCALE_PRESETS,
-} from "../../core/models/Model.presets";
+import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";

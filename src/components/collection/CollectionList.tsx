@@ -1,10 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRoot, useRootId } from "../../contexts/PagePropsContext";
-import Chord from "../../core/models/Chord";
-import { ModelType, NoteId } from "../../core/models/Model.constants";
-import Scale from "../../core/models/Scale";
+import { useRootId } from "../../contexts/PagePropsContext";
+import { POD_LIST_PRESETS } from "../../core/models/Model.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 
 const StyledCollectionList = styled.ul`
@@ -31,13 +29,12 @@ interface ICollectionListProps {
 
 const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
   const rootId = useRootId();
-  const root = useRoot();
   return (
     <StyledCollectionList>
       {data.map((d) => {
-        const cl = d.modelType === ModelType.Chord ? Chord : Scale;
-        // @ts-ignore
-        const model = new cl(d.modelId, { root });
+        const model = POD_LIST_PRESETS.find(
+          (preset) => preset.modelId === d.modelId
+        );
 
         return (
           <li key={d.modelId}>
