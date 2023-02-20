@@ -1,135 +1,135 @@
-import IntervalSpan from './Interval';
-import Model from './Model';
-import { ChordId, IPod, ModelType, ScaleId } from './Model.constants';
-import { CHORD_PRESETS, SCALE_PRESETS } from './Model.presets';
-import Note from './Note';
-import { addPods, arePodListsEqual, getIndexOfPodAtPitch, getShortName, listContainsSubset } from './Pod.static';
+import IntervalSpan from "./Interval";
+import Model from "./Model";
+import { ChordId, IPod, ModelType, ScaleId } from "./Model.constants";
+import { getIntervalFromValue } from "./Model.generation";
+import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
+import Note from "./Note";
+import {
+  addPods,
+  arePodListsEqual,
+  getIndexOfPodAtPitch,
+  getShortName,
+  listContainsSubset,
+} from "./Pod.static";
 
 export interface IPodListOptions {
-    root?: Note;
+  root?: Note;
 }
 
 export default class PodList extends Model {
+  modelType: ModelType;
+  modelId: ChordId | ScaleId;
+  root: Note;
+  podList: IPod[];
+  intervals: IntervalSpan[];
+  notePods?: IPod[];
+  notes?: Note[];
 
-    modelType: ModelType;
-    modelId: ChordId | ScaleId;
-    root: Note;
-    podList: IPod[];
-    intervals: IntervalSpan[];
-    notePods?: IPod[];
-    notes?: Note[];
+  constructor(
+    presetMap,
+    presetId: ChordId | ScaleId,
+    options?: IPodListOptions
+  ) {
+    super();
 
-    constructor(presetMap, presetId: ChordId | ScaleId, options?: IPodListOptions) {
-        super();
+    const preset = presetMap.get(presetId);
+    if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
 
-        const preset = presetMap.get(presetId);
-        if (!preset) throw new Error(`Unknown presetId: ${presetId}`);
+    this.modelType = preset.modelType;
+    this.modelId = preset.modelId;
+    this.name = preset.name;
+    this.tags = preset.tags;
+    this.aliases = preset.aliases;
+    this.podList = preset.value;
+    this.intervals = preset.value.map((pod) => getIntervalFromValue(pod));
 
-        this.modelType = preset.modelType;
-        this.modelId = preset.modelId;
-        this.name = preset.name;
-        this.tags = preset.tags;
-        this.aliases = preset.aliases;
-        this.podList = preset.value;
-        this.intervals = preset.value.map(pod => IntervalSpan.fromValue(pod));
-
-        if (options && options.root) {
-            this.applyRoot(options.root);
-        }
+    if (options && options.root) {
+      this.applyRoot(options.root);
     }
+  }
 
-    equals(B: PodList) {
-        return arePodListsEqual(this.podList, B.podList);
+  equals(B: PodList) {
+    return arePodListsEqual(this.podList, B.podList);
+  }
+
+  getName = () => {
+    return this.name;
+  };
+
+  getShortName = () => {
+    return getShortName(this.name);
+  };
+
+  applyRoot(root: Note) {
+    let notes;
+    let notePods;
+    try {
+      notePods = this.intervals.map((ivl) => addPods(ivl.pod, root.pod));
+      notes = notePods.map((pod) => new Note(pod));
+    } catch (e) {
+      console.error(e);
+      throw new Error("Unable to apply root");
     }
+    this.root = root;
+    this.notes = notes;
+    this.notePods = notePods;
+    this.name = `${this.root.name} ${this.name}`;
+    return this;
+  }
 
-    getName = () => {
-        return this.name;
-    }
+  getIntervalListString(): string {
+    const nameArr = this.intervals.map((ivl) => ivl.getName());
+    return nameArr.join(", ");
+  }
 
-    getShortName = () => {
-        return getShortName(this.name)
-    }
+  isInSuperset(superset: IPod[]) {
+    if (superset.length <= this.podList.length) return false;
+    return listContainsSubset(superset, this.podList);
+  }
 
-    applyRoot(root: Note) {
-        let notes;
-        let notePods;
-        try {
-            notePods = this.intervals.map(ivl => addPods(ivl.pod, root.pod));
-            notes = notePods.map(pod => new Note(pod));
-        }
-        catch (e) {
-            console.error(e);
-            throw new Error('Unable to apply root');
-        }
-        this.root = root;
-        this.notes = notes;
-        this.notePods = notePods;
-        this.name = `${this.root.name} ${this.name}`
-        return this;
-    }
+  containsSubset(subset: IPod[]) {
+    if (subset.length >= this.podList.length) return false;
+    return listContainsSubset(this.podList, subset);
+  }
 
-    getIntervalListString(): string {
-        const nameArr = this.intervals.map(ivl => ivl.getName());
-        return nameArr.join(', ');
-    }
+  getSubchords() {
+    return CHORD_PRESETS.filter((preset) => this.containsSubset(preset.value));
+  }
 
-    isInSuperset(superset: IPod[]) {
-        if (superset.length <= this.podList.length) return false;
-        return listContainsSubset(superset, this.podList);
-    }
+  getSuperchords() {
+    return CHORD_PRESETS.filter((preset) => this.isInSuperset(preset.value));
+  }
 
-    containsSubset(subset: IPod[]) {
-        if (subset.length >= this.podList.length) return false;
-        return listContainsSubset(this.podList, subset);
-    }
+  getSubscales() {
+    return SCALE_PRESETS.filter((preset) => this.containsSubset(preset.value));
+  }
 
-    getSubchords() {
-        return CHORD_PRESETS.filter(preset =>
-            this.containsSubset(preset.value)
-        );
-    }
+  getSuperscales() {
+    return SCALE_PRESETS.filter((preset) => this.isInSuperset(preset.value));
+  }
 
-    getSuperchords() {
-        return CHORD_PRESETS.filter(preset =>
-            this.isInSuperset(preset.value)
-        );
-    }
+  getAllRelated() {
+    return [
+      ...this.getSubchords(),
+      ...this.getSubscales(),
+      ...this.getSuperchords(),
+      ...this.getSuperscales(),
+    ];
+  }
 
-    getSubscales() {
-        return SCALE_PRESETS.filter(preset =>
-            this.containsSubset(preset.value)
-        );
-    }
+  getPreview() {
+    return this.getIntervalListString();
+  }
 
-    getSuperscales() {
-        return SCALE_PRESETS.filter(preset =>
-            this.isInSuperset(preset.value)
-        );
-    }
+  tryGetPodPairAtPitch(
+    noteIndex: number
+  ): [IntervalSpan, Note] | [undefined, undefined] {
+    if (!this.notePods) return [undefined, undefined];
 
-    getAllRelated() {
-        return [
-            ...this.getSubchords(),
-            ...this.getSubscales(),
-            ...this.getSuperchords(),
-            ...this.getSuperscales()
-        ]
-    }
+    const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
 
-    getPreview() {
-        return this.getIntervalListString();
-    }
+    if (index == null) return [undefined, undefined];
 
-    tryGetPodPairAtPitch(noteIndex: number): [IntervalSpan, Note] | [undefined, undefined] {
-        if (!this.notePods) return [undefined, undefined];
-        
-        const index = getIndexOfPodAtPitch(this.notePods, noteIndex, false);
-
-        if (index == null) return [undefined, undefined];
-
-        return [
-            this.intervals[index],
-            (this.notes as Note[])[index]
-        ];
-    }
+    return [this.intervals[index], (this.notes as Note[])[index]];
+  }
 }

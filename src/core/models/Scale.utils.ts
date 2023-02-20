@@ -2,6 +2,7 @@ import NumberUtils from "../general/Number.utils";
 import Chord from "./Chord";
 import IntervalSpan from "./Interval";
 import { IPod, Tag } from "./Model.constants";
+import { getChordfromValue } from "./Model.generation";
 import { subtractPods } from "./Pod.static";
 
 export const getNumeral = (podList, intervals, root, notes, d): Chord => {
@@ -18,10 +19,8 @@ export const getNumeral = (podList, intervals, root, notes, d): Chord => {
   for (let i = 0; i < curIntervals.length - 1; i++) {
     const newPod = subtractPods(curIntervals[i + 1].pod, curIntervals[0].pod);
     newPods.push(newPod);
-    //const newIvl = IntervalSpan.fromValue(newPod);
-    //newIntervals.push(newIvl);
   }
-  const numeral = Chord.fromValue(newPods);
+  const numeral = getChordfromValue(newPods);
   if (root && notes) {
     numeral.applyRoot(notes[d]);
   }

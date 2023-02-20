@@ -6,6 +6,7 @@ import {
   getParsedChart,
 } from "../../../../../core/models/Chart.constants";
 import { ModelType } from "../../../../../core/models/Model.constants";
+import { getNotefromValue } from "../../../../../core/models/Model.generation";
 import {
   NOTE_PRESETS,
   NOTE_PRESET_MAP,
@@ -149,7 +150,7 @@ const Page: React.FC<any> = () => {
 
                     let adjustedRoot;
                     try {
-                      adjustedRoot = Note.fromValue(adjustedPod);
+                      adjustedRoot = getNotefromValue(adjustedPod);
                     } catch (e) {
                       return <li>?</li>;
                     }
