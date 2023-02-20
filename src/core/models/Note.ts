@@ -61,10 +61,6 @@ export default class Note extends Pod {
     return note;
   };
 
-  getColor(): string | undefined {
-    return DEFAULT_PITCH_COLOR_SCHEME[this.getPitch()];
-  }
-
   getAccidentalOffset(): number {
     const [p, d] = reducePod(this.pod);
 

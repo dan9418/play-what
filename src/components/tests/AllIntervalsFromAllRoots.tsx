@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import IntervalSpan from "../../core/models/Interval";
+import styled from "styled-components";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
 import { getIntervalFromValue } from "../../core/models/Model.generation";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";

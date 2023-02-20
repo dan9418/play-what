@@ -1,9 +1,8 @@
 import Chord from "../../core/models/Chord";
 import IntervalSpan from "../../core/models/Interval";
-import { IModelConfig } from "../../core/models/Model.constants";
 import Note from "../../core/models/Note";
 import Scale from "../../core/models/Scale";
-import { ITuning, TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
+import { TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
 import { IVoicing } from "./Fretboard.voicing";
 
 export interface IFretLabelProps {
@@ -71,7 +70,9 @@ export const getFretColor = (props: IFretProps): string | undefined => {
     return `#00000011`;
   }
 
-  return interval.getColor();
+  if (interval.pod[0] === 0 && interval.pod[1] === 0) return "red";
+
+  return "#555";
 };
 
 export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {

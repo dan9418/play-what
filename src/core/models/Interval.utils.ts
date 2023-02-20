@@ -1,3 +1,4 @@
+import TuningUtils from "../tuning/Tuning.utils";
 import {
   IIntervalQuality,
   IModelConfig,
@@ -6,7 +7,7 @@ import {
   IPod,
   MAX_POD,
 } from "./Model.constants";
-import { CORE_INTERVALS } from "./Model.presets";
+import { CORE_INTERVALS, INTERVAL_PRESET_MAP } from "./Model.presets";
 import { getExtensionInversionId, reducePod } from "./Pod.static";
 
 const getIsExtended = (pod: IPod): boolean => {
@@ -56,4 +57,19 @@ export const getName = (pod: IPod) => {
   }
 
   return value;
+};
+
+export const getNameFromId = (presetId: IntervalId) => {
+  return (INTERVAL_PRESET_MAP.get(presetId) as IModelConfig).name || "";
+};
+
+export const getRatio = (pod: IPod) => {
+  const [p] = pod;
+
+  const baseline = TuningUtils.getFrequency(0);
+  const compareTo = TuningUtils.getFrequency(p);
+
+  const ratio = compareTo / baseline;
+
+  return `1:${ratio.toFixed(2)}`;
 };

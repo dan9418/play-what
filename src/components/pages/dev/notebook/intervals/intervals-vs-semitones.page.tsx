@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import IntervalSpan from "../../../../../core/models/Interval";
+import { getNameFromId } from "../../../../../core/models/Interval.utils";
 import { IntervalId } from "../../../../../core/models/Model.constants";
 import PageLayout from "../../../../layout/PageLayout";
 import Card from "../../../../ui/Card";
 import { Table } from "../../../../ui/Table";
 import { TABLE_STYLES_1 } from "../../../../ui/Table.styles";
-
-const getName = (id: IntervalId): string => {
-  return new IntervalSpan(id).getName();
-};
 
 const FOOTERS = [
   {
@@ -23,45 +19,45 @@ const ROWS = [
       "",
       "",
       "",
-      getName(IntervalId.A2),
+      getNameFromId(IntervalId.A2),
       "",
-      getName(IntervalId.A3),
-      getName(IntervalId.A4),
+      getNameFromId(IntervalId.A3),
+      getNameFromId(IntervalId.A4),
       "",
-      getName(IntervalId.A5),
+      getNameFromId(IntervalId.A5),
       "",
-      getName(IntervalId.A6),
+      getNameFromId(IntervalId.A6),
       "",
     ],
   },
   {
     cols: [
-      getName(IntervalId.P1),
-      getName(IntervalId.m2),
-      getName(IntervalId.M2),
-      getName(IntervalId.m3),
-      getName(IntervalId.M3),
-      getName(IntervalId.P4),
+      getNameFromId(IntervalId.P1),
+      getNameFromId(IntervalId.m2),
+      getNameFromId(IntervalId.M2),
+      getNameFromId(IntervalId.m3),
+      getNameFromId(IntervalId.M3),
+      getNameFromId(IntervalId.P4),
       "",
-      getName(IntervalId.P5),
-      getName(IntervalId.m6),
-      getName(IntervalId.M6),
-      getName(IntervalId.m7),
-      getName(IntervalId.M7),
+      getNameFromId(IntervalId.P5),
+      getNameFromId(IntervalId.m6),
+      getNameFromId(IntervalId.M6),
+      getNameFromId(IntervalId.m7),
+      getNameFromId(IntervalId.M7),
     ],
   },
   {
     cols: [
       "",
       "",
-      getName(IntervalId.d3),
+      getNameFromId(IntervalId.d3),
       "",
-      getName(IntervalId.d4),
+      getNameFromId(IntervalId.d4),
       "",
-      getName(IntervalId.d5),
-      getName(IntervalId.d6),
+      getNameFromId(IntervalId.d5),
+      getNameFromId(IntervalId.d6),
       "",
-      getName(IntervalId.d7),
+      getNameFromId(IntervalId.d7),
       "",
       "",
     ],
