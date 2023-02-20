@@ -1252,13 +1252,27 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
 ]);
 
+// Merged maps
+
+// export const POD_PRESET_MAP = new Map<ModelId, IModelConfig>([
+//   ...NOTE_PRESET_MAP,
+//   ...INTERVAL_PRESET_MAP,
+// ]);
+
+export const POD_LIST_PRESET_MAP = new Map<ModelId, IModelConfig>([
+  ...CHORD_PRESET_MAP,
+  ...SCALE_PRESET_MAP,
+]);
+
 // Definition arrays
 
 export const NOTE_PRESETS = ArrayUtils.mapToArray(NOTE_PRESET_MAP);
+export const INTERVAL_PRESETS = ArrayUtils.mapToArray(INTERVAL_PRESET_MAP);
+//export const POD_PRESETS = [...NOTE_PRESETS, ...INTERVAL_PRESETS]
+
 export const SCALE_PRESETS = ArrayUtils.mapToArray(SCALE_PRESET_MAP);
 export const CHORD_PRESETS = ArrayUtils.mapToArray(CHORD_PRESET_MAP);
-export const INTERVAL_PRESETS = ArrayUtils.mapToArray(INTERVAL_PRESET_MAP);
-export const ALL_PRESETS = [...CHORD_PRESETS, ...SCALE_PRESETS];
+export const POD_LIST_PRESETS = [...SCALE_PRESETS, ...CHORD_PRESETS];
 
 // Definition groupings
 

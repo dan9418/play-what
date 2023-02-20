@@ -3,10 +3,13 @@ import {
   ModelId,
   ModelType,
   NoteId,
-  Tag
+  Tag,
 } from "../../core/models/Model.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
-import { ALL_PRESETS, NOTE_PRESET_MAP } from "../../core/models/Model.presets";
+import {
+  POD_LIST_PRESETS,
+  NOTE_PRESET_MAP,
+} from "../../core/models/Model.presets";
 import { replaceAll } from "../../core/general/String.utils";
 
 interface ISearchResult {
@@ -140,7 +143,7 @@ const getPresetsFromQuery = (
   modelType?: ModelType
 ): IModelPresetResult[] => {
   const allTags = getTags(query);
-  return ALL_PRESETS.filter(
+  return POD_LIST_PRESETS.filter(
     (p) => !(modelType && p.modelType !== modelType)
   ).map((p) => {
     return extendPreset(p, query, allTags);

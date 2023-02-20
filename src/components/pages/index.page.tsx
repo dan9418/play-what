@@ -6,9 +6,12 @@ import { FEEDBACK_LINK } from "../../config/constants";
 import {
   getModelIdClass,
   getModelIdText,
-  ModelType
+  ModelType,
 } from "../../core/models/Model.constants";
-import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
+import {
+  POD_LIST_PRESETS,
+  NOTE_PRESETS,
+} from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import PageLayout from "../layout/PageLayout";
@@ -199,7 +202,7 @@ const Page: React.FC<any> = () => {
       const root =
         NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
       const structure =
-        ALL_PRESETS[Math.floor(Math.random() * ALL_PRESETS.length)];
+        POD_LIST_PRESETS[Math.floor(Math.random() * POD_LIST_PRESETS.length)];
       const text = `${root.name} ${structure.name} ${getModelIdText(
         structure.modelType
       )}`;
