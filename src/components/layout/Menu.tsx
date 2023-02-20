@@ -91,10 +91,6 @@ const LINKS: ILink[] = [
     name: "Fretboard",
   },
   {
-    path: "search",
-    name: "Search",
-  },
-  {
     path: "help",
     name: "Help",
   },

@@ -39,7 +39,7 @@ const Page: React.FC = () => {
           </p>
           <ul>
             <li>
-              <a href="https://danbednarczyk.com/">Website</a>
+              <a href="http://danbednarczyk.com/">Website</a>
             </li>
             <li>
               <a href="https://www.instagram.com/dan.bednarczyk/">Instagram</a>

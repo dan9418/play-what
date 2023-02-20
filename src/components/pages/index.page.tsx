@@ -6,13 +6,12 @@ import { FEEDBACK_LINK } from "../../config/constants";
 import {
   getModelIdClass,
   getModelIdText,
-  ModelType,
+  ModelType
 } from "../../core/models/Model.constants";
 import { ALL_PRESETS, NOTE_PRESETS } from "../../core/models/Model.presets";
 import Note from "../../core/models/Note";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import PageLayout from "../layout/PageLayout";
-import SearchBar, { StyledSearchBar } from "../search/SearchBar";
 import Icon, { IconId } from "../ui/Icon";
 import { DEFAULT_MODEL } from "./view/view.defaults";
 
@@ -45,7 +44,7 @@ const StyledHomePage = styled(PageLayout)`
     text-align: center;
     line-height: 120%;
     font-size: 120%;
-    margin: auto;
+    margin: 32px auto;
     @media (min-width: 512px) {
       font-size: 140%;
     }
@@ -68,12 +67,6 @@ const StyledHomePage = styled(PageLayout)`
       margin: 32px 0;
       font-size: 120%;
     }
-  }
-
-  ${StyledSearchBar} {
-    margin: 32px auto;
-    display: flex;
-    justify-content: center;
   }
 
   .preview {
@@ -193,7 +186,6 @@ const StyledHomePage = styled(PageLayout)`
 `;
 
 const Page: React.FC<any> = () => {
-  const [placeholder, setPlaceholder] = useState("Search the site");
   const [model, setModel] = useState(DEFAULT_MODEL);
 
   const modelPath = getModelRoute(
@@ -214,7 +206,6 @@ const Page: React.FC<any> = () => {
       const cl = getModelIdClass(structure.modelType);
       const m = new cl(structure.modelId, { root: Note.fromId(root.modelId) });
 
-      setPlaceholder(text);
       setModel(m);
     }, 2000);
     return () => clearInterval(id);
@@ -224,7 +215,6 @@ const Page: React.FC<any> = () => {
     <StyledHomePage isHome>
       <img src={logoSrc} className="logo" /*width={768} height={128}*/ />
       <p className="intro">Every chord. Every scale. Every key.</p>
-      <SearchBar placeholder={placeholder} />
       <div className="tiles">
         <Link to="/browse" className="tile">
           <Icon iconId={IconId.Browse} size={64} />

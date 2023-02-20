@@ -4,10 +4,10 @@ import {
   ModelType,
   NoteId,
   Tag
-} from "../models/Model.constants";
-import { getModelRoute } from "../routing/Routing.utils";
-import { ALL_PRESETS, NOTE_PRESET_MAP } from "./../models/Model.presets";
-import { replaceAll } from "./String.utils";
+} from "../../core/models/Model.constants";
+import { getModelRoute } from "../../core/routing/Routing.utils";
+import { ALL_PRESETS, NOTE_PRESET_MAP } from "../../core/models/Model.presets";
+import { replaceAll } from "../../core/general/String.utils";
 
 interface ISearchResult {
   to: string;

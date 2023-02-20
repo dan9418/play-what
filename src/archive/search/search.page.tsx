@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from 'styled-components';
 import { useQueryParam } from "use-query-params";
-import PageLayout from "../layout/PageLayout";
-import SearchBar from "../search/SearchBar";
-import SearchResultsCard from "../search/SearchResultsCard";
+import PageLayout from "../../components/layout/PageLayout";
+import SearchBar from "./SearchBar";
+import SearchResultsCard from "./SearchResultsCard";
 
 const StyledSearchPage = styled(PageLayout)`
     .search-bar {
