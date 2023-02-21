@@ -1,46 +1,77 @@
 import React from "react";
-import { ModelType, PresetType } from "../../core/models/Model.constants";
+import { IModelConfig, PresetType } from "../../core/models/Model.constants";
 import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
+import {
+  getSubchords,
+  getSubscales,
+  getSuperchords,
+  getSuperscales,
+} from "../../core/models/Pod.static";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";
 
-const RelatedCard: React.FC<any> = ({ model }) => {
-  const subchords = model.getSubchords();
-  const subscales = model.getSubscales();
-  const superchords = model.getSuperchords();
-  const superscales = model.getSuperscales();
+interface IRelatedCardProps {
+  modelConfig: IModelConfig;
+  rootModelConfig?: IModelConfig;
+}
 
-  const semitones = model.intervals.map((ivl) => ivl.pod[0] + 1);
+const RelatedCard: React.FC<IRelatedCardProps> = ({
+  modelConfig,
+  rootModelConfig,
+}) => {
+  const { modelType, presetType, presetId, value: intervalPods } = modelConfig;
+  const subchords = getSubchords(intervalPods);
+  const subscales = getSubscales(intervalPods);
+  const superchords = getSuperchords(intervalPods);
+  const superscales = getSuperscales(intervalPods);
+
+  const semitones = intervalPods.map((ivl) => ivl[0] + 1);
 
   return (
     <>
       {subchords.length > 0 && (
         <Card title="Child Chords">
-          <CollectionTable data={subchords} semitones={semitones} />
+          <CollectionTable
+            data={subchords}
+            rootModelConfig={rootModelConfig}
+            semitones={semitones}
+          />
         </Card>
       )}
       {superchords.length > 0 && (
         <Card title="Parent Chords">
-          <CollectionTable data={superchords} semitones={semitones} />
+          <CollectionTable
+            data={superchords}
+            rootModelConfig={rootModelConfig}
+            semitones={semitones}
+          />
         </Card>
       )}
       {subscales.length > 0 && (
         <Card title="Child Scales">
-          <CollectionTable data={subscales} semitones={semitones} />
+          <CollectionTable
+            data={subscales}
+            rootModelConfig={rootModelConfig}
+            semitones={semitones}
+          />
         </Card>
       )}
       {superscales.length > 0 && (
         <Card title="Parent Scales">
-          <CollectionTable data={superscales} semitones={semitones} />
+          <CollectionTable
+            data={superscales}
+            rootModelConfig={rootModelConfig}
+            semitones={semitones}
+          />
         </Card>
       )}
-      {model.modelType === PresetType.Chord && (
+      {presetType === PresetType.Chord && (
         <Card title="Other Chords">
           <CollectionList data={CHORD_PRESETS} />
         </Card>
       )}
-      {model.modelType === PresetType.Scale && (
+      {presetType === PresetType.Scale && (
         <Card title="Other Scales">
           <CollectionList data={SCALE_PRESETS} />
         </Card>

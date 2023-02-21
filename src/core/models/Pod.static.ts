@@ -18,6 +18,7 @@ import {
   SCALE_PRESETS,
   SCALE_PRESET_MAP,
 } from "./Model.presets";
+import { getName } from "./Note.utils";
 
 // Sound
 
@@ -188,8 +189,13 @@ export const getExtensionInversionId = (id: IntervalId): IntervalId => {
   }
 };
 
-export const getRootedName = (modelConfig: IModelConfig, rootId: NoteId) => {
-  return `${rootId || ""} ${modelConfig.name}`;
+export const getRootedName = (
+  modelConfig: IModelConfig,
+  rootModelConfig?: IModelConfig
+) => {
+  return `${rootModelConfig ? `${getName(rootModelConfig.value)} ` : ""}${
+    modelConfig.name
+  }`;
 };
 
 export const isInSuperset = (intervalPods: IPod[], superset: IPod[]) => {

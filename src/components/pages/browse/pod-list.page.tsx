@@ -5,6 +5,7 @@ import { IModelConfig, PresetType } from "../../../core/models/Model.constants";
 import { getNoteFromId } from "../../../core/models/Note.utils";
 import { getModelConfigById } from "../../../core/models/Pod.static";
 import DetailsCard from "../../cards/DetailsCard";
+import RelatedCard from "../../cards/RelatedCard";
 import RootCard from "../../cards/RootCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
@@ -42,7 +43,10 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
             null /*<ModeCard model={podList} />*/
         }
         {/*<GuitarCard model={podList} />*/}
-        {/*<RelatedCard model={podList} />*/}
+        <RelatedCard
+          modelConfig={modelConfig}
+          rootModelConfig={rootModelConfig}
+        />
       </ColumnManager>
     </StyledPodlistPage>
   );

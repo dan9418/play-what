@@ -1,9 +1,9 @@
 import React from "react";
 import { css } from "styled-components";
-import { useRootId } from "../../contexts/PagePropsContext";
-import { getName } from "../../core/models/Interval.utils";
+import { getName as getIntervalName } from "../../core/models/Interval.utils";
 import { IModelConfig, IPod, NoteId } from "../../core/models/Model.constants";
-import { getRootedName } from "../../core/models/Pod.static";
+import { getName as getNoteName } from "../../core/models/Note.utils";
+import { addPods, getRootedName } from "../../core/models/Pod.static";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
 
@@ -75,6 +75,7 @@ const tableStyles = css`
 
 export interface ICollectionTableProps {
   data: IModelConfig[];
+  rootModelConfig?: IModelConfig;
   semitones?: number[];
 }
 
@@ -84,7 +85,7 @@ const getSemitoneCol = (
   pods: IPod[],
   h: number,
   semitones: number[],
-  rootId?: NoteId
+  rootModelConfig?: IModelConfig
 ) => {
   const index = pods.findIndex((ivl) => ivl[0] + 1 === h);
   const className = semitones.includes(h) ? "active" : undefined;
@@ -94,7 +95,9 @@ const getSemitoneCol = (
       content: "",
     };
   }
-  const text = rootId ? "?" : getName(pods[index]);
+  const text = rootModelConfig
+    ? getNoteName(addPods(rootModelConfig.value, pods[index]))
+    : getIntervalName(pods[index]);
   return {
     className,
     content: text,
@@ -104,8 +107,8 @@ const getSemitoneCol = (
 const CollectionTable: React.FC<ICollectionTableProps> = ({
   data,
   semitones = [],
+  rootModelConfig,
 }) => {
-  const rootId = useRootId();
   return (
     <Table
       styles={tableStyles}
@@ -115,7 +118,7 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
             "Name",
             {
               colSpan: 12,
-              content: rootId ? "Notes" : "Intervals",
+              content: rootModelConfig ? "Notes" : "Intervals",
             },
           ],
         },
@@ -124,11 +127,17 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
         return {
           cols: [
             {
-              link: getModelRoute(d.presetType, d.presetId, rootId as NoteId),
-              content: getRootedName(d, rootId as NoteId),
+              link: getModelRoute(
+                d.presetType,
+                d.presetId,
+                rootModelConfig
+                  ? (rootModelConfig.presetId as NoteId)
+                  : undefined
+              ),
+              content: getRootedName(d, rootModelConfig),
             },
             ...SEMITONES.map((h, i) =>
-              getSemitoneCol(d.value, h, semitones, rootId as NoteId)
+              getSemitoneCol(d.value, h, semitones, rootModelConfig)
             ),
           ],
         };
