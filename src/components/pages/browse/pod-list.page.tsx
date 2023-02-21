@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { ModelPageProps, useRoot } from "../../../contexts/PagePropsContext";
-import { PresetType } from "../../../core/models/Model.constants";
+import { ModelPageProps } from "../../../contexts/PagePropsContext";
+import { IModelConfig, PresetType } from "../../../core/models/Model.constants";
+import { getNoteFromId } from "../../../core/models/Note.utils";
+import { getModelConfigById } from "../../../core/models/Pod.static";
+import DetailsCard from "../../cards/DetailsCard";
 import RootCard from "../../cards/RootCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
@@ -9,10 +12,14 @@ import PageLayout from "../../layout/PageLayout";
 const StyledPodlistPage = styled(PageLayout)``;
 
 const PodListPage: React.FC<ModelPageProps> = (props) => {
-  const { presetType, presetId } = props.pageContext;
-  const root = useRoot();
+  const { presetType, presetId, rootId } = props.pageContext;
 
-  const title = `PODLIST`;
+  const modelConfig = getModelConfigById(presetType, presetId) as IModelConfig;
+  const rootModelConfig = getNoteFromId(rootId);
+
+  const title = `${
+    rootId ? (getNoteFromId(rootId) as IModelConfig).name : ""
+  } ${modelConfig.name}`;
 
   //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
 
@@ -21,7 +28,10 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
       <ColumnManager>
         <ColumnManager tablet={["300px", "auto"]}>
           <RootCard />
-          {/*<DetailsCard model={podList} />*/}
+          <DetailsCard
+            modelConfig={modelConfig}
+            rootModelConfig={rootModelConfig}
+          />
         </ColumnManager>
         {
           presetType === PresetType.Scale &&

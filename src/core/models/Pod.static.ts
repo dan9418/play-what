@@ -1,12 +1,23 @@
 import NumberUtils from "../general/Number.utils";
 import {
+  ChordId,
   IModelConfig,
   IntervalId,
   IPod,
   MAX_POD,
   NoteId,
+  PresetId,
+  PresetType,
+  ScaleId,
 } from "./Model.constants";
-import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
+import {
+  CHORD_PRESETS,
+  CHORD_PRESET_MAP,
+  INTERVAL_PRESET_MAP,
+  NOTE_PRESET_MAP,
+  SCALE_PRESETS,
+  SCALE_PRESET_MAP,
+} from "./Model.presets";
 
 // Sound
 
@@ -250,4 +261,19 @@ export const tryGetPodPairAtPitch = (
   if (index == null) return [undefined, undefined];
 
   return [intervalPods[index], (notePods as IPod[])[index]];
+};
+
+export const getModelConfigById = (
+  presetType: PresetType,
+  presetId: PresetId
+) => {
+  if (presetType === PresetType.Interval) {
+    return INTERVAL_PRESET_MAP.get(presetId as IntervalId);
+  } else if (presetType === PresetType.Note) {
+    return NOTE_PRESET_MAP.get(presetId as NoteId);
+  } else if (presetType === PresetType.Chord) {
+    return CHORD_PRESET_MAP.get(presetId as ChordId);
+  } else if (presetType === PresetType.Scale) {
+    return SCALE_PRESET_MAP.get(presetId as ScaleId);
+  }
 };

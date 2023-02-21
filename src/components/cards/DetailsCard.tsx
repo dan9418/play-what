@@ -12,6 +12,7 @@ import {
   getName as getNoteName,
   getOctave,
 } from "../../core/models/Note.utils";
+import { addPods } from "../../core/models/Pod.static";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -116,21 +117,28 @@ const getRatioCell = (interval: IPod) => {
 };
 
 interface IDetailsCardProps {
-  model: IModelConfig;
+  modelConfig: IModelConfig;
+  rootModelConfig?: IModelConfig;
 }
 
-const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
-  const intervalPods = model.intervalPods;
+const DetailsCard: React.FC<IDetailsCardProps> = ({
+  modelConfig,
+  rootModelConfig,
+}) => {
+  const intervalPods = modelConfig.value;
   const octave = useRecoilValue(octaveState);
-  const hasNotes = !!model.notePods;
-  const notes =
+  const hasNotes = !!rootModelConfig;
+  const notePods =
     hasNotes &&
-    (model.notePods as IPod[]).map((n) => [
-      (octave - 4) * 12 + NumberUtils.modulo(n[0], 12),
-      n[1],
-    ]);
+    intervalPods.map((ivl) => {
+      const notePod = addPods(rootModelConfig.value, ivl);
+      return [
+        (octave - 4) * 12 + NumberUtils.modulo(notePod[0], 12),
+        notePod[1],
+      ];
+    });
 
-  if (!intervalPods && !notes) return null;
+  if (!intervalPods && !notePods) return null;
 
   return (
     <StyledDetailsCard $n={intervalPods.length}>
@@ -148,12 +156,12 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
           },
         ]}
         tbody={intervalPods.map((ivl, i) => {
-          const note = hasNotes && notes[i];
+          const notePod = hasNotes && notePods[i];
           return {
             cols: [
-              hasNotes ? getNoteCell(note, i) : undefined,
-              getIntervalCell(ivl, !note),
-              hasNotes ? getPitchCell(note) : undefined,
+              hasNotes ? getNoteCell(notePod, i) : undefined,
+              getIntervalCell(ivl, !notePod),
+              hasNotes ? getPitchCell(notePod) : undefined,
               getRatioCell(ivl),
             ],
           };
@@ -167,21 +175,23 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({ model }) => {
             ? {
                 cols: [
                   "Note",
-                  ...(notes as IPod[]).map((note, i) => getNoteCell(note, i)),
+                  ...(notePods as IPod[]).map((note, i) =>
+                    getNoteCell(note, i)
+                  ),
                 ],
               }
             : undefined,
           {
             cols: [
               "Interval",
-              ...intervalPods.map((ivl, i) => getIntervalCell(ivl, !notes)),
+              ...intervalPods.map((ivl, i) => getIntervalCell(ivl, !notePods)),
             ],
           },
           hasNotes
             ? {
                 cols: [
                   "Pitch",
-                  ...(notes as IPod[]).map((note, i) => getPitchCell(note)),
+                  ...(notePods as IPod[]).map((note, i) => getPitchCell(note)),
                 ],
               }
             : undefined,
