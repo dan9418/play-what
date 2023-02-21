@@ -1,49 +1,52 @@
 import ArrayUtils from "../general/Array.utils";
 import NumberUtils from "../general/Number.utils";
 import { IModelConfig, IPod, Tag } from "./Model.constants";
-import { CHORD_PRESETS, SCALE_PRESETS } from "./Model.presets";
-import { arePodListsEqual, subtractPods } from "./Pod.static";
+import {
+  CHORD_PRESETS,
+  INTERVAL_PRESETS,
+  SCALE_PRESETS,
+} from "./Model.presets";
+import {
+  arePodListsEqual,
+  arePodsEqual,
+  reducePod,
+  subtractPods,
+} from "./Pod.static";
 
-export const getNumeral = (
-  podList: IPod[],
-  intervals: IPod[],
-  root: IPod,
-  notes: IPod,
-  d: number
-): IModelConfig => {
+export const getNumeral = (intervalPods: IPod[], d: number): IModelConfig => {
   // Get every other interval
   const curIntervals: IPod[] = [];
-  for (let i = 0; i < podList.length; i = i + 2) {
-    const curD = NumberUtils.moduloSum(d, i, podList.length);
-    const curIvl = intervals[curD];
+  for (let i = 0; i < intervalPods.length; i = i + 2) {
+    const curD = NumberUtils.moduloSum(d, i, intervalPods.length);
+    const curIvl = intervalPods[curD];
     curIntervals.push(curIvl);
   }
   // Get difference between each interval
   const newPods: IPod[] = [[0, 0]];
   for (let i = 0; i < curIntervals.length - 1; i++) {
     const newPod = subtractPods(curIntervals[i + 1], curIntervals[0]);
-    newPods.push(newPod);
+    newPods.push(reducePod(newPod));
   }
-  const numeral = CHORD_PRESETS.find((preset) =>
-    arePodListsEqual(preset, newPods)
+  console.log(
+    "dpb",
+    newPods.map((p) =>
+      INTERVAL_PRESETS.find((ivl) => arePodsEqual(ivl.value, p))
+    )
   );
-  if (root && notes) {
-    // numeral.applyRoot(notes[d]); TODO
-  }
+  const numeral = CHORD_PRESETS.find((preset) =>
+    arePodListsEqual(preset.value, newPods)
+  );
   return numeral;
 };
 
 export const getAllNumerals = (
-  podList,
-  intervas,
-  root,
-  notes,
-  tags
-): IModelConfig[] => {
-  const numerals: IModelConfig[] = [];
-  if (tags.includes(Tag.Diatonic)) {
-    for (let i = 0; i < podList.length; i++) {
-      numerals.push(getNumeral(podList, intervas, root, notes, i));
+  modelConfig: IModelConfig,
+  rootModelConfig?: IModelConfig
+): [IModelConfig | undefined, IModelConfig][] => {
+  const numerals: [IModelConfig | undefined, IModelConfig][] = [];
+  if (modelConfig.tags.includes(Tag.Diatonic)) {
+    for (let i = 0; i < modelConfig.value.length; i++) {
+      numerals.push([rootModelConfig, getNumeral(modelConfig.value, i)]);
     }
   }
   return numerals;

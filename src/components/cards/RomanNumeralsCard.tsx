@@ -1,8 +1,14 @@
 import React from "react";
 import { css } from "styled-components";
 import { getNumeralParts } from "../../core/models/Chord.utils";
-import { NoteId } from "../../core/models/Model.constants";
-import Scale from "../../core/models/Scale";
+import {
+  ChordId,
+  IModelConfig,
+  NoteId,
+} from "../../core/models/Model.constants";
+import { getNoteFromPod } from "../../core/models/Note.utils";
+import { getRootedName, getShortName } from "../../core/models/Pod.static";
+import { getAllNumerals } from "../../core/models/Scale.utils";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -34,17 +40,19 @@ const tableStyles = css`
 `;
 
 interface IRomanNumeralsCardProps {
-  model: Scale;
+  modelConfig: IModelConfig;
+  rootModelConfig?: IModelConfig;
   title?: string;
 }
 
 const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
-  model,
+  modelConfig,
+  rootModelConfig,
   title = "Roman Numerals",
 }) => {
-  const numerals = model.getAllNumerals();
+  const numerals = getAllNumerals(modelConfig, rootModelConfig);
 
-  if (!numerals.length || numerals.find((n) => !n)) return null;
+  if (!numerals.length || numerals.find((n) => !n || !n[1])) return null;
 
   return (
     <Card title={title}>
@@ -58,7 +66,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
               "Numeral",
               ...numerals.map((n, i) => {
                 const [numeral, symbol] = getNumeralParts(
-                  model.presetId,
+                  modelConfig.presetId as ChordId,
                   i + 1
                 );
                 return {
@@ -78,13 +86,13 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
           {
             cols: [
               "Name",
-              ...numerals.map((n, i) => ({
+              ...numerals.map(([root, n], i) => ({
                 link: getModelRoute(
-                  n.modelType,
+                  n.presetType,
                   n.presetId,
-                  n.root && n.root.presetId
+                  root ? (root.presetId as NoteId) : undefined
                 ),
-                content: n.getShortName(),
+                content: getShortName(getRootedName(n, rootModelConfig)),
               })),
             ],
           },

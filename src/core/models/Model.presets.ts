@@ -40,7 +40,7 @@ const formatPreset = (
 ): IModelConfig => {
   const isList = getIsList(presetType);
   return {
-    modelType: isList ? ModelType.Pod : ModelType.PodList,
+    modelType: isList ? ModelType.PodList : ModelType.Pod,
     presetType,
     presetId,
     name,
@@ -1237,23 +1237,10 @@ export const SCALE_PRESET_MAP = new Map<ScaleId, IModelConfig>([
   ],
 ]);
 
-// Merged maps
-
-// export const POD_PRESET_MAP = new Map<PresetId, IModelConfig>([
-//   ...NOTE_PRESET_MAP,
-//   ...INTERVAL_PRESET_MAP,
-// ]);
-
-export const POD_LIST_PRESET_MAP = new Map<PresetId, IModelConfig>([
-  ...CHORD_PRESET_MAP,
-  ...SCALE_PRESET_MAP,
-]);
-
 // Definition arrays
 
 export const NOTE_PRESETS = ArrayUtils.mapToArray(NOTE_PRESET_MAP);
 export const INTERVAL_PRESETS = ArrayUtils.mapToArray(INTERVAL_PRESET_MAP);
-//export const POD_PRESETS = [...NOTE_PRESETS, ...INTERVAL_PRESETS]
 
 export const SCALE_PRESETS = ArrayUtils.mapToArray(SCALE_PRESET_MAP);
 export const CHORD_PRESETS = ArrayUtils.mapToArray(CHORD_PRESET_MAP);

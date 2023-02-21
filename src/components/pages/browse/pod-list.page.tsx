@@ -6,6 +6,7 @@ import { getNoteFromId } from "../../../core/models/Note.utils";
 import { getModelConfigById } from "../../../core/models/Pod.static";
 import DetailsCard from "../../cards/DetailsCard";
 import RelatedCard from "../../cards/RelatedCard";
+import RomanNumeralsCard from "../../cards/RomanNumeralsCard";
 import RootCard from "../../cards/RootCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
@@ -22,8 +23,6 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
     rootId ? (getNoteFromId(rootId) as IModelConfig).name : ""
   } ${modelConfig.name}`;
 
-  //const subtitle = podList.aliases.length ? `Also known as ${podList.aliases.join(', ')}` : 'Podlist';
-
   return (
     <StyledPodlistPage title={title}>
       <ColumnManager>
@@ -34,10 +33,12 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
             rootModelConfig={rootModelConfig}
           />
         </ColumnManager>
-        {
-          presetType === PresetType.Scale &&
-            null /*<RomanNumeralsCard model={podList} />*/
-        }
+        {presetType === PresetType.Scale && (
+          <RomanNumeralsCard
+            modelConfig={modelConfig}
+            rootModelConfig={rootModelConfig}
+          />
+        )}
         {
           presetType === PresetType.Scale &&
             null /*<ModeCard model={podList} />*/
