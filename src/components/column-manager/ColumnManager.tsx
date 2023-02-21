@@ -1,36 +1,48 @@
-import React from "react";
-import styled from 'styled-components';
+import React, { PropsWithChildren } from "react";
+import styled from "styled-components";
 
-export const StyledColumnManager = styled.div`
-    display: grid;
-    gap: 16px;
-    grid-template-columns: 1fr;
+export const StyledColumnManager = styled.div<{
+  $tablet?: string[];
+  $desktop?: string[];
+}>`
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
 
-    ${({ $tablet }) => $tablet ? `
+  ${({ $tablet }) =>
+    $tablet
+      ? `
         @media(min-width: 512px) {
-            grid-template-columns: ${$tablet.join(' ')}
+            grid-template-columns: ${$tablet.join(" ")}
         }
-    ` : ''}
+    `
+      : ""}
 
-    ${({ $desktop }) => $desktop ? `
+  ${({ $desktop }) =>
+    $desktop
+      ? `
         @media(min-width: 1024px) {
-            grid-template-columns: ${$desktop.join(' ')}
+            grid-template-columns: ${$desktop.join(" ")}
         }
-    ` : ``}
-   
+    `
+      : ``}
 `;
 
-export interface IColumnManagerProps {
-    tablet?: string[];
-    desktop?: string[];
+export interface IColumnManagerProps extends PropsWithChildren {
+  tablet?: string[];
+  desktop?: string[];
 }
 
-const ColumnManager: React.FC<any> = ({ children, tablet, desktop }) => {
-    return (
-        <StyledColumnManager $tablet={tablet} $desktop={desktop}>
-            {children}
-        </StyledColumnManager >
-    );
+const ColumnManager: React.FC<IColumnManagerProps> = ({
+  tablet,
+  desktop,
+  children,
+}) => {
+  return (
+    <StyledColumnManager $tablet={tablet} $desktop={desktop}>
+      {children}
+    </StyledColumnManager>
+  );
 };
 
 export default ColumnManager;

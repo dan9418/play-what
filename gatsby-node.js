@@ -32,38 +32,38 @@ const STATIC_PAGES = [
 
 const POD_LIST_PATH = './src/components/pages/browse/pod-list.page.tsx';
 
-// module.exports.sourceNodes = ({ actions, createContentDigest }) => {
-//   const { createNode } = actions;
+module.exports.sourceNodes = ({ actions, createContentDigest }) => {
+  const { createNode } = actions;
 
-//   const notes = NOTE_JSON.map(note => createNode({
-//     ...note,
-//     id: note.presetId,
-//     internal: {
-//       type: `Note`,
-//       contentDigest: createContentDigest(note)
-//     }
-//   }));
+  const notes = NOTE_JSON.map(note => createNode({
+    ...note,
+    id: note.presetId,
+    internal: {
+      type: `Note`,
+      contentDigest: createContentDigest(note)
+    }
+  }));
 
-//   const chords = CHORD_JSON.map(chord => createNode({
-//     ...chord,
-//     id: chord.presetId,
-//     internal: {
-//       type: `Chord`,
-//       contentDigest: createContentDigest(chord)
-//     }
-//   }));
+  const chords = CHORD_JSON.map(chord => createNode({
+    ...chord,
+    id: chord.presetId,
+    internal: {
+      type: `Chord`,
+      contentDigest: createContentDigest(chord)
+    }
+  }));
 
-//   const scales = SCALE_JSON.map(scale => createNode({
-//     ...scale,
-//     id: scale.presetId,
-//     internal: {
-//       type: `Scale`,
-//       contentDigest: createContentDigest(scale)
-//     }
-//   }));
+  const scales = SCALE_JSON.map(scale => createNode({
+    ...scale,
+    id: scale.presetId,
+    internal: {
+      type: `Scale`,
+      contentDigest: createContentDigest(scale)
+    }
+  }));
 
-//   return [...notes, ...chords, ...scales];
-// }
+  return [...notes, ...chords, ...scales];
+}
 
 module.exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
@@ -79,38 +79,38 @@ module.exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  // CHORD_JSON.forEach(model => {
-  //   createPage({
-  //     path: `/browse/chords/${model.presetId}/`,
-  //     component: require.resolve(POD_LIST_PATH),
-  //     context: { presetType: 'chords', presetId: model.presetId },
-  //   });
+  CHORD_JSON.forEach(model => {
+    createPage({
+      path: `/browse/chords/${model.presetId}/`,
+      component: require.resolve(POD_LIST_PATH),
+      context: { presetType: 'chords', presetId: model.presetId },
+    });
 
-  //   NOTE_JSON.forEach(root => {
-  //     createPage({
-  //       path: `/browse/chords/${model.presetId}/root/${root.presetId}/`,
-  //       component: require.resolve(POD_LIST_PATH),
-  //       context: { presetType: 'chords', presetId: model.presetId, rootId: root.presetId },
-  //     });
-  //   })
+    NOTE_JSON.forEach(root => {
+      createPage({
+        path: `/browse/chords/${model.presetId}/root/${root.presetId}/`,
+        component: require.resolve(POD_LIST_PATH),
+        context: { presetType: 'chords', presetId: model.presetId, rootId: root.presetId },
+      });
+    })
 
-  // });
+  });
 
-  // SCALE_JSON.forEach(model => {
-  //   createPage({
-  //     path: `/browse/scales/${model.presetId}/`,
-  //     component: require.resolve(POD_LIST_PATH),
-  //     context: { presetType: 'scales', presetId: model.presetId },
-  //   });
+  SCALE_JSON.forEach(model => {
+    createPage({
+      path: `/browse/scales/${model.presetId}/`,
+      component: require.resolve(POD_LIST_PATH),
+      context: { presetType: 'scales', presetId: model.presetId },
+    });
 
-  //   NOTE_JSON.forEach(root => {
-  //     createPage({
-  //       path: `/browse/scales/${model.presetId}/root/${root.presetId}/`,
-  //       component: require.resolve(POD_LIST_PATH),
-  //       context: { presetType: 'scales', presetId: model.presetId, rootId: root.presetId },
-  //     });
-  //   })
+    NOTE_JSON.forEach(root => {
+      createPage({
+        path: `/browse/scales/${model.presetId}/root/${root.presetId}/`,
+        component: require.resolve(POD_LIST_PATH),
+        context: { presetType: 'scales', presetId: model.presetId, rootId: root.presetId },
+      });
+    })
 
-  // });
+  });
 
 }
