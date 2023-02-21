@@ -2,7 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
-import { NoteId, Tag } from "../../core/models/Model.constants";
+import { IModelConfig, NoteId, Tag } from "../../core/models/Model.constants";
 import { SCALE_PRESETS } from "../../core/models/Model.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
@@ -23,10 +23,18 @@ const StyledModeCard = styled.div`
   }
 `;
 
-const ModeCard: React.FC<any> = ({ model }) => {
+interface IModeCardProps {
+  modelConfig: IModelConfig;
+  rootModelConfig?: IModelConfig;
+}
+
+const ModeCard: React.FC<IModeCardProps> = ({
+  modelConfig,
+  rootModelConfig,
+}) => {
   const rootId = useRootId();
 
-  const type = model.tags.find(
+  const type = modelConfig.tags.find(
     (t) =>
       t === Tag.Diatonic ||
       t === Tag.Pentatonic ||
@@ -61,8 +69,8 @@ const ModeCard: React.FC<any> = ({ model }) => {
           {modes.map((n) => (
             <li key={n.presetId}>
               <Link
-                to={getModelRoute(n.modelType, n.presetId, rootId)}
-                className={model.presetId === n.presetId ? "active" : ""}
+                to={getModelRoute(n.presetType, n.presetId, rootId)}
+                className={modelConfig.presetId === n.presetId ? "active" : ""}
               >
                 {n.name}
               </Link>
