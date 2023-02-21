@@ -64,9 +64,9 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
             className: "numeral",
             cols: [
               "Numeral",
-              ...numerals.map((n, i) => {
+              ...numerals.map(([root, n], i) => {
                 const [numeral, symbol] = getNumeralParts(
-                  modelConfig.presetId as ChordId,
+                  n.presetId as ChordId,
                   i + 1
                 );
                 return {

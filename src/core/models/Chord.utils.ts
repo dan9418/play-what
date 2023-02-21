@@ -1,7 +1,7 @@
 import NumberUtils from "../general/Number.utils";
 import { ChordId, CHORD_QUALITY } from "./Model.constants";
 
-export const getSymbol = (presetId, symbolType = "jazz") => {
+export const getSymbol = (presetId: ChordId, symbolType = "jazz") => {
   switch (presetId) {
     case ChordId.MajTriad:
     case ChordId.Maj7:
