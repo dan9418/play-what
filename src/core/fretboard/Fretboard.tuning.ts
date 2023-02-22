@@ -1,6 +1,6 @@
-import ArrayUtils from "../../core/general/Array.utils";
-import { getNoteWithOctave } from "../../core/models/Note.utils";
-import { NoteId } from "./../../core/models/Model.constants";
+import ArrayUtils from "../general/Array.utils";
+import { getNoteWithOctave } from "../models/Note.utils";
+import { NoteId } from "../models/Model.constants";
 
 export enum TuningId {
   Standard = "standard",

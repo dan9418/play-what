@@ -3,7 +3,7 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
-import { getName } from "../../core/models/Interval.utils";
+import { getName } from "../../core/models/Note.utils";
 import { isEditingKeyState, octaveState } from "../../state/state";
 import THEME from "../../styles/theme";
 import ButtonInput from "../inputs/ButtonInput";

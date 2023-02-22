@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
-import FretTable from "../../../viewers/fret-table/FretTable";
+import Fretboard from "../../../viewers/fret-table/Fretboard";
 import {
   IFretProps,
   isIntervalInVoicing,
@@ -109,7 +109,7 @@ const Page: React.FC = () => {
     isFullScreen,
     setIsFullScreen,
     viewer: (
-      <FretTable
+      <Fretboard
         {...instrumentColProps}
         {...notesColProps}
         colorMapFn={colorMapFn as any}

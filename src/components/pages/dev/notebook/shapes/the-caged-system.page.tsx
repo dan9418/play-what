@@ -8,7 +8,7 @@ import {
 } from "../../../../../core/models/Model.constants";
 import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import Scale from "../../../../../core/models/Scale";
-import { StyledFretTable } from "../../../../../viewers/fret-table/FretTable";
+import { StyledFretTable } from "../../../../../viewers/fret-table/Fretboard";
 import {
   VoicingId,
   VOICING_PRESET_MAP,

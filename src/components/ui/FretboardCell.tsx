@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import FretTable from "../../viewers/fret-table/FretTable";
+import Fretboard from "../../viewers/fret-table/Fretboard";
 import { IFretboardProps } from "../../viewers/fretboard/Fretboard.utils";
 
 export const StyledFretboardCell = styled.div`
@@ -24,7 +24,7 @@ const FretboardCell: React.FC<IFretboardCellProps> = ({
 }) => {
   return (
     <StyledFretboardCell>
-      <FretTable {...fretboardConfig} />
+      <Fretboard {...fretboardConfig} />
       {caption && <div className="caption">{caption}</div>}
     </StyledFretboardCell>
   );

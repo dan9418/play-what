@@ -5,6 +5,7 @@ import { IModelConfig, PresetType } from "../../../core/models/Model.constants";
 import { getNoteFromId } from "../../../core/models/Note.utils";
 import { getModelConfigById } from "../../../core/models/Pod.static";
 import DetailsCard from "../../cards/DetailsCard";
+import FretboardCard from "../../cards/FretboardCard";
 import ModeCard from "../../cards/ModeCard";
 import RelatedCard from "../../cards/RelatedCard";
 import RomanNumeralsCard from "../../cards/RomanNumeralsCard";
@@ -46,7 +47,10 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
             rootModelConfig={rootModelConfig}
           />
         )}
-        {/*<GuitarCard model={podList} />*/}
+        <FretboardCard
+          modelConfig={modelConfig}
+          rootModelConfig={rootModelConfig}
+        />
         <RelatedCard
           modelConfig={modelConfig}
           rootModelConfig={rootModelConfig}

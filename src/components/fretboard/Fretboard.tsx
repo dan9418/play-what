@@ -1,11 +1,12 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { IColConfig, IRowConfig, Table } from "../../components/ui/Table";
 import {
   DEFAULT_FRETBOARD_PROPS,
   getDotsForFret,
   IFretboardProps,
-} from "../fretboard/Fretboard.utils";
+} from "../../core/fretboard/Fretboard.utils";
+import { IColConfig, IRowConfig, Table } from "../ui/Table";
+
 import FretFlag from "./FretFlag";
 
 export const StyledFretTable = styled.div``;
@@ -50,7 +51,7 @@ const tableStyles = css`
   }
 `;
 
-const FretTable: React.FC<IFretboardProps> = (userProps) => {
+const Fretboard: React.FC<IFretboardProps> = (userProps) => {
   const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
 
   const { fretRange, showFretDots, showFretNumbers, tuning, colorMapFn } =
@@ -108,4 +109,4 @@ const FretTable: React.FC<IFretboardProps> = (userProps) => {
   );
 };
 
-export default FretTable;
+export default Fretboard;
