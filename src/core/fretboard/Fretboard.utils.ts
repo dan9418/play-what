@@ -1,40 +1,21 @@
-import { IModelConfig, IPod } from "../../core/models/Model.constants";
+import { IPod } from "../../core/models/Model.constants";
 import {
   getDegree,
   getNotePods,
   tryGetPodPairAtPitch,
 } from "../../core/models/Pod.static";
+import { COLOR_SCHEME_PRESET_MAP, IColorScheme } from "../color/Color.utils";
 import {
-  ColorSchemeFn,
-  ColorSchemeId,
-  COLOR_SCHEME_PRESET_MAP,
-  IColorScheme,
-} from "../color/Color.utils";
-import { CHORD_PRESETS, NOTE_PRESETS } from "../models/Model.presets";
-import { ITuning, TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
-import {
-  IVoicing,
-  VoicingId,
-  VoicingValue,
-  VOICING_PRESET_MAP,
-} from "./Fretboard.voicing";
-
-export const DOTTED_FRET_INDICES = [
-  true,
-  false,
-  false,
-  true,
-  false,
-  true,
-  false,
-  true,
-  false,
-  true,
-  false,
-  false,
-];
-
-export const FRET_SIZE_RATIO = Math.pow(1 / 2, 1 / 12);
+  DEFAULT_FRETBOARD_PROPS,
+  DOTTED_FRET_INDICES,
+  FRET_SIZE_RATIO,
+  IFretboardProps,
+  IFretConfig,
+  IFretContext,
+  IFretMap,
+} from "./Fretboard.constants";
+import { ITuning, TUNING_PRESET_MAP } from "./Fretboard.tuning";
+import { IVoicing, VOICING_PRESET_MAP } from "./Fretboard.voicing";
 
 export const isIntervalInVoicing = (
   interval: IPod,
@@ -104,51 +85,6 @@ export const getDotsForFret = (fretNumber: number): string => {
 const doesVoicingValueMatch = (d: number, v: number) => {
   return d + 1 === v;
 };
-
-export interface IFretboardProps {
-  // UI
-  fretRange: [number, number];
-  showFretDots: boolean;
-  showFretNumbers: boolean;
-  // Info
-  colorSchemeId: ColorSchemeId;
-  voicingId: VoicingId;
-  tuningId: TuningId;
-  modelConfig: IModelConfig;
-  rootModelConfig: IModelConfig;
-}
-
-export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
-  fretRange: [1, 12],
-  showFretDots: true,
-  showFretNumbers: true,
-  colorSchemeId: ColorSchemeId.HighlightRoot,
-  voicingId: VoicingId.None,
-  tuningId: TuningId.Standard,
-  modelConfig: CHORD_PRESETS[0],
-  rootModelConfig: NOTE_PRESETS[0],
-};
-
-export interface IFretContext {
-  stringIndex: number;
-  fretIndex: number;
-  tuningValue: number[];
-  modelConfig: IModelConfig;
-  rootModelConfig: IModelConfig;
-  colorSchemeFn: ColorSchemeFn;
-  voicingValue: VoicingValue;
-}
-
-export interface IFretConfig {
-  color?: string;
-  opacity?: number;
-}
-
-export interface IFretMap {
-  fretNums: number[];
-  fretDots: string[];
-  strings: IFretConfig[][];
-}
 
 export const getFretMapFromFretboardProps = (
   userProps: Partial<IFretboardProps>
