@@ -4,7 +4,8 @@ import { getDegree } from "../models/Pod.static";
 import { DEFAULT_DEGREE_COLOR_SCHEME } from "../theory/Degree.constants";
 import { DEFAULT_PITCH_COLOR_SCHEME } from "../theory/Pitch.constants";
 
-export enum ColorScheme {
+export enum ColorSchemeId {
+  None,
   Monochrome,
   HighlightRoot,
   Degree,
@@ -12,7 +13,7 @@ export enum ColorScheme {
 }
 
 export interface IColorScheme {
-  id: ColorScheme;
+  id: ColorSchemeId;
   name: string;
   defaultConfig: string[];
   fn: (note?: IPod, interval?: IPod, config?: string[]) => string | false;
@@ -24,14 +25,14 @@ const BLACK = "#6b6b7b";
 
 export const COLOR_SCHEMES: IColorScheme[] = [
   {
-    id: ColorScheme.Monochrome,
+    id: ColorSchemeId.Monochrome,
     name: "Monochrome",
     defaultConfig: [BLACK],
     fn: (note, interval, config = [BLACK]) => (note ? config[0] : false),
     labelFn: (index) => "*",
   },
   {
-    id: ColorScheme.HighlightRoot,
+    id: ColorSchemeId.HighlightRoot,
     name: "Highlight Root",
     defaultConfig: [RED, BLACK],
     fn: (note, interval, config = [RED, BLACK]) =>
@@ -39,7 +40,7 @@ export const COLOR_SCHEMES: IColorScheme[] = [
     labelFn: (index) => (index === 0 ? "R" : "*"),
   },
   {
-    id: ColorScheme.Degree,
+    id: ColorSchemeId.Degree,
     name: "Interval Degree",
     defaultConfig: DEFAULT_DEGREE_COLOR_SCHEME,
     fn: (note, interval, config = DEFAULT_DEGREE_COLOR_SCHEME) =>
@@ -47,7 +48,7 @@ export const COLOR_SCHEMES: IColorScheme[] = [
     labelFn: (index) => index + 1 + "",
   },
   {
-    id: ColorScheme.PitchClass,
+    id: ColorSchemeId.PitchClass,
     name: "Pitch Class",
     defaultConfig: DEFAULT_PITCH_COLOR_SCHEME,
     fn: (note, interval, config = DEFAULT_PITCH_COLOR_SCHEME) =>

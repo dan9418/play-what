@@ -1,15 +1,24 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
 import {
-  DEFAULT_FRETBOARD_PROPS,
-  getDotsForFret,
+  getFretMapFromFretboardProps,
   IFretboardProps,
 } from "../../core/fretboard/Fretboard.utils";
 import { IColConfig, IRowConfig, Table } from "../ui/Table";
 
-import FretFlag from "./FretFlag";
-
 export const StyledFretTable = styled.div``;
+
+export const StyledFretFlag = styled.div<{
+  $color?: string;
+  $opacity?: number;
+}>`
+  height: 16px;
+  width: 16px;
+  background: ${(props) => props.$color || ""};
+  opacity: ${(props) => props.$opacity || 1};
+  border-radius: 100%;
+  z-index: 1;
+`;
 
 const tableStyles = css`
   width: 100%;
@@ -51,58 +60,34 @@ const tableStyles = css`
   }
 `;
 
-const Fretboard: React.FC<IFretboardProps> = (userProps) => {
-  const props = { ...DEFAULT_FRETBOARD_PROPS, ...userProps };
+const Fretboard: React.FC<Partial<IFretboardProps>> = (props) => {
+  const fretMap = getFretMapFromFretboardProps(props);
 
-  const { fretRange, showFretDots, showFretNumbers, tuning, colorMapFn } =
-    props;
-  const [lo, hi] = fretRange as [number, number];
+  const { fretNums, fretDots, strings } = fretMap;
 
-  const numFrets = hi - lo + 1;
-  const numStrings = (tuning as number[]).length;
-
-  const fretNums: number[] = [];
-  for (let i = 0; i < numFrets; i++) {
-    fretNums.push(lo + i);
-  }
-
-  const fretDots: string[] = [];
-  for (let i = 0; i < numFrets; i++) {
-    fretDots.push(getDotsForFret(lo + i));
-  }
-
-  const strings: IRowConfig[] = [];
-  for (let s = 0; s < numStrings; s++) {
-    const frets: IColConfig[] = [];
-    for (let f = lo; f <= hi; f++) {
-      frets.push({
+  const rows: IRowConfig[] = [];
+  for (let s = 0; s < strings.length; s++) {
+    const cols: IColConfig[] = [];
+    for (let f = 0; f < strings[s].length; f++) {
+      const { color, opacity } = strings[s][f];
+      cols.push({
         content: (
           <div className="fret-content">
             <div className="fret-string" />
-            <FretFlag
-              color={(colorMapFn as any)({
-                stringIndex: s,
-                fretIndex: f,
-                ...props,
-              })}
-              text=""
-              opacity={1}
-            />
+            <StyledFretFlag $color={color} $opacity={opacity} />
           </div>
         ),
       });
     }
-    strings.push({
-      cols: frets,
-    });
+    rows.push({ cols });
   }
 
   return (
     <StyledFretTable>
       <Table
-        thead={showFretNumbers ? [{ cols: fretNums }] : undefined}
-        tfoot={showFretDots ? [{ cols: fretDots }] : undefined}
-        tbody={strings}
+        thead={fretNums.length ? [{ cols: fretNums }] : undefined}
+        tfoot={fretDots.length ? [{ cols: fretDots }] : undefined}
+        tbody={rows}
         styles={tableStyles}
       />
     </StyledFretTable>
