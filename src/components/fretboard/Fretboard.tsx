@@ -14,7 +14,7 @@ export const StyledFretFlag = styled.div<{
 }>`
   height: 16px;
   width: 16px;
-  background: ${(props) => props.$color || ""};
+  background: ${(props) => props.$color || "transparent"};
   opacity: ${(props) => props.$opacity || 1};
   border-radius: 100%;
   z-index: 1;

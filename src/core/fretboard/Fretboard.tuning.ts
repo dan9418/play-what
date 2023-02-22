@@ -1,6 +1,6 @@
 import ArrayUtils from "../general/Array.utils";
-import { getNoteWithOctave } from "../models/Note.utils";
 import { NoteId } from "../models/Model.constants";
+import { getNoteWithOctave } from "../models/Note.utils";
 
 export enum TuningId {
   Standard = "standard",
@@ -21,16 +21,18 @@ export enum TuningId {
   OpenG = "open-g",
 }
 
+export type TuningValue = number[];
+
 export interface ITuning {
   id: TuningId;
   name: string;
-  value: number[];
+  value: TuningValue;
 }
 
 const formatPreset = (
   id: TuningId,
   name: string,
-  value: number[]
+  value: TuningValue
 ): ITuning => ({
   id,
   name,

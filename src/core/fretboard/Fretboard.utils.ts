@@ -1,9 +1,20 @@
 import { IModelConfig, IPod } from "../../core/models/Model.constants";
 import { getDegree, tryGetPodPairAtPitch } from "../../core/models/Pod.static";
-import { ColorSchemeId } from "../color/Color.utils";
+import {
+  ColorSchemeFn,
+  ColorSchemeId,
+  COLOR_SCHEMES,
+  COLOR_SCHEME_PRESET_MAP,
+  IColorScheme,
+} from "../color/Color.utils";
 import { CHORD_PRESETS, NOTE_PRESETS } from "../models/Model.presets";
 import { ITuning, TuningId, TUNING_PRESET_MAP } from "./Fretboard.tuning";
-import { IVoicing, VoicingId } from "./Fretboard.voicing";
+import {
+  IVoicing,
+  VoicingId,
+  VoicingValue,
+  VOICING_PRESET_MAP,
+} from "./Fretboard.voicing";
 
 export const DOTTED_FRET_INDICES = [
   true,
@@ -38,24 +49,33 @@ export const isIntervalInVoicing = (
   return false;
 };
 
-export const getFretColor = (fretContext: IFretContext): string => {
-  const { stringIndex, fretIndex, tuningValue } = fretContext;
+const getFretConfig = (fretContext: IFretContext): IFretConfig => {
+  const {
+    stringIndex,
+    fretIndex,
+    tuningValue,
+    modelConfig,
+    rootModelConfig,
+    voicingValue,
+    colorSchemeFn,
+  } = fretContext;
+
   const noteIndex = tuningValue[stringIndex] + fretIndex;
+
   const [interval, note] = tryGetPodPairAtPitch(
-    [[0, 0]], // TODO
-    [[0, 0]], // TODO
+    modelConfig.value,
+    modelConfig.value,
     noteIndex
   );
 
-  if (!note) return "transparent";
+  if (!note) return {};
 
-  // if (voicing && !isIntervalInVoicing(interval, voicing, stringIndex)) {
-  //   return `#00000011`;
-  // }
+  const color = colorSchemeFn(note, interval);
 
-  if (interval[0] === 0 && interval[1] === 0) return "red";
-
-  return "#555";
+  return {
+    color,
+    //opacity: voicingValue && !isIntervalInVoicing(interval, voicingValue, stringIndex) ? 0.5 : 1
+  };
 };
 
 export const getFretRatios = (numFrets: number): number[] => {
@@ -95,7 +115,7 @@ export const DEFAULT_FRETBOARD_PROPS: IFretboardProps = {
   fretRange: [1, 12],
   showFretDots: true,
   showFretNumbers: true,
-  colorSchemeId: ColorSchemeId.None,
+  colorSchemeId: ColorSchemeId.HighlightRoot,
   voicingId: VoicingId.None,
   tuningId: TuningId.Standard,
   modelConfig: CHORD_PRESETS[0],
@@ -106,11 +126,15 @@ export interface IFretContext {
   stringIndex: number;
   fretIndex: number;
   tuningValue: number[];
+  modelConfig: IModelConfig;
+  rootModelConfig: IModelConfig;
+  colorSchemeFn: ColorSchemeFn;
+  voicingValue: VoicingValue;
 }
 
 export interface IFretConfig {
-  color: string;
-  opacity: number;
+  color?: string;
+  opacity?: number;
 }
 
 export interface IFretMap {
@@ -138,6 +162,10 @@ export const getFretMapFromFretboardProps = (
   const [lo, hi] = fretRange;
 
   const tuningValue = (TUNING_PRESET_MAP.get(tuningId) as ITuning).value;
+  const voicingValue = (VOICING_PRESET_MAP.get(voicingId) as IVoicing).value;
+  const colorSchemeFn = (
+    COLOR_SCHEME_PRESET_MAP.get(colorSchemeId) as IColorScheme
+  ).fn;
 
   const numFrets = hi - lo + 1;
   const numStrings = tuningValue.length;
@@ -160,14 +188,17 @@ export const getFretMapFromFretboardProps = (
   for (let s = 0; s < numStrings; s++) {
     const frets: IFretConfig[] = [];
     for (let f = lo; f <= hi; f++) {
-      frets.push({
-        color: getFretColor({
+      frets.push(
+        getFretConfig({
           stringIndex: s,
           fretIndex: f,
           tuningValue,
-        }),
-        opacity: 0.5,
-      });
+          modelConfig,
+          rootModelConfig,
+          colorSchemeFn,
+          voicingValue,
+        })
+      );
     }
     strings.push(frets);
   }

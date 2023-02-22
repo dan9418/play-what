@@ -32,16 +32,18 @@ export enum VoicingId {
   Scale_DoubleOctave_DShape_1 = "Scale_DoubleOctave_DShape_1",
 }
 
+export type VoicingValue = (number | number[] | undefined)[];
+
 export interface IVoicing {
   id: VoicingId;
   name: string;
-  value: (number | number[] | undefined)[];
+  value: VoicingValue;
 }
 
 const formatPreset = (
   id: VoicingId,
   name: string,
-  value: (number | number[] | undefined)[]
+  value: VoicingValue
 ): IVoicing => ({
   id,
   name,
@@ -49,6 +51,7 @@ const formatPreset = (
 });
 
 export const VOICING_PRESET_MAP = new Map<VoicingId, IVoicing>([
+  [VoicingId.None, formatPreset(VoicingId.None, "None", [])],
   // Triads
   [
     VoicingId.Chord_Triad_CShape_1,

@@ -40,7 +40,10 @@ const FretboardCard: React.FC<IFretboardCardProps> = ({
       }
     >
       <StyledFretboardCard>
-        <Fretboard />
+        <Fretboard
+          modelConfig={modelConfig}
+          rootModelConfig={rootModelConfig}
+        />
       </StyledFretboardCard>
     </Card>
   );
