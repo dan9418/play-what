@@ -1,7 +1,6 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import NumberUtils from "../../core/general/Number.utils";
 import {
   getName as getIntervalName,
   getRatio,
@@ -12,7 +11,7 @@ import {
   getName as getNoteName,
   getOctave,
 } from "../../core/models/Note.utils";
-import { addPods } from "../../core/models/Pod.static";
+import { getNotePods } from "../../core/models/Pod.static";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 import { Table } from "../ui/Table";
@@ -129,14 +128,7 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({
   const octave = useRecoilValue(octaveState);
   const hasNotes = !!rootModelConfig;
   const notePods =
-    hasNotes &&
-    intervalPods.map((ivl) => {
-      const notePod = addPods(rootModelConfig.value, ivl);
-      return [
-        (octave - 4) * 12 + NumberUtils.modulo(notePod[0], 12),
-        notePod[1],
-      ];
-    });
+    hasNotes && getNotePods(rootModelConfig.value, modelConfig.value, octave);
 
   if (!intervalPods && !notePods) return null;
 

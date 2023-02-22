@@ -1,9 +1,12 @@
 import { IModelConfig, IPod } from "../../core/models/Model.constants";
-import { getDegree, tryGetPodPairAtPitch } from "../../core/models/Pod.static";
+import {
+  getDegree,
+  getNotePods,
+  tryGetPodPairAtPitch,
+} from "../../core/models/Pod.static";
 import {
   ColorSchemeFn,
   ColorSchemeId,
-  COLOR_SCHEMES,
   COLOR_SCHEME_PRESET_MAP,
   IColorScheme,
 } from "../color/Color.utils";
@@ -62,9 +65,13 @@ const getFretConfig = (fretContext: IFretContext): IFretConfig => {
 
   const noteIndex = tuningValue[stringIndex] + fretIndex;
 
+  const rootPod = rootModelConfig.value;
+  const intervalPods = modelConfig.value;
+  const notePods = getNotePods(rootPod, intervalPods);
+
   const [interval, note] = tryGetPodPairAtPitch(
-    modelConfig.value,
-    modelConfig.value,
+    intervalPods,
+    notePods,
     noteIndex
   );
 

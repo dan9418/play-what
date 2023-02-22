@@ -283,3 +283,18 @@ export const getModelConfigById = (
     return SCALE_PRESET_MAP.get(presetId as ScaleId);
   }
 };
+
+export const getNotePods = (
+  rootPod: IPod,
+  intervalPods: IPod[],
+  octave = 4
+): IPod[] => {
+  const notePods = intervalPods.map((ivl) => {
+    const notePod = addPods(rootPod, ivl);
+    return [
+      (octave - 4) * 12 + NumberUtils.modulo(notePod[0], 12),
+      notePod[1],
+    ] as IPod;
+  });
+  return notePods;
+};
