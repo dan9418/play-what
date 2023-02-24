@@ -1,6 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { IChordPreset } from "../../core/models/Chord.presets";
+import { INotePreset } from "../../core/models/Note.presets";
+import { IScalePreset } from "../../core/models/Scale.presets";
 import Fretboard from "../fretboard/Fretboard";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
@@ -13,8 +16,8 @@ const StyledFretboardCard = styled.div`
 `;
 
 interface IFretboardCardProps {
-  modelConfig: IModelConfig;
-  rootModelConfig?: IModelConfig;
+  modelConfig: IChordPreset | IScalePreset;
+  rootModelConfig?: INotePreset;
 }
 
 const FretboardCard: React.FC<IFretboardCardProps> = ({

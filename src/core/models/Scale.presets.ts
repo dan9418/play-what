@@ -1,4 +1,4 @@
-import { PresetMap, Tag } from ".";
+import { PresetMap, Tag } from "./Model.constants";
 import ArrayUtils from "../general/Array.utils";
 import { IntervalId } from "./Interval.presets";
 import { reduceExtendedIntervalIds } from "./Interval.utils";

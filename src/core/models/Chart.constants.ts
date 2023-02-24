@@ -1,7 +1,7 @@
 import * as CHARTS from "./Chart.presets";
-import Chord from "./Chord";
+import { ChordId, IChordPreset } from "./Chord.presets";
 import { getSymbol } from "./Chord.utils";
-import { ChordId, IModelConfig, NoteId } from "./Model.constants";
+import { NoteId } from "./Note.presets";
 import { getNoteFromId } from "./Note.utils";
 
 export type ISectionChord = [rootId: NoteId, chordId: ChordId, t: number];
@@ -29,7 +29,7 @@ interface IChordItem {
   t?: number;
   rootName: string;
   structureName: string;
-  chord: IModelConfig;
+  chord: IChordPreset;
 }
 
 interface ISectionParsed {

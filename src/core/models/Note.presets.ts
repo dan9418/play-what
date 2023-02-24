@@ -1,4 +1,4 @@
-import { IPreset, PresetMap, Tag } from ".";
+import { IPreset, PresetMap, Tag } from "./Model.constants";
 import ArrayUtils from "../general/Array.utils";
 import { formatPodPreset, IPod, IPodPreset } from "./Pod.presets";
 
