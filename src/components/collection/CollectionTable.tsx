@@ -3,7 +3,7 @@ import { css } from "styled-components";
 import { getName as getIntervalName } from "../../core/models/Interval.utils";
 import { IModelConfig, IPod, NoteId } from "../../core/models/Model.constants";
 import { getName as getNoteName } from "../../core/models/Note.utils";
-import { addPods, getRootedName } from "../../core/models/Pod.static";
+import { addPods, getRootedName } from "../../core/models/Pod.utils";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
 

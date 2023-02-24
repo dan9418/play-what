@@ -6,7 +6,7 @@ import {
   getSubscales,
   getSuperchords,
   getSuperscales,
-} from "../../core/models/Pod.static";
+} from "../../core/models/Pod.utils";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";

@@ -11,7 +11,7 @@ import {
   getName as getNoteName,
   getOctave,
 } from "../../core/models/Note.utils";
-import { getNotePods } from "../../core/models/Pod.static";
+import { getNotePods } from "../../core/models/Pod.utils";
 import { octaveState } from "../../state/state";
 import { CardHeader, StyledCard } from "../ui/Card";
 import { Table } from "../ui/Table";

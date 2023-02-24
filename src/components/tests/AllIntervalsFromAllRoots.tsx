@@ -4,7 +4,7 @@ import { getName } from "../../core/models/Interval.utils";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
 import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
 import { getNoteFromPod } from "../../core/models/Note.utils";
-import { addPods } from "../../core/models/Pod.static";
+import { addPods } from "../../core/models/Pod.utils";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";
 import { DIATONIC_VALUES } from "../../core/theory/Diatonic.constants";
 import { Table } from "../ui/Table";

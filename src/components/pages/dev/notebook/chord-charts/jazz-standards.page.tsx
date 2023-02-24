@@ -15,7 +15,7 @@ import {
   addPods,
   reducePod,
   subtractPods,
-} from "../../../../../core/models/Pod.static";
+} from "../../../../../core/models/Pod.utils";
 import { getModelRoute } from "../../../../../core/routing/Routing.utils";
 import DropdownInput from "../../../../inputs/DropdownInput";
 import PageLayout from "../../../../layout/PageLayout";

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { ModelPageProps } from "../../../contexts/PagePropsContext";
 import { IModelConfig, PresetType } from "../../../core/models/Model.constants";
 import { getNoteFromId } from "../../../core/models/Note.utils";
-import { getModelConfigById } from "../../../core/models/Pod.static";
+import { getModelConfigById } from "../../../core/models/Pod.utils";
 import DetailsCard from "../../cards/DetailsCard";
 import FretboardCard from "../../cards/FretboardCard";
 import ModeCard from "../../cards/ModeCard";

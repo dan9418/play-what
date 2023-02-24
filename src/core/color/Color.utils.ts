@@ -2,7 +2,7 @@ import color from "color";
 import ArrayUtils from "../general/Array.utils";
 import { IPod } from "../models/Model.constants";
 import { getPitchClass } from "../models/Note.utils";
-import { getDegree } from "../models/Pod.static";
+import { getDegree } from "../models/Pod.utils";
 
 export enum ColorSchemeId {
   None,

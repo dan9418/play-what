@@ -3,7 +3,7 @@ import {
   getDegree,
   getNotePods,
   tryGetPodPairAtPitch,
-} from "../../core/models/Pod.static";
+} from "../../core/models/Pod.utils";
 import { COLOR_SCHEME_PRESET_MAP, IColorScheme } from "../color/Color.utils";
 import {
   DEFAULT_FRETBOARD_PROPS,

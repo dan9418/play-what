@@ -7,7 +7,7 @@ import {
   NoteId,
 } from "../../core/models/Model.constants";
 import { getNoteFromPod } from "../../core/models/Note.utils";
-import { getRootedName, getShortName } from "../../core/models/Pod.static";
+import { getRootedName, getShortName } from "../../core/models/Pod.utils";
 import { getAllNumerals } from "../../core/models/Scale.utils";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";

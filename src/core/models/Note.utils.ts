@@ -10,7 +10,7 @@ import {
   NoteId,
 } from "./Model.constants";
 import { NOTE_PRESETS, NOTE_PRESET_MAP } from "./Model.presets";
-import { arePodsEqual, getDegree, reducePod } from "./Pod.static";
+import { arePodsEqual, getDegree, reducePod } from "./Pod.utils";
 
 interface INoteNameOptions {
   includeOctave?: boolean;

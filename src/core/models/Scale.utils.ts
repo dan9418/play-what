@@ -11,7 +11,7 @@ import {
   arePodsEqual,
   reducePod,
   subtractPods,
-} from "./Pod.static";
+} from "./Pod.utils";
 
 export const getNumeral = (intervalPods: IPod[], d: number): IModelConfig => {
   // Get every other interval
