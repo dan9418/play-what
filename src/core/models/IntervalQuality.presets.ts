@@ -1,47 +1,89 @@
-export interface IIntervalQuality {
-  id: string;
-  name: string;
-  symbol: string;
-  up?: string;
-  down?: string;
+import ArrayUtils from "../general/Array.utils";
+import { IPreset, PresetMap } from "./Model.constants";
+
+export enum IntervalQualityId {
+  Diminished = "diminished",
+  Minor = "minor",
+  Perfect = "perfect",
+  Major = "major",
+  Augmented = "augmented",
 }
 
-export const INTERVAL_QUALITY: { [x: string]: IIntervalQuality } = {
-  dim: {
-    id: "dim",
-    name: "Diminished",
-    symbol: "d",
-    down: undefined,
-    up: "min",
-  },
-  min: {
-    id: "min",
-    name: "Minor",
-    symbol: "m",
-    down: "dim",
-    up: "maj",
-  },
-  perfect: {
-    id: "perfect",
-    name: "Perfect",
-    symbol: "P",
-    down: "dim",
-    up: "aug",
-  },
-  maj: {
-    id: "maj",
-    name: "Major",
-    symbol: "M",
-    down: "min",
-    up: "aug",
-  },
-  aug: {
-    id: "aug",
-    name: "Augmented",
-    symbol: "A",
-    down: "maj",
-    up: undefined,
-  },
-};
+interface IIntervalQuality {
+  symbol: string;
+  down?: IntervalQualityId;
+  up?: IntervalQualityId;
+}
 
-export const INTERVAL_QUALITY_VALUES = Object.values(INTERVAL_QUALITY);
+export interface IIntervalQualityPreset
+  extends IPreset<IntervalQualityId, IIntervalQuality> {}
+
+export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
+  IntervalQualityId,
+  IIntervalQualityPreset
+> = new Map([
+  [
+    IntervalQualityId.Diminished,
+    {
+      presetId: IntervalQualityId.Diminished,
+      name: "Diminished",
+      value: {
+        symbol: "d",
+        down: undefined,
+        up: IntervalQualityId.Minor,
+      },
+    },
+  ],
+  [
+    IntervalQualityId.Minor,
+    {
+      presetId: IntervalQualityId.Minor,
+      name: "Minor",
+      value: {
+        symbol: "m",
+        down: IntervalQualityId.Diminished,
+        up: IntervalQualityId.Major,
+      },
+    },
+  ],
+  [
+    IntervalQualityId.Perfect,
+    {
+      presetId: IntervalQualityId.Perfect,
+      name: "Perfect",
+      value: {
+        symbol: "P",
+        down: IntervalQualityId.Diminished,
+        up: IntervalQualityId.Augmented,
+      },
+    },
+  ],
+  [
+    IntervalQualityId.Major,
+    {
+      presetId: IntervalQualityId.Major,
+      name: "Major",
+      value: {
+        symbol: "M",
+        down: IntervalQualityId.Minor,
+        up: IntervalQualityId.Augmented,
+      },
+    },
+  ],
+  [
+    IntervalQualityId.Augmented,
+    {
+      presetId: IntervalQualityId.Augmented,
+      name: "Augmented",
+      value: {
+        symbol: "A",
+        down: IntervalQualityId.Major,
+        up: undefined,
+      },
+    },
+  ],
+]);
+
+export const INTERVAL_QUALITY_PRESETS = ArrayUtils.mapToArray(
+  INTERVAL_QUALITY_PRESET_MAP
+);
