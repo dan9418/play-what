@@ -1,4 +1,5 @@
 import ArrayUtils from "../general/Array.utils";
+import { IPreset, PresetMap } from "../models/Model.constants";
 import { NoteId } from "../models/Note.presets";
 import { getNoteWithOctave } from "../models/Note.utils";
 
@@ -21,20 +22,16 @@ export enum TuningId {
   OpenG = "open-g",
 }
 
-export type TuningValue = number[];
+export type ITuning = number[];
 
-export interface ITuning {
-  id: TuningId;
-  name: string;
-  value: TuningValue;
-}
+export interface ITuningPreset extends IPreset<TuningId, ITuning> {}
 
 const formatPreset = (
-  id: TuningId,
+  presetId: TuningId,
   name: string,
-  value: TuningValue
-): ITuning => ({
-  id,
+  value: ITuning
+): ITuningPreset => ({
+  presetId,
   name,
   value,
 });
@@ -42,7 +39,7 @@ const formatPreset = (
 const getPitch = (noteId: NoteId, octave: number): number =>
   getNoteWithOctave(noteId, octave)[0];
 
-export const TUNING_PRESET_MAP = new Map<TuningId, ITuning>([
+export const TUNING_PRESET_MAP: PresetMap<TuningId, ITuningPreset> = new Map([
   [
     TuningId.Standard,
     formatPreset(TuningId.Standard, "Standard Guitar", [
