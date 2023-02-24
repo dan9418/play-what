@@ -40,13 +40,13 @@ export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
 };
 
 export const getAllNumerals = (
-  modelConfig: IScalePreset,
-  rootModelConfig?: INotePreset
+  podListPreset: IScalePreset,
+  rootNotePreset?: INotePreset
 ): [INotePreset | undefined, IChordPreset][] => {
   const numerals: [INotePreset | undefined, IChordPreset][] = [];
-  if (modelConfig.tags.includes(Tag.Diatonic)) {
-    for (let i = 0; i < modelConfig.value.length; i++) {
-      numerals.push([rootModelConfig, getNumeral(modelConfig.value, i)]);
+  if (podListPreset.tags.includes(Tag.Diatonic)) {
+    for (let i = 0; i < podListPreset.value.length; i++) {
+      numerals.push([rootNotePreset, getNumeral(podListPreset.value, i)]);
     }
   }
   return numerals;

@@ -21,13 +21,13 @@ const StyledPodlistPage = styled(PageLayout)``;
 const PodListPage: React.FC<ModelPageProps> = (props) => {
   const { presetType, presetId, rootId } = props.pageContext;
 
-  const modelConfig = getModelConfigById(presetType, presetId) as
+  const podListPreset = getModelConfigById(presetType, presetId) as
     | IChordPreset
     | IScalePreset;
-  const rootModelConfig = getNoteFromId(rootId);
+  const rootNotePreset = getNoteFromId(rootId);
 
   const title = `${rootId ? (getNoteFromId(rootId) as INotePreset).name : ""} ${
-    modelConfig.name
+    podListPreset.name
   }`;
 
   return (
@@ -36,29 +36,29 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
         <ColumnManager tablet={["300px", "auto"]}>
           <RootCard />
           <DetailsCard
-            modelConfig={modelConfig}
-            rootModelConfig={rootModelConfig}
+            podListPreset={podListPreset}
+            rootNotePreset={rootNotePreset}
           />
         </ColumnManager>
         {presetType === PresetType.Scale && (
           <RomanNumeralsCard
-            modelConfig={modelConfig}
-            rootModelConfig={rootModelConfig}
+            podListPreset={podListPreset}
+            rootNotePreset={rootNotePreset}
           />
         )}
         {presetType === PresetType.Scale && (
           <ModeCard
-            modelConfig={modelConfig}
-            rootModelConfig={rootModelConfig}
+            podListPreset={podListPreset}
+            rootNotePreset={rootNotePreset}
           />
         )}
         <FretboardCard
-          modelConfig={modelConfig}
-          rootModelConfig={rootModelConfig}
+          podListPreset={podListPreset}
+          rootNotePreset={rootNotePreset}
         />
         <RelatedCard
-          modelConfig={modelConfig}
-          rootModelConfig={rootModelConfig}
+          podListPreset={podListPreset}
+          rootNotePreset={rootNotePreset}
         />
       </ColumnManager>
     </StyledPodlistPage>

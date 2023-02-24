@@ -7,6 +7,7 @@ import {
   getPresetTypeText,
   PresetType,
 } from "../../core/models/Model.constants";
+import { POD_LIST_PRESETS } from "../../core/models/Model.derived";
 import { NOTE_PRESETS } from "../../core/models/Note.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import PageLayout from "../layout/PageLayout";
@@ -182,7 +183,7 @@ const StyledHomePage = styled(PageLayout)`
   }
 `;
 
-const Page: React.FC<any> = () => {
+const Page: React.FC = () => {
   const [modelPath, setModelPath] = useState("");
 
   useEffect(() => {

@@ -3,7 +3,10 @@ import { IScalePreset, SCALE_PRESETS } from "./Scale.presets";
 
 export type AnyPodListPreset = IChordPreset | IScalePreset;
 
-export const POD_LIST_PRESETS = [...SCALE_PRESETS, ...CHORD_PRESETS];
+export const POD_LIST_PRESETS: AnyPodListPreset[] = [
+  ...SCALE_PRESETS,
+  ...CHORD_PRESETS,
+];
 
 // export const logPresetJson = () => {
 //   console.log("pw-presets notes", JSON.stringify(NOTE_PRESETS));

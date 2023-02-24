@@ -3,6 +3,10 @@ import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
 import { IChordPreset } from "../../core/models/Chord.presets";
+import {
+  AnyPodListPreset,
+  POD_LIST_PRESETS,
+} from "../../core/models/Model.derived";
 import { IScalePreset } from "../../core/models/Scale.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 
@@ -25,7 +29,7 @@ const StyledCollectionList = styled.ul`
 `;
 
 interface ICollectionListProps {
-  data: (IChordPreset | IScalePreset)[];
+  data: AnyPodListPreset[];
 }
 
 const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {

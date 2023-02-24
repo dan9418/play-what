@@ -15,12 +15,12 @@ export enum PresetType {
   Scale = "scales",
 }
 
-const PRESET_TO_MODEL_MAP: Map<PresetType, ModelType> = new Map([
-  [PresetType.Note, ModelType.Pod],
-  [PresetType.Interval, ModelType.Pod],
-  [PresetType.Chord, ModelType.PodList],
-  [PresetType.Scale, ModelType.PodList],
-]);
+// export const PRESET_TO_MODEL_MAP: Map<PresetType, ModelType> = new Map([
+//   [PresetType.Note, ModelType.Pod],
+//   [PresetType.Interval, ModelType.Pod],
+//   [PresetType.Chord, ModelType.PodList],
+//   [PresetType.Scale, ModelType.PodList],
+// ]);
 
 export enum Tag {
   Pentatonic = "Pentatonic",
@@ -61,12 +61,3 @@ export interface IPreset<D extends string, V extends PresetValue> {
 }
 
 export type PresetMap<D extends string, IPreset> = Map<D, IPreset>;
-
-// export const logPresetJson = () => {
-//   console.log("pw-presets notes", JSON.stringify(NOTE_PRESETS));
-//   console.log("pw-presets intervals", JSON.stringify(INTERVAL_PRESETS));
-//   console.log("pw-presets chords", JSON.stringify(CHORD_PRESETS));
-//   console.log("pw-presets scales", JSON.stringify(SCALE_PRESETS));
-// };
-
-// export const POD_LIST_PRESETS = [...SCALE_PRESETS, ...CHORD_PRESETS];

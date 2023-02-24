@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "styled-components";
 import { ChordId, IChordPreset } from "../../core/models/Chord.presets";
 import { getNumeralParts } from "../../core/models/Chord.utils";
+import { AnyPodListPreset } from "../../core/models/Model.derived";
 import { INotePreset, NoteId } from "../../core/models/Note.presets";
 import { getRootedName, getShortName } from "../../core/models/Pod.utils";
 import { IPodListPreset } from "../../core/models/PodList.presets";
@@ -38,17 +39,17 @@ const tableStyles = css`
 `;
 
 interface IRomanNumeralsCardProps {
-  modelConfig: IChordPreset | IScalePreset;
-  rootModelConfig?: INotePreset;
+  podListPreset: AnyPodListPreset;
+  rootNotePreset?: INotePreset;
   title?: string;
 }
 
 const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
-  modelConfig,
-  rootModelConfig,
+  podListPreset,
+  rootNotePreset,
   title = "Roman Numerals",
 }) => {
-  const numerals = getAllNumerals(modelConfig, rootModelConfig);
+  const numerals = getAllNumerals(podListPreset, rootNotePreset);
 
   if (!numerals.length || numerals.find((n) => !n || !n[1])) return null;
 
@@ -90,7 +91,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
                   n.presetId,
                   root ? (root.presetId as NoteId) : undefined
                 ),
-                content: getShortName(getRootedName(n, rootModelConfig)),
+                content: getShortName(getRootedName(n, rootNotePreset)),
               })),
             ],
           },

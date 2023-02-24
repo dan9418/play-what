@@ -7,6 +7,7 @@ import {
 } from "./Chord.presets";
 import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.presets";
 import { PresetType } from "./Model.constants";
+import { AnyPodListPreset } from "./Model.derived";
 import { INotePreset, NoteId, NOTE_PRESET_MAP } from "./Note.presets";
 import { getName } from "./Note.utils";
 import { IPod, MAX_POD } from "./Pod.presets";
@@ -142,11 +143,11 @@ export const getShortName = (str) =>
     .replace("th", "");
 
 export const getRootedName = (
-  modelConfig: IChordPreset | IScalePreset,
-  rootModelConfig?: INotePreset
+  podListPreset: AnyPodListPreset,
+  rootNotePreset?: INotePreset
 ) => {
-  return `${rootModelConfig ? `${getName(rootModelConfig.value)} ` : ""}${
-    modelConfig.name
+  return `${rootNotePreset ? `${getName(rootNotePreset.value)} ` : ""}${
+    podListPreset.name
   }`;
 };
 

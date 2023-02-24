@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "styled-components";
 import { IChordPreset } from "../../core/models/Chord.presets";
 import { getName as getIntervalName } from "../../core/models/Interval.utils";
+import { AnyPodListPreset } from "../../core/models/Model.derived";
 import { INotePreset, NoteId } from "../../core/models/Note.presets";
 import { getName as getNoteName } from "../../core/models/Note.utils";
 import { IPod } from "../../core/models/Pod.presets";
@@ -77,8 +78,8 @@ const tableStyles = css`
 `;
 
 export interface ICollectionTableProps {
-  data: (IChordPreset | IScalePreset)[];
-  rootModelConfig?: INotePreset;
+  data: AnyPodListPreset[];
+  rootNotePreset?: INotePreset;
   semitones?: number[];
 }
 
@@ -88,7 +89,7 @@ const getSemitoneCol = (
   pods: IPod[],
   h: number,
   semitones: number[],
-  rootModelConfig?: INotePreset
+  rootNotePreset?: INotePreset
 ) => {
   const index = pods.findIndex((ivl) => ivl[0] + 1 === h);
   const className = semitones.includes(h) ? "active" : undefined;
@@ -98,8 +99,8 @@ const getSemitoneCol = (
       content: "",
     };
   }
-  const text = rootModelConfig
-    ? getNoteName(addPods(rootModelConfig.value, pods[index]))
+  const text = rootNotePreset
+    ? getNoteName(addPods(rootNotePreset.value, pods[index]))
     : getIntervalName(pods[index]);
   return {
     className,
@@ -110,7 +111,7 @@ const getSemitoneCol = (
 const CollectionTable: React.FC<ICollectionTableProps> = ({
   data,
   semitones = [],
-  rootModelConfig,
+  rootNotePreset,
 }) => {
   return (
     <Table
@@ -121,7 +122,7 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
             "Name",
             {
               colSpan: 12,
-              content: rootModelConfig ? "Notes" : "Intervals",
+              content: rootNotePreset ? "Notes" : "Intervals",
             },
           ],
         },
@@ -133,14 +134,12 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
               link: getModelRoute(
                 d.presetType,
                 d.presetId,
-                rootModelConfig
-                  ? (rootModelConfig.presetId as NoteId)
-                  : undefined
+                rootNotePreset ? (rootNotePreset.presetId as NoteId) : undefined
               ),
-              content: getRootedName(d, rootModelConfig),
+              content: getRootedName(d, rootNotePreset),
             },
             ...SEMITONES.map((h, i) =>
-              getSemitoneCol(d.value, h, semitones, rootModelConfig)
+              getSemitoneCol(d.value, h, semitones, rootNotePreset)
             ),
           ],
         };

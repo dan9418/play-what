@@ -14,17 +14,17 @@ import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";
 
 interface IRelatedCardProps {
-  modelConfig: IPodListPreset<any>;
-  rootModelConfig?: IPodPreset<NoteId>;
+  podListPreset: IPodListPreset<any>;
+  rootNotePreset?: IPodPreset<NoteId>;
   presetType: PresetType;
 }
 
 const RelatedCard: React.FC<IRelatedCardProps> = ({
-  modelConfig,
-  rootModelConfig,
+  podListPreset,
+  rootNotePreset,
   presetType,
 }) => {
-  const { value: intervalPods } = modelConfig;
+  const { value: intervalPods } = podListPreset;
   const subchords = getSubchords(intervalPods);
   const subscales = getSubscales(intervalPods);
   const superchords = getSuperchords(intervalPods);
@@ -38,7 +38,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
         <Card title="Child Chords">
           <CollectionTable
             data={subchords}
-            rootModelConfig={rootModelConfig}
+            rootNotePreset={rootNotePreset}
             semitones={semitones}
           />
         </Card>
@@ -47,7 +47,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
         <Card title="Parent Chords">
           <CollectionTable
             data={superchords}
-            rootModelConfig={rootModelConfig}
+            rootNotePreset={rootNotePreset}
             semitones={semitones}
           />
         </Card>
@@ -56,7 +56,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
         <Card title="Child Scales">
           <CollectionTable
             data={subscales}
-            rootModelConfig={rootModelConfig}
+            rootNotePreset={rootNotePreset}
             semitones={semitones}
           />
         </Card>
@@ -65,7 +65,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
         <Card title="Parent Scales">
           <CollectionTable
             data={superscales}
-            rootModelConfig={rootModelConfig}
+            rootNotePreset={rootNotePreset}
             semitones={semitones}
           />
         </Card>

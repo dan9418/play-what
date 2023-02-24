@@ -116,18 +116,18 @@
 
 // interface IDetailsCardProps {
 //   modelConfig: IModelConfig;
-//   rootModelConfig?: IModelConfig;
+//   rootNotePreset?: IModelConfig;
 // }
 
 // const DetailsCard: React.FC<IDetailsCardProps> = ({
 //   modelConfig,
-//   rootModelConfig,
+//   rootNotePreset,
 // }) => {
 //   const intervalPods = modelConfig.value;
 //   const octave = useRecoilValue(octaveState);
-//   const hasNotes = !!rootModelConfig;
+//   const hasNotes = !!rootNotePreset;
 //   const notePods =
-//     hasNotes && getNotePods(rootModelConfig.value, modelConfig.value, octave);
+//     hasNotes && getNotePods(rootNotePreset.value, modelConfig.value, octave);
 
 //   if (!intervalPods && !notePods) return null;
 

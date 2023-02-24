@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { IChordPreset } from "../../core/models/Chord.presets";
+import { AnyPodListPreset } from "../../core/models/Model.derived";
 import { IScalePreset } from "../../core/models/Scale.presets";
 import Card, { ICardProps } from "../ui/Card";
 import CollectionTable from "./CollectionTable";
 
 interface ICollectionCardProps extends ICardProps {
-  data: (IChordPreset | IScalePreset)[];
+  data: AnyPodListPreset[];
   description?: string;
 }
 

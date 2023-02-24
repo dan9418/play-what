@@ -38,16 +38,16 @@ const getFretConfig = (fretContext: IFretContext): IFretConfig => {
     stringIndex,
     fretIndex,
     tuningValue,
-    modelConfig,
-    rootModelConfig,
+    podListPreset,
+    rootNotePreset,
     voicingValue,
     colorSchemeFn,
   } = fretContext;
 
   const noteIndex = tuningValue[stringIndex] + fretIndex;
 
-  const rootPod = rootModelConfig.value;
-  const intervalPods = modelConfig.value;
+  const rootPod = rootNotePreset.value;
+  const intervalPods = podListPreset.value;
   const notePods = getNotePods(rootPod, intervalPods);
 
   const [interval, note] = tryGetPodPairAtPitch(
@@ -98,8 +98,8 @@ export const getFretMapFromFretboardProps = (
     tuningId,
     colorSchemeId,
     voicingId,
-    modelConfig,
-    rootModelConfig,
+    podListPreset,
+    rootNotePreset,
   } = props;
 
   const [lo, hi] = fretRange;
@@ -136,8 +136,8 @@ export const getFretMapFromFretboardProps = (
           stringIndex: s,
           fretIndex: f,
           tuningValue,
-          modelConfig,
-          rootModelConfig,
+          podListPreset,
+          rootNotePreset,
           colorSchemeFn,
           voicingValue,
         })

@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { IChordPreset } from "../../core/models/Chord.presets";
+import { AnyPodListPreset } from "../../core/models/Model.derived";
 import { INotePreset } from "../../core/models/Note.presets";
 import { IScalePreset } from "../../core/models/Scale.presets";
 import Fretboard from "../fretboard/Fretboard";
@@ -16,20 +17,20 @@ const StyledFretboardCard = styled.div`
 `;
 
 interface IFretboardCardProps {
-  modelConfig: IChordPreset | IScalePreset;
-  rootModelConfig?: INotePreset;
+  podListPreset: AnyPodListPreset;
+  rootNotePreset?: INotePreset;
 }
 
 const FretboardCard: React.FC<IFretboardCardProps> = ({
-  modelConfig,
-  rootModelConfig,
+  podListPreset,
+  rootNotePreset,
 }) => {
-  if (!modelConfig || !rootModelConfig) return null;
+  if (!podListPreset || !rootNotePreset) return null;
 
   const qp = new URLSearchParams({
-    presetId: modelConfig.presetId,
-    modelType: modelConfig.modelType,
-    rootId: rootModelConfig.presetId,
+    presetId: podListPreset.presetId,
+    modelType: podListPreset.modelType,
+    rootId: rootNotePreset.presetId,
   });
 
   return (
@@ -43,8 +44,8 @@ const FretboardCard: React.FC<IFretboardCardProps> = ({
     >
       <StyledFretboardCard>
         <Fretboard
-          modelConfig={modelConfig}
-          rootModelConfig={rootModelConfig}
+          podListPreset={podListPreset}
+          rootNotePreset={rootNotePreset}
         />
       </StyledFretboardCard>
     </Card>

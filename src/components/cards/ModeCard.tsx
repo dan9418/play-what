@@ -26,17 +26,17 @@ const StyledModeCard = styled.div`
 `;
 
 interface IModeCardProps {
-  modelConfig: IPodListPreset<any>;
-  rootModelConfig?: IPodPreset<any>;
+  podListPreset: IPodListPreset<any>;
+  rootNotePreset?: IPodPreset<any>;
 }
 
 const ModeCard: React.FC<IModeCardProps> = ({
-  modelConfig,
-  rootModelConfig,
+  podListPreset,
+  rootNotePreset,
 }) => {
   const rootId = useRootId();
 
-  const type = modelConfig.tags.find(
+  const type = podListPreset.tags.find(
     (t) =>
       t === Tag.Diatonic ||
       t === Tag.Pentatonic ||
@@ -72,7 +72,9 @@ const ModeCard: React.FC<IModeCardProps> = ({
             <li key={n.presetId}>
               <Link
                 to={getModelRoute(n.presetType, n.presetId, rootId)}
-                className={modelConfig.presetId === n.presetId ? "active" : ""}
+                className={
+                  podListPreset.presetId === n.presetId ? "active" : ""
+                }
               >
                 {n.name}
               </Link>
