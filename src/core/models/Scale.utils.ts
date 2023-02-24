@@ -1,19 +1,19 @@
 import ArrayUtils from "../general/Array.utils";
 import NumberUtils from "../general/Number.utils";
-import { IModelConfig, IPod, Tag } from "./Model.constants";
-import {
-  CHORD_PRESETS,
-  INTERVAL_PRESETS,
-  SCALE_PRESETS,
-} from "./Model.presets";
+import { CHORD_PRESETS, IChordPreset } from "./Chord.presets";
+import { INTERVAL_PRESETS } from "./Interval.presets";
+import { Tag } from "./Model.constants";
+import { INotePreset } from "./Note.presets";
+import { IPod } from "./Pod.presets";
 import {
   arePodListsEqual,
   arePodsEqual,
   reducePod,
   subtractPods,
 } from "./Pod.utils";
+import { IScalePreset, SCALE_PRESETS } from "./Scale.presets";
 
-export const getNumeral = (intervalPods: IPod[], d: number): IModelConfig => {
+export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
   // Get every other interval
   const curIntervals: IPod[] = [];
   for (let i = 0; i < intervalPods.length; i = i + 2) {
@@ -40,10 +40,10 @@ export const getNumeral = (intervalPods: IPod[], d: number): IModelConfig => {
 };
 
 export const getAllNumerals = (
-  modelConfig: IModelConfig,
-  rootModelConfig?: IModelConfig
-): [IModelConfig | undefined, IModelConfig][] => {
-  const numerals: [IModelConfig | undefined, IModelConfig][] = [];
+  modelConfig: IScalePreset,
+  rootModelConfig?: INotePreset
+): [INotePreset | undefined, IChordPreset][] => {
+  const numerals: [INotePreset | undefined, IChordPreset][] = [];
   if (modelConfig.tags.includes(Tag.Diatonic)) {
     for (let i = 0; i < modelConfig.value.length; i++) {
       numerals.push([rootModelConfig, getNumeral(modelConfig.value, i)]);
@@ -52,7 +52,7 @@ export const getAllNumerals = (
   return numerals;
 };
 
-export const getMode = (podList: IPod[], d: number): IModelConfig => {
+export const getMode = (podList: IPod[], d: number): IScalePreset => {
   let rotated = [...podList];
   rotated = ArrayUtils.rotate(rotated, d);
   for (let i = podList.length - d; i < rotated.length; i++) {
@@ -72,8 +72,8 @@ export const getMode = (podList: IPod[], d: number): IModelConfig => {
   return mode;
 };
 
-export const getAllModes = (podList: IPod[], tags: Tag[]): IModelConfig[] => {
-  const modes: IModelConfig[] = [];
+export const getAllModes = (podList: IPod[], tags: Tag[]): IScalePreset[] => {
+  const modes: IScalePreset[] = [];
   if (
     tags.includes(Tag.Diatonic) ||
     tags.includes(Tag.Pentatonic) ||

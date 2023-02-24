@@ -2,8 +2,10 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
-import { IModelConfig, NoteId, Tag } from "../../core/models/Model.constants";
-import { SCALE_PRESETS } from "../../core/models/Model.presets";
+import { Tag } from "../../core/models/Model.constants";
+import { IPodPreset } from "../../core/models/Pod.presets";
+import { IPodListPreset } from "../../core/models/PodList.presets";
+import { SCALE_PRESETS } from "../../core/models/Scale.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
 
@@ -24,8 +26,8 @@ const StyledModeCard = styled.div`
 `;
 
 interface IModeCardProps {
-  modelConfig: IModelConfig;
-  rootModelConfig?: IModelConfig;
+  modelConfig: IPodListPreset<any>;
+  rootModelConfig?: IPodPreset<any>;
 }
 
 const ModeCard: React.FC<IModeCardProps> = ({

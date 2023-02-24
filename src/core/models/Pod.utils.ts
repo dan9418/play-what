@@ -1,24 +1,21 @@
 import NumberUtils from "../general/Number.utils";
 import {
   ChordId,
-  IModelConfig,
-  IntervalId,
-  IPod,
-  MAX_POD,
-  NoteId,
-  PresetId,
-  PresetType,
-  ScaleId,
-} from "./Model.constants";
-import {
   CHORD_PRESETS,
   CHORD_PRESET_MAP,
-  INTERVAL_PRESET_MAP,
-  NOTE_PRESET_MAP,
+  IChordPreset,
+} from "./Chord.presets";
+import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.presets";
+import { PresetType } from "./Model.constants";
+import { INotePreset, NoteId, NOTE_PRESET_MAP } from "./Note.presets";
+import { getName } from "./Note.utils";
+import { IPod, MAX_POD } from "./Pod.presets";
+import {
+  IScalePreset,
+  ScaleId,
   SCALE_PRESETS,
   SCALE_PRESET_MAP,
-} from "./Model.presets";
-import { getName } from "./Note.utils";
+} from "./Scale.presets";
 
 // Sound
 
@@ -145,8 +142,8 @@ export const getShortName = (str) =>
     .replace("th", "");
 
 export const getRootedName = (
-  modelConfig: IModelConfig,
-  rootModelConfig?: IModelConfig
+  modelConfig: IChordPreset | IScalePreset,
+  rootModelConfig?: INotePreset
 ) => {
   return `${rootModelConfig ? `${getName(rootModelConfig.value)} ` : ""}${
     modelConfig.name
@@ -226,7 +223,7 @@ export const tryGetPodPairAtPitch = (
 
 export const getModelConfigById = (
   presetType: PresetType,
-  presetId: PresetId
+  presetId: string
 ) => {
   if (presetType === PresetType.Interval) {
     return INTERVAL_PRESET_MAP.get(presetId as IntervalId);

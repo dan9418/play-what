@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { ModelPageProps } from "../../../contexts/PagePropsContext";
-import { IModelConfig, PresetType } from "../../../core/models/Model.constants";
+import { IChordPreset } from "../../../core/models/Chord.presets";
+import { PresetType } from "../../../core/models/Model.constants";
+import { INotePreset } from "../../../core/models/Note.presets";
 import { getNoteFromId } from "../../../core/models/Note.utils";
 import { getModelConfigById } from "../../../core/models/Pod.utils";
+import { IScalePreset } from "../../../core/models/Scale.presets";
 import DetailsCard from "../../cards/DetailsCard";
 import FretboardCard from "../../cards/FretboardCard";
 import ModeCard from "../../cards/ModeCard";
@@ -18,12 +21,14 @@ const StyledPodlistPage = styled(PageLayout)``;
 const PodListPage: React.FC<ModelPageProps> = (props) => {
   const { presetType, presetId, rootId } = props.pageContext;
 
-  const modelConfig = getModelConfigById(presetType, presetId) as IModelConfig;
+  const modelConfig = getModelConfigById(presetType, presetId) as
+    | IChordPreset
+    | IScalePreset;
   const rootModelConfig = getNoteFromId(rootId);
 
-  const title = `${
-    rootId ? (getNoteFromId(rootId) as IModelConfig).name : ""
-  } ${modelConfig.name}`;
+  const title = `${rootId ? (getNoteFromId(rootId) as INotePreset).name : ""} ${
+    modelConfig.name
+  }`;
 
   return (
     <StyledPodlistPage title={title}>

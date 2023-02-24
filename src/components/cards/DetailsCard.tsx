@@ -5,7 +5,6 @@ import {
   getName as getIntervalName,
   getRatio,
 } from "../../core/models/Interval.utils";
-import { IModelConfig, IPod } from "../../core/models/Model.constants";
 import {
   getFrequency,
   getName as getNoteName,

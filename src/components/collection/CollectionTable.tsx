@@ -1,9 +1,12 @@
 import React from "react";
 import { css } from "styled-components";
+import { IChordPreset } from "../../core/models/Chord.presets";
 import { getName as getIntervalName } from "../../core/models/Interval.utils";
-import { IModelConfig, IPod, NoteId } from "../../core/models/Model.constants";
+import { INotePreset, NoteId } from "../../core/models/Note.presets";
 import { getName as getNoteName } from "../../core/models/Note.utils";
+import { IPod } from "../../core/models/Pod.presets";
 import { addPods, getRootedName } from "../../core/models/Pod.utils";
+import { IScalePreset } from "../../core/models/Scale.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
 
@@ -74,8 +77,8 @@ const tableStyles = css`
 `;
 
 export interface ICollectionTableProps {
-  data: IModelConfig[];
-  rootModelConfig?: IModelConfig;
+  data: (IChordPreset | IScalePreset)[];
+  rootModelConfig?: INotePreset;
   semitones?: number[];
 }
 
@@ -85,7 +88,7 @@ const getSemitoneCol = (
   pods: IPod[],
   h: number,
   semitones: number[],
-  rootModelConfig?: IModelConfig
+  rootModelConfig?: INotePreset
 ) => {
   const index = pods.findIndex((ivl) => ivl[0] + 1 === h);
   const className = semitones.includes(h) ? "active" : undefined;

@@ -1,5 +1,5 @@
 import ArrayUtils from "../general/Array.utils";
-import { NoteId } from "../models/Model.constants";
+import { NoteId } from "../models/Note.presets";
 import { getNoteWithOctave } from "../models/Note.utils";
 
 export enum TuningId {

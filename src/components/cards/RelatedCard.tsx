@@ -1,26 +1,30 @@
 import React from "react";
-import { IModelConfig, PresetType } from "../../core/models/Model.constants";
-import { CHORD_PRESETS, SCALE_PRESETS } from "../../core/models/Model.presets";
+import { PresetType } from "../../core/models/Model.constants";
+import { NoteId } from "../../core/models/Note.presets";
+import { IPodPreset } from "../../core/models/Pod.presets";
 import {
   getSubchords,
   getSubscales,
   getSuperchords,
   getSuperscales,
 } from "../../core/models/Pod.utils";
+import { IPodListPreset } from "../../core/models/PodList.presets";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";
 
 interface IRelatedCardProps {
-  modelConfig: IModelConfig;
-  rootModelConfig?: IModelConfig;
+  modelConfig: IPodListPreset<any>;
+  rootModelConfig?: IPodPreset<NoteId>;
+  presetType: PresetType;
 }
 
 const RelatedCard: React.FC<IRelatedCardProps> = ({
   modelConfig,
   rootModelConfig,
+  presetType,
 }) => {
-  const { modelType, presetType, presetId, value: intervalPods } = modelConfig;
+  const { value: intervalPods } = modelConfig;
   const subchords = getSubchords(intervalPods);
   const subscales = getSubscales(intervalPods);
   const superchords = getSuperchords(intervalPods);

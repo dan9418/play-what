@@ -1,13 +1,11 @@
 import TuningUtils from "../tuning/Tuning.utils";
 import {
-  IIntervalQuality,
-  IModelConfig,
+  CORE_INTERVALS,
+  IIntervalPreset,
   IntervalId,
-  INTERVAL_QUALITY,
-  IPod,
-  MAX_POD,
-} from "./Model.constants";
-import { CORE_INTERVALS, INTERVAL_PRESET_MAP } from "./Model.presets";
+  INTERVAL_PRESET_MAP,
+} from "./Interval.presets";
+import { IPod, MAX_POD } from "./Pod.presets";
 import { reducePod } from "./Pod.utils";
 
 const getIsExtended = (pod: IPod): boolean => {
@@ -18,7 +16,7 @@ export const getName = (pod: IPod) => {
   const reduced = reducePod(pod);
 
   const [noteIndex, d] = reduced;
-  const degreeIntervals = CORE_INTERVALS[d] as IModelConfig[];
+  const degreeIntervals = CORE_INTERVALS[d] as IIntervalPreset[];
   if (!degreeIntervals) return "?";
 
   const pIvl = degreeIntervals[0];
@@ -26,7 +24,7 @@ export const getName = (pod: IPod) => {
   const hiIvl = degreeIntervals[degreeIntervals.length - 1];
 
   // determine core interval and quality
-  let ivl: IModelConfig | undefined;
+  let ivl: IIntervalPreset | undefined;
   let quality: IIntervalQuality | undefined;
   if (degreeIntervals.length === 1) {
     ivl = pIvl; // perfect
@@ -39,7 +37,7 @@ export const getName = (pod: IPod) => {
     quality = INTERVAL_QUALITY.maj;
   }
 
-  const offset = (ivl as IModelConfig).value[0] - reduced[0];
+  const offset = (ivl as IIntervalPreset).value[0] - reduced[0];
 
   if (offset === 0) return `${(quality as IIntervalQuality).symbol}${d + 1}`;
   else if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
@@ -60,7 +58,7 @@ export const getName = (pod: IPod) => {
 };
 
 export const getNameFromId = (presetId: IntervalId) => {
-  return (INTERVAL_PRESET_MAP.get(presetId) as IModelConfig).name || "";
+  return (INTERVAL_PRESET_MAP.get(presetId) as IIntervalPreset).name || "";
 };
 
 export const getRatio = (pod: IPod) => {
@@ -126,6 +124,6 @@ export const reduceExtendedIntervalIds = (value: IntervalId[]) => {
 
     let intervalId = isExtended ? getExtensionInversionId(id) : id;
 
-    return (INTERVAL_PRESET_MAP.get(intervalId) as IModelConfig).value;
+    return (INTERVAL_PRESET_MAP.get(intervalId) as IIntervalPreset).value;
   });
 };

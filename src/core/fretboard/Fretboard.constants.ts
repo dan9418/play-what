@@ -1,6 +1,7 @@
-import { IModelConfig } from "../../core/models/Model.constants";
 import { ColorSchemeFn, ColorSchemeId } from "../color/Color.utils";
-import { CHORD_PRESETS, NOTE_PRESETS } from "../models/Model.presets";
+import { CHORD_PRESETS, IChordPreset } from "../models/Chord.presets";
+import { INotePreset, NOTE_PRESETS } from "../models/Note.presets";
+import { IScalePreset } from "../models/Scale.presets";
 import { TuningId } from "./Fretboard.tuning";
 import { VoicingId, VoicingValue } from "./Fretboard.voicing";
 
@@ -30,16 +31,16 @@ export interface IFretboardProps {
   colorSchemeId: ColorSchemeId;
   voicingId: VoicingId;
   tuningId: TuningId;
-  modelConfig: IModelConfig;
-  rootModelConfig: IModelConfig;
+  modelConfig: IScalePreset | IChordPreset;
+  rootModelConfig: INotePreset;
 }
 
 export interface IFretContext {
   stringIndex: number;
   fretIndex: number;
   tuningValue: number[];
-  modelConfig: IModelConfig;
-  rootModelConfig: IModelConfig;
+  modelConfig: IChordPreset | IScalePreset;
+  rootModelConfig: INotePreset;
   colorSchemeFn: ColorSchemeFn;
   voicingValue: VoicingValue;
 }

@@ -1,4 +1,4 @@
-import { IPreset, Tag } from ".";
+import { IPreset, Tag } from "./Model.constants";
 import { IPod } from "./Pod.presets";
 
 export interface IPodListPreset<D extends string> extends IPreset<D, IPod[]> {

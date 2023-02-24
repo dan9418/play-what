@@ -1,5 +1,5 @@
 import NumberUtils from "../general/Number.utils";
-import { ChordId, CHORD_QUALITY } from "./Model.constants";
+import { ChordId } from "./Chord.presets";
 
 export const getSymbol = (presetId: ChordId, symbolType = "jazz") => {
   switch (presetId) {

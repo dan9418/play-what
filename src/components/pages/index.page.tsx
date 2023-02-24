@@ -7,10 +7,7 @@ import {
   getPresetTypeText,
   PresetType,
 } from "../../core/models/Model.constants";
-import {
-  NOTE_PRESETS,
-  POD_LIST_PRESETS,
-} from "../../core/models/Model.presets";
+import { NOTE_PRESETS } from "../../core/models/Note.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import PageLayout from "../layout/PageLayout";
 import Icon, { IconId } from "../ui/Icon";

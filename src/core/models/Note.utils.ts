@@ -3,13 +3,12 @@ import { DegreeId, DEGREE_PRESETS } from "../theory/Degree.constants";
 import { ROOT_SCALE } from "../theory/Theory.constants";
 import TuningUtils from "../tuning/Tuning.utils";
 import {
-  ACCIDENTAL,
-  IModelConfig,
-  IPod,
-  MAX_POD,
+  INotePreset,
   NoteId,
-} from "./Model.constants";
-import { NOTE_PRESETS, NOTE_PRESET_MAP } from "./Model.presets";
+  NOTE_PRESETS,
+  NOTE_PRESET_MAP,
+} from "./Note.presets";
+import { IPod, MAX_POD } from "./Pod.presets";
 import { arePodsEqual, getDegree, reducePod } from "./Pod.utils";
 
 interface INoteNameOptions {
@@ -31,7 +30,7 @@ export const getNoteFromId = (id: NoteId) => {
 };
 
 export const getNoteWithOctave = (noteId: NoteId, octave: number): IPod => {
-  const notePreset = NOTE_PRESET_MAP.get(noteId) as IModelConfig;
+  const notePreset = NOTE_PRESET_MAP.get(noteId) as INotePreset;
   return [
     (octave - 4) * 12 + NumberUtils.modulo(notePreset.value[0], 12),
     notePreset.value[1],

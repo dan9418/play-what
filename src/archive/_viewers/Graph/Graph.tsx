@@ -1,6 +1,4 @@
 import React from "react";
-import { MAX_POD } from "../../../core/models/Model.constants";
-import ModelUtils from "../../../core/models/Model.utils";
 import "./Graph.css";
 import DEFAULT_GRAPH_PROPS from "./Graph.defaults";
 

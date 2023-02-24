@@ -2,8 +2,8 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
-import { IModelConfig } from "../../core/models/Model.constants";
-import { POD_LIST_PRESETS } from "../../core/models/Model.presets";
+import { IChordPreset } from "../../core/models/Chord.presets";
+import { IScalePreset } from "../../core/models/Scale.presets";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 
 const StyledCollectionList = styled.ul`
@@ -25,7 +25,7 @@ const StyledCollectionList = styled.ul`
 `;
 
 interface ICollectionListProps {
-  data: IModelConfig[];
+  data: (IChordPreset | IScalePreset)[];
 }
 
 const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {

@@ -1,13 +1,11 @@
 import React from "react";
 import { css } from "styled-components";
+import { ChordId, IChordPreset } from "../../core/models/Chord.presets";
 import { getNumeralParts } from "../../core/models/Chord.utils";
-import {
-  ChordId,
-  IModelConfig,
-  NoteId,
-} from "../../core/models/Model.constants";
-import { getNoteFromPod } from "../../core/models/Note.utils";
+import { INotePreset, NoteId } from "../../core/models/Note.presets";
 import { getRootedName, getShortName } from "../../core/models/Pod.utils";
+import { IPodListPreset } from "../../core/models/PodList.presets";
+import { IScalePreset } from "../../core/models/Scale.presets";
 import { getAllNumerals } from "../../core/models/Scale.utils";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
@@ -40,8 +38,8 @@ const tableStyles = css`
 `;
 
 interface IRomanNumeralsCardProps {
-  modelConfig: IModelConfig;
-  rootModelConfig?: IModelConfig;
+  modelConfig: IChordPreset | IScalePreset;
+  rootModelConfig?: INotePreset;
   title?: string;
 }
 

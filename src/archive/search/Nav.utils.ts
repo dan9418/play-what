@@ -1,15 +1,4 @@
-import {
-  IModelConfig,
-  PresetId,
-  ModelType,
-  NoteId,
-  Tag,
-} from "../../core/models/Model.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
-import {
-  POD_LIST_PRESETS,
-  NOTE_PRESET_MAP,
-} from "../../core/models/Model.presets";
 import { replaceAll } from "../../core/general/String.utils";
 
 interface ISearchResult {

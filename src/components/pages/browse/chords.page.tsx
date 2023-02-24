@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { CHORD_PRESETS } from "../../../core/models/Chord.presets";
 import { Tag } from "../../../core/models/Model.constants";
-import { CHORD_PRESETS } from "../../../core/models/Model.presets";
 import CollectionCard from "../../collection/CollectionCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";
