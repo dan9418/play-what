@@ -1,15 +1,15 @@
-import color from "color";
 import ArrayUtils from "../general/Array.utils";
+import { IPreset } from "../models/Model.constants";
 import { getPitchClass } from "../models/Note.utils";
 import { IPod } from "../models/Pod.presets";
 import { getDegree } from "../models/Pod.utils";
 
 export enum ColorSchemeId {
-  None,
-  Monochrome,
-  HighlightRoot,
-  Degree,
-  PitchClass,
+  None = "none",
+  Monochrome = "monochrome",
+  HighlightRoot = "highlight-root",
+  Degree = "degree",
+  PitchClass = "pitch-class",
 }
 
 export type ColorSchemeFn = (
@@ -18,9 +18,7 @@ export type ColorSchemeFn = (
   config?: string[]
 ) => string | undefined;
 
-export interface IColorScheme {
-  id: ColorSchemeId;
-  name: string;
+export interface IColorSchemePreset extends IPreset<ColorSchemeId> {
   defaultConfig: string[];
   fn: ColorSchemeFn;
 }
@@ -57,12 +55,12 @@ const DEFAULT_PITCH_COLOR_SCHEME = [
   "#C2305E",
 ];
 
-export const COLOR_SCHEME_PRESET_MAP: Map<ColorSchemeId, IColorScheme> =
+export const COLOR_SCHEME_PRESET_MAP: Map<ColorSchemeId, IColorSchemePreset> =
   new Map([
     [
       ColorSchemeId.Monochrome,
       {
-        id: ColorSchemeId.Monochrome,
+        presetId: ColorSchemeId.Monochrome,
         name: "Monochrome",
         defaultConfig: DEFAULT_MONOCHROME_CONFIG,
         fn: (note, interval, config = DEFAULT_MONOCHROME_CONFIG) =>
@@ -72,7 +70,7 @@ export const COLOR_SCHEME_PRESET_MAP: Map<ColorSchemeId, IColorScheme> =
     [
       ColorSchemeId.HighlightRoot,
       {
-        id: ColorSchemeId.HighlightRoot,
+        presetId: ColorSchemeId.HighlightRoot,
         name: "Highlight Root",
         defaultConfig: DEFAULT_HIGHLIGHT_ROOT_CONFIG,
         fn: (note, interval, config = DEFAULT_HIGHLIGHT_ROOT_CONFIG) =>
@@ -86,7 +84,7 @@ export const COLOR_SCHEME_PRESET_MAP: Map<ColorSchemeId, IColorScheme> =
     [
       ColorSchemeId.Degree,
       {
-        id: ColorSchemeId.Degree,
+        presetId: ColorSchemeId.Degree,
         name: "Interval Degree",
         defaultConfig: DEFAULT_DEGREE_COLOR_SCHEME,
         fn: (note, interval, config = DEFAULT_DEGREE_COLOR_SCHEME) =>
@@ -96,7 +94,7 @@ export const COLOR_SCHEME_PRESET_MAP: Map<ColorSchemeId, IColorScheme> =
     [
       ColorSchemeId.PitchClass,
       {
-        id: ColorSchemeId.PitchClass,
+        presetId: ColorSchemeId.PitchClass,
         name: "Pitch Class",
         defaultConfig: DEFAULT_PITCH_COLOR_SCHEME,
         fn: (note, interval, config = DEFAULT_PITCH_COLOR_SCHEME) =>
@@ -109,32 +107,27 @@ export const COLOR_SCHEME_PRESETS = ArrayUtils.mapToArray(
   COLOR_SCHEME_PRESET_MAP
 );
 
-const getFgColor = (bg?: string): string => {
-  if (!bg) return "#000";
-  return color(bg).isDark() ? "#fff" : "#000";
-};
+// const getFgColor = (bg?: string): string => {
+//   if (!bg) return "#000";
+//   return color(bg).isDark() ? "#fff" : "#000";
+// };
 
-const getStylesFromBgColor = (bg?: string): any => {
-  if (!bg) return {};
-  const fg = getFgColor(bg);
-  return {
-    backgroundColor: bg,
-    color: fg,
-  };
-};
+// const getStylesFromBgColor = (bg?: string): any => {
+//   if (!bg) return {};
+//   const fg = getFgColor(bg);
+//   return {
+//     backgroundColor: bg,
+//     color: fg,
+//   };
+// };
 
-/* const getColorFromContinuousScheme = (value, min, max, scheme) => {
-  let percent = (value - min) / (max - min);
-  percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
+// const getColorFromContinuousScheme = (value, min, max, scheme) => {
+//   let percent = (value - min) / (max - min);
+//   percent = percent <= 0 ? 0 : percent >= 1 ? 1 : percent;
 
-  const initialColor = color(scheme.min);
-  const finalColor = color(scheme.max);
-  const background = initialColor.mix(finalColor, percent);
+//   const initialColor = color(scheme.min);
+//   const finalColor = color(scheme.max);
+//   const background = initialColor.mix(finalColor, percent);
 
-  return background;
-}; */
-
-export default {
-  getFgColor,
-  getStylesFromBgColor,
-};
+//   return background;
+// };

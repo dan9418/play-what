@@ -1,35 +1,35 @@
+import { IPreset, PresetMap } from "../models/Model.constants";
+
 export const MAX_PITCH = 12;
 
 export enum PitchId {
-  MiddleC = "MiddleC",
-  Midi = "Midi",
+  MiddleC = "middle-c",
+  Midi = "midi",
 }
 
-interface IPitchPreset {
-  id: PitchId;
-  name: string;
-  value: number;
+interface IPitchPreset extends IPreset<PitchId> {
+  noteIndex: number;
 }
 
-export const PITCH_PRESET_MAP = new Map<PitchId, IPitchPreset>([
+export const PITCH_PRESET_MAP: PresetMap<PitchId, IPitchPreset> = new Map([
   [
     PitchId.MiddleC,
     {
-      id: PitchId.MiddleC,
+      presetId: PitchId.MiddleC,
       name: "Middle C",
-      value: 0,
+      noteIndex: 0,
     },
   ],
   [
     PitchId.Midi,
     {
-      id: PitchId.Midi,
+      presetId: PitchId.Midi,
       name: "MIDI",
-      value: 60,
+      noteIndex: 60,
     },
   ],
 ]);
 
 export const ROOT_PITCH = (
   PITCH_PRESET_MAP.get(PitchId.MiddleC) as IPitchPreset
-).value;
+).noteIndex;

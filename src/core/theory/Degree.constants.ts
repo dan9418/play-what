@@ -1,3 +1,6 @@
+import ArrayUtils from "../general/Array.utils";
+import { IPreset, PresetMap } from "../models/Model.constants";
+
 export const MAX_DEGREE = 7;
 
 export enum DegreeId {
@@ -10,72 +13,70 @@ export enum DegreeId {
   B = "B",
 }
 
-export const DEGREE_PRESET_MAP = new Map<DegreeId, any>([
+export interface IDegreePreset extends IPreset<DegreeId> {
+  degreeIndex: number;
+}
+
+export const DEGREE_PRESET_MAP: PresetMap<DegreeId, IDegreePreset> = new Map([
   [
     DegreeId.C,
     {
-      id: DegreeId.C,
+      presetId: DegreeId.C,
       name: "C",
-      tags: [],
-      value: 0,
+      degreeIndex: 0,
     },
   ],
   [
     DegreeId.D,
     {
-      id: DegreeId.D,
+      presetId: DegreeId.D,
       name: "D",
-      tags: [],
-      value: 1,
+      degreeIndex: 1,
     },
   ],
   [
     DegreeId.E,
     {
-      id: DegreeId.E,
+      presetId: DegreeId.E,
       name: "E",
-      tags: [],
-      value: 2,
+      degreeIndex: 2,
     },
   ],
   [
     DegreeId.F,
     {
-      id: DegreeId.F,
+      presetId: DegreeId.F,
       name: "F",
-      tags: [],
-      value: 3,
+      degreeIndex: 3,
     },
   ],
   [
     DegreeId.G,
     {
-      id: DegreeId.G,
+      presetId: DegreeId.G,
       name: "G",
-      tags: [],
-      value: 4,
+      degreeIndex: 4,
     },
   ],
   [
     DegreeId.A,
     {
-      id: DegreeId.A,
+      presetId: DegreeId.A,
       name: "A",
-      tags: [],
-      value: 5,
+      degreeIndex: 5,
     },
   ],
   [
     DegreeId.B,
     {
-      id: DegreeId.B,
+      presetId: DegreeId.B,
       name: "B",
-      tags: [],
-      value: 6,
+      degreeIndex: 6,
     },
   ],
 ]);
 
-export const ROOT_DEGREE = DEGREE_PRESET_MAP.get(DegreeId.C).value;
+export const ROOT_DEGREE = (DEGREE_PRESET_MAP.get(DegreeId.C) as IDegreePreset)
+  .degreeIndex;
 
-export const DEGREE_PRESETS = Array.from(DEGREE_PRESET_MAP).map(([k, v]) => v);
+export const DEGREE_PRESETS = ArrayUtils.mapToArray(DEGREE_PRESET_MAP);
