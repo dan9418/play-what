@@ -22,14 +22,16 @@ export enum TuningId {
   OpenG = "open-g",
 }
 
-export type ITuning = number[];
+export type TuningValue = number[];
 
-export interface ITuningPreset extends IPreset<TuningId, ITuning> {}
+export interface ITuningPreset extends IPreset<TuningId> {
+  value: TuningValue;
+}
 
 const formatPreset = (
   presetId: TuningId,
   name: string,
-  value: ITuning
+  value: TuningValue
 ): ITuningPreset => ({
   presetId,
   name,

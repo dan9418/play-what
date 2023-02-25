@@ -41,9 +41,9 @@ export interface IIntervalPreset extends IPodPreset<IntervalId> {}
 const formatIntervalPreset = (
   presetId: IntervalId,
   name: string,
-  value: IPod,
+  pod: IPod,
   tags: Tag[]
-): IIntervalPreset => formatPodPreset(presetId, name, value, tags);
+): IIntervalPreset => formatPodPreset(presetId, name, pod, tags);
 
 export const INTERVAL_PRESET_MAP: PresetMap<IntervalId, IIntervalPreset> =
   new Map([

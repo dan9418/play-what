@@ -9,14 +9,11 @@ export enum IntervalQualityId {
   Augmented = "augmented",
 }
 
-interface IIntervalQuality {
+export interface IIntervalQualityPreset extends IPreset<IntervalQualityId> {
   symbol: string;
   down?: IntervalQualityId;
   up?: IntervalQualityId;
 }
-
-export interface IIntervalQualityPreset
-  extends IPreset<IntervalQualityId, IIntervalQuality> {}
 
 export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
   IntervalQualityId,
@@ -27,11 +24,9 @@ export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
     {
       presetId: IntervalQualityId.Diminished,
       name: "Diminished",
-      value: {
-        symbol: "d",
-        down: undefined,
-        up: IntervalQualityId.Minor,
-      },
+      symbol: "d",
+      down: undefined,
+      up: IntervalQualityId.Minor,
     },
   ],
   [
@@ -39,11 +34,9 @@ export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
     {
       presetId: IntervalQualityId.Minor,
       name: "Minor",
-      value: {
-        symbol: "m",
-        down: IntervalQualityId.Diminished,
-        up: IntervalQualityId.Major,
-      },
+      symbol: "m",
+      down: IntervalQualityId.Diminished,
+      up: IntervalQualityId.Major,
     },
   ],
   [
@@ -51,11 +44,9 @@ export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
     {
       presetId: IntervalQualityId.Perfect,
       name: "Perfect",
-      value: {
-        symbol: "P",
-        down: IntervalQualityId.Diminished,
-        up: IntervalQualityId.Augmented,
-      },
+      symbol: "P",
+      down: IntervalQualityId.Diminished,
+      up: IntervalQualityId.Augmented,
     },
   ],
   [
@@ -63,11 +54,9 @@ export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
     {
       presetId: IntervalQualityId.Major,
       name: "Major",
-      value: {
-        symbol: "M",
-        down: IntervalQualityId.Minor,
-        up: IntervalQualityId.Augmented,
-      },
+      symbol: "M",
+      down: IntervalQualityId.Minor,
+      up: IntervalQualityId.Augmented,
     },
   ],
   [
@@ -75,11 +64,9 @@ export const INTERVAL_QUALITY_PRESET_MAP: PresetMap<
     {
       presetId: IntervalQualityId.Augmented,
       name: "Augmented",
-      value: {
-        symbol: "A",
-        down: IntervalQualityId.Major,
-        up: undefined,
-      },
+      symbol: "A",
+      down: IntervalQualityId.Major,
+      up: undefined,
     },
   ],
 ]);

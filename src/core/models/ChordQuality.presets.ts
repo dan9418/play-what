@@ -10,7 +10,7 @@ export enum ChordQualityId {
   Augmented = "augmented",
 }
 
-interface IChordQuality {
+export interface IChordQualityPreset extends IPreset<ChordQualityId> {
   term: {
     long: string;
     medium: string;
@@ -21,9 +21,6 @@ interface IChordQuality {
   triad: ChordQualityId;
 }
 
-export interface IChordQualityPreset
-  extends IPreset<ChordQualityId, IChordQuality> {}
-
 export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
   new Map([
     [
@@ -31,16 +28,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.Major,
         name: "Major",
-        value: {
-          term: {
-            long: "Major",
-            medium: "Maj",
-            short: "M",
-            minimal: "",
-            jazz: "Δ",
-          },
-          triad: ChordQualityId.Major,
+        term: {
+          long: "Major",
+          medium: "Maj",
+          short: "M",
+          minimal: "",
+          jazz: "Δ",
         },
+        triad: ChordQualityId.Major,
       },
     ],
     [
@@ -48,16 +43,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.Minor,
         name: "Minor",
-        value: {
-          term: {
-            long: "Minor",
-            medium: "Min",
-            short: "m",
-            minimal: "m",
-            jazz: "-",
-          },
-          triad: ChordQualityId.Minor,
+        term: {
+          long: "Minor",
+          medium: "Min",
+          short: "m",
+          minimal: "m",
+          jazz: "-",
         },
+        triad: ChordQualityId.Minor,
       },
     ],
     [
@@ -65,16 +58,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.Dominant,
         name: "Dominant",
-        value: {
-          term: {
-            long: "Dominant",
-            medium: "Dom",
-            short: "7",
-            minimal: "7",
-            jazz: "⁷",
-          },
-          triad: ChordQualityId.Major,
+        term: {
+          long: "Dominant",
+          medium: "Dom",
+          short: "7",
+          minimal: "7",
+          jazz: "⁷",
         },
+        triad: ChordQualityId.Major,
       },
     ],
     [
@@ -82,16 +73,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.HalfDiminished,
         name: "Half-Diminished",
-        value: {
-          term: {
-            long: "Half-Diminished",
-            medium: "Half-Dim",
-            short: "ø",
-            minimal: "ø",
-            jazz: "ø",
-          },
-          triad: ChordQualityId.Diminished,
+        term: {
+          long: "Half-Diminished",
+          medium: "Half-Dim",
+          short: "ø",
+          minimal: "ø",
+          jazz: "ø",
         },
+        triad: ChordQualityId.Diminished,
       },
     ],
     [
@@ -99,16 +88,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.Diminished,
         name: "Diminished",
-        value: {
-          term: {
-            long: "Diminished",
-            medium: "Dim",
-            short: "d",
-            minimal: "d",
-            jazz: "o",
-          },
-          triad: ChordQualityId.Diminished,
+        term: {
+          long: "Diminished",
+          medium: "Dim",
+          short: "d",
+          minimal: "d",
+          jazz: "o",
         },
+        triad: ChordQualityId.Diminished,
       },
     ],
     [
@@ -116,16 +103,14 @@ export const CHORD_QUALITY_MAP: PresetMap<ChordQualityId, IChordQualityPreset> =
       {
         presetId: ChordQualityId.Augmented,
         name: "Augmented",
-        value: {
-          term: {
-            long: "Augmented",
-            medium: "Aug",
-            short: "A",
-            minimal: "",
-            jazz: "+",
-          },
-          triad: ChordQualityId.Augmented,
+        term: {
+          long: "Augmented",
+          medium: "Aug",
+          short: "A",
+          minimal: "",
+          jazz: "+",
         },
+        triad: ChordQualityId.Augmented,
       },
     ],
   ]);

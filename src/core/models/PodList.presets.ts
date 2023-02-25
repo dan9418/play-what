@@ -1,9 +1,10 @@
 import { IPreset, Tag } from "./Model.constants";
 import { IPod } from "./Pod.presets";
 
-export interface IPodListPreset<D extends string> extends IPreset<D, IPod[]> {
+export interface IPodListPreset<D extends string> extends IPreset<D> {
   tags: Tag[];
   aliases: string[];
+  pods: IPod[];
   valueIds: string[];
 }
 
@@ -11,7 +12,7 @@ export const formatPodListPreset = <D extends string>(
   presetId: D,
   name: string,
   valueIds: string[],
-  value: IPod[],
+  pods: IPod[],
   tags = [] as Tag[],
   aliases = [] as string[]
 ): IPodListPreset<D> => {
@@ -19,7 +20,7 @@ export const formatPodListPreset = <D extends string>(
     presetId,
     name,
     valueIds,
-    value,
+    pods,
     aliases,
     tags,
   };

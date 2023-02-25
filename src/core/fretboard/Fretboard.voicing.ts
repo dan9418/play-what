@@ -33,14 +33,16 @@ export enum VoicingId {
   Scale_DoubleOctave_DShape_1 = "Scale_DoubleOctave_DShape_1",
 }
 
-export type IVoicing = (number | number[] | undefined)[];
+export type VoicingValue = (number | number[] | undefined)[];
 
-export interface IVoicingPreset extends IPreset<VoicingId, IVoicing> {}
+export interface IVoicingPreset extends IPreset<VoicingId> {
+  value: VoicingValue;
+}
 
 const formatVoicingPreset = (
   presetId: VoicingId,
   name: string,
-  value: IVoicing
+  value: VoicingValue
 ): IVoicingPreset => ({
   presetId,
   name,

@@ -9,8 +9,9 @@ export enum AccidentalId {
   DoubleSharp = "double-sharp",
 }
 
-interface IAccidentalPreset extends IPreset<AccidentalId, number> {
+interface IAccidentalPreset extends IPreset<AccidentalId> {
   symbol: string;
+  offset: number;
 }
 
 export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
@@ -21,7 +22,7 @@ export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
         presetId: AccidentalId.DoubleFlat,
         name: "Double Flat",
         symbol: "bb",
-        value: -2,
+        offset: -2,
       },
     ],
     [
@@ -30,7 +31,7 @@ export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
         presetId: AccidentalId.Flat,
         name: "Flat",
         symbol: "b",
-        value: -1,
+        offset: -1,
       },
     ],
     [
@@ -39,7 +40,7 @@ export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
         presetId: AccidentalId.Natural,
         name: "Natural",
         symbol: "♮",
-        value: 0,
+        offset: 0,
       },
     ],
     [
@@ -48,7 +49,7 @@ export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
         presetId: AccidentalId.Sharp,
         name: "Sharp",
         symbol: "#",
-        value: 1,
+        offset: 1,
       },
     ],
     [
@@ -57,7 +58,7 @@ export const ACCIDENTAL_PRESET_MAP: PresetMap<AccidentalId, IAccidentalPreset> =
         presetId: AccidentalId.DoubleSharp,
         name: "Double Sharp",
         symbol: "##",
-        value: 2,
+        offset: 2,
       },
     ],
   ]);

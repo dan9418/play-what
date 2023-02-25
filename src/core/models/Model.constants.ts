@@ -54,10 +54,9 @@ export enum Tag {
 
 export type PresetValue = any;
 
-export interface IPreset<D extends string, V extends PresetValue> {
+export interface IPreset<D extends string> {
   name: string;
   presetId: D;
-  value: V;
 }
 
-export type PresetMap<D extends string, IPreset> = Map<D, IPreset>;
+export type PresetMap<D extends string, P extends IPreset<D>> = Map<D, P>;

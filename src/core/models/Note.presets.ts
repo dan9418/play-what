@@ -1,5 +1,5 @@
-import { IPreset, PresetMap, Tag } from "./Model.constants";
 import ArrayUtils from "../general/Array.utils";
+import { PresetMap } from "./Model.constants";
 import { formatPodPreset, IPod, IPodPreset } from "./Pod.presets";
 
 export enum NoteId {
@@ -31,8 +31,8 @@ export interface INotePreset extends IPodPreset<NoteId> {}
 const formatNotePreset = (
   presetId: NoteId,
   name: string,
-  value: IPod
-): INotePreset => formatPodPreset(presetId, name, value);
+  pod: IPod
+): INotePreset => formatPodPreset(presetId, name, pod);
 
 export const NOTE_PRESET_MAP: PresetMap<NoteId, INotePreset> = new Map([
   [NoteId.C, formatNotePreset(NoteId.C, "C", [0, 0])],
