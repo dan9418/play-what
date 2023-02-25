@@ -1,5 +1,5 @@
 import { PresetMap, Tag } from "./Model.constants";
-import ArrayUtils from "../general/Array.utils";
+import ArrayUtils from "./Array.utils";
 import { IntervalId } from "./Interval.presets";
 import { reduceExtendedIntervalIds } from "./Interval.utils";
 import { formatPodListPreset, IPodListPreset } from "./PodList.presets";

@@ -1,5 +1,5 @@
-import { PresetType } from "../models/Model.constants";
-import { NoteId } from "../models/Note.presets";
+import { PresetType } from "./Model.constants";
+import { NoteId } from "./Note.presets";
 
 export const getModelRoute = (
   presetType: PresetType,

@@ -1,6 +1,8 @@
-import ArrayUtils from "../general/Array.utils";
+import ArrayUtils from "./Array.utils";
 import { PresetMap } from "../models/Model.constants";
 import { IPodPreset } from "../models/Pod.presets";
+import { ROOT_DEGREE } from "./Degree.constants";
+import { ROOT_PITCH } from "./Pitch.constants";
 
 export enum DiatonicId {
   Tonic = "tonic",
@@ -75,3 +77,8 @@ export const DIATONIC_PRESET_MAP: PresetMap<DiatonicId, IDiatonicPreset> =
   ]);
 
 export const DIATONIC_PRESETS = ArrayUtils.mapToArray(DIATONIC_PRESET_MAP);
+
+export const ROOT_SCALE = DIATONIC_PRESETS.map((pod, i) => [
+  ROOT_PITCH + pod.value[0],
+  ROOT_DEGREE + pod.value[1],
+]);

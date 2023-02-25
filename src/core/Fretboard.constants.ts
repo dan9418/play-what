@@ -1,8 +1,8 @@
 import { ColorSchemeFn, ColorSchemeId } from "../color/Color.utils";
-import { CHORD_PRESETS, IChordPreset } from "../models/Chord.presets";
-import { AnyPodListPreset } from "../models/Model.derived";
-import { INotePreset, NOTE_PRESETS } from "../models/Note.presets";
-import { IScalePreset } from "../models/Scale.presets";
+import { CHORD_PRESETS, IChordPreset } from "./Chord.presets";
+import { AnyPodListPreset } from "./Model.derived";
+import { INotePreset, NOTE_PRESETS } from "./Note.presets";
+import { IScalePreset } from "./Scale.presets";
 import { TuningId } from "./Fretboard.tuning";
 import { VoicingId, VoicingValue } from "./Fretboard.voicing";
 

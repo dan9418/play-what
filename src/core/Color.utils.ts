@@ -1,8 +1,8 @@
-import ArrayUtils from "../general/Array.utils";
-import { IPreset } from "../models/Model.constants";
-import { getPitchClass } from "../models/Note.utils";
-import { IPod } from "../models/Pod.presets";
-import { getDegree } from "../models/Pod.utils";
+import ArrayUtils from "./Array.utils";
+import { IPreset } from "./Model.constants";
+import { getPitchClass } from "./Note.utils";
+import { IPod } from "./Pod.presets";
+import { getDegree } from "./Pod.utils";
 
 export enum ColorSchemeId {
   None = "none",
