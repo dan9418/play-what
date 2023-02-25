@@ -1,4 +1,4 @@
-import ArrayUtils from "../general/Array.utils";
+import ArrayUtils from "./Array.utils";
 import { IPreset, PresetMap } from "./Model.constants";
 
 export enum AccidentalId {
