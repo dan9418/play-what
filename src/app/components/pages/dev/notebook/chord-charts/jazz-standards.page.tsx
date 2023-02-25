@@ -10,7 +10,7 @@ import { getNotefromValue } from "../../../../../core/models/Model.generation";
 import {
   NOTE_PRESETS,
   NOTE_PRESET_MAP,
-} from "../../../../../core/models/Model.presets";
+} from "../../../../../core/models/Model.constants";
 import {
   addPods,
   reducePod,

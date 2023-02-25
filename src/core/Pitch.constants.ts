@@ -1,4 +1,4 @@
-import { IPreset, PresetMap } from "./Model.constants";
+import { IPreset, PresetMap } from "./Core.constants";
 
 export const MAX_PITCH = 12;
 

@@ -7,7 +7,7 @@ import {
   IPod,
   NoteId,
 } from "../../../../../../core/models/Model.constants";
-import { NOTE_PRESET_MAP } from "../../../../../../core/models/Model.presets";
+import { NOTE_PRESET_MAP } from "../../../../../../core/models/Model.constants";
 import {
   VoicingId,
   VOICING_PRESET_MAP,

@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-plugin-styled-components`,
       options: {},
     },
-    {
+    /*{
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
@@ -21,7 +21,7 @@ module.exports = {
         },
         extensions: []
       }
-    },
+    },*/
     /*{
       resolve: `gatsby-source-filesystem`,
       options: {

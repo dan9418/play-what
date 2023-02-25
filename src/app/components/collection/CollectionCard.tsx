@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { IChordPreset } from "../../core/models/Chord.presets";
+import { IChordPreset } from "../../core/models/Chord.constants";
 import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { IScalePreset } from "../../core/models/Scale.presets";
+import { IScalePreset } from "../../core/models/Scale.constants";
 import Card, { ICardProps } from "../ui/Card";
 import CollectionTable from "./CollectionTable";
 

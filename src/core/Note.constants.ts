@@ -1,6 +1,6 @@
-import ArrayUtils from "./Array.utils";
-import { PresetMap } from "./Model.constants";
-import { formatPodPreset, IPod, IPodPreset } from "./Pod.presets";
+import ArrayUtils from "./primitives/Array.utils";
+import { PresetMap } from "./Core.constants";
+import { formatPodPreset, IPod, IPodPreset } from "./Pod.constants";
 
 export enum NoteId {
   C = "c",

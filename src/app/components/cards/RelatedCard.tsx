@@ -1,14 +1,14 @@
 import React from "react";
 import { PresetType } from "../../core/models/Model.constants";
-import { NoteId } from "../../core/models/Note.presets";
-import { IPodPreset } from "../../core/models/Pod.presets";
+import { NoteId } from "../../core/models/Note.constants";
+import { IPodPreset } from "../../core/models/Pod.constants";
 import {
   getSubchords,
   getSubscales,
   getSuperchords,
   getSuperscales,
 } from "../../core/models/Pod.utils";
-import { IPodListPreset } from "../../core/models/PodList.presets";
+import { IPodListPreset } from "../../core/models/PodList.constants";
 import CollectionList from "../collection/CollectionList";
 import CollectionTable from "../collection/CollectionTable";
 import Card from "../ui/Card";

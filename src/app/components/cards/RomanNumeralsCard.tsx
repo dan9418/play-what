@@ -1,12 +1,12 @@
 import React from "react";
 import { css } from "styled-components";
-import { ChordId, IChordPreset } from "../../core/models/Chord.presets";
+import { ChordId, IChordPreset } from "../../core/models/Chord.constants";
 import { getNumeralParts } from "../../core/models/Chord.utils";
 import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { INotePreset, NoteId } from "../../core/models/Note.presets";
+import { INotePreset, NoteId } from "../../core/models/Note.constants";
 import { getRootedName, getShortName } from "../../core/models/Pod.utils";
-import { IPodListPreset } from "../../core/models/PodList.presets";
-import { IScalePreset } from "../../core/models/Scale.presets";
+import { IPodListPreset } from "../../core/models/PodList.constants";
+import { IScalePreset } from "../../core/models/Scale.constants";
 import { getAllNumerals } from "../../core/models/Scale.utils";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";

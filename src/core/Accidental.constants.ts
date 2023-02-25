@@ -1,5 +1,5 @@
-import ArrayUtils from "./Array.utils";
-import { IPreset, PresetMap } from "./Model.constants";
+import ArrayUtils from "./primitives/Array.utils";
+import { IPreset, PresetMap } from "./Core.constants";
 
 export enum AccidentalId {
   DoubleFlat = "double-flat",
@@ -9,7 +9,7 @@ export enum AccidentalId {
   DoubleSharp = "double-sharp",
 }
 
-interface IAccidentalPreset extends IPreset<AccidentalId> {
+export interface IAccidentalPreset extends IPreset<AccidentalId> {
   symbol: string;
   offset: number;
 }

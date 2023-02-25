@@ -1,10 +1,10 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { IChordPreset } from "../../core/models/Chord.presets";
+import { IChordPreset } from "../../core/models/Chord.constants";
 import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { INotePreset } from "../../core/models/Note.presets";
-import { IScalePreset } from "../../core/models/Scale.presets";
+import { INotePreset } from "../../core/models/Note.constants";
+import { IScalePreset } from "../../core/models/Scale.constants";
 import Fretboard from "../fretboard/Fretboard";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";

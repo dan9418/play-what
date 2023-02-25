@@ -1,5 +1,5 @@
-import ArrayUtils from "../../core/general/Array.utils";
-import { IPreset, PresetMap } from "../models/Model.constants";
+import ArrayUtils from "./primitives/Array.utils";
+import { IPreset, PresetMap } from "./Core.constants";
 
 export enum VoicingId {
   None = "None",

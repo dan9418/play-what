@@ -1,5 +1,5 @@
-import ArrayUtils from "./Array.utils";
-import { IPreset, PresetMap } from "./Model.constants";
+import { IPreset, PresetMap } from "./Core.constants";
+import ArrayUtils from "./primitives/Array.utils";
 
 export const MAX_DEGREE = 7;
 

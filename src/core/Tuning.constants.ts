@@ -1,7 +1,7 @@
-import ArrayUtils from "../general/Array.utils";
-import { IPreset, PresetMap } from "../models/Model.constants";
-import { NoteId } from "../models/Note.presets";
-import { getNoteWithOctave } from "../models/Note.utils";
+import ArrayUtils from "./primitives/Array.utils";
+import { IPreset, PresetMap } from "./Core.constants";
+import { NoteId } from ".//Note.constants";
+import { getNoteWithOctave } from "./Note.utils";
 
 export enum TuningId {
   Standard = "standard",

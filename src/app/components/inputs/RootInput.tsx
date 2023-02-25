@@ -7,7 +7,7 @@ import {
   INotePreset,
   NoteId,
   NOTE_PRESET_MAP,
-} from "../../core/models/Note.presets";
+} from "../../core/models/Note.constants";
 import { octaveState } from "../../state/state";
 import InputRow from "../ui/InputRow";
 import DropdownInput from "./DropdownInput";

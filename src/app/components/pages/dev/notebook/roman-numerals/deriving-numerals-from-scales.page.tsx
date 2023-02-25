@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { NoteId, Tag } from "../../../../../core/models/Model.constants";
-import { SCALE_PRESETS } from "../../../../../core/models/Model.presets";
+import { SCALE_PRESETS } from "../../../../../core/models/Model.constants";
 import { getNoteFromId } from "../../../../../core/models/Note.utils";
 import Scale from "../../../../../core/models/Scale";
 import RomanNumeralsCard from "../../../../cards/RomanNumeralsCard";

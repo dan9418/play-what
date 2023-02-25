@@ -35,3 +35,15 @@ export const getFrequency = (p: number): number => {
 // 		}
 // 	}
 // };
+
+// Sound
+
+// static playSound = (note: IPod): void => {
+//     const frequency = TuningUtils.getFrequency(note[0]);
+//     ToneUtils.playSound(frequency)
+// }
+
+// static playSoundList = (notes: IPod[]): void => {
+//     const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
+//     ToneUtils.playSound(frequencies)
+// }

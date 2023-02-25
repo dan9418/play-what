@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CHORD_PRESETS } from "../../../core/models/Chord.presets";
+import { CHORD_PRESETS } from "../../../core/models/Chord.constants";
 import { Tag } from "../../../core/models/Model.constants";
 import CollectionCard from "../../collection/CollectionCard";
 import ColumnManager from "../../column-manager/ColumnManager";

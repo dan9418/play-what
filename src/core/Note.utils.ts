@@ -1,15 +1,20 @@
-import NumberUtils from "../general/Number.utils";
-import { DegreeId, DEGREE_PRESETS } from "../theory/Degree.constants";
-import { ROOT_SCALE } from "../theory/Theory.constants";
-import TuningUtils from "../tuning/Tuning.utils";
+import {
+  AccidentalId,
+  ACCIDENTAL_PRESET_MAP,
+  IAccidentalPreset,
+} from "./Accidental.constants";
+import { DegreeId, DEGREE_PRESETS } from "./Degree.constants";
+import { ROOT_SCALE } from "./Diatonic.constants";
+import { getFrequency as getFrequencyFromPitch } from "./Frequency.utils";
 import {
   INotePreset,
   NoteId,
   NOTE_PRESETS,
   NOTE_PRESET_MAP,
-} from "./Note.presets";
-import { IPod, MAX_POD } from "./Pod.presets";
+} from "./Note.constants";
+import { IPod, MAX_POD } from "./Pod.constants";
 import { arePodsEqual, getDegree, reducePod } from "./Pod.utils";
+import NumberUtils from "./primitives/Number.utils";
 
 interface INoteNameOptions {
   includeOctave?: boolean;
@@ -32,8 +37,8 @@ export const getNoteFromId = (id: NoteId) => {
 export const getNoteWithOctave = (noteId: NoteId, octave: number): IPod => {
   const notePreset = NOTE_PRESET_MAP.get(noteId) as INotePreset;
   return [
-    (octave - 4) * 12 + NumberUtils.modulo(notePreset.value[0], 12),
-    notePreset.value[1],
+    (octave - 4) * 12 + NumberUtils.modulo(notePreset.pod[0], 12),
+    notePreset.pod[1],
   ];
 };
 
@@ -86,9 +91,13 @@ export const getAccidentalOffset = (pod: IPod): number => {
 export const getAccidentalString = (pod: IPod): string => {
   const offset = getAccidentalOffset(pod);
   if (offset > 0) {
-    return ACCIDENTAL.sharp.symbol.repeat(offset);
+    return (
+      ACCIDENTAL_PRESET_MAP.get(AccidentalId.Sharp) as IAccidentalPreset
+    ).symbol.repeat(offset);
   } else if (offset < 0) {
-    return ACCIDENTAL.flat.symbol.repeat(-offset);
+    return (
+      ACCIDENTAL_PRESET_MAP.get(AccidentalId.Flat) as IAccidentalPreset
+    ).symbol.repeat(-offset);
   }
   return "";
 };
@@ -131,6 +140,6 @@ export const getName = (pod: IPod, options: INoteNameOptions = {}): string => {
 };
 
 export const getFrequency = (pod: IPod, format = false) => {
-  const f = TuningUtils.getFrequency(getPitch(pod));
+  const f = getFrequencyFromPitch(getPitch(pod));
   return format ? `${f.toFixed(0)} Hz` : f;
 };

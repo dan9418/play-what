@@ -1,5 +1,5 @@
-import { CHORD_PRESETS, IChordPreset } from "./Chord.presets";
-import { IScalePreset, SCALE_PRESETS } from "./Scale.presets";
+import { CHORD_PRESETS, IChordPreset } from "./Chord.constants";
+import { IScalePreset, SCALE_PRESETS } from "./Scale.constants";
 
 export type AnyPodListPreset = IChordPreset | IScalePreset;
 

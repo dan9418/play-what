@@ -2,12 +2,12 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
-import { IChordPreset } from "../../core/models/Chord.presets";
+import { IChordPreset } from "../../core/models/Chord.constants";
 import {
   AnyPodListPreset,
   POD_LIST_PRESETS,
 } from "../../core/models/Model.derived";
-import { IScalePreset } from "../../core/models/Scale.presets";
+import { IScalePreset } from "../../core/models/Scale.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 
 const StyledCollectionList = styled.ul`

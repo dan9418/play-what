@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { getName } from "../../core/models/Interval.utils";
 import { ACCIDENTAL_VALUES, IPod } from "../../core/models/Model.constants";
-import { INTERVAL_PRESETS } from "../../core/models/Model.presets";
+import { INTERVAL_PRESETS } from "../../core/models/Model.constants";
 import { getNoteFromPod } from "../../core/models/Note.utils";
 import { addPods } from "../../core/models/Pod.utils";
 import { DEGREE_PRESETS } from "../../core/theory/Degree.constants";

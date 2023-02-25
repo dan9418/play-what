@@ -1,5 +1,5 @@
 // import { useState } from "react";
-// import { NOTE_PRESETS } from "../../../core/models/Model.presets";
+// import { NOTE_PRESETS } from "../../../core/models/Model.constants";
 // import {
 //   DEFAULT_MODEL_CONFIG,
 //   DEFAULT_MODEL_TYPE,

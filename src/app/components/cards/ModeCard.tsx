@@ -3,9 +3,9 @@ import React from "react";
 import styled from "styled-components";
 import { useRootId } from "../../contexts/PagePropsContext";
 import { Tag } from "../../core/models/Model.constants";
-import { IPodPreset } from "../../core/models/Pod.presets";
-import { IPodListPreset } from "../../core/models/PodList.presets";
-import { SCALE_PRESETS } from "../../core/models/Scale.presets";
+import { IPodPreset } from "../../core/models/Pod.constants";
+import { IPodListPreset } from "../../core/models/PodList.constants";
+import { SCALE_PRESETS } from "../../core/models/Scale.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import Card from "../ui/Card";
 

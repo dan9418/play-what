@@ -1,13 +1,13 @@
 import React from "react";
 import { css } from "styled-components";
-import { IChordPreset } from "../../core/models/Chord.presets";
+import { IChordPreset } from "../../core/models/Chord.constants";
 import { getName as getIntervalName } from "../../core/models/Interval.utils";
 import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { INotePreset, NoteId } from "../../core/models/Note.presets";
+import { INotePreset, NoteId } from "../../core/models/Note.constants";
 import { getName as getNoteName } from "../../core/models/Note.utils";
-import { IPod } from "../../core/models/Pod.presets";
+import { IPod } from "../../core/models/Pod.constants";
 import { addPods, getRootedName } from "../../core/models/Pod.utils";
-import { IScalePreset } from "../../core/models/Scale.presets";
+import { IScalePreset } from "../../core/models/Scale.constants";
 import { getModelRoute } from "../../core/routing/Routing.utils";
 import { Table } from "../ui/Table";
 

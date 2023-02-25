@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import { logPresetJson } from '../../core/models/Model.presets';
+import React from "react";
+import styled from "styled-components";
+import { logPresetJson } from "../../core/models/Model.constants";
 
 const StyledMain = styled.main`
-	margin: auto;
-	width: 100%;
+  margin: auto;
+  width: 100%;
   min-height: 100vh;
 
   position: relative;
@@ -15,11 +15,7 @@ const StyledMain = styled.main`
 
 const Main: React.FC<any> = ({ children }) => {
   false && logPresetJson();
-  return (
-    <StyledMain>
-      {children}
-    </StyledMain>
-  );
+  return <StyledMain>{children}</StyledMain>;
 };
 
 export default Main;

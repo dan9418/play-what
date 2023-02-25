@@ -1,34 +1,12 @@
-import NumberUtils from "../general/Number.utils";
-import {
-  ChordId,
-  CHORD_PRESETS,
-  CHORD_PRESET_MAP,
-  IChordPreset,
-} from "./Chord.presets";
-import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.presets";
-import { PresetType } from "./Model.constants";
-import { AnyPodListPreset } from "./Model.derived";
-import { INotePreset, NoteId, NOTE_PRESET_MAP } from "./Note.presets";
+import { ChordId, CHORD_PRESETS, CHORD_PRESET_MAP } from "./Chord.constants";
+import { PresetType } from "./Core.constants";
+import { AnyPodListPreset } from "./Core.derived";
+import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.constants";
+import { INotePreset, NoteId, NOTE_PRESET_MAP } from "./Note.constants";
 import { getName } from "./Note.utils";
-import { IPod, MAX_POD } from "./Pod.presets";
-import {
-  IScalePreset,
-  ScaleId,
-  SCALE_PRESETS,
-  SCALE_PRESET_MAP,
-} from "./Scale.presets";
-
-// Sound
-
-/*static playSound = (note: IPod): void => {
-    const frequency = TuningUtils.getFrequency(note[0]);
-    ToneUtils.playSound(frequency)
-}*/
-
-/*static playSoundList = (notes: IPod[]): void => {
-    const frequencies = notes.map(n => TuningUtils.getFrequency(n[0]));
-    ToneUtils.playSound(frequencies)
-}*/
+import { IPod, MAX_POD } from "./Pod.constants";
+import NumberUtils from "./primitives/Number.utils";
+import { ScaleId, SCALE_PRESETS, SCALE_PRESET_MAP } from "./Scale.constants";
 
 // Search
 
@@ -146,7 +124,7 @@ export const getRootedName = (
   podListPreset: AnyPodListPreset,
   rootNotePreset?: INotePreset
 ) => {
-  return `${rootNotePreset ? `${getName(rootNotePreset.value)} ` : ""}${
+  return `${rootNotePreset ? `${getName(rootNotePreset.pod)} ` : ""}${
     podListPreset.name
   }`;
 };

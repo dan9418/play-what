@@ -1,5 +1,5 @@
-import ArrayUtils from "../general/Array.utils";
-import { IPreset, PresetMap } from "./Model.constants";
+import ArrayUtils from "./primitives/Array.utils";
+import { IPreset, PresetMap } from "./Core.constants";
 
 export enum IntervalQualityId {
   Diminished = "diminished",

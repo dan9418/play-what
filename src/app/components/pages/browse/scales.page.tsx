@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Tag } from "../../../core/models/Model.constants";
-import { SCALE_PRESETS } from "../../../core/models/Scale.presets";
+import { SCALE_PRESETS } from "../../../core/models/Scale.constants";
 import CollectionCard from "../../collection/CollectionCard";
 import ColumnManager from "../../column-manager/ColumnManager";
 import PageLayout from "../../layout/PageLayout";

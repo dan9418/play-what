@@ -1,9 +1,9 @@
 import { PageProps } from "gatsby";
 import React from "react";
 import { PresetType } from "../core/models/Model.constants";
-import { INotePreset, NoteId } from "../core/models/Note.presets";
+import { INotePreset, NoteId } from "../core/models/Note.constants";
 import { getNoteFromId } from "../core/models/Note.utils";
-import { IPod } from "../core/models/Pod.presets";
+import { IPod } from "../core/models/Pod.constants";
 
 export interface IPageContext {
   presetType: PresetType;

@@ -1,17 +1,17 @@
-import ArrayUtils from "../general/Array.utils";
-import NumberUtils from "../general/Number.utils";
-import { CHORD_PRESETS, IChordPreset } from "./Chord.presets";
-import { INTERVAL_PRESETS } from "./Interval.presets";
-import { Tag } from "./Model.constants";
-import { INotePreset } from "./Note.presets";
-import { IPod } from "./Pod.presets";
+import { CHORD_PRESETS, IChordPreset } from "./Chord.constants";
+import { Tag } from "./Core.constants";
+import { INTERVAL_PRESETS } from "./Interval.constants";
+import { INotePreset } from "./Note.constants";
+import { IPod } from "./Pod.constants";
 import {
   arePodListsEqual,
   arePodsEqual,
   reducePod,
   subtractPods,
 } from "./Pod.utils";
-import { IScalePreset, SCALE_PRESETS } from "./Scale.presets";
+import ArrayUtils from "./primitives/Array.utils";
+import NumberUtils from "./primitives/Number.utils";
+import { IScalePreset, SCALE_PRESETS } from "./Scale.constants";
 
 export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
   // Get every other interval
@@ -45,8 +45,8 @@ export const getAllNumerals = (
 ): [INotePreset | undefined, IChordPreset][] => {
   const numerals: [INotePreset | undefined, IChordPreset][] = [];
   if (podListPreset.tags.includes(Tag.Diatonic)) {
-    for (let i = 0; i < podListPreset.value.length; i++) {
-      numerals.push([rootNotePreset, getNumeral(podListPreset.value, i)]);
+    for (let i = 0; i < podListPreset.pods.length; i++) {
+      numerals.push([rootNotePreset, getNumeral(podListPreset.pods, i)]);
     }
   }
   return numerals;

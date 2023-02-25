@@ -1,8 +1,8 @@
-import ArrayUtils from "./Array.utils";
-import { PresetMap } from "../models/Model.constants";
-import { IPodPreset } from "../models/Pod.presets";
+import { PresetMap } from "./Core.constants";
 import { ROOT_DEGREE } from "./Degree.constants";
 import { ROOT_PITCH } from "./Pitch.constants";
+import { IPodPreset } from "./Pod.constants";
+import ArrayUtils from "./primitives/Array.utils";
 
 export enum DiatonicId {
   Tonic = "tonic",

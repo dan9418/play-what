@@ -1,6 +1,6 @@
-import { PresetMap, Tag } from "./Model.constants";
-import ArrayUtils from "./Array.utils";
-import { formatPodPreset, IPod, IPodPreset } from "./Pod.presets";
+import { PresetMap, Tag } from "./Core.constants";
+import ArrayUtils from "./primitives/Array.utils";
+import { formatPodPreset, IPod, IPodPreset } from "./Pod.constants";
 
 export enum IntervalId {
   P1 = "unison",

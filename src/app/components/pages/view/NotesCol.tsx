@@ -13,7 +13,7 @@
 //   CHORD_PRESETS,
 //   NOTE_PRESETS,
 //   SCALE_PRESETS,
-// } from "../../../core/models/Model.presets";
+// } from "../../../core/models/Model.constants";
 // import { getNoteFromId } from "../../../core/models/Note.utils";
 // import Scale from "../../../core/models/Scale";
 // import ColorSchemeInput from "../../inputs/ColorSchemeInput";

@@ -1,10 +1,4 @@
-import { IPod } from "../../core/models/Model.constants";
-import {
-  getDegree,
-  getNotePods,
-  tryGetPodPairAtPitch,
-} from "../../core/models/Pod.utils";
-import { COLOR_SCHEME_PRESET_MAP, IColorScheme } from "../color/Color.utils";
+import { COLOR_SCHEME_PRESET_MAP, IColorSchemePreset } from "./Color.utils";
 import {
   DEFAULT_FRETBOARD_PROPS,
   DOTTED_FRET_INDICES,
@@ -14,12 +8,14 @@ import {
   IFretContext,
   IFretMap,
 } from "./Fretboard.constants";
-import { ITuning, TUNING_PRESET_MAP } from "./Fretboard.tuning";
-import { IVoicing, VOICING_PRESET_MAP } from "./Fretboard.voicing";
+import { IPod } from "./Pod.constants";
+import { getDegree, getNotePods, tryGetPodPairAtPitch } from "./Pod.utils";
+import { ITuningPreset, TUNING_PRESET_MAP } from "./Tuning.constants";
+import { IVoicingPreset, VOICING_PRESET_MAP } from "./Voicing.constants";
 
 export const isIntervalInVoicing = (
   interval: IPod,
-  voicing: IVoicing,
+  voicing: IVoicingPreset,
   stringIndex: number
 ) => {
   if (!voicing || !voicing.value) return true;
@@ -46,8 +42,8 @@ const getFretConfig = (fretContext: IFretContext): IFretConfig => {
 
   const noteIndex = tuningValue[stringIndex] + fretIndex;
 
-  const rootPod = rootNotePreset.value;
-  const intervalPods = podListPreset.value;
+  const rootPod = rootNotePreset.pod;
+  const intervalPods = podListPreset.pods;
   const notePods = getNotePods(rootPod, intervalPods);
 
   const [interval, note] = tryGetPodPairAtPitch(
@@ -104,10 +100,11 @@ export const getFretMapFromFretboardProps = (
 
   const [lo, hi] = fretRange;
 
-  const tuningValue = (TUNING_PRESET_MAP.get(tuningId) as ITuning).value;
-  const voicingValue = (VOICING_PRESET_MAP.get(voicingId) as IVoicing).value;
+  const tuningValue = (TUNING_PRESET_MAP.get(tuningId) as ITuningPreset).value;
+  const voicingValue = (VOICING_PRESET_MAP.get(voicingId) as IVoicingPreset)
+    .value;
   const colorSchemeFn = (
-    COLOR_SCHEME_PRESET_MAP.get(colorSchemeId) as IColorScheme
+    COLOR_SCHEME_PRESET_MAP.get(colorSchemeId) as IColorSchemePreset
   ).fn;
 
   const numFrets = hi - lo + 1;

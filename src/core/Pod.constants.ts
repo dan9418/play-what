@@ -1,6 +1,6 @@
+import { IPreset, Tag } from "./Core.constants";
 import { MAX_DEGREE, ROOT_DEGREE } from "./Degree.constants";
-import { MAX_PITCH, ROOT_PITCH } from "../theory/Pitch.constants";
-import { IPreset, Tag } from "./Model.constants";
+import { MAX_PITCH, ROOT_PITCH } from "./Pitch.constants";
 
 export type IPod = [number, number];
 

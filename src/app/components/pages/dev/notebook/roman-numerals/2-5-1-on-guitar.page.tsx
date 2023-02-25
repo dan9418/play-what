@@ -8,7 +8,7 @@ import {
   NoteId,
   ScaleId,
 } from "../../../../../core/models/Model.constants";
-import { NOTE_PRESET_MAP } from "../../../../../core/models/Model.presets";
+import { NOTE_PRESET_MAP } from "../../../../../core/models/Model.constants";
 import {
   getNoteFromId,
   getNoteFromPod,

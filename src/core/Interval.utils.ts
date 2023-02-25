@@ -1,11 +1,16 @@
-import TuningUtils from "../tuning/Tuning.utils";
+import { getFrequency } from "./Frequency.utils";
 import {
   CORE_INTERVALS,
   IIntervalPreset,
   IntervalId,
   INTERVAL_PRESET_MAP,
-} from "./Interval.presets";
-import { IPod, MAX_POD } from "./Pod.presets";
+} from "./Interval.constants";
+import {
+  IIntervalQualityPreset,
+  IntervalQualityId,
+  INTERVAL_QUALITY_PRESET_MAP,
+} from "./IntervalQuality.constants";
+import { IPod, MAX_POD } from "./Pod.constants";
 import { reducePod } from "./Pod.utils";
 
 const getIsExtended = (pod: IPod): boolean => {
@@ -25,26 +30,40 @@ export const getName = (pod: IPod) => {
 
   // determine core interval and quality
   let ivl: IIntervalPreset | undefined;
-  let quality: IIntervalQuality | undefined;
+  let quality: IIntervalQualityPreset | undefined;
   if (degreeIntervals.length === 1) {
     ivl = pIvl; // perfect
-    quality = INTERVAL_QUALITY.perfect;
-  } else if (noteIndex <= loIvl.value[0]) {
+    quality = INTERVAL_QUALITY_PRESET_MAP.get(
+      IntervalQualityId.Perfect
+    ) as IIntervalQualityPreset;
+  } else if (noteIndex <= loIvl.pod[0]) {
     ivl = loIvl; // minor
-    quality = INTERVAL_QUALITY.min;
-  } else if (noteIndex >= hiIvl.value[0]) {
+    quality = INTERVAL_QUALITY_PRESET_MAP.get(
+      IntervalQualityId.Minor
+    ) as IIntervalQualityPreset;
+  } else if (noteIndex >= hiIvl.pod[0]) {
     ivl = hiIvl; // major
-    quality = INTERVAL_QUALITY.maj;
+    quality = INTERVAL_QUALITY_PRESET_MAP.get(
+      IntervalQualityId.Major
+    ) as IIntervalQualityPreset;
   }
 
-  const offset = (ivl as IIntervalPreset).value[0] - reduced[0];
+  const offset = (ivl as IIntervalPreset).pod[0] - reduced[0];
 
-  if (offset === 0) return `${(quality as IIntervalQuality).symbol}${d + 1}`;
-  else if (offset > 0) quality = INTERVAL_QUALITY.dim; // dim
-  else if (offset < 0) quality = INTERVAL_QUALITY.aug; // aug
+  if (offset === 0)
+    return `${(quality as IIntervalQualityPreset).symbol}${d + 1}`;
+  else if (offset > 0)
+    quality = INTERVAL_QUALITY_PRESET_MAP.get(
+      IntervalQualityId.Diminished
+    ) as IIntervalQualityPreset;
+  // dim
+  else if (offset < 0)
+    quality = INTERVAL_QUALITY_PRESET_MAP.get(
+      IntervalQualityId.Augmented
+    ) as IIntervalQualityPreset; // aug
 
   const count = Math.abs(offset);
-  const qualityStr = (quality as IIntervalQuality).symbol.repeat(count);
+  const qualityStr = (quality as IIntervalQualityPreset).symbol.repeat(count);
 
   let value = `${qualityStr}${d + 1}`;
 
@@ -64,8 +83,8 @@ export const getNameFromId = (presetId: IntervalId) => {
 export const getRatio = (pod: IPod) => {
   const [p] = pod;
 
-  const baseline = TuningUtils.getFrequency(0);
-  const compareTo = TuningUtils.getFrequency(p);
+  const baseline = getFrequency(0);
+  const compareTo = getFrequency(p);
 
   const ratio = compareTo / baseline;
 
@@ -124,6 +143,6 @@ export const reduceExtendedIntervalIds = (value: IntervalId[]) => {
 
     let intervalId = isExtended ? getExtensionInversionId(id) : id;
 
-    return (INTERVAL_PRESET_MAP.get(intervalId) as IIntervalPreset).value;
+    return (INTERVAL_PRESET_MAP.get(intervalId) as IIntervalPreset).pod;
   });
 };

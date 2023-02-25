@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { ModelPageProps } from "../../../contexts/PagePropsContext";
-import { IChordPreset } from "../../../core/models/Chord.presets";
+import { IChordPreset } from "../../../core/models/Chord.constants";
 import { PresetType } from "../../../core/models/Model.constants";
-import { INotePreset } from "../../../core/models/Note.presets";
+import { INotePreset } from "../../../core/models/Note.constants";
 import { getNoteFromId } from "../../../core/models/Note.utils";
 import { getModelConfigById } from "../../../core/models/Pod.utils";
-import { IScalePreset } from "../../../core/models/Scale.presets";
+import { IScalePreset } from "../../../core/models/Scale.constants";
 import DetailsCard from "../../cards/DetailsCard";
 import FretboardCard from "../../cards/FretboardCard";
 import ModeCard from "../../cards/ModeCard";

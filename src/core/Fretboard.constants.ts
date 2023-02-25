@@ -1,10 +1,9 @@
-import { ColorSchemeFn, ColorSchemeId } from "../color/Color.utils";
-import { CHORD_PRESETS, IChordPreset } from "./Chord.presets";
-import { AnyPodListPreset } from "./Model.derived";
-import { INotePreset, NOTE_PRESETS } from "./Note.presets";
-import { IScalePreset } from "./Scale.presets";
-import { TuningId } from "./Fretboard.tuning";
-import { VoicingId, VoicingValue } from "./Fretboard.voicing";
+import { ColorSchemeFn, ColorSchemeId } from "./Color.utils";
+import { CHORD_PRESETS } from "./Chord.constants";
+import { TuningId } from "./Tuning.constants";
+import { VoicingId, VoicingValue } from "./Voicing.constants";
+import { AnyPodListPreset } from "./Core.derived";
+import { INotePreset, NOTE_PRESETS } from "./Note.constants";
 
 export const DOTTED_FRET_INDICES = [
   true,
