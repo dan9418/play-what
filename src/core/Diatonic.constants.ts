@@ -78,7 +78,7 @@ export const DIATONIC_PRESET_MAP: PresetMap<DiatonicId, IDiatonicPreset> =
 
 export const DIATONIC_PRESETS = ArrayUtils.mapToArray(DIATONIC_PRESET_MAP);
 
-export const ROOT_SCALE = DIATONIC_PRESETS.map((pod, i) => [
-  ROOT_PITCH + pod.value[0],
-  ROOT_DEGREE + pod.value[1],
+export const ROOT_SCALE = DIATONIC_PRESETS.map((preset, i) => [
+  ROOT_PITCH + preset.pod[0],
+  ROOT_DEGREE + preset.pod[1],
 ]);

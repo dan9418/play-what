@@ -1,9 +1,9 @@
 import { PageProps } from "gatsby";
 import React from "react";
-import { PresetType } from "../core/models/Model.constants";
-import { INotePreset, NoteId } from "../core/models/Note.constants";
-import { getNoteFromId } from "../core/models/Note.utils";
-import { IPod } from "../core/models/Pod.constants";
+import { PresetType } from "../../../../core/Core.constants";
+import { INotePreset, NoteId } from "../../../../core/Note.constants";
+import { getNoteFromId } from "../../../../core/Note.utils";
+import { IPod } from "../../../../core/Pod.constants";
 
 export interface IPageContext {
   presetType: PresetType;
@@ -33,7 +33,7 @@ export const usePageProps = (): ModelPageProps =>
 export const useRoot = (): IPod | undefined => {
   const props = usePageProps();
   return props.pageContext.rootId
-    ? ((getNoteFromId(props.pageContext.rootId) as INotePreset).value as IPod)
+    ? ((getNoteFromId(props.pageContext.rootId) as INotePreset).pod as IPod)
     : undefined;
 };
 

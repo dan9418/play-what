@@ -1,7 +1,7 @@
 import { PresetMap, Tag } from "./Core.constants";
 import ArrayUtils from "./primitives/Array.utils";
 import { IntervalId } from "./Interval.constants";
-import { reduceExtendedIntervalIds } from "./Interval.utils";
+import { reduceExtendedIntervalIds } from "./ExtendedInterval.utils";
 import { formatPodListPreset, IPodListPreset } from "./PodList.constants";
 
 export enum ChordId {

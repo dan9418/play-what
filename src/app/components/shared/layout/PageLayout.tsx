@@ -1,7 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
-import BreadcrumbList from "../breadcrumb-list/BreadcrumbList";
-import { StyledCard } from "../ui/Card";
+import BreadcrumbList from "./BreadcrumbList";
 import SEO from "../utils/SEO";
 
 const StyledPageLayout = styled.div`

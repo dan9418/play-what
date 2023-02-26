@@ -1,6 +1,5 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { logPresetJson } from "../../core/models/Model.constants";
 
 const StyledMain = styled.main`
   margin: auto;
@@ -13,8 +12,7 @@ const StyledMain = styled.main`
   overflow: auto;
 `;
 
-const Main: React.FC<any> = ({ children }) => {
-  false && logPresetJson();
+const Main: React.FC<PropsWithChildren> = ({ children }) => {
   return <StyledMain>{children}</StyledMain>;
 };
 

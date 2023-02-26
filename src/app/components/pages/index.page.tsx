@@ -1,17 +1,14 @@
 import { Link } from "gatsby";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import logoSrc from "../../../static/play_what_logo_web.png";
-import { FEEDBACK_LINK } from "../../config/constants";
-import {
-  getPresetTypeText,
-  PresetType,
-} from "../../core/models/Model.constants";
-import { POD_LIST_PRESETS } from "../../core/models/Model.derived";
-import { NOTE_PRESETS } from "../../core/models/Note.constants";
-import { getModelRoute } from "../../core/routing/Routing.utils";
-import PageLayout from "../layout/PageLayout";
-import Icon, { IconId } from "../ui/Icon";
+import { PresetType } from "../../../core/Core.constants";
+import { POD_LIST_PRESETS } from "../../../core/Core.derived";
+import { NOTE_PRESETS } from "../../../core/Note.constants";
+import { getModelRoute } from "../../../core/Routing.utils";
+import { FEEDBACK_LINK } from "../../constants";
+import PageLayout from "../shared/layout/PageLayout";
+import Icon, { IconId } from "../shared/ui/Icon";
+import logoSrc from "../../../../static/play_what_logo_web.png";
 
 const StyledHomePage = styled(PageLayout)`
   display: flex;
@@ -192,11 +189,9 @@ const Page: React.FC = () => {
         NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
       const structure =
         POD_LIST_PRESETS[Math.floor(Math.random() * POD_LIST_PRESETS.length)];
-      const text = `${root.name} ${structure.name} ${getPresetTypeText(
-        structure.modelType
-      )}`;
+      const text = `${root.name} ${structure.name}`;
       const route = getModelRoute(
-        structure.modelType,
+        PresetType.Chord, // TODO
         structure.presetId,
         root.presetId
       );

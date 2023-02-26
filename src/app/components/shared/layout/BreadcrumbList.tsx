@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { usePageProps } from "../../contexts/PagePropsContext";
+import { usePageProps } from "../utils/PagePropsContext";
 import Icon from "../ui/Icon";
 
 const StyledBreadcrumbList = styled.ul`

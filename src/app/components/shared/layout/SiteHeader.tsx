@@ -1,14 +1,13 @@
-import { Link } from 'gatsby';
-import React, { useState } from 'react';
-import { useSetRecoilState } from 'recoil';
-import styled, { useTheme } from 'styled-components';
-import { themeState } from '../../state/state';
-import THEME, { DARK_THEME } from '../../styles/theme';
-import SwitchInput from '../inputs/SwitchInput';
-import Icon from '../ui/Icon';
-import Menu from './Menu';
+import { Link } from "gatsby";
+import React, { useState } from "react";
+import { useSetRecoilState } from "recoil";
+import styled from "styled-components";
+import SwitchInput from "../inputs/SwitchInput";
+import Icon from "../ui/Icon";
+import Menu from "./Menu";
 import { useLocation } from "@reach/router";
-
+import THEME, { DARK_THEME } from "../../../styles/theme";
+import { themeState } from "../../../state";
 
 const StyledSiteHeader = styled.div`
     height: 48px;
@@ -20,7 +19,7 @@ const StyledSiteHeader = styled.div`
     z-index: 2000;
 
 	background-color: ${({ theme }) => theme.surface.nav};
-	//border-bottom: 1px solid ${props => props.theme.utils.border};
+	//border-bottom: 1px solid ${(props) => props.theme.utils.border};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	.width-cap {
@@ -50,7 +49,7 @@ const StyledSiteHeader = styled.div`
 		}
 
 		&.active {
-			border-bottom: 2px solid ${props => props.theme.action.active};
+			border-bottom: 2px solid ${(props) => props.theme.action.active};
 		}
 	}
 
@@ -104,46 +103,50 @@ const StyledSiteHeader = styled.div`
 `;
 
 const SiteHeader: React.FC = () => {
-	const setTheme = useSetRecoilState(themeState);
-	const [isNightMode, setIsNightMode] = useState(false);
-	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const { pathname } = useLocation();
+  const setTheme = useSetRecoilState(themeState);
+  const [isNightMode, setIsNightMode] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
-	const onThemeToggle = v => {
-		setTheme(isNightMode ? THEME : DARK_THEME);
-		setIsNightMode(v);
-	}
+  const onThemeToggle = (v) => {
+    setTheme(isNightMode ? THEME : DARK_THEME);
+    setIsNightMode(v);
+  };
 
-	return (
-		<>
-			<StyledSiteHeader>
-				<div className="width-cap">
-					<div className='left'>
-						<button type="button" className="menu" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-							<Icon iconId='menu'></Icon>
-						</button>
-						{pathname !== '/' &&
-							<Link to="/" className="logo">
-								Play What?
-							</Link>
-						}
-					</div>
-					<div className="right">
-						<Link to="/help" className="icon" title='Help'>
-							<Icon iconId='help' />
-						</Link>
-						<Link to="/about" className="icon" title='About'>
-							<Icon iconId='info' />
-						</Link>
-						<div className="night-mode">
-							<SwitchInput value={isNightMode} setValue={onThemeToggle} />
-						</div>
-					</div>
-				</div>
-			</StyledSiteHeader>
-			<Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
-		</>
-	);
+  return (
+    <>
+      <StyledSiteHeader>
+        <div className="width-cap">
+          <div className="left">
+            <button
+              type="button"
+              className="menu"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Icon iconId="menu"></Icon>
+            </button>
+            {pathname !== "/" && (
+              <Link to="/" className="logo">
+                Play What?
+              </Link>
+            )}
+          </div>
+          <div className="right">
+            <Link to="/help" className="icon" title="Help">
+              <Icon iconId="help" />
+            </Link>
+            <Link to="/about" className="icon" title="About">
+              <Icon iconId="info" />
+            </Link>
+            <div className="night-mode">
+              <SwitchInput value={isNightMode} setValue={onThemeToggle} />
+            </div>
+          </div>
+        </div>
+      </StyledSiteHeader>
+      <Menu isOpen={isMenuOpen} setIsOpen={setIsMenuOpen} />
+    </>
+  );
 };
 
 export default SiteHeader;

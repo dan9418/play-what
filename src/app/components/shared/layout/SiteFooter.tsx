@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled, { useTheme } from "styled-components";
-import { FEEDBACK_LINK } from "../../config/constants";
+import { FEEDBACK_LINK } from "../../../constants";
 
 const StyledSiteFooter = styled.footer`
   min-height: 256px;

@@ -1,7 +1,7 @@
 import { Link } from "gatsby";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { usePageProps } from "../../contexts/PagePropsContext";
+import { usePageProps } from "../utils/PagePropsContext";
 
 const StyledMenu = styled.div`
   width: 100%;
