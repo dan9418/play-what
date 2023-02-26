@@ -5,10 +5,10 @@ import styled from "styled-components";
 import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
 import { getName } from "../../core/models/Note.utils";
 import { isEditingKeyState, octaveState } from "../../state/state";
-import THEME from "../../styles/theme";
-import ButtonInput from "../inputs/ButtonInput";
-import RootInput from "../inputs/RootInput";
-import Card from "../ui/Card";
+import THEME from "../../../../styles/theme";
+import ButtonInput from "../../../inputs/ButtonInput";
+import RootInput from "../../../inputs/RootInput";
+import Card from "../../../ui/Card";
 
 const StyledRoot = styled.div<{ $isRootless: boolean }>`
   margin-top: 8px;
