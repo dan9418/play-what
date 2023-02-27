@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { FEEDBACK_LINK } from "../../../constants";
+import { MediaQuery } from "../../../styles/breakpoint";
 
 const StyledSiteFooter = styled.footer`
   min-height: 256px;
@@ -10,7 +11,7 @@ const StyledSiteFooter = styled.footer`
   padding: 32px 16px;
 
   font-size: 70%;
-  @media (min-width: 512px) {
+  ${MediaQuery.Tablet} {
     font-size: 80%;
   }
 
@@ -21,7 +22,6 @@ const StyledSiteFooter = styled.footer`
   h3 {
     text-transform: uppercase;
     margin-bottom: 8px;
-    //border-bottom: 1px solid ${({ theme }) => theme?.utils?.border};
   }
 
   a {
@@ -48,7 +48,7 @@ const StyledSiteFooter = styled.footer`
     gap: 16px;
     flex-direction: column;
     text-align: center;
-    @media (min-width: 512px) {
+    ${MediaQuery.Tablet} {
       align-items: flex-start;
       flex-direction: row;
     }
@@ -62,78 +62,92 @@ const StyledSiteFooter = styled.footer`
   }
 `;
 
+const FOOTER_LINKS = [
+  {
+    sectionTitle: "Site",
+    links: [
+      {
+        to: "/",
+        text: "Home",
+      },
+    ],
+  },
+  {
+    sectionTitle: "Resources",
+    links: [
+      {
+        to: "/help",
+        text: "Help",
+      },
+      {
+        to: "/about",
+        text: "About",
+      },
+      {
+        to: "/coming-soon",
+        text: "Coming Soon",
+      },
+      {
+        to: "/dev",
+        text: "Developer Panel",
+      },
+    ],
+  },
+  {
+    sectionTitle: "Contact",
+    links: [
+      {
+        to: "https://github.com/dan9418/play-what",
+        text: "GitHub",
+      },
+      {
+        to: "https://www.instagram.com/dan.bednarczyk/",
+        text: "Instagram",
+      },
+      {
+        to: "http://danbednarczyk.com",
+        text: "Author Website",
+      },
+      {
+        to: FEEDBACK_LINK,
+        text: "Provide Feedback",
+      },
+    ],
+  },
+];
+
 const SiteFooter: React.FC = () => {
-  const theme = useTheme();
   return (
     <StyledSiteFooter className="footer">
-      <div className="nav-links">
-        <section>
-          <h3>Site</h3>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/view/fretboard">Fretboard</Link>
-            </li>
-            <li>
-              <Link to="/browse">Browse</Link>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Resources</h3>
-          <ul>
-            <li>
-              <Link to="/help">Help</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/coming-soon">Coming Soon</Link>
-            </li>
-            {/*<li>
-							<Link to='/coming-soon'>Submit Feedback</Link>
-						</li>*/}
-            <li>
-              <Link to="/dev">Developer Panel</Link>
-            </li>
-          </ul>
-        </section>
-        <section>
-          <h3>Contact</h3>
-          <ul>
-            <li>
-              <a target="_blank" href="https://github.com/dan9418/play-what">
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.instagram.com/dan.bednarczyk/"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href="https://danbednarczyk.com">
-                Author Website
-              </a>
-            </li>
-            <li>
-              <a target="_blank" href={FEEDBACK_LINK}>
-                Provide Feedback
-              </a>
-            </li>
-          </ul>
-        </section>
-      </div>
+      {false && (
+        <div className="nav-links">
+          {FOOTER_LINKS.map(({ sectionTitle, links }) => {
+            return (
+              <section key={sectionTitle}>
+                <h3>{sectionTitle}</h3>
+                <ul>
+                  {links.map(({ to, text }) => {
+                    return (
+                      <li key={text}>
+                        {to.startsWith("/") ? (
+                          <Link to={to}>{text}</Link>
+                        ) : (
+                          <a target="_blank" href={to}>
+                            {text}
+                          </a>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </section>
+            );
+          })}
+        </div>
+      )}
       <a href="http://danbednarczyk.com" className="name">
         2023 Dan Bednarczyk
       </a>
-
       <div className="version">v0.1.2</div>
     </StyledSiteFooter>
   );

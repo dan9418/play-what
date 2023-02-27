@@ -48,7 +48,7 @@ const Page: React.FC = () => {
       <img src={logoSrc} className="logo" />
       <p className="intro">Every chord. Every scale. Every key.</p>
       <HomeTiles />
-      <HomeGrid />
+      {/*<HomeGrid /> */}
     </StyledHomePage>
   );
 };

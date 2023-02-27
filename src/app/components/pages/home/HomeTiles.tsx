@@ -1,6 +1,8 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { PresetType } from "../../../../core/Core.constants";
+import { getModelRoute } from "../../../../core/Routing.utils";
 import { MediaQuery } from "../../../styles/breakpoint";
 import Icon, { IconId } from "../../shared/ui/Icon";
 import useRandomModel from "./useRandomModel";
@@ -45,7 +47,7 @@ const StyledHomeTiles = styled.div`
 `;
 
 const TILES = [
-  {
+  /*{
     link: "/browse",
     iconId: IconId.Browse,
     text: "Browse Chords & Scales",
@@ -54,6 +56,16 @@ const TILES = [
     link: "/view/fretboard",
     iconId: IconId.Guitar,
     text: "Customize Fretboard",
+  },*/
+  {
+    link: getModelRoute(PresetType.Chord),
+    iconId: IconId.Browse,
+    text: "Chords",
+  },
+  {
+    link: getModelRoute(PresetType.Scale),
+    iconId: IconId.Browse,
+    text: "Scales",
   },
   {
     link: "RANDOM",
