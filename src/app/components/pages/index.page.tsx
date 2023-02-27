@@ -45,7 +45,7 @@ const StyledHomePage = styled(PageLayout)`
 const Page: React.FC = () => {
   return (
     <StyledHomePage isHome>
-      <img src={logoSrc} className="logo" /*width={768} height={128}*/ />
+      <img src={logoSrc} className="logo" />
       <p className="intro">Every chord. Every scale. Every key.</p>
       <HomeTiles />
       <HomeGrid />

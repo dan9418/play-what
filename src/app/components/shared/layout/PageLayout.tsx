@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import BreadcrumbList from "./BreadcrumbList";
 import SEO from "../utils/SEO";
+import { MediaQuery } from "../../../styles/breakpoint";
 
 const StyledPageLayout = styled.div<{ $maxWidth }>`
   width: 100%;
@@ -14,14 +15,14 @@ const StyledPageLayout = styled.div<{ $maxWidth }>`
     width: 100%;
     margin: auto;
     padding: 0 8px 8px;
-    @media (min-width: 512px) {
+    ${MediaQuery.Tablet} {
       padding: 0 16px 16px;
     }
 
     > h1 {
       width: 100%;
       font-size: 150%;
-      @media (min-width: 512px) {
+      ${MediaQuery.Tablet} {
         font-size: 300%;
       }
       text-align: left;
@@ -38,7 +39,7 @@ const StyledPageLayout = styled.div<{ $maxWidth }>`
       text-align: left;
       color: ${({ theme }) => theme?.text?.secondary};
       font-size: 80%;
-      @media (min-width: 512px) {
+      ${MediaQuery.Tablet} {
         font-size: 100%;
       }
     }
@@ -49,8 +50,8 @@ const StyledPageLayout = styled.div<{ $maxWidth }>`
   }
 `;
 
-interface IPageLayoutProps extends PropsWithChildren<any> {
-  title: string;
+interface IPageLayoutProps extends PropsWithChildren {
+  title?: string;
   subtitle?: string;
   action?: any;
   className?: string;
@@ -63,7 +64,7 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   subtitle,
   action,
   maxWidth,
-  className,
+  className = "",
   children,
   isHome,
 }) => {
