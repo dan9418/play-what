@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { IChordPreset } from "../../core/models/Chord.constants";
-import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { IScalePreset } from "../../core/models/Scale.constants";
-import Card, { ICardProps } from "../../../ui/Card";
+import { AnyPodListPreset } from "../../../../../core/Core.derived";
+import Card, { ICardProps } from "../../../shared/ui/Card";
+
 import CollectionTable from "./CollectionTable";
 
 interface ICollectionCardProps extends ICardProps {

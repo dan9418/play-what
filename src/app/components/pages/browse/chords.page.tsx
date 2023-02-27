@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { CHORD_PRESETS } from "../../../core/models/Chord.constants";
-import { Tag } from "../../../core/models/Model.constants";
-import CollectionCard from "../../collection/CollectionCard";
-import ColumnManager from "../../column-manager/ColumnManager";
-import PageLayout from "../../layout/PageLayout";
+import { CHORD_PRESETS } from "../../../../core/Chord.constants";
+import { Tag } from "../../../../core/Core.constants";
+import ColumnManager from "../../shared/layout/ColumnManager";
+import PageLayout from "../../shared/layout/PageLayout";
+import CollectionCard from "./cards/CollectionCard";
 
 const StyledChordsPage = styled(PageLayout)`
   .intro {
