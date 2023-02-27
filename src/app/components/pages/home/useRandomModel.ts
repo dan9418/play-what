@@ -13,7 +13,7 @@ const useRandomModel = () => {
         NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
       const structure =
         POD_LIST_PRESETS[Math.floor(Math.random() * POD_LIST_PRESETS.length)];
-      const text = `${root.name} ${structure.name}`;
+      //const text = `${root.name} ${structure.name}`;
       const route = getModelRoute(
         PresetType.Chord, // TODO
         structure.presetId,

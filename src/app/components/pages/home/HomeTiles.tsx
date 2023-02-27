@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { MediaQuery } from "../../../styles/breakpoint";
 import Icon, { IconId } from "../../shared/ui/Icon";
 import useRandomModel from "./useRandomModel";
 
@@ -10,7 +11,7 @@ const StyledHomeTiles = styled.div`
   margin: 0 16px;
 
   grid-template-columns: 100%;
-  @media (min-width: 512px) {
+  ${MediaQuery.Tablet} {
     grid-template-columns: repeat(3, 1fr);
   }
 

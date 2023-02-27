@@ -4,10 +4,11 @@ import styled from "styled-components";
 import { PresetType } from "../../../../core/Core.constants";
 import { getModelRoute } from "../../../../core/Routing.utils";
 import { FEEDBACK_LINK } from "../../../constants";
+import { MediaQuery } from "../../../styles/breakpoint";
 
 const StyledHomeGrid = styled.div`
   display: grid;
-  @media (min-width: 512px) {
+  ${MediaQuery.Tablet} {
     grid-template-columns: 1fr 1fr;
   }
   gap: 32px;
