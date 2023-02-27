@@ -14,20 +14,20 @@ const StyledSiteFooter = styled.footer`
     font-size: 80%;
   }
 
-  color: ${({ theme }) => theme.text.inverted};
-  background-color: ${({ theme }) => theme.surface.nav};
+  color: ${({ theme }) => theme?.text?.inverted};
+  background-color: ${({ theme }) => theme?.surface?.nav};
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
   h3 {
     text-transform: uppercase;
     margin-bottom: 8px;
-    //border-bottom: 1px solid ${({ theme }) => theme.utils.border};
+    //border-bottom: 1px solid ${({ theme }) => theme?.utils?.border};
   }
 
   a {
     display: block;
     padding: 4px;
-    color: ${({ theme }) => theme.text.inverted};
+    color: ${({ theme }) => theme?.text?.inverted};
 
     &.name {
       margin: 32px 0;

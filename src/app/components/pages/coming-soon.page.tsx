@@ -21,12 +21,12 @@ const tableStyles = css`
   }
 
   th {
-    border-bottom: 1px solid ${(props) => props.theme.utils.border};
+    border-bottom: 1px solid ${(props) => props.theme?.utils?.border};
   }
 
   tr:not(:last-child) {
     td {
-      border-bottom: 1px solid ${(props) => props.theme.utils.border};
+      border-bottom: 1px solid ${(props) => props.theme?.utils?.border};
     }
   }
 `;

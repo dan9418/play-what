@@ -18,20 +18,20 @@ const StyledHelpPage = styled(PageLayout)`
   .ans {
     margin-top: 2px;
     font-style: italic;
-    color: ${(props) => props.theme.text.secondary};
+    color: ${(props) => props.theme?.text?.secondary};
   }
 
   h3 {
     width: 100%;
     margin-top: 64px;
     padding-bottom: 8px;
-    border-bottom: 1px solid ${(props) => props.theme.utils.border};
+    border-bottom: 1px solid ${(props) => props.theme?.utils?.border};
   }
 
   h4 {
     margin-top: 16px;
     text-transform: uppercase;
-    color: ${(props) => props.theme.text.secondary};
+    color: ${(props) => props.theme?.text?.secondary};
   }
 `;
 

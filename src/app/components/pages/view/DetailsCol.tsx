@@ -32,7 +32,7 @@
 //         font-size: 120%;
 //       }
 //       .interval {
-//         color: ${(props) => props.theme.text.secondary};
+//         color: ${(props) => props.theme?.text?.secondary};
 //       }
 //     }
 //   }

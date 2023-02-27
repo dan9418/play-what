@@ -17,7 +17,7 @@ const tableStyles = css`
   width: 100%;
 
   th {
-    //color: ${(props) => props.theme.brand.accent};
+    //color: ${(props) => props.theme?.brand?.accent};
     &:first-child {
       text-align: right;
     }

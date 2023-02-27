@@ -6,10 +6,10 @@ export const StyledCardSection = styled.div`
     text-transform: uppercase;
     font-size: 80%;
     margin-bottom: 8px;
-    color: ${(props) => props.theme.text.secondary};
+    color: ${(props) => props.theme?.text?.secondary};
   }
   & > .content {
-    background: ${(props) => props.theme.surface.bg};
+    background: ${(props) => props.theme?.surface?.bg};
     border-radius: 8px;
     padding: 8px;
   }

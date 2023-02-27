@@ -23,7 +23,7 @@ const StyledBreadcrumbList = styled.ul`
   }
 
   span {
-    color: ${(props) => props.theme.text.secondary};
+    color: ${(props) => props.theme?.text?.secondary};
   }
 `;
 

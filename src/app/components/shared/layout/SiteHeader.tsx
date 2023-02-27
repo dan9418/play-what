@@ -18,8 +18,8 @@ const StyledSiteHeader = styled.div`
     right: 0;
     z-index: 2000;
 
-	background-color: ${({ theme }) => theme.surface.nav};
-	//border-bottom: 1px solid ${(props) => props.theme.utils.border};
+	background-color: ${({ theme }) => theme?.surface?.nav};
+	//border-bottom: 1px solid ${(props) => props.theme?.utils?.border};
     box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
 
 	.width-cap {
@@ -35,7 +35,7 @@ const StyledSiteHeader = styled.div`
 		cursor: pointer;
     	border: none;
 		appearance: none;
-		color: ${({ theme }) => theme.text.inverted};
+		color: ${({ theme }) => theme?.text?.inverted};
 		text-decoration: none;
 		white-space: nowrap;
 		height: 48px;
@@ -49,7 +49,7 @@ const StyledSiteHeader = styled.div`
 		}
 
 		&.active {
-			border-bottom: 2px solid ${(props) => props.theme.action.active};
+			border-bottom: 2px solid ${(props) => props.theme?.action?.active};
 		}
 	}
 

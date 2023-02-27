@@ -45,8 +45,8 @@ const StyledPracticePage = styled(PageLayout)`
   .chord {
     white-space: nowrap;
     border-radius: 8px;
-    //border: 1px solid ${(props) => props.theme.utils.border};
-    background-color: ${(props) => props.theme.action.interactive};
+    //border: 1px solid ${(props) => props.theme?.utils?.border};
+    background-color: ${(props) => props.theme?.action?.interactive};
     color: white;
     //height: 100%;
 
@@ -60,7 +60,7 @@ const StyledPracticePage = styled(PageLayout)`
     }
 
     :hover {
-      background-color: ${(props) => props.theme.action.active};
+      background-color: ${(props) => props.theme?.action?.active};
     }
 
     &.t-2 {

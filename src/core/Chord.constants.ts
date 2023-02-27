@@ -1,8 +1,7 @@
 import { PresetMap, Tag } from "./Core.constants";
-import ArrayUtils from "./primitives/Array.utils";
-import { IntervalId } from "./Interval.constants";
-import { reduceExtendedIntervalIds } from "./ExtendedInterval.utils";
+import { IntervalId, reduceExtendedIntervalIds } from "./Interval.constants";
 import { formatPodListPreset, IPodListPreset } from "./PodList.constants";
+import ArrayUtils from "./primitives/Array.utils";
 
 export enum ChordId {
   MajTriad = "major-triad",

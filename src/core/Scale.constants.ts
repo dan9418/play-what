@@ -1,6 +1,5 @@
 import { PresetMap, Tag } from "./Core.constants";
-import { IntervalId } from "./Interval.constants";
-import { reduceExtendedIntervalIds } from "./ExtendedInterval.utils";
+import { IntervalId, reduceExtendedIntervalIds } from "./Interval.constants";
 import { formatPodListPreset, IPodListPreset } from "./PodList.constants";
 import ArrayUtils from "./primitives/Array.utils";
 

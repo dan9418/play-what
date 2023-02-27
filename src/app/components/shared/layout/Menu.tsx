@@ -10,8 +10,8 @@ const StyledMenu = styled.div`
   }
 
   height: 100%;
-  background-color: ${({ theme }) => theme.surface.card};
-  border-right: 1px solid ${({ theme }) => theme.utils.border};
+  background-color: ${({ theme }) => theme?.surface?.card};
+  border-right: 1px solid ${({ theme }) => theme?.utils?.border};
 
   position: fixed;
   top: 48px;
@@ -22,7 +22,7 @@ const StyledMenu = styled.div`
 
   .active {
     font-weight: bold;
-    background-color: ${({ theme }) => theme.surface.bg};
+    background-color: ${({ theme }) => theme?.surface?.bg};
   }
 
   ul > ul {

@@ -22,7 +22,7 @@ const StyledCollectionList = styled.ul`
     &:not(:last-child) {
       ::after {
         content: ", ";
-        color: ${(props) => props.theme.text.secondary};
+        color: ${(props) => props.theme?.text?.secondary};
       }
     }
   }

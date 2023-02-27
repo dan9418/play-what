@@ -45,10 +45,10 @@ const tableStyles = css`
   }
 
   td {
-    //border-right: 1px solid ${(props) => props.theme.utils.border};
-    //border-bottom: 1px solid ${(props) => props.theme.utils.border};
+    //border-right: 1px solid ${(props) => props.theme?.utils?.border};
+    //border-bottom: 1px solid ${(props) => props.theme?.utils?.border};
     &.active {
-      background-color: ${(props) => props.theme.surface.bg};
+      background-color: ${(props) => props.theme?.surface?.bg};
     }
   }
 
@@ -60,8 +60,8 @@ const tableStyles = css`
       display: none;
     }
     tr th {
-      background-color: ${(props) => props.theme.surface.nav};
-      color: ${({ theme }) => theme.text.inverted};
+      background-color: ${(props) => props.theme?.surface?.nav};
+      color: ${({ theme }) => theme?.text?.inverted};
     }
 
     th:first-child {

@@ -3,14 +3,14 @@ import styled from "styled-components";
 import BreadcrumbList from "./BreadcrumbList";
 import SEO from "../utils/SEO";
 
-const StyledPageLayout = styled.div`
+const StyledPageLayout = styled.div<{ $maxWidth }>`
   width: 100%;
   max-width: ${({ $maxWidth }) => $maxWidth || "1024px"};
   margin: auto;
   min-height: calc(100vh - 330px);
 
   > .header {
-    border-bottom: 1px solid ${({ theme }) => theme.utils.border};
+    border-bottom: 1px solid ${({ theme }) => theme?.utils?.border};
     width: 100%;
     margin: auto;
     padding: 0 8px 8px;
@@ -25,7 +25,7 @@ const StyledPageLayout = styled.div`
         font-size: 300%;
       }
       text-align: left;
-      color: ${({ theme }) => theme.text.primary};
+      color: ${({ theme }) => theme?.text?.primary};
 
       display: flex;
       align-items: center;
@@ -36,7 +36,7 @@ const StyledPageLayout = styled.div`
       margin-top: 4px;
       width: 100%;
       text-align: left;
-      color: ${({ theme }) => theme.text.secondary};
+      color: ${({ theme }) => theme?.text?.secondary};
       font-size: 80%;
       @media (min-width: 512px) {
         font-size: 100%;

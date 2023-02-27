@@ -43,7 +43,7 @@ const StyledRootInput = styled.div`
 
     &:hover,
     &.active {
-      background-color: ${(props) => props.theme.action.active};
+      background-color: ${(props) => props.theme?.action?.active};
       color: white;
     }
   }

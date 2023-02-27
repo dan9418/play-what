@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { PropsWithChildren, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ThemeProvider } from "styled-components";
 import { themeState } from "../state";
@@ -25,17 +25,17 @@ export const useSetTheme = () => {
   };
 };
 
-export const ThemeManager: React.FC = ({ children }) => {
+export const ThemeManager: React.FC<PropsWithChildren> = ({ children }) => {
   const theme = useRecoilValue(themeState);
 
   useEffect(() => {
-    document.documentElement.style.setProperty("--bg", theme.surface.bg);
-    document.documentElement.style.setProperty("--fg", theme.text.primary);
+    document.documentElement.style.setProperty("--bg", theme?.surface?.bg);
+    document.documentElement.style.setProperty("--fg", theme?.text?.primary);
     document.documentElement.style.setProperty(
       "--link",
-      theme.action.interactive
+      theme?.action?.interactive
     );
-  }, [theme.surface.bg, theme.text.primary, theme.action.interactive]);
+  }, [theme?.surface?.bg, theme?.text?.primary, theme?.action?.interactive]);
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };

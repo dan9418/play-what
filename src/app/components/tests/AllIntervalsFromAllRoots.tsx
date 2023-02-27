@@ -21,7 +21,7 @@ const StyledTest = styled.div`
   overflow: auto;
 
   .invalid {
-    color: ${({ theme }) => theme.status.negative};
+    color: ${({ theme }) => theme?.status?.negative};
     font-weight: bold;
   }
 `;

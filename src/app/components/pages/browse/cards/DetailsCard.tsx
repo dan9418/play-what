@@ -73,7 +73,7 @@
 
 //     .ratio,
 //     .frequency {
-//       color: ${(props) => props.theme.text.secondary};
+//       color: ${(props) => props.theme?.text?.secondary};
 //       font-size: 80%;
 //       @media (min-width: 512px) {
 //         font-size: 100%;

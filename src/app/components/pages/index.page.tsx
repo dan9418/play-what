@@ -35,7 +35,7 @@ const StyledHomePage = styled(PageLayout)`
 
   .intro {
     max-width: 768px;
-    color: ${({ theme }) => theme.text.primary};
+    color: ${({ theme }) => theme?.text?.primary};
     text-align: center;
     line-height: 120%;
     font-size: 120%;
@@ -50,7 +50,7 @@ const StyledHomePage = styled(PageLayout)`
 
   .disclaimer {
     font-style: italic;
-    color: ${({ theme }) => theme.text.secondary};
+    color: ${({ theme }) => theme?.text?.secondary};
     text-align: center;
     margin: 8px 0;
     font-size: 80%;
@@ -120,7 +120,7 @@ const StyledHomePage = styled(PageLayout)`
 
   h3 {
     margin: 32px 0 16px;
-    color: ${({ theme }) => theme.text.primary};
+    color: ${({ theme }) => theme?.text?.primary};
   }
 
   > a {
@@ -128,7 +128,7 @@ const StyledHomePage = styled(PageLayout)`
     cursor: pointer;
     color: white;
     font-weight: bold;
-    background-color: ${(props) => props.theme.action.interactive};
+    background-color: ${({ theme }) => theme?.action?.interactive};
     padding: 8px 16px;
 
     display: flex;
@@ -154,7 +154,7 @@ const StyledHomePage = styled(PageLayout)`
     }
 
     .tile {
-      background-color: ${(props) => props.theme.surface.card};
+      background-color: ${({ theme }) => theme?.surface?.card};
       border-radius: 8px;
       padding: 20px;
       display: flex;
@@ -163,18 +163,18 @@ const StyledHomePage = styled(PageLayout)`
       flex-direction: column;
       gap: 16px;
 
-      border: 1px solid ${(props) => props.theme.action.interactive};
+      border: 1px solid ${({ theme }) => theme?.action?.interactive};
 
       svg,
       svg * {
-        fill: ${(props) => props.theme.action.interactive};
+        fill: ${({ theme }) => theme?.action?.interactive};
       }
       &:hover {
         svg,
         svg * {
-          fill: ${(props) => props.theme.action.active};
+          fill: ${({ theme }) => theme?.action?.active};
         }
-        border-color: ${(props) => props.theme.action.active};
+        border-color: ${({ theme }) => theme?.action?.active};
       }
     }
   }

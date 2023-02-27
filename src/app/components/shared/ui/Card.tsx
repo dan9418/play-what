@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 export const StyledCard = styled.div`
-  background: ${(props) => props.theme.surface.card};
+  background: ${(props) => props.theme?.surface?.card};
   width: 100%;
   border-radius: 16px;
   padding: 16px;

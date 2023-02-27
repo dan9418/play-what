@@ -16,9 +16,9 @@ const StyledSwitch = styled.button`
   cursor: pointer;
   overflow: hidden;
 
-  background-color: ${({ theme }) => theme.surface.bg};
+  background-color: ${({ theme }) => theme?.surface?.bg};
   :hover {
-    background-color: ${({ theme }) => theme.action.active};
+    background-color: ${({ theme }) => theme?.action?.active};
   }
 
   & .ball {
@@ -27,7 +27,7 @@ const StyledSwitch = styled.button`
 
     ${({ $active, theme }) =>
       `&.${$active ? "moon" : "sun"} { background-color: ${
-        theme.action.interactive
+        theme?.action?.interactive
       } }`};
 
     display: flex;

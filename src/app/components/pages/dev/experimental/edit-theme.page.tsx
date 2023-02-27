@@ -1,6 +1,6 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import styled, { useTheme } from 'styled-components';
+import styled, { useTheme } from "styled-components";
 import { themeState } from "../../../../state/state";
 import THEME, { DARK_THEME } from "../../../../styles/theme";
 import { useSetTheme } from "../../../../styles/ThemeManager";
@@ -9,119 +9,122 @@ import PageLayout from "../../../layout/PageLayout";
 import Card, { StyledCard } from "../../../ui/Card";
 
 const StyledThemePage = styled(PageLayout)`
-    .grid {
-        margin-top: 16px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr;
-        @media(min-width: 512px) {
-            grid-template-columns: 1fr 1fr;
-        }
+  .grid {
+    margin-top: 16px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+    @media (min-width: 512px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .theme-btns {
+    font-weight: bold;
+    margin-top: 16px;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+    @media (min-width: 512px) {
+      grid-template-columns: 1fr 1fr;
     }
 
-    .theme-btns {
+    button {
+      width: 100%;
+    }
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    //justify-content: space-between;
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      label {
         font-weight: bold;
-        margin-top: 16px;
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr;
-        @media(min-width: 512px) {
-            grid-template-columns: 1fr 1fr;
-        }
-
-        button {
-            width: 100%;
-        }
+        font-size: 120%;
+      }
+      span {
+        color: ${(props) => props.theme?.text?.secondary};
+      }
     }
-
-    .row {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-bottom: 16px;
-        //justify-content: space-between;
-        .text {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            label {
-                font-weight: bold;
-                font-size: 120%;
-            }
-            span {
-                color: ${props => props.theme.text.secondary};
-            }
-        }
-    }
+  }
 `;
 
 const Swatch = styled.input`
-    appearance: none;
-	border: none;
-    cursor: pointer;
-    height: 64px;
-    width: 64px;
-    border: 1px solid black;
-    background-color: ${props => props.$color};
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  height: 64px;
+  width: 64px;
+  border: 1px solid black;
+  background-color: ${(props) => props.$color};
 `;
 
 const SwatchSelector: React.FC<any> = ({ type, attr, title }) => {
-    const setTheme = useSetTheme();
-    const theme = useTheme();
-    let color;
-    if (type) {
-        color = theme[type][attr];
-    }
-    else {
-        color = theme[attr];
-    }
-    return (
-        <div className="row">
-            <Swatch
-                type="color"
-                $color={color}
-                value={color}
-                onChange={e => setTheme(e.target.value, attr, type)}
-            />
-            <div className="text">
-                <label>{title}</label>
-                <span>{color}</span>
-            </div>
-        </div>
-    );
-}
+  const setTheme = useSetTheme();
+  const theme = useTheme();
+  let color;
+  if (type) {
+    color = theme[type][attr];
+  } else {
+    color = theme[attr];
+  }
+  return (
+    <div className="row">
+      <Swatch
+        type="color"
+        $color={color}
+        value={color}
+        onChange={(e) => setTheme(e.target.value, attr, type)}
+      />
+      <div className="text">
+        <label>{title}</label>
+        <span>{color}</span>
+      </div>
+    </div>
+  );
+};
 
 const Page: React.FC<any> = () => {
-    const setTheme = useSetRecoilState(themeState);
-    return (
-        <StyledThemePage title="Theme" >
-            <Card title="Reset Theme">
-                <div className="theme-btns">
-                    <ButtonInput onClick={() => setTheme(THEME)} >Light</ButtonInput>
-                    <ButtonInput onClick={() => setTheme(DARK_THEME)} >Dark</ButtonInput>
-                </div>
-            </Card>
-            <div className="grid">
-                <div>
-                    <Card title="Brand">
-                        <SwatchSelector title="Primary" type="brand" attr="primary" />
-                        <SwatchSelector title="Secondary" type="brand" attr="secondary" />
-                        <SwatchSelector title="Accent" type="brand" attr="accent" />
-                    </Card>
+  const setTheme = useSetRecoilState(themeState);
+  return (
+    <StyledThemePage title="Theme">
+      <Card title="Reset Theme">
+        <div className="theme-btns">
+          <ButtonInput onClick={() => setTheme(THEME)}>Light</ButtonInput>
+          <ButtonInput onClick={() => setTheme(DARK_THEME)}>Dark</ButtonInput>
+        </div>
+      </Card>
+      <div className="grid">
+        <div>
+          <Card title="Brand">
+            <SwatchSelector title="Primary" type="brand" attr="primary" />
+            <SwatchSelector title="Secondary" type="brand" attr="secondary" />
+            <SwatchSelector title="Accent" type="brand" attr="accent" />
+          </Card>
 
-                    <Card title="Action">
-                        <SwatchSelector title="Active" type="action" attr="active" />
-                        <SwatchSelector title="Interactive" type="action" attr="interactive" />
-                    </Card>
+          <Card title="Action">
+            <SwatchSelector title="Active" type="action" attr="active" />
+            <SwatchSelector
+              title="Interactive"
+              type="action"
+              attr="interactive"
+            />
+          </Card>
 
-                    <Card title="Status">
-                        <SwatchSelector title="Positive" type="status" attr="positive" />
-                        <SwatchSelector title="Negative" type="status" attr="negative" />
-                        <SwatchSelector title="Warning" type="status" attr="warning" />
-                        <SwatchSelector title="Info" type="status" attr="info" />
-                        <SwatchSelector title="Highlight" type="status" attr="highlight" />
-                    </Card>
-                    {/*<Card title="Palette">
+          <Card title="Status">
+            <SwatchSelector title="Positive" type="status" attr="positive" />
+            <SwatchSelector title="Negative" type="status" attr="negative" />
+            <SwatchSelector title="Warning" type="status" attr="warning" />
+            <SwatchSelector title="Info" type="status" attr="info" />
+            <SwatchSelector title="Highlight" type="status" attr="highlight" />
+          </Card>
+          {/*<Card title="Palette">
                         <SwatchSelector title="Dark Blue" attr="darkBlue" />
                         <SwatchSelector title="Light Blue" attr="lightBlue" />
                         <SwatchSelector title="Green" attr="green" />
@@ -142,29 +145,33 @@ const Page: React.FC<any> = () => {
                         <SwatchSelector title="Dark 3" attr="dark3" />
                         <SwatchSelector title="Black" attr="black" />
                     </Card>*/}
-                </div>
-                <div>
-                    <Card title="Surface">
-                        <SwatchSelector title="Navigation" type="surface" attr="nav" />
-                        <SwatchSelector title="Background" type="surface" attr="bg" />
-                        <SwatchSelector title="Card" type="surface" attr="card" />
-                    </Card>
+        </div>
+        <div>
+          <Card title="Surface">
+            <SwatchSelector title="Navigation" type="surface" attr="nav" />
+            <SwatchSelector title="Background" type="surface" attr="bg" />
+            <SwatchSelector title="Card" type="surface" attr="card" />
+          </Card>
 
-                    <Card title="Text">
-                        <SwatchSelector title="Primary" type="text" attr="primary" />
-                        <SwatchSelector title="Secondary" type="text" attr="secondary" />
-                        <SwatchSelector title="Inverted" type="text" attr="inverted" />
-                    </Card>
+          <Card title="Text">
+            <SwatchSelector title="Primary" type="text" attr="primary" />
+            <SwatchSelector title="Secondary" type="text" attr="secondary" />
+            <SwatchSelector title="Inverted" type="text" attr="inverted" />
+          </Card>
 
-                    <Card title="Utility">
-                        <SwatchSelector title="Border" type="utils" attr="border" />
-                        <SwatchSelector title="Hover Dark" type="utils" attr="hoverDark" />
-                        <SwatchSelector title="Hover Light" type="utils" attr="hoverLight" />
-                    </Card>
-                </div>
-            </div>
-        </StyledThemePage>
-    );
+          <Card title="Utility">
+            <SwatchSelector title="Border" type="utils" attr="border" />
+            <SwatchSelector title="Hover Dark" type="utils" attr="hoverDark" />
+            <SwatchSelector
+              title="Hover Light"
+              type="utils"
+              attr="hoverLight"
+            />
+          </Card>
+        </div>
+      </div>
+    </StyledThemePage>
+  );
 };
 
 export default Page;
