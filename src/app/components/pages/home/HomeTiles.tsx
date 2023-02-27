@@ -14,7 +14,7 @@ const StyledHomeTiles = styled.div`
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .tile {
+  a {
     background-color: ${({ theme }) => theme?.surface?.card};
     border-radius: 8px;
     padding: 20px;
@@ -25,8 +25,7 @@ const StyledHomeTiles = styled.div`
     gap: 16px;
     border: 1px solid ${({ theme }) => theme?.action?.interactive};
     cursor: pointer;
-    color: white;
-    font-weight: bold;
+    color: ${({ theme }) => theme?.action?.interactive};
     width: 100%;
     max-width: 512px;
 
@@ -44,22 +43,37 @@ const StyledHomeTiles = styled.div`
   }
 `;
 
+const TILES = [
+  {
+    link: "/browse",
+    iconId: IconId.Browse,
+    text: "Browse Chords & Scales",
+  },
+  {
+    link: "/view/fretboard",
+    iconId: IconId.Guitar,
+    text: "Customize Fretboard",
+  },
+  {
+    link: "RANDOM",
+    iconId: IconId.Dice,
+    text: "Random Page",
+  },
+];
+
 const HomeTiles: React.FC = () => {
   const modelPath = useRandomModel();
   return (
     <StyledHomeTiles>
-      <Link to="/browse" className="tile">
-        <Icon iconId={IconId.Browse} size={64} />
-        Browse Chords & Scales
-      </Link>
-      <Link to="/view/fretboard" className="tile">
-        <Icon iconId={IconId.Guitar} size={64} />
-        Customize Fretboard
-      </Link>
-      <Link to={modelPath} className="tile">
-        <Icon iconId={IconId.Dice} size={64} />
-        Random Page
-      </Link>
+      {TILES.map((tile) => {
+        const { link, iconId, text } = tile;
+        return (
+          <Link key={text} to={link === "RANDOM" ? modelPath : link}>
+            <Icon iconId={iconId} size={64} />
+            {text}
+          </Link>
+        );
+      })}
     </StyledHomeTiles>
   );
 };
