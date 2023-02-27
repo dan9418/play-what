@@ -1,6 +1,7 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
+import { GITHUB_LINK } from "../../constants";
 import ColumnManager from "../column-manager/ColumnManager";
 import PageLayout from "../layout/PageLayout";
 import Card from "../ui/Card";
@@ -61,13 +62,12 @@ const Page: React.FC = () => {
         </Card>
         <Card title="License">
           <p>
-            The <a href="https://github.com/dan9418/play-what">code</a> for Play
-            What is public, but is currently published under a proprietary
-            software license restricting all modifications and redistribution.
-            There are plans to officially open-source the code in the future,
-            but it is not yet ready for public contribution. By using Play What
-            and/or its code repository, you hereby agree to not share the source
-            code or any derivatives.
+            The <a href={GITHUB_LINK}>code</a> for Play What is public, but is
+            currently published under a proprietary software license restricting
+            all modifications and redistribution. There are plans to officially
+            open-source the code in the future, but it is not yet ready for
+            public contribution. By using Play What and/or its code repository,
+            you hereby agree to not share the source code or any derivatives.
           </p>
         </Card>
         <Card title="Developers">

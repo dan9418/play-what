@@ -1,7 +1,12 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { FEEDBACK_LINK } from "../../../constants";
+import {
+  AUTHOR_WEBSITE_LINK,
+  FEEDBACK_LINK,
+  GITHUB_LINK,
+  INSTAGRAM_LINK,
+} from "../../../constants";
 import { MediaQuery } from "../../../styles/breakpoint";
 
 const StyledSiteFooter = styled.footer`
@@ -97,15 +102,15 @@ const FOOTER_LINKS = [
     sectionTitle: "Contact",
     links: [
       {
-        to: "https://github.com/dan9418/play-what",
+        to: GITHUB_LINK,
         text: "GitHub",
       },
       {
-        to: "https://www.instagram.com/dan.bednarczyk/",
+        to: INSTAGRAM_LINK,
         text: "Instagram",
       },
       {
-        to: "http://danbednarczyk.com",
+        to: AUTHOR_WEBSITE_LINK,
         text: "Author Website",
       },
       {
@@ -145,7 +150,7 @@ const SiteFooter: React.FC = () => {
           })}
         </div>
       )}
-      <a href="http://danbednarczyk.com" className="name">
+      <a href={AUTHOR_WEBSITE_LINK} className="name">
         2023 Dan Bednarczyk
       </a>
       <div className="version">v0.1.2</div>
