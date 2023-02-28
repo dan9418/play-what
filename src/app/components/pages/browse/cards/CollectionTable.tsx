@@ -1,15 +1,17 @@
 import React from "react";
 import { css } from "styled-components";
-import { IChordPreset } from "../../core/models/Chord.constants";
-import { getName as getIntervalName } from "../../core/models/Interval.utils";
-import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { INotePreset, NoteId } from "../../core/models/Note.constants";
-import { getName as getNoteName } from "../../core/models/Note.utils";
-import { IPod } from "../../core/models/Pod.constants";
-import { addPods, getRootedName } from "../../core/models/Pod.utils";
-import { IScalePreset } from "../../core/models/Scale.constants";
-import { getModelRoute } from "../../core/routing/Routing.utils";
-import { Table } from "../ui/Table";
+import { PresetType } from "../../../../../core/Core.constants";
+import { AnyPodListPreset } from "../../../../../core/Core.derived";
+import { getName as getIntervalName } from "../../../../../core/Interval.utils";
+import { INotePreset, NoteId } from "../../../../../core/Note.constants";
+import { getName as getNoteName } from "../../../../../core/Note.utils";
+import { IPod } from "../../../../../core/Pod.constants";
+import { addPods, getRootedName } from "../../../../../core/Pod.utils";
+import { getModelRoute } from "../../../../../core/Routing.utils";
+import { Breakpoint, MediaQuery } from "../../../../styles/breakpoint";
+import { Table } from "../../../shared/ui/Table";
+
+const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const tableStyles = css`
   width: 100%;
@@ -33,7 +35,7 @@ const tableStyles = css`
       height: 32px;
 
       display: none;
-      @media (min-width: 512px) {
+      ${MediaQuery.Tablet} {
         display: table-cell;
       }
     }
@@ -56,7 +58,7 @@ const tableStyles = css`
     text-transform: uppercase;
     font-size: 80%;
 
-    @media (max-width: 511px) {
+    @media (max-width: ${Breakpoint.Tablet - 1}px) {
       display: none;
     }
     tr th {
@@ -77,14 +79,6 @@ const tableStyles = css`
   }
 `;
 
-export interface ICollectionTableProps {
-  data: AnyPodListPreset[];
-  rootNotePreset?: INotePreset;
-  semitones?: number[];
-}
-
-const SEMITONES = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
 const getSemitoneCol = (
   pods: IPod[],
   h: number,
@@ -100,7 +94,7 @@ const getSemitoneCol = (
     };
   }
   const text = rootNotePreset
-    ? getNoteName(addPods(rootNotePreset.value, pods[index]))
+    ? getNoteName(addPods(rootNotePreset.pod, pods[index]))
     : getIntervalName(pods[index]);
   return {
     className,
@@ -108,10 +102,18 @@ const getSemitoneCol = (
   };
 };
 
+export interface ICollectionTableProps {
+  data: AnyPodListPreset[];
+  rootNotePreset?: INotePreset;
+  semitones?: number[];
+  presetType: PresetType;
+}
+
 const CollectionTable: React.FC<ICollectionTableProps> = ({
   data,
   semitones = [],
   rootNotePreset,
+  presetType,
 }) => {
   return (
     <Table
@@ -132,14 +134,14 @@ const CollectionTable: React.FC<ICollectionTableProps> = ({
           cols: [
             {
               link: getModelRoute(
-                d.presetType,
+                presetType,
                 d.presetId,
                 rootNotePreset ? (rootNotePreset.presetId as NoteId) : undefined
               ),
               content: getRootedName(d, rootNotePreset),
             },
             ...SEMITONES.map((h, i) =>
-              getSemitoneCol(d.value, h, semitones, rootNotePreset)
+              getSemitoneCol(d.pods, h, semitones, rootNotePreset)
             ),
           ],
         };

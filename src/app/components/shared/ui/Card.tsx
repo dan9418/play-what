@@ -1,32 +1,31 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
-export const StyledCard = styled.div`
-  background: ${(props) => props.theme?.surface?.card};
-  width: 100%;
-  border-radius: 16px;
-  padding: 16px;
+interface ICardHeaderProps {
+  title: string;
+  level?: number;
+  action?: any;
+}
 
-  .header {
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: space-between;
-  }
+export const StyledCardHeader = styled.div`
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: space-between;
 `;
 
-export const CardHeader: React.FC<any> = ({
+export const CardHeader: React.FC<ICardHeaderProps> = ({
   title,
   level = 2,
   action = null,
 }) => {
   const AsTag: any = `h${level}`;
   return (
-    <div className="header">
+    <StyledCardHeader>
       <AsTag>{title}</AsTag>
       {action}
-    </div>
+    </StyledCardHeader>
   );
 };
 
@@ -36,6 +35,13 @@ export interface ICardProps extends PropsWithChildren<any> {
   action?: any;
   level?: number;
 }
+
+export const StyledCard = styled.div`
+  background: ${(props) => props.theme?.surface?.card};
+  width: 100%;
+  border-radius: 16px;
+  padding: 16px;
+`;
 
 const Card: React.FC<ICardProps> = ({
   title,

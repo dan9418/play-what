@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { PresetType } from "../../../../../core/Core.constants";
 import { AnyPodListPreset } from "../../../../../core/Core.derived";
 import Card, { ICardProps } from "../../../shared/ui/Card";
-
 import CollectionTable from "./CollectionTable";
 
 interface ICollectionCardProps extends ICardProps {
   data: AnyPodListPreset[];
   description?: string;
+  presetType: PresetType;
 }
 
 const StyledCollectionCard = styled(Card)`
@@ -19,12 +20,13 @@ const StyledCollectionCard = styled(Card)`
 const CollectionCard: React.FC<ICollectionCardProps> = ({
   description,
   data,
+  presetType,
   ...rest
 }) => {
   return (
     <StyledCollectionCard {...rest}>
       {description && <p>{description}</p>}
-      <CollectionTable data={data} />
+      <CollectionTable presetType={presetType} data={data} />
     </StyledCollectionCard>
   );
 };

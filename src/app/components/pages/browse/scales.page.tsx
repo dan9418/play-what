@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Tag } from "../../../core/models/Model.constants";
-import { SCALE_PRESETS } from "../../../core/models/Scale.constants";
-import CollectionCard from "../../collection/CollectionCard";
-import ColumnManager from "../../column-manager/ColumnManager";
-import PageLayout from "../../layout/PageLayout";
+import { PresetType, Tag } from "../../../../core/Core.constants";
+import { SCALE_PRESETS } from "../../../../core/Scale.constants";
+import ColumnManager from "../../shared/layout/ColumnManager";
+import PageLayout from "../../shared/layout/PageLayout";
+import CollectionCard from "./cards/CollectionCard";
 
 const StyledScalesPage = styled(PageLayout)`
   .intro {
@@ -33,6 +33,7 @@ const ScalesPage: React.FC = () => {
       <ColumnManager>
         <ColumnManager>
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Diatonic Modes"
             description={`
               Diatonic scales are by far the most common type in Western music.
@@ -46,6 +47,7 @@ const ScalesPage: React.FC = () => {
             )}
           />
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Harmonic Minor Modes"
             description={`
               The Harmonic Minor scale is a slight variation of the Natural
@@ -60,6 +62,7 @@ const ScalesPage: React.FC = () => {
             )}
           />
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Melodic Minor Modes"
             description={`
               The Melodic Minor scale is formed by making one additional change
@@ -72,6 +75,7 @@ const ScalesPage: React.FC = () => {
             )}
           />
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Pentatonic Modes"
             description={`
               Pentatonic scales contain only five notes and are often a subset
@@ -83,6 +87,7 @@ const ScalesPage: React.FC = () => {
             )}
           />
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Blues Scales"
             description={`
               Blues scales are pentatonic scales with an extra "blue" note.
@@ -92,6 +97,7 @@ const ScalesPage: React.FC = () => {
             )}
           />
           <CollectionCard
+            presetType={PresetType.Scale}
             title="Bebop Scales"
             description={`
               Bebop scales are diatonic scales with an extra chomatic passing note.

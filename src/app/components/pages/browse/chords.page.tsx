@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { CHORD_PRESETS } from "../../../../core/Chord.constants";
-import { Tag } from "../../../../core/Core.constants";
+import { PresetType, Tag } from "../../../../core/Core.constants";
 import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import CollectionCard from "./cards/CollectionCard";
@@ -26,6 +26,7 @@ const ChordsPage: React.FC = () => {
       </div>
       <ColumnManager>
         <CollectionCard
+          presetType={PresetType.Chord}
           title="Triads"
           description={`
             A triad is the most basic type of chord. It consists of 3
@@ -35,6 +36,7 @@ const ChordsPage: React.FC = () => {
           data={CHORD_PRESETS.filter((chord) => chord.tags.includes(Tag.Triad))}
         />
         <CollectionCard
+          presetType={PresetType.Chord}
           title="Seventh Chords"
           description={`
             A seventh chord is a triad with an additional seventh interval
@@ -47,6 +49,7 @@ const ChordsPage: React.FC = () => {
           )}
         />
         <CollectionCard
+          presetType={PresetType.Chord}
           title="Sixth Chords"
           description={`
             A sixth chord is a triad with an additional sixth interval stacked
@@ -59,6 +62,7 @@ const ChordsPage: React.FC = () => {
           )}
         />
         <CollectionCard
+          presetType={PresetType.Chord}
           title="Suspended Chords"
           description={`
             A suspended chord is a like a triad, except it sustitutes a second
@@ -69,6 +73,7 @@ const ChordsPage: React.FC = () => {
           )}
         />
         <CollectionCard
+          presetType={PresetType.Chord}
           title="Extended Chords"
           description={`
             An extended chord contains extended intervals. [INCOMPLETE]

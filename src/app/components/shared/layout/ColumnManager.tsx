@@ -1,10 +1,13 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
+import { MediaQuery } from "../../../styles/breakpoint";
 
-export const StyledColumnManager = styled.div<{
+interface IStyledColumnManagerProps {
   $tablet?: string[];
   $desktop?: string[];
-}>`
+}
+
+export const StyledColumnManager = styled.div<IStyledColumnManagerProps>`
   display: grid;
   gap: 16px;
   grid-template-columns: 1fr;
@@ -12,7 +15,7 @@ export const StyledColumnManager = styled.div<{
   ${({ $tablet }) =>
     $tablet
       ? `
-        @media(min-width: 512px) {
+        ${MediaQuery.Tablet} {
             grid-template-columns: ${$tablet.join(" ")}
         }
     `
@@ -21,7 +24,7 @@ export const StyledColumnManager = styled.div<{
   ${({ $desktop }) =>
     $desktop
       ? `
-        @media(min-width: 1024px) {
+        ${MediaQuery.Desktop} {
             grid-template-columns: ${$desktop.join(" ")}
         }
     `
