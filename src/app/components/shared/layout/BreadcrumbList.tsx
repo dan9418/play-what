@@ -1,13 +1,15 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { usePageProps } from "../utils/PagePropsContext";
+import { replaceAll } from "../../../../core/primitives/String.utils";
+import { Breakpoint } from "../../../styles/breakpoint";
 import Icon from "../ui/Icon";
+import { usePageProps } from "../utils/PagePropsContext";
 
 const StyledBreadcrumbList = styled.ul`
   font-size: 80%;
   padding: 8px;
-  @media (min-width: 512px) {
+  ${Breakpoint.Tablet} {
     font-size: 110%;
     padding: 16px;
   }
@@ -27,34 +29,29 @@ const StyledBreadcrumbList = styled.ul`
   }
 `;
 
-const NON_LINK_TERMS = [
-  "view",
-  "root",
-  "test",
-  "experimental",
-  "caged",
-  "chord-progressions",
-  "chord-charts",
-  "voicings",
-  "basics",
-  "advanced",
-  "intervals",
-];
+const NON_LINK_TERMS = ["view", "root", "browse"];
 
 const BreadcrumbList = () => {
+  return null;
   const { path } = usePageProps();
+
   let pieces = path.split("/");
   const paths: any[] = [];
+
   pieces.reduce((prev, cur, i, arr) => {
     const path = `${prev}/${cur}`.replace("//", "/") || "/";
     const isLink = !NON_LINK_TERMS.includes(cur);
     const text =
       i === 0
         ? "Home"
-        : cur.replaceAll("-", " ").replace(" sharp", "#").replace(" flat", "b");
+        : replaceAll(
+            cur.replace(" sharp", "#").replace(" flat", "b"),
+            "-",
+            " "
+          );
 
     const Tag = isLink ? Link : "span";
-    const to: any = isLink ? path : undefined;
+    const to: string | undefined = isLink ? path : undefined;
 
     paths.push(
       <li key={i}>
@@ -64,6 +61,7 @@ const BreadcrumbList = () => {
     );
     return path;
   }, "/");
+
   return (
     <StyledBreadcrumbList>
       {paths.slice(0, paths.length - 1)}
