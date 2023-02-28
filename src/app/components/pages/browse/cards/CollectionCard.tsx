@@ -5,7 +5,7 @@ import { AnyPodListPreset } from "../../../../../core/Core.derived";
 import Card, { ICardProps } from "../../../shared/ui/Card";
 import CollectionTable from "./CollectionTable";
 
-interface ICollectionCardProps extends ICardProps {
+export interface ICollectionCardProps extends ICardProps {
   data: AnyPodListPreset[];
   description?: string;
   presetType: PresetType;
