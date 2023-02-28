@@ -15,7 +15,7 @@ const StyledCollectionPage = styled(PageLayout)`
 export interface ICollectionPageCard
   extends Omit<ICollectionCardProps, "presetType"> {}
 
-interface ICollectionPageProps {
+export interface ICollectionPageProps {
   title: string;
   subtitle: string;
   intro: string;

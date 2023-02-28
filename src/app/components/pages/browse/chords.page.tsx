@@ -1,7 +1,10 @@
 import React from "react";
 import { CHORD_PRESETS } from "../../../../core/Chord.constants";
 import { PresetType, Tag } from "../../../../core/Core.constants";
-import CollectionPage, { ICollectionPageCard } from "./CollectionPage";
+import CollectionPage, {
+  ICollectionPageCard,
+  ICollectionPageProps,
+} from "./CollectionPage";
 
 const CARDS: ICollectionPageCard[] = [
   {
@@ -52,19 +55,21 @@ const CARDS: ICollectionPageCard[] = [
   },
 ];
 
+const PROPS: ICollectionPageProps = {
+  presetType: PresetType.Chord,
+  title: "Chords",
+  subtitle: "The foundation of harmony",
+  intro: `
+    A chord is a collection of musical notes, usually played
+    simultaneously. Chords are defined by their first note (the
+    root) and its relationship to the following notes (
+    intervals)
+  `,
+  cards: CARDS,
+};
+
 const ChordsPage: React.FC = () => {
-  return (
-    <CollectionPage
-      presetType={PresetType.Chord}
-      title="Chords"
-      subtitle="The foundation of harmony"
-      intro={`A chord is a collection of musical notes, usually played
-        simultaneously. Chords are defined by their first note (the
-        root) and its relationship to the following notes (
-        intervals).`}
-      cards={CARDS}
-    />
-  );
+  return <CollectionPage {...PROPS} />;
 };
 
 export default ChordsPage;
