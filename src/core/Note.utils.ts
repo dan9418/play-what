@@ -30,10 +30,6 @@ export const getNoteFromPod = (pod: IPod) => {
   return NOTE_PRESETS.find((note) => arePodsEqual(note, pod));
 };
 
-export const getNoteFromId = (id: NoteId) => {
-  return NOTE_PRESET_MAP.get(id);
-};
-
 export const getNoteWithOctave = (noteId: NoteId, octave: number): IPod => {
   const notePreset = NOTE_PRESET_MAP.get(noteId) as INotePreset;
   return [

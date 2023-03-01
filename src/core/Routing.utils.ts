@@ -1,9 +1,10 @@
 import { PresetType } from "./Core.constants";
+import { PresetId } from "./Core.derived";
 import { NoteId } from "./Note.constants";
 
 export const getModelRoute = (
   presetType: PresetType,
-  presetId?: string,
+  presetId?: PresetId,
   rootId?: NoteId
 ) => {
   const modelSuffix = presetId ? `/${presetId}` : "";

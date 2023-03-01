@@ -1,14 +1,9 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRootId } from "../../contexts/PagePropsContext";
-import { IChordPreset } from "../../core/models/Chord.constants";
-import {
-  AnyPodListPreset,
-  POD_LIST_PRESETS,
-} from "../../core/models/Model.derived";
-import { IScalePreset } from "../../core/models/Scale.constants";
-import { getModelRoute } from "../../core/routing/Routing.utils";
+import { AnyPodListPreset, getPreset } from "../../../../../core/Core.derived";
+import { getModelRoute } from "../../../../../core/Routing.utils";
+import { usePageProps } from "../../../shared/utils/PagePropsContext";
 
 const StyledCollectionList = styled.ul`
   display: flex;
@@ -33,18 +28,15 @@ interface ICollectionListProps {
 }
 
 const CollectionList: React.FC<ICollectionListProps> = ({ data }) => {
-  const rootId = useRootId();
+  const { rootId, presetType } = usePageProps().pageContext;
   return (
     <StyledCollectionList>
       {data.map((d) => {
-        const model = POD_LIST_PRESETS.find(
-          (preset) => preset.presetId === d.presetId
-        );
-
+        const preset = getPreset(presetType, d.presetId) as AnyPodListPreset;
         return (
           <li key={d.presetId}>
-            <Link to={getModelRoute(d.presetType, d.presetId, rootId)}>
-              {model.name}
+            <Link to={getModelRoute(presetType, d.presetId, rootId)}>
+              {preset.name}
             </Link>
           </li>
         );

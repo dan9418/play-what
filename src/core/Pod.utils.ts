@@ -1,12 +1,9 @@
-import { ChordId, CHORD_PRESETS, CHORD_PRESET_MAP } from "./Chord.constants";
-import { PresetType } from "./Core.constants";
+import { CHORD_PRESETS } from "./Chord.constants";
 import { AnyPodListPreset } from "./Core.derived";
-import { IntervalId, INTERVAL_PRESET_MAP } from "./Interval.constants";
-import { INotePreset, NoteId, NOTE_PRESET_MAP } from "./Note.constants";
-import { getName } from "./Note.utils";
+import { INotePreset } from "./Note.constants";
 import { IPod, MAX_POD } from "./Pod.constants";
 import NumberUtils from "./primitives/Number.utils";
-import { ScaleId, SCALE_PRESETS, SCALE_PRESET_MAP } from "./Scale.constants";
+import { SCALE_PRESETS } from "./Scale.constants";
 
 // Search
 
@@ -124,7 +121,7 @@ export const getRootedName = (
   podListPreset: AnyPodListPreset,
   rootNotePreset?: INotePreset
 ) => {
-  return `${rootNotePreset ? `${getName(rootNotePreset.pod)} ` : ""}${
+  return `${rootNotePreset ? `${rootNotePreset.name} ` : ""}${
     podListPreset.name
   }`;
 };
@@ -198,21 +195,6 @@ export const tryGetPodPairAtPitch = (
   if (index == null) return [undefined, undefined];
 
   return [intervalPods[index], (notePods as IPod[])[index]];
-};
-
-export const getModelConfigById = (
-  presetType: PresetType,
-  presetId: string
-) => {
-  if (presetType === PresetType.Interval) {
-    return INTERVAL_PRESET_MAP.get(presetId as IntervalId);
-  } else if (presetType === PresetType.Note) {
-    return NOTE_PRESET_MAP.get(presetId as NoteId);
-  } else if (presetType === PresetType.Chord) {
-    return CHORD_PRESET_MAP.get(presetId as ChordId);
-  } else if (presetType === PresetType.Scale) {
-    return SCALE_PRESET_MAP.get(presetId as ScaleId);
-  }
 };
 
 export const getNotePods = (
