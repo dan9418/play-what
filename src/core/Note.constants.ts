@@ -58,4 +58,6 @@ export const NOTE_PRESET_MAP: PresetMap<NoteId, INotePreset> = new Map([
   [NoteId.Cb, formatNotePreset(NoteId.Cb, "Cb", [11, 0])],
 ]);
 
-export const NOTE_PRESETS = ArrayUtils.mapToArray(NOTE_PRESET_MAP);
+export const NOTE_PRESETS = ArrayUtils.mapToArray(
+  NOTE_PRESET_MAP
+) as INotePreset[];

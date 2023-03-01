@@ -1,21 +1,22 @@
 import React from "react";
-import { PresetType } from "../../core/models/Model.constants";
-import { NoteId } from "../../core/models/Note.constants";
-import { IPodPreset } from "../../core/models/Pod.constants";
+import { CHORD_PRESETS } from "../../../../../core/Chord.constants";
+import { PresetType } from "../../../../../core/Core.constants";
+import { AnyPodListPreset } from "../../../../../core/Core.derived";
+import { INotePreset } from "../../../../../core/Note.constants";
 import {
   getSubchords,
   getSubscales,
   getSuperchords,
   getSuperscales,
-} from "../../core/models/Pod.utils";
-import { IPodListPreset } from "../../core/models/PodList.constants";
-import CollectionList from "../collection/CollectionList";
-import CollectionTable from "../collection/CollectionTable";
-import Card from "../ui/Card";
+} from "../../../../../core/Pod.utils";
+import { SCALE_PRESETS } from "../../../../../core/Scale.constants";
+import Card from "../../../shared/ui/Card";
+import CollectionList from "./CollectionList";
+import CollectionTable from "./CollectionTable";
 
 interface IRelatedCardProps {
-  podListPreset: IPodListPreset<any>;
-  rootNotePreset?: IPodPreset<NoteId>;
+  podListPreset: AnyPodListPreset;
+  rootNotePreset?: INotePreset;
   presetType: PresetType;
 }
 
@@ -24,13 +25,13 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
   rootNotePreset,
   presetType,
 }) => {
-  const { value: intervalPods } = podListPreset;
-  const subchords = getSubchords(intervalPods);
-  const subscales = getSubscales(intervalPods);
-  const superchords = getSuperchords(intervalPods);
-  const superscales = getSuperscales(intervalPods);
+  const { pods, presetId } = podListPreset;
+  const subchords = getSubchords(pods);
+  const subscales = getSubscales(pods);
+  const superchords = getSuperchords(pods);
+  const superscales = getSuperscales(pods);
 
-  const semitones = intervalPods.map((ivl) => ivl[0] + 1);
+  const semitones = pods.map((ivl) => ivl[0] + 1);
 
   return (
     <>
@@ -40,6 +41,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={subchords}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
+            presetType={presetType}
           />
         </Card>
       )}
@@ -49,6 +51,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={superchords}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
+            presetType={presetType}
           />
         </Card>
       )}
@@ -58,6 +61,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={subscales}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
+            presetType={presetType}
           />
         </Card>
       )}
@@ -67,17 +71,26 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={superscales}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
+            presetType={presetType}
           />
         </Card>
       )}
       {presetType === PresetType.Chord && (
         <Card title="Other Chords">
-          <CollectionList data={CHORD_PRESETS} />
+          <CollectionList
+            data={CHORD_PRESETS.filter(
+              (preset) => preset.presetId !== presetId
+            )}
+          />
         </Card>
       )}
       {presetType === PresetType.Scale && (
         <Card title="Other Scales">
-          <CollectionList data={SCALE_PRESETS} />
+          <CollectionList
+            data={SCALE_PRESETS.filter(
+              (preset) => preset.presetId !== presetId
+            )}
+          />
         </Card>
       )}
     </>

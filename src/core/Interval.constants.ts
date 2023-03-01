@@ -340,7 +340,9 @@ export const CORE_INTERVALS = [
   ],
 ];
 
-export const INTERVAL_PRESETS = ArrayUtils.mapToArray(INTERVAL_PRESET_MAP);
+export const INTERVAL_PRESETS = ArrayUtils.mapToArray(
+  INTERVAL_PRESET_MAP
+) as IIntervalPreset[];
 
 export const getExtensionInversionId = (id: IntervalId): IntervalId => {
   switch (id) {

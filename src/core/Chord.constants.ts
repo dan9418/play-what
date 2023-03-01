@@ -342,4 +342,7 @@ const EXTENDED_CHORDS: IExtendedChordConfig[] = [
 ];
 
 EXTENDED_CHORDS.forEach((chord) => addExtendedChordPreset(chord));
-export const CHORD_PRESETS = ArrayUtils.mapToArray(CHORD_PRESET_MAP);
+
+export const CHORD_PRESETS = ArrayUtils.mapToArray(
+  CHORD_PRESET_MAP
+) as IChordPreset[];

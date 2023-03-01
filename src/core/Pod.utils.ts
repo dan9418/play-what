@@ -138,25 +138,25 @@ export const containsSubset = (intervalPods: IPod[], subset: IPod[]) => {
 
 export const getSubchords = (intervalPods: IPod[]) => {
   return CHORD_PRESETS.filter((preset) =>
-    containsSubset(intervalPods, preset.value)
+    containsSubset(intervalPods, preset.pods)
   );
 };
 
 export const getSuperchords = (intervalPods: IPod[]) => {
   return CHORD_PRESETS.filter((preset) =>
-    isInSuperset(intervalPods, preset.value)
+    isInSuperset(intervalPods, preset.pods)
   );
 };
 
 export const getSubscales = (intervalPods: IPod[]) => {
   return SCALE_PRESETS.filter((preset) =>
-    containsSubset(intervalPods, preset.value)
+    containsSubset(intervalPods, preset.pods)
   );
 };
 
 export const getSuperscales = (intervalPods: IPod[]) => {
   return SCALE_PRESETS.filter((preset) =>
-    isInSuperset(intervalPods, preset.value)
+    isInSuperset(intervalPods, preset.pods)
   );
 };
 

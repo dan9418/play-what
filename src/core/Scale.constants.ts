@@ -574,4 +574,6 @@ export const SCALE_PRESET_MAP: PresetMap<ScaleId, IScalePreset> = new Map([
   ],
 ]);
 
-export const SCALE_PRESETS = ArrayUtils.mapToArray(SCALE_PRESET_MAP);
+export const SCALE_PRESETS = ArrayUtils.mapToArray(
+  SCALE_PRESET_MAP
+) as IScalePreset[];
