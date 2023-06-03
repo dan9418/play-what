@@ -8,7 +8,7 @@ import CollectionPage, {
 
 const CARDS: ICollectionPageCard[] = [
   {
-    title: "Diatonic Modes",
+    title: "Triads",
     description: `
       A triad is the most basic type of chord. It consists of 3
       intervals (a root, a third, and a fifth). The specific thirds and
