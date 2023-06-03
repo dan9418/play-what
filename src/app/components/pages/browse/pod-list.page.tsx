@@ -7,6 +7,7 @@ import { getRootedName } from "../../../../core/Pod.utils";
 import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import { ModelPageProps } from "../../shared/utils/PagePropsContext";
+import DetailsCard from "./cards/DetailsCard";
 import RelatedCard from "./cards/RelatedCard";
 
 const StyledPodlistPage = styled(PageLayout)``;
@@ -22,13 +23,11 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
   return (
     <StyledPodlistPage title={title}>
       <ColumnManager>
-        {/*<ColumnManager tablet={["300px", "auto"]}>
-          <RootCard />
-          <DetailsCard
-            podListPreset={podListPreset}
-            rootNotePreset={rootNotePreset}
-          />
-        </ColumnManager>
+        <DetailsCard
+          podListPreset={podListPreset}
+          rootNotePreset={rootNotePreset}
+        />
+        {/*
         {presetType === PresetType.Scale && (
           <RomanNumeralsCard
             podListPreset={podListPreset}
