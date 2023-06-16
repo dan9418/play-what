@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import ButtonInput from "../inputs/ButtonInput";
 interface IErrorBoundaryState {
@@ -23,7 +23,7 @@ const StyledErrorPage = styled.section`
     }
   }
 `;
-class ErrorBoundary extends React.Component<unknown, IErrorBoundaryState> {
+class ErrorBoundary extends React.Component<PropsWithChildren, IErrorBoundaryState> {
   constructor(props) {
     super(props);
     this.state = { hasError: false };

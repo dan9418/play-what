@@ -41,13 +41,13 @@ const StyledRootInput = styled.div`
 
 const RootInput: React.FC = () => {
   const pageProps = usePageProps();
-  const { path } = pageProps;
+  const { pathname } = pageProps.location;
 
-  const hasRoot = path.includes('/root/');
+  const hasRoot = pathname.includes('/root/');
 
-  const rootIndex = pageProps.path.lastIndexOf("hasRoot");
-  const basePath = hasRoot ? path.slice(0, rootIndex) : path;
-  const rootKey = hasRoot ? path.slice(rootIndex + 5, rootIndex + 6) : path;
+  const rootIndex = pageProps.path.lastIndexOf("root");
+  const basePath = hasRoot ? pathname.slice(0, rootIndex) : pathname;
+  const rootKey = hasRoot ? pathname.slice(rootIndex + 5, rootIndex + 6) : pathname;
 
   return (
     <StyledRootInput>

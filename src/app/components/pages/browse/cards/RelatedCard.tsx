@@ -32,7 +32,6 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
   const superscales = getSuperscales(pods);
 
   const semitones = pods.map((ivl) => ivl[0] + 1);
-
   return (
     <>
       {subchords.length > 0 && (
@@ -45,7 +44,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
           />
         </Card>
       )}
-      {superchords.length > 0 && (
+      {false && superchords.length > 0 && (
         <Card title="Parent Chords">
           <CollectionTable
             data={superchords}
@@ -65,7 +64,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
           />
         </Card>
       )}
-      {superscales.length > 0 && (
+      {false && superscales.length > 0 && (
         <Card title="Parent Scales">
           <CollectionTable
             data={superscales}

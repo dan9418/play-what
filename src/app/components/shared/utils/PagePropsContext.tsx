@@ -18,7 +18,7 @@ export const PagePropsContextProvider: React.FC<{
   value: any;
   children: any;
 }> = ({ children, value }) => {
-  //console.log('pw-page-props', value);
+  console.log('pw-page-props', value);
   return (
     <PagePropsContext.Provider value={value}>
       {children}
