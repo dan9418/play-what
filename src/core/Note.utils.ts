@@ -27,7 +27,7 @@ interface INoteNameParts {
 }
 
 export const getNoteFromPod = (pod: IPod) => {
-  return NOTE_PRESETS.find((note) => arePodsEqual(note, pod));
+  return NOTE_PRESETS.find((note) => arePodsEqual(note.pod, pod));
 };
 
 export const getNoteWithOctave = (noteId: NoteId, octave: number): IPod => {
@@ -114,7 +114,7 @@ export const getOctave = (pod: IPod): number => {
 
 export const getDegreeId = (pod: IPod): DegreeId => {
   const degree = getDegree(pod);
-  return DEGREE_PRESETS[degree].id;
+  return DEGREE_PRESETS[degree].presetId;
 };
 
 export const getSpelling = (pod: IPod): string => {

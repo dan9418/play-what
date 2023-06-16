@@ -39,7 +39,7 @@ interface ITestShape {
 const getRoots = (): ITestShape[] => {
   const roots: ITestShape[] = [];
   DEGREE_PRESETS.forEach((degree) => {
-    const spelling = degree.id;
+    const spelling = degree.presetId;
     const d = degree.value;
 
     const diatonicPitch = DIATONIC_VALUES[d].value[0];

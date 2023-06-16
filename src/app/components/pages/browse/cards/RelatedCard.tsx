@@ -44,7 +44,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
           />
         </Card>
       )}
-      {false && superchords.length > 0 && (
+      {superchords.length > 0 && (
         <Card title="Parent Chords">
           <CollectionTable
             data={superchords}
@@ -64,7 +64,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
           />
         </Card>
       )}
-      {false && superscales.length > 0 && (
+      {superscales.length > 0 && (
         <Card title="Parent Scales">
           <CollectionTable
             data={superscales}

@@ -8,7 +8,7 @@ export enum DiatonicId {
   Tonic = "tonic",
   Supertonic = "supertonic",
   Mediant = "mediant",
-  Subdominant = "submediant",
+  Subdominant = "subdominant",
   Dominant = "dominant",
   Submediant = "submediant",
   Subtonic = "subtonic",
