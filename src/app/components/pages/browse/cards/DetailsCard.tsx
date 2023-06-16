@@ -5,6 +5,7 @@ import { IIntervalPreset, IntervalId, INTERVAL_PRESET_MAP } from "../../../../..
 import { getName } from "../../../../../core/Interval.utils";
 import { INotePreset } from "../../../../../core/Note.constants";
 import { StyledCard } from "../../../shared/ui/Card";
+import RootInput from "../../../shared/inputs/RootInput";
 
 const StyledDetailsCard = styled(StyledCard) <{ $n: number }>`
     ul {
@@ -38,7 +39,7 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({
                     );
                 })}
             </ul>
-
+            <RootInput />
         </StyledDetailsCard>
     );
 };

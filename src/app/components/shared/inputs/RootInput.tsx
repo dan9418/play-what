@@ -1,24 +1,14 @@
 import { Link } from "gatsby";
 import React from "react";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { usePageProps, useRoot } from "../../contexts/PagePropsContext";
-import {
-  INotePreset,
-  NoteId,
-  NOTE_PRESET_MAP,
-} from "../../core/models/Note.constants";
-import { octaveState } from "../../state/state";
+import { INotePreset, NOTE_PRESET_MAP, NoteId } from "../../../../core/Note.constants";
 import InputRow from "../ui/InputRow";
-import DropdownInput from "./DropdownInput";
+import { usePageProps } from "../utils/PagePropsContext";
 
 const StyledRootInput = styled.div`
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   width: 100%;
-
-  @media (min-width: 512px) {
-  }
 
   .spelling,
   .accidental {
@@ -49,25 +39,19 @@ const StyledRootInput = styled.div`
   }
 `;
 
-const OCTAVE_OPTIONS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((x, i) => ({
-  id: i + 1,
-  name: i + 1,
-}));
-
 const RootInput: React.FC = () => {
-  const root = useRoot();
   const pageProps = usePageProps();
   const { path } = pageProps;
 
-  const rootIndex = pageProps.path.lastIndexOf("root");
-  const basePath = root ? path.slice(0, rootIndex) : path;
-  const rootKey = root ? path.slice(rootIndex + 5, rootIndex + 6) : path;
+  const hasRoot = path.includes('/root/');
 
-  const [octave, setOctave] = useRecoilState(octaveState);
+  const rootIndex = pageProps.path.lastIndexOf("hasRoot");
+  const basePath = hasRoot ? path.slice(0, rootIndex) : path;
+  const rootKey = hasRoot ? path.slice(rootIndex + 5, rootIndex + 6) : path;
 
   return (
     <StyledRootInput>
-      <InputRow label={root ? "Spelling" : undefined} y>
+      <InputRow label={hasRoot ? "Spelling" : undefined} y>
         <div className="spelling">
           <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`}>
             {(NOTE_PRESET_MAP.get(NoteId.C) as INotePreset).name}
@@ -92,35 +76,26 @@ const RootInput: React.FC = () => {
           </Link>
         </div>
       </InputRow>
-      {root && (
-        <>
-          <InputRow label="Accidental" y>
-            <div className="accidental">
-              <Link
-                activeClassName="active"
-                to={`${basePath}root/${rootKey}-flat`}
-              >
-                b
-              </Link>
-              <Link activeClassName="active" to={`${basePath}root/${rootKey}`}>
-                none
-              </Link>
-              <Link
-                activeClassName="active"
-                to={`${basePath}root/${rootKey}-sharp`}
-              >
-                #
-              </Link>
-            </div>
-          </InputRow>
-          <InputRow label="Octave" y>
-            <DropdownInput
-              options={OCTAVE_OPTIONS}
-              value={{ id: octave }}
-              setValue={(o) => setOctave(o.id)}
-            />
-          </InputRow>
-        </>
+      {hasRoot && (
+        <InputRow label="Accidental" y>
+          <div className="accidental">
+            <Link
+              activeClassName="active"
+              to={`${basePath}root/${rootKey}-flat`}
+            >
+              b
+            </Link>
+            <Link activeClassName="active" to={`${basePath}root/${rootKey}`}>
+              none
+            </Link>
+            <Link
+              activeClassName="active"
+              to={`${basePath}root/${rootKey}-sharp`}
+            >
+              #
+            </Link>
+          </div>
+        </InputRow>
       )}
     </StyledRootInput>
   );
