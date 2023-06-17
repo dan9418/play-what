@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
+import { CHORD_PRESETS } from "../../../../core/Chord.constants";
 import { PresetType } from "../../../../core/Core.constants";
-import { POD_LIST_PRESETS } from "../../../../core/Core.derived";
 import { NOTE_PRESETS } from "../../../../core/Note.constants";
 import { getModelRoute } from "../../../../core/Routing.utils";
+import { SCALE_PRESETS } from "../../../../core/Scale.constants";
 
 const useRandomModel = () => {
   const [modelPath, setModelPath] = useState("");
@@ -11,11 +12,13 @@ const useRandomModel = () => {
     const id = setInterval(() => {
       const root =
         NOTE_PRESETS[Math.floor(Math.random() * NOTE_PRESETS.length)];
+      const type = Math.random() >= .5 ? PresetType.Chord : PresetType.Scale;
+      const typeData = type === PresetType.Chord ? CHORD_PRESETS : SCALE_PRESETS;
       const structure =
-        POD_LIST_PRESETS[Math.floor(Math.random() * POD_LIST_PRESETS.length)];
+        typeData[Math.floor(Math.random() * typeData.length)];
       //const text = `${root.name} ${structure.name}`;
       const route = getModelRoute(
-        PresetType.Chord, // TODO
+        type,
         structure.presetId,
         root.presetId
       );
