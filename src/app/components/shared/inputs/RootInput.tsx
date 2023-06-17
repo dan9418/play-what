@@ -2,27 +2,25 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { INotePreset, NOTE_PRESET_MAP, NoteId } from "../../../../core/Note.constants";
-import InputRow from "../ui/InputRow";
 import { usePageProps } from "../utils/PagePropsContext";
 
 const StyledRootInput = styled.div`
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  width: 100%;
+  background-color: ${props => props.theme.surface.bg};
 
-  .spelling,
-  .accidental {
+  padding: 8px;
+  border-radius: 8px;
+  width: fit-content;
+  margin: auto;
+  margin-top: 16px;
+
+  .spelling {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 4px;
   }
 
-  .accidental > a:nth-child(2) {
-    width: 64px;
-  }
-
-  a {
+  a:not(.clear) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,7 +35,39 @@ const StyledRootInput = styled.div`
       color: white;
     }
   }
+  .clear {
+    font-weight: normal;
+    font-size: 90%;
+  }
+  h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
 `;
+
+const Col: React.FC<any> = ({ basePath, rootKey }) => {
+  return (
+    <div className="col">
+      <Link
+        activeClassName="active"
+        to={`${basePath}root/${rootKey}-sharp`}
+      >
+        #
+      </Link>
+      <Link activeClassName="active" to={`${basePath}root/${rootKey}`}>
+        {(NOTE_PRESET_MAP.get(rootKey) as INotePreset).name}
+      </Link>
+      <Link
+        activeClassName="active"
+        to={`${basePath}root/${rootKey}-flat`}
+      >
+        b
+      </Link>
+    </div>
+  );
+};
 
 const RootInput: React.FC = () => {
   const pageProps = usePageProps();
@@ -51,52 +81,22 @@ const RootInput: React.FC = () => {
 
   return (
     <StyledRootInput>
-      <InputRow label={hasRoot ? "Spelling" : undefined} y>
-        <div className="spelling">
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.C}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.C) as INotePreset).name}
+      <h3>Root
+        {hasRoot &&
+          <Link className="clear" to={`${basePath}`}>
+            Clear
           </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.D}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.D) as INotePreset).name}
-          </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.E}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.E) as INotePreset).name}
-          </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.F}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.F) as INotePreset).name}
-          </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.G}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.G) as INotePreset).name}
-          </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.A}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.A) as INotePreset).name}
-          </Link>
-          <Link activeClassName="active" to={`${basePath}root/${NoteId.B}`}>
-            {(NOTE_PRESET_MAP.get(NoteId.B) as INotePreset).name}
-          </Link>
-        </div>
-      </InputRow>
-      {hasRoot && (
-        <InputRow label="Accidental" y>
-          <div className="accidental">
-            <Link
-              activeClassName="active"
-              to={`${basePath}root/${rootKey}-flat`}
-            >
-              b
-            </Link>
-            <Link activeClassName="active" to={`${basePath}root/${rootKey}`}>
-              none
-            </Link>
-            <Link
-              activeClassName="active"
-              to={`${basePath}root/${rootKey}-sharp`}
-            >
-              #
-            </Link>
-          </div>
-        </InputRow>
-      )}
+        }
+      </h3>
+      <div className="spelling">
+        <Col basePath={basePath} rootKey={NoteId.C} />
+        <Col basePath={basePath} rootKey={NoteId.D} />
+        <Col basePath={basePath} rootKey={NoteId.E} />
+        <Col basePath={basePath} rootKey={NoteId.F} />
+        <Col basePath={basePath} rootKey={NoteId.G} />
+        <Col basePath={basePath} rootKey={NoteId.A} />
+        <Col basePath={basePath} rootKey={NoteId.B} />
+      </div>
     </StyledRootInput>
   );
 };
