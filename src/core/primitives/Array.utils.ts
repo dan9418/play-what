@@ -8,9 +8,9 @@ const rotate = (arr: any[], count: number): any[] => {
 };
 
 
-const mapToArray = (m: Map<any, any>): any[] => Array.from(m).map(([k, v]) => v);
+const mapToArray = (m: Map<any, any>) => Array.from(m).map(([k, v]) => v);
 
-const setToArray = (s: Set<any>): any[] => Array.from(s);
+const setToArray = (s: Set<any>) => Array.from(s);
 
 export default {
 	splitAt,
