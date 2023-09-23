@@ -12,6 +12,7 @@ import DetailsCard from "./cards/DetailsCard";
 import ModeCard from "./cards/ModeCard";
 import RelatedCard from "./cards/RelatedCard";
 import RomanNumeralsCard from "./cards/RomanNumeralsCard";
+import FretboardCard from "./cards/FretboardCard";
 
 const StyledPodlistPage = styled(PageLayout)``;
 
@@ -42,10 +43,10 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
             rootNotePreset={rootNotePreset}
           />
         )}
-        {/*<FretboardCard
+        <FretboardCard
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}
-        />*/}
+        />
         <RelatedCard
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}

@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled, { css } from "styled-components";
-import { IFretboardProps } from "../../core/fretboard/Fretboard.constants";
-import { getFretMapFromFretboardProps } from "../../core/fretboard/Fretboard.utils";
+import { IFretboardProps } from "../../../../core/Fretboard.constants";
+import { getFretMapFromFretboardProps } from "../../../../core/Fretboard.utils";
 import { IColConfig, IRowConfig, Table } from "../ui/Table";
 
 export const StyledFretTable = styled.div``;
