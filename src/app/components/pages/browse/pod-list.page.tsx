@@ -8,6 +8,7 @@ import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import { ModelPageProps } from "../../shared/utils/PagePropsContext";
 import DetailsCard from "./cards/DetailsCard";
+import ModeCard from "./cards/ModeCard";
 import RelatedCard from "./cards/RelatedCard";
 
 const StyledPodlistPage = styled(PageLayout)``;
@@ -33,14 +34,14 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
             podListPreset={podListPreset}
             rootNotePreset={rootNotePreset}
           />
-        )}
+        )}*/}
         {presetType === PresetType.Scale && (
           <ModeCard
             podListPreset={podListPreset}
             rootNotePreset={rootNotePreset}
           />
         )}
-        <FretboardCard
+        {/*<FretboardCard
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}
         />*/}

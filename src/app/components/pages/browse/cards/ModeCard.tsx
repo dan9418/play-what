@@ -1,13 +1,12 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { useRootId } from "../../contexts/PagePropsContext";
-import { Tag } from "../../core/models/Model.constants";
-import { IPodPreset } from "../../core/models/Pod.constants";
-import { IPodListPreset } from "../../core/models/PodList.constants";
-import { SCALE_PRESETS } from "../../core/models/Scale.constants";
-import { getModelRoute } from "../../core/routing/Routing.utils";
-import Card from "../ui/Card";
+import { PresetType, Tag } from "../../../../../core/Core.constants";
+import { IPodPreset } from "../../../../../core/Pod.constants";
+import { IPodListPreset } from "../../../../../core/PodList.constants";
+import { getModelRoute } from "../../../../../core/Routing.utils";
+import { SCALE_PRESETS } from "../../../../../core/Scale.constants";
+import Card from "../../../shared/ui/Card";
 
 const StyledModeCard = styled.div`
   ul {
@@ -34,7 +33,7 @@ const ModeCard: React.FC<IModeCardProps> = ({
   podListPreset,
   rootNotePreset,
 }) => {
-  const rootId = useRootId();
+  const rootId = rootNotePreset ? rootNotePreset.presetId : undefined;
 
   const type = podListPreset.tags.find(
     (t) =>
@@ -71,7 +70,7 @@ const ModeCard: React.FC<IModeCardProps> = ({
           {modes.map((n) => (
             <li key={n.presetId}>
               <Link
-                to={getModelRoute(n.presetType, n.presetId, rootId)}
+                to={getModelRoute(PresetType.Scale, n.presetId, rootId)}
                 className={
                   podListPreset.presetId === n.presetId ? "active" : ""
                 }
