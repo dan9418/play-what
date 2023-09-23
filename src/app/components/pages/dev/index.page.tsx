@@ -1,9 +1,9 @@
 import React from "react";
 import styled from 'styled-components';
-import PageLayout from "../../layout/PageLayout";
-import Card from "../../ui/Card";
-import { List } from "../../ui/List";
-import { LIST_STYLES_1 } from "../../ui/List.styles";
+import PageLayout from "../../shared/layout/PageLayout";
+import Card from "../../shared/ui/Card";
+import { List } from "../../shared/ui/List";
+import { LIST_STYLES_1 } from "../../shared/ui/List.styles";
 
 const StyledDevPage = styled(PageLayout)``;
 
