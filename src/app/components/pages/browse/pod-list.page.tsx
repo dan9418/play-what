@@ -4,12 +4,14 @@ import { PresetType } from "../../../../core/Core.constants";
 import { AnyPodListPreset, getPreset } from "../../../../core/Core.derived";
 import { INotePreset } from "../../../../core/Note.constants";
 import { getRootedName } from "../../../../core/Pod.utils";
+import { IScalePreset } from "../../../../core/Scale.constants";
 import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import { ModelPageProps } from "../../shared/utils/PagePropsContext";
 import DetailsCard from "./cards/DetailsCard";
 import ModeCard from "./cards/ModeCard";
 import RelatedCard from "./cards/RelatedCard";
+import RomanNumeralsCard from "./cards/RomanNumeralsCard";
 
 const StyledPodlistPage = styled(PageLayout)``;
 
@@ -28,16 +30,15 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}
         />
-        {/*
         {presetType === PresetType.Scale && (
           <RomanNumeralsCard
-            podListPreset={podListPreset}
+            podListPreset={podListPreset as IScalePreset}
             rootNotePreset={rootNotePreset}
           />
-        )}*/}
+        )}
         {presetType === PresetType.Scale && (
           <ModeCard
-            podListPreset={podListPreset}
+            podListPreset={podListPreset as IScalePreset}
             rootNotePreset={rootNotePreset}
           />
         )}

@@ -2,10 +2,9 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { PresetType, Tag } from "../../../../../core/Core.constants";
-import { IPodPreset } from "../../../../../core/Pod.constants";
-import { IPodListPreset } from "../../../../../core/PodList.constants";
+import { INotePreset } from "../../../../../core/Note.constants";
 import { getModelRoute } from "../../../../../core/Routing.utils";
-import { SCALE_PRESETS } from "../../../../../core/Scale.constants";
+import { IScalePreset, SCALE_PRESETS } from "../../../../../core/Scale.constants";
 import Card from "../../../shared/ui/Card";
 
 const StyledModeCard = styled.div`
@@ -25,8 +24,8 @@ const StyledModeCard = styled.div`
 `;
 
 interface IModeCardProps {
-  podListPreset: IPodListPreset<any>;
-  rootNotePreset?: IPodPreset<any>;
+  podListPreset: IScalePreset;
+  rootNotePreset?: INotePreset;
 }
 
 const ModeCard: React.FC<IModeCardProps> = ({

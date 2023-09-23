@@ -1,16 +1,15 @@
 import React from "react";
 import { css } from "styled-components";
-import { ChordId, IChordPreset } from "../../core/models/Chord.constants";
-import { getNumeralParts } from "../../core/models/Chord.utils";
-import { AnyPodListPreset } from "../../core/models/Model.derived";
-import { INotePreset, NoteId } from "../../core/models/Note.constants";
-import { getRootedName, getShortName } from "../../core/models/Pod.utils";
-import { IPodListPreset } from "../../core/models/PodList.constants";
-import { IScalePreset } from "../../core/models/Scale.constants";
-import { getAllNumerals } from "../../core/models/Scale.utils";
-import { getModelRoute } from "../../core/routing/Routing.utils";
-import Card from "../ui/Card";
-import { Table } from "../ui/Table";
+import { IChordPreset } from "../../../../../core/Chord.constants";
+import { getNumeralParts } from "../../../../../core/Chord.utils";
+import { PresetType } from "../../../../../core/Core.constants";
+import { INotePreset, NoteId } from "../../../../../core/Note.constants";
+import { getRootedName, getShortName } from "../../../../../core/Pod.utils";
+import { getModelRoute } from "../../../../../core/Routing.utils";
+import { IScalePreset } from "../../../../../core/Scale.constants";
+import { getAllNumerals } from "../../../../../core/Scale.utils";
+import Card from "../../../shared/ui/Card";
+import { Table } from "../../../shared/ui/Table";
 
 const tableStyles = css`
   border-collapse: collapse;
@@ -39,7 +38,7 @@ const tableStyles = css`
 `;
 
 interface IRomanNumeralsCardProps {
-  podListPreset: AnyPodListPreset;
+  podListPreset: IScalePreset;
   rootNotePreset?: INotePreset;
   title?: string;
 }
@@ -49,7 +48,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
   rootNotePreset,
   title = "Roman Numerals",
 }) => {
-  const numerals = getAllNumerals(podListPreset, rootNotePreset);
+  const numerals = getAllNumerals(podListPreset, rootNotePreset) as [INotePreset, IChordPreset][];
 
   if (!numerals.length || numerals.find((n) => !n || !n[1])) return null;
 
@@ -65,7 +64,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
               "Numeral",
               ...numerals.map(([root, n], i) => {
                 const [numeral, symbol] = getNumeralParts(
-                  n.presetId as ChordId,
+                  n.presetId,
                   i + 1
                 );
                 return {
@@ -87,7 +86,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
               "Name",
               ...numerals.map(([root, n], i) => ({
                 link: getModelRoute(
-                  n.presetType,
+                  PresetType.Chord,
                   n.presetId,
                   root ? (root.presetId as NoteId) : undefined
                 ),

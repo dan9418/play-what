@@ -13,7 +13,7 @@ import ArrayUtils from "./primitives/Array.utils";
 import NumberUtils from "./primitives/Number.utils";
 import { IScalePreset, SCALE_PRESETS } from "./Scale.constants";
 
-export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
+export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset | undefined => {
   // Get every other interval
   const curIntervals: IPod[] = [];
   for (let i = 0; i < intervalPods.length; i = i + 2) {
@@ -30,11 +30,11 @@ export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
   console.log(
     "dpb",
     newPods.map((p) =>
-      INTERVAL_PRESETS.find((ivl) => arePodsEqual(ivl.value, p))
+      INTERVAL_PRESETS.find((ivl) => arePodsEqual(ivl.pod, p))
     )
   );
   const numeral = CHORD_PRESETS.find((preset) =>
-    arePodListsEqual(preset.value, newPods)
+    arePodListsEqual(preset.pods, newPods)
   );
   return numeral;
 };
@@ -42,17 +42,17 @@ export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset => {
 export const getAllNumerals = (
   podListPreset: IScalePreset,
   rootNotePreset?: INotePreset
-): [INotePreset | undefined, IChordPreset][] => {
+): [INotePreset | undefined, IChordPreset | undefined][] => {
   const numerals: [INotePreset | undefined, IChordPreset][] = [];
   if (podListPreset.tags.includes(Tag.Diatonic)) {
     for (let i = 0; i < podListPreset.pods.length; i++) {
-      numerals.push([rootNotePreset, getNumeral(podListPreset.pods, i)]);
+      numerals.push([rootNotePreset, getNumeral(podListPreset.pods, i) as IChordPreset]);
     }
   }
   return numerals;
 };
 
-export const getMode = (podList: IPod[], d: number): IScalePreset => {
+export const getMode = (podList: IPod[], d: number): IScalePreset | undefined => {
   let rotated = [...podList];
   rotated = ArrayUtils.rotate(rotated, d);
   for (let i = podList.length - d; i < rotated.length; i++) {
@@ -66,7 +66,7 @@ export const getMode = (podList: IPod[], d: number): IScalePreset => {
     newPods.push(newPod);
   }
   const mode = SCALE_PRESETS.find((preset) =>
-    arePodListsEqual(preset, newPods)
+    arePodListsEqual(preset.pods, newPods)
   );
 
   return mode;
@@ -81,7 +81,7 @@ export const getAllModes = (podList: IPod[], tags: Tag[]): IScalePreset[] => {
     tags.includes(Tag.HarmonicMode)
   ) {
     for (let i = 0; i < podList.length; i++) {
-      modes.push(getMode(podList, i));
+      modes.push(getMode(podList, i) as IScalePreset);
     }
   }
   return modes;
