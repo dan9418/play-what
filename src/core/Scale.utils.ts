@@ -40,7 +40,10 @@ export const getAllNumerals = (
   const numerals: [INotePreset | undefined, IChordPreset][] = [];
   if (podListPreset.tags.includes(Tag.Diatonic)) {
     for (let i = 0; i < podListPreset.pods.length; i++) {
-      numerals.push([rootNotePreset, getNumeral(podListPreset.pods, i) as IChordPreset]);
+      numerals.push([
+        rootNotePreset, // TODO needs to change for every chord
+        getNumeral(podListPreset.pods, i) as IChordPreset
+      ]);
     }
   }
   return numerals;
