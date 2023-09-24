@@ -1,16 +1,10 @@
 import React from "react";
-import {
-  FRETBOARD_TUNING_VALUES,
-  TuningId,
-} from "../../../viewers/fretboard/Fretboard.tuning";
-import { DEFAULT_FRETBOARD_PROPS } from "../../../viewers/fretboard/Fretboard.utils";
-import {
-  VoicingId,
-  VOICING_PRESETS,
-} from "../../../viewers/fretboard/Fretboard.voicing";
-import DropdownInput from "../../inputs/DropdownInput";
-import NumericInput from "../../inputs/NumericInput";
-import InputRow from "../../ui/InputRow";
+import { DEFAULT_FRETBOARD_PROPS } from "../../../../core/Fretboard.constants";
+import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../../core/Tuning.constants";
+import { VOICING_PRESETS, VoicingId } from "../../../../core/Voicing.constants";
+import DropdownInput from "../../shared/inputs/DropdownInput";
+import NumericInput from "../../shared/inputs/NumericInput";
+import InputRow from "../../shared/ui/InputRow";
 import CardSection from "./CardSection";
 
 const VOICING_OPTIONS = [
@@ -29,7 +23,6 @@ export interface IFretboardColProps {
   setVoicing;
   setTuning;
   setFretRange;
-  model;
 }
 
 export const DEFAULT_VOICING = VOICING_OPTIONS[0];
@@ -37,7 +30,6 @@ export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0];
 export const DEFAULT_FRET_RANGE = DEFAULT_FRETBOARD_PROPS.fretRange;
 
 const FretboardCol: React.FC<IFretboardColProps> = ({
-  model,
   voicing,
   tuning,
   fretRange,
@@ -45,13 +37,14 @@ const FretboardCol: React.FC<IFretboardColProps> = ({
   setTuning,
   setFretRange,
 }) => {
-  const filteredVoicings = VOICING_OPTIONS.filter((v) => {
+  const filteredVoicings = VOICING_OPTIONS;
+  /*.filter((v) => {
     if (!v.value) return true;
     const containsNonModelIntervals = v.value.some(
       (x) => x && !model.intervals.find((ivl) => ivl.pod[1] + 1 === x)
     );
     return !containsNonModelIntervals;
-  });
+  });*/
 
   const [fretLo, fretHi] = fretRange;
 

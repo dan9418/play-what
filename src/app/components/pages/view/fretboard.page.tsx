@@ -1,35 +1,42 @@
-// import React, { useState } from "react";
-// import styled from "styled-components";
-// import { COLOR_SCHEMES } from "../../../core/color/Color.utils";
-// import Fretboard from "../../../viewers/fret-table/Fretboard";
-// import {
-//   IFretProps,
-//   isIntervalInVoicing,
-// } from "../../../viewers/fretboard/Fretboard.utils";
-// import ColumnManager from "../../column-manager/ColumnManager";
-// import PageLayout from "../../layout/PageLayout";
-// import Card from "../../ui/Card";
-// import { StyledCardSection } from "./CardSection";
-// import DetailsCol from "./DetailsCol";
-// import FretboardCol, {
-//   DEFAULT_FRET_RANGE,
-//   DEFAULT_TUNING,
-//   DEFAULT_VOICING,
-// } from "./FretboardCol";
-// import MainCol from "./MainCol";
-// import MaximizeButton from "./MaximizeButton";
-// import NotesCol from "./NotesCol";
-// import useModelQueryParams from "./useModelQueryParams";
-// import { useModelState } from "./useModelState";
+import React, { useState } from "react";
+import styled from "styled-components";
 
-// const StyledFretboardPage = styled(PageLayout)`
-//   ${StyledCardSection} {
-//     margin-top: 16px;
-//   }
-// `;
+import { ChordId } from "../../../../core/Chord.constants";
+import { COLOR_SCHEME_PRESETS } from "../../../../core/Color.utils";
+import { PresetType } from "../../../../core/Core.constants";
+import { AnyPodListPreset, getPreset } from "../../../../core/Core.derived";
+import { INotePreset, NoteId } from "../../../../core/Note.constants";
+import { getRootedName } from "../../../../core/Pod.utils";
+import Fretboard from "../../shared/fretboard/Fretboard";
+import ColumnManager from "../../shared/layout/ColumnManager";
+import PageLayout from "../../shared/layout/PageLayout";
+import Card from "../../shared/ui/Card";
+import { StyledCardSection } from "./CardSection";
+import DetailsCol from "./DetailsCol";
+import FretboardCol, {
+    DEFAULT_FRET_RANGE,
+    DEFAULT_TUNING,
+    DEFAULT_VOICING,
+} from "./FretboardCol";
+import MainCol from "./MainCol";
+import MaximizeButton from "./MaximizeButton";
+import useModelQueryParams from "./useModelQueryParams";
 
-// const Page: React.FC = () => {
-//   const [qpModelType, qpModelId, qpRootId] = useModelQueryParams();
+const StyledFretboardPage = styled(PageLayout)`
+  ${StyledCardSection} {
+    margin-top: 16px;
+  }
+`;
+
+const DEFAULT = {
+    presetType: PresetType.Chord,
+    presetId: ChordId.MajTriad,
+    rootId: NoteId.C
+}
+
+const Page: React.FC = () => {
+    const [presetType, presetId, rootId] = useModelQueryParams();
+
 //   const modelState = useModelState(qpModelType, qpModelId, qpRootId);
 //   const {
 //     modelType,
@@ -42,100 +49,80 @@
 //     setModel,
 //   } = modelState;
 
-//   const [voicing, setVoicing] = useState(DEFAULT_VOICING);
-//   const [tuning, setTuning] = useState(DEFAULT_TUNING);
-//   const [fretRange, setFretRange] = useState(DEFAULT_FRET_RANGE);
-//   const [isFullScreen, setIsFullScreen] = useState(false);
-//   const [colorScheme, _setColorScheme] = useState(COLOR_SCHEMES[1]);
-//   const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
+    // @ts-ignore
+    const podListPreset = getPreset(presetType, presetId) as AnyPodListPreset;
+    // @ts-ignore
+    const rootNotePreset = getPreset(PresetType.Note, rootId) as INotePreset;
 
-//   const setColorScheme = (cs) => {
-//     _setColorScheme(cs);
-//     setColorConfig(cs.defaultConfig);
-//   };
+    const title = getRootedName(podListPreset, rootNotePreset);
 
-//   const instrumentColProps = {
-//     model,
-//     voicing,
-//     setVoicing,
-//     tuning,
-//     setTuning,
-//     fretRange,
-//     setFretRange,
-//   };
+    const [voicing, setVoicing] = useState(DEFAULT_VOICING);
+    const [tuning, setTuning] = useState(DEFAULT_TUNING);
+    const [fretRange, setFretRange] = useState(DEFAULT_FRET_RANGE);
+    const [isFullScreen, setIsFullScreen] = useState(false);
+    const [colorScheme, _setColorScheme] = useState(COLOR_SCHEME_PRESETS[1]);
+    const [colorConfig, setColorConfig] = useState(colorScheme.defaultConfig);
 
-//   const notesColProps = {
-//     modelType,
-//     setModelType,
-//     modelConfig,
-//     setModelConfig,
-//     root,
-//     setRoot,
-//     model,
-//     setModel,
-//     instrumentName: "Fretboard",
-//     instrumentTuning: instrumentColProps.tuning.name,
-//     colorScheme,
-//     setColorScheme,
-//     colorConfig,
-//     setColorConfig,
-//   };
+    const setColorScheme = (cs) => {
+        _setColorScheme(cs);
+        setColorConfig(cs.defaultConfig);
+    };
 
-//   const colorMapFn = (props: IFretProps) => {
-//     const { stringIndex, fretIndex, tuning, model, voicing } = props;
-//     // @ts-ignore
-//     const noteIndex = tuning[stringIndex] + fretIndex;
-//     // @ts-ignore
-//     const [interval, note] = model.tryGetPodPairAtPitch(noteIndex);
+    const instrumentColProps = {
+        voicing,
+        setVoicing,
+        tuning,
+        setTuning,
+        fretRange,
+        setFretRange,
+    };
 
-//     const cs = COLOR_SCHEMES.find((cs) => cs.id === colorScheme.id);
+    // const notesColProps = {
+    //     modelType,
+    //     setModelType,
+    //     modelConfig,
+    //     setModelConfig,
+    //     root,
+    //     setRoot,
+    //     model,
+    //     setModel,
+    //     instrumentName: "Fretboard",
+    //     instrumentTuning: instrumentColProps.tuning.name,
+    //     colorScheme,
+    //     setColorScheme,
+    //     colorConfig,
+    //     setColorConfig,
+    // };
 
-//     if (!cs) return;
+    const mainColProps = {
+        isFullScreen,
+        setIsFullScreen,
+        viewer: (
+            <Fretboard
+                podListPreset={podListPreset}
+                rootNotePreset={rootNotePreset}
+            />
+        ),
+    };
 
-//     const color = cs.fn(note, interval, colorConfig);
+    return (
+        <StyledFretboardPage
+            title="Fretboard"
+            subtitle={title}
+            action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}
+        >
+            <ColumnManager desktop={["1fr", "1fr"]}>
+                <MainCol {...mainColProps} />
+                <div>
+                    <Card>
+                        {/*<DetailsCol {...notesColProps} />*/}
+                        {/*<NotesCol {...notesColProps} />*/}
+                        <FretboardCol {...instrumentColProps} />
+                    </Card>
+                </div>
+            </ColumnManager>
+        </StyledFretboardPage>
+    );
+};
 
-//     if (
-//       color &&
-//       voicing &&
-//       !isIntervalInVoicing(interval, voicing, stringIndex)
-//     ) {
-//       return `${color}33`;
-//     }
-
-//     return color;
-//   };
-
-//   const mainColProps = {
-//     isFullScreen,
-//     setIsFullScreen,
-//     viewer: (
-//       <Fretboard
-//         {...instrumentColProps}
-//         {...notesColProps}
-//         colorMapFn={colorMapFn as any}
-//         tuning={instrumentColProps.tuning.value}
-//       />
-//     ),
-//   };
-
-//   return (
-//     <StyledFretboardPage
-//       title="Fretboard"
-//       subtitle={model.name}
-//       action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}
-//     >
-//       <ColumnManager desktop={["1fr", "1fr"]}>
-//         <MainCol {...mainColProps} />
-//         <div>
-//           <Card>
-//             <DetailsCol {...notesColProps} />
-//             <NotesCol {...notesColProps} />
-//             <FretboardCol {...instrumentColProps} />
-//           </Card>
-//         </div>
-//       </ColumnManager>
-//     </StyledFretboardPage>
-//   );
-// };
-
-// export default Page;
+export default Page;

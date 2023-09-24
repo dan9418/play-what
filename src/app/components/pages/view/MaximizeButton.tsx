@@ -1,7 +1,8 @@
 import React from 'react';
-import ButtonInput from "../../inputs/ButtonInput";
-import Icon from "../../ui/Icon";
+
 import styled from 'styled-components';
+import ButtonInput from '../../shared/inputs/ButtonInput';
+import Icon from '../../shared/ui/Icon';
 
 const StyledMaximizeButton = styled(ButtonInput)`
     background-color: transparent !important;

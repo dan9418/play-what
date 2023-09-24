@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
-import Modal from "../../layout/Modal";
+import Modal from "../../shared/layout/Modal";
 
 const StyledMainCol = styled.div`
     padding: 16px;

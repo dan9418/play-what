@@ -46,6 +46,7 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
         <FretboardCard
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}
+          presetType={presetType}
         />
         <RelatedCard
           podListPreset={podListPreset}

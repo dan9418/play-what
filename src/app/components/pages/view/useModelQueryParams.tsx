@@ -1,11 +1,14 @@
-// import { useQueryParam } from "use-query-params";
+import { useQueryParam } from "use-query-params";
+import { PresetType } from "../../../../core/Core.constants";
+import { PresetId } from "../../../../core/Core.derived";
+import { NoteId } from "../../../../core/Note.constants";
 
-// const useModelQueryParams = () => {
-//   const [qpModelType] = useQueryParam("modelType");
-//   const [qpModelId] = useQueryParam("presetId");
-//   const [qpRootId] = useQueryParam("rootId");
+const useModelQueryParams = () => {
+  const [qpPresetType] = useQueryParam("presetType");
+  const [qpPresetId] = useQueryParam("presetId");
+  const [qpRootId] = useQueryParam("rootId");
 
-//   return [qpModelType, qpModelId, qpRootId];
-// };
+  return [qpPresetType as PresetType, qpPresetId as PresetId, qpRootId as NoteId];
+};
 
-// export default useModelQueryParams;
+export default useModelQueryParams;

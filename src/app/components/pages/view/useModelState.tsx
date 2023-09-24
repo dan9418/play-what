@@ -1,12 +1,8 @@
 // import { useState } from "react";
-// import { NOTE_PRESETS } from "../../../core/models/Model.constants";
 // import {
-//   DEFAULT_MODEL_CONFIG,
-//   DEFAULT_MODEL_TYPE,
-//   DEFAULT_ROOT,
-//   getNewModel,
 //   MODEL_TYPE_OPTIONS,
 // } from "./NotesCol";
+// import { NOTE_PRESETS } from "../../../../core/Note.constants";
 
 // const getInitModelType = (qpModelType?: string) => {
 //   const found = MODEL_TYPE_OPTIONS.find(

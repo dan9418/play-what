@@ -1,51 +1,37 @@
-// import React from "react";
-// import { COLOR_SCHEMES, IColorScheme } from "../../../core/color/Color.utils";
-// import Chord from "../../../core/models/Chord";
-// import {
-//   ChordId,
-//   IModelConfig,
-//   NoteId,
-//   PresetId,
-//   PresetType,
-//   ScaleId,
-// } from "../../../core/models/Model.constants";
-// import {
-//   CHORD_PRESETS,
-//   NOTE_PRESETS,
-//   SCALE_PRESETS,
-// } from "../../../core/models/Model.constants";
-// import { getNoteFromId } from "../../../core/models/Note.utils";
-// import Scale from "../../../core/models/Scale";
-// import ColorSchemeInput from "../../inputs/ColorSchemeInput";
-// import DropdownInput from "../../inputs/DropdownInput";
-// import InputRow from "../../ui/InputRow";
-// import CardSection from "./CardSection";
+import React from "react";
+import CardSection from "./CardSection";
+import { PresetType } from "../../../../core/Core.constants";
+import { CHORD_PRESETS } from "../../../../core/Chord.constants";
+import { SCALE_PRESETS } from "../../../../core/Scale.constants";
+import { IColorSchemePreset } from "../../../../core/Color.utils";
+import { NOTE_PRESETS, NoteId } from "../../../../core/Note.constants";
+import { PresetId } from "../../../../core/Core.derived";
 
-// export const MODEL_TYPE_OPTIONS = [
-//   {
-//     id: PresetType.Chord,
-//     name: "Chords",
-//     value: PresetType.Chord,
-//     data: CHORD_PRESETS,
-//   },
-//   {
-//     id: PresetType.Scale,
-//     name: "Scales",
-//     value: PresetType.Scale,
-//     data: SCALE_PRESETS,
-//   },
-// ];
+export const MODEL_TYPE_OPTIONS = [
+  {
+    id: PresetType.Chord,
+    name: "Chords",
+    value: PresetType.Chord,
+    data: CHORD_PRESETS,
+  },
+  {
+    id: PresetType.Scale,
+    name: "Scales",
+    value: PresetType.Scale,
+    data: SCALE_PRESETS,
+  },
+];
 
 // export interface INotesColProps {
 //   modelType: typeof MODEL_TYPE_OPTIONS[0];
 //   modelConfig;
-//   root: IModelConfig | any;
-//   model: Chord | Scale;
+//   root:  any;
+//   model: any;
 //   setModelType?;
 //   setModelConfig?;
 //   setRoot?;
 //   setModel?;
-//   colorScheme: IColorScheme;
+//   colorScheme: IColorSchemePreset;
 //   setColorScheme;
 //   colorConfig: string[];
 //   setColorConfig;

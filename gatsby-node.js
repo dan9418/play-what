@@ -10,7 +10,7 @@ const STATIC_PAGES = [
   //{ route: '/about/' },
   //{ route: '/coming-soon/' },
   //{ route: '/help/' },
-  // { route: '/view/fretboard/' },
+{ route: '/view/fretboard/' },
   // { route: '/dev/index/' },
   // { route: '/dev/experimental/edit-theme/' },
   // { route: '/dev/test/all-intervals-from-all-roots/' },

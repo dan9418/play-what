@@ -27,12 +27,6 @@ export const getNumeral = (intervalPods: IPod[], d: number): IChordPreset | unde
     const newPod = subtractPods(curIntervals[i + 1], curIntervals[0]);
     newPods.push(reducePod(newPod));
   }
-  console.log(
-    "dpb",
-    newPods.map((p) =>
-      INTERVAL_PRESETS.find((ivl) => arePodsEqual(ivl.pod, p))
-    )
-  );
   const numeral = CHORD_PRESETS.find((preset) =>
     arePodListsEqual(preset.pods, newPods)
   );
