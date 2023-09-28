@@ -13,10 +13,14 @@ export interface IFretboardState {
     tuning, setTuning,
     fretRange, setFretRange,
     colorScheme, setColorScheme,
-    colorConfig, setColorConfig
+    colorConfig, setColorConfig,
+    showFretNumbers, setShowFretNumbers,
+    showFretDots, setShowFretDots
 }
 
 const useFretboardState = () => {
+    const [showFretDots, setShowFretDots] = useState(true);
+    const [showFretNumbers, setShowFretNumbers] = useState(true);
     const [voicing, setVoicing] = useState(DEFAULT_VOICING);
     const [tuning, setTuning] = useState(DEFAULT_TUNING);
     const [fretRange, setFretRange] = useState(DEFAULT_FRET_RANGE);
@@ -33,7 +37,9 @@ const useFretboardState = () => {
         tuning, setTuning,
         fretRange, setFretRange,
         colorScheme, setColorScheme,
-        colorConfig, setColorConfig
+        colorConfig, setColorConfig,
+        showFretDots, setShowFretDots,
+        showFretNumbers, setShowFretNumbers
     }
 };
 

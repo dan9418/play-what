@@ -4,6 +4,7 @@ import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../../core/Tuning.const
 import { VOICING_OPTIONS } from "../../../../core/Voicing.constants";
 import DropdownInput from "../../shared/inputs/DropdownInput";
 import NumericInput from "../../shared/inputs/NumericInput";
+import SwitchInput from "../../shared/inputs/SwitchInput";
 import InputRow from "../../shared/ui/InputRow";
 import CardSection from "./CardSection";
 import { IFretboardState } from "./useFretboardState";
@@ -19,6 +20,10 @@ const FretboardCol: React.FC<IFretboardState> = ({
   setVoicing,
   setTuning,
   setFretRange,
+  showFretNumbers,
+  setShowFretNumbers,
+  showFretDots,
+  setShowFretDots
 }) => {
   const filteredVoicings = VOICING_OPTIONS;
   /*.filter((v) => {
@@ -66,6 +71,20 @@ const FretboardCol: React.FC<IFretboardState> = ({
             min={fretLo}
             max={24}
             setValue={(v) => setFretRange([fretLo, v])}
+          />
+        </InputRow>
+      </CardSection>
+      <CardSection title="Details">
+        <InputRow label="Fret Dots">
+          <SwitchInput
+            value={showFretDots}
+            setValue={setShowFretDots}
+          />
+        </InputRow>
+        <InputRow label="Fret Numbers">
+          <SwitchInput
+            value={showFretNumbers}
+            setValue={setShowFretNumbers}
           />
         </InputRow>
       </CardSection>

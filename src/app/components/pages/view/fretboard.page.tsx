@@ -45,8 +45,8 @@ const Page: React.FC = () => {
                 podListPreset={presetConfig}
                 rootNotePreset={root}
                 fretRange={fretboardState.fretRange}
-                //showFretDots={fretboardState.showFretDots}
-                //showFretNumbers={fretboardState.showFretNubmers}
+                showFretDots={fretboardState.showFretDots}
+                showFretNumbers={fretboardState.showFretNumbers}
                 //colorSchemeId={fretboardState.colorScheme}
                 //voicingId={fretboardState.voicing.presetId}
                 tuningId={fretboardState.tuning.presetId}
