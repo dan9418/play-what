@@ -10,6 +10,7 @@ import DetailsCol from "./DetailsCol";
 import FretboardCol from "./FretboardCol";
 import MainCol from "./MainCol";
 import MaximizeButton from "./MaximizeButton";
+import NotesCol from "./NotesCol";
 import useFretboardState from "./useFretboardState";
 import useModelQueryParams from "./useModelQueryParams";
 import useModelState from "./useModelState";
@@ -67,7 +68,7 @@ const Page: React.FC = () => {
                 <div>
                     <Card>
                         <DetailsCol {...modelState} />
-                        {/*<NotesCol {...notesColProps} />*/}
+                        <NotesCol {...modelState} />
                         <FretboardCol {...fretboardState} />
                     </Card>
                 </div>
