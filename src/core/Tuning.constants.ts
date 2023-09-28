@@ -1,7 +1,7 @@
-import ArrayUtils from "./primitives/Array.utils";
-import { IPreset, PresetMap } from "./Core.constants";
 import { NoteId } from ".//Note.constants";
+import { IPreset, PresetMap } from "./Core.constants";
 import { getNoteWithOctave } from "./Note.utils";
+import ArrayUtils from "./primitives/Array.utils";
 
 export enum TuningId {
   Standard = "standard",
@@ -219,4 +219,4 @@ export const TUNING_PRESET_MAP: PresetMap<TuningId, ITuningPreset> = new Map([
   ],
 ]);
 
-export const FRETBOARD_TUNING_VALUES = ArrayUtils.mapToArray(TUNING_PRESET_MAP);
+export const FRETBOARD_TUNING_VALUES: ITuningPreset[] = ArrayUtils.mapToArray(TUNING_PRESET_MAP);

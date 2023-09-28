@@ -1,35 +1,18 @@
 import React from "react";
 import { DEFAULT_FRETBOARD_PROPS } from "../../../../core/Fretboard.constants";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../../core/Tuning.constants";
-import { VOICING_PRESETS, VoicingId } from "../../../../core/Voicing.constants";
+import { VOICING_OPTIONS } from "../../../../core/Voicing.constants";
 import DropdownInput from "../../shared/inputs/DropdownInput";
 import NumericInput from "../../shared/inputs/NumericInput";
 import InputRow from "../../shared/ui/InputRow";
 import CardSection from "./CardSection";
-
-const VOICING_OPTIONS = [
-  {
-    id: VoicingId.None,
-    name: "---",
-    value: undefined,
-  },
-  ...VOICING_PRESETS,
-];
-
-export interface IFretboardColProps {
-  voicing;
-  tuning;
-  fretRange;
-  setVoicing;
-  setTuning;
-  setFretRange;
-}
+import { IFretboardState } from "./useFretboardState";
 
 export const DEFAULT_VOICING = VOICING_OPTIONS[0];
 export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0];
 export const DEFAULT_FRET_RANGE = DEFAULT_FRETBOARD_PROPS.fretRange;
 
-const FretboardCol: React.FC<IFretboardColProps> = ({
+const FretboardCol: React.FC<IFretboardState> = ({
   voicing,
   tuning,
   fretRange,

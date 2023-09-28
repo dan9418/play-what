@@ -1,5 +1,5 @@
-import ArrayUtils from "./primitives/Array.utils";
 import { IPreset, PresetMap } from "./Core.constants";
+import ArrayUtils from "./primitives/Array.utils";
 
 export enum VoicingId {
   None = "None",
@@ -370,3 +370,12 @@ export const VOICING_PRESET_MAP: PresetMap<VoicingId, IVoicingPreset> = new Map(
 );
 
 export const VOICING_PRESETS = ArrayUtils.mapToArray(VOICING_PRESET_MAP);
+
+export const VOICING_OPTIONS: IVoicingPreset[] = [
+  {
+    id: VoicingId.None,
+    name: "---",
+    value: undefined,
+  },
+  ...VOICING_PRESETS,
+];
