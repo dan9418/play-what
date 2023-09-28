@@ -1,26 +1,4 @@
-import React from "react";
-import CardSection from "./CardSection";
-import { PresetType } from "../../../../core/Core.constants";
-import { CHORD_PRESETS } from "../../../../core/Chord.constants";
-import { SCALE_PRESETS } from "../../../../core/Scale.constants";
-import { IColorSchemePreset } from "../../../../core/Color.utils";
-import { NOTE_PRESETS, NoteId } from "../../../../core/Note.constants";
-import { PresetId } from "../../../../core/Core.derived";
 
-export const MODEL_TYPE_OPTIONS = [
-  {
-    id: PresetType.Chord,
-    name: "Chords",
-    value: PresetType.Chord,
-    data: CHORD_PRESETS,
-  },
-  {
-    id: PresetType.Scale,
-    name: "Scales",
-    value: PresetType.Scale,
-    data: SCALE_PRESETS,
-  },
-];
 
 // export interface INotesColProps {
 //   modelType: typeof MODEL_TYPE_OPTIONS[0];

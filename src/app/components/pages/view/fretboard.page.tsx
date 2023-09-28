@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { ChordId } from "../../../../core/Chord.constants";
 import { COLOR_SCHEME_PRESETS } from "../../../../core/Color.utils";
-import { PresetType } from "../../../../core/Core.constants";
-import { AnyPodListPreset, getPreset } from "../../../../core/Core.derived";
-import { INotePreset, NoteId } from "../../../../core/Note.constants";
 import { getRootedName } from "../../../../core/Pod.utils";
 import Fretboard from "../../shared/fretboard/Fretboard";
 import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import Card from "../../shared/ui/Card";
 import { StyledCardSection } from "./CardSection";
-import DetailsCol from "./DetailsCol";
 import FretboardCol, {
     DEFAULT_FRET_RANGE,
     DEFAULT_TUNING,
@@ -21,6 +16,7 @@ import FretboardCol, {
 import MainCol from "./MainCol";
 import MaximizeButton from "./MaximizeButton";
 import useModelQueryParams from "./useModelQueryParams";
+import useModelState from "./useModelState";
 
 const StyledFretboardPage = styled(PageLayout)`
   ${StyledCardSection} {
@@ -28,33 +24,19 @@ const StyledFretboardPage = styled(PageLayout)`
   }
 `;
 
-const DEFAULT = {
-    presetType: PresetType.Chord,
-    presetId: ChordId.MajTriad,
-    rootId: NoteId.C
-}
-
 const Page: React.FC = () => {
-    const [presetType, presetId, rootId] = useModelQueryParams();
+    const [qpPresetType, qpPresetId, qpRootId] = useModelQueryParams();
 
-//   const modelState = useModelState(qpModelType, qpModelId, qpRootId);
-//   const {
-//     modelType,
-//     setModelType,
-//     modelConfig,
-//     setModelConfig,
-//     root,
-//     setRoot,
-//     model,
-//     setModel,
-//   } = modelState;
+    const {
+        presetType,
+        setPresetType,
+        presetConfig,
+        setPresetConfig,
+        root,
+        setRoot
+    } = useModelState(qpPresetType, qpPresetId, qpRootId);
 
-    // @ts-ignore
-    const podListPreset = getPreset(presetType, presetId) as AnyPodListPreset;
-    // @ts-ignore
-    const rootNotePreset = getPreset(PresetType.Note, rootId) as INotePreset;
-
-    const title = getRootedName(podListPreset, rootNotePreset);
+    const title = getRootedName(presetConfig, root);
 
     const [voicing, setVoicing] = useState(DEFAULT_VOICING);
     const [tuning, setTuning] = useState(DEFAULT_TUNING);
@@ -99,8 +81,8 @@ const Page: React.FC = () => {
         setIsFullScreen,
         viewer: (
             <Fretboard
-                podListPreset={podListPreset}
-                rootNotePreset={rootNotePreset}
+                podListPreset={presetConfig}
+                rootNotePreset={root}
             />
         ),
     };

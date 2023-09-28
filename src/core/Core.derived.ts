@@ -21,6 +21,22 @@ export const POD_LIST_PRESETS: AnyPodListPreset[] = [
   ...CHORD_PRESETS,
 ];
 
+
+export const POD_LIST_PRESET_TYPE_OPTIONS = [
+  {
+    id: PresetType.Chord,
+    name: "Chords",
+    value: PresetType.Chord,
+    data: CHORD_PRESETS,
+  },
+  {
+    id: PresetType.Scale,
+    name: "Scales",
+    value: PresetType.Scale,
+    data: SCALE_PRESETS,
+  },
+];
+
 export type PresetId = NoteId | IntervalId | ChordId | ScaleId;
 
 export const getPreset = (presetType?: PresetType, presetId?: PresetId) => {

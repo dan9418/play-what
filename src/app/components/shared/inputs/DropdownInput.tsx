@@ -33,7 +33,7 @@ const DropdownInput: React.FC<IDropdownInputProps> = props => {
 			value={value ? value[idProperty || 'id'] : ''}
 		>
 			{(options || []).map((v, i) => (
-				<option key={i} value={v[idProperty || 'id']}>{displayProperty ? v[displayProperty] : v.name}</option>
+				<option key={i} value={v[idProperty || 'id']}>{v[displayProperty || 'name']}</option>
 			))}
 		</StyledDropdownInput>
 	);

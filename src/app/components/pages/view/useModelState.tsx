@@ -1,45 +1,43 @@
-// import { useState } from "react";
-// import {
-//   MODEL_TYPE_OPTIONS,
-// } from "./NotesCol";
-// import { NOTE_PRESETS } from "../../../../core/Note.constants";
+import { useState } from "react";
+import { POD_LIST_PRESET_TYPE_OPTIONS } from "../../../../core/Core.derived";
+import { NOTE_PRESETS } from "../../../../core/Note.constants";
 
-// const getInitModelType = (qpModelType?: string) => {
-//   const found = MODEL_TYPE_OPTIONS.find(
-//     (type) => type.id && type.id === qpModelType
-//   );
-//   return found || DEFAULT_MODEL_TYPE;
-// };
+const getInitPresetType = (qpPresetType?: string) => {
+    const found = POD_LIST_PRESET_TYPE_OPTIONS.find(
+        (type) => type.id && type.id === qpPresetType
+    );
+    if (!found) throw new Error('Cannot find preset type: ' + qpPresetType);
+    return found;
+};
 
-// const getInitModelConfig = (modelType, qpModelId?: string) => {
-//   const found = modelType.data.find((preset) => preset.presetId === qpModelId);
-//   return found || DEFAULT_MODEL_CONFIG;
-// };
+const getInitPresetConfig = (presetType, qpPresetId?: string) => {
+    const found = presetType.data.find((preset) => preset.presetId === qpPresetId);
+    if (!found) throw new Error('Cannot find preset id: ' + qpPresetId);
+    return found;
+};
 
-// const getInitRoot = (qpRootId?: string) => {
-//   const found = NOTE_PRESETS.find((note) => note.presetId === qpRootId);
-//   return found || DEFAULT_ROOT;
-// };
+const getInitRoot = (qpRootId?: string) => {
+    const found = NOTE_PRESETS.find((note) => note.presetId === qpRootId);
+    if (!found) throw new Error('Cannot find root id: ' + qpRootId);
+    return found;
+};
 
-// export const useModelState = (initModelType, initModelId, initRootId) => {
-//   const [modelType, setModelType] = useState(getInitModelType(initModelType));
-//   const [modelConfig, setModelConfig] = useState(
-//     getInitModelConfig(modelType, initModelId)
-//   );
+const useModelState = (initPresetType: string, initPresetId: string, initRootId: string) => {
+    const [presetType, setPresetType] = useState(getInitPresetType(initPresetType));
+    const [presetConfig, setPresetConfig] = useState(
+        getInitPresetConfig(presetType, initPresetId)
+    );
 
-//   const [root, setRoot] = useState(getInitRoot(initRootId));
-//   const [model, setModel] = useState(
-//     getNewModel(modelType.id, modelConfig.presetId, root.presetId)
-//   );
+    const [root, setRoot] = useState(getInitRoot(initRootId));
 
-//   return {
-//     modelType,
-//     setModelType,
-//     modelConfig,
-//     setModelConfig,
-//     root,
-//     setRoot,
-//     model,
-//     setModel,
-//   };
-// };
+    return {
+        presetType,
+        setPresetType,
+        presetConfig,
+        setPresetConfig,
+        root,
+        setRoot
+    };
+};
+
+export default useModelState;
