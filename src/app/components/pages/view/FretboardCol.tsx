@@ -1,19 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from 'styled-components';
 import { DEFAULT_FRETBOARD_PROPS } from "../../../../core/Fretboard.constants";
 import { FRETBOARD_TUNING_VALUES, TuningId } from "../../../../core/Tuning.constants";
 import { VOICING_OPTIONS } from "../../../../core/Voicing.constants";
+import Fretboard from "../../shared/fretboard/Fretboard";
 import DropdownInput from "../../shared/inputs/DropdownInput";
 import NumericInput from "../../shared/inputs/NumericInput";
 import SwitchInput from "../../shared/inputs/SwitchInput";
+import Modal from "../../shared/layout/Modal";
+import Card from "../../shared/ui/Card";
 import InputRow from "../../shared/ui/InputRow";
 import CardSection from "./CardSection";
+import MaximizeButton from "./MaximizeButton";
 import { IFretboardState } from "./useFretboardState";
+import { IModelState } from "./useModelState";
 
 export const DEFAULT_VOICING = VOICING_OPTIONS[0];
 export const DEFAULT_TUNING = FRETBOARD_TUNING_VALUES[0];
 export const DEFAULT_FRET_RANGE = DEFAULT_FRETBOARD_PROPS.fretRange;
 
-const FretboardCol: React.FC<IFretboardState> = ({
+const StyledMainCol = styled.div`
+    padding: 16px;
+    .maximize {
+        background-color: transparent !important;
+    }
+`;
+
+const FretboardCol: React.FC<IFretboardState & IModelState> = ({
   voicing,
   tuning,
   fretRange,
@@ -23,8 +36,13 @@ const FretboardCol: React.FC<IFretboardState> = ({
   showFretNumbers,
   setShowFretNumbers,
   showFretDots,
-  setShowFretDots
+  setShowFretDots,
+  presetConfig,
+  root
 }) => {
+
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
   const filteredVoicings = VOICING_OPTIONS;
   /*.filter((v) => {
     if (!v.value) return true;
@@ -36,8 +54,32 @@ const FretboardCol: React.FC<IFretboardState> = ({
 
   const [fretLo, fretHi] = fretRange;
 
+  const viewer = <Fretboard
+    podListPreset={presetConfig}
+    rootNotePreset={root}
+    fretRange={fretRange}
+    showFretDots={showFretDots}
+    showFretNumbers={showFretNumbers}
+    //colorSchemeId={colorScheme}
+    //voicingId={voicing.presetId}
+    tuningId={tuning.presetId}
+  />;
+
   return (
-    <>
+    <Card
+      title="Fretboard"
+      action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}
+    >
+      {isFullScreen && (
+        <Modal setIsOpen={setIsFullScreen}>
+          <div className="resize">
+            {viewer}
+          </div>
+        </Modal>
+      )}
+      <StyledMainCol>
+        {viewer}
+      </StyledMainCol>
       <CardSection title="Tuning">
         <InputRow label="Preset">
           <DropdownInput
@@ -88,7 +130,7 @@ const FretboardCol: React.FC<IFretboardState> = ({
           />
         </InputRow>
       </CardSection>
-    </>
+    </Card>
   );
 };
 
