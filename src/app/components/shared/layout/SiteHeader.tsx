@@ -2,13 +2,13 @@ import { Link } from "gatsby";
 import React, { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import SwitchInput from "../inputs/SwitchInput";
 //import Icon from "../ui/Icon";
 //import Menu from "./Menu";
 import { useLocation } from "@reach/router";
-import THEME, { DARK_THEME } from "../../../styles/theme";
 import { themeState } from "../../../state";
 import { MediaQuery } from "../../../styles/breakpoint";
+import THEME, { DARK_THEME } from "../../../styles/theme";
+import ThemeSwitchInput from "../inputs/ThemeSwitchInput";
 
 const StyledSiteHeader = styled.div`
   height: 48px;
@@ -143,7 +143,7 @@ const SiteHeader: React.FC = () => {
               <Icon iconId="info" />
 			</Link>*/}
             <div className="night-mode">
-              <SwitchInput value={isNightMode} setValue={onThemeToggle} />
+              <ThemeSwitchInput value={isNightMode} setValue={onThemeToggle} />
             </div>
           </div>
         </div>
