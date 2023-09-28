@@ -62,6 +62,7 @@ const Page: React.FC = () => {
             title="Fretboard"
             subtitle={title}
             action={<MaximizeButton onClick={() => setIsFullScreen(true)} />}
+            hideHeader
         >
             <ColumnManager desktop={["1fr", "1fr"]}>
                 <MainCol {...mainColProps} />

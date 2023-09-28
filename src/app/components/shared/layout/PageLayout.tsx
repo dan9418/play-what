@@ -55,7 +55,7 @@ interface IPageLayoutProps extends PropsWithChildren {
   subtitle?: string;
   action?: any;
   className?: string;
-  isHome?: boolean;
+  hideHeader?: boolean;
   maxWidth?: string;
 }
 
@@ -66,12 +66,12 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   maxWidth,
   className = "",
   children,
-  isHome,
+  hideHeader,
 }) => {
   return (
     <StyledPageLayout $maxWidth={maxWidth}>
       <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
-      {!isHome && (
+      {!hideHeader && (
         <>
           <BreadcrumbList />
           <div className="header">
