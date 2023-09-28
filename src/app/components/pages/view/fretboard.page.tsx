@@ -65,12 +65,17 @@ const Page: React.FC = () => {
             hideHeader
         >
             <ColumnManager desktop={["1fr", "1fr"]}>
-                <MainCol {...mainColProps} />
+                <div>
+                    <Card>
+                        <MainCol {...mainColProps} />
+                        <FretboardCol {...fretboardState} />
+                    </Card>
+                </div>
                 <div>
                     <Card>
                         <DetailsCol {...modelState} />
                         <NotesCol {...modelState} />
-                        <FretboardCol {...fretboardState} />
+
                     </Card>
                 </div>
             </ColumnManager>
