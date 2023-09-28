@@ -32,9 +32,9 @@ export interface IModelState {
 }
 
 const useModelState = (initPresetType: string, initPresetId: string, initRootId: string) => {
-    const [presetType, _setPresetType] = useState(getInitPresetType(initPresetType));
+    const [presetType, _setPresetType] = useState(() => getInitPresetType(initPresetType));
     const [presetConfig, setPresetConfig] = useState(
-        getInitPresetConfig(presetType, initPresetId)
+        () => getInitPresetConfig(presetType, initPresetId)
     );
     const setPresetType = (type) => {
         _setPresetType(type);

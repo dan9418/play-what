@@ -50,11 +50,8 @@ const StyledDetailsCol = styled.div`
 const DetailsCol: React.FC<IModelState> = (props) => {
   const {
     presetType,
-    setPresetType,
     presetConfig,
-    setPresetConfig,
     root,
-    setRoot
   } = props;
 
   const intervalIds = presetConfig.valueIds;
