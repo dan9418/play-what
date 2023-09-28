@@ -6,6 +6,7 @@ import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import Card from "../../shared/ui/Card";
 import { StyledCardSection } from "./CardSection";
+import DetailsCol from "./DetailsCol";
 import FretboardCol from "./FretboardCol";
 import MainCol from "./MainCol";
 import MaximizeButton from "./MaximizeButton";
@@ -22,6 +23,7 @@ const StyledFretboardPage = styled(PageLayout)`
 const Page: React.FC = () => {
     const [qpPresetType, qpPresetId, qpRootId] = useModelQueryParams();
 
+    const modelState = useModelState(qpPresetType, qpPresetId, qpRootId);
     const {
         presetType,
         setPresetType,
@@ -29,7 +31,7 @@ const Page: React.FC = () => {
         setPresetConfig,
         root,
         setRoot
-    } = useModelState(qpPresetType, qpPresetId, qpRootId);
+    } = modelState;
 
     const fretboardState = useFretboardState();
 
@@ -64,7 +66,7 @@ const Page: React.FC = () => {
                 <MainCol {...mainColProps} />
                 <div>
                     <Card>
-                        {/*<DetailsCol {...notesColProps} />*/}
+                        <DetailsCol {...modelState} />
                         {/*<NotesCol {...notesColProps} />*/}
                         <FretboardCol {...fretboardState} />
                     </Card>

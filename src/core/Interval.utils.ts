@@ -1,18 +1,19 @@
 import { getFrequency } from "./Frequency.utils";
 import {
   CORE_INTERVALS,
-  getExtensionInversionId,
   IIntervalPreset,
-  IntervalId,
   INTERVAL_PRESET_MAP,
+  IntervalId,
+  getExtensionInversionId,
 } from "./Interval.constants";
 import {
   IIntervalQualityPreset,
-  IntervalQualityId,
   INTERVAL_QUALITY_PRESET_MAP,
+  IntervalQualityId,
 } from "./IntervalQuality.constants";
 import { IPod, MAX_POD } from "./Pod.constants";
-import { reducePod } from "./Pod.utils";
+import { addPods, reducePod } from "./Pod.utils";
+
 
 const getIsExtended = (pod: IPod): boolean => {
   return pod[0] > MAX_POD[0] || pod[1] > MAX_POD[1];

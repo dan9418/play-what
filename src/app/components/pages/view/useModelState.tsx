@@ -22,6 +22,15 @@ const getInitRoot = (qpRootId?: string) => {
     return found;
 };
 
+export interface IModelState {
+    presetType,
+    setPresetType,
+    presetConfig,
+    setPresetConfig,
+    root,
+    setRoot
+}
+
 const useModelState = (initPresetType: string, initPresetId: string, initRootId: string) => {
     const [presetType, setPresetType] = useState(getInitPresetType(initPresetType));
     const [presetConfig, setPresetConfig] = useState(

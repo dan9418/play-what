@@ -1,9 +1,13 @@
 import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
-import { MODEL_TYPE_OPTIONS } from "./NotesCol";
-import CardSection from "./CardSection";
+import { IIntervalPreset, INTERVAL_PRESET_MAP, IntervalId } from "../../../../core/Interval.constants";
+import { getName as getIntervalName } from "../../../../core/Interval.utils";
+import { getName as getNoteName } from "../../../../core/Note.utils";
+import { addPods, getRootedName } from "../../../../core/Pod.utils";
 import { getModelRoute } from "../../../../core/Routing.utils";
+import CardSection from "./CardSection";
+import { IModelState } from "./useModelState";
 
 const StyledDetailsCol = styled.div`
   .name {
@@ -43,27 +47,17 @@ const StyledDetailsCol = styled.div`
   }
 `;
 
-export interface IDetailsColProps {
-  modelType: typeof MODEL_TYPE_OPTIONS[0];
-  modelConfig;
-  root:  any;
-  model: any;
-  setModelType?;
-  setModelConfig?;
-  setRoot?;
-  setModel?;
-}
-
-const DetailsCol: React.FC<IDetailsColProps> = (props) => {
+const DetailsCol: React.FC<IModelState> = (props) => {
   const {
-    modelType,
-    modelConfig,
+    presetType,
+    setPresetType,
+    presetConfig,
+    setPresetConfig,
     root,
-    setModelType: _setModelType,
-    setModelConfig: _setModelConfig,
-    setRoot: _setRoot,
-    model,
+    setRoot
   } = props;
+
+  const intervalIds = presetConfig.valueIds;
 
   return (
     <StyledDetailsCol>
@@ -71,22 +65,29 @@ const DetailsCol: React.FC<IDetailsColProps> = (props) => {
         <div className="notes">
           <Link
             to={getModelRoute(
-              modelType.id,
-              modelConfig.presetId,
+              presetType.id,
+              presetConfig.presetId,
               root.presetId
             )}
             className="name"
           >
-            {model.name}
+            {getRootedName(presetConfig, root)}
           </Link>
           <div className="info">
-            {model.notes &&
-              model.notes.map((note, i) => (
+            {intervalIds.map((ivl, i) => {
+              const intervalPreset = INTERVAL_PRESET_MAP.get(ivl as IntervalId) as IIntervalPreset;
+              const intervalPod = intervalPreset.pod;
+              const intervalName = getIntervalName(intervalPod)
+              const notePod = root && addPods(root.pod, intervalPreset.pod);
+              const noteName = notePod && getNoteName(notePod);
+
+              return (
                 <div key={i} className="item">
-                  <div className="note">{note.name}</div>
-                  <div className="interval">{model.intervals[i].getName()}</div>
+                  <div className="note">{noteName}</div>
+                  <div className="interval">{intervalName}</div>
                 </div>
-              ))}
+              )
+            })}
           </div>
         </div>
       </CardSection>

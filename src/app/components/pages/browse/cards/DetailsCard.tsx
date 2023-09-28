@@ -36,11 +36,12 @@ interface IDetailsCardProps {
     rootNotePreset?: INotePreset;
 }
 
+
+
 const DetailsCard: React.FC<IDetailsCardProps> = ({
     podListPreset,
     rootNotePreset,
 }) => {
-    const hasRoot = !!rootNotePreset;
     const intervalIds = podListPreset.valueIds;
 
     return (
