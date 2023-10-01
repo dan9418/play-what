@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { AnyPodListPreset } from "../../../../../core/Core.derived";
 import { IIntervalPreset, INTERVAL_PRESET_MAP, IntervalId } from "../../../../../core/Interval.constants";
@@ -6,6 +6,8 @@ import { getName as getIntervalName, getRatio } from "../../../../../core/Interv
 import { INotePreset } from "../../../../../core/Note.constants";
 import { getFrequency, getName as getNoteName } from "../../../../../core/Note.utils";
 import { addPods } from "../../../../../core/Pod.utils";
+import ButtonInput from "../../../shared/inputs/ButtonInput";
+import RootInput from "../../../shared/inputs/RootInput";
 import Card from "../../../shared/ui/Card";
 
 const StyledDetailsCard = styled(Card) <{ $n: number }>`
@@ -35,18 +37,20 @@ interface IDetailsCardProps {
     rootNotePreset?: INotePreset;
 }
 
-
-
 const DetailsCard: React.FC<IDetailsCardProps> = ({
     podListPreset,
     rootNotePreset,
 }) => {
+    const [isEditingRoot, setIsEditingRoot] = useState(false);
+
     const hasRoot = !!rootNotePreset;
     const intervalIds = podListPreset.valueIds;
     const title = `Intervals${hasRoot ? ' & Notes' : ''}`
-    0
+
+    if (isEditingRoot) return <RootInput onCancel={() => setIsEditingRoot(false)} />;
+
     return (
-        <StyledDetailsCard title={title} $n={intervalIds.length}>
+        <StyledDetailsCard title={title} action={<ButtonInput onClick={() => setIsEditingRoot(true)}>{hasRoot ? 'Edit' : 'Set'} Root</ButtonInput>} $n={intervalIds.length}>
             <ul className="intervals">
                 {intervalIds.map(ivlId => {
                     const intervalPreset = INTERVAL_PRESET_MAP.get(ivlId as IntervalId) as IIntervalPreset;

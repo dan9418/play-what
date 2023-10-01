@@ -2,10 +2,11 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { INotePreset, NOTE_PRESET_MAP, NoteId } from "../../../../core/Note.constants";
-import { StyledCard } from "../ui/Card";
+import Card from "../ui/Card";
 import { usePageProps } from "../utils/PagePropsContext";
+import ButtonInput from "./ButtonInput";
 
-const StyledRootInput = styled(StyledCard)`
+const StyledRootInput = styled(Card)`
   .spelling {
     display: flex;
     align-items: center;
@@ -29,14 +30,8 @@ const StyledRootInput = styled(StyledCard)`
     }
   }
   .clear {
-    font-weight: normal;
-    font-size: 90%;
-  }
-  h3 {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 4px;
+    margin-left: 8px;
+    font-size: 110%;
   }
 `;
 
@@ -63,7 +58,7 @@ const Col: React.FC<any> = ({ basePath, rootKey }) => {
   );
 };
 
-const RootInput: React.FC = () => {
+const RootInput: React.FC<any> = ({ onCancel }) => {
   const pageProps = usePageProps();
   const { pathname } = pageProps.location;
 
@@ -74,14 +69,22 @@ const RootInput: React.FC = () => {
   const rootKey = hasRoot ? pathname.slice(rootIndex + 5, rootIndex + 6) : pathname;
 
   return (
-    <StyledRootInput>
-      <h3>Root
-        {hasRoot &&
-          <Link className="clear" to={`${basePath}`}>
-            Clear
-          </Link>
-        }
-      </h3>
+    <StyledRootInput
+      title={`${hasRoot ? 'Edit' : 'Set'} Root`}
+      action={(
+        <div>
+          {onCancel &&
+            <ButtonInput onClick={onCancel} isLink>
+              Cancel
+            </ButtonInput>
+          }
+          {hasRoot &&
+            <Link className="clear" to={`${basePath}`}>
+              Clear
+            </Link>
+          }
+        </div>
+      )}>
       <div className="spelling">
         <Col basePath={basePath} rootKey={NoteId.C} />
         <Col basePath={basePath} rootKey={NoteId.D} />
