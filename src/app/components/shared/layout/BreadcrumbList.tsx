@@ -32,7 +32,7 @@ const StyledBreadcrumbList = styled.ul`
 const NON_LINK_TERMS = ["view", "root", "browse"];
 
 const BreadcrumbList = () => {
-  return null;
+  //return null;
   const { path } = usePageProps();
 
   let pieces = path.split("/");

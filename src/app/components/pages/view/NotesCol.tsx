@@ -17,9 +17,6 @@ import { IModelState } from "./useModelState";
 const StyledDetailsCol = styled.div`
   .name {
     font-size: 140%;
-    display: block;
-    padding: 8px;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,9 +26,10 @@ const StyledDetailsCol = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 8px;
 
     .item {
-      margin: 8px;
+      margin: 0 8px;
       text-align: center;
       .note {
         font-weight: bold;
@@ -43,12 +41,20 @@ const StyledDetailsCol = styled.div`
     }
   }
   .notes {
-    min-height: 128px;
-
+    padding: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+  }
+  .edit {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 100%;
+    height: 24px;
+    border: none;
+    margin-top: 16px;
   }
 `;
 
@@ -98,36 +104,36 @@ const NotesCol: React.FC<IModelState> = (props) => {
                             </div>
                         </div>
                     </CardSection>
-                </StyledDetailsCol>
-                <CardSection title="Root">
-                    <InputRow label="Key Center">
-                        <DropdownInput
-                            value={root}
-                            setValue={setRoot}
-                            options={NOTE_PRESETS}
-                            idProperty="presetId"
-                        />
-                    </InputRow>
-                </CardSection>
-                <CardSection title="Intervals">
-                    <InputRow label="Model Type">
-                        <DropdownInput
-                            value={presetType}
-                            setValue={setPresetType}
-                            options={POD_LIST_PRESET_TYPE_OPTIONS}
-                            idProperty="id"
-                        />
-                    </InputRow>
-                    <InputRow label="Preset">
-                        <DropdownInput
-                            value={presetConfig}
-                            setValue={setPresetConfig}
-                            options={modelOptions}
-                            idProperty="presetId"
-                        />
-                    </InputRow>
-                </CardSection>
-                {/*<CardSection title="Colors">
+
+                    <CardSection title="Root">
+                        <InputRow label="Key Center">
+                            <DropdownInput
+                                value={root}
+                                setValue={setRoot}
+                                options={NOTE_PRESETS}
+                                idProperty="presetId"
+                            />
+                        </InputRow>
+                    </CardSection>
+                    <CardSection title="Intervals">
+                        <InputRow label="Model Type">
+                            <DropdownInput
+                                value={presetType}
+                                setValue={setPresetType}
+                                options={POD_LIST_PRESET_TYPE_OPTIONS}
+                                idProperty="id"
+                            />
+                        </InputRow>
+                        <InputRow label="Preset">
+                            <DropdownInput
+                                value={presetConfig}
+                                setValue={setPresetConfig}
+                                options={modelOptions}
+                                idProperty="presetId"
+                            />
+                        </InputRow>
+                    </CardSection>
+                    {/*<CardSection title="Colors">
                 <InputRow label="Color Scheme">
                     <DropdownInput
                         value={colorScheme}
@@ -144,6 +150,8 @@ const NotesCol: React.FC<IModelState> = (props) => {
                     />
                 </InputRow>
                 </CardSection>*/}
+                    <button className="edit">EDIT</button>
+                </StyledDetailsCol>
             </Card>
         </>
     );
