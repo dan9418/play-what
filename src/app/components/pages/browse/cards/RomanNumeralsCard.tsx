@@ -90,7 +90,7 @@ const RomanNumeralsCard: React.FC<IRomanNumeralsCardProps> = ({
                   n.presetId,
                   root ? (root.presetId as NoteId) : undefined
                 ),
-                content: getShortName(getRootedName(n, rootNotePreset)),
+                content: getShortName(getRootedName(n, root)),
               })),
             ],
           },
