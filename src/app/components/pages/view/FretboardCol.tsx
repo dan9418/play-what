@@ -9,6 +9,7 @@ import NumericInput from "../../shared/inputs/NumericInput";
 import SwitchInput from "../../shared/inputs/SwitchInput";
 import Modal from "../../shared/layout/Modal";
 import Card from "../../shared/ui/Card";
+import CardFooterButton from "../../shared/ui/CardFooterButton";
 import InputRow from "../../shared/ui/InputRow";
 import CardSection from "./CardSection";
 import MaximizeButton from "./MaximizeButton";
@@ -40,7 +41,7 @@ const FretboardCol: React.FC<IFretboardState & IModelState> = ({
   presetConfig,
   root
 }) => {
-
+  const [isEditing, setIsEditing] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
   const filteredVoicings = VOICING_OPTIONS;
@@ -80,56 +81,61 @@ const FretboardCol: React.FC<IFretboardState & IModelState> = ({
       <StyledMainCol>
         {viewer}
       </StyledMainCol>
-      <CardSection title="Tuning">
-        <InputRow label="Preset">
-          <DropdownInput
-            value={tuning}
-            setValue={setTuning}
-            options={FRETBOARD_TUNING_VALUES}
-          />
-        </InputRow>
-        {tuning.id === TuningId.Standard && (
-          <InputRow label="Voicing">
-            <DropdownInput
-              value={voicing}
-              setValue={setVoicing}
-              options={filteredVoicings}
-            />
-          </InputRow>
-        )}
-      </CardSection>
-      <CardSection title="Range">
-        <InputRow label="Low Fret">
-          <NumericInput
-            value={fretLo}
-            min={0}
-            max={fretHi}
-            setValue={(v) => setFretRange([v, fretHi])}
-          />
-        </InputRow>
-        <InputRow label="High Fret">
-          <NumericInput
-            value={fretHi}
-            min={fretLo}
-            max={24}
-            setValue={(v) => setFretRange([fretLo, v])}
-          />
-        </InputRow>
-      </CardSection>
-      <CardSection title="Details">
-        <InputRow label="Fret Dots">
-          <SwitchInput
-            value={showFretDots}
-            setValue={setShowFretDots}
-          />
-        </InputRow>
-        <InputRow label="Fret Numbers">
-          <SwitchInput
-            value={showFretNumbers}
-            setValue={setShowFretNumbers}
-          />
-        </InputRow>
-      </CardSection>
+      {isEditing && (
+        <div>
+          <CardSection title="Tuning">
+            <InputRow label="Preset">
+              <DropdownInput
+                value={tuning}
+                setValue={setTuning}
+                options={FRETBOARD_TUNING_VALUES}
+              />
+            </InputRow>
+            {tuning.id === TuningId.Standard && (
+              <InputRow label="Voicing">
+                <DropdownInput
+                  value={voicing}
+                  setValue={setVoicing}
+                  options={filteredVoicings}
+                />
+              </InputRow>
+            )}
+          </CardSection>
+          <CardSection title="Range">
+            <InputRow label="Low Fret">
+              <NumericInput
+                value={fretLo}
+                min={0}
+                max={fretHi}
+                setValue={(v) => setFretRange([v, fretHi])}
+              />
+            </InputRow>
+            <InputRow label="High Fret">
+              <NumericInput
+                value={fretHi}
+                min={fretLo}
+                max={24}
+                setValue={(v) => setFretRange([fretLo, v])}
+              />
+            </InputRow>
+          </CardSection>
+          <CardSection title="Details">
+            <InputRow label="Fret Dots">
+              <SwitchInput
+                value={showFretDots}
+                setValue={setShowFretDots}
+              />
+            </InputRow>
+            <InputRow label="Fret Numbers">
+              <SwitchInput
+                value={showFretNumbers}
+                setValue={setShowFretNumbers}
+              />
+            </InputRow>
+          </CardSection>
+        </div>
+      )}
+      <CardFooterButton isActive={isEditing} onClick={() => setIsEditing(!isEditing)}>{isEditing ? 'DONE' : 'EDIT'}</CardFooterButton>
     </Card>
   );
 };
