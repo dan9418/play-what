@@ -153,7 +153,7 @@ const SiteFooter: React.FC = () => {
       <a href={AUTHOR_WEBSITE_LINK} className="name">
         2023 Dan Bednarczyk
       </a>
-      <div className="version">v0.1.2</div>
+      <div className="version">v0.1.3</div>
     </StyledSiteFooter>
   );
 };
