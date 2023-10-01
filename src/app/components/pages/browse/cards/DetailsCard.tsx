@@ -6,14 +6,13 @@ import { getName as getIntervalName, getRatio } from "../../../../../core/Interv
 import { INotePreset } from "../../../../../core/Note.constants";
 import { getFrequency, getName as getNoteName } from "../../../../../core/Note.utils";
 import { addPods } from "../../../../../core/Pod.utils";
-import { StyledCard } from "../../../shared/ui/Card";
+import Card from "../../../shared/ui/Card";
 
-const StyledDetailsCard = styled(StyledCard) <{ $n: number }>`
+const StyledDetailsCard = styled(Card) <{ $n: number }>`
     ul {
         display: flex;
         align-items: center;
         justify-content: space-evenly;
-        height: 100%;
     }
     li {
         display: flex;
@@ -42,10 +41,12 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({
     podListPreset,
     rootNotePreset,
 }) => {
+    const hasRoot = !!rootNotePreset;
     const intervalIds = podListPreset.valueIds;
-
+    const title = `Intervals${hasRoot ? ' & Notes' : ''}`
+    0
     return (
-        <StyledDetailsCard $n={intervalIds.length}>
+        <StyledDetailsCard title={title} $n={intervalIds.length}>
             <ul className="intervals">
                 {intervalIds.map(ivlId => {
                     const intervalPreset = INTERVAL_PRESET_MAP.get(ivlId as IntervalId) as IIntervalPreset;

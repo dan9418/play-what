@@ -5,7 +5,6 @@ import { AnyPodListPreset, getPreset } from "../../../../core/Core.derived";
 import { INotePreset } from "../../../../core/Note.constants";
 import { getRootedName } from "../../../../core/Pod.utils";
 import { IScalePreset } from "../../../../core/Scale.constants";
-import RootInput from "../../shared/inputs/RootInput";
 import ColumnManager from "../../shared/layout/ColumnManager";
 import PageLayout from "../../shared/layout/PageLayout";
 import { ModelPageProps } from "../../shared/utils/PagePropsContext";
@@ -29,13 +28,10 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
     <StyledPodlistPage title={title}>
 
       <ColumnManager>
-        <ColumnManager desktop={["1fr", "3fr"]}>
-          <DetailsCard
-            podListPreset={podListPreset}
-            rootNotePreset={rootNotePreset}
-          />
-          <RootInput />
-        </ColumnManager>
+        <DetailsCard
+          podListPreset={podListPreset}
+          rootNotePreset={rootNotePreset}
+        />
 
         {presetType === PresetType.Scale && (
           <RomanNumeralsCard
