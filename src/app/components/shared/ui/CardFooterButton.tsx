@@ -1,5 +1,6 @@
 import React, { HTMLProps, PropsWithChildren } from "react";
 import styled from "styled-components";
+import Icon from "./Icon";
 
 
 export interface ICardFooterButtonProps extends PropsWithChildren, HTMLProps<HTMLButtonElement> {
@@ -26,6 +27,14 @@ export const StyledCardFooterButton = styled.div`
         background: ${(props) => props.theme?.utils?.hoverDark};
         color: ${(props) => props.theme?.action?.active};
     }
+
+    svg {
+        margin-left: 8px;
+        margin-bottom: 2px;
+        * {
+            fill: ${(props) => props.theme?.action?.interactive};
+        }
+    }
 `;
 
 const CardFooterButton: React.FC<ICardFooterButtonProps> = ({
@@ -36,6 +45,7 @@ const CardFooterButton: React.FC<ICardFooterButtonProps> = ({
     return (
         <StyledCardFooterButton type="button" $isActive={isActive} {...rest}>
             {children}
+            <Icon iconId={isActive ? 'up' : 'down'} size={8} />
         </StyledCardFooterButton>
     );
 };

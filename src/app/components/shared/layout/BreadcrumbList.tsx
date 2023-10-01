@@ -2,16 +2,15 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { replaceAll } from "../../../../core/primitives/String.utils";
-import { Breakpoint } from "../../../styles/breakpoint";
+import { MediaQuery } from "../../../styles/breakpoint";
 import Icon from "../ui/Icon";
 import { usePageProps } from "../utils/PagePropsContext";
 
 const StyledBreadcrumbList = styled.ul`
   font-size: 80%;
   padding: 8px;
-  ${Breakpoint.Tablet} {
-    font-size: 110%;
-    padding: 16px;
+  ${MediaQuery.Tablet} {
+    font-size: 100%;
   }
 
   display: flex;
