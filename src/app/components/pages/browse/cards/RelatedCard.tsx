@@ -40,7 +40,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={subchords}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
-            presetType={presetType}
+            presetType={PresetType.Chord}
           />
         </Card>
       )}
@@ -50,7 +50,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={superchords}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
-            presetType={presetType}
+            presetType={PresetType.Chord}
           />
         </Card>
       )}
@@ -60,7 +60,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={subscales}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
-            presetType={presetType}
+            presetType={PresetType.Scale}
           />
         </Card>
       )}
@@ -70,7 +70,7 @@ const RelatedCard: React.FC<IRelatedCardProps> = ({
             data={superscales}
             rootNotePreset={rootNotePreset}
             semitones={semitones}
-            presetType={presetType}
+            presetType={PresetType.Scale}
           />
         </Card>
       )}

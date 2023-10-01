@@ -4,7 +4,6 @@ const SCALE_JSON = require("./static/scales.json");
 
 const STATIC_PAGES = [
   { route: "/index/" },
-  //{ route: '/browse/index/' },
   { route: '/browse/chords/' },
   { route: '/browse/scales/' },
   //{ route: '/about/' },

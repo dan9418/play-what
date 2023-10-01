@@ -26,13 +26,11 @@ const PodListPage: React.FC<ModelPageProps> = (props) => {
 
   return (
     <StyledPodlistPage title={title}>
-
       <ColumnManager>
         <DetailsCard
           podListPreset={podListPreset}
           rootNotePreset={rootNotePreset}
         />
-
         {presetType === PresetType.Scale && (
           <RomanNumeralsCard
             podListPreset={podListPreset as IScalePreset}

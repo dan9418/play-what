@@ -12,8 +12,7 @@ import {
   IntervalQualityId,
 } from "./IntervalQuality.constants";
 import { IPod, MAX_POD } from "./Pod.constants";
-import { addPods, reducePod } from "./Pod.utils";
-
+import { reducePod } from "./Pod.utils";
 
 const getIsExtended = (pod: IPod): boolean => {
   return pod[0] > MAX_POD[0] || pod[1] > MAX_POD[1];
