@@ -1,7 +1,7 @@
 [
     {
         "modelType": "chords",
-        "modelId": "dominant-flat-9th",
+        "presetId": "dominant-flat-9th",
         "name": "Dominant b9",
         "value": [
             [
@@ -34,7 +34,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-9th",
+        "presetId": "dominant-9th",
         "name": "Dominant 9",
         "value": [
             [
