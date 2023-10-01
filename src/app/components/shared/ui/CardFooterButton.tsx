@@ -16,17 +16,13 @@ export const StyledCardFooterButton = styled.div`
     width: 100%;
     border: none;
     margin-top: 16px;
+    padding: 8px 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
     color: ${(props) => props.theme?.action?.interactive};
-
-    &:hover {
-        background: ${(props) => props.theme?.utils?.hoverDark};
-        color: ${(props) => props.theme?.action?.active};
-    }
 
     svg {
         margin-left: 8px;
@@ -35,6 +31,14 @@ export const StyledCardFooterButton = styled.div`
             fill: ${(props) => props.theme?.action?.interactive};
         }
     }
+
+    &:hover {
+        svg,
+        svg * {
+          fill: ${({ theme }) => theme?.action?.active};
+        }
+        color: ${({ theme }) => theme?.action?.active};
+      }
 `;
 
 const CardFooterButton: React.FC<ICardFooterButtonProps> = ({

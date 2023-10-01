@@ -14,13 +14,13 @@ const StyledHomeTiles = styled.div`
 
   grid-template-columns: 100%;
   ${MediaQuery.Tablet} {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
   a {
     background-color: ${({ theme }) => theme?.surface?.card};
     border-radius: 8px;
-    padding: 20px;
+    padding: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -42,21 +42,12 @@ const StyledHomeTiles = styled.div`
         fill: ${({ theme }) => theme?.action?.active};
       }
       border-color: ${({ theme }) => theme?.action?.active};
+      color: ${({ theme }) => theme?.action?.active};
     }
   }
 `;
 
 const TILES = [
-  /*{
-    link: "/browse",
-    iconId: IconId.Browse,
-    text: "Browse Chords & Scales",
-  },
-  {
-    link: "/view/fretboard",
-    iconId: IconId.Guitar,
-    text: "Customize Fretboard",
-  },*/
   {
     link: getModelRoute(PresetType.Chord),
     iconId: IconId.Browse,
@@ -66,6 +57,11 @@ const TILES = [
     link: getModelRoute(PresetType.Scale),
     iconId: IconId.Browse,
     text: "Scales",
+  },
+  {
+    link: "/view/fretboard/?presetId=major-triad&presetType=chords&rootId=c",
+    iconId: IconId.Guitar,
+    text: "Fretboard",
   },
   {
     link: "RANDOM",
@@ -82,7 +78,7 @@ const HomeTiles: React.FC = () => {
         const { link, iconId, text } = tile;
         return (
           <Link key={text} to={link === "RANDOM" ? modelPath : link}>
-            <Icon iconId={iconId} size={64} />
+            <Icon iconId={iconId} size={48} />
             {text}
           </Link>
         );
