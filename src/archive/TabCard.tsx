@@ -12,7 +12,7 @@ const StyledTabCard = styled(StyledCard)`
     position: relative;
     width: 100%;
     bottom: 2px;
-    border-bottom: 2px solid ${(props) => props.theme.surface.bg};
+    border-bottom: 2px solid ${(props) => props.theme?.surface?.bg};
   }
   > ul {
     display: flex;
@@ -26,26 +26,26 @@ const StyledTabCard = styled(StyledCard)`
       appearance: none;
       border: none;
       cursor: pointer;
-      background-color: ${(props) => props.theme.surface.card};
+      background-color: ${(props) => props.theme?.surface?.card};
       border-bottom: 2px solid transparent;
       border-radius: 8px 8px 0 0;
-      border-bottom: 2px solid ${(props) => props.theme.surface.bg};
+      border-bottom: 2px solid ${(props) => props.theme?.surface?.bg};
 
       @media (min-width: 512px) {
         font-size: 120%;
       }
 
-      color: ${(props) => props.theme.text.secondary};
+      color: ${(props) => props.theme?.text?.secondary};
 
       &:hover {
-        border-bottom: 2px solid ${(props) => props.theme.action.interactive};
-        color: ${(props) => props.theme.text.primary};
+        border-bottom: 2px solid ${(props) => props.theme?.action?.interactive};
+        color: ${(props) => props.theme?.text?.primary};
       }
 
       &.active {
-        border-color: ${(props) => props.theme.action.active};
+        border-color: ${(props) => props.theme?.action?.active};
         font-weight: bold;
-        color: ${(props) => props.theme.text.primary};
+        color: ${(props) => props.theme?.text?.primary};
       }
     }
   }

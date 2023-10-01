@@ -1,7 +1,7 @@
 [
     {
         "modelType": "intervals",
-        "modelId": "unison",
+        "presetId": "unison",
         "name": "Perfect Unison",
         "value": [
             0,
@@ -13,7 +13,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "minor-2nd",
+        "presetId": "minor-2nd",
         "name": "Minor 2nd",
         "value": [
             1,
@@ -25,7 +25,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "major-2nd",
+        "presetId": "major-2nd",
         "name": "Major 2nd",
         "value": [
             2,
@@ -37,7 +37,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "augmented-2nd",
+        "presetId": "augmented-2nd",
         "name": "Augmented 2nd",
         "value": [
             3,
@@ -49,7 +49,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "diminished-3rd",
+        "presetId": "diminished-3rd",
         "name": "Diminished 3rd",
         "value": [
             2,
@@ -61,7 +61,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "minor-3rd",
+        "presetId": "minor-3rd",
         "name": "Minor 3rd",
         "value": [
             3,
@@ -73,7 +73,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "major-3rd",
+        "presetId": "major-3rd",
         "name": "Major 3rd",
         "value": [
             4,
@@ -85,7 +85,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "augmented-3rd",
+        "presetId": "augmented-3rd",
         "name": "Augmented 3rd",
         "value": [
             5,
@@ -97,7 +97,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "diminished-4th",
+        "presetId": "diminished-4th",
         "name": "Diminished 4th",
         "value": [
             4,
@@ -109,7 +109,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "perfect-4th",
+        "presetId": "perfect-4th",
         "name": "Perfect 4th",
         "value": [
             5,
@@ -121,7 +121,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "augmented-4th",
+        "presetId": "augmented-4th",
         "name": "Augmented 4th",
         "value": [
             6,
@@ -133,7 +133,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "diminished-5th",
+        "presetId": "diminished-5th",
         "name": "Diminished 5th",
         "value": [
             6,
@@ -145,7 +145,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "perfect-5th",
+        "presetId": "perfect-5th",
         "name": "Perfect 5th",
         "value": [
             7,
@@ -157,7 +157,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "augmented-5th",
+        "presetId": "augmented-5th",
         "name": "Augmented 5th",
         "value": [
             8,
@@ -169,7 +169,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "diminished-6th",
+        "presetId": "diminished-6th",
         "name": "Diminished 6th",
         "value": [
             7,
@@ -181,7 +181,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "minor-6th",
+        "presetId": "minor-6th",
         "name": "Minor 6th",
         "value": [
             8,
@@ -193,7 +193,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "major-6th",
+        "presetId": "major-6th",
         "name": "Major 6th",
         "value": [
             9,
@@ -205,7 +205,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "augmented-6th",
+        "presetId": "augmented-6th",
         "name": "Augmented 6th",
         "value": [
             10,
@@ -217,7 +217,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "diminished-7th",
+        "presetId": "diminished-7th",
         "name": "Diminished 7th",
         "value": [
             9,
@@ -229,7 +229,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "minor-7th",
+        "presetId": "minor-7th",
         "name": "Minor 7th",
         "value": [
             10,
@@ -241,7 +241,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "major-7th",
+        "presetId": "major-7th",
         "name": "Major 7th",
         "value": [
             11,
@@ -253,7 +253,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "octave",
+        "presetId": "octave",
         "name": "Octave",
         "value": [
             12,
@@ -265,7 +265,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "flat-9th",
+        "presetId": "flat-9th",
         "name": "Flat Ninth",
         "value": [
             13,
@@ -277,7 +277,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "9th",
+        "presetId": "9th",
         "name": "Ninth",
         "value": [
             14,
@@ -289,7 +289,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "sharp-9th",
+        "presetId": "sharp-9th",
         "name": "Sharp Ninth",
         "value": [
             15,
@@ -301,7 +301,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "flat-11th",
+        "presetId": "flat-11th",
         "name": "Flat Eleventh",
         "value": [
             16,
@@ -313,7 +313,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "11th",
+        "presetId": "11th",
         "name": "Eleventh",
         "value": [
             17,
@@ -325,7 +325,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "sharp-11th",
+        "presetId": "sharp-11th",
         "name": "Sharp Eleventh",
         "value": [
             18,
@@ -337,7 +337,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "flat-13th",
+        "presetId": "flat-13th",
         "name": "Flat Thirteenth",
         "value": [
             20,
@@ -349,7 +349,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "13th",
+        "presetId": "13th",
         "name": "Thirteenth",
         "value": [
             21,
@@ -361,7 +361,7 @@
     },
     {
         "modelType": "intervals",
-        "modelId": "sharp-13th",
+        "presetId": "sharp-13th",
         "name": "Sharp Thirteenth",
         "value": [
             22,

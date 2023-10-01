@@ -1,7 +1,7 @@
 [
     {
         "modelType": "chords",
-        "modelId": "major-triad",
+        "presetId": "major-triad",
         "name": "Major Triad",
         "valueIds": [
             "unison",
@@ -30,7 +30,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-triad",
+        "presetId": "minor-triad",
         "name": "Minor Triad",
         "valueIds": [
             "unison",
@@ -59,7 +59,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "augmented-triad",
+        "presetId": "augmented-triad",
         "name": "Augmented Triad",
         "valueIds": [
             "unison",
@@ -88,7 +88,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "diminished-triad",
+        "presetId": "diminished-triad",
         "name": "Diminished Triad",
         "valueIds": [
             "unison",
@@ -117,7 +117,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-7th",
+        "presetId": "major-7th",
         "name": "Major 7th",
         "valueIds": [
             "unison",
@@ -151,7 +151,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-7th",
+        "presetId": "minor-7th",
         "name": "Minor 7th",
         "valueIds": [
             "unison",
@@ -185,7 +185,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-7th",
+        "presetId": "dominant-7th",
         "name": "Dominant 7th",
         "valueIds": [
             "unison",
@@ -219,7 +219,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-major-7th",
+        "presetId": "minor-major-7th",
         "name": "Minor-Major 7th",
         "valueIds": [
             "unison",
@@ -253,7 +253,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "diminished-7th",
+        "presetId": "diminished-7th",
         "name": "Diminished 7th",
         "valueIds": [
             "unison",
@@ -287,7 +287,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "half-diminished-7th",
+        "presetId": "half-diminished-7th",
         "name": "Half-Diminished 7th",
         "valueIds": [
             "unison",
@@ -323,7 +323,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "augmented-7th",
+        "presetId": "augmented-7th",
         "name": "Augmented 7th",
         "valueIds": [
             "unison",
@@ -357,7 +357,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "augmented-major-7th",
+        "presetId": "augmented-major-7th",
         "name": "Augmented Major 7th",
         "valueIds": [
             "unison",
@@ -391,7 +391,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-6th",
+        "presetId": "major-6th",
         "name": "Major 6th",
         "valueIds": [
             "unison",
@@ -425,7 +425,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-6th",
+        "presetId": "minor-6th",
         "name": "Minor 6th",
         "valueIds": [
             "unison",
@@ -459,7 +459,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "suspended-2nd",
+        "presetId": "suspended-2nd",
         "name": "Suspended 2nd",
         "valueIds": [
             "unison",
@@ -488,7 +488,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "suspended-4th",
+        "presetId": "suspended-4th",
         "name": "Suspended 4th",
         "valueIds": [
             "unison",
@@ -517,7 +517,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-flat-9th",
+        "presetId": "dominant-flat-9th",
         "name": "Dominant b9",
         "valueIds": [
             "unison",
@@ -557,7 +557,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-9th",
+        "presetId": "dominant-9th",
         "name": "Dominant 9",
         "valueIds": [
             "unison",
@@ -597,7 +597,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-sharp-9th",
+        "presetId": "dominant-sharp-9th",
         "name": "Dominant #9",
         "valueIds": [
             "unison",
@@ -637,7 +637,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-1th",
+        "presetId": "dominant-1th",
         "name": "Dominant 11",
         "valueIds": [
             "unison",
@@ -677,7 +677,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-sharp-11th",
+        "presetId": "dominant-sharp-11th",
         "name": "Dominant #11",
         "valueIds": [
             "unison",
@@ -717,7 +717,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-flat-13th",
+        "presetId": "dominant-flat-13th",
         "name": "Dominant b13",
         "valueIds": [
             "unison",
@@ -757,7 +757,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "dominant-13th",
+        "presetId": "dominant-13th",
         "name": "Dominant 13",
         "valueIds": [
             "unison",
@@ -797,7 +797,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-flat-9th",
+        "presetId": "minor-flat-9th",
         "name": "Minor b9",
         "valueIds": [
             "unison",
@@ -837,7 +837,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-9th",
+        "presetId": "minor-9th",
         "name": "Minor 9",
         "valueIds": [
             "unison",
@@ -877,7 +877,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-11th",
+        "presetId": "minor-11th",
         "name": "Minor 11",
         "valueIds": [
             "unison",
@@ -917,7 +917,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "minor-13th",
+        "presetId": "minor-13th",
         "name": "Minor 13",
         "valueIds": [
             "unison",
@@ -957,7 +957,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-9th",
+        "presetId": "major-9th",
         "name": "Major 9",
         "valueIds": [
             "unison",
@@ -997,7 +997,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-11th",
+        "presetId": "major-11th",
         "name": "Major 11",
         "valueIds": [
             "unison",
@@ -1037,7 +1037,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-sharp-11th",
+        "presetId": "major-sharp-11th",
         "name": "Major #11",
         "valueIds": [
             "unison",
@@ -1077,7 +1077,7 @@
     },
     {
         "modelType": "chords",
-        "modelId": "major-13th",
+        "presetId": "major-13th",
         "name": "Major 13",
         "valueIds": [
             "unison",
