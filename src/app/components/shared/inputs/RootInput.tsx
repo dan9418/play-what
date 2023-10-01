@@ -16,10 +16,10 @@ const StyledRootInput = styled(StyledCard)`
   a:not(.clear) {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    letter-spacing: 2px;
 
-    height: 32px;
-    width: 32px;
+    padding: 8px;
     border-radius: 4px;
 
     &:hover,
@@ -41,22 +41,23 @@ const StyledRootInput = styled(StyledCard)`
 `;
 
 const Col: React.FC<any> = ({ basePath, rootKey }) => {
+  const name = (NOTE_PRESET_MAP.get(rootKey) as INotePreset).name;
   return (
     <div className="col">
       <Link
         activeClassName="active"
         to={`${basePath}root/${rootKey}-sharp`}
       >
-        #
+        {`${name}#`}
       </Link>
       <Link activeClassName="active" to={`${basePath}root/${rootKey}`}>
-        {(NOTE_PRESET_MAP.get(rootKey) as INotePreset).name}
+        {name}
       </Link>
       <Link
         activeClassName="active"
         to={`${basePath}root/${rootKey}-flat`}
       >
-        b
+        {`${name}b`}
       </Link>
     </div>
   );
