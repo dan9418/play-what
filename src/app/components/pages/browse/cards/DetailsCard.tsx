@@ -6,7 +6,6 @@ import { getName as getIntervalName, getRatio } from "../../../../../core/Interv
 import { INotePreset } from "../../../../../core/Note.constants";
 import { getFrequency, getName as getNoteName } from "../../../../../core/Note.utils";
 import { addPods } from "../../../../../core/Pod.utils";
-import RootInput from "../../../shared/inputs/RootInput";
 import { StyledCard } from "../../../shared/ui/Card";
 
 const StyledDetailsCard = styled(StyledCard) <{ $n: number }>`
@@ -14,6 +13,7 @@ const StyledDetailsCard = styled(StyledCard) <{ $n: number }>`
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        height: 100%;
     }
     li {
         display: flex;
@@ -65,7 +65,6 @@ const DetailsCard: React.FC<IDetailsCardProps> = ({
                     );
                 })}
             </ul>
-            <RootInput />
         </StyledDetailsCard>
     );
 };

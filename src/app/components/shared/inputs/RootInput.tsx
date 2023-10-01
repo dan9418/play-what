@@ -2,17 +2,10 @@ import { Link } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import { INotePreset, NOTE_PRESET_MAP, NoteId } from "../../../../core/Note.constants";
+import { StyledCard } from "../ui/Card";
 import { usePageProps } from "../utils/PagePropsContext";
 
-const StyledRootInput = styled.div`
-  background-color: ${props => props.theme.surface.bg};
-
-  padding: 8px;
-  border-radius: 8px;
-  width: fit-content;
-  margin: auto;
-  margin-top: 16px;
-
+const StyledRootInput = styled(StyledCard)`
   .spelling {
     display: flex;
     align-items: center;
