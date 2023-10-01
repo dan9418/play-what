@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
-import BreadcrumbList from "./BreadcrumbList";
-import SEO from "../utils/SEO";
 import { MediaQuery } from "../../../styles/breakpoint";
+import SEO from "../utils/SEO";
+import BreadcrumbList from "./BreadcrumbList";
 
 const StyledPageLayout = styled.div<{ $maxWidth }>`
   width: 100%;
@@ -56,6 +56,7 @@ interface IPageLayoutProps extends PropsWithChildren {
   action?: any;
   className?: string;
   hideHeader?: boolean;
+  hideBreadcrumbs?: boolean;
   maxWidth?: string;
 }
 
@@ -67,21 +68,20 @@ const PageLayout: React.FC<IPageLayoutProps> = ({
   className = "",
   children,
   hideHeader,
+  hideBreadcrumbs
 }) => {
   return (
     <StyledPageLayout $maxWidth={maxWidth}>
       <SEO title={subtitle ? `${title} - ${subtitle}` : title} />
+      {!hideBreadcrumbs && <BreadcrumbList />}
       {!hideHeader && (
-        <>
-          <BreadcrumbList />
-          <div className="header">
-            <h1>
-              {title}
-              {action && <div className="action">{action}</div>}
-            </h1>
-            {subtitle && <h2>{subtitle}</h2>}
-          </div>
-        </>
+        <div className="header">
+          <h1>
+            {title}
+            {action && <div className="action">{action}</div>}
+          </h1>
+          {subtitle && <h2>{subtitle}</h2>}
+        </div>
       )}
       <div className={`content ${className}`}>{children}</div>
     </StyledPageLayout>

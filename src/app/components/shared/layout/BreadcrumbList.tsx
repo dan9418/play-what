@@ -45,17 +45,18 @@ const BreadcrumbList = () => {
       i === 0
         ? "Home"
         : replaceAll(
-            cur.replace(" sharp", "#").replace(" flat", "b"),
-            "-",
-            " "
-          );
+          cur.replace(" sharp", "#").replace(" flat", "b"),
+          "-",
+          " "
+        );
 
     const Tag = isLink ? Link : "span";
-    const to: string | undefined = isLink ? path : undefined;
+    const to = isLink ? path : undefined;
 
     paths.push(
       <li key={i}>
         {i > 0 && <Icon iconId="next" size={10} color="grey" />}
+        {/* @ts-ignore */}
         <Tag to={to}>{text}</Tag>
       </li>
     );
