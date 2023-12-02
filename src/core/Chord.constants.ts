@@ -20,6 +20,7 @@ export enum ChordId {
   HalfDim7 = "half-diminished-7th",
   Sus2 = "suspended-2nd",
   Sus4 = "suspended-4th",
+  Dom7Sus4 = "dominant-7th-suspended-4th",
   DomFlat9 = "dominant-flat-9th",
   Dom9 = "dominant-9th",
   DomSharp9 = "dominant-sharp-9th",
@@ -196,6 +197,15 @@ export const CHORD_PRESET_MAP: PresetMap<ChordId, IChordPreset> = new Map([
       "Suspended 2nd",
       [IntervalId.P1, IntervalId.M2, IntervalId.P5],
       [Tag.Suspended]
+    ),
+  ],
+  [
+    ChordId.Dom7Sus4,
+    formatChordPreset(
+      ChordId.Dom7Sus4,
+      "Dominant 7th Suspended 4th",
+      [IntervalId.P1, IntervalId.P4, IntervalId.P5, IntervalId.m7],
+      [Tag.Suspended, Tag.Dominant, Tag.Seventh]
     ),
   ],
   [
