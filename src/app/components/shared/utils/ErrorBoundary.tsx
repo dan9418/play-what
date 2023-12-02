@@ -23,7 +23,10 @@ const StyledErrorPage = styled.section`
     }
   }
 `;
-class ErrorBoundary extends React.Component<PropsWithChildren, IErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  PropsWithChildren,
+  IErrorBoundaryState
+> {
   constructor(props) {
     super(props);
     this.state = { hasError: false };
@@ -45,7 +48,7 @@ class ErrorBoundary extends React.Component<PropsWithChildren, IErrorBoundarySta
           <div>
             <h1>Sorry, something went wrong.</h1>
             <p>This app is still unstable and prone to errors.</p>
-            <ButtonInput onClick={() => location.reload()}>Refresh</ButtonInput>
+            {/*<ButtonInput onClick={() => location.reload()}>Refresh</ButtonInput>*/}
           </div>
         </StyledErrorPage>
       );
