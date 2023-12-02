@@ -517,6 +517,41 @@
     },
     {
         "modelType": "chords",
+        "presetId": "dominant-7th-suspended-4th",
+        "name": "Dominant 7th Suspended 4th",
+        "valueIds": [
+            "unison",
+            "perfect-4th",
+            "perfect-5th",
+            "minor-7th"
+        ],
+        "value": [
+            [
+                0,
+                0
+            ],
+            [
+                5,
+                3
+            ],
+            [
+                7,
+                4
+            ],
+            [
+                10,
+                6
+            ]
+        ],
+        "aliases": [],
+        "tags": [
+            "Suspended",
+            "Seventh",
+            "Dominant"
+        ]
+    },
+    {
+        "modelType": "chords",
         "presetId": "dominant-flat-9th",
         "name": "Dominant b9",
         "valueIds": [
